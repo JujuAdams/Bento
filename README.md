@@ -1,4 +1,5 @@
-<h1 align="center">Bento 0.0.0</h1>
+<p align="center"><img src="https://raw.githubusercontent.com/JujuAdams/bento/master/LOGO_small.png" style="display:block; margin:auto; width:300px"></p>
+<h1 align="center">0.0.0</h1>
 
 <p align="center">A modern UI framework for GameMaker Studio 2 by <b>@jujuadams</b><br><br>See https://interfaceingame.com/ for examples of game UI</p>
 
