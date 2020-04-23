@@ -1,0 +1,9 @@
+/// Configuration settings for Bento
+
+#macro BENTO_CLEAN_UP_DESTROYED_NAMED_CHILDREN    false
+#macro BENTO_STYLE_TEMPLATE_DEFAULT_BY_REFERENCE  false
+#macro BENTO_ANCHOR_ALLOW_ELEMENTS                true
+
+#macro BENTO_WARNING_NOT_ROOT_ELEMENT             true
+#macro BENTO_WARNING_ANCHOR_NOT_BOUNDING_BOX      true
+#macro BENTO_WARNING_STYLE_TEMPLATE_DOESNT_EXIST  true
