@@ -19,10 +19,27 @@ function bento_layout_update(_element)
             var _line_halign    = style.flexbox.line_halign;
             var _line_valign    = style.flexbox.line_valign;
             
-            var _row_major = true;
+            #region Unpack the "direction" parameter
+            
             var _direction = style.flexbox.direction;
-            if ((_direction != "rows") && (_direction != "columns")) throw "Bento: Flexbox direction \"" + string(_direction) + "\" not supported";
-            if (_direction == "columns") _row_major = false;
+            switch(_direction)
+            {
+                case "row":
+                case "rows":
+                    var _row_major = true;
+                break;
+                
+                case "column":
+                case "columns":
+                    var _row_major = false;
+                break;
+                
+                default:
+                    throw "Bento: Flexbox direction \"" + string(_direction) + "\" not supported";
+                break;
+            }
+            
+            #endregion
             
             //Set some state variables
             var _line       = -1;

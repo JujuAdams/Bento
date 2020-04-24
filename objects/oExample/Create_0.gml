@@ -9,15 +9,17 @@ with(box)
         direction = "columns";
         line_halign = "left";
         line_valign = "top";
-        content_halign = "around";
-        content_valign = "between";
+        content_halign = "left";
+        content_valign = "top";
     }
     
-    repeat(30)
+    var _i = 50;
+    repeat(25)
     {
         with(bento_sprite(sTest, 0))
         {
-            style.sprite.color = choose(c_red, c_lime, c_blue);
+            style.sprite.color = make_color_rgb(_i, 0, 0);
+            _i += 8;
         }
     }
 }
