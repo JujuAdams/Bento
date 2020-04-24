@@ -1,6 +1,19 @@
 #macro BENTO_VERSION  "0.0.0"
 #macro BENTO_DATE     "2020-04-14"
 
+#macro BENTO_ALIGN_LEFT     "left"
+#macro BENTO_ALIGN_TOP      "top"
+#macro BENTO_ALIGN_RIGHT    "right"
+#macro BENTO_ALIGN_BOTTOM   "bottom"
+#macro BENTO_ALIGN_CENTER   "center"
+#macro BENTO_ALIGN_CENTRE   "centre"
+#macro BENTO_ALIGN_MIDDLE   "middle"
+#macro BENTO_ALIGN_EVEN     "even"
+#macro BENTO_ALIGN_BETWEEN  "between"
+#macro BENTO_ALIGN_AROUND   "around"
+#macro BENTO_ALIGN_STRETCH  "stretch"
+#macro BENTO_STRETCH        "stretch"
+
 #macro bento_clip    global.__bento_clip
 
 global.__bento_element_count = 0;

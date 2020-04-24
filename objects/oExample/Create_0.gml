@@ -4,11 +4,17 @@ with(box)
     style.fill.alpha = 0.3;
     
     layout_flexbox();
-    
-    repeat(30)
+    with(style.flexbox)
     {
-        bento_sprite(sTest, 0);
+        line_halign = "center";
+        line_valign = "center";
+        content_valign = "top";
     }
+    
+    
+    bento_sprite(sTest, 0);
+    with(bento_sprite(sTest, 0)) style.flexbox.grow = 1;
+    with(bento_sprite(sTest, 0)) style.flexbox.grow = 2;
 }
 
 bento_layout_update(box);

@@ -199,9 +199,12 @@ function bento_element_class() constructor
         
         with(style)
         {
-            layout       = "grid";
-            grid.columns = _columns;
-            grid.rows    = _rows;
+            layout = "grid";
+            with(grid)
+            {
+                columns = _columns;
+                rows    = _rows;
+            }
         }
         
         return self;
@@ -305,14 +308,13 @@ function bento_element_class() constructor
     
     #endregion
     
+    #region Position
+    
     /// @function position_update()
     static position_update = function()
     {
         var _actual_w = __bento_resolve_width();
         var _actual_h = __bento_resolve_height();
-        
-        var _margin = style.margin;
-        var _padding = style.padding;
         
         with(properties)
         {
@@ -351,7 +353,7 @@ function bento_element_class() constructor
                         case "l": case "left":                                               var _a =  _box_l.l;               break;
                         case "c": case "m":     case "center": case "centre": case "middle": var _a = (_box_l.l + _box_l.r)/2; break;
                         case "r": case "right":                                              var _a =  _box_l.r;               break;
-                        default: throw "Bento: Anchor type \"" + string(anchor_left.anchor) + "\" not recognised for left anchor\n "; break;
+                        default: throw "Bento: Anchor type \"" + string(anchor_left.anchor) + "\" not supported for left anchor\n "; break;
                     }
                 
                     bbox_margin.l = _a + __bento_width_perc(_box_l, anchor_left.parent_offset) + __bento_width_perc(_actual_w, anchor_left.child_offset);
@@ -381,7 +383,7 @@ function bento_element_class() constructor
                         case "t": case "top":                                                 var _a =  _box_t.t;               break;
                         case "c": case "m":      case "center": case "centre": case "middle": var _a = (_box_t.t + _box_t.b)/2; break;
                         case "b": case "bottom":                                              var _a =  _box_t.b;               break;
-                        default: throw "Bento: Anchor type \"" + string(anchor_top.anchor) + "\" not recognised for top anchor\n "; break;
+                        default: throw "Bento: Anchor type \"" + string(anchor_top.anchor) + "\" not supported for top anchor\n "; break;
                     }
                 
                     bbox_margin.t = _a + __bento_height_perc(_box_t, anchor_top.parent_offset) + __bento_height_perc(_actual_h, anchor_top.child_offset);
@@ -411,7 +413,7 @@ function bento_element_class() constructor
                         case "l": case "left":                                               var _a =  _box_r.l;               break;
                         case "c": case "m":     case "center": case "centre": case "middle": var _a = (_box_r.l + _box_r.r)/2; break;
                         case "r": case "right":                                              var _a =  _box_r.r;               break;
-                        default: throw "Bento: Anchor type \"" + string(anchor_right.anchor) + "\" not recognised for right anchor\n "; break;
+                        default: throw "Bento: Anchor type \"" + string(anchor_right.anchor) + "\" not supported for right anchor\n "; break;
                     }
                 
                     bbox_margin.r = _a + __bento_width_perc(_box_r, anchor_right.parent_offset) + __bento_width_perc(_actual_w, anchor_right.child_offset);
@@ -441,7 +443,7 @@ function bento_element_class() constructor
                         case "t": case "top":                                                 var _a =  _box_b.t;               break;
                         case "c": case "m":      case "center": case "centre": case "middle": var _a = (_box_b.t + _box_b.b)/2; break;
                         case "b": case "bottom":                                              var _a =  _box_b.b;               break;
-                        default: throw "Bento: Anchor type \"" + string(anchor_bottom.anchor) + "\" not recognised for bottom anchor\n "; break;
+                        default: throw "Bento: Anchor type \"" + string(anchor_bottom.anchor) + "\" not supported for bottom anchor\n "; break;
                     }
                 
                     bbox_margin.b = _a + __bento_height_perc(_box_b, anchor_bottom.parent_offset) + __bento_height_perc(_actual_h, anchor_bottom.child_offset);
@@ -451,38 +453,132 @@ function bento_element_class() constructor
                 if (!_anchored_l && !_anchored_r) bbox_margin.r = bbox_margin.l + _actual_w;
                 if (!_anchored_t && !_anchored_b) bbox_margin.b = bbox_margin.t + _actual_h;
             }
-            
+        }
+        
+        update_bbox_from_margin();
+    }
+    
+    /// @function update_bbox_from_margin()
+    static update_bbox_from_margin = function()
+    {
+        var _margin  = style.margin;
+        var _padding = style.padding;
+        
+        with(properties)
+        {
             if (!is_struct(_margin))
             {
-                bbox_padding.l = bbox_margin.l - _margin;
-                bbox_padding.t = bbox_margin.t - _margin;
-                bbox_padding.r = bbox_margin.r + _margin;
-                bbox_padding.b = bbox_margin.b + _margin;
+                bbox_padding.l = bbox_margin.l + _margin;
+                bbox_padding.t = bbox_margin.t + _margin;
+                bbox_padding.r = bbox_margin.r - _margin;
+                bbox_padding.b = bbox_margin.b - _margin;
             }
             else
             {
-                bbox_padding.l = bbox_margin.l - _margin.l;
-                bbox_padding.t = bbox_margin.t - _margin.t;
-                bbox_padding.r = bbox_margin.r + _margin.r;
-                bbox_padding.b = bbox_margin.b + _margin.b;
+                bbox_padding.l = bbox_margin.l + _margin.l;
+                bbox_padding.t = bbox_margin.t + _margin.t;
+                bbox_padding.r = bbox_margin.r - _margin.r;
+                bbox_padding.b = bbox_margin.b - _margin.b;
             }
             
             if (!is_struct(_padding))
             {
-                bbox_content.l = bbox_padding.l - _padding;
-                bbox_content.t = bbox_padding.t - _padding;
-                bbox_content.r = bbox_padding.r + _padding;
-                bbox_content.b = bbox_padding.b + _padding;
+                bbox_content.l = bbox_padding.l + _padding;
+                bbox_content.t = bbox_padding.t + _padding;
+                bbox_content.r = bbox_padding.r - _padding;
+                bbox_content.b = bbox_padding.b - _padding;
             }
             else
             {
-                bbox_content.l = bbox_padding.l - _padding.l;
-                bbox_content.t = bbox_padding.t - _padding.t;
-                bbox_content.r = bbox_padding.r + _padding.r;
-                bbox_content.b = bbox_padding.b + _padding.b;
+                bbox_content.l = bbox_padding.l + _padding.l;
+                bbox_content.t = bbox_padding.t + _padding.t;
+                bbox_content.r = bbox_padding.r - _padding.r;
+                bbox_content.b = bbox_padding.b - _padding.b;
             }
         }
     }
+    
+    /// @function update_bbox_from_padding()
+    static update_bbox_from_padding = function()
+    {
+        var _margin  = style.margin;
+        var _padding = style.padding;
+        
+        with(properties)
+        {
+            if (!is_struct(_margin))
+            {
+                bbox_margin.l = bbox_padding.l - _margin;
+                bbox_margin.t = bbox_padding.t - _margin;
+                bbox_margin.r = bbox_padding.r = _margin;
+                bbox_margin.b = bbox_padding.b = _margin;
+            }
+            else
+            {
+                bbox_margin.l = bbox_padding.l - _margin.l;
+                bbox_margin.t = bbox_padding.t - _margin.t;
+                bbox_margin.r = bbox_padding.r + _margin.r;
+                bbox_margin.b = bbox_padding.b + _margin.b;
+            }
+            
+            if (!is_struct(_padding))
+            {
+                bbox_content.l = bbox_padding.l + _padding;
+                bbox_content.t = bbox_padding.t + _padding;
+                bbox_content.r = bbox_padding.r - _padding;
+                bbox_content.b = bbox_padding.b - _padding;
+            }
+            else
+            {
+                bbox_content.l = bbox_padding.l + _padding.l;
+                bbox_content.t = bbox_padding.t + _padding.t;
+                bbox_content.r = bbox_padding.r - _padding.r;
+                bbox_content.b = bbox_padding.b - _padding.b;
+            }
+        }
+    }
+    
+    /// @function update_bbox_from_padding()
+    static update_bbox_from_content = function()
+    {
+        var _margin  = style.margin;
+        var _padding = style.padding;
+        
+        with(properties)
+        {
+            if (!is_struct(_padding))
+            {
+                bbox_padding.l = bbox_content.l - _padding;
+                bbox_padding.t = bbox_content.t - _padding;
+                bbox_padding.r = bbox_content.r + _padding;
+                bbox_padding.b = bbox_content.b + _padding;
+            }
+            else
+            {
+                bbox_padding.l = bbox_content.l - _padding.l;
+                bbox_padding.t = bbox_content.t - _padding.t;
+                bbox_padding.r = bbox_content.r + _padding.r;
+                bbox_padding.b = bbox_content.b + _padding.b;
+            }
+            
+            if (!is_struct(_margin))
+            {
+                bbox_margin.l = bbox_padding.l - _margin;
+                bbox_margin.t = bbox_padding.t - _margin;
+                bbox_margin.r = bbox_padding.r = _margin;
+                bbox_margin.b = bbox_padding.b = _margin;
+            }
+            else
+            {
+                bbox_margin.l = bbox_padding.l - _margin.l;
+                bbox_margin.t = bbox_padding.t - _margin.t;
+                bbox_margin.r = bbox_padding.r + _margin.r;
+                bbox_margin.b = bbox_padding.b + _margin.b;
+            }
+        }
+    }
+    
+    #endregion
     
     /// @function destroy()
     static destroy = function()
@@ -505,6 +601,4 @@ function bento_element_class() constructor
     {
         return properties.long_name;
     }
-    
-    #endregion
 }

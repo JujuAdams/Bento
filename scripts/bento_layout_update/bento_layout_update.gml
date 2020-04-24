@@ -23,7 +23,7 @@ function bento_layout_update(_element)
             var _line_array = [];
         
             var _line_y = 0;
-        
+            
             var _e = 0;
             var _children_count = array_length(children);
             while(_e < _children_count)
@@ -38,6 +38,7 @@ function bento_layout_update(_element)
                         height        : 0,
                         element_start : _e,
                         element_count : 0,
+                        total_grow    : 0,
                     }
                 
                     _line_array[@ array_length(_line_array)] = _line;
@@ -56,8 +57,32 @@ function bento_layout_update(_element)
                 {
                     var _child_width  = __bento_width_perc( _child.parent.properties.bbox_content, _child.properties.width );
                     var _child_height = __bento_height_perc(_child.parent.properties.bbox_content, _child.properties.height);
+                    var _child_grow   = max(0, _child.style.flexbox.grow);
                     
-                    //TODO - Include padding and margin
+                    //Find the full width by applying the margin/padding
+                    var _child_margin = _child.style.margin;
+                    if (is_struct(_child_margin))
+                    {
+                        _child_width  += _child_margin.l + _child_margin.r;
+                        _child_height += _child_margin.t + _child_margin.b;
+                    }
+                    else
+                    {
+                        _child_width  += 2*_child_margin;
+                        _child_height += 2*_child_margin;
+                    }
+                    
+                    var _child_padding = _child.style.padding;
+                    if (is_struct(_child_padding))
+                    {
+                        _child_width  += _child_padding.l + _child_padding.r;
+                        _child_height += _child_padding.t + _child_padding.b;
+                    }
+                    else
+                    {
+                        _child_width  += 2*_child_padding;
+                        _child_height += 2*_child_padding;
+                    }
                     
                     //Figure out where to place the element
                     if (_line.width + _child_width > _content_max_width)
@@ -66,8 +91,9 @@ function bento_layout_update(_element)
                         {
                             with(_line)
                             {
-                                width  = _child_width;
-                                height = _child_height;
+                                total_grow    = _child_grow;
+                                width         = _child_width;
+                                height        = _child_height;
                                 element_start = _e;
                                 element_count = 1;
                             }
@@ -84,6 +110,7 @@ function bento_layout_update(_element)
                     {
                         with(_line)
                         {
+                            total_grow += _child_grow;
                             width += _child_width;
                             height = max(height, _child_height);
                             element_count++;
@@ -104,9 +131,9 @@ function bento_layout_update(_element)
                 var _content_x = _bbox_content.l;
                 var _content_y = _bbox_content.t;
                 
-                var _line_gap = 0;
-                var _line_x   = _content_x;
-                var _line_y   = _content_y;
+                var _line_gap  = 0;
+                var _line_x    = _content_x;
+                var _line_y    = _content_y;
                 
                 #region Content vertical alignment / line gap
                 
@@ -153,6 +180,10 @@ function bento_layout_update(_element)
                             _line_y += _line_gap/2;
                         }
                     break;
+                    
+                    default:
+                        throw "Bento: Content vertical alignment \"" + string(_content_valign) + "\" not supported";
+                    break;
                 }
                 
                 #endregion
@@ -166,9 +197,17 @@ function bento_layout_update(_element)
                     var _element_x   = _line_x;
                     var _element_y   = _line_y;
                     
-                    #region Line justification / element gap
+                    #region Line horizontal alignment / element gap
                     
                     var _space = _content_max_width - _line.width;
+                    var _line_grow_space = _line.total_grow;
+                    if (_line_grow_space > 0)
+                    {
+                        _line_grow_space = _space / _line_grow_space;
+                        _space = 0;
+                    }
+                    
+                    
                     switch(_line_halign)
                     {
                         case "left":
@@ -228,6 +267,10 @@ function bento_layout_update(_element)
                                 _element_x += _element_gap;
                             }
                         break;
+                        
+                        default:
+                            throw "Bento: Line horizontal alignment \"" + string(_line_halign) + "\" not supported";
+                        break;
                     }
                     
                     #endregion
@@ -242,9 +285,33 @@ function bento_layout_update(_element)
                         var _child_width  = __bento_width_perc( _child.parent.properties.bbox_content, _child_properties.width );
                         var _child_height = __bento_height_perc(_child.parent.properties.bbox_content, _child_properties.height);
                         
-                        //TODO - Include padding and margin
-                        var _full_width  = _child_width;
+                        var _full_width  = _child_width + _line_grow_space*_child.style.flexbox.grow;
                         var _full_height = _child_height;
+                        
+                        //Find the full width by applying the margin/padding
+                        var _child_margin = _child.style.margin;
+                        if (is_struct(_child_margin))
+                        {
+                            _full_width  += _child_margin.l + _child_margin.r;
+                            _full_height += _child_margin.t + _child_margin.b;
+                        }
+                        else
+                        {
+                            _full_width  += 2*_child_margin;
+                            _full_height += 2*_child_margin;
+                        }
+                        
+                        var _child_padding = _child.style.padding;
+                        if (is_struct(_child_padding))
+                        {
+                            _full_width  += _child_padding.l + _child_padding.r;
+                            _full_height += _child_padding.t + _child_padding.b;
+                        }
+                        else
+                        {
+                            _full_width  += 2*_child_padding;
+                            _full_height += 2*_child_padding;
+                        }
                         
                         #region Vertical alignment
                         
@@ -266,26 +333,21 @@ function bento_layout_update(_element)
                             
                             case "stretch":
                             break;
+                        
+                            default:
+                                throw "Bento: Line vertical alignment \"" + string(_line_valign) + "\" not supported";
+                            break;
                         }
                         
                         #endregion
                         
                         //Position the element
-                        
-                        //TODO - Include padding and margin
                         _child_bbox_margin.l = _element_x;
                         _child_bbox_margin.t = _element_y;
-                        
                         _child_bbox_margin.r = _child_bbox_margin.l + _full_width;
+                        _child_bbox_margin.b = (_line_valign == "stretch")? (_line_y + _line.height) : (_child_bbox_margin.t + _full_height);
                         
-                        if (_line_valign == "stretch")
-                        {
-                            _child_bbox_margin.b = _line_y + _line.height;
-                        }
-                        else
-                        {
-                            _child_bbox_margin.b = _child_bbox_margin.t + _child_height;
-                        }
+                        _child.update_bbox_from_margin();
                         
                         _element_x += _full_width + _element_gap;
                         
@@ -398,7 +460,7 @@ function bento_layout_update(_element)
             var _grid_l = _bbox_content.l;
             var _grid_t = _bbox_content.t;
             
-            #region Content justification
+            #region Content horizontal alignment
             
             var _space = _content_max_width - _content_width;
             switch(_content_halign)
@@ -463,6 +525,10 @@ function bento_layout_update(_element)
                         _grid_column_gap = (_grid_column_gap*(_grid_x_count - 1) + _space)/(_grid_x_count + 1);
                         _grid_l += _grid_column_gap;
                     }
+                break;
+                
+                default:
+                    throw "Bento: Content horizontal alignment \"" + string(_content_halign) + "\" not supported";
                 break;
             }
             
@@ -534,6 +600,10 @@ function bento_layout_update(_element)
                         _grid_t += _grid_row_gap;
                     }
                 break;
+                
+                default:
+                    throw "Bento: Content vertical alignment \"" + string(_content_valign) + "\" not supported";
+                break;
             }
             
             #endregion
@@ -595,7 +665,7 @@ function bento_layout_update(_element)
                             break;
                             
                             default:
-                                throw "Bento: Invalid element justification \"" + string(_element_halign) + "\"";
+                                throw "Bento: Element horizontal alignment \"" + string(_element_halign) + "\" not supported";
                             break;
                         }
                         
@@ -624,7 +694,7 @@ function bento_layout_update(_element)
                             break;
                             
                             default:
-                                throw "Bento: Invalid element alignment \"" + string(_element_halign) + "\"";
+                                throw "Bento: Element vertical alignment \"" + string(_element_valign) + "\" not supported";
                             break;
                         }
                         

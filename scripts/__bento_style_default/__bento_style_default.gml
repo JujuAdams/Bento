@@ -72,6 +72,7 @@ function __bento_style_default() constructor
     };
     
     flexbox = {
+        grow           : 0,
         direction      : "rows", //TODO
         content_valign : "top",
         line_halign    : "left",
