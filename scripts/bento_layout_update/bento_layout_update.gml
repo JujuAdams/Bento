@@ -14,32 +14,34 @@ function bento_layout_update(_element)
         {
             #region Flexbox Emulation
             
-            var _content_halign = style.flexbox.content_halign;
-            var _content_valign = style.flexbox.content_valign;
-            var _line_halign    = style.flexbox.line_halign;
-            var _line_valign    = style.flexbox.line_valign;
-            
-            #region Unpack the "direction" parameter
-            
-            var _direction = style.flexbox.direction;
-            switch(_direction)
+            with(style.flexbox)
             {
-                case "row":
-                case "rows":
-                    var _row_major = true;
-                break;
+                var _content_halign = content_halign;
+                var _content_valign = content_valign;
+                var _line_halign    = line_halign;
+                var _line_valign    = line_valign;
                 
-                case "column":
-                case "columns":
-                    var _row_major = false;
-                break;
+                #region Unpack the "direction" parameter
                 
-                default:
-                    throw "Bento: Flexbox direction \"" + string(_direction) + "\" not supported";
-                break;
+                switch(direction)
+                {
+                    case "row":
+                    case "rows":
+                        var _row_major = true;
+                    break;
+                    
+                    case "column":
+                    case "columns":
+                        var _row_major = false;
+                    break;
+                    
+                    default:
+                        throw "Bento: Flexbox direction \"" + string(direction) + "\" not supported";
+                    break;
+                }
+                
+                #endregion
             }
-            
-            #endregion
             
             //Set some state variables
             var _line       = -1;
@@ -626,6 +628,9 @@ function bento_layout_update(_element)
                         
                         _child.update_bbox_from_margin();
                         
+                        //Now resolve the child
+                        bento_layout_update(_child);
+                        
                         if (_row_major)
                         {
                             _element_x += _full_width + _element_gap;
@@ -634,9 +639,6 @@ function bento_layout_update(_element)
                         {
                             _element_y += _full_height + _element_gap;
                         }
-                        
-                        //Now resolve the child
-                        bento_layout_update(_child);
                         
                         ++_e;
                     }
@@ -662,15 +664,39 @@ function bento_layout_update(_element)
         {
             #region CSS Grids Emulation
             
-            var _content_halign = style.grid.content_halign;
-            var _content_valign = style.grid.content_valign;
-            var _element_halign = style.grid.element_halign;
-            var _element_valign = style.grid.element_valign;
-            
-            var _grid_columns    = style.grid.columns;
-            var _grid_column_gap = style.grid.column_gap;
-            var _grid_rows       = style.grid.rows;
-            var _grid_row_gap    = style.grid.row_gap;
+            with(style.grid)
+            {
+                var _content_halign = content_halign;
+                var _content_valign = content_valign;
+                var _element_halign = element_halign;
+                var _element_valign = element_valign;
+                
+                #region Unpack the "direction" parameter
+                
+                switch(direction)
+                {
+                    case "row":
+                    case "rows":
+                        var _row_major = true;
+                    break;
+                    
+                    case "column":
+                    case "columns":
+                        var _row_major = false;
+                    break;
+                    
+                    default:
+                        throw "Bento: Flexbox direction \"" + string(direction) + "\" not supported";
+                    break;
+                }
+                
+                #endregion
+                
+                var _grid_columns    = columns;
+                var _grid_column_gap = column_gap;
+                var _grid_rows       = rows;
+                var _grid_row_gap    = row_gap;
+            }
             
             var _grid_width  = array_length(_grid_columns);
             var _grid_height = array_length(_grid_rows);
@@ -688,9 +714,19 @@ function bento_layout_update(_element)
             
             var _x = 0;
             var _y = 0;
-            var _grid_x_count = 0;
-            var _grid_y_count = 1;
             var _e = 0;
+            
+            if (_row_major)
+            {
+                var _grid_x_count = 0;
+                var _grid_y_count = 1;
+            }
+            else
+            {
+                var _grid_x_count = 1;
+                var _grid_y_count = 0;
+            }
+            
             repeat(array_length(children))
             {
                 var _child = children[_e];
@@ -698,29 +734,60 @@ function bento_layout_update(_element)
                 if (is_string(_child) && (_child == "__bento_layout_newline"))
                 {
                     //Line break special case
-                    _x = 0;
-                    ++_y;
+                    if (_row_major)
+                    {
+                        _x = 0;
+                        ++_y;
+                    }
+                    else
+                    {
+                        _y = 0;
+                        ++_x;
+                    }
                 }
                 else if (_child.properties.bento_layout_auto)
                 {
                     _grid_element[_x][@ _y] = _child;
                     
                     //Move to the next cell
-                    ++_x;
-                    _grid_x_count = max(_grid_x_count, _x);
-                    
-                    if (_x >= _grid_width)
+                    if (_row_major)
                     {
+                        ++_x;
+                        _grid_x_count = max(_grid_x_count, _x);
+                        
+                        if (_x >= _grid_width)
+                        {
+                            if (_y >= _grid_height)
+                            {
+                                _y = _grid_height - 1;
+                                //break;
+                            }
+                            else
+                            {
+                                _x = 0;
+                                ++_y;
+                                ++_grid_y_count;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ++_y;
+                        _grid_y_count = max(_grid_y_count, _y);
+                        
                         if (_y >= _grid_height)
                         {
-                            _y = _grid_height - 1;
-                            //break;
-                        }
-                        else
-                        {
-                            _x = 0;
-                            ++_y;
-                            ++_grid_y_count;
+                            if (_x >= _grid_width)
+                            {
+                                _x = _grid_width - 1;
+                                //break;
+                            }
+                            else
+                            {
+                                _y = 0;
+                                ++_x;
+                                ++_grid_x_count;
+                            }
                         }
                     }
                 }
@@ -827,7 +894,7 @@ function bento_layout_update(_element)
             
             #endregion
             
-            #region Content alignment
+            #region Content vertical alignment
             
             var _space = _content_max_height - _content_height;
             switch(_content_valign)
@@ -919,17 +986,29 @@ function bento_layout_update(_element)
                         var _child_width       = __bento_width_perc( _child.parent.properties.bbox_content, _child_properties.width );
                         var _child_height      = __bento_height_perc(_child.parent.properties.bbox_content, _child_properties.height);
                         
-                        //Find the dimensions of the element, including padding
-                        var _child_padding = _child.style.padding;
-                        if (!is_struct(_child_padding))
+                        //Find the full width by applying the margin/padding
+                        var _child_margin = _child.style.margin;
+                        if (is_struct(_child_margin))
                         {
-                            var _padding_x = 2*_child_padding;
-                            var _padding_y = 2*_child_padding;
+                            _child_width  += _child_margin.l + _child_margin.r;
+                            _child_height += _child_margin.t + _child_margin.b;
                         }
                         else
                         {
-                            var _padding_x = _child_padding.l + _child_padding.r;
-                            var _padding_y = _child_padding.t + _child_padding.b;
+                            _child_width  += 2*_child_margin;
+                            _child_height += 2*_child_margin;
+                        }
+                        
+                        var _child_padding = _child.style.padding;
+                        if (is_struct(_child_padding))
+                        {
+                            _child_width  += _child_padding.l + _child_padding.r;
+                            _child_height += _child_padding.t + _child_padding.b;
+                        }
+                        else
+                        {
+                            _child_width  += 2*_child_padding;
+                            _child_height += 2*_child_padding;
                         }
                         
                         var _element_l = _cell_l;
@@ -937,7 +1016,7 @@ function bento_layout_update(_element)
                         
                         #region Element horizontal alignment
                         
-                        var _space = _grid_columns[_x] - (_child_width + _padding_x);
+                        var _space = _grid_columns[_x] - _child_width;
                         switch(_element_halign)
                         {
                             case "left":
@@ -966,7 +1045,7 @@ function bento_layout_update(_element)
                         
                         #region Element vertical alignment
                         
-                        var _space = _grid_rows[_y] - (_child_height + _padding_y);
+                        var _space = _grid_rows[_y] - _child_height;
                         switch(_element_valign)
                         {
                             case "top":
@@ -994,19 +1073,13 @@ function bento_layout_update(_element)
                         #endregion
                         
                         //Position the element
-                        if (!is_struct(_child_padding))
-                        {
-                            _child_bbox_margin.l = _element_l + _child_padding;
-                            _child_bbox_margin.t = _element_t + _child_padding;
-                        }
-                        else
-                        {
-                            _child_bbox_margin.l = _element_l + _child_padding.l;
-                            _child_bbox_margin.t = _element_t + _child_padding.t;
-                        }
+                        _child_bbox_margin.l = _element_l;
+                        _child_bbox_margin.t = _element_t;
                         
                         _child_bbox_margin.r = _child_bbox_margin.l + _child_width;
                         _child_bbox_margin.b = _child_bbox_margin.t + _child_height;
+                        
+                        _child.update_bbox_from_margin();
                         
                         //Now resolve the child
                         bento_layout_update(_child);

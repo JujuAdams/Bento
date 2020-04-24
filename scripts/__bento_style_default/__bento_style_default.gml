@@ -60,11 +60,11 @@ function __bento_style_default() constructor
     };
     
     grid = {
-        direction      : "rows", //TODO
         columns        : undefined,
         rows           : undefined,
         column_gap     : 0,
         row_gap        : 0,
+        direction      : "rows",
         content_halign : "left",
         content_valign : "top",
         element_halign : "left",

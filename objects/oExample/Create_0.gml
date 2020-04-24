@@ -3,13 +3,23 @@ with(box)
 {
     style.fill.alpha = 0.3;
     
-    layout_flexbox();
-    with(style.flexbox)
+    //layout_flexbox();
+    //with(style.flexbox)
+    //{
+    //    direction = "columns";
+    //    line_halign = "left";
+    //    line_valign = "top";
+    //    content_halign = "left";
+    //    content_valign = "top";
+    //}
+    
+    layout_grid([64, 64, 64, 64, 64, 64], [64, 64, 64, 64, 64, 64]);
+    with(style.grid)
     {
-        direction = "columns";
+        direction = "rows";
         line_halign = "left";
         line_valign = "top";
-        content_halign = "left";
+        content_halign = "even";
         content_valign = "top";
     }
     
