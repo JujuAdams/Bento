@@ -348,9 +348,9 @@ function bento_element_class() constructor
                 
                     switch(anchor_left.anchor)
                     {
-                        case "l": case "left":  case "start":                                var _a =  _box_l.l;               break;
+                        case "l": case "left":                                               var _a =  _box_l.l;               break;
                         case "c": case "m":     case "center": case "centre": case "middle": var _a = (_box_l.l + _box_l.r)/2; break;
-                        case "r": case "right": case "end":                                  var _a =  _box_l.r;               break;
+                        case "r": case "right":                                              var _a =  _box_l.r;               break;
                         default: throw "Bento: Anchor type \"" + string(anchor_left.anchor) + "\" not recognised for left anchor\n "; break;
                     }
                 
@@ -378,9 +378,9 @@ function bento_element_class() constructor
                 
                     switch(anchor_top.anchor)
                     {
-                        case "t": case "top":    case "start":                                var _a =  _box_t.t;               break;
+                        case "t": case "top":                                                 var _a =  _box_t.t;               break;
                         case "c": case "m":      case "center": case "centre": case "middle": var _a = (_box_t.t + _box_t.b)/2; break;
-                        case "b": case "bottom": case "end":                                  var _a =  _box_t.b;               break;
+                        case "b": case "bottom":                                              var _a =  _box_t.b;               break;
                         default: throw "Bento: Anchor type \"" + string(anchor_top.anchor) + "\" not recognised for top anchor\n "; break;
                     }
                 
@@ -408,9 +408,9 @@ function bento_element_class() constructor
                 
                     switch(anchor_right.anchor)
                     {
-                        case "l": case "left":  case "start":                                var _a =  _box_r.l;               break;
+                        case "l": case "left":                                               var _a =  _box_r.l;               break;
                         case "c": case "m":     case "center": case "centre": case "middle": var _a = (_box_r.l + _box_r.r)/2; break;
-                        case "r": case "right": case "end":                                  var _a =  _box_r.r;               break;
+                        case "r": case "right":                                              var _a =  _box_r.r;               break;
                         default: throw "Bento: Anchor type \"" + string(anchor_right.anchor) + "\" not recognised for right anchor\n "; break;
                     }
                 
@@ -438,9 +438,9 @@ function bento_element_class() constructor
                 
                     switch(anchor_bottom.anchor)
                     {
-                        case "t": case "top":    case "start":                                var _a =  _box_b.t;               break;
+                        case "t": case "top":                                                 var _a =  _box_b.t;               break;
                         case "c": case "m":      case "center": case "centre": case "middle": var _a = (_box_b.t + _box_b.b)/2; break;
-                        case "b": case "bottom": case "end":                                  var _a =  _box_b.b;               break;
+                        case "b": case "bottom":                                              var _a =  _box_b.b;               break;
                         default: throw "Bento: Anchor type \"" + string(anchor_bottom.anchor) + "\" not recognised for bottom anchor\n "; break;
                     }
                 

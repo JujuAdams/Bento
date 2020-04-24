@@ -14,9 +14,9 @@ function bento_layout_update(_element)
         {
             #region Flexbox Emulation
             
-            var _content_align = style.flexbox.content_align
-            var _line_justify  = style.flexbox.line_justify;
-            var _line_align    = style.flexbox.line_align;
+            var _content_valign = style.flexbox.content_valign
+            var _line_halign    = style.flexbox.line_halign;
+            var _line_valign    = style.flexbox.line_valign;
             
             //Set some state variables
             var _line = -1;
@@ -108,11 +108,11 @@ function bento_layout_update(_element)
                 var _line_x   = _content_x;
                 var _line_y   = _content_y;
                 
-                #region Content alignment / line gap
+                #region Content vertical alignment / line gap
                 
-                switch(_content_align)
+                switch(_content_valign)
                 {
-                    case "start":
+                    case "top":
                     break;
                     
                     case "center":
@@ -121,7 +121,7 @@ function bento_layout_update(_element)
                         _line_y += _content_space/2;
                     break;
                     
-                    case "end":
+                    case "bottom":
                         _line_y += _content_space;
                     break;
                     
@@ -169,9 +169,9 @@ function bento_layout_update(_element)
                     #region Line justification / element gap
                     
                     var _space = _content_max_width - _line.width;
-                    switch(_line_justify)
+                    switch(_line_halign)
                     {
-                        case "start":
+                        case "left":
                         break;
                         
                         case "center":
@@ -180,7 +180,7 @@ function bento_layout_update(_element)
                             _element_x += _space/2;
                         break;
                         
-                        case "end":
+                        case "right":
                             _element_x += _space;
                         break;
                         
@@ -249,9 +249,9 @@ function bento_layout_update(_element)
                         #region Vertical alignment
                         
                         var _element_y = _line_y;
-                        switch(_line_align)
+                        switch(_line_valign)
                         {
-                            case "start":
+                            case "top":
                             break;
                             
                             case "center":
@@ -260,7 +260,7 @@ function bento_layout_update(_element)
                                 _element_y += (_line.height - _full_height)/2;
                             break;
                             
-                            case "end":
+                            case "bottom":
                                 _element_y += _line.height - _full_height;
                             break;
                             
@@ -278,7 +278,7 @@ function bento_layout_update(_element)
                         
                         _child_bbox_margin.r = _child_bbox_margin.l + _full_width;
                         
-                        if (_line_align == "stretch")
+                        if (_line_valign == "stretch")
                         {
                             _child_bbox_margin.b = _line_y + _line.height;
                         }
@@ -307,10 +307,10 @@ function bento_layout_update(_element)
         {
             #region CSS Grids Emulation
             
-            var _content_justify = style.grid.content_justify;
-            var _content_align   = style.grid.content_align;
-            var _element_justify = style.grid.element_justify;
-            var _element_align   = style.grid.element_align;
+            var _content_halign = style.grid.content_halign;
+            var _content_valign = style.grid.content_valign;
+            var _element_halign = style.grid.element_halign;
+            var _element_valign = style.grid.element_valign;
             
             var _grid_columns    = style.grid.columns;
             var _grid_column_gap = style.grid.column_gap;
@@ -401,15 +401,18 @@ function bento_layout_update(_element)
             #region Content justification
             
             var _space = _content_max_width - _content_width;
-            switch(_content_justify)
+            switch(_content_halign)
             {
+                case "left":
+                break;
+                
                 case "center":
                 case "centre":
                 case "middle":
                     _grid_l += _space/2;
                 break;
                 
-                case "end":
+                case "right":
                     _grid_l += _space;
                 break;
                 
@@ -468,15 +471,18 @@ function bento_layout_update(_element)
             #region Content alignment
             
             var _space = _content_max_height - _content_height;
-            switch(_content_align)
+            switch(_content_valign)
             {
+                case "top":
+                break;
+                
                 case "center":
                 case "centre":
                 case "middle":
                     _grid_t += _space/2;
                 break;
                 
-                case "end":
+                case "bottom":
                     _grid_t += _space;
                 break;
                 
@@ -566,12 +572,12 @@ function bento_layout_update(_element)
                         var _element_l = _cell_l;
                         var _element_t = _cell_t;
                         
-                        #region Element justification
+                        #region Element horizontal alignment
                         
                         var _space = _grid_columns[_x] - (_child_width + _padding_x);
-                        switch(_element_justify)
+                        switch(_element_halign)
                         {
-                            case "start":
+                            case "left":
                             break;
                             
                             case "center":
@@ -580,7 +586,7 @@ function bento_layout_update(_element)
                                 _element_l += _space/2;
                             break;
                             
-                            case "end":
+                            case "right":
                                 _element_l += _space;
                             break;
                             
@@ -589,18 +595,18 @@ function bento_layout_update(_element)
                             break;
                             
                             default:
-                                throw "Bento: Invalid element justification \"" + string(_element_justify) + "\"";
+                                throw "Bento: Invalid element justification \"" + string(_element_halign) + "\"";
                             break;
                         }
                         
                         #endregion
                         
-                        #region Element alignment
+                        #region Element vertical alignment
                         
                         var _space = _grid_rows[_y] - (_child_height + _padding_y);
-                        switch(_element_align)
+                        switch(_element_valign)
                         {
-                            case "start":
+                            case "top":
                             break;
                             
                             case "center":
@@ -609,7 +615,7 @@ function bento_layout_update(_element)
                                 _element_t += _space/2;
                             break;
                             
-                            case "end":
+                            case "bottom":
                                 _element_t += _space;
                             break;
                             
@@ -618,7 +624,7 @@ function bento_layout_update(_element)
                             break;
                             
                             default:
-                                throw "Bento: Invalid element alignment \"" + string(_element_justify) + "\"";
+                                throw "Bento: Invalid element alignment \"" + string(_element_halign) + "\"";
                             break;
                         }
                         

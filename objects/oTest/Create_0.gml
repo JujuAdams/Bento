@@ -32,10 +32,10 @@ with(document)
     {
         grid.column_gap = 30;
         grid.row_gap = 30;
-        grid.content_justify = "between";
-        grid.content_align   = "even";
-        grid.element_justify = "stretch";
-        grid.element_align   = "stretch";
+        grid.content_halign = "between";
+        grid.content_valign = "even";
+        grid.element_halign = "stretch";
+        grid.element_valign = "stretch";
     }
     
     repeat(7) add(bento_sprite(sTest, -1));

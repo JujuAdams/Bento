@@ -60,21 +60,21 @@ function __bento_style_default() constructor
     };
     
     grid = {
-        direction       : "rows", //TODO
-        columns         : undefined,
-        rows            : undefined,
-        column_gap      : 0,
-        row_gap         : 0,
-        content_justify : "start",
-        content_align   : "start",
-        element_justify : "start",
-        element_align   : "start",
+        direction      : "rows", //TODO
+        columns        : undefined,
+        rows           : undefined,
+        column_gap     : 0,
+        row_gap        : 0,
+        content_halign : "left",
+        content_valign : "top",
+        element_halign : "left",
+        element_valign : "top",
     };
     
     flexbox = {
-        direction     : "rows", //TODO
-        content_align : "start",
-        line_justify  : "start",
-        line_align    : "start",
+        direction      : "rows", //TODO
+        content_valign : "top",
+        line_halign    : "left",
+        line_valign    : "top",
     };
 }
