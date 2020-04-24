@@ -14,15 +14,23 @@ function bento_layout_update(_element)
         {
             #region Flexbox Emulation
             
-            var _content_valign = style.flexbox.content_valign
+            var _content_halign = style.flexbox.content_halign;
+            var _content_valign = style.flexbox.content_valign;
             var _line_halign    = style.flexbox.line_halign;
             var _line_valign    = style.flexbox.line_valign;
             
+            var _row_major = true;
+            var _direction = style.flexbox.direction;
+            if ((_direction != "rows") && (_direction != "columns")) throw "Bento: Flexbox direction \"" + string(_direction) + "\" not supported";
+            if (_direction == "columns") _row_major = false;
+            
             //Set some state variables
-            var _line = -1;
+            var _line       = -1;
             var _line_array = [];
-        
-            var _line_y = 0;
+            var _line_x     = 0;
+            var _line_y     = 0;
+            
+            #region Assign children to lines
             
             var _e = 0;
             var _children_count = array_length(children);
@@ -33,12 +41,21 @@ function bento_layout_update(_element)
                 {
                     _line = {
                         x             : 0,
-                        y             : _line_y,
+                        y             : 0,
                         width         : 0,
                         height        : 0,
                         element_start : _e,
                         element_count : 0,
                         total_grow    : 0,
+                    }
+                    
+                    if (_row_major)
+                    {
+                        _line.y = _line_y;
+                    }
+                    else
+                    {
+                        _line.x = _line_x;
                     }
                 
                     _line_array[@ array_length(_line_array)] = _line;
@@ -49,8 +66,16 @@ function bento_layout_update(_element)
                 
                 if (is_string(_child) && (_child == "__bento_layout_newline"))
                 {
-                    //Line break special case
-                    _line_y += _line.height;
+                    //Newline special case
+                    if (_row_major)
+                    {
+                        _line_y += _line.height;
+                    }
+                    else
+                    {
+                        _line_x += _line.width;
+                    }
+                    
                     _line = -1;
                 }
                 else if (_child.properties.bento_layout_auto)
@@ -85,35 +110,72 @@ function bento_layout_update(_element)
                     }
                     
                     //Figure out where to place the element
-                    if (_line.width + _child_width > _content_max_width)
+                    if (_row_major)
                     {
-                        if (_line.element_count == 0)
+                        if (_line.width + _child_width > _content_max_width)
                         {
-                            with(_line)
+                            if (_line.element_count == 0)
                             {
-                                total_grow    = _child_grow;
-                                width         = _child_width;
-                                height        = _child_height;
-                                element_start = _e;
-                                element_count = 1;
+                                with(_line)
+                                {
+                                    total_grow    = _child_grow;
+                                    width         = _child_width;
+                                    height        = _child_height;
+                                    element_start = _e;
+                                    element_count = 1;
+                                }
                             }
+                            else
+                            {
+                                --_e;
+                            }
+                            
+                            _line_y += _line.height;
+                            _line = -1;
                         }
                         else
                         {
-                            --_e;
+                            with(_line)
+                            {
+                                total_grow += _child_grow;
+                                width += _child_width;
+                                height = max(height, _child_height);
+                                element_count++;
+                            }
                         }
-                        
-                        _line_y += _line.height;
-                        _line = -1;
                     }
                     else
                     {
-                        with(_line)
+                        if (_line.height + _child_height > _content_max_height)
                         {
-                            total_grow += _child_grow;
-                            width += _child_width;
-                            height = max(height, _child_height);
-                            element_count++;
+                            if (_line.element_count == 0)
+                            {
+                                with(_line)
+                                {
+                                    total_grow    = _child_grow;
+                                    width         = _child_width;
+                                    height        = _child_height;
+                                    element_start = _e;
+                                    element_count = 1;
+                                }
+                            }
+                            else
+                            {
+                                --_e;
+                            }
+                            
+                            _line_x += _line.width;
+                            _line = -1;
+                        }
+                        else
+                        {
+                            with(_line)
+                            {
+                                total_grow += _child_grow;
+                                width   = max(width, _child_width);
+                                height += _child_height;
+                                element_count++;
+                            }
                         }
                     }
                 }
@@ -121,12 +183,14 @@ function bento_layout_update(_element)
                 ++_e;
             }
             
+            #endregion
+            
+            #region Finalise children positions
+            
             var _line_count = array_length(_line_array);
             if (array_length(_line_array) > 0)
             {
                 var _line = _line_array[_line_count - 1];
-                var _content_height = _line.y + _line.height;
-                var _content_space  = _content_max_height - _content_height;
                 
                 var _content_x = _bbox_content.l;
                 var _content_y = _bbox_content.t;
@@ -135,58 +199,120 @@ function bento_layout_update(_element)
                 var _line_x    = _content_x;
                 var _line_y    = _content_y;
                 
-                #region Content vertical alignment / line gap
-                
-                switch(_content_valign)
+                if (_row_major)
                 {
-                    case "top":
-                    break;
+                    #region Content vertical alignment / line gap
                     
-                    case "center":
-                    case "centre":
-                    case "middle":
-                        _line_y += _content_space/2;
-                    break;
-                    
-                    case "bottom":
-                        _line_y += _content_space;
-                    break;
-                    
-                    case "between":
-                    case "space between":
-                    case "space-between":
-                        if (_line_count == 1)
-                        {
-                            //Special case for only one element
+                    var _content_height = _line.y + _line.height;
+                    var _content_space = _content_max_height - _content_height;
+                    switch(_content_valign)
+                    {
+                        case "top":
+                        break;
+                        
+                        case "center":
+                        case "centre":
+                        case "middle":
                             _line_y += _content_space/2;
-                        }
-                        else
-                        {
-                            _line_gap = _content_space/(_line_count - 1);
-                        }
-                    break;
+                        break;
+                        
+                        case "bottom":
+                            _line_y += _content_space;
+                        break;
+                        
+                        case "between":
+                        case "space between":
+                        case "space-between":
+                            if (_line_count == 1)
+                            {
+                                //Special case for only one element
+                                _line_y += _content_space/2;
+                            }
+                            else
+                            {
+                                _line_gap = _content_space/(_line_count - 1);
+                            }
+                        break;
+                        
+                        case "around":
+                        case "space around":
+                        case "space-around":
+                            if (_line_count == 1)
+                            {
+                                //Special case for only one element
+                                _line_y += _content_space/2;
+                            }
+                            else
+                            {
+                                _line_gap = _content_space/_line_count;
+                                _line_y += _line_gap/2;
+                            }
+                        break;
+                        
+                        default:
+                            throw "Bento: Content vertical alignment \"" + string(_content_valign) + "\" not supported";
+                        break;
+                    }
                     
-                    case "around":
-                    case "space around":
-                    case "space-around":
-                        if (_line_count == 1)
-                        {
-                            //Special case for only one element
-                            _line_y += _content_space/2;
-                        }
-                        else
-                        {
-                            _line_gap = _content_space/_line_count;
-                            _line_y += _line_gap/2;
-                        }
-                    break;
-                    
-                    default:
-                        throw "Bento: Content vertical alignment \"" + string(_content_valign) + "\" not supported";
-                    break;
+                    #endregion
                 }
-                
-                #endregion
+                else
+                {
+                    #region Content horizontal alignment / line gap
+                    
+                    var _content_width = _line.x + _line.width;
+                    var _content_space = _content_max_width - _content_width;
+                    switch(_content_halign)
+                    {
+                        case "left":
+                        break;
+                        
+                        case "center":
+                        case "centre":
+                        case "middle":
+                            _line_x += _content_space/2;
+                        break;
+                        
+                        case "right":
+                            _line_x += _content_space;
+                        break;
+                        
+                        case "between":
+                        case "space between":
+                        case "space-between":
+                            if (_line_count == 1)
+                            {
+                                //Special case for only one element
+                                _line_x += _content_space/2;
+                            }
+                            else
+                            {
+                                _line_gap = _content_space/(_line_count - 1);
+                            }
+                        break;
+                        
+                        case "around":
+                        case "space around":
+                        case "space-around":
+                            if (_line_count == 1)
+                            {
+                                //Special case for only one element
+                                _line_x += _content_space/2;
+                            }
+                            else
+                            {
+                                _line_gap = _content_space/_line_count;
+                                _line_x += _line_gap/2;
+                            }
+                        break;
+                        
+                        default:
+                            throw "Bento: Content horizontal alignment \"" + string(_content_halign) + "\" not supported";
+                        break;
+                    }
+                    
+                    #endregion
+                }
                 
                 var _l = 0;
                 repeat(array_length(_line_array))
@@ -197,83 +323,164 @@ function bento_layout_update(_element)
                     var _element_x   = _line_x;
                     var _element_y   = _line_y;
                     
-                    #region Line horizontal alignment / element gap
-                    
-                    var _space = _content_max_width - _line.width;
-                    var _line_grow_space = _line.total_grow;
-                    if (_line_grow_space > 0)
+                    if (_row_major)
                     {
-                        _line_grow_space = _space / _line_grow_space;
-                        _space = 0;
+                        #region Line horizontal alignment / element gap
+                        
+                        var _space = _content_max_width - _line.width;
+                        var _line_grow_space = _line.total_grow;
+                        if (_line_grow_space > 0)
+                        {
+                            _line_grow_space = _space / _line_grow_space;
+                            _space = 0;
+                        }
+                        
+                        switch(_line_halign)
+                        {
+                            case "left":
+                            break;
+                            
+                            case "center":
+                            case "centre":
+                            case "middle":
+                                _element_x += _space/2;
+                            break;
+                            
+                            case "right":
+                                _element_x += _space;
+                            break;
+                            
+                            case "between":
+                            case "space between":
+                            case "space-between":
+                                if (_line.element_count == 1)
+                                {
+                                    //Special case for only one element
+                                    _element_x += _space/2;
+                                }
+                                else
+                                {
+                                    _element_gap = _space/(_line.element_count - 1);
+                                }
+                            break;
+                            
+                            case "around":
+                            case "space around":
+                            case "space-around":
+                                if (_line.element_count == 1)
+                                {
+                                    //Special case for only one element
+                                    _element_x += _space/2;
+                                }
+                                else
+                                {
+                                    _element_gap = _space/_line.element_count;
+                                    _element_x += _element_gap/2;
+                                }
+                            break;
+                            
+                            case "even":
+                            case "evenly":
+                            case "space evenly":
+                            case "space-evenly":
+                                if (_line.element_count == 1)
+                                {
+                                    //Special case for only one element
+                                    _element_x += _space/2;
+                                }
+                                else
+                                {
+                                    _element_gap = _space/(_line.element_count + 1);
+                                    _element_x += _element_gap;
+                                }
+                            break;
+                            
+                            default:
+                                throw "Bento: Line horizontal alignment \"" + string(_line_halign) + "\" not supported";
+                            break;
+                        }
+                        
+                        #endregion
                     }
-                    
-                    
-                    switch(_line_halign)
+                    else
                     {
-                        case "left":
-                        break;
+                        #region Line vertical alignment / element gap
                         
-                        case "center":
-                        case "centre":
-                        case "middle":
-                            _element_x += _space/2;
-                        break;
+                        var _space = _content_max_height - _line.height;
+                        var _line_grow_space = _line.total_grow;
+                        if (_line_grow_space > 0)
+                        {
+                            _line_grow_space = _space / _line_grow_space;
+                            _space = 0;
+                        }
                         
-                        case "right":
-                            _element_x += _space;
-                        break;
+                        switch(_line_valign)
+                        {
+                            case "top":
+                            break;
+                            
+                            case "center":
+                            case "centre":
+                            case "middle":
+                                _element_y += _space/2;
+                            break;
+                            
+                            case "bottom":
+                                _element_y += _space;
+                            break;
+                            
+                            case "between":
+                            case "space between":
+                            case "space-between":
+                                if (_line.element_count == 1)
+                                {
+                                    //Special case for only one element
+                                    _element_y += _space/2;
+                                }
+                                else
+                                {
+                                    _element_gap = _space/(_line.element_count - 1);
+                                }
+                            break;
+                            
+                            case "around":
+                            case "space around":
+                            case "space-around":
+                                if (_line.element_count == 1)
+                                {
+                                    //Special case for only one element
+                                    _element_y += _space/2;
+                                }
+                                else
+                                {
+                                    _element_gap = _space/_line.element_count;
+                                    _element_y += _element_gap/2;
+                                }
+                            break;
+                            
+                            case "even":
+                            case "evenly":
+                            case "space evenly":
+                            case "space-evenly":
+                                if (_line.element_count == 1)
+                                {
+                                    //Special case for only one element
+                                    _element_y += _space/2;
+                                }
+                                else
+                                {
+                                    _element_gap = _space/(_line.element_count + 1);
+                                    _element_y += _element_gap;
+                                }
+                            break;
+                            
+                            default:
+                                throw "Bento: Line vertical alignment \"" + string(_line_valign) + "\" not supported";
+                            break;
+                        }
                         
-                        case "between":
-                        case "space between":
-                        case "space-between":
-                            if (_line.element_count == 1)
-                            {
-                                //Special case for only one element
-                                _element_x += _space/2;
-                            }
-                            else
-                            {
-                                _element_gap = _space/(_line.element_count - 1);
-                            }
-                        break;
-                        
-                        case "around":
-                        case "space around":
-                        case "space-around":
-                            if (_line.element_count == 1)
-                            {
-                                //Special case for only one element
-                                _element_x += _space/2;
-                            }
-                            else
-                            {
-                                _element_gap = _space/_line.element_count;
-                                _element_x += _element_gap/2;
-                            }
-                        break;
-                        
-                        case "even":
-                        case "evenly":
-                        case "space evenly":
-                        case "space-evenly":
-                            if (_line.element_count == 1)
-                            {
-                                //Special case for only one element
-                                _element_x += _space/2;
-                            }
-                            else
-                            {
-                                _element_gap = _space/(_line.element_count + 1);
-                                _element_x += _element_gap;
-                            }
-                        break;
-                        
-                        default:
-                            throw "Bento: Line horizontal alignment \"" + string(_line_halign) + "\" not supported";
-                        break;
+                        #endregion
                     }
-                    
-                    #endregion
                     
                     var _e = _line.element_start;
                     repeat(_line.element_count)
@@ -285,8 +492,18 @@ function bento_layout_update(_element)
                         var _child_width  = __bento_width_perc( _child.parent.properties.bbox_content, _child_properties.width );
                         var _child_height = __bento_height_perc(_child.parent.properties.bbox_content, _child_properties.height);
                         
-                        var _full_width  = _child_width + _line_grow_space*_child.style.flexbox.grow;
+                        var _full_width  = _child_width;
                         var _full_height = _child_height;
+                        
+                        //Stretch this element if possible
+                        if (_row_major)
+                        {
+                            _full_width += _line_grow_space*_child.style.flexbox.grow;
+                        }
+                        else
+                        {
+                            _full_height += _line_grow_space*_child.style.flexbox.grow;
+                        }
                         
                         //Find the full width by applying the margin/padding
                         var _child_margin = _child.style.margin;
@@ -313,43 +530,93 @@ function bento_layout_update(_element)
                             _full_height += 2*_child_padding;
                         }
                         
-                        #region Vertical alignment
-                        
-                        var _element_y = _line_y;
-                        switch(_line_valign)
+                        if (_row_major)
                         {
-                            case "top":
-                            break;
+                            #region Line vertical alignment
                             
-                            case "center":
-                            case "centre":
-                            case "middle":
-                                _element_y += (_line.height - _full_height)/2;
-                            break;
+                            var _element_y = _line_y;
+                            switch(_line_valign)
+                            {
+                                case "top":
+                                break;
+                                
+                                case "center":
+                                case "centre":
+                                case "middle":
+                                    _element_y += (_line.height - _full_height)/2;
+                                break;
+                                
+                                case "bottom":
+                                    _element_y += _line.height - _full_height;
+                                break;
+                                
+                                case "stretch":
+                                break;
+                                
+                                default:
+                                    throw "Bento: Line vertical alignment \"" + string(_line_valign) + "\" not supported";
+                                break;
+                            }
                             
-                            case "bottom":
-                                _element_y += _line.height - _full_height;
-                            break;
+                            #endregion
+                        }
+                        else
+                        {
+                            #region Line horizontal alignment
                             
-                            case "stretch":
-                            break;
-                        
-                            default:
-                                throw "Bento: Line vertical alignment \"" + string(_line_valign) + "\" not supported";
-                            break;
+                            var _element_x = _line_x;
+                            switch(_line_halign)
+                            {
+                                case "left":
+                                break;
+                                
+                                case "center":
+                                case "centre":
+                                case "middle":
+                                    _element_x += (_line.width - _full_width)/2;
+                                break;
+                                
+                                case "right":
+                                    _element_x += _line.width - _full_width;
+                                break;
+                                
+                                case "stretch":
+                                break;
+                                
+                                default:
+                                    throw "Bento: Line horizontal alignment \"" + string(_line_halign) + "\" not supported";
+                                break;
+                            }
+                            
+                            #endregion
                         }
                         
-                        #endregion
-                        
-                        //Position the element
+                        //Position the element's top left corner
                         _child_bbox_margin.l = _element_x;
                         _child_bbox_margin.t = _element_y;
-                        _child_bbox_margin.r = _child_bbox_margin.l + _full_width;
-                        _child_bbox_margin.b = (_line_valign == "stretch")? (_line_y + _line.height) : (_child_bbox_margin.t + _full_height);
+                        
+                        //Position the element's bottom right corner
+                        if (_row_major)
+                        {
+                            _child_bbox_margin.r = _child_bbox_margin.l + _full_width;
+                            _child_bbox_margin.b = (_line_valign == "stretch")? (_line_y + _line.height) : (_child_bbox_margin.t + _full_height);
+                        }
+                        else
+                        {
+                            _child_bbox_margin.r = (_line_valign == "stretch")? (_line_x + _line.width) : (_child_bbox_margin.l + _full_width);
+                            _child_bbox_margin.b = _child_bbox_margin.t + _full_height;
+                        }
                         
                         _child.update_bbox_from_margin();
                         
-                        _element_x += _full_width + _element_gap;
+                        if (_row_major)
+                        {
+                            _element_x += _full_width + _element_gap;
+                        }
+                        else
+                        {
+                            _element_y += _full_height + _element_gap;
+                        }
                         
                         //Now resolve the child
                         bento_layout_update(_child);
@@ -357,11 +624,20 @@ function bento_layout_update(_element)
                         ++_e;
                     }
                     
-                    _line_y += _line.height + _line_gap;
+                    if (_row_major)
+                    {
+                        _line_y += _line.height + _line_gap;
+                    }
+                    else
+                    {
+                        _line_x += _line.width + _line_gap;
+                    }
                     
                     ++_l;
                 }
             }
+            
+            #endregion
             
             #endregion
         }

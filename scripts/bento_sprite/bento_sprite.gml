@@ -17,7 +17,6 @@ function bento_sprite()
         //Set our sprite definition
         style.sprite.index = _sprite;
         style.sprite.image = _image;
-        style.margin = 10;
         
         //Set draw method
         callbacks.draw = bento_draw_box;
