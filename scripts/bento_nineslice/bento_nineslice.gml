@@ -19,9 +19,9 @@ function bento_nineslice()
         properties.height = _height;
         
         //Set our sprite definition
-        style.sprite.index     = _sprite;
-        style.sprite.image     = _image;
-        style.sprite.nineslice = true;
+        style.sprite.index    = _sprite;
+        style.sprite.image    = _image;
+        style.sprite.behavior = "nineslice";
         
         if (_style == undefined)
         {

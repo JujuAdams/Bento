@@ -26,11 +26,15 @@ function __bento_style_default() constructor
     };
     
     sprite = {
+        behavior : "stretch",
         index : undefined,
         image : -1,
         color : c_white,
         alpha : 1.0,
-        nineslice : false,
+        tile_offset : {
+            x : 0,
+            y : 0,
+        },
         nineslice_border : {
             l : 0,
             t : 0,

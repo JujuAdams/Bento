@@ -210,10 +210,24 @@ function bento_element_class() constructor
         return self;
     }
     
-    /// @function layout_flexbox()
-    static layout_flexbox = function()
+    /// @function set_flexbox(direction, lineHAlign, lineVAlign, contentHAlign, contentVAlign)
+    /// @param direction
+    /// @param lineHAlign
+    /// @param lineVAlign
+    /// @param contentHAlign
+    /// @param contentVAlign
+    static set_flexbox = function(_direction, _line_halign, _line_valign, _content_halign, _content_valign)
     {
         style.layout = "flexbox";
+        with(style.flexbox)
+        {
+            direction      = _direction;
+            line_halign    = _line_halign;
+            line_valign    = _line_valign;
+            content_halign = _content_halign;
+            content_valign = _content_valign;
+        }
+        
         return self;
     }
     
