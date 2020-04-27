@@ -190,10 +190,10 @@ function bento_element_class() constructor
     
     #region Layouts
     
-    /// @function layout_grid(columnSizes, rowSizes)
+    /// @function set_grid(columnSizes, rowSizes)
     /// @param columnSizes
     /// @param rowSizes
-    static layout_grid = function(_columns, _rows)
+    static set_grid = function(_columns, _rows)
     {
         if (!is_array(_columns) || !is_array(_rows)) throw "Bento: Column and row definitions must be arrays";
         

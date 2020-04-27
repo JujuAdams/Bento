@@ -27,7 +27,7 @@ with(document)
     add(bento_box(100, 100, "big box"));
     
     /*
-    layout_grid([128, 128, 128, 128, 128], [128, 128, 128, 128, 128]);
+    set_grid([128, 128, 128, 128, 128], [128, 128, 128, 128, 128]);
     with(style)
     {
         grid.column_gap = 30;
