@@ -9,7 +9,7 @@ function __bento_style_default() constructor
     
     fill = {
         color : c_white,
-        alpha : 1.0,
+        alpha : 0.0,
     };
     
     outline = {
@@ -34,6 +34,7 @@ function __bento_style_default() constructor
         tile_offset : {
             x : 0,
             y : 0,
+            worldspace : false,
         },
         nineslice_border : {
             l : 0,

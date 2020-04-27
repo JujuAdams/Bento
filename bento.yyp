@@ -1,7 +1,7 @@
 {
   "resources": [
     {"id":{"name":"oTest2","path":"objects/oTest2/oTest2.yy",},"order":6,},
-    {"id":{"name":"bento_nineslice","path":"scripts/bento_nineslice/bento_nineslice.yy",},"order":4,},
+    {"id":{"name":"bento_sprite_nineslice","path":"scripts/bento_sprite_nineslice/bento_sprite_nineslice.yy",},"order":4,},
     {"id":{"name":"oExample","path":"objects/oExample/oExample.yy",},"order":7,},
     {"id":{"name":"bento_box_region","path":"scripts/bento_box_region/bento_box_region.yy",},"order":1,},
     {"id":{"name":"Notes","path":"notes/Notes/Notes.yy",},"order":5,},

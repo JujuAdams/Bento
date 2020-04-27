@@ -32,8 +32,8 @@ function bento_draw_box()
     {
         draw_sprite_stretched_ext(__spr_bento_pixel, 0,
                                   _bbox_padding.l, _bbox_padding.t,
-                                  1 + _bbox_padding.t - _bbox_padding.l,
-                                  1 + _bbox_padding.r - _bbox_padding.b,
+                                  1 + _bbox_padding.r - _bbox_padding.l,
+                                  1 + _bbox_padding.b - _bbox_padding.t,
                                   _fill.color, _fill.alpha);
     }
     
@@ -65,11 +65,20 @@ function bento_draw_box()
                 var _sprite_w = sprite_get_width( _sprite);
                 var _sprite_h = sprite_get_height(_sprite);
                 
-                var _part_offset_x = _sprite_struct.tile_offset.x mod _sprite_w;
-                var _part_offset_y = _sprite_struct.tile_offset.y mod _sprite_h;
+                var _tile_offset_x = _sprite_struct.tile_offset.x;
+                var _tile_offset_y = _sprite_struct.tile_offset.y;
                 
-                if (_sprite_struct.tile_offset.x > 0) _part_offset_x -= _sprite_w;
-                if (_sprite_struct.tile_offset.y > 0) _part_offset_y -= _sprite_h;
+                if (_sprite_struct.tile_offset.worldspace)
+                {
+                    _tile_offset_x += _left;
+                    _tile_offset_y += _top;
+                }
+                
+                var _part_offset_x = _tile_offset_x mod _sprite_w;
+                var _part_offset_y = _tile_offset_y mod _sprite_h;
+                
+                if (_tile_offset_x > 0) _part_offset_x -= _sprite_w;
+                if (_tile_offset_y > 0) _part_offset_y -= _sprite_h;
                 
                 var _y1 = _part_offset_y;
                 while(_y1 < _h)

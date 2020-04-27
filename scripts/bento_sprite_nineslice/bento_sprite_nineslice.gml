@@ -4,7 +4,7 @@
 /// @param height
 /// @param [templateName]
 
-function bento_nineslice()
+function bento_sprite_nineslice()
 {
     var _sprite = argument[0];
     var _image  = argument[1];

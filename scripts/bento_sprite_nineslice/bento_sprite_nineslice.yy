@@ -6,7 +6,7 @@
     "path": "folders/Bento/Elements.yy",
   },
   "resourceVersion": "1.0",
-  "name": "bento_nineslice",
+  "name": "bento_sprite_nineslice",
   "tags": [],
   "resourceType": "GMScript",
 }

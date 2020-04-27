@@ -34,13 +34,13 @@ with(bento_style_template("nineslice template"))
     sprite.nineslice.b = 8;
 }
 
-with(document.add(bento_nineslice(s9SliceTest, 0, 300, 200, "nineslice template"), "nineslice1"))
+with(document.add(bento_sprite_nineslice(s9SliceTest, 0, 300, 200, "nineslice template"), "nineslice1"))
 {
     anchor_right( root, "center", 0, -20);
     anchor_bottom(root, "bottom", 0,   0);
 }
 
-with(document.add(bento_nineslice(s9SliceTest, 0, 300, 200, "nineslice template"), "nineslice2"))
+with(document.add(bento_sprite_nineslice(s9SliceTest, 0, 300, 200, "nineslice template"), "nineslice2"))
 {
     anchor_left(  root, "center", 0, 20);
     anchor_bottom(root, "bottom", 0,  0);

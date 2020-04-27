@@ -6,7 +6,7 @@
 /// @param offsetY
 /// @param [templateName]
 
-function bento_sprite()
+function bento_sprite_tile()
 {
     var _sprite   = argument[0];
     var _image    = argument[1];
