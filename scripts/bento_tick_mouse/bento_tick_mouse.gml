@@ -110,6 +110,7 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
     }
     
     //Run custom tick method
+    __bento_call_method(properties.internal_tick);
     __bento_call_method(callback.tick);
     
     var _mouse_over_me = false;

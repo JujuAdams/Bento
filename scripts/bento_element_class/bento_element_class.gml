@@ -111,6 +111,7 @@ function bento_element_class() constructor
         },
         
         internal_mouse_event : undefined,
+        internal_tick        : undefined,
     };
     
     #endregion

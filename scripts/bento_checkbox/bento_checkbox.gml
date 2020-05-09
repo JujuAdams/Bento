@@ -23,20 +23,20 @@ function bento_checkbox()
         properties.checkbox = {
             scope : _scope,
             variable_name : _variable_name,
-            value : false,
+            state : false,
         };
         
         if (is_struct(_scope))
         {
-            properties.checkbox.value = variable_struct_get(_scope, _variable_name);
+            properties.checkbox.state = variable_struct_get(_scope, _variable_name);
         }
         else if (_scope == global)
         {
-            properties.checkbox.value = variable_global_get(_variable_name);
+            properties.checkbox.state = variable_global_get(_variable_name);
         }
         else
         {
-            properties.checkbox.value = variable_instance_get(id, _variable_name);
+            properties.checkbox.state = variable_instance_get(id, _variable_name);
         }
         
         //Set draw method
@@ -45,11 +45,11 @@ function bento_checkbox()
         {
             switch(_event)
             {
-                case "leave": style.sprite.image = properties.checkbox.value? 3 : 0; break;
-                case "enter": style.sprite.image = properties.checkbox.value? 4 : 1; break;
+                case "leave": style.sprite.image = properties.checkbox.state? 3 : 0; break;
+                case "enter": style.sprite.image = properties.checkbox.state? 4 : 1; break;
                 
                 case "pressed":
-                    style.sprite.image = properties.checkbox.value? 5 : 0;
+                    style.sprite.image = properties.checkbox.state? 5 : 2;
                 break;
                 
                 case "released":
@@ -57,24 +57,24 @@ function bento_checkbox()
                     {
                         if (is_struct(scope))
                         {
-                            var _value = !variable_struct_get(scope, variable_name);
-                            variable_struct_set(scope, variable_name, _value);
+                            var _state = !variable_struct_get(scope, variable_name);
+                            variable_struct_set(scope, variable_name, _state);
                         }
                         else if (scope == global)
                         {
-                            var _value = !variable_global_get(variable_name);
-                            variable_global_set(variable_name, _value);
+                            var _state = !variable_global_get(variable_name);
+                            variable_global_set(variable_name, _state);
                         }
                         else
                         {
-                            var _value = !variable_instance_get(id, variable_name);
-                            variable_instance_set(id, variable_name, _value);
+                            var _state = !variable_instance_get(id, variable_name);
+                            variable_instance_set(id, variable_name, _state);
                         }
                         
-                        value = _value;
+                        state = _state;
                     }
                     
-                    style.sprite.image = ((properties.mouse.over)? 1 : 0) + (properties.checkbox.value? 3 : 0);
+                    style.sprite.image = ((properties.mouse.over)? 1 : 0) + (properties.checkbox.state? 3 : 0);
                 break;
             }
         }
