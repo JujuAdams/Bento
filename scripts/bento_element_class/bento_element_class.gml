@@ -109,6 +109,8 @@ function bento_element_class() constructor
             pressed_dx : 0,
             pressed_dy : 0,
         },
+        
+        internal_mouse_event : undefined,
     };
     
     #endregion

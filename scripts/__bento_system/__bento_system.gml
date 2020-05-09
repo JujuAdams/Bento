@@ -47,6 +47,7 @@ function __bento_call_method()
 /// @param event
 function __bento_mouse_event(_event)
 {
+    __bento_call_method(properties.internal_mouse_event, _event);
     __bento_call_method(variable_struct_get(callback, "mouse_" + _event));
     __bento_call_method(callback.mouse_event, _event);
 }
