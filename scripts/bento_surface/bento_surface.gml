@@ -16,7 +16,7 @@ function bento_surface()
         style.surface.index = _surface;
         
         //Set draw method
-        callbacks.draw = bento_draw_box;
+        callback.draw = bento_draw_box;
         
         return self;
     }

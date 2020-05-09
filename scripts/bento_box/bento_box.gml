@@ -15,7 +15,7 @@ function bento_box()
         properties.height = _height;
         
         //Set draw method
-        callbacks.draw = bento_draw_box;
+        callback.draw = bento_draw_box;
         
         return self;
     }

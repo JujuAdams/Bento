@@ -17,7 +17,7 @@ function bento_box_region(_left, _top, _right, _bottom)
         properties.bbox_margin.b = _bottom;
         
         //Set draw method
-        callbacks.draw = bento_draw_box;
+        callback.draw = bento_draw_box;
         
         //Return this new element
         return self;

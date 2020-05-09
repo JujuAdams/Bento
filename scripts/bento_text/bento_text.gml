@@ -19,7 +19,7 @@ function bento_text()
         properties.text = _text;
         
         //Set draw method
-        callbacks.draw = bento_draw_box;
+        callback.draw = bento_draw_box;
         
         return self;
     }

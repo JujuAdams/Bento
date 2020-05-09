@@ -6,14 +6,12 @@
 /// 
 /// style            : <struct>    Contains visual formatting rules for the element
 /// properties       : <struct>    Logical values, including mouse state, position, and dimensions
-/// callbacks        : <struct>    Struct of methods that dictate various element behaviours, including mouse callbacks and how the element is drawn
+/// callback         : <struct>    Struct of methods that dictate various element behaviours, including mouse callbacks and how the element is drawn
 /// root             : <struct>    Bento struct, instanceof() == "bento_element_class"
 /// parent           : <struct>    Bento struct, instanceof() == "bento_element_class"
 /// children         : <array>     Array of children in the order they are to be drawn. The first element to be drawn is at array index 0
-/// mouse_over_array : <array>     Array of child elements that the mouse is over. This array only exists on root elements
+/// mouse_handle_array : <array>     Array of child elements that the mouse is over. This array only exists on root elements
 /// 
-/// add(element)           : <function>    Attaches the specified element to this element as a child
-/// add_at(element)        : <function>   
 /// position_update()      : <function>    
 /// destroy()              : <function>    Marks this element *and all child elements* for destruction. The element won't necessarily be destroyed immediately
 /// anchor_left(element)   : <function>    
@@ -117,7 +115,7 @@ function bento_element_class() constructor
     
     #region Callbacks
     
-    callbacks = {
+    callback = {
         tick           : undefined, //TODO
         
         draw_begin     : undefined, //Before clipping frame is pushed (usually this means we're clipped to our parent's frame)

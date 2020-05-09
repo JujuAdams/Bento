@@ -16,34 +16,37 @@ function bento_tick_mouse(_element, _mouse_x, _mouse_y, _mouse_state)
     
     with(_element)
     {
-        mouse_over_array = [];
+        mouse_handle_array = [];
+        if (!variable_struct_exists(self, "mouse_handle_state")) mouse_handle_state = false;
+        var _root_mouse_pressed  = (!mouse_handle_state &&  _mouse_state);
+        var _root_mouse_released = ( mouse_handle_state && !_mouse_state);
+        mouse_handle_state = _mouse_state;
         
         __bento_tick_mouse_inner(_mouse_x, _mouse_y);
         
-        var _length = array_length(mouse_over_array);
+        var _length = array_length(mouse_handle_array);
         if (_length > 0)
         {
             //Iterate through the first few children that think the mouse is over them
             var _i = 0;
             repeat(_length-1)
             {
-                with(mouse_over_array[_i])
+                with(mouse_handle_array[_i])
                 {
                     if (properties.mouse.over)
                     {
                         //If the mouse isn't over us but it was last frame then trigger a "leave" event
+                        properties.mouse.over  = false;
+                        properties.mouse.state = false;
                         __bento_mouse_event("leave");
                     }
-                    
-                    properties.mouse.over  = false;
-                    properties.mouse.state = false;
                 }
                 
                 ++_i;
             }
             
             //Then handle the last element in the array
-            var _top_over = mouse_over_array[_length-1];
+            var _top_over = mouse_handle_array[_length-1];
             if (instanceof(_top_over) == "bento_element_class")
             {
                 with(_top_over)
@@ -57,6 +60,13 @@ function bento_tick_mouse(_element, _mouse_x, _mouse_y, _mouse_state)
                     if (!_prev_over)
                     {
                         properties.mouse.over = true;
+                        
+                        if (!_mouse_state)
+                        {
+                            _prev_state = false;
+                            properties.mouse.state = false;
+                        }
+                        
                         __bento_mouse_event("enter");
                     }
                     else
@@ -70,16 +80,16 @@ function bento_tick_mouse(_element, _mouse_x, _mouse_y, _mouse_state)
                     }
                     else
                     {
-                        properties.mouse.state = _mouse_state;
-                    
-                        if (_mouse_state)
+                        if (_mouse_state && _root_mouse_pressed)
                         {
-                            __bento_mouse_event("pressed");
+                            properties.mouse.state = true;
                             properties.mouse.pressed_dx = properties.bbox_margin.l - _mouse_x;
                             properties.mouse.pressed_dy = properties.bbox_margin.t - _mouse_y;
+                            __bento_mouse_event("pressed");
                         }
-                        else
+                        else if (_root_mouse_released)
                         {
+                            properties.mouse.state = false;
                             __bento_mouse_event("released");
                         }
                     }
@@ -107,14 +117,14 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
     }
     
     //Run custom tick method
-    __bento_call_method(callbacks.tick);
+    __bento_call_method(callback.tick);
     
     var _mouse_over_me = false;
     
     //Find out if our element, or any of its children, are under the mouse
     if (style.interactive)
     {
-        var _mouse_check_function = callbacks.mouse_check;
+        var _mouse_check_function = callback.mouse_check;
         if (is_method(_mouse_check_function))
         {
             _mouse_over_me = _mouse_check_function(_mouse_x, _mouse_y);
@@ -175,7 +185,7 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
     if (!_mouse_over_child && _mouse_over_me)
     {
         //If the mouse is over us, add ourselves to the root's array
-        root.mouse_over_array[@ array_length(root.mouse_over_array)] = self;
+        root.mouse_handle_array[@ array_length(root.mouse_handle_array)] = self;
     }
     else
     {

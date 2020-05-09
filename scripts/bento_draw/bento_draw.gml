@@ -40,7 +40,7 @@ function __bento_draw_inner()
     position_update();
     
     //Execute our pre-clipping draw code
-    __bento_call_method(callbacks.draw_begin);
+    __bento_call_method(callback.draw_begin);
     
     //Update our clipping frame
     var _do_clip = false;
@@ -51,7 +51,7 @@ function __bento_draw_inner()
     }
     
     //Draw our element
-    __bento_call_method(callbacks.draw);
+    __bento_call_method(callback.draw);
     
     //Draw our children
     var _i = 0;
@@ -66,7 +66,7 @@ function __bento_draw_inner()
     }
     
     //Execute our post-children draw code
-    __bento_call_method(callbacks.draw_end);
+    __bento_call_method(callback.draw_end);
     
     //Pop our clipping frame
     if (_do_clip) __bento_clip_pop();
