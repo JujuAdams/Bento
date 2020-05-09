@@ -1,7 +1,7 @@
 /// @param sprite
 /// @param [templateName]
 
-function bento_sprite_button()
+function bento_button()
 {
     var _sprite = argument[0];
     var _style  = (argument_count > 1)? argument[1] : undefined;

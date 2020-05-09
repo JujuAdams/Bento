@@ -6,7 +6,7 @@
     "path": "folders/Bento/Elements.yy",
   },
   "resourceVersion": "1.0",
-  "name": "bento_sprite_button",
+  "name": "bento_checkbox",
   "tags": [],
   "resourceType": "GMScript",
 }
