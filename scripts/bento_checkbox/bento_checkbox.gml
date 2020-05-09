@@ -32,18 +32,7 @@ function bento_checkbox()
         {
             with(properties.checkbox)
             {
-                if (is_struct(scope))
-                {
-                    state = variable_struct_get(scope, variable_name);
-                }
-                else if (scope == global)
-                {
-                    state = variable_global_get(variable_name);
-                }
-                else
-                {
-                    state = variable_instance_get(id, variable_name);
-                }
+                state = bento_variable_get(scope, variable_name);
             }
             
             var _image = 0;
@@ -62,19 +51,7 @@ function bento_checkbox()
                 with(properties.checkbox)
                 {
                     state = !state;
-                    
-                    if (is_struct(scope))
-                    {
-                        variable_struct_set(scope, variable_name, state);
-                    }
-                    else if (scope == global)
-                    {
-                        variable_global_set(variable_name, state);
-                    }
-                    else
-                    {
-                        variable_instance_set(id, variable_name, state);
-                    }
+                    bento_variable_set(scope, variable_name, state);
                 }
                 
                 properties.internal_tick();

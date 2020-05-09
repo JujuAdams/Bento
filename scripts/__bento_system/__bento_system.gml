@@ -314,3 +314,46 @@ function __bento_clip_reset(_left, _top, _right, _bottom)
 }
 
 #endregion
+
+#region Utility
+
+/// @function bento_variable_get(scope, variableName)
+/// @param scope
+/// @param variableName
+function bento_variable_get(_scope, _variable_name)
+{
+    if (is_struct(_scope))
+    {
+        return variable_struct_get(_scope, _variable_name);
+    }
+    else if (_scope == global)
+    {
+        return variable_global_get(_variable_name);
+    }
+    else
+    {
+        return variable_instance_get(_scope, _variable_name);
+    }
+}
+
+/// @function bento_variable_set(scope, variableName, value)
+/// @param scope
+/// @param variableName
+/// @param value
+function bento_variable_set(_scope, _variable_name, _value)
+{
+    if (is_struct(_scope))
+    {
+        return variable_struct_set(_scope, _variable_name, _value);
+    }
+    else if (_scope == global)
+    {
+        return variable_global_set(_variable_name, _value);
+    }
+    else
+    {
+        return variable_instance_set(_scope, _variable_name, _value);
+    }
+}
+
+#endregion

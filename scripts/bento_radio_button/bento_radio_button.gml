@@ -35,18 +35,7 @@ function bento_radio_button()
         {
             with(properties.radio_button)
             {
-                if (is_struct(scope))
-                {
-                    state = (value == variable_struct_get(scope, variable_name));
-                }
-                else if (scope == global)
-                {
-                    state = (value == variable_global_get(variable_name));
-                }
-                else
-                {
-                    state = (value == variable_instance_get(id, variable_name));
-                }
+                state = (value == bento_variable_get(scope, variable_name));
             }
             
             var _image = 0;
@@ -62,18 +51,7 @@ function bento_radio_button()
             {
                 with(properties.radio_button)
                 {
-                    if (is_struct(scope))
-                    {
-                        variable_struct_set(scope, variable_name, value);
-                    }
-                    else if (scope == global)
-                    {
-                        variable_global_set(variable_name, value);
-                    }
-                    else
-                    {
-                        variable_instance_set(id, variable_name, value);
-                    }
+                    bento_variable_set(scope, variable_name, value);
                 }
             }
         }
