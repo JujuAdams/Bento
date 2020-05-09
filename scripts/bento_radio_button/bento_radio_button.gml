@@ -29,81 +29,56 @@ function bento_radio_button()
             state : false,
         };
         
-        if (is_struct(_scope))
-        {
-            properties.radio_button.state = variable_struct_get(_scope, _variable_name);
-        }
-        else if (_scope == global)
-        {
-            properties.radio_button.state = variable_global_get(_variable_name);
-        }
-        else
-        {
-            properties.radio_button.state = variable_instance_get(id, _variable_name);
-        }
-        
         //Set draw method
         callback.draw = bento_draw_box;
         properties.internal_tick = function()
         {
             with(properties.radio_button)
             {
-                var _new_state = state;
                 if (is_struct(scope))
                 {
-                    _new_state = (value == variable_struct_get(scope, variable_name));
+                    state = (value == variable_struct_get(scope, variable_name));
                 }
                 else if (scope == global)
                 {
-                    _new_state = (value == variable_global_get(variable_name));
+                    state = (value == variable_global_get(variable_name));
                 }
                 else
                 {
-                    _new_state = (value == variable_instance_get(id, variable_name));
+                    state = (value == variable_instance_get(id, variable_name));
                 }
             }
             
-            if (_new_state != properties.radio_button.state)
-            {
-                properties.radio_button.state = _new_state;
-                style.sprite.image = ((properties.mouse.over)? 1 : 0) + (_new_state? 3 : 0);
-            }
+            var _image = 0;
+            if (properties.mouse.over) _image = 1;
+            if (properties.mouse.state) _image = 2;
+            if (properties.radio_button.state) _image += 3;
+            style.sprite.image = _image;
         };
         
         properties.internal_mouse_event = function(_event)
         {
-            switch(_event)
+            if (_event == "released")
             {
-                case "leave": style.sprite.image = (properties.radio_button.state)? 3 : 0; break;
-                case "enter": style.sprite.image = (properties.radio_button.state)? 4 : 1; break;
-                
-                case "pressed":
-                    style.sprite.image = (properties.radio_button.state)? 5 : 2;
-                break;
-                
-                case "released":
-                    with(properties.radio_button)
+                with(properties.radio_button)
+                {
+                    if (is_struct(scope))
                     {
-                        if (is_struct(scope))
-                        {
-                            variable_struct_set(scope, variable_name, value);
-                        }
-                        else if (scope == global)
-                        {
-                            variable_global_set(variable_name, value);
-                        }
-                        else
-                        {
-                            variable_instance_set(id, variable_name, value);
-                        }
-                        
-                        state = true;
+                        variable_struct_set(scope, variable_name, value);
                     }
-                    
-                    style.sprite.image = (properties.mouse.over)? 4 : 1;
-                break;
+                    else if (scope == global)
+                    {
+                        variable_global_set(variable_name, value);
+                    }
+                    else
+                    {
+                        variable_instance_set(id, variable_name, value);
+                    }
+                }
             }
         }
+        
+        properties.internal_tick();
         
         return self;
     }
