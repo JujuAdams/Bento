@@ -60,13 +60,6 @@ function bento_tick_mouse(_element, _mouse_x, _mouse_y, _mouse_state)
                     if (!_prev_over)
                     {
                         properties.mouse.over = true;
-                        
-                        if (!_mouse_state)
-                        {
-                            _prev_state = false;
-                            properties.mouse.state = false;
-                        }
-                        
                         __bento_mouse_event("enter");
                     }
                     else
@@ -80,7 +73,7 @@ function bento_tick_mouse(_element, _mouse_x, _mouse_y, _mouse_state)
                     }
                     else
                     {
-                        if (_mouse_state && _root_mouse_pressed)
+                        if (_root_mouse_pressed)
                         {
                             properties.mouse.state = true;
                             properties.mouse.pressed_dx = properties.bbox_margin.l - _mouse_x;
@@ -187,15 +180,12 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
         //If the mouse is over us, add ourselves to the root's array
         root.mouse_handle_array[@ array_length(root.mouse_handle_array)] = self;
     }
-    else
+    else if (properties.mouse.over)
     {
-        if (properties.mouse.over)
-        {
-            //If the mouse isn't over us but it was last frame then trigger a "leave" event
-            properties.mouse.over  = false;
-            properties.mouse.state = false;
-            __bento_mouse_event("leave");
-        }
+        //If the mouse isn't over us but it was last frame then trigger a "leave" event
+        properties.mouse.over  = false;
+        properties.mouse.state = false;
+        __bento_mouse_event("leave");
     }
     
     return (_mouse_over_child || _mouse_over_me);
