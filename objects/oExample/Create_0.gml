@@ -1,3 +1,5 @@
+global.radiobuttonTest = 0;
+
 with(bento_style_template("10px margin"))
 {
     margin = 10;
@@ -28,18 +30,29 @@ with(box)
         }
     }
     
-    with(bento_button(sButtonTest, "10px margin"))
+    bento_text("Hello world! :D", "10px margin");
+    
+    with(bento_checkbox(sCheckboxTest, global, "checkboxTest", "10px margin"))
     {
-        callback.mouse_event = function(_event)
-        {
-            show_debug_message(properties.long_name + ": " + _event);
-        }
+        bento_label(self, "Checkbox", 12);
     }
     
-    bento_checkbox(sCheckboxTest, global, "checkboxTest");
-    bento_radiobutton(sCheckboxTest, self, "checkbox", 1, "10px margin");
-    bento_radiobutton(sCheckboxTest, self, "checkbox", 2, "10px margin");
-    bento_radiobutton(sCheckboxTest, self, "checkbox", 3, "10px margin");
+    bento_text("Hello world! :D", "10px margin");
+    
+    with(bento_radiobutton(sCheckboxTest, global, "radiobuttonTest", 0, "10px margin"))
+    {
+        bento_label(self, "Radiobutton 0", 12);
+    }
+    
+    with(bento_radiobutton(sCheckboxTest, global, "radiobuttonTest", 1, "10px margin"))
+    {
+        bento_label(self, "Radiobutton 1", 12);
+    }
+    
+    with(bento_radiobutton(sCheckboxTest, global, "radiobuttonTest", 2, "10px margin"))
+    {
+        bento_label(self, "Radiobutton 2", 12);
+    }
 }
 
 bento_layout_update(box);
