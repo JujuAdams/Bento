@@ -13,20 +13,18 @@ function bento_sprite()
         //Set some style variables specific to this kind of element
         with(style)
         {
-            sprite = {
-                index : _sprite,
-                image : _image,
-                color : c_white,
-                alpha : 1.0,
-            };
+            sprite = _sprite;
+            image  = _image;
+            color  = c_white;
+            alpha  = 1.0;
         }
         
         //Apply our style template
         bento_style_template_apply(self, _style);
         
         //Set our dimensions based on the sprite we're using
-        properties.width  = sprite_get_width( style.sprite.index);
-        properties.height = sprite_get_height(style.sprite.index);
+        properties.width  = sprite_get_width( style.sprite);
+        properties.height = sprite_get_height(style.sprite);
         
         //Set draw method
         callback.draw = bento_draw_sprite;
@@ -37,14 +35,17 @@ function bento_sprite()
 
 function bento_draw_sprite()
 {
-    //Draw the sprite (if needed)
-    var _sprite_struct = style.sprite;
-    if ((_sprite_struct.index != undefined) && (_sprite_struct.alpha > 0))
+    var _bbox_padding = properties.bbox_padding;
+    
+    with(style)
     {
-        var _bbox_padding = properties.bbox_padding;
-        draw_sprite_stretched_ext(_sprite_struct.index, _sprite_struct.image,
-                                  _bbox_padding.l, _bbox_padding.t,
-                                  _bbox_padding.r - _bbox_padding.l, _bbox_padding.b - _bbox_padding.t,
-                                  _sprite_struct.color, _sprite_struct.alpha);
+        //Draw the sprite (if needed)
+        if ((sprite != undefined) && (alpha > 0))
+        {
+            draw_sprite_stretched_ext(sprite, image,
+                                      _bbox_padding.l, _bbox_padding.t,
+                                      _bbox_padding.r - _bbox_padding.l, _bbox_padding.b - _bbox_padding.t,
+                                      color, alpha);
+        }
     }
 }

@@ -18,10 +18,10 @@ function bento_button()
             //Swap between images of our sprite based on what events are triggered
             switch(_event)
             {
-                case "leave":    style.sprite.image = 0; break;
-                case "enter":    style.sprite.image = 1; break;
-                case "pressed":  style.sprite.image = 2; break;
-                case "released": style.sprite.image = (properties.mouse.focus)? 1 : 0; break;
+                case "leave":    style.image = 0; break;
+                case "enter":    style.image = 1; break;
+                case "pressed":  style.image = 2; break;
+                case "released": style.image = (properties.mouse.focus)? 1 : 0; break;
             }
         }
         

@@ -37,7 +37,7 @@ function bento_checkbox()
             if (properties.mouse.focus   ) _image  = 1;
             if (properties.mouse.state   ) _image  = 2;
             if (properties.checkbox.state) _image += 3;
-            style.sprite.image = _image;
+            style.image = _image;
         };
         
         properties.internal_mouse_event = function(_event)
