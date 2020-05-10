@@ -1,4 +1,4 @@
-/// @param element
+/// @param rootElement
 /// @param mouseX
 /// @param mouseY
 /// @param mouseState

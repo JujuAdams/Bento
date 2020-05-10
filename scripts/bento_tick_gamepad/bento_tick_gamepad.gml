@@ -1,20 +1,11 @@
-/// @param element
+/// @param rootElement
 /// @param axisH
 /// @param axisV
-/// @param threshold
-/// @param moveDelay
 /// @param selectState
 
-function bento_tick_gamepad()
+function bento_tick_gamepad(_element, _dx, _dy, _select_state)
 {
-    var _element      = argument[0];
-    var _dx           = argument[1];
-    var _dy           = argument[2];
-    var _threshold    = argument[3];
-    var _move_delay   = argument[4];
-    var _select_state = argument[5];
-    
-    if (_dx*_dx + _dy*_dy < _threshold*_threshold)
+    if (_dx*_dx + _dy*_dy < BENTO_GAMEPAD_DEADZONE*BENTO_GAMEPAD_DEADZONE)
     {
         _dx = 0;
         _dy = 0;
@@ -31,25 +22,38 @@ function bento_tick_gamepad()
     
     with(_element)
     {
-        element_over_distance = 999999999;
-        if (!variable_struct_exists(self, "element_over")) element_over = undefined;
-        old_element_over = element_over;
-        
-        if (!variable_struct_exists(self, "gamepad_handle_state")) gamepad_handle_state = false;
-        var _root_select_pressed  = (!gamepad_handle_state &&  _select_state);
-        var _root_select_released = ( gamepad_handle_state && !_select_state);
-        gamepad_handle_state = _select_state;
-        
-        if (_root_select_pressed) show_debug_message("pressed");
-        
-        if (!variable_struct_exists(self, "last_move")) last_move = -current_time;
-        if (current_time - last_move < _move_delay)
+        //Define our root properties
+        if (!variable_struct_exists(self, "root_properties"))
         {
-            _dx = 0;
-            _dy = 0;
+            root_properties = {
+                type           : "gamepad",
+                focus          : undefined,
+                focus_distance : 999999,
+                prev_focus     : undefined,
+                state          : false,
+                last_change    : -current_time,
+            };
         }
         
-        if (instanceof(element_over) != "bento_element_class")
+        //Update root properties
+        with(root_properties)
+        {
+            prev_focus     = focus;
+            focus_distance = 999999;
+            
+            var _root_select_pressed  = (!state &&  _select_state);
+            var _root_select_released = ( state && !_select_state);
+            state = _select_state;
+            
+            if (current_time - last_change < BENTO_GAMEPAD_SCROLL_DELAY)
+            {
+                _dx = 0;
+                _dy = 0;
+            }
+        }
+        
+        //If our focused element isn't an element, find the first interactive child and use that
+        if (instanceof(root_properties.focus) != "bento_element_class")
         {
             var _i = 0;
             repeat(array_length(children))
@@ -57,7 +61,7 @@ function bento_tick_gamepad()
                 var _child = children[_i];
                 if (_child.style.interactive)
                 {
-                    element_over = children[_i];
+                    root_properties.focus = children[_i];
                     break;
                 }
                 
@@ -65,38 +69,46 @@ function bento_tick_gamepad()
             }
         }
         
-        if (instanceof(element_over) == "bento_element_class")
+        if (instanceof(root_properties.focus) != "bento_element_class")
         {
-            var _focus_x = (element_over.properties.bbox_content.l + element_over.properties.bbox_content.r)/2;
-            var _focus_y = (element_over.properties.bbox_content.t + element_over.properties.bbox_content.b)/2;
-            __bento_tick_gamepad_inner(_focus_x, _focus_y, 999999*_dx, 999999*_dy);
+            //If our focused element *still* isn't an element, still tick the DOM but don't try to move the selector
+            __bento_tick_gamepad_inner(0, 0, 0, 0);
         }
         else
         {
-            __bento_tick_gamepad_inner(0, 0, 0, 0);
+            var _bbox = root_properties.focus.properties.bbox_content;
+            var _focus_x = (_bbox.l + _bbox.r)/2;
+            var _focus_y = (_bbox.t + _bbox.b)/2;
+            __bento_tick_gamepad_inner(_focus_x, _focus_y, 999999*_dx, 999999*_dy);
         }
         
-        if (instanceof(element_over) != "bento_element_class")
+        //If we couldn't find anything to focus, use the previous focus
+        if (instanceof(root_properties.focus) != "bento_element_class")
         {
-            element_over = old_element_over;
+            root_properties.focus = root_properties.prev_focus;
         }
         
-        if (instanceof(element_over) == "bento_element_class")
+        if (instanceof(root_properties.focus) == "bento_element_class")
         {
-            if ((instanceof(old_element_over) == "bento_element_class") && (old_element_over != element_over))
+            //If We've changed focus...
+            if (root_properties.prev_focus != root_properties.focus)
             {
-                with(old_element_over)
+                if (instanceof(root_properties.prev_focus) == "bento_element_class")
                 {
-                    //If the mouse isn't over us but it was last frame then trigger a "leave" event
-                    properties.mouse.over  = false;
-                    properties.mouse.state = false;
-                    __bento_mouse_event("leave");
+                    with(root_properties.prev_focus)
+                    {
+                        //Reset the element that lost focus
+                        properties.mouse.over  = false;
+                        properties.mouse.state = false;
+                        __bento_mouse_event("leave");
+                    }
                 }
                 
-                last_move = current_time;
+                root_properties.last_change = current_time;
             }
             
-            with(element_over)
+            //Handle interaction with the focused element
+            with(root_properties.focus)
             {
                 var _prev_over  = properties.mouse.over;
                 var _prev_state = properties.mouse.state;
@@ -218,11 +230,11 @@ function __bento_tick_gamepad_inner(_focus_x, _focus_y, _focus_dx, _focus_dy)
     //Pop our clipping frame
     if (_do_clip) __bento_clip_pop();
     
-    if ((_gamepad_distance < root.element_over_distance) && (root.old_element_over != self))
+    if ((_gamepad_distance < root.root_properties.focus_distance) && (root.root_properties.prev_focus != self))
     {
         //If the mouse is over us, add ourselves to the root's array
-        root.element_over = self;
-        root.element_over_distance = _gamepad_distance;
+        root.root_properties.focus = self;
+        root.root_properties.focus_distance = _gamepad_distance;
     }
     
     return _gamepad_distance;
