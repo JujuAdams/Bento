@@ -3,13 +3,6 @@ with(bento_style_template("10px margin"))
     margin = 10;
 }
 
-with(bento_style_template("prettier font"))
-{
-    text = {
-        font : fntComicSans,
-    };
-}
-
 box = bento_box_region(50, 50, room_width-50, room_height-50)
 with(box)
 {
@@ -25,7 +18,7 @@ with(box)
     
     set_flexbox("columns", "left", "top", "left", "top");
     
-    bento_text("Hello world! :D", ["prettier font", "10px margin"]);
+    bento_text("Hello world! :D", "10px margin");
     
     with(bento_button(sButtonTest, "10px margin"))
     {
