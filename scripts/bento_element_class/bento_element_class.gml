@@ -109,6 +109,15 @@ function bento_element_class() constructor
             pressed_dx : 0,
             pressed_dy : 0,
         },
+    
+        root_tick : {
+            type           : "unknown",
+            focus          : undefined,
+            focus_distance : 999999,
+            prev_focus     : undefined,
+            select_state   : false,
+            last_change    : -current_time,
+        },
         
         internal_mouse_event : undefined,
         internal_tick        : undefined,

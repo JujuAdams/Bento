@@ -5,7 +5,7 @@
 #macro BENTO_ANCHOR_ALLOW_ELEMENTS                true
 
 #macro BENTO_GAMEPAD_DEADZONE      0.5 //Circular axis deadzone when using bento_tick_gamepad()
-#macro BENTO_GAMEPAD_SCROLL_DELAY  200 //Milliseconds between focus changes e.g. when scrolling on a menu
+#macro BENTO_GAMEPAD_SCROLL_DELAY  160 //Milliseconds between focus changes e.g. when scrolling on a menu
 
 #macro BENTO_WARNING_NOT_ROOT_ELEMENT             true
 #macro BENTO_WARNING_ANCHOR_NOT_BOUNDING_BOX      true
