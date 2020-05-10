@@ -1,13 +1,14 @@
 {
   "resources": [
-    {"id":{"name":"oTest2","path":"objects/oTest2/oTest2.yy",},"order":8,},
+    {"id":{"name":"oTest2","path":"objects/oTest2/oTest2.yy",},"order":9,},
     {"id":{"name":"bento_sprite_nineslice","path":"scripts/bento_sprite_nineslice/bento_sprite_nineslice.yy",},"order":4,},
-    {"id":{"name":"sButtonTest","path":"sprites/sButtonTest/sButtonTest.yy",},"order":5,},
-    {"id":{"name":"oExample","path":"objects/oExample/oExample.yy",},"order":9,},
+    {"id":{"name":"fntComicSans","path":"fonts/fntComicSans/fntComicSans.yy",},"order":5,},
+    {"id":{"name":"sButtonTest","path":"sprites/sButtonTest/sButtonTest.yy",},"order":6,},
+    {"id":{"name":"oExample","path":"objects/oExample/oExample.yy",},"order":10,},
     {"id":{"name":"bento_box_region","path":"scripts/bento_box_region/bento_box_region.yy",},"order":1,},
     {"id":{"name":"Notes","path":"notes/Notes/Notes.yy",},"order":5,},
-    {"id":{"name":"oTest","path":"objects/oTest/oTest.yy",},"order":7,},
-    {"id":{"name":"sCheckboxTest","path":"sprites/sCheckboxTest/sCheckboxTest.yy",},"order":6,},
+    {"id":{"name":"oTest","path":"objects/oTest/oTest.yy",},"order":8,},
+    {"id":{"name":"sCheckboxTest","path":"sprites/sCheckboxTest/sCheckboxTest.yy",},"order":7,},
     {"id":{"name":"__bento_system","path":"scripts/__bento_system/__bento_system.yy",},"order":6,},
     {"id":{"name":"callback_mouse_event","path":"scripts/callback_mouse_event/callback_mouse_event.yy",},"order":1,},
     {"id":{"name":"__spr_bento_pixel","path":"sprites/__spr_bento_pixel/__spr_bento_pixel.yy",},"order":8,},
@@ -33,7 +34,7 @@
     {"id":{"name":"bento_checkbox","path":"scripts/bento_checkbox/bento_checkbox.yy",},"order":8,},
     {"id":{"name":"bento_text","path":"scripts/bento_text/bento_text.yy",},"order":5,},
     {"id":{"name":"bento_style_template","path":"scripts/bento_style_template/bento_style_template.yy",},"order":1,},
-    {"id":{"name":"rMain","path":"rooms/rMain/rMain.yy",},"order":10,},
+    {"id":{"name":"rMain","path":"rooms/rMain/rMain.yy",},"order":11,},
   ],
   "Options": [
     {"name":"Amazon Fire","path":"options/amazonfire/options_amazonfire.yy",},

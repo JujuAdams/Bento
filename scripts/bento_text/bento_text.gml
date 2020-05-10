@@ -8,6 +8,18 @@ function bento_text()
     
     with(new bento_element_class())
     {
+        //Set some style variables specific to this kind of element
+        with(style)
+        {
+            text = {
+                font   : -1,
+                halign : fa_left,
+                valign : fa_top,
+                color  : c_white,
+                alpha  : 1.0,
+            };
+        }
+        
         //Apply our style template
         bento_style_template_apply(self, _style);
         

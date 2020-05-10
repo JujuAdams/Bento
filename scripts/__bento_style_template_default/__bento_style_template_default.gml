@@ -10,50 +10,6 @@ function __bento_style_template_default()
         interactive    = false;
         layout         = "none"; //Can be "none", "flexbox", or "grid"
         
-        fill = {
-            color : c_white,
-            alpha : 0.0,
-        };
-        
-        outline = {
-            color : c_white,
-            alpha : 0.0,
-            thickness : 1.0,
-        };
-        
-        text = {
-            font   : -1,
-            halign : fa_left,
-            valign : fa_top,
-            color  : c_white,
-            alpha  : 1.0,
-        };
-        
-        sprite = {
-            behavior : "stretch",
-            index : undefined,
-            image : -1,
-            color : c_white,
-            alpha : 1.0,
-            tile_offset : {
-                x : 0,
-                y : 0,
-                worldspace : false,
-            },
-            nineslice_border : {
-                l : 0,
-                t : 0,
-                r : 0,
-                b : 0,
-            },
-        };
-        
-        surface = {
-            index : undefined,
-            color : c_white,
-            alpha : 1.0,
-        };
-        
         margin = {
             l : 0,
             t : 0,

@@ -8,15 +8,19 @@ function bento_surface()
     
     with(new bento_element_class())
     {
-        //Set our dimensions based on the sprite we're using
-        properties.width  = surface_get_width( _surface);
-        properties.height = surface_get_height(_surface);
-        
-        //Set our sprite definition
-        style.surface.index = _surface;
+        //Set some style variables specific to this kind of element
+        surface = {
+            index : _surface,
+            color : c_white,
+            alpha : 1.0,
+        };
         
         //Apply our style template
         bento_style_template_apply(self, _style);
+        
+        //Set our dimensions based on the sprite we're using
+        properties.width  = surface_get_width( _surface);
+        properties.height = surface_get_height(_surface);
         
         //Set draw method
         callback.draw = bento_draw_surface;

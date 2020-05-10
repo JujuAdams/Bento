@@ -18,19 +18,28 @@ function bento_sprite_tile()
     
     with(new bento_element_class())
     {
-        //Set our dimensions based on the sprite we're using
-        properties.width  = _width;
-        properties.height = _height;
-        
-        //Set our sprite definition
-        style.sprite.index         = _sprite;
-        style.sprite.image         = _image;
-        style.sprite.behavior      = "tile";
-        style.sprite.tile_offset.x = _offset_x;
-        style.sprite.tile_offset.y = _offset_y;
+        //Set some style variables specific to this kind of element
+        with(style)
+        {
+            sprite = {
+                index : _sprite,
+                image : _image,
+                color : c_white,
+                alpha : 1.0,
+                tile_offset : {
+                    x : _offset_x,
+                    y : _offset_y,
+                    worldspace : false,
+                },
+            };
+        }
         
         //Apply our style template
         bento_style_template_apply(self, _style);
+        
+        //Set our dimensions based on the sprite we're using
+        properties.width  = _width;
+        properties.height = _height;
         
         //Set draw method
         callback.draw = bento_draw_sprite_tile;

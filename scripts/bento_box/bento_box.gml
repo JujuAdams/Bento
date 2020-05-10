@@ -10,7 +10,7 @@ function bento_box()
     
     with(new bento_element_class())
     {
-        //Set some style variable specific to this kind of element
+        //Set some style variables specific to this kind of element
         with(style)
         {
             fill = {
