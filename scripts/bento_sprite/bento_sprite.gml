@@ -19,8 +19,22 @@ function bento_sprite()
         style.sprite.image = _image;
         
         //Set draw method
-        callback.draw = bento_draw_box;
+        callback.draw = bento_draw_sprite;
         
         return self;
+    }
+}
+
+function bento_draw_sprite()
+{
+    //Draw the sprite (if needed)
+    var _sprite_struct = style.sprite;
+    if ((_sprite_struct.index != undefined) && (_sprite_struct.alpha > 0))
+    {
+        var _bbox_padding = properties.bbox_padding;
+        draw_sprite_stretched_ext(_sprite_struct.index, _sprite_struct.image,
+                                  _bbox_padding.l, _bbox_padding.t,
+                                  _bbox_padding.r - _bbox_padding.l, _bbox_padding.b - _bbox_padding.t,
+                                  _sprite_struct.color, _sprite_struct.alpha);
     }
 }

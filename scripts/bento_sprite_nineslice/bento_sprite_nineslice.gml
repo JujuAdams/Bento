@@ -34,8 +34,59 @@ function bento_sprite_nineslice()
         }
         
         //Set draw method
-        callback.draw = bento_draw_box;
+        callback.draw = bento_draw_sprite_nineslice;
         
         return self;
+    }
+}
+
+function bento_draw_sprite_nineslice()
+{
+    //Draw the sprite (if needed)
+    var _sprite_struct = style.sprite;
+    if ((_sprite_struct.index != undefined) && (_sprite_struct.alpha > 0))
+    {
+        var _bbox_padding = properties.bbox_padding;
+        
+        var _sprite = _sprite_struct.index;
+        var _image  = _sprite_struct.image;
+        var _color  = _sprite_struct.color;
+        var _alpha  = _sprite_struct.alpha;
+        
+        var _l = _bbox_padding.l;
+        var _t = _bbox_padding.t;
+        var _r = _bbox_padding.r;
+        var _b = _bbox_padding.b;
+        var _w = _r - _l;
+        var _h = _b - _t;
+        
+        var _nineslice_border = _sprite_struct.nineslice_border;
+        var _border_l = _nineslice_border.l;
+        var _border_t = _nineslice_border.t;
+        var _border_r = _nineslice_border.r;
+        var _border_b = _nineslice_border.b;
+        
+        var _center_w = sprite_get_width( _sprite) - (_border_l + _border_r);
+        var _center_h = sprite_get_height(_sprite) - (_border_t + _border_b);
+        var _border_i = _border_l + _center_w;
+        var _border_j = _border_t + _center_h;
+        
+        var _xs = (_w - (_border_l + _border_r)) / _center_w;
+        var _ys = (_h - (_border_t + _border_b)) / _center_h;
+        
+        //Corners
+        draw_sprite_part_ext(_sprite, _image,            0,         0,    _border_l, _border_t,    _l            , _t            ,    1.0, 1.0,    _color, _alpha);
+        draw_sprite_part_ext(_sprite, _image,    _border_i,         0,    _border_r, _border_t,    _r - _border_r, _t            ,    1.0, 1.0,    _color, _alpha);
+        draw_sprite_part_ext(_sprite, _image,            0, _border_j,    _border_l, _border_b,    _l            , _b - _border_b,    1.0, 1.0,    _color, _alpha);
+        draw_sprite_part_ext(_sprite, _image,    _border_i, _border_j,    _border_r, _border_b,    _r - _border_r, _b - _border_b,    1.0, 1.0,    _color, _alpha);
+        
+        //Sides                                                                                                                                    
+        draw_sprite_part_ext(_sprite, _image,    _border_l,         0,    _center_w, _border_t,    _l + _border_l, _t            ,    _xs, 1.0,    _color, _alpha);
+        draw_sprite_part_ext(_sprite, _image,            0, _border_t,    _border_l, _center_h,    _l            , _t + _border_t,    1.0, _ys,    _color, _alpha);
+        draw_sprite_part_ext(_sprite, _image,    _border_l, _border_j,    _center_w, _border_b,    _l + _border_l, _b - _border_b,    _xs, 1.0,    _color, _alpha);
+        draw_sprite_part_ext(_sprite, _image,    _border_i, _border_t,    _border_r, _center_h,    _r - _border_r, _t + _border_t,    1.0, _ys,    _color, _alpha);
+        
+        //Centre                                                                                                                                  
+        draw_sprite_part_ext(_sprite, _image,    _border_l, _border_t,    _center_w, _center_h,    _l + _border_l, _t + _border_t,    _xs, _ys,    _color, _alpha);
     }
 }

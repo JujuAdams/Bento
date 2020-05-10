@@ -16,8 +16,26 @@ function bento_surface()
         style.surface.index = _surface;
         
         //Set draw method
-        callback.draw = bento_draw_box;
+        callback.draw = bento_draw_surface;
         
         return self;
+    }
+}
+
+function bento_draw_surface()
+{
+    //Get some data
+    var _surface_struct = style.surface;
+    var _surface = _surface_struct.index;
+    
+    //If our surface is valid and exists
+    if ((_surface != undefined) && surface_exists(_surface))
+    {
+        //Draw it!
+        var _bbox_padding = properties.bbox_padding;
+        draw_surface_stretched_ext(_surface,
+                                   _bbox_padding.l, _bbox_padding.t,
+                                   _bbox_padding.r - _bbox_padding.l, _bbox_padding.b - _bbox_padding.t,
+                                   _surface_struct.color, _surface_struct.alpha);
     }
 }

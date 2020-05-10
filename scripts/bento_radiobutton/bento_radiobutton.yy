@@ -6,7 +6,7 @@
     "path": "folders/Bento/Elements.yy",
   },
   "resourceVersion": "1.0",
-  "name": "bento_radio_button",
+  "name": "bento_radiobutton",
   "tags": [],
   "resourceType": "GMScript",
 }

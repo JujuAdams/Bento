@@ -19,8 +19,52 @@ function bento_text()
         properties.text = _text;
         
         //Set draw method
-        callback.draw = bento_draw_box;
+        callback.draw = bento_draw_text;
         
         return self;
+    }
+}
+
+function bento_draw_text()
+{
+    //Draw the text
+    var _text = style.text;
+    if ((_text.alpha > 0.0) && (properties.text != ""))
+    {
+        var _bbox_padding = properties.bbox_padding;
+        
+        draw_set_font(_text.font);
+        draw_set_colour(_text.color);
+        draw_set_alpha(_text.alpha);
+        draw_set_halign(_text.halign);
+        draw_set_valign(_text.valign);
+        
+        if (_text.halign == fa_center)
+        {
+            var _x = (_bbox_padding.l + _bbox_padding.r)/2;
+        }
+        else if (_text.halign == fa_right)
+        {
+            var _x = _bbox_padding.r;
+        }
+        else
+        {
+            var _x = _bbox_padding.l;
+        }
+        
+        if (_text.halign == fa_middle)
+        {
+            var _y = (_bbox_padding.t + _bbox_padding.b)/2;
+        }
+        else if (_text.halign == fa_bottom)
+        {
+            var _y = _bbox_padding.b;
+        }
+        else
+        {
+            var _y = _bbox_padding.t;
+        }
+        
+        draw_text(_x, _y, properties.text);
     }
 }

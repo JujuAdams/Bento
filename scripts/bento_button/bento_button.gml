@@ -6,21 +6,16 @@ function bento_button()
     var _sprite = argument[0];
     var _style  = (argument_count > 1)? argument[1] : undefined;
     
-    with(new bento_element_class(_style))
+    //Create and extend the basic sprite element
+    with(bento_sprite(_sprite, 0, _style))
     {
-        //Set our dimensions based on the sprite we're using
-        properties.width  = sprite_get_width( _sprite);
-        properties.height = sprite_get_height(_sprite);
+        //Make sure we set this checkbox to interactive
+        style.interactive = true;
         
-        //Set our sprite definition
-        style.sprite.index = _sprite;
-        style.sprite.image = 0;
-        style.interactive  = true;
-        
-        //Set draw method
-        callback.draw = bento_draw_box;
+        //Give this element an internal mouse event function
         properties.internal_mouse_event = function(_event)
         {
+            //Swap between images of our sprite based on what events are triggered
             switch(_event)
             {
                 case "leave":    style.sprite.image = 0; break;

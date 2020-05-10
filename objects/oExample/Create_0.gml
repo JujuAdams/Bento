@@ -33,17 +33,17 @@ with(box)
         style.margin = 10;
     }
     
-    with(bento_radio_button(sCheckboxTest, self, "checkbox", 1))
+    with(bento_radiobutton(sCheckboxTest, self, "checkbox", 1))
     {
         style.margin = 10;
     }
     
-    with(bento_radio_button(sCheckboxTest, self, "checkbox", 2))
+    with(bento_radiobutton(sCheckboxTest, self, "checkbox", 2))
     {
         style.margin = 10;
     }
     
-    with(bento_radio_button(sCheckboxTest, self, "checkbox", 3))
+    with(bento_radiobutton(sCheckboxTest, self, "checkbox", 3))
     {
         style.margin = 10;
     }
