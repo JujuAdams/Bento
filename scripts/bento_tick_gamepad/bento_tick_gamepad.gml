@@ -159,7 +159,7 @@ function __bento_tick_gamepad_inner(_focus_x, _focus_y, _focus_dx, _focus_dy)
     var _gamepad_distance = undefined;
     
     //Find out if our element, or any of its children, are under the mouse
-    if (style.interactive)
+    if (style.interactive && (root.properties.root_tick.prev_focus != self))
     {
         var _gamepad_check_function = callback.gamepad_check;
         if (is_method(_gamepad_check_function))
@@ -218,13 +218,16 @@ function __bento_tick_gamepad_inner(_focus_x, _focus_y, _focus_dx, _focus_dy)
     //Pop our clipping frame
     if (_do_clip) __bento_clip_pop();
     
-    with(root.properties.root_tick)
+    if (_gamepad_distance != undefined)
     {
-        if ((_gamepad_distance < focus_distance) && (prev_focus != other))
+        with(root.properties.root_tick)
         {
-            //If the mouse is over us, add ourselves to the root's array
-            focus = other;
-            focus_distance = _gamepad_distance;
+            if (_gamepad_distance < focus_distance)
+            {
+                //If the mouse is over us, add ourselves to the root's array
+                focus = other;
+                focus_distance = _gamepad_distance;
+            }
         }
     }
     
@@ -246,9 +249,6 @@ function __bento_gamepad_check_aabb(_x1, _y1, _dx, _dy)
     var _r = min(_bbox.r, bento_clip.r);
     var _b = min(_bbox.b, bento_clip.b);
     
-    var _flo = 0;
-    var _fhi = 999999;
-    
     var _f0x = (_l - _x1) / _dx;
     var _f1x = (_r - _x1) / _dx;
     
@@ -259,38 +259,29 @@ function __bento_gamepad_check_aabb(_x1, _y1, _dx, _dy)
         _f1x = _temp;
     }
     
-    if (_f1x > _flo)
+    if (_f1x > 0)
     {
-        if (_f0x < _fhi)
+        var _flo = max(0, _f0x);
+        var _fhi = _f1x;
+        
+        if (_flo < _fhi)
         {
-            _flo = max(_flo, _f0x);
-            _fhi = min(_fhi, _f1x);
+            var _f0y = (_t - _y1) / _dy;
+            var _f1y = (_b - _y1) / _dy;
             
-            if (_flo < _fhi)
+            if (_f0y > _f1y)
             {
-                var _f0y = (_t - _y1) / _dy;
-                var _f1y = (_b - _y1) / _dy;
+                var _temp = _f0y;
+                _f0y = _f1y;
+                _f1y = _temp;
+            }
+            
+            if ((_f1y > _flo) && (_f0y < _fhi))
+            {
+                if (_flo > _f0y) _flo = _f0y;
+                if (_fhi < _f0y) _fhi = _f1y;
                 
-                if (_f0y > _f1y)
-                {
-                    var _temp = _f0y;
-                    _f0y = _f1y;
-                    _f1y = _temp;
-                }
-                
-                if (_f1y > _flo)
-                {
-                    if (_f0y < _fhi)
-                    {         
-                        _flo = max(_flo, _f0y);
-                        _fhi = min(_fhi, _f1y);
-                        
-                        if (_flo < _fhi)
-                        {
-                            return _flo*sqrt(_dx*_dx + _dy*_dy);
-                        }
-                    }
-                }
+                if (_flo < _fhi) return _flo*sqrt(_dx*_dx + _dy*_dy);
             }
         }
     }
