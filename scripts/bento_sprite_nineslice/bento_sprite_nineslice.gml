@@ -12,7 +12,7 @@ function bento_sprite_nineslice()
     var _height = argument[3];
     var _style  = (argument_count > 4)? argument[4] : undefined;
     
-    with(new bento_element_class(_style))
+    with(new bento_element_class())
     {
         //Set our dimensions based on the sprite we're using
         properties.width  = _width;
@@ -22,6 +22,9 @@ function bento_sprite_nineslice()
         style.sprite.index    = _sprite;
         style.sprite.image    = _image;
         style.sprite.behavior = "nineslice";
+        
+        //Apply our style template
+        bento_style_template_apply(self, _style);
         
         if (_style == undefined)
         {

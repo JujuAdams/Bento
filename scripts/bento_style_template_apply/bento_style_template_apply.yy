@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Bento",
-    "path": "folders/Bento.yy",
+    "name": "Style Templates",
+    "path": "folders/Bento/Style Templates.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__bento_style_default",
+  "name": "bento_style_template_apply",
   "tags": [],
   "resourceType": "GMScript",
 }

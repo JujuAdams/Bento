@@ -14,7 +14,7 @@ function bento_checkbox()
     with(bento_sprite(_sprite, 0, _style))
     {
         //Make sure we set this checkbox to interactive
-        style.interactive  = true;
+        style.interactive = true;
         
         //Give ourselves some extra variables to use internally
         properties.checkbox = {

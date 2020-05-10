@@ -2,11 +2,14 @@
 /// @param [getOnly]
 
 global.__bento_style_map = ds_map_create();
+__bento_style_template_default();
 
 function bento_style_template()
 {
     var _name     = argument[0];
     var _get_only = (argument_count > 1)? argument[1] : false;
+    
+    if (_name == undefined) return undefined;
     
     var _style = global.__bento_style_map[? _name];
     if (!is_struct(_style))
@@ -18,7 +21,7 @@ function bento_style_template()
         }
         else
         {
-            _style = new __bento_style_default();
+            var _style = {};
             global.__bento_style_map[? _name] = _style;
         }
     }

@@ -1,8 +1,7 @@
 /// Configuration settings for Bento
 
-#macro BENTO_CLEAN_UP_DESTROYED_NAMED_CHILDREN    false
-#macro BENTO_STYLE_TEMPLATE_DEFAULT_BY_REFERENCE  false
-#macro BENTO_ANCHOR_ALLOW_ELEMENTS                true
+#macro BENTO_CLEAN_UP_DESTROYED_NAMED_CHILDREN  false
+#macro BENTO_ANCHOR_ALLOW_ELEMENTS              true
 
 #macro BENTO_GAMEPAD_DEADZONE      0.5 //Circular axis deadzone when using bento_tick_gamepad()
 #macro BENTO_GAMEPAD_SCROLL_DELAY  160 //Milliseconds between focus changes e.g. when scrolling on a menu

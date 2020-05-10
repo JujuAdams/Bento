@@ -16,7 +16,7 @@ function bento_sprite_tile()
     var _offset_y = argument[5];
     var _style    = (argument_count > 6)? argument[6] : undefined;
     
-    with(new bento_element_class(_style))
+    with(new bento_element_class())
     {
         //Set our dimensions based on the sprite we're using
         properties.width  = _width;
@@ -28,6 +28,9 @@ function bento_sprite_tile()
         style.sprite.behavior      = "tile";
         style.sprite.tile_offset.x = _offset_x;
         style.sprite.tile_offset.y = _offset_y;
+        
+        //Apply our style template
+        bento_style_template_apply(self, _style);
         
         //Set draw method
         callback.draw = bento_draw_sprite_tile;

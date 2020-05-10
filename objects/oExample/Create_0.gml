@@ -1,52 +1,43 @@
+with(bento_style_template("10px margin"))
+{
+    margin = 10;
+}
+
 box = bento_box_region(50, 50, room_width-50, room_height-50)
 with(box)
 {
-    style.fill.color = c_red;
-    style.fill.alpha = 0.3;
+    with(style)
+    {
+        fill.color = c_red;
+        fill.alpha = 0.3;
+        
+        outline.color = c_white;
+        outline.alpha = 0.5;
+        outline.thickness = 2;
+    }
+    
     set_flexbox("columns", "left", "top", "left", "top");
     
-    with(bento_button(sButtonTest))
+    with(bento_button(sButtonTest, "10px margin"))
     {
-        set_name("A");
-        style.margin = 10;
-        
         callback.mouse_pressed = function()
         {
             show_debug_message(properties.long_name);
         }
     }
     
-    with(bento_button(sButtonTest))
+    with(bento_button(sButtonTest, "10px margin"))
     {
-        set_name("B");
-        style.margin = 10;
-        
         callback.mouse_event = function(_event)
         {
             show_debug_message(properties.long_name + ": " + _event);
         }
     }
     
-    with(bento_checkbox(sCheckboxTest, global, "checkboxTest"))
-    {
-        set_name("C");
-        style.margin = 10;
-    }
-    
-    with(bento_radiobutton(sCheckboxTest, self, "checkbox", 1))
-    {
-        style.margin = 10;
-    }
-    
-    with(bento_radiobutton(sCheckboxTest, self, "checkbox", 2))
-    {
-        style.margin = 10;
-    }
-    
-    with(bento_radiobutton(sCheckboxTest, self, "checkbox", 3))
-    {
-        style.margin = 10;
-    }
+    bento_checkbox(sCheckboxTest, global, "checkboxTest");
+    bento_radiobutton(sCheckboxTest, self, "checkbox", 1, "10px margin");
+    bento_radiobutton(sCheckboxTest, self, "checkbox", 2, "10px margin");
+    bento_radiobutton(sCheckboxTest, self, "checkbox", 3, "10px margin");
 }
 
 bento_layout_update(box);

@@ -16,7 +16,7 @@ function bento_radiobutton()
     with(bento_sprite(_sprite, 0, _style))
     {
         //Make sure we set this radiobutton to interactive
-        style.interactive  = true;
+        style.interactive = true;
         
         //Give ourselves some extra variables to use internally
         properties.radio_button = {

@@ -6,8 +6,11 @@ function bento_text()
     var _text  = argument[0];
     var _style = (argument_count > 1)? argument[1] : undefined;
     
-    with(new bento_element_class(_style))
+    with(new bento_element_class())
     {
+        //Apply our style template
+        bento_style_template_apply(self, _style);
+        
         //Set our dimensions based on the size of our text in the given font
         var _old_font = draw_get_font();
         draw_set_font(style.text.font);

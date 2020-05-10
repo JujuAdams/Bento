@@ -21,20 +21,8 @@
 
 function bento_element_class() constructor
 {
-    #region Set style from template
-    
-    var _style = (argument_count > 0)? argument[0] : undefined;
-    
-    if (BENTO_STYLE_TEMPLATE_DEFAULT_BY_REFERENCE)
-    {
-        style = bento_style_template(_style);
-    }
-    else
-    {
-        style = bento_style_template_copy(_style);
-    }
-    
-    #endregion
+    //Make a copy of the default style
+    style = bento_style_template_copy("default");
     
     #region Properties
     

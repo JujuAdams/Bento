@@ -5,19 +5,20 @@
 
 function bento_box_region(_left, _top, _right, _bottom)
 {
+    var _width  = 1 + _right - _left;
+    var _height = 1 + _bottom - _top;
+    
     //Create a new element
-    with(new bento_element_class())
+    with(bento_box(_width, _height))
     {
-        //Set our dimensions
-        properties.width  = 1 + _right - _left;
-        properties.height = 1 + _bottom - _top;
+        //Directly set the position of the margin
         properties.bbox_margin.l = _left;
         properties.bbox_margin.t = _top;
         properties.bbox_margin.r = _right;
         properties.bbox_margin.b = _bottom;
         
-        //Set draw method
-        callback.draw = bento_draw_box;
+        //Update the other bounding boxes 
+        update_bbox_from_margin();
         
         //Return this new element
         return self;
