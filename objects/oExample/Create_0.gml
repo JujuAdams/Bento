@@ -8,12 +8,12 @@ with(box)
 {
     with(style)
     {
-        fill.color = c_red;
-        fill.alpha = 0.3;
+        color = c_red;
+        alpha = 0.3;
         
-        outline.color = c_white;
-        outline.alpha = 0.5;
-        outline.thickness = 2;
+        outline_color = c_white;
+        outline_alpha = 0.5;
+        outline_thickness = 2;
     }
     
     layout_set_flexbox("columns", "left", "top", "left", "top");
