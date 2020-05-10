@@ -232,12 +232,34 @@ function bento_element_class() constructor
         return self;
     };
     
+    /// @function destroy()
+    static destroy = function()
+    {
+        //Mark us as destroyed
+        properties.destroyed = true;
+        
+        //Mark our children as destroyed too
+        var _i = 0;
+        repeat(array_length(children))
+        {
+            var _child = children[_i];
+            if (instanceof(_child) == "bento_element_class") _child.destroy();
+            ++_i;
+        }
+    }
+    
+    /// string() behaviour
+    static toString = function()
+    {
+        return properties.long_name;
+    }
+    
     #region Layouts
     
-    /// @function set_grid(columnSizes, rowSizes)
+    /// @function layout_set_grid(columnSizes, rowSizes)
     /// @param columnSizes
     /// @param rowSizes
-    static set_grid = function(_columns, _rows)
+    static layout_set_grid = function(_columns, _rows)
     {
         if (!is_array(_columns) || !is_array(_rows)) throw "Bento: Column and row definitions must be arrays";
         
@@ -254,13 +276,13 @@ function bento_element_class() constructor
         return self;
     }
     
-    /// @function set_flexbox(direction, lineHAlign, lineVAlign, contentHAlign, contentVAlign)
+    /// @function layout_set_flexbox(direction, lineHAlign, lineVAlign, contentHAlign, contentVAlign)
     /// @param direction
     /// @param lineHAlign
     /// @param lineVAlign
     /// @param contentHAlign
     /// @param contentVAlign
-    static set_flexbox = function(_direction, _line_halign, _line_valign, _content_halign, _content_valign)
+    static layout_set_flexbox = function(_direction, _line_halign, _line_valign, _content_halign, _content_valign)
     {
         style.layout = "flexbox";
         with(style.flexbox)
@@ -637,28 +659,6 @@ function bento_element_class() constructor
     }
     
     #endregion
-    
-    /// @function destroy()
-    static destroy = function()
-    {
-        //Mark us as destroyed
-        properties.destroyed = true;
-        
-        //Mark our children as destroyed too
-        var _i = 0;
-        repeat(array_length(children))
-        {
-            var _child = children[_i];
-            if (instanceof(_child) == "bento_element_class") _child.destroy();
-            ++_i;
-        }
-    }
-    
-    /// string() behaviour
-    static toString = function()
-    {
-        return properties.long_name;
-    }
     
     #endregion
 }

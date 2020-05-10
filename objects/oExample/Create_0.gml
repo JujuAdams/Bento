@@ -16,7 +16,7 @@ with(box)
         outline.thickness = 2;
     }
     
-    set_flexbox("columns", "left", "top", "left", "top");
+    layout_set_flexbox("columns", "left", "top", "left", "top");
     
     bento_text("Hello world! :D", "10px margin");
     
