@@ -18,7 +18,6 @@
     {"id":{"name":"bento_surface","path":"scripts/bento_surface/bento_surface.yy",},"order":6,},
     {"id":{"name":"bento_tick_mouse","path":"scripts/bento_tick_mouse/bento_tick_mouse.yy",},"order":0,},
     {"id":{"name":"bento_tick_gamepad","path":"scripts/bento_tick_gamepad/bento_tick_gamepad.yy",},"order":1,},
-    {"id":{"name":"__bento_style_template_default","path":"scripts/__bento_style_template_default/__bento_style_template_default.yy",},"order":0,},
     {"id":{"name":"__shd_bento_clip","path":"shaders/__shd_bento_clip/__shd_bento_clip.yy",},"order":7,},
     {"id":{"name":"bento_layout_update","path":"scripts/bento_layout_update/bento_layout_update.yy",},"order":5,},
     {"id":{"name":"bento_radiobutton","path":"scripts/bento_radiobutton/bento_radiobutton.yy",},"order":9,},

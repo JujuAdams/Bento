@@ -1,9 +1,6 @@
 /// @param templateName
 /// @param [getOnly]
 
-global.__bento_style_map = ds_map_create();
-__bento_style_template_default();
-
 function bento_style_template()
 {
     var _name     = argument[0];
