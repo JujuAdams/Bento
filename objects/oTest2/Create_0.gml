@@ -103,7 +103,7 @@ with(document.button2.add(bento_text("Button Event"), "display_text"))
     
     callback.mouse_event = function(_event) //Bento also offers an event-driven approach for buttons too
     {
-        if ((_event != "over") || !properties.mouse.state)
+        if ((_event != "focus") || !properties.mouse.state)
         {
             display_text.properties.text = "Button Event\n" + _event;
         }

@@ -1,11 +1,5 @@
 -- Elements --
-Text
-Sprite
-Rectangle
-Checkbox
-Radiobutton
 Slider
-Button
 Dropdown Box
 Toggle
 Text Input?

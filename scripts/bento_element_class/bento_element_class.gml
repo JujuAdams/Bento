@@ -10,7 +10,6 @@
 /// root             : <struct>    Bento struct, instanceof() == "bento_element_class"
 /// parent           : <struct>    Bento struct, instanceof() == "bento_element_class"
 /// children         : <array>     Array of children in the order they are to be drawn. The first element to be drawn is at array index 0
-/// mouse_handle_array : <array>     Array of child elements that the mouse is over. This array only exists on root elements
 /// 
 /// position_update()      : <function>    
 /// destroy()              : <function>    Marks this element *and all child elements* for destruction. The element won't necessarily be destroyed immediately
@@ -102,7 +101,7 @@ function bento_element_class() constructor
         },
         
         mouse : {
-            over       : false,
+            focus      : false,
             state      : false,
             pressed    : false,
             released   : false,
@@ -128,7 +127,7 @@ function bento_element_class() constructor
     #region Callbacks
     
     callback = {
-        tick           : undefined, //TODO
+        tick           : undefined,
         
         draw_begin     : undefined, //Before clipping frame is pushed (usually this means we're clipped to our parent's frame)
         draw           : undefined, //After clipping, before children
@@ -139,7 +138,7 @@ function bento_element_class() constructor
                                     //To turn off mouse checking for an element, set properties.interactive to <false>
         
         mouse_enter    : undefined,
-        mouse_over     : undefined,
+        mouse_focus    : undefined,
         mouse_leave    : undefined,
         mouse_pressed  : undefined,
         mouse_down     : undefined,

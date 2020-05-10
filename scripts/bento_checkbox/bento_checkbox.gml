@@ -34,7 +34,7 @@ function bento_checkbox()
             
             //Set our sprite image based on our internal values
             var _image = 0;
-            if (properties.mouse.over    ) _image  = 1;
+            if (properties.mouse.focus   ) _image  = 1;
             if (properties.mouse.state   ) _image  = 2;
             if (properties.checkbox.state) _image += 3;
             style.sprite.image = _image;

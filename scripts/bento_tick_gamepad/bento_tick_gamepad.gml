@@ -84,7 +84,7 @@ function bento_tick_gamepad(_element, _dx, _dy, _select_state)
                     with(prev_focus)
                     {
                         //Reset the element that lost focus
-                        properties.mouse.over  = false;
+                        properties.mouse.focus = false;
                         properties.mouse.state = false;
                         __bento_mouse_event("leave");
                     }
@@ -96,22 +96,22 @@ function bento_tick_gamepad(_element, _dx, _dy, _select_state)
             //Handle interaction with the focused element
             with(focus)
             {
-                var _prev_over  = properties.mouse.over;
+                var _prev_focus = properties.mouse.focus;
                 var _prev_state = properties.mouse.state;
                 
-                if (!_prev_over)
+                if (!_prev_focus)
                 {
-                    properties.mouse.over = true;
+                    properties.mouse.focus = true;
                     __bento_mouse_event("enter");
                 }
                 else
                 {
-                    __bento_mouse_event("over");
+                    __bento_mouse_event("focus");
                 }
                 
                 if (_prev_state == _select_state)
                 {
-                    if (_select_state && properties.mouse.over) __bento_mouse_event("down");
+                    if (_select_state && properties.mouse.focus) __bento_mouse_event("down");
                 }
                 else
                 {
@@ -222,7 +222,7 @@ function __bento_tick_gamepad_inner(_focus_x, _focus_y, _focus_dx, _focus_dy)
         {
             if (_gamepad_distance < focus_distance)
             {
-                //If the mouse is over us, add ourselves to the root's array
+                //If we're the closest to the origin, tell the root node we're in focus
                 focus = other;
                 focus_distance = _gamepad_distance;
             }

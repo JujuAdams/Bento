@@ -36,7 +36,7 @@ function bento_tick_mouse(_element, _mouse_x, _mouse_y, _select_state)
                 with(prev_focus)
                 {
                     //Reset the element that lost focus
-                    properties.mouse.over  = false;
+                    properties.mouse.focus = false;
                     properties.mouse.state = false;
                     __bento_mouse_event("leave");
                 }
@@ -48,25 +48,25 @@ function bento_tick_mouse(_element, _mouse_x, _mouse_y, _select_state)
         {
             with(focus)
             {
-                var _prev_over  = properties.mouse.over;
+                var _prev_focus = properties.mouse.focus;
                 var _prev_state = properties.mouse.state;
                 
                 if (mouse_wheel_up())   __bento_mouse_event("wheel_u");
                 if (mouse_wheel_down()) __bento_mouse_event("wheel_d");
                 
-                if (!_prev_over)
+                if (!_prev_focus)
                 {
-                    properties.mouse.over = true;
+                    properties.mouse.focus = true;
                     __bento_mouse_event("enter");
                 }
                 else
                 {
-                    __bento_mouse_event("over");
+                    __bento_mouse_event("focus");
                 }
                 
                 if (_prev_state == _select_state)
                 {
-                    if (_select_state && properties.mouse.over) __bento_mouse_event("down");
+                    if (_select_state && properties.mouse.focus) __bento_mouse_event("down");
                 }
                 else
                 {
@@ -109,7 +109,7 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
     __bento_call_method(properties.internal_tick);
     __bento_call_method(callback.tick);
     
-    var _mouse_over_me = false;
+    var _mouse_focus_me = false;
     
     //Find out if our element, or any of its children, are under the mouse
     if (style.interactive)
@@ -117,19 +117,19 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
         var _mouse_check_function = callback.mouse_check;
         if (is_method(_mouse_check_function))
         {
-            _mouse_over_me = _mouse_check_function(_mouse_x, _mouse_y);
+            _mouse_focus_me = _mouse_check_function(_mouse_x, _mouse_y);
         }
         else if (_mouse_check_function == undefined)
         {
-            _mouse_over_me = __bento_mouse_check_aabb(_mouse_x, _mouse_y);
+            _mouse_focus_me = __bento_mouse_check_aabb(_mouse_x, _mouse_y);
         }
         else
         {
-            _mouse_over_me = script_execute(_mouse_check_function, _mouse_x, _mouse_y);
+            _mouse_focus_me = script_execute(_mouse_check_function, _mouse_x, _mouse_y);
         }
     }
     
-    var _mouse_over_child = false;
+    var _mouse_focus_child = false;
     var _i = 0;
     repeat(array_length(children))
     {
@@ -161,7 +161,7 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
                 with(_child)
                 {
                     //Tick the child too
-                    _mouse_over_child |= __bento_tick_mouse_inner(_mouse_x, _mouse_y);
+                    _mouse_focus_child |= __bento_tick_mouse_inner(_mouse_x, _mouse_y);
                 }
             }
         }
@@ -172,13 +172,13 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
     //Pop our clipping frame
     if (_do_clip) __bento_clip_pop();
     
-    if (!_mouse_over_child && _mouse_over_me)
+    if (!_mouse_focus_child && _mouse_focus_me)
     {
-        //If the mouse is over us, tell the root node we're in focus
+        //If the mouse is focus on us, tell the root node we're in focus
         root.properties.root_tick.focus = self;
     }
     
-    return (_mouse_over_child || _mouse_over_me);
+    return (_mouse_focus_child || _mouse_focus_me);
 }
 
 /// @function __bento_mouse_check_aabb(mouseX, mouseY)

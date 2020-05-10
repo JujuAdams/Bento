@@ -21,7 +21,7 @@ function bento_button()
                 case "leave":    style.sprite.image = 0; break;
                 case "enter":    style.sprite.image = 1; break;
                 case "pressed":  style.sprite.image = 2; break;
-                case "released": style.sprite.image = (properties.mouse.over)? 1 : 0; break;
+                case "released": style.sprite.image = (properties.mouse.focus)? 1 : 0; break;
             }
         }
         

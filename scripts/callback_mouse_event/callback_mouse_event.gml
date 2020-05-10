@@ -7,7 +7,7 @@ function callback_mouse_event(_event)
         case "enter":
         break;
         
-        case "over":
+        case "focus":
         break;
         
         case "leave":
