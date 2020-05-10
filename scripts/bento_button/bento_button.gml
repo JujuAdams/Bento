@@ -15,6 +15,7 @@ function bento_button()
         //Set our sprite definition
         style.sprite.index = _sprite;
         style.sprite.image = 0;
+        style.interactive  = true;
         
         //Set draw method
         callback.draw = bento_draw_box;

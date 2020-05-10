@@ -75,7 +75,7 @@ with(document.add(bento_text("This text is a button."), "button1"))
     anchor_top( root.clip_window, "top"  ,  0, 0);
     
     //Button behaviour is enabled by setting functions
-    callbacks.mouse_released = function()
+    callback.mouse_released = function()
     {
         //This function will display the button's long name when clicked
         show_message(properties.long_name);
@@ -101,7 +101,7 @@ with(document.button2.add(bento_text("Button Event"), "display_text"))
         interactive = false; //Elements can be set to non-interactive to stop them from eating mouse input
     }
     
-    callbacks.mouse_event = function(_event) //Bento also offers an event-driven approach for buttons too
+    callback.mouse_event = function(_event) //Bento also offers an event-driven approach for buttons too
     {
         if ((_event != "over") || !properties.mouse.state)
         {

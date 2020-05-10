@@ -21,6 +21,7 @@ function bento_radio_button()
         //Set our sprite definition
         style.sprite.index = _sprite;
         style.sprite.image = 0;
+        style.interactive  = true;
         
         properties.radio_button = {
             scope : _scope,

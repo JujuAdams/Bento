@@ -4,7 +4,7 @@ function __bento_style_default() constructor
 {
     clip           = false;
     clip_new_frame = false;
-    interactive    = true;
+    interactive    = false;
     layout         = "none"; //Can be "none", "flexbox", or "grid"
     
     fill = {

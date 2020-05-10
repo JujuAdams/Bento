@@ -125,6 +125,7 @@ function bento_element_class() constructor
         draw           : undefined, //After clipping, before children
         draw_end       : undefined, //After children, before clipping frame is popped
         
+        gamepad_check  : undefined,
         mouse_check    : undefined, //If this function is <undefined> then __bento_mouse_check_aabb() is used instead
                                     //To turn off mouse checking for an element, set properties.interactive to <false>
         

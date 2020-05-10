@@ -3,12 +3,49 @@ with(box)
 {
     style.fill.color = c_red;
     style.fill.alpha = 0.3;
-    set_flexbox("rows", "between", "middle", "left", "between");
+    set_flexbox("columns", "left", "top", "left", "top");
     
-    repeat(5)
+    with(bento_button(sButtonTest))
     {
-        repeat(5) bento_sprite_nineslice(s9SliceTest, 0, 96, 96);
-        layout_newline();
+        set_name("A");
+        style.margin = 10;
+        
+        callback.mouse_pressed = function()
+        {
+            show_debug_message(properties.long_name);
+        }
+    }
+    
+    with(bento_button(sButtonTest))
+    {
+        set_name("B");
+        style.margin = 10;
+        
+        callback.mouse_event = function(_event)
+        {
+            show_debug_message(properties.long_name + ": " + _event);
+        }
+    }
+    
+    with(bento_checkbox(sCheckboxTest, global, "checkboxTest"))
+    {
+        set_name("C");
+        style.margin = 10;
+    }
+    
+    with(bento_radio_button(sCheckboxTest, self, "checkbox", 1))
+    {
+        style.margin = 10;
+    }
+    
+    with(bento_radio_button(sCheckboxTest, self, "checkbox", 2))
+    {
+        style.margin = 10;
+    }
+    
+    with(bento_radio_button(sCheckboxTest, self, "checkbox", 3))
+    {
+        style.margin = 10;
     }
 }
 
