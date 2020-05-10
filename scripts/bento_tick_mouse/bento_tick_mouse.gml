@@ -1,9 +1,9 @@
 /// @param rootElement
 /// @param mouseX
 /// @param mouseY
-/// @param mouseState
+/// @param selectState
 
-function bento_tick_mouse(_element, _mouse_x, _mouse_y, _mouse_state)
+function bento_tick_mouse(_element, _mouse_x, _mouse_y, _select_state)
 {
     if (BENTO_WARNING_NOT_ROOT_ELEMENT && (_element.root != _element))
     {
@@ -14,81 +14,77 @@ function bento_tick_mouse(_element, _mouse_x, _mouse_y, _mouse_state)
     
     __bento_clip_reset(-999999, -999999, 999999, 999999);
     
-    with(_element)
+    with(_element.properties.root_tick)
     {
-        mouse_handle_array = [];
-        if (!variable_struct_exists(self, "mouse_handle_state")) mouse_handle_state = false;
-        var _root_mouse_pressed  = (!mouse_handle_state &&  _mouse_state);
-        var _root_mouse_released = ( mouse_handle_state && !_mouse_state);
-        mouse_handle_state = _mouse_state;
+        //Update root properties
+        type       = "mouse";
+        prev_focus = focus;
+        focus      = undefined;
         
-        __bento_tick_mouse_inner(_mouse_x, _mouse_y);
+        var _root_select_pressed  = (!select_state &&  _select_state);
+        var _root_select_released = ( select_state && !_select_state);
+        select_state = _select_state;
         
-        var _length = array_length(mouse_handle_array);
-        if (_length > 0)
+        //Tick the element and children
+        with(_element) __bento_tick_mouse_inner(_mouse_x, _mouse_y);
+        
+        //If We've changed focus...
+        if (prev_focus != focus)
         {
-            //Iterate through the first few children that think the mouse is over them
-            var _i = 0;
-            repeat(_length-1)
+            if (instanceof(prev_focus) == "bento_element_class")
             {
-                with(mouse_handle_array[_i])
+                with(prev_focus)
                 {
-                    if (properties.mouse.over)
+                    //Reset the element that lost focus
+                    properties.mouse.over  = false;
+                    properties.mouse.state = false;
+                    __bento_mouse_event("leave");
+                }
+            }
+        }
+        
+        //Now handle the state of the focused element
+        if (instanceof(focus) == "bento_element_class")
+        {
+            with(focus)
+            {
+                var _prev_over  = properties.mouse.over;
+                var _prev_state = properties.mouse.state;
+                
+                if (mouse_wheel_up())   __bento_mouse_event("wheel_u");
+                if (mouse_wheel_down()) __bento_mouse_event("wheel_d");
+                
+                if (!_prev_over)
+                {
+                    properties.mouse.over = true;
+                    __bento_mouse_event("enter");
+                }
+                else
+                {
+                    __bento_mouse_event("over");
+                }
+                
+                if (_prev_state == _select_state)
+                {
+                    if (_select_state && properties.mouse.over) __bento_mouse_event("down");
+                }
+                else
+                {
+                    if (_root_select_pressed)
                     {
-                        //If the mouse isn't over us but it was last frame then trigger a "leave" event
-                        properties.mouse.over  = false;
+                        properties.mouse.state = true;
+                        properties.mouse.pressed_dx = properties.bbox_margin.l - _mouse_x;
+                        properties.mouse.pressed_dy = properties.bbox_margin.t - _mouse_y;
+                        __bento_mouse_event("pressed");
+                    }
+                    else if (_root_select_released)
+                    {
                         properties.mouse.state = false;
-                        __bento_mouse_event("leave");
+                        __bento_mouse_event("released");
                     }
                 }
                 
-                ++_i;
-            }
-            
-            //Then handle the last element in the array
-            var _top_over = mouse_handle_array[_length-1];
-            if (instanceof(_top_over) == "bento_element_class")
-            {
-                with(_top_over)
-                {
-                    var _prev_over  = properties.mouse.over;
-                    var _prev_state = properties.mouse.state;
-                    
-                    if (mouse_wheel_up())   __bento_mouse_event("wheel_u");
-                    if (mouse_wheel_down()) __bento_mouse_event("wheel_d");
-                    
-                    if (!_prev_over)
-                    {
-                        properties.mouse.over = true;
-                        __bento_mouse_event("enter");
-                    }
-                    else
-                    {
-                        __bento_mouse_event("over");
-                    }
-                    
-                    if (_prev_state == _mouse_state)
-                    {
-                        if (_mouse_state && properties.mouse.over) __bento_mouse_event("down");
-                    }
-                    else
-                    {
-                        if (_root_mouse_pressed)
-                        {
-                            properties.mouse.state = true;
-                            properties.mouse.pressed_dx = properties.bbox_margin.l - _mouse_x;
-                            properties.mouse.pressed_dy = properties.bbox_margin.t - _mouse_y;
-                            __bento_mouse_event("pressed");
-                        }
-                        else if (_root_mouse_released)
-                        {
-                            properties.mouse.state = false;
-                            __bento_mouse_event("released");
-                        }
-                    }
-                    
-                    return self;
-                }
+                return self;
             }
         }
     }
@@ -178,15 +174,8 @@ function __bento_tick_mouse_inner(_mouse_x, _mouse_y)
     
     if (!_mouse_over_child && _mouse_over_me)
     {
-        //If the mouse is over us, add ourselves to the root's array
-        root.mouse_handle_array[@ array_length(root.mouse_handle_array)] = self;
-    }
-    else if (properties.mouse.over)
-    {
-        //If the mouse isn't over us but it was last frame then trigger a "leave" event
-        properties.mouse.over  = false;
-        properties.mouse.state = false;
-        __bento_mouse_event("leave");
+        //If the mouse is over us, tell the root node we're in focus
+        root.properties.root_tick.focus = self;
     }
     
     return (_mouse_over_child || _mouse_over_me);

@@ -20,118 +20,116 @@ function bento_tick_gamepad(_element, _dx, _dy, _select_state)
     
     __bento_clip_reset(-999999, -999999, 999999, 999999);
     
-    with(_element)
+    with(_element.properties.root_tick)
     {
         //Update root properties
-        with(properties.root_tick)
+        type           = "gamepad";
+        prev_focus     = focus;
+        focus_distance = 999999;
+        
+        var _root_select_pressed  = (!select_state &&  _select_state);
+        var _root_select_released = ( select_state && !_select_state);
+        select_state = _select_state;
+        
+        if (current_time - last_change < BENTO_GAMEPAD_SCROLL_DELAY)
         {
-            prev_focus     = focus;
-            focus_distance = 999999;
-            
-            var _root_select_pressed  = (!select_state &&  _select_state);
-            var _root_select_released = ( select_state && !_select_state);
-            select_state = _select_state;
-            
-            if (current_time - last_change < BENTO_GAMEPAD_SCROLL_DELAY)
+            _dx = 0;
+            _dy = 0;
+        }
+        
+        //If our focused element isn't an element, find the first interactive child and use that
+        if (instanceof(focus) != "bento_element_class")
+        {
+            var _children = _element.children;
+            var _i = 0;
+            repeat(array_length(_children))
             {
-                _dx = 0;
-                _dy = 0;
-            }
-            
-            //If our focused element isn't an element, find the first interactive child and use that
-            if (instanceof(focus) != "bento_element_class")
-            {
-                var _children = _element.children;
-                var _i = 0;
-                repeat(array_length(_children))
+                var _child = _children[_i];
+                if (_child.style.interactive)
                 {
-                    var _child = _children[_i];
-                    if (_child.style.interactive)
-                    {
-                        focus = _children[_i];
-                        break;
-                    }
-                    
-                    ++_i;
-                }
-            }
-            
-            if (instanceof(focus) != "bento_element_class")
-            {
-                //If our focused element *still* isn't an element, still tick the DOM but don't try to move the selector
-                with(_element) __bento_tick_gamepad_inner(0, 0, 0, 0);
-            }
-            else
-            {
-                var _bbox = focus.properties.bbox_content;
-                var _focus_x = (_bbox.l + _bbox.r)/2;
-                var _focus_y = (_bbox.t + _bbox.b)/2;
-                with(_element) __bento_tick_gamepad_inner(_focus_x, _focus_y, _dx, _dy);
-            }
-            
-            //If we couldn't find anything to focus, use the previous focus
-            if (instanceof(focus) != "bento_element_class")
-            {
-                focus = prev_focus;
-            }
-            
-            if (instanceof(focus) == "bento_element_class")
-            {
-                //If We've changed focus...
-                if (prev_focus != focus)
-                {
-                    if (instanceof(prev_focus) == "bento_element_class")
-                    {
-                        with(prev_focus)
-                        {
-                            //Reset the element that lost focus
-                            properties.mouse.over  = false;
-                            properties.mouse.state = false;
-                            __bento_mouse_event("leave");
-                        }
-                    }
-                    
-                    last_change = current_time;
+                    focus = _children[_i];
+                    break;
                 }
                 
-                //Handle interaction with the focused element
-                with(focus)
+                ++_i;
+            }
+        }
+        
+        if (instanceof(focus) != "bento_element_class")
+        {
+            //If our focused element *still* isn't an element, still tick the DOM but don't try to move the selector
+            with(_element) __bento_tick_gamepad_inner(0, 0, 0, 0);
+        }
+        else
+        {
+            var _bbox = focus.properties.bbox_content;
+            var _focus_x = (_bbox.l + _bbox.r)/2;
+            var _focus_y = (_bbox.t + _bbox.b)/2;
+            with(_element) __bento_tick_gamepad_inner(_focus_x, _focus_y, _dx, _dy);
+        }
+        
+        //If we couldn't find anything to focus, use the previous focus
+        if (instanceof(focus) != "bento_element_class")
+        {
+            focus = prev_focus;
+        }
+        
+        if (instanceof(focus) == "bento_element_class")
+        {
+            //If We've changed focus...
+            if (prev_focus != focus)
+            {
+                if (instanceof(prev_focus) == "bento_element_class")
                 {
-                    var _prev_over  = properties.mouse.over;
-                    var _prev_state = properties.mouse.state;
-                    
-                    if (!_prev_over)
+                    with(prev_focus)
                     {
-                        properties.mouse.over = true;
-                        __bento_mouse_event("enter");
+                        //Reset the element that lost focus
+                        properties.mouse.over  = false;
+                        properties.mouse.state = false;
+                        __bento_mouse_event("leave");
                     }
-                    else
-                    {
-                        __bento_mouse_event("over");
-                    }
-                    
-                    if (_prev_state == _select_state)
-                    {
-                        if (_select_state && properties.mouse.over) __bento_mouse_event("down");
-                    }
-                    else
-                    {
-                        if (_root_select_pressed)
-                        {
-                            properties.mouse.state = true;
-                            properties.mouse.pressed_dx = properties.bbox_margin.l - _focus_x;
-                            properties.mouse.pressed_dy = properties.bbox_margin.t - _focus_y;
-                            __bento_mouse_event("pressed");
-                        }
-                        else if (_root_select_released)
-                        {
-                            properties.mouse.state = false;
-                            __bento_mouse_event("released");
-                        }
-                    }
-                    
-                    return self;
                 }
+                
+                last_change = current_time;
+            }
+            
+            //Handle interaction with the focused element
+            with(focus)
+            {
+                var _prev_over  = properties.mouse.over;
+                var _prev_state = properties.mouse.state;
+                
+                if (!_prev_over)
+                {
+                    properties.mouse.over = true;
+                    __bento_mouse_event("enter");
+                }
+                else
+                {
+                    __bento_mouse_event("over");
+                }
+                
+                if (_prev_state == _select_state)
+                {
+                    if (_select_state && properties.mouse.over) __bento_mouse_event("down");
+                }
+                else
+                {
+                    if (_root_select_pressed)
+                    {
+                        properties.mouse.state = true;
+                        properties.mouse.pressed_dx = properties.bbox_margin.l - _focus_x;
+                        properties.mouse.pressed_dy = properties.bbox_margin.t - _focus_y;
+                        __bento_mouse_event("pressed");
+                    }
+                    else if (_root_select_released)
+                    {
+                        properties.mouse.state = false;
+                        __bento_mouse_event("released");
+                    }
+                }
+                
+                return self;
             }
         }
     }
