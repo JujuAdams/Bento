@@ -5,6 +5,7 @@
     {"id":{"name":"fntComicSans","path":"fonts/fntComicSans/fntComicSans.yy",},"order":5,},
     {"id":{"name":"bento_variable_set","path":"scripts/bento_variable_set/bento_variable_set.yy",},"order":7,},
     {"id":{"name":"sButtonTest","path":"sprites/sButtonTest/sButtonTest.yy",},"order":6,},
+    {"id":{"name":"__bento_align","path":"scripts/__bento_align/__bento_align.yy",},"order":9,},
     {"id":{"name":"__bento_parse_offset","path":"scripts/__bento_parse_offset/__bento_parse_offset.yy",},"order":8,},
     {"id":{"name":"oExample","path":"objects/oExample/oExample.yy",},"order":10,},
     {"id":{"name":"bento_box_region","path":"scripts/bento_box_region/bento_box_region.yy",},"order":2,},

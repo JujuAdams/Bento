@@ -22,23 +22,33 @@ with(box)
     
     with(bento_button(sButtonTest))
     {
-        align_x_to_target_x(other, 0);
-        align_t_to_target_t(other, 0);
-            
-        event.mouse_released = function()
-        {
-            global.radiobuttonTest--;
-        }
+        align_x_to_target_x(bento_prev);
+        align_t_to_target_t(bento_prev);
     }
     
     with(bento_button(sButtonTest))
     {
-        align_x_to_target_x(bento_prev, 0);
-        align_t_to_target_b(bento_prev, 0);
-            
-        event.mouse_released = function()
-        {
-            global.radiobuttonTest--;
-        }
+        align_x_to_target_x(bento_prev);
+        align_t_to_target_b(bento_prev);
+    }
+    
+    with(bento_button(sButtonTest))
+    {
+        align_l_to_target_r(bento_prev);
+        align_t_to_target_b(bento_prev);
+    }
+    
+    with(bento_button(sButtonTest))
+    {
+        align_r_to_target_l(bento_prev);
+        align_t_to_target_b(bento_prev);
+    }
+    
+    with(bento_button(sButtonTest))
+    {
+        align_l_to_target_l(bento_prev);
+        align_r_to_target_l(bento_prev, "50%");
+        align_t_to_target_b(bento_prev);
+        align_b_to_target_b(bento_prev, "50%");
     }
 }

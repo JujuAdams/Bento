@@ -55,23 +55,6 @@ function bento_class_element() constructor
             b : 0,
         },
         
-        align_l : {
-            target : undefined,
-            offset : 0,
-        },
-        align_t : {
-            target : undefined,
-            offset : 0,
-        },
-        align_r : {
-            target : undefined,
-            offset : 0,
-        },
-        align_b : {
-            target : undefined,
-            offset : 0,
-        },
-        
         mouse : {
             focus      : false,
             state      : false,
@@ -91,10 +74,29 @@ function bento_class_element() constructor
         fixed_tick        : undefined,
     };
     
+    alignment = {
+        l : {
+            target : undefined,
+            offset : 0,
+        },
+        t : {
+            target : undefined,
+            offset : 0,
+        },
+        r : {
+            target : undefined,
+            offset : 0,
+        },
+        b : {
+            target : undefined,
+            offset : 0,
+        },
+        children : [],
+    };
+        
     event = {
         tick           : undefined,
         draw           : undefined, //After clipping, before children
-        
         mouse_enter    : undefined,
         mouse_focus    : undefined,
         mouse_leave    : undefined,
@@ -106,7 +108,6 @@ function bento_class_element() constructor
     };
     
     property.name = "<element" + string(global.__bento_element_count) + ">";
-    bento_prev = self;
     ++global.__bento_element_count;
     
     if (instanceof(other) == "bento_class_element")
@@ -126,6 +127,9 @@ function bento_class_element() constructor
         property.long_name = property.name;
     }
     
+    global.__bento_prev2 = global.__bento_prev;
+    global.__bento_prev  = self;
+    
     #region Methods
     
     /// @function layout_update()
@@ -138,10 +142,90 @@ function bento_class_element() constructor
         var _root_w = 1 + _root_content.r - _root_content.l;
         var _root_h = 1 + _root_content.r - _root_content.l;
         
-        var _align = property.align_l;
-        var _target = _align.target;
-        if (is_struct(_target))
+        #region Collect alignment data and handle destroyed targets
+        
+        var _align_l  = alignment.l;
+        var _align_t  = alignment.t;
+        var _align_r  = alignment.r;
+        var _align_b  = alignment.b;
+        
+        var _target_l = _align_l.target;
+        var _target_t = _align_t.target;
+        var _target_r = _align_r.target;
+        var _target_b = _align_b.target;
+        
+        if (is_struct(_target_l))
         {
+            if (instanceof(_target_l) == "bento_class_element")
+            {
+                if (_target_l.property.destroyed)
+                {
+                    _target_l = undefined;
+                    _align_l.target = undefined;
+                }
+            }
+        }
+        
+        if (is_struct(_target_t))
+        {
+            if (instanceof(_target_t) == "bento_class_element")
+            {
+                if (_target_t.property.destroyed)
+                {
+                    _target_t = undefined;
+                    _align_t.target = undefined;
+                }
+            }
+        }
+        
+        if (is_struct(_target_r))
+        {
+            if (instanceof(_target_r) == "bento_class_element")
+            {
+                if (_target_r.property.destroyed)
+                {
+                    _target_r = undefined;
+                    _align_r.target = undefined;
+                }
+            }
+        }
+        
+        if (is_struct(_target_b))
+        {
+            if (instanceof(_target_b) == "bento_class_element")
+            {
+                if (_target_b.property.destroyed)
+                {
+                    _target_b = undefined;
+                    _align_b.target = undefined;
+                }
+            }
+        }
+        
+        #endregion
+        
+        #region If either of our axes have no alignment set up, find the size of our bbox automatically from the base width/height
+        
+        var _update_from_padding = false;
+        if (!is_struct(_target_l) && !is_struct(_target_r))
+        {
+            property.bbox_padding.r = property.bbox_margin.l + property.width;
+            _update_from_padding = true;
+        }
+        
+        if (!is_struct(_target_t) && !is_struct(_target_b))
+        {
+            property.bbox_padding.b = property.bbox_margin.t + property.height;
+            _update_from_padding = true;
+        }
+        
+        if (_update_from_padding) update_bbox_from_padding();
+        
+        #endregion
+        
+        if (is_struct(_target_l))
+        {
+            var _target = _target_l;
             if (instanceof(_target) == "bento_class_element")
             {
                 if (parent == _target)
@@ -159,13 +243,12 @@ function bento_class_element() constructor
             property.bbox_margin.l = _target.l +
                                      __bento_parse_offset(_static_margin_w,
                                                           1 + _target.r - _target.l,
-                                                          _root_w, _align.offset);
+                                                          _root_w, _align_l.offset);
         }
         
-        var _align = property.align_t;
-        var _target = _align.target;
-        if (is_struct(_target))
+        if (is_struct(_target_t))
         {
+            var _target = _target_t;
             if (instanceof(_target) == "bento_class_element")
             {
                 if (parent == _target)
@@ -183,13 +266,12 @@ function bento_class_element() constructor
             property.bbox_margin.t = _target.t +
                                      __bento_parse_offset(_static_margin_h,
                                                           1 + _target.b - _target.t,
-                                                          _root_h, _align.offset);
+                                                          _root_h, _align_t.offset);
         }
         
-        var _align = property.align_r;
-        var _target = _align.target;
-        if (is_struct(_target))
+        if (is_struct(_target_r))
         {
+            var _target = _target_r;
             if (instanceof(_target) == "bento_class_element")
             {
                 if (parent == _target)
@@ -207,17 +289,12 @@ function bento_class_element() constructor
             property.bbox_margin.r = _target.l +
                                      __bento_parse_offset(_static_margin_w,
                                                           1 + _target.r - _target.l,
-                                                          _root_w, _align.offset);
-        }
-        else
-        {
-            property.bbox_margin.r = property.bbox_margin.l + _static_margin_w;
+                                                          _root_w, _align_r.offset);
         }
         
-        var _align = property.align_b;
-        var _target = _align.target;
-        if (is_struct(_target))
+        if (is_struct(_target_b))
         {
+            var _target = _target_b;
             if (instanceof(_target) == "bento_class_element")
             {
                 if (parent == _target)
@@ -235,21 +312,31 @@ function bento_class_element() constructor
             property.bbox_margin.b = _target.t +
                                      __bento_parse_offset(_static_margin_h,
                                                           1 + _target.b - _target.t,
-                                                          _root_h, _align.offset);
+                                                          _root_h, _align_b.offset);
         }
-        else
-        {
-            property.bbox_margin.b = property.bbox_margin.t + _static_margin_h;
-        }
+        
+        if (!is_struct(_target_l) && is_struct(_target_r)) property.bbox_margin.l = property.bbox_margin.r - _static_margin_w;
+        if (!is_struct(_target_t) && is_struct(_target_b)) property.bbox_margin.t = property.bbox_margin.b - _static_margin_h;
+        if (!is_struct(_target_r) && is_struct(_target_l)) property.bbox_margin.r = property.bbox_margin.l + _static_margin_w;
+        if (!is_struct(_target_b) && is_struct(_target_t)) property.bbox_margin.b = property.bbox_margin.t + _static_margin_h;
         
         update_bbox_from_margin();
         
+        var _array = alignment.children;
         var _i = 0;
-        repeat(array_length(children))
+        repeat(array_length(_array))
         {
-            var _child = children[_i];
-            if (instanceof(_child) == "bento_class_element") with(_child) layout_update();
-            ++_i;
+            var _child = _array[_i];
+            if (instanceof(_child) == "bento_class_element")
+            {
+                with(_child) layout_update();
+                ++_i;
+            }
+            else
+            {
+                show_debug_message("Deleting layout child " + string(_child));
+                __bento_array_delete(_array, _i);
+            }
         }
         
         property.layout_dirty = false;
@@ -279,136 +366,86 @@ function bento_class_element() constructor
     
     #region Alignment
     
-    /// @function align_l_to_target_l(target, offset)
+    /// @function align_l_to_target_l(target, [offset])
     /// @param target
-    /// @param offset
-    align_l_to_target_l = function(_target, _offset)
+    /// @param [offset]
+    align_l_to_target_l = function()
     {
-        with(property.align_l)
-        {
-            target = _target;
-            offset = _offset;
-        }
+        __bento_align(alignment.l, argument[0], (argument_count > 1)? argument[1] : 0);
     }
     
-    /// @function align_l_to_target_r(target, offset)
+    /// @function align_t_to_target_t(target, [offset])
     /// @param target
-    /// @param offset
-    align_l_to_target_r = function(_target, _offset)
+    /// @param [offset]
+    align_t_to_target_t = function()
     {
-        with(property.align_l)
-        {
-            target = _target;
-            offset = string(_offset) + "+100%T";
-        }
+        __bento_align(alignment.t, argument[0], (argument_count > 1)? argument[1] : 0);
     }
     
-    /// @function align_t_to_target_t(target, offset)
+    /// @function align_r_to_target_r(target, [offset])
     /// @param target
-    /// @param offset
-    align_t_to_target_t = function(_target, _offset)
+    /// @param [offset]
+    align_r_to_target_l = function()
     {
-        with(property.align_t)
-        {
-            target = _target;
-            offset = _offset;
-        }
+        __bento_align(alignment.r, argument[0], (argument_count > 1)? argument[1] : 0);
     }
     
-    /// @function align_t_to_target_b(target, offset)
+    /// @function align_b_to_target_t(target, [offset])
     /// @param target
-    /// @param offset
-    align_t_to_target_b = function(_target, _offset)
+    /// @param [offset]
+    align_b_to_target_t = function()
     {
-        with(property.align_t)
-        {
-            target = _target;
-            offset = string(_offset) + "+100%T";
-        }
+        __bento_align(alignment.b, argument[0], (argument_count > 1)? argument[1] : 0);
     }
     
-    /// @function align_r_to_target_r(target, offset)
+    /// @function align_l_to_target_r(target, [offset])
     /// @param target
-    /// @param offset
-    align_r_to_target_r = function(_target, _offset)
+    /// @param [offset]
+    align_l_to_target_r = function()
     {
-        with(property.align_r)
-        {
-            target = _target;
-            offset = _offset;
-        }
+        align_l_to_target_l(argument[0], (argument_count > 1)? (string(argument[1]) + "+100%T") : "100%T");
     }
     
-    /// @function align_r_to_target_l(target, offset)
+    /// @function align_t_to_target_b(target, [offset])
     /// @param target
-    /// @param offset
-    align_r_to_target_l = function(_target, _offset)
+    /// @param [offset]
+    align_t_to_target_b = function()
     {
-        with(property.align_r)
-        {
-            target = _target;
-            offset = string(_offset) + "-100%T";
-        }
+        align_t_to_target_t(argument[0], (argument_count > 1)? (string(argument[1]) + "+100%T") : "100%T");
     }
     
-    /// @function align_b_to_target_b(target, offset)
+    /// @function align_r_to_target_l(target, [offset])
     /// @param target
-    /// @param offset
-    align_b_to_target_b = function(_target, _offset)
+    /// @param [offset]
+    align_r_to_target_r = function()
     {
-        with(property.align_b)
-        {
-            target = _target;
-            offset = _offset;
-        }
+        align_r_to_target_r(argument[0], (argument_count > 1)? (string(argument[1]) + "+100%T") : "100%T");
     }
     
-    /// @function align_b_to_target_t(target, offset)
+    /// @function align_b_to_target_b(target, [offset])
     /// @param target
-    /// @param offset
-    align_b_to_target_t = function(_target, _offset)
+    /// @param [offset]
+    align_b_to_target_b = function()
     {
-        with(property.align_b)
-        {
-            target = _target;
-            offset = string(_offset) + "-100%T";
-        }
+        align_b_to_target_t(argument[0], (argument_count > 1)? (string(argument[1]) + "+100%T") : "100%T");
     }
     
-    /// @function align_x_to_target_x(target, offset)
+    /// @function align_x_to_target_x(target, [offset])
     /// @param target
-    /// @param offset
+    /// @param [offset]
     align_x_to_target_x = function(_target, _offset)
     {
-        with(property.align_l)
-        {
-            target = _target;
-            offset = string(_offset) + "+50%T-50%";
-        }
-        
-        with(property.align_r)
-        {
-            target = _target;
-            offset = string(_offset) + "+50%T+50%";
-        }
+        align_l_to_target_l(_target, string(_offset) + "+50%T-50%");
+        align_r_to_target_l(_target, string(_offset) + "+50%T+50%");
     }
     
-    /// @function align_y_to_target_y(target, offset)
+    /// @function align_y_to_target_y(target, [offset])
     /// @param target
-    /// @param offset
+    /// @param [offset]
     align_y_to_target_y = function(_target, _offset)
     {
-        with(property.align_t)
-        {
-            target = _target;
-            offset = string(_offset) + "+50%T-50%";
-        }
-        
-        with(property.align_b)
-        {
-            target = _target;
-            offset = string(_offset) + "+50%T+50%";
-        }
+        align_t_to_target_t(_target, string(_offset) + "+50%T-50%");
+        align_b_to_target_t(_target, string(_offset) + "+50%T+50%");
     }
     
     #endregion
