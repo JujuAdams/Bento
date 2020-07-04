@@ -13,6 +13,7 @@
     {"id":{"name":"callback_mouse_event","path":"scripts/callback_mouse_event/callback_mouse_event.yy",},"order":1,},
     {"id":{"name":"__spr_bento_pixel","path":"sprites/__spr_bento_pixel/__spr_bento_pixel.yy",},"order":8,},
     {"id":{"name":"bento_button","path":"scripts/bento_button/bento_button.yy",},"order":8,},
+    {"id":{"name":"bento_textbox_string","path":"scripts/bento_textbox_string/bento_textbox_string.yy",},"order":11,},
     {"id":{"name":"sTest","path":"sprites/sTest/sTest.yy",},"order":2,},
     {"id":{"name":"bento_style_template_apply","path":"scripts/bento_style_template_apply/bento_style_template_apply.yy",},"order":3,},
     {"id":{"name":"bento_surface","path":"scripts/bento_surface/bento_surface.yy",},"order":7,},
@@ -63,7 +64,6 @@
   ],
   "Folders": [
     {"folderPath":"folders/Bento.yy","order":0,"resourceVersion":"1.0","name":"Bento","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Bento/Element Templates/Defaults.yy","order":2,"resourceVersion":"1.0","name":"Defaults","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Bento/Elements.yy","order":4,"resourceVersion":"1.0","name":"Elements","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Bento/Style Templates.yy","order":3,"resourceVersion":"1.0","name":"Style Templates","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Bento/Core.yy","order":2,"resourceVersion":"1.0","name":"Core","tags":[],"resourceType":"GMFolder",},
@@ -76,7 +76,7 @@
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "23.1.1.138",
+    "IDEVersion": "23.1.1.168",
   },
   "resourceVersion": "1.3",
   "name": "bento",

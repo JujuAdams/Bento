@@ -74,25 +74,59 @@ function __bento_width_perc(_bbox, _value)
     var _out = 0;
     if (is_string(_value))
     {
-        var _length = string_length(_value);
-        if (string_char_at(_value, _length) == "%")
+        if (_value == "auto")
         {
-            try
+            show_debug_message(children);
+            
+            var _children = children;
+            var _min =  999999;
+            var _max = -999999;
+            var _i = 0;
+            repeat(array_length(children))
             {
-                _out = real(string_copy(_value, 1, _length-1))/100;
-            }
-            catch(_error)
-            {
-                return 0;
+                var _child = children[_i];
+                show_debug_message("    " + string(_child));
+                
+                //If this member is a struct, and a Bento element, draw it
+                if (instanceof(_child) == "bento_element_class")
+                {
+                    with(_child.properties.bbox_margin)
+                    {
+                        show_debug_message("        " + string(self));
+                        _min = min(_min, l, r);
+                        _max = max(_max, l, r);
+                    }
+                }
+                
+                ++_i;
             }
             
-            if (is_struct(_bbox))
+            show_debug_message(string(_min) + " -> " + string(_max));
+            
+            return 1 + _max - _min;
+        }
+        else
+        {
+            var _length = string_length(_value);
+            if (string_char_at(_value, _length) == "%")
             {
-                return _out*(_bbox.r - _bbox.l);
-            }
-            else
-            {
-                return _out*_bbox;
+                try
+                {
+                    _out = real(string_copy(_value, 1, _length-1))/100;
+                }
+                catch(_error)
+                {
+                    return 0;
+                }
+                
+                if (is_struct(_bbox))
+                {
+                    return _out*(_bbox.r - _bbox.l);
+                }
+                else
+                {
+                    return _out*_bbox;
+                }
             }
         }
     }
@@ -354,6 +388,59 @@ function bento_variable_set(_scope, _variable_name, _value)
     else
     {
         return variable_instance_set(_scope, _variable_name, _value);
+    }
+}
+
+/// @function bento_draw_rectangle(left, top, right, bottom, color, alpha, outlineThickness)
+/// @param left
+/// @param top
+/// @param right
+/// @param bottom
+/// @param color
+/// @param alpha
+/// @param outlineThickness
+function bento_draw_rectangle(_left, _top, _right, _bottom, _color, _alpha, _outline_thickness)
+{
+    //Draw the background fill using a single stretched sprite
+    //This may seem a bit weird, but this is to ensure accuracy cross-platform
+    if (_alpha > 0.0)
+    {
+        var _width  = 1 + _right - _left;
+        var _height = 1 + _bottom - _top;
+        
+        if (_outline_thickness <= 0.0)
+        {
+            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
+                                      _left, _top,
+                                      _width, _height,
+                                      _color, _alpha);
+        }
+        else
+        {
+            //Top
+            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
+                                      _left, _top,
+                                      _width, _outline_thickness,
+                                      _color, _alpha);
+            
+            //Left
+            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
+                                      _left, _top + _outline_thickness,
+                                      _outline_thickness, _height - 2*_outline_thickness,
+                                      _color, _alpha);
+            
+            //Bottom
+            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
+                                      _left, _bottom + 1 - _outline_thickness,
+                                      _width, _outline_thickness,
+                                      _color, _alpha);
+            
+            //Right
+            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
+                                      _right + 1 - _outline_thickness, _top + _outline_thickness,
+                                      _outline_thickness, _height - 2*_outline_thickness,
+                                      _color, _alpha);
+        }
     }
 }
 

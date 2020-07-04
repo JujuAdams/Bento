@@ -1,11 +1,11 @@
-/// @param width
-/// @param height
+/// @param [width]
+/// @param [height]
 /// @param [templateName]
 
 function bento_box()
 {
-    var _width  = argument[0];
-    var _height = argument[1];
+    var _width  = (argument_count > 0)? argument[0] : "auto";
+    var _height = (argument_count > 1)? argument[1] : "auto";
     var _style  = (argument_count > 2)? argument[2] : undefined;
     
     with(new bento_element_class())
@@ -38,49 +38,20 @@ function bento_box()
 function bento_draw_box()
 {
     var _bbox_padding = properties.bbox_padding;
-    
     with(style)
     {
-        //Draw the background fill using a single stretched sprite
-        //This may seem a bit weird, but this is to ensure accuracy cross-platform
-        if (alpha > 0.0)
-        {
-            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
-                                      _bbox_padding.l, _bbox_padding.t,
-                                      1 + _bbox_padding.r - _bbox_padding.l,
-                                      1 + _bbox_padding.b - _bbox_padding.t,
-                                      color, alpha);
-        }
+        //Background fill
+        bento_draw_rectangle(_bbox_padding.l, _bbox_padding.t,
+                                _bbox_padding.r, _bbox_padding.b,
+                                color, alpha, 0);
         
-        //Draw our outline using 4 stretched sprites
-        if ((outline_alpha > 0.0) && (outline_thickness > 0.0))
+        //Outline
+        if (outline_thickness > 0.0)
         {
-            var _w = 1 + _bbox_padding.r - _bbox_padding.l;
-            var _h = 1 + _bbox_padding.b - _bbox_padding.t;
-            
-            //Top
-            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
-                                      _bbox_padding.l, _bbox_padding.t,
-                                      _w, outline_thickness,
-                                      outline_color, outline_alpha);
-            
-            //Left
-            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
-                                      _bbox_padding.l, _bbox_padding.t + outline_thickness,
-                                      outline_thickness, _h - 2*outline_thickness,
-                                      outline_color, outline_alpha);
-            
-            //Bottom
-            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
-                                      _bbox_padding.l, _bbox_padding.b + 1 - outline_thickness,
-                                      _w, outline_thickness,
-                                      outline_color, outline_alpha);
-            
-            //Right
-            draw_sprite_stretched_ext(__spr_bento_pixel, 0,
-                                      _bbox_padding.r + 1 - outline_thickness, _bbox_padding.t + outline_thickness,
-                                      outline_thickness, _h - 2*outline_thickness,
-                                      outline_color, outline_alpha);
+            bento_draw_rectangle(_bbox_padding.l, _bbox_padding.t,
+                                 _bbox_padding.r, _bbox_padding.b,
+                                 outline_color, outline_alpha,
+                                 outline_thickness);
         }
     }
 }
