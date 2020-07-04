@@ -42,28 +42,28 @@ function bento_draw_text()
             
             if (text_halign == fa_center)
             {
-                var _x = (bbox_padding.l + bbox_padding.r)/2;
+                var _x = (bbox_base.l + bbox_base.r)/2;
             }
             else if (text_halign == fa_right)
             {
-                var _x = bbox_padding.r;
+                var _x = bbox_base.r;
             }
             else
             {
-                var _x = bbox_padding.l;
+                var _x = bbox_base.l;
             }
             
             if (text_valign == fa_middle)
             {
-                var _y = (bbox_padding.t + bbox_padding.b)/2;
+                var _y = (bbox_base.t + bbox_base.b)/2;
             }
             else if (text_valign == fa_bottom)
             {
-                var _y = bbox_padding.b;
+                var _y = bbox_base.b;
             }
             else
             {
-                var _y = bbox_padding.t;
+                var _y = bbox_base.t;
             }
             
             draw_text(_x, _y, text);

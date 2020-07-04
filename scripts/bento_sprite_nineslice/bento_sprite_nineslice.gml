@@ -38,10 +38,10 @@ function bento_draw_sprite_nineslice()
     {
         if ((sprite != undefined) && (alpha > 0))
         {
-            var _l = bbox_padding.l;
-            var _t = bbox_padding.t;
-            var _r = bbox_padding.r;
-            var _b = bbox_padding.b;
+            var _l = bbox_base.l;
+            var _t = bbox_base.t;
+            var _r = bbox_base.r;
+            var _b = bbox_base.b;
             var _w = _r - _l;
             var _h = _b - _t;
             

@@ -28,15 +28,15 @@ function bento_draw_box()
     with(property)
     {
         //Background fill
-        bento_draw_rectangle(bbox_padding.l, bbox_padding.t,
-                             bbox_padding.r, bbox_padding.b,
+        bento_draw_rectangle(bbox_base.l, bbox_base.t,
+                             bbox_base.r, bbox_base.b,
                              color, alpha, 0);
         
         //Outline
         if (outline_thickness > 0.0)
         {
-            bento_draw_rectangle(bbox_padding.l, bbox_padding.t,
-                                 bbox_padding.r, bbox_padding.b,
+            bento_draw_rectangle(bbox_base.l, bbox_base.t,
+                                 bbox_base.r, bbox_base.b,
                                  outline_color, outline_alpha,
                                  outline_thickness);
         }

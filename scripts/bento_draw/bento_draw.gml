@@ -41,7 +41,7 @@ function __bento_draw_inner()
     if (property.clip || property.clip_new_frame)
     {
         _do_clip = true;
-        __bento_clip_push(property.bbox_content, property.clip_new_frame);
+        __bento_clip_push(property.bbox_inner, property.clip_new_frame);
     }
     
     //Draw our element

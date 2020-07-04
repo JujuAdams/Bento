@@ -31,8 +31,8 @@ function bento_draw_sprite()
         if ((sprite != undefined) && (alpha > 0))
         {
             draw_sprite_stretched_ext(sprite, image,
-                                      bbox_padding.l, bbox_padding.t,
-                                      bbox_padding.r - bbox_padding.l, bbox_padding.b - bbox_padding.t,
+                                      bbox_base.l, bbox_base.t,
+                                      bbox_base.r - bbox_base.l, bbox_base.b - bbox_base.t,
                                       color, alpha);
         }
     }

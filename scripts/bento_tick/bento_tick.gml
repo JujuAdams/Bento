@@ -76,8 +76,8 @@ function bento_tick(_element, _mouse_x, _mouse_y, _select_state)
                         if (_root_select_pressed)
                         {
                             property.mouse.state = true;
-                            property.mouse.pressed_dx = property.bbox_margin.l - _mouse_x;
-                            property.mouse.pressed_dy = property.bbox_margin.t - _mouse_y;
+                            property.mouse.pressed_dx = property.bbox_outer.l - _mouse_x;
+                            property.mouse.pressed_dy = property.bbox_outer.t - _mouse_y;
                             __bento_mouse_event("pressed");
                         }
                         else if (_root_select_released)
@@ -108,7 +108,7 @@ function __bento_tick_inner(_mouse_x, _mouse_y)
     if (property.clip || property.clip_new_frame)
     {
         _do_clip = true;
-        __bento_clip_push(property.bbox_padding, property.clip_new_frame);
+        __bento_clip_push(property.bbox_base, property.clip_new_frame);
     }
     
     //Run custom tick method

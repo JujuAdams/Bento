@@ -14,10 +14,10 @@ with(box)
         outline_alpha = 0.5;
         outline_thickness = 2;
         
-        padding.l = 10;
-        padding.t = 10;
-        padding.r = 10;
-        padding.b = 10;
+        inner_space.l = 10;
+        inner_space.t = 10;
+        inner_space.r = 10;
+        inner_space.b = 10;
     }
     
     with(bento_button(sButtonTest))

@@ -13,9 +13,9 @@ function bento_box_region(_left, _top, _right, _bottom)
     {
         with(property)
         {
-            with(bbox_margin)
+            with(bbox_outer)
             {
-                //Directly set the position of the margin
+                //Directly set the position of the outer bounding box
                 l = _left;
                 t = _top;
                 r = _right;
@@ -27,7 +27,7 @@ function bento_box_region(_left, _top, _right, _bottom)
         }
         
         //Update the other bounding boxes 
-        update_bbox_from_margin();
+        update_bbox_from_outer();
         
         //Return this new element
         return self;

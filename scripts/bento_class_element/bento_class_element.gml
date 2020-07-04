@@ -23,32 +23,32 @@ function bento_class_element() constructor
         color  : c_white,
         alpha  : 1.0,
         
-        margin : {
+        outer_space : {
             l : 0,
             t : 0,
             r : 0,
             b : 0,
         },
-        padding : {
+        inner_space : {
             l : 0,
             t : 0,
             r : 0,
             b : 0,
         },
         
-        bbox_content : {
+        bbox_inner : {
             l : 0,
             t : 0,
             r : 0,
             b : 0,
         },
-        bbox_padding : {
+        bbox_base : {
             l : 0,
             t : 0,
             r : 0,
             b : 0,
         },
-        bbox_margin : {
+        bbox_outer : {
             l : 0,
             t : 0,
             r : 0,
@@ -135,10 +135,10 @@ function bento_class_element() constructor
     /// @function layout_update()
     layout_update = function()
     {
-        var _static_margin_w = property.width  + property.margin.l + property.margin.r;
-        var _static_margin_h = property.height + property.margin.t + property.margin.b;
+        var _outer_w = property.width  + property.outer_space.l + property.outer_space.r;
+        var _outer_h = property.height + property.outer_space.t + property.outer_space.b;
         
-        var _root_content = root.property.bbox_content;
+        var _root_content = root.property.bbox_inner;
         var _root_w = 1 + _root_content.r - _root_content.l;
         var _root_h = 1 + _root_content.r - _root_content.l;
         
@@ -206,138 +206,123 @@ function bento_class_element() constructor
         
         #region If either of our axes have no alignment set up, find the size of our bbox automatically from the base width/height
         
-        var _update_from_padding = false;
+        var _update_from_base = false;
         if (!is_struct(_target_l) && !is_struct(_target_r))
         {
-            property.bbox_padding.r = property.bbox_margin.l + property.width;
-            _update_from_padding = true;
+            property.bbox_base.r = property.bbox_base.l + property.width;
+            _update_from_base = true;
         }
         
         if (!is_struct(_target_t) && !is_struct(_target_b))
         {
-            property.bbox_padding.b = property.bbox_margin.t + property.height;
-            _update_from_padding = true;
+            property.bbox_base.b = property.bbox_base.t + property.height;
+            _update_from_base = true;
         }
         
-        if (_update_from_padding) update_bbox_from_padding();
+        if (_update_from_base) update_bbox_from_base();
         
         #endregion
         
+        #region Set the bounding box based on the alignments
+        
+        var _update_from_outer = false;
+        
         if (is_struct(_target_l))
         {
+            _update_from_outer = true;
+            
             var _target = _target_l;
             if (instanceof(_target) == "bento_class_element")
             {
-                if (parent == _target)
-                {
-                    //If our parent is the target, use the content bbox
-                    _target = _target.property.bbox_content;
-                }
-                else
-                {
-                    //If our parent is the target, use the margin bbox
-                    _target = _target.property.bbox_margin;
-                }
+                //If the target is our parent then use the inner bbox
+                _target = (parent == _target)? _target.property.bbox_inner : _target.property.bbox_outer
             }
             
-            property.bbox_margin.l = _target.l +
-                                     __bento_parse_offset(_static_margin_w,
-                                                          1 + _target.r - _target.l,
-                                                          _root_w, _align_l.offset);
+            property.bbox_outer.l = _target.l +
+                                    __bento_parse_offset(_outer_w,
+                                                         1 + _target.r - _target.l,
+                                                         _root_w, _align_l.offset);
         }
         
         if (is_struct(_target_t))
         {
+            _update_from_outer = true;
+            
             var _target = _target_t;
             if (instanceof(_target) == "bento_class_element")
             {
-                if (parent == _target)
-                {
-                    //If our parent is the target, use the content bbox
-                    _target = _target.property.bbox_content;
-                }
-                else
-                {
-                    //If our parent is the target, use the margin bbox
-                    _target = _target.property.bbox_margin;
-                }
+                //If the target is our parent then use the inner bbox
+                _target = (parent == _target)? _target.property.bbox_inner : _target.property.bbox_outer
             }
             
-            property.bbox_margin.t = _target.t +
-                                     __bento_parse_offset(_static_margin_h,
-                                                          1 + _target.b - _target.t,
-                                                          _root_h, _align_t.offset);
+            property.bbox_outer.t = _target.t +
+                                    __bento_parse_offset(_outer_h,
+                                                         1 + _target.b - _target.t,
+                                                         _root_h, _align_t.offset);
         }
         
         if (is_struct(_target_r))
         {
+            _update_from_outer = true;
+            
             var _target = _target_r;
             if (instanceof(_target) == "bento_class_element")
             {
-                if (parent == _target)
-                {
-                    //If our parent is the target, use the content bbox
-                    _target = _target.property.bbox_content;
-                }
-                else
-                {
-                    //If our parent is the target, use the margin bbox
-                    _target = _target.property.bbox_margin;
-                }
+                //If the target is our parent then use the inner bbox
+                _target = (parent == _target)? _target.property.bbox_inner : _target.property.bbox_outer
             }
             
-            property.bbox_margin.r = _target.l +
-                                     __bento_parse_offset(_static_margin_w,
-                                                          1 + _target.r - _target.l,
-                                                          _root_w, _align_r.offset);
+            property.bbox_outer.r = _target.l +
+                                    __bento_parse_offset(_outer_w,
+                                                         1 + _target.r - _target.l,
+                                                         _root_w, _align_r.offset);
         }
         
         if (is_struct(_target_b))
         {
+            _update_from_outer = true;
+            
             var _target = _target_b;
             if (instanceof(_target) == "bento_class_element")
             {
-                if (parent == _target)
+                //If the target is our parent then use the inner bbox
+                _target = (parent == _target)? _target.property.bbox_inner : _target.property.bbox_outer
+            }
+            
+            property.bbox_outer.b = _target.t +
+                                    __bento_parse_offset(_outer_h,
+                                                         1 + _target.b - _target.t,
+                                                         _root_h, _align_b.offset);
+        }
+        
+        if (_update_from_outer)
+        {
+            if (!is_struct(_target_l) && is_struct(_target_r)) property.bbox_outer.l = property.bbox_outer.r - _outer_w;
+            if (!is_struct(_target_t) && is_struct(_target_b)) property.bbox_outer.t = property.bbox_outer.b - _outer_h;
+            if (!is_struct(_target_r) && is_struct(_target_l)) property.bbox_outer.r = property.bbox_outer.l + _outer_w;
+            if (!is_struct(_target_b) && is_struct(_target_t)) property.bbox_outer.b = property.bbox_outer.t + _outer_h;
+            
+            update_bbox_from_outer();
+            
+            var _array = alignment.children;
+            var _i = 0;
+            repeat(array_length(_array))
+            {
+                var _child = _array[_i];
+                if (instanceof(_child) == "bento_class_element")
                 {
-                    //If our parent is the target, use the content bbox
-                    _target = _target.property.bbox_content;
+                    with(_child) layout_update();
+                    ++_i;
                 }
                 else
                 {
-                    //If our parent is the target, use the margin bbox
-                    _target = _target.property.bbox_margin;
+                    show_debug_message("Deleting layout child " + string(_child));
+                    __bento_array_delete(_array, _i);
                 }
             }
-            
-            property.bbox_margin.b = _target.t +
-                                     __bento_parse_offset(_static_margin_h,
-                                                          1 + _target.b - _target.t,
-                                                          _root_h, _align_b.offset);
         }
         
-        if (!is_struct(_target_l) && is_struct(_target_r)) property.bbox_margin.l = property.bbox_margin.r - _static_margin_w;
-        if (!is_struct(_target_t) && is_struct(_target_b)) property.bbox_margin.t = property.bbox_margin.b - _static_margin_h;
-        if (!is_struct(_target_r) && is_struct(_target_l)) property.bbox_margin.r = property.bbox_margin.l + _static_margin_w;
-        if (!is_struct(_target_b) && is_struct(_target_t)) property.bbox_margin.b = property.bbox_margin.t + _static_margin_h;
-        
-        update_bbox_from_margin();
-        
-        var _array = alignment.children;
-        var _i = 0;
-        repeat(array_length(_array))
-        {
-            var _child = _array[_i];
-            if (instanceof(_child) == "bento_class_element")
-            {
-                with(_child) layout_update();
-                ++_i;
-            }
-            else
-            {
-                show_debug_message("Deleting layout child " + string(_child));
-                __bento_array_delete(_array, _i);
-            }
-        }
+        #endregion
         
         property.layout_dirty = false;
     }
@@ -433,73 +418,75 @@ function bento_class_element() constructor
     /// @function align_x_to_target_x(target, [offset])
     /// @param target
     /// @param [offset]
-    align_x_to_target_x = function(_target, _offset)
+    align_x_to_target_x = function()
     {
-        align_l_to_target_l(_target, string(_offset) + "+50%T-50%");
-        align_r_to_target_l(_target, string(_offset) + "+50%T+50%");
+        var _offset = (argument_count > 1)? argument[1] : 0;
+        align_l_to_target_l(argument[0], string(_offset) + "+50%T-50%");
+        align_r_to_target_l(argument[0], string(_offset) + "+50%T+50%");
     }
     
     /// @function align_y_to_target_y(target, [offset])
     /// @param target
     /// @param [offset]
-    align_y_to_target_y = function(_target, _offset)
+    align_y_to_target_y = function()
     {
-        align_t_to_target_t(_target, string(_offset) + "+50%T-50%");
-        align_b_to_target_t(_target, string(_offset) + "+50%T+50%");
+        var _offset = (argument_count > 1)? argument[1] : 0;
+        align_t_to_target_t(argument[0], string(_offset) + "+50%T-50%");
+        align_b_to_target_t(argument[0], string(_offset) + "+50%T+50%");
     }
     
     #endregion
     
     #region Bounding box updates
     
-    /// @function update_bbox_from_margin()
-    update_bbox_from_margin = function()
+    /// @function update_bbox_from_outer()
+    update_bbox_from_outer = function()
     {
         with(property)
         {
-            bbox_padding.l = bbox_margin.l + margin.l;
-            bbox_padding.t = bbox_margin.t + margin.t;
-            bbox_padding.r = bbox_margin.r - margin.r;
-            bbox_padding.b = bbox_margin.b - margin.b;
+            bbox_base.l = bbox_outer.l + outer_space.l;
+            bbox_base.t = bbox_outer.t + outer_space.t;
+            bbox_base.r = bbox_outer.r - outer_space.r;
+            bbox_base.b = bbox_outer.b - outer_space.b;
             
-            bbox_content.l = bbox_padding.l + padding.l;
-            bbox_content.t = bbox_padding.t + padding.t;
-            bbox_content.r = bbox_padding.r - padding.r;
-            bbox_content.b = bbox_padding.b - padding.b;
+            bbox_inner.l = bbox_base.l + inner_space.l;
+            bbox_inner.t = bbox_base.t + inner_space.t;
+            bbox_inner.r = bbox_base.r - inner_space.r;
+            bbox_inner.b = bbox_base.b - inner_space.b;
         }
     }
     
-    /// @function update_bbox_from_padding()
-    update_bbox_from_padding = function()
+    /// @function update_bbox_from_base()
+    update_bbox_from_base = function()
     {
         with(property)
         {
-            bbox_margin.l = bbox_padding.l - margin.l;
-            bbox_margin.t = bbox_padding.t - margin.t;
-            bbox_margin.r = bbox_padding.r + margin.r;
-            bbox_margin.b = bbox_padding.b + margin.b;
+            bbox_outer.l = bbox_base.l - outer_space.l;
+            bbox_outer.t = bbox_base.t - outer_space.t;
+            bbox_outer.r = bbox_base.r + outer_space.r;
+            bbox_outer.b = bbox_base.b + outer_space.b;
             
-            bbox_content.l = bbox_padding.l + padding.l;
-            bbox_content.t = bbox_padding.t + padding.t;
-            bbox_content.r = bbox_padding.r - padding.r;
-            bbox_content.b = bbox_padding.b - padding.b;
+            bbox_inner.l = bbox_base.l + inner_space.l;
+            bbox_inner.t = bbox_base.t + inner_space.t;
+            bbox_inner.r = bbox_base.r - inner_space.r;
+            bbox_inner.b = bbox_base.b - inner_space.b;
         }
     }
     
-    /// @function update_bbox_from_padding()
-    update_bbox_from_content = function()
+    /// @function update_bbox_from_inner()
+    update_bbox_from_inner = function()
     {
         with(property)
         {
-            bbox_padding.l = bbox_content.l - padding.l;
-            bbox_padding.t = bbox_content.t - padding.t;
-            bbox_padding.r = bbox_content.r + padding.r;
-            bbox_padding.b = bbox_content.b + padding.b;
+            bbox_base.l = bbox_inner.l - inner_space.l;
+            bbox_base.t = bbox_inner.t - inner_space.t;
+            bbox_base.r = bbox_inner.r + inner_space.r;
+            bbox_base.b = bbox_inner.b + inner_space.b;
             
-            bbox_margin.l = bbox_padding.l - margin.l;
-            bbox_margin.t = bbox_padding.t - margin.t;
-            bbox_margin.r = bbox_padding.r + margin.r;
-            bbox_margin.b = bbox_padding.b + margin.b;
+            bbox_outer.l = bbox_base.l - outer_space.l;
+            bbox_outer.t = bbox_base.t - outer_space.t;
+            bbox_outer.r = bbox_base.r + outer_space.r;
+            bbox_outer.b = bbox_base.b + outer_space.b;
         }
     }
     

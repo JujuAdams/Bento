@@ -37,10 +37,10 @@ function bento_draw_sprite_tile()
     {
         if ((sprite != undefined) && (alpha > 0))
         {
-            var _left = bbox_padding.l;
-            var _top  = bbox_padding.t;
-            var _w    = 1 + bbox_padding.r - bbox_padding.l;
-            var _h    = 1 + bbox_padding.b - bbox_padding.t;
+            var _left = bbox_base.l;
+            var _top  = bbox_base.t;
+            var _w    = 1 + bbox_base.r - bbox_base.l;
+            var _h    = 1 + bbox_base.b - bbox_base.t;
             
             var _sprite_w = sprite_get_width( sprite);
             var _sprite_h = sprite_get_height(sprite);
