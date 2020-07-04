@@ -2,9 +2,10 @@
 #macro BENTO_DATE     "2020-07-04"
 
 #macro bento_clip    global.__bento_clip
+#macro bento_prev    global.__bento_prev
 
 global.__bento_element_count = 0;
-
+bento_prev = undefined;
 
 
 #region Struct/Array manipulation

@@ -9,22 +9,20 @@ function bento_sprite_tile(_sprite, _image, _width, _height, _offset_x, _offset_
 {
     with(new bento_class_element())
     {
-        //Set some style variables specific to this kind of element
-        with(style)
+        with(property)
         {
+            //Set some style variables specific to this kind of element
             sprite = _sprite;
             image  = _image;
-            color  = c_white;
-            alpha  = 1.0;
             
             tile_offset_x   = _offset_x;
             tile_offset_y   = _offset_y;
             tile_worldspace = false;
+            
+            //Set our dimensions based on the sprite we're using
+            width  = _width;
+            height = _height;
         }
-        
-        //Set our dimensions based on the sprite we're using
-        properties.width  = _width;
-        properties.height = _height;
         
         //Set draw method
         event.draw = bento_draw_sprite_tile;
@@ -35,16 +33,14 @@ function bento_sprite_tile(_sprite, _image, _width, _height, _offset_x, _offset_
 
 function bento_draw_sprite_tile()
 {
-    var _bbox_padding = properties.bbox_padding;
-    
-    with(style)
+    with(property)
     {
         if ((sprite != undefined) && (alpha > 0))
         {
-            var _left = _bbox_padding.l;
-            var _top  = _bbox_padding.t;
-            var _w    = 1 + _bbox_padding.r - _bbox_padding.l;
-            var _h    = 1 + _bbox_padding.b - _bbox_padding.t;
+            var _left = bbox_padding.l;
+            var _top  = bbox_padding.t;
+            var _w    = 1 + bbox_padding.r - bbox_padding.l;
+            var _h    = 1 + bbox_padding.b - bbox_padding.t;
             
             var _sprite_w = sprite_get_width( sprite);
             var _sprite_h = sprite_get_height(sprite);

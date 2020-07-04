@@ -5,18 +5,16 @@ function bento_sprite(_sprite, _image)
 {
     with(new bento_class_element())
     {
-        //Set some style variables specific to this kind of element
-        with(style)
+        with(property)
         {
+            //Set some style variables specific to this kind of element
             sprite = _sprite;
             image  = _image;
-            color  = c_white;
-            alpha  = 1.0;
+            
+            //Set our dimensions based on the sprite we're using
+            width  = sprite_get_width(sprite);
+            height = sprite_get_height(sprite);
         }
-        
-        //Set our dimensions based on the sprite we're using
-        properties.width  = sprite_get_width( style.sprite);
-        properties.height = sprite_get_height(style.sprite);
         
         //Set draw method
         event.draw = bento_draw_sprite;
@@ -27,16 +25,14 @@ function bento_sprite(_sprite, _image)
 
 function bento_draw_sprite()
 {
-    var _bbox_padding = properties.bbox_padding;
-    
-    with(style)
+    with(property)
     {
         //Draw the sprite (if needed)
         if ((sprite != undefined) && (alpha > 0))
         {
             draw_sprite_stretched_ext(sprite, image,
-                                      _bbox_padding.l, _bbox_padding.t,
-                                      _bbox_padding.r - _bbox_padding.l, _bbox_padding.b - _bbox_padding.t,
+                                      bbox_padding.l, bbox_padding.t,
+                                      bbox_padding.r - bbox_padding.l, bbox_padding.b - bbox_padding.t,
                                       color, alpha);
         }
     }

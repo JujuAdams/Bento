@@ -17,9 +17,7 @@ function bento_draw(_element)
     shader_set(__shd_bento_clip);
     global.__bento_clip_drawing = true; //Make sure __bento_clip_set() knows we want to set the shader uniform
     __bento_clip_reset(-999999, -999999, 999999, 999999); //Render everything until we clip!
-    
     with(_element) __bento_draw_inner();
-    
     global.__bento_clip_drawing = false;
     
     //Reset the draw state!
@@ -34,14 +32,16 @@ function bento_draw(_element)
 function __bento_draw_inner()
 {
     //If we're not visible or we're deactivated/destroyed, don't draw us or our children
-    if (!properties.visible || properties.deactivate || properties.destroyed) exit;
+    if (!property.visible || property.deactivate || property.destroyed) exit;
+    
+    if (property.layout_dirty) layout_update();
     
     //Update our clipping frame
     var _do_clip = false;
-    if (style.clip || style.clip_new_frame)
+    if (property.clip || property.clip_new_frame)
     {
         _do_clip = true;
-        __bento_clip_push(properties.bbox_content, style.clip_new_frame);
+        __bento_clip_push(property.bbox_content, property.clip_new_frame);
     }
     
     //Draw our element

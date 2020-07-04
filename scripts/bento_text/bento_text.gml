@@ -5,26 +5,20 @@ function bento_text(_text)
     with(new bento_class_element())
     {
         //Set some style variables specific to this kind of element
-        with(style)
+        with(property)
         {
-            text = {
-                font   : -1,
-                halign : fa_left,
-                valign : fa_top,
-                color  : c_white,
-                alpha  : 1.0,
-            };
+            text        = _text;
+            text_font   = -1;
+            text_halign = fa_left;
+            text_valign = fa_top;
+            
+            //Set our dimensions based on the size of our text in the given font
+            var _old_font = draw_get_font();
+            draw_set_font(text_font);
+            width  = string_width(_text);
+            height = string_height(_text);
+            draw_set_font(_old_font);
         }
-        
-        //Set our dimensions based on the size of our text in the given font
-        var _old_font = draw_get_font();
-        draw_set_font(style.text.font);
-        properties.width  = string_width( _text);
-        properties.height = string_height(_text);
-        draw_set_font(_old_font);
-        
-        //Set our text definition
-        properties.text = _text;
         
         //Set draw method
         event.draw = bento_draw_text;
@@ -36,43 +30,43 @@ function bento_text(_text)
 function bento_draw_text()
 {
     //Draw the text
-    var _text = style.text;
-    if ((_text.alpha > 0.0) && (properties.text != ""))
+    with(property)
     {
-        var _bbox_padding = properties.bbox_padding;
-        
-        draw_set_font(_text.font);
-        draw_set_colour(_text.color);
-        draw_set_alpha(_text.alpha);
-        draw_set_halign(_text.halign);
-        draw_set_valign(_text.valign);
-        
-        if (_text.halign == fa_center)
+        if ((alpha > 0.0) && (text != ""))
         {
-            var _x = (_bbox_padding.l + _bbox_padding.r)/2;
+            draw_set_font(text_font);
+            draw_set_colour(color);
+            draw_set_alpha(alpha);
+            draw_set_halign(text_halign);
+            draw_set_valign(text_valign);
+            
+            if (text_halign == fa_center)
+            {
+                var _x = (bbox_padding.l + bbox_padding.r)/2;
+            }
+            else if (text_halign == fa_right)
+            {
+                var _x = bbox_padding.r;
+            }
+            else
+            {
+                var _x = bbox_padding.l;
+            }
+            
+            if (text_valign == fa_middle)
+            {
+                var _y = (bbox_padding.t + bbox_padding.b)/2;
+            }
+            else if (text_valign == fa_bottom)
+            {
+                var _y = bbox_padding.b;
+            }
+            else
+            {
+                var _y = bbox_padding.t;
+            }
+            
+            draw_text(_x, _y, text);
         }
-        else if (_text.halign == fa_right)
-        {
-            var _x = _bbox_padding.r;
-        }
-        else
-        {
-            var _x = _bbox_padding.l;
-        }
-        
-        if (_text.halign == fa_middle)
-        {
-            var _y = (_bbox_padding.t + _bbox_padding.b)/2;
-        }
-        else if (_text.halign == fa_bottom)
-        {
-            var _y = _bbox_padding.b;
-        }
-        else
-        {
-            var _y = _bbox_padding.t;
-        }
-        
-        draw_text(_x, _y, properties.text);
     }
 }

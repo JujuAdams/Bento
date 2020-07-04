@@ -7,13 +7,11 @@ function bento_sprite_nineslice(_sprite, _image, _width, _height)
 {
     with(new bento_class_element())
     {
-        //Set some style variables specific to this kind of element
-        with(style)
+        with(property)
         {
+            //Set some style variables specific to this kind of element
             sprite = _sprite;
             image  = _image;
-            color  = c_white;
-            alpha  = 1.0;
             
             nineslice = {
                 l : sprite_get_width( _sprite)/3,
@@ -21,11 +19,11 @@ function bento_sprite_nineslice(_sprite, _image, _width, _height)
                 r : sprite_get_width( _sprite)/3,
                 b : sprite_get_height(_sprite)/3,
             };
+            
+            //Set our dimensions based on the sprite we're using
+            width  = _width;
+            height = _height;
         }
-        
-        //Set our dimensions based on the sprite we're using
-        properties.width  = _width;
-        properties.height = _height;
         
         //Set draw method
         event.draw = bento_draw_sprite_nineslice;
@@ -36,16 +34,14 @@ function bento_sprite_nineslice(_sprite, _image, _width, _height)
 
 function bento_draw_sprite_nineslice()
 {
-    var _bbox_padding = properties.bbox_padding;
-    
-    with(style)
+    with(property)
     {
         if ((sprite != undefined) && (alpha > 0))
         {
-            var _l = _bbox_padding.l;
-            var _t = _bbox_padding.t;
-            var _r = _bbox_padding.r;
-            var _b = _bbox_padding.b;
+            var _l = bbox_padding.l;
+            var _t = bbox_padding.t;
+            var _r = bbox_padding.r;
+            var _b = bbox_padding.b;
             var _w = _r - _l;
             var _h = _b - _t;
             

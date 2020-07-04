@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "bento",
-    "path": "bento.yyp",
+    "name": "Helpers",
+    "path": "folders/Bento/Core/Helpers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "callback_mouse_event",
+  "name": "__bento_parse_offset",
   "tags": [],
   "resourceType": "GMScript",
 }

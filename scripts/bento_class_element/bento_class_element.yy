@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Elements",
-    "path": "folders/Bento/Elements.yy",
+    "name": "Core",
+    "path": "folders/Bento/Core.yy",
   },
   "resourceVersion": "1.0",
   "name": "bento_class_element",
