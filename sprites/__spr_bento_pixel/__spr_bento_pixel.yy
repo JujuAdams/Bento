@@ -1,7 +1,6 @@
 {
   "bboxMode": 0,
   "collisionKind": 1,
-  "separateMasks": false,
   "type": 0,
   "origin": 0,
   "preMultiplyAlpha": false,
@@ -69,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"ffafed72-c67b-4aac-8a1b-61276a0e47b6","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Core",
-    "path": "folders/Bento/Core.yy",
+    "name": "Helpers",
+    "path": "folders/Bento/Core/Helpers.yy",
   },
   "resourceVersion": "1.0",
   "name": "__spr_bento_pixel",

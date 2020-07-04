@@ -6,7 +6,7 @@
     "path": "folders/Bento/Core/Helpers.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__bento_system",
+  "name": "bento_draw_rectangle",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -1,12 +1,8 @@
 /// @param surface
-/// @param [templateName]
 
-function bento_surface()
+function bento_surface(_surface)
 {
-    var _surface = argument[0];
-    var _style   = (argument_count > 1)? argument[1] : undefined;
-    
-    with(new bento_element_class())
+    with(new bento_class_element())
     {
         //Set some style variables specific to this kind of element
         surface = {
@@ -15,15 +11,12 @@ function bento_surface()
             alpha : 1.0,
         };
         
-        //Apply our style template
-        bento_style_template_apply(self, _style);
-        
         //Set our dimensions based on the sprite we're using
         properties.width  = surface_get_width( _surface);
         properties.height = surface_get_height(_surface);
         
         //Set draw method
-        callback.draw = bento_draw_surface;
+        event.draw = bento_draw_surface;
         
         return self;
     }

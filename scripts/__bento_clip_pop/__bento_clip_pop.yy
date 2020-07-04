@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Helpers",
-    "path": "folders/Bento/Core/Helpers.yy",
+    "name": "Clipping",
+    "path": "folders/Bento/Core/Clipping.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__bento_system",
+  "name": "__bento_clip_pop",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Helpers",
-    "path": "folders/Bento/Core/Helpers.yy",
+    "name": "Elements",
+    "path": "folders/Bento/Elements.yy",
   },
   "resourceVersion": "1.0",
-  "name": "__bento_system",
+  "name": "bento_class_element",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -2,17 +2,10 @@
 /// @param image
 /// @param width
 /// @param height
-/// @param [templateName]
 
-function bento_sprite_nineslice()
+function bento_sprite_nineslice(_sprite, _image, _width, _height)
 {
-    var _sprite = argument[0];
-    var _image  = argument[1];
-    var _width  = argument[2];
-    var _height = argument[3];
-    var _style  = (argument_count > 4)? argument[4] : undefined;
-    
-    with(new bento_element_class())
+    with(new bento_class_element())
     {
         //Set some style variables specific to this kind of element
         with(style)
@@ -30,15 +23,12 @@ function bento_sprite_nineslice()
             };
         }
         
-        //Apply our style template
-        bento_style_template_apply(self, _style);
-        
         //Set our dimensions based on the sprite we're using
         properties.width  = _width;
         properties.height = _height;
         
         //Set draw method
-        callback.draw = bento_draw_sprite_nineslice;
+        event.draw = bento_draw_sprite_nineslice;
         
         return self;
     }

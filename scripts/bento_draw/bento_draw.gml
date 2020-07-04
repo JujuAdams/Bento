@@ -36,12 +36,6 @@ function __bento_draw_inner()
     //If we're not visible or we're deactivated/destroyed, don't draw us or our children
     if (!properties.visible || properties.deactivate || properties.destroyed) exit;
     
-    //Update the bounding box position for this element
-    position_update();
-    
-    //Execute our pre-clipping draw code
-    __bento_call_method(callback.draw_begin);
-    
     //Update our clipping frame
     var _do_clip = false;
     if (style.clip || style.clip_new_frame)
@@ -51,7 +45,7 @@ function __bento_draw_inner()
     }
     
     //Draw our element
-    __bento_call_method(callback.draw);
+    __bento_call_method(event.draw);
     
     //Draw our children
     var _i = 0;
@@ -60,13 +54,10 @@ function __bento_draw_inner()
         var _child = children[_i];
         
         //If this member is a struct, and a Bento element, draw it
-        if (instanceof(_child) == "bento_element_class") with(_child) __bento_draw_inner();
+        if (instanceof(_child) == "bento_class_element") with(_child) __bento_draw_inner();
         
         ++_i;
     }
-    
-    //Execute our post-children draw code
-    __bento_call_method(callback.draw_end);
     
     //Pop our clipping frame
     if (_do_clip) __bento_clip_pop();

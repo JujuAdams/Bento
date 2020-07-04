@@ -1,13 +1,9 @@
 /// @param sprite
-/// @param [templateName]
 
-function bento_button()
+function bento_button(_sprite)
 {
-    var _sprite = argument[0];
-    var _style  = (argument_count > 1)? argument[1] : undefined;
-    
     //Create and extend the basic sprite element
-    with(bento_sprite(_sprite, 0, _style))
+    with(bento_sprite(_sprite, 0))
     {
         //Make sure we set this checkbox to interactive
         style.interactive = true;

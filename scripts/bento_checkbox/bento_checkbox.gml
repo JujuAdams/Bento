@@ -1,24 +1,18 @@
 /// @param sprite
-/// @param scope
+/// @param variableScope
 /// @param variableName
-/// @param [templateName]
 
-function bento_checkbox()
+function bento_checkbox(_sprite, _variable_scope, _variable_name)
 {
-    var _sprite        = argument[0];
-    var _scope         = argument[1];
-    var _variable_name = argument[2];
-    var _style         = (argument_count > 3)? argument[3] : undefined;
-    
     //Create and extend the basic sprite element
-    with(bento_sprite(_sprite, 0, _style))
+    with(bento_sprite(_sprite, 0))
     {
         //Make sure we set this checkbox to interactive
         style.interactive = true;
         
         //Give ourselves some extra variables to use internally
         properties.checkbox = {
-            scope : _scope,
+            variable_scope : _variable_scope,
             variable_name : _variable_name,
             state : false,
         };
@@ -29,7 +23,7 @@ function bento_checkbox()
             //Update our state based on the variable we're tracking
             with(properties.checkbox)
             {
-                state = bento_variable_get(scope, variable_name);
+                state = bento_variable_get(variable_scope, variable_name);
             }
             
             //Set our sprite image based on our internal values
@@ -51,7 +45,7 @@ function bento_checkbox()
                     state = !state;
                     
                     //...and update the variable we're tracking
-                    bento_variable_set(scope, variable_name, state);
+                    bento_variable_set(variable_scope, variable_name, state);
                 }
             }
         }

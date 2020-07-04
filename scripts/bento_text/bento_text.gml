@@ -1,12 +1,8 @@
 /// @param string
-/// @param [templateName]
 
-function bento_text()
+function bento_text(_text)
 {
-    var _text  = argument[0];
-    var _style = (argument_count > 1)? argument[1] : undefined;
-    
-    with(new bento_element_class())
+    with(new bento_class_element())
     {
         //Set some style variables specific to this kind of element
         with(style)
@@ -20,9 +16,6 @@ function bento_text()
             };
         }
         
-        //Apply our style template
-        bento_style_template_apply(self, _style);
-        
         //Set our dimensions based on the size of our text in the given font
         var _old_font = draw_get_font();
         draw_set_font(style.text.font);
@@ -34,7 +27,7 @@ function bento_text()
         properties.text = _text;
         
         //Set draw method
-        callback.draw = bento_draw_text;
+        event.draw = bento_draw_text;
         
         return self;
     }

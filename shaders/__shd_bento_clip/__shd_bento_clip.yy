@@ -1,8 +1,8 @@
 {
   "type": 1,
   "parent": {
-    "name": "Core",
-    "path": "folders/Bento/Core.yy",
+    "name": "Clipping",
+    "path": "folders/Bento/Core/Clipping.yy",
   },
   "resourceVersion": "1.0",
   "name": "__shd_bento_clip",

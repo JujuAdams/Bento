@@ -4,19 +4,10 @@
 /// @param height
 /// @param offsetX
 /// @param offsetY
-/// @param [templateName]
 
-function bento_sprite_tile()
+function bento_sprite_tile(_sprite, _image, _width, _height, _offset_x, _offset_y)
 {
-    var _sprite   = argument[0];
-    var _image    = argument[1];
-    var _width    = argument[2];
-    var _height   = argument[3];
-    var _offset_x = argument[4];
-    var _offset_y = argument[5];
-    var _style    = (argument_count > 6)? argument[6] : undefined;
-    
-    with(new bento_element_class())
+    with(new bento_class_element())
     {
         //Set some style variables specific to this kind of element
         with(style)
@@ -26,20 +17,17 @@ function bento_sprite_tile()
             color  = c_white;
             alpha  = 1.0;
             
-            tile_offset_x = _offset_x;
-            tile_offset_y = _offset_y;
+            tile_offset_x   = _offset_x;
+            tile_offset_y   = _offset_y;
             tile_worldspace = false;
         }
-        
-        //Apply our style template
-        bento_style_template_apply(self, _style);
         
         //Set our dimensions based on the sprite we're using
         properties.width  = _width;
         properties.height = _height;
         
         //Set draw method
-        callback.draw = bento_draw_sprite_tile;
+        event.draw = bento_draw_sprite_tile;
         
         return self;
     }

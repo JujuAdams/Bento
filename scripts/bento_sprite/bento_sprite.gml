@@ -1,14 +1,9 @@
 /// @param sprite
 /// @param image
-/// @param [templateName]
 
-function bento_sprite()
+function bento_sprite(_sprite, _image)
 {
-    var _sprite = argument[0];
-    var _image  = argument[1];
-    var _style  = (argument_count > 2)? argument[2] : undefined;
-    
-    with(new bento_element_class())
+    with(new bento_class_element())
     {
         //Set some style variables specific to this kind of element
         with(style)
@@ -19,15 +14,12 @@ function bento_sprite()
             alpha  = 1.0;
         }
         
-        //Apply our style template
-        bento_style_template_apply(self, _style);
-        
         //Set our dimensions based on the sprite we're using
         properties.width  = sprite_get_width( style.sprite);
         properties.height = sprite_get_height(style.sprite);
         
         //Set draw method
-        callback.draw = bento_draw_sprite;
+        event.draw = bento_draw_sprite;
         
         return self;
     }
