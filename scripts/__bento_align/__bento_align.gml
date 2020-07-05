@@ -4,19 +4,17 @@
 
 function __bento_align(_struct, _target, _offset)
 {
+    if (!__bento_check_layout_parenting(self, _target))
+    {
+        throw "Bento: Layout parenting cycle created (" + string(self) + " targeting " + string(_target) + ")";
+        return false;
+    }
+    
     with(_struct)
     {
         target = _target;
         offset = _offset;
     }
     
-    var _array = _target.alignment.children;
-    var _i = 0;
-    repeat(array_length(_array))
-    {
-        if (_array[_i] == self) exit;
-        ++_i;
-    }
-    
-    __bento_array_add(_array, self);
+    if (__bento_array_find(_target.alignment.children, self) < 0) __bento_array_add(_target.alignment.children, self);
 }

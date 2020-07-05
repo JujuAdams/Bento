@@ -404,7 +404,7 @@ function bento_class_element() constructor
     /// @param [offset]
     align_r_to_target_r = function()
     {
-        align_r_to_target_r(argument[0], (argument_count > 1)? (string(argument[1]) + "+100%T") : "100%T");
+        align_r_to_target_l(argument[0], (argument_count > 1)? (string(argument[1]) + "+100%T") : "100%T");
     }
     
     /// @function align_b_to_target_b(target, [offset])
