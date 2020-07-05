@@ -10,8 +10,8 @@ function bento_surface(_surface)
             surface = _surface;
             
             //Set our dimensions based on the sprite we're using
-            width  = surface_get_width(surface);
-            height = surface_get_height(surface);
+            source_width  = surface_get_width(surface);
+            source_height = surface_get_height(surface);
         }
         
         //Set draw method

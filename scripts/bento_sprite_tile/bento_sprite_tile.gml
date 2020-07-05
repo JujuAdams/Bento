@@ -20,8 +20,8 @@ function bento_sprite_tile(_sprite, _image, _width, _height, _offset_x, _offset_
             tile_worldspace = false;
             
             //Set our dimensions based on the sprite we're using
-            width  = _width;
-            height = _height;
+            source_width  = _width;
+            source_height = _height;
         }
         
         //Set draw method

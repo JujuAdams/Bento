@@ -22,12 +22,12 @@ function bento_box_region(_left, _top, _right, _bottom)
                 b = _bottom;
             }
             
-            width  = 1 + _right - _left;
-            height = 1 + _bottom - _top;
+            source_width  = 1 + _right - _left;
+            source_height = 1 + _bottom - _top;
         }
         
         //Update the other bounding boxes 
-        update_bbox_from_outer();
+        update_from_bbox_outer();
         
         //Return this new element
         return self;

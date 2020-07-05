@@ -21,8 +21,8 @@ function bento_sprite_nineslice(_sprite, _image, _width, _height)
             };
             
             //Set our dimensions based on the sprite we're using
-            width  = _width;
-            height = _height;
+            source_width  = _width;
+            source_height = _height;
         }
         
         //Set draw method

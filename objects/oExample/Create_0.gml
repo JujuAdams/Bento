@@ -47,7 +47,6 @@ with(box)
     with(bento_button(sButtonTest))
     {
         align_l_to_target_l(bento_prev);
-        align_r_to_target_l(bento_prev, "50%");
         align_t_to_target_b(bento_prev);
         align_b_to_target_b(bento_prev, "50%");
     }

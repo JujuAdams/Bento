@@ -18,8 +18,10 @@ function bento_class_element() constructor
         
         layout_dirty : true,
         
-        width  : 0,
-        height : 0,
+        source_width  : 0,
+        source_height : 0,
+        
+        lock_aspect_ratio : false,
         color  : c_white,
         alpha  : 1.0,
         
@@ -135,8 +137,10 @@ function bento_class_element() constructor
     /// @function layout_update()
     layout_update = function()
     {
-        var _outer_w = property.width  + property.outer_space.l + property.outer_space.r;
-        var _outer_h = property.height + property.outer_space.t + property.outer_space.b;
+        var _aspect_ratio = property.source_width/property.source_height;
+        
+        var _outer_w = property.source_width  + property.outer_space.l + property.outer_space.r;
+        var _outer_h = property.source_height + property.outer_space.t + property.outer_space.b;
         
         var _root_content = root.property.bbox_inner;
         var _root_w = 1 + _root_content.r - _root_content.l;
@@ -154,6 +158,11 @@ function bento_class_element() constructor
         var _target_r = _align_r.target;
         var _target_b = _align_b.target;
         
+        var _target_l_valid = is_struct(_target_l);
+        var _target_t_valid = is_struct(_target_t);
+        var _target_r_valid = is_struct(_target_r);
+        var _target_b_valid = is_struct(_target_b);
+        
         if (is_struct(_target_l))
         {
             if (instanceof(_target_l) == "bento_class_element")
@@ -161,6 +170,7 @@ function bento_class_element() constructor
                 if (_target_l.property.destroyed)
                 {
                     _target_l = undefined;
+                    _target_l_valid = false;
                     _align_l.target = undefined;
                 }
             }
@@ -173,6 +183,7 @@ function bento_class_element() constructor
                 if (_target_t.property.destroyed)
                 {
                     _target_t = undefined;
+                    _target_t_valid = false;
                     _align_t.target = undefined;
                 }
             }
@@ -185,6 +196,7 @@ function bento_class_element() constructor
                 if (_target_r.property.destroyed)
                 {
                     _target_r = undefined;
+                    _target_r_valid = false;
                     _align_r.target = undefined;
                 }
             }
@@ -197,6 +209,7 @@ function bento_class_element() constructor
                 if (_target_b.property.destroyed)
                 {
                     _target_b = undefined;
+                    _target_b_valid = false;
                     _align_b.target = undefined;
                 }
             }
@@ -204,22 +217,22 @@ function bento_class_element() constructor
         
         #endregion
         
-        #region If either of our axes have no alignment set up, find the size of our bbox automatically from the base width/height
+        #region If either of our axes have no alignment set up, find the size of our bbox automatically from the source width/height
         
         var _update_from_base = false;
         if (!is_struct(_target_l) && !is_struct(_target_r))
         {
-            property.bbox_base.r = property.bbox_base.l + property.width;
+            property.bbox_base.r = property.bbox_base.l + property.source_width;
             _update_from_base = true;
         }
         
         if (!is_struct(_target_t) && !is_struct(_target_b))
         {
-            property.bbox_base.b = property.bbox_base.t + property.height;
+            property.bbox_base.b = property.bbox_base.t + property.source_height;
             _update_from_base = true;
         }
         
-        if (_update_from_base) update_bbox_from_base();
+        if (_update_from_base) update_from_bbox_base();
         
         #endregion
         
@@ -295,6 +308,8 @@ function bento_class_element() constructor
                                                          _root_h, _align_b.offset);
         }
         
+        #endregion
+        
         if (_update_from_outer)
         {
             if (!is_struct(_target_l) && is_struct(_target_r)) property.bbox_outer.l = property.bbox_outer.r - _outer_w;
@@ -302,8 +317,53 @@ function bento_class_element() constructor
             if (!is_struct(_target_r) && is_struct(_target_l)) property.bbox_outer.r = property.bbox_outer.l + _outer_w;
             if (!is_struct(_target_b) && is_struct(_target_t)) property.bbox_outer.b = property.bbox_outer.t + _outer_h;
             
-            update_bbox_from_outer();
+            update_from_bbox_outer();
+        }
+        
+        if (property.lock_aspect_ratio)
+        {
+            if (_target_l_valid && _target_r_valid) //Width is strictly bound
+            {
+                var _base_width  = property.bbox_base.r - property.bbox_base.l;
+                var _base_height = _base_width / _aspect_ratio;
+                
+                if (!_target_b_valid) //Bottom is unbound (we don't care if the top is bound or not)
+                {
+                    property.bbox_base.b = property.bbox_base.t + _base_height;
+                }
+                else if (!_target_t_valid) //Bottom is bound but the top is unbound
+                {
+                    property.bbox_base.t = property.bbox_base.b - _base_height;
+                }
+                else //Top and bottom are bound
+                {
+                    //Do nothing!
+                }
+            }
+            else if (_target_t_valid && _target_b_valid) //Height is strictly bound
+            {
+                var _base_height = property.bbox_base.b - property.bbox_base.t;
+                var _base_width = _base_height * _aspect_ratio;
+                
+                if (!_target_r_valid) //Right is unbound (we don't care if the left is bound or not)
+                {
+                    property.bbox_base.r = property.bbox_base.l + _base_width;
+                }
+                else if (!_target_l_valid) //Right is bound but the left is unbound
+                {
+                    property.bbox_base.l = property.bbox_base.r - _base_width;
+                }
+                else //Left and right are bound
+                {
+                    //Do nothing!
+                }
+            }
             
+            update_from_bbox_base();
+        }
+        
+        if (_update_from_base || _update_from_outer)
+        {
             var _array = alignment.children;
             var _i = 0;
             repeat(array_length(_array))
@@ -321,8 +381,6 @@ function bento_class_element() constructor
                 }
             }
         }
-        
-        #endregion
         
         property.layout_dirty = false;
     }
@@ -439,8 +497,8 @@ function bento_class_element() constructor
     
     #region Bounding box updates
     
-    /// @function update_bbox_from_outer()
-    update_bbox_from_outer = function()
+    /// @function update_from_bbox_outer()
+    update_from_bbox_outer = function()
     {
         with(property)
         {
@@ -456,8 +514,8 @@ function bento_class_element() constructor
         }
     }
     
-    /// @function update_bbox_from_base()
-    update_bbox_from_base = function()
+    /// @function update_from_bbox_base()
+    update_from_bbox_base = function()
     {
         with(property)
         {
@@ -473,8 +531,8 @@ function bento_class_element() constructor
         }
     }
     
-    /// @function update_bbox_from_inner()
-    update_bbox_from_inner = function()
+    /// @function update_from_bbox_inner()
+    update_from_bbox_inner = function()
     {
         with(property)
         {

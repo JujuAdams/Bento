@@ -12,8 +12,8 @@ function bento_sprite(_sprite, _image)
             image  = _image;
             
             //Set our dimensions based on the sprite we're using
-            width  = sprite_get_width(sprite);
-            height = sprite_get_height(sprite);
+            source_width  = sprite_get_width(sprite);
+            source_height = sprite_get_height(sprite);
         }
         
         //Set draw method

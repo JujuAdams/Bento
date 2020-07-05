@@ -15,8 +15,8 @@ function bento_text(_text)
             //Set our dimensions based on the size of our text in the given font
             var _old_font = draw_get_font();
             draw_set_font(text_font);
-            width  = string_width(_text);
-            height = string_height(_text);
+            source_width  = string_width(_text);
+            source_height = string_height(_text);
             draw_set_font(_old_font);
         }
         

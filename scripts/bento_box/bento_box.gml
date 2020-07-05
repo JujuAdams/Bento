@@ -12,8 +12,8 @@ function bento_box(_width, _height)
             outline_alpha     = 0.0;
             outline_thickness = 1.0;
             
-            width  = _width;
-            height = _height;
+            source_width  = _width;
+            source_height = _height;
         }
         
         //Set draw method
