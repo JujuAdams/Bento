@@ -34,7 +34,10 @@ function __bento_draw_inner()
     //If we're not visible or we're deactivated/destroyed, don't draw us or our children
     if (!property.visible || property.deactivate || property.destroyed) exit;
     
-    if (property.layout_dirty) layout_update();
+    if (property.layout_dirty) resolve_alignment();
+    
+    //Draw our element
+    __bento_call_method(event.draw);
     
     //Update our clipping frame
     var _do_clip = false;
@@ -43,9 +46,6 @@ function __bento_draw_inner()
         _do_clip = true;
         __bento_clip_push(property.bbox_inner, property.clip_new_frame);
     }
-    
-    //Draw our element
-    __bento_call_method(event.draw);
     
     //Draw our children
     var _i = 0;

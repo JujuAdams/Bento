@@ -11,6 +11,7 @@
     {"id":{"name":"bento_box_region","path":"scripts/bento_box_region/bento_box_region.yy",},"order":2,},
     {"id":{"name":"bento_set_view_size","path":"scripts/bento_set_view_size/bento_set_view_size.yy",},"order":0,},
     {"id":{"name":"Notes","path":"notes/Notes/Notes.yy",},"order":5,},
+    {"id":{"name":"bento_class_vec4","path":"scripts/bento_class_vec4/bento_class_vec4.yy",},"order":4,},
     {"id":{"name":"sCheckboxTest","path":"sprites/sCheckboxTest/sCheckboxTest.yy",},"order":7,},
     {"id":{"name":"__bento_system","path":"scripts/__bento_system/__bento_system.yy",},"order":0,},
     {"id":{"name":"__bento_call_method","path":"scripts/__bento_call_method/__bento_call_method.yy",},"order":2,},
@@ -73,8 +74,8 @@
     {"folderPath":"folders/Bento.yy","order":0,"resourceVersion":"1.0","name":"Bento","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Bento/Elements.yy","order":4,"resourceVersion":"1.0","name":"Elements","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Bento/Core.yy","order":2,"resourceVersion":"1.0","name":"Core","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Bento/Core/Helpers.yy","order":4,"resourceVersion":"1.0","name":"Helpers","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Bento/Core/Clipping.yy","order":5,"resourceVersion":"1.0","name":"Clipping","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Bento/Core/Helpers.yy","order":5,"resourceVersion":"1.0","name":"Helpers","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Bento/Core/Clipping.yy","order":6,"resourceVersion":"1.0","name":"Clipping","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":461609314234257646,"resourceVersion":"1.0","name":"audiogroup_default","resourceType":"GMAudioGroup",},

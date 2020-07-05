@@ -16,7 +16,7 @@ function bento_tick(_element, _mouse_x, _mouse_y, _select_state)
     
     with(_element)
     {
-        if (property.layout_dirty) layout_update();
+        if (property.layout_dirty) resolve_alignment();
         
         with(property.__bento_root__)
         {
@@ -101,7 +101,7 @@ function __bento_tick_inner(_mouse_x, _mouse_y)
     //Deactivated/destroyed elements always return <false>
     if (property.deactivate || property.destroyed) return false;
     
-    if (property.layout_dirty) layout_update();
+    if (property.layout_dirty) resolve_alignment();
     
     //Update our clipping frame
     var _do_clip = false;

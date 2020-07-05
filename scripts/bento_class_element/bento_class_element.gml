@@ -16,8 +16,6 @@ function bento_class_element() constructor
         clip_new_frame : false,
         interactive    : false,
         
-        layout_dirty : true,
-        
         source_width      : 0,
         source_height     : 0,
         lock_aspect_ratio : false,
@@ -25,37 +23,13 @@ function bento_class_element() constructor
         color  : c_white,
         alpha  : 1.0,
         
-        outer_space : {
-            l : 0,
-            t : 0,
-            r : 0,
-            b : 0,
-        },
-        inner_space : {
-            l : 0,
-            t : 0,
-            r : 0,
-            b : 0,
-        },
+        outer_space : new bento_class_vec4("outer_space"),
+        inner_space : new bento_class_vec4("inner_space"),
+        bbox_inner  : new bento_class_vec4("bbox_inner" ),
+        bbox_base   : new bento_class_vec4("bbox_base"  ),
+        bbox_outer  : new bento_class_vec4("bbox_outer" ),
         
-        bbox_inner : {
-            l : 0,
-            t : 0,
-            r : 0,
-            b : 0,
-        },
-        bbox_base : {
-            l : 0,
-            t : 0,
-            r : 0,
-            b : 0,
-        },
-        bbox_outer : {
-            l : 0,
-            t : 0,
-            r : 0,
-            b : 0,
-        },
+        layout_dirty : true,
         
         mouse : {
             focus      : false,
@@ -98,7 +72,7 @@ function bento_class_element() constructor
         
     event = {
         tick           : undefined,
-        draw           : undefined, //After clipping, before children
+        draw           : undefined, //Before clipping
         mouse_enter    : undefined,
         mouse_focus    : undefined,
         mouse_leave    : undefined,
@@ -134,8 +108,8 @@ function bento_class_element() constructor
     
     #region Methods
     
-    /// @function layout_update()
-    layout_update = function()
+    /// @function resolve_alignment()
+    resolve_alignment = function()
     {
         var _aspect_ratio = property.source_width/property.source_height;
         
@@ -379,7 +353,7 @@ function bento_class_element() constructor
                 var _child = _array[_i];
                 if (instanceof(_child) == "bento_class_element")
                 {
-                    with(_child) layout_update();
+                    with(_child) resolve_alignment();
                     ++_i;
                 }
                 else
@@ -510,15 +484,11 @@ function bento_class_element() constructor
     {
         with(property)
         {
-            bbox_base.l = bbox_outer.l + outer_space.l;
-            bbox_base.t = bbox_outer.t + outer_space.t;
-            bbox_base.r = bbox_outer.r - outer_space.r;
-            bbox_base.b = bbox_outer.b - outer_space.b;
+            bbox_base.copy(bbox_outer);
+            bbox_base.add_inside(outer_space);
             
-            bbox_inner.l = bbox_base.l + inner_space.l;
-            bbox_inner.t = bbox_base.t + inner_space.t;
-            bbox_inner.r = bbox_base.r - inner_space.r;
-            bbox_inner.b = bbox_base.b - inner_space.b;
+            bbox_inner.copy(bbox_base);
+            bbox_inner.add_inside(inner_space);
         }
     }
     
@@ -527,15 +497,11 @@ function bento_class_element() constructor
     {
         with(property)
         {
-            bbox_outer.l = bbox_base.l - outer_space.l;
-            bbox_outer.t = bbox_base.t - outer_space.t;
-            bbox_outer.r = bbox_base.r + outer_space.r;
-            bbox_outer.b = bbox_base.b + outer_space.b;
+            bbox_outer.copy(bbox_base);
+            bbox_outer.add_outside(outer_space);
             
-            bbox_inner.l = bbox_base.l + inner_space.l;
-            bbox_inner.t = bbox_base.t + inner_space.t;
-            bbox_inner.r = bbox_base.r - inner_space.r;
-            bbox_inner.b = bbox_base.b - inner_space.b;
+            bbox_inner.copy(bbox_base);
+            bbox_inner.add_inside(inner_space);
         }
     }
     
@@ -544,15 +510,11 @@ function bento_class_element() constructor
     {
         with(property)
         {
-            bbox_base.l = bbox_inner.l - inner_space.l;
-            bbox_base.t = bbox_inner.t - inner_space.t;
-            bbox_base.r = bbox_inner.r + inner_space.r;
-            bbox_base.b = bbox_inner.b + inner_space.b;
+            bbox_base.copy(bbox_inner);
+            bbox_base.add_outside(inner_space);
             
-            bbox_outer.l = bbox_base.l - outer_space.l;
-            bbox_outer.t = bbox_base.t - outer_space.t;
-            bbox_outer.r = bbox_base.r + outer_space.r;
-            bbox_outer.b = bbox_base.b + outer_space.b;
+            bbox_outer.copy(bbox_base);
+            bbox_outer.add_outside(outer_space);
         }
     }
     
