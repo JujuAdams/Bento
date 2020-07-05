@@ -1,9 +1,10 @@
 /// @param selfSize
 /// @param targetSize
 /// @param rootSize
+/// @param viewSize
 /// @param offset
 
-function __bento_parse_offset(_s_size, _t_size, _r_size, _offset_input)
+function __bento_parse_offset(_s_size, _t_size, _r_size, _v_size, _offset_input)
 {
     if (is_numeric(_offset_input)) return _offset_input;
     if (!is_string(_offset_input)) return 0;
@@ -60,6 +61,7 @@ function __bento_parse_offset(_s_size, _t_size, _r_size, _offset_input)
                                 case 0: _number *= _s_size/100; break;
                                 case 1: _number *= _t_size/100; break;
                                 case 2: _number *= _r_size/100; break;
+                                case 3: _number *= _v_size/100; break;
                             }
                         }
                         
@@ -98,6 +100,18 @@ function __bento_parse_offset(_s_size, _t_size, _r_size, _offset_input)
                         if (_in_pc)
                         {
                             _pc_type = 2;
+                        }
+                        else
+                        {
+                            throw "";
+                        }
+                    break;
+                    
+                    case "v":
+                    case "V":
+                        if (_in_pc)
+                        {
+                            _pc_type = 3;
                         }
                         else
                         {

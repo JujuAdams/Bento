@@ -18,10 +18,10 @@ function bento_class_element() constructor
         
         layout_dirty : true,
         
-        source_width  : 0,
-        source_height : 0,
-        
+        source_width      : 0,
+        source_height     : 0,
         lock_aspect_ratio : false,
+        
         color  : c_white,
         alpha  : 1.0,
         
@@ -254,7 +254,9 @@ function bento_class_element() constructor
             property.bbox_outer.l = _target.l +
                                     __bento_parse_offset(_outer_w,
                                                          1 + _target.r - _target.l,
-                                                         _root_w, _align_l.offset);
+                                                         _root_w,
+                                                         global.bento_view_width,
+                                                         _align_l.offset);
         }
         
         if (is_struct(_target_t))
@@ -271,7 +273,9 @@ function bento_class_element() constructor
             property.bbox_outer.t = _target.t +
                                     __bento_parse_offset(_outer_h,
                                                          1 + _target.b - _target.t,
-                                                         _root_h, _align_t.offset);
+                                                         _root_h,
+                                                         global.bento_view_height,
+                                                         _align_t.offset);
         }
         
         if (is_struct(_target_r))
@@ -288,7 +292,9 @@ function bento_class_element() constructor
             property.bbox_outer.r = _target.l +
                                     __bento_parse_offset(_outer_w,
                                                          1 + _target.r - _target.l,
-                                                         _root_w, _align_r.offset);
+                                                         _root_w,
+                                                         global.bento_view_width,
+                                                         _align_r.offset);
         }
         
         if (is_struct(_target_b))
@@ -305,7 +311,9 @@ function bento_class_element() constructor
             property.bbox_outer.b = _target.t +
                                     __bento_parse_offset(_outer_h,
                                                          1 + _target.b - _target.t,
-                                                         _root_h, _align_b.offset);
+                                                         _root_h,
+                                                         global.bento_view_height,
+                                                         _align_b.offset);
         }
         
         #endregion

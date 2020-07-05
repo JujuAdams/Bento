@@ -8,6 +8,8 @@ global.__bento_element_count = 0;
 global.__bento_prev          = undefined;
 global.__bento_prev2         = undefined;
 
+global.bento_view_width  = display_get_gui_width();
+global.bento_view_height = display_get_gui_height();
 
 #region Struct/Array manipulation
 
