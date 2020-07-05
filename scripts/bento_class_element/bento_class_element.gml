@@ -220,13 +220,13 @@ function bento_class_element() constructor
         #region If either of our axes have no alignment set up, find the size of our bbox automatically from the source width/height
         
         var _update_from_base = false;
-        if (!is_struct(_target_l) && !is_struct(_target_r))
+        if (!_target_l_valid && !_target_r_valid)
         {
             property.bbox_base.r = property.bbox_base.l + property.source_width;
             _update_from_base = true;
         }
         
-        if (!is_struct(_target_t) && !is_struct(_target_b))
+        if (!_target_t_valid && !_target_b_valid)
         {
             property.bbox_base.b = property.bbox_base.t + property.source_height;
             _update_from_base = true;
@@ -240,7 +240,7 @@ function bento_class_element() constructor
         
         var _update_from_outer = false;
         
-        if (is_struct(_target_l))
+        if (_target_l_valid)
         {
             _update_from_outer = true;
             
@@ -259,7 +259,7 @@ function bento_class_element() constructor
                                                          _align_l.offset);
         }
         
-        if (is_struct(_target_t))
+        if (_target_t_valid)
         {
             _update_from_outer = true;
             
@@ -278,7 +278,7 @@ function bento_class_element() constructor
                                                          _align_t.offset);
         }
         
-        if (is_struct(_target_r))
+        if (_target_r_valid)
         {
             _update_from_outer = true;
             
@@ -297,7 +297,7 @@ function bento_class_element() constructor
                                                          _align_r.offset);
         }
         
-        if (is_struct(_target_b))
+        if (_target_b_valid)
         {
             _update_from_outer = true;
             
@@ -320,10 +320,10 @@ function bento_class_element() constructor
         
         if (_update_from_outer)
         {
-            if (!is_struct(_target_l) && is_struct(_target_r)) property.bbox_outer.l = property.bbox_outer.r - _outer_w;
-            if (!is_struct(_target_t) && is_struct(_target_b)) property.bbox_outer.t = property.bbox_outer.b - _outer_h;
-            if (!is_struct(_target_r) && is_struct(_target_l)) property.bbox_outer.r = property.bbox_outer.l + _outer_w;
-            if (!is_struct(_target_b) && is_struct(_target_t)) property.bbox_outer.b = property.bbox_outer.t + _outer_h;
+            if (!_target_l_valid && _target_r_valid) property.bbox_outer.l = property.bbox_outer.r - _outer_w;
+            if (!_target_t_valid && _target_b_valid) property.bbox_outer.t = property.bbox_outer.b - _outer_h;
+            if (!_target_r_valid && _target_l_valid) property.bbox_outer.r = property.bbox_outer.l + _outer_w;
+            if (!_target_b_valid && _target_t_valid) property.bbox_outer.b = property.bbox_outer.t + _outer_h;
             
             update_from_bbox_outer();
         }
