@@ -1,7 +1,9 @@
 <p align="center"><img src="https://raw.githubusercontent.com/JujuAdams/bento/master/LOGO_small.png" style="display:block; margin:auto; width:300px"></p>
 <h1 align="center">0.0.0</h1>
 
-<p align="center">A modern UI framework for GameMaker Studio 2 by <b>@jujuadams</b><br><br>See https://interfaceingame.com/ for examples of game UI</p>
+<p align="center">A modern UI framework for GameMaker Studio 2 by <b>@jujuadams</b></p>
+<p align="center">Chat about Bento on the <a href="https://discord.gg/8krYCqr">Discord server</a></p>
+<p align="center">See https://interfaceingame.com/ for examples of game UI</p>
 
 &nbsp;
 
