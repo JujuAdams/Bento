@@ -1,6 +1,8 @@
 global.__bento_uniform_clip = shader_get_uniform(__shd_bento_clip, "u_vClip");
 
 global.__bento_clip_drawing = false;
+
+#macro bento_clip   global.__bento_clip
 bento_clip = {
     l : -999999,
     t : -999999,

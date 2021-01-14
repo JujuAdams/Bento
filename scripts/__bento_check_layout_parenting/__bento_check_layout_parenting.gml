@@ -8,7 +8,7 @@ function __bento_check_layout_parenting(_self, _target)
     repeat(array_length(_array))
     {
         var _value = _array[_i];
-        if (is_struct(_value))
+        if (instanceof(_value) == "bento_class_element")
         {
             if (_value == _target) return false;
             if (!__bento_check_layout_parenting(_value, _target)) return false;

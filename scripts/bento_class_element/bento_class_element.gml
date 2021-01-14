@@ -103,6 +103,11 @@ function bento_class_element() constructor
         property.long_name = property.name;
     }
     
+    if (is_struct(bento_group))
+    {
+        bento_group.add(self);
+    }
+    
     global.__bento_prev2 = global.__bento_prev;
     global.__bento_prev  = self;
     
@@ -356,10 +361,14 @@ function bento_class_element() constructor
                     with(_child) resolve_alignment();
                     ++_i;
                 }
+                else if (instanceof(_child) == "bento_class_group")
+                {
+                    with(_child) update();
+                    ++_i;
+                }
                 else
                 {
-                    show_debug_message("Deleting layout child " + string(_child));
-                    __bento_array_delete(_array, _i);
+                    children = __bento_array_delete(_array, _i);
                 }
             }
         }

@@ -16,9 +16,14 @@ function bento_draw(_element)
     
     shader_set(__shd_bento_clip);
     global.__bento_clip_drawing = true; //Make sure __bento_clip_set() knows we want to set the shader uniform
+    global.__bento_offset_set_matrix = false;
+    
     __bento_clip_reset(-999999, -999999, 999999, 999999); //Render everything until we clip!
+    
     with(_element) __bento_draw_inner();
+    
     global.__bento_clip_drawing = false;
+    global.__bento_offset_set_matrix = false;
     
     //Reset the draw state!
     draw_set_color(_old_color);

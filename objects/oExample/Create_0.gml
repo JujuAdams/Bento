@@ -3,7 +3,7 @@ with(box)
 {
     with(property)
     {
-        clip = false;
+        clip = true;
         
         color = c_red;
         alpha = 0.3;
@@ -14,6 +14,8 @@ with(box)
         
         inner_space.clear(5);
     }
+    
+    var _group = bento_group_push();
     
     with(bento_button(sButtonTest))
     {
@@ -64,5 +66,14 @@ with(box)
         align_l_to_target_l(bento_prev);
         align_t_to_target_b(bento_prev);
         align_b_to_target_b(bento_prev, "50%");
+    }
+    
+    bento_group_pop();
+    
+    with(bento_button(sButtonTest))
+    {
+        property.outer_space.clear(5);
+        align_l_to_target_r(_group);
+        align_y_to_target_y(_group);
     }
 }

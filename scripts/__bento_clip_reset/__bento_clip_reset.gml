@@ -3,6 +3,7 @@
 /// @param top
 /// @param right
 /// @param bottom
+
 function __bento_clip_reset(_left, _top, _right, _bottom)
 {
     ds_stack_clear(global.__bento_stack_clip_l);

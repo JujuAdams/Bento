@@ -11,6 +11,7 @@ function bento_tick(_element, _mouse_x, _mouse_y, _select_state)
     }
     
     global.__bento_clip_drawing = false;
+    global.__bento_offset_set_matrix = false;
     
     __bento_clip_reset(-999999, -999999, 999999, 999999);
     

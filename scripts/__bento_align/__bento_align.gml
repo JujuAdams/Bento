@@ -16,5 +16,11 @@ function __bento_align(_struct, _target, _offset)
         offset = _offset;
     }
     
-    if (__bento_array_find(_target.alignment.children, self) < 0) __bento_array_add(_target.alignment.children, self);
+    if (instanceof(_target) == "bento_class_element")
+    {
+        if (__bento_array_find(_target.alignment.children, self) < 0)
+        {
+            __bento_array_add(_target.alignment.children, self);
+        }
+    }
 }
