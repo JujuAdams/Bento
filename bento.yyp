@@ -1,10 +1,19 @@
 {
   "resources": [
+    {"id":{"name":"BentoConstantGet","path":"scripts/BentoConstantGet/BentoConstantGet.yy",},"order":3,},
+    {"id":{"name":"__BentoConfig","path":"scripts/__BentoConfig/__BentoConfig.yy",},"order":0,},
+    {"id":{"name":"__BentoBoxClass","path":"scripts/__BentoBoxClass/__BentoBoxClass.yy",},"order":1,},
+    {"id":{"name":"__BentoSystem","path":"scripts/__BentoSystem/__BentoSystem.yy",},"order":0,},
     {"id":{"name":"fntComicSans","path":"fonts/fntComicSans/fntComicSans.yy",},"order":5,},
     {"id":{"name":"sButtonTest","path":"sprites/sButtonTest/sButtonTest.yy",},"order":6,},
+    {"id":{"name":"BentoCreateRoot","path":"scripts/BentoCreateRoot/BentoCreateRoot.yy",},"order":1,},
+    {"id":{"name":"__BentoFlowCellClass","path":"scripts/__BentoFlowCellClass/__BentoFlowCellClass.yy",},"order":2,},
     {"id":{"name":"oExample","path":"objects/oExample/oExample.yy",},"order":10,},
+    {"id":{"name":"BentoConstantSet","path":"scripts/BentoConstantSet/BentoConstantSet.yy",},"order":2,},
+    {"id":{"name":"BentoTemplateRectangle","path":"scripts/BentoTemplateRectangle/BentoTemplateRectangle.yy",},"order":0,},
     {"id":{"name":"sCheckboxTest","path":"sprites/sCheckboxTest/sCheckboxTest.yy",},"order":7,},
     {"id":{"name":"sTest","path":"sprites/sTest/sTest.yy",},"order":2,},
+    {"id":{"name":"BentoConstantExists","path":"scripts/BentoConstantExists/BentoConstantExists.yy",},"order":4,},
     {"id":{"name":"s9Slice","path":"sprites/s9Slice/s9Slice.yy",},"order":3,},
     {"id":{"name":"s9SliceTest","path":"sprites/s9SliceTest/s9SliceTest.yy",},"order":4,},
     {"id":{"name":"rMain","path":"rooms/rMain/rMain.yy",},"order":11,},
@@ -34,7 +43,11 @@
   "RoomOrderNodes": [
     {"roomId":{"name":"rMain","path":"rooms/rMain/rMain.yy",},},
   ],
-  "Folders": [],
+  "Folders": [
+    {"folderPath":"folders/Bento.yy","order":12,"resourceVersion":"1.0","name":"Bento","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Bento/System.yy","order":6,"resourceVersion":"1.0","name":"System","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Bento/Templates.yy","order":5,"resourceVersion":"1.0","name":"Templates","tags":[],"resourceType":"GMFolder",},
+  ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
   ],

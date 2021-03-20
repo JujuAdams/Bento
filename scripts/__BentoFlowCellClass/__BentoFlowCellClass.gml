@@ -1,0 +1,4 @@
+function __BentoFlowLineClass() constructor
+{
+    
+}

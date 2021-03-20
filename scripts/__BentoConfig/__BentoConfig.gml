@@ -1,0 +1,1 @@
+#macro BENTO_DEFAULT_CLIP_MODE  "surface"
