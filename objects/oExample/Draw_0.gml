@@ -1,1 +1,0 @@
-bento_draw(box);
