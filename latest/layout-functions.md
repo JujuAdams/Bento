@@ -2,7 +2,7 @@
 
 &nbsp;
 
-## `Layout(maxCellsX, maxCellsY, flowDirection, overflowRule)`
+## `Layout(maxCellsX, maxCellsY, flowDirection, flowStart, overflowRule)`
 
 **Returns:** N/A (`undefined`)
 
@@ -10,13 +10,21 @@
 |---------------|--------|------------------------------------------------------------------------|
 |`maxCellsX`    |integer |Maximum width of the layout grid, in cells. Use `infinity` for no limit |
 |`maxCellsY`    |integer |Maximum height of the layout grid, in cells. Use `infinity` for no limit|
-|`flowDirection`|enum    |Member of the `BENTO_FLOW` enum. See below                              |
+|`flowDirection`|enum    |Member of the `BENTO_FLOW_DIRECTION` enum. See below                    |
+|`flowStart`    |enum    |Member of the `BENTO_FLOW_START` enum. See below                        |
 |`overflowRules`|enum    |Member of the `BENTO_OVERFLOW` enum. See below                          |
 
 |Member         |Purpose|
 |---------------|-------|
 |`.ROW_MAJOR`   |       |
 |`.COLUMN_MAJOR`|       |
+
+|Member         |Purpose|
+|---------------|-------|
+|`.TOP_LEFT`    |       |
+|`.TOP_RIGHT`   |       |
+|`.BOTTOM_LEFT` |       |
+|`.BOTTOM_RIGHT`|       |
 
 |Member   |Purpose|
 |---------|-------|
