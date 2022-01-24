@@ -10,7 +10,9 @@
 |--------|--------|---------------------------------------------------------------------------------------------------------------|
 |`[name]`|string  |Optional. If not specified, the name is set to the same as the UUID for the Bento box (i.e. randomly generated)|
 
-This function creates a new Bento box and opens it for editing. Every `BentoOpen()` must have a matching call to `BentoClose()`.
+This function creates a new Bento box and opens it for editing.
+
+!> Every `BentoOpen()` must have a matching call to `BentoClose()`.
 
 &nbsp;
 
