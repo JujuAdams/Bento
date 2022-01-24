@@ -2,7 +2,7 @@
 
 &nbsp;
 
-## `LayoutCanvas(left, top, right, bottom, gutterX, gutterY)`
+## `LayoutCanvas(left, top, right, bottom, overflowX, overflowY)`
 
 **Returns:** N/A (`undefined`)
 
@@ -25,7 +25,7 @@ The `BENTO_OVERFLOW` enum contains the following members:
 
 &nbsp;
 
-## `LayoutGrid(maxCellsX, maxCellsY, flowDirection, flowStart, overflowRule)`
+## `LayoutGrid(maxCellsX, maxCellsY, gutterX, gutterY, flowDirection, flowStart)`
 
 **Returns:** N/A (`undefined`)
 
