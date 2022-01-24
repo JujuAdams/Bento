@@ -9,7 +9,7 @@
 
 Bento supports all GameMaker export modules, including consoles, mobile, and Opera GX. Bento also works on HTML5 but YoYoGames' lacklustre support for this platform can make bug fixing hard if you run into anything. If you'd like to report a bug or suggest a feature, please use the repo's [Issues page](https://github.com/JujuAdams/bento/issues). Bento is constantly being maintained and upgraded; bugs are usually addressed within a few days of being reported.
 
-Bento is built and maintained by [@jujuadams](https://twitter.com/jujuadams) who has a long history of building bespoke UI solutions. Juju's worked on a lot of [commercial GameMaker games](http://www.jujuadams.com/).
+Bento is built and maintained by [@jujuadams](https://twitter.com/jujuadams) who has a long history of building bespoke UI solutions. Juju's worked on a lot of [commercial GameMaker games](http://www.jujuadams.com/) and all of their UI solutions were painful.
 
 This library will never truly be finished because contributions and suggestions from new users are always welcome. Bento wouldn't be the same without [your](https://tenor.com/search/whos-awesome-gifs) input! Make a suggestion on the repo's [Issues page](https://github.com/JujuAdams/bento/issues) if you'd like a feature to be added.
 
