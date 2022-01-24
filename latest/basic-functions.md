@@ -48,14 +48,16 @@ This function sets a special variable on the currently open Bento box for your o
 
 Returns an array of Bento box structs, with their positions and dimensions solved as determined by the layout rules and constraints you have set. The array is flat and not a tree-based. Array elements are structs that contain the following information:
 
-|Member variable|Datatype|Purpose                                                                                                            |
-|---------------|--------|-------------------------------------------------------------------------------------------------------------------|
-|`.name`        |string  |Name of the box, as set by `BentoOpen()`                                                                           |
-|`.uuid`        |string  |UUID for the box, randomly generated and unique                                                                    |
-|`.left`        |number  |Lefthand coordinate for the box, in pixels                                                                         |
-|`.top`         |number  |Top-most coordinate for the box, in pixels                                                                         |
-|`.right`       |number  |Righthand coordinate for the box, in pixels                                                                        |
-|`.bottom`      |number  |Bottom-most coordinate for the box, in pixels                                                                      |
-|`.data`        |any     |The data value set by `BentoData()`, or `undefined` if no data value was set                                       |
-|`.parent`      |string  |UUID for this box's parent. The root element will have a value of `undefined`                                      |
-|`.children`    |array   |Array of UUIDs that enumerate this box's children. If the box has no children this will have a value of `undefined`|
+|Member variable|Datatype|Purpose                                                                                                                               |
+|---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------|
+|`.name`        |string  |Name of the box, as set by `BentoOpen()`                                                                                              |
+|`.uuid`        |string  |UUID for the box, randomly generated and unique                                                                                       |
+|`.left`        |number  |Lefthand coordinate for the box, in pixels                                                                                            |
+|`.top`         |number  |Top-most coordinate for the box, in pixels                                                                                            |
+|`.right`       |number  |Righthand coordinate for the box, in pixels                                                                                           |
+|`.bottom`      |number  |Bottom-most coordinate for the box, in pixels                                                                                         |
+|`.data`        |any     |The data value set by `BentoData()`, or `undefined` if no data value was set                                                          |
+|`.parent`      |string  |UUID for this box's parent. The root element will have a value of `undefined`                                                         |
+|`.children`    |array   |Array of UUIDs that enumerate this box's children. If the box has no children this will have a value of `undefined`                   |
+|`.scrollX`     |struct  |Contains data on the x-axis scroll bar, or `undefined` if none is need. `.min` and `.max` define the limits of the scroll bar's offset|
+|`.scrollY`     |struct  |Contains data on the y-axis scroll bar, or `undefined` if none is need. `.min` and `.max` define the limits of the scroll bar's offset|
