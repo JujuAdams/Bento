@@ -25,7 +25,7 @@ The `BENTO_OVERFLOW` enum contains the following members:
 
 &nbsp;
 
-## `LayoutGrid(maxCellsX, maxCellsY, gutterX, gutterY, flowDirection, flowStart)`
+## `LayoutGrid(maxCellsX, maxCellsY, gutterX, gutterY, flowStart, rowMajor)`
 
 **Returns:** N/A (`undefined`)
 
@@ -35,24 +35,17 @@ The `BENTO_OVERFLOW` enum contains the following members:
 |`maxCellsY`    |integer |Maximum height of the layout grid, in cells. Use `infinity` for no limit|
 |`gutterX`      |number  |Space between columns of children, in pixels                            |
 |`gutterY`      |number  |Space between rows of children, in pixels                               |
-|`flowDirection`|enum    |Member of the `BENTO_FLOW_DIRECTION` enum. See below                    |
 |`flowStart`    |enum    |Member of the `BENTO_FLOW_START` enum. See below                        |
-
-The `BENTO_FLOW_DIRECTION` enum contains the following members:
-
-|Member         |Purpose|
-|---------------|-------|
-|`.ROW_MAJOR`   |       |
-|`.COLUMN_MAJOR`|       |
+|`rowMajor`     |boolean |Whether to place children in the grid by filling rows before columns. Set to `false` to fill columns before rows|
 
 The `BENTO_FLOW_START` enum contains the following members:
 
-|Member         |Purpose|
-|---------------|-------|
-|`.TOP_LEFT`    |       |
-|`.TOP_RIGHT`   |       |
-|`.BOTTOM_LEFT` |       |
-|`.BOTTOM_RIGHT`|       |
+|Member         |Purpose                                                      |
+|---------------|-------------------------------------------------------------|
+|`.TOP_LEFT`    |Fill from the top-left corner towards the bottom-right corner|
+|`.TOP_RIGHT`   |Fill from the top-right corner towards the bottom-left corner|
+|`.BOTTOM_LEFT` |Fill from the bottom-left corner towards the top-right corner|
+|`.BOTTOM_RIGHT`|Fill from the bottom-right corner towards the top-left corner|
 
 &nbsp;
 
@@ -64,4 +57,4 @@ The `BENTO_FLOW_START` enum contains the following members:
 |----|--------|-------|
 |None|        |       |
 
-Forces children to start their layout on the next line. Whether this is a row or column is determined by the flow direction for the layout.
+Forces children to start their layout on the next line. Whether this is a row or column is determined by the `rowMajor` argument for `BentoLayoutGrid()`.
