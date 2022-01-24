@@ -70,8 +70,8 @@ This function is provided for convenience and allows a box to have its width and
 
 ```JS
 //Suggest a fixed width and height for the sprite
-var width  = sprite_get_height(sprite);
-var height = sprite_get_height(sprite);
+var width  = scale*sprite_get_width( sprite);
+var height = scale*sprite_get_height(sprite);
 BentoSuggest("width = " + string(width), "height = " + string(height));
 
 if (keepAspectRatio)
