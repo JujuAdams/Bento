@@ -36,7 +36,7 @@ This function sets a special variable on the currently open Bento box for your o
 
 ## `BentoResult(rootUUID)`
 
-**Returns:** N/A (`undefined`)
+**Returns:** Array, all the boxes defined inside the given root box
 
 |Name      |Datatype|Purpose                                                 |
 |----------|--------|--------------------------------------------------------|
