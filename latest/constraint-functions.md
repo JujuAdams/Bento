@@ -64,7 +64,7 @@ Allows the suggestion of a fixed value for a property.
 |-------------------|------------|----------------------------------------------------------------------------------------------|
 |`sprite`           |sprite index|Sprite to read width and height information from                                              |
 |`[keepAspectRatio]`|boolean     |Optional. Whether to ensure the aspect ratio of the box remaining constant. Defaults to `true`|
-|`[scale]`          |number      |Optional. Suggestd scale for the sprite. Defaults to `1`                                      |
+|`[scale]`          |number      |Optional. Suggested scale for the sprite. Defaults to `1`                                     |
 
 This function is provided for convenience and allows a box to have its width and height set to that of a sprite. Calling this function is equivalent to calling the following code:
 
