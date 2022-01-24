@@ -45,11 +45,8 @@
 
 **Returns:** N/A (`undefined`)
 
-|Name     |Datatype|Purpose                                                                  |
-|---------|--------|-------------------------------------------------------------------------|
-|`left`   |number  |Space to pad around the lefthand side of this box's children, in pixels  |
-|`top`    |number  |Space to pad around the topmost side of this box's children, in pixels   |
-|`right`  |number  |Space to pad around the righthand side of this box's children, in pixels |
-|`bottom` |number  |Space to pad around the bottommost side of this box's children, in pixels|
-|`gutterX`|number  |Space between columns of children, in pixels                             |
-|`gutterY`|number  |Space between rows of children, in pixels                                |
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+Forces children to start their layout on the next line. Whether this is a row or column is determined by the flow direction for the layout.
