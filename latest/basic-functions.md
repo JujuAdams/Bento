@@ -46,7 +46,7 @@ Returns an array of Bento box structs, with their positions and dimensions solve
 
 |Member variable|Datatype|Purpose                                                                                                            |
 |---------------|--------|-------------------------------------------------------------------------------------------------------------------|
-|`.name`        |string  |Name of the box, as set in by `BentoOpen()`                                                                        |
+|`.name`        |string  |Name of the box, as set by `BentoOpen()`                                                                           |
 |`.uuid`        |string  |UUID for the box, randomly generated and unique                                                                    |
 |`.left`        |number  |Lefthand coordinate for the box, in pixels                                                                         |
 |`.top`         |number  |Top-most coordinate for the box, in pixels                                                                         |
