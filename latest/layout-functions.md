@@ -2,29 +2,20 @@
 
 &nbsp;
 
-## `LayoutGrid(maxCellsX, maxCellsY, flowDirection, flowStart, overflowRule)`
+## `LayoutCanvas(left, top, right, bottom, gutterX, gutterY)`
 
 **Returns:** N/A (`undefined`)
 
-|Name           |Datatype|Purpose                                                                 |
-|---------------|--------|------------------------------------------------------------------------|
-|`maxCellsX`    |integer |Maximum width of the layout grid, in cells. Use `infinity` for no limit |
-|`maxCellsY`    |integer |Maximum height of the layout grid, in cells. Use `infinity` for no limit|
-|`flowDirection`|enum    |Member of the `BENTO_FLOW_DIRECTION` enum. See below                    |
-|`flowStart`    |enum    |Member of the `BENTO_FLOW_START` enum. See below                        |
-|`overflowRules`|enum    |Member of the `BENTO_OVERFLOW` enum. See below                          |
+|Name       |Datatype|Purpose                                                                                       |
+|-----------|--------|----------------------------------------------------------------------------------------------|
+|`left`     |number  |Space to pad around the lefthand side of this box's children, in pixels                       |
+|`top`      |number  |Space to pad around the topmost side of this box's children, in pixels                        |
+|`right`    |number  |Space to pad around the righthand side of this box's children, in pixels                      |
+|`bottom`   |number  |Space to pad around the bottommost side of this box's children, in pixels                     |
+|`overflowX`|enum    |Member of the `BENTO_OVERFLOW` enum (see below). Controls the overflow behaviour in the x-axis|
+|`overflowY`|enum    |Member of the `BENTO_OVERFLOW` enum (see below). Controls the overflow behaviour in the y-axis|
 
-|Member         |Purpose|
-|---------------|-------|
-|`.ROW_MAJOR`   |       |
-|`.COLUMN_MAJOR`|       |
-
-|Member         |Purpose|
-|---------------|-------|
-|`.TOP_LEFT`    |       |
-|`.TOP_RIGHT`   |       |
-|`.BOTTOM_LEFT` |       |
-|`.BOTTOM_RIGHT`|       |
+The `BENTO_OVERFLOW` enum contains the following members:
 
 |Member   |Purpose|
 |---------|-------|
@@ -34,22 +25,38 @@
 
 &nbsp;
 
-## `LayoutPadding(left, top, right, bottom, gutterX, gutterY)`
+## `LayoutGrid(maxCellsX, maxCellsY, flowDirection, flowStart, overflowRule)`
 
 **Returns:** N/A (`undefined`)
 
-|Name     |Datatype|Purpose                                                                  |
-|---------|--------|-------------------------------------------------------------------------|
-|`left`   |number  |Space to pad around the lefthand side of this box's children, in pixels  |
-|`top`    |number  |Space to pad around the topmost side of this box's children, in pixels   |
-|`right`  |number  |Space to pad around the righthand side of this box's children, in pixels |
-|`bottom` |number  |Space to pad around the bottommost side of this box's children, in pixels|
-|`gutterX`|number  |Space between columns of children, in pixels                             |
-|`gutterY`|number  |Space between rows of children, in pixels                                |
+|Name           |Datatype|Purpose                                                                 |
+|---------------|--------|------------------------------------------------------------------------|
+|`maxCellsX`    |integer |Maximum width of the layout grid, in cells. Use `infinity` for no limit |
+|`maxCellsY`    |integer |Maximum height of the layout grid, in cells. Use `infinity` for no limit|
+|`gutterX`      |number  |Space between columns of children, in pixels                            |
+|`gutterY`      |number  |Space between rows of children, in pixels                               |
+|`flowDirection`|enum    |Member of the `BENTO_FLOW_DIRECTION` enum. See below                    |
+|`flowStart`    |enum    |Member of the `BENTO_FLOW_START` enum. See below                        |
+
+The `BENTO_FLOW_DIRECTION` enum contains the following members:
+
+|Member         |Purpose|
+|---------------|-------|
+|`.ROW_MAJOR`   |       |
+|`.COLUMN_MAJOR`|       |
+
+The `BENTO_FLOW_START` enum contains the following members:
+
+|Member         |Purpose|
+|---------------|-------|
+|`.TOP_LEFT`    |       |
+|`.TOP_RIGHT`   |       |
+|`.BOTTOM_LEFT` |       |
+|`.BOTTOM_RIGHT`|       |
 
 &nbsp;
 
-## `LayoutLinebreak()`
+## `LayoutGridLinebreak()`
 
 **Returns:** N/A (`undefined`)
 
