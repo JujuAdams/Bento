@@ -2,7 +2,7 @@
 
 &nbsp;
 
-## `Layout(maxCellsX, maxCellsY, flowDirection, flowStart, overflowRule)`
+## `LayoutGrid(maxCellsX, maxCellsY, flowDirection, flowStart, overflowRule)`
 
 **Returns:** N/A (`undefined`)
 
