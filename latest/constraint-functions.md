@@ -77,7 +77,7 @@ BentoSuggest("width = " + string(width), "height = " + string(height));
 if (keepAspectRatio)
 {
     //If we want to keep a fixed aspect ratio, also add a constraint to ensure that
-    var _aspectRatio = _width / _height;
-    BentoConstraint("width = " + string(_aspectRatio) + "*height");
+    var aspectRatio = width / height;
+    BentoConstraint("width = " + string(aspectRatio) + "*height");
 }
 ```
