@@ -56,7 +56,7 @@ Allows the suggestion of a fixed value for a property.
 
 &nbsp;
 
-## `BentoSprite(sprite, [keepAspectRatio=true], [scale=1])`
+## `BentoTemplateSprite(sprite, [keepAspectRatio=true], [scale=1])`
 
 **Returns:** N/A (`undefined`)
 
