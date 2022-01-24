@@ -4,21 +4,23 @@
 
 ## `BentoOpen([name])`
 
-**Returns:** String, the UUID for the Bento box
+**Returns:** Struct, an internal representation of a new Bento box
 
 |Name    |Datatype|Purpose                                                                                                        |
 |--------|--------|---------------------------------------------------------------------------------------------------------------|
 |`[name]`|string  |Optional. If not specified, the name is set to the same as the UUID for the Bento box (i.e. randomly generated)|
 
+This function creates a new Bento box and opens it for editing. Every `BentoOpen()` must have a matching call to `BentoClose()`.
+
 &nbsp;
 
 ## `BentoClose()`
 
-**Returns:** String, the UUID for the Bento box
+**Returns:** Struct, the Bento box created by the matching `BentoOpen()`
 
-|Name   |Datatype|Purpose      |
-|-------|--------|-------------|
-|`value`|any     |Value to test|
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
 
 &nbsp;
 
@@ -34,13 +36,13 @@ This function sets a special variable on the currently open Bento box for your o
 
 &nbsp;
 
-## `BentoResult(rootUUID)`
+## `BentoResult(rootStruct)`
 
 **Returns:** Array, all the boxes defined inside the given root box
 
-|Name      |Datatype|Purpose                                                 |
-|----------|--------|--------------------------------------------------------|
-|`rootUUID`|string  |The UUID for the root box, as returned by `BentoClose()`|
+|Name       |Datatype|Purpose                                                                             |
+|-----------|--------|------------------------------------------------------------------------------------|
+|`rootStruct`|struct |The srruct for the root box, as returned by `BentoOpen()` or `BentoClose()`|
 
 Returns an array of Bento box structs, with their positions and dimensions solved as determined by the layout rules and constraints you have set. The array is flat and not a tree-based. Array elements are structs that contain the following information:
 
