@@ -46,15 +46,3 @@ The `BENTO_FLOW_START` enum contains the following members:
 |`.TOP_RIGHT`   |Fill from the top-right corner towards the bottom-left corner|
 |`.BOTTOM_LEFT` |Fill from the bottom-left corner towards the top-right corner|
 |`.BOTTOM_RIGHT`|Fill from the bottom-right corner towards the top-left corner|
-
-&nbsp;
-
-## `BentoLayoutGridLinebreak()`
-
-**Returns:** N/A (`undefined`)
-
-|Name|Datatype|Purpose|
-|----|--------|-------|
-|None|        |       |
-
-Forces children to start their layout on the next line. Whether this is a row or column is determined by the `rowMajor` argument for `BentoLayoutGrid()`.
