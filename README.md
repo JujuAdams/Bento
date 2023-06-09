@@ -1,7 +1,7 @@
 <p align="center"><img src="https://raw.githubusercontent.com/JujuAdams/bento/master/LOGO_small.png" style="display:block; margin:auto; width:300px"></p>
 <h1 align="center">0.0.0</h1>
 
-<p align="center">Cross-platform UI framework GameMaker Studio 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a></p>
+<p align="center">Cross-platform UI framework for GameMaker Studio 2022 LTS by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a></p>
 
 &nbsp;
 
