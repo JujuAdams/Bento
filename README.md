@@ -7,6 +7,7 @@
 
 &nbsp;
 
+- ### [Download the .yymps](https://github.com/JujuAdams/input/releases/)
 - ### Talk about Bento on the [Discord server](https://discord.gg/8krYCqr)
 - ### You may also like [Emu](https://github.com/DragoniteSpam/Emu), [YUI](https://github.com/shdwcat/YUI), and [SimpleUI](https://github.com/evolutionleo/SimpleUI)
 - ### See https://interfaceingame.com/ for examples of game UI
