@@ -2,10 +2,24 @@
 
 ## identifier
 
-Dataype: `string`
-Default: varies; automatically generated
-Get: ✅
-Set: ✅
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>number</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Default</td>
+    	<td align="right">Varies; automatically generated</td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">✅</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -25,10 +39,24 @@ TODO lol
 
 ## active
 
-Dataype: `boolean`
-Default `true`
-Get: ✅
-Set: ✅
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>boolean</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Default</td>
+    	<td align="right"><code>true</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">✅</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -46,12 +74,26 @@ TODO lol
 
 &nbsp;
 
-## identifier
+## visible
 
-Dataype: `boolean`
-Default: `true`
-Get: ✅
-Set: ✅
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>boolean</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Default</td>
+    	<td align="right"><code>true</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">✅</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
