@@ -5,7 +5,7 @@
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>boolean</code></td>
+    	<td>string</td>
 	</tr>
     <tr>
     	<td>Default</td>
@@ -42,7 +42,7 @@ TODO lol
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>boolean</code></td>
+    	<td>boolean</td>
 	</tr>
     <tr>
     	<td>Default</td>
@@ -79,7 +79,7 @@ TODO lol
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>boolean</code></td>
+    	<td>boolean</td>
 	</tr>
     <tr>
     	<td>Default</td>
