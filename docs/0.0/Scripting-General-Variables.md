@@ -4,20 +4,20 @@
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>number</code></td>
+    	<td>Datatype</td>
+    	<td><code>boolean</code></td>
 	</tr>
     <tr>
-    	<td align="right">Default</td>
-    	<td align="right">Varies; automatically generated</td>
+    	<td>Default</td>
+    	<td>Varies; automatically generated</td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">✅</td>
+    	<td>Set</td>
+    	<td>✅</td>
 	</tr>
 </table>
 
@@ -41,20 +41,20 @@ TODO lol
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>boolean</code></td>
+    	<td>Datatype</td>
+    	<td><code>boolean</code></td>
 	</tr>
     <tr>
-    	<td align="right">Default</td>
-    	<td align="right"><code>true</code></td>
+    	<td>Default</td>
+    	<td><code>true</code></td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">✅</td>
+    	<td>Set</td>
+    	<td>✅</td>
 	</tr>
 </table>
 
@@ -78,20 +78,20 @@ TODO lol
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>boolean</code></td>
+    	<td>Datatype</td>
+    	<td><code>boolean</code></td>
 	</tr>
     <tr>
-    	<td align="right">Default</td>
-    	<td align="right"><code>true</code></td>
+    	<td>Default</td>
+    	<td><code>true</code></td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">✅</td>
+    	<td>Set</td>
+    	<td>✅</td>
 	</tr>
 </table>
 
