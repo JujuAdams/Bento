@@ -2,9 +2,20 @@
 
 ## drawLeft
 
-Dataype: `number`
-Get: ✅
-Set: ❌
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>number</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">❌</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -24,9 +35,20 @@ TODO lol
 
 ## drawTop
 
-Dataype: `number`
-Get: ✅
-Set: ❌
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>number</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">❌</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -46,9 +68,20 @@ TODO lol
 
 ## drawRight
 
-Dataype: `number`
-Get: ✅
-Set: ❌
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>number</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">❌</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -68,9 +101,20 @@ TODO lol
 
 ## drawBottom
 
-Dataype: `number`
-Get: ✅
-Set: ❌
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>number</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">❌</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -90,9 +134,20 @@ TODO lol
 
 ## drawX
 
-Dataype: `number`
-Get: ✅
-Set: ❌
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>number</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">❌</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -112,9 +167,20 @@ TODO lol
 
 ## drawY
 
-Dataype: `number`
-Get: ✅
-Set: ❌
+<table>
+    <tr>
+    	<td align="right">Datatype</td>
+    	<td align="right"><code>number</code></td>
+	</tr>
+    <tr>
+    	<td align="right">Get</td>
+    	<td align="right">✅</td>
+	</tr>
+    <tr>
+    	<td align="right">Set</td>
+    	<td align="right">❌</td>
+	</tr>
+</table>
 
 <!-- tabs:start -->
 
