@@ -15,7 +15,7 @@
 - [Local Position Variables](Scripting-Local-Position-Variables)
 - [World Position Variables](Scripting-World-Position-Variables)
 - [Draw Position Variables](Scripting-Draw-Position-Variables)
-- [Parent/Child Variables](Scripting-Parent-Child-Variables)
+- [Parent & Child Variables](Scripting-Parent-Child-Variables)
 - [Hover Callbacks](Scripting-Hover-Callbacks)
 - [Focus Callbacks](Scripting-Focus-Callbacks)
 - [Button Callbacks](Scripting-Button-Callbacks)
