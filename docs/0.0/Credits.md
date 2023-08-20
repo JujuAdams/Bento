@@ -10,7 +10,7 @@ You can get your name on this page too! Contributions are welcome on [GitHub](ht
 
 &nbsp;
 
-<p align="center">Input is brought to you by:</a>
+<p align="center">Bento is brought to you by:</a>
 
 &nbsp;
 
