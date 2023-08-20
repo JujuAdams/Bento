@@ -1,69 +1,30 @@
 - [Home](README)
-- [Alternatives](Alternatives)
-- [Newbie Guide](Newbie-Guide)
-- [Multiplayer Guide](Multiplayer-Guide)
-- [Changes From v5](Changes-from-v5)
+- [Setting Up](Setting-Up)
 - [Credits](Credits)
 
 ---
 
-**Concepts**
-
-- [Verbs and Bindings](Verbs-and-Bindings)
-- [Input Sources](Input-Sources)
-- [Source Modes](Source-Modes)
-- [Profiles](Profiles)
-- [Library Constants](Library-Constants)
-- [Binding Names](Binding-Names)
+- [Box Template](Template-Box)
+- [Rectangle Template](Template-Rectangle)
 
 ---
 
-**Setting Up**
-
-- [Importing The Library](Importing-The-Library)
-- [Config Macros](Config-Macros)
-- [Steamworks](Steamworks)
-- [Icon Config](Icon-Config)
+- [Scripting Overview](Scripting-Overview)
+- [Script Structure](Script-Structure)
+- [General Variables](Scripting-General-Variables)
+- [Local Position Variables](Scripting-Local-Position-Variables)
+- [World Position Variables](Scripting-World-Position-Variables)
+- [Draw Position Variables](Scripting-Draw-Position-Variables)
+- [Parent/Child Variables](Scripting-Parent-Child-Variables)
+- [Hover Callbacks](Scripting-Hover-Callbacks)
+- [Focus Callbacks](Scripting-Focus-Callbacks)
+- [Button Callbacks](Scripting-Button-Callbacks)
+- [Tick Callbacks](Scripting-Tick-Callbacks)
+- [Layout Callbacks](Scripting-Layout-Callbacks)
+- [Methods](Scripting-Methods)
 
 ---
 
-**Further Reading**
-
-- [Input Quirks](Input-Quirks)
-- [Gamepad Troubleshooting](Gamepad-Troubleshooting)
-- [Common Keyboard Combos](Common-Keyboard-Combos)
-
----
-
-**API**
-
-- [Checking Verbs](Functions-(Checkers))
-- [2D Checkers](Functions-(2D-Checkers))
-- [Advanced Checkers](Functions-(Advanced-Checkers))
-- [Further Verb Functions](Functions-(Further-Verbs))
-- [Binding Creators](Functions-(Binding-Creators))
-- [Binding Access](Functions-(Binding-Access))
-- [Binding Scanner](Functions-(Binding-Scan))
-- [Icons](Functions-(Icons))
-- [Cursor](Functions-(Cursor))
-- [Cursor Control](Functions-(Cursor-Control))
-- [Mouse Capture](Functions-(Mouse-Capture))
-- [Accessibility](Functions-(Accessibility))
-- [Exporting & Importing](Functions-(Exporting-and-Importing))
-- [Virtual Buttons](Functions-(Virtual-Buttons))
-- [VButton Setup](Functions-(Virtual-Button-Setup))
-- [VButton Properties](Functions-(Virtual-Button-Properties))
-- [VButton Checkers](Functions-(Virtual-Button-Checkers))
-- [VButton History](Functions-(Virtual-Button-History))
-- [Players](Functions-(Players))
-- [Profiles](Functions-(Profiles))
-- [Source Modes](Functions-(Source-Modes))
-- [Sources](Functions-(Sources))
-- [Vibration](Functions-(Vibration))
-- [Color](Functions-(Color))
-- [Gyro & Motion](Functions-(Gyro-And-Motion))
-- [Trigger Effects](Functions-(Trigger-Effects))
-- [Other](Functions-(Other))
-- [Mouse (Direct)](Functions-(Mouse))
-- [Gamepad (Direct)](Functions-(Gamepad))
-- [Keyboard (Direct)](Functions-(Keyboard))
+- [Building Using GML](Building-Using-GML)
+- [UI Interaction](UI-Interaction)
+- [Pointer Getters](Pointer-Getters)
