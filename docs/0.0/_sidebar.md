@@ -1,4 +1,5 @@
 - [Home](README)
+- [Alternatives](Alternatives)
 - [Setting Up](Setting-Up)
 - [Credits](Credits)
 
