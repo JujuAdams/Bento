@@ -5,7 +5,7 @@
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>number</code></td>
+    	<td>number</td>
 	</tr>
     <tr>
     	<td>Get</td>
@@ -19,11 +19,11 @@
 
 <!-- tabs:start -->
 
-#### **Description**
+#### **Summary**
 
 
 
-#### **Example**
+#### **Usage**
 
 ```gml
 TODO lol
@@ -38,7 +38,7 @@ TODO lol
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>number</code></td>
+    	<td>number</td>
 	</tr>
     <tr>
     	<td>Get</td>
@@ -52,11 +52,11 @@ TODO lol
 
 <!-- tabs:start -->
 
-#### **Description**
+#### **Summary**
 
 
 
-#### **Example**
+#### **Usage**
 
 ```gml
 TODO lol
@@ -71,7 +71,7 @@ TODO lol
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>number</code></td>
+    	<td>number</td>
 	</tr>
     <tr>
     	<td>Get</td>
@@ -85,11 +85,11 @@ TODO lol
 
 <!-- tabs:start -->
 
-#### **Description**
+#### **Summary**
 
 
 
-#### **Example**
+#### **Usage**
 
 ```gml
 TODO lol
@@ -104,7 +104,7 @@ TODO lol
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>number</code></td>
+    	<td>number</td>
 	</tr>
     <tr>
     	<td>Get</td>
@@ -118,11 +118,11 @@ TODO lol
 
 <!-- tabs:start -->
 
-#### **Description**
+#### **Summary**
 
 
 
-#### **Example**
+#### **Usage**
 
 ```gml
 TODO lol
@@ -137,7 +137,7 @@ TODO lol
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>number</code></td>
+    	<td>number</td>
 	</tr>
     <tr>
     	<td>Get</td>
@@ -151,11 +151,11 @@ TODO lol
 
 <!-- tabs:start -->
 
-#### **Description**
+#### **Summary**
 
 
 
-#### **Example**
+#### **Usage**
 
 ```gml
 TODO lol
@@ -170,7 +170,7 @@ TODO lol
 <table>
     <tr>
     	<td>Datatype</td>
-    	<td><code>number</code></td>
+    	<td>number</td>
 	</tr>
     <tr>
     	<td>Get</td>
@@ -184,11 +184,11 @@ TODO lol
 
 <!-- tabs:start -->
 
-#### **Description**
+#### **Summary**
 
 
 
-#### **Example**
+#### **Usage**
 
 ```gml
 TODO lol
