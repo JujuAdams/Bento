@@ -4,19 +4,19 @@
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>string</td>
 	</tr>
     <tr>
-    	<td>Default</td>
+    	<td><b>Default</b></td>
     	<td>Varies; automatically generated</td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>✅</td>
 	</tr>
 </table>
@@ -41,19 +41,19 @@ TODO lol
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>boolean</td>
 	</tr>
     <tr>
-    	<td>Default</td>
+    	<td><b>Default</b></td>
     	<td><code>true</code></td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>✅</td>
 	</tr>
 </table>
@@ -78,19 +78,19 @@ TODO lol
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>boolean</td>
 	</tr>
     <tr>
-    	<td>Default</td>
+    	<td><b>Default</b></td>
     	<td><code>true</code></td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>✅</td>
 	</tr>
 </table>

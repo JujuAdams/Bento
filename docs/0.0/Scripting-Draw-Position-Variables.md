@@ -4,15 +4,15 @@
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>number</td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>❌</td>
 	</tr>
 </table>
@@ -37,15 +37,15 @@ TODO lol
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>number</td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>❌</td>
 	</tr>
 </table>
@@ -70,15 +70,15 @@ TODO lol
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>number</td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>❌</td>
 	</tr>
 </table>
@@ -103,15 +103,15 @@ TODO lol
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>number</td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>❌</td>
 	</tr>
 </table>
@@ -136,15 +136,15 @@ TODO lol
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>number</td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>❌</td>
 	</tr>
 </table>
@@ -169,15 +169,15 @@ TODO lol
 
 <table>
     <tr>
-    	<td>Datatype</td>
+    	<td><b>Datatype</b></td>
     	<td>number</td>
 	</tr>
     <tr>
-    	<td>Get</td>
+    	<td><b>Get</b></td>
     	<td>✅</td>
 	</tr>
     <tr>
-    	<td>Set</td>
+    	<td><b>Set</b></td>
     	<td>❌</td>
 	</tr>
 </table>
