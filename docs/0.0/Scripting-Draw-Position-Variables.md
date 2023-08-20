@@ -4,16 +4,16 @@
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>number</code></td>
+    	<td>Datatype</td>
+    	<td><code>number</code></td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">❌</td>
+    	<td>Set</td>
+    	<td>❌</td>
 	</tr>
 </table>
 
@@ -37,16 +37,16 @@ TODO lol
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>number</code></td>
+    	<td>Datatype</td>
+    	<td><code>number</code></td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">❌</td>
+    	<td>Set</td>
+    	<td>❌</td>
 	</tr>
 </table>
 
@@ -70,16 +70,16 @@ TODO lol
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>number</code></td>
+    	<td>Datatype</td>
+    	<td><code>number</code></td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">❌</td>
+    	<td>Set</td>
+    	<td>❌</td>
 	</tr>
 </table>
 
@@ -103,16 +103,16 @@ TODO lol
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>number</code></td>
+    	<td>Datatype</td>
+    	<td><code>number</code></td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">❌</td>
+    	<td>Set</td>
+    	<td>❌</td>
 	</tr>
 </table>
 
@@ -136,16 +136,16 @@ TODO lol
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>number</code></td>
+    	<td>Datatype</td>
+    	<td><code>number</code></td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">❌</td>
+    	<td>Set</td>
+    	<td>❌</td>
 	</tr>
 </table>
 
@@ -169,16 +169,16 @@ TODO lol
 
 <table>
     <tr>
-    	<td align="right">Datatype</td>
-    	<td align="right"><code>number</code></td>
+    	<td>Datatype</td>
+    	<td><code>number</code></td>
 	</tr>
     <tr>
-    	<td align="right">Get</td>
-    	<td align="right">✅</td>
+    	<td>Get</td>
+    	<td>✅</td>
 	</tr>
     <tr>
-    	<td align="right">Set</td>
-    	<td align="right">❌</td>
+    	<td>Set</td>
+    	<td>❌</td>
 	</tr>
 </table>
 
