@@ -2,6 +2,10 @@
 
 ## drawLeft
 
+<!-- tabs:start -->
+
+#### **Summary**
+
 <table>
     <tr>
     	<td><b>Datatype</b></td>
@@ -16,10 +20,6 @@
     	<td>❌</td>
 	</tr>
 </table>
-
-<!-- tabs:start -->
-
-#### **Summary**
 
 
 
@@ -35,6 +35,10 @@ TODO lol
 
 ## drawTop
 
+<!-- tabs:start -->
+
+#### **Summary**
+
 <table>
     <tr>
     	<td><b>Datatype</b></td>
@@ -49,10 +53,6 @@ TODO lol
     	<td>❌</td>
 	</tr>
 </table>
-
-<!-- tabs:start -->
-
-#### **Summary**
 
 
 
@@ -68,6 +68,10 @@ TODO lol
 
 ## drawRight
 
+<!-- tabs:start -->
+
+#### **Summary**
+
 <table>
     <tr>
     	<td><b>Datatype</b></td>
@@ -82,10 +86,6 @@ TODO lol
     	<td>❌</td>
 	</tr>
 </table>
-
-<!-- tabs:start -->
-
-#### **Summary**
 
 
 
@@ -101,6 +101,10 @@ TODO lol
 
 ## drawBottom
 
+<!-- tabs:start -->
+
+#### **Summary**
+
 <table>
     <tr>
     	<td><b>Datatype</b></td>
@@ -115,10 +119,6 @@ TODO lol
     	<td>❌</td>
 	</tr>
 </table>
-
-<!-- tabs:start -->
-
-#### **Summary**
 
 
 
@@ -134,6 +134,10 @@ TODO lol
 
 ## drawX
 
+<!-- tabs:start -->
+
+#### **Summary**
+
 <table>
     <tr>
     	<td><b>Datatype</b></td>
@@ -148,10 +152,6 @@ TODO lol
     	<td>❌</td>
 	</tr>
 </table>
-
-<!-- tabs:start -->
-
-#### **Summary**
 
 
 
@@ -167,6 +167,10 @@ TODO lol
 
 ## drawY
 
+<!-- tabs:start -->
+
+#### **Summary**
+
 <table>
     <tr>
     	<td><b>Datatype</b></td>
@@ -181,10 +185,6 @@ TODO lol
     	<td>❌</td>
 	</tr>
 </table>
-
-<!-- tabs:start -->
-
-#### **Summary**
 
 
 
