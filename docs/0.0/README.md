@@ -7,6 +7,7 @@
 
 &nbsp;
 
+- ### [Download the .yymps](https://github.com/JujuAdams/input/releases/)
 - ### Talk about Bento on the [Discord server](https://discord.gg/8krYCqr)
 - ### See https://interfaceingame.com/ for examples of game UI
 
