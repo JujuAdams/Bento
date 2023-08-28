@@ -26,6 +26,6 @@
 
 ---
 
-- [Building Using GML](Building-Using-GML)
+- [Building From GML](Building-From-GML)
 - [UI Interaction](UI-Interaction)
 - [Pointer Getters](Pointer-Getters)
