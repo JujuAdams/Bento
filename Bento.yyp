@@ -81,7 +81,6 @@
     {"id":{"name":"oTest","path":"objects/oTest/oTest.yy",},"order":2,},
     {"id":{"name":"__BentoNullableRefCall","path":"scripts/__BentoNullableRefCall/__BentoNullableRefCall.yy",},"order":1,},
     {"id":{"name":"BentoClassSprite","path":"scripts/BentoClassSprite/BentoClassSprite.yy",},"order":11,},
-    {"id":{"name":"House Scripting Style","path":"notes/House Scripting Style/House Scripting Style.yy",},"order":1,},
     {"id":{"name":"__BentoScriptScopePop","path":"scripts/__BentoScriptScopePop/__BentoScriptScopePop.yy",},"order":3,},
     {"id":{"name":"__BentoNullableRefEquals","path":"scripts/__BentoNullableRefEquals/__BentoNullableRefEquals.yy",},"order":4,},
     {"id":{"name":"__BentoClassCallback","path":"scripts/__BentoClassCallback/__BentoClassCallback.yy",},"order":0,},
