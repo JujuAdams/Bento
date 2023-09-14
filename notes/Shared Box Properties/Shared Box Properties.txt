@@ -1,0 +1,82 @@
+The shared UI class is an internal constructor that can be accessed using the BentoClassShared() macro.
+In general, you should try to build new custom constructors by inheriting from directly relevant
+constructors. For example, when creating a custom button then you should inherit from BentoClassButton
+rather than try to build your own functionality from BentoClassShared(). This reduces boilerplate and means
+that any future updates to default library behaviour will automatically be reflected in your custom
+UI constructors.
+
+However, all default UI constructors will eventually inherit from BentoClassShared() as the sole common
+ancestor. This means that all default boxes share the same basic capabilities. Below is
+a list of what those capabilities are.
+
+General utility:
+  GET & SET  identifier
+  GET & SET  active
+  GET & SET  visible
+
+Local coordinates (i.e. relative to parent's top-left corner):
+  GET & SET  left
+  GET & SET  top
+  GET & SET  right
+  GET & SET  bottom
+  GET & SET  width
+  GET & SET  height
+  GET & SET  ltrb
+  GET & SET  size
+  GET & SET  xy
+
+World coordinates (absolute):
+  GET & SET  worldLeft
+  GET & SET  worldTop
+  GET & SET  worldRight
+  GET & SET  worldBottom
+
+Coordinates for use when drawing:
+  GET        drawLeft
+  GET        drawTop
+  GET        drawRight
+  GET        drawBottom
+
+Parent/child-related variables:
+  GET        parent
+  GET        children
+  GET        childMinLeft
+  GET        childMinTop
+  GET        childMaxRight
+  GET        childMacBottom
+
+Callback assignment. If used, the following must be set to functions:
+        SET  press
+        SET  hold
+        SET  release
+        SET  click
+        SET  canCapture
+        SET  captureClick
+        SET  captureCast
+        SET  enter
+        SET  over
+        SET  leave
+        SET  step
+        SET  draw
+        SET  canHighlight
+        SET  onClose
+        SET  layoutVerticalList
+        SET  layoutHorizontalList
+        SET  layout
+        SET  layoutCheck
+
+boxes also all have a selection of methods that can be executed:
+  GetIdentifier()
+  SetIdentifier()
+  GetType()
+  GetUUID()
+  GetHighlight()
+  GetButton()
+  Find(identifier)
+  CallbackSet(state)
+  HighlightStateSet(state)
+  ButtonStateSet(state)
+  VariableBind(variableName, getterFunc, setterFun)
+  Get(variableName)
+  Set(variableName, value)
+  ReplaceFROMfile(path)

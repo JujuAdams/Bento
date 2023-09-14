@@ -1,0 +1,121 @@
+This is a preview release of Bento. In lieu of proper documentation, I hope some text files will
+be enough to communicate what Bento is all about.
+
+Bento, like all of my libraries, is the product of years of experience cleaning up existing UI
+solutions multiplied by the frustration of GameMaker lacking native tools. I also find visual
+WYSIWYG tools to function poorly in situations with a lot of dynamic content, such as a game.
+Bento eschews a visual layout tool for pure code, albeit convenient and low friction code. This
+reduces the learning curve, reduces maintenance, reduces the size of the library, and reduces the
+effort required to ship Bento itself. GameMaker is very much a "write a line of code, see the
+results" sort of game engine and Bento shares that ethos.
+
+Bento has the following goals:
+  - To build user interfaces that are suitable for players to see and use.
+  - To offer a foundations for thorough customisation, both visual and functional.
+  - To to meet the needs of commercial games.
+  - To work well cross-platform with the minimum of effort on behalf of the developer.
+  - To be easy and fast to use.
+  - To enable limited reactive interface design.
+
+There is still plenty of work to be done to achieve these goals, especially with gamepad/keyboard
+support. Right now, Bento is intended primarily for use with mouse- and touch-driven interfaces.
+Debugging in Bento is also challenging at this time. Patience and low expectations are recommended.
+
+
+
+The basic architecture of Bento is centred around "boxes". Boxes are user interface elements -
+containers, buttons, text, sliders, scrollboxes etc. Boxes are stored hierarchically in a tree;
+each box can itself have child boxes and so on. Boxes that are found further down the tree will
+be drawn last i.e. parent boxes are drawn underneath child boxes.
+
+Boxes can be visible or invisible. Consider a container that holds a list of buttons for a main
+menu. This container might be invisible but still has an important role to play in determining the
+final layout of a main menu. Boxes contain state. They can track whether they've been highlighted,
+what their position is, any animation values, and so on. Boxes can be moved from parent to parent
+easily, and in doing so it's possible to create drag-and-drop behaviours. If you'd like to expand
+upon what boxes can do then you are invited (and encouraged!) to extend existing Bento templates
+to achieve what you want.
+
+Boxes are created by instantiating copies of box templates. Box templates are implemented as GML
+constructor functions that can be invoked through Bento scripts. You can find the code for box
+templates in the "Templates" folder in the asset browser inside the main Bento folder. Each
+template is registered with Bento by calling BentoAddBoxType() at the top of the script. Box
+templates inherit from an existing template, and template inheritance will eventually reach the
+shared common ancestor, BentoClassShared(). Each box template will have its own properties, but
+they all share a core set of behaviour.
+
+If you'd like to expand upon the native Bento box templates then all you need to do is:
+  1. Create a new constructor
+  2. Inherit from an existing box template constructor function
+  3. Call BentoAddBoxType()
+You can even override the box templates that Bento ships with by reusing the template name.
+
+
+
+Something that has been challenging for me in the past is building reliable modals and tooltips.
+UI solutions that I've used on commercial projects are typically messy with a lot of tangled code
+to control what can and cannot receive player input. Bento boils this down to a simple layer
+system.
+
+Each layer acts as an invisible "root box" for a tree of boxes, as described above. A layer will
+always be invisible. Layers will inherit the size and position of the left-top-right-bottom (LTRB)
+box defined using BentoHostLTRB(). Be warned! Changing the LTRB box with BentoHostLTRB() after
+creating layers will not automatically update those layers. Because layers inheritently have a size
+and shape, they can be used to influence box positioning. With some careful consideration, this can
+be used to achieve reactive interfaces that respond to the size and shape of the player's device.
+
+Layers have unique names. If you try to rename a layer to use an already existing name then the
+previous layer will unceremoniously be deleted entirely. Be careful and ensure you keep a clear
+idea in your head of the layer structure of your interface!
+
+Layers are designed to be used dynamically; they should be created and deleted freely to achieve
+the design goals of your game. Tooltip layers, a special type of layer, are set to be "volatile".
+If you don't call the Bento script LayerSustain() function for a tooltip layer then it will
+automatically be destroyed. The intention here is that tooltip layers are created when the pointer
+is highlighting over a button etc.
+
+Each layer has a "precedence" that controls how it receives input and whether subsequent
+layers should be allowed to receive input. There are three settings:
+  - precedence = 0: Layer cannot receive input.
+  - precedence = 1: Layer receives input and allows input to pass through to other layers.
+  - precedence = 2: Layer receive input and blocks following layers from receiving input.
+
+Layers can be placed in one of three ways. The position of a layer is chiefly determined on
+creation but can be adjusted after creation too. The most basic method, and likely the most common,
+is placing a layer on top of the stack. Secondly, a layer can be given a specific priority and will
+be placed in the stack above layers with a lower priority and under layers with a higher priority.
+If a layer (or layers) exists with the same priority then the new layer will be placed at the top
+of the stack of same-priority players i.e. layers with the same priority will typically be handled
+from newest to oldest. Finally, a layer can be placed immediately over the top of another layer.
+The two layers will share the same priority.
+
+
+
+None of these architectural decisions are particular novel or revolutionary, and there are many
+GameMaker UI libraries that ship with a very similar (and maybe more extensive) set of features.
+What sets Bento apart, however, is the close integration between the GML code and a custom UI
+scripting language. This unlocks multiple capabilities:
+  1. Custom scripting is a more convenient way of describing UI layouts than plain GML.
+  2. Hot reloading of UI layouts so you can adjust on the fly.
+  3. A sandboxed environment that keeps the UI at arm's length from the rest of the codebase,
+     which hopefully encourages a cleaner data-oriented way of building UIs.
+  4. The possibility for UI modding by your players, should you wish to permit that.
+
+The scripting platform that Bento uses is called Catspeak, made by Katsaii. It's an incredible
+tool and it has been a pleasure to use. You can find out more about Catspeak in general via the
+GitHub page (https://github.com/katsaii/catspeak-lang). Bento includes some custom features to
+optimise the syntax and grammar for use with UI layouts, and you can find that information in the
+"Catspeak Script" note. This custom version of Catspeak is not compatible with the general release
+of Catspeak. Until I've figured out a way to separate the version that Bento uses from general
+release, Bento should not be used in projects that are using Catspeak for other scripting purposes.
+
+An interesting side effect of using custom scripting rather than GML to describe UI layouts is that
+the GML API is rather small since a lot of UI generation tasks that would normally be handled by a
+big chunk of dense GML can now be handled instead by svelte Catspeak scripts, either stored in
+files or hardcoded into your game as strings.
+
+
+
+This has been a lot to read I'm sure. The best way to get started is to look at the examples and
+the (regretably limited thus far) documentation, both in note files as well as function
+descriptions. I hope Bento helps take the pain out of making your games.

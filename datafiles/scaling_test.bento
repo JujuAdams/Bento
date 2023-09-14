@@ -1,0 +1,57 @@
+build BentoRectangle {
+	xy = ["50%", "50%"]
+	size = [300, 300]
+
+	step = fn {
+		animScale = lerp(1, 2, 0.5 + 0.5*dsin(Time()/30))
+	}
+
+	build BentoRectangle {
+		originX = 1
+		xy = ["100%", "50%"]
+		size = [50, 100]
+
+		build BentoButton {
+			xy = ["50%", "50%"]
+			size = [25, 25]
+		}
+	}
+
+	build BentoRectangle {
+		originY = 0
+		xy = ["50%", 0]
+		size = [100, 50]
+
+		build BentoButton {
+			xy = ["50%", "50%"]
+			size = [25, 25]
+		}
+	}
+
+	build BentoRectangle {
+		originX = 0
+		xy = [0, "50%"]
+		size = [50, 100]
+
+		build BentoButton {
+			xy = ["50%", "50%"]
+			size = [25, 25]
+		}
+	}
+
+	build BentoRectangle {
+		originY = 1
+		xy = ["50%", "100%"]
+		size = [100, 50]
+
+		build BentoButton {
+			xy = ["50%", "50%"]
+			size = [25, 25]
+		}
+	}
+
+	build BentoTextButton {
+		label = "test"
+		xy = ["50%", "50%"]
+	}
+}

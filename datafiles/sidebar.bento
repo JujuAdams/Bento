@@ -1,0 +1,59 @@
+build BentoBox {
+	originY = 0.5
+	ltrb = [0, 0, "100%", "100%"]
+	LayoutAsVerticalList("center", 70)
+
+	if (savedata_exists()) {
+		build BentoTextButton {
+			label = "Resume Game"
+			captureClick = "action"
+			click = fn {
+				game_resume()
+			}
+		}
+
+		build BentoTextButton {
+			label = "New Game"
+			captureClick = "action"
+		}
+
+		build BentoTextButton {
+			label = "Load Game"
+			captureClick = "action"
+		}
+	} else {
+		build BentoTextButton {
+			label = "New Game"
+			captureClick = "action"
+		}
+	}
+
+	build BentoTextButton {
+		label = "Settings"
+		captureClick = "action"
+
+		over = fn {
+			if (not LayerSustain("tooltip")) {
+				build BentoLayer {
+					precedence = BENTO_PRECEDENCE_PASSTHROUGH
+					volatile = true
+					name = "tooltip"
+					FileExecute("tooltip.bento")
+				}
+			}
+		}
+	}
+
+	build BentoTextButton {
+		label = "Credits"
+		captureClick = "action"
+	}
+
+	build BentoTextButton {
+		label = "Quit"
+		captureClick = "action"
+		click = fn {
+			game_end()
+		}
+	}
+}

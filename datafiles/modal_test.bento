@@ -1,0 +1,17 @@
+build BentoRectangle {
+	fillColor = c_red
+	fillAlpha = 0.34
+
+	xy = ["50%", "50%"]
+	size = [320, 180]
+
+	build BentoButton {
+		size = [40, 40]
+		xy = [parent.width - 20, 20]
+
+		captureClick = "action"
+		click = fn {
+			LayerDeleteCurrent()
+		}
+	}
+}

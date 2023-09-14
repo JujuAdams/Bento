@@ -1,0 +1,179 @@
+This file contains documentation for variables specific to each Bento template. For documentation
+regarid variables shared by all Bento box templates, please see "BentoScript Shared Variables".
+
+
+
+BentoBox
+  An invisible box with no other properties.
+
+
+
+BentoButton
+  A clickable button.
+  
+  Variables:
+    color = Colour of the button
+    alpha = Alpha transparency of the button
+
+
+
+BentoHorizontalScrollbar
+  A horizontally orientated scrollbar, used for manipulating a BentoScrollBox box. A horizontal
+  scrollbar will control the x-axis position of a scrollbox.
+  
+  Inherits from BentoHorizontalSlider.
+  
+  Variables:
+    value    = Current x offset for scrollbox contents
+    valueMin = Minimum x offset for scrollbox contents (GET only!)
+    valueMax = Maximum x offset for scrollbox contents (GET only!)
+    binding  = BentoScrollBox box that this scrollbar controls
+
+
+
+BentoHorizontalSlider
+  A horizontally orientated slider.
+  
+  Inherits from BentoClassButton.
+  
+  Variables:
+    color          = Colour of the slider
+    alpha          = Alpha transparency of the slider
+    value          = Current value for slider
+    handleWidth    = Width of the handle for the slider
+    handleHeight   = Height of the handle for the slider
+    handlePosition = Normalised position of the handle (from 0 to 1)
+    valueMin       = Minimum value for slider (defaults to 0)
+    valueMax       = Maximum value for slider (defaults to 1)
+    valueIncrement = Quantisation for slider values (defaults to 0.01)
+
+
+
+BentoRectangle
+  A simple rectangle with no other properties. Useful for sketching out your UI before adding
+  functionality and graphics.
+  
+  Variables:
+    borderColor = Colour of the rectangle's border
+    borderAlpha = Alpha transparency of the rectangle's border
+    fillColor   = Colour of the rectangle's fill
+    fillAlpha   = Alpha transparency of the rectangle's fill
+
+
+
+BentoScrollBox
+  A scrollable window that can scroll to reveal further contents.
+  
+  Variables:
+    scrollX    = Current x offset for contents
+    scrollXMin = Minimum x offset for contents
+    scrollXMax = Maximum x offset for contents
+    scrollY    = Current y offset for contents
+    scrollYMin = Minimum y offset for contents
+    scrollYMax = Maximum y offset for contents
+
+
+
+BentoSprite
+  A simple graphic. Use with a 9-sliced sprite (and with .stretch set to <true>) for an easy
+  9-sliced background.
+  
+  Variables:
+    sprite   = Sprite to draw
+    color    = Blend colour for the sprite
+    alpha    = Alpha transparency for the sprite
+    image    = Image to draw
+    stretch  = Whether to stretch the sprite over the box
+
+
+
+BentoSpriteButton
+  A simple graphic. Use with a 9-sliced sprite (and with .stretch set to <true>) for an easy
+  9-sliced background.
+  
+  Variables:
+    alpha           = Alpha transparency for the sprite button (across all states)
+    sprite          = Sprite to draw when not being interacted with
+    color           = Blend colour when not being interacted with
+    image           = Image to draw when not being interacted with
+    heldSprite      = Sprite to draw when the pointer is hovering over the button
+    heldColor       = Blend colour when the pointer is hovering over the button
+    heldImage       = Image to draw when the pointer is hovering over the button
+    highlightSprite = Sprite to draw when the button has been pressed/highlighted
+    highlightColor  = Blend colour when the button has been pressed/highlighted
+    highlightImage  = Image to draw when the button has been pressed/highlighted
+    stretch         = Whether to stretch the sprite over the box
+
+
+
+BentoText
+  Text! Doesn't use Scribble :(
+  
+  Variables:
+    color     = Colour to draw the text in
+    alpha     = Alpha transparency of the text
+    hAlign    = Alignment of the text within the box ("left" / "center" / "right")
+    vAlign    = Alignment of the text within the box ("top" / "middle" / "bottom")
+    label     = Text to draw
+    margin    = Spacing around the edges of the text
+    font      = Font to use when drawing text
+    wrap      = Whether to wrap text using the .widthWrap value
+    wrapWidth = Maximum width for text if wrapping
+
+
+
+BentoTextButton
+  A clickable button with a label.
+  
+  Inherits from BentoClassButton.
+  
+  Variables:
+    color  = Colour to draw the text button in
+    alpha  = Alpha transparency of the text button
+    label  = Text to draw
+    margin = Spacing around the edges of the text
+    font   = Font to use when drawing text
+
+
+
+BentoVerticalScrollbar
+  A vertically orientated scrollbar, used for manipulating a BentoScrollBox box. A vertical
+  scrollbar will control the y-axis position of a scrollbox.
+  
+  Inherits from BentoVerticalSlider.
+  
+  Variables:
+    value    = Current y offset for scrollbox contents
+    valueMin = Minimum y offset for scrollbox contents (GET only!)
+    valueMax = Maximum y offset for scrollbox contents (GET only!)
+    binding  = BentoScrollBox box that this scrollbar controls
+
+
+
+BentoVerticalSlider
+  A vertically orientated slider.
+  
+  Inherits from BentoClassButton.
+  
+  Variables:
+    color          = Colour of the slider
+    alpha          = Alpha transparency of the slider
+    value          = Current value for slider
+    handleWidth    = Width of the handle for the slider
+    handleHeight   = Height of the handle for the slider
+    handlePosition = Normalised position of the handle (from 0 to 1)
+    valueMin       = Minimum value for slider (defaults to 0)
+    valueMax       = Maximum value for slider (defaults to 1)
+    valueIncrement = Quantisation for slider values (defaults to 0.01)
+
+
+
+BentoVideo
+  A video, played using GameMaker's native video playback feature. The video is draw stretched
+  across the box.
+  
+  Variables:
+    source = Path to the video
+    loop   = Whether to loop the video (defaults to <true>)
+    color  = Blend colour for the video
+    alpha  = Alpha transparency for the video

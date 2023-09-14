@@ -1,0 +1,4 @@
+This file contains documentation regarding variables shared by all Bento templates. For information
+regarding specific behaviours for Bento boxes, please see "BentoScript Templates".
+
+BentoShared
