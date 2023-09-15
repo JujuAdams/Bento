@@ -9,7 +9,7 @@
 //               `.  |                        / ._____/ logo: mashmerlow      
 //                 `.|                        \_)                             
 // 
-// BentoScript is a modified version of BentoScript 3.0.0 by Katsaii
+// BentoScript is a modified version of Catspeak 3.0.0 by Katsaii
 
 //# feather use syntax-errors
 
