@@ -46,7 +46,7 @@ function __BentoScriptForceInit() {
     __BentoScriptInitEngine();
     
     show_debug_message("Welcome to BentoScript! This is version " + __BENTOSCRIPT_VERSION + ", " + __BENTOSCRIPT_DATE);
-    show_debug_message("BentoScript is a modified version of BentoScript 3.0.0 by Katsaii");
+    show_debug_message("BentoScript is a modified version of Catspeak 3.0.0 by Katsaii");
     return true;
 }
 
