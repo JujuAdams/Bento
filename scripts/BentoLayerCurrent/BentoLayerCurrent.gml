@@ -1,3 +1,5 @@
+/// Returns the name of the current layer.
+
 function BentoLayerCurrent()
 {
     static _global = __BentoGlobal();

@@ -1,4 +1,4 @@
-/// Returns whether the current host layer being processed is the top-most layer.
+/// Returns whether the current layer being processed is the top-most layer.
 /// 
 /// This function will return <undefined> if called outside of the execution of either the
 /// .Step() or .Draw() methods on an host struct.

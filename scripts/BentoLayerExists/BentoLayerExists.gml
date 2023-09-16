@@ -1,3 +1,5 @@
+/// Returns if a layer with the given name exists.
+/// 
 /// @param [layerName]
 
 function BentoLayerExists(_layerName = undefined)

@@ -1,3 +1,5 @@
+/// Deletes a layer with the given name. If the layer doesn't exists, this function does nothing.
+/// 
 /// @param [layerName=current]
 
 function BentoLayerDelete(_layerName = undefined)

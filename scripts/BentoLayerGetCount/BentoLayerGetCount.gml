@@ -1,3 +1,5 @@
+/// Returns the number of layers that currently exist.
+
 function BentoLayerGetCount()
 {
     static _global = __BentoGlobal();

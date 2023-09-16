@@ -1,4 +1,4 @@
-/// Closes a box/layer that you're editing, and returns that box/layer
+/// Closes a box/layer that you're editing, and returns that box/layer.
 
 function BentoClose()
 {

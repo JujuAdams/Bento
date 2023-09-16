@@ -182,8 +182,8 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"07 Files","folderPath":"folders/Bento/07 Files.yy","order":8,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"08 Debug Hooks","folderPath":"folders/Bento/08 Debug Hooks.yy","order":9,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"09 Hosts","folderPath":"folders/Bento/09 Hosts.yy","order":10,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Documentation","folderPath":"folders/Bento/Documentation.yy","order":0,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"10 MIscellaneous","folderPath":"folders/Bento/10 MIscellaneous.yy","order":12,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Documentation","folderPath":"folders/Bento/Documentation.yy","order":0,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},

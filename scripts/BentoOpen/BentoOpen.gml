@@ -1,4 +1,4 @@
-/// Opens a box for editing
+/// Opens an existing box or layer for editing.
 /// 
 /// @param box
 
