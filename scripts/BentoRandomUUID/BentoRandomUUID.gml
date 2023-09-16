@@ -1,3 +1,8 @@
+/// Generates a random UUID using the UUIDv4 standard.
+/// 
+/// This function is used internally to provisionally name layers. You may also want to use it
+/// for other purposes in your own code.
+
 function BentoRandomUUID(_hyphenate = false)
 {
     //As per https://www.cryptosys.net/pki/uuid-rfc4122.html (though without the hyphens)

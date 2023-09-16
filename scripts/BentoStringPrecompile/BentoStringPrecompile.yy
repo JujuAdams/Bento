@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BentoStringPreload",
+  "name": "BentoStringPrecompile",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

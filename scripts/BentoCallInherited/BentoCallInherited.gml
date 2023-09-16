@@ -1,3 +1,7 @@
+/// Executes the callback function one step up the box template inheritance chain.
+/// 
+/// This is effectively JavaScript's "super" but available only for BentoScript callback functions.
+
 function BentoCallInherited()
 {
     static _global = __BentoGlobal();

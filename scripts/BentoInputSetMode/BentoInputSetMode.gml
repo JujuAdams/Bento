@@ -1,5 +1,9 @@
-// Feather disable all
-
+/// Forcibly sets the input mode for Bento.
+/// 
+/// The mode should be one of the following constants:
+///   BENTO_INPUT_MODE_POINTER
+///   BENTO_INPUT_MODE_DIRECTIONAL
+/// 
 /// @param mode
 
 function BentoInputSetMode(_mode)

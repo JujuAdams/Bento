@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BentoGetBentoScriptEnvironment",
+  "name": "BentoScriptGetEnvironment",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "00 Config",
-    "path": "folders/Bento/00 Config.yy",
+    "name": "10 MIscellaneous",
+    "path": "folders/Bento/10 MIscellaneous.yy",
   },
 }

@@ -5,7 +5,7 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "01 Basics",
-    "path": "folders/Bento/01 Basics.yy",
+    "name": "10 MIscellaneous",
+    "path": "folders/Bento/10 MIscellaneous.yy",
   },
 }

@@ -2,7 +2,7 @@ BentoData().version = "3.4.5";
 
 useMouse = true;
 
-BentoGetBentoScriptEnvironment().interface.exposeConstant(
+BentoScriptGetEnvironment().interface.exposeConstant(
     "c_aqua",    c_aqua,
     "c_black",   c_black,
     "c_blue",    c_blue,
@@ -24,11 +24,11 @@ BentoGetBentoScriptEnvironment().interface.exposeConstant(
     "c_yellow",  c_yellow
 );
 
-BentoGetBentoScriptEnvironment().interface.exposeConstant(
+BentoScriptGetEnvironment().interface.exposeConstant(
     "spr_logo", spr_logo,
 );
 
-BentoGetBentoScriptEnvironment().interface.exposeFunction(
+BentoScriptGetEnvironment().interface.exposeFunction(
     "savedata_exists",    function() { return false },
     "game_resume",        function() { return false },
     "game_end",           game_end,

@@ -1,3 +1,5 @@
+/// Sets the left/top/right/bottom boundary of the currently targeted Bento host.
+
 function BentoHostLTRB(_left, _top, _right, _bottom)
 {
     static _global = __BentoGlobal();

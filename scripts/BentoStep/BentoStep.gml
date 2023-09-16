@@ -1,3 +1,5 @@
+/// Updates Bento logic, including user input.
+
 function BentoStep()
 {
     static _global = __BentoGlobal();

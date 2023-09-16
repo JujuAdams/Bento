@@ -1,4 +1,4 @@
-// Feather disable all
+/// Returns the current input mode.
 
 function BentoInputGetMode()
 {

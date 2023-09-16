@@ -1,3 +1,5 @@
+/// Deletes all Bento boxes.
+
 function BentoClear()
 {
     static _global = __BentoGlobal();

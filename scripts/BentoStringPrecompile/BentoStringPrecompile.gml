@@ -1,4 +1,8 @@
-function BentoStringPreload(_string)
+/// Precompiles the string as BentoScript but does not execute it.
+/// 
+/// Using this function speeds up the first-time execution of a string.
+
+function BentoStringPrecompile(_string)
 {
     if (is_array(_string))
     {
@@ -11,7 +15,7 @@ function BentoStringPreload(_string)
         var _i = 0;
         repeat(array_length(_array))
         {
-            BentoStringPreload(_array[_i]);
+            BentoStringPrecompile(_array[_i]);
             ++_i;
         }
         
