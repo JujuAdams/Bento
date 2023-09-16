@@ -328,7 +328,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #region Callback Setters
     
-    static CallbackSet = function(_callType, _function)
+    static __CallbackSet = function(_callType, _function)
     {
         var _targetArray = __callbackArray[_callType];
         
@@ -342,95 +342,95 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static CallbackSetHighlightStart = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__HIGHLIGHT_START, _function);
+        return __CallbackSet(__BENTO_CALL.__HIGHLIGHT_START, _function);
     }
     
     static CallbackSetHighlight = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__HIGHLIGHT, _function);
+        return __CallbackSet(__BENTO_CALL.__HIGHLIGHT, _function);
     }
     
     static CallbackSetHighlightEnd = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__HIGHLIGHT_END, _function);
+        return __CallbackSet(__BENTO_CALL.__HIGHLIGHT_END, _function);
     }
     
     
     
     static CallbackSetButtonStart = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__BUTTON_START, _function);
+        return __CallbackSet(__BENTO_CALL.__BUTTON_START, _function);
     }
     
     static CallbackSetButton = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__BUTTON, _function);
+        return __CallbackSet(__BENTO_CALL.__BUTTON, _function);
     }
     
     static CallbackSetButtonEnd = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__BUTTON_END, _function);
+        return __CallbackSet(__BENTO_CALL.__BUTTON_END, _function);
     }
     
     static CallbackSetButtonClick = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__BUTTON_CLICK, _function);
+        return __CallbackSet(__BENTO_CALL.__BUTTON_CLICK, _function);
     }
     
     static CallbackSetButtonCanCapture = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__BUTTON_CAN_CAPTURE, _function);
+        return __CallbackSet(__BENTO_CALL.__BUTTON_CAN_CAPTURE, _function);
     }
     
     
     
     static CallbackSetStep = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__STEP, _function);
+        return __CallbackSet(__BENTO_CALL.__STEP, _function);
     }
     
     static CallbackSetDraw = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__DRAW, _function);
+        return __CallbackSet(__BENTO_CALL.__DRAW, _function);
     }
     
     static CallbackSetOnClose = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__ON_CLOSE, _function);
+        return __CallbackSet(__BENTO_CALL.__ON_CLOSE, _function);
     }
     
     static CallbackSetCanHighlight = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__CAN_HIGHLIGHT, _function);
+        return __CallbackSet(__BENTO_CALL.__CAN_HIGHLIGHT, _function);
     }
     
     
     
     static CallbackSetLayoutExecute = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__LAYOUT_EXECUTE, _function);
+        return __CallbackSet(__BENTO_CALL.__LAYOUT_EXECUTE, _function);
     }
     
     static CallbackSetLayoutCheck = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__LAYOUT_CHECK, _function);
+        return __CallbackSet(__BENTO_CALL.__LAYOUT_CHECK, _function);
     }
     
     
     
     static CallbackSetOnValueChange = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__ON_VALUE_CHANGE, _function);
+        return __CallbackSet(__BENTO_CALL.__ON_VALUE_CHANGE, _function);
     }
     
     static CallbackSetValueUpdate = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__VALUE_UPDATE, _function);
+        return __CallbackSet(__BENTO_CALL.__VALUE_UPDATE, _function);
     }
     
     static CallbackSetBuildIn = function(_function)
     {
-        return CallbackSet(__BENTO_CALL.__BUILD_IN, _function);
+        return __CallbackSet(__BENTO_CALL.__BUILD_IN, _function);
     }
     
     #endregion
@@ -1603,7 +1603,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #endregion
     
-    #region Layout Horizotal List
+    #region Layout Horizontal List
     
     static LayoutAsHorizontalList = function(_vAlign, _spacing)
     {

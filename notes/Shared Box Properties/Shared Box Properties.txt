@@ -73,7 +73,6 @@ boxes also all have a selection of methods that can be executed:
   GetHighlight()
   GetButton()
   Find(identifier)
-  CallbackSet(state)
   HighlightStateSet(state)
   ButtonStateSet(state)
   VariableBind(variableName, getterFunc, setterFun)
