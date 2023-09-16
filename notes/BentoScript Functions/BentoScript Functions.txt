@@ -46,7 +46,7 @@ LayerSustain(layerName)
   
     if (not LayerSustain("tooltip")) {
         build BentoLayer {
-            precedence = BENTO_PRECEDENCE_PASSTHROUGH
+            behavior = BENTO_BEHAVIOR_PASSTHROUGH
             volatile = true
             name = "tooltip"
             FileExecute("tooltip.bento")

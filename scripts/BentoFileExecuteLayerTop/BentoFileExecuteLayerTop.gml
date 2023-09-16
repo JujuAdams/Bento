@@ -1,9 +1,9 @@
-function BentoFileExecuteLayerTop(_path, _layerName, _precedence = 2)
+function BentoFileExecuteLayerTop(_path, _layerName, _behavior = 2)
 {
     var _layer = new __BentoClassLayer();
     
     BentoOpen(_layer);
-    _layer.Set("precedence", _precedence);
+    _layer.Set("behavior", _behavior);
     BentoFileExecute(_path);
     BentoClose();
 }

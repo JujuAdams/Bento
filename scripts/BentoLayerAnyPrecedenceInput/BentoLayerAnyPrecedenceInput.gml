@@ -1,6 +1,6 @@
-function BentoLayerAnyPrecedenceInput()
+function BentoLayerAnyBehaviorInput()
 {
     static _global = __BentoGlobal();
     
-    return _global.__currentHost.__LayerAnyPrecedenceInput();
+    return _global.__currentHost.__LayerAnyBehaviorInput();
 }

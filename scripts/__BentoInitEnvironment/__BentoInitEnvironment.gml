@@ -17,13 +17,13 @@ function __BentoInitEnvironment()
             "not", __BENTOSCRIPT_TOKEN.NOT,
         );
         
-        interface.exposeConstant("data",                         __BentoGlobal().__dataStruct,
-                                 "BENTO_PRECEDENCE_NONE",        BENTO_PRECEDENCE_NONE,
-                                 "BENTO_PRECEDENCE_PASSTHROUGH", BENTO_PRECEDENCE_PASSTHROUGH,
-                                 "BENTO_PRECEDENCE_MODAL",       BENTO_PRECEDENCE_MODAL,
-                                 "BENTO_PRECEDENCE_BLOCKING",    BENTO_PRECEDENCE_BLOCKING,
-                                 "BENTO_VERSION",                BENTO_VERSION,
-                                 "BENTO_DATE",                   BENTO_DATE,);
+        interface.exposeConstant("data",                       __BentoGlobal().__dataStruct,
+                                 "BENTO_BEHAVIOR_DRAW_ONLY",   BENTO_BEHAVIOR_DRAW_ONLY,
+                                 "BENTO_BEHAVIOR_PASSTHROUGH", BENTO_BEHAVIOR_PASSTHROUGH,
+                                 "BENTO_BEHAVIOR_MODAL",       BENTO_BEHAVIOR_MODAL,
+                                 "BENTO_BEHAVIOR_BLOCKING",    BENTO_BEHAVIOR_BLOCKING,
+                                 "BENTO_VERSION",              BENTO_VERSION,
+                                 "BENTO_DATE",                 BENTO_DATE,);
     }
     
     BentoAddFunction("LayerIsTop", BentoLayerCurrentIsTop);
@@ -53,7 +53,7 @@ function __BentoInitEnvironment()
         BentoOpen(_layer)
         with(_layer)
         {
-            Set("precedence", BENTO_PRECEDENCE_PASSTHROUGH);
+            Set("behavior", BENTO_BEHAVIOR_PASSTHROUGH);
             Set("volatile", true);
         }
         

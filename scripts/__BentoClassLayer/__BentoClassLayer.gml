@@ -7,7 +7,7 @@ function __BentoClassLayer() constructor
     __name      = BentoRandomUUID();
     __host      = _global.__currentHost;
     __priority  = undefined;
-    precedence = BENTO_PRECEDENCE_MODAL;
+    behavior = BENTO_BEHAVIOR_MODAL;
     
     __host.__LayerAddTop(self);
     
@@ -314,7 +314,7 @@ function __BentoClassLayer() constructor
             __distance: undefined,
         }
         
-        if (precedence >= BENTO_PRECEDENCE_PASSTHROUGH) //Don't pass input to anything with 0 precedence
+        if (behavior >= BENTO_BEHAVIOR_PASSTHROUGH) //Don't pass input to anything with 0 behavior
         {
             __BentoLayerStackPush(self);
             
@@ -395,7 +395,7 @@ function __BentoClassLayer() constructor
     
     static __InputClearAll = function(_clearHighlight)
     {
-        if (precedence >= BENTO_PRECEDENCE_PASSTHROUGH) //Don't pass input to anything with 0 precedence
+        if (behavior >= BENTO_BEHAVIOR_PASSTHROUGH) //Don't pass input to anything with 0 behavior
         {
             __BentoLayerStackPush(self);
             

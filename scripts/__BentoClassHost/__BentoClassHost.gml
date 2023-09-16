@@ -59,7 +59,7 @@ function __BentoClassHost(_name) constructor
         _global.__currentHost = self;
         
         //Distribute inputs amongst layers
-        //We stop when we hit a modal (a layer with precedence greater than 1)
+        //We stop when we hit a modal (a layer with behavior greater than 1)
         var _i = 0;
         repeat(array_length(_layerArray))
         {
@@ -69,7 +69,7 @@ function __BentoClassHost(_name) constructor
             ++_i;
             
             //Don't let input go beyond modals
-            if (_layer.precedence >= BENTO_PRECEDENCE_MODAL) break;
+            if (_layer.behavior >= BENTO_BEHAVIOR_MODAL) break;
         }
         
         //Reset button state for all remaining layers after a modal
@@ -132,7 +132,7 @@ function __BentoClassHost(_name) constructor
         repeat(array_length(__layerArray))
         {
             ++_last;
-            if (__layerArray[_last-1].precedence >= BENTO_PRECEDENCE_BLOCKING) break;
+            if (__layerArray[_last-1].behavior >= BENTO_BEHAVIOR_BLOCKING) break;
         }
         
         //Draw backwards
@@ -151,28 +151,28 @@ function __BentoClassHost(_name) constructor
         array_resize(__layerArray, 0);
     }
     
-    static __LayerAnyPrecedenceInput = function()
+    static __LayerAnyBehaviorInput = function()
     {
         //FIXME - Cache this value
         
         var _i = 0;
         repeat(array_length(__layerArray))
         {
-            if (__layerArray[_i].precedence >= BENTO_PRECEDENCE_PASSTHROUGH) return true;
+            if (__layerArray[_i].behavior >= BENTO_BEHAVIOR_PASSTHROUGH) return true;
             ++_i;
         }
         
         return false;
     }
     
-    static __LayerAnyPrecedenceModal = function()
+    static __LayerAnyBehaviorModal = function()
     {
         //FIXME - Cache this value
         
         var _i = 0;
         repeat(array_length(__layerArray))
         {
-            if (__layerArray[_i].precedence >= BENTO_PRECEDENCE_MODAL) return true;
+            if (__layerArray[_i].behavior >= BENTO_BEHAVIOR_MODAL) return true;
             ++_i;
         }
         
@@ -313,11 +313,11 @@ function __BentoClassHost(_name) constructor
         return _layer.__priority;
     }
     
-    static __GetPrecedence = function(_name)
+    static __GetBehavior = function(_name)
     {
         var _layer = __GetLayer(_name);
         if (_layer == undefined) return undefined;
-        return _layer.precedence;
+        return _layer.behavior;
     }
     
     static __GetTopLayer = function()

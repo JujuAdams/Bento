@@ -2,15 +2,15 @@ BentoLayer
   name       = Name of the layer.
   volatile   = Whether the layer will be deleted if LayerSustain() is not called.
   priority   = Draw/input-handling priority for the layer. High priorities are handled first.
-  precedence = Whether this layer allows subsequent layers to draw/handle input. Must be one of
+  behavior = Whether this layer allows subsequent layers to draw/handle input. Must be one of
                the following values:
-                 BENTO_PRECEDENCE_NONE
+                 BENTO_BEHAVIOR_DRAW_ONLY
                    Doesn't receive input. Will draw and will allow input to pass through.
-                 BENTO_PRECEDENCE_PASSTHROUGH
+                 BENTO_BEHAVIOR_PASSTHROUGH
                    Receives input. Will draw and will allow input to pass through.
-                 BENTO_PRECEDENCE_MODAL
+                 BENTO_BEHAVIOR_MODAL
                    Receives input and blocks subsequent layers from receiving input. Draws.
-                 BENTO_PRECEDENCE_BLOCKING
+                 BENTO_BEHAVIOR_BLOCKING
                    Receives input and blocks subsequent layers from receiving input. Draws and
                    blocks subsequent layers from drawing.
   

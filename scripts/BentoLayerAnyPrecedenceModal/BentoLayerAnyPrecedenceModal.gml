@@ -1,6 +1,6 @@
-function BentoLayerAnyPrecedenceModal()
+function BentoLayerAnyBehaviorModal()
 {
     static _global = __BentoGlobal();
     
-    return _global.__currentHost.__LayerAnyPrecedenceModal();
+    return _global.__currentHost.__LayerAnyBehaviorModal();
 }

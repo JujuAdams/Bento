@@ -74,11 +74,11 @@ If you don't call the Bento script LayerSustain() function for a tooltip layer t
 automatically be destroyed. The intention here is that tooltip layers are created when the pointer
 is highlighting over a button etc.
 
-Each layer has a "precedence" that controls how it receives input and whether subsequent
+Each layer has a "behavior" that controls how it receives input and whether subsequent
 layers should be allowed to receive input. There are three settings:
-  - precedence = 0: Layer cannot receive input.
-  - precedence = 1: Layer receives input and allows input to pass through to other layers.
-  - precedence = 2: Layer receive input and blocks following layers from receiving input.
+  - behavior = 0: Layer cannot receive input.
+  - behavior = 1: Layer receives input and allows input to pass through to other layers.
+  - behavior = 2: Layer receive input and blocks following layers from receiving input.
 
 Layers can be placed in one of three ways. The position of a layer is chiefly determined on
 creation but can be adjusted after creation too. The most basic method, and likely the most common,
