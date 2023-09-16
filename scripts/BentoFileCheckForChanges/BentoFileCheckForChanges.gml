@@ -1,4 +1,5 @@
-/// Returns <true> if an external file has received changes, otherwise returns <false>.
+/// Returns <true> if an external file has been changed since the last time it was loaded or
+/// executed.
 /// 
 /// @param path
 

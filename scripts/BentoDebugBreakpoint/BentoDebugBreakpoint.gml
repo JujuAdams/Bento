@@ -1,3 +1,6 @@
+/// Endpoint for the BentoScript function DebugBreakpoint(). Place a GameMaker native breakpoint in
+/// the function to help pause BentoScript execution.
+
 function BentoDebugBreakpoint()
 {
     static _counter = 0;

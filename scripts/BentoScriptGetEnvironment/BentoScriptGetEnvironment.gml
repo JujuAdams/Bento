@@ -1,4 +1,7 @@
-/// Returns the Catpseak environment being used by the library.
+/// Returns the BentoScript environment being used by the library.
+/// 
+/// Having a reference to the underlying Bento environment allows you to further customise the
+/// code environment that BentoScript uses.
 
 function BentoScriptGetEnvironment()
 {

@@ -1,3 +1,6 @@
+/// Sets whether Bento should allow strings instead of sprite references for sprite-related
+/// templates.
+/// 
 /// @param state
 
 function BentoDebugRelaxedSprites(_state)

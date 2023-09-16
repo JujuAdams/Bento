@@ -1,3 +1,5 @@
+/// Sets whether the wireframe for Bento boxes is visible.
+/// 
 /// @param state
 
 function BentoDebugShowSkeleton(_state)

@@ -4,10 +4,10 @@ function __BentoClassLayer() constructor
     static _debugStruct  = _global.__debug;
     static _nullCallback = _global.__nullCallback;
     
-    __name      = BentoRandomUUID();
-    __host      = _global.__currentHost;
-    __priority  = undefined;
-    behavior = BENTO_BEHAVIOR_MODAL;
+    __name     = BentoRandomUUID();
+    __host     = _global.__currentHost;
+    __priority = undefined;
+    behavior   = BENTO_BEHAVIOR_MODAL;
     
     __host.__LayerAddTop(self);
     

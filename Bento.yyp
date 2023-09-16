@@ -8,7 +8,6 @@
     {"id":{"name":"__BentoScriptLocation","path":"scripts/__BentoScriptLocation/__BentoScriptLocation.yy",},"order":1,},
     {"id":{"name":"__BentoValidateMacros","path":"scripts/__BentoValidateMacros/__BentoValidateMacros.yy",},"order":25,},
     {"id":{"name":"BentoDebugRelaxedSprites","path":"scripts/BentoDebugRelaxedSprites/BentoDebugRelaxedSprites.yy",},"order":2,},
-    {"id":{"name":"BentoDebugMessage","path":"scripts/BentoDebugMessage/BentoDebugMessage.yy",},"order":0,},
     {"id":{"name":"BentoClassSpriteButton","path":"scripts/BentoClassSpriteButton/BentoClassSpriteButton.yy",},"order":12,},
     {"id":{"name":"__BentoXORShift32Choose","path":"scripts/__BentoXORShift32Choose/__BentoXORShift32Choose.yy",},"order":2,},
     {"id":{"name":"BentoLayerCurrentIsTop","path":"scripts/BentoLayerCurrentIsTop/BentoLayerCurrentIsTop.yy",},"order":4,},

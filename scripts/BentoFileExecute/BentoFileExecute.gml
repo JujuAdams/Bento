@@ -1,4 +1,4 @@
-/// Executes an external UI file.
+/// Executes an external file as BentoScript.
 /// 
 /// @param path
 

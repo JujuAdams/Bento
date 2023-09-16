@@ -1,8 +1,8 @@
-/// Resets the currently targeted host to the default host (BENTO_ONION). All further layer- and
-/// UI-related calls will be use the default host as the scope.
+/// Resets the currently targeted host to the default host. All further Bento calls will be use the
+/// default host as the scope.
 /// 
-/// This function is provided for complex situations where maintaining multiple independent UI
-/// stacks is necessary. You probably don't need this function.
+///   N.B. You'll probably never need to use this function. It exists for use with complex setups
+///        where multiple users might need separate interfaces that can be used simultaneously.
 
 function BentoHostResetTarget()
 {

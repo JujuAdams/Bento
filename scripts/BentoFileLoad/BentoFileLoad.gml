@@ -1,4 +1,6 @@
-/// Loads an external UI file. This isn't strictly necessary, a UI file is automatically loaded
+/// Loads an external file and compiles it as BentoScript (but doesn't execute the script).
+/// 
+/// Use of this function isn't strictly necessary, BentoScript files are automatically loaded
 /// when executed, but calling this function when a game boots up improves performance when
 /// BentoFileExecute() is called later during gameplay.
 /// 

@@ -1,3 +1,5 @@
+/// Sets whether the Bento native pointer position is visible.
+/// 
 /// @param state
 
 function BentoDebugShowPointer(_state)
