@@ -17,7 +17,7 @@ function __BentoInitEnvironment()
             "not", __BENTOSCRIPT_TOKEN.NOT,
         );
         
-        interface.exposeConstant("data",                       __BentoGlobal().__dataStruct,
+        interface.exposeConstant("global",               __BentoGlobal().__exposedGlobalStruct,
                                  "BEHAVIOR_DRAW_ONLY",   BENTO_BEHAVIOR_DRAW_ONLY,
                                  "BEHAVIOR_PASSTHROUGH", BENTO_BEHAVIOR_PASSTHROUGH,
                                  "BEHAVIOR_MODAL",       BENTO_BEHAVIOR_MODAL,

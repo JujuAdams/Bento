@@ -4,7 +4,7 @@ function __BentoGlobal()
     
     static _struct = {
         __bentoScriptEnv: undefined, //Set in __BentoInit()
-        __dataStruct: {},
+        __exposedGlobalStruct: {},
         
         __currentHost: undefined,
         __hostArray:   [],
