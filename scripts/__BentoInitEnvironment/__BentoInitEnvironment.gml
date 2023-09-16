@@ -18,12 +18,12 @@ function __BentoInitEnvironment()
         );
         
         interface.exposeConstant("data",                       __BentoGlobal().__dataStruct,
-                                 "BENTO_BEHAVIOR_DRAW_ONLY",   BENTO_BEHAVIOR_DRAW_ONLY,
-                                 "BENTO_BEHAVIOR_PASSTHROUGH", BENTO_BEHAVIOR_PASSTHROUGH,
-                                 "BENTO_BEHAVIOR_MODAL",       BENTO_BEHAVIOR_MODAL,
-                                 "BENTO_BEHAVIOR_BLOCKING",    BENTO_BEHAVIOR_BLOCKING,
-                                 "BENTO_VERSION",              BENTO_VERSION,
-                                 "BENTO_DATE",                 BENTO_DATE,);
+                                 "BEHAVIOR_DRAW_ONLY",   BENTO_BEHAVIOR_DRAW_ONLY,
+                                 "BEHAVIOR_PASSTHROUGH", BENTO_BEHAVIOR_PASSTHROUGH,
+                                 "BEHAVIOR_MODAL",       BENTO_BEHAVIOR_MODAL,
+                                 "BEHAVIOR_BLOCKING",    BENTO_BEHAVIOR_BLOCKING,
+                                 "BENTO_VERSION",        BENTO_VERSION,
+                                 "BENTO_DATE",           BENTO_DATE,);
     }
     
     BentoAddFunction("LayerIsTop", BentoLayerCurrentIsTop);
