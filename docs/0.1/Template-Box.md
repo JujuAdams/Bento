@@ -33,6 +33,8 @@ No additional methods beyond shared methods.
 
 ### Visible
 
+Boxes are primarily used to aid layouts so the basic Bento box defaults to being invisible. When wireframing or debugging it's often useful to be able to visualise your boxes. Setting the `visible` variable to `true` will make the box visible, helping you understand your layout.
+
 <!-- tabs:start -->
 
 #### **BentoScript**
