@@ -1,11 +1,13 @@
 - [Home](README)
 - [Alternatives](Alternatives)
-- [Setting Up](Setting-Up)
 - [Credits](Credits)
+- [Introduction](Introduction)
+- [Setting Up](Setting-Up)
+- [Using GML](Using-GML)
+- [Using BentoScript](Using-BentoScript)
 
 ---
 
-- [Scripting Overview](Scripting-Overview)
 - [Script Structure](Script-Structure)
 - [General Variables](Scripting-General-Variables)
 - [Local Position Variables](Scripting-Local-Position-Variables)
