@@ -283,9 +283,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #region Build Animations
     
-    VariableBind("buildIn", function()
+    VariableBind("callbackBuildIn", function()
     {
-        __BentoError("Cannot get \"buildIn\"");
+        __BentoError("Cannot get \"callbackBuildIn\"");
         return;
     },
     function(_value)
@@ -1277,9 +1277,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #region Callback Getter/Setters
     
-    VariableBind("press", function()
+    VariableBind("callbackPress", function()
     {
-        __BentoError("Cannot get \"press\"");
+        __BentoError("Cannot get \"callbackPress\"");
         return;
     },
     function(_value)
@@ -1287,9 +1287,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__BUTTON_START, _value);
     });
     
-    VariableBind("hold", function()
+    VariableBind("callbackHold", function()
     {
-        __BentoError("Cannot get \"hold\"");
+        __BentoError("Cannot get \"callbackHold\"");
         return;
     },
     function(_value)
@@ -1297,9 +1297,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__BUTTON, _value);
     });
     
-    VariableBind("release", function()
+    VariableBind("callbackRelease", function()
     {
-        __BentoError("Cannot get \"release\"");
+        __BentoError("Cannot get \"callbackRelease\"");
         return;
     },
     function(_value)
@@ -1307,9 +1307,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__BUTTON_END, _value);
     });
     
-    VariableBind("click", function()
+    VariableBind("callbackClick", function()
     {
-        __BentoError("Cannot get \"click\"");
+        __BentoError("Cannot get \"callbackClick\"");
         return;
     },
     function(_value)
@@ -1317,9 +1317,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__BUTTON_CLICK, _value);
     });
     
-    VariableBind("canCapture", function()
+    VariableBind("callbackCanCapture", function()
     {
-        __BentoError("Cannot get \"canCapture\"");
+        __BentoError("Cannot get \"callbackCanCapture\"");
         return;
     },
     function(_value)
@@ -1327,9 +1327,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__BUTTON_CAN_CAPTURE, _value);
     });
     
-    VariableBind("captureClick", function()
+    VariableBind("clickListen", function()
     {
-        __BentoError("Cannot get \"captureClick\"");
+        __BentoError("Cannot get \"clickListen\"");
         return;
     },
     function(_array)
@@ -1351,9 +1351,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         }
     });
     
-    VariableBind("captureCast", function()
+    VariableBind("castListen", function()
     {
-        __BentoError("Cannot get \"captureCast\"");
+        __BentoError("Cannot get \"castListen\"");
         return;
     },
     function(_array)
@@ -1377,9 +1377,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    VariableBind("enter", function()
+    VariableBind("callbackEnter", function()
     {
-        __BentoError("Cannot get \"enter\"");
+        __BentoError("Cannot get \"callbackEnter\"");
         return;
     },
     function(_value)
@@ -1387,9 +1387,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__HIGHLIGHT_START, _value);
     });
     
-    VariableBind("over", function()
+    VariableBind("callbackOver", function()
     {
-        __BentoError("Cannot get \"over\"");
+        __BentoError("Cannot get \"callbackOver\"");
         return;
     },
     function(_value)
@@ -1397,9 +1397,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__HIGHLIGHT, _value);
     });
     
-    VariableBind("leave", function()
+    VariableBind("callbackLeave", function()
     {
-        __BentoError("Cannot get \"leave\"");
+        __BentoError("Cannot get \"callbackLeave\"");
         return;
     },
     function(_value)
@@ -1409,9 +1409,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    VariableBind("step", function()
+    VariableBind("callbackStep", function()
     {
-        __BentoError("Cannot get \"step\"");
+        __BentoError("Cannot get \"callbackStep\"");
         return;
     },
     function(_value)
@@ -1419,9 +1419,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__STEP, _value);
     });
     
-    VariableBind("draw", function()
+    VariableBind("callbackDraw", function()
     {
-        __BentoError("Cannot get \"draw\"");
+        __BentoError("Cannot get \"callbackDraw\"");
         return;
     },
     function(_value)
@@ -1431,9 +1431,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    VariableBind("canHighlight", function()
+    VariableBind("callbackCanHighlight", function()
     {
-        __BentoError("Cannot get \"canHighlight\"");
+        __BentoError("Cannot get \"callbackCanHighlight\"");
         return;
     },
     function(_value)
@@ -1441,9 +1441,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__CAN_HIGHLIGHT, _value);
     });
     
-    VariableBind("onClose", function()
+    VariableBind("callbackOnClose", function()
     {
-        __BentoError("Cannot get \"onClose\"");
+        __BentoError("Cannot get \"callbackOnClose\"");
         return;
     },
     function(_value)
@@ -1484,9 +1484,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __CallbackGet(__BENTO_CALL.__LAYOUT_CHECK).__Call(self);
     }
     
-    VariableBind("layout", function()
+    VariableBind("callbackLayout", function()
     {
-        __BentoError("Cannot get \"layout\"");
+        __BentoError("Cannot get \"callbackLayout\"");
         return;
     },
     function(_value)
@@ -1494,9 +1494,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__LAYOUT_EXECUTE, _value);
     });
     
-    VariableBind("layoutCheck", function()
+    VariableBind("callbackLayoutCheck", function()
     {
-        __BentoError("Cannot get \"layoutCheck\"");
+        __BentoError("Cannot get \"callbackLayoutCheck\"");
         return;
     },
     function(_value)

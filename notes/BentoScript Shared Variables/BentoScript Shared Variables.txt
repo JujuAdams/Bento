@@ -13,8 +13,75 @@ BentoShared
   animBlend
   animBlendAmount
   
-  buildIn (function)
+  callbackBuildIn (function)
   buildInLength
+  
+  left
+  top
+  right
+  bottom
+  x
+  y
+  width
+  height
+  originX
+  originY
+  scale
+  
+  ltrb
+  size
+  xy
+  xywh
+  
+  worldLeft
+  worldTop
+  worldRight
+  worldBottom
+  worldX
+  worldY
+  worldWidth
+  worldHeight
+  
+  drawLeft
+  drawTop
+  drawRight
+  drawBottom
+  drawX
+  drawY
+  
+  children
+  parent
+  active
+  visible
+  
+  callbackPress (function)
+  callbackHold (function)
+  callbackRelease (function)
+  callbackClick (function)
+  callbackCanCapture (function)
+  clickListen
+  castListen
+  callbackEnter (function)
+  callbackOver (function)
+  callbackLeave (function)
+  
+  callbackStep (function)
+  callbackDraw (function)
+  callbackCanHighlight (function)
+  callbackOnClose (function)
+  callbackLayout (function)
+  callbackLayoutCheck (function)
+  
+  childMinLeft
+  childMinTop
+  childMaxRight
+  childMaxBottom
+  
+  LayoutAsVerticalList(hAlign, spacing)
+  LayoutAsHorizontalList(vAlign, spacing)
+  LayoutAsGrid(columnWisth, columnHeight)
+  LayoutAsColumns(hAlign, spacing, widthArray)
+  
   BuildFinish()
   GetBuilding()
   
@@ -56,69 +123,3 @@ BentoShared
   TempOriginY(value)
   TempOriginXReset()
   TempOriginYReset()
-  
-  left
-  top
-  right
-  bottom
-  x
-  y
-  width
-  height
-  originX
-  originY
-  scale
-  
-  ltrb
-  size
-  xy
-  xywh
-  
-  worldLeft
-  worldTop
-  worldRight
-  worldBottom
-  worldX
-  worldY
-  worldWidth
-  worldHeight
-  
-  drawLeft
-  drawTop
-  drawRight
-  drawBottom
-  drawX
-  drawY
-  
-  children
-  parent
-  active
-  visible
-  
-  press (function)
-  hold (function)
-  release (function)
-  click (function)
-  canCapture (function)
-  captureClick
-  captureCast
-  enter (function)
-  over (function)
-  leave (function)
-  
-  step (function)
-  draw (function)
-  canHighlight (function)
-  onClose (function)
-  layout (function)
-  layoutCheck (function)
-  
-  LayoutAsVerticalList(hAlign, spacing)
-  LayoutAsHorizontalList(vAlign, spacing)
-  LayoutAsGrid(columnWisth, columnHeight)
-  LayoutAsColumns(hAlign, spacing, widthArray)
-  
-  childMinLeft
-  childMinTop
-  childMaxRight
-  childMaxBottom

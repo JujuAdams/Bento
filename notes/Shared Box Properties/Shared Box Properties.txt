@@ -46,24 +46,24 @@ Parent/child-related variables:
   GET        childMacBottom
 
 Callback assignment. If used, the following must be set to functions:
-        SET  press
-        SET  hold
-        SET  release
-        SET  click
-        SET  canCapture
-        SET  captureClick
-        SET  captureCast
-        SET  enter
-        SET  over
-        SET  leave
-        SET  step
-        SET  draw
-        SET  canHighlight
-        SET  onClose
+        SET  callbackPress
+        SET  callbackHold
+        SET  callbackRelease
+        SET  callbackClick
+        SET  callbackCanCapture
+        SET  clickListen
+        SET  castListen
+        SET  callbackEnter
+        SET  callbackOver
+        SET  callbackLeave
+        SET  callbackStep
+        SET  callbackDraw
+        SET  callbackCanHighlight
+        SET  callbackOnClose
         SET  layoutVerticalList
         SET  layoutHorizontalList
-        SET  layout
-        SET  layoutCheck
+        SET  callbackLayout
+        SET  callbackLayoutCheck
 
 boxes also all have a selection of methods that can be executed:
   GetIdentifier()

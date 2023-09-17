@@ -323,6 +323,7 @@ function __BentoClassLayer() constructor
                 case BENTO_INPUT_MODE_POINTER:
                     __pointerX = _pointerX;
                     __pointerY = _pointerY;
+                    __BentoTrace("Set layer \"", __name, "\" pointer as ", __pointerX, ",", __pointerY);
                 break;
                 
                 case BENTO_INPUT_MODE_DIRECTIONAL:

@@ -1,10 +1,11 @@
 build BentoRectangle {
-	step = fn {
+	callbackStep = fn {
+		DebugLog(GetPointerX(), ",", GetPointerY())
 		worldX = GetPointerX()
 		worldY = GetPointerY() - height/2
 	}
 
-	layout = fn {
+	callbackLayout = fn {
 		size = [textElement.width + 40, textElement.height + 40]
 		
 		worldX = GetPointerX()
@@ -14,7 +15,7 @@ build BentoRectangle {
 	textElement = build BentoText {
 		label = "Wow! You found a tooltip!"
 
-		layout = fn {
+		callbackLayout = fn {
 			xy = ["50%", "50%"]
 		}
 	}

@@ -45,12 +45,12 @@ LayerSustain(layerName)
   layers used for e.g. tooltips to be created and sustained efficiently e.g.
   
     if (not LayerSustain("tooltip")) {
-        build BentoLayer {
-            behavior = BENTO_BEHAVIOR_PASSTHROUGH
-            volatile = true
-            name = "tooltip"
-            FileExecute("tooltip.bento")
-        }
+		build BentoLayer {
+			behavior = BENTO_BEHAVIOR_PASSTHROUGH
+			volatile = true
+			name = "tooltip"
+			FileExecute("MainMenuTooltip.bento")
+		}
     }
 
 

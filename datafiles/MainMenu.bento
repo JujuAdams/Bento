@@ -30,10 +30,10 @@ build BentoBox {
 		build BentoText {
 			originY = 1
 			xy = ["50%", "95%"]
-			label = "Bento " + string(BENTO_VERSION) + ", " + string(BENTO_DATE) + "\nBy Juju Adams\nWith the assistance of Katsaii"
+			label = "Bento " + string(BENTO_VERSION) + ", " + string(BENTO_DATE) + "\n" + global.testString
 		}
 
-		BoxReplace("target frame", "sidebar.bento")
+		BoxReplace("target frame", "MainMenuSidebar.bento")
 	}
 
 	build BentoRectangle {

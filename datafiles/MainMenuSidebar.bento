@@ -6,39 +6,39 @@ build BentoBox {
 	if (savedata_exists()) {
 		build BentoTextButton {
 			label = "Resume Game"
-			captureClick = "action"
-			click = fn {
+			clickListen = "action"
+			callbackClick = fn {
 				game_resume()
 			}
 		}
 
 		build BentoTextButton {
 			label = "New Game"
-			captureClick = "action"
+			clickListen = "action"
 		}
 
 		build BentoTextButton {
 			label = "Load Game"
-			captureClick = "action"
+			clickListen = "action"
 		}
 	} else {
 		build BentoTextButton {
 			label = "New Game"
-			captureClick = "action"
+			clickListen = "action"
 		}
 	}
 
 	build BentoTextButton {
 		label = "Settings"
-		captureClick = "action"
+		clickListen = "action"
 
-		over = fn {
+		callbackOver = fn {
 			if (not LayerSustain("tooltip")) {
 				build BentoLayer {
-					precedence = BENTO_PRECEDENCE_PASSTHROUGH
+					behavior = BEHAVIOR_PASSTHROUGH
 					volatile = true
 					name = "tooltip"
-					FileExecute("tooltip.bento")
+					FileExecute("MainMenuTooltip.bento")
 				}
 			}
 		}
@@ -46,13 +46,13 @@ build BentoBox {
 
 	build BentoTextButton {
 		label = "Credits"
-		captureClick = "action"
+		clickListen = "action"
 	}
 
 	build BentoTextButton {
 		label = "Quit"
-		captureClick = "action"
-		click = fn {
+		clickListen = "action"
+		callbackClick = fn {
 			game_end()
 		}
 	}

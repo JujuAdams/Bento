@@ -1,4 +1,4 @@
-BentoData().version = "3.4.5";
+BentoScriptGlobal().testString = "By Juju Adams\nWith the assistance of Katsaii";
 
 useMouse = true;
 
@@ -41,11 +41,11 @@ BentoScriptGetEnvironment().interface.exposeFunction(
     "draw_circle",        draw_circle
 );
 
-BentoFileExecuteLayerTop("main_menu.bento", "main menu");
+BentoFileExecuteLayerTop("MainMenu.bento", "main menu");
 
-BentoOpen(new __BentoClassLayer());
-BentoFileExecute("main_menu.bento");
-BentoClose();
+//BentoOpen(new __BentoClassLayer());
+//BentoFileExecute("MainMenu.bento");
+//BentoClose();
 
 //BentoStringExecute(@'
 //build BentoLayer {
