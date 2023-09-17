@@ -21,9 +21,21 @@
 
 ---
 
-- [Box Template](Template-Box)
-- [Rectangle Template](Template-Rectangle)
+**Templates**
 
+- [Box](Template-Box)
+- [Button](Template-Button)
+- [Horizontal Scrollbar](Template-Horizontal-Scrollbar)
+- [Horizontal Slider](Template-Horizontal-Slider)
+- [Rectangle](Template-Rectangle)
+- [Scroll Box](Template-Scroll-Box)
+- [Sprite](Template-Sprite)
+- [Sprite Button](Template-Sprite-Button)
+- [Text](Template-Text)
+- [Text Button](Template-Text-Button)
+- [Vertical Scrollbar](Template-Vertical-Scrollbar)
+- [Vertical Slider](Template-Vertical-Slider)
+- [Video](Template-Video)
 ---
 
 - [Building From GML](Building-From-GML)
