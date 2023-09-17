@@ -21,7 +21,7 @@ During its (long and painful) development, Bento ended up getting complicated. I
 
 The feature of Bento that I'm most proud of is the live programming. This allows you to edit UI code whilst the game is running and immediately see the difference. This is incredibly useful and saves so, so much time. In order to achieve this, I've linked Bento to a custom scripting language for UI called BentoScript. It has some carefully chosen syntax and behaviour which allows for uncomplicated UI layouts using code. Because we're using a custom language, Bento can reload UI code in realtime which opens up a world of possibilities.
 
-Having said that, you can still use Bento without BentoScript. The Bento API is fully available through GML and you lose nothing but convenience if you decide to use only the GML portion of Bento. You can read more about BentoScript [here](BentoScript.md).
+Having said that, you can still use Bento without BentoScript. The Bento API is fully available through GML and you lose nothing but convenience if you decide to use only the GML portion of Bento. You can read more about BentoScript [here](BentoScript).
 
 ?> Despite being immensely proud of the live programming feature, I didn't write most of it! Bento's custom scripting language (BentoScript) is a modified version of the incomparable [Catspeak](https://github.com/katsaii/catspeak-lang) by [Katsaii](https://www.katsaii.com/). I highly recommend investigating Catspeak if you need any sort of flexible scripting solution for your game.
 
@@ -33,7 +33,7 @@ The basic unit of logic in Bento is the "box". A Bento box is implemented as a s
 
 As a practical example, consider a small pause menu that appears in the centre of the screen. The pause menu background occupies a small portion of the screen rather than filling it. The buttons on the pause menu are children of the pause menu background, and the menu background is the parent.
 
-By attaching child boxes to parent boxes we create a hierarchy that is helpful for resolving mouse events, ordering draw calls, calculating layouts, and generally organising the appearance of the user interface.
+By attaching child boxes to parent boxes we create a hierarchy that is helpful for resolving mouse events, ordering draw calls, calculating layouts, and generally organising the appearance of the user interface. You can read more about the capabilities of Bento boxes [here](Bento-Boxes).
 
 &nbsp;
 
@@ -47,6 +47,8 @@ There's no conceivable way that I could cover every UI use case with Bento. As a
 
 If you'd like to make something totally custom then you'll want to inherit directly from `BentoClassShared` and fill in the various variables and callbacks as you see fit.
 
+You can read more about the various templates that available to you [here](Bento-Templates).
+
 &nbsp;
 
 ## Callbacks
@@ -57,9 +59,9 @@ Bento uses a callback model for linking your user interface to your functional c
 
 ## Layers
 
-Bento UI elements are arranged on layers.
+Bento UI elements are arranged on layers. Each layer has precisely one root Bento box which acts as the tying-off point for whatever UI layout you need to exist on that layer. Layers must have unique names. Layers additionally have a `priority` variable that controls the order that Bento layers are processed (for both user inout and drawing purposes). Layers have methods that allow them to be placed over other layers, to be pushed to the very top of the stack, or to be drawn at a specific priority.
 
-Layers have their own user input state (more on that later), they have their own pointer state.
+T#he behaviour of Bento boxes stored on layers can be controlled by setting the `behavior` variable on a layer. This behaviour variable can be used to change how Bento boxes on that layer function, but it is also used to control how subsequent (deeper / later) layers behave too. For example, a layer whose behaviour is set to `BENTO_BEHAVIOR_BLOCKING` will prevent all subsequent layers from receiving input or even drawing.
 
 &nbsp;
 
