@@ -23,7 +23,7 @@ BentoHorizontalScrollbar
   
   Inherits from BentoHorizontalSlider.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     value    = Current x offset for scrollbox contents
     valueMin = Minimum x offset for scrollbox contents (GET only!)
     valueMax = Maximum x offset for scrollbox contents (GET only!)
@@ -36,7 +36,7 @@ BentoHorizontalSlider
   
   Inherits from BentoClassButton.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     color          = Colour of the slider
     alpha          = Alpha transparency of the slider
     value          = Current value for slider
@@ -53,7 +53,7 @@ BentoRectangle
   A simple rectangle with no other properties. Useful for sketching out your UI before adding
   functionality and graphics.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     borderColor = Colour of the rectangle's border
     borderAlpha = Alpha transparency of the rectangle's border
     fillColor   = Colour of the rectangle's fill
@@ -64,7 +64,7 @@ BentoRectangle
 BentoScrollBox
   A scrollable window that can scroll to reveal further contents.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     scrollX    = Current x offset for contents
     scrollXMin = Minimum x offset for contents
     scrollXMax = Maximum x offset for contents
@@ -78,12 +78,12 @@ BentoSprite
   A simple graphic. Use with a 9-sliced sprite (and with .stretch set to <true>) for an easy
   9-sliced background.
   
-  Variables:
-    sprite   = Sprite to draw
-    color    = Blend colour for the sprite
-    alpha    = Alpha transparency for the sprite
-    image    = Image to draw
-    stretch  = Whether to stretch the sprite over the box
+  In addition to BentoClassShared() variables, public variables are:
+    sprite  = Sprite to draw
+    color   = Blend colour for the sprite
+    alpha   = Alpha transparency for the sprite
+    image   = Image to draw
+    stretch = Whether to stretch the sprite over the box
 
 
 
@@ -91,7 +91,7 @@ BentoSpriteButton
   A simple graphic. Use with a 9-sliced sprite (and with .stretch set to <true>) for an easy
   9-sliced background.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     alpha           = Alpha transparency for the sprite button (across all states)
     sprite          = Sprite to draw when not being interacted with
     color           = Blend colour when not being interacted with
@@ -107,19 +107,20 @@ BentoSpriteButton
 
 
 BentoText
-  Text! Doesn't use Scribble :(
+  Native GameMaker text rendering. Doesn't use Scribble :(
   
-  Variables:
-    color     = Colour to draw the text in
-    alpha     = Alpha transparency of the text
-    hAlign    = Alignment of the text within the box ("left" / "center" / "right")
-    vAlign    = Alignment of the text within the box ("top" / "middle" / "bottom")
-    label     = Text to draw
-    margin    = Spacing around the edges of the text
-    font      = Font to use when drawing text
-    wrap      = Whether to wrap text using the .widthWrap value
-    wrapWidth = Maximum width for text if wrapping
-
+  In addition to BentoClassShared() variables, public variables are:
+    color  = Colour to draw the text in
+    alpha  = Alpha transparency of the text
+    hAlign = Alignment of the text within the box ("left" / "center" / "right")
+    vAlign = Alignment of the text within the box ("top" / "middle" / "bottom")
+    label  = Text to draw
+    margin = Spacing around the edges of the text
+    font   = Font to use when drawing text
+    wrap   = Whether to wrap text
+  
+  Methods:
+    Trim()
 
 
 BentoTextButton
@@ -127,7 +128,7 @@ BentoTextButton
   
   Inherits from BentoClassButton.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     color  = Colour to draw the text button in
     alpha  = Alpha transparency of the text button
     label  = Text to draw
@@ -142,7 +143,7 @@ BentoVerticalScrollbar
   
   Inherits from BentoVerticalSlider.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     value    = Current y offset for scrollbox contents
     valueMin = Minimum y offset for scrollbox contents (GET only!)
     valueMax = Maximum y offset for scrollbox contents (GET only!)
@@ -155,7 +156,7 @@ BentoVerticalSlider
   
   Inherits from BentoClassButton.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     color          = Colour of the slider
     alpha          = Alpha transparency of the slider
     value          = Current value for slider
@@ -172,7 +173,7 @@ BentoVideo
   A video, played using GameMaker's native video playback feature. The video is draw stretched
   across the box.
   
-  Variables:
+  In addition to BentoClassShared() variables, public variables are:
     source = Path to the video
     loop   = Whether to loop the video (defaults to <true>)
     color  = Blend colour for the video

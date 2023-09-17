@@ -1,14 +1,15 @@
-/// Straight-forwards unwrapped text. Color and alpha can be changed as well as font, alignment,
-/// and margins around the text itself.
+/// Native GameMaker text rendering. Doesn't use Scribble :(
 /// 
 /// In addition to BentoClassShared() variables, public variables are:
-///   label
-///   margin
-///   font
 ///   color
 ///   alpha
 ///   hAlign
 ///   vAlign
+///   label
+///   margin
+///   font
+///   wrap
+///   wrapTight
 /// 
 /// This box has no callbacks or methods beyond BentoClassShared()
 
@@ -22,11 +23,10 @@ function BentoClassText() : BentoClassShared() constructor
     vAlign = "middle";
     ////////////////////////
     
-    __label     = "???";
-    __margin    = 0;
-    __font      = BENTO_DEFAULT_FONT;
-    __wrap      = false;
-    __wrapTight = false;
+    __label  = "???";
+    __margin = 0;
+    __font   = BENTO_DEFAULT_FONT;
+    __wrap   = false;
     
     
     
@@ -39,7 +39,6 @@ function BentoClassText() : BentoClassShared() constructor
     function(_value)
     {
         __label = _value;
-        __UpdateSize();
     });
     
     VariableBind("margin", function()
@@ -49,7 +48,6 @@ function BentoClassText() : BentoClassShared() constructor
     function(_value)
     {
         __margin = _value;
-        __UpdateSize();
     });
     
     VariableBind("font", function()
@@ -67,8 +65,6 @@ function BentoClassText() : BentoClassShared() constructor
             var _result = asset_get_index(_value);
             __font = font_exists(_result)? _result : BENTO_DEFAULT_FONT;
         }
-        
-        __UpdateSize();
     });
     
     VariableBind("wrap", function()
@@ -78,38 +74,16 @@ function BentoClassText() : BentoClassShared() constructor
     function(_value)
     {
         __wrap = _value;
-        __UpdateSize();
     });
     
-    VariableBind("wrapTight", function()
-    {
-        return __wrapTight;
-    },
-    function(_value)
-    {
-        __wrapTight = _value;
-        __UpdateSize();
-    });
-    
-    
-    
-    
-    
-    static __UpdateSize = function()
+    static Trim = function()
     {
         var _oldFont = draw_get_font();
         draw_set_font(__font);
         
         if (__wrap)
         {
-            if (__wrapTight)
-            {
-                Set("size", [string_width_ext(__label, -1, __localWidth) + 2*__margin, string_height_ext(__label, -1, __localWidth) + 2*__margin]);
-            }
-            else
-            {
-                Set("height", string_height_ext(__label, -1, __localWidth) + 2*__margin);
-            }
+            Set("size", [string_width_ext(__label, -1, __localWidth) + 2*__margin, string_height_ext(__label, -1, __localWidth) + 2*__margin]);
         }
         else
         {
@@ -118,6 +92,10 @@ function BentoClassText() : BentoClassShared() constructor
         
         draw_set_font(_oldFont);
     }
+    
+    
+    
+    
     
     CallbackSetDraw(function()
     {
