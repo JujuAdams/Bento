@@ -25,6 +25,7 @@ function __BentoScriptInferFunctionName(func) {
 /// Represents a foreign function/constant interface for exposing BentoScript
 function __BentoScriptClassForeignInterface() constructor {
     self.database = { };
+    self.databaseDynConst = { }; //Contains keywords marked as "dynamic constants"
     self.banList = { };
 
     /// Returns the value of a foreign symbol exposed to this interface.
@@ -54,11 +55,18 @@ function __BentoScriptClassForeignInterface() constructor {
         }
         return variable_struct_exists(database, name);
     };
-    
-    static remove = function (name) {
-        variable_struct_remove(database, name);   
-    }
-    
+
+    /// Returns whether the foreign symbol is a "dynamic constant".
+    /// If the symbol hasn't been added then this function returns `false`.
+    ///
+    /// @param {String} name
+    ///   The name of the symbol as it appears in Catspeak.
+    ///
+    /// @return {Any}
+    static isDynamicConstant = function (name) {
+        return (databaseDynConst[$ name] ?? false);
+    };
+
     /// Bans an array of symbols from being used by this interface. Any
     /// symbols in this list will be treated as though they do not exist. To
     /// unban a set of symbols, you should use the [addPardonList].
@@ -101,7 +109,8 @@ function __BentoScriptClassForeignInterface() constructor {
     /// Exposes a constant value to this interface.
     ///
     /// NOTE: You cannot expose functions using this function. Instead you
-    ///       should use one of [exposeFunction] or [exposeMethod].
+    ///       should use one of [exposeDynamicConstant] or [exposeFunction]
+    ///       or [exposeMethod].
     ///
     /// @param {String} name
     ///   The name of the constant as it will appear in __BentoScript.
@@ -132,6 +141,30 @@ function __BentoScriptClassForeignInterface() constructor {
             database[$ name] = value;
         }
     }
+
+    /// Exposes a "dynamic constant" to this interface. The value provided
+    /// for the constant should be a script or method. When the dynamic
+    /// constant is evaluated at runtime, the method will be executed with
+    /// zero arguments and the return value used as the value of the constant.
+    ///
+    /// @param {String} name
+    ///   The name of the constant as it will appear in Catspeak.
+    ///
+    /// @param {Function} func
+    ///   The script ID or function to add.
+    static exposeDynamicConstant = function () {
+        for (var i = 0; i < argument_count; i += 2) {
+            var name = argument[i + 0];
+            var func = argument[i + 1];
+            if (BENTOSCRIPT_DEBUG_MODE) {
+                __BentoScriptCheckArg("name", name, is_string);
+                __BentoScriptCheckArg("func", func, is_method);
+            }
+            func = is_method(func) ? func : method(undefined, func);
+            database[$ name] = func;
+            databaseDynConst[$ name] = true;
+        }
+    };
 
     /// Exposes a new unbound function to this interface. When passed a bound
     /// method (i.e. a non-global function), it will be unbound before it's
@@ -409,6 +442,16 @@ function __BentoScriptClassGMLCompiler(asg, interface=undefined) constructor {
             return undefined;
         }
         return interface.exists(name);
+    }
+
+    /// @ignore
+    ///
+    /// @param {String} name
+    static __isDynamicConstant = function (name) {
+        if (interface == undefined) {
+            return false;
+        }
+        return interface.isDynamicConstant(name);
     }
 
     /// Updates the compiler by generating the code for a single term from the
@@ -985,10 +1028,21 @@ function __BentoScriptClassGMLCompiler(asg, interface=undefined) constructor {
         }
         var name = term.name;
         if (__exists(name)) {
-            // user-defined interface
-            return method({
+            var _callee = method({
                 value : __get(name),
             }, __BentoScriptExprValue__);
+            if (__isDynamicConstant(name)) {
+                // dynamic constant
+                return method({
+                    dbgError : __dbgTerm(term, "is not a function"),
+                    callee : _callee,
+                    args : [],
+                    shared : sharedData,
+                }, __BentoScriptExprCall__);
+            } else {
+                // user-defined interface
+                return _callee;
+            }
         } else {
             // global var
             return method({
@@ -1194,11 +1248,11 @@ function __BentoScriptExprValue__() {
 /// @ignore
 /// @return {Any}
 function __BentoScriptExprArray__() {
-    //return array_map(values, function(f) { return f() });
-    var i = 0;
+	//return array_map(values, function(f) { return f() });
+	var i = 0;
     var values_ = values;
     var n_ = n;
-    var arr = array_create(n_);
+	var arr = array_create(n_);
     repeat (n_) {
         // not sure if this is even fast
         // but people will cry if I don't do it

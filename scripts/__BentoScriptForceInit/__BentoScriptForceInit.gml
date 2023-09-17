@@ -13,8 +13,8 @@
 
 //# feather use syntax-errors
 
-#macro __BENTOSCRIPT_VERSION "3.0.1"
-#macro __BENTOSCRIPT_DATE    "2023-09-13"
+#macro __BENTOSCRIPT_VERSION "3.0.2"
+#macro __BENTOSCRIPT_DATE    "2023-09-17"
 
 #macro __BentoScript  (__BentoScriptGMLGlobal().__environment)
 
