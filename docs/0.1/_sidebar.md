@@ -5,11 +5,6 @@
 
 ---
 
-- [Box Template](Template-Box)
-- [Rectangle Template](Template-Rectangle)
-
----
-
 - [Scripting Overview](Scripting-Overview)
 - [Script Structure](Script-Structure)
 - [General Variables](Scripting-General-Variables)
@@ -23,6 +18,11 @@
 - [Tick Callbacks](Scripting-Tick-Callbacks)
 - [Layout Callbacks](Scripting-Layout-Callbacks)
 - [Methods](Scripting-Methods)
+
+---
+
+- [Box Template](Template-Box)
+- [Rectangle Template](Template-Rectangle)
 
 ---
 

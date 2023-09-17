@@ -21,8 +21,8 @@
 
 const config = {
 	name: 'Bento',
-	description: 'Comprehensive cross-platform input for GameMaker 2.3',
-	latestVersion: '0.0',
+	description: 'UI framework for GameMaker',
+	latestVersion: '0.1',
 	otherVersions: [],
 	favicon: 'assets/favicon.ico',
 	themeColor: '#c50000',
