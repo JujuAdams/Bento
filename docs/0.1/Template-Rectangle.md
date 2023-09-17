@@ -15,8 +15,6 @@
     </tr>
 </table>
 
-GML name: `BentoClassRectangle()` *constructor*
-
 &nbsp;
 
 ## Variables
@@ -39,6 +37,8 @@ No additional methods beyond shared methods.
 ## Examples
 
 ### Red
+
+Rectangles are meant to be used for wireframing user interfaces. It can be helpful to colour-code rectangles so that you can better visualise the structure of your layout.
 
 <!-- tabs:start -->
 
