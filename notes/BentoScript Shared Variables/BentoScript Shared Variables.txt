@@ -103,6 +103,11 @@ BentoShared
     Set(name, value)
     ReplaceFRomFile(path)
     
+    TempOriginX(value)
+    TempOriginY(value)
+    TempOriginXReset()
+    TempOriginYReset()
+    
     CallbackSetHighlightStart(function)
     CallbackSetHighlight(function)
     CallbackSetHighlightEnd(function)
@@ -120,8 +125,3 @@ BentoShared
     CallbackSetOnValueChange(function)
     CallbackSetValueUpdate(function)
     CallbackSetBuildIn(function)
-    
-    TempOriginX(value)
-    TempOriginY(value)
-    TempOriginXReset()
-    TempOriginYReset()
