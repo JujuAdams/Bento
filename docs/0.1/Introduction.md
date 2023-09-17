@@ -67,6 +67,9 @@ T#he behaviour of Bento boxes stored on layers can be controlled by setting the 
 
 ## User Input
 
+Bento is built with both desktop mice, mobile touchscreens, and console gamepads in mind. Bento supports gamepad-based navigation out of the box and, unless you've customised things really heavily, you should have no issue swapping between mouse-driven and gamepad-driven user input modes. Bento uses a raycasting technique to determine which button to highlight so, even without direct assistance, Bento works with gamepads as well as mice.
+
+User input is handled by passing button state into Bento, wherein Bento decides whether a button has been pressed, released, held, or none of the above. Gone are the days of meticulously programming mouse button checks for every UI element. Bento also differentiates between "clicks" (which are actions directed at a specific UI element) and "casts" (which are actions broadcast more generally). For example, right-clicking on an item to open a context menu is a "click" and pressing Escape to close a pause menu is a "cast".
 
 
 
