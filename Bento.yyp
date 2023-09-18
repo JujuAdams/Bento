@@ -161,6 +161,13 @@
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Bento","folderPath":"folders/Bento.yy","order":0,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"(System)","folderPath":"folders/Bento/(System).yy","order":13,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"BentoScript","folderPath":"folders/Bento/(System)/BentoScript.yy","order":0,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"(System)","folderPath":"folders/Bento/(System)/BentoScript/(System).yy","order":0,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Common","folderPath":"folders/Bento/(System)/BentoScript/(System)/Common.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Compiler","folderPath":"folders/Bento/(System)/BentoScript/(System)/Compiler.yy","order":2,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Runtime","folderPath":"folders/Bento/(System)/BentoScript/(System)/Runtime.yy","order":3,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Advanced","folderPath":"folders/Bento/(System)/BentoScript/Advanced.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Really Advanced","folderPath":"folders/Bento/(System)/BentoScript/Advanced/Really Advanced.yy","order":1,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Classes","folderPath":"folders/Bento/(System)/Classes.yy","order":1,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Nullable References","folderPath":"folders/Bento/(System)/Nullable References.yy","order":4,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Surface","folderPath":"folders/Bento/(System)/Surface.yy","order":2,},
@@ -177,13 +184,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"09 Hosts","folderPath":"folders/Bento/09 Hosts.yy","order":10,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"10 MIscellaneous","folderPath":"folders/Bento/10 MIscellaneous.yy","order":12,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Documentation","folderPath":"folders/Bento/Documentation.yy","order":0,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"BentoScript","folderPath":"folders/Bento/(System)/BentoScript.yy","order":0,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"(System)","folderPath":"folders/Bento/(System)/BentoScript/(System).yy","order":0,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Common","folderPath":"folders/Bento/(System)/BentoScript/(System)/Common.yy","order":1,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Compiler","folderPath":"folders/Bento/(System)/BentoScript/(System)/Compiler.yy","order":2,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Runtime","folderPath":"folders/Bento/(System)/BentoScript/(System)/Runtime.yy","order":3,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Advanced","folderPath":"folders/Bento/(System)/BentoScript/Advanced.yy","order":1,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Really Advanced","folderPath":"folders/Bento/(System)/BentoScript/Advanced/Really Advanced.yy","order":1,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
@@ -192,7 +192,6 @@
     {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","isScaled":true,"compressFormat":"bz2","loadType":"default","directory":"","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,},
   ],
   "IncludedFiles": [
-    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"ZS_menu.mp4","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"MainMenuSidebar.bento","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"scroll_test.bento","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"modal_test.bento","CopyToMask":-1,"filePath":"datafiles",},
@@ -202,6 +201,7 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"focus_test.bento","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"columns_test.bento","CopyToMask":-1,"filePath":"datafiles",},
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"MainMenu.bento","CopyToMask":-1,"filePath":"datafiles",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"MainMenuVideo.mp4","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
     "IDEVersion": "2022.0.1.31",

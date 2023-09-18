@@ -3,7 +3,7 @@ build BentoBox {
 
 	build BentoVideo {
 		ltrb = [0, 0, "100%", "100%"]
-		source = "ZS_menu.mp4"
+		source = "MainMenuVideo.mp4"
 	}
 
 	build BentoRectangle {
