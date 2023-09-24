@@ -14,16 +14,19 @@ build BentoRectangle {
 		build BentoButton {
 			size = [200, 100]
 			xy = [0, "50%"]
+			clickListen = "action"
 		}
 
 		build BentoButton {
 			size = [200, 100]
 			xy = ["50%", "50%"]
+			clickListen = "action"
 		}
 
 		build BentoButton {
 			size = [200, 100]
 			xy = ["100%", "50%"]
+			clickListen = "action"
 		}
 	}
 }
