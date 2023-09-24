@@ -2006,10 +2006,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         
         var _highlightStruct = undefined;
         
-        var _visibleLeft   = max(_limitLeft,   __worldLeft  );
-        var _visibleTop    = max(_limitTop,    __worldTop   );
-        var _visibleRight  = min(_limitRight,  __worldRight );
-        var _visibleBottom = min(_limitBottom, __worldBottom);
+        var _visibleLeft   = __worldLeft;   //max(_limitLeft,   __worldLeft  );
+        var _visibleTop    = __worldTop;    //max(_limitTop,    __worldTop   );
+        var _visibleRight  = __worldRight;  //min(_limitRight,  __worldRight );
+        var _visibleBottom = __worldBottom; //min(_limitBottom, __worldBottom);
         
         if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom))
         {
@@ -2047,10 +2047,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     {
         //TODO - Write an exception for scanning within scrollboxes
         
-        var _visibleLeft   = max(_limitLeft,   __worldLeft  );
-        var _visibleTop    = max(_limitTop,    __worldTop   );
-        var _visibleRight  = min(_limitRight,  __worldRight );
-        var _visibleBottom = min(_limitBottom, __worldBottom);
+        var _visibleLeft   = __worldLeft;   //max(_limitLeft,   __worldLeft  );
+        var _visibleTop    = __worldTop;    //max(_limitTop,    __worldTop   );
+        var _visibleRight  = __worldRight;  //min(_limitRight,  __worldRight );
+        var _visibleBottom = __worldBottom; //min(_limitBottom, __worldBottom);
         
         if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom))
         {

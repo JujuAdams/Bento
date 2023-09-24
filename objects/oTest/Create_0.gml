@@ -1,3 +1,4 @@
+BentoDebugShowPointer(true);
 BentoScriptGlobal().testString = "By Juju Adams\nWith the assistance of Katsaii";
 
 useMouse = true;
