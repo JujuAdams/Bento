@@ -36,10 +36,10 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         var _width  = Get("width");
         var _height = Get("height");
         
-        var _targetLeft   = _target.__worldLeft;
-        var _targetTop    = _target.__worldTop; 
-        var _targetRight  = _target.__worldRight;
-        var _targetBottom = _target.__worldBottom;
+        var _targetLeft   = _target.__localLeft;
+        var _targetTop    = _target.__localTop;
+        var _targetRight  = _target.__localRight;
+        var _targetBottom = _target.__localBottom;
         
         if (_targetLeft < 0)
         {

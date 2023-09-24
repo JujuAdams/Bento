@@ -3,6 +3,12 @@ build BentoRectangle {
 
 	build BentoScrollbox {
 		debugUseSurface = false
+
+		scrollXMin = -100
+		scrollXMax =  100
+		scrollYMin = -100
+		scrollYMax =  100
+
 		ltrb = [0, 0, "100%", "100%"]
 
 		build BentoButton {
