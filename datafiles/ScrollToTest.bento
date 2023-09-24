@@ -1,0 +1,23 @@
+build BentoRectangle {
+	ltrb = [100, 100, parent.width-100, parent.height-100]
+
+	build BentoScrollbox {
+		debugUseSurface = false
+		ltrb = [0, 0, "100%", "100%"]
+
+		build BentoButton {
+			size = [200, 100]
+			xy = [0, "50%"]
+		}
+
+		build BentoButton {
+			size = [200, 100]
+			xy = ["50%", "50%"]
+		}
+
+		build BentoButton {
+			size = [200, 100]
+			xy = ["100%", "50%"]
+		}
+	}
+}

@@ -301,6 +301,16 @@ function __BentoClassLayer() constructor
         __struct.BuildIn();
     }
     
+    static __ScrollParentToSelf = function()
+    {
+        //Do nothing
+    }
+    
+    static __ScrollTo = function(_target)
+    {
+        //Do nothing
+    }
+    
     #endregion
     
     
@@ -323,7 +333,7 @@ function __BentoClassLayer() constructor
                 case BENTO_INPUT_MODE_POINTER:
                     __pointerX = _pointerX;
                     __pointerY = _pointerY;
-                    __BentoTrace("Set layer \"", __name, "\" pointer as ", __pointerX, ",", __pointerY);
+                    //__BentoTrace("Set layer \"", __name, "\" pointer as ", __pointerX, ",", __pointerY);
                 break;
                 
                 case BENTO_INPUT_MODE_DIRECTIONAL:
@@ -365,7 +375,8 @@ function __BentoClassLayer() constructor
             
             if (is_struct(__struct))
             {
-                __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity));
+                var _scrollTo = (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL);
+                __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity), _scrollTo);
             }
             
             var _j = 0;
@@ -408,7 +419,7 @@ function __BentoClassLayer() constructor
             
             //And then reset the rest of the capture state
             __CaptureSet(undefined, undefined, false);
-            if (_clearHighlight) __HighlightSet(undefined);
+            if (_clearHighlight) __HighlightSet(undefined, false);
             __BentoLayerStackPop();
         }
     }
@@ -637,7 +648,7 @@ function __BentoClassLayer() constructor
     
     
     
-    static __HighlightFirst = function()
+    static __HighlightFirst = function(_scrollTo)
     {
         if (!is_struct(__struct)) return;
         if (__BentoNullableRefAlive(__highlightRef)) return;
@@ -651,10 +662,10 @@ function __BentoClassLayer() constructor
             other.__pointerY = 0.5*(__worldTop + __worldBottom);
         }
         
-        __HighlightSet(_highlightStruct);
+        __HighlightSet(_highlightStruct, _scrollTo);
     }
     
-    static __HighlightSet = function(_newStruct)
+    static __HighlightSet = function(_newStruct, _scrollTo)
     {
         var _oldStruct = __BentoNullableRefResolve(__highlightRef);
         if (_oldStruct != _newStruct)
@@ -672,6 +683,7 @@ function __BentoClassLayer() constructor
                 _newStruct.__CallbackGet(__BENTO_CALL.__HIGHLIGHT_START).__Call(_newStruct);
                 __highlightRef     = __BentoNullableRefCreate(_newStruct);
                 __lastHighlightRef = __highlightRef;
+                if (_scrollTo) _newStruct.__ScrollParentToSelf();
             }
         }
         else

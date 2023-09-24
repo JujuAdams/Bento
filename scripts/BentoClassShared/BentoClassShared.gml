@@ -439,7 +439,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    #region Private Methods
+    #region Child-related Methods
     
     static __ChildAdd = function(_child)
     {
@@ -528,9 +528,24 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __BentoError("Invalid parameter for y-axis \"", _value, "\"");
     }
     
+    #endregion
     
     
     
+    
+    
+    #region Other Private Methods
+    
+    static __ScrollParentToSelf = function()
+    {
+        __parent.__ScrollTo(self);
+    }
+    
+    static __ScrollTo = function(_target)
+    {
+        //If we're not a scroll box, passthrough the command to our parent
+        __ScrollParentToSelf();
+    }
     
     static __Close = function()
     {
@@ -1244,7 +1259,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         {
             with(__FindLayer())
             {
-                if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined);
+                if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined, false);
                 if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined, false);
             }
         }
@@ -1263,7 +1278,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         {
             with(__FindLayer())
             {
-                if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined);
+                if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined, false);
                 if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined, false);
             }
         }
