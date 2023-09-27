@@ -340,7 +340,7 @@ function __BentoClassHost(_name) constructor
             var _i = 0;
             repeat(array_length(__layerArray))
             {
-                __layerArray[_i].__HighlightFirst();
+                __layerArray[_i].__HighlightFirst(true);
                 ++_i;
             }
         }

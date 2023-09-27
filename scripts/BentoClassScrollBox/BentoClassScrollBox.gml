@@ -17,6 +17,8 @@ function BentoClassScrollbox() : BentoClassShared() constructor
     scrollY    = 0;
     scrollYMin = 0;
     scrollYMax = 0;
+    
+    debugUseSurface = true;
     ////////////////////////
     
     __captureClipChildren = true;
@@ -28,6 +30,70 @@ function BentoClassScrollbox() : BentoClassShared() constructor
     
     
     
+    
+    static __ScrollTo = function(_target)
+    {
+        var _width  = Get("width");
+        var _height = Get("height");
+        
+        var _targetLeft   = _target.__localLeft;
+        var _targetTop    = _target.__localTop;
+        var _targetRight  = _target.__localRight;
+        var _targetBottom = _target.__localBottom;
+        
+        if (_targetLeft < 0)
+        {
+            if (_targetRight < _width)
+            {
+                scrollX = _targetLeft / __worldScale;
+            }
+            else
+            {
+                //Element is wider than the box
+                scrollX = (_width/2 - _targetLeft/2) / __worldScale;
+            }
+        }
+        else
+        {
+            if (_targetRight > _width)
+            {
+                scrollX = (_targetRight - _width) / __worldScale;
+            }
+            else
+            {
+                //Do nothing!
+            }
+        }
+        
+        if (_targetTop < 0)
+        {
+            if (_targetBottom < _height)
+            {
+                scrollY = _targetTop / __worldScale;
+            }
+            else
+            {
+                //Element is wider than the box
+                scrollY = (_height/2 - _targetTop/2) / __worldScale;
+            }
+        }
+        else
+        {
+            if (_targetBottom > _height)
+            {
+                scrollY = (_targetBottom - _height) / __worldScale;
+            }
+            else
+            {
+                //Do nothing!
+            }
+        }
+        
+        scrollX = clamp(scrollX, scrollXMin, scrollXMax);
+        scrollY = clamp(scrollY, scrollYMin, scrollYMax);
+        
+        __ScrollParentToSelf();
+    }
     
     static __EnsureSurface = function(_width, _height)
     {
@@ -49,7 +115,7 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         }
     }
     
-    static __Step = function(_offsetX, _offsetY)
+    static __Step = function(_offsetX, _offsetY, _scale)
     {
         __BentoContextStackPush(self);
         
@@ -120,21 +186,33 @@ function BentoClassScrollbox() : BentoClassShared() constructor
             __CallbackGet(__BENTO_CALL.__DRAW).__Call(self);
         }
         
-        __EnsureSurface();
-        
-        surface_set_target(__surface);
-        draw_clear_alpha(c_black, 0);
-        
-        var _i = 0;
-        repeat(array_length(__children))
+        if (debugUseSurface)
         {
-            __children[_i].__Draw(-__drawScale*scrollX, -__drawScale*scrollY, __drawScale);
-            ++_i;
+            __EnsureSurface(Get("width"), Get("height"));
+            
+            surface_set_target(__surface);
+            draw_clear_alpha(c_black, 0);
+            
+            var _i = 0;
+            repeat(array_length(__children))
+            {
+                __children[_i].__Draw(-__drawScale*scrollX, -__drawScale*scrollY, __drawScale);
+                ++_i;
+            }
+            
+            surface_reset_target();
+            
+            draw_surface(__surface, __drawLeft, __drawTop);
         }
-        
-        surface_reset_target();
-        
-        draw_surface(__surface, __drawLeft, __drawTop);
+        else
+        {
+            var _i = 0;
+            repeat(array_length(__children))
+            {
+                __children[_i].__Draw(__drawLeft - __drawScale*scrollX, __drawTop - __drawScale*scrollY, __drawScale);
+                ++_i;
+            }
+        }
         
         __BentoContextStackPop();
     }

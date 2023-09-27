@@ -1,3 +1,4 @@
+BentoDebugShowPointer(true);
 BentoScriptGlobal().testString = "By Juju Adams\nWith the assistance of Katsaii";
 
 useMouse = true;
@@ -41,7 +42,7 @@ BentoScriptGetEnvironment().interface.exposeFunction(
     "draw_circle",        draw_circle
 );
 
-BentoFileExecuteLayerTop("MainMenu.bento", "main menu");
+BentoFileExecuteLayerTop("ScrollToTest.bento", "main menu");
 
 //BentoOpen(new __BentoClassLayer());
 //BentoFileExecute("MainMenu.bento");
