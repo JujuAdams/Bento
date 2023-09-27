@@ -9,8 +9,7 @@ build BentoRectangle {
 		size = [40, 40]
 		xy = [parent.width - 20, 20]
 
-		captureClick = "action"
-		click = fn {
+		callbackClick = fn {
 			LayerDeleteCurrent()
 		}
 	}

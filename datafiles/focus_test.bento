@@ -6,27 +6,22 @@ build BentoBox {
 
 	build BentoButton {
 		size = [80, 80]
-		captureClick = "action"
 	}
 
 	build BentoButton {
 		size = [80, 80]
-		captureClick = "action"
 	}
 
 	build BentoHorizontalSlider {
 		size = [300, 50]
 		valueIncrement = 0.1
-		captureClick = ["action", "left", "right"]
 	}
 
 	build BentoButton {
 		size = [80, 80]
-		captureClick = "action"
 	}
 
 	build BentoButton {
 		size = [80, 80]
-		captureClick = "action"
 	}
 }
