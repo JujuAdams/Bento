@@ -983,7 +983,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     VariableBind("size", function()
     {
-        return [];
+        return [__localWidth, __localHeight];
     },
     function(_value)
     {

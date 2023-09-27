@@ -1,18 +1,3 @@
-/// Native GameMaker text rendering. Doesn't use Scribble :(
-/// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   color
-///   alpha
-///   hAlign
-///   vAlign
-///   label
-///   margin
-///   font
-///   wrap
-///   wrapTight
-/// 
-/// This box has no callbacks or methods beyond BentoClassShared()
-
 BentoAddBoxType("BentoText", BentoClassText, false);
 function BentoClassText() : BentoClassShared() constructor
 {
@@ -39,6 +24,7 @@ function BentoClassText() : BentoClassShared() constructor
     function(_value)
     {
         __label = _value;
+        if (!__wrap) Trim();
     });
     
     VariableBind("margin", function()
@@ -48,6 +34,7 @@ function BentoClassText() : BentoClassShared() constructor
     function(_value)
     {
         __margin = _value;
+        if (!__wrap) Trim();
     });
     
     VariableBind("font", function()
@@ -65,15 +52,8 @@ function BentoClassText() : BentoClassShared() constructor
             var _result = asset_get_index(_value);
             __font = font_exists(_result)? _result : BENTO_DEFAULT_FONT;
         }
-    });
-    
-    VariableBind("wrap", function()
-    {
-        return __wrap;
-    },
-    function(_value)
-    {
-        __wrap = _value;
+        
+        if (!__wrap) Trim();
     });
     
     static Trim = function()

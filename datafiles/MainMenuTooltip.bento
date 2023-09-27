@@ -1,6 +1,5 @@
 build BentoRectangle {
 	callbackStep = fn {
-		DebugLog(GetPointerX(), ",", GetPointerY())
 		worldX = GetPointerX()
 		worldY = GetPointerY() - height/2
 	}
