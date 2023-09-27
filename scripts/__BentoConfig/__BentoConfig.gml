@@ -1,3 +1,5 @@
+#macro BENTO_DEFAULT_BUTTON_NAME  "action"
+
 // Default length for build-in animations
 // This is important to prevent build-in animations never finishing
 #macro BENTO_DEFAULT_BUILD_IN_LENGTH  60

@@ -6,7 +6,6 @@ build BentoBox {
 	if (savedata_exists()) {
 		build BentoTextButton {
 			label = "Resume Game"
-			targetListen = "action"
 			callbackClick = fn {
 				game_resume()
 			}
@@ -14,25 +13,21 @@ build BentoBox {
 
 		build BentoTextButton {
 			label = "New Game"
-			targetListen = "action"
 		}
 
 		build BentoTextButton {
 			label = "Load Game"
-			targetListen = "action"
 		}
 	} else {
 		build BentoTextButton {
 			highlightGroup = "top"
 			label = "New Game"
-			targetListen = "action"
 		}
 	}
 
 	build BentoTextButton {
 		highlightGroup = "top"
 		label = "Settings"
-		targetListen = "action"
 
 		callbackOver = fn {
 			if (not LayerSustain("tooltip")) {
@@ -49,13 +44,11 @@ build BentoBox {
 	build BentoTextButton {
 		highlightGroup = "bottom"
 		label = "Credits"
-		targetListen = "action"
 	}
 
 	build BentoTextButton {
 		highlightGroup = "bottom"
 		label = "Quit"
-		targetListen = "action"
 		callbackClick = fn {
 			game_end()
 		}

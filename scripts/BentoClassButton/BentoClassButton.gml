@@ -16,6 +16,8 @@ function BentoClassButton() : BentoClassShared() constructor
     alpha = 1;
     ////////////////////////
     
+    if (BENTO_DEFAULT_BUTTON_NAME != undefined) Set("targetListen", BENTO_DEFAULT_BUTTON_NAME);
+    
     
     
     

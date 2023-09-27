@@ -7,6 +7,8 @@ function BentoClassHorizontalScrollbar() : BentoClassHorizontalSlider() construc
     
     __binding = undefined;
     
+    
+    
     VariableBind("value", function()
     {
         return value;
