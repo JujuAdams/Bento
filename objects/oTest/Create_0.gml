@@ -42,7 +42,7 @@ BentoScriptGetEnvironment().interface.exposeFunction(
     "draw_circle",        draw_circle
 );
 
-BentoFileExecuteLayerTop("ScrollToTest.bento", "main menu");
+BentoFileExecuteLayerTop("MainMenu.bento", "main menu");
 
 //BentoOpen(new __BentoClassLayer());
 //BentoFileExecute("MainMenu.bento");

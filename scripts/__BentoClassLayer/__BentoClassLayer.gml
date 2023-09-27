@@ -317,7 +317,7 @@ function __BentoClassLayer() constructor
     
     
     
-    static __InputProcess = function(_pointerMode, _pointerX, _pointerY, _retrigger, _threshold, _buttonArray)
+    static __InputProcess = function(_pointerMode, _pointerX, _pointerY, _retrigger, _threshold, _excludeGroup, _buttonArray)
     {
         static _result = {
             __struct:   undefined,
@@ -353,7 +353,15 @@ function __BentoClassLayer() constructor
                             _result.__struct   = undefined;
                             _result.__distance = infinity;
                             
-                            __struct.__HighlightableFreeSearch(__pointerX, __pointerY, _nX, _nY, __BentoNullableRefResolve(__highlightRef), -infinity, -infinity, infinity, infinity, _result);
+                            var _skipGroup = undefined;
+                            
+                            if (_excludeGroup && __BentoNullableRefAlive(__highlightRef))
+                            {
+                                var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
+                                if (is_struct(_highlightStruct)) _skipGroup = _highlightStruct.highlightGroup;
+                            }
+                            
+                            __struct.__HighlightableFreeSearch(__pointerX, __pointerY, _nX, _nY, __BentoNullableRefResolve(__highlightRef), -infinity, -infinity, infinity, infinity, _skipGroup, _result);
                             
                             if (is_struct(_result.__struct))
                             {
@@ -540,7 +548,6 @@ function __BentoClassLayer() constructor
                 
                 var _highlightRef = __highlightRef;
                 var _captureRef   = __captureRef;
-                var _dragSuccess = false;
                 
                 if (__captureButtonName == _buttonName)
                 {

@@ -6,9 +6,15 @@
 /// navigable with only 4-directional movement.
 /// 
 /// This function also implicitly sets the BENTO_INPUT_MODE_DIRECTIONAL input mode.
+/// 
+/// @param dX
+/// @param dY
+/// @param [retrigger=false]
+/// @param [threshold=0.2]
+/// @param [excludeGroup=false]
 
-function BentoInputDirection(_dX, _dY, _retrigger = false, _threshold = 0.2)
+function BentoInputDirection(_dX, _dY, _retrigger = false, _threshold = 0.2, _excludeGroup = false)
 {
     static _global = __BentoGlobal();
-    return _global.__currentHost.__InputDirection(_dX, _dY, _retrigger, _threshold);
+    return _global.__currentHost.__InputDirection(_dX, _dY, _retrigger, _threshold, _excludeGroup);
 }

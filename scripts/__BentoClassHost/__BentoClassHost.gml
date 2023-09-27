@@ -15,6 +15,7 @@ function __BentoClassHost(_name) constructor
     __inputMode         = BENTO_INPUT_MODE_POINTER;
     __inputX            = 0;
     __inputY            = 0;
+    __inputExcludeGroup = false;
     __inputRetrigger    = false;
     __inputThreshold    = 0.2;
     __inputButtonArray  = [];
@@ -64,7 +65,7 @@ function __BentoClassHost(_name) constructor
         repeat(array_length(_layerArray))
         {
             var _layer = _layerArray[_i];
-            _layer.__InputProcess(__inputMode, __inputX, __inputY, __inputRetrigger, __inputThreshold, __inputButtonArray);
+            _layer.__InputProcess(__inputMode, __inputX, __inputY, __inputRetrigger, __inputThreshold, __inputExcludeGroup, __inputButtonArray);
             
             ++_i;
             
@@ -363,14 +364,15 @@ function __BentoClassHost(_name) constructor
         return self;
     }
     
-    static __InputDirection = function(_dX, _dY, _retrigger = false, _threshold = 0.2)
+    static __InputDirection = function(_dX, _dY, _retrigger = false, _threshold = 0.2, _excludeGroup = false)
     {
         __InputSetMode(BENTO_INPUT_MODE_DIRECTIONAL);
         
-        __inputX          = _dX;
-        __inputY          = _dY;
-        __inputRetrigger  = _retrigger;
-        __inputThreshold  = _threshold;
+        __inputX            = _dX;
+        __inputY            = _dY;
+        __inputRetrigger    = _retrigger;
+        __inputThreshold    = _threshold;
+        __inputExcludeGroup = _excludeGroup;
         
         return self;
     }

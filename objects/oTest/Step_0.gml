@@ -17,7 +17,10 @@ else
     //BentoInputButtonCast("quit", gamepad_button_check(0, gp_start));
     
     BentoInputDirection(keyboard_check(vk_right) - keyboard_check(vk_left),
-                        keyboard_check(vk_down) - keyboard_check(vk_up));
+                        keyboard_check(vk_down) - keyboard_check(vk_up),
+                        undefined, undefined,
+                        keyboard_check(vk_shift));
+    
     BentoInputButtonClick("action", keyboard_check(vk_space));
     BentoInputButtonCast("quit", keyboard_check(vk_escape));
     BentoStep();

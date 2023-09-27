@@ -23,12 +23,14 @@ build BentoBox {
 		}
 	} else {
 		build BentoTextButton {
+			highlightGroup = "top"
 			label = "New Game"
 			clickListen = "action"
 		}
 	}
 
 	build BentoTextButton {
+		highlightGroup = "top"
 		label = "Settings"
 		clickListen = "action"
 
@@ -45,11 +47,13 @@ build BentoBox {
 	}
 
 	build BentoTextButton {
+		highlightGroup = "bottom"
 		label = "Credits"
 		clickListen = "action"
 	}
 
 	build BentoTextButton {
+		highlightGroup = "bottom"
 		label = "Quit"
 		clickListen = "action"
 		callbackClick = fn {

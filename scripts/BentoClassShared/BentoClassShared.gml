@@ -14,9 +14,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     /// Public variables ///
-    identifier    = undefined; //Assigned below
-    latch         = false;
-    layoutInclude = true;
+    identifier     = undefined; //Assigned below
+    highlightGroup = undefined;
+    latch          = false;
+    layoutInclude  = true;
     ////////////////////////
     
     
@@ -2043,7 +2044,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return _highlightStruct;
     }
     
-    static __HighlightableFreeSearch = function(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _result)
+    static __HighlightableFreeSearch = function(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _excludeGroup, _result)
     {
         //TODO - Write an exception for scanning within scrollboxes
         
@@ -2056,11 +2057,14 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         {
             if (__active && __visible && (__animMode == BENTO_BUILD_FINISHED) && __CanCaptureClickAnyEver() && (_oldStruct != self))
             {
-                var _distance = __HighlightableFreeSearchDistance(_pX, _pY, _nX, _nY);
-                if (_distance < _result.__distance)
+                if ((_excludeGroup == undefined) || (highlightGroup == undefined) || (_excludeGroup != highlightGroup))
                 {
-                    _result.__struct   = self;
-                    _result.__distance = _distance;
+                    var _distance = __HighlightableFreeSearchDistance(_pX, _pY, _nX, _nY);
+                    if (_distance < _result.__distance)
+                    {
+                        _result.__struct   = self;
+                        _result.__distance = _distance;
+                    }
                 }
             }
             
@@ -2075,7 +2079,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             var _i = 0;
             repeat(array_length(__children))
             {
-                __children[_i].__HighlightableFreeSearch(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _result);
+                __children[_i].__HighlightableFreeSearch(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _excludeGroup, _result);
                 ++_i;
             }
         }
