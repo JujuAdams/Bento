@@ -41,7 +41,7 @@
     {"id":{"name":"BentoLayerCurrent","path":"scripts/BentoLayerCurrent/BentoLayerCurrent.yy",},"order":3,},
     {"id":{"name":"BentoInputGetMode","path":"scripts/BentoInputGetMode/BentoInputGetMode.yy",},"order":5,},
     {"id":{"name":"__BentoSurfaceCreate","path":"scripts/__BentoSurfaceCreate/__BentoSurfaceCreate.yy",},"order":1,},
-    {"id":{"name":"BentoInputButtonClick","path":"scripts/BentoInputButtonClick/BentoInputButtonClick.yy",},"order":2,},
+    {"id":{"name":"BentoInputButtonTarget","path":"scripts/BentoInputButtonTarget/BentoInputButtonTarget.yy",},"order":2,},
     {"id":{"name":"__BentoXORShift32","path":"scripts/__BentoXORShift32/__BentoXORShift32.yy",},"order":1,},
     {"id":{"name":"BentoClassButton","path":"scripts/BentoClassButton/BentoClassButton.yy",},"order":3,},
     {"id":{"name":"BentoOpen","path":"scripts/BentoOpen/BentoOpen.yy",},"order":0,},

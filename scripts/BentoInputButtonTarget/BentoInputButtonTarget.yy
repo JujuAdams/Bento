@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BentoInputButtonClick",
+  "name": "BentoInputButtonTarget",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

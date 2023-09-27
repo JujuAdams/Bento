@@ -50,7 +50,7 @@ BentoShared
     callbackRelease (function)
     callbackClick (function)
     callbackCanCapture (function)
-    clickListen
+    targetListen
     castListen
     callbackEnter (function)
     callbackOver (function)

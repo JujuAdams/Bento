@@ -51,7 +51,7 @@ Callback assignment. If used, the following must be set to functions:
         SET  callbackRelease
         SET  callbackClick
         SET  callbackCanCapture
-        SET  clickListen
+        SET  targetListen
         SET  castListen
         SET  callbackEnter
         SET  callbackOver

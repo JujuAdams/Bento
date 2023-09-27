@@ -92,10 +92,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         ++_i;
     }
     
-    __captureClickDict  = {};
-    __captureClickArray = [];
-    __captureCastDict   = {};
-    __captureCastArray  = [];
+    __listenTargetDict  = {};
+    __listenTargetArray = [];
+    __listenCastDict    = {};
+    __listenCastArray   = [];
     
     __getter = {};
     __setter = {};
@@ -707,7 +707,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static __FindCaptureCast = function(_buttonName)
     {
-        if (__active && (__animMode == BENTO_BUILD_FINISHED) && __CanCaptureCast(_buttonName))
+        if (__active && (__animMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName))
         {
             return self;
         }
@@ -724,18 +724,18 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return undefined;
     }
     
-    static __CanCaptureClick = function(_buttonName)
+    static __CanRespondToButtonTarget = function(_buttonName)
     {
-        if (not (__captureClickDict[$ _buttonName] ?? false)) return false;
+        if (not (__listenTargetDict[$ _buttonName] ?? false)) return false;
         
         if (not __CallbackExists(__BENTO_CALL.__BUTTON_CAN_CAPTURE)) return true;
         
         return __CallbackGet(__BENTO_CALL.__BUTTON_CAN_CAPTURE).__Call(self, _buttonName);
     }
     
-    static __CanCaptureCast = function(_buttonName)
+    static __CanRespondToButtonCast = function(_buttonName)
     {
-        if (not (__captureCastDict[$ _buttonName] ?? false)) return false;
+        if (not (__listenCastDict[$ _buttonName] ?? false)) return false;
         
         if (not __CallbackExists(__BENTO_CALL.__BUTTON_CAN_CAPTURE)) return true;
         
@@ -744,15 +744,15 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static __CanCaptureClickAnyEver = function() //TODO - Reimplement in a more effient way
     {
-        if (array_length(__captureClickArray) <= 0) return false;
+        if (array_length(__listenTargetArray) <= 0) return false;
         
         return __CallbackCategoryExists(__BENTO_CALL.__CATEGORY_BUTTON);
     }
     
     static __CanCaptureAnyEver = function() //TODO - Reimplement in a more effient way
     {
-        if ((array_length(__captureClickArray) <= 0)
-        &&  (array_length(__captureCastArray ) <= 0))
+        if ((array_length(__listenTargetArray) <= 0)
+        &&  (array_length(__listenCastArray ) <= 0))
         {
             return false;
         }
@@ -763,7 +763,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     static __CanCaptureClickAnyNow = function() //TODO - Reimplement in a more effient way
     {
         //If we haven't registered any captures, return <false>
-        var _length = array_length(__captureClickArray);
+        var _length = array_length(__listenTargetArray);
         if (_length <= 0) return false;
         
         //If there are no button callbacks then return <false>
@@ -777,7 +777,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         var _i = 0;
         repeat(_length)
         {
-            if (_canCaptureCallback(__captureClickArray[_i])) return true;
+            if (_canCaptureCallback(__listenTargetArray[_i])) return true;
             ++_i;
         }
         
@@ -1343,9 +1343,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__BUTTON_CAN_CAPTURE, _value);
     });
     
-    VariableBind("clickListen", function()
+    VariableBind("targetListen", function()
     {
-        __BentoError("Cannot get \"clickListen\"");
+        __BentoError("Cannot get \"targetListen\"");
         return;
     },
     function(_array)
@@ -1357,10 +1357,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         {
             var _value = _array[_i];
             
-            if (!variable_struct_exists(__captureClickDict, _value))
+            if (!variable_struct_exists(__listenTargetDict, _value))
             {
-                array_push(__captureClickArray, _value);
-                __captureClickDict[$ _value] = true;
+                array_push(__listenTargetArray, _value);
+                __listenTargetDict[$ _value] = true;
             }
             
             ++_i;
@@ -1381,10 +1381,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         {
             var _value = _array[_i];
             
-            if (!variable_struct_exists(__captureCastDict, _value))
+            if (!variable_struct_exists(__listenCastDict, _value))
             {
-                array_push(__captureCastArray, _value);
-                __captureCastDict[$ _value] = true;
+                array_push(__listenCastArray, _value);
+                __listenCastDict[$ _value] = true;
             }
             
             ++_i;
@@ -2137,7 +2137,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static __CaptureCastSearch = function(_buttonName)
     {
-        if (__active && (__animMode == BENTO_BUILD_FINISHED) && __CanCaptureCast(_buttonName)) return self;
+        if (__active && (__animMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName)) return self;
         return __parent.__CaptureCastSearch();
     }
     

@@ -40,13 +40,11 @@ build BentoBox {
 		xywh = [200, 100, 10, 10]
 	}
 
-	build BentoText {
+	build BentoTextWrap {
 		hAlign = "right"
 		vAlign = "bottom"
 		xy = [200, 100]
 		label = "a bb ccc dddd eeeee dddd ccc bb a"
 		width = 132
-		wrap = true
-		wrapTight = true
 	}
 }

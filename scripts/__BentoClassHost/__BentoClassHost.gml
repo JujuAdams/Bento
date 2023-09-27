@@ -377,13 +377,13 @@ function __BentoClassHost(_name) constructor
         return self;
     }
     
-    static __InputButtonClick = function(_name, _state)
+    static __InputButtonTarget = function(_name, _state)
     {
         var _buttonData = __inputButtonDict[$ _name];
         if (_buttonData == undefined)
         {
             _buttonData = {
-                __type:  "click",
+                __type:  "target",
                 __name:  _name,
                 __state: _state,
             };

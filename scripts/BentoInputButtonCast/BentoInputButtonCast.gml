@@ -2,7 +2,7 @@
 /// 
 /// This function should be given the "held" state of the user input in question. For example:
 /// 
-///   BentoInputButtonClick("quit", keyboard_check(vk_escape));
+///   BentoInputButtonTarget("quit", keyboard_check(vk_escape));
 /// 
 /// Bento will take care of the press/released state itself.
 

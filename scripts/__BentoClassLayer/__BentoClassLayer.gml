@@ -392,8 +392,8 @@ function __BentoClassLayer() constructor
                 var _buttonData = _buttonArray[_j];
                 switch(_buttonData.__type)
                 {
-                    case "click":
-                        __InputProcessClick(_buttonData.__name, _buttonData.__state, _pointerMode);
+                    case "target":
+                        __InputProcessTarget(_buttonData.__name, _buttonData.__state, _pointerMode);
                     break;
                     
                     case "cast":
@@ -495,7 +495,7 @@ function __BentoClassLayer() constructor
         __BentoLayerStackPop();
     }
     
-    static __InputProcessClick = function(_buttonName, _state, _pointerMode)
+    static __InputProcessTarget = function(_buttonName, _state, _pointerMode)
     {
         var _buttonStateDict = __stateButtonDict;
         var _oldState = _buttonStateDict[$ _buttonName] ?? false;
@@ -537,9 +537,13 @@ function __BentoClassLayer() constructor
                 //Button pressed
                 
                 //Only allow new input if we're not clicking other buttons
-                if (variable_struct_names_count(_buttonStateDict) == 1)
+                if ((variable_struct_names_count(_buttonStateDict) == 1) && __BentoNullableRefAlive(__highlightRef))
                 {
-                    __CaptureSet(__BentoNullableRefResolve(__highlightRef), _buttonName, false);
+                    var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
+                    if (_highlightStruct.__CanRespondToButtonTarget(_buttonName))
+                    {
+                        __CaptureSet(_highlightStruct, _buttonName, false);
+                    }
                 }
             }
             else

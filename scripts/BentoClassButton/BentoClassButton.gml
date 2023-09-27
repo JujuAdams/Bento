@@ -1,6 +1,6 @@
 /// Simple rectangular button with color and alpha.
 /// 
-/// Make sure to set <clickListen> and <callbackClick> to activate the button!
+/// Make sure to set <targetListen> and <callbackClick> to activate the button!
 /// 
 /// In addition to BentoClassShared() variables, public variables are:
 ///   color

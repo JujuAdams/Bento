@@ -2,7 +2,7 @@
 /// Please note that the size of the enclosing box is determined by the <sprite> variable i.e.
 /// the initial "neutral" sprite.
 /// 
-/// Make sure to set <clickListen> and <callbackClick> to activate the button!
+/// Make sure to set <targetListen> and <callbackClick> to activate the button!
 /// 
 /// In addition to BentoClassShared() variables, public variables are:
 ///   sprite
