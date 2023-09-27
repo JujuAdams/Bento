@@ -333,6 +333,8 @@ function __BentoClassLayer() constructor
                 case BENTO_INPUT_MODE_POINTER:
                     __pointerX = _pointerX;
                     __pointerY = _pointerY;
+                    
+                    __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity), false);
                 break;
                 
                 case BENTO_INPUT_MODE_DIRECTIONAL:
@@ -363,27 +365,26 @@ function __BentoClassLayer() constructor
                             
                             __struct.__HighlightableFreeSearch(__pointerX, __pointerY, _nX, _nY, __BentoNullableRefResolve(__highlightRef), -infinity, -infinity, infinity, infinity, _skipGroup, _result);
                             
-                            if (is_struct(_result.__struct))
+                            var _target = _result.__struct;
+                            if (is_struct(_target)) __HighlightSet(_target, true);
+                        }
+                        
+                        if (__BentoNullableRefAlive(__highlightRef))
+                        {
+                            with(__BentoNullableRefResolve(__highlightRef))
                             {
-                                with(_result.__struct)
-                                {
-                                    other.__pointerX = 0.5*(__worldLeft + __worldRight);
-                                    other.__pointerY = 0.5*(__worldTop + __worldBottom);
-                                }
+                                other.__pointerX = 0.5*(__worldLeft + __worldRight);
+                                other.__pointerY = 0.5*(__worldTop + __worldBottom);
                             }
                         }
+                        
+                        __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity), true);
                     }
                 break;
                 
                 default:
                     __BentoError("Input pointer mode \"", _pointerMode, "\" for ", self, " not recognised");
                 break;
-            }
-            
-            if (is_struct(__struct))
-            {
-                var _scrollTo = (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL);
-                __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity), _scrollTo);
             }
             
             var _j = 0;
@@ -658,7 +659,7 @@ function __BentoClassLayer() constructor
     
     
     
-    static __HighlightFirst = function(_scrollTo)
+    static __HighlightFirst = function(_directional)
     {
         if (!is_struct(__struct)) return;
         if (__BentoNullableRefAlive(__highlightRef)) return;
@@ -672,10 +673,10 @@ function __BentoClassLayer() constructor
             other.__pointerY = 0.5*(__worldTop + __worldBottom);
         }
         
-        __HighlightSet(_highlightStruct, _scrollTo);
+        __HighlightSet(_highlightStruct, _directional);
     }
     
-    static __HighlightSet = function(_newStruct, _scrollTo)
+    static __HighlightSet = function(_newStruct, _directional)
     {
         var _oldStruct = __BentoNullableRefResolve(__highlightRef);
         if (_oldStruct != _newStruct)
@@ -693,7 +694,8 @@ function __BentoClassLayer() constructor
                 _newStruct.__CallbackGet(__BENTO_CALL.__HIGHLIGHT_START).__Call(_newStruct);
                 __highlightRef     = __BentoNullableRefCreate(_newStruct);
                 __lastHighlightRef = __highlightRef;
-                if (_scrollTo) _newStruct.__ScrollParentToSelf();
+                
+                if (_directional) _newStruct.__ScrollParentToSelf();
             }
         }
         else

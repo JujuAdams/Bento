@@ -544,7 +544,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static __ScrollTo = function(_target)
     {
-        //If we're not a scroll box, passthrough the command to our parent
+        //If we're not a scroll box, pass through the command to our parent
         __ScrollParentToSelf();
     }
     

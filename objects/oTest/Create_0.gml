@@ -39,10 +39,10 @@ BentoScriptGetEnvironment().interface.exposeFunction(
         show_debug_message(string(current_time) + ": " + string(_string))
     },
     "show_message",       function(_string) { show_message(string(_string)) },
-    "draw_circle",        draw_circle
+    "draw_circle",        draw_circle,
 );
 
-BentoFileExecuteLayerTop("MainMenu.bento", "main menu");
+BentoFileExecuteLayerTop("ScrollToTest.bento", "main menu");
 
 //BentoOpen(new __BentoClassLayer());
 //BentoFileExecute("MainMenu.bento");
