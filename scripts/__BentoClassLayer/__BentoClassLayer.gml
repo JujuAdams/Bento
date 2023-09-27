@@ -377,6 +377,10 @@ function __BentoClassLayer() constructor
                                 other.__pointerY = 0.5*(__worldTop + __worldBottom);
                             }
                         }
+                        else
+                        {
+                            //Handle highlighted button disappearing
+                        }
                         
                         __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity), true);
                     }
@@ -446,7 +450,7 @@ function __BentoClassLayer() constructor
         if (is_struct(__struct))
         {
             __BentoLayerStackPush(self);
-            __struct.__Step(__localLeft, __localTop, 1);
+            __struct.__Step(__localLeft, __localTop, 1, true);
             __BentoLayerStackPop();
         }
         

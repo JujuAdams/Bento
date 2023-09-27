@@ -553,11 +553,11 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __CallbackGet(__BENTO_CALL.__ON_CLOSE).__Call(self);
     }
     
-    static __Step = function(_offsetX, _offsetY, _inheritedScale)
+    static __Step = function(_offsetX, _offsetY, _inheritedScale, _executeCallback)
     {
         __BentoContextStackPush(self);
         
-        if (__animMode == BENTO_BUILD_IN)
+        if (_executeCallback && (__animMode == BENTO_BUILD_IN))
         {
             ++__animTime;
             __CallbackGet(__BENTO_CALL.__BUILD_IN).__Call(self, __animTime);
@@ -576,12 +576,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __worldBottom  = _offsetY + __worldScale*(_inheritedScale*__localBottom - __localY) + __localY;
         __worldScale  *= _inheritedScale;
         
-        if (__active) __CallbackGet(__BENTO_CALL.__STEP).__Call(self);
+        if (_executeCallback && __active) __CallbackGet(__BENTO_CALL.__STEP).__Call(self);
         
         var _i = 0;
         repeat(array_length(__children))
         {
-            __children[_i].__Step(__worldLeft, __worldTop, __worldScale);
+            __children[_i].__Step(__worldLeft, __worldTop, __worldScale, _executeCallback);
             ++_i;
         }
         

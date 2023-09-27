@@ -33,6 +33,9 @@ function BentoClassScrollbox() : BentoClassShared() constructor
     
     static __ScrollTo = function(_target)
     {
+        var _oldScrollX = scrollX;
+        var _oldScrollY = scrollY;
+        
         var _width  = Get("width");
         var _height = Get("height");
         
@@ -92,6 +95,12 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         scrollX = clamp(scrollX, scrollXMin, scrollXMax);
         scrollY = clamp(scrollY, scrollYMin, scrollYMax);
         
+        //If our scroll position has changed, immediately update the world space positions of our children
+        if ((_oldScrollX != scrollX) || (_oldScrollY != scrollY))
+        {
+            __Step(__worldOffsetX, __worldOffsetY, __worldScale / __localScale, false);
+        }
+        
         __ScrollParentToSelf();
     }
     
@@ -115,11 +124,11 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         }
     }
     
-    static __Step = function(_offsetX, _offsetY, _scale)
+    static __Step = function(_offsetX, _offsetY, _scale, _executeCallback)
     {
         __BentoContextStackPush(self);
         
-        if (__animMode == BENTO_BUILD_IN)
+        if (_executeCallback && (__animMode == BENTO_BUILD_IN))
         {
             ++__animTime;
             __CallbackGet(__BENTO_CALL.__BUILD_IN).__Call(self, __animTime);
@@ -139,12 +148,12 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         __worldRight   = _offsetX + __worldScale*__localRight;
         __worldBottom  = _offsetY + __worldScale*__localBottom;
         
-        if (__active) __CallbackGet(__BENTO_CALL.__STEP).__Call(self);
+        if (_executeCallback && __active) __CallbackGet(__BENTO_CALL.__STEP).__Call(self);
         
         var _i = 0;
         repeat(array_length(__children))
         {
-            __children[_i].__Step(__worldLeft - __worldScale*scrollX, __worldTop - __worldScale*scrollY, __worldScale);
+            __children[_i].__Step(__worldLeft - __worldScale*scrollX, __worldTop - __worldScale*scrollY, __worldScale, _executeCallback);
             ++_i;
         }
         
