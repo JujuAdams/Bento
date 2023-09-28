@@ -9,8 +9,8 @@
 #macro BENTO_INPUT_MODE_POINTER      "pointer"
 #macro BENTO_INPUT_MODE_DIRECTIONAL  "directional"
 
-#macro BENTO_VERSION  "0.1.0 preview"
-#macro BENTO_DATE     "2023-09-14"
+#macro BENTO_VERSION  "0.1.1 preview"
+#macro BENTO_DATE     "2023-09-28"
 
 #macro __BENTO_TEST_LATCHING  true
 
