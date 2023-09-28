@@ -710,10 +710,13 @@ function __BentoClassLayer() constructor
     static __HighlightFirst = function(_directional)
     {
         if (!is_struct(__struct)) return;
-        if (__BentoNullableRefAlive(__highlightRef)) return;
         
-        var _highlightStruct = __struct.__HighlightableSearchFirst();
-        if (_highlightStruct == undefined) return;
+        var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
+        if (!is_struct(_highlightStruct))
+        {
+            _highlightStruct = __struct.__HighlightableSearchFirst();
+            if (_highlightStruct == undefined) return;
+        }
         
         with(_highlightStruct)
         {
@@ -721,10 +724,10 @@ function __BentoClassLayer() constructor
             other.__pointerY = 0.5*(__worldTop + __worldBottom);
         }
         
-        __HighlightSet(_highlightStruct, _directional);
+        __HighlightSet(_highlightStruct, _directional, true);
     }
     
-    static __HighlightSet = function(_newStruct, _directional)
+    static __HighlightSet = function(_newStruct, _directional, _retriggerScroll = false)
     {
         var _oldStruct = __BentoNullableRefResolve(__highlightRef);
         if (_oldStruct != _newStruct)
@@ -743,12 +746,19 @@ function __BentoClassLayer() constructor
                 __highlightRef     = __BentoNullableRefCreate(_newStruct);
                 __lastHighlightRef = __highlightRef;
                 
-                if (_directional) _newStruct.__ScrollParentToSelf();
+                if (_directional)
+                {
+                    _newStruct.__ScrollParentToSelf();
+                }
             }
         }
         else
         {
-            if (_oldStruct != undefined) _oldStruct.__CallbackGet(__BENTO_CALL.__HIGHLIGHT).__Call(_oldStruct);
+            if (_oldStruct != undefined)
+            {
+                _oldStruct.__CallbackGet(__BENTO_CALL.__HIGHLIGHT).__Call(_oldStruct);
+                if (_retriggerScroll) _oldStruct.__ScrollParentToSelf();
+            }
         }
     }
     
