@@ -18,6 +18,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     highlightGroup = undefined;
     latch          = false;
     layoutInclude  = true;
+    navigationLock = false;
     ////////////////////////
     
     
@@ -107,6 +108,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     __originXStashed = undefined;
     __originYStashed = undefined;
+    
+    //Nullable weak references
+    __navigationRight = undefined;
+    __navigationUp    = undefined;
+    __navigationLeft  = undefined;
+    __navigationDown  = undefined;
     
     __localScale  = 1;
     __localLeft   = 0;
@@ -1227,6 +1234,50 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
+    #region Navigation Getter/Setters
+    
+    VariableBind("navigationRight", function()
+    {
+        return __BentoNullableRefResolve(__navigationRight);
+    },
+    function(_value)
+    {
+        __navigationRight = __BentoNullableRefCreate(_value);
+    });
+    
+    VariableBind("navigationUp", function()
+    {
+        return __BentoNullableRefResolve(__navigationUp);
+    },
+    function(_value)
+    {
+        __navigationUp = __BentoNullableRefCreate(_value);
+    });
+    
+    VariableBind("navigationLeft", function()
+    {
+        return __BentoNullableRefResolve(__navigationLeft);
+    },
+    function(_value)
+    {
+        __navigationLeft = __BentoNullableRefCreate(_value);
+    });
+    
+    VariableBind("navigationDown", function()
+    {
+        return __BentoNullableRefResolve(__navigationDown);
+    },
+    function(_value)
+    {
+        __navigationDown = __BentoNullableRefCreate(_value);
+    });
+    
+    #endregion
+    
+    
+    
+    
+    
     #region Other Getter/Setters
     
     VariableBind("children", function()
@@ -2044,6 +2095,11 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return _highlightStruct;
     }
     
+    static __HighlightableNotInGroup = function(_excludeGroup)
+    {
+        return ((_excludeGroup == undefined) || (highlightGroup == undefined) || (_excludeGroup != highlightGroup));
+    }
+    
     static __HighlightableFreeSearch = function(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _excludeGroup, _result)
     {
         //TODO - Write an exception for scanning within scrollboxes
@@ -2053,18 +2109,15 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         var _visibleRight  = __worldRight;  //min(_limitRight,  __worldRight );
         var _visibleBottom = __worldBottom; //min(_limitBottom, __worldBottom);
         
-        if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom))
+        if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom) && (__animMode == BENTO_BUILD_FINISHED))
         {
-            if (__active && __visible && (__animMode == BENTO_BUILD_FINISHED) && __CanCaptureClickAnyEver() && (_oldStruct != self))
+            if (__active && __visible && __CanCaptureClickAnyEver() && (_oldStruct != self) && __HighlightableNotInGroup(_excludeGroup))
             {
-                if ((_excludeGroup == undefined) || (highlightGroup == undefined) || (_excludeGroup != highlightGroup))
+                var _distance = __HighlightableFreeSearchDistance(_pX, _pY, _nX, _nY);
+                if (_distance < _result.__distance)
                 {
-                    var _distance = __HighlightableFreeSearchDistance(_pX, _pY, _nX, _nY);
-                    if (_distance < _result.__distance)
-                    {
-                        _result.__struct   = self;
-                        _result.__distance = _distance;
-                    }
+                    _result.__struct   = self;
+                    _result.__distance = _distance;
                 }
             }
             

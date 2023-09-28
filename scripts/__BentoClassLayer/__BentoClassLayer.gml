@@ -355,15 +355,59 @@ function __BentoClassLayer() constructor
                             _result.__struct   = undefined;
                             _result.__distance = infinity;
                             
-                            var _skipGroup = undefined;
+                            var _skipGroup  = undefined;
+                            var _freeSearch = true;
                             
-                            if (_excludeGroup && __BentoNullableRefAlive(__highlightRef))
+                            var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
+                            if (is_struct(_highlightStruct))
                             {
-                                var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
-                                if (is_struct(_highlightStruct)) _skipGroup = _highlightStruct.highlightGroup;
+                                var _navigationTarget = undefined;
+                                
+                                with(_highlightStruct)
+                                {
+                                    _freeSearch = !navigationLock;
+                                    if (_excludeGroup) _skipGroup = highlightGroup;
+                                    
+                                    //Break down the movement into 4 directions
+                                    if (abs(_nX) > abs(_nY))
+                                    {
+                                        if (_nX < 0) //Left
+                                        {
+                                            _navigationTarget = __navigationLeft;
+                                        }
+                                        else //Right
+                                        {
+                                            _navigationTarget = __navigationRight;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (_nY < 0) //Up
+                                        {
+                                            _navigationTarget = __navigationUp;
+                                        }
+                                        else //Down
+                                        {
+                                            _navigationTarget = __navigationDown;
+                                        }
+                                    }
+                                }
+                                
+                                //See if the navigation target exists, and jump to it if so
+                                _navigationTarget = __BentoNullableRefResolve(_navigationTarget);
+                                if (is_struct(_navigationTarget))
+                                {
+                                    _result.__struct   = _navigationTarget;
+                                    _result.__distance = 0;
+                                    
+                                    _freeSearch = false;
+                                }
                             }
                             
-                            __struct.__HighlightableFreeSearch(__pointerX, __pointerY, _nX, _nY, __BentoNullableRefResolve(__highlightRef), -infinity, -infinity, infinity, infinity, _skipGroup, _result);
+                            if (_freeSearch)
+                            {
+                                __struct.__HighlightableFreeSearch(__pointerX, __pointerY, _nX, _nY, __BentoNullableRefResolve(__highlightRef), -infinity, -infinity, infinity, infinity, _skipGroup, _result);
+                            }
                             
                             var _target = _result.__struct;
                             if (is_struct(_target)) __HighlightSet(_target, true);

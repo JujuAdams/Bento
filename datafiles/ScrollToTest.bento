@@ -11,19 +11,27 @@ build BentoRectangle {
 
 		ltrb = [0, 0, "100%", "100%"]
 
-		build BentoButton {
+		var buttonA = build BentoButton {
+			navigationLock = true
 			size = [200, 100]
 			xy = [0, "50%"]
 		}
 
-		build BentoButton {
+		var buttonB = build BentoButton {
+			navigationLock = true
 			size = [200, 100]
 			xy = ["50%", "50%"]
 		}
 
-		build BentoButton {
+		var buttonC = build BentoButton {
+			navigationLock = true
 			size = [200, 100]
 			xy = ["100%", "50%"]
 		}
+
+		buttonA.navigationRight = buttonB
+		buttonB.navigationLeft  = buttonA
+		buttonB.navigationRight = buttonC
+		buttonC.navigationLeft  = buttonB
 	}
 }
