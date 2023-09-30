@@ -38,6 +38,8 @@ BentoClose();  <--  OnClose callback executed here
 
 ## Button / Clicking
 
+!> Button callbacks will only works if you set either the `targetListen` or `castListen` variables so that Bento knows what button to listen for.
+
 ### ButtonClick
 
 Called when a button is positively clicked by the player. This happens on button release. The `ButtonClick` callback can be triggered by either targetted or cast button clicks.
