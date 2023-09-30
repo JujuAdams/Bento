@@ -1,5 +1,5 @@
-/// A basic rectangle. Useful for whiteboxing or creating semi-transparent masks. Available in .ui
-/// scripts using the BentoRectangle builder.
+/// A basic rectangle. Useful for whiteboxing or creating semi-transparent masks. Available in
+/// BentoScript using the BentoRectangle builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:
 /// 

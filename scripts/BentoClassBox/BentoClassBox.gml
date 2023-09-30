@@ -1,4 +1,4 @@
-/// An invisible rectangle used for organising layouts. Available in .ui script using the BentoBox
+/// An invisible rectangle used for organising layouts. Available in BentoScript using the BentoBox
 /// builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:

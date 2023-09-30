@@ -1,4 +1,4 @@
-/// A vertical scrollbar. Available in .ui script using the BentoVerticalScrollbar builder.
+/// A vertical scrollbar. Available in BentoScript using the BentoVerticalScrollbar builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:
 /// 

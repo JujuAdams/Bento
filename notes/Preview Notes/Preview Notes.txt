@@ -37,7 +37,7 @@ upon what boxes can do then you are invited (and encouraged!) to extend existing
 to achieve what you want.
 
 Boxes are created by instantiating copies of box templates. Box templates are implemented as GML
-constructor functions that can be invoked through Bento scripts. You can find the code for box
+constructor functions that can be invoked through BentoScript. You can find the code for box
 templates in the "Templates" folder in the asset browser inside the main Bento folder. Each
 template is registered with Bento by calling BentoAddBoxType() at the top of the script. Box
 templates inherit from an existing template, and template inheritance will eventually reach the

@@ -1,4 +1,4 @@
-/// A sprite, with the added capability to stretch it. Available in .ui scripts using the
+/// A sprite, with the added capability to stretch it. Available in BentoScript using the
 /// BentoSprite builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:

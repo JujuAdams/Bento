@@ -1,4 +1,4 @@
-/// A horizontal scrollbar. Available in .ui script using the BentoHorizontalScrollbar builder.
+/// A horizontal scrollbar. Available in BentoScript using the BentoHorizontalScrollbar builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:
 /// 

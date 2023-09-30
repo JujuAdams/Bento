@@ -28,7 +28,7 @@ Button callbacks require one of the following variables to be set:
 | callbackPress          | CallbackSetButtonStart      | Function to call when a button is pressed on the UI element                                                                                            |
 | callbackHold           | CallbackSetButton           | Function to call when a button is held on the UI element                                                                                               |
 | callbackRelease        | CallbackSetButtonEnd        | Function to call when a button is released (and the UI element received a pressed event)                                                               |
-| callback               |                             | N.B. This is NOT the same as "clicking" the button. A button can be released for many reasons that aren't the same as the player deliberately clicking |
+|                        |                             | N.B. This is NOT the same as "clicking" the button. A button can be released for many reasons that aren't the same as the player deliberately clicking |
 | callbackCanCapture     | CallbackSetButtonCanCapture | Function to call to check whether a UI element can be clicked. The function should return <true> or <false> to indicate clickability                   |
 
 

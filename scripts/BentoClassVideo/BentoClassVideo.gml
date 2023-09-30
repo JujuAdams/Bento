@@ -1,5 +1,5 @@
 /// Video playback using GameMaker's native player. The video is drawn stretched across the
-/// bounding box. Available in .ui scripts using the BentoVideo builder.
+/// bounding box. Available in BentoScript using the BentoVideo builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:
 /// 

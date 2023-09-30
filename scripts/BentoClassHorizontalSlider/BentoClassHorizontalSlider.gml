@@ -1,4 +1,4 @@
-/// A horizontal slider. Available in .ui script using the BentoHorizontalSlider builder.
+/// A horizontal slider. Available in BentoScript using the BentoHorizontalSlider builder.
 /// 
 /// Sliders have two special callbacks, "onValueChange" and "valueUpdate":
 /// 

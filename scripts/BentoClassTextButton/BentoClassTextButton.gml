@@ -1,4 +1,4 @@
-/// Simple clickable text button. Available in .ui script using the BentoTextButton builder.
+/// Simple clickable text button. Available in BentoScript using the BentoTextButton builder.
 /// 
 /// Don't forget to set the .targetListen and .click variables! Buttons will be highlightable but
 /// won't do anything if you don't set BOTH variables. For example:

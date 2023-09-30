@@ -1,5 +1,5 @@
 /// A button drawn using a sprite. When interacted with, the sprite can change image/color etc.
-/// Available in .ui scripts using the BentoSpriteButton builder.
+/// Available in BentoScript using the BentoSpriteButton builder.
 /// 
 /// Don't forget to set the .targetListen and .click variables! Buttons will be highlightable but
 /// won't do anything if you don't set BOTH variables. For example:

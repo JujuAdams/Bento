@@ -1,5 +1,5 @@
 /// Simple unadorned rectangular button. Useful as a basis for creating custom button behaviour.
-/// Available in .ui scripts using the BentoButton builder.
+/// Available in BentoScript using the BentoButton builder.
 /// 
 /// Don't forget to set the .targetListen and .click variables! Buttons will be highlightable but
 /// won't do anything if you don't set BOTH variables. For example:

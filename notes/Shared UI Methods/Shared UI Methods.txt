@@ -23,7 +23,7 @@ The methods on this page are available across all UI elements.
 | ButtonStateSet         | Sets the button state                                                        |
 | Find                   | Tries to find a UI element descendent with an identifier                     |
 | FindType               | Finds all descendents with a given type                                      |
-| ReplaceFromFile        | Replaces the UI element with the result of executing a .ui script            |
+| ReplaceFromFile        | Replaces the UI element with the result of executing a BentoScript           |
 | BuildIn                | Restarts the build-in animation                                              |
 | BuildFinish            | Immediately stops any animation                                              |
 | GetBuilding            | Returns the build-in animation state                                         |
@@ -71,7 +71,7 @@ Returns: Type of the UI element, as a string
 | None          |          |         |
 
 The "type" of a UI element is typically the instanceof() of the constructor that created the
-element e.g. a UiButton builder in a .ui script will generate a UI element with the type
+element e.g. a UiButton builder in a BentoScript will generate a UI element with the type
 "uiClassButton".
 
 
@@ -247,9 +247,9 @@ as an ancestor) UI element with a matching type is pushed into the array.
 
 Returns: <undefined>
 
-| Argument Name | Datatype | Purpose                                                           |
-|---------------|----------|-------------------------------------------------------------------|
-| filePath      | string   | Path to the .ui script to execute and replace the UI element with |
+| Argument Name | Datatype | Purpose                                                            |
+|---------------|----------|--------------------------------------------------------------------|
+| filePath      | string   | Path to the BentoScript to execute and replace the UI element with |
 
 
 
@@ -301,13 +301,13 @@ Returns: <undefined>
 | getterFunc    | function | Function to call when getting the value of the named variable |
 | setterFunc    | function | Function to call when setting the value of the named variable |
 
-The bindings set by this method are used by Catspeak when executing .ui scripts, and they are also
+The bindings set by this method are used by Catspeak when executing BentoScript, and they are also
 used by the .Get() and .Set() methods. Trying to use standard GML syntax to get/set variables that
 have been bound using .VariableBind() will fail.
 
 
 
-.Get(variableName)
+### .Get(variableName)
 
 Returns: <undefined>
 
@@ -320,7 +320,7 @@ read directly.
 
 
 
-.Set(variableName, value)
+### .Set(variableName, value)
 
 Returns: <undefined>
 

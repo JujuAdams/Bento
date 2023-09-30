@@ -1,5 +1,5 @@
 /// A simple text rendering class. The size of the UI element is automatically calculated from the
-/// text itself. Available in .ui script using the BentoText builder.
+/// text itself. Available in BentoScript using the BentoText builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:
 /// 
@@ -14,18 +14,18 @@
 /// | hAlign    | string   | "left," "center", or "right". Note that the bounding box calcs are based on "centre" |
 /// | vAlign    | string   | "top", "middle", or "bottom". Note that the bounding box calcs are based on "middle" |
 /// 
-/// Draggable inventories also have the following methods:
+/// Instances of BentoClassText also have the following methods:
 /// 
 /// .Trim()
-/// 
-/// Resizes the UI element to match the size of the rendered text. Automatically called by this
-/// class when the font, label, or margin is changed.
 /// 
 /// Returns: <undefined>
 /// 
 /// | Argument Name | Datatype | Purpose |
 /// |---------------|----------|---------|
 /// | None          |          |         |
+/// 
+/// Resizes the UI element to match the size of the rendered text. Automatically called by this
+/// class when the font, label, or margin is changed.
 
 BentoAddBoxType("BentoText", BentoClassText, false);
 function BentoClassText() : BentoClassShared() constructor

@@ -1,8 +1,3 @@
-A basic rectangle. Useful for whiteboxing or creating semi-transparent masks. Available in .ui
-scripts using the BentoRectangle builder.
-
-
-
 # Variables
 
 Available variables (in addition to shared UI variables) are:
@@ -100,13 +95,13 @@ Returns: <undefined>
 | getterFunc    | function | Function to call when getting the value of the named variable |
 | setterFunc    | function | Function to call when setting the value of the named variable |
 
-The bindings set by this method are used by Catspeak when executing .ui scripts, and they are also
+The bindings set by this method are used by Catspeak when executing BentoScript, and they are also
 used by the .Get() and .Set() methods. Trying to use standard GML syntax to get/set variables that
 have been bound using .VariableBind() will fail.
 
 
 
-.Get(variableName)
+### .Get(variableName)
 
 Returns: <undefined>
 
@@ -119,7 +114,7 @@ read directly.
 
 
 
-.Set(variableName, value)
+### .Set(variableName, value)
 
 Returns: <undefined>
 

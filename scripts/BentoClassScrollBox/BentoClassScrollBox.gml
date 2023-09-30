@@ -1,5 +1,5 @@
 /// A surface-based clipping window that allows its contents to be offset. Useful for allowing
-/// access to more content than would otherwise fit on the screen. Available in .ui scripts using
+/// access to more content than would otherwise fit on the screen. Available in BentoScript using
 /// the BentoScrollbox builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:
