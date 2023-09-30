@@ -96,10 +96,22 @@ Called by proxy when the UI element is generated, or when the `BuildIn()` method
 
 ### ButtonClick
 
-**BentoScript:** `callbackClick`
-**GML method:** `CallbackSetButtonClick`
+<!-- tabs:start -->
+
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>callbackClick</code></td>
+    </tr>
+    <tr>
+		<td><b>GML constructor</b></td>
+		<td><code>CallbackSetButtonClick</code></td>
+    </tr>
+</table>
 
 Called when a button is positively clicked by the player. This happens on button release. The `ButtonClick` callback can be triggered by either targetted or cast button clicks.
+
+<!-- tabs:end -->
 
 ### ButtonStart
 
