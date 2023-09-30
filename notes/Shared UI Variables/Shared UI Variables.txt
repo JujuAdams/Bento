@@ -92,8 +92,6 @@ The variables on this page are available across all UI elements.
 
 # Animation
 
-These properties are not fully tested or implemented.
-
 | Name             | Datatype | Purpose                                                               |
 |------------------|----------|-----------------------------------------------------------------------|
 | buildInLength    | number   | Length of the build-in animation, as triggered by .BuildIn()          |
