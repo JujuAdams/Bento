@@ -35,20 +35,19 @@ build BentoSpriteButton {
 
 ## Variables
 
-| Name        | Datatype | Purpose                                                                                                            |
-|-------------|----------|--------------------------------------------------------------------------------------------------------------------|
-| sprite      | sprite   | Sprite to draw when in a neutral state. You may use a string if BentoDebugRelaxedSprites() to set to <true>        |
-|             |          | N.B. Setting the sprite will also set the width/height of the UI element itself                                    |
-| image       | number   | Image of the sprite to draw when in a neutral state                                                                |
-| color       | RGB      | Blend color for the button when in a neutral state                                                                 |
-| hoverSprite | sprite   | Sprite to draw when the button is highlighted. You may use a string if BentoDebugRelaxedSprites() to set to <true> |
-| hoverImage  | number   | Image of the sprite to draw when the button is highlighted                                                         |
-| hoverColor  | RGB      | Blend color for the button when highlighted                                                                        |
-| heldSprite  | sprite   | Sprite to draw when the button is pressed. You may use a string if BentoDebugRelaxedSprites() to set to <true>     |
-| heldImage   | number   | Image of the sprite to draw when the button is pressed                                                             |
-| heldColor   | RGB      | Blend color for the button when pressed                                                                            |
-| alpha       | number   | Alpha transparency                                                                                                 |
-| stretch     | boolean  | Whether or not to stretch the sprite over the bounding box                                                         |
+| Name          | Datatype | Purpose                                                                                                              |
+|---------------|----------|----------------------------------------------------------------------------------------------------------------------|
+| `sprite`      | sprite   | Sprite to draw when in a neutral state. You may use a string if `BentoDebugRelaxedSprites()` to set to `true`<br> N.B. Setting the sprite will also set the width/height of the UI element itself |
+| `image`       | number   | Image of the sprite to draw when in a neutral state                                                                  |
+| `color`       | RGB      | Blend color for the button when in a neutral state                                                                   |
+| `hoverSprite` | sprite   | Sprite to draw when the button is highlighted. You may use a string if `BentoDebugRelaxedSprites()` to set to `true` |
+| `hoverImage`  | number   | Image of the sprite to draw when the button is highlighted                                                           |
+| `hoverColor`  | RGB      | Blend color for the button when highlighted                                                                          |
+| `heldSprite`  | sprite   | Sprite to draw when the button is pressed. You may use a string if `BentoDebugRelaxedSprites()` to set to `true`     |
+| `heldImage`   | number   | Image of the sprite to draw when the button is pressed                                                               |
+| `heldColor`   | RGB      | Blend color for the button when pressed                                                                              |
+| `alpha`       | number   | Alpha transparency                                                                                                   |
+| `stretch`     | boolean  | Whether or not to stretch the sprite over the bounding box                                                           |
 
 &nbsp;
 

@@ -37,13 +37,13 @@ build BentoTextButton {
 
 ## Variables
 
-| Name   | Datatype | Purpose                                                                   |
-|--------|----------|---------------------------------------------------------------------------|
-| label  | string   | Text to draw                                                              |
-| margin | number   | Additional space to put around the text when calculating the bounding box |
-| font   | string   | Name of the font to use                                                   |
-| color  | RGB      | Colour to use when drawing the button                                     |
-| alpha  | number   | Alpha blending value                                                      |
+| Name     | Datatype | Purpose                                                                   |
+|----------|----------|---------------------------------------------------------------------------|
+| `label`  | string   | Text to draw                                                              |
+| `margin` | number   | Additional space to put around the text when calculating the bounding box |
+| `font`   | string   | Name of the font to use                                                   |
+| `color`  | RGB      | Colour to use when drawing the button                                     |
+| `alpha`  | number   | Alpha blending value                                                      |
 
 &nbsp;
 

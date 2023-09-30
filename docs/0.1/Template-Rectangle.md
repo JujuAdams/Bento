@@ -21,12 +21,12 @@ A basic rectangle. Useful for whiteboxing or creating semi-transparent masks.
 
 ## Variables
 
-| Name        | Datatype | Purpose                          |
-|-------------|----------|----------------------------------|
-| borderColor | RGB      | Colour of the border             |
-| borderAlpha | number   | Alpha transparency of the border |
-| fillColor   | RGB      | Colour of the rectangle fill     |
-| fillAlpha   | number   | Alpha transparency of the fill   |
+| Name          | Datatype | Purpose                          |
+|---------------|----------|----------------------------------|
+| `borderColor` | RGB      | Colour of the border             |
+| `borderAlpha` | number   | Alpha transparency of the border |
+| `fillColor`   | RGB      | Colour of the rectangle fill     |
+| `fillAlpha`   | number   | Alpha transparency of the fill   |
 
 &nbsp;
 

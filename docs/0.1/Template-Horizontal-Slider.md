@@ -38,19 +38,19 @@ build BentoHorizontalSlider {
 
 ## Variables
 
-| Name                  | Datatype | Purpose                                                                           |
-|-----------------------|----------|-----------------------------------------------------------------------------------|
-| color                 | RGB      | Colour for the slider                                                             |
-| alpha                 | number   | Alpha blending value                                                              |
-| handleWidth           | number   | Width of the handle                                                               |
-| handleHeight          | number   | Height of the handle                                                              |
-| handlePosition        | number   | Normalised (0 -> 1) position of the handle. Coupled to the `.value` variable      |
-| value                 | number   | Value for the slider. Coupled to the `.handlePosition` variable                   |
-| valueMin              | number   | Minimum value when the handle is at the left-hand side                            |
-| valueMax              | number   | Maximum value when the handle is at the right-hand side                           |
-| valueIncrement        | boolean  | Quantisation resolution for the slider value                                      |
-| callbackOnValueChange | function | Callback to execute when the handle of the slider is moved                        |
-| callbackValueUpdate   | function | Callback to execute every frame to link the slider to a variable stored elsewhere |
+| Name                    | Datatype | Purpose                                                                           |
+|-------------------------|----------|-----------------------------------------------------------------------------------|
+| `color`                 | RGB      | Colour for the slider                                                             |
+| `alpha`                 | number   | Alpha blending value                                                              |
+| `handleWidth`           | number   | Width of the handle                                                               |
+| `handleHeight`          | number   | Height of the handle                                                              |
+| `handlePosition`        | number   | Normalised (0 -> 1) position of the handle. Coupled to the `.value` variable      |
+| `value`                 | number   | Value for the slider. Coupled to the `.handlePosition` variable                   |
+| `valueMin`              | number   | Minimum value when the handle is at the left-hand side                            |
+| `valueMax`              | number   | Maximum value when the handle is at the right-hand side                           |
+| `valueIncrement`        | boolean  | Quantisation resolution for the slider value                                      |
+| `callbackOnValueChange` | function | Callback to execute when the handle of the slider is moved                        |
+| `callbackValueUpdate`   | function | Callback to execute every frame to link the slider to a variable stored elsewhere |
 
 &nbsp;
 

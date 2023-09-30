@@ -21,14 +21,13 @@ A sprite, with the added capability to stretch it.
 
 ## Variables
 
-| Name    | Datatype | Purpose                                                                             |
-|---------|----------|-------------------------------------------------------------------------------------|
-| color   | RGB      | Blend color for the sprite                                                          |
-| alpha   | number   | Alpha transparency                                                                  |
-| sprite  | sprite   | Sprite to draw. You may use a string if BentoDebugRelaxedSprites() to set to <true> |
-|         |          | N.B. Setting the sprite will also set the width/height of the UI element itself     |
-| image   | number   | Image of the sprite to draw                                                         |
-| stretch | boolean  | Whether or not to stretch the sprite over the bounding box                          |
+| Name      | Datatype | Purpose                                                                             |
+|-----------|----------|-------------------------------------------------------------------------------------|
+| `color`   | RGB      | Blend color for the sprite                                                          |
+| `alpha`   | number   | Alpha transparency                                                                  |
+| `sprite`  | sprite   | Sprite to draw. You may use a string if `BentoDebugRelaxedSprites()` to set to `true` <br> N.B. Setting the sprite will also set the width/height of the UI element itself |
+| `image`   | number   | Image of the sprite to draw                                                         |
+| `stretch` | boolean  | Whether or not to stretch the sprite over the bounding box                          |
 
 &nbsp;
 

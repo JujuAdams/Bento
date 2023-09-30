@@ -21,11 +21,11 @@ A vertical scrollbar.
 
 ## Variables
 
-| Name    | Datatype  | Purpose                                                                 |
-|---------|-----------|-------------------------------------------------------------------------|
-| color   | RGB       | Colour for the slider                                                   |
-| alpha   | number    | Alpha blending value                                                    |
-| binding | UI struct | UI scroll box struct to bind to, as created by a BentoScrollBox builder |
+| Name      | Datatype  | Purpose                                                                   |
+|-----------|-----------|---------------------------------------------------------------------------|
+| `color`   | RGB       | Colour for the slider                                                     |
+| `alpha`   | number    | Alpha blending value                                                      |
+| `binding` | UI struct | UI scroll box struct to bind to, as created by a `BentoScrollBox` builder |
 
 &nbsp;
 

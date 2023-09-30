@@ -21,16 +21,16 @@ A simple text rendering class. The size of the UI element is automatically calcu
 
 ## Variables
 
-| Name      | Datatype | Purpose                                                                              |
-|-----------|----------|--------------------------------------------------------------------------------------|
-| label     | string   | Text to draw                                                                         |
-| margin    | number   | Additional space to put around the text when calculating the bounding box            |
-| font      | string   | Name of the font to use                                                              |
-| color     | RGB      | Colour to use when drawing the text                                                  |
-| scale     | number   | Scaling factor. A value of 1 is no change                                            |
-| alpha     | number   | Alpha blending value                                                                 |
-| hAlign    | string   | "left," "center", or "right". Note that the bounding box calcs are based on "centre" |
-| vAlign    | string   | "top", "middle", or "bottom". Note that the bounding box calcs are based on "middle" |
+| Name     | Datatype | Purpose                                                                                    |
+|----------|----------|--------------------------------------------------------------------------------------------|
+| `label`  | string   | Text to draw                                                                               |
+| `margin` | number   | Additional space to put around the text when calculating the bounding box                  |
+| `font`   | string   | Name of the font to use                                                                    |
+| `color`  | RGB      | Colour to use when drawing the text                                                        |
+| `scale`  | number   | Scaling factor. A value of 1 is no change                                                  |
+| `alpha`  | number   | Alpha blending value                                                                       |
+| `hAlign` | string   | `"left"` `"center"` or `"right"`. Note that the bounding box calcs are based on `"centre"` |
+| `vAlign` | string   | `"top"` `"middle"` or `"bottom"`. Note that the bounding box calcs are based on `"middle"` |
 
 &nbsp;
 
@@ -38,7 +38,7 @@ A simple text rendering class. The size of the UI element is automatically calcu
 
 ### .Trim()
 
-Returns: <undefined>
+Returns: N/A (`undefined`)
 
 | Argument Name | Datatype | Purpose |
 |---------------|----------|---------|

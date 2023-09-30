@@ -35,10 +35,10 @@ build BentoButton {
 
 ## Variables
 
-| Name  | Datatype | Purpose                    |
-|-------|----------|----------------------------|
-| color | RGB      | Blend color for the button |
-| alpha | number   | Alpha transparency         |
+| Name    | Datatype | Purpose                    |
+|---------|----------|----------------------------|
+| `color` | RGB      | Blend color for the button |
+| `alpha` | number   | Alpha transparency         |
 
 &nbsp;
 
