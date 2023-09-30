@@ -1,8 +1,10 @@
 # Building From GML
 
+## Executing BentoScript
+
 Bento is intended to be used by loading UI layouts from files. This isn't always ideal and it is occasionally easier or (a little) safer to create UI from within your game application.
 
-Building from GML is essentially the same as building from a file. You'll need to create a string that contains the Catspeak script that you'd like to execute, and then you'll need to execute that string. The syntax in a script run from a string versus run from a file is identical. Hot reloading is not supported when executing a string.
+Executing BentoScript from within GML is essentially the same as building from a file. You'll need to create a string that contains the Catspeak script that you'd like to execute, and then you'll need to execute that string. The syntax in a script run from a string versus run from a file is identical. Hot reloading is not supported when executing a string.
 
 The easiest way to create a string that contains a Catspeak script is to use a ["string literal"](https://manual.yoyogames.com/GameMaker_Language/GML_Reference/Strings/Strings.htm). This is somewhat unusual syntax in GameMaker but is helpful here. A string literal is created like a normal string, but the first delimiter is preceeded by an `@` sign. The delimiter can be `"` or `'`. You cannot escape characters in a string literal so whatever delimiter you use to start the string literal cannot be used mid-string.
 
@@ -46,3 +48,32 @@ if (hp <= 0)
 Internally, Catspeak scripts executed from strings are first compiled by Catspeak and then executed. Since compilation only needs to happen once (and is usually the slowest part of `BentoStringExecute()`), Bento will cache the result of the compilation internally. This means the next time that you execute the string Bento will already have the compiled script available for use making subsequent executions substantially faster. You can precompile strings by calling `BentoStringPreload()` before you need to execute that string if you want a further speed boost in-game.
 
 Caching strings does use up memory. It's not a huge amount but for really complicated games it could add up significantly. You can set a limit on the number of strings held in the cache by setting the macro `BENTO_MAX_CACHED_STRINGS`. It defaults to 100 which should be plenty - try reducing this number if you're tight on resources.
+
+&nbsp;
+
+## Direct Building
+
+It is entirely possible to build your UI without touching BentoScript at all. Unfortunately, the syntax is a little clumsy. The key functions to know are `BentoOpen()` and `BentoClose()`, and `BentoCurrent()` is useful too. Here's a very simple example that shows the equivalence between BentoScript and the pure GML calls required to make the same thing:
+
+```
+build BentoBox {
+	visible = true
+}
+```
+
+```
+BentoOpen(new BentoClassBox());
+    BentoCurrent().Set("visible", true);
+BentoClose();
+```
+
+It is also possible to write the GML code in another way, taking advantage of GameMaker's `with()` feature:
+
+```
+var _box = BentoOpen(new BentoClassBox());
+with(_box)
+{
+    Set("visible", true);
+}
+BentoClose();
+```
