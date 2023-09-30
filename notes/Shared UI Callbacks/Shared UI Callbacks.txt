@@ -6,8 +6,8 @@ The variables and methods on this page define callbacks and are available across
 
 | Scripting Name  | GML Function       | Purpose                                                                                    |
 |-----------------|--------------------|--------------------------------------------------------------------------------------------|
-| callbackStep    | CallbackSetStep    | Called every frame via UI_ONION.Step()                                                     |
-| callbackDraw    | CallbackSetDraw    | Called every frame via UI_ONION.Draw()                                                     |
+| callbackStep    | CallbackSetStep    | Called every frame via BentoStep()                                                         |
+| callbackDraw    | CallbackSetDraw    | Called every frame via BentoDraw()                                                         |
 | callbackOnClose | CallbackSetOnClose | Called when a UI element finishes construction (i.e. at the final closing } curly bracket) |
 | callbackBuildIn | CallbackSetBuildIn | Called when a UI element is when appearing on screen a.k.a. "building in"                  |
 

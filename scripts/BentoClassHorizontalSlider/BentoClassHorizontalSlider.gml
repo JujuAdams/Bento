@@ -1,20 +1,20 @@
 /// A horizontal slider. Available in BentoScript using the BentoHorizontalSlider builder.
 /// 
-/// Sliders have two special callbacks, "onValueChange" and "valueUpdate":
+/// Sliders have two special callbacks, "callbackOnValueChange" and "callbackValueUpdate":
 /// 
-/// "onValueChange" is executed when the handle is moved by the player. You could use this callback
-/// to set a variable elsewhere or to play a sound etc. "valueUpdate" is called once when the
-/// slider is created, and then every frame. The intention is that this callback allows you to
-/// create a two-way binding for the slider. The function you set for "valueUpdate" should return 
-/// the value you want to set for the slider. For example:
+/// "callbackOnValueChange" is executed when the handle is moved by the player. You could use this
+/// callback to set a variable elsewhere or to play a sound etc. "callbackValueUpdate" is called
+/// once when the slider is created, and then every frame. The intention is that this callback
+/// allows you to create a two-way binding for the slider. The function you set for
+/// "callbackValueUpdate" should return  the value you want to set for the slider. For example:
 /// 
 ///     build BentoHorizontalSlider {
-///         onValueChange = fn {
+///         callbackOnValueChange = fn {
 ///             SettingsSet("sound volume", value)
 ///             AudioPlay(snd_blip)
 ///         }
 ///     
-///         valueUpdate = fn {
+///         callbackValueUpdate = fn {
 ///             return SettingsGet("sound volume")
 ///         }
 ///     }
