@@ -98,7 +98,7 @@ Called by proxy when the UI element is generated, or when the `BuildIn()` method
 
 <!-- tabs:start -->
 
-#### **BentoScript**
+#### 
 
 <table>
     <tr>
