@@ -42,6 +42,8 @@ BentoClose();  <--  OnClose callback executed here
 
 ### BuildIn
 
+Called by proxy when the UI element is generated, or when the `BuildIn()` method is executed for a UI element. Used to trigger an animation that visually introduces the UI element onto the screen.
+
 &nbsp;
 
 ## Button / Clicking
