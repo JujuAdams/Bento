@@ -30,13 +30,13 @@ The `.behavior` variable can take one of the following values:
 | `BENTO_BEHAVIOR_MODAL`       | Receives input and blocks subsequent layers from receiving input. Draws                                           |
 | `BENTO_BEHAVIOR_BLOCKING`    | Receives input and blocks subsequent layers from receiving input. Draws and blocks subsequent layers from drawing |
 
-
+&nbsp;
 
 ## Methods
 
 Layers also have the following methods:
 
-
+&nbsp;
 
 ### .MoveToTop()
 
@@ -48,7 +48,7 @@ Returns: <undefined>
 
 Moves the layer to the top of the host's stack, causing it to be processed and drawn first.
 
-
+&nbsp;
 
 ### .MoveOver(targetLayerName)
 
@@ -61,7 +61,7 @@ Returns: <undefined>
 Moves the layer over the target layer. This sets the priority of the scoped layer to be the same as
 the target layer.
 
-
+&nbsp;
 
 ### .BuildIn()
 
@@ -73,7 +73,7 @@ Returns: <undefined>
 
 Triggers (or re-triggers) the build-in animation for every child of the layer.
 
-
+&nbsp;
 
 ### .HasChildren()
 
@@ -85,7 +85,7 @@ Returns: <undefined>
 
 Returns whether the layer has any children.
 
-
+&nbsp;
 
 ## Variable Access
 
@@ -101,7 +101,7 @@ Returns: <undefined>
 
 The bindings set by this method are used by Catspeak when executing BentoScript, and they are also used by the `.Get()` and `.Set()` methods. Trying to use standard GML syntax to get/set variables that have been bound using `.VariableBind()` will fail.
 
-
+&nbsp;
 
 ### .Get(variableName)
 
@@ -113,7 +113,7 @@ Returns: <undefined>
 
 Executes the getter function if it exists, as set by `.VariableBind()`, otherwise the variable is read directly.
 
-
+&nbsp;
 
 ### .Set(variableName, value)
 

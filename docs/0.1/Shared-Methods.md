@@ -156,7 +156,7 @@ Returns: <undefined>
 
 &nbsp;
 
-# Element Interaction
+## Element Interaction
 
 ### .GetHover()
 
