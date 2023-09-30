@@ -6,6 +6,14 @@
 
 &nbsp;
 
+## Callback Inheritance
+
+Bento callbacks are automatically parented to the callback defined in the parent constructor. When implementing your own buttons, for example, you'll want to create your own constructor that inherits the native `BentoClassButton` constructor. To save you from the hassle of having to handle the implementation details of hooking your new button up to Bento's system, your new button constructor will automatically call all of the `BentoClassButton` callbacks with you needing to write any further code.
+
+However, sometimes you might want to do something *in addition to* the existing template behaviour. This is where `BentoCallInherited()` comes in. If you call this function in your GML constructor then Bento will execute the full callback from the parent constructor (and if the parent's callback contains `BentoCallInherited()` then it'll call the next parent up, and so on). The BentScript equivalent is `CallInherited()` (or `Super()`). When extending and customising Bento, you'll want to invoke the parent's callback most of the time, apart from the Draw callback most likely.
+
+&nbsp;
+
 ## General
 
 ### Step
