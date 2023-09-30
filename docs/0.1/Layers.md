@@ -6,20 +6,20 @@
 
 Available variables (in addition to shared UI variables) are:
 
-| Name     | Datatype | Purpose                                                                                      |
-|----------|----------|----------------------------------------------------------------------------------------------|
-| name     | string   | Name of the layer                                                                            |
-| volatile | boolean  | Whether the layer will be deleted if `LayerSustain()` is not called                          |
-| priority | number   | Draw/input-handling priority for the layer. High priorities are handled first                |
-| behavior | number   | Whether this layer allows subsequent layers to draw/handle input. See below for legal values |
-| left     | number   | Worldspace left x-coordinate of the layer                                                    |
-| top      | number   | Worldspace top y-coordinate of the layer                                                     |
-| right    | number   | Worldspace right x-coordinate of the layer                                                   |
-| bottom   | number   | Worldspace bottom y-coordinate of the layer                                                  |
-| x        | number   | Worldspace x-coordinate in the centre of the layer                                           |
-| y        | number   | Worldspace y-coordinate in the centre of the layer                                           |
-| width    | number   | Worldspace width of the layer                                                                |
-| height   | number   | Worldspace height of the layer                                                               |
+| Name       | Datatype | Purpose                                                                                      |
+|------------|----------|----------------------------------------------------------------------------------------------|
+| `name`     | string   | Name of the layer                                                                            |
+| `volatile` | boolean  | Whether the layer will be deleted if `LayerSustain()` is not called                          |
+| `priority` | number   | Draw/input-handling priority for the layer. High priorities are handled first                |
+| `behavior` | number   | Whether this layer allows subsequent layers to draw/handle input. See below for legal values |
+| `left`     | number   | Worldspace left x-coordinate of the layer                                                    |
+| `top`      | number   | Worldspace top y-coordinate of the layer                                                     |
+| `right`    | number   | Worldspace right x-coordinate of the layer                                                   |
+| `bottom`   | number   | Worldspace bottom y-coordinate of the layer                                                  |
+| `x`        | number   | Worldspace x-coordinate in the centre of the layer                                           |
+| `y`        | number   | Worldspace y-coordinate in the centre of the layer                                           |
+| `width`    | number   | Worldspace width of the layer                                                                |
+| `height`   | number   | Worldspace height of the layer                                                               |
 
 The `.behavior` variable can take one of the following values:
 
@@ -54,9 +54,9 @@ Moves the layer to the top of the host's stack, causing it to be processed and d
 
 Returns: <undefined>
 
-| Argument Name   | Datatype | Purpose                        |
-|-----------------|----------|--------------------------------|
-| targetLayerName | string   | Name of the layer to move over |
+| Argument Name     | Datatype | Purpose                        |
+|-------------------|----------|--------------------------------|
+| `targetLayerName` | string   | Name of the layer to move over |
 
 Moves the layer over the target layer. This sets the priority of the scoped layer to be the same as
 the target layer.
