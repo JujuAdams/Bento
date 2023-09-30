@@ -9,7 +9,7 @@ Available variables (in addition to shared UI variables) are:
 | Name     | Datatype | Purpose                                                                                      |
 |----------|----------|----------------------------------------------------------------------------------------------|
 | name     | string   | Name of the layer                                                                            |
-| volatile | boolean  | Whether the layer will be deleted if LayerSustain() is not called                            |
+| volatile | boolean  | Whether the layer will be deleted if `LayerSustain()` is not called                          |
 | priority | number   | Draw/input-handling priority for the layer. High priorities are handled first                |
 | behavior | number   | Whether this layer allows subsequent layers to draw/handle input. See below for legal values |
 | left     | number   | Worldspace left x-coordinate of the layer                                                    |
@@ -23,12 +23,12 @@ Available variables (in addition to shared UI variables) are:
 
 The `.behavior` variable can take one of the following values:
 
-| Name                       | Behaviour                                                                                                         |
-|----------------------------|-------------------------------------------------------------------------------------------------------------------|
-| BENTO_BEHAVIOR_DRAW_ONLY   | Doesn't receive input. Will draw and will allow input to pass through                                             |
-| BENTO_BEHAVIOR_PASSTHROUGH | Receives input. Will draw and will allow input to pass through                                                    |
-| BENTO_BEHAVIOR_MODAL       | Receives input and blocks subsequent layers from receiving input. Draws                                           |
-| BENTO_BEHAVIOR_BLOCKING    | Receives input and blocks subsequent layers from receiving input. Draws and blocks subsequent layers from drawing |
+| Name                         | Behaviour                                                                                                         |
+|------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| `BENTO_BEHAVIOR_DRAW_ONLY`   | Doesn't receive input. Will draw and will allow input to pass through                                             |
+| `BENTO_BEHAVIOR_PASSTHROUGH` | Receives input. Will draw and will allow input to pass through                                                    |
+| `BENTO_BEHAVIOR_MODAL`       | Receives input and blocks subsequent layers from receiving input. Draws                                           |
+| `BENTO_BEHAVIOR_BLOCKING`    | Receives input and blocks subsequent layers from receiving input. Draws and blocks subsequent layers from drawing |
 
 
 
@@ -93,15 +93,13 @@ Returns whether the layer has any children.
 
 Returns: <undefined>
 
-| Argument Name | Datatype | Purpose                                                       |
-|---------------|----------|---------------------------------------------------------------|
-| variableName  | string   | Name of the variable to bind to                               |
-| getterFunc    | function | Function to call when getting the value of the named variable |
-| setterFunc    | function | Function to call when setting the value of the named variable |
+| Argument Name  | Datatype | Purpose                                                       |
+|----------------|----------|---------------------------------------------------------------|
+| `variableName` | string   | Name of the variable to bind to                               |
+| `getterFunc`   | function | Function to call when getting the value of the named variable |
+| `setterFunc`   | function | Function to call when setting the value of the named variable |
 
-The bindings set by this method are used by Catspeak when executing BentoScript, and they are also
-used by the .Get() and .Set() methods. Trying to use standard GML syntax to get/set variables that
-have been bound using .VariableBind() will fail.
+The bindings set by this method are used by Catspeak when executing BentoScript, and they are also used by the `.Get()` and `.Set()` methods. Trying to use standard GML syntax to get/set variables that have been bound using `.VariableBind()` will fail.
 
 
 
@@ -109,12 +107,11 @@ have been bound using .VariableBind() will fail.
 
 Returns: <undefined>
 
-| Argument Name | Datatype | Purpose                     |
-|---------------|----------|-----------------------------|
-| variableName  | string   | Name of the variable to get |
+| Argument Name  | Datatype | Purpose                     |
+|----------------|----------|-----------------------------|
+| `variableName` | string   | Name of the variable to get |
 
-Executes the getter function if it exists, as set by .VariableBind(), otherwise the variable is
-read directly.
+Executes the getter function if it exists, as set by `.VariableBind()`, otherwise the variable is read directly.
 
 
 
@@ -122,10 +119,9 @@ read directly.
 
 Returns: <undefined>
 
-| Argument Name | Datatype | Purpose                     |
-|---------------|----------|-----------------------------|
-| variableName  | string   | Name of the variable to set |
-| value         | any      | Value to set                |
+| Argument Name  | Datatype | Purpose                     |
+|----------------|----------|-----------------------------|
+| `variableName` | string   | Name of the variable to set |
+| `value`        | any      | Value to set                |
 
-Executes the setter function if it exists, as set by .VariableBind(), otherwise the variable is set
-directly.
+Executes the setter function if it exists, as set by `.VariableBind()`, otherwise the variable is set directly.

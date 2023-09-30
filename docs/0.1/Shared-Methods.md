@@ -6,32 +6,32 @@ The methods on this page are available across all UI elements.
 
 ## Overview
 
-| Method                 | Usage                                                                        |
-|------------------------|------------------------------------------------------------------------------|
-| toString               | Called by `string()`. Returns the UI element's identifier                    |
-| Destroy                | Immediately destroys the UI element, freeing any memory associated with it   |
-| GetType                | Returns the type of the UI element                                           |
-| LayoutAsVerticalList   | Sets up a vertical list layout                                               |
-| LayoutAsHorizontalList | Sets up a horizontal list layout                                             |
-| LayoutAsGrid           | Sets up a grid layout with cells of identical size                           |
-| LayoutAsColumns        | Sets up a column layout. Children on the same row are vertically aligned     |
-| HasChildren            | Returns if the UI element has children                                       |
-| ChildrenClear          | Removes all children from the UI element                                     |
-| ParentChange           | Moves from one parent to another                                             |
-| GetHover               | Returns whether the UI element is being highlighted                          |
-| GetFocus               | Returns whether the UI element is being focused                              |
-| GetButton              | Returns whether the UI element is being clicked                              |
-| HoverStateSet          | Sets the highlight state                                                     |
-| ButtonStateSet         | Sets the button state                                                        |
-| Find                   | Tries to find a UI element descendent with an identifier                     |
-| FindType               | Finds all descendents with a given type                                      |
-| ReplaceFromFile        | Replaces the UI element with the result of executing a BentoScript           |
-| BuildIn                | Restarts the build-in animation                                              |
-| BuildFinish            | Immediately stops any animation                                              |
-| GetBuilding            | Returns the build-in animation state                                         |
-| VariableBind           | Binds a getter and setter function to a variable name                        |
-| Get                    | Calls the getter function (see above)                                        |
-| Set                    | Calls the setter function (see above)                                        |
+| Method                   | Usage                                                                      |
+|--------------------------|----------------------------------------------------------------------------|
+| `toString`               | Called by `string()`. Returns the UI element's identifier                  |
+| `Destroy`                | Immediately destroys the UI element, freeing any memory associated with it |
+| `GetType`                | Returns the type of the UI element                                         |
+| `LayoutAsVerticalList`   | Sets up a vertical list layout                                             |
+| `LayoutAsHorizontalList` | Sets up a horizontal list layout                                           |
+| `LayoutAsGrid`           | Sets up a grid layout with cells of identical size                         |
+| `LayoutAsColumns`        | Sets up a column layout. Children on the same row are vertically aligned   |
+| `HasChildren`            | Returns if the UI element has children                                     |
+| `ChildrenClear`          | Removes all children from the UI element                                   |
+| `ParentChange`           | Moves from one parent to another                                           |
+| `GetHover`               | Returns whether the UI element is being highlighted                        |
+| `GetFocus`               | Returns whether the UI element is being focused                            |
+| `GetButton`              | Returns whether the UI element is being clicked                            |
+| `HoverStateSet`          | Sets the highlight state                                                   |
+| `ButtonStateSet`         | Sets the button state                                                      |
+| `Find`                   | Tries to find a UI element descendent with an identifier                   |
+| `FindType`               | Finds all descendents with a given type                                    |
+| `ReplaceFromFile`        | Replaces the UI element with the result of executing a BentoScript         |
+| `BuildIn`                | Restarts the build-in animation                                            |
+| `BuildFinish`            | Immediately stops any animation                                            |
+| `GetBuilding`            | Returns the build-in animation state                                       |
+| `VariableBind`           | Binds a getter and setter function to a variable name                      |
+| `Get`                    | Calls the getter function (see above)                                      |
+| `Set`                    | Calls the setter function (see above)                                      |
 
 
 
@@ -45,8 +45,7 @@ Returns: Identifier for the UI element, as a string
 |---------------|----------|---------|
 | None          |          |         |
 
-The function is also used internally by GameMaker when using the native string() function. This
-means that stringifying a UI struct will return its identifier.
+The function is also used internally by GameMaker when using the native string() function. This means that stringifying a UI struct will return its identifier.
 
 
 
@@ -58,9 +57,7 @@ Returns: <undefined>
 |---------------|----------|---------|
 | None          |          |         |
 
-Destroys the UI element, freeing any memory associated with it. This is not necessary to call to
-clean up UI elements as garbage collection takes care of that for us, but this function is helpful
-for targeted removal of UI elements.
+Destroys the UI element, freeing any memory associated with it. This is not necessary to call to clean up UI elements as garbage collection takes care of that for us, but this function is helpful for targeted removal of UI elements.
 
 
 
@@ -72,9 +69,7 @@ Returns: Type of the UI element, as a string
 |---------------|----------|---------|
 | None          |          |         |
 
-The "type" of a UI element is typically the instanceof() of the constructor that created the
-element e.g. a UiButton builder in a BentoScript will generate a UI element with the type
-"uiClassButton".
+The "type" of a UI element is typically the instanceof() of the constructor that created the element e.g. a BentoButton builder in a BentoScript will generate a UI element with the type "BentoClassButton".
 
 
 
@@ -86,8 +81,8 @@ Returns:
 
 | Argument Name | Datatype | Purpose                                     |
 |---------------|----------|---------------------------------------------|
-| hAlign        | string   |                                             |
-| spacing       | number   |                                             |
+| `hAlign`      | string   |                                             |
+| `spacing`     | number   |                                             |
 
 
 
@@ -97,8 +92,8 @@ Returns:
 
 | Argument Name | Datatype | Purpose                                     |
 |---------------|----------|---------------------------------------------|
-| vAlign        | string   |                                             |
-| spacing       | number   |                                             |
+| `vAlign`      | string   |                                             |
+| `spacing`     | number   |                                             |
 
 
 
@@ -108,8 +103,8 @@ Returns:
 
 | Argument Name | Datatype | Purpose                                     |
 |---------------|----------|---------------------------------------------|
-| cellWidth     | number   |                                             |
-| cellHeight    | number   |                                             |
+| `cellWidth`   | number   |                                             |
+| `cellHeight`  | number   |                                             |
 
 
 
@@ -119,9 +114,9 @@ Returns:
 
 | Argument Name | Datatype | Purpose                                     |
 |---------------|----------|---------------------------------------------|
-| vAlign        | string   |                                             |
-| spacing       | number   |                                             |
-| widthArray    | array    |                                             |
+| `vAlign`      | string   |                                             |
+| `spacing`     | number   |                                             |
+| `widthArray`  | array    |                                             |
 
 
 
@@ -155,7 +150,7 @@ Returns: <undefined>
 
 | Argument Name | Datatype  | Purpose               |
 |---------------|-----------|-----------------------|
-| newParent     | UI struct | New parent to move to |
+| `newParent`   | UI struct | New parent to move to |
 
 
 
@@ -211,8 +206,8 @@ Returns: <undefined>
 
 | Argument Name | Datatype | Purpose                                  |
 |---------------|----------|------------------------------------------|
-| buttonName    | string   | Name of the button to set this state for |
-| state         | boolean  | State to set                             |
+| `buttonName`  | string   | Name of the button to set this state for |
+| `state`       | boolean  | State to set                             |
 
 
 
@@ -224,7 +219,7 @@ Returns: UI element descendent with the given identifier, or <undefined> if it c
 
 | Argument Name | Datatype | Purpose                                     |
 |---------------|----------|---------------------------------------------|
-| identifier    | string   | Identifier of the UI element to try to find |
+| `identifier`  | string   | Identifier of the UI element to try to find |
 
 This is a recursive downwards search so any descendent (i.e. any UI element with the scoped element
 as an ancestor) UI element with a matching identifier is returned.
@@ -237,8 +232,8 @@ Returns: <undefined>
 
 | Argument Name | Datatype | Purpose                              |
 |---------------|----------|--------------------------------------|
-| resultArray   | array    | Array to push found UI elements into |
-| type          | string   | Type of UI element to find           |
+| `resultArray` | array    | Array to push found UI elements into |
+| `type`        | string   | Type of UI element to find           |
 
 This is a recursive downwards search so any descendent (i.e. any UI element with the scoped element
 as an ancestor) UI element with a matching type is pushed into the array.
@@ -251,7 +246,7 @@ Returns: <undefined>
 
 | Argument Name | Datatype | Purpose                                                            |
 |---------------|----------|--------------------------------------------------------------------|
-| filePath      | string   | Path to the BentoScript to execute and replace the UI element with |
+| `filePath`    | string   | Path to the BentoScript to execute and replace the UI element with |
 
 
 
@@ -297,15 +292,13 @@ Returns: The build-in animation state.
 
 Returns: <undefined>
 
-| Argument Name | Datatype | Purpose                                                       |
-|---------------|----------|---------------------------------------------------------------|
-| variableName  | string   | Name of the variable to bind to                               |
-| getterFunc    | function | Function to call when getting the value of the named variable |
-| setterFunc    | function | Function to call when setting the value of the named variable |
+| Argument Name  | Datatype | Purpose                                                       |
+|----------------|----------|---------------------------------------------------------------|
+| `variableName` | string   | Name of the variable to bind to                               |
+| `getterFunc`   | function | Function to call when getting the value of the named variable |
+| `setterFunc`   | function | Function to call when setting the value of the named variable |
 
-The bindings set by this method are used by Catspeak when executing BentoScript, and they are also
-used by the .Get() and .Set() methods. Trying to use standard GML syntax to get/set variables that
-have been bound using .VariableBind() will fail.
+The bindings set by this method are used by Catspeak when executing BentoScript, and they are also used by the `.Get()` and `.Set()` methods. Trying to use standard GML syntax to get/set variables that have been bound using `.VariableBind()` will fail.
 
 
 
@@ -313,12 +306,11 @@ have been bound using .VariableBind() will fail.
 
 Returns: <undefined>
 
-| Argument Name | Datatype | Purpose                     |
-|---------------|----------|-----------------------------|
-| variableName  | string   | Name of the variable to get |
+| Argument Name  | Datatype | Purpose                     |
+|----------------|----------|-----------------------------|
+| `variableName` | string   | Name of the variable to get |
 
-Executes the getter function if it exists, as set by .VariableBind(), otherwise the variable is
-read directly.
+Executes the getter function if it exists, as set by `.VariableBind()`, otherwise the variable is read directly.
 
 
 
@@ -326,10 +318,9 @@ read directly.
 
 Returns: <undefined>
 
-| Argument Name | Datatype | Purpose                     |
-|---------------|----------|-----------------------------|
-| variableName  | string   | Name of the variable to set |
-| value         | any      | Value to set                |
+| Argument Name  | Datatype | Purpose                     |
+|----------------|----------|-----------------------------|
+| `variableName` | string   | Name of the variable to set |
+| `value`        | any      | Value to set                |
 
-Executes the setter function if it exists, as set by .VariableBind(), otherwise the variable is set
-directly.
+Executes the setter function if it exists, as set by `.VariableBind()`, otherwise the variable is set directly.
