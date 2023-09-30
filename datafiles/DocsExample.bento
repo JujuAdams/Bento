@@ -1,0 +1,21 @@
+build BentoRectangle {
+	ltrb = [0, 0, "100%", "100%"]
+
+	fillColor   = 255
+	fillAlpha   = 0.5
+	borderAlpha = 0
+
+	build BentoText {
+		xy = ["50%", "40%"]
+		label = "Welcome to Bento!"
+	}
+
+	build BentoButton {
+		xywh = ["50%", "60%", "20%", "15%"]
+		
+		targetListen = "action"
+		callbackClick = fn {
+			DebugLog("Clicked the button!")
+		}
+	}
+}
