@@ -18,13 +18,46 @@ However, sometimes you might want to do something *in addition to* the existing 
 
 ### Step
 
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>callbackStep</code></td>
+    </tr>
+    <tr>
+		<td><b>GML constructor</b></td>
+		<td><code>CallbackSetStep</code></td>
+    </tr>
+</table>
+
 Called by proxy when `BentoStep()` is called. Step callbacks are executed by traversing the tree depth-first.
 
 ### Draw
 
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>callbackStep</code></td>
+    </tr>
+    <tr>
+		<td><b>GML constructor</b></td>
+		<td><code>CallbackSetDraw</code></td>
+    </tr>
+</table>
+
 Called by proxy when `BentoDraw()` is called. Draw callbacks are executed by traversing the tree depth-first.
 
 ### OnClose
+
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>callbackOnClose</code></td>
+    </tr>
+    <tr>
+		<td><b>GML constructor</b></td>
+		<td><code>CallbackSetOnClose</code></td>
+    </tr>
+</table>
 
 Called when the UI element is finished constructing. For the avoidance of doubt:
 
@@ -41,6 +74,17 @@ BentoClose();  <--  OnClose callback executed here
 ```
 
 ### BuildIn
+
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>callbackBuildIn</code></td>
+    </tr>
+    <tr>
+		<td><b>GML constructor</b></td>
+		<td><code>CallbackSetBuildIn</code></td>
+    </tr>
+</table>
 
 Called by proxy when the UI element is generated, or when the `BuildIn()` method is executed for a UI element. Used to trigger an animation that visually introduces the UI element onto the screen.
 
