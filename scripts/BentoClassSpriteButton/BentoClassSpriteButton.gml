@@ -1,23 +1,35 @@
-/// A sprite that can be clicked. When interacted with, the sprite can change image/color etc.
-/// Please note that the size of the enclosing box is determined by the <sprite> variable i.e.
-/// the initial "neutral" sprite.
+/// A button drawn using a sprite. When interacted with, the sprite can change image/color etc.
+/// Available in .ui scripts using the BentoSpriteButton builder.
 /// 
-/// Make sure to set <targetListen> and <callbackClick> to activate the button!
+/// Don't forget to set the .targetListen and .click variables! Buttons will be highlightable but
+/// won't do anything if you don't set BOTH variables. For example:
 /// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   sprite
-///   image
-///   color
-///   highlightSprite
-///   highlightImage
-///   highlightColor
-///   heldSprite
-///   heldImage
-///   heldColor
-///   alpha
-///   stretch
+///     build BentoSpriteButton {
+///         //Receive events from the left mouse button
+///         targetListen = "action"
+///         
+///         //Then tell the UI system what to do when we're clicked
+///         click = fn {
+///             Log("Ping!")
+///         }
+///     }
 /// 
-/// This box has no callbacks or methods beyond BentoClassShared().
+/// Available variables (in addition to shared UI variables) are:
+/// 
+/// | Name        | Datatype | Purpose                                                                                                            |
+/// |-------------|----------|--------------------------------------------------------------------------------------------------------------------|
+/// | sprite      | sprite   | Sprite to draw when in a neutral state. You may use a string if BentoDebugRelaxedSprites() to set to <true>        |
+/// |             |          | N.B. Setting the sprite will also set the width/height of the UI element itself                                    |
+/// | image       | number   | Image of the sprite to draw when in a neutral state                                                                |
+/// | color       | RGB      | Blend color for the button when in a neutral state                                                                 |
+/// | hoverSprite | sprite   | Sprite to draw when the button is highlighted. You may use a string if BentoDebugRelaxedSprites() to set to <true> |
+/// | hoverImage  | number   | Image of the sprite to draw when the button is highlighted                                                         |
+/// | hoverColor  | RGB      | Blend color for the button when highlighted                                                                        |
+/// | heldSprite  | sprite   | Sprite to draw when the button is pressed. You may use a string if BentoDebugRelaxedSprites() to set to <true>     |
+/// | heldImage   | number   | Image of the sprite to draw when the button is pressed                                                             |
+/// | heldColor   | RGB      | Blend color for the button when pressed                                                                            |
+/// | alpha       | number   | Alpha transparency                                                                                                 |
+/// | stretch     | boolean  | Whether or not to stretch the sprite over the bounding box                                                         |
 
 BentoAddBoxType("BentoSpriteButton", BentoClassSpriteButton, false);
 function BentoClassSpriteButton() : BentoClassButton() constructor

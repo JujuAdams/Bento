@@ -1,13 +1,14 @@
-/// Simple rectangle with separate fill color and border color
-/// Useful for acting as a placeholder whilst white boxing
+/// A basic rectangle. Useful for whiteboxing or creating semi-transparent masks. Available in .ui
+/// scripts using the BentoRectangle builder.
 /// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   borderColor
-///   borderAlpha
-///   fillColor
-///   fillAlpha
+/// Available variables (in addition to shared UI variables) are:
 /// 
-/// This box has no callbacks or methods beyond BentoClassShared()
+/// | Name        | Datatype | Purpose                          |
+/// |-------------|----------|----------------------------------|
+/// | borderColor | RGB      | Colour of the border             |
+/// | borderAlpha | number   | Alpha transparency of the border |
+/// | fillColor   | RGB      | Colour of the rectangle fill     |
+/// | fillAlpha   | number   | Alpha transparency of the fill   |
 
 BentoAddBoxType("BentoRectangle", BentoClassRectangle, false);
 function BentoClassRectangle() : BentoClassShared() constructor
@@ -18,10 +19,6 @@ function BentoClassRectangle() : BentoClassShared() constructor
     fillColor   = c_white;
     fillAlpha   = 0.1;
     ////////////////////////
-    
-    
-    
-    
     
     CallbackSetDraw(function()
     {

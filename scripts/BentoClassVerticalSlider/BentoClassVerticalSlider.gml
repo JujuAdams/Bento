@@ -1,19 +1,39 @@
-/// Vertical slider with customisable range, increment, and handle size.
+/// A vertical slider. Available in .ui script using the BentoVerticalSlider builder.
 /// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   handleWidth
-///   handleHeight
-///   handlePosition
-///   value
-///   valueMin
-///   valueMax
-///   valueIncrement
+/// Sliders have two special callbacks, "onValueChange" and "valueUpdate":
 /// 
-/// The following additional callbacks can be bound:
-///   onValueChang
-///   valueUpdatee
-///   
-/// This box has no further methods beyond BentoClassShared().
+/// "onValueChange" is executed when the handle is moved by the player. You could use this callback
+/// to set a variable elsewhere or to play a sound etc. "valueUpdate" is called once when the
+/// slider is created, and then every frame. The intention is that this callback allows you to
+/// create a two-way binding for the slider. The function you set for "valueUpdate" should return 
+/// the value you want to set for the slider. For example:
+/// 
+///     build BentoVerticalSlider {
+///         onValueChange = fn {
+///             SettingsSet("sound volume", value)
+///             AudioPlay(snd_blip)
+///         }
+///     
+///         valueUpdate = fn {
+///             return SettingsGet("sound volume")
+///         }
+///     }
+/// 
+/// Available variables (in addition to shared UI variables) are:
+/// 
+/// | Name           | Datatype | Purpose                                                                           |
+/// |----------------|----------|-----------------------------------------------------------------------------------|
+/// | color          | RGB      | Colour for the slider                                                             |
+/// | alpha          | number   | Alpha blending value                                                              |
+/// | handleWidth    | number   | Width of the handle                                                               |
+/// | handleHeight   | number   | Height of the handle                                                              |
+/// | handlePosition | number   | Normalised (0 -> 1) position of the handle. Coupled to the .value variable        |
+/// | value          | number   | Value for the slider. Coupled to the .handlePosition variable                     |
+/// | valueMin       | number   | Minimum value when the handle is at the top position                              |
+/// | valueMax       | number   | Maximum value when the handle is at the bottom position                           |
+/// | valueIncrement | boolean  | Quantisation resolution for the slider value                                      |
+/// | onValueChange  | function | Callback to execute when the handle of the slider is moved                        |
+/// | valueUpdate    | function | Callback to execute every frame to link the slider to a variable stored elsewhere |
 
 BentoAddBoxType("BentoVerticalSlider", BentoClassVerticalSlider, false);
 function BentoClassVerticalSlider() : BentoClassButton() constructor
@@ -35,10 +55,6 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
     __handleTop     = 0;
     __handleRight   = 0;
     __handleBottom  = 0;
-    
-    
-    
-    
     
     VariableBind("onValueChange", function()
     {
@@ -86,10 +102,6 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
             __CallbackGet(__BENTO_CALL.__ON_VALUE_CHANGE).__Call(self, value);
         }
     }
-    
-    
-    
-    
     
     CallbackSetButtonStart(function()
     {

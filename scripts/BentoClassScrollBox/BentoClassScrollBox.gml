@@ -1,11 +1,19 @@
-/// A scrolling container, useful for allowing access to more content than would otherwise
-/// fit on a screen.
+/// A surface-based clipping window that allows its contents to be offset. Useful for allowing
+/// access to more content than would otherwise fit on the screen. Available in .ui scripts using
+/// the BentoScrollbox builder.
 /// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   scrollX
-///   scrollY
+/// Available variables (in addition to shared UI variables) are:
 /// 
-/// This box has no callbacks or methods beyond BentoClassShared().
+/// | Name       | Datatype | Purpose                                                              |
+/// |------------|----------|----------------------------------------------------------------------|
+/// | scrollX    | number   | x-axis offset for children                                           |
+/// | scrollXMin | number   | Minimum x-axis offset for children                                   |
+/// | scrollXMax | number   | Maximum x-axis offset for children                                   |
+/// | scrollY    | number   | y-axis offset for children                                           |
+/// | scrollYMin | number   | Minimum y-axis offset for children                                   |
+/// | scrollYMax | number   | Maximum y-axis offset for children                                   |
+/// | draggableX | boolean  | Whether the scroll box can be clicked and dragged to move the window |
+/// | draggableY | boolean  | Whether the scroll box can be clicked and dragged to move the window |
 
 BentoAddBoxType("BentoScrollbox", BentoClassScrollbox, false);
 function BentoClassScrollbox() : BentoClassShared() constructor
@@ -26,10 +34,6 @@ function BentoClassScrollbox() : BentoClassShared() constructor
     
     __scrollDragOffsetX = 0;
     __scrollDragOffsetY = 0;
-    
-    
-    
-    
     
     static __ScrollTo = function(_target)
     {

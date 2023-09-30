@@ -1,10 +1,16 @@
+/// A vertical scrollbar. Available in .ui script using the BentoVerticalScrollbar builder.
+/// 
+/// Available variables (in addition to shared UI variables) are:
+/// 
+/// | Name    | Datatype  | Purpose                                                                 |
+/// |---------|-----------|-------------------------------------------------------------------------|
+/// | color   | RGB       | Colour for the slider                                                   |
+/// | alpha   | number    | Alpha blending value                                                    |
+/// | binding | UI struct | UI scroll box struct to bind to, as created by a BentoScrollBox builder |
+
 BentoAddBoxType("BentoVerticalScrollbar", BentoClassVerticalScrollbar, false);
 function BentoClassVerticalScrollbar() : BentoClassVerticalSlider() constructor
 {
-    /// Public variables ///
-    
-    ////////////////////////
-    
     __binding = undefined;
     
     VariableBind("value", function()

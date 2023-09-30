@@ -1,12 +1,14 @@
-/// Video playback using GameMaker's native player. The video is drawn stretched across the box.
+/// Video playback using GameMaker's native player. The video is drawn stretched across the
+/// bounding box. Available in .ui scripts using the BentoVideo builder.
 /// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   source
-///   loop
-///   color
-///   alpha
+/// Available variables (in addition to shared UI variables) are:
 /// 
-/// This box has no callbacks or methods beyond BentoClassShared().
+/// | Name   | Datatype | Purpose                              |
+/// |--------|----------|--------------------------------------|
+/// | color  | RGB      | Blend color for the video surface    |
+/// | alpha  | number   | Alpha transparency                   |
+/// | source | string   | Path to the video file to play       |
+/// | loop   | boolean  | Whether or not the video should loop |
 
 BentoAddBoxType("BentoVideo", BentoClassVideo, false);
 function BentoClassVideo() : BentoClassShared() constructor

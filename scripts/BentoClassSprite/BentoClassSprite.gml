@@ -1,17 +1,16 @@
-/// A static sprite with blend color and alpha. The sprite will not animate
-/// Normally a sprite is drawn in the center of the enclosing box. However, setting <stretch>
-/// to <true> will cause the sprite to be stretched across the entire box. This is useful when
-/// combined with GameMaker's native 9-slicing implementation to create attractive resizeable
-/// backgrounds for boxes.
+/// A sprite, with the added capability to stretch it. Available in .ui scripts using the
+/// BentoSprite builder.
 /// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   color
-///   alpha
-///   sprite
-///   image
-///   stretch
+/// Available variables (in addition to shared UI variables) are:
 /// 
-/// This box has no callbacks or methods beyond BentoClassShared().
+/// | Name    | Datatype | Purpose                                                                             |
+/// |---------|----------|-------------------------------------------------------------------------------------|
+/// | color   | RGB      | Blend color for the sprite                                                          |
+/// | alpha   | number   | Alpha transparency                                                                  |
+/// | sprite  | sprite   | Sprite to draw. You may use a string if BentoDebugRelaxedSprites() to set to <true> |
+/// |         |          | N.B. Setting the sprite will also set the width/height of the UI element itself     |
+/// | image   | number   | Image of the sprite to draw                                                         |
+/// | stretch | boolean  | Whether or not to stretch the sprite over the bounding box                          |
 
 BentoAddBoxType("BentoSprite", BentoClassSprite, false);
 function BentoClassSprite() : BentoClassShared() constructor
@@ -24,8 +23,6 @@ function BentoClassSprite() : BentoClassShared() constructor
     ////////////////////////
     
     __sprite = undefined;
-    
-    
     
     VariableBind("sprite", function()
     {
@@ -49,8 +46,6 @@ function BentoClassSprite() : BentoClassShared() constructor
             Set("size", [0, 0]);
         }
     });
-    
-    
     
     CallbackSetDraw(function()
     {

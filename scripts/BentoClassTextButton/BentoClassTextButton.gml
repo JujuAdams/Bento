@@ -1,14 +1,29 @@
-/// Button that is sized to a text label. Color and alpha can be changed as well as font and
-/// margins around the text itself. Text is always center-middle aligned.
+/// Simple clickable text button. Available in .ui script using the BentoTextButton builder.
 /// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   label
-///   margin
-///   font
-///   color
-///   alpha
+/// Don't forget to set the .targetListen and .click variables! Buttons will be highlightable but
+/// won't do anything if you don't set BOTH variables. For example:
 /// 
-/// This box has no callbacks or methods beyond BentoClassShared()
+///     build BentoTextButton {
+///         label = "Example Button"
+///         
+///         //Receive events from the left mouse button
+///         targetListen = "action"
+///         
+///         //Then tell the UI system what to do when we're clicked
+///         click = fn {
+///             Log("Ping!")
+///         }
+///     }
+/// 
+/// Available variables (in addition to common UI variables) are:
+/// 
+/// | Name   | Datatype | Purpose                                                                   |
+/// |--------|----------|---------------------------------------------------------------------------|
+/// | label  | string   | Text to draw                                                              |
+/// | margin | number   | Additional space to put around the text when calculating the bounding box |
+/// | font   | string   | Name of the font to use                                                   |
+/// | color  | RGB      | Colour to use when drawing the button                                     |
+/// | alpha  | number   | Alpha blending value                                                      |
 
 BentoAddBoxType("BentoTextButton", BentoClassTextButton, false);
 function BentoClassTextButton() : BentoClassButton() constructor

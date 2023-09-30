@@ -1,13 +1,17 @@
+/// A horizontal scrollbar. Available in .ui script using the BentoHorizontalScrollbar builder.
+/// 
+/// Available variables (in addition to shared UI variables) are:
+/// 
+/// | Name    | Datatype  | Purpose                                                                 |
+/// |---------|-----------|-------------------------------------------------------------------------|
+/// | color   | RGB       | Colour for the slider                                                   |
+/// | alpha   | number    | Alpha blending value                                                    |
+/// | binding | UI struct | UI scroll box struct to bind to, as created by a BentoScrollBox builder |
+
 BentoAddBoxType("BentoHorizontalScrollbar", BentoClassHorizontalScrollbar, false);
 function BentoClassHorizontalScrollbar() : BentoClassHorizontalSlider() constructor
 {
-    /// Public variables ///
-    
-    ////////////////////////
-    
     __binding = undefined;
-    
-    
     
     VariableBind("value", function()
     {

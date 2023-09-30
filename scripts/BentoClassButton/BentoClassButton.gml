@@ -1,12 +1,25 @@
-/// Simple rectangular button with color and alpha.
+/// Simple unadorned rectangular button. Useful as a basis for creating custom button behaviour.
+/// Available in .ui scripts using the BentoButton builder.
 /// 
-/// Make sure to set <targetListen> and <callbackClick> to activate the button!
+/// Don't forget to set the .targetListen and .click variables! Buttons will be highlightable but
+/// won't do anything if you don't set BOTH variables. For example:
 /// 
-/// In addition to BentoClassShared() variables, public variables are:
-///   color
-///   alpha
+///     build BentoButton {
+///         //Receive events from the left mouse button
+///         targetListen = "action"
+///         
+///         //Then tell the UI system what to do when we're clicked
+///         click = fn {
+///             Log("Ping!")
+///         }
+///     }
 /// 
-/// This box has no callbacks or methods beyond BentoClassShared().
+/// Available variables (in addition to shared UI variables) are:
+/// 
+/// | Name  | Datatype | Purpose                    |
+/// |-------|----------|----------------------------|
+/// | color | RGB      | Blend color for the button |
+/// | alpha | number   | Alpha transparency         |
 
 BentoAddBoxType("BentoButton", BentoClassButton, false);
 function BentoClassButton() : BentoClassShared() constructor
@@ -17,10 +30,6 @@ function BentoClassButton() : BentoClassShared() constructor
     ////////////////////////
     
     if (BENTO_DEFAULT_BUTTON_NAME != undefined) Set("targetListen", BENTO_DEFAULT_BUTTON_NAME);
-    
-    
-    
-    
     
     CallbackSetHighlightStart( function()
     {

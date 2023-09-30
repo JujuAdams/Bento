@@ -1,7 +1,11 @@
-/// The most basic sort of container - an invisible rectangle.
-/// Useful for subdividing UI layouts or creating spacers.
+/// An invisible rectangle used for organising layouts. Available in .ui script using the BentoBox
+/// builder.
 /// 
-/// This box has no variables, callbacks, or methods beyond BentoClassShared().
+/// Available variables (in addition to shared UI variables) are:
+/// 
+/// | Name | Datatype | Purpose |
+/// |------|----------|---------|
+/// | None |          |         |
 
 BentoAddBoxType("BentoBox", BentoClassBox, false);
 function BentoClassBox() : BentoClassShared() constructor
