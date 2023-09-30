@@ -55,7 +55,7 @@ Button callbacks require one of the following variables to be set:
 
 # Slider Callbacks
 
-| Scripting Name  | GML Function             | Purpose                                                                                                                                            |
-|-----------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| onValueChange   | CallbackSetOnValueChange | Function to call when the slider's handle is moved. Can be used to set another variable or trigger other behaviour                                 |
-| valueUpdate     | CallbackSetValueUpdate   | Function to call, every frame, to update the slider's value. Best used in conjunction with the above callback to create a two-way variable binding |
+| Scripting Name        | GML Function             | Purpose                                                                                                                                            |
+|-----------------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| callbackOnValueChange | CallbackSetOnValueChange | Function to call when the slider's handle is moved. Can be used to set another variable or trigger other behaviour                                 |
+| callbackValueUpdate   | CallbackSetValueUpdate   | Function to call, every frame, to update the slider's value. Best used in conjunction with the above callback to create a two-way variable binding |

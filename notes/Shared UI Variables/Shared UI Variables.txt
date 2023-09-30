@@ -10,19 +10,7 @@ The variables on this page are available across all UI elements.
 | active        | boolean  | Whether or not the UI element is actively receives player input                                                                     |
 | visible       | boolean  | Whether or not the UI element is visible. An invisible UI also doesn't receive player input                                         |
 | layoutInclude | boolean  | Whether this UI element can be moved around by a parent's layout function                                                           |
-
-
-
-# Children
-
-| Name           | Datatype  | Purpose                                                                                                            |
-|----------------|-----------|--------------------------------------------------------------------------------------------------------------------|
-| parent         | UI struct | Parent for the UI element                                                                                          |
-| children       | array     | Array of child UI elements                                                                                         |
-| childMinLeft   | number    | Furtherest left x-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element   |
-| childMinTop    | number    | Furtherest top y-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element    |
-| childMaxRight  | number    | Furtherest right x-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element  |
-| childMaxBottom | number    | Furtherest bottom y-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element |
+| focusable     | boolean  | Whether this UI element can be focused                                                                                              |
 
 
 # Local Position
@@ -44,6 +32,19 @@ The variables on this page are available across all UI elements.
 | originY | number   |                                                                                                      |
 | scale   | number   |                                                                                                      |
 | size    | array    | Convenient 2-element array that represents the width/height values (see above)                       |
+
+
+
+# Children
+
+| Name           | Datatype  | Purpose                                                                                                            |
+|----------------|-----------|--------------------------------------------------------------------------------------------------------------------|
+| parent         | UI struct | Parent for the UI element                                                                                          |
+| children       | array     | Array of child UI elements                                                                                         |
+| childMinLeft   | number    | Furtherest left x-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element   |
+| childMinTop    | number    | Furtherest top y-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element    |
+| childMaxRight  | number    | Furtherest right x-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element  |
+| childMaxBottom | number    | Furtherest bottom y-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element |
 
 
 

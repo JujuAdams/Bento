@@ -21,25 +21,25 @@
 /// 
 /// Available variables (in addition to shared UI variables) are:
 /// 
-/// | Name           | Datatype | Purpose                                                                           |
-/// |----------------|----------|-----------------------------------------------------------------------------------|
-/// | color          | RGB      | Colour for the slider                                                             |
-/// | alpha          | number   | Alpha blending value                                                              |
-/// | handleWidth    | number   | Width of the handle                                                               |
-/// | handleHeight   | number   | Height of the handle                                                              |
-/// | handlePosition | number   | Normalised (0 -> 1) position of the handle. Coupled to the .value variable        |
-/// | value          | number   | Value for the slider. Coupled to the .handlePosition variable                     |
-/// | valueMin       | number   | Minimum value when the handle is at the top position                              |
-/// | valueMax       | number   | Maximum value when the handle is at the bottom position                           |
-/// | valueIncrement | boolean  | Quantisation resolution for the slider value                                      |
-/// | onValueChange  | function | Callback to execute when the handle of the slider is moved                        |
-/// | valueUpdate    | function | Callback to execute every frame to link the slider to a variable stored elsewhere |
+/// | Name                  | Datatype | Purpose                                                                           |
+/// |-----------------------|----------|-----------------------------------------------------------------------------------|
+/// | color                 | RGB      | Colour for the slider                                                             |
+/// | alpha                 | number   | Alpha blending value                                                              |
+/// | handleWidth           | number   | Width of the handle                                                               |
+/// | handleHeight          | number   | Height of the handle                                                              |
+/// | handlePosition        | number   | Normalised (0 -> 1) position of the handle. Coupled to the .value variable        |
+/// | value                 | number   | Value for the slider. Coupled to the .handlePosition variable                     |
+/// | valueMin              | number   | Minimum value when the handle is at the top position                              |
+/// | valueMax              | number   | Maximum value when the handle is at the bottom position                           |
+/// | valueIncrement        | boolean  | Quantisation resolution for the slider value                                      |
+/// | callbackOnValueChange | function | Callback to execute when the handle of the slider is moved                        |
+/// | callbackValueUpdate   | function | Callback to execute every frame to link the slider to a variable stored elsewhere |
 
 BentoAddBoxType("BentoVerticalSlider", BentoClassVerticalSlider, false);
 function BentoClassVerticalSlider() : BentoClassButton() constructor
 {
     /// Public variables ///
-    latch          = true;
+    focusable      = true;
     handleWidth    = undefined;
     handleHeight   = undefined;
     handlePosition = 0;
@@ -56,9 +56,9 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
     __handleRight   = 0;
     __handleBottom  = 0;
     
-    VariableBind("onValueChange", function()
+    VariableBind("callbackOnValueChange", function()
     {
-        __BentoError("Cannot get \"onValueChange\"");
+        __BentoError("Cannot get \"callbackOnValueChange\"");
         return;
     },
     function(_value)
@@ -66,9 +66,9 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__ON_VALUE_CHANGE, _value);
     });
     
-    VariableBind("valueUpdate", function()
+    VariableBind("callbackValueUpdate", function()
     {
-        __BentoError("Cannot get \"valueUpdate\"");
+        __BentoError("Cannot get \"callbackValueUpdate\"");
         return;
     },
     function(_value)

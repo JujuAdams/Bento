@@ -37,10 +37,6 @@ function BentoClassTextButton() : BentoClassButton() constructor
     __margin = 0;
     __font   = BENTO_DEFAULT_FONT;
     
-    
-    
-    
-    
     VariableBind("label", function()
     {
         return __label;
@@ -79,10 +75,6 @@ function BentoClassTextButton() : BentoClassButton() constructor
         
         __UpdateSize();
     });
-    
-    
-    
-    
     
     static __UpdateSize = function()
     {

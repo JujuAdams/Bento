@@ -21,15 +21,15 @@ The methods on this page are available across all UI elements.
 | GetButton              | Returns whether the UI element is being clicked                              |
 | HoverStateSet          | Sets the highlight state                                                     |
 | ButtonStateSet         | Sets the button state                                                        |
-| VariableBind           | Binds a getter and setter function to a variable name                        |
-| Get                    | Calls the getter function (see above)                                        |
-| Set                    | Calls the setter function (see above)                                        |
 | Find                   | Tries to find a UI element descendent with an identifier                     |
 | FindType               | Finds all descendents with a given type                                      |
 | ReplaceFromFile        | Replaces the UI element with the result of executing a .ui script            |
 | BuildIn                | Restarts the build-in animation                                              |
 | BuildFinish            | Immediately stops any animation                                              |
 | GetBuilding            | Returns the build-in animation state                                         |
+| VariableBind           | Binds a getter and setter function to a variable name                        |
+| Get                    | Calls the getter function (see above)                                        |
+| Set                    | Calls the setter function (see above)                                        |
 
 
 
@@ -154,51 +154,6 @@ Returns: <undefined>
 | Argument Name | Datatype  | Purpose               |
 |---------------|-----------|-----------------------|
 | newParent     | UI struct | New parent to move to |
-
-
-
-# Variable Access
-
-### .VariableBind(variableName, getterFunc, setterFunc)
-
-Returns: <undefined>
-
-| Argument Name | Datatype | Purpose                                                       |
-|---------------|----------|---------------------------------------------------------------|
-| variableName  | string   | Name of the variable to bind to                               |
-| getterFunc    | function | Function to call when getting the value of the named variable |
-| setterFunc    | function | Function to call when setting the value of the named variable |
-
-The bindings set by this method are used by Catspeak when executing .ui scripts, and they are also
-used by the .Get() and .Set() methods. Trying to use standard GML syntax to get/set variables that
-have been bound using .VariableBind() will fail.
-
-
-
-.Get(variableName)
-
-Returns: <undefined>
-
-| Argument Name | Datatype | Purpose                     |
-|---------------|----------|-----------------------------|
-| variableName  | string   | Name of the variable to get |
-
-Executes the getter function if it exists, as set by .VariableBind(), otherwise the variable is
-read directly.
-
-
-
-.Set(variableName, value)
-
-Returns: <undefined>
-
-| Argument Name | Datatype | Purpose                     |
-|---------------|----------|-----------------------------|
-| variableName  | string   | Name of the variable to set |
-| value         | any      | Value to set                |
-
-Executes the setter function if it exists, as set by .VariableBind(), otherwise the variable is set
-directly.
 
 
 
@@ -331,3 +286,48 @@ Returns: The build-in animation state.
 | Argument Name | Datatype | Purpose |
 |---------------|----------|---------|
 | None          |          |         |
+
+
+
+# Variable Access
+
+### .VariableBind(variableName, getterFunc, setterFunc)
+
+Returns: <undefined>
+
+| Argument Name | Datatype | Purpose                                                       |
+|---------------|----------|---------------------------------------------------------------|
+| variableName  | string   | Name of the variable to bind to                               |
+| getterFunc    | function | Function to call when getting the value of the named variable |
+| setterFunc    | function | Function to call when setting the value of the named variable |
+
+The bindings set by this method are used by Catspeak when executing .ui scripts, and they are also
+used by the .Get() and .Set() methods. Trying to use standard GML syntax to get/set variables that
+have been bound using .VariableBind() will fail.
+
+
+
+.Get(variableName)
+
+Returns: <undefined>
+
+| Argument Name | Datatype | Purpose                     |
+|---------------|----------|-----------------------------|
+| variableName  | string   | Name of the variable to get |
+
+Executes the getter function if it exists, as set by .VariableBind(), otherwise the variable is
+read directly.
+
+
+
+.Set(variableName, value)
+
+Returns: <undefined>
+
+| Argument Name | Datatype | Purpose                     |
+|---------------|----------|-----------------------------|
+| variableName  | string   | Name of the variable to set |
+| value         | any      | Value to set                |
+
+Executes the setter function if it exists, as set by .VariableBind(), otherwise the variable is set
+directly.

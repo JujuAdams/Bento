@@ -562,7 +562,7 @@ function __BentoClassLayer() constructor
         if (__BENTO_TEST_LATCHING || (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL))
         {
             var _captureStruct = __BentoNullableRefResolve(__captureRef);
-            if (is_struct(_captureStruct) && _captureStruct.latch)
+            if (is_struct(_captureStruct) && _captureStruct.focusable)
             {
                 //Toggle on released (falling edge)
                 if (_oldState && !_state) __captureLatch = !__captureLatch;
@@ -649,7 +649,7 @@ function __BentoClassLayer() constructor
         if (__BENTO_TEST_LATCHING || (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL))
         {
             var _captureStruct = __BentoNullableRefResolve(__captureRef);
-            if (is_struct(_captureStruct) && _captureStruct.latch)
+            if (is_struct(_captureStruct) && _captureStruct.focusable)
             {
                 //Toggle on released (falling edge)
                 if (_oldState && !_state) __captureLatch = !__captureLatch;

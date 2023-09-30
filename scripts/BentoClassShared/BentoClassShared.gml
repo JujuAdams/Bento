@@ -16,7 +16,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     /// Public variables ///
     identifier     = undefined; //Assigned below
     highlightGroup = undefined;
-    latch          = false;
+    focusable      = false;
     layoutInclude  = true;
     navigationLock = false;
     ////////////////////////
