@@ -2,6 +2,10 @@
 
 &nbsp;
 
+?> This page is a cheatsheet. More details on callbacks can be found [here](Callbacks).
+
+&nbsp;
+
 The variables and methods on this page define callbacks and are available across all UI elements.
 
 &nbsp;
@@ -47,18 +51,18 @@ Button callbacks require one of the following variables to be set:
 
 &nbsp;
 
-## Layout
-
-| Scripting Name        | GML Function               | Purpose                                                                                                                                                                                          |
-|-----------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `callbackLayout`      | `CallbackSetLayoutExecute` | Manual use only. This function is called to determine the position of a UI element when completing its construction                                                                              |
-| `callbackLayoutCheck` | `CallbackSetLayoutCheck`   | Manual use only and very optional. This function is called after laying out child element to verify that they've been placed correctly. The callback should return <true> or <false> accordingly |
-
-&nbsp;
-
 ## Slider
 
 | Scripting Name          | GML Function               | Purpose                                                                                                                                            |
 |-------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | `callbackOnValueChange` | `CallbackSetOnValueChange` | Function to call when the slider's handle is moved. Can be used to set another variable or trigger other behaviour                                 |
 | `callbackValueUpdate`   | `CallbackSetValueUpdate`   | Function to call, every frame, to update the slider's value. Best used in conjunction with the above callback to create a two-way variable binding |
+
+&nbsp;
+
+## Layout
+
+| Scripting Name        | GML Function               | Purpose                                                                                                                                                                                          |
+|-----------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `callbackLayout`      | `CallbackSetLayoutExecute` | Manual use only. This function is called to determine the position of a UI element when completing its construction                                                                              |
+| `callbackLayoutCheck` | `CallbackSetLayoutCheck`   | Manual use only and very optional. This function is called after laying out child element to verify that they've been placed correctly. The callback should return <true> or <false> accordingly |
