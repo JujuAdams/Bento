@@ -15,11 +15,35 @@
     </tr>
 </table>
 
+Simple clickable text button.
+
+Don't forget to set the `.targetListen` and `.click` variables! Buttons will be highlightable but won't do anything if you don't set **both** variables. For example:
+
+```
+build BentoTextButton {
+    label = "Example Button"
+    
+    //Receive events from the left mouse button
+    targetListen = "action"
+    
+    //Then tell the UI system what to do when we're clicked
+    click = fn {
+        Log("Ping!")
+    }
+}
+```
+
 &nbsp;
 
 ## Variables
 
-No additional variables beyond shared variables.
+| Name   | Datatype | Purpose                                                                   |
+|--------|----------|---------------------------------------------------------------------------|
+| label  | string   | Text to draw                                                              |
+| margin | number   | Additional space to put around the text when calculating the bounding box |
+| font   | string   | Name of the font to use                                                   |
+| color  | RGB      | Colour to use when drawing the button                                     |
+| alpha  | number   | Alpha blending value                                                      |
 
 &nbsp;
 

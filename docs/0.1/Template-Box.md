@@ -15,6 +15,8 @@
     </tr>
 </table>
 
+An invisible rectangle used for organising layouts.
+
 &nbsp;
 
 ## Variables

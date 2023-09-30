@@ -1,4 +1,4 @@
-# Text Template
+# Text Wrap Template
 
 &nbsp;
 
@@ -7,15 +7,15 @@
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><code>BentoText</code></td>
+		<td><code>BentoTextWrap</code></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
-		<td><code>BentoClassText</code></td>
+		<td><code>BentoClassTextWrap</code></td>
     </tr>
 </table>
 
-A simple text rendering class. The size of the UI element is automatically calculated from the text itself.
+A wrapped text rendering class. The size of the UI element will **not** automatically resize based on the text itself. If you want to resize the UI element to fit around the text, call the `Trim()` method.
 
 &nbsp;
 

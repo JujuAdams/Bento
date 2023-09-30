@@ -15,11 +15,18 @@
     </tr>
 </table>
 
+Video playback using GameMaker's native player. The video is drawn stretched across the bounding box.
+
 &nbsp;
 
 ## Variables
 
-No additional variables beyond shared variables.
+| Name   | Datatype | Purpose                              |
+|--------|----------|--------------------------------------|
+| color  | RGB      | Blend color for the video surface    |
+| alpha  | number   | Alpha transparency                   |
+| source | string   | Path to the video file to play       |
+| loop   | boolean  | Whether or not the video should loop |
 
 &nbsp;
 

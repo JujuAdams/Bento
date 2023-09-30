@@ -15,16 +15,18 @@
     </tr>
 </table>
 
+A basic rectangle. Useful for whiteboxing or creating semi-transparent masks.
+
 &nbsp;
 
 ## Variables
 
-|Name         |Datatype|Purpose                       |
-|-------------|--------|------------------------------|
-|`borderColor`|colour  |                              |
-|`borderAlpha`|number  |                              |
-|`fillColor`  |colour  |                              |
-|`fillAlpha`  |number  |                              |
+| Name        | Datatype | Purpose                          |
+|-------------|----------|----------------------------------|
+| borderColor | RGB      | Colour of the border             |
+| borderAlpha | number   | Alpha transparency of the border |
+| fillColor   | RGB      | Colour of the rectangle fill     |
+| fillAlpha   | number   | Alpha transparency of the fill   |
 
 &nbsp;
 
