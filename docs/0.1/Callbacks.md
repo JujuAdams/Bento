@@ -20,11 +20,11 @@ However, sometimes you might want to do something *in addition to* the existing 
 
 <table>
     <tr>
-		<td><b>BentoScript</b></td>
+		<td>BentoScript variable</td>
 		<td><code>callbackStep</code></td>
     </tr>
     <tr>
-		<td><b>GML constructor</b></td>
+		<td>GML constructor</td>
 		<td><code>CallbackSetStep</code></td>
     </tr>
 </table>
@@ -35,11 +35,11 @@ Called by proxy when `BentoStep()` is called. Step callbacks are executed by tra
 
 <table>
     <tr>
-		<td><b>BentoScript</b></td>
+		<td>BentoScript variable</td>
 		<td><code>callbackStep</code></td>
     </tr>
     <tr>
-		<td><b>GML constructor</b></td>
+		<td>GML constructor</td>
 		<td><code>CallbackSetDraw</code></td>
     </tr>
 </table>
@@ -50,11 +50,11 @@ Called by proxy when `BentoDraw()` is called. Draw callbacks are executed by tra
 
 <table>
     <tr>
-		<td><b>BentoScript</b></td>
+		<td>BentoScript variable</td>
 		<td><code>callbackOnClose</code></td>
     </tr>
     <tr>
-		<td><b>GML constructor</b></td>
+		<td>GML constructor</td>
 		<td><code>CallbackSetOnClose</code></td>
     </tr>
 </table>
@@ -77,11 +77,11 @@ BentoClose();  <--  OnClose callback executed here
 
 <table>
     <tr>
-		<td><b>BentoScript</b></td>
+		<td>BentoScript variable</td>
 		<td><code>callbackBuildIn</code></td>
     </tr>
     <tr>
-		<td><b>GML constructor</b></td>
+		<td>GML constructor</td>
 		<td><code>CallbackSetBuildIn</code></td>
     </tr>
 </table>
