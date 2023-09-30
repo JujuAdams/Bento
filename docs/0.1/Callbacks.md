@@ -20,11 +20,11 @@ However, sometimes you might want to do something *in addition to* the existing 
 
 <table>
     <tr>
-		<td>BentoScript variable</td>
+		<td><b>BentoScript</b></td>
 		<td><code>callbackStep</code></td>
     </tr>
     <tr>
-		<td>GML constructor</td>
+		<td><b>GML constructor</b></td>
 		<td><code>CallbackSetStep</code></td>
     </tr>
 </table>
@@ -35,11 +35,11 @@ Called by proxy when `BentoStep()` is called. Step callbacks are executed by tra
 
 <table>
     <tr>
-		<td>BentoScript variable</td>
+		<td><b>BentoScript</b></td>
 		<td><code>callbackStep</code></td>
     </tr>
     <tr>
-		<td>GML constructor</td>
+		<td><b>GML constructor</b></td>
 		<td><code>CallbackSetDraw</code></td>
     </tr>
 </table>
@@ -50,11 +50,11 @@ Called by proxy when `BentoDraw()` is called. Draw callbacks are executed by tra
 
 <table>
     <tr>
-		<td>BentoScript variable</td>
+		<td><b>BentoScript</b></td>
 		<td><code>callbackOnClose</code></td>
     </tr>
     <tr>
-		<td>GML constructor</td>
+		<td><b>GML constructor</b></td>
 		<td><code>CallbackSetOnClose</code></td>
     </tr>
 </table>
@@ -77,11 +77,11 @@ BentoClose();  <--  OnClose callback executed here
 
 <table>
     <tr>
-		<td>BentoScript variable</td>
+		<td><b>BentoScript</b></td>
 		<td><code>callbackBuildIn</code></td>
     </tr>
     <tr>
-		<td>GML constructor</td>
+		<td><b>GML constructor</b></td>
 		<td><code>CallbackSetBuildIn</code></td>
     </tr>
 </table>
@@ -95,6 +95,9 @@ Called by proxy when the UI element is generated, or when the `BuildIn()` method
 !> Button callbacks will only works if you set either the `targetListen` or `castListen` variables so that Bento knows what button to listen for.
 
 ### ButtonClick
+
+**BentoScript:** `callbackClick`
+**GML method:** `CallbackSetButtonClick`
 
 Called when a button is positively clicked by the player. This happens on button release. The `ButtonClick` callback can be triggered by either targetted or cast button clicks.
 
