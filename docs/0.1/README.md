@@ -1,5 +1,5 @@
 <img src="https://raw.githubusercontent.com/JujuAdams/Bento/master/LOGO.png" width="50%" style="display: block; margin: auto;" />
-<h1 align="center">0.0.0</h1>
+<h1 align="center">0.1</h1>
 <p align="center">Cross-platform UI framework for GameMaker by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a></p>
 
 <p align="center"><a href="https://github.com/JujuAdams/Bento/releases/" target="_blank">Download the .yymps</a></p>
