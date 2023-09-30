@@ -24,7 +24,7 @@ BentoScript isn't a million miles away from GML and if you're comfortable with G
 
 - Function definitions come up a lot when defining callbacks and most callbacks don't receive arguments. If a function has no arguments then instead of typing `fn()` you can shorten it further to `fn`.
 
-- A new keyword `build` has been added to assist with creating a UI tree (`build` replaces Catspeak's native `use` but it returns the result of the close function).
+- A new keyword `build` has been added to assist with creating a UI tree (`build` replaces Catspeak's native `use`, though it returns the result of the close function).
 
 - BentoScript doesn't support the unary operators `++` or `--` (use `+= 1` or `-= 1` respectively).
 
