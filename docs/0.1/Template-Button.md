@@ -17,7 +17,7 @@
 
 Simple unadorned rectangular button. Useful as a basis for creating custom button behaviour.
 
-Don't forget to set the `.targetListen` and `.click variables`! Buttons will be highlightable but won't do anything if you don't set **both** variables. For example:
+Don't forget to set the `.targetListen` and `.callbackClick` variables! Buttons will be highlightable but won't do anything if you don't set **both** variables. For example:
 
 ```
 build BentoButton {
