@@ -1,8 +1,10 @@
 # Shared Callbacks
 
+&nbsp;
+
 The variables and methods on this page define callbacks and are available across all UI elements.
 
-
+&nbsp;
 
 ## General
 
@@ -13,7 +15,7 @@ The variables and methods on this page define callbacks and are available across
 | `callbackOnClose` | `CallbackSetOnClose` | Called when a UI element finishes construction (i.e. at the final closing } curly bracket) |
 | `callbackBuildIn` | `CallbackSetBuildIn` | Called when a UI element is when appearing on screen a.k.a. "building in"                  |
 
-
+&nbsp;
 
 ## Button / Clicking
 
@@ -32,7 +34,7 @@ Button callbacks require one of the following variables to be set:
 | `callbackRelease`    | `CallbackSetButtonEnd`        | Function to call when a button is released (and the UI element received a pressed event) <br> **N.B.** This is NOT the same as "clicking" the button. A button can be released for many reasons that aren't the same as the player deliberately clicking |
 | `callbackCanCapture` | `CallbackSetButtonCanCapture` | Function to call to check whether a UI element can be clicked. The function should return <true> or <false> to indicate clickability                   |
 
-
+&nbsp;
 
 ## Pointer-Over / Highlight
 
@@ -43,7 +45,7 @@ Button callbacks require one of the following variables to be set:
 | `callbackLeave`        | `CallbackSetHoverEnd`     | Function to call when the UI element is un-highlighted                                                                     |
 | `callbackCanHighlight` | `CallbackSetCanHighlight` | Function to call to check whether a UI element can be highlighted                                                          |
 
-
+&nbsp;
 
 ## Layout
 
@@ -52,7 +54,7 @@ Button callbacks require one of the following variables to be set:
 | `callbackLayout`      | `CallbackSetLayoutExecute` | Manual use only. This function is called to determine the position of a UI element when completing its construction                                                                              |
 | `callbackLayoutCheck` | `CallbackSetLayoutCheck`   | Manual use only and very optional. This function is called after laying out child element to verify that they've been placed correctly. The callback should return <true> or <false> accordingly |
 
-
+&nbsp;
 
 ## Slider
 

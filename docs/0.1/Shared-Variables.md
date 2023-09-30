@@ -1,8 +1,10 @@
 # Shared Variables
 
+&nbsp;
+
 The variables on this page are available across all UI elements.
 
-
+&nbsp;
 
 ## Miscellaneous
 
@@ -14,6 +16,7 @@ The variables on this page are available across all UI elements.
 | `layoutInclude` | boolean  | Whether this UI element can be moved around by a parent's layout function                                                           |
 | `focusable`     | boolean  | Whether this UI element can be focused                                                                                              |
 
+&nbsp;
 
 ## Local Position
 
@@ -35,7 +38,7 @@ The variables on this page are available across all UI elements.
 | `scale`   | number   |                                                                                                      |
 | `size`    | array    | Convenient 2-element array that represents the width/height values (see above)                       |
 
-
+&nbsp;
 
 ## Children
 
@@ -48,7 +51,7 @@ The variables on this page are available across all UI elements.
 | `childMaxRight`  | number    | Furtherest right x-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element  |
 | `childMaxBottom` | number    | Furtherest bottom y-coordinate amongst child UI elements, relative to the top-left corner of the scoped UI element |
 
-
+&nbsp;
 
 ## World Position
 
@@ -63,7 +66,7 @@ The variables on this page are available across all UI elements.
 | `worldWidth`  | number   |                                                                                                      |
 | `worldHeight` | number   |                                                                                                      |
 
-
+&nbsp;
 
 ## Draw Position
                                                                                                                                                 
@@ -78,7 +81,7 @@ The variables on this page are available across all UI elements.
 | `drawWidth`  | number   | Width of the UI element                                                                                                       |
 | `drawHeight` | number   | Height of the UI element                                                                                                      |
 
-
+&nbsp;
 
 ## Gamepad/Keyboard navigation
 
@@ -89,8 +92,8 @@ The variables on this page are available across all UI elements.
 | `navigationUp`    | UI struct | UI element to navigate to when pushing up                                         |
 | `navigationLeft`  | UI struct | UI element to navigate to when pushing left                                       |
 | `navigationDown`  | UI struct | UI element to navigate to when pushing down                                       |
-                                                                                    
 
+&nbsp;
 
 ## Animation
 

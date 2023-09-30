@@ -1,5 +1,7 @@
 # Alternatives
 
+&nbsp;
+
 Bento might not be the perfect fit for your game. The GameMaker community has produced other solutions that you might like to try:
 
 - [YUI](https://github.com/shdwcat/YUI)

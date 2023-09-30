@@ -1,5 +1,7 @@
 # Building From GML
 
+&nbsp;
+
 ## Executing BentoScript
 
 Bento is intended to be used by loading UI layouts from files. This isn't always ideal and it is occasionally easier or (a little) safer to create UI from within your game application.

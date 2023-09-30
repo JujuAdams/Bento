@@ -1,8 +1,10 @@
 # Shared Methods
 
+&nbsp;
+
 The methods on this page are available across all UI elements.
 
-
+&nbsp;
 
 ## Overview
 
@@ -33,7 +35,7 @@ The methods on this page are available across all UI elements.
 | `Get`                    | Calls the getter function (see above)                                      |
 | `Set`                    | Calls the setter function (see above)                                      |
 
-
+&nbsp;
 
 ## Basics
 
@@ -47,7 +49,7 @@ Returns: Identifier for the UI element, as a string
 
 The function is also used internally by GameMaker when using the native string() function. This means that stringifying a UI struct will return its identifier.
 
-
+&nbsp;
 
 ### .Destroy()
 
@@ -59,7 +61,7 @@ Returns: <undefined>
 
 Destroys the UI element, freeing any memory associated with it. This is not necessary to call to clean up UI elements as garbage collection takes care of that for us, but this function is helpful for targeted removal of UI elements.
 
-
+&nbsp;
 
 ### .GetType()
 
@@ -71,7 +73,7 @@ Returns: Type of the UI element, as a string
 
 The "type" of a UI element is typically the instanceof() of the constructor that created the element e.g. a BentoButton builder in a BentoScript will generate a UI element with the type "BentoClassButton".
 
-
+&nbsp;
 
 ## Layout
 
@@ -82,9 +84,9 @@ Returns:
 | Argument Name | Datatype | Purpose                                     |
 |---------------|----------|---------------------------------------------|
 | `hAlign`      | string   |                                             |
-| `spacing`     | number   |                                             |
+| `spacing`     | number   |                                             
 
-
+&nbsp;
 
 ### .LayoutAsHorizontalList(vAlign, spacing)
 
@@ -95,7 +97,7 @@ Returns:
 | `vAlign`      | string   |                                             |
 | `spacing`     | number   |                                             |
 
-
+&nbsp;
 
 ### .LayoutAsGrid(cellWidth, cellHeight)
 
@@ -106,7 +108,7 @@ Returns:
 | `cellWidth`   | number   |                                             |
 | `cellHeight`  | number   |                                             |
 
-
+&nbsp;
 
 ### .LayoutAsColumns(hAlign, spacing, widthArray)
 
@@ -118,7 +120,7 @@ Returns:
 | `spacing`     | number   |                                             |
 | `widthArray`  | array    |                                             |
 
-
+&nbsp;
 
 ## Children & Parents
 
@@ -130,7 +132,7 @@ Returns: Whether the UI element has any children
 |---------------|----------|---------|
 | None          |          |         |
 
-
+&nbsp;
 
 ### .ChildrenClear()
 
@@ -142,7 +144,7 @@ Returns: <undefined>
 
 Removes all children.
 
-
+&nbsp;
 
 ### .ParentChange(newParent)
 
@@ -152,7 +154,7 @@ Returns: <undefined>
 |---------------|-----------|-----------------------|
 | `newParent`   | UI struct | New parent to move to |
 
-
+&nbsp;
 
 # Element Interaction
 
@@ -164,7 +166,7 @@ Returns: Whether the UI element is being highlighted by the pointer
 |---------------|----------|---------|
 | None          |          |         |
 
-
+&nbsp;
 
 ### .GetFocus()
 
@@ -176,7 +178,7 @@ Returns: Whether the UI element is being focused by the UI system
 
 N.B. This method will likely get removed in the near future.
 
-
+&nbsp;
 
 ### .GetButton(buttonName)
 
@@ -188,7 +190,7 @@ Returns: Whether the UI element is being focused by the UI system
 
 N.B. This method will likely get removed in the near future.
 
-
+&nbsp;
 
 ### .HoverStateSet(state)
 
@@ -198,7 +200,7 @@ Returns: <undefined>
 |---------------|----------|--------------|
 | state         | boolean  | State to set |
 
-
+&nbsp;
 
 ### .ButtonStateSet(buttonName, state)
 
@@ -209,7 +211,7 @@ Returns: <undefined>
 | `buttonName`  | string   | Name of the button to set this state for |
 | `state`       | boolean  | State to set                             |
 
-
+&nbsp;
 
 ## Search
 
@@ -224,7 +226,7 @@ Returns: UI element descendent with the given identifier, or <undefined> if it c
 This is a recursive downwards search so any descendent (i.e. any UI element with the scoped element
 as an ancestor) UI element with a matching identifier is returned.
 
-
+&nbsp;
 
 ### .FindType(resultArray, type)
 
@@ -238,7 +240,7 @@ Returns: <undefined>
 This is a recursive downwards search so any descendent (i.e. any UI element with the scoped element
 as an ancestor) UI element with a matching type is pushed into the array.
 
-
+&nbsp;
 
 ### .ReplaceFromFile(filePath)
 
@@ -248,7 +250,7 @@ Returns: <undefined>
 |---------------|----------|--------------------------------------------------------------------|
 | `filePath`    | string   | Path to the BentoScript to execute and replace the UI element with |
 
-
+&nbsp;
 
 ## Animation
 
@@ -262,7 +264,7 @@ Returns: <undefined>
 
 Restarts the build-in animation.
 
-
+&nbsp;
 
 ### .BuildFinish()
 
@@ -274,7 +276,7 @@ Returns: <undefined>
 
 Immediately stops any animation.
 
-
+&nbsp;
 
 ### .GetBuilding()
 
@@ -284,7 +286,7 @@ Returns: The build-in animation state.
 |---------------|----------|---------|
 | None          |          |         |
 
-
+&nbsp;
 
 ## Variable Access
 
@@ -300,7 +302,7 @@ Returns: <undefined>
 
 The bindings set by this method are used by Catspeak when executing BentoScript, and they are also used by the `.Get()` and `.Set()` methods. Trying to use standard GML syntax to get/set variables that have been bound using `.VariableBind()` will fail.
 
-
+&nbsp;
 
 ### .Get(variableName)
 
@@ -312,7 +314,7 @@ Returns: <undefined>
 
 Executes the getter function if it exists, as set by `.VariableBind()`, otherwise the variable is read directly.
 
-
+&nbsp;
 
 ### .Set(variableName, value)
 

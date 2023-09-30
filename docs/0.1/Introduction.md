@@ -1,5 +1,7 @@
 # Introduction
 
+&nbsp;
+
 Bento is a user interface framework. It is intended to be used for player-facing UI rather than, say, debug menus. I've tried to make iterating on your UI implementation as fast as possible within Bento.
 
 
