@@ -5,6 +5,8 @@
 - [Setting Up](Setting-Up)
 - [Building From BentoScript](Building-From-BentoScript)
 - [Building From GML](Building-From-GML)
+- [Callbacks](Callbacks)
+- [Customisation](Customisation)
 
 ---
 

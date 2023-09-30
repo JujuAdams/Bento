@@ -2,73 +2,42 @@
 
 &nbsp;
 
-Bento is a user interface framework. It is intended to be used for player-facing UI rather than, say, debug menus. I've tried to make iterating on your UI implementation as fast as possible within Bento.
-
-
-Bento is not like my other libraries where I typically try to cover the majority of use-cases with a single API though; user interfaces are so varied and so central to the feel of a game that a single API is a doomed endeavour.
-
-- Templates
-- User input
-- Layers
-- Live reloading
-- Native gamepad support
-- Expansion necessary
-- Works on phone
-
-During its (long and painful) development, Bento ended up getting complicated. I've done my best to hide some of the gnarlier details but there's still a lot to learn. Here's a brief overview of how Bento is structured which hopefully helps you understand what's going on.
+Bento is a user interface framework. It is intended to be used for player-facing UI rather than, say, debug menus. This library doesn't seek to solve every single user interface problem, but it should cover the majority of basic games.
 
 &nbsp;
 
-## Live Programming
+### BentoScript
 
-The feature of Bento that I'm most proud of is the live programming. This allows you to edit UI code whilst the game is running and immediately see the difference. This is incredibly useful and saves so, so much time. In order to achieve this, I've linked Bento to a custom scripting language for UI called BentoScript. It has some carefully chosen syntax and behaviour which allows for uncomplicated UI layouts using code. Because we're using a custom language, Bento can reload UI code in realtime which opens up a world of possibilities.
+One of the core principles of Bento is making it easy to iterate quickly on your UI layouts. Bento offers a GML API to build interfaces but the library works best when you use the custom BentoScript language instead. Don't worry! BentoScript is very similar to GML, it just has a couple special features to make it more convenient to use.
 
-Having said that, you can still use Bento without BentoScript. The Bento API is fully available through GML and you lose nothing but convenience if you decide to use only the GML portion of Bento. You can read more about BentoScript [here](BentoScript).
+Using a custom scripting language has a couple major advantages. The really big one is that Bento supports live coding. If you're not happy with where a button is on your main menu, you can change the script that builds the main menu and it'll update immediately in-game. This is very helpful! BentoScript is so powerful that you could quite easily build an entire game inside of it. You can read more about BentoScript [here](BentoScript).
 
-?> Despite being immensely proud of the live programming feature, I didn't write most of it! Bento's custom scripting language (BentoScript) is a modified version of the incomparable [Catspeak](https://github.com/katsaii/catspeak-lang) by [Katsaii](https://www.katsaii.com/). I highly recommend investigating Catspeak if you need any sort of flexible scripting solution for your game.
+?> Despite live programming being a major feature, I didn't write most of it! BentoScript is a modified version of the incomparable [Catspeak](https://github.com/katsaii/catspeak-lang) by [Katsaii](https://www.katsaii.com/). I highly recommend investigating Catspeak if you need any sort of flexible scripting solution for your game.
 
 &nbsp;
 
-## Bento Boxes
+### Structure
 
 The basic unit of logic in Bento is the "box". A Bento box is implemented as a struct internally, and each Bento box has an array of children. By attaching child boxes to parent boxes recursively, we can build a tree of UI elements. This is similar to the "document object model" if you're familiar with HTML and web tech in general.
 
 As a practical example, consider a small pause menu that appears in the centre of the screen. The pause menu background occupies a small portion of the screen rather than filling it. The buttons on the pause menu are children of the pause menu background, and the menu background is the parent.
 
-By attaching child boxes to parent boxes we create a hierarchy that is helpful for resolving mouse events, ordering draw calls, calculating layouts, and generally organising the appearance of the user interface. You can read more about the capabilities of Bento boxes [here](Bento-Boxes).
+At the top of the UI tree is a layer. Every UI element will, at the top of its chain of parents, eventually reach a layer. Layers can have their order exchanged, of course, but their real power comes in how upper layers can be used to block input reaching lower layers. By blocking input, a layer can act as a [modal](https://semantic-ui.com/modules/modal.html). An example of a modal is a confirm dialogue box for deleting a save file. You can read more about layers over on the [layers](Layers) page.
 
 &nbsp;
 
-## Templates & Customisation
+### Templates & Customisation
 
-As mentioned, a Bento box is implemented as a struct. Needless to say, a box is a special type of box. All boxes are generated by instantiating constructors, and those constructors all (through a chain of inheritance) inherit from the same base constructor `BentoClassShared`. Bento offers several basic UI templates ("widgets") as constructors. For example, the sprite button constructor `BentoClassSpriteButton` inherits from `BentoClassButton` which in turn inherits from `BentoClassShared`.
+It's not possible to cover every style of user interface with a single library. Instead, Bento is trying to be easily extensible and customisable instead of being outright comprehensive. In the sidebar you'll find a list of common UI elements that Bento ships with. These should cover the majority of the interface you'll need to build for even relatively complex games.
 
-?> If you're not familiar with constructor inheritance, check out [GameMaker's documentation](https://manual.yoyogames.com/index.htm#t=GameMaker_Language%2FGML_Overview%2FStructs.htm&rhsearch=Inheritance&rhhlterm=Inheritance) on the topic.
-
-There's no conceivable way that I could cover every UI use case with Bento. As a result, Bento is built to be easily extensible. In order to customise Bento, all you need to do is create a new constructor and inherit from the template of your choice. If you'd like to make a special kind of slider, you can inherit from `BentoClassHorizontalSlider` and start customising. This will require some effort on your part, but it's worth it.
-
-If you'd like to make something totally custom then you'll want to inherit directly from `BentoClassShared` and fill in the various variables and callbacks as you see fit.
-
-You can read more about the various templates that available to you [here](Bento-Templates).
+By using a combination of GML's [constructor inheritance](https://manual.yoyogames.com/GameMaker_Language/GML_Overview/Structs.htm) and Bento's own callback system, it's possible to build some really pretty menus simply by reskinning the template UI elements. Customisation is discussed in more depth [on this page](Customisation).
 
 &nbsp;
 
-## Callbacks
+### Cross-Platform
 
-Bento uses a callback model for linking your user interface to your functional code.
+Bento is written using 100% native GML so it will (should) work on all target platforms. However, not all platforms have the same input hardware. A desktop PC will typically use a mouse for UI input, or perhaps a keyboard or gamepad. Mobile phones have a touch screen. Consoles will use gamepad input exclusively (apart from Switch if you're feeling adventurous!). This library abstracts hardware input so you don't need to worry about managing the nitty gritty details.
 
-&nbsp;
+Input is funneled into Bento using device-agnostic functions. Bento uses an internal pointer that can act as a free roaming stand-in for mouse or touch input. When using a gamepad, Bento disables free roaming and instead uses a raycast to detect which UI element to lock on to.
 
-## Layers
-
-Bento UI elements are arranged on layers. Each layer has precisely one root Bento box which acts as the tying-off point for whatever UI layout you need to exist on that layer. Layers must have unique names. Layers additionally have a `priority` variable that controls the order that Bento layers are processed (for both user inout and drawing purposes). Layers have methods that allow them to be placed over other layers, to be pushed to the very top of the stack, or to be drawn at a specific priority.
-
-T#he behaviour of Bento boxes stored on layers can be controlled by setting the `behavior` variable on a layer. This behaviour variable can be used to change how Bento boxes on that layer function, but it is also used to control how subsequent (deeper / later) layers behave too. For example, a layer whose behaviour is set to `BENTO_BEHAVIOR_BLOCKING` will prevent all subsequent layers from receiving input or even drawing.
-
-&nbsp;
-
-## User Input
-
-Bento is built with both desktop mice, mobile touchscreens, and console gamepads in mind. Bento supports gamepad-based navigation out of the box and, unless you've customised things really heavily, you should have no issue swapping between mouse-driven and gamepad-driven user input modes. Bento uses a raycasting technique to determine which button to highlight so, even without direct assistance, Bento works with gamepads as well as mice.
-
-User input is handled by passing button state into Bento, wherein Bento decides whether a button has been pressed, released, held, or none of the above. Gone are the days of meticulously programming mouse button checks for every UI element. Bento also differentiates between "clicks" (which are actions directed at a specific UI element) and "casts" (which are actions broadcast more generally). For example, right-clicking on an item to open a context menu is a "click" and pressing Escape to close a pause menu is a "cast".
+Button input from hardware, such as a left mouse click or the A button on a gamepad, is again funnelled into Bento with a specific function. If you create a user interface that works with a mouse, even without polishing it, it'll probably work with a gamepad too. Bento also differentiates between "target" button clicks (which are actions directed at a specific UI element) and "cast" button clicks (which are actions broadcast more generally). For example, right-clicking on an item to open a context menu is a "target" click and pressing Escape to close a pause menu is a "cast" click.
