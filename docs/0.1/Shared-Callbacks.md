@@ -27,8 +27,8 @@ Button callbacks require one of the following variables to be set:
 
 | Variable Name   | Datatype        | Purpose                                                                                                                                    |
 |-----------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| `captureClick`  | string or array | What button names this UI element can receive when the button is directly clicked on. Use an array for sensitivity to muliple button names |
-| `captureCast`   | string or array | What button names this UI element can receive by casting. Use an array for sensitivity to muliple button names                             |
+| `targetListen`  | string or array | What button names this UI element can receive when the button is directly clicked on. Use an array for sensitivity to muliple button names |
+| `castListen`    | string or array | What button names this UI element can receive by casting. Use an array for sensitivity to muliple button names                             |
 
 | Scripting Name       | GML Function                  | Purpose                                                                                                                                                |
 |----------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
