@@ -12,8 +12,6 @@
 - [Shared Variables](Shared-Variables)
 - [Shared Callbacks](Shared-Callbacks)
 - [Shared Methods](Shared-Methods)
-- [UI Interaction](UI-Interaction)
-- [Pointer Getters](Pointer-Getters)
 
 ---
 
