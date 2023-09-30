@@ -15,7 +15,7 @@
     </tr>
 </table>
 
-A vertical scrollbar. Available in BentoScript using the BentoVerticalScrollbar builder.
+A vertical scrollbar.
 
 &nbsp;
 

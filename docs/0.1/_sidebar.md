@@ -3,23 +3,17 @@
 - [Credits](Credits)
 - [Introduction](Introduction)
 - [Setting Up](Setting-Up)
-- [Using GML](Using-GML)
-- [Using BentoScript](Using-BentoScript)
+- [Building From BentoScript](Building-From-BentoScript)
+- [Building From GML](Building-From-GML)
 
 ---
 
-- [Script Structure](Script-Structure)
-- [General Variables](Scripting-General-Variables)
-- [Local Position Variables](Scripting-Local-Position-Variables)
-- [World Position Variables](Scripting-World-Position-Variables)
-- [Draw Position Variables](Scripting-Draw-Position-Variables)
-- [Parent & Child Variables](Scripting-Parent-Child-Variables)
-- [Hover Callbacks](Scripting-Hover-Callbacks)
-- [Focus Callbacks](Scripting-Focus-Callbacks)
-- [Button Callbacks](Scripting-Button-Callbacks)
-- [Tick Callbacks](Scripting-Tick-Callbacks)
-- [Layout Callbacks](Scripting-Layout-Callbacks)
-- [Methods](Scripting-Methods)
+- [Layers](Layers)
+- [Shared Variables](Shared-Variables)
+- [Shared Callbacks](Shared-Callbacks)
+- [Shared Methods](Shared-Methods)
+- [UI Interaction](UI-Interaction)
+- [Pointer Getters](Pointer-Getters)
 
 ---
 
@@ -38,8 +32,16 @@
 - [Vertical Scrollbar](Template-Vertical-Scrollbar)
 - [Vertical Slider](Template-Vertical-Slider)
 - [Video](Template-Video)
+
 ---
 
-- [Building From GML](Building-From-GML)
-- [UI Interaction](UI-Interaction)
-- [Pointer Getters](Pointer-Getters)
+- [General Variables](Scripting-General-Variables)
+- [Local Position Variables](Scripting-Local-Position-Variables)
+- [World Position Variables](Scripting-World-Position-Variables)
+- [Draw Position Variables](Scripting-Draw-Position-Variables)
+- [Parent & Child Variables](Scripting-Parent-Child-Variables)
+- [Hover Callbacks](Scripting-Hover-Callbacks)
+- [Focus Callbacks](Scripting-Focus-Callbacks)
+- [Button Callbacks](Scripting-Button-Callbacks)
+- [Tick Callbacks](Scripting-Tick-Callbacks)
+- [Layout Callbacks](Scripting-Layout-Callbacks)

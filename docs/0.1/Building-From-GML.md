@@ -31,7 +31,7 @@ if (hp <= 0)
 						color = c_red
 					}
 
-					captureClick = "action"
+					targetList = "action"
 					click = fn {
 						Clear()
 						room_goto(rmMainMenu)

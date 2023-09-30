@@ -15,7 +15,7 @@
     </tr>
 </table>
 
-A sprite, with the added capability to stretch it. Available in BentoScript using the BentoSprite builder.
+A sprite, with the added capability to stretch it.
 
 &nbsp;
 
