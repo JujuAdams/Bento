@@ -42,3 +42,18 @@
 - [Vertical Scrollbar](Template-Vertical-Scrollbar)
 - [Vertical Slider](Template-Vertical-Slider)
 - [Video](Template-Video)
+
+---
+
+**GML API**
+
+- [Configuration](GML-Configuration)
+- [Basics](GML-Basics)
+- [Input](GML-Input)
+- [Pointer Getters](GML-Pointer-Getters)
+- [Boxes](GML-Boxes)
+- [Layers](GML-Layers)
+- [Files](GML-Files)
+- [Debugging](GML-Debugging)
+- [Hosts](GML-Hosts)
+- [Miscellaneous](GML-Miscellaneous)
