@@ -1,5 +1,7 @@
 # Variables
 
+&nbsp;
+
 ?> You can read a full list of shared variables [here](Shared-Variables). Each UI template also has its own set of special variables specific to that template so make sure to read the documentation thoroughly to understand what's available.
 
 There are many, many variables that you can read and adjust for a UI element. Variables in BentoScript behave similarly to GML. They're weakly typed to begin with, and variables types can be one of the following: boolean, number, string, array, struct, functions, or undefined. You can create local variables with `var` and variables without a prefix (e.g. `x` as opposed to `topChild.x`) are presumed to be variables available in the current scope.
