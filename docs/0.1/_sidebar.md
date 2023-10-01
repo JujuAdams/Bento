@@ -2,18 +2,29 @@
 - [Alternatives](Alternatives)
 - [Credits](Credits)
 - [Introduction](Introduction)
+
+---
+
+**BentoScript**
+
+- [Variables](BentoSpeak-Variables)
+- [Callbacks](BentoSpeak-Callbacks)
+- [Layouts & Methods](BentoSpeak-Layouts-And-Methods)
+
+---
+
 - [Setting Up](Setting-Up)
 - [Building From BentoScript](Building-From-BentoScript)
 - [Building From GML](Building-From-GML)
-- [Callbacks](Callbacks)
 - [Customisation](Customisation)
 
 ---
 
 - [Layers](Layers)
 - [Shared Variables](Shared-Variables)
-- [Shared Callbacks](Shared-Callbacks)
 - [Shared Methods](Shared-Methods)
+- [Shared Callbacks](Shared-Callbacks)
+- [Callback Cheatsheet](Callback-Cheatsheet)
 
 ---
 

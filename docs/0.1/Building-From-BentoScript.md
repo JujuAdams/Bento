@@ -30,6 +30,22 @@ BentoScript isn't a million miles away from GML and if you're comfortable with G
 
 &nbsp;
 
+## Exposing Assets
+
+BentoScript is sandboxed. This means that, without intervention, you will not be able to access sprites, sounds, functions etc. from within your UI scripts. The following functions allow you to whitelist various components of your project.
+
+- `BentoAddBoxType()`
+
+- `BentoAddNativeFunction()`
+
+- `BentoAddConstant()`
+
+- `BentoAddFunction()`
+
+- `BentoAddAsset()`
+
+&nbsp;
+
 ## Executing BentoScript
 
 Code stored in BentoScript files can be executed using a few different GML functions:
@@ -106,184 +122,3 @@ build BentoRectangle {
 ```
 
 In this example, we're creating a local variable (`var firstChild`) that stores a reference to a rectangle. We're then creating a second rectangle beneath it with a 20px space between the two. Both rectangles share the same width and height.
-
-&nbsp;
-
-## Variables
-
-?> You can read a full list of shared variables [here](Shared-Variables). Each UI template also has its own set of special variables specific to that template so make sure to read the documentation thoroughly to understand what's available.
-
-There are many, many variables that you can read and adjust for a UI element. You've seen a few already - `x` `y` `width` `height`. You'll notice a special variable called `ltrb` as well. Variables in BentoScript behave similarly to GML. They're weakly typed to begin with, and variables types can be one of the following: boolean, number, string, array, struct, functions, or undefined. You can create local variables with `var` and variables without a prefix (e.g. `x` as opposed to `topChild.x`) are presumed to be variables available in the current scope.
-
-BentoScript adds an extra feature on top of standard GML variables, however, and that's getter and setter functions for variables. Normally when you get and set a variable in GML you're just reading and writing variables. There's nothing else that happens. In building out Bento, however, I found that it's really useful to execute implicit behaviours when setting variables.
-
-As an example, let's look at `ltrb`. This is a shorthand for "left, top, right, bottom" and, as you might have guessed, this variable sets the bounding box for a UI element based on a 4-element array. Internally, there is no `ltrb` variable. It's a trick! In reality, the `ltrb` variable has special getter and setter functions set up. When you set the `ltrb`variable, the four components of the array are unpacked into separate left, top, right, and bottom variables. When you get the `ltrb` variable, these four components are recombined into an array.
-
-In fact, the majority of variables that you'll use with BentoScript are implemented as getter / setter functions. When building custom UI templates for yourself you'll likely want to be able to define your own getter / setter functions too. You can call the `VariableBind()` method to set up getter / setter functions for yourself.
-
-!> When writing GML code to interface with Bento, it is strongly recommended that you use the `Get()` and `Set()` methods for reading and writing variables. Getter / Setter functions will only work in GML if you use these two methods!
-
-&nbsp;
-
-## Percentages
-
-You'll see in a few places the use of strings that contain a percentage value. Percentage values aren't available for use everywhere, but you'll find them useful when defining the position and size of UI elements. When a percentage value is used, the resulting value passed into Bento is a fraction of the parent's width or height (as is appropriate). For example:
-
-```
-build BentoSprite {
-	//Stretch the blood splatter sprite over this UI element
-	sprite = sprBloodSplatter
-	stretch = true
-
-	//Position the sprite towards the upper-centre of the parent
-	xy = ["50%", "30%"]
-
-	//Cover most of the width, but less of the height, of the parent
-	size = ["90%", "50%"]
-}
-```
-
-Percentage values are very useful when designing responsive layouts and you'll get a lot of mileage out of them on mobile device especially.
-
-&nbsp;
-
-## Callbacks
-
-?> You can read a full list of shared callbacks [here](Callbacks), and there's a quick reference cheat sheet [here](Shared-Callbacks).
-
-Callbacks are the way Bento passes control to your game when an event happens. This includes straight-forward situations where the player clicks on a button; in this situation, the "Click" callback is executed. You'll naturally want to define what should happen when the player clicks a button individually per button. This is where the special variable `callbackClick` comes in. Here's an example:
-
-```
-build BentoButton {
-	//Centre the button in the parent
-	xy = ["50%", "50%"]
-
-	//Give us a big enough size to click
-	size = [200, 100]
-
-	//Listen for the left mouse button
-	targetListen = "action"
-
-	//Define a callback for clicking the button
-	callbackClick = fn {
-		//When clicked, show a message in the debug log
-		DebugLog("Ping!")
-	}
-}
-```
-
-The important point to note here is that we define the callback by setting it to a function that we define using the `fn { ... }` syntax. Callbacks must always be defined as functions so that Bento has something to execute when the event occurs.
-
-Some callbacks receive an argument, and the "Click" callback is actually one of those callbacks. If you want your callback to be able to receive an argument (or many arguments) then you can add some brackets to the function definition, as you normally would in GML, to grab those arguments e.g.:
-
-```
-build BentoButton {
-	//Centre the button in the parent
-	xy = ["50%", "50%"]
-
-	//Give us a big enough size to click
-	size = [200, 100]
-
-	//Listen for the left mouse button
-	targetListen = ["action", "alt"]
-
-	//Define a callback for clicking the button
-	callbackClick = fn(buttonName) {
-		DebugLog("You pressed \"" + String(buttonName) + "\"")
-	}
-}
-```
-
-&nbap;
-
-## Callback Inheritance
-
-Callbacks have a further property: you can execute the callback for the event from a parent template (constructor). This is done by calling `CallInherited()` or `Super()` in BentoScript, or calling `BentoCallInherited()` in GML. This is especially useful when you want to extend the behaviour of a UI template without overriding the behaviour of that UI template entirely. For example, let's we wanted to play a sound effect when a particular button is highlighted:
-
-```
-build BentoButton {
-	//Centre the button in the parent
-	xy = ["50%", "50%"]
-
-	//Give us a big enough size to click
-	size = [200, 100]
-
-	//Listen for the left mouse button
-	targetListen = "action"
-
-	//Define a callback for highlighting the button
-	callbackEnter = fn(buttonName) {
-		//Make sure we call the inherited behaviour
-		CallInherited()
-
-		//Play the sound
-		AudioPlay(sndSquelch)
-	}
-}
-```
-
-&nbsp;
-
-## Layouts & Methods
-
-?> You can read a full list of shared callbacks [here](Shared-Methods).
-
-Bento's UI elements, in addition to getter / setter variables and callbacks, also have explicit methods calls that you can use. These methods vary from very useful and useful, such as `.Destroy()`, to obscure, such as `ButtonStateSet()`. Some UI templates also have methods and when customising your own UI elements you'll likely want to add your own.
-
-Of particular note, however, are the "layout methods". These methods override the `callbackLayout` and `callbackLayoutCheck` callbacks and set up common layout behaviours. You'll find yourself using these a lot in production as a way to simplify setting up menus and inventories etc.  Here's an example:
-
-```
-build BentoBox {
-	//Place the menu at the left-hand side of the screen
-	ltrb = ["10%", "10%", "40%", "90%"]
-
-	//Set up a vertical list that horizontally centres children for this menu
-	LayoutAsVerticalList("center", 20)
-
-	build BentoTextButton {
-		label = "New Game"
-		size = [200, 50]
-
-		targetList = "action"
-		callbackClick = fn {
-			ChangePage("new game")
-		}
-	}
-
-	build BentoTextButton {
-		label = "Settings"
-		size = [200, 50]
-
-		targetList = "action"
-		callbackClick = fn {
-			ChangePage("settings")
-		}
-	}
-
-	build BentoTextButton {
-		label = "Quit"
-		size = [200, 50]
-
-		targetList = "action"
-		callbackClick = fn {
-			GameEnd()
-		}
-	}
-}
-```
-
-&nbsp;
-
-## Exposing Assets
-
-BentoScript is sandboxed. This means that, without intervention, you will not be able to access sprites, sounds, functions etc. from within your UI scripts. The following functions allow you to whitelist various components of your project.
-
-- `BentoAddBoxType()`
-
-- `BentoAddNativeFunction()`
-
-- `BentoAddConstant()`
-
-- `BentoAddFunction()`
-
-- `BentoAddAsset()`

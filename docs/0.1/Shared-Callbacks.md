@@ -2,67 +2,116 @@
 
 &nbsp;
 
-?> This page is a cheatsheet. More details on callbacks can be found [here](Callbacks).
+?> If you're looking for BentoScript variables and GML functions that set up callbacks, check out [this page](Shared-Callbacks).
 
 &nbsp;
 
-The variables and methods on this page define callbacks and are available across all UI elements.
+## Callback Inheritance
+
+Bento callbacks are automatically parented to the callback defined in the parent constructor. When implementing your own buttons, for example, you'll want to create your own constructor that inherits the native `BentoClassButton` constructor. To save you from the hassle of having to handle the implementation details of hooking your new button up to Bento's system, your new button constructor will automatically call all of the `BentoClassButton` callbacks with you needing to write any further code.
+
+However, sometimes you might want to do something *in addition to* the existing template behaviour. This is where `BentoCallInherited()` comes in. If you call this function in your GML constructor then Bento will execute the full callback from the parent constructor (and if the parent's callback contains `BentoCallInherited()` then it'll call the next parent up, and so on). The BentScript equivalent is `CallInherited()` (or `Super()`). When extending and customising Bento, you'll want to invoke the parent's callback most of the time, apart from the Draw callback most likely.
 
 &nbsp;
 
 ## General
 
-| Scripting Name    | GML Function         | Purpose                                                                                    |
-|-------------------|----------------------|--------------------------------------------------------------------------------------------|
-| `callbackStep`    | `CallbackSetStep`    | Called via `BentoStep()`                                                                   |
-| `callbackDraw`    | `CallbackSetDraw`    | Called via `BentoDraw()`                                                                   |
-| `callbackOnClose` | `CallbackSetOnClose` | Called when a UI element finishes construction (i.e. at the final closing } curly bracket) |
-| `callbackBuildIn` | `CallbackSetBuildIn` | Called when a UI element is when appearing on screen a.k.a. "building in"                  |
+### Step
+
+Called by proxy when `BentoStep()` is called. Step callbacks are executed by traversing the tree depth-first.
+
+### Draw
+
+Called by proxy when `BentoDraw()` is called. Draw callbacks are executed by traversing the tree depth-first.
+
+### OnClose
+
+Called when the UI element is finished constructing. For the avoidance of doubt:
+
+```
+build BentoRectangle {
+	fillAlpha = 0.8
+}  <--  OnClose callback executed here
+```
+
+```gml
+BentoOpen(new BentoClassRectangle());
+	BentoCurrent().Set("fillAlpha", 0.8);
+BentoClose();  <--  OnClose callback executed here
+```
+
+### BuildIn
+
+Called by proxy when the UI element is generated, or when the `BuildIn()` method is executed for a UI element. Used to trigger an animation that visually introduces the UI element onto the screen.
 
 &nbsp;
 
 ## Button / Clicking
 
-Button callbacks require one of the following variables to be set:
+!> Button callbacks will only works if you set either the `targetListen` or `castListen` variables so that Bento knows what button to listen for.
 
-| Variable Name   | Datatype        | Purpose                                                                                                                                    |
-|-----------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| `targetListen`  | string or array | What button names this UI element can receive when the button is directly clicked on. Use an array for sensitivity to muliple button names |
-| `castListen`    | string or array | What button names this UI element can receive by casting. Use an array for sensitivity to muliple button names                             |
+### ButtonClick
 
-| Scripting Name       | GML Function                  | Purpose                                                                                                                                                |
-|----------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `callbackClick`      | `CallbackSetButtonClick`      | Function to call when a button is deliberately actived (typically by clicking on it!). This function is also triggered by button casts                 |
-| `callbackPress`      | `CallbackSetButtonStart`      | Function to call when a button is pressed on the UI element                                                                                            |
-| `callbackHold`       | `CallbackSetButton`           | Function to call when a button is held on the UI element                                                                                               |
-| `callbackRelease`    | `CallbackSetButtonEnd`        | Function to call when a button is released (and the UI element received a pressed event) <br> **N.B.** This is NOT the same as "clicking" the button. A button can be released for many reasons that aren't the same as the player deliberately clicking |
-| `callbackCanCapture` | `CallbackSetButtonCanCapture` | Function to call to check whether a UI element can be clicked. The function should return <true> or <false> to indicate clickability                   |
+Called when a button is positively clicked by the player. This happens on button release. The `ButtonClick` callback can be triggered by either targetted or cast button clicks.
+
+### ButtonStart
+
+Called when a button is pressed whilst the UI element is focused. The button is considered "captured" for the purposes of the `Button` and `ButtonEnd` callbacks.
+
+### Button
+
+Called for every subsequent frame where the captured button (see above) is held.
+
+### ButtonEnd
+
+Called for when the captured button (see above) is released.
+
+### ButtonCanCapture
+
+Called when detecting if a signal from a button can be received by a UI element.
 
 &nbsp;
 
 ## Pointer-Over / Highlight
 
-| Scripting Name         | GML Function              | Purpose                                                                                                                    |
-|------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| `callbackEnter`        | `CallbackSetHoverStart`   | Function to call when the pointer enters the UI element, or when the UI element is newly highlighted through gamepad input |
-| `callbackOver`         | `CallbackSetHover`        | Function to call when the UI element is highlighted                                                                        |
-| `callbackLeave`        | `CallbackSetHoverEnd`     | Function to call when the UI element is un-highlighted                                                                     |
-| `callbackCanHighlight` | `CallbackSetCanHighlight` | Function to call to check whether a UI element can be highlighted                                                          |
+### HoverStart
+
+Called when highlighting a button (and it previously was in a non-highlighted state). This applies to mouse input and well as gamepad/keyboard input.
+
+### Hover
+
+Called for every subsequent frame that a button is highlighted.
+
+### HoverEnd
+
+Called when unhighlighting a button (and it previously was highlighted).
+
+### CanHighlight
+
+Called when detecting if a UI element can be highlighted.
 
 &nbsp;
 
 ## Slider
 
-| Scripting Name          | GML Function               | Purpose                                                                                                                                            |
-|-------------------------|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| `callbackOnValueChange` | `CallbackSetOnValueChange` | Function to call when the slider's handle is moved. Can be used to set another variable or trigger other behaviour                                 |
-| `callbackValueUpdate`   | `CallbackSetValueUpdate`   | Function to call, every frame, to update the slider's value. Best used in conjunction with the above callback to create a two-way variable binding |
+### OnValueChange
+
+Called when the handle for a slider is moved by the player. You could use this callback to set a variable elsewhere or to play a sound etc. 
+
+### ValueUpdate
+
+Called once when the slider is created, and then every frame. The intention is that this callback allows you to create a two-way binding for the slider. The function you set for this callback should return the value you want to set for the slider.
 
 &nbsp;
 
 ## Layout
 
-| Scripting Name        | GML Function               | Purpose                                                                                                                                                                                          |
-|-----------------------|----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `callbackLayout`      | `CallbackSetLayoutExecute` | Manual use only. This function is called to determine the position of a UI element when completing its construction                                                                              |
-| `callbackLayoutCheck` | `CallbackSetLayoutCheck`   | Manual use only and very optional. This function is called after laying out child element to verify that they've been placed correctly. The callback should return <true> or <false> accordingly |
+!> These two functions have niche use cases and may, at some point, be replaced.
+
+### LayoutExecute
+
+Called when deciding the layout of a UI element. You can (and should) use this callback to move child elements too.
+
+### LayoutCheck
+
+Called when deciding if the previously set layout (see above) is valid. The function you set for this callback should return `true` or `false` depending on whether the layout is still acceptable.
