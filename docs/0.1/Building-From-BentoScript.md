@@ -271,3 +271,19 @@ build BentoBox {
 	}
 }
 ```
+
+&nbsp;
+
+## Exposing Assets
+
+BentoScript is sandboxed. This means that, without intervention, you will not be able to access sprites, sounds, functions etc. from within your UI scripts. The following functions allow you to whitelist various components of your project.
+
+- `BentoAddBoxType()`
+
+- `BentoAddNativeFunction()`
+
+- `BentoAddConstant()`
+
+- `BentoAddFunction()`
+
+- `BentoAddAsset()`
