@@ -4,7 +4,16 @@
 
 ## …HostLTRB
 
-`BentoHostLTRB(left, top, right, bottom)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoHostLTRB(left, top, right, bottom)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
