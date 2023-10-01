@@ -22,7 +22,9 @@ It's useful to have a specific persistent and permanent object instance set up t
 
 ### 2. Set The Host Dimensions
 
-Bento defaults to using the GUI width and height for the size of the screen. This is a pretty good guess but every has their own way of working. If you're using some other UI scale, which is reasonably common amongst pixel art games, call `BentoHostLTRB()` with accurate values to ensure you're building your UI at the right scale. You should only call this function once at the start of the game.
+Bento defaults to using the GUI width and height for the size of the screen. This is a pretty good guess but every has their own way of working. If you're using some other UI scale, which is reasonably common amongst pixel art games, call `BentoHostLTRB()` with accurate values to ensure you're building your UI at the right scale. 
+
+?> If you change the host dimensions whilst UI exists you might run into weirdness. If you change the host's dimensions, make sure you also regenerate the UI entirely.
 
 &nbsp;
 
