@@ -36,7 +36,7 @@ By using a combination of GML's [constructor inheritance](https://manual.yoyogam
 
 &nbsp;
 
-### Cross-Platform
+### Gamepad Support & Cross-Platform
 
 Bento is written using 100% native GML so it will (should) work on all target platforms. However, not all platforms have the same input hardware. A desktop PC will typically use a mouse for UI input, or perhaps a keyboard or gamepad. Mobile phones have a touch screen. Consoles will use gamepad input exclusively (apart from Switch if you're feeling adventurous!). This library abstracts hardware input so you don't need to worry about managing the nitty gritty details.
 
