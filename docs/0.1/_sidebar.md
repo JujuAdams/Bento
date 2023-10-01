@@ -47,7 +47,8 @@
 
 **GML API**
 
-- [Configuration](GML-Configuration)
+- [Config Macros](GML-Config-Macro)
+- [Config Functions](GML-Config-Functions)
 - [Basics](GML-Basics)
 - [Input](GML-Input)
 - [Pointer Getters](GML-Pointer-Getters)

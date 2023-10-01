@@ -1,4 +1,4 @@
-# Configuration
+# Config Functions
 
 &nbsp;
 
