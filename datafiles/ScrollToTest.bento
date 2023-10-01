@@ -34,4 +34,11 @@ build BentoRectangle {
 		buttonB.navigationRight = buttonC
 		buttonC.navigationLeft  = buttonB
 	}
+
+	build BentoSprite {
+		sprite = spr_logo
+		originY = 0
+		scale = 2
+		xy = ["50%", 0]
+	}
 }
