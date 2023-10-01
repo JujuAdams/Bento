@@ -2,6 +2,10 @@
 - [Alternatives](Alternatives)
 - [Credits](Credits)
 - [Introduction](Introduction)
+- [Setting Up](Setting-Up)
+- [Building From BentoScript](Building-From-BentoScript)
+- [Building From GML](Building-From-GML)
+- [Customisation](Customisation)
 
 ---
 
@@ -13,12 +17,7 @@
 
 ---
 
-- [Setting Up](Setting-Up)
-- [Building From BentoScript](Building-From-BentoScript)
-- [Building From GML](Building-From-GML)
-- [Customisation](Customisation)
-
----
+**Technical Details**
 
 - [Layers](Layers)
 - [Shared Variables](Shared-Variables)
