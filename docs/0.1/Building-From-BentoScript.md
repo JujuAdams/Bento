@@ -54,12 +54,40 @@ Finally, you can also execute a BentoScript string using `BentoStringExecute()`.
 
 &nbsp;
 
-## Structure
+## The `build` Command
 
-Building UI with BentoScript is a case of calling the `build` command.
+Building UI with BentoScript is a case of calling the `build` command and targeting a UI class. Anything inside the subsequent curly brackets will be executed in the scope of the new UI element, a little bit like a `with()` statement in GML.
 
 ```
 build BentoRectangle {
 	ltrb = [20, 20, parent.width-20, parent.height-20]
 }
 ```
+
+`build` commands can be nested inside each other. When you execute a build command in the scope of a UI element, the new UI element is added to the old one a child.
+
+```
+build BentoRectangle {
+	ltrb = [20, 20, parent.width-20, parent.height-20]
+
+	build BentoRectangle {
+		ltrb = [20, 20, parent.width/2 - 10, parent.height-20]
+	}
+
+	build BentoRectangle {
+		ltrb = [parent.width/2 + 10, 20, parent.width - 20, parent.height-20]
+	}
+}
+```
+
+&nbsp;
+
+## Variables
+
+&nbsp;
+
+## Callbacks
+
+&nbsp;
+
+## Methods
