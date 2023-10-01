@@ -3,7 +3,7 @@
   "resourceVersion": "1.1",
   "name": "BentoScript",
   "parent": {
-    "name": "Documentation",
-    "path": "folders/Bento/Documentation.yy",
+    "name": "Legacy Documentation",
+    "path": "folders/Bento/(System)/Legacy Documentation.yy",
   },
 }
