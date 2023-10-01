@@ -12,7 +12,7 @@ BentoScript isn't a million miles away from GML and if you're comfortable with G
 
 - BentoScript is sandboxed. To access anything in your project (functions, objects, sprites, sounds, etc.) you'll need to explicitly whitelist it.
 
-- Variables are weakly typed. Variables can be numbers, strings, arrays, structs, or functions. Struct/array literals are supported.
+- Variables are weakly typed. Variables can be booleans, numbers, strings, arrays, structs, functions, or undefined. Struct/array literals are supported.
 
 - There are no methods, only simple functions. Every function is called in the current scope.
 
@@ -56,7 +56,7 @@ Finally, you can also execute a BentoScript string using `BentoStringExecute()`.
 
 ## The `build` Command
 
-Building UI with BentoScript is a case of calling the `build` command and targeting a UI class. Anything inside the subsequent curly brackets will be executed in the scope of the new UI element, a little bit like a `with()` statement in GML.
+Building UI with BentoScript is a case of calling the `build` command and targeting a UI class. Anything inside the subsequent curly brackets will be executed in the scope of the new UI element, a little bit like a combination of the `new` command and the `with()` command in GML.
 
 ```
 build BentoRectangle {
@@ -67,22 +67,61 @@ build BentoRectangle {
 `build` commands can be nested inside each other. When you execute a build command in the scope of a UI element, the new UI element is added to the old one a child.
 
 ```
+//This is the parent
 build BentoRectangle {
 	ltrb = [20, 20, parent.width-20, parent.height-20]
 
+	//This is a child
 	build BentoRectangle {
 		ltrb = [20, 20, parent.width/2 - 10, parent.height-20]
 	}
 
+	//This is another child
 	build BentoRectangle {
 		ltrb = [parent.width/2 + 10, 20, parent.width - 20, parent.height-20]
 	}
 }
 ```
 
+Every UI element you construct in BentoScript will always have a parent. Which UI element is being used as the parent depends on the situation. When using a function like `BentoFileExecuteLayerTop()`, the new layer is the parent for UI elements built in your BentoScript.
+
+The `build` command itself returns the struct that it has created. This means you can use the return value from the `build` command to hold references to UI elements. Consider this example:
+
+```
+build BentoRectangle {
+	ltrb = [20, 20, parent.width-20, parent.height-20]
+
+	var firstChild = build BentoRectangle {
+		ltrb = [20, 20, parent.width/2 - 10, parent.height-20]
+	}
+
+	//Create the second rectangle below the first rectangle
+	build BentoRectangle {
+		x      = topChild.x
+		y      = topChild.height + 20
+		width  = topChild.width
+		height = topChild.height
+	}
+}
+```
+
+In this example, we're creating a local variable (`var firstChild`) that stores a reference to a rectangle. We're then creating a second rectangle beneath it with a 20px space between the two. Both rectangles share the same width and height.
+
 &nbsp;
 
 ## Variables
+
+?> You can read a full list of shared variables [here](Shared-Variables). Each UI template also has its own set of special variables specific to that template so make sure to read the documentation thoroughly to understand what's available.
+
+There are many, many variables that you can read and adjust for a UI element. You've seen a few already - `x` `y` `width` `height`. You'll notice a special variable called `ltrb` as well. Variables in BentoScript behave similarly to GML. They're weakly typed to begin with, and variables types can be one of the following: boolean, number, string, array, struct, functions, or undefined. You can create local variables with `var` and variables without a prefix (e.g. `x` as opposed to `topChild.x`) are presumed to be variables available in the current scope.
+
+BentoScript adds an extra feature on top of standard GML variables, however, and that's getter and setter functions for variables. Normally when you get and set a variable in GML you're just reading and writing variables. There's nothing else that happens. In building out Bento, however, I found that it's really useful to execute implicit behaviours when setting variables.
+
+As an example, let's look at `ltrb`. This is a shorthand for "left, top, right, bottom" and, as you might have guessed, this variable sets the bounding box for a UI element based on a 4-element array. Internally, there is no `ltrb` variable. It's a trick! In reality, the `ltrb` variable has special getter and setter functions set up. When you set the `ltrb`variable, the four components of the array are unpacked into separate left, top, right, and bottom variables. When you get the `ltrb` variable, these four components are recombined into an array.
+
+In fact, the majority of variables that you'll use with BentoScript are implemented as getter / setter functions. When building custom UI templates for yourself you'll likely want to be able to define your own getter / setter functions too. You can call the `VariableBind()` method to set up getter / setter functions for yourself.
+
+!> When writing GML code to interface with Bento, it is **strongly** recommended that you use the `Get()` and `Set()` methods for reading and writing variables. Getter / Setter functions will only work in GML if you use these two methods!
 
 &nbsp;
 
