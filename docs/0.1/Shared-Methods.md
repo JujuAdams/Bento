@@ -8,6 +8,8 @@ The methods on this page are available across all UI elements.
 
 ## Overview
 
+?> There's more detail below - scroll down!
+
 | Method                   | Usage                                                                      |
 |--------------------------|----------------------------------------------------------------------------|
 | `toString`               | Called by `string()`. Returns the UI element's identifier                  |
