@@ -31,11 +31,11 @@ The variables on this page are available across all UI elements.
 | `y`       | number   | y-position of the middle of the UI element, relative to the top-left corner of the parent UI element |
 | `width`   | number   | Width of the UI element                                                                              |
 | `height`  | number   | Height of the UI element                                                                             |
-| `xy`      | array    |                                                                                                      |
-| `xywh`    | array    |                                                                                                      |
-| `originX` | number   |                                                                                                      |
-| `originY` | number   |                                                                                                      |
-| `scale`   | number   |                                                                                                      |
+| `xy`      | array    | Convenient 2-element array that represents the x/y coordinates (see above)                           |
+| `xywh`    | array    | Convenient 4-element array that represents the x/y/width/height coordinates (see above)              |
+| `originX` | number   | Normalised (from 0 to 1) origin point in the x-axis. A value of 0.5 is central                       |
+| `originY` | number   | Normalised (from 0 to 1) origin point in the y-axis. A value of 0.5 is central                       |
+| `scale`   | number   | Scale of the UI element. A value of 1 is no change                                                   |
 | `size`    | array    | Convenient 2-element array that represents the width/height values (see above)                       |
 
 &nbsp;
@@ -63,8 +63,8 @@ The variables on this page are available across all UI elements.
 | `worldBottom` | number   | Bottom y-position of the UI element, relative to the top-left corner of the GUI (game window)        |
 | `worldX`      | number   | x-position of the centre of the UI element, relative to the top-left corner of the GUI (game window) |
 | `worldY`      | number   | y-position of the middle of the UI element, relative to the top-left corner of the GUI (game window) |
-| `worldWidth`  | number   |                                                                                                      |
-| `worldHeight` | number   |                                                                                                      |
+| `worldWidth`  | number   | Width of the UI element in world space                                                               |
+| `worldHeight` | number   | Height of the UI element in world space                                                              |
 
 &nbsp;
 
