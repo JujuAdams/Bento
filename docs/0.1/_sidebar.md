@@ -14,6 +14,7 @@
 - [Variables](BentoSpeak-Variables)
 - [Callbacks](BentoSpeak-Callbacks)
 - [Layouts & Methods](BentoSpeak-Layouts-And-Methods)
+- [Layers](GML-Layers)
 
 ---
 
@@ -53,7 +54,6 @@
 - [Input](GML-Input)
 - [Pointer Getters](GML-Pointer-Getters)
 - [Boxes](GML-Boxes)
-- [Layers](GML-Layers)
 - [Files](GML-Files)
 - [Debugging](GML-Debugging)
 - [Hosts](GML-Hosts)
