@@ -271,21 +271,3 @@ build BentoBox {
 	}
 }
 ```
-
-&nbsp;
-
-## Exposing Assets
-
-There are three functions that allow you to expose assets and functions in your GameMaker project to BentoScript. Any asset that you **don't** expose will not be available in BentoScript, and their use may result in errors.
-
-&nbsp;
-
-### `BentoAddBoxType()`
-
-&nbsp;
-
-### `BentoAddFunction()`
-
-&nbsp;
-
-### `BentoAddNativeFunction()`
