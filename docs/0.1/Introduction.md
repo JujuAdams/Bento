@@ -8,7 +8,7 @@ This page will introduce you to the various concepts in Bento. There's a lot to 
 
 &nbsp;
 
-### BentoScript
+## BentoScript
 
 One of the core principles of Bento is making it easy to iterate quickly on your UI layouts. Bento offers a GML API to build interfaces but the library works best when you use the custom BentoScript language instead. BentoScript is similar to GML, it just has a couple special features to make it more convenient to use.
 
@@ -18,7 +18,7 @@ Using a custom scripting language has a couple major advantages. The really big 
 
 &nbsp;
 
-### Structure
+## Structure
 
 The basic unit of logic in Bento is the "UI element". A Bento UI element is implemented as a struct internally. UI elements are always attached to another UI element, creating a parent-child relationship. By attaching child UI to parent UI repeatedly, we can build a tree of UI elements. This is similar to the "document object model" if you're familiar with HTML and web tech in general.
 
@@ -28,7 +28,7 @@ At the top of the UI tree is a layer. Every UI element will, at the top of its c
 
 &nbsp;
 
-### Templates & Customisation
+## Templates & Customisation
 
 It's not possible to cover every style of user interface with a single library. Instead, Bento is trying to be easily extensible and customisable instead of being outright comprehensive. In the sidebar you'll find a list of common UI elements that Bento ships with. These should cover the majority of the interface you'll need to build for even relatively complex games.
 
@@ -36,7 +36,7 @@ By using a combination of GML's [constructor inheritance](https://manual.yoyogam
 
 &nbsp;
 
-### Gamepad Support & Cross-Platform
+## Gamepad Support & Cross-Platform
 
 Bento is written using 100% native GML so it will (should) work on all target platforms. However, not all platforms have the same input hardware. A desktop PC will typically use a mouse for UI input, or perhaps a keyboard or gamepad. Mobile phones have a touch screen. Consoles will use gamepad input exclusively (apart from Switch if you're feeling adventurous!). This library abstracts hardware input so you don't need to worry about managing the nitty gritty details.
 
