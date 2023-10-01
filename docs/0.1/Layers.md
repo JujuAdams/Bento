@@ -4,11 +4,13 @@
 
 Bento UI elements are arranged on layers. Each layer has precisely one root UI element which acts as the tying-off point for whatever UI layout you need to exist on that layer. Layers must have unique names. Layers additionally have a `priority` variable that controls the order that Bento layers are processed (for both user inout and drawing purposes). Layers have methods that allow them to be placed over other layers, to be pushed to the very top of the stack, or to be drawn at a specific priority.
 
-T#he behaviour of Bento boxes stored on layers can be controlled by setting the `behavior` variable on a layer. This behaviour variable can be used to change how Bento boxes on that layer function, but it is also used to control how subsequent (deeper / later) layers behave too. For example, a layer whose behaviour is set to `BENTO_BEHAVIOR_BLOCKING` will prevent all subsequent layers from receiving input or even drawing.
+T#he behaviour of UI elements stored on layers can be controlled by setting the `behavior` variable on a layer. This behaviour variable can be used to change how UI elements on that layer function, but it is also used to control how subsequent (deeper / later) layers behave too. For example, a layer whose behaviour is set to `BENTO_BEHAVIOR_BLOCKING` will prevent all subsequent layers from receiving input or even drawing.
 
 &nbsp;
 
 ## Variables
+
+?> Whilst layers have variables that might make them look like UI elements they are, in fact, not UI elements in the conventional sense.
 
 Available variables (in addition to shared UI variables) are:
 

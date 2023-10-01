@@ -18,7 +18,7 @@ Using a custom scripting language has a couple major advantages. The really big 
 
 ### Structure
 
-The basic unit of logic in Bento is the "box". A Bento box is implemented as a struct internally, and each Bento box has an array of children. By attaching child boxes to parent boxes recursively, we can build a tree of UI elements. This is similar to the "document object model" if you're familiar with HTML and web tech in general.
+The basic unit of logic in Bento is the "UI element". A Bento UI element is implemented as a struct internally, and each Bento UI element has an array of children. By attaching child boxes to parent boxes recursively, we can build a tree of UI elements. This is similar to the "document object model" if you're familiar with HTML and web tech in general.
 
 As a practical example, consider a small pause menu that appears in the centre of the screen. The pause menu background occupies a small portion of the screen rather than filling it. The buttons on the pause menu are children of the pause menu background, and the menu background is the parent.
 
