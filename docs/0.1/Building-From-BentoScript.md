@@ -164,7 +164,7 @@ build BentoButton {
 	//Listen for the left mouse button
 	targetListen = "action"
 
-	//Define a callback
+	//Define a callback for clicking the button
 	callbackClick = fn {
 		//When clicked, show a message in the debug log
 		DebugLog("Ping!")
@@ -187,9 +187,37 @@ build BentoButton {
 	//Listen for the left mouse button
 	targetListen = ["action", "alt"]
 
-	//Define a callback
+	//Define a callback for clicking the button
 	callbackClick = fn(buttonName) {
 		DebugLog("You pressed \"" + String(buttonName) + "\"")
+	}
+}
+```
+
+&nbap;
+
+## Callback Inheritance
+
+Callbacks have a further property: you can execute the callback for the event from a parent template (constructor). This is done by calling `CallInherited()` or `Super()` in BentoScript, or calling `BentoCallInherited()` in GML. This is especially useful when you want to extend the behaviour of a UI template without overriding the behaviour of that UI template entirely. For example, let's we wanted to play a sound effect when a particular button is highlighted:
+
+```
+build BentoButton {
+	//Centre the button in the parent
+	xy = ["50%", "50%"]
+
+	//Give us a big enough size to click
+	size = [200, 100]
+
+	//Listen for the left mouse button
+	targetListen = "action"
+
+	//Define a callback for highlighting the button
+	callbackEnter = fn(buttonName) {
+		//Make sure we call the inherited behaviour
+		CallInherited()
+
+		//Play the sound
+		AudioPlay(sndSquelch)
 	}
 }
 ```
