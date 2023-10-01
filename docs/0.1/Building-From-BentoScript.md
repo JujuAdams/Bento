@@ -6,7 +6,7 @@ BentoScript is the language that Bento uses to describe UI layouts (as well as U
 
 &nbsp;
 
-### BentoScript Overview
+## BentoScript Overview
 
 BentoScript isn't a million miles away from GML and if you're comfortable with GML then you'll get to grips with it quickly:
 
@@ -54,7 +54,7 @@ Finally, you can also execute a BentoScript string using `BentoStringExecute()`.
 
 &nbsp;
 
-## The `build` Command
+## Building
 
 Building UI with BentoScript is a case of calling the `build` command and targeting a UI class. Anything inside the subsequent curly brackets will be executed in the scope of the new UI element, a little bit like a combination of the `new` command and the `with()` command in GML.
 
@@ -121,12 +121,16 @@ As an example, let's look at `ltrb`. This is a shorthand for "left, top, right, 
 
 In fact, the majority of variables that you'll use with BentoScript are implemented as getter / setter functions. When building custom UI templates for yourself you'll likely want to be able to define your own getter / setter functions too. You can call the `VariableBind()` method to set up getter / setter functions for yourself.
 
-!> When writing GML code to interface with Bento, it is **strongly** recommended that you use the `Get()` and `Set()` methods for reading and writing variables. Getter / Setter functions will only work in GML if you use these two methods!
+!> When writing GML code to interface with Bento, it is strongly recommended that you use the `Get()` and `Set()` methods for reading and writing variables. Getter / Setter functions will only work in GML if you use these two methods!
 
 &nbsp;
 
 ## Callbacks
 
+?> You can read a full list of shared callbacks [here](Shared-Callbacks).
+
 &nbsp;
 
 ## Methods
+
+?> You can read a full list of shared callbacks [here](Shared-Methods).
