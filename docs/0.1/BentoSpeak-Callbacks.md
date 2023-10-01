@@ -1,5 +1,7 @@
 # Callbacks
 
+&nbsp;
+
 ?> You can read a full list of shared callbacks [here](Shared-Callbacks), and there's a quick reference cheat sheet [here](Callback-Cheatsheet).
 
 Callbacks are the way Bento passes control to your game when an event happens. This includes straight-forward situations where the player clicks on a button; in this situation, the "Click" callback is executed. You'll naturally want to define what should happen when the player clicks a button individually per button. This is where the special variable `callbackClick` comes in. Here's an example:
