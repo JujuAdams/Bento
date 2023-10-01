@@ -1,5 +1,7 @@
 # Layouts & Methods
 
+&nbsp;
+
 ?> You can read a full list of shared callbacks [here](Shared-Methods).
 
 Bento's UI elements, in addition to getter / setter variables and callbacks, also have explicit methods calls that you can use. These methods vary from very useful and useful, such as `.Destroy()`, to obscure, such as `ButtonStateSet()`. Some UI templates also have methods and when customising your own UI elements you'll likely want to add your own.
