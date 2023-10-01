@@ -4,11 +4,13 @@
 
 Bento is a user interface framework. It is intended to be used for player-facing UI rather than, say, debug menus. This library doesn't seek to solve every single user interface problem, but it should cover the majority of basic games.
 
+This page will introduce you to the various concepts in Bento. There's a lot to talk about and organising it is, honestly, something I haven't totally figured out yet. You're welcome to swing by [the Discord](https://discord.gg/8krYCqr) to ask targeted questions at your leisure.
+
 &nbsp;
 
 ### BentoScript
 
-One of the core principles of Bento is making it easy to iterate quickly on your UI layouts. Bento offers a GML API to build interfaces but the library works best when you use the custom BentoScript language instead. Don't worry! BentoScript is very similar to GML, it just has a couple special features to make it more convenient to use.
+One of the core principles of Bento is making it easy to iterate quickly on your UI layouts. Bento offers a GML API to build interfaces but the library works best when you use the custom BentoScript language instead. BentoScript is similar to GML, it just has a couple special features to make it more convenient to use.
 
 Using a custom scripting language has a couple major advantages. The really big one is that Bento supports live coding. If you're not happy with where a button is on your main menu, you can change the script that builds the main menu and it'll update immediately in-game. This is very helpful! BentoScript is so powerful that you could quite easily build an entire game inside of it. You can read more about BentoScript [here](BentoScript).
 
