@@ -125,9 +125,74 @@ In fact, the majority of variables that you'll use with BentoScript are implemen
 
 &nbsp;
 
+## Percentages
+
+You'll see in a few places the use of strings that contain a percentage value. Percentage values aren't available for use everywhere, but you'll find them useful when defining the position and size of UI elements. When a percentage value is used, the resulting value passed into Bento is a fraction of the parent's width or height (as is appropriate). For example:
+
+```
+build BentoSprite {
+	//Stretch the blood splatter sprite over this UI element
+	sprite = sprBloodSplatter
+	stretch = true
+
+	//Position the sprite towards the upper-centre of the parent
+	xy = ["50%", "30%"]
+
+	//Cover most of the width, but less of the height, of the parent
+	size = ["90%", "50%"]
+}
+```
+
+Percentage values are very useful when designing responsive layouts and you'll get a lot of mileage out of them on mobile device especially.
+
+&nbsp;
+
 ## Callbacks
 
-?> You can read a full list of shared callbacks [here](Shared-Callbacks).
+?> You can read a full list of shared callbacks [here](Callbacks), and there's a quick reference cheat sheet [here](Shared-Callbacks).
+
+Callbacks are the way Bento passes control to your game when an event happens. This includes straight-forward situations where the player clicks on a button; in this situation, the "Click" callback is executed. You'll naturally want to define what should happen when the player clicks a button individually per button. This is where the special variable `callbackClick` comes in. Here's an example:
+
+```
+build BentoButton {
+	//Centre the button in the parent
+	xy = ["50%", "50%"]
+
+	//Give us a big enough size to click
+	size = [200, 100]
+
+	//Listen for the left mouse button
+	targetListen = "action"
+
+	//Define a callback
+	callbackClick = fn {
+		//When clicked, show a message in the debug log
+		DebugLog("Ping!")
+	}
+}
+```
+
+The important point to note here is that we define the callback by setting it to a function that we define using the `fn { ... }` syntax. Callbacks must always be defined as functions so that Bento has something to execute when the event occurs.
+
+Some callbacks receive an argument, and the "Click" callback is actually one of those callbacks. If you want your callback to be able to receive an argument (or many arguments) then you can add some brackets to the function definition, as you normally would in GML, to grab those arguments e.g.:
+
+```
+build BentoButton {
+	//Centre the button in the parent
+	xy = ["50%", "50%"]
+
+	//Give us a big enough size to click
+	size = [200, 100]
+
+	//Listen for the left mouse button
+	targetListen = ["action", "alt"]
+
+	//Define a callback
+	callbackClick = fn(buttonName) {
+		DebugLog("You pressed \"" + String(buttonName) + "\"")
+	}
+}
+```
 
 &nbsp;
 
