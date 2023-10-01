@@ -1,4 +1,9 @@
 /// Sets the left/top/right/bottom boundary of the currently targeted Bento host.
+/// 
+/// @param left
+/// @param top
+/// @param right
+/// @param bottom
 
 function BentoHostLTRB(_left, _top, _right, _bottom)
 {
