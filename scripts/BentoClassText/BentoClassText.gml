@@ -98,7 +98,7 @@ function BentoClassText() : BentoClassShared() constructor
         draw_set_font(_oldFont);
     }
     
-    CallbackSetDraw(function()
+    EventDraw(function()
     {
         BentoCallInherited();
         

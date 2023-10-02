@@ -22,12 +22,12 @@ function __BentoGlobal()
         __contextStack:        [undefined],
         __createReplaceTarget: undefined,
         
-        __currentCallback:       undefined,
-        __currentCallbackScope:  undefined,
-        __currentCallbackParam0: undefined,
-        __currentCallbackParam1: undefined,
+        __currentEvent:       undefined,
+        __currentEventScope:  undefined,
+        __currentEventParam0: undefined,
+        __currentEventParam1: undefined,
         
-        __nullCallback: undefined,
+        __nullEvent: undefined,
         
         __debug: {
             __showPointer:    false,

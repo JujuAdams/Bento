@@ -1,4 +1,4 @@
-function __BentoClassCallback(_parent, _function, _fromBentoScript) constructor
+function __BentoClassEvent(_parent, _function, _fromBentoScript) constructor
 {
     static _global = __BentoGlobal();
     
@@ -10,15 +10,15 @@ function __BentoClassCallback(_parent, _function, _fromBentoScript) constructor
     {
         if (__function == undefined) return;
         
-        var _oldCallback       = _global.__currentCallback;
-        var _oldCallbackScope  = _global.__currentCallbackScope;
-        var _oldCallbackParam0 = _global.__currentCallbackParam0;
-        var _oldCallbackParam1 = _global.__currentCallbackParam1;
+        var _oldEvent       = _global.__currentEvent;
+        var _oldEventScope  = _global.__currentEventScope;
+        var _oldEventParam0 = _global.__currentEventParam0;
+        var _oldEventParam1 = _global.__currentEventParam1;
         
-        _global.__currentCallback       = self;
-        _global.__currentCallbackScope  = _scope;
-        _global.__currentCallbackParam0 = _param0;
-        _global.__currentCallbackParam1 = _param1;
+        _global.__currentEvent       = self;
+        _global.__currentEventScope  = _scope;
+        _global.__currentEventParam0 = _param0;
+        _global.__currentEventParam1 = _param1;
         
         if (__fromBentoScript)
         {
@@ -33,10 +33,10 @@ function __BentoClassCallback(_parent, _function, _fromBentoScript) constructor
             var _result = method(_scope, __function)(_param0, _param1);
         }
         
-        _global.__currentCallback       = _oldCallback;
-        _global.__currentCallbackScope  = _oldCallbackScope;
-        _global.__currentCallbackParam0 = _oldCallbackParam0;
-        _global.__currentCallbackParam1 = _oldCallbackParam1;
+        _global.__currentEvent       = _oldEvent;
+        _global.__currentEventScope  = _oldEventScope;
+        _global.__currentEventParam0 = _oldEventParam0;
+        _global.__currentEventParam1 = _oldEventParam1;
         
         return _result;
     }

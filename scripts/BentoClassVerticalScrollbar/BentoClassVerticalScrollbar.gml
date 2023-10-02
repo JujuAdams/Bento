@@ -69,12 +69,12 @@ function BentoClassVerticalScrollbar() : BentoClassVerticalSlider() constructor
         valueMax = _value.scrollYMax;
     });
     
-    CallbackSetOnValueChange(function(_value)
+    EventOnValueChange(function(_value)
     {
         if (__binding != undefined) __binding.scrollY = _value;
     });
     
-    CallbackSetValueUpdate(function()
+    EventValueUpdate(function()
     {
         if (__binding != undefined)
         {

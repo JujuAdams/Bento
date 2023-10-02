@@ -47,7 +47,7 @@ function BentoClassSprite() : BentoClassShared() constructor
         }
     });
     
-    CallbackSetDraw(function()
+    EventDraw(function()
     {
         if ((__sprite != undefined) && sprite_exists(__sprite))
         {

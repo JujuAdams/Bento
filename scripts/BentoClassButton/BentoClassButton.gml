@@ -31,27 +31,27 @@ function BentoClassButton() : BentoClassShared() constructor
     
     if (BENTO_DEFAULT_BUTTON_NAME != undefined) Set("targetListen", BENTO_DEFAULT_BUTTON_NAME);
     
-    CallbackSetHighlightStart( function()
+    EventHighlightStart( function()
     {
         HighlightStateSet(true);
     });
     
-    CallbackSetHighlightEnd(function()
+    EventHighlightEnd(function()
     {
         HighlightStateSet(false);
     });
     
-    CallbackSetButtonStart(function(_name)
+    EventButtonStart(function(_name)
     {
         ButtonStateSet(_name, true);
     });
     
-    CallbackSetButtonEnd(function(_name)
+    EventButtonEnd(function(_name)
     {
         ButtonStateSet(_name, false);
     });
     
-    CallbackSetDraw(function()
+    EventDraw(function()
     {
         var _color = merge_color(color, animBlend, animBlendAmount);
         var _alpha = alpha*animAlpha;

@@ -39,4 +39,4 @@ curly brackets, the scope of the BentoScript code will now swap to the newly cre
 
 You'll often want to be able to customise how your boxes respond to user input. In the most basic
 example, buttons will recessarily want to trigger custom behaviour. This is a somewhat involved
-topic which has its own special documentation file: "BentoScript Callbacks".
+topic which has its own special documentation file: "BentoScript Events".
