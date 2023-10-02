@@ -1,20 +1,20 @@
 /// A vertical slider. Available in BentoScript using the BentoVerticalSlider builder.
 /// 
-/// Sliders have two special callbacks, "callbackOnValueChange" and "callbackValueUpdate":
+/// Sliders have two special events, "eventOnValueChange" and "eventValueUpdate":
 /// 
-/// "callbackOnValueChange" is executed when the handle is moved by the player. You could use this
-/// callback to set a variable elsewhere or to play a sound etc. "callbackValueUpdate" is called
-/// once when the slider is created, and then every frame. The intention is that this callback
+/// "eventOnValueChange" is executed when the handle is moved by the player. You could use this
+/// event to set a variable elsewhere or to play a sound etc. "eventValueUpdate" is called
+/// once when the slider is created, and then every frame. The intention is that this event
 /// allows you to create a two-way binding for the slider. The function you set for
-/// "callbackValueUpdate" should return  the value you want to set for the slider. For example:
+/// "eventValueUpdate" should return  the value you want to set for the slider. For example:
 /// 
 ///     build BentoVerticalSlider {
-///         callbackOnValueChange = fn {
+///         eventOnValueChange = fn {
 ///             SettingsSet("sound volume", value)
 ///             AudioPlay(snd_blip)
 ///         }
 ///     
-///         callbackValueUpdate = fn {
+///         eventValueUpdate = fn {
 ///             return SettingsGet("sound volume")
 ///         }
 ///     }
@@ -32,8 +32,8 @@
 /// | valueMin              | number   | Minimum value when the handle is at the top position                              |
 /// | valueMax              | number   | Maximum value when the handle is at the bottom position                           |
 /// | valueIncrement        | boolean  | Quantisation resolution for the slider value                                      |
-/// | callbackOnValueChange | function | Callback to execute when the handle of the slider is moved                        |
-/// | callbackValueUpdate   | function | Callback to execute every frame to link the slider to a variable stored elsewhere |
+/// | functionOnValueChange | function | Function to execute when the handle of the slider is moved                        |
+/// | functionValueUpdate   | function | Function to execute every frame to link the slider to a variable stored elsewhere |
 
 BentoAddBoxType("BentoVerticalSlider", BentoClassVerticalSlider, false);
 function BentoClassVerticalSlider() : BentoClassButton() constructor
@@ -56,9 +56,9 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
     __handleRight   = 0;
     __handleBottom  = 0;
     
-    VariableBind("callbackOnValueChange", function()
+    VariableBind("eventOnValueChange", function()
     {
-        __BentoError("Cannot get \"callbackOnValueChange\"");
+        __BentoError("Cannot get \"eventOnValueChange\"");
         return;
     },
     function(_value)
@@ -66,9 +66,9 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         __CallbackSetFromBentoScript(__BENTO_CALL.__ON_VALUE_CHANGE, _value);
     });
     
-    VariableBind("callbackValueUpdate", function()
+    VariableBind("eventValueUpdate", function()
     {
-        __BentoError("Cannot get \"callbackValueUpdate\"");
+        __BentoError("Cannot get \"eventValueUpdate\"");
         return;
     },
     function(_value)
@@ -96,7 +96,7 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         __handleRight  = 0.5*(__localWidth + handleWidth);
         __handleBottom = __handleTop + handleHeight;
         
-        //If the output value of the slider has changed, execute the associated callback
+        //If the output value of the slider has changed, execute the associated event
         if ((value != undefined) && (value != _oldValue))
         {
             __CallbackGet(__BENTO_CALL.__ON_VALUE_CHANGE).__Call(self, value);

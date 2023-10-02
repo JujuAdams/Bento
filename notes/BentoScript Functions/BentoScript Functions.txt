@@ -10,9 +10,9 @@ Super()
   See below.
 
 CallInherited()
-  Executes the equivalent function for the current callback type by searching up the box behaviour
+  Executes the equivalent function for the current event type by searching up the box behaviour
   tree. For example, the BentoSpriteButton template inherits behaviour from BentoButton. Calling
-  CallInherited() for a BentoSpriteButton box will execute the callback code found in BentoButton.
+  CallInherited() for a BentoSpriteButton box will execute the event code found in BentoButton.
 
 
 

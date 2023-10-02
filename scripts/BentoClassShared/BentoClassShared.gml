@@ -317,7 +317,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    #region Callback Setters
+    #region Event Setters
     
     static __CallbackSet = function(_callType, _function)
     {
@@ -756,10 +756,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         var _length = array_length(__listenTargetArray);
         if (_length <= 0) return false;
         
-        //If there are no button callbacks then return <false>
+        //If there are no button events then return <false>
         if (not __CallbackCategoryExists(__BENTO_CALL.__CATEGORY_BUTTON)) return false;
         
-        //If we don't have a "can capture" callback then every named button can be captured
+        //If we don't have a "can capture" event then every named button can be captured
         if (not __CallbackCategoryExists(__BENTO_CALL.__BUTTON_CAN_CAPTURE)) return true;
         
         //Finally, check each named button to see if it can currently capture
@@ -1353,7 +1353,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    #region Callback Getter/Setters
+    #region Event Getter/Setters
     
     VariableBind("callbackPress", function()
     {

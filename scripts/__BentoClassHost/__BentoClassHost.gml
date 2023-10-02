@@ -81,7 +81,7 @@ function __BentoClassHost(_name) constructor
             ++_i;
         }
         
-        //Then run the standard per-frame Step callbacks
+        //Then run the standard per-frame Step events
         var _i = 0;
         repeat(array_length(_layerArray))
         {

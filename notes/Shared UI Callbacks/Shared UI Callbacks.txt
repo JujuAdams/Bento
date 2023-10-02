@@ -1,8 +1,8 @@
-The variables and methods on this page define callbacks and are available across all UI elements.
+The variables and methods on this page define events and are available across all UI elements.
 
 
 
-# Callbacks
+# Events
 
 | Scripting Name  | GML Function       | Purpose                                                                                    |
 |-----------------|--------------------|--------------------------------------------------------------------------------------------|
@@ -13,9 +13,9 @@ The variables and methods on this page define callbacks and are available across
 
 
 
-# Button / Clicking Callbacks
+# Button / Clicking Events
 
-Button callbacks require one of the following variables to be set:
+Button events require one of the following variables to be set:
 
 | Variable Name | Datatype        | Purpose                                                                                                                                    |
 |---------------|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------|
@@ -33,7 +33,7 @@ Button callbacks require one of the following variables to be set:
 
 
 
-# Pointer-Over / Highlight Callbacks
+# Pointer-Over / Highlight Events
 
 | Scripting Name       | GML Function            | Purpose                                                                                                                    |
 |----------------------|-------------------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -44,18 +44,18 @@ Button callbacks require one of the following variables to be set:
 
 
 
-# Layout Callbacks
+# Layout Events
 
-| Scripting Name      | GML Function             | Purpose                                                                                                                                                                                          |
-|---------------------|--------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| callbackLayout      | CallbackSetLayoutExecute | Manual use only. This function is called to determine the position of a UI element when completing its construction                                                                              |
-| callbackLayoutCheck | CallbackSetLayoutCheck   | Manual use only and very optional. This function is called after laying out child element to verify that they've been placed correctly. The callback should return <true> or <false> accordingly |
+| Scripting Name      | GML Function             | Purpose                                                                                                                                                                                      |
+|---------------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callbackLayout      | CallbackSetLayoutExecute | Manual use only. This function is called to determine the position of a UI element when completing its construction                                                                          |
+| callbackLayoutCheck | CallbackSetLayoutCheck   | Manual use only and very optional. This function is called after laying out child element to verify that they've been placed correctly. The event should return <true> or <false> accordingly|
 
 
 
-# Slider Callbacks
+# Slider Events
 
-| Scripting Name        | GML Function             | Purpose                                                                                                                                            |
-|-----------------------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
-| callbackOnValueChange | CallbackSetOnValueChange | Function to call when the slider's handle is moved. Can be used to set another variable or trigger other behaviour                                 |
-| callbackValueUpdate   | CallbackSetValueUpdate   | Function to call, every frame, to update the slider's value. Best used in conjunction with the above callback to create a two-way variable binding |
+| Scripting Name     | GML Function             | Purpose                                                                                                                                         |
+|--------------------|--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| eventOnValueChange | CallbackSetOnValueChange | Function to call when the slider's handle is moved. Can be used to set another variable or trigger other behaviour                              |
+| eventValueUpdate   | CallbackSetValueUpdate   | Function to call, every frame, to update the slider's value. Best used in conjunction with the above event to create a two-way variable binding |

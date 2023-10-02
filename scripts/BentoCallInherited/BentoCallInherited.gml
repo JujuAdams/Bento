@@ -1,6 +1,6 @@
-/// Executes the callback function one step up the box template inheritance chain.
+/// Executes the event function one step up the box template inheritance chain.
 /// 
-/// This is effectively JavaScript's "super" but available only for BentoScript callback functions.
+/// This is effectively JavaScript's "super" but available only for BentoScript event functions.
 
 function BentoCallInherited()
 {
