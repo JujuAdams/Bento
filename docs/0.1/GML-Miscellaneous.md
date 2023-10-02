@@ -4,7 +4,16 @@
 
 ## …RandomUUID
 
-`BentoRandomUUID()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoRandomUUID()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -28,7 +37,16 @@
 
 ## …ScriptGetEnvironment
 
-`BentoScriptGetEnvironment()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoScriptGetEnvironment()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
