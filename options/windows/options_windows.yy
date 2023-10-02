@@ -4,7 +4,7 @@
   "name": "Windows",
   "option_windows_display_name": "Bento",
   "option_windows_executable_name": "${project_name}.exe",
-  "option_windows_version": "0.1.2.0",
+  "option_windows_version": "0.1.3.0",
   "option_windows_company_info": "@jujuadams",
   "option_windows_product_info": "Bento",
   "option_windows_copyright_info": "@jujuadams (c) 2023",
