@@ -7,7 +7,7 @@
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><code>DebugBreakpoint</code></td>
+		<td><code>DebugBreakpoint()</code></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
