@@ -134,6 +134,39 @@
 
 &nbsp;
 
+## …LayerSustain
+
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>LayerSustain()</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoLayerSustain(name)</code></td>
+    </tr>
+</table>
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name  |Datatype|Purpose                     |
+|------|--------|----------------------------|
+|`name`|string  |Name of the layer to sustain|
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
 ## …LayerGetCount
 
 <table>
