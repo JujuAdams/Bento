@@ -57,15 +57,15 @@ function __BentoInitEnvironment()
         return method(undefined, BentoClose);
     });
     
-    BentoAddFunction("DebugShowPointer", BentoDebugShowPointer);
-    BentoAddFunction("DebugShowSkeleton", BentoDebugShowSkeleton);
+    BentoAddFunction("DebugShowPointer",    BentoDebugShowPointer);
+    BentoAddFunction("DebugShowSkeleton",   BentoDebugShowSkeleton);
     BentoAddFunction("DebugRelaxedSprites", BentoDebugRelaxedSprites);
-    BentoAddFunction("DebugBreakpoint", BentoDebugBreakpoint);
-    BentoAddFunction("DebugLog", __BentoTrace);
+    BentoAddFunction("DebugBreakpoint",     BentoDebugBreakpoint);
+    BentoAddFunction("DebugLog",            __BentoTrace);
     
     BentoAddFunction("FileExecute", BentoFileExecute);
     
-    BentoAddFunction("Super", BentoCallInherited);
+    BentoAddFunction("Super",         BentoCallInherited);
     BentoAddFunction("CallInherited", BentoCallInherited);
     
     BentoAddFunction("ForceClick", function(_buttonName)
@@ -78,15 +78,7 @@ function __BentoInitEnvironment()
     BentoAddFunction("GetPointerStartX", BentoPointerGetStartX);
     BentoAddFunction("GetPointerStartY", BentoPointerGetStartY);
     
-    BentoAddFunction("BoxReplace", BentoReplace);
-    
-    BentoAddFunction("BoxFind", function(_identifier)
-    {
-        return BentoBoxFind(_identifier);
-    });
-    
-    BentoAddFunction("BoxFindRelaxed", function(_identifier)
-    {
-        return BentoBoxFindRelaxed(_identifier);
-    });
+    BentoAddFunction("BoxReplace",     BentoReplace);
+    BentoAddFunction("BoxFind",        BentoBoxFind);
+    BentoAddFunction("BoxFindRelaxed", BentoBoxFindRelaxed);
 }
