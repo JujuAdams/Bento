@@ -168,3 +168,37 @@
 ```
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …Replace
+
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>BoxReplace(identifier, path)</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoReplace(identifier, path)</code></td>
+    </tr>
+</table>
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name        |Datatype|Purpose                                                     |
+|------------|--------|------------------------------------------------------------|
+|`identifier`|string  |                                                            |
+|`path`      |string  |                                                            |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
