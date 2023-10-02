@@ -14,7 +14,7 @@
 
 #macro __BENTO_TEST_LATCHING  true
 
-enum __BENTO_CALL
+enum __BENTO_EVENT
 {
     __HIGHLIGHT_START,
     __HIGHLIGHT,

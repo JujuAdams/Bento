@@ -69,12 +69,12 @@ function BentoClassHorizontalScrollbar() : BentoClassHorizontalSlider() construc
         valueMax  = _value.scrollXMax;
     });
     
-    EventSetOnValueChange(function(_value)
+    EventOnValueChange(function(_value)
     {
         if (__binding != undefined) __binding.scrollX = _value;
     });
     
-    EventSetValueUpdate(function()
+    EventValueUpdate(function()
     {
         if (__binding != undefined)
         {

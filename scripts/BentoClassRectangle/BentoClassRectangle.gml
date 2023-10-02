@@ -20,7 +20,7 @@ function BentoClassRectangle() : BentoClassShared() constructor
     fillAlpha   = 0.1;
     ////////////////////////
     
-    EventSetDraw(function()
+    EventDraw(function()
     {
         var _oldColor = draw_get_color();
         var _oldAlpha = draw_get_alpha();

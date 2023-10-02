@@ -471,7 +471,7 @@ function __BentoClassLayer() constructor
             __stateButtonDict = {};
             
             //Execute the BUTTON_END event for the captured button
-            __BentoNullableRefEvent(__captureRef, __BENTO_CALL.__BUTTON_END, __captureButtonName);
+            __BentoNullableRefEvent(__captureRef, __BENTO_EVENT.__BUTTON_END, __captureButtonName);
             
             //And then reset the rest of the capture state
             __CaptureSet(undefined, undefined, false);
@@ -625,7 +625,7 @@ function __BentoClassLayer() constructor
                 if (__BentoNullableRefAlive(_captureRef))
                 {
                     var _captureStruct = __BentoNullableRefResolve(_captureRef);
-                    _captureStruct.__EventGet(__BENTO_CALL.__BUTTON).__Call(_captureStruct, _buttonName);
+                    _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON).__Call(_captureStruct, _buttonName);
                 }
             }
         }
@@ -697,7 +697,7 @@ function __BentoClassLayer() constructor
                 if (__BentoNullableRefAlive(_captureRef))
                 {
                     var _captureStruct = __BentoNullableRefResolve(_captureRef);
-                    _captureStruct.__EventGet(__BENTO_CALL.__BUTTON).__Call(_captureStruct, _buttonName);
+                    _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON).__Call(_captureStruct, _buttonName);
                 }
             }
         }
@@ -735,14 +735,14 @@ function __BentoClassLayer() constructor
             if (_oldStruct != undefined)
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Unsetting highlight ", _oldStruct);
-                _oldStruct.__EventGet(__BENTO_CALL.__HIGHLIGHT_END).__Call(_oldStruct);
+                _oldStruct.__EventGet(__BENTO_EVENT.__HIGHLIGHT_END).__Call(_oldStruct);
                 __highlightRef = undefined;
             }
             
             if (_newStruct != undefined)
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Setting highlight ", _newStruct);
-                _newStruct.__EventGet(__BENTO_CALL.__HIGHLIGHT_START).__Call(_newStruct);
+                _newStruct.__EventGet(__BENTO_EVENT.__HIGHLIGHT_START).__Call(_newStruct);
                 __highlightRef     = __BentoNullableRefCreate(_newStruct);
                 __lastHighlightRef = __highlightRef;
                 
@@ -756,7 +756,7 @@ function __BentoClassLayer() constructor
         {
             if (_oldStruct != undefined)
             {
-                _oldStruct.__EventGet(__BENTO_CALL.__HIGHLIGHT).__Call(_oldStruct);
+                _oldStruct.__EventGet(__BENTO_EVENT.__HIGHLIGHT).__Call(_oldStruct);
                 if (_retriggerScroll) _oldStruct.__ScrollParentToSelf();
             }
         }
@@ -769,7 +769,7 @@ function __BentoClassLayer() constructor
         {
             if (_oldStruct != undefined)
             {
-                _oldStruct.__EventGet(__BENTO_CALL.__BUTTON_END).__Call(_oldStruct, __captureButtonName);
+                _oldStruct.__EventGet(__BENTO_EVENT.__BUTTON_END).__Call(_oldStruct, __captureButtonName);
                 if (_click) __BentoInputButtonClick(_oldStruct, __captureButtonName);
                 
                 __captureRef        = undefined;
@@ -787,7 +787,7 @@ function __BentoClassLayer() constructor
                 __pointerStartX     = __pointerX;
                 __pointerStartY     = __pointerY;
                 
-                _newStruct.__EventGet(__BENTO_CALL.__BUTTON_START).__Call(_newStruct, _buttonName);
+                _newStruct.__EventGet(__BENTO_EVENT.__BUTTON_START).__Call(_newStruct, _buttonName);
             }
         }
     }

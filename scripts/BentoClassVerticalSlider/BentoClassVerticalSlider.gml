@@ -63,7 +63,7 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
     },
     function(_value)
     {
-        __EventSetFromBentoScript(__BENTO_CALL.__ON_VALUE_CHANGE, _value);
+        __EventFromBentoScript(__BENTO_EVENT.__ON_VALUE_CHANGE, _value);
     });
     
     VariableBind("eventValueUpdate", function()
@@ -73,7 +73,7 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
     },
     function(_value)
     {
-        __EventSetFromBentoScript(__BENTO_CALL.__VALUE_UPDATE, _value);
+        __EventFromBentoScript(__BENTO_EVENT.__VALUE_UPDATE, _value);
     });
     
     static __UpdateHandle = function(_forceFromHandle)
@@ -99,11 +99,11 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         //If the output value of the slider has changed, execute the associated event
         if ((value != undefined) && (value != _oldValue))
         {
-            __EventGet(__BENTO_CALL.__ON_VALUE_CHANGE).__Call(self, value);
+            __EventGet(__BENTO_EVENT.__ON_VALUE_CHANGE).__Call(self, value);
         }
     }
     
-    EventSetButtonStart(function()
+    EventButtonStart(function()
     {
         BentoCallInherited();
         
@@ -114,19 +114,19 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         __localCaptureY = BentoPointerGetY() - _handleTop;
     });
     
-    EventSetCanHighlight(function()
+    EventCanHighlight(function()
     {
         return point_in_rectangle(BentoPointerGetX() - __worldLeft, BentoPointerGetY() - __worldTop,
                                   __handleLeft, __handleTop, __handleRight, __handleBottom);
     });
     
-    EventSetButtonCanCapture(function()
+    EventButtonCanCapture(function()
     {
         return point_in_rectangle(BentoPointerGetX() - __worldLeft, BentoPointerGetY() - __worldTop,
                                   __handleLeft, __handleTop, __handleRight, __handleBottom);
     });
     
-    EventSetButton(function()
+    EventButton(function()
     {
         var _newTop = BentoPointerGetY();
         _newTop -= __localCaptureY;
@@ -137,22 +137,22 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         __UpdateHandle(true);
     });
     
-    EventSetOnClose(function()
+    EventOnClose(function()
     {
         if (handleWidth  == undefined) handleWidth  = __localWidth;
         if (handleHeight == undefined) handleHeight = 0.1*__localHeight;
         
         //Initialize the handle's position
-        if (__EventExists(__BENTO_CALL.__VALUE_UPDATE)) value = __EventGet(__BENTO_CALL.__VALUE_UPDATE).__Call(self) ?? value;
+        if (__EventExists(__BENTO_EVENT.__VALUE_UPDATE)) value = __EventGet(__BENTO_EVENT.__VALUE_UPDATE).__Call(self) ?? value;
         
         __UpdateHandle(false);
     });
     
-    EventSetDraw(function()
+    EventDraw(function()
     {
         //Update the slider by executing the value_update() function
         var _oldValue = value;
-        var _newValue = __EventGet(__BENTO_CALL.__VALUE_UPDATE).__Call(self) ?? _oldValue;
+        var _newValue = __EventGet(__BENTO_EVENT.__VALUE_UPDATE).__Call(self) ?? _oldValue;
         
         if (_newValue != _oldValue)
         {
