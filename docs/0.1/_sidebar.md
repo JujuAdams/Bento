@@ -46,7 +46,7 @@
 
 ---
 
-**GML API**
+**API**
 
 - [Config Macros](GML-Config-Macro)
 - [Config Functions](GML-Config-Functions)
