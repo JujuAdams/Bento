@@ -2,7 +2,7 @@
 
 &nbsp;
 
-## …BentoPointerGetStartX
+## …PointerGetStartX
 
 <table>
     <tr>
@@ -35,7 +35,7 @@
 
 &nbsp;
 
-## …BentoPointerGetStartY
+## …PointerGetStartY
 
 <table>
     <tr>
@@ -68,7 +68,7 @@
 
 &nbsp;
 
-## …BentoPointerGetX
+## …PointerGetX
 
 <table>
     <tr>
@@ -101,7 +101,7 @@
 
 &nbsp;
 
-## …BentoPointerGetY
+## …PointerGetY
 
 <table>
     <tr>
