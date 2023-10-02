@@ -4,7 +4,16 @@
 
 ## …LayerExists
 
-`BentoLayerExists(layerName)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoLayerExists(layerName)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -28,7 +37,16 @@
 
 ## …LayerDelete
 
-`BentoLayerDelete([layerName])`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>LayerDelete()</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoLayerDelete([layerName])</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -52,7 +70,16 @@
 
 ## …LayerCurrent
 
-`BentoLayerCurrent(layerName)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoLayerCurrent()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -76,7 +103,16 @@
 
 ## …LayerCurrentIsTop
 
-`BentoLayerCurrentIsTop()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>LayerIsTop()</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoLayerCurrentIsTop()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -100,7 +136,16 @@
 
 ## …LayerGetCount
 
-`BentoLayerGetCount()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoLayerGetCount()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -124,7 +169,16 @@
 
 ## …LayerAnyBehaviorInput
 
-`BentoLayerAnyBehaviorInput()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoLayerAnyBehaviorInput()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -148,7 +202,16 @@
 
 ## …LayerAnyBehaviorModal
 
-`BentoLayerAnyBehaviorModal()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoLayerAnyBehaviorModal()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
