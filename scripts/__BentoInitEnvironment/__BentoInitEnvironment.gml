@@ -35,10 +35,7 @@ function __BentoInitEnvironment()
         BentoLayerDelete();
     });
     
-    BentoAddFunction("LayerSustain", function(_name)
-    {
-        return BentoHostCurrent().__LayerSustain(_name);
-    });
+    BentoAddFunction("LayerSustain", BentoLayerSustain);
     
     BentoAddFunction("BentoLayer", function()
     {
