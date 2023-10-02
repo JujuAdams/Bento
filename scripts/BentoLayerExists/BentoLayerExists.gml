@@ -1,8 +1,8 @@
 /// Returns if a layer with the given name exists.
 /// 
-/// @param [layerName]
+/// @param layerName
 
-function BentoLayerExists(_layerName = undefined)
+function BentoLayerExists(_layerName)
 {
     static _global = __BentoGlobal();
     
