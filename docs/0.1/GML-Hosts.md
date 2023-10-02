@@ -4,6 +4,17 @@
 
 ## …HostCreate
 
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoHostCreate()</code></td>
+    </tr>
+</table>
+
 `BentoHostCreate()`
 
 <!-- tabs:start -->
@@ -28,7 +39,16 @@
 
 ## …HostSetTarget
 
-`BentoHostSetTarget(host)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoHostSetTarget(host)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -52,7 +72,16 @@
 
 ## …HostResetTarget
 
-`BentoHostResetTarget()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoHostResetTarget()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -76,7 +105,16 @@
 
 ## …HostCurrent
 
-`BentoHostCurrent()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoHostCurrent()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
