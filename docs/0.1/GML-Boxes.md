@@ -4,7 +4,18 @@
 
 ## …Open
 
-`BentoOpen()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Use `build` syntax</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoOpen(uiElement)</code></td>
+    </tr>
+</table>
+
+`BentoOpen(uiElement)`
 
 <!-- tabs:start -->
 
@@ -28,7 +39,16 @@
 
 ## …Current
 
-`BentoCurrent()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Use `build` syntax</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoCurrent()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -52,7 +72,16 @@
 
 ## …Close
 
-`BentoClose()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Use `build` syntax</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoClose()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -76,7 +105,16 @@
 
 ## …BoxFind
 
-`BentoBoxFind(identifier, [layerName])`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>BoxFind(identifier, [layerName])</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoBoxFind(identifier, [layerName])</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -101,7 +139,16 @@
 
 ## …BoxFindRelaxed
 
-`BentoBoxFindRelaxed(identifier, [layerName])`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>BoxFindRelaxed(identifier, [layerName])</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoBoxFindRelaxed(identifier, [layerName])</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
