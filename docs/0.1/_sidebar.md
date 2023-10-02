@@ -12,7 +12,7 @@
 **BentoScript**
 
 - [Variables](BentoSpeak-Variables)
-- [Callbacks](BentoSpeak-Callbacks)
+- [Events](BentoSpeak-Events)
 - [Layouts & Methods](BentoSpeak-Layouts-And-Methods)
 - [Layers](GML-Layers)
 
@@ -23,8 +23,8 @@
 - [Layers](Layers)
 - [Shared Variables](Shared-Variables)
 - [Shared Methods](Shared-Methods)
-- [Shared Callbacks](Shared-Callbacks)
-- [Callback Cheatsheet](Callback-Cheatsheet)
+- [Shared Events](Shared-Events)
+- [Event Cheatsheet](Callback-Cheatsheet)
 
 ---
 
