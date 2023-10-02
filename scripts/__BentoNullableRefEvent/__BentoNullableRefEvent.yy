@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "__BentoNullableRefCall",
+  "name": "__BentoNullableRefEvent",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

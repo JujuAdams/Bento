@@ -471,7 +471,7 @@ function __BentoClassLayer() constructor
             __stateButtonDict = {};
             
             //Execute the BUTTON_END event for the captured button
-            __BentoNullableRefCall(__captureRef, __BENTO_CALL.__BUTTON_END, __captureButtonName);
+            __BentoNullableRefEvent(__captureRef, __BENTO_CALL.__BUTTON_END, __captureButtonName);
             
             //And then reset the rest of the capture state
             __CaptureSet(undefined, undefined, false);
