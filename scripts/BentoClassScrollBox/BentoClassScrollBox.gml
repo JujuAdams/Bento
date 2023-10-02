@@ -128,14 +128,14 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         }
     }
     
-    static __Step = function(_offsetX, _offsetY, _scale, _executeCallback)
+    static __Step = function(_offsetX, _offsetY, _scale, _executeEvent)
     {
         __BentoContextStackPush(self);
         
-        if (_executeCallback && (__animMode == BENTO_BUILD_IN))
+        if (_executeEvent && (__animMode == BENTO_BUILD_IN))
         {
             ++__animTime;
-            __CallbackGet(__BENTO_CALL.__BUILD_IN).__Call(self, __animTime);
+            __EventGet(__BENTO_CALL.__BUILD_IN).__Call(self, __animTime);
             if (__animTime >= buildInLength) BuildFinish();
         }
         
@@ -152,12 +152,12 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         __worldRight   = _offsetX + __worldScale*__localRight;
         __worldBottom  = _offsetY + __worldScale*__localBottom;
         
-        if (_executeCallback && __active) __CallbackGet(__BENTO_CALL.__STEP).__Call(self);
+        if (_executeEvent && __active) __EventGet(__BENTO_CALL.__STEP).__Call(self);
         
         var _i = 0;
         repeat(array_length(__children))
         {
-            __children[_i].__Step(__worldLeft - __worldScale*scrollX, __worldTop - __worldScale*scrollY, __worldScale, _executeCallback);
+            __children[_i].__Step(__worldLeft - __worldScale*scrollX, __worldTop - __worldScale*scrollY, __worldScale, _executeEvent);
             ++_i;
         }
         
@@ -196,7 +196,7 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         
         if (__visible)
         {
-            __CallbackGet(__BENTO_CALL.__DRAW).__Call(self);
+            __EventGet(__BENTO_CALL.__DRAW).__Call(self);
         }
         
         if (debugUseSurface)

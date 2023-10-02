@@ -63,8 +63,8 @@ function __BentoInit()
     
     if ((BENTO_HOT_RELOAD_MODE > 0) && (GM_build_type == "run")) _global.__fileDirectory = filename_dir(GM_project_filename) + "/datafiles/";
     
-    _global.__nullCallback    = new __BentoClassCallback(undefined, undefined, false);
-    _global.__currentCallback = _global.__nullCallback;
+    _global.__nullEvent    = new __BentoClassEvent(undefined, undefined, false);
+    _global.__currentEvent = _global.__nullEvent;
     
     _global.__bentoScriptEnv = __BentoScript;
     _global.__defaultHost = BentoHostCreate("master");

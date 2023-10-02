@@ -20,13 +20,13 @@ function BentoClassVideo() : BentoClassShared() constructor
     alpha  = 1;
     ////////////////////////
     
-    CallbackSetOnClose(function()
+    EventSetOnClose(function()
     {
         video_open(source);
         video_enable_loop(loop);
     });
     
-    CallbackSetDraw(function()
+    EventSetDraw(function()
     {
         var _video = video_draw();
         if (_video[0] == 0)

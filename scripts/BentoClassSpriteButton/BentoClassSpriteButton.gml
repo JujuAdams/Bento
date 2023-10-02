@@ -76,7 +76,7 @@ function BentoClassSpriteButton() : BentoClassButton() constructor
         }
     });
     
-    CallbackSetDraw(function()
+    EventSetDraw(function()
     {
         if ((__sprite != undefined) && sprite_exists(__sprite))
         {

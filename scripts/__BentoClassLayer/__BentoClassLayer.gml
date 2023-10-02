@@ -2,7 +2,7 @@ function __BentoClassLayer() constructor
 {
     static _global       = __BentoGlobal();
     static _debugStruct  = _global.__debug;
-    static _nullCallback = _global.__nullCallback;
+    static _nullEvent = _global.__nullEvent;
     
     __name     = BentoRandomUUID();
     __host     = _global.__currentHost;
@@ -266,9 +266,9 @@ function __BentoClassLayer() constructor
         return self;
     }
     
-    static __CallbackGet = function()
+    static __EventGet = function()
     {
-        return _nullCallback;
+        return _nullEvent;
     }
     
     static __LayoutExecute = function()
@@ -625,7 +625,7 @@ function __BentoClassLayer() constructor
                 if (__BentoNullableRefAlive(_captureRef))
                 {
                     var _captureStruct = __BentoNullableRefResolve(_captureRef);
-                    _captureStruct.__CallbackGet(__BENTO_CALL.__BUTTON).__Call(_captureStruct, _buttonName);
+                    _captureStruct.__EventGet(__BENTO_CALL.__BUTTON).__Call(_captureStruct, _buttonName);
                 }
             }
         }
@@ -697,7 +697,7 @@ function __BentoClassLayer() constructor
                 if (__BentoNullableRefAlive(_captureRef))
                 {
                     var _captureStruct = __BentoNullableRefResolve(_captureRef);
-                    _captureStruct.__CallbackGet(__BENTO_CALL.__BUTTON).__Call(_captureStruct, _buttonName);
+                    _captureStruct.__EventGet(__BENTO_CALL.__BUTTON).__Call(_captureStruct, _buttonName);
                 }
             }
         }
@@ -735,14 +735,14 @@ function __BentoClassLayer() constructor
             if (_oldStruct != undefined)
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Unsetting highlight ", _oldStruct);
-                _oldStruct.__CallbackGet(__BENTO_CALL.__HIGHLIGHT_END).__Call(_oldStruct);
+                _oldStruct.__EventGet(__BENTO_CALL.__HIGHLIGHT_END).__Call(_oldStruct);
                 __highlightRef = undefined;
             }
             
             if (_newStruct != undefined)
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Setting highlight ", _newStruct);
-                _newStruct.__CallbackGet(__BENTO_CALL.__HIGHLIGHT_START).__Call(_newStruct);
+                _newStruct.__EventGet(__BENTO_CALL.__HIGHLIGHT_START).__Call(_newStruct);
                 __highlightRef     = __BentoNullableRefCreate(_newStruct);
                 __lastHighlightRef = __highlightRef;
                 
@@ -756,7 +756,7 @@ function __BentoClassLayer() constructor
         {
             if (_oldStruct != undefined)
             {
-                _oldStruct.__CallbackGet(__BENTO_CALL.__HIGHLIGHT).__Call(_oldStruct);
+                _oldStruct.__EventGet(__BENTO_CALL.__HIGHLIGHT).__Call(_oldStruct);
                 if (_retriggerScroll) _oldStruct.__ScrollParentToSelf();
             }
         }
@@ -769,7 +769,7 @@ function __BentoClassLayer() constructor
         {
             if (_oldStruct != undefined)
             {
-                _oldStruct.__CallbackGet(__BENTO_CALL.__BUTTON_END).__Call(_oldStruct, __captureButtonName);
+                _oldStruct.__EventGet(__BENTO_CALL.__BUTTON_END).__Call(_oldStruct, __captureButtonName);
                 if (_click) __BentoInputButtonClick(_oldStruct, __captureButtonName);
                 
                 __captureRef        = undefined;
@@ -787,7 +787,7 @@ function __BentoClassLayer() constructor
                 __pointerStartX     = __pointerX;
                 __pointerStartY     = __pointerY;
                 
-                _newStruct.__CallbackGet(__BENTO_CALL.__BUTTON_START).__Call(_newStruct, _buttonName);
+                _newStruct.__EventGet(__BENTO_CALL.__BUTTON_START).__Call(_newStruct, _buttonName);
             }
         }
     }

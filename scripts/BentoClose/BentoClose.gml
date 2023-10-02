@@ -12,7 +12,7 @@ function BentoClose()
     _current.__Close();
     
     //We want to run layouts on close in case 
-    _current.__CallbackGet(__BENTO_CALL.__LAYOUT_EXECUTE).__Call(_current);
+    _current.__EventGet(__BENTO_CALL.__LAYOUT_EXECUTE).__Call(_current);
     
     //Pop context set elsewhere (typically BentoOpenExisting() or layer creation methods in BentoClassHost)
     __BentoContextStackPop();

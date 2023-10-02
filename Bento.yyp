@@ -80,7 +80,7 @@
     {"id":{"name":"__BentoNullableRefEvent","path":"scripts/__BentoNullableRefEvent/__BentoNullableRefEvent.yy",},"order":1,},
     {"id":{"name":"BentoClassSprite","path":"scripts/BentoClassSprite/BentoClassSprite.yy",},"order":10,},
     {"id":{"name":"__BentoNullableRefEquals","path":"scripts/__BentoNullableRefEquals/__BentoNullableRefEquals.yy",},"order":4,},
-    {"id":{"name":"__BentoClassCallback","path":"scripts/__BentoClassCallback/__BentoClassCallback.yy",},"order":0,},
+    {"id":{"name":"__BentoClassEvent","path":"scripts/__BentoClassEvent/__BentoClassEvent.yy",},"order":0,},
     {"id":{"name":"BentoScript Functions","path":"notes/BentoScript Functions/BentoScript Functions.yy",},"order":2,},
     {"id":{"name":"BentoFileLoad","path":"scripts/BentoFileLoad/BentoFileLoad.yy",},"order":6,},
     {"id":{"name":"BentoHostResetTarget","path":"scripts/BentoHostResetTarget/BentoHostResetTarget.yy",},"order":2,},
