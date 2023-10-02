@@ -17,18 +17,18 @@
 
 A horizontal slider.
 
-Sliders have two special callbacks, `callbackOnValueChange` and `callbackValueUpdate`:
+Sliders have two special events, `eventOnValueChange` and `eventValueUpdate`:
 
-`callbackOnValueChange` is executed when the handle is moved by the player. You could use this callback to set a variable elsewhere or to play a sound etc. `callbackValueUpdate` is called once when the slider is created, and then every frame. The intention is that this callback allows you to create a two-way binding for the slider. The function you set for `callbackValueUpdate` should return  the value you want to set for the slider. For example:
+`eventOnValueChange` is executed when the handle is moved by the player. You could use this event to set a variable elsewhere or to play a sound etc. `eventValueUpdate` is called once when the slider is created, and then every frame. The intention is that this event allows you to create a two-way binding for the slider. The function you set for `eventValueUpdate` should return  the value you want to set for the slider. For example:
 
 ```
 build BentoHorizontalSlider {
-    onValueChange = fn {
+    eventOnValueChange = fn {
         SettingsSet("sound volume", value)
         AudioPlay(snd_blip)
     }
 
-    valueUpdate = fn {
+    eventValueUpdate = fn {
         return SettingsGet("sound volume")
     }
 }

@@ -17,7 +17,7 @@ build BentoButton {
 	//Listen for the left mouse button
 	targetListen = "action"
 
-	//Define a event for clicking the button
+	//Define an event for clicking the button
 	callbackClick = fn {
 		//When clicked, show a message in the debug log
 		DebugLog("Ping!")
@@ -40,7 +40,7 @@ build BentoButton {
 	//Listen for the left mouse button
 	targetListen = ["action", "alt"]
 
-	//Define a event for clicking the button
+	//Define an event for clicking the button
 	eventClick = fn(buttonName) {
 		DebugLog("You pressed \"" + String(buttonName) + "\"")
 	}
@@ -64,7 +64,7 @@ build BentoButton {
 	//Listen for the left mouse button
 	targetListen = "action"
 
-	//Define a event for highlighting the button
+	//Define an event for highlighting the button
 	eventEnter = fn(buttonName) {
 		//Make sure we call the inherited behaviour
 		CallInherited()

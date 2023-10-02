@@ -8,4 +8,4 @@ All Bento UI elements are implemented as structs. All UI elements are generated 
 
 There's no conceivable way that I could cover every UI use case with Bento. As a result, Bento is built to be easily extensible. In order to customise Bento, all you need to do is create a new constructor and inherit from the template of your choice. If you'd like to make a special kind of slider, you can inherit from `BentoClassHorizontalSlider` and start customising. This will require some effort on your part, but it's worth it.
 
-If you'd like to make something totally custom then you'll want to inherit directly from `BentoClassShared` and fill in the various variables and callbacks as you see fit.
+If you'd like to make something totally custom then you'll want to inherit directly from `BentoClassShared` and fill in the various variables and events as you see fit.

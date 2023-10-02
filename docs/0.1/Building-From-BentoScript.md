@@ -22,7 +22,7 @@ BentoScript isn't a million miles away from GML and if you're comfortable with G
 
 - Functions are defined using the abbreviation `fn` (instead of GML's `function`).
 
-- Function definitions come up a lot when defining callbacks and most callbacks don't receive arguments. If a function has no arguments then instead of typing `fn()` you can shorten it further to `fn`.
+- Function definitions come up a lot when defining events and most events don't receive arguments. If a function has no arguments then instead of typing `fn()` you can shorten it further to `fn`.
 
 - A new command `build` has been added to assist with creating a UI tree (`build` replaces Catspeak's native `use`, though it returns the result of the close function).
 

@@ -1,16 +1,16 @@
-# Shared Callbacks
+# Shared Events
 
 &nbsp;
 
-?> If you're looking for BentoScript variables and GML functions that set up callbacks, check out [this page](Shared-Callbacks).
+?> If you're looking for BentoScript variables and GML functions that set up events, check out [this page](Shared-Events).
 
 &nbsp;
 
-## Callback Inheritance
+## Event Inheritance
 
-Bento callbacks are automatically parented to the callback defined in the parent constructor. When implementing your own buttons, for example, you'll want to create your own constructor that inherits the native `BentoClassButton` constructor. To save you from the hassle of having to handle the implementation details of hooking your new button up to Bento's system, your new button constructor will automatically call all of the `BentoClassButton` callbacks with you needing to write any further code.
+Bento events are automatically parented to the event defined in the parent constructor. When implementing your own buttons, for example, you'll want to create your own constructor that inherits the native `BentoClassButton` constructor. To save you from the hassle of having to handle the implementation details of hooking your new button up to Bento's system, your new button constructor will automatically call all of the `BentoClassButton` events with you needing to write any further code.
 
-However, sometimes you might want to do something *in addition to* the existing template behaviour. This is where `BentoCallInherited()` comes in. If you call this function in your GML constructor then Bento will execute the full callback from the parent constructor (and if the parent's callback contains `BentoCallInherited()` then it'll call the next parent up, and so on). The BentScript equivalent is `CallInherited()` (or `Super()`). When extending and customising Bento, you'll want to invoke the parent's callback most of the time, apart from the Draw callback most likely.
+However, sometimes you might want to do something *in addition to* the existing template behaviour. This is where `BentoCallInherited()` comes in. If you call this function in your GML constructor then Bento will execute the full event from the parent constructor (and if the parent's event contains `BentoCallInherited()` then it'll call the next parent up, and so on). The BentScript equivalent is `CallInherited()` (or `Super()`). When extending and customising Bento, you'll want to invoke the parent's event most of the time, apart from the Draw event most likely.
 
 &nbsp;
 
@@ -18,11 +18,11 @@ However, sometimes you might want to do something *in addition to* the existing 
 
 ### Step
 
-Called by proxy when `BentoStep()` is called. Step callbacks are executed by traversing the tree depth-first.
+Called by proxy when `BentoStep()` is called. Step events are executed by traversing the tree depth-first.
 
 ### Draw
 
-Called by proxy when `BentoDraw()` is called. Draw callbacks are executed by traversing the tree depth-first.
+Called by proxy when `BentoDraw()` is called. Draw events are executed by traversing the tree depth-first.
 
 ### OnClose
 
@@ -31,13 +31,13 @@ Called when the UI element is finished constructing. For the avoidance of doubt:
 ```
 build BentoRectangle {
 	fillAlpha = 0.8
-}  <--  OnClose callback executed here
+}  <--  OnClose event executed here
 ```
 
 ```gml
 BentoOpen(new BentoClassRectangle());
 	BentoCurrent().Set("fillAlpha", 0.8);
-BentoClose();  <--  OnClose callback executed here
+BentoClose();  <--  OnClose event executed here
 ```
 
 ### BuildIn
@@ -48,15 +48,15 @@ Called by proxy when the UI element is generated, or when the `BuildIn()` method
 
 ## Button / Clicking
 
-!> Button callbacks will only works if you set either the `targetListen` or `castListen` variables so that Bento knows what button to listen for.
+!> Button events will only works if you set either the `targetListen` or `castListen` variables so that Bento knows what button to listen for.
 
 ### ButtonClick
 
-Called when a button is positively clicked by the player. This happens on button release. The `ButtonClick` callback can be triggered by either targetted or cast button clicks.
+Called when a button is positively clicked by the player. This happens on button release. The `ButtonClick` event can be triggered by either targetted or cast button clicks.
 
 ### ButtonStart
 
-Called when a button is pressed whilst the UI element is focused. The button is considered "captured" for the purposes of the `Button` and `ButtonEnd` callbacks.
+Called when a button is pressed whilst the UI element is focused. The button is considered "captured" for the purposes of the `Button` and `ButtonEnd` events.
 
 ### Button
 
@@ -96,11 +96,11 @@ Called when detecting if a UI element can be highlighted.
 
 ### OnValueChange
 
-Called when the handle for a slider is moved by the player. You could use this callback to set a variable elsewhere or to play a sound etc. 
+Called when the handle for a slider is moved by the player. You could use this event to set a variable elsewhere or to play a sound etc. 
 
 ### ValueUpdate
 
-Called once when the slider is created, and then every frame. The intention is that this callback allows you to create a two-way binding for the slider. The function you set for this callback should return the value you want to set for the slider.
+Called once when the slider is created, and then every frame. The intention is that this event allows you to create a two-way binding for the slider. The function you set for this event should return the value you want to set for the slider.
 
 &nbsp;
 
@@ -110,8 +110,8 @@ Called once when the slider is created, and then every frame. The intention is t
 
 ### LayoutExecute
 
-Called when deciding the layout of a UI element. You can (and should) use this callback to move child elements too.
+Called when deciding the layout of a UI element. You can (and should) use this event to move child elements too.
 
 ### LayoutCheck
 
-Called when deciding if the previously set layout (see above) is valid. The function you set for this callback should return `true` or `false` depending on whether the layout is still acceptable.
+Called when deciding if the previously set layout (see above) is valid. The function you set for this event should return `true` or `false` depending on whether the layout is still acceptable.
