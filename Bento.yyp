@@ -36,6 +36,7 @@
     {"id":{"name":"BentoInputDirection","path":"scripts/BentoInputDirection/BentoInputDirection.yy",},"order":1,},
     {"id":{"name":"__BentoSurfaceFree","path":"scripts/__BentoSurfaceFree/__BentoSurfaceFree.yy",},"order":2,},
     {"id":{"name":"__BentoStringEnsure","path":"scripts/__BentoStringEnsure/__BentoStringEnsure.yy",},"order":15,},
+    {"id":{"name":"BentoHighlighted","path":"scripts/BentoHighlighted/BentoHighlighted.yy",},"order":6,},
     {"id":{"name":"BentoLayerAnyPrecedenceModal","path":"scripts/BentoLayerAnyPrecedenceModal/BentoLayerAnyPrecedenceModal.yy",},"order":7,},
     {"id":{"name":"BentoInputSetMode","path":"scripts/BentoInputSetMode/BentoInputSetMode.yy",},"order":4,},
     {"id":{"name":"BentoLayerCurrent","path":"scripts/BentoLayerCurrent/BentoLayerCurrent.yy",},"order":2,},

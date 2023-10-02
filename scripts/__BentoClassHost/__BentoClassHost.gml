@@ -264,6 +264,14 @@ function __BentoClassHost(_name) constructor
         if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Deleted ", _layer);
     }
     
+    static __LayerGetHighlighted = function(_name)
+    {
+        var _index = __GetIndex(_name);
+        if (_index == undefined) return;
+        
+        return __BentoNullableRefResolve(__layerArray[_index].__highlightRef);
+    }
+    
     #endregion
     
     
