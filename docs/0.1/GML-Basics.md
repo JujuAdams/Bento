@@ -40,7 +40,16 @@
 
 ## …Step
 
-`BentoStep()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoStep()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -64,7 +73,16 @@
 
 ## …Draw
 
-`BentoDraw()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoDraw()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -88,7 +106,16 @@
 
 ## …Clear
 
-`BentoClear()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoClear()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -112,7 +139,16 @@
 
 ## …CallInherited
 
-`BentoCallInherited()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoCallInherited()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -136,7 +172,16 @@
 
 ## …ScriptGlobal
 
-`BentoScriptGlobal()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoScriptGlobal()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -160,7 +205,16 @@
 
 ## …StringExecute
 
-`BentoStringExecute(string)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoStringExecute(string)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -184,7 +238,16 @@
 
 ## …StringPrecompile
 
-`BentoStringPrecompile(string)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoStringPrecompile(string)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
