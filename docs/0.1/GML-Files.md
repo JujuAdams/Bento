@@ -4,7 +4,16 @@
 
 ## …FileExecuteLayerTop
 
-`BentoFileExecuteLayerTop(path, layerName)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoFileExecuteLayerTop(path, layerName)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -29,7 +38,16 @@
 
 ## …FileExecuteLayerOver
 
-`BentoFileExecuteLayerOver(path, layerName, targetName)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoFileExecuteLayerOver(path, layerName, targetName)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -55,7 +73,16 @@
 
 ## …FileExecuteLayerPriority
 
-`BentoFileExecuteLayerPriority(path, layerName, priority)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoFileExecuteLayerPriority(path, layerName, priority)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -81,7 +108,16 @@
 
 ## …FileExecute
 
-`BentoFileExecute(path)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>FileExecute(path)</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoFileExecute(path)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -105,7 +141,16 @@
 
 ## …FileCheckForChanges
 
-`BentoFileCheckForChanges(path)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoFileCheckForChanges(path)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -129,7 +174,16 @@
 
 ## …FileGetArray
 
-`BentoFileGetArray()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoFileGetArray(path)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -153,7 +207,16 @@
 
 ## …FileLoad
 
-`BentoFileLoad(path)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoFileLoad(path)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -177,7 +240,16 @@
 
 ## …FileReloadAll
 
-`BentoFileReloadAll(path)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoFileReloadAll()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
