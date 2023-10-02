@@ -4,7 +4,16 @@
 
 ## …AddBoxType
 
-`BentoAddBoxType(name, constructor, [overwrite])`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoAddBoxType(name, constructor, [overwrite])</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -30,7 +39,16 @@
 
 ## …AddFunction
 
-`BentoAddFunction(name, function)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoAddFunction(name, function)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -55,7 +73,16 @@
 
 ## …AddNativeFunction
 
-`BentoAddNativeFunction(GMLscript, [functionName])`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoAddNativeFunction(GMLscript, [functionName])</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -80,7 +107,16 @@
 
 ## …AddConstant
 
-`BentoAddConstant(constantName, value)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoAddConstant(constantName, value)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -105,7 +141,16 @@
 
 ## …AddAsset
 
-`BentoAddAsset(name)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoAddAsset(name)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
