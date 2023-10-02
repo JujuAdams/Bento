@@ -4,7 +4,16 @@
 
 ## …DebugBreakpoint
 
-`BentoDebugBreakpoint()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>DebugBreakpoint</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoDebugBreakpoint()</code></td>
+    </tr>
+</table>
 
 ?> This function is not especially helpful when executed from GML. Instead, you should look to executing this function via BentoScript.
 
@@ -30,7 +39,16 @@
 
 ## …DebugRelaxedSprites
 
-`BentoDebugRelaxedSprites(state)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>DebugRelaxedSprites(state)</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoDebugRelaxedSprites(state)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -54,7 +72,16 @@
 
 ## …DebugShowPointer
 
-`BentoDebugShowPointer(state)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>DebugShowPointer(state)</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoDebugShowPointer(state)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -78,7 +105,16 @@
 
 ## …DebugShowSkeleton
 
-`BentoDebugShowSkeleton(state)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><code>DebugShowSkeleton(state)</code></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoDebugShowSkeleton(state)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
