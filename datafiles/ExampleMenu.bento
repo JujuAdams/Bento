@@ -1,0 +1,49 @@
+build BentoRectangle {
+	xywh = ["50%", "50%", "40%", "90%"]
+
+	build BentoBox {
+		xywh = ["50%", "50%", "100%", "90%"]
+
+		LayoutAsVerticalList("center", 20)
+
+		build BentoTextButton {
+			label = "Buttons"
+			margin = 20
+		}
+
+		build BentoTextButton {
+			label = "Sliders"
+			margin = 20
+		}
+
+		build BentoTextButton {
+			label = "Layouts"
+			margin = 20
+		}
+
+		build BentoTextButton {
+			label = "Scroll Boxes"
+			margin = 20
+		}
+
+		build BentoTextButton {
+			label = "Video & Sprites"
+			margin = 20
+		}
+
+		build BentoTextButton {
+			label = "Example: Main Menu"
+			margin = 20
+		}
+
+		build BentoTextButton {
+			label = "Example: Settings"
+			margin = 20
+		}
+
+		build BentoTextButton {
+			label = "Example: Dialogue Box"
+			margin = 20
+		}
+	}
+}
