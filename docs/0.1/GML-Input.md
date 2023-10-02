@@ -4,7 +4,16 @@
 
 ## …InputPointer
 
-`BentoInputPointer(x, y)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoInputPointer(x, y)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -29,7 +38,16 @@
 
 ## …InputDirection
 
-`BentoInputDirection(dX, dY, [retrigger], [threshold], [excludeGroup])`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoInputDirection(dX, dY, [retrigger], [threshold], [excludeGroup])</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -57,7 +75,16 @@
 
 ## …InputButtonTarget
 
-`BentoInputButtonTarget(name, state)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoInputButtonTarget(name, state)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -82,7 +109,16 @@
 
 ## …InputButtonCast
 
-`BentoInputButtonCast(name, state)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoInputButtonCast(name, state)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -107,7 +143,16 @@
 
 ## …InputSetMode
 
-`BentoInputSetMode(mode)`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoInputSetMode(mode)</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
@@ -131,7 +176,16 @@
 
 ## …InputGetMode
 
-`BentoInputGetMode()`
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoInputGetMode()</code></td>
+    </tr>
+</table>
 
 <!-- tabs:start -->
 
