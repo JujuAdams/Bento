@@ -7,7 +7,7 @@
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><i>Use `build` syntax</i></td>
+		<td><i>Use <code>build</code> syntax</i></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
@@ -42,7 +42,7 @@
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><i>Use `build` syntax</i></td>
+		<td><i>Use <code>build</code> syntax</i></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
@@ -75,7 +75,7 @@
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><i>Use `build` syntax</i></td>
+		<td><i>Use <code>build</code> syntax</i></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
