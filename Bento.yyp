@@ -5,6 +5,7 @@
   "resources": [
     {"id":{"name":"BentoFileExecuteLayerPriority","path":"scripts/BentoFileExecuteLayerPriority/BentoFileExecuteLayerPriority.yy",},"order":2,},
     {"id":{"name":"__BentoValidateMacros","path":"scripts/__BentoValidateMacros/__BentoValidateMacros.yy",},"order":25,},
+    {"id":{"name":"BentoReplace","path":"scripts/BentoReplace/BentoReplace.yy",},"order":5,},
     {"id":{"name":"BentoDebugRelaxedSprites","path":"scripts/BentoDebugRelaxedSprites/BentoDebugRelaxedSprites.yy",},"order":2,},
     {"id":{"name":"BentoClassSpriteButton","path":"scripts/BentoClassSpriteButton/BentoClassSpriteButton.yy",},"order":11,},
     {"id":{"name":"__BentoXORShift32Choose","path":"scripts/__BentoXORShift32Choose/__BentoXORShift32Choose.yy",},"order":2,},
@@ -208,6 +209,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"DocsExample.bento","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.0.0.19",
+    "IDEVersion": "2022.0.1.31",
   },
 }

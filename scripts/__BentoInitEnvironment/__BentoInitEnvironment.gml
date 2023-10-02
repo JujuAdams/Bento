@@ -81,10 +81,7 @@ function __BentoInitEnvironment()
     BentoAddFunction("GetPointerStartX", BentoPointerGetStartX);
     BentoAddFunction("GetPointerStartY", BentoPointerGetStartY);
     
-    BentoAddFunction("BoxReplace", function(_identifier, _file)
-    {
-        BentoBoxFind(_identifier).ReplaceFromFile(_file);
-    });
+    BentoAddFunction("BoxReplace", BentoReplace);
     
     BentoAddFunction("BoxFind", function(_identifier)
     {
