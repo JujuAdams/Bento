@@ -302,6 +302,8 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         if (__EventExists(__BENTO_EVENT.__BUILD_IN))
         {
             __animationMode = BENTO_BUILD_IN;
+            array_resize(__animationArray, 0);
+            
             __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self);
         }
         
@@ -322,6 +324,8 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         animBlendAmount = 0;
         
         __animationMode = BENTO_BUILD_FINISHED;
+        array_resize(__animationArray, 0);
+        
         __EventGet(__BENTO_EVENT.__BUILD_FINISHED).__Call(self);
     }
     
