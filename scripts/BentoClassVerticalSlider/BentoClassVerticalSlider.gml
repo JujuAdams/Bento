@@ -49,6 +49,7 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
     valueIncrement = 0.00001;
     ////////////////////////
     
+    __oldValue      = undefined;
     __localCaptureX = 0;
     __localCaptureY = 0;
     __handleLeft    = 0;
@@ -78,8 +79,6 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
     
     static __UpdateHandle = function(_forceFromHandle)
     {
-        var _oldValue = value;
-        
         if ((value == undefined) || _forceFromHandle)
         {
             value = valueMin + valueIncrement*round(((valueMax - valueMin)*handlePosition) / valueIncrement);
@@ -97,8 +96,9 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         __handleBottom = __handleTop + handleHeight;
         
         //If the output value of the slider has changed, execute the associated event
-        if ((value != undefined) && (value != _oldValue))
+        if ((value != undefined) && (value != __oldValue))
         {
+            __oldValue = __value;
             __EventGet(__BENTO_EVENT.__ON_VALUE_CHANGE).__Call(self, value);
         }
     }
@@ -140,26 +140,31 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         }
     });
     
-    EventButton(function()
+    EventButton(function(_buttonName, _directional)
     {
-        var _newTop = BentoPointerGetY();
-        _newTop -= __localCaptureY;
-        _newTop -= __worldTop;
-        
-        handlePosition = clamp(_newTop / max(1, __localHeight - handleHeight), 0, 1);
-        
-        __UpdateHandle(true);
+        if (!_directional)
+        {
+            var _newTop = BentoPointerGetY();
+            _newTop -= __localCaptureY;
+            _newTop -= __worldTop;
+            
+            handlePosition = clamp(_newTop / max(1, __localHeight - handleHeight), 0, 1);
+            
+            __UpdateHandle(true);
+        }
     });
     
     EventPush(function(_direction)
     {
         if (_direction == 90) //Up = increment
         {
-            value = clamp(value + valueIncrement, valueMin, valueMax);
+            value += valueIncrement;
+            __UpdateHandle(false);
         }
         else if (_direction == 270) //Down = decrement
         {
-            value = clamp(value - valueIncrement, valueMin, valueMax);
+            value -= valueIncrement;
+            __UpdateHandle(false);
         }
     });
     

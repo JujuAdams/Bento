@@ -647,7 +647,7 @@ function __BentoClassLayer() constructor
                 if (__BentoNullableRefAlive(_captureRef))
                 {
                     var _captureStruct = __BentoNullableRefResolve(_captureRef);
-                    _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON).__Call(_captureStruct, _buttonName);
+                    _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON).__Call(_captureStruct, _buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL));
                 }
             }
         }
