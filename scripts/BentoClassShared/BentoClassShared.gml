@@ -290,7 +290,8 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         {
             __animMode = BENTO_BUILD_IN;
             __animTime = 0;
-            __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self, __animTime);
+            
+            __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self, 1);
         }
         
         var _i = 0;
@@ -304,6 +305,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     static BuildFinish = function()
     {
         __animMode = BENTO_BUILD_FINISHED;
+        
+        animXOffset     = 0;
+        animYOffset     = 0;
+        animAlpha       = 1;
+        animScale       = 1;
+        animBlendAmount = 0;
     }
     
     static GetBuilding = function()
@@ -555,8 +562,15 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         if (_executeEvent && (__animMode == BENTO_BUILD_IN))
         {
             ++__animTime;
-            __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self, __animTime);
-            if (__animTime >= buildInLength) BuildFinish();
+            if (__animTime >= buildInLength)
+            {
+                __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self, 0);
+                BuildFinish();
+            }
+            else
+            {
+                __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self, 1 - __animTime/buildInLength);
+            }
         }
         
         _offsetX += animXOffset;

@@ -7,8 +7,14 @@ build BentoBox {
 	build BentoButton {
 		size = [80, 80]
 
+		buildInLength = 220
+
 		eventClick = fn {
 			DebugLog("1")
+		}
+
+		eventBuildIn = fn(animTime) {
+			animXOffset = 200*animTime*animTime*animTime*animTime
 		}
 	}
 
