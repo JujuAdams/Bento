@@ -137,6 +137,18 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         __UpdateHandle(true);
     });
     
+    EventPush(function(_direction)
+    {
+        if (_direction == 0) //Right = increment
+        {
+            value = clamp(value + valueIncrement, valueMin, valueMax);
+        }
+        else if (_direction == 180) //Left = decrement
+        {
+            value = clamp(value - valueIncrement, valueMin, valueMax);
+        }
+    });
+    
     EventOnClose(function()
     {
         if (handleWidth  == undefined) handleWidth  = __localWidth;

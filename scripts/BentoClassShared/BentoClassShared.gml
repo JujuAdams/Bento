@@ -424,6 +424,11 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __Event(__BENTO_EVENT.__BUILD_IN, _function);
     }
     
+    static EventPush = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__PUSH, _function);
+    }
+    
     #endregion
     
     
@@ -1525,6 +1530,16 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     function(_value)
     {
         __EventFromBentoScript(__BENTO_EVENT.__ON_CLOSE, _value);
+    });
+    
+    VariableBind("eventPush", function()
+    {
+        __BentoError("Cannot get \"eventPush\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__PUSH, _value);
     });
     
     #endregion

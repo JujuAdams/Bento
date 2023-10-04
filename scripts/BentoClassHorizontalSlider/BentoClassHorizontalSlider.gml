@@ -140,6 +140,18 @@ function BentoClassHorizontalSlider() : BentoClassButton() constructor
         __UpdateHandle(true);
     });
     
+    EventPush(function(_direction)
+    {
+        if (_direction == 90) //Up = increment
+        {
+            value = clamp(value + valueIncrement, valueMin, valueMax);
+        }
+        else if (_direction == 270) //Down = decrement
+        {
+            value = clamp(value - valueIncrement, valueMin, valueMax);
+        }
+    });
+    
     EventButtonClick(function(_buttonName)
     {
         if ((_buttonName == "action") && (BentoInputGetMode() == BENTO_INPUT_MODE_DIRECTIONAL))

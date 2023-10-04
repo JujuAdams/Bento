@@ -10,6 +10,7 @@ The variables and methods on this page define events and are available across al
 | eventDraw      | EventDraw    | Called every frame via BentoDraw()                                                         |
 | eventOnClose   | EventOnClose | Called when a UI element finishes construction (i.e. at the final closing } curly bracket) |
 | eventBuildIn   | EventBuildIn | Called when a UI element is when appearing on screen a.k.a. "building in"                  |
+| eventPush      | EventPush    | Called when a focused UI element is "pushed" by directional input (e.g. from a gamepad)    |
 
 
 
