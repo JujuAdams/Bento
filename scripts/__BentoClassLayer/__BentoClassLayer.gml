@@ -611,7 +611,7 @@ function __BentoClassLayer() constructor
                 if ((variable_struct_names_count(_buttonStateDict) == 1) && __BentoNullableRefAlive(__highlightRef))
                 {
                     var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
-                    if (_highlightStruct.__CanRespondToButtonTarget(_buttonName))
+                    if (_highlightStruct.__CanRespondToButtonTarget(_buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL)))
                     {
                         __CaptureSet(_highlightStruct, _buttonName, false);
                     }
@@ -698,7 +698,7 @@ function __BentoClassLayer() constructor
                 if (variable_struct_names_count(_buttonStateDict) == 1)
                 {
                     var _castFrom = __BentoNullableRefAlive(__lastHighlightRef)? __BentoNullableRefResolve(__lastHighlightRef) : __struct;
-                    var _captureStruct = is_struct(_castFrom)? _castFrom.__CaptureCastSearch(_buttonName) : undefined;
+                    var _captureStruct = is_struct(_castFrom)? _castFrom.__CaptureCastSearch(_buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL)) : undefined;
                     
                     __CaptureSet(_captureStruct, _buttonName, false);
                 }

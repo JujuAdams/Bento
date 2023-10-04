@@ -700,9 +700,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    static __FindCaptureCast = function(_buttonName)
+    static __FindCaptureCast = function(_buttonName, _directional)
     {
-        if (__active && (__animMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName))
+        if (__active && (__animMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName, _directional))
         {
             return self;
         }
@@ -710,7 +710,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         var _i = 0;
         repeat(array_length(__children))
         {
-            var _captureStruct = __children[_i].__FindCaptureCast(_buttonName);
+            var _captureStruct = __children[_i].__FindCaptureCast(_buttonName, _directional);
             if (_captureStruct != undefined) return _captureStruct;
             
             ++_i;
@@ -719,22 +719,22 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return undefined;
     }
     
-    static __CanRespondToButtonTarget = function(_buttonName)
+    static __CanRespondToButtonTarget = function(_buttonName, _directional)
     {
         if (not (__listenTargetDict[$ _buttonName] ?? false)) return false;
         
         if (not __EventExists(__BENTO_EVENT.__BUTTON_CAN_CAPTURE)) return true;
         
-        return __EventGet(__BENTO_EVENT.__BUTTON_CAN_CAPTURE).__Call(self, _buttonName);
+        return __EventGet(__BENTO_EVENT.__BUTTON_CAN_CAPTURE).__Call(self, _buttonName, _directional);
     }
     
-    static __CanRespondToButtonCast = function(_buttonName)
+    static __CanRespondToButtonCast = function(_buttonName, _directional)
     {
         if (not (__listenCastDict[$ _buttonName] ?? false)) return false;
         
         if (not __EventExists(__BENTO_EVENT.__BUTTON_CAN_CAPTURE)) return true;
         
-        return __EventGet(__BENTO_EVENT.__BUTTON_CAN_CAPTURE).__Call(self, _buttonName);
+        return __EventGet(__BENTO_EVENT.__BUTTON_CAN_CAPTURE).__Call(self, _buttonName, _directional);
     }
     
     static __CanCaptureClickAnyEver = function() //TODO - Reimplement in a more effient way
@@ -2212,10 +2212,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return undefined;
     }
     
-    static __CaptureCastSearch = function(_buttonName)
+    static __CaptureCastSearch = function(_buttonName, _directional)
     {
-        if (__active && (__animMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName)) return self;
-        return __parent.__CaptureCastSearch();
+        if (__active && (__animMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName, _directional)) return self;
+        return __parent.__CaptureCastSearch(_buttonName, _directional);
     }
     
     #endregion

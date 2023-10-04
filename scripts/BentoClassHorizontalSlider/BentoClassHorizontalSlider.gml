@@ -130,10 +130,17 @@ function BentoClassHorizontalSlider() : BentoClassButton() constructor
         }
     });
     
-    EventButtonCanCapture(function()
+    EventButtonCanCapture(function(_buttonName, _directional)
     {
-        return point_in_rectangle(BentoPointerGetX() - __worldLeft, BentoPointerGetY() - __worldTop,
-                                  __handleLeft, __handleTop, __handleRight, __handleBottom);
+        if (_directional)
+        {
+            return true;
+        }
+        else
+        {
+            return point_in_rectangle(BentoPointerGetX() - __worldLeft, BentoPointerGetY() - __worldTop,
+                                      __handleLeft, __handleTop, __handleRight, __handleBottom);
+        }
     });
     
     EventButton(function(_buttonName)
