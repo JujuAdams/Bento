@@ -334,7 +334,7 @@ function __BentoClassLayer() constructor
                     __pointerX = _pointerX;
                     __pointerY = _pointerY;
                     
-                    __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity), false);
+                    __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity, false), false);
                 break;
                 
                 case BENTO_INPUT_MODE_DIRECTIONAL:
@@ -448,7 +448,7 @@ function __BentoClassLayer() constructor
                             //Handle highlighted button disappearing
                         }
                         
-                        __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity), true);
+                        __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity, true), true);
                     }
                 break;
                 
@@ -740,7 +740,7 @@ function __BentoClassLayer() constructor
         var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
         if (!is_struct(_highlightStruct))
         {
-            _highlightStruct = __struct.__HighlightableSearchFirst();
+            _highlightStruct = __struct.__HighlightableSearchFirst(_directional);
             if (_highlightStruct == undefined) return;
         }
         

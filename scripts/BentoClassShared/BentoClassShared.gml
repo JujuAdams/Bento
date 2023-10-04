@@ -779,13 +779,13 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return false;
     }
     
-    static __CanHighlight = function()
+    static __CanHighlight = function(_directional)
     {
         if (not __EventCategoryExists(__BENTO_EVENT.__CATEGORY_HIGHLIGHT)) return false;
         
         if (not __EventExists(__BENTO_EVENT.__CAN_HIGHLIGHT)) return true;
         
-        return __EventGet(__BENTO_EVENT.__CAN_HIGHLIGHT).__Call(self);
+        return __EventGet(__BENTO_EVENT.__CAN_HIGHLIGHT).__Call(self, _directional);
     }
     
     #endregion
@@ -2076,7 +2076,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return _resultArray;
     }
     
-    static __HighlightSearch = function(_pX, _pY, _limitLeft, _limitTop, _limitRight, _limitBottom)
+    static __HighlightSearch = function(_pX, _pY, _limitLeft, _limitTop, _limitRight, _limitBottom, _directional)
     {
         __BentoContextStackPush(self);
         
@@ -2089,7 +2089,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         
         if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom))
         {
-            if (__active && __visible && (__animMode == BENTO_BUILD_FINISHED) && __CanHighlight())
+            if (__active && __visible && (__animMode == BENTO_BUILD_FINISHED) && __CanHighlight(_directional))
             {
                 if ((_pX >= _visibleLeft) && (_pY >= _visibleTop) && (_pX <= _visibleRight) && (_pY <= _visibleBottom))
                 {
@@ -2108,7 +2108,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             var _i = 0;
             repeat(array_length(__children))
             {
-                var _childOver = __children[_i].__HighlightSearch(_pX, _pY, _limitLeft, _limitTop, _limitRight, _limitBottom);
+                var _childOver = __children[_i].__HighlightSearch(_pX, _pY, _limitLeft, _limitTop, _limitRight, _limitBottom, _directional);
                 if (_childOver != undefined) _highlightStruct = _childOver;
                 ++_i;
             }
@@ -2186,7 +2186,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return sqrt(_paraDist*_paraDist + _perpDist*_perpDist);
     }
     
-    static __HighlightableSearchFirst = function()
+    static __HighlightableSearchFirst = function(_directional)
     {
         var _openArray = [self];
         while(array_length(_openArray) > 0)
@@ -2197,7 +2197,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                 if (__active)
                 {
                     __BentoContextStackPush(self);
-                    var _result = __CanHighlight();
+                    var _result = __CanHighlight(_directional);
                     __BentoContextStackPop();
                     
                     if (_result) return self;
