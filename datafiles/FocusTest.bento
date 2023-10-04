@@ -2,14 +2,22 @@ build BentoBox {
 	visible = true
 	ltrb = [20, 20, parent.width-20, parent.height-20]
 
-	layoutVerticalList = ["center", 30]
+	LayoutAsVerticalList("center", 30)
 
 	build BentoButton {
 		size = [80, 80]
+
+		eventClick = fn {
+			DebugLog("1")
+		}
 	}
 
 	build BentoButton {
 		size = [80, 80]
+
+		eventClick = fn {
+			DebugLog("2")
+		}
 	}
 
 	build BentoHorizontalSlider {
@@ -18,10 +26,23 @@ build BentoBox {
 	}
 
 	build BentoButton {
+		focusable = true
 		size = [80, 80]
+
+		eventClick = fn {
+			DebugLog("3")
+		}
+
+		eventPush = fn(direction) {
+			DebugLog("Pushed ", direction)
+		}
 	}
 
 	build BentoButton {
 		size = [80, 80]
+
+		eventClick = fn {
+			DebugLog("4")
+		}
 	}
 }
