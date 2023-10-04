@@ -242,6 +242,30 @@ function __BentoScriptClassIRBuilder(_environment) constructor {
         });
     };
 
+    /// Emits the instruction for a context managed `build` block.
+    ///
+    /// @param {Struct} condition
+    ///   The term which evaluates to the condition of the context block.
+    ///
+    /// @param {Struct} body
+    ///   The body of the block.
+    ///
+    /// @param {Real} [location]
+    ///   The source location of this value term.
+    ///
+    /// @return {Struct}
+    static createBuild = function (condition, body, location=undefined) {
+        if (BENTOSCRIPT_DEBUG_MODE) {
+            __BentoScriptCheckArgStruct("condition", condition);
+            __BentoScriptCheckArgStruct("body", body);
+        }
+        // __createTerm() will do argument validation
+        return __createTerm(__BENTOSCRIPT_TERM.BUILD, location, {
+            condition : condition,
+            body : body,
+        });
+    };
+
     /// Emits the instruction for a context managed `use` block.
     ///
     /// @param {Struct} condition
@@ -820,18 +844,19 @@ enum __BENTOSCRIPT_TERM {
     OR,        // 6
     WHILE,     // 7
     USE,       // 8
-    RETURN,    // 9
-    BREAK,     //10
-    CONTINUE,  //11
-    OP_BINARY, //12
-    OP_UNARY,  //13
-    CALL,      //14
-    CALL_NEW,  //15
-    SET,       //16
-    INDEX,     //17
-    LOCAL,     //18
-    NAKED,     //29
-    FUNCTION,  //20
-    SELF,      //21
-    __SIZE__   //22
+    BUILD,     // 9
+    RETURN,    //10
+    BREAK,     //11
+    CONTINUE,  //12
+    OP_BINARY, //13
+    OP_UNARY,  //14
+    CALL,      //15
+    CALL_NEW,  //16
+    SET,       //17
+    INDEX,     //18
+    LOCAL,     //19
+    NAKED,     //20
+    FUNCTION,  //21
+    SELF,      //22
+    __SIZE__   //23
 }

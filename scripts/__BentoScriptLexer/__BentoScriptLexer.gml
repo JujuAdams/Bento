@@ -106,6 +106,8 @@ enum __BENTOSCRIPT_TOKEN {
     LOOP,
     /// The `use` keyword.
     USE,
+    /// The `build` keyword.
+    BUILD,
     /// The `let` keyword.
     LET,
     /// The `fun` keyword.
@@ -903,7 +905,7 @@ function __BentoScriptInitLexerCodepage() {
 /// @return {Struct}
 function __BentoScriptKeywordsCreate() {
     var keywords = { };
-    keywords[$ "--"] = __BENTOSCRIPT_TOKEN.COMMENT;
+    keywords[$ "//"] = __BENTOSCRIPT_TOKEN.COMMENT;
     keywords[$ ";"] = __BENTOSCRIPT_TOKEN.SEMICOLON;
     keywords[$ ":"] = __BENTOSCRIPT_TOKEN.COLON;
     keywords[$ ","] = __BENTOSCRIPT_TOKEN.COMMA;
@@ -914,9 +916,10 @@ function __BentoScriptKeywordsCreate() {
     keywords[$ "-="] = __BENTOSCRIPT_TOKEN.ASSIGN_SUBTRACT;
     keywords[$ "+="] = __BENTOSCRIPT_TOKEN.ASSIGN_PLUS;
     keywords[$ "%"] = __BENTOSCRIPT_TOKEN.REMAINDER;
+    keywords[$ "mod"] = __BENTOSCRIPT_TOKEN.REMAINDER;
     keywords[$ "*"] = __BENTOSCRIPT_TOKEN.MULTIPLY;
     keywords[$ "/"] = __BENTOSCRIPT_TOKEN.DIVIDE;
-    keywords[$ "//"] = __BENTOSCRIPT_TOKEN.DIVIDE_INT;
+    keywords[$ "div"] = __BENTOSCRIPT_TOKEN.DIVIDE_INT;
     keywords[$ "-"] = __BENTOSCRIPT_TOKEN.SUBTRACT;
     keywords[$ "+"] = __BENTOSCRIPT_TOKEN.PLUS;
     keywords[$ "=="] = __BENTOSCRIPT_TOKEN.EQUAL;
@@ -926,6 +929,7 @@ function __BentoScriptKeywordsCreate() {
     keywords[$ "<"] = __BENTOSCRIPT_TOKEN.LESS;
     keywords[$ "<="] = __BENTOSCRIPT_TOKEN.LESS_EQUAL;
     keywords[$ "!"] = __BENTOSCRIPT_TOKEN.NOT;
+    keywords[$ "not"] = __BENTOSCRIPT_TOKEN.NOT;
     keywords[$ "~"] = __BENTOSCRIPT_TOKEN.BITWISE_NOT;
     keywords[$ ">>"] = __BENTOSCRIPT_TOKEN.SHIFT_RIGHT;
     keywords[$ "<<"] = __BENTOSCRIPT_TOKEN.SHIFT_LEFT;
@@ -933,16 +937,19 @@ function __BentoScriptKeywordsCreate() {
     keywords[$ "^"] = __BENTOSCRIPT_TOKEN.BITWISE_XOR;
     keywords[$ "|"] = __BENTOSCRIPT_TOKEN.BITWISE_OR;
     keywords[$ "and"] = __BENTOSCRIPT_TOKEN.AND;
+    keywords[$ "&&"] = __BENTOSCRIPT_TOKEN.AND;
     keywords[$ "or"] = __BENTOSCRIPT_TOKEN.OR;
+    keywords[$ "||"] = __BENTOSCRIPT_TOKEN.OR;
     keywords[$ "do"] = __BENTOSCRIPT_TOKEN.DO;
     keywords[$ "if"] = __BENTOSCRIPT_TOKEN.IF;
     keywords[$ "else"] = __BENTOSCRIPT_TOKEN.ELSE;
     keywords[$ "while"] = __BENTOSCRIPT_TOKEN.WHILE;
     keywords[$ "for"] = __BENTOSCRIPT_TOKEN.FOR;
     keywords[$ "loop"] = __BENTOSCRIPT_TOKEN.LOOP;
+    keywords[$ "build"] = __BENTOSCRIPT_TOKEN.BUILD;
     keywords[$ "use"] = __BENTOSCRIPT_TOKEN.USE;
-    keywords[$ "let"] = __BENTOSCRIPT_TOKEN.LET;
-    keywords[$ "fun"] = __BENTOSCRIPT_TOKEN.FUN;
+    keywords[$ "var"] = __BENTOSCRIPT_TOKEN.LET;
+    keywords[$ "fn"] = __BENTOSCRIPT_TOKEN.FUN;
     keywords[$ "params"] = __BENTOSCRIPT_TOKEN.PARAMS;
     keywords[$ "break"] = __BENTOSCRIPT_TOKEN.BREAK;
     keywords[$ "continue"] = __BENTOSCRIPT_TOKEN.CONTINUE;

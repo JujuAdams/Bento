@@ -2,21 +2,6 @@ function __BentoInitEnvironment()
 {
     with(__BentoGlobal().__bentoScriptEnv)
     {
-        renameKeyword(
-            "//", "div",
-            "--", "//",
-            "let", "var",
-            "fun", "fn",
-            "use", "build",
-        );
-        
-        addKeyword(
-            "&&",  __BENTOSCRIPT_TOKEN.AND,
-            "||",  __BENTOSCRIPT_TOKEN.OR,
-            "mod", __BENTOSCRIPT_TOKEN.REMAINDER,
-            "not", __BENTOSCRIPT_TOKEN.NOT,
-        );
-        
         interface.exposeConstant("global",               __BentoGlobal().__exposedGlobalStruct,
                                  "BEHAVIOR_DRAW_ONLY",   BENTO_BEHAVIOR_DRAW_ONLY,
                                  "BEHAVIOR_PASSTHROUGH", BENTO_BEHAVIOR_PASSTHROUGH,

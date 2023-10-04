@@ -166,6 +166,13 @@ function __BentoScriptClassParser(lexer, builder) constructor {
             __parseStatements("while");
             var body = asg.popBlock();
             return asg.createWhile(condition, body, lexer.getLocation());
+        } else if (peeked == __BENTOSCRIPT_TOKEN.BUILD) {
+            lexer.next();
+            var condition = __parseCondition();
+            asg.pushBlock();
+            __parseStatements("build");
+            var body = asg.popBlock();
+            return asg.createBuild(condition, body, lexer.getLocation());
         } else if (peeked == __BENTOSCRIPT_TOKEN.USE) {
             lexer.next();
             var condition = __parseCondition();
@@ -193,7 +200,7 @@ function __BentoScriptClassParser(lexer, builder) constructor {
                     __ex("expected closing ')' after function arguments");
                 }
             }
-            __parseStatements("fun");
+            __parseStatements("fn");
             return asg.popFunction();
         } else {
             return __parseAssign();

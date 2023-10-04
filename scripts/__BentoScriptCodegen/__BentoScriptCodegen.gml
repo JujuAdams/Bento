@@ -738,6 +738,25 @@ function __BentoScriptClassGMLCompiler(asg, interface=undefined) constructor {
     /// @param {Struct} ctx
     /// @param {Struct} term
     /// @return {Function}
+    static __compileBuild = function (ctx, term) {
+        if (BENTOSCRIPT_DEBUG_MODE) {
+            __BentoScriptCheckArgStruct("term", term,
+                "condition", undefined,
+                "body", undefined
+            );
+        }
+        return method({
+            dbgError : __dbgTerm(term.condition, "is not a function"),
+            condition : __compileTerm(ctx, term.condition),
+            body : __compileTerm(ctx, term.body),
+        }, __BentoScriptExprBuild__);
+    };
+
+    /// @ignore
+    ///
+    /// @param {Struct} ctx
+    /// @param {Struct} term
+    /// @return {Function}
     static __compileUse = function (ctx, term) {
         if (BENTOSCRIPT_DEBUG_MODE) {
             __BentoScriptCheckArgStruct("term", term,
@@ -1123,6 +1142,7 @@ function __BentoScriptClassGMLCompiler(asg, interface=undefined) constructor {
         db[@ __BENTOSCRIPT_TERM.BLOCK] = __compileBlock;
         db[@ __BENTOSCRIPT_TERM.IF] = __compileIf;
         db[@ __BENTOSCRIPT_TERM.WHILE] = __compileWhile;
+        db[@ __BENTOSCRIPT_TERM.BUILD] = __compileBuild;
         db[@ __BENTOSCRIPT_TERM.USE] = __compileUse;
         db[@ __BENTOSCRIPT_TERM.RETURN] = __compileReturn;
         db[@ __BENTOSCRIPT_TERM.BREAK] = __compileBreak;
@@ -1375,6 +1395,27 @@ function __BentoScriptExprWhile__() {
             }
         }
     }
+}
+
+/// @ignore
+/// @return {Any}
+function __BentoScriptExprBuild__() {
+    var body_ = body;
+    var open = condition();
+    if (!is_method(open)) {
+        __BentoScriptErrorGot(dbgError, open);
+    }
+    var close = open();
+    if (!is_method(close)) {
+        __BentoScriptErrorGot(dbgError, close);
+    }
+    var result;
+    try {
+        body_();
+    } finally {
+        result = close();
+    }
+    return result;
 }
 
 /// @ignore
