@@ -19,6 +19,7 @@ The methods on this page are available across all UI elements.
 | `LayoutAsHorizontalList` | Sets up a horizontal list layout                                           |
 | `LayoutAsGrid`           | Sets up a grid layout with cells of identical size                         |
 | `LayoutAsColumns`        | Sets up a column layout. Children on the same row are vertically aligned   |
+| `LayoutGetArray`         | Returns an ordered array of child elements to lay out                      |
 | `HasChildren`            | Returns if the UI element has children                                     |
 | `ChildrenClear`          | Removes all children from the UI element                                   |
 | `ParentChange`           | Moves from one parent to another                                           |
@@ -121,6 +122,16 @@ Returns:
 | `vAlign`      | string   |                                             |
 | `spacing`     | number   |                                             |
 | `widthArray`  | array    |                                             |
+
+&nbsp;
+
+### .LayoutGetArray()
+
+Returns: Ordered array of child elements to lay out
+
+| Argument Name | Datatype | Purpose |
+|---------------|----------|---------|
+| None          |          |         |
 
 &nbsp;
 
