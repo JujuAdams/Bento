@@ -5,6 +5,7 @@ function __BentoGlobal()
     static _struct = {
         __bentoScriptEnv: undefined, //Set in __BentoInit()
         __exposedGlobalStruct: {},
+        __elementCount: 0,
         
         __currentHost: undefined,
         __hostArray:   [],

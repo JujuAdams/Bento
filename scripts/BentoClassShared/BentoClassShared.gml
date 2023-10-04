@@ -17,8 +17,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     identifier     = undefined; //Assigned below
     highlightGroup = undefined;
     focusable      = false;
-    layoutInclude  = true;
     navigationLock = false;
+    layoutInclude  = true;
+    layoutOrder    = 0;
     ////////////////////////
     
     
@@ -81,6 +82,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     animBlendAmount = 0;
     
     buildInLength = BENTO_DEFAULT_BUILD_IN_LENGTH;
+    
+    __childIndex = _global.__elementCount;
+    _global.__elementCount++;
     
     __children   = [];
     __fileOrigin = undefined;
@@ -1617,6 +1621,38 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #region Layout Vertical List
     
+    static LayoutGetArray = function()
+    {
+        var _array = [];
+        
+        var _i = 0;
+        repeat(array_length(__children))
+        {
+            var _child = __children[_i];
+            if (_child.layoutInclude) array_push(_array, _child);
+            
+            ++_i;
+        }
+        
+        array_sort(_array, function(_a, _b)
+        {
+            if (_a.layoutOrder > _b.layoutOrder)
+            {
+                return 1;
+            }
+            else if (_a.layoutOrder < _b.layoutOrder)
+            {
+                return -1;
+            }
+            else
+            {
+                return sign(_a.__childIndex - _b.__childIndex);
+            }
+        });
+        
+        return _array;
+    }
+    
     static LayoutAsVerticalList = function(_hAlign, _spacing)
     {
         __layout = {
@@ -1629,24 +1665,24 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         {
             var _y = 0;
             var _spacing = __layout.__spacing;
+            var _children = LayoutGetArray();
             
             switch(__layout.__alignment)
             {
                 case "left":
                     var _i = 0;
-                    repeat(array_length(__children))
+                    repeat(array_length(_children))
                     {
-                        var _child = __children[_i];
-                        if (_child.layoutInclude)
+                        with(_children[_i])
                         {
                             TempOriginX(0);
                             TempOriginY(0);
-                            _child.Set("x", 0);
-                            _child.Set("y", _y);
-                                
-                            _y += _child.__localHeight + _spacing;
-                        }
+                            Set("x", 0);
+                            Set("y", _y);
                             
+                            _y += __localHeight + _spacing;
+                        }
+                        
                         ++_i;
                     }
                 break;
@@ -1655,19 +1691,18 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     var _x = 0.5*__localWidth;
                     
                     var _i = 0;
-                    repeat(array_length(__children))
+                    repeat(array_length(_children))
                     {
-                        var _child = __children[_i];
-                        if (_child.layoutInclude)
+                        with(_children[_i])
                         {
                             TempOriginX(0.5);
                             TempOriginY(0);
-                            _child.Set("x", _x);
-                            _child.Set("y", _y);
-                                
-                            _y += _child.__localHeight + _spacing;
-                        }
+                            Set("x", _x);
+                            Set("y", _y);
                             
+                            _y += __localHeight + _spacing;
+                        }
+                        
                         ++_i;
                     }
                 break;
@@ -1676,19 +1711,18 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     var _x = __localWidth;
                     
                     var _i = 0;
-                    repeat(array_length(__children))
+                    repeat(array_length(_children))
                     {
-                        var _child = __children[_i];
-                        if (_child.layoutInclude)
+                        with(_children[_i])
                         {
                             TempOriginX(1);
                             TempOriginY(0);
-                            _child.Set("x", _x);
-                            _child.Set("y", _y);
-                                
-                            _y += _child.__localHeight + _spacing;
-                        }
+                            Set("x", _x);
+                            Set("y", _y);
                             
+                            _y += __localHeight + _spacing;
+                        }
+                        
                         ++_i;
                     }
                 break;
@@ -1722,24 +1756,22 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         {
             var _x = 0;
             var _spacing = __layout.__spacing;
+            var _children = LayoutGetArray();
             
             switch(__layout.__alignment)
             {
                 case "top":
                     var _i = 0;
-                    repeat(array_length(__children))
+                    repeat(array_length(_children))
                     {
-                        with(__children[_i])
+                        with(_children[_i])
                         {
-                            if (layoutInclude)
-                            {
-                                TempOriginX(0);
-                                TempOriginY(0);
-                                Set("x", _x);
-                                Set("y", 0);
-                                
-                                _x += __localWidth + _spacing;
-                            }
+                            TempOriginX(0);
+                            TempOriginY(0);
+                            Set("x", _x);
+                            Set("y", 0);
+                            
+                            _x += __localWidth + _spacing;
                         }
                         
                         ++_i;
@@ -1750,19 +1782,16 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     var _y = 0.5*__localWidth;
                     
                     var _i = 0;
-                    repeat(array_length(__children))
+                    repeat(array_length(_children))
                     {
-                        with(__children[_i])
+                        with(_children[_i])
                         {
-                            if (layoutInclude)
-                            {
-                                TempOriginX(0);
-                                TempOriginY(0.5);
-                                Set("x", _x);
-                                Set("y", 0);
-                                
-                                _x += __localWidth + _spacing;
-                            }
+                            TempOriginX(0);
+                            TempOriginY(0.5);
+                            Set("x", _x);
+                            Set("y", 0);
+                            
+                            _x += __localWidth + _spacing;
                         }
                         
                         ++_i;
@@ -1773,19 +1802,16 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     var _y = __localHeight;
                     
                     var _i = 0;
-                    repeat(array_length(__children))
+                    repeat(array_length(_children))
                     {
-                        with(__children[_i])
+                        with(_children[_i])
                         {
-                            if (layoutInclude)
-                            {
-                                TempOriginX(0);
-                                TempOriginY(1);
-                                Set("x", 0);
-                                Set("y", _y);
-                                
-                                _x += __localWidth + _spacing;
-                            }
+                            TempOriginX(0);
+                            TempOriginY(1);
+                            Set("x", 0);
+                            Set("y", _y);
+                            
+                            _x += __localWidth + _spacing;
                         }
                         
                         ++_i;
@@ -1826,25 +1852,23 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             var _x = _cellWidth/2;
             var _y = _cellHeight/2;
             
+            var _children = LayoutGetArray();
             var _i = 0;
-            repeat(array_length(__children))
+            repeat(array_length(_children))
             {
-                with(__children[_i])
+                with(_children[_i])
                 {
-                    if (layoutInclude)
+                    TempOriginX(0.5);
+                    TempOriginY(0.5);
+                    Set("x", _x);
+                    Set("y", _y);
+                    
+                    _x += _cellWidth;
+                    
+                    if (_x > _maxWidth)
                     {
-                        TempOriginX(0.5);
-                        TempOriginY(0.5);
-                        Set("x", _x);
-                        Set("y", _y);
-                        
-                        _x += _cellWidth;
-                        
-                        if (_x > _maxWidth)
-                        {
-                            _x = _cellWidth/2;
-                            _y += _cellHeight;
-                        }
+                        _x = _cellWidth/2;
+                        _y += _cellHeight;
                     }
                 }
                 
@@ -1884,17 +1908,14 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         
         EventLayoutExecute(function()
         {
-            var _funcCenterElements = function(_i, _count, _y)
+            var _funcCenterElements = function(_children, _i, _count, _y)
             {
                 repeat(_count)
                 {
-                    with(__children[_i])
+                    with(_children[_i])
                     {
-                        if (layoutInclude)
-                        {
-                            TempOriginY(0.5);
-                            Set("y", _y);
-                        }
+                        TempOriginY(0.5);
+                        Set("y", _y);
                     }
                     
                     ++_i;
@@ -1913,53 +1934,52 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             var _y = 0;
             
             var _lineCells = 0;
+            
+            var _children = LayoutGetArray();
             var _i = 0;
-            repeat(array_length(__children))
+            repeat(array_length(_children))
             {
-                with(__children[_i])
+                with(_children[_i])
                 { 
-                    if (layoutInclude)
+                    var _columnWidth = _widthArray[_lineCells];
+                    
+                    switch(_hAlign)
                     {
-                        var _columnWidth = _widthArray[_lineCells];
+                        case "left":
+                            TempOriginX(0);
+                            Set("x", _x);
+                        break;
                         
-                        switch(_hAlign)
-                        {
-                            case "left":
-                                TempOriginX(0);
-                                Set("x", _x);
-                            break;
-                            
-                            case "center":
-                                TempOriginX(0.5);
-                                Set("x", _x + _columnWidth/2);
-                            break;
-                            
-                            case "right":
-                                TempOriginX(1);
-                                Set("x", _x + _columnWidth);
-                            break;
-                            
-                            default:
-                                __BentoError("Unknown horizontal alignment \"", _hAlign, "\"");
-                            break;
-                        }
+                        case "center":
+                            TempOriginX(0.5);
+                            Set("x", _x + _columnWidth/2);
+                        break;
                         
-                        _x += _columnWidth;
+                        case "right":
+                            TempOriginX(1);
+                            Set("x", _x + _columnWidth);
+                        break;
                         
-                        _maxHeight = max(_maxHeight, Get("height"));
+                        default:
+                            __BentoError("Unknown horizontal alignment \"", _hAlign, "\"");
+                        break;
+                    }
+                    
+                    _x += _columnWidth;
+                    
+                    _maxHeight = max(_maxHeight, Get("height"));
+                    
+                    ++_lineCells;
+                    if (_lineCells >= _columnCount)
+                    {
+                        _funcCenterElements(_children, _lineStart, _lineCells, _y + _maxHeight/2);
                         
-                        ++_lineCells;
-                        if (_lineCells >= _columnCount)
-                        {
-                            _funcCenterElements(_lineStart, _lineCells, _y + _maxHeight/2);
-                            
-                            _lineStart = _i+1;
-                            _lineCells = 0;
-                            
-                            _x = 0;
-                            _y += _maxHeight + _spacing;
-                            _maxHeight = 0;
-                        }
+                        _lineStart = _i+1;
+                        _lineCells = 0;
+                        
+                        _x = 0;
+                        _y += _maxHeight + _spacing;
+                        _maxHeight = 0;
                     }
                 }
                 
@@ -1969,7 +1989,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             //Clean up any dangling children
             if (_lineCells > 0)
             {
-                _funcCenterElements(_lineStart, _lineCells, _y + _maxHeight/2);
+                _funcCenterElements(_children, _lineStart, _lineCells, _y + _maxHeight/2);
             }
         });
         
