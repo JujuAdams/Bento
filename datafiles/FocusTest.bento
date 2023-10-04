@@ -13,8 +13,8 @@ build BentoBox {
 			DebugLog("1")
 		}
 
-		eventBuildIn = fn(animTime) {
-			animXOffset = 200*animTime*animTime*animTime*animTime
+		eventBuildIn = fn {
+			AnimateXY(200, 50, 100, 100)
 		}
 	}
 
