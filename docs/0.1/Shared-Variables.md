@@ -13,8 +13,9 @@ The variables on this page are available across all UI elements.
 | `identifier`    | string   | Unique identifier for the UI element. Automatically generated. You can set this to something yourself to make UI referencing easier |
 | `active`        | boolean  | Whether or not the UI element is actively receives player input                                                                     |
 | `visible`       | boolean  | Whether or not the UI element is visible. An invisible UI also doesn't receive player input                                         |
-| `layoutInclude` | boolean  | Whether this UI element can be moved around by a parent's layout function                                                           |
 | `focusable`     | boolean  | Whether this UI element can be focused                                                                                              |
+| `layoutInclude` | boolean  | Whether this UI element can be moved around by a parent's layout function                                                           |
+| `layoutOrder`   | number   | Where to place this UI element in the layout. A higher number will place the UI element later, relative to its siblings             |
 
 &nbsp;
 
