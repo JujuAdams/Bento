@@ -4,8 +4,9 @@
 /// @param end
 /// @param duration
 /// @param delay
+/// @param animCurve
 
-function __BentoClassAnimate(_scope, _variableName, _start, _end, _duration, _delay) constructor
+function __BentoClassAnimate(_scope, _variableName, _start, _end, _duration, _delay, _animCurve) constructor
 {
     __scope = _scope;
     
@@ -19,6 +20,8 @@ function __BentoClassAnimate(_scope, _variableName, _start, _end, _duration, _de
     __duration = max(1, _duration);
     __delay    = max(0, _delay);
     
+    __animCurve = _animCurve;
+    
     __scope[$ __variableName] = __value;
     
     
@@ -28,7 +31,17 @@ function __BentoClassAnimate(_scope, _variableName, _start, _end, _duration, _de
         ++__time;
         
         var _t = clamp((__time - __delay) / __duration, 0, 1);
-        __value = lerp(__start, __end, _t);
+        
+        if (__animCurve == undefined)
+        {
+            var _q = _t;
+        }
+        else
+        {
+            var _q = animcurve_channel_evaluate(animcurve_get_channel(__animCurve, 0), _t);
+        }
+        
+        __value = lerp(__start, __end, _q);
         
         __scope[$ __variableName] = __value;
         

@@ -136,9 +136,9 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         {
             var _finished = true;
             var _i = 0;
-            repeat(array_length(__animationArray))
+            repeat(array_length(F))
             {
-                if (!__animationArray[_i].__Update(self)) _finished = false;
+                if (!__animationArray[_i].__Update()) _finished = false;
                 ++_i;
             }
             

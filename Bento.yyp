@@ -116,6 +116,7 @@
     {"id":{"name":"BentoClassShared","path":"scripts/BentoClassShared/BentoClassShared.yy",},"order":3,},
     {"id":{"name":"BentoClose","path":"scripts/BentoClose/BentoClose.yy",},"order":2,},
     {"id":{"name":"BentoDebugShowSkeleton","path":"scripts/BentoDebugShowSkeleton/BentoDebugShowSkeleton.yy",},"order":4,},
+    {"id":{"name":"acBack","path":"animcurves/acBack/acBack.yy",},"order":5,},
     {"id":{"name":"__BentoClassHost","path":"scripts/__BentoClassHost/__BentoClassHost.yy",},"order":3,},
     {"id":{"name":"BentoClassHorizontalScrollbar","path":"scripts/BentoClassHorizontalScrollbar/BentoClassHorizontalScrollbar.yy",},"order":6,},
     {"id":{"name":"__BentoSurfaceCheckForOrphans","path":"scripts/__BentoSurfaceCheckForOrphans/__BentoSurfaceCheckForOrphans.yy",},"order":0,},

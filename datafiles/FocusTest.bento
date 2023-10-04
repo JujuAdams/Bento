@@ -14,7 +14,7 @@ build BentoBox {
 		}
 
 		eventBuildIn = fn {
-			AnimateXY(200, 50, 100, 100)
+			AnimateXY(200, 50, 100, 100, acBack)
 		}
 	}
 

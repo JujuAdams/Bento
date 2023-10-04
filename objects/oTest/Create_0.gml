@@ -24,6 +24,7 @@ BentoAddConstant("c_white",   c_white);
 BentoAddConstant("c_yellow",  c_yellow);
 
 BentoAddAsset("spr_logo");
+BentoAddAsset("acBack");
 
 BentoAddFunction("savedata_exists",    function() { return false });
 BentoAddFunction("game_resume",        function() { return false });

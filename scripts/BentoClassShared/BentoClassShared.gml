@@ -560,36 +560,36 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #region Animation
     
-    static AnimateX = function(_x, _duration, _delay = 0)
+    static AnimateX = function(_x, _duration, _delay = 0, _animCurve = undefined)
     {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animXOffset", _x, 0, _duration, _delay));
+        array_push(__animationArray, new __BentoClassAnimate(self, "animXOffset", _x, 0, _duration, _delay, _animCurve));
     }
     
-    static AnimateY = function(_y, _duration, _delay = 0)
+    static AnimateY = function(_y, _duration, _delay = 0, _animCurve = undefined)
     {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animYOffset", _y, 0, _duration, _delay));
+        array_push(__animationArray, new __BentoClassAnimate(self, "animYOffset", _y, 0, _duration, _delay, _animCurve));
     }
     
-    static AnimateXY = function(_x, _y, _duration, _delay = 0)
+    static AnimateXY = function(_x, _y, _duration, _delay = 0, _animCurve = undefined)
     {
-        AnimateX(_x, _duration, _delay);
-        AnimateY(_y, _duration, _delay);
+        AnimateX(_x, _duration, _delay, _animCurve);
+        AnimateY(_y, _duration, _delay, _animCurve);
     }
     
-    static AnimateScale = function(_scale, _duration, _delay = 0)
+    static AnimateScale = function(_scale, _duration, _delay = 0, _animCurve = undefined)
     {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animScale", _scale, 1, _duration, _delay));
+        array_push(__animationArray, new __BentoClassAnimate(self, "animScale", _scale, 1, _duration, _delay, _animCurve));
     }
     
-    static AnimateAlpha = function(_alpha, _duration, _delay = 0)
+    static AnimateAlpha = function(_alpha, _duration, _delay = 0, _animCurve = undefined)
     {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animAlpha", _alpha, 1, _duration, _delay));
+        array_push(__animationArray, new __BentoClassAnimate(self, "animAlpha", _alpha, 1, _duration, _delay, _animCurve));
     }
     
-    static AnimateColor = function(_blend, _blendAmount, _duration, _delay = 0)
+    static AnimateColor = function(_blend, _blendAmount, _duration, _delay = 0, _animCurve = undefined)
     {
         animBlend = _blend;
-        array_push(__animationArray, new __BentoClassAnimate(self, "animBlendAmount", _blendAmount, 0, _duration, _delay));
+        array_push(__animationArray, new __BentoClassAnimate(self, "animBlendAmount", _blendAmount, 0, _duration, _delay, _animCurve));
     }
     
     #endregion
@@ -610,7 +610,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             var _i = 0;
             repeat(array_length(__animationArray))
             {
-                if (!__animationArray[_i].__Update(self)) _finished = false;
+                if (!__animationArray[_i].__Update()) _finished = false;
                 ++_i;
             }
             
