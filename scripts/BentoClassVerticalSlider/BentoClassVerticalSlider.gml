@@ -153,11 +153,11 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
     
     EventPush(function(_direction)
     {
-        if (_direction == 0) //Right = increment
+        if (_direction == 90) //Up = increment
         {
             value = clamp(value + valueIncrement, valueMin, valueMax);
         }
-        else if (_direction == 180) //Left = decrement
+        else if (_direction == 270) //Down = decrement
         {
             value = clamp(value - valueIncrement, valueMin, valueMax);
         }
