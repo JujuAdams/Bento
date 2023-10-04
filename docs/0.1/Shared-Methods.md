@@ -20,6 +20,12 @@ The methods on this page are available across all UI elements.
 | `LayoutAsGrid`           | Sets up a grid layout with cells of identical size                         |
 | `LayoutAsColumns`        | Sets up a column layout. Children on the same row are vertically aligned   |
 | `LayoutGetArray`         | Returns an ordered array of child elements to lay out                      |
+| `AnimateX`               | Sets up an animation in the x-axis                                         |
+| `AnimateY`               | Sets up an animation in the y-axis                                         |
+| `AnimateXY`              | Sets up an animation in both the x-axis and y-axis                         |
+| `AnimateScale`           | Sets up an animation using the UI element's scale                          |
+| `AnimateAlpha`           | Sets up an animation using the UI element's alpha transparency             |
+| `AnimateColor`           | Sets up an animation using the UI element's colour blending                |
 | `HasChildren`            | Returns if the UI element has children                                     |
 | `ChildrenClear`          | Removes all children from the UI element                                   |
 | `ParentChange`           | Moves from one parent to another                                           |
@@ -132,6 +138,100 @@ Returns: Ordered array of child elements to lay out
 | Argument Name | Datatype | Purpose |
 |---------------|----------|---------|
 | None          |          |         |
+
+&nbsp;
+
+## Animation
+
+### .AnimateX(start, duration, delay = 0, animCurve = undefined)
+
+Returns:
+
+| Argument Name | Datatype        | Purpose                          |
+|---------------|-----------------|----------------------------------|
+| `start`       | number          | Starting value for the animation |
+| `duration`    | number          | Duration of the tween            |
+| `delay`       | number          | Initial delay for the tween      |
+| `animCurve`   | animation curve | Animation curve to use           |
+
+!> If you're calling this method from BentoScript, don't forget to call `BentoAddAsset()` to expose animation curves for use in BentoScript.
+
+&nbsp;
+
+### .AnimateY(start, duration, delay = 0, animCurve = undefined)
+
+Returns:
+
+| Argument Name | Datatype        | Purpose                          |
+|---------------|-----------------|----------------------------------|
+| `start`       | number          | Starting value for the animation |
+| `duration`    | number          | Duration of the tween            |
+| `delay`       | number          | Initial delay for the tween      |
+| `animCurve`   | animation curve | Animation curve to use           |
+
+!> If you're calling this method from BentoScript, don't forget to call `BentoAddAsset()` to expose animation curves for use in BentoScript.
+
+&nbsp;
+
+### .AnimateXY(startX, startY, duration, delay = 0, animCurve = undefined)
+
+Returns:
+
+| Argument Name | Datatype        | Purpose                                                  |
+|---------------|-----------------|----------------------------------------------------------|
+| `startX`      | number          | Starting value for the x-axis component of the animation |
+| `startY`      | number          | Starting value for the y-axis component of the animation |
+| `duration`    | number          | Duration of the tween                                    |
+| `delay`       | number          | Initial delay for the tween                              |
+| `animCurve`   | animation curve | Animation curve to use                                   |
+
+!> If you're calling this method from BentoScript, don't forget to call `BentoAddAsset()` to expose animation curves for use in BentoScript.
+
+&nbsp;
+
+### .AnimateScale(start, duration, delay = 0, animCurve = undefined)
+
+Returns:
+
+| Argument Name | Datatype        | Purpose                          |
+|---------------|-----------------|----------------------------------|
+| `start`       | number          | Starting value for the animation |
+| `duration`    | number          | Duration of the tween            |
+| `delay`       | number          | Initial delay for the tween      |
+| `animCurve`   | animation curve | Animation curve to use           |
+
+!> If you're calling this method from BentoScript, don't forget to call `BentoAddAsset()` to expose animation curves for use in BentoScript.
+
+&nbsp;
+
+### .AnimateAlpha(start, duration, delay = 0, animCurve = undefined)
+
+Returns:
+
+| Argument Name | Datatype        | Purpose                          |
+|---------------|-----------------|----------------------------------|
+| `start`       | number          | Starting value for the animation |
+| `duration`    | number          | Duration of the tween            |
+| `delay`       | number          | Initial delay for the tween      |
+| `animCurve`   | animation curve | Animation curve to use           |
+
+!> If you're calling this method from BentoScript, don't forget to call `BentoAddAsset()` to expose animation curves for use in BentoScript.
+
+&nbsp;
+
+### .AnimateColor(blendColor, startFactor, duration, delay = 0, animCurve = undefined)
+
+Returns:
+
+| Argument Name | Datatype        | Purpose                                 |
+|---------------|-----------------|-----------------------------------------|
+| `blendColor`  | RGB             | Starting blend colour                   |
+| `startFactor` | number          | Starting blend amount for the animation |
+| `duration`    | number          | Duration of the tween                   |
+| `delay`       | number          | Initial delay for the tween             |
+| `animCurve`   | animation curve | Animation curve to use                  |
+
+!> If you're calling this method from BentoScript, don't forget to call `BentoAddAsset()` to expose animation curves for use in BentoScript.
 
 &nbsp;
 

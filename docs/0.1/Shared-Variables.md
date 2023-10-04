@@ -96,11 +96,12 @@ The variables on this page are available across all UI elements.
 
 &nbsp;
 
-## Animation
+## Manual Animation
+
+!> If you're using the `Animate*()` methods then you don't need to touch these variables.
 
 | Name               | Datatype | Purpose                                                               |
 |--------------------|----------|-----------------------------------------------------------------------|
-| `buildInLength`    | number   | Length of the build-in animation, as triggered by .BuildIn()          |
 | `animXOffset`      | number   | Visual x-offset for the UI element. A value of 0 represents no offset |
 | `animYOffset`      | number   | Visual y-offset for the UI element. A value of 0 represents no offset |
 | `animScale`        | number   | Currently inactive.                                                   |
