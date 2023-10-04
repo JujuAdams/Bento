@@ -1,6 +1,6 @@
 function __BentoValidateMacros()
 {
-    if (!is_string(BENTO_DEFAULT_BUTTON_NAME) || !is_undefined(BENTO_DEFAULT_BUTTON_NAME))
+    if (!is_string(BENTO_DEFAULT_BUTTON_NAME) && !is_undefined(BENTO_DEFAULT_BUTTON_NAME))
     {
         __BentoError("BENTO_DEFAULT_BUTTON_NAME must be a string or undefined");
     }
