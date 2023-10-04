@@ -58,6 +58,7 @@
     {"id":{"name":"BentoFileGetArray","path":"scripts/BentoFileGetArray/BentoFileGetArray.yy",},"order":5,},
     {"id":{"name":"__BentoScriptScope","path":"scripts/__BentoScriptScope/__BentoScriptScope.yy",},"order":2,},
     {"id":{"name":"BentoPointerGetStartX","path":"scripts/BentoPointerGetStartX/BentoPointerGetStartX.yy",},"order":11,},
+    {"id":{"name":"__BentoClassAnimate","path":"scripts/__BentoClassAnimate/__BentoClassAnimate.yy",},"order":6,},
     {"id":{"name":"BentoAddConstant","path":"scripts/BentoAddConstant/BentoAddConstant.yy",},"order":5,},
     {"id":{"name":"__BentoXORShift32Random","path":"scripts/__BentoXORShift32Random/__BentoXORShift32Random.yy",},"order":3,},
     {"id":{"name":"BentoInputPointer","path":"scripts/BentoInputPointer/BentoInputPointer.yy",},"order":0,},
@@ -212,6 +213,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"FocusTest.bento","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.0.1.31",
+    "IDEVersion": "2022.0.0.19",
   },
 }

@@ -132,19 +132,17 @@ function BentoClassScrollbox() : BentoClassShared() constructor
     {
         __BentoContextStackPush(self);
         
-        if (_executeEvent && (__animMode == BENTO_BUILD_IN))
+        if (_executeEvent && (__animationMode == BENTO_BUILD_IN))
         {
-            ++__animTime;
+            var _finished = true;
+            var _i = 0;
+            repeat(array_length(__animationArray))
+            {
+                if (!__animationArray[_i].__Update(self)) _finished = false;
+                ++_i;
+            }
             
-            if (__animTime >= buildInLength)
-            {
-                __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self, 0);
-                BuildFinish();
-            }
-            else
-            {
-                __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self, 1 - __animTime/buildInLength);
-            }
+            if (_finished) BuildFinish();
         }
         
         _offsetX += animXOffset;

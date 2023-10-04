@@ -1,9 +1,5 @@
 #macro BENTO_DEFAULT_BUTTON_NAME  "action"
 
-// Default length for build-in animations
-// This is important to prevent build-in animations never finishing
-#macro BENTO_DEFAULT_BUILD_IN_LENGTH  60
-
 // The maximum number of repetitions for solving layouts
 // Be very careful with this number! It might seriously degrade performance when building UI
 #macro BENTO_LAYOUT_MAX_REPETITIONS  2

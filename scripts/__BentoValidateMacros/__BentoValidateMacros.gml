@@ -1,8 +1,8 @@
 function __BentoValidateMacros()
 {
-    if (!is_numeric(BENTO_DEFAULT_BUILD_IN_LENGTH) || (BENTO_DEFAULT_BUILD_IN_LENGTH < 0))
+    if (!is_string(BENTO_DEFAULT_BUTTON_NAME) || !is_undefined(BENTO_DEFAULT_BUTTON_NAME))
     {
-        __BentoError("BENTO_DEFAULT_BUILD_IN_LENGTH must be a number greater than or equal to 0");
+        __BentoError("BENTO_DEFAULT_BUTTON_NAME must be a string or undefined");
     }
     
     if (!is_numeric(BENTO_LAYOUT_MAX_REPETITIONS) || (BENTO_LAYOUT_MAX_REPETITIONS <= 0) || (floor(BENTO_LAYOUT_MAX_REPETITIONS) != BENTO_LAYOUT_MAX_REPETITIONS))
