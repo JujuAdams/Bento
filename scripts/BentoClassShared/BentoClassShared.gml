@@ -287,6 +287,16 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __EventFromBentoScript(__BENTO_EVENT.__BUILD_IN, _value);
     });
     
+    VariableBind("eventBuildFinished", function()
+    {
+        __BentoError("Cannot get \"eventBuildFinished\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUILD_FINISHED, _value);
+    });
+    
     static BuildIn = function()
     {
         if (__EventExists(__BENTO_EVENT.__BUILD_IN))
@@ -305,13 +315,14 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static BuildFinish = function()
     {
-        __animationMode = BENTO_BUILD_FINISHED;
-        
         animXOffset     = 0;
         animYOffset     = 0;
         animAlpha       = 1;
         animScale       = 1;
         animBlendAmount = 0;
+        
+        __animationMode = BENTO_BUILD_FINISHED;
+        __EventGet(__BENTO_EVENT.__BUILD_FINISHED).__Call(self);
     }
     
     static GetBuilding = function()
@@ -352,6 +363,11 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     static EventHighlightEnd = function(_function)
     {
         return __Event(__BENTO_EVENT.__HIGHLIGHT_END, _function);
+    }
+    
+    static EventCanHighlight = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__CAN_HIGHLIGHT, _function);
     }
     
     
@@ -398,9 +414,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __Event(__BENTO_EVENT.__ON_CLOSE, _function);
     }
     
-    static EventCanHighlight = function(_function)
+    static EventPush = function(_function)
     {
-        return __Event(__BENTO_EVENT.__CAN_HIGHLIGHT, _function);
+        return __Event(__BENTO_EVENT.__PUSH, _function);
     }
     
     
@@ -432,9 +448,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __Event(__BENTO_EVENT.__BUILD_IN, _function);
     }
     
-    static EventPush = function(_function)
+    static EventBuildFinished = function(_function)
     {
-        return __Event(__BENTO_EVENT.__PUSH, _function);
+        return __Event(__BENTO_EVENT.__BUILD_FINISHED, _function);
     }
     
     #endregion

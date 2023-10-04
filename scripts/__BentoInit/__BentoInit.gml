@@ -39,6 +39,7 @@ enum __BENTO_EVENT
     __ON_VALUE_CHANGE,
     __VALUE_UPDATE,
     __BUILD_IN,
+    __BUILD_FINISHED,
     
     __SIZE,
     
