@@ -45,10 +45,19 @@ build BentoBox {
 	}
 
 	build BentoButton {
-		size = [80, 80]
+		size = [300, 300]
 
 		eventClick = fn {
 			DebugLog("4")
+
+			if (!HasChildren()) {
+				use self {
+					build BentoText {
+						label = "Success!"
+						xy = ["50%", "50%"]
+					}
+				}
+			}
 		}
 	}
 }

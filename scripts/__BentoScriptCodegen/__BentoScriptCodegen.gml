@@ -765,7 +765,7 @@ function __BentoScriptClassGMLCompiler(asg, interface=undefined) constructor {
             );
         }
         return method({
-            dbgError : __dbgTerm(term.condition, "is not a function"),
+            dbgError : __dbgTerm(term.condition, "is not a struct"),
             condition : __compileTerm(ctx, term.condition),
             body : __compileTerm(ctx, term.body),
         }, __BentoScriptExprUse__);
@@ -1422,19 +1422,16 @@ function __BentoScriptExprBuild__() {
 /// @return {Any}
 function __BentoScriptExprUse__() {
     var body_ = body;
-    var open = condition();
-    if (!is_method(open)) {
-        __BentoScriptErrorGot(dbgError, open);
-    }
-    var close = open();
-    if (!is_method(close)) {
-        __BentoScriptErrorGot(dbgError, close);
+    var condition_ = condition();
+    if (!is_struct(condition_)) {
+        __BentoScriptErrorGot(dbgError, condition_);
     }
     var result;
     try {
+        BentoOpen(condition_);
         body_();
     } finally {
-        result = close();
+        result = BentoClose();
     }
     return result;
 }
