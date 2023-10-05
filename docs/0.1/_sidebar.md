@@ -6,6 +6,7 @@
 - [Building From BentoScript](Building-From-BentoScript)
 - [Building From GML](Building-From-GML)
 - [Customisation](Customisation)
+- [Adding & Destroying](Adding-Destroying)
 
 ---
 
