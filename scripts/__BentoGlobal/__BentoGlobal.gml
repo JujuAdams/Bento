@@ -31,9 +31,10 @@ function __BentoGlobal()
         __nullEvent: undefined,
         
         __debug: {
-            __showPointer:    false,
-            __showSkeleton:   false,
-            __relaxedSprites: false,
+            __showPointer:         false,
+            __showSkeleton:        false,
+            __relaxedSprites:      false,
+            __showNavigationGraph: false,
         }
     };
     

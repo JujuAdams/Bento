@@ -45,6 +45,7 @@ function __BentoInitEnvironment()
     BentoAddFunction("DebugShowPointer",    BentoDebugShowPointer);
     BentoAddFunction("DebugShowSkeleton",   BentoDebugShowSkeleton);
     BentoAddFunction("DebugRelaxedSprites", BentoDebugRelaxedSprites);
+    BentoAddFunction("DebugShowNavigation", BentoDebugShowNavigation);
     BentoAddFunction("DebugBreakpoint",     BentoDebugBreakpoint);
     BentoAddFunction("DebugLog",            __BentoTrace);
     

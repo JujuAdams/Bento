@@ -35,7 +35,7 @@ BentoAddFunction("show_debug_message", function(_string) { show_debug_message(st
 BentoAddFunction("show_message",       function(_string) { show_message(string(_string)) });
 BentoAddFunction("draw_circle",        draw_circle);
 
-BentoFileExecuteLayerTop("FocusTest.bento", "main menu");
+BentoFileExecuteLayerTop("ExampleMenu.bento", "main menu");
 
 //BentoOpen(new __BentoClassLayer());
 //BentoFileExecute("MainMenu.bento");

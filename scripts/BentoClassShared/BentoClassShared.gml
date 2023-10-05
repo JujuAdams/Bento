@@ -686,6 +686,54 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             ++_i;
         }
         
+        if (_debugStruct.__showNavigationGraph)
+        {
+            var _oldColor = draw_get_color();
+            
+            var _i = 0;
+            repeat(array_length(__children))
+            {
+                with(__children[_i])
+                {
+                    if (__BentoNullableRefAlive(__navigationRight))
+                    {
+                        draw_set_color(c_red);
+                        var _target = __BentoNullableRefResolve(__navigationRight);
+                        draw_arrow(0.5*(__drawLeft + __drawRight), 0.5*(__drawTop + __drawBottom) - 4,
+                                   0.5*(_target.__drawLeft + _target.__drawRight), 0.5*(_target.__drawTop + _target.__drawBottom) - 4, 10);
+                    }
+                    
+                    if (__BentoNullableRefAlive(__navigationUp))
+                    {
+                        draw_set_color(c_lime);
+                        var _target = __BentoNullableRefResolve(__navigationUp);
+                        draw_arrow(0.5*(__drawLeft + __drawRight) - 4, 0.5*(__drawTop + __drawBottom),
+                                   0.5*(_target.__drawLeft + _target.__drawRight) - 4, 0.5*(_target.__drawTop + _target.__drawBottom), 10);
+                    }
+                    
+                    if (__BentoNullableRefAlive(__navigationLeft))
+                    {
+                        draw_set_color(c_aqua);
+                        var _target = __BentoNullableRefResolve(__navigationLeft);
+                        draw_arrow(0.5*(__drawLeft + __drawRight), 0.5*(__drawTop + __drawBottom) + 4,
+                                   0.5*(_target.__drawLeft + _target.__drawRight), 0.5*(_target.__drawTop + _target.__drawBottom) + 4, 10);
+                    }
+                    
+                    if (__BentoNullableRefAlive(__navigationDown))
+                    {
+                        draw_set_color(c_fuchsia);
+                        var _target = __BentoNullableRefResolve(__navigationDown);
+                        draw_arrow(0.5*(__drawLeft + __drawRight) + 4, 0.5*(__drawTop + __drawBottom),
+                                   0.5*(_target.__drawLeft + _target.__drawRight) + 4, 0.5*(_target.__drawTop + _target.__drawBottom), 10);
+                    }
+                }
+                
+                ++_i;
+            }
+            
+            draw_set_color(_oldColor);
+        }
+        
         __BentoContextStackPop();
     }
     
@@ -1731,6 +1779,8 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             var _spacing = __layout.__spacing;
             var _children = LayoutGetArray();
             
+            var _elementPrev = undefined;
+            
             switch(__layout.__alignment)
             {
                 case "left":
@@ -1739,6 +1789,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
+                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
+                            Set("navigationUp", _elementPrev);
+                            _elementPrev = self;
+                            
                             TempOriginX(0);
                             TempOriginY(0);
                             Set("x", 0);
@@ -1759,6 +1813,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
+                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
+                            Set("navigationUp", _elementPrev);
+                            _elementPrev = self;
+                            
                             TempOriginX(0.5);
                             TempOriginY(0);
                             Set("x", _x);
@@ -1779,6 +1837,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
+                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
+                            Set("navigationUp", _elementPrev);
+                            _elementPrev = self;
+                            
                             TempOriginX(1);
                             TempOriginY(0);
                             Set("x", _x);
@@ -1822,6 +1884,8 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             var _spacing = __layout.__spacing;
             var _children = LayoutGetArray();
             
+            var _elementPrev = undefined;
+            
             switch(__layout.__alignment)
             {
                 case "top":
@@ -1830,6 +1894,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
+                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
+                            Set("navigationLeft", _elementPrev);
+                            _elementPrev = self;
+                            
                             TempOriginX(0);
                             TempOriginY(0);
                             Set("x", _x);
@@ -1850,6 +1918,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
+                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
+                            Set("navigationLeft", _elementPrev);
+                            _elementPrev = self;
+                            
                             TempOriginX(0);
                             TempOriginY(0.5);
                             Set("x", _x);
@@ -1870,6 +1942,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
+                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
+                            Set("navigationLeft", _elementPrev);
+                            _elementPrev = self;
+                            
                             TempOriginX(0);
                             TempOriginY(1);
                             Set("x", 0);
@@ -1883,7 +1959,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                 break;
                 
                 default:
-                    __BentoError("Unknown vertical list alignment \"", __alignment, "\"");
+                    __BentoError("Unknown horizontal list alignment \"", __layout.__alignment, "\"");
                 break;
             }
         });

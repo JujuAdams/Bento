@@ -543,6 +543,7 @@ function __BentoClassLayer() constructor
             __struct.__Draw(__localLeft, __localTop, 1);
         }
         
+        
         if (_debugStruct.__showPointer)
         {
             var _x = BentoPointerGetX();
