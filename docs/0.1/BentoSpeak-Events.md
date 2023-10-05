@@ -49,7 +49,7 @@ build BentoButton {
 
 &nbsp;
 
-## Callback Inheritance
+## Inheritance
 
 Events have a further property: you can execute the event for the event from a parent template (constructor). This is done by calling `CallInherited()` or `Super()` in BentoScript, or calling `BentoCallInherited()` in GML. This is especially useful when you want to extend the behaviour of a UI template without overriding the behaviour of that UI template entirely. For example, let's we wanted to play a sound effect when a particular button is highlighted:
 
