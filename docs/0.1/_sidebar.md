@@ -25,7 +25,7 @@
 - [Shared Variables](Shared-Variables)
 - [Shared Methods](Shared-Methods)
 - [Shared Events](Shared-Events)
-- [Event Cheatsheet](Callback-Cheatsheet)
+- [Event Cheatsheet](Event-Cheatsheet)
 
 ---
 
