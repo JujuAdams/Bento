@@ -12,12 +12,12 @@ The variables and methods on this page define events and are available across al
 
 ## General
 
-| Scripting Name | GML Function   | Purpose                                                                                    |
-|----------------|----------------|--------------------------------------------------------------------------------------------|
-| `eventStep`    | `EventStep`    | Called via `BentoStep()`                                                                   |
-| `eventDraw`    | `EventDraw`    | Called via `BentoDraw()`                                                                   |
-| `eventOnClose` | `EventOnClose` | Called when a UI element finishes construction (i.e. at the final closing } curly bracket) |
-| `eventBuildIn` | `EventBuildIn` | Called when a UI element is when appearing on screen a.k.a. "building in"                  |
+| Scripting Name | GML Function   | Purpose                                                                                                               |
+|----------------|----------------|-----------------------------------------------------------------------------------------------------------------------|
+| `eventStep`    | `EventStep`    | Called via `BentoStep()`                                                                                              |
+| `eventDraw`    | `EventDraw`    | Called via `BentoDraw()`                                                                                              |
+| `eventOnClose` | `EventOnClose` | Called when a UI element finishes construction (i.e. at the final closing } curly bracket)                            |
+| `eventBuildIn` | `EventBuildIn` | Called via the `BuildIn()` method and when a UI element is first created. Should be used to set up an entry animation |
 
 &nbsp;
 
