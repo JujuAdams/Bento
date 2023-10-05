@@ -2,6 +2,10 @@
 
 &nbsp;
 
+This page covers dynamically adjusting your UI layout after it has first been generated.
+
+&nbsp;
+
 ## Adding
 
 You may, from to time, need to create a UI element after an interface has been laid out. This might happen when constructing a server browser or an inventory etc.  This can be accomplished in both BentoScript and GML easily enough. The key point to remember is that you must always have a UI element "open" and that this open UI element will act as the parent for the new UI element you intend to create.
