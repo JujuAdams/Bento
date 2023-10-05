@@ -1765,18 +1765,21 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return _array;
     }
     
-    static LayoutAsVerticalList = function(_hAlign, _spacing)
+    static LayoutAsVerticalList = function(_hAlign = "center", _spacing = 0, _setNavigation = true)
     {
         __layout = {
-            __type:      "vertical list",
-            __alignment: _hAlign,
-            __spacing:   _spacing,
+            __type:          "vertical list",
+            __alignment:     _hAlign,
+            __spacing:       _spacing,
+            __setNavigation: _setNavigation,
         };
         
         EventLayoutExecute(function()
         {
+            var _spacing       = __layout.__spacing;
+            var _setNavigation = __layout.__setNavigation;
+            
             var _y = 0;
-            var _spacing = __layout.__spacing;
             var _children = LayoutGetArray();
             
             var _elementPrev = undefined;
@@ -1789,9 +1792,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
-                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
-                            Set("navigationUp", _elementPrev);
-                            _elementPrev = self;
+                            if (_setNavigation)
+                            {
+                                if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
+                                Set("navigationUp", _elementPrev);
+                                _elementPrev = self;
+                            }
                             
                             TempOriginX(0);
                             TempOriginY(0);
@@ -1813,9 +1819,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
-                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
-                            Set("navigationUp", _elementPrev);
-                            _elementPrev = self;
+                            if (_setNavigation)
+                            {
+                                if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
+                                Set("navigationUp", _elementPrev);
+                                _elementPrev = self;
+                            }
                             
                             TempOriginX(0.5);
                             TempOriginY(0);
@@ -1837,9 +1846,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
-                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
-                            Set("navigationUp", _elementPrev);
-                            _elementPrev = self;
+                            if (_setNavigation)
+                            {
+                                if (is_struct(_elementPrev)) _elementPrev.Set("navigationDown", self);
+                                Set("navigationUp", _elementPrev);
+                                _elementPrev = self;
+                            }
                             
                             TempOriginX(1);
                             TempOriginY(0);
@@ -1870,18 +1882,21 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #region Layout Horizontal List
     
-    static LayoutAsHorizontalList = function(_vAlign, _spacing)
+    static LayoutAsHorizontalList = function(_vAlign = "middle", _spacing = 0, _setNavigation = true)
     {
         __layout = {
-            __type:      "horizontal list",
-            __alignment: _vAlign,
-            __spacing:   _spacing,
+            __type:          "horizontal list",
+            __alignment:     _vAlign,
+            __spacing:       _spacing,
+            __setNavigation: _setNavigation,
         };
         
         EventLayoutExecute(function()
         {
+            var _spacing       = __layout.__spacing;
+            var _setNavigation = __layout.__setNavigation;
+            
             var _x = 0;
-            var _spacing = __layout.__spacing;
             var _children = LayoutGetArray();
             
             var _elementPrev = undefined;
@@ -1894,9 +1909,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
-                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
-                            Set("navigationLeft", _elementPrev);
-                            _elementPrev = self;
+                            if (_setNavigation)
+                            {
+                                if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
+                                Set("navigationLeft", _elementPrev);
+                                _elementPrev = self;
+                            }
                             
                             TempOriginX(0);
                             TempOriginY(0);
@@ -1918,9 +1936,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
-                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
-                            Set("navigationLeft", _elementPrev);
-                            _elementPrev = self;
+                            if (_setNavigation)
+                            {
+                                if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
+                                Set("navigationLeft", _elementPrev);
+                                _elementPrev = self;
+                            }
                             
                             TempOriginX(0);
                             TempOriginY(0.5);
@@ -1942,9 +1963,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     {
                         with(_children[_i])
                         {
-                            if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
-                            Set("navigationLeft", _elementPrev);
-                            _elementPrev = self;
+                            if (_setNavigation)
+                            {
+                                if (is_struct(_elementPrev)) _elementPrev.Set("navigationRight", self);
+                                Set("navigationLeft", _elementPrev);
+                                _elementPrev = self;
+                            }
                             
                             TempOriginX(0);
                             TempOriginY(1);
