@@ -40,9 +40,17 @@ BentoOpen(new BentoClassRectangle());
 BentoClose();  <--  OnClose event executed here
 ```
 
+&nbsp;
+
+## Animation
+
 ### BuildIn
 
-Called by proxy when the UI element is generated, or when the `BuildIn()` method is executed for a UI element. Used to trigger an animation that visually introduces the UI element onto the screen.
+Called by proxy when the UI element is generated, or when the `BuildIn()` method is executed for a UI element. Used to trigger an animation that visually introduces the UI element onto the screen. You should call one of the `Animate*()` methods in this function in order to trigger **BuildFinished**.
+
+### BuildFinished
+
+Called when all of the build-in animations finish. This event will only be triggerd if an `Animate*()` method was called in the **BuildIn** event.
 
 &nbsp;
 

@@ -202,3 +202,36 @@
 ```
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …Highlighted
+
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoHighlighted([layerName])</code></td>
+    </tr>
+</table>
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name         |Datatype|Purpose                                                     |
+|-------------|--------|------------------------------------------------------------|
+|`[layerName]`|string  |                                                            |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->

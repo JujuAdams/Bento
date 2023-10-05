@@ -14,12 +14,6 @@ The macros on this page can be found in the `__BentoConfig` script.
 
 &nbsp;
 
-## `BENTO_DEFAULT_BUILD_IN_LENGTH`
-
-*Typical value:* `60`
-
-&nbsp;
-
 ## `BENTO_LAYOUT_MAX_REPETITIONS`
 
 *Typical value:* `2`
