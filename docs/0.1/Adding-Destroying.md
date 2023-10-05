@@ -29,7 +29,7 @@ use existingUI {
 
 ```gml
 //Optional - Find a UI element with the given identifier
-var _existingUI = BentoFind("indentifier")
+var _existingUI = BentoFind("indentifier");
 
 //Open up an existing struct to add a UI element to
 BentoOpen(_existingUI);
@@ -66,7 +66,7 @@ existingUI.Destroy()
 
 ```gml
 //Optional - Find a UI element with the given identifier
-var _existingUI = BentoFind("indentifier")
+var _existingUI = BentoFind("indentifier");
 
 //Destroy this UI element
 _existingUI.Destroy();
