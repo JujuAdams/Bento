@@ -516,7 +516,7 @@ function __BentoClassLayer() constructor
             __BentoNullableRefEvent(__captureRef, __BENTO_EVENT.__BUTTON_END, __captureButtonName);
             
             //And then reset the rest of the capture state
-            __CaptureSet(undefined, undefined, false);
+            __CaptureSet(undefined, undefined);
             if (_clearHighlight) __HighlightSet(undefined, false);
             __BentoLayerStackPop();
         }
@@ -634,7 +634,8 @@ function __BentoClassLayer() constructor
                     var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
                     if (_highlightStruct.__CanRespondToButtonTarget(_buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL)))
                     {
-                        __CaptureSet(_highlightStruct, _buttonName, false);
+                        __CaptureSet(_highlightStruct, _buttonName);
+                        if (__host.__inputClickOnPress) __BentoInputButtonClick(_highlightStruct, __captureButtonName);
                     }
                 }
             }
@@ -647,14 +648,17 @@ function __BentoClassLayer() constructor
                 
                 if (__captureButtonName == _buttonName)
                 {
-                    var _click = false;
+                    var _captureStruct = __BentoNullableRefResolve(_captureRef);
                     
-                    if (__BentoNullableRefAlive(_highlightRef) && __BentoNullableRefAlive(_captureRef) && (__BentoNullableRefResolve(_highlightRef) == __BentoNullableRefResolve(_captureRef)))
+                    if (!__host.__inputClickOnPress
+                    &&  __BentoNullableRefAlive(_highlightRef)
+                    &&  __BentoNullableRefAlive(_captureRef)
+                    &&  (__BentoNullableRefResolve(_highlightRef) == _captureStruct))
                     {
-                        _click = true;
+                        __BentoInputButtonClick(_captureStruct, __captureButtonName);
                     }
                     
-                    __CaptureSet(undefined, _buttonName, _click);
+                    __CaptureSet(undefined, _buttonName);
                 }
             }
         }
@@ -721,7 +725,8 @@ function __BentoClassLayer() constructor
                     var _castFrom = __BentoNullableRefAlive(__lastHighlightRef)? __BentoNullableRefResolve(__lastHighlightRef) : __struct;
                     var _captureStruct = is_struct(_castFrom)? _castFrom.__CaptureCastSearch(_buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL)) : undefined;
                     
-                    __CaptureSet(_captureStruct, _buttonName, false);
+                    __CaptureSet(_captureStruct, _buttonName);
+                    if (__host.__inputClickOnPress) __BentoInputButtonClick(_captureStruct, __captureButtonName);
                 }
             }
             else
@@ -730,7 +735,8 @@ function __BentoClassLayer() constructor
                 
                 if (__captureButtonName == _buttonName)
                 {
-                    __CaptureSet(undefined, _buttonName, true);
+                    if (!__host.__inputClickOnPress) __BentoInputButtonClick(__BentoNullableRefResolve(__captureRef), __captureButtonName);
+                    __CaptureSet(undefined, _buttonName);
                 }
             }
         }
@@ -809,7 +815,7 @@ function __BentoClassLayer() constructor
         }
     }
     
-    static __CaptureSet = function(_newStruct, _buttonName, _click)
+    static __CaptureSet = function(_newStruct, _buttonName)
     {
         var _oldStruct = __BentoNullableRefResolve(__captureRef);
         if (_oldStruct != _newStruct)
@@ -817,7 +823,6 @@ function __BentoClassLayer() constructor
             if (_oldStruct != undefined)
             {
                 _oldStruct.__EventGet(__BENTO_EVENT.__BUTTON_END).__Call(_oldStruct, __captureButtonName);
-                if (_click) __BentoInputButtonClick(_oldStruct, __captureButtonName);
                 
                 __captureRef        = undefined;
                 __captureButtonName = undefined;

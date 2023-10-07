@@ -1463,7 +1463,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             with(__FindLayer())
             {
                 if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined, false);
-                if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined, false);
+                if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined);
             }
         }
     });
@@ -1482,7 +1482,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             with(__FindLayer())
             {
                 if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined, false);
-                if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined, false);
+                if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined);
             }
         }
     });

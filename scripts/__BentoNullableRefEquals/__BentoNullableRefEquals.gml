@@ -1,5 +1,3 @@
-// Feather disable all
-
 /// @param aRef
 /// @param bRef
 

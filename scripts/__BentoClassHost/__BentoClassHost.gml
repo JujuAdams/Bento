@@ -13,6 +13,7 @@ function __BentoClassHost(_name) constructor
     __layerArray = []; //Ordered as highest priority first
     
     __inputMode         = BENTO_INPUT_MODE_POINTER;
+    __inputClickOnPress = ((os_type == os_android) || (os_type == os_ios))? BENTO_MOBILE_CLICK_ON_PRESS : false;
     __inputX            = 0;
     __inputY            = 0;
     __inputExcludeGroup = false;
@@ -360,6 +361,16 @@ function __BentoClassHost(_name) constructor
     static __InputGetMode = function()
     {
         return __inputMode;
+    }
+    
+    static __InputSetClickOnPress = function(_state)
+    {
+        __inputClickOnPress = _state;
+    }
+    
+    static __InputGetClickOnPress = function(_state)
+    {
+        return __inputClickOnPress;
     }
     
     static __InputPointer = function(_x, _y)
