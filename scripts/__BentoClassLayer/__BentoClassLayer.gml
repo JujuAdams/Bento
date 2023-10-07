@@ -635,7 +635,12 @@ function __BentoClassLayer() constructor
                     if (_highlightStruct.__CanRespondToButtonTarget(_buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL)))
                     {
                         __CaptureSet(_highlightStruct, _buttonName);
-                        if (__host.__inputClickOnPress) __BentoInputButtonClick(_highlightStruct, __captureButtonName);
+                        
+                        if (is_struct(_highlightStruct)
+                        &&  _highlightStruct.__ClickOnPress(__host.__inputClickOnPress))
+                        {
+                            __BentoInputButtonClick(_highlightStruct, __captureButtonName);
+                        }
                     }
                 }
             }
@@ -650,10 +655,10 @@ function __BentoClassLayer() constructor
                 {
                     var _captureStruct = __BentoNullableRefResolve(_captureRef);
                     
-                    if (!__host.__inputClickOnPress
-                    &&  __BentoNullableRefAlive(_highlightRef)
+                    if (__BentoNullableRefAlive(_highlightRef)
                     &&  __BentoNullableRefAlive(_captureRef)
-                    &&  (__BentoNullableRefResolve(_highlightRef) == _captureStruct))
+                    &&  (__BentoNullableRefResolve(_highlightRef) == _captureStruct)
+                    &&  !_captureStruct.__ClickOnPress(__host.__inputClickOnPress))
                     {
                         __BentoInputButtonClick(_captureStruct, __captureButtonName);
                     }
@@ -726,7 +731,12 @@ function __BentoClassLayer() constructor
                     var _captureStruct = is_struct(_castFrom)? _castFrom.__CaptureCastSearch(_buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL)) : undefined;
                     
                     __CaptureSet(_captureStruct, _buttonName);
-                    if (__host.__inputClickOnPress) __BentoInputButtonClick(_captureStruct, __captureButtonName);
+                    
+                    if (is_struct(_captureStruct)
+                    &&  _captureStruct.__ClickOnPress(__host.__inputClickOnPress))
+                    {
+                        __BentoInputButtonClick(_captureStruct, __captureButtonName);
+                    }
                 }
             }
             else
@@ -735,7 +745,15 @@ function __BentoClassLayer() constructor
                 
                 if (__captureButtonName == _buttonName)
                 {
-                    if (!__host.__inputClickOnPress) __BentoInputButtonClick(__BentoNullableRefResolve(__captureRef), __captureButtonName);
+                    if (__BentoNullableRefAlive(__captureRef))
+                    {
+                        var _captureStruct = __BentoNullableRefResolve(__captureRef);
+                        if (!_captureStruct.__ClickOnPress(__host.__inputClickOnPress))
+                        {
+                            __BentoInputButtonClick(_captureStruct, __captureButtonName);
+                        }
+                    }
+                    
                     __CaptureSet(undefined, _buttonName);
                 }
             }

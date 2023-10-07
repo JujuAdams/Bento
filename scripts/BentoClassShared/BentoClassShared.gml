@@ -21,6 +21,8 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     layoutInclude  = true;
     layoutOrder    = 0;
     
+    forceClickOnPress = undefined;
+    
     animXOffset     = 0;
     animYOffset     = 0;
     animScale       = 1;
@@ -1080,6 +1082,13 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         if (not __EventExists(__BENTO_EVENT.__CAN_HIGHLIGHT)) return true;
         
         return __EventGet(__BENTO_EVENT.__CAN_HIGHLIGHT).__Call(self, _directional);
+    }
+    
+    static __ClickOnPress = function(_hostValue)
+    {
+        if (__EventExists(__BENTO_EVENT.__BUTTON_LONG_CLICK)) return false;
+        
+        return forceClickOnPress ?? _hostValue;
     }
     
     #endregion
