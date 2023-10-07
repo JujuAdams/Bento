@@ -36,6 +36,7 @@ The variables on this page are available across all UI elements.
 | `xywh`    | array    | Convenient 4-element array that represents the x/y/width/height coordinates (see above)              |
 | `originX` | number   | Normalised (from 0 to 1) origin point in the x-axis. A value of 0.5 is central                       |
 | `originY` | number   | Normalised (from 0 to 1) origin point in the y-axis. A value of 0.5 is central                       |
+| `origin`  | array    | Convenient 2-element array that represents the normalised origin (see above)                         |
 | `scale`   | number   | Scale of the UI element. A value of 1 is no change                                                   |
 | `size`    | array    | Convenient 2-element array that represents the width/height values (see above)                       |
 
