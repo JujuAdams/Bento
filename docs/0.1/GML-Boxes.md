@@ -103,16 +103,16 @@
 
 &nbsp;
 
-## …BoxFind
+## …Find
 
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><code>BoxFind(identifier, [layerName])</code></td>
+		<td><code>BFind(identifier, [layerName])</code></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
-		<td><code>BentoBoxFind(identifier, [layerName])</code></td>
+		<td><code>BentoFind(identifier, [layerName])</code></td>
     </tr>
 </table>
 
@@ -137,16 +137,16 @@
 
 &nbsp;
 
-## …BoxFindRelaxed
+## …FindRelaxed
 
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><code>BoxFindRelaxed(identifier, [layerName])</code></td>
+		<td><code>FindRelaxed(identifier, [layerName])</code></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
-		<td><code>BentoBoxFindRelaxed(identifier, [layerName])</code></td>
+		<td><code>BentoFindRelaxed(identifier, [layerName])</code></td>
     </tr>
 </table>
 
@@ -176,7 +176,7 @@
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><code>BoxReplace(identifier, path)</code></td>
+		<td><code>Replace(identifier, path)</code></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
