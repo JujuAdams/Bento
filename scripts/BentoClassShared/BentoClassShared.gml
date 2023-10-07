@@ -153,8 +153,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    
-    
     #region Public Methods
     
     static toString = function()
@@ -273,29 +271,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    
-    
-    #region Build Animations
-    
-    VariableBind("eventBuildIn", function()
-    {
-        __BentoError("Cannot get \"eventBuildIn\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__BUILD_IN, _value);
-    });
-    
-    VariableBind("eventBuildFinished", function()
-    {
-        __BentoError("Cannot get \"eventBuildFinished\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__BUILD_FINISHED, _value);
-    });
+    #region Animation
     
     static BuildIn = function()
     {
@@ -334,13 +310,43 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __animationMode;
     }
     
+    static AnimateX = function(_x, _duration, _delay = 0, _animCurve = undefined)
+    {
+        array_push(__animationArray, new __BentoClassAnimate(self, "animXOffset", _x, 0, _duration, _delay, _animCurve));
+    }
+    
+    static AnimateY = function(_y, _duration, _delay = 0, _animCurve = undefined)
+    {
+        array_push(__animationArray, new __BentoClassAnimate(self, "animYOffset", _y, 0, _duration, _delay, _animCurve));
+    }
+    
+    static AnimateXY = function(_x, _y, _duration, _delay = 0, _animCurve = undefined)
+    {
+        AnimateX(_x, _duration, _delay, _animCurve);
+        AnimateY(_y, _duration, _delay, _animCurve);
+    }
+    
+    static AnimateScale = function(_scale, _duration, _delay = 0, _animCurve = undefined)
+    {
+        array_push(__animationArray, new __BentoClassAnimate(self, "animScale", _scale, 1, _duration, _delay, _animCurve));
+    }
+    
+    static AnimateAlpha = function(_alpha, _duration, _delay = 0, _animCurve = undefined)
+    {
+        array_push(__animationArray, new __BentoClassAnimate(self, "animAlpha", _alpha, 1, _duration, _delay, _animCurve));
+    }
+    
+    static AnimateColor = function(_blend, _blendAmount, _duration, _delay = 0, _animCurve = undefined)
+    {
+        animBlend = _blend;
+        array_push(__animationArray, new __BentoClassAnimate(self, "animBlendAmount", _blendAmount, 0, _duration, _delay, _animCurve));
+    }
+    
     #endregion
     
     
     
-    
-    
-    #region Event Setters
+    #region Events
     
     static __Event = function(_callType, _function)
     {
@@ -354,27 +360,124 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    static EventHighlightStart = function(_function)
+    #region General
+    
+    static EventStep = function(_function)
     {
-        return __Event(__BENTO_EVENT.__HIGHLIGHT_START, _function);
+        return __Event(__BENTO_EVENT.__STEP, _function);
     }
     
-    static EventHighlight = function(_function)
+    static EventDraw = function(_function)
     {
-        return __Event(__BENTO_EVENT.__HIGHLIGHT, _function);
+        return __Event(__BENTO_EVENT.__DRAW, _function);
     }
     
-    static EventHighlightEnd = function(_function)
+    static EventOnClose = function(_function)
     {
-        return __Event(__BENTO_EVENT.__HIGHLIGHT_END, _function);
+        return __Event(__BENTO_EVENT.__ON_CLOSE, _function);
     }
     
-    static EventCanHighlight = function(_function)
+    static EventLayout = function(_function)
     {
-        return __Event(__BENTO_EVENT.__CAN_HIGHLIGHT, _function);
+        return __Event(__BENTO_EVENT.__LAYOUT, _function);
     }
     
+    static EventPush = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__PUSH, _function);
+    }
     
+    VariableBind("eventStep", function()
+    {
+        __BentoError("Cannot get \"eventStep\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__STEP, _value);
+    });
+    
+    VariableBind("eventDraw", function()
+    {
+        __BentoError("Cannot get \"eventDraw\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__DRAW, _value);
+    });
+    
+    VariableBind("eventOnClose", function()
+    {
+        __BentoError("Cannot get \"eventOnClose\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__ON_CLOSE, _value);
+    });
+    
+    VariableBind("eventLayout", function()
+    {
+        __BentoError("Cannot get \"eventLayout\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__LAYOUT, _value);
+    });
+    
+    VariableBind("eventPush", function()
+    {
+        __BentoError("Cannot get \"eventPush\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__PUSH, _value);
+    });
+    
+    #endregion
+    
+    
+    
+    #region Animations
+    
+    VariableBind("eventBuildIn", function()
+    {
+        __BentoError("Cannot get \"eventBuildIn\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUILD_IN, _value);
+    });
+    
+    VariableBind("eventBuildFinished", function()
+    {
+        __BentoError("Cannot get \"eventBuildFinished\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUILD_FINISHED, _value);
+    });
+    
+    static EventBuildIn = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__BUILD_IN, _function);
+    }
+    
+    static EventBuildFinished = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__BUILD_FINISHED, _function);
+    }
+    
+    #endregion
+    
+    
+    
+    #region Button / Clicking
     
     static EventButtonStart = function(_function)
     {
@@ -401,36 +504,175 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __Event(__BENTO_EVENT.__BUTTON_CAN_CAPTURE, _function);
     }
     
-    
-    
-    static EventStep = function(_function)
+    VariableBind("eventPress", function()
     {
-        return __Event(__BENTO_EVENT.__STEP, _function);
+        __BentoError("Cannot get \"eventPress\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_START, _value);
+    });
+    
+    VariableBind("eventHold", function()
+    {
+        __BentoError("Cannot get \"eventHold\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUTTON, _value);
+    });
+    
+    VariableBind("eventRelease", function()
+    {
+        __BentoError("Cannot get \"eventRelease\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_END, _value);
+    });
+    
+    VariableBind("eventClick", function()
+    {
+        __BentoError("Cannot get \"eventClick\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_CLICK, _value);
+    });
+    
+    VariableBind("eventCanCapture", function()
+    {
+        __BentoError("Cannot get \"eventCanCapture\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_CAN_CAPTURE, _value);
+    });
+    
+    VariableBind("targetListen", function()
+    {
+        __BentoError("Cannot get \"targetListen\"");
+        return;
+    },
+    function(_array)
+    {
+        if (not is_array(_array)) _array = [_array];
+        
+        var _i = 0;
+        repeat(array_length(_array))
+        {
+            var _value = _array[_i];
+            
+            if (!variable_struct_exists(__listenTargetDict, _value))
+            {
+                array_push(__listenTargetArray, _value);
+                __listenTargetDict[$ _value] = true;
+            }
+            
+            ++_i;
+        }
+    });
+    
+    VariableBind("castListen", function()
+    {
+        __BentoError("Cannot get \"castListen\"");
+        return;
+    },
+    function(_array)
+    {
+        if (not is_array(_array)) _array = [_array];
+        
+        var _i = 0;
+        repeat(array_length(_array))
+        {
+            var _value = _array[_i];
+            
+            if (!variable_struct_exists(__listenCastDict, _value))
+            {
+                array_push(__listenCastArray, _value);
+                __listenCastDict[$ _value] = true;
+            }
+            
+            ++_i;
+        }
+    });
+    
+    #endregion
+    
+    
+    
+    #region Pointer-Over / Highlight
+    
+    static EventHighlightStart = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__HIGHLIGHT_START, _function);
     }
     
-    static EventDraw = function(_function)
+    static EventHighlight = function(_function)
     {
-        return __Event(__BENTO_EVENT.__DRAW, _function);
+        return __Event(__BENTO_EVENT.__HIGHLIGHT, _function);
     }
     
-    static EventOnClose = function(_function)
+    static EventHighlightEnd = function(_function)
     {
-        return __Event(__BENTO_EVENT.__ON_CLOSE, _function);
+        return __Event(__BENTO_EVENT.__HIGHLIGHT_END, _function);
     }
     
-    static EventPush = function(_function)
+    static EventCanHighlight = function(_function)
     {
-        return __Event(__BENTO_EVENT.__PUSH, _function);
+        return __Event(__BENTO_EVENT.__CAN_HIGHLIGHT, _function);
     }
     
-    
-    
-    static EventLayout = function(_function)
+    VariableBind("eventEnter", function()
     {
-        return __Event(__BENTO_EVENT.__LAYOUT, _function);
-    }
+        __BentoError("Cannot get \"eventEnter\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__HIGHLIGHT_START, _value);
+    });
+    
+    VariableBind("eventOver", function()
+    {
+        __BentoError("Cannot get \"eventOver\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__HIGHLIGHT, _value);
+    });
+    
+    VariableBind("eventLeave", function()
+    {
+        __BentoError("Cannot get \"eventLeave\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__HIGHLIGHT_END, _value);
+    });
+    
+    VariableBind("eventCanHighlight", function()
+    {
+        __BentoError("Cannot get \"eventCanHighlight\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__CAN_HIGHLIGHT, _value);
+    });
+    
+    #endregion
     
     
+    
+    #region Slider 
     
     static EventOnValueChange = function(_function)
     {
@@ -442,23 +684,15 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __Event(__BENTO_EVENT.__VALUE_UPDATE, _function);
     }
     
-    static EventBuildIn = function(_function)
-    {
-        return __Event(__BENTO_EVENT.__BUILD_IN, _function);
-    }
+    #endregion
     
-    static EventBuildFinished = function(_function)
-    {
-        return __Event(__BENTO_EVENT.__BUILD_FINISHED, _function);
-    }
+    
     
     #endregion
     
     
     
-    
-    
-    #region Child-related Methods
+    #region Child-related Private Methods
     
     static __ChildAdd = function(_child)
     {
@@ -551,48 +785,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    
-    
-    #region Animation
-    
-    static AnimateX = function(_x, _duration, _delay = 0, _animCurve = undefined)
-    {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animXOffset", _x, 0, _duration, _delay, _animCurve));
-    }
-    
-    static AnimateY = function(_y, _duration, _delay = 0, _animCurve = undefined)
-    {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animYOffset", _y, 0, _duration, _delay, _animCurve));
-    }
-    
-    static AnimateXY = function(_x, _y, _duration, _delay = 0, _animCurve = undefined)
-    {
-        AnimateX(_x, _duration, _delay, _animCurve);
-        AnimateY(_y, _duration, _delay, _animCurve);
-    }
-    
-    static AnimateScale = function(_scale, _duration, _delay = 0, _animCurve = undefined)
-    {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animScale", _scale, 1, _duration, _delay, _animCurve));
-    }
-    
-    static AnimateAlpha = function(_alpha, _duration, _delay = 0, _animCurve = undefined)
-    {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animAlpha", _alpha, 1, _duration, _delay, _animCurve));
-    }
-    
-    static AnimateColor = function(_blend, _blendAmount, _duration, _delay = 0, _animCurve = undefined)
-    {
-        animBlend = _blend;
-        array_push(__animationArray, new __BentoClassAnimate(self, "animBlendAmount", _blendAmount, 0, _duration, _delay, _animCurve));
-    }
-    
-    #endregion
-    
-    
-    
-    
-    
     #region Step
     
     static __Step = function(_offsetX, _offsetY, _inheritedScale, _executeEvent)
@@ -637,6 +829,8 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     }
     
     #endregion
+    
+    
     
     #region Draw
     
@@ -736,8 +930,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    
-    
     #region Other Private Methods
     
     static __ScrollParentToSelf = function()
@@ -821,29 +1013,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __eventArray[_callType][0] ?? _nullEvent;
     }
     
-    
-    
-    
-    
-    static __FindCaptureCast = function(_buttonName, _directional)
-    {
-        if (__active && (__animationMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName, _directional))
-        {
-            return self;
-        }
-        
-        var _i = 0;
-        repeat(array_length(__children))
-        {
-            var _captureStruct = __children[_i].__FindCaptureCast(_buttonName, _directional);
-            if (_captureStruct != undefined) return _captureStruct;
-            
-            ++_i;
-        }
-        
-        return undefined;
-    }
-    
     static __CanRespondToButtonTarget = function(_buttonName, _directional)
     {
         if (not (__listenTargetDict[$ _buttonName] ?? false)) return false;
@@ -914,8 +1083,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     }
     
     #endregion
-    
-    
     
     
     
@@ -1116,8 +1283,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    
-    
     #region Multi-argument variables
     
     VariableBind("ltrb", function()
@@ -1170,8 +1335,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     });
     
     #endregion
-    
-    
     
     
     
@@ -1303,8 +1466,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    
-    
     #region Draw Position Getter
     
     VariableBind("drawLeft", function()
@@ -1383,8 +1544,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    
-    
     #region Navigation Getter/Setters
     
     VariableBind("navigationRight", function()
@@ -1424,8 +1583,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     });
     
     #endregion
-    
-    
     
     
     
@@ -1491,198 +1648,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    
-    
-    #region Event Getter/Setters
-    
-    VariableBind("eventPress", function()
-    {
-        __BentoError("Cannot get \"eventPress\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_START, _value);
-    });
-    
-    VariableBind("eventHold", function()
-    {
-        __BentoError("Cannot get \"eventHold\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__BUTTON, _value);
-    });
-    
-    VariableBind("eventRelease", function()
-    {
-        __BentoError("Cannot get \"eventRelease\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_END, _value);
-    });
-    
-    VariableBind("eventClick", function()
-    {
-        __BentoError("Cannot get \"eventClick\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_CLICK, _value);
-    });
-    
-    VariableBind("targetListen", function()
-    {
-        __BentoError("Cannot get \"targetListen\"");
-        return;
-    },
-    function(_array)
-    {
-        if (not is_array(_array)) _array = [_array];
-        
-        var _i = 0;
-        repeat(array_length(_array))
-        {
-            var _value = _array[_i];
-            
-            if (!variable_struct_exists(__listenTargetDict, _value))
-            {
-                array_push(__listenTargetArray, _value);
-                __listenTargetDict[$ _value] = true;
-            }
-            
-            ++_i;
-        }
-    });
-    
-    VariableBind("castListen", function()
-    {
-        __BentoError("Cannot get \"castListen\"");
-        return;
-    },
-    function(_array)
-    {
-        if (not is_array(_array)) _array = [_array];
-        
-        var _i = 0;
-        repeat(array_length(_array))
-        {
-            var _value = _array[_i];
-            
-            if (!variable_struct_exists(__listenCastDict, _value))
-            {
-                array_push(__listenCastArray, _value);
-                __listenCastDict[$ _value] = true;
-            }
-            
-            ++_i;
-        }
-    });
-    
-    
-    
-    VariableBind("eventEnter", function()
-    {
-        __BentoError("Cannot get \"eventEnter\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__HIGHLIGHT_START, _value);
-    });
-    
-    VariableBind("eventOver", function()
-    {
-        __BentoError("Cannot get \"eventOver\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__HIGHLIGHT, _value);
-    });
-    
-    VariableBind("eventLeave", function()
-    {
-        __BentoError("Cannot get \"eventLeave\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__HIGHLIGHT_END, _value);
-    });
-    
-    VariableBind("eventCanHighlight", function()
-    {
-        __BentoError("Cannot get \"eventCanHighlight\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__CAN_HIGHLIGHT, _value);
-    });
-    
-    VariableBind("eventCanCapture", function()
-    {
-        __BentoError("Cannot get \"eventCanCapture\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_CAN_CAPTURE, _value);
-    });
-    
-    
-    
-    VariableBind("eventStep", function()
-    {
-        __BentoError("Cannot get \"eventStep\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__STEP, _value);
-    });
-    
-    VariableBind("eventDraw", function()
-    {
-        __BentoError("Cannot get \"eventDraw\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__DRAW, _value);
-    });
-    
-    VariableBind("eventOnClose", function()
-    {
-        __BentoError("Cannot get \"eventOnClose\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__ON_CLOSE, _value);
-    });
-    
-    VariableBind("eventPush", function()
-    {
-        __BentoError("Cannot get \"eventPush\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__PUSH, _value);
-    });
-    
-    #endregion
-    
-    
-    
-    
-    
     #region Layouts
     
     static __LayoutBuildOrder = function(_array)
@@ -1704,22 +1669,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     {
         return __EventGet(__BENTO_EVENT.__LAYOUT).__Call(self);
     }
-    
-    VariableBind("eventLayout", function()
-    {
-        __BentoError("Cannot get \"eventLayout\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__LAYOUT, _value);
-    });
-    
-    #endregion
-    
-    
-    
-    
     
     #region Layout Vertical List
     
@@ -2132,7 +2081,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #endregion
     
-    
+    #endregion
     
     
     
@@ -2215,8 +2164,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     });
     
     #endregion
-    
-    
     
     
     
@@ -2380,6 +2327,26 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     {
         if (__active && (__animationMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName, _directional)) return self;
         return __parent.__CaptureCastSearch(_buttonName, _directional);
+    }
+    
+    
+    static __FindCaptureCast = function(_buttonName, _directional)
+    {
+        if (__active && (__animationMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName, _directional))
+        {
+            return self;
+        }
+        
+        var _i = 0;
+        repeat(array_length(__children))
+        {
+            var _captureStruct = __children[_i].__FindCaptureCast(_buttonName, _directional);
+            if (_captureStruct != undefined) return _captureStruct;
+            
+            ++_i;
+        }
+        
+        return undefined;
     }
     
     #endregion
