@@ -21,19 +21,19 @@
 /// 
 /// Available variables (in addition to shared UI variables) are:
 /// 
-/// | Name                  | Datatype | Purpose                                                                           |
-/// |-----------------------|----------|-----------------------------------------------------------------------------------|
-/// | color                 | RGB      | Colour for the slider                                                             |
-/// | alpha                 | number   | Alpha blending value                                                              |
-/// | handleWidth           | number   | Width of the handle                                                               |
-/// | handleHeight          | number   | Height of the handle                                                              |
-/// | handlePosition        | number   | Normalised (0 -> 1) position of the handle. Coupled to the .value variable        |
-/// | value                 | number   | Value for the slider. Coupled to the .handlePosition variable                     |
-/// | valueMin              | number   | Minimum value when the handle is at the top position                              |
-/// | valueMax              | number   | Maximum value when the handle is at the bottom position                           |
-/// | valueIncrement        | boolean  | Quantisation resolution for the slider value                                      |
-/// | functionOnValueChange | function | Function to execute when the handle of the slider is moved                        |
-/// | functionValueUpdate   | function | Function to execute every frame to link the slider to a variable stored elsewhere |
+/// | Name               | Datatype | Purpose                                                                           |
+/// |--------------------|----------|-----------------------------------------------------------------------------------|
+/// | color              | RGB      | Colour for the slider                                                             |
+/// | alpha              | number   | Alpha blending value                                                              |
+/// | handleWidth        | number   | Width of the handle                                                               |
+/// | handleHeight       | number   | Height of the handle                                                              |
+/// | handlePosition     | number   | Normalised (0 -> 1) position of the handle. Coupled to the .value variable        |
+/// | value              | number   | Value for the slider. Coupled to the .handlePosition variable                     |
+/// | valueMin           | number   | Minimum value when the handle is at the top position                              |
+/// | valueMax           | number   | Maximum value when the handle is at the bottom position                           |
+/// | valueIncrement     | boolean  | Quantisation resolution for the slider value                                      |
+/// | eventOnValueChange | function | Function to execute when the handle of the slider is moved                        |
+/// | eventValueUpdate   | function | Function to execute every frame to link the slider to a variable stored elsewhere |
 
 BentoAddBoxType("BentoVerticalSlider", BentoClassVerticalSlider, false);
 function BentoClassVerticalSlider() : BentoClassButton() constructor
