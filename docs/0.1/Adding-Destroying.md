@@ -16,7 +16,7 @@ You may, from to time, need to create a UI element after an interface has been l
 
 ```
 //Optional - Find a UI element with the given identifier
-var existingUI = BoxFind("indentifier")
+var existingUI = Find("indentifier")
 
 //Open up an existing struct to add a UI element to
 use existingUI {
@@ -60,7 +60,7 @@ Destroying a UI element is achieved by calling the `.Destroy()` method on the ta
 
 ```
 //Optional - Find a UI element with the given identifier
-var existingUI = BoxFind("indentifier")
+var existingUI = Find("indentifier")
 
 //Destroy this UI element
 existingUI.Destroy()
