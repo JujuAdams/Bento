@@ -2259,14 +2259,48 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return ((_excludeGroup == undefined) || (highlightGroup == undefined) || (_excludeGroup != highlightGroup));
     }
     
-    static __HighlightableFreeSearch = function(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _excludeGroup, _result)
+    static __HighlightableFreeSearch = function(_pX, _pY, _nX, _nY, _oldStruct, _excludeGroup, _result)
     {
-        //TODO - Write an exception for scanning within scrollboxes
-        
-        var _visibleLeft   = __worldLeft;   //max(_limitLeft,   __worldLeft  );
-        var _visibleTop    = __worldTop;    //max(_limitTop,    __worldTop   );
-        var _visibleRight  = __worldRight;  //min(_limitRight,  __worldRight );
-        var _visibleBottom = __worldBottom; //min(_limitBottom, __worldBottom);
+        var _searchBranch = self;
+        while(true)
+        {
+            //Find the next "branch" in the tree above where we are
+            _searchBranch = __HighlightableFreeSearchNextBranch(_searchBranch);
+            if (_searchBranch == undefined) break; //Uhoh give up
+            
+            with(_searchBranch)
+            {
+                if (variable_struct_exists(self, "__children"))
+                {
+                    //Search recursively through all the children for the branch element
+                    //We don't constrain the search window here to handle off-screen element in scoll boxes
+                    var _i = 0;
+                    repeat(array_length(__children))
+                    {
+                        __children[_i].__HighlightableFreeSearchInner(_pX, _pY, _nX, _nY, _oldStruct, -infinity, -infinity, infinity, infinity, _excludeGroup, _result);
+                        ++_i;
+                    }
+                }
+                else
+                {
+                    __struct.__HighlightableFreeSearchInner(_pX, _pY, _nX, _nY, _oldStruct, -infinity, -infinity, infinity, infinity, _excludeGroup, _result);
+                }
+            }
+            
+            //If we've now found a highlightable element break out
+            if (_result.__struct != undefined) break;
+            
+            //Otherwise do another loop round to the next branch above us
+        }
+    }
+    
+    static __HighlightableFreeSearchInner = function(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _excludeGroup, _result)
+    {
+        //Clip our visible AABB to the search window
+        var _visibleLeft   = max(_limitLeft,   __worldLeft  );
+        var _visibleTop    = max(_limitTop,    __worldTop   );
+        var _visibleRight  = min(_limitRight,  __worldRight );
+        var _visibleBottom = min(_limitBottom, __worldBottom);
         
         if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom) && (__animationMode == BENTO_BUILD_FINISHED))
         {
@@ -2291,10 +2325,15 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             var _i = 0;
             repeat(array_length(__children))
             {
-                __children[_i].__HighlightableFreeSearch(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _excludeGroup, _result);
+                __children[_i].__HighlightableFreeSearchInner(_pX, _pY, _nX, _nY, _oldStruct, _limitLeft, _limitTop, _limitRight, _limitBottom, _excludeGroup, _result);
                 ++_i;
             }
         }
+    }
+    
+    static __HighlightableFreeSearchNextBranch = function(_current)
+    {
+        return __parent.__HighlightableFreeSearchNextBranch(_current);
     }
     
     static __HighlightableFreeSearchDistance = function(_pX, _pY, _nX, _nY)

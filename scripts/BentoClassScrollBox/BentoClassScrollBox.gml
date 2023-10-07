@@ -1,6 +1,6 @@
 /// A surface-based clipping window that allows its contents to be offset. Useful for allowing
 /// access to more content than would otherwise fit on the screen. Available in BentoScript using
-/// the BentoScrollbox builder.
+/// the BentoScrollBox builder.
 /// 
 /// Available variables (in addition to shared UI variables) are:
 /// 
@@ -15,8 +15,8 @@
 /// | draggableX | boolean  | Whether the scroll box can be clicked and dragged to move the window |
 /// | draggableY | boolean  | Whether the scroll box can be clicked and dragged to move the window |
 
-BentoAddBoxType("BentoScrollbox", BentoClassScrollbox, false);
-function BentoClassScrollbox() : BentoClassShared() constructor
+BentoAddBoxType("BentoScrollBox", BentoClassScrollBox, false);
+function BentoClassScrollBox() : BentoClassShared() constructor
 {
     /// Public variables ///
     scrollX    = 0;
@@ -126,6 +126,11 @@ function BentoClassScrollbox() : BentoClassShared() constructor
         {
             __surface = __BentoSurfaceCreate(self, _width, _height);
         }
+    }
+    
+    static __HighlightableFreeSearchNextBranch = function(_current)
+    {
+        return (_current != self)? self : __parent.__HighlightableFreeSearchNextBranch(_current);
     }
     
     static __Step = function(_offsetX, _offsetY, _scale, _executeEvent)

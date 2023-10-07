@@ -331,6 +331,11 @@ function __BentoClassLayer() constructor
         //Do nothing
     }
     
+    static __HighlightableFreeSearchNextBranch = function(_current)
+    {
+        return (_current != self)? self : undefined;
+    }
+    
     #endregion
     
     
@@ -412,12 +417,12 @@ function __BentoClassLayer() constructor
                                 _result.__struct   = undefined;
                                 _result.__distance = infinity;
                                 
-                                var _skipGroup  = undefined;
                                 var _freeSearch = true;
                                 
                                 var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
                                 if (is_struct(_highlightStruct))
                                 {
+                                    var _skipGroup  = undefined;
                                     var _navTarget = undefined;
                                     
                                     with(_highlightStruct)
@@ -440,14 +445,16 @@ function __BentoClassLayer() constructor
                                     {
                                         _result.__struct   = _navTarget;
                                         _result.__distance = 0;
-                                        
-                                        _freeSearch = false;
+                                    }
+                                    else if (_freeSearch)
+                                    {
+                                        _highlightStruct.__HighlightableFreeSearch(__pointerX, __pointerY, _nX, _nY, _highlightStruct, _skipGroup, _result);
                                     }
                                 }
-                                
-                                if (_freeSearch)
+                                else
                                 {
-                                    __struct.__HighlightableFreeSearch(__pointerX, __pointerY, _nX, _nY, __BentoNullableRefResolve(__highlightRef), -infinity, -infinity, infinity, infinity, _skipGroup, _result);
+                                    //Nothing highlighted, free search time!
+                                    __struct.__HighlightableFreeSearchInner(__pointerX, __pointerY, _nX, _nY, undefined, -infinity, -infinity, infinity, infinity, undefined, _result);
                                 }
                                 
                                 var _target = _result.__struct;
