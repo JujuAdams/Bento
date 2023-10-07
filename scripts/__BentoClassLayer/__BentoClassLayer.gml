@@ -679,13 +679,11 @@ function __BentoClassLayer() constructor
                     var _captureStruct = __BentoNullableRefResolve(_captureRef);
                     _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON).__Call(_captureStruct, _buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL));
                     
-                    if (_captureStruct.__EventExists(__BENTO_EVENT.__BUTTON_LONG_CLICK))
+                    if (_captureStruct.__EventExists(__BENTO_EVENT.__BUTTON_LONG_CLICK)
+                    &&  (current_time - __captureTime > BENTO_LONG_CLICK_DELAY))
                     {
-                        if (current_time - __captureTime > BENTO_LONG_CLICK_DELAY)
-                        {
-                            _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON_LONG_CLICK).__Call(_captureStruct, __captureButtonName);
-                            __CaptureSet(undefined, _buttonName);
-                        }
+                        _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON_LONG_CLICK).__Call(_captureStruct, __captureButtonName);
+                        __CaptureSet(undefined, _buttonName);
                     }
                 }
             }
@@ -779,13 +777,11 @@ function __BentoClassLayer() constructor
                     var _captureStruct = __BentoNullableRefResolve(_captureRef);
                     _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON).__Call(_captureStruct, _buttonName);
                     
-                    if (__EventExists(__BENTO_EVENT.__BUTTON_LONG_CLICK))
+                    if (__EventExists(__BENTO_EVENT.__BUTTON_LONG_CLICK)
+                    &&  (current_time - __captureTime > BENTO_LONG_CLICK_DELAY))
                     {
-                        if (current_time - __captureTime > BENTO_LONG_CLICK_DELAY)
-                        {
-                            _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON_LONG_CLICK).__Call(_captureStruct, __captureButtonName);
-                            __CaptureSet(undefined, _buttonName);
-                        }
+                        _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON_LONG_CLICK).__Call(_captureStruct, __captureButtonName);
+                        __CaptureSet(undefined, _buttonName);
                     }
                 }
             }
