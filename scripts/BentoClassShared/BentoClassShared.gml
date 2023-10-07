@@ -2353,25 +2353,5 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __parent.__CaptureCastSearch(_buttonName, _directional);
     }
     
-    
-    static __FindCaptureCast = function(_buttonName, _directional)
-    {
-        if (__active && (__animationMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName, _directional))
-        {
-            return self;
-        }
-        
-        var _i = 0;
-        repeat(array_length(__children))
-        {
-            var _captureStruct = __children[_i].__FindCaptureCast(_buttonName, _directional);
-            if (_captureStruct != undefined) return _captureStruct;
-            
-            ++_i;
-        }
-        
-        return undefined;
-    }
-    
     #endregion
 }
