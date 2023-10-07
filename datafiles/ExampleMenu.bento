@@ -9,41 +9,97 @@ build BentoRectangle {
 		build BentoTextButton {
 			label = "Buttons"
 			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleButtons.bento")
+				}
+			}
 		}
 
 		build BentoTextButton {
 			label = "Sliders"
 			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleSliders.bento")
+				}
+			}
 		}
 
 		build BentoTextButton {
 			label = "Layouts"
 			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleLayouts.bento")
+				}
+			}
 		}
 
 		build BentoTextButton {
 			label = "Scroll Boxes"
 			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleScrollBoxes.bento")
+				}
+			}
 		}
 
 		build BentoTextButton {
 			label = "Video & Sprites"
 			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleVideoAndSprites.bento")
+				}
+			}
 		}
 
 		build BentoTextButton {
 			label = "Example: Main Menu"
 			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleMainMenu.bento")
+				}
+			}
 		}
 
 		build BentoTextButton {
 			label = "Example: Settings"
 			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleSettings.bento")
+				}
+			}
 		}
 
 		build BentoTextButton {
 			label = "Example: Dialogue Box"
 			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleDialogueBox.bento")
+				}
+			}
 		}
 	}
 }
