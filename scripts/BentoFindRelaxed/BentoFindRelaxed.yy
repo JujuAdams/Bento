@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BentoBoxFindRelaxed",
+  "name": "BentoFindRelaxed",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

@@ -5,5 +5,5 @@
 
 function BentoReplace(_identifier, _file)
 {
-    BentoBoxFind(_identifier).ReplaceFromFile(_file);
+    BentoFind(_identifier).ReplaceFromFile(_file);
 }

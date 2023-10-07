@@ -16,15 +16,15 @@ CallInherited()
 
 
 
-BoxFind(identifier)
+Find(identifier)
   Returns the box with the given identifier. If that box doesn't exist then an error will be
-  thrown. This is the same as executing the GML function BentoBoxFind().
+  thrown. This is the same as executing the GML function BentoFind().
 
-BoxFindRelaxed(identifier)
+FindRelaxed(identifier)
   Returns the box with the given identifier. If that box doesn't exist then the function will
-  return <undefined>. This is the same as executing the GML function BentoBoxFindRelaxed().
+  return <undefined>. This is the same as executing the GML function BentoFindRelaxed().
 
-BoxReplace(identifier, path)
+Replace(identifier, path)
   Replaces the box with the given identifier with the result of executing the file at the given
   path. This is the same as executing the .ReplaceFromFile() method for the target box.
 

@@ -33,7 +33,7 @@ build BentoBox {
 			label = "Bento " + string(BENTO_VERSION) + ", " + string(BENTO_DATE) + "\n" + global.testString
 		}
 
-		BoxReplace("target frame", "MainMenuSidebar.bento")
+		Replace("target frame", "MainMenuSidebar.bento")
 	}
 
 	build BentoRectangle {

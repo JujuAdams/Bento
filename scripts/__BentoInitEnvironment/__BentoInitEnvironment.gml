@@ -2,45 +2,19 @@ function __BentoInitEnvironment()
 {
     with(__BentoGlobal().__bentoScriptEnv)
     {
-        interface.exposeConstant("global",               __BentoGlobal().__exposedGlobalStruct,
-                                 "BEHAVIOR_DRAW_ONLY",   BENTO_BEHAVIOR_DRAW_ONLY,
-                                 "BEHAVIOR_PASSTHROUGH", BENTO_BEHAVIOR_PASSTHROUGH,
-                                 "BEHAVIOR_MODAL",       BENTO_BEHAVIOR_MODAL,
-                                 "BEHAVIOR_BLOCKING",    BENTO_BEHAVIOR_BLOCKING,
-                                 "BENTO_VERSION",        BENTO_VERSION,
-                                 "BENTO_DATE",           BENTO_DATE,);
+        interface.exposeConstant("global", __BentoGlobal().__exposedGlobalStruct,
+                                 "BENTO_BEHAVIOR_DRAW_ONLY",   BENTO_BEHAVIOR_DRAW_ONLY,
+                                 "BENTO_BEHAVIOR_PASSTHROUGH", BENTO_BEHAVIOR_PASSTHROUGH,
+                                 "BENTO_BEHAVIOR_MODAL",       BENTO_BEHAVIOR_MODAL,
+                                 "BENTO_BEHAVIOR_BLOCKING",    BENTO_BEHAVIOR_BLOCKING,
+                                 "BENTO_VERSION",              BENTO_VERSION,
+                                 "BENTO_DATE",                 BENTO_DATE,);
     }
     
-    BentoAddFunction("LayerIsTop", BentoLayerCurrentIsTop);
-    
-    BentoAddFunction("LayerDelete", BentoLayerDelete);
-    
-    BentoAddFunction("LayerDeleteCurrent", function()
-    {
-        BentoLayerDelete();
-    });
-    
-    BentoAddFunction("LayerSustain", BentoLayerSustain);
-    
-    BentoAddFunction("BentoLayer", function()
-    {
-        BentoOpen(new __BentoClassLayer());
-        return method(undefined, BentoClose);
-    });
-    
-    BentoAddFunction("BentoTooltipLayer", function()
-    {
-        var _layer = new __BentoClassLayer();
-        
-        BentoOpen(_layer)
-        with(_layer)
-        {
-            Set("behavior", BENTO_BEHAVIOR_PASSTHROUGH);
-            Set("volatile", true);
-        }
-        
-        return method(undefined, BentoClose);
-    });
+    BentoAddFunction("LayerIsTop",         BentoLayerCurrentIsTop);
+    BentoAddFunction("LayerDelete",        BentoLayerDelete);
+    BentoAddFunction("LayerDeleteCurrent", function() { BentoLayerDelete(); });
+    BentoAddFunction("LayerSustain",       BentoLayerSustain);
     
     BentoAddFunction("DebugShowPointer",    BentoDebugShowPointer);
     BentoAddFunction("DebugShowSkeleton",   BentoDebugShowSkeleton);
@@ -64,7 +38,7 @@ function __BentoInitEnvironment()
     BentoAddFunction("GetPointerStartX", BentoPointerGetStartX);
     BentoAddFunction("GetPointerStartY", BentoPointerGetStartY);
     
-    BentoAddFunction("BoxReplace",     BentoReplace);
-    BentoAddFunction("BoxFind",        BentoBoxFind);
-    BentoAddFunction("BoxFindRelaxed", BentoBoxFindRelaxed);
+    BentoAddFunction("Replace",     BentoReplace);
+    BentoAddFunction("Find",        BentoFind);
+    BentoAddFunction("FindRelaxed", BentoFindRelaxed);
 }

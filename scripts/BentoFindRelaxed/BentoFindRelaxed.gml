@@ -3,7 +3,7 @@
 /// @param identifier
 /// @param [layerName]
 
-function BentoBoxFindRelaxed(_identifier, _layerName = undefined)
+function BentoFindRelaxed(_identifier, _layerName = undefined)
 {
     static _global = __BentoGlobal();
     
