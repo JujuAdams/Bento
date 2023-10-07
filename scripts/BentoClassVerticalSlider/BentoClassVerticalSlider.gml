@@ -98,7 +98,7 @@ function BentoClassVerticalSlider() : BentoClassButton() constructor
         //If the output value of the slider has changed, execute the associated event
         if ((value != undefined) && (value != __oldValue))
         {
-            __oldValue = __value;
+            __oldValue = value;
             __EventGet(__BENTO_EVENT.__ON_VALUE_CHANGE).__Call(self, value);
         }
     }
