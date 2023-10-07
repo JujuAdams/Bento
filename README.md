@@ -1,5 +1,5 @@
 <p align="center"><img src="https://raw.githubusercontent.com/JujuAdams/bento/master/LOGO_small.png" style="display:block; margin:auto; width:300px"></p>
-<h1 align="center">0.1.4</h1>
+<h1 align="center">0.1.5</h1>
 
 <p align="center">Cross-platform UI framework for GameMaker by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a></p>
 
