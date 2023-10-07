@@ -40,6 +40,10 @@ BentoOpen(new BentoClassRectangle());
 BentoClose();  <--  OnClose event executed here
 ```
 
+### Push
+
+Called when "pushing" a focused UI element using directional input.
+
 ### Layout
 
 Called when deciding the layout of a UI element. You can (and should) use this event to move child elements too.

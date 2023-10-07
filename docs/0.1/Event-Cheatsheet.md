@@ -12,12 +12,13 @@ The variables and methods on this page define events and are available across al
 
 ## General
 
-| Scripting Name | GML Function         | Purpose                                                                                                               |
-|----------------|----------------------|-----------------------------------------------------------------------------------------------------------------------|
-| `eventStep`    | `EventStep`          | Called via `BentoStep()`                                                                                              |
-| `eventDraw`    | `EventDraw`          | Called via `BentoDraw()`                                                                                              |
-| `eventOnClose` | `EventOnClose`       | Called when a UI element finishes construction (i.e. at the final closing } curly bracket)                            |
-| `eventLayout`  | `EventLayoutExecute` | Manual use only. This function is called to determine the position of a UI element when completing its construction   |
+| Scripting Name | GML Function   | Purpose                                                                                                             |
+|----------------|----------------|---------------------------------------------------------------------------------------------------------------------|
+| `eventStep`    | `EventStep`    | Called via `BentoStep()`                                                                                            |
+| `eventDraw`    | `EventDraw`    | Called via `BentoDraw()`                                                                                            |
+| `eventOnClose` | `EventOnClose` | Called when a UI element finishes construction (i.e. at the final closing } curly bracket)                          |
+| `eventLayout`  | `EventLayout`  | Manual use only. This function is called to determine the position of a UI element when completing its construction |
+| `eventPush`    | `EventPush`    | Called when "pushing" a focused UI element using directional input                                                  |
 
 &nbsp;
 
