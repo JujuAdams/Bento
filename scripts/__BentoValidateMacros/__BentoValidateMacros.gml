@@ -5,11 +5,6 @@ function __BentoValidateMacros()
         __BentoError("BENTO_DEFAULT_BUTTON_NAME must be a string or undefined");
     }
     
-    if (!is_numeric(BENTO_LAYOUT_MAX_REPETITIONS) || (BENTO_LAYOUT_MAX_REPETITIONS <= 0) || (floor(BENTO_LAYOUT_MAX_REPETITIONS) != BENTO_LAYOUT_MAX_REPETITIONS))
-    {
-        __BentoError("BENTO_LAYOUT_MAX_REPETITIONS must be an integer greater than 0");
-    }
-    
     if (!is_numeric(BENTO_DEFAULT_FONT) || !font_exists(BENTO_DEFAULT_FONT))
     {
         __BentoError("BENTO_DEFAULT_FONT must be a font");
