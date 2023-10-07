@@ -60,7 +60,7 @@ Mostly you'll be using the convenience function `BentoFileExecuteLayerTop()` but
 
 Another useful feature is replacing a UI element with the result of executing a file. You can do this two ways: 
 
-1. BentoScript function `BoxReplace()`
+1. BentoScript function `Replace()`
 
 2. Method `.ReplaceFromFile()`
 
