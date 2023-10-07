@@ -1093,6 +1093,16 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         __localY = lerp(__localTop, __localBottom, __originY);
     });
     
+    VariableBind("origin", function()
+    {
+        return [Get("originX", "originY")];
+    },
+    function(_value)
+    {
+        Set("originX", _value[0]);
+        Set("originY", _value[1]);
+    });
+    
     VariableBind("scale", function()
     {
         return __localScale;
