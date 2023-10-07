@@ -12,12 +12,21 @@ The variables and methods on this page define events and are available across al
 
 ## General
 
-| Scripting Name | GML Function   | Purpose                                                                                                               |
-|----------------|----------------|-----------------------------------------------------------------------------------------------------------------------|
-| `eventStep`    | `EventStep`    | Called via `BentoStep()`                                                                                              |
-| `eventDraw`    | `EventDraw`    | Called via `BentoDraw()`                                                                                              |
-| `eventOnClose` | `EventOnClose` | Called when a UI element finishes construction (i.e. at the final closing } curly bracket)                            |
-| `eventBuildIn` | `EventBuildIn` | Called via the `BuildIn()` method and when a UI element is first created. Should be used to set up an entry animation |
+| Scripting Name | GML Function         | Purpose                                                                                                               |
+|----------------|----------------------|-----------------------------------------------------------------------------------------------------------------------|
+| `eventStep`    | `EventStep`          | Called via `BentoStep()`                                                                                              |
+| `eventDraw`    | `EventDraw`          | Called via `BentoDraw()`                                                                                              |
+| `eventOnClose` | `EventOnClose`       | Called when a UI element finishes construction (i.e. at the final closing } curly bracket)                            |
+| `eventLayout`  | `EventLayoutExecute` | Manual use only. This function is called to determine the position of a UI element when completing its construction   |
+
+&nbsp;
+
+## Animation
+
+| Scripting Name       | GML Function         | Purpose                                                                                                                                           |
+|----------------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| `eventBuildIn`       | `EventBuildIn`       | Called via the `BuildIn()` method and when a UI element is first created. Should be used to set up an entry animation                             |
+| `eventBuildFinished` | `EventBuildFinished` | Called when all of the build-in animations finish. This event will only be triggerd if an `Animate*()` method was called in the **BuildIn** event |
 
 &nbsp;
 
@@ -57,12 +66,3 @@ Button events require one of the following variables to be set:
 |----------------------|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | `eventOnValueChange` | `EventOnValueChange` | Function to call when the slider's handle is moved. Can be used to set another variable or trigger other behaviour                              |
 | `eventValueUpdate`   | `EventValueUpdate`   | Function to call, every frame, to update the slider's value. Best used in conjunction with the above event to create a two-way variable binding |
-
-&nbsp;
-
-## Layout
-
-| Scripting Name     | GML Function         | Purpose                                                                                                                                                                                       |
-|--------------------|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `eventLayout`      | `EventLayoutExecute` | Manual use only. This function is called to determine the position of a UI element when completing its construction                                                                           |
-| `eventLayoutCheck` | `EventLayoutCheck`   | Manual use only and very optional. This function is called after laying out child element to verify that they've been placed correctly. The event should return <true> or <false> accordingly |

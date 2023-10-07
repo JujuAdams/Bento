@@ -40,6 +40,10 @@ BentoOpen(new BentoClassRectangle());
 BentoClose();  <--  OnClose event executed here
 ```
 
+### Layout
+
+Called when deciding the layout of a UI element. You can (and should) use this event to move child elements too.
+
 &nbsp;
 
 ## Animation
@@ -109,17 +113,3 @@ Called when the handle for a slider is moved by the player. You could use this e
 ### ValueUpdate
 
 Called once when the slider is created, and then every frame. The intention is that this event allows you to create a two-way binding for the slider. The function you set for this event should return the value you want to set for the slider.
-
-&nbsp;
-
-## Layout
-
-!> These two functions have niche use cases and may, at some point, be replaced.
-
-### LayoutExecute
-
-Called when deciding the layout of a UI element. You can (and should) use this event to move child elements too.
-
-### LayoutCheck
-
-Called when deciding if the previously set layout (see above) is valid. The function you set for this event should return `true` or `false` depending on whether the layout is still acceptable.

@@ -6,7 +6,7 @@
 
 Bento's UI elements, in addition to getter / setter variables and events, also have explicit methods calls that you can use. These methods vary from very useful and useful, such as `.Destroy()`, to obscure, such as `ButtonStateSet()`. Some UI templates also have methods and when customising your own UI elements you'll likely want to add your own.
 
-Of particular note, however, are the "layout methods". These methods override the `eventLayout` and `eventLayoutCheck` events and set up common layout behaviours. You'll find yourself using these a lot in production as a way to simplify setting up menus and inventories etc.  Here's an example:
+Of particular note, however, are the "layout methods". These methods override `eventLayout` and set up common layout behaviours. You'll find yourself using these a lot in production as a way to simplify setting up menus and inventories etc.  Here's an example:
 
 ```
 build BentoBox {
