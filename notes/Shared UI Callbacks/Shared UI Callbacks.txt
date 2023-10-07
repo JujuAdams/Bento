@@ -4,13 +4,14 @@ The variables and methods on this page define events and are available across al
 
 # Events
 
-| Scripting Name | GML Function | Purpose                                                                                    |
-|----------------|--------------|--------------------------------------------------------------------------------------------|
-| eventStep      | EventStep    | Called every frame via BentoStep()                                                         |
-| eventDraw      | EventDraw    | Called every frame via BentoDraw()                                                         |
-| eventOnClose   | EventOnClose | Called when a UI element finishes construction (i.e. at the final closing } curly bracket) |
-| eventBuildIn   | EventBuildIn | Called when a UI element is when appearing on screen a.k.a. "building in"                  |
-| eventPush      | EventPush    | Called when a focused UI element is "pushed" by directional input (e.g. from a gamepad)    |
+| Scripting Name | GML Function | Purpose                                                                                                             |
+|----------------|--------------|---------------------------------------------------------------------------------------------------------------------|
+| eventStep      | EventStep    | Called every frame via BentoStep()                                                                                  |
+| eventDraw      | EventDraw    | Called every frame via BentoDraw()                                                                                  |
+| eventOnClose   | EventOnClose | Called when a UI element finishes construction (i.e. at the final closing } curly bracket)                          |
+| eventBuildIn   | EventBuildIn | Called when a UI element is when appearing on screen a.k.a. "building in"                                           |
+| eventPush      | EventPush    | Called when a focused UI element is "pushed" by directional input (e.g. from a gamepad)                             |
+| eventLayout    | EventLayout  | Manual use only. This function is called to determine the position of a UI element when completing its construction |
 
 
 
@@ -42,15 +43,6 @@ Button events require one of the following variables to be set:
 | eventOver         | EventHover        | Function to call when the UI element is highlighted                                                                        |
 | eventLeave        | EventHoverEnd     | Function to call when the UI element is un-highlighted                                                                     |
 | eventCanHighlight | EventCanHighlight | Function to call to check whether a UI element can be highlighted                                                          |
-
-
-
-# Layout Events
-
-| Scripting Name   | GML Function       | Purpose                                                                                                                                                                                      |
-|------------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| eventLayout      | EventLayoutExecute | Manual use only. This function is called to determine the position of a UI element when completing its construction                                                                          |
-| eventLayoutCheck | EventLayoutCheck   | Manual use only and very optional. This function is called after laying out child element to verify that they've been placed correctly. The event should return <true> or <false> accordingly|
 
 
 

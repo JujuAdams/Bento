@@ -425,14 +425,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     
     
-    static EventLayoutExecute = function(_function)
+    static EventLayout = function(_function)
     {
-        return __Event(__BENTO_EVENT.__LAYOUT_EXECUTE, _function);
-    }
-    
-    static EventLayoutCheck = function(_function)
-    {
-        return __Event(__BENTO_EVENT.__LAYOUT_CHECK, _function);
+        return __Event(__BENTO_EVENT.__LAYOUT, _function);
     }
     
     
@@ -1682,7 +1677,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static __LayoutBuildOrder = function(_array)
     {
-        if (__EventExists(__BENTO_EVENT.__LAYOUT_EXECUTE) || __EventExists(__BENTO_EVENT.__LAYOUT_CHECK))
+        if (__EventExists(__BENTO_EVENT.__LAYOUT))
         {
             array_push(_array, self);
         }
@@ -1697,12 +1692,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static __LayoutExecute = function()
     {
-        return __EventGet(__BENTO_EVENT.__LAYOUT_EXECUTE).__Call(self);
-    }
-    
-    static __LayoutCheck = function()
-    {
-        return __EventGet(__BENTO_EVENT.__LAYOUT_CHECK).__Call(self);
+        return __EventGet(__BENTO_EVENT.__LAYOUT).__Call(self);
     }
     
     VariableBind("eventLayout", function()
@@ -1712,17 +1702,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     },
     function(_value)
     {
-        __EventFromBentoScript(__BENTO_EVENT.__LAYOUT_EXECUTE, _value);
-    });
-    
-    VariableBind("eventLayoutCheck", function()
-    {
-        __BentoError("Cannot get \"eventLayoutCheck\"");
-        return;
-    },
-    function(_value)
-    {
-        __EventFromBentoScript(__BENTO_EVENT.__LAYOUT_CHECK, _value);
+        __EventFromBentoScript(__BENTO_EVENT.__LAYOUT, _value);
     });
     
     #endregion
@@ -1774,7 +1754,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             __setNavigation: _setNavigation,
         };
         
-        EventLayoutExecute(function()
+        EventLayout(function()
         {
             var _spacing       = __layout.__spacing;
             var _setNavigation = __layout.__setNavigation;
@@ -1870,12 +1850,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                 break;
             }
         });
-        
-        EventLayoutCheck(function()
-        {
-            //Don't bother! Presume everything went according to plan
-            return false;
-        });
     }
     
     #endregion
@@ -1891,7 +1865,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             __setNavigation: _setNavigation,
         };
         
-        EventLayoutExecute(function()
+        EventLayout(function()
         {
             var _spacing       = __layout.__spacing;
             var _setNavigation = __layout.__setNavigation;
@@ -1987,12 +1961,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                 break;
             }
         });
-        
-        EventLayoutCheck(function()
-        {
-            //Don't bother! Presume everything went according to plan
-            return false;
-        });
     }
     
     #endregion
@@ -2007,7 +1975,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             __cellHeight: _cellHeight,
         };
         
-        EventLayoutExecute(function()
+        EventLayout(function()
         {
             var _maxWidth   = __localWidth;
             var _cellWidth  = __layout.__cellWidth;
@@ -2039,12 +2007,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                 ++_i;
             }
         });
-        
-        EventLayoutCheck(function()
-        {
-            //Don't bother! Presume everything went according to plan
-            return false;
-        });
     }
     
     #endregion
@@ -2070,7 +2032,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             __columnWidths: _widthArray,
         };
         
-        EventLayoutExecute(function()
+        EventLayout(function()
         {
             var _funcCenterElements = function(_children, _i, _count, _y)
             {
@@ -2155,12 +2117,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
             {
                 _funcCenterElements(_children, _lineStart, _lineCells, _y + _maxHeight/2);
             }
-        });
-        
-        EventLayoutCheck(function()
-        {
-            //Don't bother! Presume everything went according to plan
-            return false;
         });
     }
     

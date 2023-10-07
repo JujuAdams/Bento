@@ -32,9 +32,7 @@ enum __BENTO_EVENT
     __DRAW,
     __ON_CLOSE,
     __CAN_HIGHLIGHT,
-    
-    __LAYOUT_EXECUTE,
-    __LAYOUT_CHECK,
+    __LAYOUT,
     
     __ON_VALUE_CHANGE,
     __VALUE_UPDATE,

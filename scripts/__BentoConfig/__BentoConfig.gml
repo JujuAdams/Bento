@@ -1,9 +1,5 @@
 #macro BENTO_DEFAULT_BUTTON_NAME  "action"
 
-// The maximum number of repetitions for solving layouts
-// Be very careful with this number! It might seriously degrade performance when building UI
-#macro BENTO_LAYOUT_MAX_REPETITIONS  2
-
 // Default font to use for text-based boxes
 #macro BENTO_DEFAULT_FONT  __bentoDefaultFont
 

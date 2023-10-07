@@ -12,7 +12,7 @@ function BentoClose()
     _current.__Close();
     
     //We want to run layouts on close in case 
-    _current.__EventGet(__BENTO_EVENT.__LAYOUT_EXECUTE).__Call(_current);
+    _current.__EventGet(__BENTO_EVENT.__LAYOUT).__Call(_current);
     
     //Pop context set elsewhere (typically BentoOpenExisting() or layer creation methods in BentoClassHost)
     __BentoContextStackPop();
@@ -27,32 +27,11 @@ function BentoClose()
         _current.__LayoutBuildOrder(_array);
         var _layoutCount = array_length(_array);
         
-        //Repeat a few times
-        //We break out early if nothing changed
-        repeat(BENTO_LAYOUT_MAX_REPETITIONS)
+        var _i = 0;
+        repeat(_layoutCount)
         {
-            var _dirty = false;
-            
-            var _i = 0;
-            repeat(_layoutCount)
-            {
-                _array[_i].__LayoutExecute();
-                ++_i;
-            }
-            
-            var _i = _layoutCount-1;
-            repeat(_layoutCount)
-            {
-                if (not (_array[_i].__LayoutCheck() ?? true))
-                {
-                    _dirty = true;
-                    break;
-                }
-                
-                --_i;
-            }
-            
-            if (not _dirty) break;
+            _array[_i].__LayoutExecute();
+            ++_i;
         }
         
         //Start the build-in animation
