@@ -43,6 +43,7 @@ Button events require one of the following variables to be set:
 | Scripting Name    | GML Function            | Purpose                                                                                                                                                |
 |-------------------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `eventClick`      | `EventButtonClick`      | Function to call when a button is deliberately actived (typically by clicking on it!). This function is also triggered by button casts                 |
+| `eventLongClick`  | `EventButtonLongClick`  | Function to call when a button is held for a long period of time (determined by `BENTO_LONG_CLICK_DELAY`)                                              |
 | `eventPress`      | `EventButtonStart`      | Function to call when a button is pressed on the UI element                                                                                            |
 | `eventHold`       | `EventButton`           | Function to call when a button is held on the UI element                                                                                               |
 | `eventRelease`    | `EventButtonEnd`        | Function to call when a button is released (and the UI element received a pressed event) <br> **N.B.** This is NOT the same as "clicking" the button. A button can be released for many reasons that aren't the same as the player deliberately clicking |

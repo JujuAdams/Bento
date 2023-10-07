@@ -68,11 +68,15 @@ Called when all of the build-in animations finish. This event will only be trigg
 
 ### ButtonClick
 
-Called when a button is positively clicked by the player. This happens on button release. The `ButtonClick` event can be triggered by either targetted or cast button clicks.
+Called when a button is positively clicked by the player. This typically happens on button release (see `BENTO_MOBILE_CLICK_ON_PRESS` and `BentoInputSetClickOnPress()`). The **ButtonClick** event can be triggered by either targetted or cast button clicks.
+
+### ButtonLongClick
+
+Called when a button is positively clicked by the player and then held for a period of time. The **ButtonLongClick** event can be triggered by either targetted or cast button clicks.
 
 ### ButtonStart
 
-Called when a button is pressed whilst the UI element is focused. The button is considered "captured" for the purposes of the `Button` and `ButtonEnd` events.
+Called when a button is pressed whilst the UI element is focused. The button is considered "captured" for the purposes of the **Button** and **ButtonEnd** events.
 
 ### Button
 

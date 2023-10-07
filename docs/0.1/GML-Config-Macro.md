@@ -14,9 +14,15 @@ The macros on this page can be found in the `__BentoConfig` script.
 
 &nbsp;
 
-## `BENTO_LAYOUT_MAX_REPETITIONS`
+## `BENTO_MOBILE_CLICK_ON_PRESS`
 
-*Typical value:* `2`
+*Typical value:* `true`
+
+&nbsp;
+
+## `BENTO_LONG_CLICK_DELAY`
+
+*Typical value:* `600`
 
 &nbsp;
 

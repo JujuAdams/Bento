@@ -204,3 +204,69 @@
 ```
 
 <!-- tabs:end -->
+
+&nbsp;
+
+## …InputSetClickOnPress
+
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoInputSetClickOnPress(state)</code></td>
+    </tr>
+</table>
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name   |Datatype|Purpose                                                     |
+|-------|--------|------------------------------------------------------------|
+|`state`|boolean |                                                            |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
+
+&nbsp;
+
+## …InputGetClickOnPress
+
+<table>
+    <tr>
+		<td><b>BentoScript</b></td>
+		<td><i>Unavailable</i></td>
+    </tr>
+    <tr>
+		<td><b>GML</b></td>
+		<td><code>BentoInputGetClickOnPress()</code></td>
+    </tr>
+</table>
+
+<!-- tabs:start -->
+
+#### **Description**
+
+**Returns:** N/A (`undefined`)
+
+|Name|Datatype|Purpose|
+|----|--------|-------|
+|None|        |       |
+
+#### **Example**
+
+```gml
+
+```
+
+<!-- tabs:end -->
