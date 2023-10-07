@@ -2,6 +2,8 @@
 
 #macro BENTO_MOBILE_CLICK_ON_PRESS  true
 
+#macro BENTO_LONG_CLICK_DELAY  600
+
 // Default font to use for text-based boxes
 #macro BENTO_DEFAULT_FONT  __bentoDefaultFont
 

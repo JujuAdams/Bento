@@ -501,6 +501,11 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __Event(__BENTO_EVENT.__BUTTON_CLICK, _function);
     }
     
+    static EventButtonLongClick = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__BUTTON_LONG_CLICK, _function);
+    }
+    
     static EventButtonCanCapture = function(_function)
     {
         return __Event(__BENTO_EVENT.__BUTTON_CAN_CAPTURE, _function);
@@ -544,6 +549,16 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     function(_value)
     {
         __EventFromBentoScript(__BENTO_EVENT.__BUTTON_CLICK, _value);
+    });
+    
+    VariableBind("eventLongClick", function()
+    {
+        __BentoError("Cannot get \"eventLongClick\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUTTON_LONG_CLICK, _value);
     });
     
     VariableBind("eventCanCapture", function()

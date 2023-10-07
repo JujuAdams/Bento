@@ -24,6 +24,7 @@ enum __BENTO_EVENT
     __BUTTON,
     __BUTTON_END,
     __BUTTON_CLICK,
+    __BUTTON_LONG_CLICK,
     __BUTTON_CAN_CAPTURE,
     
     __PUSH,
