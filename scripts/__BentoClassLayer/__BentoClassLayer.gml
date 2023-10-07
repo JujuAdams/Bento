@@ -1,3 +1,23 @@
+BentoAddFunction("BentoLayer", function()
+{
+    BentoOpen(new __BentoClassLayer());
+    return method(undefined, BentoClose);
+});
+
+BentoAddFunction("BentoTooltipLayer", function()
+{
+    var _layer = new __BentoClassLayer();
+    
+    BentoOpen(_layer)
+    with(_layer)
+    {
+        Set("behavior", BENTO_BEHAVIOR_MODAL);
+        Set("volatile", true);
+    }
+    
+    return method(undefined, BentoClose);
+});
+
 function __BentoClassLayer() constructor
 {
     static _global       = __BentoGlobal();
@@ -582,7 +602,7 @@ function __BentoClassLayer() constructor
         }
         
         //Handle latching
-        if (__BENTO_TEST_LATCHING || (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL))
+        if (__BENTO_TEST_FOCUSING || (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL))
         {
             var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
             if (is_struct(_highlightStruct) && _highlightStruct.focusable)
@@ -669,7 +689,7 @@ function __BentoClassLayer() constructor
         }
         
         //Handle latching
-        if (__BENTO_TEST_LATCHING || (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL))
+        if (__BENTO_TEST_FOCUSING || (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL))
         {
             var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
             if (is_struct(_highlightStruct) && _highlightStruct.focusable)

@@ -1,7 +1,7 @@
 #macro BENTO_BUILD_FINISHED  0
 #macro BENTO_BUILD_IN        1
 
-#macro BENTO_BEHAVIOR_DRAW_ONLY         0
+#macro BENTO_BEHAVIOR_DRAW_ONLY    0
 #macro BENTO_BEHAVIOR_PASSTHROUGH  1
 #macro BENTO_BEHAVIOR_MODAL        2
 #macro BENTO_BEHAVIOR_BLOCKING     3
@@ -12,7 +12,7 @@
 #macro BENTO_VERSION  "0.1.4 alpha"
 #macro BENTO_DATE     "2023-10-04"
 
-#macro __BENTO_TEST_LATCHING  true
+#macro __BENTO_TEST_FOCUSING  true
 
 enum __BENTO_EVENT
 {
