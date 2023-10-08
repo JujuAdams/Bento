@@ -113,9 +113,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     __originX = 0.5; //Normalized value
     __originY = 0.5; //Normalized value
     
-    __originXStashed = undefined;
-    __originYStashed = undefined;
-    
     //Nullable weak references
     __navigationRight = undefined;
     __navigationUp    = undefined;
@@ -1051,38 +1048,6 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     }
     
     #endregion
-    
-    
-    
-    static TempOriginX = function(_value)
-    {
-        if (__originXStashed == undefined) __originXStashed = __originX;
-        __originX = _value;
-    }
-    
-    static TempOriginY = function(_value)
-    {
-        if (__originYStashed == undefined) __originYStashed = __originY;
-        __originY = _value;
-    }
-    
-    static TempOriginXReset = function()
-    {
-        if (__originXStashed != undefined)
-        {
-            __originX = __originXStashed;
-            __originXStashed = undefined;
-        }
-    }
-    
-    static TempOriginYReset = function()
-    {
-        if (__originYStashed != undefined)
-        {
-            __originY = __originYStashed;
-            __originYStashed = undefined;
-        }
-    }
     
     
     

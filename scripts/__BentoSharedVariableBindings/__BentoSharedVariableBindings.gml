@@ -396,8 +396,6 @@ function __BentoSharedVariableBindings()
     },
     function(_value)
     {
-        __originXStashed = undefined;
-        
         __originX = _value;
         __localX = lerp(__localLeft, __localRight, __originX);
     });
@@ -408,8 +406,6 @@ function __BentoSharedVariableBindings()
     },
     function(_value)
     {
-        __originYStashed = undefined;
-        
         __originY = _value;
         __localY = lerp(__localTop, __localBottom, __originY);
     });
@@ -445,13 +441,8 @@ function __BentoSharedVariableBindings()
     },
     function(_value)
     {
-        var _originXStashed = __originXStashed;
-        var _originYStashed = __originYStashed;
         Set("left",   _value[0]);
         Set("top",    _value[1]);
-        
-        __originXStashed = _originXStashed;
-        __originYStashed = _originYStashed;
         Set("right",  _value[2]);
         Set("bottom", _value[3]);
     });
