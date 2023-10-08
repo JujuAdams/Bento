@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BentoLayerDelete",
+  "name": "BentoLayerDestroy",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {

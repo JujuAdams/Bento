@@ -254,15 +254,17 @@ function __BentoClassHost(_name) constructor
         return false;
     }
     
-    static __LayerDelete = function(_name)
+    static __LayerDestroy = function(_name)
     {
         var _index = __GetIndex(_name);
         if (_index == undefined) return; //Stop, stop, he's already dead
         
+        _layer.Destroy();
+        
         var _layer = __layerArray[_index];
         array_delete(__layerArray, _index, 1);
         
-        if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Deleted ", _layer);
+        if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Destroyd ", _layer);
     }
     
     static __LayerAnimationExit = function(_name)

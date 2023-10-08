@@ -1,4 +1,4 @@
-/// Deletes all Bento boxes.
+/// Destroys all Bento UI elements.
 
 function BentoClear()
 {

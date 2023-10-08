@@ -10,11 +10,10 @@ function __BentoInitEnvironment()
                                  "BENTO_VERSION",              BENTO_VERSION,
                                  "BENTO_DATE",                 BENTO_DATE,);
     }
-    
+                                            
     BentoAddFunction("LayerIsTop",         BentoLayerCurrentIsTop);
     BentoAddFunction("LayerAnimationExit", BentoLayerAnimationExit);
-    BentoAddFunction("LayerDelete",        BentoLayerDelete);
-    BentoAddFunction("LayerDeleteCurrent", function() { BentoLayerDelete(); });
+    BentoAddFunction("LayerDestroy",       BentoLayerDestroy);
     BentoAddFunction("LayerSustain",       BentoLayerSustain);
     
     BentoAddFunction("DebugShowPointer",    BentoDebugShowPointer);

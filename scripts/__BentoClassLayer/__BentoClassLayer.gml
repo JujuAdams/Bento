@@ -35,7 +35,7 @@ function __BentoClassLayer() constructor
     __volatile          = false;
     __volatileKeepAlive = true;
     
-    __destroyed = false;
+    __destroyed     = false;
     __animationExit = false;
     
     __pointerX      = 0;
@@ -72,7 +72,7 @@ function __BentoClassLayer() constructor
     {
         if (_value != __name)
         {
-            __host.__LayerDelete(_value);
+            __host.__LayerDestroy(_value);
             
             var _oldName = string(self);
             __name = _value;
@@ -252,6 +252,18 @@ function __BentoClassLayer() constructor
     });
     
     
+    
+    static Destroy = function()
+    {
+        if (__destroyed) return;
+        __destroyed = true;
+        
+        if (is_struct(__struct))
+        {
+            __struct.Destroy();
+            __struct = undefined;
+        }
+    }
     
     static HasChildren = function()
     {
@@ -560,12 +572,12 @@ function __BentoClassLayer() constructor
             if (!is_struct(__struct))
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " build out has finished (no child struct)");
-                __destroyed = true;
+                Destroy();
             }
             else if (__struct.__animationMode == BENTO_ANIMATION_EXITED)
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " build out has finished");
-                __destroyed = true;
+                Destroy();
             }
         }
         
@@ -578,7 +590,7 @@ function __BentoClassLayer() constructor
             else
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " not kept alive, destroying");
-                __destroyed = true;
+                Destroy();
             }
         }
     }

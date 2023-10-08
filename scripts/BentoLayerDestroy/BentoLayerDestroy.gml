@@ -1,8 +1,8 @@
-/// Deletes a layer with the given name. If the layer doesn't exists, this function does nothing.
+/// Destroys a layer with the given name. If the layer doesn't exists, this function does nothing.
 /// 
 /// @param [layerName=current]
 
-function BentoLayerDelete(_layerName = undefined)
+function BentoLayerDestroy(_layerName = undefined)
 {
     static _global = __BentoGlobal();
     
@@ -13,5 +13,5 @@ function BentoLayerDelete(_layerName = undefined)
         _layerName = _layer.__name;
     }
     
-    return _global.__currentHost.__LayerDelete(_layerName);
+    return _global.__currentHost.__LayerDestroy(_layerName);
 }
