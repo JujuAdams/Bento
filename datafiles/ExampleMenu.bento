@@ -6,6 +6,16 @@ build BentoRectangle {
 	}
 
 	build BentoTextButton {
+		label = "Docs"
+		origin = [0, 0]
+		xywh = [10, 10, 50, 40]
+
+		eventClick = fn {
+			url_open("https://www.jujuadams.com/Bento/")
+		}
+	}
+
+	build BentoTextButton {
 		label = "?"
 		origin = [1, 0]
 		xywh = [parent.width-10, 10, 40, 40]
@@ -17,14 +27,34 @@ build BentoRectangle {
 				build BentoRectangle {
 					fillColor = make_color_rgb(20, 20, 20)
 					fillAlpha = 0.9
-					ltrb = ["70%", 0, "100%", "100%"]
+					ltrb = ["60%", 0, "100%", "100%"]
 
 					eventBuildIn = fn {
 						AnimateX(width, 30, 0, acExpo)
 					}
 
+					var header = build BentoText {
+						xy = ["50%", 30]
+						label = "Welcome to Bento " + BENTO_VERSION + "!"
+					}
+
+					var footer = build BentoTextWrap {
+						width = parent.width - 30
+						label = "Thank you for taking a look at Bento,\nand good luck with your games!"
+						Trim()
+						originY = 1
+						xy = ["50%", parent.height-30]
+					}
+
+					build BentoTextWrap {
+						ltrb = [60, header.bottom + 30, parent.width-20, footer.top-30]
+						hAlign = "left"
+						vAlign = "middle"
+						label = "Bento is a UI framework for GameMaker LTS 2022 made by Juju Adams, with a ton of help from Katsaii and other members of The GameMaker Kitchen Discord server.\n\nUI building has always been very challenging in GameMaker. A lot of libraries have been written over the years to tackle the problem but they've typically been a collection of widgets rather than a holistic *system* that manages user input, layering, animation, and layout. Bento prioritises solving this systemic challenge.\n\nHere are a few things Bento makes easier:\n\n- UI can be laid out and edited without having to recompile the game\n\n- Template UI elements can be extended and customised to meet your needs\n\n- Native build-in / build-out animation system\n\n- Native gamepad/keyboard support, including navigation hinting\n\n- Surface-based scroll boxes\n\n- In-depth layering system, including support for modals"
+					}
+
 					build BentoTextButton {
-						label = "-->"
+						label = "X"
 						origin = [0, 0.5]
 						xywh = [0, "50%", 40, 40]
 
