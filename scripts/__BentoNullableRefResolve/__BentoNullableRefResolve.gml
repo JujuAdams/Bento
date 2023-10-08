@@ -1,4 +1,4 @@
 function __BentoNullableRefResolve(_value)
 {
-    return ((_value == undefined) || (not weak_ref_alive(_value)))? undefined : _value.ref;
+    return __BentoNullableRefAlive(_value)? _value.ref : undefined;
 }

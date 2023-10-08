@@ -170,6 +170,18 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         
         __destroyed = true;
         __EventGet(__BENTO_EVENT.__DESTROY).__Call(self);
+        
+        //Orphan this UI element
+        __ParentChange(undefined);
+        
+        //Turn off active and visible
+        Set("active",  false);
+        Set("visible", false);
+    }
+    
+    static Exists = function()
+    {
+        return !__destroyed;
     }
     
     static GetType = function()
@@ -266,6 +278,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static ReplaceFromFile = function(_file)
     {
+        if (__destroyed)
+        {
+            __BentoTrace("Cannot replace \"", self, "\" from file \"", _file, "\" as this UI element has been destroyed");
+            return;
+        }
+        
         if (BENTO_REPORT_LEVEL > 0) __BentoTrace("Reloading \"", self, "\" (file = \"", _file, "\")");
         
         var _oldCreateTarget = _global.__createReplaceTarget;
