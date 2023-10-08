@@ -259,9 +259,8 @@ function __BentoClassHost(_name) constructor
         var _index = __GetIndex(_name);
         if (_index == undefined) return; //Stop, stop, he's already dead
         
-        _layer.Destroy();
-        
         var _layer = __layerArray[_index];
+        _layer.Destroy();
         array_delete(__layerArray, _index, 1);
         
         if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Destroyd ", _layer);
