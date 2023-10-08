@@ -4,7 +4,7 @@
 /// @param [layerName=current]
 /// @param [destroyOnExit=true]
 
-function BentoLayerBuildOut(_layerName = undefined, _destroyOnExit = true)
+function BentoLayerAnimationExit(_layerName = undefined, _destroyOnExit = true)
 {
     static _global = __BentoGlobal();
     
@@ -15,5 +15,5 @@ function BentoLayerBuildOut(_layerName = undefined, _destroyOnExit = true)
         _layerName = _layer.__name;
     }
     
-    return _global.__currentHost.__LayerBuildOut(_layerName, _destroyOnExit);
+    return _global.__currentHost.__LayerAnimationExit(_layerName, _destroyOnExit);
 }

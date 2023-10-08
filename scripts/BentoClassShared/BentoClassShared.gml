@@ -96,7 +96,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         ++_i;
     }
     
-    __animationMode          = BENTO_BUILD_FINISHED;
+    __animationMode          = BENTO_ANIMATION_ENTERED;
     __animationArray         = [];
     __animationDestroyOnExit = true;
     
@@ -303,48 +303,48 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #region Animation
     
-    static BuildIn = function()
+    static AnimationEnter = function()
     {
-        if (__EventExists(__BENTO_EVENT.__BUILD_IN))
+        if (__EventExists(__BENTO_EVENT.__ANIMATION_ENTER))
         {
-            __animationMode = BENTO_BUILD_IN;
+            __animationMode = BENTO_ANIMATION_ENTER;
             array_resize(__animationArray, 0);
             
-            __EventGet(__BENTO_EVENT.__BUILD_IN).__Call(self);
+            __EventGet(__BENTO_EVENT.__ANIMATION_ENTER).__Call(self);
         }
         
         var _i = 0;
         repeat(array_length(__children))
         {
-            __children[_i].BuildIn();
+            __children[_i].AnimationEnter();
             ++_i;
         }
     }
     
-    static BuildOut = function(_destroyOnExit = true)
+    static AnimationExit = function(_destroyOnExit = true)
     {
-        __animationMode          = BENTO_BUILD_OUT;
+        __animationMode          = BENTO_ANIMATION_EXIT;
         __animationDestroyOnExit = _destroyOnExit;
         
-        if (__EventExists(__BENTO_EVENT.__BUILD_OUT))
+        if (__EventExists(__BENTO_EVENT.__ANIMATION_EXIT))
         {
             array_resize(__animationArray, 0);
-            __EventGet(__BENTO_EVENT.__BUILD_OUT).__Call(self);
+            __EventGet(__BENTO_EVENT.__ANIMATION_EXIT).__Call(self);
         }
         
         var _i = 0;
         repeat(array_length(__children))
         {
-            __children[_i].BuildOut();
+            __children[_i].AnimationExit();
             ++_i;
         }
     }
     
-    static __BuildUpdate = function()
+    static __AnimationUpdate = function()
     {
         switch(__animationMode)
         {
-            case BENTO_BUILD_IN:
+            case BENTO_ANIMATION_ENTER:
                 var _finished = true;
                 var _i = 0;
                 repeat(array_length(__animationArray))
@@ -356,7 +356,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                 return _finished;
             break;
             
-            case BENTO_BUILD_OUT:
+            case BENTO_ANIMATION_EXIT:
                 var _finished = true;
                 var _i = 0;
                 repeat(array_length(__animationArray))
@@ -376,18 +376,18 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                     var _i = 0;
                     repeat(array_length(__children))
                     {
-                        if (__children[_i].__animationMode == BENTO_BUILD_OUT) _finished = false;
+                        if (__children[_i].__animationMode == BENTO_ANIMATION_EXIT) _finished = false;
                         ++_i;
                     }
                     
-                    if (_finished) BuildFinish();
+                    if (_finished) AnimationFinish();
                 }
                 
                 return _finished;
             break;
             
-            case BENTO_BUILD_FINISHED:
-            case BENTO_BUILD_EXITED:
+            case BENTO_ANIMATION_ENTERED:
+            case BENTO_ANIMATION_EXITED:
                 return true;
             break;
             
@@ -399,32 +399,33 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return false;
     }
     
-    static BuildFinish = function()
+    static AnimationFinish = function()
     {
         switch(__animationMode)
         {
-            case BENTO_BUILD_IN:
+            case BENTO_ANIMATION_ENTER:
                 animXOffset     = 0;
                 animYOffset     = 0;
                 animAlpha       = 1;
                 animScale       = 1;
                 animBlendAmount = 0;
                 
-                __animationMode = BENTO_BUILD_FINISHED;
+                __animationMode = BENTO_ANIMATION_ENTERED;
                 array_resize(__animationArray, 0);
                 
-                __EventGet(__BENTO_EVENT.__BUILD_FINISHED).__Call(self);
+                __EventGet(__BENTO_EVENT.__ANIMATION_ENTERED).__Call(self);
             break;
             
-            case BENTO_BUILD_OUT:
-                __animationMode = BENTO_BUILD_EXITED;
+            case BENTO_ANIMATION_EXIT:
+                __animationMode = BENTO_ANIMATION_EXITED;
                 array_resize(__animationArray, 0);
                 
+                __EventGet(__BENTO_EVENT.__ANIMATION_EXITED).__Call(self);
                 if (__animationDestroyOnExit) Destroy();
             break;
             
-            case BENTO_BUILD_FINISHED:
-            case BENTO_BUILD_EXITED:
+            case BENTO_ANIMATION_ENTERED:
+            case BENTO_ANIMATION_EXITED:
             break;
             
             default:
@@ -433,14 +434,14 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         }
     }
     
-    static GetBuilding = function()
+    static GetAnimation = function()
     {
         return __animationMode;
     }
     
     static AnimateX = function(_x, _duration, _delay = 0, _animCurve = undefined)
     {
-        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__ANIMATION_EXIT)
         {
             array_push(__animationArray, new __BentoClassAnimate(self, "animXOffset", 0, _x, _duration, _delay, _animCurve));
         }
@@ -452,7 +453,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static AnimateY = function(_y, _duration, _delay = 0, _animCurve = undefined)
     {
-        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__ANIMATION_EXIT)
         {
             array_push(__animationArray, new __BentoClassAnimate(self, "animYOffset", 0, _y, _duration, _delay, _animCurve));
         }
@@ -470,7 +471,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static AnimateScale = function(_scale, _duration, _delay = 0, _animCurve = undefined)
     {
-        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__ANIMATION_EXIT)
         {
             array_push(__animationArray, new __BentoClassAnimate(self, "animScale", 1, _scale, _duration, _delay, _animCurve));
         }
@@ -482,7 +483,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static AnimateAlpha = function(_alpha, _duration, _delay = 0, _animCurve = undefined)
     {
-        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__ANIMATION_EXIT)
         {
             array_push(__animationArray, new __BentoClassAnimate(self, "animAlpha", 1, _alpha, _duration, _delay, _animCurve));
         }
@@ -496,7 +497,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     {
         animBlend = _blend;
         
-        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__ANIMATION_EXIT)
         {
             array_push(__animationArray, new __BentoClassAnimate(self, "animBlendAmount", 0, _blendAmount, _duration, _delay, _animCurve));
         }
@@ -607,44 +608,64 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     #region Animations
     
-    VariableBind("eventBuildIn", function()
+    VariableBind("eventAnimationEnter", function()
     {
-        __BentoError("Cannot get \"eventBuildIn\"");
+        __BentoError("Cannot get \"eventAnimationEnter\"");
         return;
     },
     function(_value)
     {
-        __EventFromBentoScript(__BENTO_EVENT.__BUILD_IN, _value);
+        __EventFromBentoScript(__BENTO_EVENT.__ANIMATION_ENTER, _value);
     });
     
-    VariableBind("eventBuildOut", function()
+    VariableBind("eventAnimationEntered", function()
     {
-        __BentoError("Cannot get \"eventBuildOut\"");
+        __BentoError("Cannot get \"eventAnimationEntered\"");
         return;
     },
     function(_value)
     {
-        __EventFromBentoScript(__BENTO_EVENT.__BUILD_OUT, _value);
+        __EventFromBentoScript(__BENTO_EVENT.__ANIMATION_ENTERED, _value);
     });
     
-    VariableBind("eventBuildFinished", function()
+    VariableBind("eventAnimationExit", function()
     {
-        __BentoError("Cannot get \"eventBuildFinished\"");
+        __BentoError("Cannot get \"eventAnimationExit\"");
         return;
     },
     function(_value)
     {
-        __EventFromBentoScript(__BENTO_EVENT.__BUILD_FINISHED, _value);
+        __EventFromBentoScript(__BENTO_EVENT.__ANIMATION_EXIT, _value);
     });
     
-    static EventBuildIn = function(_function)
+    VariableBind("eventAnimationExited", function()
     {
-        return __Event(__BENTO_EVENT.__BUILD_IN, _function);
+        __BentoError("Cannot get \"eventAnimationExited\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__ANIMATION_EXITED, _value);
+    });
+    
+    static EventAnimationEnter = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__ANIMATION_ENTER, _function);
     }
     
-    static EventBuildFinished = function(_function)
+    static EventAnimationEntered = function(_function)
     {
-        return __Event(__BENTO_EVENT.__BUILD_FINISHED, _function);
+        return __Event(__BENTO_EVENT.__ANIMATION_ENTERED, _function);
+    }
+    
+    static EventAnimationExit = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__ANIMATION_EXIT, _function);
+    }
+    
+    static EventAnimationExited = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__ANIMATION_EXITED, _function);
     }
     
     #endregion
@@ -980,7 +1001,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     {
         __BentoContextStackPush(self);
         
-        if (_executeEvent) __BuildUpdate();
+        if (_executeEvent) __AnimationUpdate();
         
         _offsetX += animXOffset;
         _offsetY += animYOffset;
@@ -2385,7 +2406,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         
         if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom))
         {
-            if (__active && __visible && (__animationMode == BENTO_BUILD_FINISHED) && __CanHighlight(_directional))
+            if (__active && __visible && (__animationMode == BENTO_ANIMATION_ENTERED) && __CanHighlight(_directional))
             {
                 if ((_pX >= _visibleLeft) && (_pY >= _visibleTop) && (_pX <= _visibleRight) && (_pY <= _visibleBottom))
                 {
@@ -2463,7 +2484,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         var _visibleRight  = min(_limitRight,  __worldRight );
         var _visibleBottom = min(_limitBottom, __worldBottom);
         
-        if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom) && (__animationMode == BENTO_BUILD_FINISHED))
+        if ((_visibleLeft < _visibleRight) && (_visibleTop < _visibleBottom) && (__animationMode == BENTO_ANIMATION_ENTERED))
         {
             if (__active && __visible && __CanCaptureClickAnyEver() && (_oldStruct != self) && __HighlightableNotInGroup(_excludeGroup))
             {
@@ -2549,7 +2570,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static __CaptureCastSearch = function(_buttonName, _directional)
     {
-        if (__active && (__animationMode == BENTO_BUILD_FINISHED) && __CanRespondToButtonCast(_buttonName, _directional)) return self;
+        if (__active && (__animationMode == BENTO_ANIMATION_ENTERED) && __CanRespondToButtonCast(_buttonName, _directional)) return self;
         return __parent.__CaptureCastSearch(_buttonName, _directional);
     }
     

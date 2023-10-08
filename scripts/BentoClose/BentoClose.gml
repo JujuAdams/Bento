@@ -35,7 +35,7 @@ function BentoClose()
         }
         
         //Start the build-in animation
-        _current.BuildIn();
+        _current.AnimationEnter();
         
         //Actually pop the layer stack!
         __BentoLayerStackPop();

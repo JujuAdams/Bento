@@ -36,7 +36,7 @@ function __BentoClassLayer() constructor
     __volatileKeepAlive = true;
     
     __destroyed = false;
-    __buildOut = false;
+    __animationExit = false;
     
     __pointerX      = 0;
     __pointerY      = 0;
@@ -316,17 +316,17 @@ function __BentoClassLayer() constructor
         return undefined;
     }
     
-    static BuildIn = function()
+    static AnimationEnter = function()
     {
         if (!is_struct(__struct)) return;
-        __struct.BuildIn();
+        __struct.AnimationEnter();
     }
     
-    static BuildOut = function()
+    static AnimationExit = function()
     {
-        __buildOut = true;
+        __animationExit = true;
         if (!is_struct(__struct)) return;
-        __struct.BuildOut();
+        __struct.AnimationExit();
     }
     
     static __ScrollParentToSelf = function()
@@ -555,14 +555,14 @@ function __BentoClassLayer() constructor
             __BentoLayerStackPop();
         }
         
-        if (__buildOut)
+        if (__animationExit)
         {
             if (!is_struct(__struct))
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " build out has finished (no child struct)");
                 __destroyed = true;
             }
-            else if (__struct.__animationMode == BENTO_BUILD_EXITED)
+            else if (__struct.__animationMode == BENTO_ANIMATION_EXITED)
             {
                 if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " build out has finished");
                 __destroyed = true;

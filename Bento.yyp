@@ -97,7 +97,7 @@
     {"id":{"name":"BentoCallInherited","path":"scripts/BentoCallInherited/BentoCallInherited.yy",},"order":6,},
     {"id":{"name":"__BentoScriptParser","path":"scripts/__BentoScriptParser/__BentoScriptParser.yy",},"order":3,},
     {"id":{"name":"acBackInv","path":"animcurves/acBackInv/acBackInv.yy",},"order":5,},
-    {"id":{"name":"BentoLayerBuildOut","path":"scripts/BentoLayerBuildOut/BentoLayerBuildOut.yy",},"order":1,},
+    {"id":{"name":"BentoLayerAnimationExit","path":"scripts/BentoLayerAnimationExit/BentoLayerAnimationExit.yy",},"order":1,},
     {"id":{"name":"BentoDraw","path":"scripts/BentoDraw/BentoDraw.yy",},"order":4,},
     {"id":{"name":"BentoClassText","path":"scripts/BentoClassText/BentoClassText.yy",},"order":12,},
     {"id":{"name":"BentoFindRelaxed","path":"scripts/BentoFindRelaxed/BentoFindRelaxed.yy",},"order":4,},

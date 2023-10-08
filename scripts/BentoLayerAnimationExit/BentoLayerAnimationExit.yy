@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "BentoLayerBuildOut",
+  "name": "BentoLayerAnimationExit",
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
