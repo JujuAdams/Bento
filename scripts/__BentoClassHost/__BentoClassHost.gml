@@ -265,6 +265,14 @@ function __BentoClassHost(_name) constructor
         if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Deleted ", _layer);
     }
     
+    static __LayerBuildOut = function(_name)
+    {
+        var _index = __GetIndex(_name);
+        if (_index == undefined) return;
+        
+        __layerArray[_index].BuildOut();
+    }
+    
     static __LayerGetHighlighted = function(_name)
     {
         var _index = __GetIndex(_name);

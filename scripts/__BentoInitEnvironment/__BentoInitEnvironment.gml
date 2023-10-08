@@ -12,6 +12,7 @@ function __BentoInitEnvironment()
     }
     
     BentoAddFunction("LayerIsTop",         BentoLayerCurrentIsTop);
+    BentoAddFunction("LayerBuildOut",      BentoLayerBuildOut);
     BentoAddFunction("LayerDelete",        BentoLayerDelete);
     BentoAddFunction("LayerDeleteCurrent", function() { BentoLayerDelete(); });
     BentoAddFunction("LayerSustain",       BentoLayerSustain);

@@ -84,6 +84,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     __childIndex = _global.__elementCount;
     _global.__elementCount++;
     
+    __destroyed  = false;
     __children   = [];
     __fileOrigin = undefined;
     
@@ -95,8 +96,9 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         ++_i;
     }
     
-    __animationMode  = BENTO_BUILD_FINISHED;
-    __animationArray = [];
+    __animationMode          = BENTO_BUILD_FINISHED;
+    __animationArray         = [];
+    __animationDestroyOnExit = true;
     
     __listenTargetDict  = {};
     __listenTargetArray = [];
@@ -160,6 +162,14 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     static toString = function()
     {
         return identifier;
+    }
+    
+    static Destroy = function()
+    {
+        if (__destroyed) return;
+        
+        __destroyed = true;
+        __EventGet(__BENTO_EVENT.__DESTROY).__Call(self);
     }
     
     static GetType = function()
@@ -293,18 +303,117 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         }
     }
     
+    static BuildOut = function(_destroyOnExit = true)
+    {
+        __animationDestroyOnExit = _destroyOnExit;
+        
+        if (__EventExists(__BENTO_EVENT.__BUILD_OUT))
+        {
+            __animationMode = BENTO_BUILD_OUT;
+            array_resize(__animationArray, 0);
+            
+            __EventGet(__BENTO_EVENT.__BUILD_OUT).__Call(self);
+        }
+        
+        var _i = 0;
+        repeat(array_length(__children))
+        {
+            __children[_i].BuildOut();
+            ++_i;
+        }
+    }
+    
+    static __BuildUpdate = function()
+    {
+        switch(__animationMode)
+        {
+            case BENTO_BUILD_IN:
+                var _finished = true;
+                var _i = 0;
+                repeat(array_length(__animationArray))
+                {
+                    if (!__animationArray[_i].__Update()) _finished = false;
+                    ++_i;
+                }
+                
+                return _finished;
+            break;
+            
+            case BENTO_BUILD_OUT:
+                var _finished = true;
+                var _i = 0;
+                repeat(array_length(__animationArray))
+                {
+                    if (!__animationArray[_i].__Update()) _finished = false;
+                    ++_i;
+                }
+                
+                if (_finished) //Only check child animation state if we're finished
+                {
+                    //Clear our animations to make processing a bit lighter
+                    array_resize(__animationArray, 0);
+                    
+                    //We're finished if all of our children have exited the build out state
+                    //Note that this deliberately includes children trying to build in since we
+                    //don't want to lock up in a "mixed build" situation
+                    var _i = 0;
+                    repeat(array_length(__children))
+                    {
+                        if (__children[_i].__animationMode == BENTO_BUILD_OUT) _finished = false;
+                        ++_i;
+                    }
+                    
+                    if (_finished) BuildFinish();
+                }
+                
+                return _finished;
+            break;
+            
+            case BENTO_BUILD_FINISHED:
+            case BENTO_BUILD_EXITED:
+                return true;
+            break;
+            
+            default:
+                __BentoError("Animation mode ", __animationMode, " not recognised");
+            break;
+        }
+        
+        return false;
+    }
+    
     static BuildFinish = function()
     {
-        animXOffset     = 0;
-        animYOffset     = 0;
-        animAlpha       = 1;
-        animScale       = 1;
-        animBlendAmount = 0;
-        
-        __animationMode = BENTO_BUILD_FINISHED;
-        array_resize(__animationArray, 0);
-        
-        __EventGet(__BENTO_EVENT.__BUILD_FINISHED).__Call(self);
+        switch(__animationMode)
+        {
+            case BENTO_BUILD_IN:
+                animXOffset     = 0;
+                animYOffset     = 0;
+                animAlpha       = 1;
+                animScale       = 1;
+                animBlendAmount = 0;
+                
+                __animationMode = BENTO_BUILD_FINISHED;
+                array_resize(__animationArray, 0);
+                
+                __EventGet(__BENTO_EVENT.__BUILD_FINISHED).__Call(self);
+            break;
+            
+            case BENTO_BUILD_OUT:
+                __animationMode = BENTO_BUILD_EXITED;
+                array_resize(__animationArray, 0);
+                
+                if (__animationDestroyOnExit) Destroy();
+            break;
+            
+            case BENTO_BUILD_FINISHED:
+            case BENTO_BUILD_EXITED:
+            break;
+            
+            default:
+                __BentoError("Animation mode ", __animationMode, " not recognised");
+            break;
+        }
     }
     
     static GetBuilding = function()
@@ -314,12 +423,26 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static AnimateX = function(_x, _duration, _delay = 0, _animCurve = undefined)
     {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animXOffset", _x, 0, _duration, _delay, _animCurve));
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animXOffset", 0, _x, _duration, _delay, _animCurve));
+        }
+        else
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animXOffset", _x, 0, _duration, _delay, _animCurve));
+        }
     }
     
     static AnimateY = function(_y, _duration, _delay = 0, _animCurve = undefined)
     {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animYOffset", _y, 0, _duration, _delay, _animCurve));
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animYOffset", 0, _y, _duration, _delay, _animCurve));
+        }
+        else
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animYOffset", _y, 0, _duration, _delay, _animCurve));
+        }
     }
     
     static AnimateXY = function(_x, _y, _duration, _delay = 0, _animCurve = undefined)
@@ -330,18 +453,40 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static AnimateScale = function(_scale, _duration, _delay = 0, _animCurve = undefined)
     {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animScale", _scale, 1, _duration, _delay, _animCurve));
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animScale", 1, _scale, _duration, _delay, _animCurve));
+        }
+        else
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animScale", _scale, 1, _duration, _delay, _animCurve));
+        }
     }
     
     static AnimateAlpha = function(_alpha, _duration, _delay = 0, _animCurve = undefined)
     {
-        array_push(__animationArray, new __BentoClassAnimate(self, "animAlpha", _alpha, 1, _duration, _delay, _animCurve));
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animAlpha", 1, _alpha, _duration, _delay, _animCurve));
+        }
+        else
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animAlpha", _alpha, 1, _duration, _delay, _animCurve));
+        }
     }
     
     static AnimateColor = function(_blend, _blendAmount, _duration, _delay = 0, _animCurve = undefined)
     {
         animBlend = _blend;
-        array_push(__animationArray, new __BentoClassAnimate(self, "animBlendAmount", _blendAmount, 0, _duration, _delay, _animCurve));
+        
+        if (_global.__currentEvent.__type == __BENTO_EVENT.__BUILD_OUT)
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animBlendAmount", 0, _blendAmount, _duration, _delay, _animCurve));
+        }
+        else
+        {
+            array_push(__animationArray, new __BentoClassAnimate(self, "animBlendAmount", _blendAmount, 0, _duration, _delay, _animCurve));
+        }
     }
     
     #endregion
@@ -354,7 +499,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     {
         var _targetArray = __eventArray[_callType];
         
-        var _event = new __BentoClassEvent(_targetArray[0], _function, false);
+        var _event = new __BentoClassEvent(_targetArray[0], _function, false, _callType);
         array_insert(_targetArray, 0, _event);
         
         return self;
@@ -453,6 +598,16 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     function(_value)
     {
         __EventFromBentoScript(__BENTO_EVENT.__BUILD_IN, _value);
+    });
+    
+    VariableBind("eventBuildOut", function()
+    {
+        __BentoError("Cannot get \"eventBuildOut\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__BUILD_OUT, _value);
     });
     
     VariableBind("eventBuildFinished", function()
@@ -808,18 +963,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     {
         __BentoContextStackPush(self);
         
-        if (_executeEvent && (__animationMode == BENTO_BUILD_IN))
-        {
-            var _finished = true;
-            var _i = 0;
-            repeat(array_length(__animationArray))
-            {
-                if (!__animationArray[_i].__Update()) _finished = false;
-                ++_i;
-            }
-            
-            if (_finished) BuildFinish();
-        }
+        if (_executeEvent) __BuildUpdate();
         
         _offsetX += animXOffset;
         _offsetY += animYOffset;
@@ -969,7 +1113,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     {
         var _targetArray = __eventArray[_callType];
         
-        var _event = new __BentoClassEvent(_targetArray[0], _function, true);
+        var _event = new __BentoClassEvent(_targetArray[0], _function, true, _callType);
         array_insert(_targetArray, 0, _event);
         
         return self;

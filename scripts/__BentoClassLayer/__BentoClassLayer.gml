@@ -36,6 +36,7 @@ function __BentoClassLayer() constructor
     __volatileKeepAlive = true;
     
     __destroyed = false;
+    __buildOut = false;
     
     __pointerX      = 0;
     __pointerY      = 0;
@@ -321,6 +322,13 @@ function __BentoClassLayer() constructor
         __struct.BuildIn();
     }
     
+    static BuildOut = function()
+    {
+        __buildOut = true;
+        if (!is_struct(__struct)) return;
+        __struct.BuildOut();
+    }
+    
     static __ScrollParentToSelf = function()
     {
         //Do nothing
@@ -535,7 +543,7 @@ function __BentoClassLayer() constructor
     
     static __Close = function()
     {
-        
+        //Do nothing!
     }
     
     static __Step = function()
@@ -545,6 +553,20 @@ function __BentoClassLayer() constructor
             __BentoLayerStackPush(self);
             __struct.__Step(__localLeft, __localTop, 1, true);
             __BentoLayerStackPop();
+        }
+        
+        if (__buildOut)
+        {
+            if (!is_struct(__struct))
+            {
+                if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " build out has finished (no child struct)");
+                __destroyed = true;
+            }
+            else if (__struct.__animationMode == BENTO_BUILD_EXITED)
+            {
+                if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " build out has finished");
+                __destroyed = true;
+            }
         }
         
         if (__volatile)

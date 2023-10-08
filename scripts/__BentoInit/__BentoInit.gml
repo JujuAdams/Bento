@@ -1,5 +1,7 @@
 #macro BENTO_BUILD_FINISHED  0
 #macro BENTO_BUILD_IN        1
+#macro BENTO_BUILD_OUT       2
+#macro BENTO_BUILD_EXITED    3
 
 #macro BENTO_BEHAVIOR_DRAW_ONLY    0
 #macro BENTO_BEHAVIOR_PASSTHROUGH  1
@@ -32,12 +34,14 @@ enum __BENTO_EVENT
     __STEP,
     __DRAW,
     __ON_CLOSE,
+    __DESTROY,
     __CAN_HIGHLIGHT,
     __LAYOUT,
     
     __ON_VALUE_CHANGE,
     __VALUE_UPDATE,
     __BUILD_IN,
+    __BUILD_OUT,
     __BUILD_FINISHED,
     
     __SIZE,
@@ -65,7 +69,7 @@ function __BentoInit()
     
     if ((BENTO_HOT_RELOAD_MODE > 0) && (GM_build_type == "run")) _global.__fileDirectory = filename_dir(GM_project_filename) + "/datafiles/";
     
-    _global.__nullEvent    = new __BentoClassEvent(undefined, undefined, false);
+    _global.__nullEvent    = new __BentoClassEvent(undefined, undefined, false, undefined);
     _global.__currentEvent = _global.__nullEvent;
     
     _global.__bentoScriptEnv = __BentoScript;

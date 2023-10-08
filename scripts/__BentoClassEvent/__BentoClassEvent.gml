@@ -1,10 +1,11 @@
-function __BentoClassEvent(_parent, _function, _fromBentoScript) constructor
+function __BentoClassEvent(_parent, _function, _fromBentoScript, _type) constructor
 {
     static _global = __BentoGlobal();
     
-    __parent       = _parent;
-    __function     = _function;
+    __parent          = _parent;
+    __function        = _function;
     __fromBentoScript = _fromBentoScript;
+    __type            = _type;
     
     static __Call = function(_scope, _param0, _param1)
     {
