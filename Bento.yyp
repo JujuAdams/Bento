@@ -136,6 +136,7 @@
     {"id":{"name":"BentoHostLTRB","path":"scripts/BentoHostLTRB/BentoHostLTRB.yy",},"order":0,},
     {"id":{"name":"BentoDebugShowPointer","path":"scripts/BentoDebugShowPointer/BentoDebugShowPointer.yy",},"order":3,},
     {"id":{"name":"__BentoScriptScopePush","path":"scripts/__BentoScriptScopePush/__BentoScriptScopePush.yy",},"order":4,},
+    {"id":{"name":"__BentoSharedVariableBindings","path":"scripts/__BentoSharedVariableBindings/__BentoSharedVariableBindings.yy",},"order":26,},
     {"id":{"name":"__BentoConfig","path":"scripts/__BentoConfig/__BentoConfig.yy",},"order":0,},
     {"id":{"name":"__BentoLayerStackPush","path":"scripts/__BentoLayerStackPush/__BentoLayerStackPush.yy",},"order":21,},
     {"id":{"name":"BentoScriptGlobal","path":"scripts/BentoScriptGlobal/BentoScriptGlobal.yy",},"order":8,},
@@ -213,6 +214,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"ExampleNativeLayouts.bento","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.0.1.31",
+    "IDEVersion": "2022.0.0.19",
   },
 }

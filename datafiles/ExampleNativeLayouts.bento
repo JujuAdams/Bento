@@ -178,7 +178,7 @@ build BentoRectangle {
 
 	//Column test case
 	build BentoRectangle {
-		xywh = [1000, 100, 300, 100]
+		xywh = [1000, 100, 300, 170]
 
 		LayoutAsColumns("left", 20, [100, 200])
 
@@ -208,7 +208,7 @@ build BentoRectangle {
 	}
 
 	build BentoRectangle {
-		xywh = [1000, 300, 300, 100]
+		xywh = [1000, 300, 300, 170]
 
 		LayoutAsColumns("center", 20, [100, 200])
 
@@ -238,7 +238,7 @@ build BentoRectangle {
 	}
 
 	build BentoRectangle {
-		xywh = [1000, 500, 300, 100]
+		xywh = [1000, 500, 300, 170]
 
 		LayoutAsColumns("right", 20, [100, 200])
 

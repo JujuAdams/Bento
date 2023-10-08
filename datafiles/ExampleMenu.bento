@@ -26,7 +26,7 @@ build BentoRectangle {
 
 				build BentoRectangle {
 					fillColor = make_color_rgb(20, 20, 20)
-					fillAlpha = 0.9
+					fillAlpha = 0.7
 					ltrb = ["60%", 0, "100%", "100%"]
 
 					eventAnimationEnter = fn {
@@ -207,7 +207,10 @@ build BentoRectangle {
 			}
 		}
 
-		scrollYMax = childMaxBottom
+		eventOnClose = fn {
+			scrollYMin = childMinTop
+			scrollYMax = max(0, childMaxBottom - height)
+		}
 	}
 
 	build BentoVerticalScrollbar {
