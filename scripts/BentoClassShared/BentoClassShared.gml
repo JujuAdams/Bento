@@ -305,13 +305,12 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static BuildOut = function(_destroyOnExit = true)
     {
+        __animationMode          = BENTO_BUILD_OUT;
         __animationDestroyOnExit = _destroyOnExit;
         
         if (__EventExists(__BENTO_EVENT.__BUILD_OUT))
         {
-            __animationMode = BENTO_BUILD_OUT;
             array_resize(__animationArray, 0);
-            
             __EventGet(__BENTO_EVENT.__BUILD_OUT).__Call(self);
         }
         
