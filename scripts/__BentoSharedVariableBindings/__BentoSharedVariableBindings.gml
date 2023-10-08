@@ -270,7 +270,7 @@ function __BentoSharedVariableBindings()
     
     
     
-    #region Local Position Variable Bindings
+    #region LTRB
     
     VariableBind("left", function()
     {
@@ -281,8 +281,6 @@ function __BentoSharedVariableBindings()
         __localLeft  = __PercentageWidth(_value);
         __localWidth = __localRight - __localLeft;
         __localX     = lerp(__localLeft, __localRight, __originX);
-        
-        TempOriginXReset();
     });
     
     VariableBind("top", function()
@@ -294,8 +292,6 @@ function __BentoSharedVariableBindings()
         __localTop    = __PercentageHeight(_value);
         __localHeight = __localBottom - __localTop;
         __localY      = lerp(__localTop, __localBottom, __originY);
-        
-        TempOriginYReset();
     });
     
     VariableBind("right", function()
@@ -307,8 +303,6 @@ function __BentoSharedVariableBindings()
         __localRight = __PercentageWidth(_value);
         __localWidth = __localRight - __localLeft;
         __localX     = lerp(__localLeft, __localRight, __originX);
-        
-        TempOriginXReset();
     });
     
     VariableBind("bottom", function()
@@ -320,9 +314,25 @@ function __BentoSharedVariableBindings()
         __localBottom = __PercentageHeight(_value);
         __localHeight = __localBottom - __localTop;
         __localY      = lerp(__localTop, __localBottom, __originY);
-        
-        TempOriginYReset();
     });
+    
+    VariableBind("ltrb", function()
+    {
+        return [__localLeft, __localTop, __localRight, __localBottom];
+    },
+    function(_value)
+    {
+        Set("left",   _value[0]);
+        Set("top",    _value[1]);
+        Set("right",  _value[2]);
+        Set("bottom", _value[3]);
+    });
+    
+    #endregion
+    
+    
+    
+    #region XYWH
     
     VariableBind("x", function()
     {
@@ -352,16 +362,6 @@ function __BentoSharedVariableBindings()
         __localY       = _value;
     });
     
-    VariableBind("xy", function()
-    {
-        return [Get("x"), Get("y")];
-    },
-    function(_array)
-    {
-        Set("x", _array[0]);
-        Set("y", _array[1]);
-    });
-    
     VariableBind("width", function()
     {
         return __localWidth;
@@ -372,8 +372,6 @@ function __BentoSharedVariableBindings()
         __localLeft  = __localLeft - __originX*_delta;
         __localRight = __localRight + (1 - __originX)*_delta;
         __localWidth = __localRight - __localLeft;
-        
-        TempOriginXReset();
     });
     
     VariableBind("height", function()
@@ -386,9 +384,45 @@ function __BentoSharedVariableBindings()
         __localTop    = __localTop - __originY*_delta;
         __localBottom = __localBottom + (1 - __originY)*_delta;
         __localHeight = __localBottom - __localTop;
-        
-        TempOriginYReset();
     });
+    
+    VariableBind("xy", function()
+    {
+        return [__localX, __localY];
+    },
+    function(_value)
+    {
+        Set("x", _value[0]);
+        Set("y", _value[1]);
+    });
+    
+    VariableBind("size", function()
+    {
+        return [__localWidth, __localHeight];
+    },
+    function(_value)
+    {
+        Set("width",  _value[0]);
+        Set("height", _value[1]);
+    });
+    
+    VariableBind("xywh", function()
+    {
+        return [__localX, __localY, __localWidth, __localHeight];
+    },
+    function(_value)
+    {
+        Set("x",      _value[0]);
+        Set("y",      _value[1]);
+        Set("width",  _value[2]);
+        Set("height", _value[3]);
+    });
+    
+    #endregion
+    
+    
+    
+    #region Origin
     
     VariableBind("originX", function()
     {
@@ -427,56 +461,6 @@ function __BentoSharedVariableBindings()
     function(_value)
     {
         __localScale = _value;
-    });
-    
-    #endregion
-    
-    
-    
-    #region Multi-argument variables
-    
-    VariableBind("ltrb", function()
-    {
-        return [__localLeft, __localTop, __localRight, __localBottom];
-    },
-    function(_value)
-    {
-        Set("left",   _value[0]);
-        Set("top",    _value[1]);
-        Set("right",  _value[2]);
-        Set("bottom", _value[3]);
-    });
-    
-    VariableBind("size", function()
-    {
-        return [__localWidth, __localHeight];
-    },
-    function(_value)
-    {
-        Set("width",  _value[0]);
-        Set("height", _value[1]);
-    });
-    
-    VariableBind("xy", function()
-    {
-        return [__localX, __localY];
-    },
-    function(_value)
-    {
-        Set("x", _value[0]);
-        Set("y", _value[1]);
-    });
-    
-    VariableBind("xywh", function()
-    {
-        return [__localX, __localY, __localWidth, __localHeight];
-    },
-    function(_value)
-    {
-        Set("x",      _value[0]);
-        Set("y",      _value[1]);
-        Set("width",  _value[2]);
-        Set("height", _value[3]);
     });
     
     #endregion
@@ -585,8 +569,6 @@ function __BentoSharedVariableBindings()
         
         __worldLeft  = __localLeft  + __worldOffsetX;
         __worldRight = __localRight + __worldOffsetX;
-        
-        TempOriginXReset();
     });
     
     VariableBind("worldHeight", function()
@@ -603,8 +585,6 @@ function __BentoSharedVariableBindings()
         
         __worldTop    = __localTop    + __worldOffsetY;
         __worldBottom = __localBottom + __worldOffsetY;
-        
-        TempOriginYReset();
     });
     
     #endregion
