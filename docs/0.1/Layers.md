@@ -71,7 +71,7 @@ the target layer.
 
 &nbsp;
 
-### .BuildIn()
+### .AnimateEnter()
 
 Returns: <undefined>
 
@@ -79,7 +79,19 @@ Returns: <undefined>
 |---------------|----------|---------|
 | None          |          |         |
 
-Triggers (or re-triggers) the build-in animation for every child of the layer.
+Triggers (or re-triggers) the entry animation for every child of the layer.
+
+&nbsp;
+
+### .AnimateExit()
+
+Returns: <undefined>
+
+| Argument Name | Datatype | Purpose |
+|---------------|----------|---------|
+| None          |          |         |
+
+Triggers the exit animation for every child of the layer. When the animations are all finished, the layer is destroyed.
 
 &nbsp;
 

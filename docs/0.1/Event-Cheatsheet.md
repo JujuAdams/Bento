@@ -17,6 +17,7 @@ The variables and methods on this page define events and are available across al
 | `eventStep`    | `EventStep`    | Called via `BentoStep()`                                                                                            |
 | `eventDraw`    | `EventDraw`    | Called via `BentoDraw()`                                                                                            |
 | `eventOnClose` | `EventOnClose` | Called when a UI element finishes construction (i.e. at the final closing } curly bracket)                          |
+| `eventDestroy` | `EventDestroy` | Called when a UI element finishes construction (i.e. at the final closing } curly bracket)                          |
 | `eventLayout`  | `EventLayout`  | Manual use only. This function is called to determine the position of a UI element when completing its construction |
 | `eventPush`    | `EventPush`    | Called when "pushing" a focused UI element using directional input                                                  |
 
@@ -24,10 +25,12 @@ The variables and methods on this page define events and are available across al
 
 ## Animation
 
-| Scripting Name       | GML Function         | Purpose                                                                                                                                           |
-|----------------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| `eventBuildIn`       | `EventBuildIn`       | Called via the `BuildIn()` method and when a UI element is first created. Should be used to set up an entry animation                             |
-| `eventBuildFinished` | `EventBuildFinished` | Called when all of the build-in animations finish. This event will only be triggerd if an `Animate*()` method was called in the **BuildIn** event |
+| Scripting Name          | GML Function            | Purpose                                                                                                                                                 |
+|-------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `eventAnimationEnter`   | `EventAnimationEnter`   | Called via the `AnimationEnter()` method and when a UI element is first created                                                                         |
+| `eventAnimationEntered` | `EventAnimationEntered` | Called when all of the build-in animations finish. This event will only be triggerd if the **AnimationEnter** event has been defined for the UI element |
+| `eventAnimationExit`    | `EventAnimationExit`    | Called via the `AnimationExit()` method and when a layer is exiting                                                                                     |
+| `eventAnimationExited`  | `EventAnimationExited`  | Called when all of this UI element's animations finish **and** when all of its children's exit animations finish                                        |
 
 &nbsp;
 

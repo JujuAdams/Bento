@@ -52,13 +52,21 @@ Called when deciding the layout of a UI element. You can (and should) use this e
 
 ## Animation
 
-### BuildIn
+### AnimationEnter
 
-Called by proxy when the UI element is generated, or when the `BuildIn()` method is executed for a UI element. Used to trigger an animation that visually introduces the UI element onto the screen. You should call one of the `Animate*()` methods in this function in order to trigger **BuildFinished**.
+Called by proxy when the UI element is generated, or when the `AnimationEnter()` method is executed for a UI element. Used to trigger an animation that visually introduces the UI element onto the screen.
 
-### BuildFinished
+### AnimationEntered
 
-Called when all of the build-in animations finish. This event will only be triggerd if an `Animate*()` method was called in the **BuildIn** event.
+Called when all of the entry animations finish. This event will only be triggerd if the **AnimationEnter** event exists.
+
+### AnimationExit
+
+Called when the `AnimationExit()` method is executed for a UI element or layer. Used to trigger an animation that visually removes the UI element from the screen.
+
+### AnimationExited
+
+Called when all of the exit animations finish **and** all of the exit animations for all children have finished.
 
 &nbsp;
 

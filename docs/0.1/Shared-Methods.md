@@ -10,39 +10,40 @@ The methods on this page are available across all UI elements.
 
 ?> There's more detail below - scroll down!
 
-| Method                   | Usage                                                                      |
-|--------------------------|----------------------------------------------------------------------------|
-| `toString`               | Called by `string()`. Returns the UI element's identifier                  |
-| `Destroy`                | Immediately destroys the UI element, freeing any memory associated with it |
-| `GetType`                | Returns the type of the UI element                                         |
-| `LayoutAsVerticalList`   | Sets up a vertical list layout                                             |
-| `LayoutAsHorizontalList` | Sets up a horizontal list layout                                           |
-| `LayoutAsGrid`           | Sets up a grid layout with cells of identical size                         |
-| `LayoutAsColumns`        | Sets up a column layout. Children on the same row are vertically aligned   |
-| `LayoutGetArray`         | Returns an ordered array of child elements to lay out                      |
-| `AnimateX`               | Sets up an animation in the x-axis                                         |
-| `AnimateY`               | Sets up an animation in the y-axis                                         |
-| `AnimateXY`              | Sets up an animation in both the x-axis and y-axis                         |
-| `AnimateScale`           | Sets up an animation using the UI element's scale                          |
-| `AnimateAlpha`           | Sets up an animation using the UI element's alpha transparency             |
-| `AnimateColor`           | Sets up an animation using the UI element's colour blending                |
-| `HasChildren`            | Returns if the UI element has children                                     |
-| `ChildrenClear`          | Removes all children from the UI element                                   |
-| `ParentChange`           | Moves from one parent to another                                           |
-| `GetHover`               | Returns whether the UI element is being highlighted                        |
-| `GetFocus`               | Returns whether the UI element is being focused                            |
-| `GetButton`              | Returns whether the UI element is being clicked                            |
-| `HoverStateSet`          | Sets the highlight state                                                   |
-| `ButtonStateSet`         | Sets the button state                                                      |
-| `Find`                   | Tries to find a UI element descendent with an identifier                   |
-| `FindType`               | Finds all descendents with a given type                                    |
-| `ReplaceFromFile`        | Replaces the UI element with the result of executing a BentoScript         |
-| `BuildIn`                | Restarts the build-in animation                                            |
-| `BuildFinish`            | Immediately stops any animation                                            |
-| `GetBuilding`            | Returns the build-in animation state                                       |
-| `VariableBind`           | Binds a getter and setter function to a variable name                      |
-| `Get`                    | Calls the getter function (see above)                                      |
-| `Set`                    | Calls the setter function (see above)                                      |
+| Method                   | Usage                                                                                                     |
+|--------------------------|-----------------------------------------------------------------------------------------------------------|
+| `toString`               | Called by `string()`. Returns the UI element's identifier                                                 |
+| `Destroy`                | Immediately destroys the UI element, freeing any memory associated with it                                |
+| `GetType`                | Returns the type of the UI element                                                                        |
+| `LayoutAsVerticalList`   | Sets up a vertical list layout                                                                            |
+| `LayoutAsHorizontalList` | Sets up a horizontal list layout                                                                          |
+| `LayoutAsGrid`           | Sets up a grid layout with cells of identical size                                                        |
+| `LayoutAsColumns`        | Sets up a column layout. Children on the same row are vertically aligned                                  |
+| `LayoutGetArray`         | Returns an ordered array of child elements to lay out                                                     |
+| `AnimationEnter`         | Starts an entry animation for this UI element and its children                                            |
+| `AnimationExit`          | Starts an exit animation for this UI element and its children. When complete, the UI element is destroyed |
+| `AnimationFinish`        | Immediately skips any in-progress animation                                                               |
+| `GetAnimation`           | Returns the current animation state                                                                       |
+| `AnimateX`               | Sets up an animation in the x-axis                                                                        |
+| `AnimateY`               | Sets up an animation in the y-axis                                                                        |
+| `AnimateXY`              | Sets up an animation in both the x-axis and y-axis                                                        |
+| `AnimateScale`           | Sets up an animation using the UI element's scale                                                         |
+| `AnimateAlpha`           | Sets up an animation using the UI element's alpha transparency                                            |
+| `AnimateColor`           | Sets up an animation using the UI element's colour blending                                               |
+| `HasChildren`            | Returns if the UI element has children                                                                    |
+| `ChildrenClear`          | Removes all children from the UI element                                                                  |
+| `ParentChange`           | Moves from one parent to another                                                                          |
+| `GetHover`               | Returns whether the UI element is being highlighted                                                       |
+| `GetFocus`               | Returns whether the UI element is being focused                                                           |
+| `GetButton`              | Returns whether the UI element is being clicked                                                           |
+| `HoverStateSet`          | Sets the highlight state                                                                                  |
+| `ButtonStateSet`         | Sets the button state                                                                                     |
+| `Find`                   | Tries to find a UI element descendent with an identifier                                                  |
+| `FindType`               | Finds all descendents with a given type                                                                   |
+| `ReplaceFromFile`        | Replaces the UI element with the result of executing a BentoScript                                        |
+| `VariableBind`           | Binds a getter and setter function to a variable name                                                     |
+| `Get`                    | Calls the getter function (see above)                                                                     |
+| `Set`                    | Calls the setter function (see above)                                                                     |
 
 &nbsp;
 
@@ -142,6 +143,52 @@ Returns: Ordered array of child elements to lay out
 &nbsp;
 
 ## Animation
+
+### .AnimationEnter()
+
+Returns: <undefined>
+
+| Argument Name | Datatype | Purpose |
+|---------------|----------|---------|
+| None          |          |         |
+
+Restarts the entry animation.
+
+&nbsp;
+
+### .AnimationExit()
+
+Returns: <undefined>
+
+| Argument Name | Datatype | Purpose |
+|---------------|----------|---------|
+| None          |          |         |
+
+Starts the exit animation. When finished, the UI element is destroyed.
+
+&nbsp;
+
+### .AnimationFinish()
+
+Returns: <undefined>
+
+| Argument Name | Datatype | Purpose |
+|---------------|----------|---------|
+| None          |          |         |
+
+Immediately skips any in-progress animation.
+
+&nbsp;
+
+### .GetAnimation()
+
+Returns: The animation state.
+
+| Argument Name | Datatype | Purpose |
+|---------------|----------|---------|
+| None          |          |         |
+
+&nbsp;
 
 ### .AnimateX(start, duration, delay = 0, animCurve = undefined)
 
@@ -362,42 +409,6 @@ Returns: <undefined>
 | Argument Name | Datatype | Purpose                                                            |
 |---------------|----------|--------------------------------------------------------------------|
 | `filePath`    | string   | Path to the BentoScript to execute and replace the UI element with |
-
-&nbsp;
-
-## Animation
-
-### .BuildIn()
-
-Returns: <undefined>
-
-| Argument Name | Datatype | Purpose |
-|---------------|----------|---------|
-| None          |          |         |
-
-Restarts the build-in animation.
-
-&nbsp;
-
-### .BuildFinish()
-
-Returns: <undefined>
-
-| Argument Name | Datatype | Purpose |
-|---------------|----------|---------|
-| None          |          |         |
-
-Immediately stops any animation.
-
-&nbsp;
-
-### .GetBuilding()
-
-Returns: The build-in animation state.
-
-| Argument Name | Datatype | Purpose |
-|---------------|----------|---------|
-| None          |          |         |
 
 &nbsp;
 
