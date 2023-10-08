@@ -48,5 +48,7 @@ BentoAddNativeFunction(draw_sprite);
 BentoAddNativeFunction(draw_sprite_ext);
 BentoAddNativeFunction(draw_sprite_stretched);
 BentoAddNativeFunction(draw_sprite_stretched_ext);
+BentoAddNativeFunction(make_color_rgb);
+BentoAddNativeFunction(make_color_hsv);
 
 BentoAddFunction("Time", function() { return current_time; });

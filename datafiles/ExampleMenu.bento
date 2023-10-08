@@ -11,7 +11,29 @@ build BentoRectangle {
 		xywh = [parent.width-10, 10, 40, 40]
 
 		eventClick = fn {
+			build BentoLayer {
+				behaviour = BENTO_BEHAVIOR_MODAL
 
+				build BentoRectangle {
+					fillColor = make_color_rgb(20, 20, 20)
+					fillAlpha = 0.9
+					ltrb = ["70%", 0, "100%", "100%"]
+
+					eventBuildIn = fn {
+						AnimateX(width, 30, 0, acExpo)
+					}
+
+					build BentoTextButton {
+						label = "-->"
+						origin = [0, 0.5]
+						xywh = [0, "50%", 40, 40]
+
+						eventClick = fn {
+							LayerDeleteCurrent()
+						}
+					}
+				}
+			}
 		}
 	}
 
