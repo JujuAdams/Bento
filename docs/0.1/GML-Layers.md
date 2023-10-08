@@ -35,16 +35,16 @@
 
 &nbsp;
 
-## …LayerDelete
+## …LayerDestroy
 
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><code>LayerDelete()</code></td>
+		<td><code>LayerDestroy([layerName])</code></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
-		<td><code>BentoLayerDelete([layerName])</code></td>
+		<td><code>BentoLayerDestroy([layerName])</code></td>
     </tr>
 </table>
 
@@ -139,7 +139,7 @@
 <table>
     <tr>
 		<td><b>BentoScript</b></td>
-		<td><code>LayerSustain()</code></td>
+		<td><code>LayerSustain(name)</code></td>
     </tr>
     <tr>
 		<td><b>GML</b></td>
