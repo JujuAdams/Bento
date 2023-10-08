@@ -426,10 +426,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                 array_resize(__animationArray, 0);
                 
                 __EventGet(__BENTO_EVENT.__ANIMATION_EXITED).__Call(self);
-                if (__animationDestroyOnExit)
-                {
-                    Destroy();
-                }
+                if (__animationDestroyOnExit) Destroy();
             break;
             
             case BENTO_ANIMATION_ENTERED:
@@ -545,6 +542,11 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         return __Event(__BENTO_EVENT.__DRAW, _function);
     }
     
+    static EventDestroy = function(_function)
+    {
+        return __Event(__BENTO_EVENT.__DESTROY, _function);
+    }
+    
     static EventOnClose = function(_function)
     {
         return __Event(__BENTO_EVENT.__ON_CLOSE, _function);
@@ -578,6 +580,16 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     function(_value)
     {
         __EventFromBentoScript(__BENTO_EVENT.__DRAW, _value);
+    });
+    
+    VariableBind("eventDestroy", function()
+    {
+        __BentoError("Cannot get \"eventDestroy\"");
+        return;
+    },
+    function(_value)
+    {
+        __EventFromBentoScript(__BENTO_EVENT.__DESTROY, _value);
     });
     
     VariableBind("eventOnClose", function()
