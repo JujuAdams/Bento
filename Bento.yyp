@@ -64,6 +64,7 @@
     {"id":{"name":"BentoClassTextButton","path":"scripts/BentoClassTextButton/BentoClassTextButton.yy",},"order":14,},
     {"id":{"name":"__BentoScriptSanity","path":"scripts/__BentoScriptSanity/__BentoScriptSanity.yy",},"order":2,},
     {"id":{"name":"__BentoClassFile","path":"scripts/__BentoClassFile/__BentoClassFile.yy",},"order":2,},
+    {"id":{"name":"acEase","path":"animcurves/acEase/acEase.yy",},"order":6,},
     {"id":{"name":"__BentoArrayFindIndex","path":"scripts/__BentoArrayFindIndex/__BentoArrayFindIndex.yy",},"order":6,},
     {"id":{"name":"BentoStep","path":"scripts/BentoStep/BentoStep.yy",},"order":3,},
     {"id":{"name":"__BentoScriptLexer","path":"scripts/__BentoScriptLexer/__BentoScriptLexer.yy",},"order":2,},

@@ -2,7 +2,7 @@ build BentoRectangle {
 	xywh = ["50%", "50%", "40%", "90%"]
 
 	eventBuildIn = fn {
-		AnimateY(-1000, 60, acBack)
+		AnimateY(-1000, 70, 30, acBack)
 	}
 
 	build BentoTextButton {
@@ -11,7 +11,7 @@ build BentoRectangle {
 		xywh = [parent.width-10, 10, 40, 40]
 
 		eventClick = fn {
-			
+
 		}
 	}
 
