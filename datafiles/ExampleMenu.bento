@@ -1,7 +1,7 @@
 build BentoRectangle {
 	xywh = ["50%", "50%", "40%", "90%"]
 
-	eventBuildIn = fn {
+	eventAnimationEnter = fn {
 		AnimateY(-1000, 70, 30, acBack)
 	}
 
@@ -29,12 +29,12 @@ build BentoRectangle {
 					fillAlpha = 0.9
 					ltrb = ["60%", 0, "100%", "100%"]
 
-					eventBuildIn = fn {
-						AnimateX(width, 40, 0, acExpo)
+					eventAnimationEnter = fn {
+						AnimateX(width, 45, 0, acExpo)
 					}
 
-					eventBuildOut = fn {
-						AnimateX(width, 25, 0, acExpoInv)
+					eventAnimationExit = fn {
+						AnimateX(width, 30, 0, acExpoInv)
 					}
 
 					var header = build BentoText {
@@ -63,7 +63,7 @@ build BentoRectangle {
 						xywh = [0, "50%", 40, 40]
 
 						eventClick = fn {
-							LayerBuildOut()
+							LayerAnimationExit()
 						}
 					}
 				}

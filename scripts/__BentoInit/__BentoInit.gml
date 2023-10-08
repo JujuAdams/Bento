@@ -15,6 +15,7 @@
 #macro BENTO_DATE     "2023-10-07"
 
 #macro __BENTO_TEST_FOCUSING  true
+#macro __BENTO_DEBUG  true
 
 enum __BENTO_EVENT
 {

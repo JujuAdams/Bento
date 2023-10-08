@@ -294,7 +294,7 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
     
     static __FindLayer = function()
     {
-        return __parent.__FindLayer();
+        return (__parent == undefined)? undefined : __parent.__FindLayer();
     }
     
     #endregion
@@ -321,15 +321,20 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         }
     }
     
-    static AnimationExit = function(_destroyOnExit = true)
+    static AnimationExit = function()
     {
-        __animationMode          = BENTO_ANIMATION_EXIT;
-        __animationDestroyOnExit = _destroyOnExit;
+        __animationMode = BENTO_ANIMATION_EXIT;
         
         if (__EventExists(__BENTO_EVENT.__ANIMATION_EXIT))
         {
+            __animationDestroyOnExit = true;
+            
             array_resize(__animationArray, 0);
             __EventGet(__BENTO_EVENT.__ANIMATION_EXIT).__Call(self);
+        }
+        else
+        {
+            __animationDestroyOnExit = false;
         }
         
         var _i = 0;
@@ -421,7 +426,10 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
                 array_resize(__animationArray, 0);
                 
                 __EventGet(__BENTO_EVENT.__ANIMATION_EXITED).__Call(self);
-                if (__animationDestroyOnExit) Destroy();
+                if (__animationDestroyOnExit)
+                {
+                    Destroy();
+                }
             break;
             
             case BENTO_ANIMATION_ENTERED:
@@ -1017,11 +1025,11 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         
         if (_executeEvent && __active) __EventGet(__BENTO_EVENT.__STEP).__Call(self);
         
-        var _i = 0;
-        repeat(array_length(__children))
+        //Shocking use of a for-loop! We have to dynamically check the size of our child array
+        //since some joker might destroy a child in the middle of execution
+        for(var _i = 0; _i < array_length(__children); _i++)
         {
             __children[_i].__Step(__worldLeft, __worldTop, __worldScale, _executeEvent);
-            ++_i;
         }
         
         __BentoContextStackPop();
@@ -1823,10 +1831,14 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         
         if (_oldValue && !__active)
         {
-            with(__FindLayer())
+            var _layer = __FindLayer();
+            if (_layer != undefined)
             {
-                if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined, false);
-                if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined);
+                with(_layer)
+                {
+                    if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined, false);
+                    if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined);
+                }
             }
         }
     });
@@ -1842,10 +1854,14 @@ function BentoClassShared(_typeOverride = instanceof(self)) constructor
         
         if (_oldValue && !__visible)
         {
-            with(__FindLayer())
+            var _layer = __FindLayer();
+            if (_layer != undefined)
             {
-                if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined, false);
-                if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined);
+                with(_layer)
+                {
+                    if (__BentoNullableRefResolve(__highlightRef) == other) __HighlightSet(undefined, false);
+                    if (__BentoNullableRefResolve(__captureRef  ) == other) __CaptureSet(undefined, undefined);
+                }
             }
         }
     });
