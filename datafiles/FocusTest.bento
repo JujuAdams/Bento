@@ -13,7 +13,7 @@ build BentoBox {
 			DebugLog("1")
 		}
 
-		eventBuildIn = fn {
+		eventAnimationEnter = fn {
 			AnimateXY(200, 50, 100, 100, acBack)
 		}
 	}
