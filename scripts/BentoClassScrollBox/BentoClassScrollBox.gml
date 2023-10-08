@@ -137,18 +137,7 @@ function BentoClassScrollBox() : BentoClassShared() constructor
     {
         __BentoContextStackPush(self);
         
-        if (_executeEvent && (__animationMode == BENTO_ANIMATION_ENTER))
-        {
-            var _finished = true;
-            var _i = 0;
-            repeat(array_length(__animationArray))
-            {
-                if (!__animationArray[_i].__Update()) _finished = false;
-                ++_i;
-            }
-            
-            if (_finished) AnimationFinish();
-        }
+        if (_executeEvent) __AnimationUpdate();
         
         _offsetX += animXOffset;
         _offsetY += animYOffset;
@@ -165,11 +154,11 @@ function BentoClassScrollBox() : BentoClassShared() constructor
         
         if (_executeEvent && __active) __EventGet(__BENTO_EVENT.__STEP).__Call(self);
         
-        var _i = 0;
-        repeat(array_length(__children))
+        //Shocking use of a for-loop! We have to dynamically check the size of our child array
+        //since some joker might destroy a child in the middle of execution
+        for(var _i = 0; _i < array_length(__children); _i++)
         {
             __children[_i].__Step(__worldLeft - __worldScale*scrollX, __worldTop - __worldScale*scrollY, __worldScale, _executeEvent);
-            ++_i;
         }
         
         __BentoContextStackPop();
