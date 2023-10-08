@@ -270,51 +270,18 @@ function __BentoSharedVariableBindings()
     
     
     
+    VariableBind("scale", function()
+    {
+        return __localScale;
+    },
+    function(_value)
+    {
+        __localScale = _value;
+    });
+    
+    
+    
     #region LTRB
-    
-    VariableBind("left", function()
-    {
-        return __localLeft;
-    },
-    function(_value)
-    {
-        __localLeft  = __PercentageWidth(_value);
-        __localWidth = __localRight - __localLeft;
-        __localX     = lerp(__localLeft, __localRight, __originX);
-    });
-    
-    VariableBind("top", function()
-    {
-        return __localTop;
-    },
-    function(_value)
-    {
-        __localTop    = __PercentageHeight(_value);
-        __localHeight = __localBottom - __localTop;
-        __localY      = lerp(__localTop, __localBottom, __originY);
-    });
-    
-    VariableBind("right", function()
-    {
-        return __localRight;
-    },
-    function(_value)
-    {
-        __localRight = __PercentageWidth(_value);
-        __localWidth = __localRight - __localLeft;
-        __localX     = lerp(__localLeft, __localRight, __originX);
-    });
-    
-    VariableBind("bottom", function()
-    {
-        return __localBottom;
-    },
-    function(_value)
-    {
-        __localBottom = __PercentageHeight(_value);
-        __localHeight = __localBottom - __localTop;
-        __localY      = lerp(__localTop, __localBottom, __originY);
-    });
     
     VariableBind("ltrb", function()
     {
@@ -326,6 +293,170 @@ function __BentoSharedVariableBindings()
         Set("top",    _value[1]);
         Set("right",  _value[2]);
         Set("bottom", _value[3]);
+    });
+    
+    VariableBind("left", function()
+    {
+        return __localLeft;
+    },
+    function(_value)
+    {
+        if (BENTO_LOCAL_POSITION_STRETCH)
+        {
+            return Set("leftStretch", _value);
+        }
+        else
+        {
+            return Set("leftMove", _value);
+        }
+    });
+    
+    VariableBind("top", function()
+    {
+        return __localTop;
+    },
+    function(_value)
+    {
+        if (BENTO_LOCAL_POSITION_STRETCH)
+        {
+            return Set("topStretch", _value);
+        }
+        else
+        {
+            return Set("topMove", _value);
+        }
+    });
+    
+    VariableBind("right", function()
+    {
+        return __localRight;
+    },
+    function(_value)
+    {
+        if (BENTO_LOCAL_POSITION_STRETCH)
+        {
+            return Set("rightStretch", _value);
+        }
+        else
+        {
+            return Set("rightMove", _value);
+        }
+    });
+    
+    VariableBind("bottom", function()
+    {
+        return __localBottom;
+    },
+    function(_value)
+    {
+        if (BENTO_LOCAL_POSITION_STRETCH)
+        {
+            return Set("bottomStretch", _value);
+        }
+        else
+        {
+            return Set("bottomMove", _value);
+        }
+    });
+    
+    VariableBind("leftStretch", function()
+    {
+        return __localLeft;
+    },
+    function(_value)
+    {
+        __localLeft  = __PercentageWidth(_value);
+        __localWidth = __localRight - __localLeft;
+        __localX     = lerp(__localLeft, __localRight, __originX);
+    });
+    
+    VariableBind("topStretch", function()
+    {
+        return __localTop;
+    },
+    function(_value)
+    {
+        __localTop    = __PercentageHeight(_value);
+        __localHeight = __localBottom - __localTop;
+        __localY      = lerp(__localTop, __localBottom, __originY);
+    });
+    
+    VariableBind("rightStretch", function()
+    {
+        return __localRight;
+    },
+    function(_value)
+    {
+        __localRight = __PercentageWidth(_value);
+        __localWidth = __localRight - __localLeft;
+        __localX     = lerp(__localLeft, __localRight, __originX);
+    });
+    
+    VariableBind("bottomStretch", function()
+    {
+        return __localBottom;
+    },
+    function(_value)
+    {
+        __localBottom = __PercentageHeight(_value);
+        __localHeight = __localBottom - __localTop;
+        __localY      = lerp(__localTop, __localBottom, __originY);
+    });
+    
+    VariableBind("leftMove", function()
+    {
+        return __localLeft;
+    },
+    function(_value)
+    {
+        _value = __PercentageWidth(_value);
+        
+        var _delta = _value - __localLeft;
+        __localLeft   = _value;
+        __localRight += _delta;
+        __localX     += _delta;
+    });
+    
+    VariableBind("topMove", function()
+    {
+        return __localTop;
+    },
+    function(_value)
+    {
+        _value = __PercentageHeight(_value);
+        
+        var _delta = _value - __localTop;
+        __localTop     = _value;
+        __localBottom += _delta;
+        __localY      += _delta;
+    });
+    
+    VariableBind("rightMove", function()
+    {
+        return __localRight;
+    },
+    function(_value)
+    {
+        _value = __PercentageWidth(_value);
+        
+        var _delta = _value - __localRight;
+        __localLeft  += _delta;
+        __localRight  = _value;
+        __localX     += _delta;
+    });
+    
+    VariableBind("bottomMove", function()
+    {
+        return __localBottom;
+    },
+    function(_value)
+    {
+        _value = __PercentageHeight(_value);
+        
+        var _delta = _value - __localBottom;
+        __localTop    += _delta;
+        __localBottom  = _value;
+        __localY      += _delta;
     });
     
     #endregion
@@ -360,6 +491,30 @@ function __BentoSharedVariableBindings()
         __localTop    += _delta;
         __localBottom += _delta;
         __localY       = _value;
+    });
+    
+    VariableBind("xCenter", function()
+    {
+        return __localX;
+    },
+    function(_value)
+    {
+        var _delta = __PercentageWidth(_value) - 0.5*(__localLeft + __localRight);
+        __localLeft  += _delta;
+        __localRight += _delta;
+        __localX     += _delta;
+    });
+    
+    VariableBind("yCenter", function()
+    {
+        return __localY;
+    },
+    function(_value)
+    {
+        var _delta = __PercentageHeight(_value) - 0.5*(__localTop + __localBottom);
+        __localTop    += _delta;
+        __localBottom += _delta;
+        __localY      += _delta;
     });
     
     VariableBind("width", function()
@@ -452,15 +607,6 @@ function __BentoSharedVariableBindings()
     {
         Set("originX", _value[0]);
         Set("originY", _value[1]);
-    });
-    
-    VariableBind("scale", function()
-    {
-        return __localScale;
-    },
-    function(_value)
-    {
-        __localScale = _value;
     });
     
     #endregion
