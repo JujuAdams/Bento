@@ -9,14 +9,9 @@ function BentoClose()
     
     //Handle basic behaviours on close
     var _current = __BentoContextStackTop();
-    _current.__Close();
     
     //We want to run layouts on close in case 
     _current.__EventGet(__BENTO_EVENT.__LAYOUT).__Call(_current);
-    
-    //Pop context set elsewhere (typically BentoOpenExisting() or layer creation methods in BentoClassHost)
-    __BentoContextStackPop();
-    __BentoScriptScopePop();
     
     if (_current.__popLayerOnClose)
     {
@@ -36,7 +31,16 @@ function BentoClose()
         
         //Start the build-in animation
         _current.AnimationEnter();
+    }
+    
+    _current.__Close();
+    
+    //Pop context set elsewhere (typically BentoOpenExisting() or layer creation methods in BentoClassHost)
+    __BentoContextStackPop();
+    __BentoScriptScopePop();
         
+    if (_current.__popLayerOnClose)
+    {
         //Actually pop the layer stack!
         __BentoLayerStackPop();
     }

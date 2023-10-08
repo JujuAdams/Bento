@@ -207,7 +207,10 @@ build BentoRectangle {
 			}
 		}
 
-		scrollYMax = childMaxBottom
+		eventOnClose = fn {
+			scrollYMin = childMinTop
+			scrollYMax = max(0, childMaxBottom - height)
+		}
 	}
 
 	build BentoVerticalScrollbar {
