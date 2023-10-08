@@ -10,7 +10,7 @@ build BentoRectangle {
 		margin = 20
 
 		eventClick = fn {
-			LayerDeleteCurrent()
+			LayerDestroy()
 		}
 	}
 
