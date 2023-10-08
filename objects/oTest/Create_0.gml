@@ -33,6 +33,7 @@ BentoAddFunction("string",             string);
 BentoAddFunction("show_debug_message", function(_string) { show_debug_message(string(current_time) + ": " + string(_string)) });
 BentoAddFunction("show_message",       function(_string) { show_message(string(_string)) });
 BentoAddFunction("draw_circle",        draw_circle);
+BentoAddFunction("draw_rectangle",     draw_rectangle);
 
 BentoFileExecuteLayerTop("ExampleMenu.bento", "main menu");
 

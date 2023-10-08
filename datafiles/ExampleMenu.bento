@@ -1,8 +1,33 @@
 build BentoRectangle {
 	xywh = ["50%", "50%", "40%", "90%"]
 
-	build BentoBox {
-		xywh = ["50%", "50%", "100%", "90%"]
+	eventBuildIn = fn {
+		AnimateY(-1000, 60, acBack)
+	}
+
+	build BentoTextButton {
+		label = "?"
+		origin = [1, 0]
+		xywh = [parent.width-10, 10, 40, 40]
+
+		eventClick = fn {
+			
+		}
+	}
+
+	var header = build BentoText {
+		xy = ["50%", 30]
+		label = "Welcome to Bento " + BENTO_VERSION + "!"
+	}
+
+	var scrollBox = build BentoScrollBox {
+
+		xywh = ["50%", "50%", "100%", "100%"]
+		top = header.bottom + 20
+
+		eventDraw = fn {
+			draw_rectangle(drawLeft, drawTop, drawRight, drawBottom, true)
+		}
 
 		LayoutAsVerticalList("center", 20)
 
@@ -31,13 +56,25 @@ build BentoRectangle {
 		}
 
 		build BentoTextButton {
-			label = "Layouts"
+			label = "Native Layouts"
 			margin = 20
 
 			eventClick = fn {
 				build BentoLayer {
 					behavior = BENTO_BEHAVIOR_BLOCKING
-					FileExecute("ExampleLayouts.bento")
+					FileExecute("ExampleNativeLayouts.bento")
+				}
+			}
+		}
+
+		build BentoTextButton {
+			label = "Complex Layouts"
+			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleComplexLayouts.bento")
 				}
 			}
 		}
@@ -101,5 +138,24 @@ build BentoRectangle {
 				}
 			}
 		}
+
+		build BentoTextButton {
+			label = "Example: Modal"
+			margin = 20
+
+			eventClick = fn {
+				build BentoLayer {
+					behavior = BENTO_BEHAVIOR_BLOCKING
+					FileExecute("ExampleModal.bento")
+				}
+			}
+		}
+
+		scrollYMax = childMaxBottom
+	}
+
+	build BentoVerticalScrollbar {
+		ltrb = [scrollBox.right + 10, scrollBox.top, scrollBox.right + 30, scrollBox.bottom]
+		binding = scrollBox
 	}
 }

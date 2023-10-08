@@ -1,0 +1,269 @@
+build BentoRectangle {
+	ltrb = ["5%", "5%", "95%", "95%"]
+
+	build BentoTextButton {
+		originX = 0
+		originY = 1
+		xy = [0, "100%"]
+
+		label = "<--"
+		margin = 20
+
+		eventClick = fn {
+			LayerDeleteCurrent()
+		}
+	}
+
+	//Horizontal list test case
+	build BentoRectangle {
+		xywh = [100, 100, 150, 100]
+		LayoutAsHorizontalList("top", 10)
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+
+	build BentoRectangle {
+		xywh = [100, 300, 150, 100]
+		LayoutAsHorizontalList("middle", 10)
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+
+	build BentoRectangle {
+		xywh = [100, 500, 150, 100]
+		LayoutAsHorizontalList("bottom", 10)
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+
+	//Vertical list test case
+	build BentoRectangle {
+		xywh = [350, 100, 100, 150]
+
+		LayoutAsVerticalList("left", 10)
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+
+	build BentoRectangle {
+		xywh = [350, 300, 100, 150]
+
+		LayoutAsVerticalList("center", 10)
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+
+	build BentoRectangle {
+		xywh = [350, 500, 100, 150]
+
+		LayoutAsVerticalList("right", 10)
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+
+	//Grid test case
+	build BentoRectangle {
+		xy = [600, 100]
+		size = [150, 100]
+
+		LayoutAsGrid(50, 50)
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+	}
+
+	build BentoRectangle {
+		xy = [600, 300]
+		size = [100, 150]
+
+		LayoutAsGrid(50, 50)
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+	}
+
+	//Column test case
+	build BentoRectangle {
+		xywh = [1000, 100, 300, 100]
+
+		LayoutAsColumns("left", 20, [100, 200])
+
+		build BentoRectangle {
+			size = [100, 40]
+		}
+
+		build BentoRectangle {
+			size = [200, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+
+	build BentoRectangle {
+		xywh = [1000, 300, 300, 100]
+
+		LayoutAsColumns("center", 20, [100, 200])
+
+		build BentoRectangle {
+			size = [100, 40]
+		}
+
+		build BentoRectangle {
+			size = [200, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+
+	build BentoRectangle {
+		xywh = [1000, 500, 300, 100]
+
+		LayoutAsColumns("right", 20, [100, 200])
+
+		build BentoRectangle {
+			size = [100, 40]
+		}
+
+		build BentoRectangle {
+			size = [200, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+
+		build BentoRectangle {
+			size = [20, 40]
+		}
+
+		build BentoRectangle {
+			size = [40, 20]
+		}
+
+		build BentoRectangle {
+			size = [40, 40]
+		}
+	}
+}
