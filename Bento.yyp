@@ -214,6 +214,6 @@
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"ExampleNativeLayouts.bento","CopyToMask":-1,"filePath":"datafiles",},
   ],
   "MetaData": {
-    "IDEVersion": "2022.0.0.19",
+    "IDEVersion": "2022.0.2.51",
   },
 }

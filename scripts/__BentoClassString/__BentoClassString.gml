@@ -67,7 +67,7 @@ function __BentoClassString(_string) constructor
         }
         else
         {
-            if (_error == undefined) __BentoError("There was an error executing ", self, "\nIt did not return a valid UI struct");
+            if (_error != undefined) __BentoError("There was an error executing ", self, "\nIt did not return a valid UI struct");
         }
         
         if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Took ", (get_timer() - _timer)/1000, "ms to execute ", self, " (exc. any preload)");
