@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScissorSetupFromBounds",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScissorSetupFromBounds",
+  "parent":{
+    "name":"Scissor",
+    "path":"folders/Gui/Scissor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

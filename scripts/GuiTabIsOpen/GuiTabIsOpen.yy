@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiTabIsOpen",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiTabIsOpen",
+  "parent":{
+    "name":"Tabs",
+    "path":"folders/Gui/Tabs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

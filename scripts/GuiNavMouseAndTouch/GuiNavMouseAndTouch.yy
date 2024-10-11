@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiNavMouseAndTouch",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiNavMouseAndTouch",
+  "parent":{
+    "name":"Navigation",
+    "path":"folders/Gui/Navigation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

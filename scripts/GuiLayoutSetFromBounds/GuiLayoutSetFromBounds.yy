@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayoutSetFromBounds",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayoutSetFromBounds",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Gui/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

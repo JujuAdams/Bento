@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayoutMove",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayoutMove",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Gui/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

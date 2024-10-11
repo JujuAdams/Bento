@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiTabSetupButton",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiTabSetupButton",
+  "parent":{
+    "name":"Tabs",
+    "path":"folders/Gui/Tabs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

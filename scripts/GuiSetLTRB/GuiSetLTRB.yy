@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiSetLTRB",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiSetLTRB",
+  "parent":{
+    "name":"Positioning",
+    "path":"folders/Gui/Positioning.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

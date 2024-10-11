@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiStep",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiStep",
+  "parent":{
+    "name":"Gui",
+    "path":"folders/Gui.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

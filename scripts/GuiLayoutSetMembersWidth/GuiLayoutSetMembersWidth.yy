@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayoutSetMembersWidth",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayoutSetMembersWidth",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Gui/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

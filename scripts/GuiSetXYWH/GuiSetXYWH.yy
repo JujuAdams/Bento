@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiSetXYWH",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiSetXYWH",
+  "parent":{
+    "name":"Positioning",
+    "path":"folders/Gui/Positioning.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

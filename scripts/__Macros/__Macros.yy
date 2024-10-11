@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__Macros",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__Macros",
+  "parent":{
+    "name":"GuiDev",
+    "path":"GuiDev.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

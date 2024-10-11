@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiNameSetSingleton",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiNameSetSingleton",
+  "parent":{
+    "name":"Names",
+    "path":"folders/Gui/Names.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayoutTabs",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayoutTabs",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Gui/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

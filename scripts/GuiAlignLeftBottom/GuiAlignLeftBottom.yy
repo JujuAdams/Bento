@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiAlignLeftBottom",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiAlignLeftBottom",
+  "parent":{
+    "name":"Positioning",
+    "path":"folders/Gui/Positioning.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

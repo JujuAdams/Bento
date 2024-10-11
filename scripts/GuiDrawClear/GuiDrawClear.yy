@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiDrawClear",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiDrawClear",
+  "parent":{
+    "name":"Gui",
+    "path":"folders/Gui.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

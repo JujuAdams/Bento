@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiDestroyByName",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiDestroyByName",
+  "parent":{
+    "name":"Names",
+    "path":"folders/Gui/Names.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

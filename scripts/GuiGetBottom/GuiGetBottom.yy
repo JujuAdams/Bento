@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiGetBottom",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiGetBottom",
+  "parent":{
+    "name":"Positioning",
+    "path":"folders/Gui/Positioning.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

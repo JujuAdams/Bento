@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayoutSetMembersHeightExt",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayoutSetMembersHeightExt",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Gui/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

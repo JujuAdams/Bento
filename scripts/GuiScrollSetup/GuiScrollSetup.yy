@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScrollSetup",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScrollSetup",
+  "parent":{
+    "name":"Scroll",
+    "path":"folders/Gui/Scroll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
