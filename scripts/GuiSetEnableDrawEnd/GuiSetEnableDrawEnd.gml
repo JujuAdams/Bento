@@ -1,9 +1,9 @@
 // Feather disable all
 
-/// @param [instance=id]
 /// @param state
+/// @param [instance=id]
 
-function GuiSetEnableDrawEnd(_instance = id, _state)
+function GuiSetEnableDrawEnd(_state, _instance = id)
 {
     static _system = __GuiSystem();
     

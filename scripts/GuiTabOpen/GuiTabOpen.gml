@@ -18,6 +18,8 @@ function GuiTabOpen(_child, _hostInstance = undefined, _button = id)
             __GuiError("GuiTabSetupHost() not called for host instance");
         }
         
+        GuiDestroy(__tabsChild);
+        
         __tabsButton = _button;
         __tabsChild  = _child;
         

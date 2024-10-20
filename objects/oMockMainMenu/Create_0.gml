@@ -21,7 +21,7 @@ GuiCreateInLayout(_layout, GuiExampleButton,
     text: "Start Adventure",
     func: function()
     {
-        GuiDestroyByName("main menu");
+        GuiNameDestroy("main menu");
         GuiCreateOutside(oMockPauseMenu);
     },
 });
@@ -32,7 +32,7 @@ GuiCreateInLayout(_layout, GuiExampleButton,
     func: function()
     {
         var _instance = GuiCreateOutside(oMockOptions, un, GuiGetParent(2), room_width/2, 500);
-        GuiSetBehavior(_instance, GUI_BEHAVIOR_BLOCK_SIBLINGS);
+        GuiSetBehavior(GUI_BEHAVIOR_BLOCK_SIBLINGS, _instance);
         GuiSetPriorityTop(_instance);
         GuiTabOpen(_instance);
     },
@@ -43,7 +43,7 @@ var _layoutHeight = GuiLayoutGetHeight(_layout);
 
 GuiLayoutFinish(_layout, x - _layoutWidth/2, y);
 GuiLayoutTabs(_layout);
-GuiLayoutNavSelect(_layout);
+GuiLayoutNavSelectFirst(_layout);
 
 width  = _layoutWidth + 20;
 height = _layoutHeight + 20;

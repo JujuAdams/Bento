@@ -11,7 +11,7 @@ function GuiLayoutMove(_layout, _dX, _dY)
     var _i = 0;
     repeat(array_length(_array))
     {
-        GuiMove(_array[_i], _dX, _dY);
+        GuiMove(_dX, _dY, _array[_i]);
         ++_i;
     }
 }

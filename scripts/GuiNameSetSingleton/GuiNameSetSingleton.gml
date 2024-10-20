@@ -5,6 +5,6 @@
 
 function GuiNameSetSingleton(_instance, _name)
 {
-    GuiDestroyByName(_name);
-    GuiSetName(_instance, _name);
+    GuiNameDestroy(_name);
+    GuiNameSet(_instance, _name);
 }

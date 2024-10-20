@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// @param layout
-/// @param [host]s
+/// @param [host]
 
 function GuiLayoutTabs(_layout, _host = GuiLayoutGetParent(_layout))
 {

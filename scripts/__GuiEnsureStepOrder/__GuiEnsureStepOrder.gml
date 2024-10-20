@@ -85,7 +85,7 @@ function __GuiEnsureStepOrderInner(_instance)
         else if (__behavior == GUI_BEHAVIOR_POP_UP)
         {
             //Store the first pop-up instance we see so we can detect when the user clicks off of
-            //the pop-up (which will destroy it). See `GuiNavMouseAndTouch()`
+            //the pop-up (which will destroy it). See `GuiInputMouseAndTouch()`
             if (not instance_exists(_system.__popUpRoot)) _system.__popUpRoot = id;
             
             //Pop-ups are not selectable but are still hoverable. This means we need to push them

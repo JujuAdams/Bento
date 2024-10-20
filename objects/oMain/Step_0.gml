@@ -15,16 +15,15 @@ if (keyboard_check_pressed(ord("3")))
     GuiNavSetMode(GUI_NAV_TOUCH);
 }
 
-GuiNavGamepad(keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left),
-              keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up),
-              keyboard_check(vk_space));
+GuiInputGamepad(keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left),
+                keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up),
+                keyboard_check(vk_space));
 
-GuiNavMouseAndTouch(mouse_x, mouse_y, mouse_check_button(mb_left));
+GuiInputMouseAndTouch(mouse_x, mouse_y, mouse_check_button(mb_left));
 
-GuiNavButton(GUI_BUTTON_MOUSE_WHEEL_UP,   mouse_wheel_up());
-GuiNavButton(GUI_BUTTON_MOUSE_WHEEL_DOWN, mouse_wheel_down());
-
-GuiNavButton("escape", keyboard_check_pressed(vk_escape));
+GuiInputButton(GUI_BUTTON_MOUSE_WHEEL_UP,   mouse_wheel_up());
+GuiInputButton(GUI_BUTTON_MOUSE_WHEEL_DOWN, mouse_wheel_down());
+GuiInputButton("escape", keyboard_check(vk_escape));
 
 GuiStep();
 

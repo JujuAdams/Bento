@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiInputGamepad",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiInputGamepad",
+  "parent":{
+    "name":"Input",
+    "path":"folders/Gui/Input.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -3,7 +3,7 @@
 event_inherited();
 
 GuiNameSetSingleton(id, "pause menu page");
-GuiSetBehavior(id, GUI_BEHAVIOR_MODAL);
+GuiSetBehavior(GUI_BEHAVIOR_MODAL);
 GuiSetEnableDrawEnd(un, true);
 
 var _layout = GuiLayoutStartListV(id, true, 10, fa_center, fa_top);
@@ -58,7 +58,7 @@ if (not GuiNameExists("main menu"))
 height = 250;
 
 GuiLayoutFinish(_layout, x, y - height/2);
-GuiLayoutNavSelect(_layout);
+GuiLayoutNavSelectFirst(_layout);
 
 width = GuiLayoutGetMaxWidth(_layout) + 20;
 
@@ -72,5 +72,5 @@ GuiCreateOutside(GuiExampleButton,
 },
 id, x + width/2, y + height/2);
 
-GuiScissorSetup(id, x - width/2, y - height/2, x + width/2, y + height/2);
-GuiScrollSetup(id, un, un, un, -max(0, GuiLayoutGetHeight(_layout) - height));
+GuiScissorSetup();
+GuiScrollSetupVert();

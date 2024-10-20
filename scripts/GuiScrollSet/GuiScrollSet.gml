@@ -1,14 +1,14 @@
 // Feather disable all
 
-/// @param instance
-/// @param [scrollX=0]
-/// @param [scrollY=0]
+/// @param scrollX
+/// @param scrollY
+/// @param [instance=id]
 
-function GuiScrollSet(_instance, _scrollX = 0, _scrollY = 0)
+function GuiScrollSet(_scrollX, _scrollY, _instance = id)
 {
     with(_instance)
     {
-        if (not __scroll) return;
+        if (not __scrollEnabled) return;
         
         var _oldX = __scrollX;
         var _oldY = __scrollY;

@@ -1,25 +1,12 @@
 // Feather disable all
 
-/// @param instance
-/// @param left
-/// @param top
-/// @param right
-/// @param bottom
+/// @param [padding=0]
+/// @param [instance=id]
 
-function GuiScissorSetup(_instance, _left, _top, _right, _bottom)
+function GuiScissorSetup(_padding = 0, _instance = id)
 {
-    static _system = __GuiSystem();
-    
-    _system.__stepDirty = true;
-    _system.__drawDirty = true;
-    
     with(_instance)
     {
-        __scissorState = true;
-        
-        __scissorLeft   = _left;
-        __scissorTop    = _top;
-        __scissorRight  = _right;
-        __scissorBottom = _bottom;
+        GuiScissorSetupExt(x - width/2 + _padding, y - height/2 + _padding, x + width/2 - _padding, y + height/2 - _padding);
     }
 }

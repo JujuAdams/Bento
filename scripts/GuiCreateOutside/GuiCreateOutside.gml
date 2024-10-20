@@ -22,7 +22,7 @@ function GuiCreateOutside(_object, _struct = undefined, _parent = GUI_ROOT, _x =
     
     if (not object_is_ancestor(_object, GuiObject))
     {
-        __GuiError($"Object {object_get_name(_object)} isn't a decendent of GuiObject");
+        __GuiError($"Object {object_get_name(_object)} isn't a descendent of GuiObject");
     }
     
     if (not instance_exists(_parent)) __GuiError("Parent doesn't exist");

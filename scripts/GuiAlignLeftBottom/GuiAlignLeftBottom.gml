@@ -15,5 +15,5 @@ function GuiAlignLeftBottom(_instance, _x, _y, _relative = false)
     _x += _instance.width/2;
     _y -= _instance.height/2;
     
-    GuiSetPosition(_instance, _x, _y, _relative);
+    GuiSetPosition(_x, _y, _instance, _relative);
 }

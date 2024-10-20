@@ -11,7 +11,6 @@ function GuiNavGetNearest(_x, _y, _excludeArray = [])
     
     var _instance = noone;
     
-    var _popUpRoot = _system.__popUpRoot;
     var _nearestDistance = infinity;
     var _i = 0;
     repeat(array_length(_stepOrder))
@@ -24,8 +23,7 @@ function GuiNavGetNearest(_x, _y, _excludeArray = [])
                 continue;
             }
             
-            if ((__behavior == GUI_BEHAVIOR_BUTTON)
-            &&  ((not instance_exists(_popUpRoot)) || GuiIsAncestor(_popUpRoot, id)))
+            if (__GuiGetHoverableInner(id))
             {
                 var _distance = point_distance(x, y, _x, _y);
                 if (_distance < _nearestDistance)

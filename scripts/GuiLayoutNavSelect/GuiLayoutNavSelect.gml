@@ -1,9 +1,9 @@
 // Feather disable all
 
 /// @param layout
-/// @param [index=0]
+/// @param index
 
-function GuiLayoutNavSelect(_layout, _index = 0)
+function GuiLayoutNavSelect(_layout, _index)
 {
     var _array = _layout.__instanceArray;
     

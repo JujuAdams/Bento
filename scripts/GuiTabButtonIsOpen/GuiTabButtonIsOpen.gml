@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// @param [istance=id]
+/// @param [instance=id]
 
 function GuiTabButtonIsOpen(_instance = id)
 {

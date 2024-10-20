@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// @param instance
+/// @param [instance=id
 
-function GuiGetDisable(_instance)
+function GuiGetDisable(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
     

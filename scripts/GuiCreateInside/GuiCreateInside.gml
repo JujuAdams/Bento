@@ -13,8 +13,6 @@
 /// @param object
 /// @param [struct]
 /// @param [parent=id]
-/// @param [x=0]
-/// @param [y=0]
 
 function GuiCreateInside(_object, _struct = undefined, _parent = id, _x = 0, _y = 0)
 {
@@ -25,7 +23,7 @@ function GuiCreateInside(_object, _struct = undefined, _parent = id, _x = 0, _y 
     
     if (not object_is_ancestor(_object, GuiObject))
     {
-        __GuiError($"Object {object_get_name(_object)} isn't a decendent of GuiObject");
+        __GuiError($"Object {object_get_name(_object)} isn't a descendent of GuiObject");
     }
     
     _system.__tempParent = _parent;

@@ -2,7 +2,7 @@
 
 event_inherited();
 
-GuiSetBehavior(id, GUI_BEHAVIOR_MODAL);
+GuiSetBehavior(GUI_BEHAVIOR_MODAL);
 
 width  = 400;
 height = 120;
@@ -22,7 +22,7 @@ GuiCreateInLayout(_layout, GuiExampleButton, {
     text: "Cancel",
     func: function()
     {
-        GuiDestroy(GuiGetParent(id));
+        GuiDestroy(GuiGetParent());
     },
 });
 

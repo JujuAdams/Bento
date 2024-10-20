@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiSetLTRB",
   "parent":{
-    "name":"Positioning",
-    "path":"folders/Gui/Positioning.yy",
+    "name":"Position & Size",
+    "path":"folders/Gui/Position & Size.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -34,10 +34,10 @@
 ///   itself will still have its Step and Draw user event executed but it cannot be interacted with
 ///   directly using the primary action. This behavior is useful for creating pages.
 /// 
-/// @param [instance=id]
 /// @param behavior
+/// @param [instance=id]
 
-function GuiSetBehavior(_instance = id, _behavior)
+function GuiSetBehavior(_behavior, _instance = id)
 {
     static _system = __GuiSystem();
     

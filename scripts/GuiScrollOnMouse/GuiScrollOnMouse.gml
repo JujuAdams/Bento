@@ -25,8 +25,8 @@ function GuiScrollOnMouse(_instance = id)
         }
         else if (GuiNavGetOver(_instance))
         {
-            if (GuiNavGetButton(GUI_BUTTON_MOUSE_WHEEL_UP  )) GuiScrollMove(_instance, -GUI_MOUSE_WHEEL_SCROLL_SPEED, GUI_MOUSE_WHEEL_SCROLL_SPEED);
-            if (GuiNavGetButton(GUI_BUTTON_MOUSE_WHEEL_DOWN)) GuiScrollMove(_instance, GUI_MOUSE_WHEEL_SCROLL_SPEED, -GUI_MOUSE_WHEEL_SCROLL_SPEED);
+            if (GuiButtonGetPress(GUI_BUTTON_MOUSE_WHEEL_UP  )) GuiScrollMove(_instance, -GUI_MOUSE_WHEEL_SCROLL_SPEED, GUI_MOUSE_WHEEL_SCROLL_SPEED);
+            if (GuiButtonGetPress(GUI_BUTTON_MOUSE_WHEEL_DOWN)) GuiScrollMove(_instance, GUI_MOUSE_WHEEL_SCROLL_SPEED, -GUI_MOUSE_WHEEL_SCROLL_SPEED);
         }
     }
 }

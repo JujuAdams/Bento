@@ -43,5 +43,5 @@ GuiCreateInLayout(_layout, GuiExampleButton,
 });
 
 GuiLayoutFinish(_layout, x, y + 70);
-GuiLayoutNavSelect(_layout);
+GuiLayoutNavSelectFirst(_layout);
 GuiLayoutTabs(_layout);

@@ -10,5 +10,5 @@
 
 function GuiAlignCenterMiddle(_instance, _x, _y, _relative = false)
 {
-    GuiSetPosition(_instance, _x, _y, _relative);
+    GuiSetPosition(_x, _y, _instance, _relative);
 }

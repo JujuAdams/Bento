@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// @param instance
+/// @param [instance=id]
 
-function GuiTabGetHost(_instance)
+function GuiTabGetHost(_instance = id)
 {
     if (not instance_exists(_instance)) return noone;
     

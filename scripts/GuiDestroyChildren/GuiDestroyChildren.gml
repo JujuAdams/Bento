@@ -2,9 +2,9 @@
 
 /// Destroys every child of a parent GUI instance.
 /// 
-/// @param parent
+/// @param [parent=id]
 
-function GuiDestroyChildren(_parent)
+function GuiDestroyChildren(_parent = id)
 {
     static __funcDestroy = function(_array)
     {

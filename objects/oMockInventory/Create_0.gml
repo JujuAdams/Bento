@@ -3,7 +3,7 @@
 event_inherited();
 
 GuiNameSetSingleton(id, "pause menu page");
-GuiSetBehavior(id, GUI_BEHAVIOR_MODAL);
+GuiSetBehavior(GUI_BEHAVIOR_MODAL);
 
 width = 300;
 height = 450;

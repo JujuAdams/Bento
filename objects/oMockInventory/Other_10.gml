@@ -4,8 +4,8 @@
 
 GuiScrollOnMouse();
 
-if (GuiNavGetButton("escape"))
+if (GuiButtonGetPress("escape"))
 {
-    GuiNavButtonConsume("escape");
+    GuiNavConsume();
     GuiDestroy();
 }

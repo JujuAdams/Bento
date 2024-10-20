@@ -11,8 +11,8 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
-#macro GUI_VERSION  "1.2.0"
-#macro GUI_DATE     "2024-10-11"
+#macro GUI_VERSION  "1.4.0"
+#macro GUI_DATE     "2024-10-20"
 
 #macro GUI_ROOT  (__GuiGetRoot())
 

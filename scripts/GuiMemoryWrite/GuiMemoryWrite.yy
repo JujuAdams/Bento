@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiMemoryWrite",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiMemoryWrite",
+  "parent":{
+    "name":"Memory",
+    "path":"folders/Gui/Memory.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

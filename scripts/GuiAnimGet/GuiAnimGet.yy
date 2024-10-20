@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiAnimGet",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiAnimGet",
+  "parent":{
+    "name":"Animation",
+    "path":"folders/Gui/Animation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiLayoutTabs",
   "parent":{
-    "name":"Layout",
-    "path":"folders/Gui/Layout.yy",
+    "name":"Setters",
+    "path":"folders/Gui/Layout/Setters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

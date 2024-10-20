@@ -14,5 +14,5 @@ function GuiAlignCenterTop(_instance, _x, _y, _relative = false)
     
     _y += _instance.height/2;
     
-    GuiSetPosition(_instance, _x, _y, _relative);
+    GuiSetPosition(_x, _y, _instance, _relative);
 }

@@ -10,7 +10,7 @@ function GuiSetLTRB(_instance, _left, _top, _right, _bottom)
 {
     with(_instance)
     {
-        GuiMove(_instance, 0.5*(_left + _right), 0.5*(_top + _bottom));
+        GuiSetPosition(0.5*(_left + _right), 0.5*(_top + _bottom), _instance);
         
         width  = _right - _left;
         height = _bottom - _top;

@@ -95,7 +95,7 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
                     var _yOffset = -height/2;
                 }
                 
-                GuiSetPosition(id, _x, _y + _yOffset);
+                GuiSetPosition(_x, _y + _yOffset);
                 xstart = x;
                 ystart = y;
                 

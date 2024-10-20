@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiLayoutSetMembersHeightExt",
   "parent":{
-    "name":"Layout",
-    "path":"folders/Gui/Layout.yy",
+    "name":"Layout Members",
+    "path":"folders/Gui/Layout Members.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

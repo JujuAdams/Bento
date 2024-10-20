@@ -31,4 +31,10 @@ with(__GuiSystem())
     if (_instance == other.id) ds_map_delete(__nameMap, other.__name);
     
     if (__popUpRoot == other.id) __popUpRoot = noone;
+    
+    if (other.__animating)
+    {
+        other.__animating = false;
+        __animCount--;
+    }
 }

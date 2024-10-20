@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiFriendlyBehavior",
   "parent":{
-    "name":"Friendly",
-    "path":"folders/Gui/Friendly.yy",
+    "name":"Friendly Names",
+    "path":"folders/Gui/Friendly Names.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

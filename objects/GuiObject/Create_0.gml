@@ -38,7 +38,8 @@ persistent = true;
 __name = undefined;
 
 __disable = false;
-__raycastDisabled = false;
+__raycastDisableHori = false;
+__raycastDisableVert = false;
 
 __childInsideArray  = [];
 __childOutsideArray = [];
@@ -46,13 +47,15 @@ __childOutsideArray = [];
 __orderDirty = false;
 __updating   = false;
 
-__scroll = false;
+__scrollEnabled = false;
 __tabsEnabled = false;
 __tabsHost = noone;
 __selectOnDestroy = noone;
 
 __scissorState = false;
-//Further scissor variables set in `GuiScissorSetup()`
+//Further scissor variables set in `GuiScissorSetupExt()`
+
+__animating = false;
 
 __guiIndex = __GuiSystem().__guiIndex;
 __GuiSystem().__guiIndex++;

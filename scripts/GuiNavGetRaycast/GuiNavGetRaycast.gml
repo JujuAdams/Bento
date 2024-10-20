@@ -35,7 +35,7 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [])
                 var _weight = point_distance(_x, _y, _nearestX, _nearestY);
                 if (_weight < _minWeight)
                 {
-                    if (__GuiGetSelectableByGamepad(id))
+                    if (GuiGetHoverable(id))
                     {
                         _instance = id;
                         _minWeight = _weight;

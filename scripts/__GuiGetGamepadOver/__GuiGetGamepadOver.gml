@@ -12,11 +12,11 @@ function __GuiGetGamepadOver(_prevInstance, _dX, _dY)
     _excludeArray[0] = _prevInstance;
     var _nextInstance = noone;
     
-    if (not __GuiGetSelectableByGamepad(_prevInstance))
+    if (not GuiGetHoverable(_prevInstance))
     {
-        //The instance we were previously highlighting is no longer valid (see __GuiGetSelectableByGamepad())
+        //The instance we were previously highlighting is no longer valid (see GuiGetHoverable())
         
-        if (__GuiGetSelectableByGamepad(_system.__overInstanceSoft))
+        if (GuiGetHoverable(_system.__overInstanceSoft))
         {
             //Choose the soft selection if possible
             _nextInstance = _system.__overInstanceSoft;
@@ -56,11 +56,12 @@ function __GuiGetGamepadOver(_prevInstance, _dX, _dY)
                 _nextInstance = _prevInstance.navDown;
             }
             
-            if (not __GuiGetSelectableByGamepad(_nextInstance))
+            if (not GuiGetHoverable(_nextInstance))
             {
                 //If the navigation instance isn't selectable then fall back on a raycast
                 
-                if (_prevInstance.__raycastDisabled)
+                if (((_dX != 0) && _prevInstance.__raycastDisableHori)
+                ||  ((_dY != 0) && _prevInstance.__raycastDisableVert))
                 {
                     //Raycast is disabled for the previous instance!
                     _nextInstance = _prevInstance;

@@ -1,4 +1,6 @@
 // Feather disable all
 
-GuiCreateOutside(oMockMainMenu, un, un, room_width/2, 500);
+GuiFreezeSetOnAnimation(true);
 GuiNavSetMode(GUI_NAV_MOUSE);
+
+GuiCreateOutside(oMockMainMenu, un, un, room_width/2, 500);

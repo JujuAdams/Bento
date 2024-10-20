@@ -82,7 +82,13 @@ function __GuiSystem()
         __holdInstance     = noone;
         __popUpRoot        = noone;
         
-        __buttonMap = ds_map_create();
+        __buttonInputMap    = ds_map_create();
+        __buttonPrevMap     = ds_map_create();
+        __buttonStateMap    = ds_map_create();
+        __buttonConsumedMap = ds_map_create();
+        __buttonArray       = [];
+        
+        __primaryConsumed = false;
         
         __updateInstanceArray = [];
         
@@ -90,6 +96,13 @@ function __GuiSystem()
         
         __tempParent = undefined;
         __tempInside = false;
+        
+        __animCount = 0;
+        
+        __freeze = false;
+        __freezeOnAnimation = false;
+        
+        __memoryStruct = {};
     }
     
     if (GM_build_type == "run")

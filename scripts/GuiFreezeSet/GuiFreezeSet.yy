@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiFreezeSet",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiFreezeSet",
+  "parent":{
+    "name":"Freeze",
+    "path":"folders/Gui/Freeze.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

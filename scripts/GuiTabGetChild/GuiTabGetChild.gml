@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// @param hostInstance
+/// @param [hostInstance]
 
-function GuiTabGetChild(_hostInstance)
+function GuiTabGetChild(_hostInstance = GuiTabGetHost())
 {
     with(_hostInstance)
     {
