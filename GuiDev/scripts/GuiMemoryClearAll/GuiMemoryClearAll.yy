@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiMemoryClearAll",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiMemoryClearAll",
+  "parent":{
+    "name":"Memory",
+    "path":"folders/Library/Memory.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

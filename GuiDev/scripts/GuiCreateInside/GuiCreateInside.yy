@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiCreateInside",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiCreateInside",
+  "parent":{
+    "name":"Instances",
+    "path":"folders/Library/Instances.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

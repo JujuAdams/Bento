@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiNavGetNearest",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiNavGetNearest",
+  "parent":{
+    "name":"Navigation",
+    "path":"folders/Library/Navigation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

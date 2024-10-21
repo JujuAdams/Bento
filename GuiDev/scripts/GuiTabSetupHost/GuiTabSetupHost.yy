@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiTabSetupHost",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiTabSetupHost",
+  "parent":{
+    "name":"Tabs",
+    "path":"folders/Library/Tabs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
