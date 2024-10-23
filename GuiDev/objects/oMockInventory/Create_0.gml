@@ -4,8 +4,42 @@ event_inherited();
 
 GuiNameSingleton("pause menu page");
 
-width = 300;
-height = 450;
+var _sortButton = GuiCreateInside(GuiExampleButton,
+{
+    text: "Sort",
+    func: function()
+    {
+        GuiCreateOutside(GuiExamplePopUpMenu,
+        {
+            buttonsArray: [
+                {
+                    text: "Name",
+                    func: function()
+                    {
+                        GuiDestroy(GuiGetParent());
+                    },
+                },
+                {
+                    text: "Type",
+                    func: function()
+                    {
+                        GuiDestroy(GuiGetParent());
+                    },
+                },
+                {
+                    text: "Value",
+                    func: function()
+                    {
+                        GuiDestroy(GuiGetParent());
+                    },
+                },
+            ],
+        },
+        GuiGetParent(), GuiNavGetCursorX(), GuiNavGetCursorY());
+    },
+});
+
+GuiSetPosition(0, 0, _sortButton, fa_left, fa_top);
 
 var _layout = GuiLayoutStartGridH(id, true, 10, 80, 40, 4);
 
@@ -17,9 +51,9 @@ repeat(30)
     });
 }
 
-GuiLayoutFinish(_layout, GuiGetLeft()+10, GuiGetTop()+10);
+GuiLayoutFinish(_layout, 0, GuiGetBottom(_sortButton) + 10);
 
-GuiSetSizeAroundLayout(_layout, 10);
+GuiSetSizeAroundChildren(10);
 
 GuiCreateOutside(GuiExampleButton,
 {
@@ -29,4 +63,7 @@ GuiCreateOutside(GuiExampleButton,
         GuiDestroy(GuiGetParent());
     },
 },
-id, x + width/2, y + height/2);
+id, GuiGetRight(), GuiGetBottom() + 7);
+
+GuiSetPosition(display_get_gui_width()/2, display_get_gui_height()/2);
+GuiLayoutNavSelectFirst(_layout);

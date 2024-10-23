@@ -2,16 +2,9 @@
 
 /// Returns whether a tab is open.
 /// 
-/// @param hostInstance
+/// @param tabIdent
 
-function GuiTabIsOpen(_hostInstance)
+function GuiTabIsOpen(_tabIdent)
 {
-    with(_hostInstance)
-    {
-        if (not __tabsEnabled) return false;
-        
-        return instance_exists(__tabsChild);
-    }
-    
-    return false;
+    return instance_exists(GuiTabGetChild(_tabIdent));
 }

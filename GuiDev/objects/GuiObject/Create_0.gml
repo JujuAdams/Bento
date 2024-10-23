@@ -47,9 +47,9 @@ __childOutsideArray = [];
 __orderDirty = false;
 __updating   = false;
 
-__scrollEnabled = false;
-__tabsEnabled = false;
-__tabsHost = noone;
+__scrollEnabled   = false;
+__tabIdent        = undefined;
+__tabIdentChildOf = undefined;
 __selectOnDestroy = noone;
 
 __scissorState = false;

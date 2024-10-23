@@ -36,10 +36,10 @@ function __GuiGetHoverableInner(_instance)
             return false;
         }
         
-        var _tabsHost = _instance.__tabsHost;
-        if (instance_exists(_tabsHost))
+        var _tabData = __GuiTabGetData(_instance.__tabIdent);
+        if (_tabData != undefined)
         {
-            if (_tabsHost.__tabsBlockGamepadWhenOpen && instance_exists(_tabsHost.__tabsChild))
+            if (_tabData.__blockGamepadWhenOpen && instance_exists(_tabData.__child))
             {
                 return false;
             }

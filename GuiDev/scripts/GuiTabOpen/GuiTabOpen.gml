@@ -3,28 +3,27 @@
 /// Opens a tab. The existing tab child, if one exists, will be destroyed.
 /// 
 /// @param child
-/// @param [hostInstance]
 /// @param [button=id]
 
-function GuiTabOpen(_child, _hostInstance = undefined, _button = id)
+function GuiTabOpen(_child, _button = id)
 {
-    if (_hostInstance == undefined)
+    if (not instance_exists(_button))
     {
-        _hostInstance = GuiTabGetHost(_button);
+        __GuiError("Button instance doesn't exist");
     }
     
-    with(_hostInstance)
+    if (_button.__tabIdent == undefined)
     {
-        if (not __tabsEnabled)
-        {
-            __GuiError("GuiTabSetupHost() not called for host instance");
-        }
+        __GuiError("GuiTabSetupButton() hasn't been called for the button instance");
+    }
+    
+    with(__GuiTabEnsure(_button.__tabIdent))
+    {
+        GuiDestroy(__child);
         
-        GuiDestroy(__tabsChild);
+        __button = _button;
+        __child  = _child;
         
-        __tabsButton = _button;
-        __tabsChild  = _child;
-        
-        _child.__tabsHost = id;
+        _child.__tabIdentChildOf = _button.__tabIdent;
     }
 }

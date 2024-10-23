@@ -2,7 +2,7 @@
 
 // Feather disable all
 
-GuiDrawClear(c_black, 0.5);
+GuiDrawClear();
 
 event_inherited();
 

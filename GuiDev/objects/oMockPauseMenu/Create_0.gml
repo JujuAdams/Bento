@@ -2,7 +2,7 @@
 
 event_inherited();
 
-GuiTabSetupHost(true);
+GuiTabSetupHost("pause menu", true);
 
 var _layout = GuiLayoutStartListV(id, true, 10, fa_left, fa_top);
 
@@ -44,5 +44,5 @@ GuiCreateInLayout(_layout, GuiExampleButton,
 
 GuiLayoutFinish(_layout, x, y + 70);
 GuiLayoutNavSelectFirst(_layout);
-GuiLayoutMembersSetupTabButton(_layout);
+GuiLayoutMembersSetupTabButton(_layout, "pause menu");
 GuiLayoutSetMembersWidthExt(_layout, GuiLayoutGetMembersMaxWidth(_layout), GuiExampleButton);

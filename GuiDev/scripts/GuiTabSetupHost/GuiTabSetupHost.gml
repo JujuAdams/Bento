@@ -1,16 +1,23 @@
 // Feather disable all
 
-/// Sets up an instance as a tab host. If `blockGamepadWhenOpen` is set to `true` then tab buttons
-/// will not be selectable with a gamepad whilst a tab is open.
+/// Sets up an instance as a tab host.
 /// 
+/// @param tabIdent
 /// @param [blockGamepadWhenOpen=false]
-/// @param [hostInstance=id]
+/// @param [instance=id]
 
-function GuiTabSetupHost(_blockGamepadWhenOpen = false, _hostInstance = id)
+function GuiTabSetupHost(_tabIdent, _blockGamepadWhenOpen = false, _instance = id)
 {
-    __tabsEnabled = true;
-    __tabsButton  = noone;
-    __tabsChild   = noone;
+    if (not instance_exists(_instance)) return;
     
-    __tabsBlockGamepadWhenOpen = _blockGamepadWhenOpen;
+    if (_tabIdent == undefined)
+    {
+        __GuiError("Tab ident cannot be `undefined`");
+    }
+    
+    var _tabData = __GuiTabEnsure(_tabIdent);
+    _tabData.__host = _instance;
+    _tabData.__blockGamepadWhenOpen = _blockGamepadWhenOpen;
+    
+    _instance.__tabIdent = _tabIdent;
 }

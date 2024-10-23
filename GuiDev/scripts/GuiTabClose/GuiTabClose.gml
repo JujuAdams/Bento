@@ -2,17 +2,9 @@
 
 /// Destroys the tab instance currently opened by a host.
 /// 
-/// @param hostInstance
+/// @param tabIdent
 
-function GuiTabClose(_hostInstance)
+function GuiTabClose(_tabIdent)
 {
-    with(_hostInstance)
-    {
-        if (not __tabsEnabled)
-        {
-            __GuiError("GuiTabSetupHost() not called for host instance");
-        }
-        
-        GuiDestroy(__tabsChild);
-    }
+    GuiDestroy(GuiTabGetChild(_tabIdent));
 }

@@ -8,17 +8,24 @@ if (instance_exists(__selectOnDestroy))
     GuiNavSelectSoft(__selectOnDestroy);
 }
 
-with(__tabsHost)
+if (__tabIdent != undefined)
 {
-    if (__tabsChild == other.id)
+    var _tabData = __GuiTabGetData(__tabIdent);
+    if ((_tabData.__host == id) || (_tabData.__button == id))
     {
-        if (not instance_exists(other.__selectOnDestroy))
+        GuiTabClose(__tabIdent);
+    }
+}
+
+if (__tabIdentChildOf != undefined)
+{
+    var _tabData = __GuiTabGetData(__tabIdentChildOf);
+    if (_tabData.__child == id)
+    {
+        if (not instance_exists(__selectOnDestroy))
         {
-            GuiNavSelect(__tabsButton);
+            GuiNavSelect(_tabData.__button);
         }
-        
-        __tabsButton = noone;
-        __tabsChild  = noone;
     }
 }
 

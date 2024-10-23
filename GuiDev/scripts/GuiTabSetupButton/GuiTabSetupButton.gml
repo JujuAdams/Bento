@@ -2,22 +2,19 @@
 
 /// Sets up an instance as a tab button.
 /// 
-/// @param [host=parent]
+/// @param tabIdent
 /// @param [instance=id]
 
-function GuiTabSetupButton(_host = GuiGetParent(), _instance = id)
+function GuiTabSetupButton(_tabIdent, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
-    if (not instance_exists(_host))
+    if (_tabIdent == undefined)
     {
-        __GuiError("Host instance doesn't exist");
+        __GuiError("Tab ident cannot be `undefined`");
     }
     
-    if (not _host.__tabsEnabled)
-    {
-        __GuiError("Host instance hasn't called GuiTabSetupHost()");
-    }
+    __GuiTabEnsure(_tabIdent);
     
-    _instance.__tabsHost = _host;
+    _instance.__tabIdent = _tabIdent;
 }

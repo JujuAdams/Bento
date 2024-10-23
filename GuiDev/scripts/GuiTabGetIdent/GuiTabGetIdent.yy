@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiTabGetHost",
+  "%Name":"GuiTabGetIdent",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiTabGetHost",
+  "name":"GuiTabGetIdent",
   "parent":{
     "name":"Tabs",
     "path":"folders/Library/Tabs.yy",

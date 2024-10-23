@@ -104,6 +104,8 @@ function __GuiSystem()
         __freeze = false;
         __freezeOnAnimation = true;
         
+        __tabDict = {};
+        
         __memoryStruct = {};
     }
     

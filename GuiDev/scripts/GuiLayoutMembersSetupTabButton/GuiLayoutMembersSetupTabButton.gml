@@ -3,15 +3,15 @@
 /// Calls `GuiTabSetupButton()` for each member of a layout.
 /// 
 /// @param layout
-/// @param [host]
+/// @param [tabIdent]
 
-function GuiLayoutMembersSetupTabButton(_layout, _host = GuiLayoutGetParent(_layout))
+function GuiLayoutMembersSetupTabButton(_layout, _tabIdent = GuiTabGetIdent())
 {
     var _array = GuiLayoutGetArray(_layout);
     var _i = 0;
     repeat(array_length(_array))
     {
-        GuiTabSetupButton(_host, _array[_i]);
+        GuiTabSetupButton(_tabIdent, _array[_i]);
         ++_i;
     }
 }

@@ -3,16 +3,12 @@
 /// Returns the instance ID of the currently open tab child. This function will return `noone` if
 /// no tab is open.
 /// 
-/// @param [hostInstance]
+/// @param tabIdent
 
-function GuiTabGetChild(_hostInstance = GuiTabGetHost())
+function GuiTabGetChild(_tabIdent)
 {
-    with(_hostInstance)
-    {
-        if (not __tabsEnabled) return noone;
-        
-        return __tabsChild;
-    }
+    var _tabData = __GuiTabGetData(_tabIdent);
+    if (_tabData == undefined) return noone;
     
-    return noone;
+    return _tabData.__child;
 }

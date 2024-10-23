@@ -3,10 +3,10 @@
 /// Convenience function that draws a fullscreen rectangle with the given `color` and `alpha`.
 /// This is a helpful function to call when drawing modals.
 /// 
-/// @param color
-/// @param alpha
+/// @param [color=black]
+/// @param [alpha=0.45]
 
-function GuiDrawClear(_color, _alpha)
+function GuiDrawClear(_color = c_black, _alpha = 0.45)
 {
     var _oldColor = draw_get_color();
     var _oldAlpha = draw_get_alpha();
