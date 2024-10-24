@@ -118,10 +118,14 @@ function __GuiClassLayoutGridV(_parent, _inside, _spacing, _cellWidth, _cellHeig
         }
     }
     
-    __FinishWithScroll = function(_left, _top, _right, _bottom, _padLeft, _padTop, _padRight, _padBottom)
+    __FinishWithScroll = function(_padLeft, _padTop, _padRight, _padBottom)
     {
-        __Finish(_left, _top);
+        if (not __parent.__scissorState)
+        {
+            __GuiError("Scissor region not set up");
+        }
+        
+        __Finish(__parent.__scissorLeft, __parent.__scissorTop);
         GuiScrollSetupVert(_padTop, _padBottom, __parent);
-        GuiScissorSetupExt(_left, _top, _right, _bottom, __parent);
     }
 }

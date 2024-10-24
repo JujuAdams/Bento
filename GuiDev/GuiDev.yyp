@@ -205,6 +205,7 @@
     {"id":{"name":"GuiNavUsingPointer","path":"scripts/GuiNavUsingPointer/GuiNavUsingPointer.yy",},},
     {"id":{"name":"GuiNavUsingTouch","path":"scripts/GuiNavUsingTouch/GuiNavUsingTouch.yy",},},
     {"id":{"name":"GuiScissorSetup","path":"scripts/GuiScissorSetup/GuiScissorSetup.yy",},},
+    {"id":{"name":"GuiScissorSetupAbsolute","path":"scripts/GuiScissorSetupAbsolute/GuiScissorSetupAbsolute.yy",},},
     {"id":{"name":"GuiScissorSetupExt","path":"scripts/GuiScissorSetupExt/GuiScissorSetupExt.yy",},},
     {"id":{"name":"GuiScissorTempOff","path":"scripts/GuiScissorTempOff/GuiScissorTempOff.yy",},},
     {"id":{"name":"GuiScissorTempOn","path":"scripts/GuiScissorTempOn/GuiScissorTempOn.yy",},},

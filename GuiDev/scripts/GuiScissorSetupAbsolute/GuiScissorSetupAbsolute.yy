@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScissorSetupAbsolute",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScissorSetupAbsolute",
+  "parent":{
+    "name":"Scissor",
+    "path":"folders/Library/Scissor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

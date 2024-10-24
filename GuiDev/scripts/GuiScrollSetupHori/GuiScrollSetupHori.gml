@@ -11,22 +11,22 @@ function GuiScrollSetupHori(_paddingLeft = 0, _paddingRight = 0, _instance = id)
 {
     with(_instance)
     {
+        if (not __scissorState)
+        {
+            __GuiError("Scissor region not set up");
+        }
+        
+        var _visibleWidth = __scissorRight - __scissorLeft;
+        
         var _bounds = GuiGetChildrenBoundsInside();
-        var _childrenLeft  = _bounds.left;
         var _childrenWidth = _bounds.width;
         
-        if (_childrenWidth <= width - (_paddingLeft + _paddingRight))
+        if (_childrenWidth <= _visibleWidth - (_paddingLeft + _paddingRight))
         {
-            GuiScrollSetupExt(_paddingLeft, 0, _paddingLeft, 0);
-            GuiScrollSet(_paddingLeft, 0);
-        }
-        else
-        {
-            var _min = (width - _paddingRight) - _childrenWidth;
+            var _scrollWidth = (_childrenWidth - _visibleWidth) + _paddingRight;
+            var _dX = _bounds.left - __scissorRight;
             
-            var _dX = _childrenLeft - (x - width/2);
-            
-            GuiScrollSetupExt(_min, 0, _paddingLeft + _dX, 0);
+            GuiScrollSetupExt(-_scrollWidth, 0, _paddingLeft + _dX, 0);
             __scrollX = _dX;
             GuiScrollSet(_paddingLeft + _dX, 0);
         }

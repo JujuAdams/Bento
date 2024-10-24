@@ -124,36 +124,40 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
         }
     }
     
-    __FinishWithScroll = function(_left, _top, _right, _bottom, _padLeft, _padTop, _padRight, _padBottom)
+    __FinishWithScroll = function(_padLeft, _padTop, _padRight, _padBottom)
     {
+        if (not __parent.__scissorState)
+        {
+            __GuiError("Scissor region not set up");
+        }
+        
         if (__hAlign == fa_left)
         {
-            var _x = _left;
+            var _x = __parent.__scissorLeft;
         }
         else if (__hAlign == fa_center)
         {
-            var _x = 0.5*(_left + _right);
+            var _x = 0.5*(__parent.__scissorLeft + __parent.__scissorRight);
         }
         else if (__hAlign == fa_right)
         {
-            var _x = _right;
+            var _x = __parent.__scissorRight;
         }
         
         if (__vAlign == fa_top)
         {
-            var _y = _top;
+            var _y = __parent.__scissorTop;
         }
         else if (__vAlign == fa_middle)
         {
-            var _y = 0.5*(_top + _bottom);
+            var _y = 0.5*(__parent.__scissorTop + __parent.__scissorBottom);
         }
         else if (__vAlign == fa_bottom)
         {
-            var _y = _bottom;
+            var _y = __parent.__scissorBottom;
         }
         
         __Finish(_x, _y);
         GuiScrollSetupHori(_padLeft, _padRight, __parent);
-        GuiScissorSetupExt(_left, _top, _right, _bottom, __parent);
     }
 }

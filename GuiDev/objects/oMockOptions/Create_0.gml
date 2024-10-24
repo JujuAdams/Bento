@@ -54,12 +54,13 @@ if (not GuiNameExists("main menu"))
     });
 }
 
+width  = GuiLayoutGetMembersMaxWidth(_layout) + 20;
 height = 250;
 
-GuiLayoutFinish(_layout, x, y - height/2);
+GuiScissorSetup();
+GuiLayoutFinishWithScroll(_layout);
 GuiLayoutNavSelectFirst(_layout);
 
-width = GuiLayoutGetMembersMaxWidth(_layout) + 20;
 
 GuiCreateOutside(GuiExampleButton,
 {
@@ -70,6 +71,3 @@ GuiCreateOutside(GuiExampleButton,
     },
 },
 id, x + width/2, y + height/2);
-
-GuiScissorSetup();
-GuiScrollSetupVert();
