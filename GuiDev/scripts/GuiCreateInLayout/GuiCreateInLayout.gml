@@ -4,7 +4,7 @@
 /// 
 /// @param layout
 /// @param object
-/// @param [struct]
+/// @param [variableStruct]
 
 function GuiCreateInLayout(_layout, _object, _struct = undefined)
 {

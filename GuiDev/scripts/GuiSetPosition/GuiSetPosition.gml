@@ -42,9 +42,6 @@ function GuiSetPosition(_x, _y, _instance = id, _hAlign = fa_center, _vAlign = f
             _y -= height/2;
         }
         
-        xstart = _x;
-        ystart = _y;
-        
         GuiMove(_x - x, _y - y);
     }
 }

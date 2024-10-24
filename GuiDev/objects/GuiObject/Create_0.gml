@@ -21,9 +21,12 @@ __GuiSetIfNotDefined(id, "scrollMarginBottom", 6);
 //                     //
 /////////////////////////
 
-overState = GUI_OFF;
-holdState = GUI_OFF;
-click     = false;
+__xInternal = x;
+__yInternal = y;
+
+__overState = GUI_OFF;
+__holdState = GUI_OFF;
+__click     = false;
 
 __parent = noone;
 __inside = _system.__tempInside;

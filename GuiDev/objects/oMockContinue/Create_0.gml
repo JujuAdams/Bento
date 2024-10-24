@@ -14,7 +14,7 @@ GuiCreateInLayout(_layout, GuiExampleButton,
     {
         GuiNameDestroy("main menu");
         GuiDestroy(GuiGetParent());
-        GuiCreateOutside(oMockPauseMenu);
+        GuiCreateOutside(oMockPauseMenu, un, GUI_ROOT);
     },
 });
 
@@ -25,7 +25,7 @@ GuiCreateInLayout(_layout, GuiExampleButton,
     {
         GuiNameDestroy("main menu");
         GuiDestroy(GuiGetParent());
-        GuiCreateOutside(oMockPauseMenu);
+        GuiCreateOutside(oMockPauseMenu, un, GUI_ROOT);
     },
 });
 
@@ -36,7 +36,7 @@ GuiCreateInLayout(_layout, GuiExampleButton,
     {
         GuiNameDestroy("main menu");
         GuiDestroy(GuiGetParent());
-        GuiCreateOutside(oMockPauseMenu);
+        GuiCreateOutside(oMockPauseMenu, un, GUI_ROOT);
     },
 });
 

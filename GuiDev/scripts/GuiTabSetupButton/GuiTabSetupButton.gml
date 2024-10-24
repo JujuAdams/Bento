@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Sets up an instance as a tab button.
+/// Sets up an instance as a tab button in a tab group.
 /// 
 /// @param tabIdent
 /// @param [instance=id]

@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the tab group ident for a tab group host or tab group button.
+/// 
 /// @param [instance=id]
 
 function GuiTabGetIdent(_instance = id)

@@ -14,17 +14,25 @@ function GuiScrollSetupVert(_paddingTop = 0, _paddingBottom = 0, _instance = id)
 {
     with(_instance)
     {
-        var _childrenHeight = GuiGetChildrenBounds().height;
+        var _bounds = GuiGetChildrenBoundsInside();
+        var _childrenTop    = _bounds.top;
+        var _childrenHeight = _bounds.height;
+        
         if (_childrenHeight <= height - (_paddingTop + _paddingBottom))
         {
-            var _min = _paddingTop;
+            GuiScrollSetupExt(0, _paddingTop, 0, _paddingTop);
+            GuiScrollSet(0, _paddingTop);
         }
         else
         {
             var _min = (height - _paddingBottom) - _childrenHeight;
+            
+            var _dY = _childrenTop - (y - height/2);
+            
+            GuiScrollSetupExt(0, _min, 0, _paddingTop + _dY);
+            __scrollY = _dY;
+            GuiScrollSet(0, _paddingTop + _dY);
         }
         
-        GuiScrollSetupExt(0, _min, 0, _paddingTop);
-        GuiScrollSet(0, _paddingTop);
     }
 }

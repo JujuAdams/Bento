@@ -1,7 +1,6 @@
 // Feather disable all
 
-/// Applies a scroll offset to an instance. This function will also move the `xstart` and `ystart`
-/// position so that animations (hopefully) still look correct.
+/// Applies a scroll offset to an instance.
 /// 
 /// @param instance
 /// @param dX
@@ -19,8 +18,8 @@ function __GuiScrollApply(_instance, _dX, _dY)
                 x += _dX;
                 y += _dY;
                 
-                xstart += _dX;
-                ystart += _dY;
+                __xInternal += _dX;
+                __yInternal += _dY;
             }
             
             ++_i;

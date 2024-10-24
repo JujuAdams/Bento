@@ -4,8 +4,9 @@
 /// 
 /// @param layout
 /// @param width
+/// @param [hAlign]
 
-function GuiLayoutSetMembersWidth(_layout, _width)
+function GuiLayoutSetMembersWidth(_layout, _width, _hAlign = undefined)
 {
     with(_layout)
     {
@@ -15,7 +16,7 @@ function GuiLayoutSetMembersWidth(_layout, _width)
         {
             with(_instanceArray[_i])
             {
-                GuiSetSize(_width, height, id, other.__hAlign, fa_middle);
+                GuiSetSize(_width, height, id, _hAlign ?? other.__hAlign, fa_middle);
             }
             
             ++_i;

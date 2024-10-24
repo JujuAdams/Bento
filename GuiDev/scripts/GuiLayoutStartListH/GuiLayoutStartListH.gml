@@ -67,6 +67,12 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
     
     __Finish = function(_x, _y)
     {
+        if (__inside && __parent.__scrollEnabled)
+        {
+            _x += __parent.__scrollX - __parent.__scrollMaxX;
+            _y += __parent.__scrollY - __parent.__scrollMaxY;
+        }
+        
         var _instanceArray = __instanceArray;
         var _spacing       = __spacing;
         var _vAlign        = __vAlign;
@@ -116,5 +122,38 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
             
             ++_i;
         }
+    }
+    
+    __FinishWithScroll = function(_left, _top, _right, _bottom, _padLeft, _padTop, _padRight, _padBottom)
+    {
+        if (__hAlign == fa_left)
+        {
+            var _x = _left;
+        }
+        else if (__hAlign == fa_center)
+        {
+            var _x = 0.5*(_left + _right);
+        }
+        else if (__hAlign == fa_right)
+        {
+            var _x = _right;
+        }
+        
+        if (__vAlign == fa_top)
+        {
+            var _y = _top;
+        }
+        else if (__vAlign == fa_middle)
+        {
+            var _y = 0.5*(_top + _bottom);
+        }
+        else if (__vAlign == fa_bottom)
+        {
+            var _y = _bottom;
+        }
+        
+        __Finish(_x, _y);
+        GuiScrollSetupHori(_padLeft, _padRight, __parent);
+        GuiScissorSetupExt(_left, _top, _right, _bottom, __parent);
     }
 }

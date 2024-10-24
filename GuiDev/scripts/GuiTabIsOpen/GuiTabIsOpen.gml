@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether a tab is open.
+/// Returns whether a tab is open in a tab group.
 /// 
 /// @param tabIdent
 

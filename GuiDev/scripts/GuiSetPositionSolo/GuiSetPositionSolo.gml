@@ -21,6 +21,12 @@ function GuiSetPositionSolo(_x, _y, _instance = id, _hAlign = fa_center, _vAlign
             {
                 _x += _parent.x;
                 _y += _parent.y;
+                
+                if (__inside && _parent.__scrollEnabled)
+                {
+                    _x += _parent.__scrollX - _parent.__scrollMaxX;
+                    _y += _parent.__scrollY - _parent.__scrollMaxY;
+                }
             }
         }
         
@@ -41,9 +47,6 @@ function GuiSetPositionSolo(_x, _y, _instance = id, _hAlign = fa_center, _vAlign
         {
             _y -= height/2;
         }
-        
-        xstart = x;
-        ystart = y;
         
         GuiMoveSolo(_x - x, _y - y);
     }

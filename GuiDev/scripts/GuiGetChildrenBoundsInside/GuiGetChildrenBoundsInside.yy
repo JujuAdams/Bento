@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiGetChildrenBoundsInside",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiGetChildrenBoundsInside",
+  "parent":{
+    "name":"Instances",
+    "path":"folders/Library/Instances.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -10,12 +10,12 @@
 /// the parent instance.
 /// 
 /// @param object
-/// @param [struct]
-/// @param [parent=root]
-/// @param [x=0]
-/// @param [y=0]
+/// @param [variableStruct]
+/// @param [parent=id]
+/// @param [absoluteX=0]
+/// @param [absoluteY=0]
 
-function GuiCreateOutside(_object, _struct = undefined, _parent = GUI_ROOT, _x = 0, _y = 0)
+function GuiCreateOutside(_object, _struct = undefined, _parent = id, _x = 0, _y = 0)
 {
     static _system = __GuiSystem();
     static _emptyStruct = {};

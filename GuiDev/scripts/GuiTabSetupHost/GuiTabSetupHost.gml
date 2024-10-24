@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Sets up an instance as a tab host.
+/// Sets up an instance as a tab host for a tab group. This is optional but recommended.
 /// 
 /// @param tabIdent
 /// @param [blockGamepadWhenOpen=false]

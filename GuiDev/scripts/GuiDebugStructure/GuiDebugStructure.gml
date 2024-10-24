@@ -5,27 +5,44 @@
 /// @param [parent=root]
 /// @param [ascii=false]  Whether to use ASCII compatibility mode
 
-function GuiDebugStructure(_parent = GUI_ROOT, _ascii = false)
+function GuiDebugStructure(_parent = GUI_ROOT, _ascii = false, _method = undefined)
 {
+    if (not instance_exists(_parent)) return "<Instance doesn't exist>";
+    
+    static _internalMethod = function(_nameArray)
+    {
+        if (__behavior != GUI_BEHAVIOR_BUTTON) array_push(_nameArray, "behavior", GuiFriendlyBehavior(__behavior));
+        if (variable_instance_exists(self, "text")) array_push(_nameArray, "text", text);
+        
+        if (width  != 0) array_push(_nameArray, "width",  width);
+        if (height != 0) array_push(_nameArray, "height", height);
+        
+        if (__overState != GUI_OFF) array_push(_nameArray, "over", GuiFriendlyOverState(__overState));
+        if (__holdState != GUI_OFF) array_push(_nameArray, "hold", GuiFriendlyHoldState(__holdState));
+        
+        if (array_length(__childInsideArray) != 0) array_push(_nameArray, "inside", __childInsideArray);
+        if (array_length(__childOutsideArray) != 0) array_push(_nameArray, "outside", __childOutsideArray);
+    }
+    
     static _buffer = buffer_create(1024, buffer_grow, 1);
     buffer_seek(_buffer, buffer_seek_start, 0);
     
     if (_ascii)
     {
-        __GuiDebugStructureASCIIInner(_buffer, " ", _parent);
+        __GuiDebugStructureASCIIInner(_buffer, " ", _parent, _method ?? _internalMethod);
     }
     else
     {
-        __GuiDebugStructureInner(_buffer, " ", _parent);
+        __GuiDebugStructureInner(_buffer, " ", _parent, _method ?? _internalMethod);
     }
     
     buffer_write(_buffer, buffer_u8, 0x00);
     return buffer_peek(_buffer, 0, buffer_string);
 }
 
-function __GuiDebugStructureInner(_buffer, _prefix, _value)
+function __GuiDebugStructureInner(_buffer, _prefix, _value, _method)
 {
-    static _funcWrite = function(_buffer, _oldPrefix, _struct, _writeName, _value)
+    static _funcWrite = function(_buffer, _oldPrefix, _struct, _writeName, _value, _method)
     {
         var _prefix = _oldPrefix + "│    ";
         repeat(string_length(_writeName)) _prefix += " ";
@@ -34,11 +51,11 @@ function __GuiDebugStructureInner(_buffer, _prefix, _value)
         buffer_write(_buffer, buffer_text, "├─ ");
         buffer_write(_buffer, buffer_text, _writeName);
         buffer_write(_buffer, buffer_text, ":");
-        __GuiDebugStructureInner(_buffer, _prefix, _value);
+        __GuiDebugStructureInner(_buffer, _prefix, _value, _method);
         buffer_write(_buffer, buffer_u8, 0x0a); // newline
     }
     
-    static _funcWriteLast = function(_buffer, _oldPrefix, _struct, _writeName, _value)
+    static _funcWriteLast = function(_buffer, _oldPrefix, _struct, _writeName, _value, _method)
     {
         buffer_write(_buffer, buffer_text, _oldPrefix);
         buffer_write(_buffer, buffer_text, "╰─ ");
@@ -47,7 +64,7 @@ function __GuiDebugStructureInner(_buffer, _prefix, _value)
         
         var _prefix = _oldPrefix + "     ";
         repeat(string_length(_writeName)) _prefix += " ";
-        __GuiDebugStructureInner(_buffer, _prefix, _value);
+        __GuiDebugStructureInner(_buffer, _prefix, _value, _method);
     }
     
     
@@ -64,17 +81,7 @@ function __GuiDebugStructureInner(_buffer, _prefix, _value)
         
         with(_instance)
         {
-            if (__behavior != GUI_BEHAVIOR_BUTTON) array_push(_nameArray, "behavior", GuiFriendlyBehavior(__behavior));
-            if (variable_instance_exists(self, "text")) array_push(_nameArray, "text", text);
-            
-            if (width  != 0) array_push(_nameArray, "width",  width);
-            if (height != 0) array_push(_nameArray, "height", height);
-            
-            if (overState != GUI_OFF) array_push(_nameArray, "over", GuiFriendlyOverState(overState));
-            if (holdState != GUI_OFF) array_push(_nameArray, "hold", GuiFriendlyHoldState(holdState));
-            
-            if (array_length(__childInsideArray) != 0) array_push(_nameArray, "inside", __childInsideArray);
-            if (array_length(__childOutsideArray) != 0) array_push(_nameArray, "outside", __childOutsideArray);
+            _method(_nameArray);
         }
         
         if (array_length(_nameArray) > 0)
@@ -84,11 +91,11 @@ function __GuiDebugStructureInner(_buffer, _prefix, _value)
             var _i = 0;
             repeat((array_length(_nameArray) div 2) - 1)
             {
-                _funcWrite(_buffer, _prefix, _instance, _nameArray[_i], _nameArray[_i+1]);
+                _funcWrite(_buffer, _prefix, _instance, _nameArray[_i], _nameArray[_i+1], _method);
                 _i += 2;
             }
             
-            _funcWriteLast(_buffer, _prefix, _instance, _nameArray[_i], _nameArray[_i+1]);
+            _funcWriteLast(_buffer, _prefix, _instance, _nameArray[_i], _nameArray[_i+1], _method);
         }
     }
     else if (is_struct(_value))
@@ -120,11 +127,11 @@ function __GuiDebugStructureInner(_buffer, _prefix, _value)
             repeat(array_length(_nameArray)-1)
             {
                 var _name = _nameArray[_i];
-                _funcWrite(_buffer, _prefix, _struct, _name, _name);
+                _funcWrite(_buffer, _prefix, _struct, _name, _name, _method);
                 ++_i;
             }
             
-            _funcWriteLast(_buffer, _prefix, _struct, _name, _name);
+            _funcWriteLast(_buffer, _prefix, _struct, _name, _name, _method);
         }
     }
     else if (is_array(_value))
@@ -147,7 +154,7 @@ function __GuiDebugStructureInner(_buffer, _prefix, _value)
             {
                 buffer_write(_buffer, buffer_text, _oldPrefix);
                 buffer_write(_buffer, buffer_text, "├─");
-                __GuiDebugStructureInner(_buffer, _prefix, _array[_i]);
+                __GuiDebugStructureInner(_buffer, _prefix, _array[_i], _method);
                 buffer_write(_buffer, buffer_u8, 0x0a); // newline
                 ++_i;
             }
@@ -155,7 +162,7 @@ function __GuiDebugStructureInner(_buffer, _prefix, _value)
             _prefix = _oldPrefix + "   ";
             buffer_write(_buffer, buffer_text, _oldPrefix);
             buffer_write(_buffer, buffer_text, "╰─");
-            __GuiDebugStructureInner(_buffer, _prefix, _array[_i]);
+            __GuiDebugStructureInner(_buffer, _prefix, _array[_i], _method);
         }
     }
     else if (is_string(_value))
@@ -178,9 +185,9 @@ function __GuiDebugStructureInner(_buffer, _prefix, _value)
     }
 }
 
-function __GuiDebugStructureASCIIInner(_buffer, _prefix, _value)
+function __GuiDebugStructureASCIIInner(_buffer, _prefix, _value, _method)
 {
-    static _funcWrite = function(_buffer, _oldPrefix, _struct, _variableName, _writeName)
+    static _funcWrite = function(_buffer, _oldPrefix, _struct, _variableName, _writeName, _method)
     {
         var _prefix = _oldPrefix + "|    ";
         repeat(string_length(_writeName)) _prefix += " ";
@@ -189,11 +196,11 @@ function __GuiDebugStructureASCIIInner(_buffer, _prefix, _value)
         buffer_write(_buffer, buffer_text, "|- ");
         buffer_write(_buffer, buffer_text, _writeName);
         buffer_write(_buffer, buffer_text, ":");
-        __GuiDebugStructureASCIIInner(_buffer, _prefix, _struct[$ _variableName]);
+        __GuiDebugStructureASCIIInner(_buffer, _prefix, _struct[$ _variableName], _method);
         buffer_write(_buffer, buffer_u8, 0x0a); // newline
     }
     
-    static _funcWriteLast = function(_buffer, _oldPrefix, _struct, _variableName, _writeName)
+    static _funcWriteLast = function(_buffer, _oldPrefix, _struct, _variableName, _writeName, _method)
     {
         buffer_write(_buffer, buffer_text, _oldPrefix);
         buffer_write(_buffer, buffer_text, "\\- ");
@@ -202,7 +209,7 @@ function __GuiDebugStructureASCIIInner(_buffer, _prefix, _value)
         
         var _prefix = _oldPrefix + "     ";
         repeat(string_length(_writeName)) _prefix += " ";
-        __GuiDebugStructureASCIIInner(_buffer, _prefix, _struct[$ _variableName]);
+        __GuiDebugStructureASCIIInner(_buffer, _prefix, _struct[$ _variableName], _method);
     }
     
     
@@ -213,13 +220,28 @@ function __GuiDebugStructureASCIIInner(_buffer, _prefix, _value)
         
         buffer_write(_buffer, buffer_text, object_get_name(_instance.object_index));
         buffer_write(_buffer, buffer_text, ":");
-        buffer_write(_buffer, buffer_text, string(id));
-        buffer_write(_buffer, buffer_text, "\n");
+        buffer_write(_buffer, buffer_text, string(real(_instance)));
         
-        _funcWrite(_buffer, _prefix, _instance, "width", "width");
-        _funcWrite(_buffer, _prefix, _instance, "height", "height");
-        _funcWrite(_buffer, _prefix, _instance, "__childInsideArray", "inside");
-        _funcWriteLast(_buffer, _prefix, _instance, "__childOutsideArray", "outside");
+        var _nameArray = [];
+        
+        with(_instance)
+        {
+            _method(_nameArray);
+        }
+        
+        if (array_length(_nameArray) > 0)
+        {
+            buffer_write(_buffer, buffer_text, "\n");
+            
+            var _i = 0;
+            repeat((array_length(_nameArray) div 2) - 1)
+            {
+                _funcWrite(_buffer, _prefix, _instance, _nameArray[_i], _nameArray[_i+1], _method);
+                _i += 2;
+            }
+            
+            _funcWriteLast(_buffer, _prefix, _instance, _nameArray[_i], _nameArray[_i+1], _method);
+        }
     }
     else if (is_struct(_value))
     {
@@ -250,11 +272,11 @@ function __GuiDebugStructureASCIIInner(_buffer, _prefix, _value)
             repeat(array_length(_nameArray)-1)
             {
                 var _name = _nameArray[_i];
-                _funcWrite(_buffer, _prefix, _struct, _name, _name);
+                _funcWrite(_buffer, _prefix, _struct, _name, _name, _method);
                 ++_i;
             }
             
-            _funcWriteLast(_buffer, _prefix, _struct, _name, _name);
+            _funcWriteLast(_buffer, _prefix, _struct, _name, _name, _method);
         }
     }
     else if (is_array(_value))
@@ -276,7 +298,7 @@ function __GuiDebugStructureASCIIInner(_buffer, _prefix, _value)
             {
                 buffer_write(_buffer, buffer_text, _oldPrefix);
                 buffer_write(_buffer, buffer_text, "|-");
-                __GuiDebugStructureASCIIInner(_buffer, _prefix, _array[_i]);
+                __GuiDebugStructureASCIIInner(_buffer, _prefix, _array[_i], _method);
                 buffer_write(_buffer, buffer_text, "\n");
                 ++_i;
             }
@@ -285,7 +307,7 @@ function __GuiDebugStructureASCIIInner(_buffer, _prefix, _value)
             _prefix = _oldPrefix + "   ";
             
             buffer_write(_buffer, buffer_text, "\\-");
-            __GuiDebugStructureASCIIInner(_buffer, _prefix, _array[_i]);
+            __GuiDebugStructureASCIIInner(_buffer, _prefix, _array[_i], _method);
         }
     }
     else if (is_string(_value))

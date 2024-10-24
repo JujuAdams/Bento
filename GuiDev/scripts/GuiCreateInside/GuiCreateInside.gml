@@ -11,8 +11,10 @@
 /// "Inside" instances should be used for content that you want to contain inside the parent.
 /// 
 /// @param object
-/// @param [struct]
+/// @param [variableStruct]
 /// @param [parent=id]
+/// @param [relativeX=0]
+/// @param [relativeY=0]
 
 function GuiCreateInside(_object, _struct = undefined, _parent = id, _x = 0, _y = 0)
 {

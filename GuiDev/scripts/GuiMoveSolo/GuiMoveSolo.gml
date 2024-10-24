@@ -16,6 +16,9 @@ function GuiMoveSolo(_dX, _dY, _instance = id)
         x += _dX;
         y += _dY;
         
+        __xInternal += _dX;
+        __yInternal += _dY;
+        
         if (__scissorState)
         {
             __scissorLeft   += _dX;

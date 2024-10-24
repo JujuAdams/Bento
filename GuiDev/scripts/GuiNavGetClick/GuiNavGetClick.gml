@@ -10,5 +10,5 @@ function GuiNavGetClick(_instance = id)
     if (_system.__primaryConsumed) return false;
     
     if (not instance_exists(_instance)) return false;
-    return _instance.click;
+    return _instance.__click;
 }

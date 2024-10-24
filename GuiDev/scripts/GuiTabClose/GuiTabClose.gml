@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Destroys the tab instance currently opened by a host.
+/// Destroys the tab instance currently opened in a tab group.
 /// 
 /// @param tabIdent
 

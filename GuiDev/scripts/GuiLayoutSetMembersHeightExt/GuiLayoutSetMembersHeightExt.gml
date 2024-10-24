@@ -5,8 +5,9 @@
 /// @param layout
 /// @param height
 /// @param object
+/// @param [vAlign]
 
-function GuiLayoutSetMembersHeightExt(_layout, _height, _object)
+function GuiLayoutSetMembersHeightExt(_layout, _height, _object, _vAlign = undefined)
 {
     with(_layout)
     {
@@ -14,10 +15,12 @@ function GuiLayoutSetMembersHeightExt(_layout, _height, _object)
         var _i = 0;
         repeat(array_length(_instanceArray))
         {
-            var _instance = _instanceArray[_i];
-            if (instance_exists(_instance) && (_instance.object_index == _object))
+            with(_instanceArray[_i])
             {
-                _instance.height = _height;
+                if (object_index == _object)
+                {
+                    GuiSetSize(width, _height, id, fa_center, _vAlign ?? other.__vAlign);
+                }
             }
             
             ++_i;

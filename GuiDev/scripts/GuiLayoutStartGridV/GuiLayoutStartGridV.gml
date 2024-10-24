@@ -80,6 +80,12 @@ function __GuiClassLayoutGridV(_parent, _inside, _spacing, _cellWidth, _cellHeig
     
     __Finish = function(_x, _y)
     {
+        if (__inside && __parent.__scrollEnabled)
+        {
+            _x += __parent.__scrollX - __parent.__scrollMaxX;
+            _y += __parent.__scrollY - __parent.__scrollMaxY;
+        }
+        
         var _instanceArray  = __instanceArray;
         var _spacing        = __spacing;
         var _cellWidth      = __cellWidth;
@@ -110,5 +116,12 @@ function __GuiClassLayoutGridV(_parent, _inside, _spacing, _cellWidth, _cellHeig
             
             ++_i;
         }
+    }
+    
+    __FinishWithScroll = function(_left, _top, _right, _bottom, _padLeft, _padTop, _padRight, _padBottom)
+    {
+        __Finish(_left, _top);
+        GuiScrollSetupVert(_padTop, _padBottom, __parent);
+        GuiScissorSetupExt(_left, _top, _right, _bottom, __parent);
     }
 }

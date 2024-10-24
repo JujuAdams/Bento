@@ -14,7 +14,7 @@ GuiCreateInLayout(_layout, GuiExampleButton, {
     func: function()
     {
         GuiDestroy(oMockPauseMenu);
-        GuiCreateOutside(oMockMainMenu, un, un, room_width/2, 500);
+        GuiCreateOutside(oMockMainMenu, un, GUI_ROOT, room_width/2, 500);
     },
 });
 

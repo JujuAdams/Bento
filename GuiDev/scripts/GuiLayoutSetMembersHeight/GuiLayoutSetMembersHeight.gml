@@ -4,8 +4,9 @@
 /// 
 /// @param layout
 /// @param height
+/// @param [vAlign]
 
-function GuiLayoutSetMembersHeight(_layout, _height)
+function GuiLayoutSetMembersHeight(_layout, _height, _vAlign = undefined)
 {
     with(_layout)
     {
@@ -13,10 +14,9 @@ function GuiLayoutSetMembersHeight(_layout, _height)
         var _i = 0;
         repeat(array_length(_instanceArray))
         {
-            var _instance = _instanceArray[_i];
-            if (instance_exists(_instance))
+            with(_instanceArray[_i])
             {
-                _instance.height = _height;
+                GuiSetSize(width, _height, id, fa_center, _vAlign ?? other.__vAlign);
             }
             
             ++_i;

@@ -8,5 +8,5 @@
 
 function GuiLayoutFinish(_layout, _x, _y)
 {
-    _layout.__Finish(_x, _y)
+    _layout.__Finish(_x, _y);
 }

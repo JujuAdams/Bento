@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Opens a tab. The existing tab child, if one exists, will be destroyed.
+/// Opens a tab in a tab group. The existing tab child, if one exists, will be destroyed.
 /// 
 /// @param child
 /// @param [button=id]
