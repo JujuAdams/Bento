@@ -37,7 +37,7 @@ function GuiSetPosition(_x, _y, _instance = id, _hAlign = fa_center, _vAlign = f
         {
             _y += height/2;
         }
-        else if (_hAlign == fa_bottom)
+        else if (_vAlign == fa_bottom)
         {
             _y -= height/2;
         }
