@@ -94,6 +94,11 @@ function __GuiEnsureStepOrderInner(_instance)
             //Pop-ups are not selectable but are still hoverable. This means we need to push them
             //to the Step order
             array_insert(_stepOrder, 0, method(self, __GuiStepMethod));
+            
+            if (not GUI_POP_UP_CLICK_THROUGH)
+            {
+                return __GUI_RETURN_MODAL;
+            }
         }
         else
         {

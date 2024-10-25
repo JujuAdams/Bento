@@ -56,6 +56,7 @@ function GuiStep()
                 &&  (not GuiIsAncestor(__popUpRoot, __overInstance))) //Also don't destroy if we're hovering over a child of the pop-up
                 {
                     GuiDestroy(__popUpRoot);
+                    if (not GUI_POP_UP_CLICK_THROUGH) __holdState = GUI_OFF;
                 }
                 
                 if (__holdState == GUI_PRESS)
