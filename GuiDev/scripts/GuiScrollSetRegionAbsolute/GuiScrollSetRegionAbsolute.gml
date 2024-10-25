@@ -10,7 +10,7 @@
 /// @param bottom
 /// @param [instance=id]
 
-function GuiScissorSetupAbsolute(_left, _top, _right, _bottom, _instance = id)
+function GuiScrollSetRegionAbsolute(_left, _top, _right, _bottom, _instance = id)
 {
     static _system = __GuiSystem();
     

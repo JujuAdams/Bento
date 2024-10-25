@@ -57,10 +57,9 @@ if (not GuiNameExists("main menu"))
 width  = GuiLayoutGetMembersMaxWidth(_layout) + 20;
 height = 250;
 
-GuiScissorSetup();
+GuiScrollSetRegion();
 GuiLayoutFinishWithScroll(_layout);
 GuiLayoutNavSelectFirst(_layout);
-
 
 GuiCreateOutside(GuiExampleButton,
 {

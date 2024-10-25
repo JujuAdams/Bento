@@ -30,6 +30,5 @@ function GuiScrollSetupVert(_paddingTop = 0, _paddingBottom = 0, _instance = id)
             __scrollY = _dY;
             GuiScrollSet(0, _paddingTop + _dY);
         }
-        
     }
 }

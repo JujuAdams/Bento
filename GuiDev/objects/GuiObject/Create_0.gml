@@ -56,7 +56,7 @@ __tabIdentChildOf = undefined;
 __selectOnDestroy = noone;
 
 __scissorState = false;
-//Further scissor variables set in `GuiScissorSetupExt()`
+//Further scissor variables set in `GuiScrollSetRegionExt()`
 
 __animating = false;
 

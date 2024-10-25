@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScissorTempOn",
+  "%Name":"GuiScrollSetRegion",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScissorTempOn",
+  "name":"GuiScrollSetRegion",
   "parent":{
-    "name":"Scissor",
-    "path":"folders/Library/Scissor.yy",
+    "name":"Scroll",
+    "path":"folders/Library/Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

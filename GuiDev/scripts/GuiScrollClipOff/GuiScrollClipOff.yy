@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScissorTempOff",
+  "%Name":"GuiScrollClipOff",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScissorTempOff",
+  "name":"GuiScrollClipOff",
   "parent":{
-    "name":"Scissor",
-    "path":"folders/Library/Scissor.yy",
+    "name":"Scroll",
+    "path":"folders/Library/Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

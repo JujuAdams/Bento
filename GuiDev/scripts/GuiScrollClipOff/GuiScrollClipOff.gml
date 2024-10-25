@@ -3,9 +3,9 @@
 /// Temporarily disables GPU scissoring.
 /// 
 /// N.B. This function should only be used in a Draw user event (`GUI_USER_EVENT_DRAW`). You also
-///      be careful to guarantee `GuiScissorTempOn()` is called to turn scissoring back on.
+///      be careful to guarantee `GuiScrollClipOn()` is called to turn scissoring back on.
 
-function GuiScissorTempOff()
+function GuiScrollClipOff()
 {
     static _scissorStack = __GuiSystem().__scissorStack;
     

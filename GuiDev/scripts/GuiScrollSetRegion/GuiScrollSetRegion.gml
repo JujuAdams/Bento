@@ -8,7 +8,7 @@
 /// @param [padding=0]
 /// @param [instance=id]
 
-function GuiScissorSetup(_padding = 0, _instance = id)
+function GuiScrollSetRegion(_padding = 0, _instance = id)
 {
-    GuiScissorSetupExt(_padding, _padding, _padding, _padding, _instance);
+    GuiScrollSetRegionExt(_padding, _padding, _padding, _padding, _instance);
 }

@@ -3,7 +3,7 @@
 /// Sets up the minimum and maximum scroll offsets that are allowed.
 /// 
 /// N.B. This function doesn't set up a scissor region so all child instances will be visible
-///      by default regardless of position. Please call `GuiScissorSetup()` to set up scissoring. 
+///      by default regardless of position.
 /// 
 /// @param minX
 /// @param minY

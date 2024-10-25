@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// Re-enables GPU scissoring after temporarily disabling it with `GuiScissorTempOff()`.
+/// Re-enables GPU scissoring after temporarily disabling it with `GuiScrollClipOff()`.
 
-function GuiScissorTempOn()
+function GuiScrollClipOn()
 {
     static _scissorStack = __GuiSystem().__scissorStack;
     

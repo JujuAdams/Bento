@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScissorSetupAbsolute",
+  "%Name":"GuiScrollSetRegionExt",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScissorSetupAbsolute",
+  "name":"GuiScrollSetRegionExt",
   "parent":{
-    "name":"Scissor",
-    "path":"folders/Library/Scissor.yy",
+    "name":"Scroll",
+    "path":"folders/Library/Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
