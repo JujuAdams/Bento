@@ -102,13 +102,7 @@ function __GuiEnsureStepOrderInner(_instance)
         }
         else
         {
-            //Other behaviors are not hoverable (or selectable) so we don't push them to the Step
-            //order unless they're pushing scissor state
-            
-            if (__scissorState)
-            {
-                array_insert(_stepOrder, 0, method(self, __GuiStepMethod));
-            }
+            //Other behaviors are not hoverable so we don't push them to the Step order
         }
     }
     
