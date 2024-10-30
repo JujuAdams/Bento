@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"Modals",
+  "name":"Modals",
+  "parent":{
+    "name":"Topics",
+    "path":"folders/Topics.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

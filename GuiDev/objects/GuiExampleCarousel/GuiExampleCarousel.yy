@@ -10,8 +10,8 @@
   "name":"GuiExampleCarousel",
   "overriddenProperties":[],
   "parent":{
-    "name":"Gui Example Objects",
-    "path":"folders/Gui Example Objects.yy",
+    "name":"Gui Elements",
+    "path":"folders/Gui Elements.yy",
   },
   "parentObjectId":{
     "name":"GuiParentButton",

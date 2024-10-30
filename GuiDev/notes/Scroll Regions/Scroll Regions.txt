@@ -1,0 +1,31 @@
+Juju: Scroll regions are used to hide contents inside a parent instance. You can see an example of
+      this behavior in `oPageOptions`. Scroll regions wouldn't make sense without child instances
+      and you can read about parenting and child instances in the `Parenting` note.
+
+The Gui system takes advantage of the new (for GameMaker at least) scissor test functions to create
+scrollable windows. The contents of a parent (the "inside" children, please see the `Parenting`
+note) can be moved within a visible rectangle on the screen. Children, or even parts of children,
+that are not visible cannot be selected by the cursor. Scroll regions can be used alongside
+layouts; be sure to call `GuiLayoutFinishWithScroll()` instead of `GuiLayoutFinish()`.
+
+When using `GUI_NAV_GAMEPAD`, any hovered instance will be automatically scrolled such that it is
+visible inside the window. Scroll regions respond to click-and-drag and tap-and-drag on desktop and
+touchscreens respectively. Scroll regions can also respond to mouse wheel input by setting the
+special `GUI_BUTTON_MOUSE_WHEEL_UP` and `GUI_BUTTON_MOUSE_WHEEL_DOWN` button inputs. These two
+inputs should be set using `GuiInputButton()`. The amount that a scroll region should move when
+using the mouse wheel is set by the `GUI_MOUSE_WHEEL_SCROLL_SPEED` macro.
+
+The windowed area of a parent can be set up using one of the `GuiScrollSetRegion*()` functions.
+These define what area of the parent should allow children to be drawn. Any part of children
+outside the defined area will not be visible. However, the `GuiScrollSetRegion*()` functions alone
+will not allow scrolling movement to happen (only clipping). You must call one of the following
+functions to set up the actual scrolling movement:
+ - `GuiScrollSetupVert()`
+ - `GuiScrollSetupHori()`
+ - `GuiScrollSetupExt()`
+ - `GuiLayoutFinishWithScroll()`
+
+Once you've set up the region and the scrolling movement, you should call `GuiScrollOnPointer()` in
+User Event 1 for the parent and any children. This function will handle scrolling functionaltiy for
+you. However, if you'd like to manually control scrolling then you may use the other scroll
+functions to achieve whatever goal you're after.

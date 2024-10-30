@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"Pop-Ups",
+  "name":"Pop-Ups",
+  "parent":{
+    "name":"Topics",
+    "path":"folders/Topics.yy",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

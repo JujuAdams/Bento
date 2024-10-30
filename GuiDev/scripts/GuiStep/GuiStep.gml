@@ -16,6 +16,10 @@ function GuiStep()
     {
         ++__frame;
         
+        // Calculate gamepad x/y deltas
+        __gamepadStateX.__Update(__gamepadDX, __frame);
+        __gamepadStateY.__Update(__gamepadDY, __frame);
+        
         if (not GuiFreezeGetAny())
         {
             var _i = 0;
@@ -41,7 +45,7 @@ function GuiStep()
             {
                 __holdState = __gamepadPrevHold? (__gamepadHold? GUI_HOLD : GUI_RELEASE) : (__gamepadHold? GUI_PRESS : GUI_OFF);
                 if (not GuiGetHoverable(__holdInstance)) __holdInstance = noone;
-                __GuiNavStartOver(__GuiGetGamepadOver(__overInstance, __gamepadDX, __gamepadDY));
+                __GuiNavStartOver(__GuiGetGamepadOver(__overInstance, __gamepadStateX.__output, __gamepadStateY.__output));
             }
             else //Using a pointer
             {

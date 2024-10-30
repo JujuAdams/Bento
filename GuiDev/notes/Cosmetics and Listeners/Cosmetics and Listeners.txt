@@ -1,0 +1,57 @@
+Juju: Cosmetics and listeners are related concepts in the Gui system and are discussed here
+      together. For a practical example, please see children of `GuiExampleFrame`, such as
+      `oPageOptions`.
+      
+Within the Gui system, cosmetics are instances that:
+ 1) Have the behavior `GUI_BEHAVIOR_COSMETIC`
+ 2) Can be hovered by the cursor but only when using `GUI_NAV_MOUSE` and `GUI_NAV_TOUCH`
+ 3) Will block the cursor from hovering instance drawn beneath them
+ 4) Will never have their User Event 0 (`GUI_USER_EVENT_STEP`) executed
+      
+Within the Gui system, listeners are instances that:
+ 1) Have the behavior `GUI_BEHAVIOR_LISTENER`
+ 2) Can be hovered by the cursor but only when using `GUI_NAV_MOUSE` and `GUI_NAV_TOUCH`
+ 3) Will block the cursor from hovering instances drawn beneath them
+ 4) Can have their User Event 0 (`GUI_USER_EVENT_STEP`) executed
+
+Cosmetics and listeners are the building blocks that give shape to a GUI. They are used primarily
+to contain other active Gui instances as "frames" or "containers". Cosmetics are the cheapest
+possible Gui instance and can be used to decorate and annotate a GUI largely without interfering
+with other instances. Listeners add the extra capability of being able to run code in User Event 0
+(`GUI_USER_EVENT_STEP`) and as such can respond to `GuiButtonGet*()` functions.
+
+Both cosmetics and listeners will very commonly be used as containers and as such are regularly
+parents. Please see the "Parenting" note for more details. Cosmetics and listeners are further
+likely to need scroll regions. Please see the "Scrolling" note for more details.
+
+Cosmetic and listener objects that you create should inherit from `GuiObject` (via intermediate
+objects as you wish). In this example project, `GuiExampleFrame` inherits from `GuiParentCommon`
+which in turn inherits from `GuiObject`. Cosmetic objects will typically use two events:
+ 1) Create event
+ 2) User Event 1 - Gui draw event `GUI_USER_EVENT_DRAW`
+The Create event should be used to initialize variables that are relevant to the cosmetic. This
+might include variables that describe a sprite to draw, the color of the instance, or the alpha
+transparency. The Create event functions as any other Create event in any other GameMaker instance.
+
+As with other Gui instances, there are two special variables that you can set: `width` and
+`height`. All Gui instances are presumed to be rectangles for the purpose of positioning and mouse
+detection. These `width` and `height` variables will set the size of the rectangle that defines
+the instance within the Gui system. `x` and `y` are relevant for the Gui system too and these two
+variables will always be treated as the center-middle of the Gui instance. It's often helpful to
+know the left-right-top-bottom coordinates of a frame and this can be returned by calling
+`GuiGetLeft()` etc.  There's no particular magic to these functions, they simply calculate
+`x - width/2` and so on but it's handy to have that available as a shorthand function.
+
+User Event 1 is executed similarly to User Event 0, but this time it is executed by `GuiDraw()`.
+Again, please see `oMain` for more information on this function. You should do all drawing for a
+cosmetic or listener in User Event 1. You may use any GameMaker drawing techniques - including
+matrices, shaders, and surfaces - without limitation. However, the Gui system's scroll region
+feature uses the stencil buffer and, as such, you may not use custom stencil buffer code.
+
+Listeners can optionally (and will typically) use User Event 0 (`GUI_USER_EVENT_STEP`). Whilst
+listeners (and cosmetics) cannot be clicked by the primary action, they can still detect button
+input set by `GuiInputButton()` via the `GuiButtonGet*()` functions. They can "listen" for button
+input, hence the name. You will typically use listeners for frames that can be dismissed by the
+player when they press a "back" button or an "escape" button. You may also find listeners helpful
+for inventory screens where pressing a "sort" button might change the order of items being
+displayed.

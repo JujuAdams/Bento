@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiClassGamepadState",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiClassGamepadState",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Library/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

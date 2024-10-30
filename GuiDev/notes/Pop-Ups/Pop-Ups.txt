@@ -1,0 +1,52 @@
+Juju: This is a discussion regarding pop-ups. For a practical example, please see
+      `GuiExamplePopUpMenu`.
+
+Within the Gui system, pop-ups are instances that:
+ 1) Have the behavior `GUI_BEHAVIOR_POP_UP`
+ 2) Can be hovered by the cursor but only when using `GUI_NAV_MOUSE` and `GUI_NAV_TOUCH`
+ 3) Will block hovering of instances beneath the pop-up when using `GUI_NAV_GAMEPAD`
+ 4) Will automatically destroy itself when the primary action is triggered outside of the pop-up
+    instance or its children when using `GUI_NAV_MOUSE` and `GUI_NAV_TOUCH`
+
+Context menus are relatively rare in games but for genres that involve a lot of UI navigation -
+strategy games, RPGs, multiplayer lobbies, anything with heavy inventory management etc. - having
+the ability to show a pop-up menu of some type is helpful. The Gui system's pop-up behavior can be
+used to create drop-down menus too. Pop-ups operate similar to modals insofar that no instances
+beneath the pop-up can be hovered by the cursor. The pop-up will be destroyed automatically if the
+primary action is triggered and the pop-up isn't being hovered. However, you will need to manually
+destroy a pop-up if a child button is pressed.
+
+Pop-up objects will very commonly be used as containers and as such are regularly parents. Please
+see the "Parenting" note for more details. You may also find that your pop-up menu could benefit
+from a scroll region. Please see the "Scrolling" note for more details.
+
+Pop-up objects that you create should inherit from `GuiObject` (via intermediate objects as you
+wish) and call `GuiSetBehavior(GUI_BEHAVIOR_MODAL)` in the Create event of the object, or
+immediately after creating the instance. Modal objects will typically use three events:
+ 1) Create event
+ 2) User Event 0 - Gui update event `GUI_USER_EVENT_STEP`
+ 3) User Event 1 - Gui draw event `GUI_USER_EVENT_DRAW`
+The Create event should be used to initialize variables that are relevant to the pop-up. This might
+include variables that describe a sprite to draw, the color of the instance, or the alpha
+transparency. The Create event functions as any other Create event in any other GameMaker instance.
+
+User Event 0 is used by the Gui system to update the state of the pop-up. User Event 0, if it needs
+to be executed, will be executed by `GuiStep()`. Please see `oMain` for more information on this
+function. As previously mentioned, User Event 0 may not always be executed due to the internal
+logic of the Gui system. For example, if the parent instance for the pop-up is set to invisible
+(`visible = false;`) then it and all child instances will be skipped by `GuiStep()` and won't have
+their User Event 0 executed. For pop-ups, User Event 0 will usually be used for checking for button
+input from `GuiInputButton()`. You will typically make use of User Event 0 for pop-ups that can be
+dismissed by the player when they press a "back" button or an "escape" button.
+
+As with other Gui instances, there are two special variables that you can set: `width` and
+`height`. All Gui instances are presumed to be rectangles for the purpose of positioning and mouse
+detection. These `width` and `height` variables will set the size of the rectangle that defines
+the instance within the Gui system. `x` and `y` are relevant for the Gui system too and these two
+variables will always be treated as the center-middle of the Gui instance.
+
+User Event 1 is executed similarly to User Event 0, but this time it is executed by `GuiDraw()`.
+Again, please see `oMain` for more information on this function. You should do all drawing for a
+pop-up in User Event 1. You may use any GameMaker drawing techniques - including matrices, shaders,
+and surfaces - without limitation. However, the Gui system's scroll region feature uses the stencil
+buffer and, as such, you may not use custom stencil buffer code.

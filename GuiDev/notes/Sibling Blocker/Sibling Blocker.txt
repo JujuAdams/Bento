@@ -1,0 +1,44 @@
+Juju: This note covers sibling blockers. For a practical example, please see children of `GuiExampleFrame`, such as
+      `oPageOptions`.
+      
+Within the Gui system, cosmetics are instances that:
+ 1) Have the behavior `GUI_BEHAVIOR_BLOCK_SIBLINGS`
+ 2) Will prevent sibling instances (instances that share the same parent as the sibling blocker)
+    that have a lower priority from being drawn or interacted with
+
+The functionality of sibling blockers has niche uses and won't be commonly used. However, you'll
+find sibling blockers helpful when needing to swap between pages of Gui instances whilst retaining
+the state of each page. By creating containers that represent pages and setting each page to be a
+sibling blocker, you can swap between pages without having to recreate pages simply by pushing the
+desired page to the top of the priority stack by using `GuiSetPriorityTop()`.
+
+When sibling blockers are used it is almost certainly as a container and as such are sibling
+blockers are typically parents. Please see the "Parenting" note for more details. Cosmetics and
+listeners are further likely to need scroll regions. Please see the "Scrolling" note for more
+details.
+
+Sibling blocker objects that you create should inherit from `GuiObject` (via intermediate objects
+as you wish) and call `GuiSetBehavior(GUI_BEHAVIOR_BLOCK_SIBLINGS)` in the Create event of the
+object, or immediately after creating the instance. Modal objects will typically use three events:
+ 1) Create event
+ 2) User Event 0 - Gui update event `GUI_USER_EVENT_STEP`
+ 3) User Event 1 - Gui draw event `GUI_USER_EVENT_DRAW`
+The Create event should be used to initialize variables that are relevant to the cosmetic. This
+might include variables that describe a sprite to draw, the color of the instance, or the alpha
+transparency. The Create event functions as any other Create event in any other GameMaker instance.
+
+User Event 0 is used by the Gui system to update the state of the instance. User Event 0, if it
+needs to be executed, will be executed by `GuiStep()`. Please see `oMain` for more information on
+this function. As previously mentioned, User Event 0 may not always be executed due to the internal
+logic of the Gui system. For example, if the parent instance for the sibling blocker is set to
+invisible (`visible = false;`) then it and all child instances will be skipped by `GuiStep()` and
+won't have their User Event 0 executed. For sibling blockers, User Event 0 will usually be used for
+checking for button input from `GuiInputButton()`. You will typically make use of User Event 0 for
+instances that can be dismissed by the player when they press a "back" button or an "escape"
+button.
+
+User Event 1 is executed similarly to User Event 0, but this time it is executed by `GuiDraw()`.
+Again, please see `oMain` for more information on this function. You should do all drawing for a
+cosmetic or listener in User Event 1. You may use any GameMaker drawing techniques - including
+matrices, shaders, and surfaces - without limitation. However, the Gui system's scroll region
+feature uses the stencil buffer and, as such, you may not use custom stencil buffer code.

@@ -1,0 +1,41 @@
+Juju: This document discussing Gui instance parenting and children. When adding manu children to a
+      parent you may find that you don't have enough to display them all. Please see the
+      `Scroll Regions` note to see information on handling overflowing contents. You can see an
+      example of parenting in `oPageContinue`.
+
+The Gui system allows instances to be created as "children" of other instances. An instance that
+has child instances is called a "parent". Indeed, anything more than the most basic of GUI designs
+requires the use of parenting. When a parent is moved (using `GuiMove()`, `GuiSetPosition()` etc.)
+then child instances are moved too, and by the same amount. If a parent instance is set to
+invisible (`visible = false;`) then all children become invisible too. If a parent instance is
+destroyed, all children instance are destroyed too. Any sort of Gui instance can be a parent and
+its entirely possible for a button to be a parent for something else.
+
+There are two kinds of child: an "inside" child and an "outside" child. The difference between the
+two comes down to how children should behave when a scroll region is applied to the paren
+instance. "Inside" children will be clipped by the scroll region and will be moved around when the
+scroll region offset changes. "Outside" children will not be affected by the scroll region in any
+way. You can think of inside children as being the content for the parent instance, and outside
+children as being additional UI glued to the side of the parent.
+
+You can create children by using the `GuiCreateInside()` and `GuiCreateOutside()` functions. If you
+have used a layout to create children then whether instances are inside or outside the parent is
+defined when the layout was started.
+
+The draw order for parents is as follows:
+ 1) User Event 1 (`GUI_USER_EVENT_DRAW`) is called for the parent
+ 2) Scroll region clipping (scissor test) is set up, if necessary
+ 3) All inside children are drawn in descending order of priority
+ 4) Scroll region clipping is reset, if necessary
+ 5) User Event 2 (`GUI_USER_EVENT_DRAW_END`) is called for the parent, if enabled
+ 6) All outside children are drawn in descending order of priority
+
+You will see above that User Event 2 is referenced. This user event is only executed if the 
+`GuiSetEnableDrawEnd()` function has been called for the parent. You will typically find that the
+use of the Draw End variant user event is rarely used in practice.
+
+You'll run into many situations when working with children that you'll want to resize the parent
+to visually enclose all of its children. This is called "size around" in the Gui library. Functions
+such as `GuiSetSizeAroundChildren()` are available, with variants for sizing around layouts as
+well. "Size around" functions do not move the child instances themselves but instead modify the
+effective bounding box of the parent instance to accommodate the child instances.

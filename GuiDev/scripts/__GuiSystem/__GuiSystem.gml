@@ -71,6 +71,13 @@ function __GuiSystem()
         __mousePressX   = undefined;
         __mousePressY   = undefined;
         
+        __gamepadNavPreDelay     = 20;
+        __gamepadNavDelay        = 9;
+        __gamepadNavDelayCount   = 4;
+        __gamepadNavDelayShorter = 5;
+        __gamepadStateX          = new __GuiClassGamepadState();
+        __gamepadStateY          = new __GuiClassGamepadState();
+        
         __gamepadLastX    = 0;
         __gamepadLastY    = 0;
         __gamepadDX       = 0;
