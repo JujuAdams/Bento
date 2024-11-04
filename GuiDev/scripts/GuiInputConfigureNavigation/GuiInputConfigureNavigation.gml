@@ -11,9 +11,9 @@ function GuiInputConfigureNavigation(_preDelay, _delay, _count, _shortDelay)
     
     with(_system)
     {
-        __gamepadNavPreDelay   = _preDelay;
-        __gamepadNavDelay      = _delay;
-        __gamepadNavDelayCount      = _count;
+        __gamepadNavPreDelay     = _preDelay;
+        __gamepadNavDelay        = _delay;
+        __gamepadNavDelayCount   = _count;
         __gamepadNavDelayShorter = _shortDelay;
     }
 }
