@@ -8,3 +8,5 @@
 // This creates the main menu page. See that object for an explanation of what "page" means in the
 // context of the Gui system.
 GuiCreateOutside(oPageMainMenu, un, GUI_ROOT, room_width/2, 500);
+
+GuiInputConfigureNavigation(10, 9, 4, 5);

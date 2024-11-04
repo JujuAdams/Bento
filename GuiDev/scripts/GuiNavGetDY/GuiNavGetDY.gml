@@ -19,7 +19,7 @@ function GuiNavGetDY()
         }
         else if (__navMode == GUI_NAV_GAMEPAD)
         {
-            return __gamepadDY;
+            return __gamepadStateY.__output;
         }
     }
     
