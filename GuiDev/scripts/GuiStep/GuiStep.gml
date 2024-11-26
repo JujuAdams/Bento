@@ -10,6 +10,7 @@ function GuiStep()
 {
     static _system = __GuiSystem();
     
+    __GuiScissorReset();
     var _stepOrder = __GuiEnsureStepOrder();
     
     with(_system)
