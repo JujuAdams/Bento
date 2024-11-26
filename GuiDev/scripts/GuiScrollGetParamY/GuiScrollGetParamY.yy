@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScrollGetParamY",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScrollGetParamY",
+  "parent":{
+    "name":"Scroll",
+    "path":"folders/Library/Scroll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
