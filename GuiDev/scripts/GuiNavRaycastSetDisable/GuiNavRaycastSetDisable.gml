@@ -5,11 +5,11 @@
 /// *don't* need to call this function if you have set up a navigation link with `GuiNavLinkHori()`
 /// or `GuiNavLinkVert()`.
 /// 
-/// @param instance
 /// @param disableHori
 /// @param disableVert
+/// @param [instance=id]
 
-function GuiNavRaycastSetDisable(_instance, _disableHori, _disableVert)
+function GuiNavRaycastSetDisable(_disableHori, _disableVert, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
