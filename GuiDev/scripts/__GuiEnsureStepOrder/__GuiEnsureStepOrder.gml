@@ -37,38 +37,45 @@ function __GuiEnsureStepOrderInner(_instance)
         
         //N.B. We iterate over instances backwards to handle modals and blockers elegantly
         
-        //Add children created outside the parent to the Step order. If we encounter a blocking
-        //instance inside the parent then prevent all subsequent instances from being added.
-        var _array = __childOutsideArray;
-        var _i = array_length(_array)-1;
-        repeat(array_length(_array))
+        var _focused = (__focused && (_system.__navMode == GUI_NAV_GAMEPAD));
+        if (not _focused)
         {
-            var _return = __GuiEnsureStepOrderInner(_array[_i]);
-            if (_return == __GUI_RETURN_MODAL) return __GUI_RETURN_MODAL;
-            if (_return == __GUI_RETURN_BLOCK_SIBLINGS) break;
-            --_i;
+            //Add children created outside the parent to the Step order. If we encounter a blocking
+            //instance inside the parent then prevent all subsequent instances from being added.
+            var _array = __childOutsideArray;
+            var _i = array_length(_array)-1;
+            repeat(array_length(_array))
+            {
+                var _return = __GuiEnsureStepOrderInner(_array[_i]);
+                if (_return == __GUI_RETURN_MODAL) return __GUI_RETURN_MODAL;
+                if (_return == __GUI_RETURN_BLOCK_SIBLINGS) break;
+                --_i;
+            }
         }
         
-        if (__scissorState)
+        if ((not __focusable) || _focused)
         {
-            array_insert(_stepOrder, 0, method(self, __GuiStepMethodScissorPush));
-        }
-        
-        //Add children created inside the parent to the Step order. If we encounter a blocking
-        //instance inside the parent then only prevent adding of instances that are inside the
-        //parent.
-        var _array = __childInsideArray;
-        var _i = array_length(_array)-1;
-        repeat(array_length(_array))
-        {
-            var _return = __GuiEnsureStepOrderInner(_array[_i]);
-            if ((_return == __GUI_RETURN_MODAL) || (_return == __GUI_RETURN_BLOCK_SIBLINGS)) break;
-            --_i;
-        }
-        
-        if (__scissorState)
-        {
-            array_insert(_stepOrder, 0, method(self, __GuiScissorPop));
+            if (__scissorState)
+            {
+                array_insert(_stepOrder, 0, method(self, __GuiStepMethodScissorPush));
+            }
+            
+            //Add children created inside the parent to the Step order. If we encounter a blocking
+            //instance inside the parent then only prevent adding of instances that are inside the
+            //parent.
+            var _array = __childInsideArray;
+            var _i = array_length(_array)-1;
+            repeat(array_length(_array))
+            {
+                var _return = __GuiEnsureStepOrderInner(_array[_i]);
+                if ((_return == __GUI_RETURN_MODAL) || (_return == __GUI_RETURN_BLOCK_SIBLINGS)) break;
+                --_i;
+            }
+            
+            if (__scissorState)
+            {
+                array_insert(_stepOrder, 0, method(self, __GuiScissorPop));
+            }
         }
         
         if ((__behavior == GUI_BEHAVIOR_BUTTON) || (__behavior == GUI_BEHAVIOR_LISTENER))

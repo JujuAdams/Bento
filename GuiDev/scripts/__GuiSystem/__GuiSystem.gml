@@ -25,8 +25,9 @@ function __GuiSystem()
         __rootInstance = undefined;
         __guiIndex = 0;
         
-        __stepOrder = [];
-        __stepDirty = true;
+        __stepRootStack = [];
+        __stepOrder     = [];
+        __stepDirty     = true;
         
         __drawOrder = [];
         __drawDirty = true;

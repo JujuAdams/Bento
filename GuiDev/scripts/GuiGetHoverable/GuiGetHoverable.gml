@@ -24,7 +24,7 @@ function __GuiGetHoverableInner(_instance)
     
     if (not instance_exists(_instance)) return false;
     
-    if ((not _instance.visible) || _instance.__disable)
+    if ((not _instance.visible) || _instance.__disable || _instance.__focusBlockHover)
     {
         return false;
     }

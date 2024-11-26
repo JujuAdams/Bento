@@ -41,6 +41,11 @@ persistent = true;
 __name = undefined;
 
 __disable = false;
+
+__focusable       = false;
+__focused         = false;
+__focusBlockHover = false;
+
 __raycastDisableHori = false;
 __raycastDisableVert = false;
 

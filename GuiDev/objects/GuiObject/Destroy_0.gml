@@ -8,6 +8,8 @@ if (instance_exists(__selectOnDestroy))
     GuiNavSelectSoft(__selectOnDestroy);
 }
 
+GuiNavSetFocus(false);
+
 if (__tabIdent != undefined)
 {
     var _tabData = __GuiTabGetData(__tabIdent);

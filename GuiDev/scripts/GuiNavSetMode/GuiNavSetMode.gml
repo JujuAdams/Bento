@@ -30,6 +30,10 @@ function GuiNavSetMode(_mode)
                 __mousePressY  = undefined;
             }
         }
+        else
+        {
+            GuiNavClearFocus();
+        }
         
         __navMode = _mode;
         __navPointer = ((_mode == GUI_NAV_MOUSE) || (_mode == GUI_NAV_TOUCH));
