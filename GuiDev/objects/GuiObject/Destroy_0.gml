@@ -8,7 +8,7 @@ if (instance_exists(__selectOnDestroy))
     GuiNavSelectSoft(__selectOnDestroy);
 }
 
-GuiNavSetFocus(false);
+if (__focusable) GuiNavSetFocus(false);
 
 if (__tabIdent != undefined)
 {
