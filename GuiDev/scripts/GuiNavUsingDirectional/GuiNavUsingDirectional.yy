@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiClassGamepadState",
+  "%Name":"GuiNavUsingDirectional",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiClassGamepadState",
+  "name":"GuiNavUsingDirectional",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "name":"Nav Mode",
+    "path":"folders/Library/Nav Mode.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

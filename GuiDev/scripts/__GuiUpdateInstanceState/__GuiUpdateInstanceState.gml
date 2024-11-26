@@ -13,7 +13,7 @@ function __GuiUpdateInstanceState()
         
         with(_instance)
         {
-            var _clickOnPress = (GuiNavUsingGamepad() ||
+            var _clickOnPress = (GuiNavUsingDirectional() ||
                                  (GUI_POINTER_CLICK_ON_PRESS
                                && _system.__navPointer
                                && (not instance_exists(__GuiScrollFindParent(id)))));

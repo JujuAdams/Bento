@@ -4,11 +4,11 @@ Juju: This is a discussion surrounding the topic of buttons. For a practical exa
 Within the Gui system, buttons are instances that:
  1) Have the behavior `GUI_BEHAVIOR_BUTTON`
  2) Can be hovered by the cursor
- 3) Will retain cursor focus when using the `GUI_NAV_GAMEPAD` navigation mode
+ 3) Will retain cursor focus when using the `GUI_NAV_DIRECTIONAL` navigation mode
 Buttons can be clicked using the primary action too, though not all buttons will always utilise
 this feature. For example, a volume slider will respond to left/right input rather than clicking
-when using `GUI_NAV_GAMEPAD`. No other Gui instance behavior will capture cursor focus in
-`GUI_NAV_GAMEPAD` mode. Buttons are the basic unit of an interactive interface and should be used
+when using `GUI_NAV_DIRECTIONAL`. No other Gui instance behavior will capture cursor focus in
+`GUI_NAV_DIRECTIONAL` mode. Buttons are the basic unit of an interactive interface and should be used
 frequently.
 
 Button objects that you create should inherit from `GuiButtonObject` (via intermediate objects as

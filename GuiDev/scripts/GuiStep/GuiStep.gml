@@ -3,7 +3,7 @@
 /// Updates the GUI system based on the navigation mode (`GuiNavSetMode()`) and user input:
 /// 
 /// - `GuiInputPointer()`
-/// - `GuiInputGamepad()`
+/// - `GuiInputDirectional()`
 /// - `GuiInputButton()`
 
 function GuiStep()
@@ -17,9 +17,9 @@ function GuiStep()
     {
         ++__frame;
         
-        // Calculate gamepad x/y deltas
-        __gamepadStateX.__Update(__gamepadDX, __frame);
-        __gamepadStateY.__Update(__gamepadDY, __frame);
+        // Calculate directional x/y deltas
+        __directionalStateX.__Update(__directionalDX, __frame);
+        __directionalStateY.__Update(__directionalDY, __frame);
         
         if (not GuiFreezeGetAny())
         {
@@ -44,9 +44,9 @@ function GuiStep()
             
             if (not __navPointer) //Not using a pointer
             {
-                __holdState = __gamepadPrevHold? (__gamepadHold? GUI_HOLD : GUI_RELEASE) : (__gamepadHold? GUI_PRESS : GUI_OFF);
+                __holdState = __directionalPrevHold? (__directionalHold? GUI_HOLD : GUI_RELEASE) : (__directionalHold? GUI_PRESS : GUI_OFF);
                 if (not GuiGetHoverable(__holdInstance)) __holdInstance = noone;
-                __GuiNavStartOver(__GuiGetGamepadOver(__overInstance, __gamepadStateX.__output, __gamepadStateY.__output));
+                __GuiNavStartOver(__GuiGetDirectionalOver(__overInstance, __directionalStateX.__output, __directionalStateY.__output));
             }
             else //Using a pointer
             {

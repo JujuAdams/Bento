@@ -22,7 +22,7 @@ if (_length > 0)
             func(option, optionArray[option]); //Execute the callback
         }
     }
-    else if (GuiNavUsingGamepad())
+    else if (GuiNavUsingDirectional())
     {
         // Detect directional input to scroll throught the option array.
         if (GuiNavGetOver() && (GuiNavGetDX() != 0))

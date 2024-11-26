@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __GuiClassGamepadState() constructor
+function __GuiClassDirectionalState() constructor
 {
     __prevPositive = false;
     __prevNegative = false;
@@ -47,7 +47,7 @@ function __GuiClassGamepadState() constructor
         {
             if (__stage == 0)
             {
-                if (((__pressTime - _frame) mod _system.__gamepadNavPreDelay) == 0)
+                if (((__pressTime - _frame) mod _system.__directionalNavPreDelay) == 0)
                 {
                     __output = __direction;
                     
@@ -66,12 +66,12 @@ function __GuiClassGamepadState() constructor
             }
             else if (__stage == 1)
             {
-                if (((__pressTime - _frame) mod _system.__gamepadNavDelay) == 0)
+                if (((__pressTime - _frame) mod _system.__directionalNavDelay) == 0)
                 {
                     __output = __direction;
                     
                     ++__count;
-                    if (__count >= _system.__gamepadNavDelayCount)
+                    if (__count >= _system.__directionalNavDelayCount)
                     {
                         __pressTime = _frame;
                         ++__stage;
@@ -85,7 +85,7 @@ function __GuiClassGamepadState() constructor
             }
             else if (__stage == 2)
             {
-                if (((__pressTime - _frame) mod _system.__gamepadNavDelayShorter) == 0)
+                if (((__pressTime - _frame) mod _system.__directionalNavDelayShorter) == 0)
                 {
                     __output = __direction;
                 }

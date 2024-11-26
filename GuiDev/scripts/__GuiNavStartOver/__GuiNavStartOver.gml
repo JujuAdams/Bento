@@ -12,10 +12,10 @@ function __GuiNavStartOver(_instance)
     {
         if (instance_exists(_instance))
         {
-            if (__navMode == GUI_NAV_GAMEPAD)
+            if (__navMode == GUI_NAV_DIRECTIONAL)
             {
-                __gamepadLastX = _instance.x;
-                __gamepadLastY = _instance.y;
+                __directionalLastX = _instance.x;
+                __directionalLastY = _instance.y;
                 GuiScrollTo(_instance);
             }
             

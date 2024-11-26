@@ -33,10 +33,10 @@
 #macro GUI_OVER   2
 #macro GUI_LEAVE  3
 
-#macro GUI_NAV_UNKNOWN  0
-#macro GUI_NAV_MOUSE    1
-#macro GUI_NAV_GAMEPAD  2
-#macro GUI_NAV_TOUCH    3
+#macro GUI_NAV_UNKNOWN      0
+#macro GUI_NAV_MOUSE        1
+#macro GUI_NAV_DIRECTIONAL  2
+#macro GUI_NAV_TOUCH        3
 
 #macro GUI_USER_EVENT_STEP      0
 #macro GUI_USER_EVENT_DRAW      1

@@ -14,7 +14,7 @@ function __GuiTabEnsure(_tabIdent)
             __button: noone,
             __child:  noone,
             
-            __blockGamepadWhenOpen: false,
+            __blockDirectionalWhenOpen: false,
         };
         
         _tabDict[$ _tabIdent] = _tabData;

@@ -29,7 +29,7 @@ function __GuiGetHoverableInner(_instance)
         return false;
     }
     
-    if (_system.__navMode == GUI_NAV_GAMEPAD)
+    if (_system.__navMode == GUI_NAV_DIRECTIONAL)
     {
         if (_instance.__behavior != GUI_BEHAVIOR_BUTTON)
         {
@@ -39,7 +39,7 @@ function __GuiGetHoverableInner(_instance)
         var _tabData = __GuiTabGetData(_instance.__tabIdent);
         if (_tabData != undefined)
         {
-            if (_tabData.__blockGamepadWhenOpen && instance_exists(_tabData.__child))
+            if (_tabData.__blockDirectionalWhenOpen && instance_exists(_tabData.__child))
             {
                 return false;
             }

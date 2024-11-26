@@ -3,7 +3,7 @@
 // Swap the navigation mode depending on what number row key has been pressed. In the main
 // project, this is handled when the player hotswaps to another input device.
 if (keyboard_check_pressed(ord("1"))) GuiNavSetMode(GUI_NAV_MOUSE);
-if (keyboard_check_pressed(ord("2"))) GuiNavSetMode(GUI_NAV_GAMEPAD);
+if (keyboard_check_pressed(ord("2"))) GuiNavSetMode(GUI_NAV_DIRECTIONAL);
 if (keyboard_check_pressed(ord("3"))) GuiNavSetMode(GUI_NAV_TOUCH);
 
 // "Gampead" input is, in reality, a generic directional input. Sending in a directional value
@@ -12,9 +12,9 @@ if (keyboard_check_pressed(ord("3"))) GuiNavSetMode(GUI_NAV_TOUCH);
 // configure the auto-scroll behavior by calling `GuiInputConfigureNavigation()`. The primary
 // action parameter should be a continuous "held" value too. The Gui system handles the "pressed"
 // and "released" state internally.
-GuiInputGamepad(keyboard_check(vk_right) - keyboard_check(vk_left),
-                keyboard_check(vk_down) - keyboard_check(vk_up),
-                keyboard_check(vk_space));
+GuiInputDirectional(keyboard_check(vk_right) - keyboard_check(vk_left),
+                    keyboard_check(vk_down) - keyboard_check(vk_up),
+                    keyboard_check(vk_space));
 
 // Pointer input generalises both mouse and touch input. As above, the primary action should be a
 // continuous "held" value. The coordinate space for the x/y coordinates should be the same as the

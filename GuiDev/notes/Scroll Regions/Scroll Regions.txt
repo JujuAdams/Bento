@@ -8,9 +8,9 @@ note) can be moved within a visible rectangle on the screen. Children, or even p
 that are not visible cannot be selected by the cursor. Scroll regions can be used alongside
 layouts; be sure to call `GuiLayoutFinishWithScroll()` instead of `GuiLayoutFinish()`.
 
-When using `GUI_NAV_GAMEPAD`, any hovered instance will be automatically scrolled such that it is
-visible inside the window. Scroll regions respond to click-and-drag and tap-and-drag on desktop and
-touchscreens respectively. Scroll regions can also respond to mouse wheel input by setting the
+When using `GUI_NAV_DIRECTIONAL`, any hovered instance will be automatically scrolled such that it
+is visible inside the window. Scroll regions respond to click-and-drag and tap-and-drag on desktop
+and touchscreens respectively. Scroll regions can also respond to mouse wheel input by setting the
 special `GUI_BUTTON_MOUSE_WHEEL_UP` and `GUI_BUTTON_MOUSE_WHEEL_DOWN` button inputs. These two
 inputs should be set using `GuiInputButton()`. The amount that a scroll region should move when
 using the mouse wheel is set by the `GUI_MOUSE_WHEEL_SCROLL_SPEED` macro.

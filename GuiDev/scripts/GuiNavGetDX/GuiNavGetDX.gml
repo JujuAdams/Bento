@@ -5,8 +5,8 @@
 /// - If the navigation mode is set to `GUI_NAV_MOUSE` or `GUI_NAV_TOUCH` then this function
 ///   returns the interframe x-axis distance.
 /// 
-/// - If the navigation mode is set to `GUI_NAV_GAMEPAD` then this function returns the `dX` value
-///   set by `GuiInputGamepad()`.
+/// - If the navigation mode is set to `GUI_NAV_DIRECTIONAL` then this function returns the `dX` value
+///   set by `GuiInputDirectional()`.
 
 function GuiNavGetDX()
 {
@@ -17,9 +17,9 @@ function GuiNavGetDX()
         {
             return __mouseHold? (__mouseX - __mousePrevX) : 0;
         }
-        else if (__navMode == GUI_NAV_GAMEPAD)
+        else if (__navMode == GUI_NAV_DIRECTIONAL)
         {
-            return __gamepadStateX.__output;
+            return __directionalStateX.__output;
         }
     }
     

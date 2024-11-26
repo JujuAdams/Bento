@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Selects an instance (if possible). This function only works when the navigation mode is set to
-/// `GUI_NAV_GAMEPAD`.
+/// `GUI_NAV_DIRECTIONAL`.
 /// 
 /// @param instance
 

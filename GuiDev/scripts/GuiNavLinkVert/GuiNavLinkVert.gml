@@ -1,7 +1,7 @@
 // Feather disable all
 
-/// Creates a vertical navigation link between two instances. When pressing up or down on your
-/// gamepad, the cursor will jump between the two instances.
+/// Creates a vertical navigation link between two instances. When pressing up or down with
+/// directional input, the cursor will jump between the two instances.
 /// 
 /// @param up
 /// @param down

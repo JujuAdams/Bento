@@ -8,16 +8,16 @@
 /// @param dY
 /// @param primaryAction
 
-function GuiInputGamepad(_dX, _dY, _buttonHold)
+function GuiInputDirectional(_dX, _dY, _buttonHold)
 {
     static _system = __GuiSystem();
     
     with(_system)
     {
-        __gamepadPrevHold = __gamepadHold;
+        __directionalPrevHold = __directionalHold;
         
-        __gamepadDX   = _dX;
-        __gamepadDY   = _dY;
-        __gamepadHold = _buttonHold;
+        __directionalDX   = _dX;
+        __directionalDY   = _dY;
+        __directionalHold = _buttonHold;
     }
 }

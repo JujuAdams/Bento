@@ -26,7 +26,7 @@
 /// - `GUI_BEHAVIOR_POP_UP`
 ///   A variant on `GUI_BEHAVIOR_LISTENER` with the added effect of self-destructing when a GUI
 ///   instance with a lower priority is clicked. Unlike modals, pop-ups will not block inputs to
-///   lower priority instances. When using the `GUI_NAV_GAMEPAD` mode, selection will be limited to
+///   lower priority instances. When using the `GUI_NAV_DIRECTIONAL` mode, selection will be limited to
 ///   GUI instances inside the pop-up.
 /// 
 /// - `GUI_BEHAVIOR_BLOCK_SIBLINGS`

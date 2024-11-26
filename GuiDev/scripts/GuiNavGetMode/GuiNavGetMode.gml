@@ -5,7 +5,7 @@
 /// 
 /// - `GUI_NAV_UNKNOWN`
 /// - `GUI_NAV_MOUSE`
-/// - `GUI_NAV_GAMEPAD`
+/// - `GUI_NAV_DIRECTIONAL`
 /// - `GUI_NAV_TOUCH`
 
 function GuiNavGetMode()

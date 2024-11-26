@@ -42,7 +42,7 @@ function __GuiSystem()
         ||  (os_type == os_xboxone)
         ||  (os_type == os_xboxseriesxs))
         {
-            __navMode = GUI_NAV_GAMEPAD;
+            __navMode = GUI_NAV_DIRECTIONAL;
         }
         else if ((os_type == os_android)
               || (os_type == os_ios)
@@ -54,7 +54,7 @@ function __GuiSystem()
               || (os_type == os_macosx)
               || (os_type == os_linux))
         {
-            __navMode = GUI_DESKTOP_DEFAULT_TO_GAMEPAD? GUI_NAV_GAMEPAD : GUI_NAV_MOUSE;
+            __navMode = GUI_DESKTOP_DEFAULT_TO_DIRECTIONAL? GUI_NAV_DIRECTIONAL : GUI_NAV_MOUSE;
         }
         else
         {
@@ -72,19 +72,19 @@ function __GuiSystem()
         __mousePressX   = undefined;
         __mousePressY   = undefined;
         
-        __gamepadNavPreDelay     = 20;
-        __gamepadNavDelay        = 9;
-        __gamepadNavDelayCount   = 4;
-        __gamepadNavDelayShorter = 5;
-        __gamepadStateX          = new __GuiClassGamepadState();
-        __gamepadStateY          = new __GuiClassGamepadState();
+        __directionalNavPreDelay     = 20;
+        __directionalNavDelay        = 9;
+        __directionalNavDelayCount   = 4;
+        __directionalNavDelayShorter = 5;
+        __directionalStateX          = new __GuiClassDirectionalState();
+        __directionalStateY          = new __GuiClassDirectionalState();
         
-        __gamepadLastX    = 0;
-        __gamepadLastY    = 0;
-        __gamepadDX       = 0;
-        __gamepadDY       = 0;
-        __gamepadHold     = false;
-        __gamepadPrevHold = false;
+        __directionalLastX    = 0;
+        __directionalLastY    = 0;
+        __directionalDX       = 0;
+        __directionalDY       = 0;
+        __directionalHold     = false;
+        __directionalPrevHold = false;
         
         __overInstance     = noone;
         __overInstanceSoft = noone;

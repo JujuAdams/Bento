@@ -24,13 +24,13 @@ function GuiNavSetFocus(_state, _instance = id)
                 {
                     if (__scissorState)
                     {
-                        _system.__gamepadLastX = __scissorLeft;
-                        _system.__gamepadLastY = __scissorTop;
+                        _system.__directionalLastX = __scissorLeft;
+                        _system.__directionalLastY = __scissorTop;
                     }
                     else
                     {
-                        _system.__gamepadLastX = x;
-                        _system.__gamepadLastY = y;
+                        _system.__directionalLastX = x;
+                        _system.__directionalLastY = y;
                     }
                 }
                 

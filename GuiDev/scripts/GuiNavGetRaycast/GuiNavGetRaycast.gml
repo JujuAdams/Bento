@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns the nearest instance along the given ray. This is not a true raycast as instances near
-/// the ray will be considered (which is better UX when navigating using a gamepad). The
+/// the ray will be considered (which is better UX when navigating using directional input). The
 /// `excludeArray` argument can be set to an array of instance IDs that should be ignored by this
 /// function.
 /// 

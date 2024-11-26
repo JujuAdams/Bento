@@ -3,10 +3,10 @@
 /// Sets up an instance as a tab host for a tab group. This is optional but recommended.
 /// 
 /// @param tabIdent
-/// @param [blockGamepadWhenOpen=false]
+/// @param [blockDirectionalWhenOpen=false]
 /// @param [instance=id]
 
-function GuiTabSetupHost(_tabIdent, _blockGamepadWhenOpen = false, _instance = id)
+function GuiTabSetupHost(_tabIdent, _blockDirectionalWhenOpen = false, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
@@ -17,7 +17,7 @@ function GuiTabSetupHost(_tabIdent, _blockGamepadWhenOpen = false, _instance = i
     
     var _tabData = __GuiTabEnsure(_tabIdent);
     _tabData.__host = _instance;
-    _tabData.__blockGamepadWhenOpen = _blockGamepadWhenOpen;
+    _tabData.__blockDirectionalWhenOpen = _blockDirectionalWhenOpen;
     
     _instance.__tabIdent = _tabIdent;
 }

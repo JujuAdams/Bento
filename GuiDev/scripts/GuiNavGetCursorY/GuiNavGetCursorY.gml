@@ -12,9 +12,9 @@ function GuiNavGetCursorY()
         {
             return __mouseY;
         }
-        else if (__navMode == GUI_NAV_GAMEPAD)
+        else if (__navMode == GUI_NAV_DIRECTIONAL)
         {
-            return __gamepadLastY;
+            return __directionalLastY;
         }
         else if (__navMode == GUI_NAV_TOUCH)
         {

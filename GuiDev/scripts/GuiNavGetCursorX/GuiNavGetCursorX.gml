@@ -12,9 +12,9 @@ function GuiNavGetCursorX()
         {
             return __mouseX;
         }
-        else if (__navMode == GUI_NAV_GAMEPAD)
+        else if (__navMode == GUI_NAV_DIRECTIONAL)
         {
-            return __gamepadLastX;
+            return __directionalLastX;
         }
         else if (__navMode == GUI_NAV_TOUCH)
         {

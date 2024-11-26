@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiGetGamepadOver",
+  "%Name":"GuiInputDirectional",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiGetGamepadOver",
+  "name":"GuiInputDirectional",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "name":"Input",
+    "path":"folders/Library/Input.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

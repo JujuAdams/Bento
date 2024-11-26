@@ -25,7 +25,7 @@ if (GuiNavUsingPointer())
         if (_delta == 0) _delta = 1;
     }
 }
-else if (GuiNavUsingGamepad())
+else if (GuiNavUsingDirectional())
 {
     // Detect directional input to scroll throught the option array.
     if (GuiNavGetOver())

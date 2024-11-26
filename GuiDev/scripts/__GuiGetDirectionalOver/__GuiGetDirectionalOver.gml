@@ -1,13 +1,13 @@
 // Feather disable all
 
-/// Returns which instance is highlighted using the gamepad highlighting rules. This function can
-/// return `noone` if no instance is available to highlight.
+/// Returns which instance is highlighted using the directional input highlighting rules. This
+/// function can return `noone` if no instance is available to highlight.
 /// 
 /// @param startInstance
 /// @param dX
 /// @param dY
 
-function __GuiGetGamepadOver(_prevInstance, _dX, _dY)
+function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
 {
     static _system       = __GuiSystem();
     static _excludeArray = [];
@@ -27,7 +27,7 @@ function __GuiGetGamepadOver(_prevInstance, _dX, _dY)
         else
         {
             //Otherwise fall back on searching for the nearest selectable instance
-            _nextInstance = GuiNavGetNearest(_system.__gamepadLastX, _system.__gamepadLastY, _excludeArray);
+            _nextInstance = GuiNavGetNearest(_system.__directionalLastX, _system.__directionalLastY, _excludeArray);
         }
     }
     else
@@ -71,7 +71,7 @@ function __GuiGetGamepadOver(_prevInstance, _dX, _dY)
                 }
                 else
                 {
-                    _nextInstance = GuiNavGetRaycast(_system.__gamepadLastX, _system.__gamepadLastY, _dX, _dY, _excludeArray);
+                    _nextInstance = GuiNavGetRaycast(_system.__directionalLastX, _system.__directionalLastY, _dX, _dY, _excludeArray);
                     
                     if (not instance_exists(_nextInstance))
                     {

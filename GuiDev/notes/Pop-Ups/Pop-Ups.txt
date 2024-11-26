@@ -4,7 +4,7 @@ Juju: This is a discussion regarding pop-ups. For a practical example, please se
 Within the Gui system, pop-ups are instances that:
  1) Have the behavior `GUI_BEHAVIOR_POP_UP`
  2) Can be hovered by the cursor but only when using `GUI_NAV_MOUSE` and `GUI_NAV_TOUCH`
- 3) Will block hovering of instances beneath the pop-up when using `GUI_NAV_GAMEPAD`
+ 3) Will block hovering of instances beneath the pop-up when using `GUI_NAV_DIRECTIONAL`
  4) Will automatically destroy itself when the primary action is triggered outside of the pop-up
     instance or its children when using `GUI_NAV_MOUSE` and `GUI_NAV_TOUCH`
 
