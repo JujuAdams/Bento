@@ -12,7 +12,7 @@ function GuiScrollOnPointer(_instance = id)
     
     if (_system.__navPointer)
     {
-        if (GuiNavGetHold(_instance))
+        if (GUI_SCROLL_ON_DRAG && GuiNavGetHold(_instance))
         {
             if (GuiNavGetDragDistance() > GUI_SCROLL_THRESHOLD)
             {

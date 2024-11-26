@@ -10,6 +10,7 @@ function GuiScrollTo(_instance)
     
     var _parent = __GuiScrollFindParent(_instance);
     if (not instance_exists(_instance)) return;
+    if (_parent == _instance) return;
     
     with(_parent)
     {
