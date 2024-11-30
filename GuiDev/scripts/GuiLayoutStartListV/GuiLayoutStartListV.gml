@@ -3,6 +3,10 @@
 /// Creates a vertical list layout. Member instances will be arranged in a vertical line when
 /// `GuiLayoutFinish()` is called.
 /// 
+/// The `spacing` argument controls the distance between member instances. The `hAlign` and
+/// `vAlign` arguments controls how the entire group of instances is aligned to the position
+/// supplied when calling `GuiLayoutFinish()`.
+/// 
 /// @param parent
 /// @param inside
 /// @param spacing

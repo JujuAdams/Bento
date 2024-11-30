@@ -19,8 +19,9 @@
 // wheel scrolling (or just don't use `GUI_BUTTON_MOUSE_WHEEL_UP` or `GUI_BUTTON_MOUSE_WHEEL_DOWN`).
 #macro GUI_MOUSE_WHEEL_SCROLL_SPEED  20
 
-// Whether clicking and dragging on a scrollable UI element should scroll.
-#macro GUI_SCROLL_ON_DRAG  false
+// Whether clicking and dragging on a scrollable UI element should scroll in the `GUI_NAV_MOUSE`
+// nav mode.
+#macro GUI_SCROLL_ON_MOUSE_DRAG  true
 
 // Whether pop-ups will allow you to click instances behind the pop-up. If this macro is set to
 // `true` then instances can be highlighted and clicked. Setting this macro to `false` will prevent
