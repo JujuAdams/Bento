@@ -20,7 +20,7 @@ function __GuiEnsureStepOrder()
         array_foreach(_dirtyOrderArray, __GuiSortChildren);
         array_resize(_dirtyOrderArray, 0);
         
-        __GuiEnsureStepOrderInner(GUI_ROOT);
+        __GuiEnsureStepOrderInner((__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? GUI_ROOT) : GUI_ROOT);
         
         return __stepOrder;
     }
