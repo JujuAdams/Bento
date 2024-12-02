@@ -17,16 +17,16 @@ function GuiScrollTo(_instance)
         var _dX = 0;
         var _dY = 0;
         
-        if (_instance.width > width)
+        if (_instance.sprite_width > sprite_width)
         {
             _dX = x - _instance.x;
         }
         else
         {
-            var _instL = _instance.x - _instance.width/2 - _instance.scrollMarginLeft;
-            var _instR = _instance.x + _instance.width/2 + _instance.scrollMarginRight;
-            var _parL  = __scissorState? __scissorLeft : (x - width/2);
-            var _parR  = __scissorState? __scissorRight : (x + width/2);
+            var _instL = _instance.bbox_left - _instance.scrollMarginLeft;
+            var _instR = _instance.bbox_right + _instance.scrollMarginRight;
+            var _parL  = __scissorState? __scissorLeft : bbox_left;
+            var _parR  = __scissorState? __scissorRight : bbox_right;
             var _distL = _parL - _instL;
             var _distR = _parR - _instR;
             
@@ -47,16 +47,16 @@ function GuiScrollTo(_instance)
             }
         }
         
-        if (_instance.height > height)
+        if (_instance.sprite_height > sprite_height)
         {
             _dY = y - _instance.y;
         }
         else
         {
-            var _instT = _instance.y - _instance.height/2 - _instance.scrollMarginTop;
-            var _instB = _instance.y + _instance.height/2 + _instance.scrollMarginBottom;
-            var _parT  = __scissorState? __scissorTop : (y - height/2);
-            var _parB  = __scissorState? __scissorBottom : (y + height/2);
+            var _instT = _instance.bbox_top - _instance.scrollMarginTop;
+            var _instB = _instance.bbox_bottom + _instance.scrollMarginBottom;
+            var _parT  = __scissorState? __scissorTop : bbox_top;
+            var _parB  = __scissorState? __scissorBottom : bbox_bottom;
             var _distT = _parT - _instT;
             var _distB = _parB - _instB;
             

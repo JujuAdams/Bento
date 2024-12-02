@@ -12,8 +12,8 @@
     "path":"folders/Gui Elements.yy",
   },
   "parentObjectId":{
-    "name":"GuiButtonObject",
-    "path":"objects/GuiButtonObject/GuiButtonObject.yy",
+    "name":"GuiParentCommon",
+    "path":"objects/GuiParentCommon/GuiParentCommon.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

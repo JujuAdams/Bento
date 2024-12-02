@@ -49,8 +49,8 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
     {
         array_push(__instanceArray, _instance);
         
-        __maxWidth  = max(__maxWidth,  _instance.width);
-        __maxHeight = max(__maxHeight, _instance.height);
+        __maxWidth  = max(__maxWidth,  _instance.sprite_width);
+        __maxHeight = max(__maxHeight, _instance.sprite_height);
         
         if (array_length(__instanceArray) == 1)
         {
@@ -58,7 +58,7 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
         }
         else
         {
-            __width += _instance.width + __spacing;
+            __width += _instance.sprite_width + __spacing;
         }
         
         __height = __maxHeight;
@@ -98,22 +98,7 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
         {
             with(_instanceArray[_i])
             {
-                _x += width/2;
-                
-                if (_vAlign == fa_left)
-                {
-                    var _yOffset = height/2;
-                }
-                else if (_vAlign == fa_center)
-                {
-                    var _yOffset = 0;
-                }
-                else if (_vAlign == fa_right)
-                {
-                    var _yOffset = -height/2;
-                }
-                
-                GuiSetPosition(_x, _y + _yOffset);
+                GuiSetPosition(_x, _y, id, fa_left, _vAlign);
                 
                 if (__behavior == GUI_BEHAVIOR_BUTTON)
                 {
@@ -121,7 +106,7 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
                     _prev = id;
                 }
                 
-                _x += width/2 + _spacing;
+                _x += sprite_width + _spacing;
             }
             
             ++_i;

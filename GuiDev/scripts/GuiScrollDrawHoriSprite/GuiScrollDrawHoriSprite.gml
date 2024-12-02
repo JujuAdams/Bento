@@ -23,7 +23,7 @@ function GuiScrollDrawHoriSprite(_left, _top, _right, _bottom, _barSprite, _hand
         
         var _q = 1 - clamp((__scrollX - __scrollMinX) / (__scrollMaxX - __scrollMinX), 0, 1);
         
-        var _handleSize = ceil((_right - _left) * (width / (width + _scrollSize)));
+        var _handleSize = ceil((_right - _left) * (sprite_width / (sprite_width + _scrollSize)));
         var _x = lerp(_left + _handlePadding, _right - _handlePadding - _handleSize, _q);
         
         draw_sprite_stretched(_barSprite, 0, _left, _top, 1 + _right - _left, 1 + _bottom - _top);

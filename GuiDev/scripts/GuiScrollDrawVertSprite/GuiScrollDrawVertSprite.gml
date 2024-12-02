@@ -23,7 +23,7 @@ function GuiScrollDrawVertSprite(_left, _top, _right, _bottom, _barSprite, _hand
         
         var _q = 1 - clamp((__scrollY - __scrollMinY) / (__scrollMaxY - __scrollMinY), 0, 1);
         
-        var _handleSize = ceil((_bottom - _top) * (height / (height + _scrollSize)));
+        var _handleSize = ceil((_bottom - _top) * (sprite_height / (sprite_height + _scrollSize)));
         var _y = lerp(_top + _handlePadding, _bottom - _handlePadding - _handleSize, _q);
         
         draw_sprite_stretched(_barSprite, 0, _left, _top, 1 + _right - _left, 1 + _bottom - _top);

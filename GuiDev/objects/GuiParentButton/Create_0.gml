@@ -6,3 +6,5 @@
 //       have to be set as parents.
 
 event_inherited();
+
+GuiSetBehavior(GUI_BEHAVIOR_BUTTON);

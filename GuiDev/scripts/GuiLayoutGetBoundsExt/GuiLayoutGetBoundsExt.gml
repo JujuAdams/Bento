@@ -31,10 +31,10 @@ function GuiLayoutGetBoundsExt(_layout, _padLeft, _padTop, _padRight, _padBottom
     {
         with(_array[_i])
         {
-            _left   = min(_left,   x - 0.5*width );
-            _top    = min(_top,    y - 0.5*height);
-            _right  = max(_right,  x + 0.5*width );
-            _bottom = max(_bottom, y + 0.5*height);
+            _left   = min(_left,   bbox_left);
+            _top    = min(_top,    bbox_top);
+            _right  = max(_right,  bbox_right);
+            _bottom = max(_bottom, bbox_bottom);
         }
         
         ++_i;

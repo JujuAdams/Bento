@@ -16,7 +16,7 @@ function GuiLayoutSetMembersWidth(_layout, _width, _hAlign = undefined)
         {
             with(_instanceArray[_i])
             {
-                GuiSetSize(_width, height, id, _hAlign ?? other.__hAlign, fa_middle);
+                GuiSetWidth(_width, id, _hAlign ?? other.__hAlign);
             }
             
             ++_i;

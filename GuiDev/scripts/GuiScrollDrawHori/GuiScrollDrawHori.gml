@@ -20,7 +20,7 @@ function GuiScrollDrawHori(_left, _top, _right, _bottom, _instance = id)
         
         var _q = 1 - clamp((__scrollX - __scrollMinX) / (__scrollMaxX - __scrollMinX), 0, 1);
         
-        var _handleSize = (_right - _left) * (width / (width + _scrollSize));
+        var _handleSize = (_right - _left) * (sprite_width / (sprite_width + _scrollSize));
         var _x = lerp(_left, _right - _handleSize, _q);
         
         draw_set_color(c_black);

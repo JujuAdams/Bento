@@ -43,25 +43,23 @@ var _layout = GuiLayoutStartGridH(id, true, 10, 80, 40, 4);
 
 repeat(30)
 {
-    GuiCreateInLayout(_layout, GuiExampleButton, {
-        width: 80,
-        height: 40,
-    });
+    var _button = GuiCreateInLayout(_layout, GuiExampleButton);
+    GuiSetSize(80, 40, _button);
 }
 
-GuiLayoutFinish(_layout, 0, GuiGetBottom(_sortButton) + 10);
+GuiLayoutFinish(_layout, 0, _sortButton.bbox_bottom + 10);
 
 GuiSetSizeAroundChildren(10);
 
-GuiCreateOutside(GuiExampleButton,
+var _button = GuiCreateOutside(GuiExampleButtonEllipse,
 {
     text: "Back",
     func: function()
     {
         GuiDestroy(GuiGetParent());
     },
-},
-id, GuiGetRight(), GuiGetBottom() + 7);
+});
+GuiSetPosition(bbox_right, bbox_bottom + 7, _button, fa_center, fa_middle);
 
-GuiSetPosition(display_get_gui_width()/2, display_get_gui_height()/2);
+GuiSetPosition(display_get_gui_width()/2, display_get_gui_height()/2, id, fa_center, fa_middle);
 GuiLayoutNavSelectFirst(_layout);

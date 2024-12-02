@@ -22,28 +22,28 @@ if (not variable_instance_exists(id, "func"       )) func = function(){};
 // Gui instances will initialize to have a `width` and `height` of 0. If either is zero when this
 // event is executed then we set a reasonable default value by using the maximal size of options in
 // the option array.
-if (width == 0)
+if (sprite_width <= 2)
 {
-    width = string_width(title);
+    var _width = string_width(title);
     
     var _i = 0;
     repeat(array_length(optionArray))
     {
-        width = max(width, string_width(optionArray[_i]) + 40);
+        _width = max(_width, string_width(optionArray[_i]) + 40);
         ++_i;
     }
     
-    width += 20;
+    GuiSetWidth(_width + 20);
 }
 
-if (height == 0)
+if (sprite_height <= 2)
 {
-    height = string_height(title);
+    var _height = string_height(title);
     
     if (array_length(optionArray) > 0)
     {
-        height += string_height(optionArray[0]);
+        _height += string_height(optionArray[0]);
     }
     
-    height += 20;
+    GuiSetHeight(_height + 20);
 }

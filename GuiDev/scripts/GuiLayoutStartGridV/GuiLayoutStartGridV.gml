@@ -52,8 +52,8 @@ function __GuiClassLayoutGridV(_parent, _inside, _spacing, _cellWidth, _cellHeig
         
         array_push(__instanceArray, _instance);
         
-        __maxWidth  = max(__maxWidth,  _instance.width);
-        __maxHeight = max(__maxHeight, _instance.height);
+        __maxWidth  = max(__maxWidth,  _instance.sprite_width);
+        __maxHeight = max(__maxHeight, _instance.sprite_height);
         
         if (_cellX == 0)
         {
@@ -99,7 +99,7 @@ function __GuiClassLayoutGridV(_parent, _inside, _spacing, _cellWidth, _cellHeig
         var _i = 0;
         repeat(array_length(_instanceArray))
         {
-            GuiSetPosition(_memberX, _memberY, _instanceArray[_i]);
+            GuiSetPosition(_memberX, _memberY, _instanceArray[_i], fa_center, fa_middle);
             
             ++_cellY;
             if (_cellY >= _countPerColumn)

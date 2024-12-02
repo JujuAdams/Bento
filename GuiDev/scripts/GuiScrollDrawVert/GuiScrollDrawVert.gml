@@ -20,7 +20,7 @@ function GuiScrollDrawVert(_left, _top, _right, _bottom, _instance = id)
         
         var _q = 1 - clamp((__scrollY - __scrollMinY) / (__scrollMaxY - __scrollMinY), 0, 1);
         
-        var _handleSize = (_bottom - _top) * (height / (height + _scrollSize));
+        var _handleSize = (_bottom - _top) * (sprite_height / (sprite_height + _scrollSize));
         var _y = lerp(_top, _bottom - _handleSize, _q);
         
         draw_set_color(c_black);

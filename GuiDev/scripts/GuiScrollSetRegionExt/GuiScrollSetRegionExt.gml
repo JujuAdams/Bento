@@ -10,6 +10,6 @@ function GuiScrollSetRegionExt(_left, _top, _right, _bottom, _instance = id)
 {
     with(_instance)
     {
-        GuiScrollSetRegionAbsolute(x - width/2 + _left, y - height/2 + _top, x + width/2 - _right, y + height/2 - _bottom);
+        GuiScrollSetRegionAbsolute(bbox_left + _left, bbox_top + _top, bbox_right - _right, bbox_bottom - _bottom);
     }
 }

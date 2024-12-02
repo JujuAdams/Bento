@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiDebugStructure",
   "parent":{
-    "name":"Library",
-    "path":"folders/Library.yy",
+    "name":"Debug",
+    "path":"folders/Library/Debug.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

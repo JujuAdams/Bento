@@ -19,7 +19,7 @@ function GuiLayoutSetMembersWidthExt(_layout, _width, _object, _hAlign = undefin
             {
                 if (object_index == _object)
                 {
-                    GuiSetSize(_width, height, id, _hAlign ?? other.__hAlign, fa_middle);
+                    GuiSetWidth(_width, id, _hAlign ?? other.__hAlign);
                 }
             }
             

@@ -2,8 +2,11 @@
 
 var _system = __GuiSystem();
 
-__GuiSetIfNotDefined(id, "width",  0);
-__GuiSetIfNotDefined(id, "height", 0);
+// Guarantee that we have a sprite to ensure we always have a collision mask available.
+if ((not sprite_exists(mask_index)) && (not sprite_exists(sprite_index)))
+{
+    sprite_index = GuiMaskBasic;
+}
 
 __GuiSetIfNotDefined(id, "navLeft",  noone);
 __GuiSetIfNotDefined(id, "navRight", noone);
@@ -21,8 +24,8 @@ __GuiSetIfNotDefined(id, "scrollMarginBottom", 6);
 //                     //
 /////////////////////////
 
-__xInternal = x;
-__yInternal = y;
+__xTarget = x;
+__yTarget = y;
 
 __overState = GUI_OFF;
 __holdState = GUI_OFF;

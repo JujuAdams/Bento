@@ -21,5 +21,5 @@ if (not variable_instance_exists(id, "valueMax" )) valueMax = 100;
 if (not variable_instance_exists(id, "value"    )) value = valueMax;
 if (not variable_instance_exists(id, "func"     )) func = function(){};
 
-if (width  == 0) width  = string_width( title) + 20;
-if (height == 0) height = string_height(title) + 20;
+if (sprite_width  <= 2) GuiSetWidth( string_width( title) + 20);
+if (sprite_height <= 2) GuiSetHeight(string_height(title) + 20);

@@ -6,36 +6,49 @@
 /// @param width
 /// @param height
 /// @param [instance=id]
-/// @param [hAlign=fa_center]
-/// @param [vAlign=fa_middle]
+/// @param [hAlign]
+/// @param [vAlign]
 
-function GuiSetSize(_width, _height, _instance = id, _hAlign = fa_center, _vAlign = fa_middle)
+function GuiSetSize(_width, _height, _instance = id, _hAlign = undefined, _vAlign = undefined)
 {
     with(_instance)
     {
-        var _dX = 0;
-        var _dY = 0;
-        
         if (_hAlign == fa_left)
         {
-            _dX = 0.5*(_width - width);
+            var _dX = 0.5*(_width - sprite_width);
+        }
+        else if (_hAlign == fa_center)
+        {
+            var _dX = (((x - bbox_left) / (bbox_right - bbox_left)) - 0.5)*(_width - sprite_width);
         }
         else if (_hAlign == fa_right)
         {
-            _dX = 0.5*(width - _width);
+            var _dX = 0.5*(sprite_width - _width);
+        }
+        else
+        {
+            var _dX = 0;
         }
         
         if (_vAlign == fa_top)
         {
-            _dY = 0.5*(_height - height);
+            var _dY = 0.5*(_height - sprite_height);
+        }
+        else if (_vAlign == fa_middle)
+        {
+            var _dY = (((y - bbox_top) / (bbox_bottom - bbox_top)) - 0.5)*(_height - sprite_height);
         }
         else if (_vAlign == fa_bottom)
         {
-            _dY = 0.5*(height - _height);
+            var _dY = 0.5*(sprite_height - _height);
+        }
+        else
+        {
+            var _dY = 0;
         }
         
-        width  = _width;
-        height = _height;
+        image_xscale = _width / sprite_get_width(sprite_index);
+        image_yscale = _height / sprite_get_height(sprite_index);
         
         if ((_dX != 0) || (_dY != 0))
         {

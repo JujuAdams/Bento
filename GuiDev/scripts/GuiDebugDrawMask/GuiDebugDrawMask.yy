@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiDebugDrawMask",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiDebugDrawMask",
+  "parent":{
+    "name":"Debug",
+    "path":"folders/Library/Debug.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

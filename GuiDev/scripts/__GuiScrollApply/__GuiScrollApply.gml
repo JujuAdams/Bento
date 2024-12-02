@@ -18,8 +18,8 @@ function __GuiScrollApply(_instance, _dX, _dY)
                 x += _dX;
                 y += _dY;
                 
-                __xInternal += _dX;
-                __yInternal += _dY;
+                __xTarget += _dX;
+                __yTarget += _dY;
             }
             
             ++_i;

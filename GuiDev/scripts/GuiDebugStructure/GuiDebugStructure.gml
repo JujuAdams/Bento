@@ -14,8 +14,8 @@ function GuiDebugStructure(_parent = GUI_ROOT, _ascii = false, _method = undefin
         if (__behavior != GUI_BEHAVIOR_BUTTON) array_push(_nameArray, "behavior", GuiFriendlyBehavior(__behavior));
         if (variable_instance_exists(self, "text")) array_push(_nameArray, "text", text);
         
-        if (width  != 0) array_push(_nameArray, "width",  width);
-        if (height != 0) array_push(_nameArray, "height", height);
+        array_push(_nameArray, "width",  sprite_width);
+        array_push(_nameArray, "height", sprite_height);
         
         if (__overState != GUI_OFF) array_push(_nameArray, "over", GuiFriendlyOverState(__overState));
         if (__holdState != GUI_OFF) array_push(_nameArray, "hold", GuiFriendlyHoldState(__holdState));

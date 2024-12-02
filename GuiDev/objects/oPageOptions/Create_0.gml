@@ -54,11 +54,9 @@ if (not GuiNameExists("main menu"))
     });
 }
 
-// Adapt the width of the options menu depending on the width of the widest child instance.
-width = GuiLayoutGetMembersMaxWidth(_layout) + 20;
-
-// But limit the height (mostly to demonstrate the scrolling behaviour).
-height = 250;
+// Adapt the width of the options menu depending on the width of the widest child instance but
+// limit the height (mostly to demonstrate the scrolling behaviour).
+GuiSetSize(GuiLayoutGetMembersMaxWidth(_layout) + 20, 250, id, fa_center, fa_middle);
 
 // Create the scrollbox region. This will, by default, up the position and size of the scoped
 // instance as the basis for the region.
@@ -73,7 +71,7 @@ GuiLayoutNavSelectFirst(_layout);
 
 // Separate to the scrollbox and the layout, we also need to create a "Back" button so the player
 // can dismiss this page.
-GuiCreateOutside(GuiExampleButton,
+var _button = GuiCreateOutside(GuiExampleButtonDiamond,
 {
     text: "Back",
     func: function()
@@ -84,5 +82,5 @@ GuiCreateOutside(GuiExampleButton,
         // button.
         GuiDestroy(GuiGetParent());
     },
-},
-id, GuiGetRight(), GuiGetBottom());
+});
+GuiSetPosition(bbox_right, bbox_bottom + 7, _button, fa_center, fa_middle);

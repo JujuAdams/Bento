@@ -19,7 +19,7 @@ function GuiLayoutSetMembersHeightExt(_layout, _height, _object, _vAlign = undef
             {
                 if (object_index == _object)
                 {
-                    GuiSetSize(width, _height, id, fa_center, _vAlign ?? other.__vAlign);
+                    GuiSetHeight(_height, id, _vAlign ?? other.__vAlign);
                 }
             }
             

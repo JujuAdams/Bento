@@ -6,11 +6,11 @@
 /// @param x
 /// @param y
 /// @param [instance=id]
-/// @param [hAlign=fa_center]
-/// @param [vAlign=fa_middle]
+/// @param [hAlign]
+/// @param [vAlign]
 /// @param [relative=false]
 
-function GuiSetPosition(_x, _y, _instance = id, _hAlign = fa_center, _vAlign = fa_middle, _relative = false)
+function GuiSetPosition(_x, _y, _instance = id, _hAlign = undefined, _vAlign = undefined, _relative = false)
 {
     with(_instance)
     {
@@ -26,22 +26,38 @@ function GuiSetPosition(_x, _y, _instance = id, _hAlign = fa_center, _vAlign = f
         
         if (_hAlign == fa_left)
         {
-            _x += width/2;
+            var _dX = _x - bbox_left;
+        }
+        else if (_hAlign == fa_center)
+        {
+            var _dX = _x - 0.5*(bbox_left + bbox_right);
         }
         else if (_hAlign == fa_right)
         {
-            _x -= width/2;
+            var _dX = _x - bbox_right;
+        }
+        else
+        {
+            var _dX = _x - x;
         }
         
         if (_vAlign == fa_top)
         {
-            _y += height/2;
+            var _dY = _y - bbox_top;
+        }
+        else if (_vAlign == fa_middle)
+        {
+            var _dY = _y - 0.5*(bbox_top + bbox_bottom);
         }
         else if (_vAlign == fa_bottom)
         {
-            _y -= height/2;
+            var _dY = _y - bbox_bottom;
+        }
+        else
+        {
+            var _dY = _y - y;
         }
         
-        GuiMove(_x - x, _y - y);
+        GuiMove(_dX, _dY);
     }
 }

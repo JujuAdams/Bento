@@ -13,9 +13,7 @@ function GuiSetLTRB(_left, _top, _right, _bottom, _instance = id)
 {
     with(_instance)
     {
-        GuiSetPosition(0.5*(_left + _right), 0.5*(_top + _bottom), _instance);
-        
-        width  = _right - _left;
-        height = _bottom - _top;
+        GuiSetSize(1 + _right - _left, 1 + _bottom - _top);
+        GuiSetPosition(_left, _top, _instance, fa_left, fa_top);
     }
 }

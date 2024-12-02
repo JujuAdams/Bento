@@ -31,8 +31,8 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [])
                 continue;
             }
             
-            var _nearestX = clamp(_x, x - 0.5*width,  x + 0.5*width );
-            var _nearestY = clamp(_y, y - 0.5*height, y + 0.5*height);
+            var _nearestX = clamp(_x, bbox_left, bbox_right);
+            var _nearestY = clamp(_y, bbox_top, bbox_bottom);
             
             var _dot = dot_product(_dX, _dY, _nearestX, _nearestY) - _baseDist;
             if (_dot > 0)

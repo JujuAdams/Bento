@@ -11,6 +11,6 @@
 
 function GuiSetXYWHSolo(_x, _y, _width, _height, _instance = id)
 {
-    GuiSetPositionSolo(_x, _y, _instance);
     GuiSetSize(_width, _height, _instance);
+    GuiSetPositionSolo(_x, _y, _instance, fa_center, fa_middle);
 }
