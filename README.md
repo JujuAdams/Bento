@@ -7,6 +7,5 @@
 
 &nbsp;
 
-- ### Talk about Bento on the [Discord server](https://discord.gg/8krYCqr)
 - ### You may also like [PXLUI](https://github.com/1pxlchibs/PXLUI), [Emu](https://github.com/DragoniteSpam/Emu), [YUI](https://github.com/shdwcat/YUI), and [SimpleUI](https://github.com/evolutionleo/SimpleUI)
 - ### See https://interfaceingame.com/ for examples of game UI
