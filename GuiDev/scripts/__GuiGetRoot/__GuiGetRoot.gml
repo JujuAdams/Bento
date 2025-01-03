@@ -12,11 +12,11 @@ function __GuiGetRoot()
     {
         if (GUI_CREATE_LAYER != undefined)
         {
-            _instance = instance_create_layer(0, 0, GUI_CREATE_LAYER, GuiObject);
+            _instance = instance_create_layer(0, 0, GUI_CREATE_LAYER, oGuiAncestor);
         }
         else
         {
-            _instance = instance_create_depth(0, 0, GUI_CREATE_DEPTH ?? 0, GuiObject);
+            _instance = instance_create_depth(0, 0, GUI_CREATE_DEPTH ?? 0, oGuiAncestor);
         }
         
         _system.__rootInstance = _instance;

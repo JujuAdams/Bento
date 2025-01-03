@@ -5,5 +5,5 @@
 
 function GuiActivateInstances()
 {
-    instance_activate_object(GuiObject);
+    instance_activate_object(oGuiAncestor);
 }

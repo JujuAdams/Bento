@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"GuiMaskDiamond",
-    "path":"sprites/GuiMaskDiamond/GuiMaskDiamond.yy",
+    "name":"sGuiMaskDiamond",
+    "path":"sprites/sGuiMaskDiamond/sGuiMaskDiamond.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"GuiMaskCircle",
-    "path":"sprites/GuiMaskCircle/GuiMaskCircle.yy",
+    "name":"sGuiMaskCircle",
+    "path":"sprites/sGuiMaskCircle/sGuiMaskCircle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -23,9 +23,9 @@ function GuiCreateInside(_object, _struct = undefined, _parent = id, _x = 0, _y 
     
     if (not instance_exists(_parent)) __GuiError("Parent doesn't exist");
     
-    if (not object_is_ancestor(_object, GuiObject))
+    if (not object_is_ancestor(_object, oGuiAncestor))
     {
-        __GuiError($"Object {object_get_name(_object)} isn't a descendent of GuiObject");
+        __GuiError($"Object {object_get_name(_object)} isn't a descendent of oGuiAncestor");
     }
     
     _system.__tempParent = _parent;

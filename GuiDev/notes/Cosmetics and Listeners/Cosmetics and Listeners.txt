@@ -24,9 +24,9 @@ Both cosmetics and listeners will very commonly be used as containers and as suc
 parents. Please see the "Parenting" note for more details. Cosmetics and listeners are further
 likely to need scroll regions. Please see the "Scrolling" note for more details.
 
-Cosmetic and listener objects that you create should inherit from `GuiObject` (via intermediate
+Cosmetic and listener objects that you create should inherit from `oGuiAncestor` (via intermediate
 objects as you wish). In this example project, `GuiExampleFrame` inherits from `GuiParentCommon`
-which in turn inherits from `GuiObject`. Cosmetic objects will typically use two events:
+which in turn inherits from `oGuiAncestor`. Cosmetic objects will typically use two events:
  1) Create event
  2) User Event 1 - Gui draw event `GUI_USER_EVENT_DRAW`
 The Create event should be used to initialize variables that are relevant to the cosmetic. This

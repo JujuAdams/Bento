@@ -23,7 +23,6 @@ function __GuiSystem()
         show_debug_message($"Gui: Version {GUI_VERSION}, {GUI_DATE}");
         
         __rootInstance = undefined;
-        __guiIndex = 0;
         
         __stepRootStack = [];
         __stepOrder     = [];

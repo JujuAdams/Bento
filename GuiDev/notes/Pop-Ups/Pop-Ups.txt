@@ -20,7 +20,7 @@ Pop-up objects will very commonly be used as containers and as such are regularl
 see the "Parenting" note for more details. You may also find that your pop-up menu could benefit
 from a scroll region. Please see the "Scrolling" note for more details.
 
-Pop-up objects that you create should inherit from `GuiObject` (via intermediate objects as you
+Pop-up objects that you create should inherit from `oGuiAncestor` (via intermediate objects as you
 wish) and call `GuiSetBehavior(GUI_BEHAVIOR_MODAL)` in the Create event of the object, or
 immediately after creating the instance. Modal objects will typically use three events:
  1) Create event

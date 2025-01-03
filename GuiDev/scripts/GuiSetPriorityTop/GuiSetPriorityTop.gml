@@ -20,7 +20,7 @@ function GuiSetPriorityTop(_instance = id, _delta = 1)
     {
         if (instance_exists(_array[_i]))
         {
-            GuiSetPriority(_array[_i].priority + _delta, _instance);
+            GuiSetPriority(_array[_i].__priority + _delta, _instance);
             return;
         }
         

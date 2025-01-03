@@ -16,7 +16,7 @@ unexpectedly disconnected. You should in this case create a modal too.
 Modals will very commonly be used as containers and as such are regularly parents. Please see the
 "Parenting" note for more details.
 
-Modal objects that you create should inherit from `GuiObject` (via intermediate objects as you
+Modal objects that you create should inherit from `oGuiAncestor` (via intermediate objects as you
 wish) and call `GuiSetBehavior(GUI_BEHAVIOR_MODAL)` in the Create event of the object, or
 immediately after creating the instance. Modal objects will typically use two events:
  1) Create event

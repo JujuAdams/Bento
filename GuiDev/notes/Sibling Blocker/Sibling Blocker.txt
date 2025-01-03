@@ -17,9 +17,10 @@ blockers are typically parents. Please see the "Parenting" note for more details
 listeners are further likely to need scroll regions. Please see the "Scrolling" note for more
 details.
 
-Sibling blocker objects that you create should inherit from `GuiObject` (via intermediate objects
-as you wish) and call `GuiSetBehavior(GUI_BEHAVIOR_BLOCK_SIBLINGS)` in the Create event of the
-object, or immediately after creating the instance. Modal objects will typically use three events:
+Sibling blocker objects that you create should inherit from `oGuiAncestor` (via intermediate
+objects as you wish) and call `GuiSetBehavior(GUI_BEHAVIOR_BLOCK_SIBLINGS)` in the Create event of
+the object, or immediately after creating the instance. Modal objects will typically use three
+events:
  1) Create event
  2) User Event 0 - Gui update event `GUI_USER_EVENT_STEP`
  3) User Event 1 - Gui draw event `GUI_USER_EVENT_DRAW`

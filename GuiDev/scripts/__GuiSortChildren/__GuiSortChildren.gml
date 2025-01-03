@@ -8,17 +8,17 @@ function __GuiSortChildren(_parent)
 {
     static _funcSort = function(_a, _b)
     {
-        if (_a.priority > _b.priority)
+        if (_a.__priority > _b.__priority)
         {
             return 1;
         }
-        else if (_a.priority < _b.priority)
+        else if (_a.__priority < _b.__priority)
         {
             return -1;
         }
         else
         {
-            return sign(_a.__guiIndex - _b.__guiIndex);
+            return sign(real(_a.id) - real(_b.id));
         }
     }
     

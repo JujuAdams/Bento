@@ -10,7 +10,7 @@
 //       swap between pages.
 
 // Inherit from the example frame. Going up the inheritance chain, this object eventually
-// inherits from `GuiObject` which is the common ancestor for all Gui objects.
+// inherits from `oGuiAncestor` which is the common ancestor for all Gui objects.
 event_inherited();
 
 // A "singleton" is anything for which only one can exist at a time. In this case, the

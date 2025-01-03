@@ -12,8 +12,8 @@
     "path":"folders/Gui Elements.yy",
   },
   "parentObjectId":{
-    "name":"GuiObject",
-    "path":"objects/GuiObject/GuiObject.yy",
+    "name":"oGuiAncestor",
+    "path":"objects/oGuiAncestor/oGuiAncestor.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
