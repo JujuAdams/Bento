@@ -57,6 +57,7 @@
     {"id":{"name":"GuiExampleCarousel","path":"objects/GuiExampleCarousel/GuiExampleCarousel.yy",},},
     {"id":{"name":"GuiExampleFrame","path":"objects/GuiExampleFrame/GuiExampleFrame.yy",},},
     {"id":{"name":"GuiExamplePopUpMenu","path":"objects/GuiExamplePopUpMenu/GuiExamplePopUpMenu.yy",},},
+    {"id":{"name":"GuiExampleScrollbox","path":"objects/GuiExampleScrollbox/GuiExampleScrollbox.yy",},},
     {"id":{"name":"GuiExampleScroller","path":"objects/GuiExampleScroller/GuiExampleScroller.yy",},},
     {"id":{"name":"GuiParentButton","path":"objects/GuiParentButton/GuiParentButton.yy",},},
     {"id":{"name":"GuiParentCommon","path":"objects/GuiParentCommon/GuiParentCommon.yy",},},
