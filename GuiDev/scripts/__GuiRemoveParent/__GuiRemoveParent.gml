@@ -19,8 +19,7 @@ function __GuiRemoveParent(_child)
     
     if (instance_exists(_parent))
     {
-        _funcRemove(_parent.__childInsideArray,  _child);
-        _funcRemove(_parent.__childOutsideArray, _child);
+        _funcRemove(_child.__inside? _parent.__childInsideArray : _parent.__childOutsideArray,  _child);
     }
     
     _child.__parent = noone;

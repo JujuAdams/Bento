@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiSetParent",
+  "%Name":"GuiSetParent",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiSetParent",
+  "name":"GuiSetParent",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "name":"Instances",
+    "path":"folders/Library/Instances.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -32,9 +32,9 @@ __holdState = GUI_OFF;
 __click     = false;
 
 __parent   = noone;
-__inside   = _system.__tempInside;
+__inside   = undefined;
 __priority = 0;
-__GuiSetParent(id, _system.__tempParent, __inside);
+GuiSetParent(_system.__tempParent, _system.__tempInside, id);
 
 __behavior = GUI_BEHAVIOR_COSMETIC;
 __drawEnd  = false;
