@@ -45,9 +45,16 @@ function __GuiClassLayoutListH(_parent, _inside, _spacing, _hAlign, _vAlign) con
     
     
     
+    __Remove = function(_instance)
+    {
+        var _index = array_get_index(__instanceArray, _instance);
+        if (_index >= 0) array_delete(__instanceArray, _index, 1);
+    }
+    
     __Add = function(_instance)
     {
         array_push(__instanceArray, _instance);
+        _instance.__layout = self;
         
         __maxWidth  = max(__maxWidth,  _instance.sprite_width);
         __maxHeight = max(__maxHeight, _instance.sprite_height);

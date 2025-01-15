@@ -34,6 +34,7 @@ __click     = false;
 __parent   = noone;
 __inside   = undefined;
 __priority = 0;
+__layout   = undefined;
 GuiSetParent(_system.__tempParent, _system.__tempInside, id);
 
 __behavior = GUI_BEHAVIOR_COSMETIC;

@@ -6,7 +6,7 @@
 /// 
 /// @param parent
 /// @param [inside]
-/// @param [targetInstance]
+/// @param [targetInstance=id]
 
 function GuiSetParent(_parent, _inside = undefined, _targetInstance = id)
 {
