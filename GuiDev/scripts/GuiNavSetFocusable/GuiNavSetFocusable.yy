@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiNavSetFocusable",
   "parent":{
-    "name":"Navigation",
-    "path":"folders/Library/Navigation.yy",
+    "name":"Setup",
+    "path":"folders/Library/Navigation/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

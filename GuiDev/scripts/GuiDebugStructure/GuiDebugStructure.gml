@@ -20,8 +20,7 @@ function GuiDebugStructure(_parent = GUI_ROOT, _ascii = false, _method = undefin
         if (__overState != GUI_OFF) array_push(_nameArray, "over", GuiFriendlyOverState(__overState));
         if (__holdState != GUI_OFF) array_push(_nameArray, "hold", GuiFriendlyHoldState(__holdState));
         
-        if (array_length(__childInsideArray) != 0) array_push(_nameArray, "inside", __childInsideArray);
-        if (array_length(__childOutsideArray) != 0) array_push(_nameArray, "outside", __childOutsideArray);
+        if (array_length(__childArray) != 0) array_push(_nameArray, "children", __childArray);
     }
     
     static _buffer = buffer_create(1024, buffer_grow, 1);

@@ -12,7 +12,7 @@ if (showScrollbar)
             GuiNavSetFocus(true);
         }
         
-        if (GuiButtonGetPress("escape"))
+        if (GuiHotkeyGetPress("escape"))
         {
             GuiNavConsume();
             GuiNavSetFocus(false);
@@ -38,12 +38,12 @@ if (showScrollbar)
                 
                 if (GuiNavGetOver())
                 {
-                    if (GuiButtonGetPress(GUI_BUTTON_MOUSE_WHEEL_UP))
+                    if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_UP))
                     {
                         GuiScrollMove(0, 1);
                     }
                     
-                    if (GuiButtonGetPress(GUI_BUTTON_MOUSE_WHEEL_DOWN))
+                    if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_DOWN))
                     {
                         GuiScrollMove(0, -1);
                     }

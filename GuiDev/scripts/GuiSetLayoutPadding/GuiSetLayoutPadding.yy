@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiSetLayoutPadding",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiSetLayoutPadding",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Library/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

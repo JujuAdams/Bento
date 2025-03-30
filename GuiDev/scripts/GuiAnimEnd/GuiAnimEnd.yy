@@ -6,7 +6,7 @@
   "name":"GuiAnimEnd",
   "parent":{
     "name":"Animation",
-    "path":"folders/Library/Animation.yy",
+    "path":"folders/Library/Extras/Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

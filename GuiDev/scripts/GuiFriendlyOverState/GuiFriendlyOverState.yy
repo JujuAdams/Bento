@@ -6,7 +6,7 @@
   "name":"GuiFriendlyOverState",
   "parent":{
     "name":"Friendly Names",
-    "path":"folders/Library/Friendly Names.yy",
+    "path":"folders/Library/Extras/Friendly Names.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

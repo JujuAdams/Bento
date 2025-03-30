@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiSolverListResizeHeight",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiSolverListResizeHeight",
+  "parent":{
+    "name":"List",
+    "path":"folders/Library/(System)/Solver/List.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

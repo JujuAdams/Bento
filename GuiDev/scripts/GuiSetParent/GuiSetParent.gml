@@ -5,31 +5,30 @@
 /// target instance will be used.
 /// 
 /// @param parent
-/// @param [inside]
 /// @param [targetInstance=id]
 
-function GuiSetParent(_parent, _inside = undefined, _targetInstance = id)
+function GuiSetParent(_parent, _targetInstance = id)
 {
     static _system          = __GuiSystem();
     static _dirtyOrderArray = __GuiSystem().__dirtyOrderArray;
     
     if (not instance_exists(_targetInstance)) return;
     
-    if (_inside == undefined)
-    {
-        _inside = _targetInstance.__inside;
-    }
-    
-    _system.__stepDirty = true;
-    _system.__drawDirty = true;
+    _system.__layoutDirty = true;
+    _system.__stepDirty   = true;
+    _system.__drawDirty   = true;
     
     __GuiRemoveParent(_targetInstance);
     _targetInstance.__parent = _parent;
-    _targetInstance.__inside = _inside;
     
     with(_parent)
     {
-        array_push(_inside? __childInsideArray : __childOutsideArray, _targetInstance);
+        if (_targetInstance.__editorRootInstance == undefined)
+        {
+            _targetInstance.__editorRootInstance = __editorRootInstance;
+        }
+        
+        array_push(__childArray, _targetInstance);
         
         if (not __orderDirty)
         {
@@ -39,9 +38,4 @@ function GuiSetParent(_parent, _inside = undefined, _targetInstance = id)
     }
     
     if (not instance_exists(_targetInstance)) return;
-    
-    if (_inside == undefined)
-    {
-        _inside = _targetInstance.__inside;
-    }
 }

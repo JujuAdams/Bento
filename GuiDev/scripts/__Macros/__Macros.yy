@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__Macros",
   "parent":{
-    "name":"GuiDev",
-    "path":"GuiDev.yyp",
+    "name":"GuiWithLayouts",
+    "path":"GuiWithLayouts.yyp",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

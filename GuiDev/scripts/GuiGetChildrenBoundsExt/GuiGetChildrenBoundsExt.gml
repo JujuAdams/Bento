@@ -27,10 +27,8 @@ function GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _inst
     
     with(_instance)
     {
-        var _insideArray  = __childInsideArray;
-        var _outsideArray = __childOutsideArray;
-        
-        if ((array_length(_insideArray) > 0) || (array_length(_outsideArray) > 0))
+        var _childArray = __childArray;
+        if (array_length(_childArray) > 0)
         {
             _empty = false;
             
@@ -40,23 +38,9 @@ function GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _inst
             var _bottom = -infinity;
             
             var _i = 0;
-            repeat(array_length(_insideArray))
+            repeat(array_length(_childArray))
             {
-                with(_insideArray[_i])
-                {
-                    _left   = min(_left,   bbox_left);
-                    _top    = min(_top,    bbox_top);
-                    _right  = max(_right,  bbox_right);
-                    _bottom = max(_bottom, bbox_bottom);
-                }
-                
-                ++_i;
-            }
-            
-            var _i = 0;
-            repeat(array_length(_outsideArray))
-            {
-                with(_outsideArray[_i])
+                with(_childArray[_i])
                 {
                     _left   = min(_left,   bbox_left);
                     _top    = min(_top,    bbox_top);

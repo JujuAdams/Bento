@@ -20,24 +20,24 @@ event_inherited();
 // Set up the pop-up menu behavior for this instance. See above for details.
 GuiSetBehavior(GUI_BEHAVIOR_POP_UP);
 
-// Fill out the menu with button based on data based in via `buttonsArray`.
-var _layout = GuiLayoutStartListV(id, true, 0, fa_center, fa_top);
-
-var _i = 0;
-repeat(array_length(buttonsArray))
-{
-    var _buttonData = buttonsArray[_i];
-    GuiCreateInLayout(_layout, GuiExampleButton,
-    {
-        text: _buttonData.text,
-        func: _buttonData.func,
-    });
-    
-    ++_i;
-}
-
-// Set up the layout, stretch out the buttons to make them prettier, and resize the pop-up menu so
-// that it visually encompasses the child buttons.
-GuiLayoutFinish(_layout, x, y);
-GuiLayoutSetMembersWidth(_layout, GuiLayoutGetMembersMaxWidth(_layout));
-GuiSetSizeAroundChildren(10);
+//// Fill out the menu with button based on data based in via `buttonsArray`.
+//var _layout = GuiLayoutStartListV(id, 0, fa_center, fa_top);
+//
+//var _i = 0;
+//repeat(array_length(buttonsArray))
+//{
+//    var _buttonData = buttonsArray[_i];
+//    GuiCreateInLayout(_layout, GuiExampleButton,
+//    {
+//        text: _buttonData.text,
+//        func: _buttonData.func,
+//    });
+//    
+//    ++_i;
+//}
+//
+//// Set up the layout, stretch out the buttons to make them prettier, and resize the pop-up menu so
+//// that it visually encompasses the child buttons.
+//GuiLayoutFinish(_layout, x, y);
+//GuiLayoutSetMembersWidth(_layout, GuiLayoutGetMembersMaxWidth(_layout));
+//GuiSetSizeAroundChildren(10);

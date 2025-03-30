@@ -6,7 +6,7 @@
   "name":"GuiFreezeSet",
   "parent":{
     "name":"Freeze",
-    "path":"folders/Library/Freeze.yy",
+    "path":"folders/Library/Extras/Freeze.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

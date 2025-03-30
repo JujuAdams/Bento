@@ -18,7 +18,7 @@ function GuiScrollSetupHori(_paddingLeft = 0, _paddingRight = 0, _instance = id)
         
         var _visibleWidth = __scissorRight - __scissorLeft;
         
-        var _bounds = GuiGetChildrenBoundsInside();
+        var _bounds = GuiGetChildrenBounds();
         var _childrenWidth = _bounds.width;
         
         if (_childrenWidth <= _visibleWidth - (_paddingLeft + _paddingRight))

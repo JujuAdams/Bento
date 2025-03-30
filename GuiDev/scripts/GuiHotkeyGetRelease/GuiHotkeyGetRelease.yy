@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiHotkeyGetRelease",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiHotkeyGetRelease",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Library/Navigation/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

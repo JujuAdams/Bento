@@ -1,11 +1,11 @@
 // Feather disable all
 
-// What room layer to create instances on when using `GuiCreateInside()` or `GuiCreateOutside()`.
-// Use `undefined` to instead create instances using a particular depth see `GUI_CREATE_DEPTH`.
+// What room layer to create instances on when using `GuiCreate()`. Use `undefined` to
+// instead create instances using a particular depth see `GUI_CREATE_DEPTH`.
 #macro GUI_CREATE_LAYER  undefined
 
-// What depth to create instances on when using `GuiCreateInside()` or `GuiCreateOutside()`. This
-// macro will only be used if `GUI_CREATE_LAYER` is set to `undefined`.
+// What depth to create instances on when using `GuiCreate()`. This macro will only be used
+// if `GUI_CREATE_LAYER` is set to `undefined`.
 #macro GUI_CREATE_DEPTH  0
 
 // How far the pointer must move before engaging scrolling when clicking and dragging.
@@ -16,7 +16,7 @@
 #macro GUI_POINTER_CLICK_ON_PRESS  false
 
 // How far to scroll when scrolling with a mouse wheel. Set this value to `0` to disable mouse
-// wheel scrolling (or just don't use `GUI_BUTTON_MOUSE_WHEEL_UP` or `GUI_BUTTON_MOUSE_WHEEL_DOWN`).
+// wheel scrolling (or just don't use `GUI_HOTKEY_MOUSE_WHEEL_UP` or `GUI_HOTKEY_MOUSE_WHEEL_DOWN`).
 #macro GUI_MOUSE_WHEEL_SCROLL_SPEED  20
 
 // Whether clicking and dragging on a scrollable UI element should scroll in the `GUI_NAV_MOUSE`
@@ -29,9 +29,9 @@
 #macro GUI_POP_UP_CLICK_THROUGH  false
 
 // Button names to use to enable mouse wheel scrolling with `GuiScrollOnPointer()`. This macros
-// should be used with `GuiInputButton()` to trigger scrolling.
-#macro GUI_BUTTON_MOUSE_WHEEL_UP     "mouse wheel up"
-#macro GUI_BUTTON_MOUSE_WHEEL_DOWN   "mouse wheel down"
+// should be used with `GuiInputHotkey()` to trigger scrolling.
+#macro GUI_HOTKEY_MOUSE_WHEEL_UP     "mouse wheel up"
+#macro GUI_HOTKEY_MOUSE_WHEEL_DOWN   "mouse wheel down"
 
 // Normally, desktop OSs will default to setting the navigation mode to `GUI_NAV_MOUSE` when the
 // library initializes. Set this macro to `true` to instead default to `GUI_NAV_DIRECTIONAL`.

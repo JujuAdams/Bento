@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"draw_diamond",
   "parent":{
-    "name":"Gui Elements",
-    "path":"folders/Gui Elements.yy",
+    "name":"(Old Content)",
+    "path":"folders/(Old Content).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

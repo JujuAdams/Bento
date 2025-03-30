@@ -6,7 +6,7 @@
   "name":"GuiTabIsOpen",
   "parent":{
     "name":"Tabs",
-    "path":"folders/Library/Tabs.yy",
+    "path":"folders/Library/Extras/Tabs.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

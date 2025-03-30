@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiNameDestroy",
   "parent":{
-    "name":"Names",
-    "path":"folders/Library/Names.yy",
+    "name":"Instance Names",
+    "path":"folders/Library/Extras/Instance Names.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

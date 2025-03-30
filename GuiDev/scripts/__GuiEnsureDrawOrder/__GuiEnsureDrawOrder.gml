@@ -5,9 +5,7 @@
 
 function __GuiEnsureDrawOrder()
 {
-    static _system          = __GuiSystem();
-    static _dirtyOrderArray = __GuiSystem().__dirtyOrderArray;
-    
+    static _system = __GuiSystem();
     if (not _system.__drawDirty) return _system.__drawOrder;
     
     with(_system)
@@ -15,8 +13,7 @@ function __GuiEnsureDrawOrder()
         array_resize(__drawOrder, 0);
         __drawDirty = false;
         
-        array_foreach(_dirtyOrderArray, __GuiSortChildren);
-        array_resize(_dirtyOrderArray, 0);
+        __GuiEnsureCorrectChildOrder();
         
         __GuiEnsureDrawOrderInner(GUI_ROOT);
         
@@ -33,15 +30,6 @@ function __GuiEnsureDrawOrderInner(_instance)
         if (__disable) return;
         
         //N.B. We iterate over instances backwards to handle blockers elegantly
-        
-        //Add children created outside the parent to the Draw order
-        var _array = __childOutsideArray;
-        var _i = array_length(_array)-1;
-        repeat(array_length(_array))
-        {
-            if (__GuiEnsureDrawOrderInner(_array[_i]) == __GUI_RETURN_BLOCK_SIBLINGS) break;
-            --_i;
-        }
         
         if (__drawEnd)
         {
@@ -70,7 +58,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         }
         
         //Add children created inside the parent to the Draw order
-        var _array = __childInsideArray;
+        var _array = __childArray;
         var _i = array_length(_array)-1;
         repeat(array_length(_array))
         {

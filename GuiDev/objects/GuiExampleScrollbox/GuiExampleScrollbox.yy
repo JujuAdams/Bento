@@ -11,8 +11,8 @@
   "name":"GuiExampleScrollbox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Gui Elements",
-    "path":"folders/Gui Elements.yy",
+    "name":"(Old Content)",
+    "path":"folders/(Old Content).yy",
   },
   "parentObjectId":null,
   "persistent":false,

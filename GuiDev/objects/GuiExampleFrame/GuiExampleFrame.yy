@@ -9,13 +9,10 @@
   "name":"GuiExampleFrame",
   "overriddenProperties":[],
   "parent":{
-    "name":"Gui Elements",
-    "path":"folders/Gui Elements.yy",
+    "name":"(Old Content)",
+    "path":"folders/(Old Content).yy",
   },
-  "parentObjectId":{
-    "name":"GuiParentCommon",
-    "path":"objects/GuiParentCommon/GuiParentCommon.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

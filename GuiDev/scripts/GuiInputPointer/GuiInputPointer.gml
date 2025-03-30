@@ -8,7 +8,7 @@
 /// @param y
 /// @param primaryAction
 
-function GuiInputPointer(_x, _y, _buttonHold)
+function GuiInputPointer(_x, _y, _primaryAction)
 {
     static _system = __GuiSystem();
     
@@ -24,9 +24,9 @@ function GuiInputPointer(_x, _y, _buttonHold)
                 __mousePrevY = __mouseY;
             }
             
-            __mouseHold = _buttonHold;
+            __mouseHold = _primaryAction;
             
-            if ((__navMode == GUI_NAV_TOUCH) && (not _buttonHold))
+            if ((__navMode == GUI_NAV_TOUCH) && (not _primaryAction))
             {
                 __mouseX = -__GUI_VERY_LARGE;
                 __mouseY = -__GUI_VERY_LARGE;

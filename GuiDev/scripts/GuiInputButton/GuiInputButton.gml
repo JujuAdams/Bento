@@ -8,15 +8,15 @@
 /// @param name
 /// @param value
 
-function GuiInputButton(_name, _value)
+function GuiInputHotkey(_name, _value)
 {
-    static _buttonInputMap = __GuiSystem().__buttonInputMap;
-    static _buttonArray    = __GuiSystem().__buttonArray;
+    static _hotkeyInputMap = __GuiSystem().__hotkeyInputMap;
+    static _hotkeyArray    = __GuiSystem().__hotkeyArray;
     
-    if (not ds_map_exists(_buttonInputMap, _name))
+    if (not ds_map_exists(_hotkeyInputMap, _name))
     {
-        array_push(_buttonArray, _name);
+        array_push(_hotkeyArray, _name);
     }
     
-    _buttonInputMap[? _name] = _value;
+    _hotkeyInputMap[? _name] = _value;
 }

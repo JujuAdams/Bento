@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiHotkeyGetPress",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiHotkeyGetPress",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Library/Navigation/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

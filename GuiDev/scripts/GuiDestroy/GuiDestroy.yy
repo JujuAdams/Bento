@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiDestroy",
   "parent":{
-    "name":"Instances",
-    "path":"folders/Library/Instances.yy",
+    "name":"Library",
+    "path":"folders/Library.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

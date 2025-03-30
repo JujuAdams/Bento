@@ -5,9 +5,7 @@
 
 function __GuiEnsureStepOrder()
 {
-    static _system          = __GuiSystem();
-    static _dirtyOrderArray = __GuiSystem().__dirtyOrderArray;
-    
+    static _system = __GuiSystem();
     if (not _system.__stepDirty) return _system.__stepOrder;
     
     with(_system)
@@ -17,8 +15,7 @@ function __GuiEnsureStepOrder()
         
         __popUpRoot = noone;
         
-        array_foreach(_dirtyOrderArray, __GuiSortChildren);
-        array_resize(_dirtyOrderArray, 0);
+        __GuiEnsureCorrectChildOrder();
         
         __GuiEnsureStepOrderInner((__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? GUI_ROOT) : GUI_ROOT);
         
@@ -38,20 +35,6 @@ function __GuiEnsureStepOrderInner(_instance)
         //N.B. We iterate over instances backwards to handle modals and blockers elegantly
         
         var _focused = (__focused && (_system.__navMode == GUI_NAV_DIRECTIONAL));
-        if (not _focused)
-        {
-            //Add children created outside the parent to the Step order. If we encounter a blocking
-            //instance inside the parent then prevent all subsequent instances from being added.
-            var _array = __childOutsideArray;
-            var _i = array_length(_array)-1;
-            repeat(array_length(_array))
-            {
-                var _return = __GuiEnsureStepOrderInner(_array[_i]);
-                if (_return == __GUI_RETURN_MODAL) return __GUI_RETURN_MODAL;
-                if (_return == __GUI_RETURN_BLOCK_SIBLINGS) break;
-                --_i;
-            }
-        }
         
         if ((not __focusable) || _focused)
         {
@@ -63,7 +46,7 @@ function __GuiEnsureStepOrderInner(_instance)
             //Add children created inside the parent to the Step order. If we encounter a blocking
             //instance inside the parent then only prevent adding of instances that are inside the
             //parent.
-            var _array = __childInsideArray;
+            var _array = __childArray;
             var _i = array_length(_array)-1;
             repeat(array_length(_array))
             {

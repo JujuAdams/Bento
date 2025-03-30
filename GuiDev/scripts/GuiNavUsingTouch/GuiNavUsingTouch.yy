@@ -6,7 +6,7 @@
   "name":"GuiNavUsingTouch",
   "parent":{
     "name":"Nav Mode",
-    "path":"folders/Library/Nav Mode.yy",
+    "path":"folders/Library/Navigation/Nav Mode.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

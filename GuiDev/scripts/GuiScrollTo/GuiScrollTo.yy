@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollTo",
   "parent":{
-    "name":"Scroll",
-    "path":"folders/Library/Scroll.yy",
+    "name":"Actions",
+    "path":"folders/Library/Scroll/Actions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiNavSelect",
   "parent":{
-    "name":"Navigation",
-    "path":"folders/Library/Navigation.yy",
+    "name":"Actions",
+    "path":"folders/Library/Navigation/Actions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

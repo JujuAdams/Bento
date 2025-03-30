@@ -13,8 +13,9 @@ function GuiSetPriority(_priority, _instance = id)
     if (not instance_exists(_instance)) return;
     if (_priority == _instance.__priority) return;
     
-    _system.__stepDirty = true;
-    _system.__drawDirty = true;
+    _system.__layoutDirty = true;
+    _system.__stepDirty   = true;
+    _system.__drawDirty   = true;
     
     _instance.__priority = _priority;
     

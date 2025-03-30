@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiSetLayoutMinSize",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiSetLayoutMinSize",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Library/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

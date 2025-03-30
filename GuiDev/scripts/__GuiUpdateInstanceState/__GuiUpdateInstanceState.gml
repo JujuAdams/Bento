@@ -48,7 +48,7 @@ function __GuiUpdateInstanceState()
                 {
                     __overState = GUI_OFF;
                 }
-                else
+                else if (__overState != GUI_OFF)
                 {
                     if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(id)}: over -> leave");
                     __overState = GUI_LEAVE;

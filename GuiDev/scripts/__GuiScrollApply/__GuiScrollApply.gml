@@ -11,9 +11,9 @@ function __GuiScrollApply(_instance, _dX, _dY)
     with(_instance)
     {
         var _i = 0;
-        repeat(array_length(__childInsideArray))
+        repeat(array_length(__childArray))
         {
-            with(__childInsideArray[_i])
+            with(__childArray[_i])
             {
                 x += _dX;
                 y += _dY;

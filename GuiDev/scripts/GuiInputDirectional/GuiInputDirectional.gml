@@ -8,7 +8,7 @@
 /// @param dY
 /// @param primaryAction
 
-function GuiInputDirectional(_dX, _dY, _buttonHold)
+function GuiInputDirectional(_dX, _dY, _primaryAction)
 {
     static _system = __GuiSystem();
     
@@ -18,6 +18,6 @@ function GuiInputDirectional(_dX, _dY, _buttonHold)
         
         __directionalDX   = _dX;
         __directionalDY   = _dY;
-        __directionalHold = _buttonHold;
+        __directionalHold = _primaryAction;
     }
 }

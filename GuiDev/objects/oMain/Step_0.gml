@@ -27,9 +27,11 @@ GuiInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(
 // is an abstract input that doesn't necessarily have to map to a physical input at all. Button
 // input could be triggered by a tutorial, a cutscene, a touch gesture etc. ... or it could be a
 // button. Buttons have a "pressed", "held", and "released" state that is accessed via functions.
-GuiInputButton(GUI_BUTTON_MOUSE_WHEEL_UP,   mouse_wheel_up());
-GuiInputButton(GUI_BUTTON_MOUSE_WHEEL_DOWN, mouse_wheel_down());
-GuiInputButton("escape", keyboard_check(vk_escape));
+GuiInputHotkey(GUI_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
+GuiInputHotkey(GUI_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
+GuiInputHotkey("escape", keyboard_check(vk_escape));
+
+GuiAnimSetAngle(current_time/20, false, gridInstance);
 
 // The main state update function. This ticks the entire system (but doesn't do any drawing).
 // Step user events (GUI_USER_EVENT_STEP, 0) are executed by this function where appropriate.
@@ -38,5 +40,7 @@ GuiStep();
 if (keyboard_check_pressed(ord("D")))
 {
     // A very helpful debug function that outputs the structure of Gui instances.
-    show_debug_message(GuiDebugStructure());
+    //show_debug_message(GuiDebugStructure());
+    GuiDebugStepOrder();
+    GuiDebugDrawOrder();
 }

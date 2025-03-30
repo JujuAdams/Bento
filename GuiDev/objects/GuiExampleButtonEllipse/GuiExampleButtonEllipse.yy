@@ -10,13 +10,10 @@
   "name":"GuiExampleButtonEllipse",
   "overriddenProperties":[],
   "parent":{
-    "name":"Gui Elements",
-    "path":"folders/Gui Elements.yy",
+    "name":"(Old Content)",
+    "path":"folders/(Old Content).yy",
   },
-  "parentObjectId":{
-    "name":"GuiParentButton",
-    "path":"objects/GuiParentButton/GuiParentButton.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

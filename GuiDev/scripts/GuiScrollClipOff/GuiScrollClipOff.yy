@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollClipOff",
   "parent":{
-    "name":"Scroll",
-    "path":"folders/Library/Scroll.yy",
+    "name":"Draw",
+    "path":"folders/Library/Scroll/Draw.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

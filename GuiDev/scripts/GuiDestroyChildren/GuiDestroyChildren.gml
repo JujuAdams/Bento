@@ -20,8 +20,7 @@ function GuiDestroyChildren(_parent = id)
     
     with(_parent)
     {
-        __funcDestroy(__childInsideArray);
-        __funcDestroy(__childOutsideArray);
+        __funcDestroy(__childArray);
         
         //No children = No problem
         __orderDirty = false;

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiAnimSetOffset",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiAnimSetOffset",
+  "parent":{
+    "name":"Animation",
+    "path":"folders/Library/Animation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -11,9 +11,9 @@ function GuiNavConsume()
         __primaryConsumed = true;
         
         var _i = 0;
-        repeat(array_length(__buttonArray))
+        repeat(array_length(__hotkeyArray))
         {
-            __buttonConsumedMap[? __buttonArray[_i]] = true;
+            __hotkeyConsumedMap[? __hotkeyArray[_i]] = true;
             ++_i;
         }
     }

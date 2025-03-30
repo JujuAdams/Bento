@@ -12,7 +12,7 @@ function GuiSetPriorityTop(_instance = id, _delta = 1)
     var _parent = _instance.__parent;
     if (not instance_exists(_parent)) return;
     
-    var _array = (_instance.__inside? _parent.__childInsideArray : _parent.__childOutsideArray);
+    var _array = _parent.__childArray;
     var _length = array_length(_array);
     
     var _i = 0;

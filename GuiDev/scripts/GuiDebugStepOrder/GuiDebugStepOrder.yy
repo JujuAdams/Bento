@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiDebugStepOrder",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiDebugStepOrder",
+  "parent":{
+    "name":"Debug",
+    "path":"folders/Library/Debug.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

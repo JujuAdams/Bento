@@ -2,7 +2,7 @@
 
 // Feather disable all
 
-if (GuiButtonGetPress("escape"))
+if (GuiHotkeyGetPress("escape"))
 {
     GuiDestroy();
     GuiNavConsume();

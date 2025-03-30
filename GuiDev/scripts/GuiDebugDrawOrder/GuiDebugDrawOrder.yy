@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiDebugDrawOrder",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiDebugDrawOrder",
+  "parent":{
+    "name":"Debug",
+    "path":"folders/Library/Debug.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -24,6 +24,11 @@ function __GuiSystem()
         
         __rootInstance = undefined;
         
+        __layoutOrder = [];
+        __layoutDirty = true;
+        
+        __animationDirty = true;
+        
         __stepRootStack = [];
         __stepOrder     = [];
         __stepDirty     = true;
@@ -91,11 +96,11 @@ function __GuiSystem()
         __holdInstance     = noone;
         __popUpRoot        = noone;
         
-        __buttonInputMap    = ds_map_create();
-        __buttonPrevMap     = ds_map_create();
-        __buttonStateMap    = ds_map_create();
-        __buttonConsumedMap = ds_map_create();
-        __buttonArray       = [];
+        __hotkeyInputMap    = ds_map_create();
+        __hotkeyPrevMap     = ds_map_create();
+        __hotkeyStateMap    = ds_map_create();
+        __hotkeyConsumedMap = ds_map_create();
+        __hotkeyArray       = [];
         
         __primaryConsumed = false;
         
@@ -104,7 +109,6 @@ function __GuiSystem()
         __nameMap = ds_map_create();
         
         __tempParent = undefined;
-        __tempInside = false;
         
         __animCount = 0;
         
@@ -116,7 +120,7 @@ function __GuiSystem()
         __memoryStruct = {};
     }
     
-    if (GM_build_type == "run")
+    if (GUI_RUNNING_FROM_IDE)
     {
         global.GuiSystem = _system;
     }

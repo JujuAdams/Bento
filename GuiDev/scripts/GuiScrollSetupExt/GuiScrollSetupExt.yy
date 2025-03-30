@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollSetupExt",
   "parent":{
-    "name":"Scroll",
-    "path":"folders/Library/Scroll.yy",
+    "name":"Setup",
+    "path":"folders/Library/Scroll/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

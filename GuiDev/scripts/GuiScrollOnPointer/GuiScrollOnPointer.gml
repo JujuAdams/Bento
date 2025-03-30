@@ -30,8 +30,8 @@ function GuiScrollOnPointer(_instance = id)
         else if (GuiNavGetOver(_instance))
         {
             //Mouse wheel input can be pretty noisy
-            if (GuiButtonGetPress(GUI_BUTTON_MOUSE_WHEEL_UP  ) || GuiButtonGetHold(GUI_BUTTON_MOUSE_WHEEL_UP  )) GuiScrollMove(-GUI_MOUSE_WHEEL_SCROLL_SPEED,  GUI_MOUSE_WHEEL_SCROLL_SPEED, _instance);
-            if (GuiButtonGetPress(GUI_BUTTON_MOUSE_WHEEL_DOWN) || GuiButtonGetHold(GUI_BUTTON_MOUSE_WHEEL_DOWN)) GuiScrollMove( GUI_MOUSE_WHEEL_SCROLL_SPEED, -GUI_MOUSE_WHEEL_SCROLL_SPEED, _instance);
+            if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_UP  ) || GuiHotkeyGetHold(GUI_HOTKEY_MOUSE_WHEEL_UP  )) GuiScrollMove(-GUI_MOUSE_WHEEL_SCROLL_SPEED,  GUI_MOUSE_WHEEL_SCROLL_SPEED, _instance);
+            if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_DOWN) || GuiHotkeyGetHold(GUI_HOTKEY_MOUSE_WHEEL_DOWN)) GuiScrollMove( GUI_MOUSE_WHEEL_SCROLL_SPEED, -GUI_MOUSE_WHEEL_SCROLL_SPEED, _instance);
         }
     }
 }

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiScissorSet",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "name":"Scissor",
+    "path":"folders/Library/(System)/Scissor.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

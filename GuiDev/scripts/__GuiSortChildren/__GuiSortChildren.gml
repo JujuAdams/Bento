@@ -27,7 +27,6 @@ function __GuiSortChildren(_parent)
         if (not __orderDirty) return;
         __orderDirty = false;
         
-        array_sort(__childInsideArray,  _funcSort);
-        array_sort(__childOutsideArray, _funcSort);
+        array_sort(__childArray, _funcSort);
     }
 }

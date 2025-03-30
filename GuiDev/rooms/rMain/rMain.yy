@@ -17,8 +17,8 @@
   ],
   "name":"rMain",
   "parent":{
-    "name":"GuiDev",
-    "path":"GuiDev.yyp",
+    "name":"GuiWithLayouts",
+    "path":"GuiWithLayouts.yyp",
   },
   "parentRoom":null,
   "physicsSettings":{

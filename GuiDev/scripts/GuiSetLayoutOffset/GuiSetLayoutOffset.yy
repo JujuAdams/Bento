@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiSetLayoutOffset",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiSetLayoutOffset",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Library/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

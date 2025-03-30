@@ -18,7 +18,7 @@ function GuiScrollSetupVert(_paddingTop = 0, _paddingBottom = 0, _instance = id)
         
         var _visibleHeight = __scissorBottom - __scissorTop;
         
-        var _bounds = GuiGetChildrenBoundsInside();
+        var _bounds = GuiGetChildrenBounds();
         var _childrenHeight = _bounds.height;
         
         if (_childrenHeight > _visibleHeight - (_paddingTop + _paddingBottom))

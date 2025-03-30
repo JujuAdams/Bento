@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiNavGetDY",
   "parent":{
-    "name":"Nav Getters",
-    "path":"folders/Library/Nav Getters.yy",
+    "name":"Getters",
+    "path":"folders/Library/Navigation/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

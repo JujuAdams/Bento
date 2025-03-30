@@ -10,8 +10,8 @@
   "name":"oMain",
   "overriddenProperties":[],
   "parent":{
-    "name":"GuiDev",
-    "path":"GuiDev.yyp",
+    "name":"GuiWithLayouts",
+    "path":"GuiWithLayouts.yyp",
   },
   "parentObjectId":null,
   "persistent":false,

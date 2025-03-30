@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiSolverGridResizeWidth",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiSolverGridResizeWidth",
+  "parent":{
+    "name":"Grid",
+    "path":"folders/Library/(System)/Solver/Grid.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

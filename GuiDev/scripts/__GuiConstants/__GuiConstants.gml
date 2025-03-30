@@ -11,9 +11,10 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
-#macro GUI_VERSION  "1.10.0"
-#macro GUI_DATE     "2024-10-30"
+#macro GUI_VERSION  "2.0.0"
+#macro GUI_DATE     "2025-03-17"
 
+#macro GUI_RUNNING_FROM_IDE  (GM_build_type == "run")
 #macro GUI_ROOT  (__GuiGetRoot())
 
 #macro GUI_BEHAVIOR_COSMETIC        0
@@ -22,6 +23,13 @@
 #macro GUI_BEHAVIOR_MODAL           3
 #macro GUI_BEHAVIOR_POP_UP          4
 #macro GUI_BEHAVIOR_BLOCK_SIBLINGS  5
+
+#macro GUI_AXIS_X  0
+#macro GUI_AXIS_Y  1
+
+#macro GUI_RESIZE_STATIC  0
+#macro GUI_RESIZE_FIT     1
+#macro GUI_RESIZE_GROW    2
 
 #macro GUI_OFF      0
 #macro GUI_PRESS    1

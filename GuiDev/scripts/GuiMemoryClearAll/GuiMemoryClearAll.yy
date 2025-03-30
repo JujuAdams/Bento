@@ -6,7 +6,7 @@
   "name":"GuiMemoryClearAll",
   "parent":{
     "name":"Memory",
-    "path":"folders/Library/Memory.yy",
+    "path":"folders/Library/Extras/Memory.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

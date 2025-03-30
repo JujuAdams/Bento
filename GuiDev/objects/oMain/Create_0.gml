@@ -1,12 +1,61 @@
 // Feather disable all
 
-// Juju: This is an example of a main menu controller object. This object is responsible for
-//       managing user input into the Gui system as a whole. In the main project, user input
-//       is funnelled through the Input library first to handle rebinding and hotswapping etc.
-//       but in this example user input will be read by directly reading keyboard and mouse values.
-
-// This creates the main menu page. See that object for an explanation of what "page" means in the
-// context of the Gui system.
-GuiCreateOutside(oPageMainMenu, un, GUI_ROOT, room_width/2, 500);
-
 GuiInputConfigureNavigation(10, 9, 4, 5);
+
+//with(GuiCreate(oGuiLibList, undefined, GUI_ROOT))
+//{
+//    image_blend = c_navy;
+//    
+//    GuiSetListAxis(0);
+//    GuiSetLayoutSize(600, 200);
+//    GuiSetLayoutResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);
+//    GuiSetLayoutPadding(10, 10, 10, 10);
+//    GuiSetLayoutGutter(10, 10);
+//    
+//    with(GuiCreate(oGuiLibList))
+//    {
+//        image_blend = c_red;
+//        GuiSetLayoutSize(100, 100);
+//    }
+//    
+//    with(GuiCreate(oGuiLibList))
+//    {
+//        image_blend = c_yellow;
+//        GuiSetLayoutSize(100, 100);
+//        GuiSetLayoutResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
+//    }
+//    
+//    with(GuiCreate(oGuiLibList))
+//    {
+//        image_blend = c_yellow;
+//        GuiSetLayoutSize(100, 100);
+//        GuiSetLayoutResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
+//    }
+//    
+//    with(GuiCreate(oGuiLibList))
+//    {
+//        image_blend = c_blue;
+//        GuiSetLayoutSize(100, 100);
+//    }
+//}
+
+gridInstance = GuiCreate(oGuiLibGrid, undefined, GUI_ROOT);
+with(gridInstance)
+{
+    image_blend = c_navy;
+    
+    GuiSetGridSize(6, 2);
+    GuiSetLayoutSize(600, 200);
+    GuiSetLayoutResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);
+    GuiSetLayoutPadding(10, 10, 10, 10);
+    GuiSetLayoutGutter(10, 10);
+    
+    repeat(11)
+    {
+        with(GuiCreate(oGuiLibRect))
+        {
+            image_blend = c_blue;
+            GuiSetLayoutResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
+        }
+    }
+}

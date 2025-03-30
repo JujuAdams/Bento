@@ -4,11 +4,14 @@
 /// 
 /// - `GuiInputPointer()`
 /// - `GuiInputDirectional()`
-/// - `GuiInputButton()`
+/// - `GuiInputHotkey()`
 
 function GuiStep()
 {
     static _system = __GuiSystem();
+    
+    __GuiEnsureLayout();
+    __GuiEnsureAnimation();
     
     __GuiScissorReset();
     var _stepOrder = __GuiEnsureStepOrder();
@@ -17,27 +20,27 @@ function GuiStep()
     {
         ++__frame;
         
-        // Calculate directional x/y deltas
+        // ulate directional x/y deltas
         __directionalStateX.__Update(__directionalDX, __frame);
         __directionalStateY.__Update(__directionalDY, __frame);
         
         if (not GuiFreezeGetAny())
         {
             var _i = 0;
-            repeat(array_length(__buttonArray))
+            repeat(array_length(__hotkeyArray))
             {
-                var _key = __buttonArray[_i];
+                var _key = __hotkeyArray[_i];
                 
-                var _prev  = __buttonPrevMap[?  _key] ?? false;
-                var _input = __buttonInputMap[? _key] ?? false;
+                var _prev  = __hotkeyPrevMap[?  _key] ?? false;
+                var _input = __hotkeyInputMap[? _key] ?? false;
                 
                 if (_input && (not _prev))
                 {
-                    __buttonConsumedMap[? _key] = false;
+                    __hotkeyConsumedMap[? _key] = false;
                 }
                 
-                __buttonPrevMap[?  _key] = _input;
-                __buttonStateMap[? _key] = _prev? (_input? GUI_HOLD : GUI_RELEASE) : (_input? GUI_PRESS : GUI_OFF);
+                __hotkeyPrevMap[?  _key] = _input;
+                __hotkeyStateMap[? _key] = _prev? (_input? GUI_HOLD : GUI_RELEASE) : (_input? GUI_PRESS : GUI_OFF);
                 
                 ++_i;
             }
