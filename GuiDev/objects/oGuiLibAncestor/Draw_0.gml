@@ -1,3 +1,3 @@
-/// @desc Use "User Event 2" instead
+/// @desc Use "User Event 1" instead
 
 return;

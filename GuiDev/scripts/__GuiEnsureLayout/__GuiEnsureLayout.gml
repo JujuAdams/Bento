@@ -60,7 +60,7 @@ function __GuiEnsureLayout()
         }
         
         //Final pass to set positions in stone
-        _guiRoot.__SolverPositions(0, 0);
+        _guiRoot.__SolverPositions(0, 0, _guiRoot.layoutWidth, _guiRoot.layoutHeight);
     }
 }
 

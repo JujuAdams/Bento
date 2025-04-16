@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiSetGridSize",
+  "%Name":"GuiSetLayoutAlignSelf",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiSetGridSize",
+  "name":"GuiSetLayoutAlignSelf",
   "parent":{
-    "name":"Special",
-    "path":"folders/Library/Layout/Special.yy",
+    "name":"Layout",
+    "path":"folders/Library/Layout.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

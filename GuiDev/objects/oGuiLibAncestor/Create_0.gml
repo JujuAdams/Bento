@@ -24,8 +24,6 @@ GuiSetIfNotDefined(id, "scrollMarginBottom", 6);
 //                       //
 ///////////////////////////
 
-layoutX      = x;
-layoutY      = y;
 layoutLeft   = x - image_xscale*sprite_get_xoffset(sprite_index);
 layoutTop    = y - image_yscale*sprite_get_yoffset(sprite_index);
 layoutWidth  = sprite_width;
@@ -105,6 +103,8 @@ __layoutWidthMax     = infinity;
 __layoutHeightMax    = infinity;
 __layoutWidthResize  = GUI_RESIZE_STATIC;
 __layoutHeightResize = GUI_RESIZE_STATIC;
+__layoutHAlign       = fa_center;
+__layoutVAlign       = fa_middle;
 
 __solverFitWidth  = 0;
 __solverFitHeight = 0;
@@ -140,27 +140,40 @@ __SolverResizeHeight = function(_maxWidth)
     //Do nothing
 }
 
-__SolverPositions = function(_x, _y)
+__SolverPositions = function(_left, _top, _parentWidth, _parentHeight)
 {
-    _x += __layoutXOffset;
-    _y += __layoutYOffset;
+    if (__layoutHAlign == fa_center)
+    {
+        _left += 0.5*(_parentWidth - layoutWidth);
+    }
+    else if (__layoutVAlign == fa_right)
+    {
+        _left += _parentWidth - layoutWidth;
+    }
     
-    layoutLeft = _x;
-    layoutTop  = _y;
+    if (__layoutVAlign == fa_middle)
+    {
+        _top += 0.5*(_parentHeight - layoutHeight);
+    }
+    else if (__layoutVAlign == fa_bottom)
+    {
+        _top += _parentHeight - layoutHeight;
+    }
     
-    __SolverSetLayoutXY();
+    _left += __layoutXOffset;
+    _top  += __layoutYOffset;
+    
+    layoutLeft = _left;
+    layoutTop  = _top;
+    
+    var _width  = layoutWidth;
+    var _height = layoutHeight;
     
     var _childArray = __childArray;
     var _i = 0;
     repeat(array_length(_childArray))
     {
-        _childArray[_i].__SolverPositions(_x, _y);
+        _childArray[_i].__SolverPositions(_left, _top, _width, _height);
         ++_i;
     }
-}
-
-__SolverSetLayoutXY = function()
-{
-    layoutX = layoutLeft + 0.5*layoutWidth;
-    layoutY = layoutTop  + 0.5*layoutHeight;
 }

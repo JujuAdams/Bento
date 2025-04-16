@@ -54,7 +54,7 @@ function __GuiSolverListPositions(_x, _y)
                     var _childMinorPos = _minorPos + (_minorAvailable - layoutHeight);
                 }
                 
-                __SolverPositions(_majorPos, _childMinorPos);
+                __SolverPositions(_majorPos, _childMinorPos, layoutWidth, _minorAvailable);
                 _majorPos += layoutWidth + _gutter;
             }
           
@@ -104,7 +104,7 @@ function __GuiSolverListPositions(_x, _y)
                     var _childMinorPos = _minorPos + (_minorAvailable - layoutWidth);
                 }
                 
-                __SolverPositions(_childMinorPos, _majorPos);
+                __SolverPositions(_childMinorPos, _majorPos, _minorAvailable, layoutHeight);
                 _majorPos += layoutHeight + _gutter;
             }
           

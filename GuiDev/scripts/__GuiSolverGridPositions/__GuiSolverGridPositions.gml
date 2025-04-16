@@ -25,7 +25,7 @@ function __GuiSolverGridPositions(_x, _y)
     var _i = 0;
     repeat(_childCount)
     {
-        _childArray[_i].__SolverPositions(_xChild, _yChild);
+        _childArray[_i].__SolverPositions(_xChild, _yChild, _cellWidth, _cellHeight);
         
         _xChild += _cellWidth + __layoutGutterX;
         ++_gridX;

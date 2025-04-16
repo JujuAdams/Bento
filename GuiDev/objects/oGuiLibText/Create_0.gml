@@ -66,9 +66,3 @@ __SolverFitHeight = function()
     
     draw_set_font(-1);
 }
-
-__SolverSetLayoutXY = function()
-{
-    layoutX = GuiRegionGetTextX(layoutLeft, layoutWidth,  hAlign);
-    layoutY = GuiRegionGetTextY(layoutTop,  layoutHeight, vAlign);
-}
