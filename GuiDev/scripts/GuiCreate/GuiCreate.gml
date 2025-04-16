@@ -5,10 +5,7 @@
 /// - clipped if scissoring is turned on for the parent
 /// - scrolled if scrolling is turned on for the parent
 /// - drawn after the parent
-/// - drawn before "outside" instances
 /// - follow the parent instance if the parent instance is moved with GuiMove()
-/// 
-/// "Inside" instances should be used for content that you want to contain inside the parent.
 /// 
 /// @param object
 /// @param [variableStruct]

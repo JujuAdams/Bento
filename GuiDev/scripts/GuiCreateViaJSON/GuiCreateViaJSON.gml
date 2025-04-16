@@ -1,16 +1,20 @@
 // Feather disable all
 
+/// Creates a GUI instances based on input JSON data. This function can be used to create multiple
+/// instances and define multiple properties for those instances. More information on the expected
+/// JSON format can be found in the `GUI JSON Format` note.
+/// 
 /// @param json
 /// @param [parentInstance=id]
 
-function GuiCreateViaJSON(_json, _parentInstance = id)
+function GuiCreateViaJSON(_json, _parent = id)
 {
     if (is_array(_json))
     {
         var _i = 0;
         repeat(array_length(_json))
         {
-            GuiCreateViaJSON(_json, _parentInstance);
+            GuiCreateViaJSON(_json, _parent);
             ++_i;
         }
     }
@@ -51,7 +55,7 @@ function GuiCreateViaJSON(_json, _parentInstance = id)
         }
         
         //Create the instance itself
-        var _instance = GuiCreate(_object, _vars, _parentInstance);
+        var _instance = GuiCreate(_object, _vars, _parent);
         
         //Apply layout options
         var _layout = _json[$ "layout"];
@@ -78,21 +82,34 @@ function GuiCreateViaJSON(_json, _parentInstance = id)
                     {
                         __GuiLayoutJSON_size(_instance, _value);
                     }
+                    else if (_name == "minSize")
+                    {
+                        __GuiLayoutJSON_minSize(_instance, _value);
+                    }
+                    else if (_name == "maxSize")
+                    {
+                        __GuiLayoutJSON_maxSize(_instance, _value);
+                    }
                     else if (_name == "resize")
                     {
                         __GuiLayoutJSON_resize(_instance, _value);
                     }
-                    else if ((_name == "pad") ||(_name == "padding"))
+                    else if (_name == "padding")
                     {
                         __GuiLayoutJSON_padding(_instance, _value);
-                    }
-                    else if (_name == "gutter")
-                    {
-                        __GuiLayoutJSON_gutter(_instance, _value);
                     }
                     else if (_name == "align")
                     {
                         __GuiLayoutJSON_align(_instance, _value);
+                    }
+                    else if (_name == "gutter")
+                    {
+                        if ((not __GuiObjectInheritsFrom(_object, oGuiLibList)) || (not __GuiObjectInheritsFrom(_object, oGuiLibGrid)))
+                        {
+                            __GuiError($"Cannot use .gutter on an object ({object_get_name(_object)}) that does not inherit from {object_get_name(oGuiLibList)} or {object_get_name(oGuiLibGrid)}");
+                        }
+                        
+                        __GuiLayoutJSON_gutter(_instance, _value);
                     }
                     else if (_name == "listAlign")
                     {
@@ -130,6 +147,19 @@ function GuiCreateViaJSON(_json, _parentInstance = id)
                 }
             }
         }
+        
+        var _children = _json[$ "children"];
+        if (_children != undefined)
+        {
+            if (not is_array(_children))
+            {
+                __GuiError($".children property must be an array (was {typeof(_children)})");
+            }
+            else
+            {
+                GuiCreateViaJSON(_children, _instance);
+            }
+        }
     }
     else
     {
@@ -139,6 +169,9 @@ function GuiCreateViaJSON(_json, _parentInstance = id)
 
 
 
+////////
+// .offset
+////////
 function __GuiLayoutJSON_offset(_instance, _value)
 {
     if (is_array(_value))
@@ -162,93 +195,114 @@ function __GuiLayoutJSON_offset(_instance, _value)
 
 
 
+////////
+// .size
+////////
 function __GuiLayoutJSON_size(_instance, _value)
 {
-    var _dataWidth  = undefined;
-    var _dataHeight = undefined;
+    var _width  = undefined;
+    var _height = undefined;
     
     //Collect width and height values
     if (is_array(_value))
     {
         if (array_length(_value) != 2)
         {
-            __GuiError($".offset layout property must have 2 elements if it is an array (length = {array_length(_value)})");
+            __GuiError($".size layout property must have 2 elements if it is an array (length = {array_length(_value)})");
         }
         
-        _dataWidth  = _value[0];
-        _dataHeight = _value[1];
+        _width  = _value[0];
+        _height = _value[1];
     }
     else if (is_struct(_value))
     {
         //Search for some valid number!
-        _dataWidth  = _value[$ "w"] ?? _value[$ "width" ] ?? _value[$ "x"];
-        _dataHeight = _value[$ "h"] ?? _value[$ "height"] ?? _value[$ "y"];
+        _width  = _value[$ "w"] ?? (_value[$ "width" ] ?? _value[$ "x"]);
+        _height = _value[$ "h"] ?? (_value[$ "height"] ?? _value[$ "y"]);
     }
     else
     {
-        __GuiError($".offset layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
+        __GuiError($".size layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
     }
     
-    var _widthPref  = undefined;
-    var _widthMini  = undefined;
-    var _widthMaxi  = undefined;
-    var _heightPref = undefined;
-    var _heightMini = undefined;
-    var _heightMaxi = undefined;
-    
-    //Decide what to do with non-atomic values
-    if (is_array(_dataWidth))
-    {
-        if (array_length(_value) != 3)
-        {
-            __GuiError($".size.width layout property must have 3 elements if it is an array (length = {array_length(_value)})");
-        }
-        
-        var _widthMini = _dataWidth[0];
-        var _widthPref = _dataWidth[1];
-        var _widthMaxi = _dataWidth[2];
-    }
-    else if (is_struct(_dataWidth))
-    {
-        var _widthMini = _dataWidth[$ "mini"] ?? _dataWidth[$ "min"];
-        var _widthPref = _dataWidth[$ "pref"] ?? _dataWidth[$ "preferred"];
-        var _widthMaxi = _dataWidth[$ "maxi"] ?? _dataWidth[$ "max"];
-    }
-    else if (not is_numeric(_dataWidth))
-    {
-        __GuiError($".size.width layout property must be a number, a 3-element array, or a struct (typeof \"{typeof(_value)}\")");
-    }
-    
-    //Decide what to do with non-atomic values
-    if (is_array(_dataHeight))
-    {
-        if (array_length(_value) != 3)
-        {
-            __GuiError($".size.width layout property must have 3 elements if it is an array (length = {array_length(_value)})");
-        }
-        
-        var _heightMini = _dataHeight[0];
-        var _heightPref = _dataHeight[1];
-        var _heightMaxi = _dataHeight[2];
-    }
-    else if (is_struct(_dataWidth))
-    {
-        var _heightMini = _dataHeight[$ "mini"] ?? _dataHeight[$ "min"];
-        var _heightPref = _dataHeight[$ "pref"] ?? _dataHeight[$ "preferred"];
-        var _heightMaxi = _dataHeight[$ "maxi"] ?? _dataHeight[$ "max"];
-    }
-    else if (not is_numeric(_dataWidth))
-    {
-        __GuiError($".size.width layout property must be a number, a 3-element array, or a struct (typeof \"{typeof(_value)}\")");
-    }
-    
-    GuiSetLayoutMinSize(_widthMini, _heightMini, _instance);
-    GuiSetLayoutSize(   _widthPref, _heightPref, _instance);
-    GuiSetLayoutMaxSize(_widthMaxi, _heightMaxi, _instance);
+    GuiSetLayoutSize(_width, _height, _instance);
 }
 
 
 
+////////
+// .minSize
+////////
+function __GuiLayoutJSON_minSize(_instance, _value)
+{
+    var _width  = undefined;
+    var _height = undefined;
+    
+    //Collect width and height values
+    if (is_array(_value))
+    {
+        if (array_length(_value) != 2)
+        {
+            __GuiError($".minSize layout property must have 2 elements if it is an array (length = {array_length(_value)})");
+        }
+        
+        _width  = _value[0];
+        _height = _value[1];
+    }
+    else if (is_struct(_value))
+    {
+        //Search for some valid number!
+        _width  = _value[$ "w"] ?? (_value[$ "width" ] ?? _value[$ "x"]);
+        _height = _value[$ "h"] ?? (_value[$ "height"] ?? _value[$ "y"]);
+    }
+    else
+    {
+        __GuiError($".minSize layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
+    }
+    
+    GuiSetLayoutMinSize(_width, _height, _instance);
+}
+
+
+
+////////
+// .maxSize
+////////
+function __GuiLayoutJSON_maxSize(_instance, _value)
+{
+    var _width  = undefined;
+    var _height = undefined;
+    
+    //Collect width and height values
+    if (is_array(_value))
+    {
+        if (array_length(_value) != 2)
+        {
+            __GuiError($".maxSize layout property must have 2 elements if it is an array (length = {array_length(_value)})");
+        }
+        
+        _width  = _value[0];
+        _height = _value[1];
+    }
+    else if (is_struct(_value))
+    {
+        //Search for some valid number!
+        _width  = _value[$ "w"] ?? (_value[$ "width" ] ?? _value[$ "x"]);
+        _height = _value[$ "h"] ?? (_value[$ "height"] ?? _value[$ "y"]);
+    }
+    else
+    {
+        __GuiError($".maxSize layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
+    }
+    
+    GuiSetLayoutMaxSize(_width, _height, _instance);
+}
+
+
+
+////////
+// .resize
+////////
 function __GuiLayoutJSON_resize(_instance, _value)
 {
     var _x = undefined;
@@ -341,6 +395,9 @@ function __GuiLayoutJSON_resize(_instance, _value)
 
 
 
+////////
+// .padding
+////////
 function __GuiLayoutJSON_padding(_instance, _value)
 {
     if (is_array(_value))
@@ -366,6 +423,11 @@ function __GuiLayoutJSON_padding(_instance, _value)
     }
 }
 
+
+
+////////
+// .gutter
+////////
 function __GuiLayoutJSON_gutter(_instance, _value)
 {
     if (is_array(_value))
@@ -389,6 +451,9 @@ function __GuiLayoutJSON_gutter(_instance, _value)
 
 
 
+////////
+// .align
+////////
 function __GuiLayoutJSON_align(_instance, _value)
 {
     var _h = undefined;
@@ -481,6 +546,9 @@ function __GuiLayoutJSON_align(_instance, _value)
 
 
 
+////////
+// .listAlign
+////////
 function __GuiLayoutJSON_listAlign(_instance, _value)
 {
     var _h = undefined;
@@ -573,6 +641,9 @@ function __GuiLayoutJSON_listAlign(_instance, _value)
 
 
 
+////////
+// .listAxis
+////////
 function __GuiLayoutJSON_listAxis(_instance, _value)
 {
     if (is_numeric(_value))
@@ -607,6 +678,9 @@ function __GuiLayoutJSON_listAxis(_instance, _value)
 
 
 
+////////
+// .gridSize
+////////
 function __GuiLayoutJSON_gridSize(_instance, _value)
 {
     if (is_array(_value))

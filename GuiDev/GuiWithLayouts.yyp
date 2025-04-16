@@ -54,6 +54,7 @@
   },
   "name":"GuiWithLayouts",
   "resources":[
+    {"id":{"name":"GuiCreateViaJSON Format","path":"notes/GuiCreateViaJSON Format/GuiCreateViaJSON Format.yy",},},
     {"id":{"name":"GuiExampleButton","path":"objects/GuiExampleButton/GuiExampleButton.yy",},},
     {"id":{"name":"GuiExampleButtonDiamond","path":"objects/GuiExampleButtonDiamond/GuiExampleButtonDiamond.yy",},},
     {"id":{"name":"GuiExampleButtonEllipse","path":"objects/GuiExampleButtonEllipse/GuiExampleButtonEllipse.yy",},},

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiSetLayoutGutter",
   "parent":{
-    "name":"Layout",
-    "path":"folders/Library/Layout.yy",
+    "name":"Special",
+    "path":"folders/Library/Layout/Special.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

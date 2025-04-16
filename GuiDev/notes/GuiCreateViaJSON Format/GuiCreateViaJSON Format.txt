@@ -1,0 +1,270 @@
+Root node can be an array or a JS object (hereafter called a "struct" in keeping with GameMaker's
+terminology). If the root node is an array, all members of that array must be structs and those
+structs must conform to the general GUI instance definition spec.
+
+GUI instance definitions are structs. The struct must contain an `.object` property. This is the
+GameMaker object that will be instantiated when creating the GUI instance. The `.object` property
+can be the name of the object as a string, a GameMaker handle, or a stringified GameMaker handle.
+Objects must inherit from `oGuiLibAncestor`.
+
+Instance definition structs may also contain a `.children` property. If specified, this should be
+an array of GUI instance definitions. These GUI instance definitions, when instantiated, will be
+created as childred of the parent instance.
+
+Instance definition structs may contain a `.vars` property. If specified, this should be a struct
+that contains variable definitions that will be passed to the created instance. These variables
+are set before the Create event is executed for the new instance. This is analogous to the
+`var_struct` argument for `instance_create_*()`.
+
+Instance definition structs may contain a `.layout` property. If specified, this should be a struct
+that contains definitions for layout rules. Each layout property is associated with a layout
+function (`GuiSetLayoutOffset()` etc.). There are many layout properties that can be defined:
+
+.offset
+.size
+.minSize
+.maxSize
+.resize
+.padding
+.align
+.gutter
+.listAlign
+.listAxis
+.gridSize
+
+Here is a brief example:
+
+{
+    object: oGuiLibList,
+    vars: {
+        visible: false,
+    },
+    layout: {
+        resize: ["fit", "static"],
+        size: [100, 70],
+        axis: "x",
+    },
+    children: [
+        {
+            object: oGuiLibRect,
+            vars: {
+                image_blend: c_red,
+            },
+            layout: {
+                resize: ["static", "grow"],
+                size: [30, 30],
+            },
+        },
+        {
+            object: oGuiLibRect,
+            vars: {
+                image_blend: c_blue,
+            },
+            layout: {
+                resize: ["static", "grow"],
+                size: [30, 30],
+            },
+        },
+    ],
+}
+
+.offset
+    Calls the `GuiSetLayoutOffset()` function on the created instance.
+    
+    Can be a 2-element array:
+        [ <x offset>, <y offset> ]
+    or a struct:
+        {
+            "x": <x offset>,
+            "y": <y offset>
+        }
+    
+    Offset values must be numbers, or you may use `null` to indicate that no change should be made
+    to a particular value.
+    
+.size
+    Calls the `GuiSetLayoutSize()` function on the created instance. "Size" means the "preferred
+    size" which is an important detail in the layout algorithm.
+    
+    Can be a 2-element array:
+        [ <width>, <height> ]
+    or a struct:
+        {
+            "w": <width>,
+            "h": <height>
+        }
+    
+    "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
+    values must be numbers, or you may use `null` to indicate that no change should be made to a
+    particular value.
+    
+.minSize
+    Calls the `GuiSetLayoutMinSize()` function on the created instance.
+    
+    Can be a 2-element array:
+        [ <width>, <height> ]
+    or a struct:
+        {
+            "w": <width>,
+            "h": <height>
+        }
+    
+    "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
+    values must be numbers, or you may use `null` to indicate that no change should be made to a
+    particular value.
+    
+.maxSize
+    Calls the `GuiSetLayoutMaxSize()` function on the created instance.
+    
+    Can be a 2-element array:
+        [ <width>, <height> ]
+    or a struct:
+        {
+            "w": <width>,
+            "h": <height>
+        }
+    
+    "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
+    values must be numbers, or you may use `null` to indicate that no change should be made to a
+    particular value.
+
+.resize
+    Calls the `GuiSetLayoutResizeType()` function on the created instance.
+    
+    Can be a 2-element array:
+        [ <x type>, <y type> ]
+    or a struct:
+        {
+            "x": <x type>,
+            "y": <y type>
+        }
+    
+    Resize types must be one of the following:
+    - "static"
+    - "fit"
+    - "grow"
+    - 0 (equal to GUI_RESIZE_STATIC)
+    - 1 (equal to GUI_RESIZE_FIT)
+    - 2 (equal to GUI_RESIZE_GROW)
+    
+    You may also use `null` to indicate that no change should be made to a particular value.
+
+.padding
+    Calls the `GuiSetLayoutPadding()` function on the created instance.
+    
+    Can be a 2-element array:
+        [ <left>, <top>, <right>, <bottom> ]
+    or a struct:
+        {
+            "l": <left>,
+            "t": <top>,
+            "r": <right>,
+            "b": <bottom>
+        }
+    
+    "left", "top", "right, "bottom" instead of "l", "t", "r", "b" respectively. Padding values
+    must be numbers, or you may use `null` to indicate that no change should be made to a
+    particular value.
+
+.align
+    Calls the `GuiSetLayoutAlignSelf()` function on the created instance.
+    
+    Can be a 2-element array:
+        [ <h align>, <v align> ]
+    or a struct:
+        {
+            "h": <h align>,
+            "v": <v align>
+        }
+    
+    Horizontal alignment values must be one of the following:
+    - "left"
+    - "center"
+    - "centre"
+    - "right"
+    - 0 (equal to fa_left)
+    - 1 (equal to fa_center)
+    - 2 (equal to fa_right)
+    
+    Vertical alignment values must be one of the following:
+    - "right"
+    - "middle"
+    - "bottom"
+    - 0 (equal to fa_right)
+    - 1 (equal to fa_middle)
+    - 2 (equal to fa_bottom)
+    
+    You may also use `null` for either value to indicate that no change should be made.
+
+.gutter
+    Calls the `GuiSetLayoutGutter()` function on the created instance. This property can only be
+    used for objects that inherit from `oGuiLibList` or `oGuiLibGrid`.
+    
+    Can be a 2-element array:
+        [ <x size>, <y size> ]
+    or a struct:
+        {
+            "x": <x size>,
+            "y": <y size>
+        }
+    
+    Gutter sizes must be numbers, or you may use `null` to indicate that no change should be made
+    to a particular value.
+
+.listAlign
+    Calls the `GuiSetListAlign()` function on the created instance. This property can only be used
+    for objects that inherit from `oGuiLibList`.
+    
+    Can be a 2-element array:
+        [ <h align>, <v align> ]
+    or a struct:
+        {
+            "h": <h align>,
+            "v": <v align>
+        }
+    
+    Horizontal alignment values must be one of the following:
+    - "left"
+    - "center"
+    - "centre"
+    - "right"
+    - 0 (equal to fa_left)
+    - 1 (equal to fa_center)
+    - 2 (equal to fa_right)
+    
+    Vertical alignment values must be one of the following:
+    - "right"
+    - "middle"
+    - "bottom"
+    - 0 (equal to fa_right)
+    - 1 (equal to fa_middle)
+    - 2 (equal to fa_bottom)
+    
+    You may also use `null` for either value to indicate that no change should be made.
+
+.listAxis
+    Calls the `GuiSetListAxis()` function on the created instance. This property can only be used
+    for objects that inherit from `oGuiLibList`.
+    
+    List axis values must be one of the following:
+    - "x"
+    - "y"
+    - 0 (equal to GUI_AXIS_X)
+    - 1 (equal to GUI_AXIS_Y)
+    
+    You may also use `null` for either value to indicate that no change should be made.
+    
+.gridSize
+    Calls the `GuiSetGridSize()` function on the created instance. This property can only be used
+    for objects that inherit from `oGuiLibGrid`.
+    
+    Can be a 2-element array:
+        [ <columns>, <rows> ]
+    or a struct:
+        {
+            "columns": <columns>,
+            "rows": <rows>
+        }
+    
+    Column and row values must be integers, or you may use `null` to indicate that no change should
+    be made to a particular value.

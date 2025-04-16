@@ -113,6 +113,8 @@ __solverMinHeight = 0;
 
 __SolverFitWidth = function()
 {
+    // N.B. `oGuiLibList`, `oGuiLibText` override this function.
+    
     layoutWidth      = clamp(__layoutWidthPref, __layoutWidthMin, __layoutWidthMax);
     __solverFitWidth = layoutWidth;
     __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : layoutWidth;
@@ -120,16 +122,22 @@ __SolverFitWidth = function()
 
 __SolverResizeWidth = function()
 {
+    // N.B. `oGuiLibList`, `oGuiLibGrid` override this function.
+    
     //Do nothing
 }
 
 __LayoutReflowText = function()
 {
+    // N.B. `oGuiLibText` overrides this function.
+    
     //Do nothing
 }
 
 __SolverFitHeight = function()
 {
+    // N.B. `oGuiLibList`, `oGuiLibText` override this function.
+    
     layoutHeight      = clamp(__layoutHeightPref, __layoutHeightMin, __layoutHeightMax);
     __solverFitHeight = layoutHeight;
     __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : layoutHeight;
@@ -137,11 +145,15 @@ __SolverFitHeight = function()
 
 __SolverResizeHeight = function(_maxWidth)
 {
+    // N.B. `oGuiLibList`, `oGuiLibGrid` override this function.
+    
     //Do nothing
 }
 
 __SolverPositions = function(_left, _top, _parentWidth, _parentHeight)
 {
+    // N.B. `oGuiLibList`, `oGuiLibGrid` overrides this function.
+    
     if (__layoutHAlign == fa_center)
     {
         _left += 0.5*(_parentWidth - layoutWidth);
