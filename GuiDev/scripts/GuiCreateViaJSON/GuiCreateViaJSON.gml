@@ -4,17 +4,48 @@
 /// instances and define multiple properties for those instances. More information on the expected
 /// JSON format can be found in the `GUI JSON Format` note.
 /// 
+/// This function will return the instance that gets created or, if the root node of the JSON is
+/// an array, this function will return the first instance that gets created.
+/// 
 /// @param json
 /// @param [parentInstance=id]
+/// @param [metadata]
 
-function GuiCreateViaJSON(_json, _parent = id)
+function GuiCreateViaJSON(_json, _parent = id, _metadata = undefined)
+{
+    var _firstInstance = undefined;
+    
+    if (is_array(_json))
+    {
+        var _i = 0;
+        repeat(array_length(_json))
+        {
+            var _instance = __GuiCreateViaJSONInner(_json, _parent, _metadata);
+            
+            if (_firstInstance == undefined)
+            {
+                _firstInstance = _instance;
+            }
+            
+            ++_i;
+        }
+        
+        return _firstInstance;
+    }
+    else
+    {
+        return __GuiCreateViaJSONInner(_json, _parent, _metadata);
+    }
+}
+
+function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
 {
     if (is_array(_json))
     {
         var _i = 0;
         repeat(array_length(_json))
         {
-            GuiCreateViaJSON(_json, _parent);
+            __GuiCreateViaJSONInner(_json[_i], _parent, _metadata);
             ++_i;
         }
     }
@@ -34,17 +65,17 @@ function GuiCreateViaJSON(_json, _parent = id)
         }
         else if (not is_handle(_object))
         {
-            __GuiError($"Could not find object \"{_object}\" (wrong datatype \"{typeof(_object)}\")");
+            __GuiError($"Could not find object \"{object_get_name(_object)}\" (wrong datatype \"{typeof(_object)}\")");
         }
         
         if (not object_exists(_object))
         {
-            __GuiError($"Could not find object \"{_object}\"");
+            __GuiError($"Could not find object \"{object_get_name(_object)}\"");
         }
         
-        if (__GuiObjectInheritsFrom(_object, oGuiLibAncestor))
+        if (not __GuiObjectInheritsFrom(_object, oGuiLibAncestor))
         {
-            __GuiError($"Object \"{_object}\" does not inherit from {object_get_name(oGuiLibAncestor)}");
+            __GuiError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oGuiLibAncestor)}");
         }
         
         //Unpack and validate the .vars property
@@ -67,12 +98,12 @@ function GuiCreateViaJSON(_json, _parent = id)
             }
             else
             {
-                var _nameArray = variable_struct_get_names(_json);
+                var _nameArray = variable_struct_get_names(_layout);
                 var _i = 0;
                 repeat(array_length(_nameArray))
                 {
                     var _name  = _nameArray[_i];
-                    var _value = _json[$ _name];
+                    var _value = _layout[$ _name];
                     
                     if (_name == "offset")
                     {
@@ -104,7 +135,7 @@ function GuiCreateViaJSON(_json, _parent = id)
                     }
                     else if (_name == "gutter")
                     {
-                        if ((not __GuiObjectInheritsFrom(_object, oGuiLibList)) || (not __GuiObjectInheritsFrom(_object, oGuiLibGrid)))
+                        if ((not __GuiObjectInheritsFrom(_object, oGuiLibList)) && (not __GuiObjectInheritsFrom(_object, oGuiLibGrid)))
                         {
                             __GuiError($"Cannot use .gutter on an object ({object_get_name(_object)}) that does not inherit from {object_get_name(oGuiLibList)} or {object_get_name(oGuiLibGrid)}");
                         }
@@ -151,15 +182,40 @@ function GuiCreateViaJSON(_json, _parent = id)
         var _children = _json[$ "children"];
         if (_children != undefined)
         {
+            if (is_string(_children))
+            {
+                var _processor = GUI_JSON_CHILDREN_STRING_PROCESSOR;
+                if (is_callable(_processor))
+                {
+                    _children = _processor(_children, _metadata);
+                }
+                else
+                {
+                    __GuiError($".children was provided as a string but `GUI_JSON_CHILDREN_STRING_PROCESSOR` is not a function");
+                }
+            }
+            
+            if (is_method(_children))
+            {
+                _children = _children(_metadata);
+                
+                if (not is_array(_children))
+                {
+                    __GuiError($".children method did not return an array (was {typeof(_children)})");
+                }
+            }
+            
             if (not is_array(_children))
             {
                 __GuiError($".children property must be an array (was {typeof(_children)})");
             }
             else
             {
-                GuiCreateViaJSON(_children, _instance);
+                __GuiCreateViaJSONInner(_children, _instance, _metadata);
             }
         }
+        
+        return _instance;
     }
     else
     {

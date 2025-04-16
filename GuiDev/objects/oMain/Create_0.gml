@@ -39,23 +39,31 @@ GuiInputConfigureNavigation(10, 9, 4, 5);
 //    }
 //}
 
-gridInstance = GuiCreate(oGuiLibGrid, undefined, GUI_ROOT);
-with(gridInstance)
-{
-    image_blend = c_navy;
-    
-    GuiSetGridSize(6, 2);
-    GuiSetLayoutSize(600, 200);
-    GuiSetLayoutResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);
-    GuiSetLayoutPadding(10, 10, 10, 10);
-    GuiSetLayoutGutter(10, 10);
-    
-    repeat(11)
-    {
-        with(GuiCreate(oGuiLibRect))
-        {
-            image_blend = c_blue;
-            GuiSetLayoutResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
-        }
-    }
-}
+var _json = {
+    object: oGuiLibGrid,
+    vars: {
+        image_blend: c_navy,
+    },
+    layout: {
+        gridSize: [6, 2],
+        size:     [600, 200],
+        resize:   [GUI_RESIZE_FIT, GUI_RESIZE_FIT],
+        padding:  [10, 10, 10, 10],
+        gutter:   [10, 10],
+    },
+    children: function(_metadata) {
+        //Create identical copies of references to the same struct
+        //This is purely for demonstration purposes; real code would do this differently
+        return array_create(_metadata.count, {
+            object: oGuiLibRect,
+            vars: {
+                image_blend: c_blue,
+            },
+            layout: {
+                resize: [GUI_RESIZE_GROW, GUI_RESIZE_GROW],
+            },
+        });
+    },
+};
+
+gridInstance = GuiCreateViaJSON(_json, GUI_ROOT, { count: 11 });

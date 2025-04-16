@@ -31,8 +31,6 @@ GuiInputHotkey(GUI_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
 GuiInputHotkey(GUI_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
 GuiInputHotkey("escape", keyboard_check(vk_escape));
 
-GuiAnimSetAngle(current_time/20, false, gridInstance);
-
 // The main state update function. This ticks the entire system (but doesn't do any drawing).
 // Step user events (GUI_USER_EVENT_STEP, 0) are executed by this function where appropriate.
 GuiStep();
