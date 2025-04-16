@@ -47,3 +47,5 @@
 
 // Function to call when showing errors. (These cannot be disabled!)
 #macro GUI_SHOW_ERROR  show_error
+
+#macro GUI_VALIDATE_CREATE_VIA_JSON  true

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiSetListAlignChildren",
+  "%Name":"GuiSetListAlign",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiSetListAlignChildren",
+  "name":"GuiSetListAlign",
   "parent":{
     "name":"Special",
     "path":"folders/Library/Layout/Special.yy",

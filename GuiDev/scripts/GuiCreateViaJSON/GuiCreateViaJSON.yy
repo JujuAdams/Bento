@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiCreateViaJSON",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiCreateViaJSON",
+  "parent":{
+    "name":"Library",
+    "path":"folders/Library.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

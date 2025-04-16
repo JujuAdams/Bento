@@ -8,15 +8,15 @@ if ((not sprite_exists(mask_index)) && (not sprite_exists(sprite_index)))
     sprite_index = sGuiMaskRectangle;
 }
 
-GuiSetIfNotDefined(id, "navLeft",  noone);
-GuiSetIfNotDefined(id, "navRight", noone);
-GuiSetIfNotDefined(id, "navUp",    noone);
-GuiSetIfNotDefined(id, "navDown",  noone);
+GuiSetIfNotDefined("navLeft",  noone);
+GuiSetIfNotDefined("navRight", noone);
+GuiSetIfNotDefined("navUp",    noone);
+GuiSetIfNotDefined("navDown",  noone);
 
-GuiSetIfNotDefined(id, "scrollMarginLeft",   6);
-GuiSetIfNotDefined(id, "scrollMarginRight",  6);
-GuiSetIfNotDefined(id, "scrollMarginTop",    6);
-GuiSetIfNotDefined(id, "scrollMarginBottom", 6);
+GuiSetIfNotDefined("scrollMarginLeft",   6);
+GuiSetIfNotDefined("scrollMarginRight",  6);
+GuiSetIfNotDefined("scrollMarginTop",    6);
+GuiSetIfNotDefined("scrollMarginBottom", 6);
 
 ///////////////////////////
 //                       //

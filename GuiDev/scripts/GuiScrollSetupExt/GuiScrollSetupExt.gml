@@ -17,8 +17,8 @@ function GuiScrollSetupExt(_minX, _minY, _maxX, _maxY, _instance = id)
     {
         __scrollEnabled = true;
         
-        GuiSetIfNotDefined(_instance, "__scrollX", 0);
-        GuiSetIfNotDefined(_instance, "__scrollY", 0);
+        GuiSetIfNotDefined("__scrollX", 0, _instance);
+        GuiSetIfNotDefined("__scrollY", 0, _instance);
         
         __scrollX = clamp(__scrollX, _minX, _maxX);
         __scrollY = clamp(__scrollY, _minY, _maxY);

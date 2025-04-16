@@ -27,17 +27,17 @@ function __GuiSolverListPositions(_x, _y)
         
         _majorSize += __layoutPadLeft + __layoutPadRight + max(_childCount-1, 0)*__layoutGutterX;
         
-        if (__alignChildrenH == fa_center)
+        if (__layoutHAlignChildren == fa_center)
         {
             _majorPos += (layoutWidth - _majorSize)/2;
         }
-        else if (__alignChildrenH == fa_right)
+        else if (__layoutHAlignChildren == fa_right)
         {
             _majorPos += layoutWidth - _majorSize;
         }
         
         var _minorAvailable = layoutHeight - (__layoutPadTop + __layoutPadBottom);
-        var _minorAlign = __alignChildrenV;
+        var _minorAlign = __layoutVAlignChildren;
         var _childMinorPos = _minorPos; //Default for fa_top
         
         var _i = 0;
@@ -77,17 +77,17 @@ function __GuiSolverListPositions(_x, _y)
         
         _majorSize += __layoutPadTop + __layoutPadBottom + max(_childCount-1, 0)*__layoutGutterY;
         
-        if (__alignChildrenH == fa_middle)
+        if (__layoutHAlignChildren == fa_middle)
         {
             _majorPos += (layoutHeight - _majorSize)/2;
         }
-        else if (__alignChildrenH == fa_bottom)
+        else if (__layoutHAlignChildren == fa_bottom)
         {
             _majorPos += layoutHeight - _majorSize;
         }
         
         var _minorAvailable = layoutWidth - (__layoutPadLeft + __layoutPadRight);
-        var _minorAlign = __alignChildrenH;
+        var _minorAlign = __layoutHAlignChildren;
         var _childMinorPos = _minorPos; //Default for fa_left
         
         var _i = 0;

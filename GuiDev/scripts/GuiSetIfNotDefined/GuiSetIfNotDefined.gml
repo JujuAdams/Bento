@@ -2,11 +2,11 @@
 
 /// Sets a variable on an instance if it has not already been defined.
 /// 
-/// @param instance
 /// @param variableName
 /// @param value
+/// @param [instance=id]
 
-function GuiSetIfNotDefined(_instance, _variableName, _value)
+function GuiSetIfNotDefined(_variableName, _value, _instance = id)
 {
     if (not variable_instance_exists(_instance, _variableName))
     {

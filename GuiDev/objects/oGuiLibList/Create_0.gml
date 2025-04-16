@@ -17,8 +17,8 @@ __solverMinHeight = 0;
 __solverFitWidth  = 0;
 __solverFitHeight = 0;
 
-__alignChildrenH = fa_left;
-__alignChildrenV = fa_top;
+__layoutHAlignChildren = fa_left;
+__layoutVAlignChildren = fa_top;
 
 __SolverFitWidth     = method(self, __GuiSolverListFitWidth);
 __SolverResizeWidth  = method(self, __GuiSolverListResizeWidth);

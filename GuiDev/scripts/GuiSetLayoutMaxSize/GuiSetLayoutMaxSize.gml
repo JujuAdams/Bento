@@ -10,7 +10,7 @@ function GuiSetLayoutMaxSize(_width, _height, _instance = id)
     
     with(_instance)
     {
-        if (_width  != undefined)
+        if (_width != undefined)
         {
             if (__layoutWidthMin != _width)
             {

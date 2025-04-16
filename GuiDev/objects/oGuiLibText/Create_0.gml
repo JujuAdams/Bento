@@ -2,10 +2,10 @@
 
 event_inherited();
 
-GuiSetIfNotDefined(id, "text", "");
-GuiSetIfNotDefined(id, "font", -1);
-GuiSetIfNotDefined(id, "hAlign", fa_left);
-GuiSetIfNotDefined(id, "vAlign", fa_top);
+GuiSetIfNotDefined("text", "");
+GuiSetIfNotDefined("font", -1);
+GuiSetIfNotDefined("hAlign", fa_left);
+GuiSetIfNotDefined("vAlign", fa_top);
 
 __SolverFitWidth = function()
 {
