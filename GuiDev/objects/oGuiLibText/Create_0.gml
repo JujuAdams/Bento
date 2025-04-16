@@ -2,8 +2,10 @@
 
 event_inherited();
 
-if (not variable_instance_exists(id, "text")) text = "";
-if (not variable_instance_exists(id, "font")) font = -1;
+GuiSetIfNotDefined(id, "text", "");
+GuiSetIfNotDefined(id, "font", -1);
+GuiSetIfNotDefined(id, "hAlign", fa_left);
+GuiSetIfNotDefined(id, "vAlign", fa_top);
 
 __SolverFitWidth = function()
 {
@@ -63,4 +65,10 @@ __SolverFitHeight = function()
     __solverFitHeight = layoutHeight;
     
     draw_set_font(-1);
+}
+
+__SolverSetLayoutXY = function()
+{
+    layoutX = GuiRegionGetTextX(layoutLeft, layoutWidth,  hAlign);
+    layoutY = GuiRegionGetTextY(layoutTop,  layoutHeight, vAlign);
 }

@@ -6,7 +6,7 @@
 /// @param variableName
 /// @param value
 
-function __GuiSetIfNotDefined(_instance, _variableName, _value)
+function GuiSetIfNotDefined(_instance, _variableName, _value)
 {
     if (not variable_instance_exists(_instance, _variableName))
     {

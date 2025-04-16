@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiDrawClear",
+  "%Name":"GuiSetIfNotDefined",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiDrawClear",
+  "name":"GuiSetIfNotDefined",
   "parent":{
-    "name":"Draw Helpers",
-    "path":"folders/Library/Draw Helpers.yy",
+    "name":"Library",
+    "path":"folders/Library.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

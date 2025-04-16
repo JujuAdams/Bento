@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiDrawClear",
+  "%Name":"GuiRegionGetSpriteX",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiDrawClear",
+  "name":"GuiRegionGetSpriteX",
   "parent":{
     "name":"Draw Helpers",
     "path":"folders/Library/Draw Helpers.yy",

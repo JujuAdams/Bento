@@ -8,15 +8,15 @@ if ((not sprite_exists(mask_index)) && (not sprite_exists(sprite_index)))
     sprite_index = sGuiMaskRectangle;
 }
 
-__GuiSetIfNotDefined(id, "navLeft",  noone);
-__GuiSetIfNotDefined(id, "navRight", noone);
-__GuiSetIfNotDefined(id, "navUp",    noone);
-__GuiSetIfNotDefined(id, "navDown",  noone);
+GuiSetIfNotDefined(id, "navLeft",  noone);
+GuiSetIfNotDefined(id, "navRight", noone);
+GuiSetIfNotDefined(id, "navUp",    noone);
+GuiSetIfNotDefined(id, "navDown",  noone);
 
-__GuiSetIfNotDefined(id, "scrollMarginLeft",   6);
-__GuiSetIfNotDefined(id, "scrollMarginRight",  6);
-__GuiSetIfNotDefined(id, "scrollMarginTop",    6);
-__GuiSetIfNotDefined(id, "scrollMarginBottom", 6);
+GuiSetIfNotDefined(id, "scrollMarginLeft",   6);
+GuiSetIfNotDefined(id, "scrollMarginRight",  6);
+GuiSetIfNotDefined(id, "scrollMarginTop",    6);
+GuiSetIfNotDefined(id, "scrollMarginBottom", 6);
 
 ///////////////////////////
 //                       //
@@ -24,6 +24,8 @@ __GuiSetIfNotDefined(id, "scrollMarginBottom", 6);
 //                       //
 ///////////////////////////
 
+layoutX      = x;
+layoutY      = y;
 layoutLeft   = x - image_xscale*sprite_get_xoffset(sprite_index);
 layoutTop    = y - image_yscale*sprite_get_yoffset(sprite_index);
 layoutWidth  = sprite_width;
@@ -146,6 +148,8 @@ __SolverPositions = function(_x, _y)
     layoutLeft = _x;
     layoutTop  = _y;
     
+    __SolverSetLayoutXY();
+    
     var _childArray = __childArray;
     var _i = 0;
     repeat(array_length(_childArray))
@@ -153,4 +157,10 @@ __SolverPositions = function(_x, _y)
         _childArray[_i].__SolverPositions(_x, _y);
         ++_i;
     }
+}
+
+__SolverSetLayoutXY = function()
+{
+    layoutX = layoutLeft + 0.5*layoutWidth;
+    layoutY = layoutTop  + 0.5*layoutHeight;
 }

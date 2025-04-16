@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiDrawClear",
+  "%Name":"GuiDrawTextExtRegion",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiDrawClear",
+  "name":"GuiDrawTextExtRegion",
   "parent":{
     "name":"Draw Helpers",
     "path":"folders/Library/Draw Helpers.yy",
