@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiLayoutSetListAxis",
   "parent":{
-    "name":"Special",
-    "path":"folders/Library/Layout/Special.yy",
+    "name":"Lists & Grids",
+    "path":"folders/Library/Layout/Lists & Grids.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

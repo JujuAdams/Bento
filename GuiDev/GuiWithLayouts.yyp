@@ -34,7 +34,7 @@
     {"$GMFolder":"","%Name":"Input","folderPath":"folders/Library/Input.yy","name":"Input","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Instances","folderPath":"folders/Library/Instances.yy","name":"Instances","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Layout","folderPath":"folders/Library/Layout.yy","name":"Layout","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Special","folderPath":"folders/Library/Layout/Special.yy","name":"Special","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Lists & Grids","folderPath":"folders/Library/Layout/Lists & Grids.yy","name":"Lists & Grids","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Navigation","folderPath":"folders/Library/Navigation.yy","name":"Navigation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Actions","folderPath":"folders/Library/Navigation/Actions.yy","name":"Actions","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Getters","folderPath":"folders/Library/Navigation/Getters.yy","name":"Getters","resourceType":"GMFolder","resourceVersion":"2.0",},
