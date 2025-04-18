@@ -47,4 +47,9 @@ with(__GuiSystem())
         other.__animating = false;
         __animCount--;
     }
+    
+    if (__GUI_DEBUG)
+    {
+        variable_struct_remove(__debugDict, __debugUUID);
+    }
 }

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiMarkScrollDirty",
+  "%Name":"__GuiMakeUUID",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiMarkScrollDirty",
+  "name":"__GuiMakeUUID",
   "parent":{
-    "name":"Scroll",
-    "path":"folders/Library/(System)/Scroll.yy",
+    "name":"(System)",
+    "path":"folders/Library/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

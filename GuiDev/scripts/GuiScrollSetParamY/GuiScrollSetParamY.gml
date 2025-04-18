@@ -7,7 +7,7 @@ function GuiScrollSetParamY(_param, _instance = id)
 {
     with(_instance)
     {
-        GuiScrollSet(__scrollX, lerp(__scrollMinY, __scrollMaxY, 1 - clamp(_param, 0, 1)));
+        GuiScrollSet(__scrollY, lerp(__scrollMinY, __scrollMaxY, 1 - clamp(_param, 0, 1)));
     }
     
     return 0;

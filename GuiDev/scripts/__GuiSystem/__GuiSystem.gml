@@ -9,6 +9,8 @@
 #macro __GUI_RETURN_MODAL           1
 #macro __GUI_RETURN_BLOCK_SIBLINGS  2
 
+#macro __GUI_DEBUG  GUI_RUNNING_FROM_IDE
+
 __GuiSystem();
 function __GuiSystem()
 {
@@ -41,6 +43,12 @@ function __GuiSystem()
         __dirtyScrollLimitsArray = [];
         
         __scissorStack = [];
+        
+        if (__GUI_DEBUG)
+        {
+            __debugGlobalCount = 0;
+            __debugDict = {};
+        }
         
         if ((os_type == os_switch)
         ||  (os_type == os_ps4)
@@ -125,6 +133,11 @@ function __GuiSystem()
     if (GUI_RUNNING_FROM_IDE)
     {
         global.GuiSystem = _system;
+        
+        if (__GUI_DEBUG)
+        {
+            global.GuiSystemInstances = _system.__debugDict;
+        }
     }
     
     return _system;

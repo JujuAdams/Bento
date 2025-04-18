@@ -1,5 +1,17 @@
 // Feather disable all
 
+if (__GUI_DEBUG)
+{
+    var _system = __GuiSystem();
+    
+    var _globalCount = _system.__debugGlobalCount;
+    ++_globalCount;
+    _system.__debugGlobalCount = _globalCount;
+    
+    __debugUUID = __GuiMakeUUID(id, object_index, _globalCount);
+    _system.__debugDict[$ __debugUUID] = self;
+}
+
 var _system = __GuiSystem();
 
 //Library instances are expected to persist between rooms.
@@ -79,8 +91,8 @@ __scissorEnabled = false;
 __scrollHori = false;
 __scrollVert = false;
 //Further scroll variables set in `GuiScrollSetEnabled()`
-__scrollX    = 0;
-__scrollY    = 0;
+__scrollX = 0;
+__scrollY = 0;
 
 __tabIdent        = undefined;
 __tabIdentChildOf = undefined;
@@ -107,8 +119,8 @@ __layoutVAlign = fa_middle;
 
 //The "preferred" (ideal) size for the instance. A value of 0 (or less) indicates that this value
 //is unset and should be inferred from some other property.
-__layoutWidthPref  = sprite_width;
-__layoutHeightPref = sprite_height;
+__layoutWidthPref  = 0;
+__layoutHeightPref = 0;
 
 //The upper and lower bounds for the instance. The preferred size is always clamped within this
 //range.
@@ -138,7 +150,7 @@ __solverMinHeight = 0;
 __SolverFitWidth = function()
 {
     // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-    layoutWidth = clamp(__layoutWidthPref, __layoutWidthMin, __layoutWidthMax);
+    layoutWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : sprite_width, __layoutWidthMin, __layoutWidthMax);
     
     __solverFitWidth = layoutWidth;
     __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : layoutWidth;
@@ -169,7 +181,7 @@ __LayoutReflow = function()
 __SolverFitHeight = function()
 {
     // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-    layoutHeight = clamp(__layoutHeightPref, __layoutHeightMin, __layoutHeightMax);
+    layoutHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : sprite_height, __layoutHeightMin, __layoutHeightMax);
     
     __solverFitHeight = layoutHeight;
     __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : layoutHeight;
@@ -177,7 +189,7 @@ __SolverFitHeight = function()
 
 //Resizes both this instance and any child instances that are set to "fit" or "grow" resize types.
 //See `__GuiSolverListResizeWidth()` and `__GuiSolverListResizeHeight()`.
-__SolverResizeHeight = function(_maxWidth)
+__SolverResizeHeight = function()
 {
     // N.B. `oGuiLibList`, `oGuiLibGrid` override this function.
     
