@@ -15,7 +15,7 @@ if (not variable_instance_exists(id, "text")) text = "Example";
 if (not variable_instance_exists(id, "func")) func = function(){};
 
 // Set a reasonable default value by using the size of the text label that will be drawn on the button.
-GuiSetLayoutSize(20 + string_width(text), 20 + string_height(text));
+GuiLayoutSetSize(20 + string_width(text), 20 + string_height(text));
 
 // Ensure that the method set as the callback is guaranteed to be scoped to this instance. This
 // avoids confusion about scoping when methods are set in e.g. a parent instance.

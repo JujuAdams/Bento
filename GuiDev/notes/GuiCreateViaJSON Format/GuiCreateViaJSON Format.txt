@@ -34,7 +34,7 @@ are set before the Create event is executed for the new instance. This is analog
 
 Instance definition structs may contain a `.layout` property. If specified, this should be a struct
 that contains definitions for layout rules. Each layout property is associated with a layout
-function (`GuiSetLayoutOffset()` etc.). There are many layout properties that can be defined:
+function (`GuiLayoutSetOffset()` etc.). There are many layout properties that can be defined:
 
 .offset
 .size
@@ -85,7 +85,7 @@ Here is a brief example:
 }
 
 .offset
-    Calls the `GuiSetLayoutOffset()` function on the created instance.
+    Calls the `GuiLayoutSetOffset()` function on the created instance.
     
     Can be a 2-element array:
         [ <x offset>, <y offset> ]
@@ -99,7 +99,7 @@ Here is a brief example:
     to a particular value.
     
 .size
-    Calls the `GuiSetLayoutSize()` function on the created instance. "Size" means the "preferred
+    Calls the `GuiLayoutSetSize()` function on the created instance. "Size" means the "preferred
     size" which is an important detail in the layout algorithm.
     
     Can be a 2-element array:
@@ -115,7 +115,7 @@ Here is a brief example:
     particular value.
     
 .minSize
-    Calls the `GuiSetLayoutMinSize()` function on the created instance.
+    Calls the `GuiLayoutSetMinSize()` function on the created instance.
     
     Can be a 2-element array:
         [ <width>, <height> ]
@@ -130,7 +130,7 @@ Here is a brief example:
     particular value.
     
 .maxSize
-    Calls the `GuiSetLayoutMaxSize()` function on the created instance.
+    Calls the `GuiLayoutSetMaxSize()` function on the created instance.
     
     Can be a 2-element array:
         [ <width>, <height> ]
@@ -145,7 +145,7 @@ Here is a brief example:
     particular value.
 
 .resize
-    Calls the `GuiSetLayoutResizeType()` function on the created instance.
+    Calls the `GuiLayoutSetResizeType()` function on the created instance.
     
     Can be a 2-element array:
         [ <x type>, <y type> ]
@@ -166,7 +166,7 @@ Here is a brief example:
     You may also use `null` to indicate that no change should be made to a particular value.
 
 .padding
-    Calls the `GuiSetLayoutPadding()` function on the created instance.
+    Calls the `GuiLayoutSetPadding()` function on the created instance.
     
     Can be a 2-element array:
         [ <left>, <top>, <right>, <bottom> ]
@@ -183,7 +183,7 @@ Here is a brief example:
     particular value.
 
 .align
-    Calls the `GuiSetLayoutAlignSelf()` function on the created instance.
+    Calls the `GuiLayoutSetAlignSelf()` function on the created instance.
     
     Can be a 2-element array:
         [ <h align>, <v align> ]
@@ -213,7 +213,7 @@ Here is a brief example:
     You may also use `null` for either value to indicate that no change should be made.
 
 .gutter
-    Calls the `GuiSetLayoutGutter()` function on the created instance. This property can only be
+    Calls the `GuiLayoutSetGutter()` function on the created instance. This property can only be
     used for objects that inherit from `oGuiLibList` or `oGuiLibGrid`.
     
     Can be a 2-element array:
@@ -228,7 +228,7 @@ Here is a brief example:
     to a particular value.
 
 .listAlign
-    Calls the `GuiSetListAlign()` function on the created instance. This property can only be used
+    Calls the `GuiLayoutSetListAlign()` function on the created instance. This property can only be used
     for objects that inherit from `oGuiLibList`.
     
     Can be a 2-element array:
@@ -259,7 +259,7 @@ Here is a brief example:
     You may also use `null` for either value to indicate that no change should be made.
 
 .listAxis
-    Calls the `GuiSetListAxis()` function on the created instance. This property can only be used
+    Calls the `GuiLayoutSetListAxis()` function on the created instance. This property can only be used
     for objects that inherit from `oGuiLibList`.
     
     List axis values must be one of the following:
@@ -271,7 +271,7 @@ Here is a brief example:
     You may also use `null` for either value to indicate that no change should be made.
     
 .gridSize
-    Calls the `GuiSetGridSize()` function on the created instance. This property can only be used
+    Calls the `GuiLayoutSetGridSize()` function on the created instance. This property can only be used
     for objects that inherit from `oGuiLibGrid`.
     
     Can be a 2-element array:

@@ -6,36 +6,36 @@ GuiInputConfigureNavigation(10, 9, 4, 5);
 //{
 //    image_blend = c_navy;
 //    
-//    GuiSetListAxis(0);
-//    GuiSetLayoutSize(600, 200);
-//    GuiSetLayoutResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);
-//    GuiSetLayoutPadding(10, 10, 10, 10);
-//    GuiSetLayoutGutter(10, 10);
+//    GuiLayoutSetListAxis(0);
+//    GuiLayoutSetSize(600, 200);
+//    GuiLayoutSetResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);
+//    GuiLayoutSetPadding(10, 10, 10, 10);
+//    GuiLayoutSetGutter(10, 10);
 //    
 //    with(GuiCreate(oGuiLibList))
 //    {
 //        image_blend = c_red;
-//        GuiSetLayoutSize(100, 100);
+//        GuiLayoutSetSize(100, 100);
 //    }
 //    
 //    with(GuiCreate(oGuiLibList))
 //    {
 //        image_blend = c_yellow;
-//        GuiSetLayoutSize(100, 100);
-//        GuiSetLayoutResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
+//        GuiLayoutSetSize(100, 100);
+//        GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
 //    }
 //    
 //    with(GuiCreate(oGuiLibList))
 //    {
 //        image_blend = c_yellow;
-//        GuiSetLayoutSize(100, 100);
-//        GuiSetLayoutResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
+//        GuiLayoutSetSize(100, 100);
+//        GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
 //    }
 //    
 //    with(GuiCreate(oGuiLibList))
 //    {
 //        image_blend = c_blue;
-//        GuiSetLayoutSize(100, 100);
+//        GuiLayoutSetSize(100, 100);
 //    }
 //}
 

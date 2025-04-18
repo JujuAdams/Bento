@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayoutSetGutter",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayoutSetGutter",
+  "parent":{
+    "name":"Special",
+    "path":"folders/Library/Layout/Special.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
