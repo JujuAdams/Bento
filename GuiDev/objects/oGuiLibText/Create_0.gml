@@ -11,34 +11,20 @@ __SolverFitWidth = function()
 {
     draw_set_font(font);
     
-    if (__layoutWidthResize == GUI_RESIZE_FIT)
+    //Determine the preferred width for the text. If the preferred width isn't set then we use the
+    //full width of the text string itself.
+    var _widthPref = clamp((__layoutWidthPref > 0)? __layoutWidthPref : string_width(text), __layoutWidthMin, __layoutWidthMax);
+    layoutWidth = _widthPref;
+    
+    if (__layoutWidthResize == GUI_RESIZE_STATIC)
     {
-        //Use the wrapped width of the text as the initial guess for a good layout width. The
-        //algorithm will refine the width as it goes.
-        //
-        //P.S. Not sure how well GameMaker handles `infinity` for some internal functions.
-        layoutWidth = max(__layoutWidthMin, string_width_ext(text, -1, min(999999, __layoutWidthMax)));
-        
-        //Use a conveniently small string to act as a baseline minimum width if no minimum width has been specified.
-        __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : string_width("Adams");
+        //For static (non-resizing) text, we treat the width of the text as a hard limit.
+        __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : _widthPref;
     }
     else
     {
-        //Determine the preferred width for the text. If the preferred width isn't set then we use the
-        //full width of the text string itself.
-        var _widthPref = (__layoutWidthPref > 0)? __layoutWidthPref : string_width(text);
-        layoutWidth = clamp(_widthPref, __layoutWidthMin, __layoutWidthMax);
-        
-        if (__layoutWidthResize == GUI_RESIZE_GROW)
-        {
-            //Use a conveniently small string to act as a baseline minimum width if no minimum width has been specified.
-            __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : string_width("Adams");
-        }
-        else
-        {
-            //For static (non-resizing) text, we treat the width of the text as a hard limit.
-            __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : _widthPref;
-        }
+        //Use a conveniently small string to act as a baseline minimum width if no minimum width has been specified.
+        __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : string_width("Adams");
     }
     
     //Whatever the weather, the width for the purpose of fitting the parent is whatever layout
