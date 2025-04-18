@@ -106,9 +106,9 @@ function __GuiSolverListResizeWidth()
                     var _prevSize = _child.layoutWidth;
                     if (_prevSize == _min)
                     {
-                        if (_prevSize + _addition >= _child.__layoutWidthMin)
+                        if (_prevSize + _addition >= _child.__layoutWidthMax)
                         {
-                            var _newSize = _child.__layoutWidthMin;
+                            var _newSize = _child.__layoutWidthMax;
                             array_delete(_modifiableArray, array_get_index(_modifiableArray, _child), 1);
                         }
                         else

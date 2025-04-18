@@ -7,6 +7,8 @@ function __GuiEnsureLayout()
     
     with(_system)
     {
+        __animationDirty = true;
+        
         var _layoutOrder = __layoutOrder;
         array_resize(_layoutOrder, 0);
         __layoutDirty = false;

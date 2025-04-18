@@ -12,9 +12,9 @@ function GuiSetLayoutMaxSize(_width, _height, _instance = id)
     {
         if (_width != undefined)
         {
-            if (__layoutWidthMin != _width)
+            if (__layoutWidthMax != _width)
             {
-                __layoutWidthMin = _width;
+                __layoutWidthMax = _width;
                 _system.__layoutDirty = true;
             }
         }
