@@ -150,7 +150,7 @@ __solverMinHeight = 0;
 __SolverFitWidth = function()
 {
     // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-    layoutWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : sprite_width, __layoutWidthMin, __layoutWidthMax);
+    layoutWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(sprite_index)? sprite_get_width(sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
     
     __solverFitWidth = layoutWidth;
     __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : layoutWidth;
@@ -170,7 +170,7 @@ __SolverResizeWidth = function()
 __SolverFitHeight = function()
 {
     // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-    layoutHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : sprite_height, __layoutHeightMin, __layoutHeightMax);
+    layoutHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(sprite_index)? sprite_get_height(sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
     
     __solverFitHeight = layoutHeight;
     __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : layoutHeight;
