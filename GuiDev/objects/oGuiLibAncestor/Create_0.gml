@@ -164,17 +164,6 @@ __SolverResizeWidth = function()
     
     //Do nothing
 }
-
-//Adjusts the instance's width based on new parameters received from the solver.
-__LayoutReflow = function()
-{
-    // N.B. `oGuiLibText` overrides this function.
-    
-    //Do nothing
-    
-    //TODO - Implement constant aspect ratio here?
-}
-
 //Function that sets the solver's fit height and minimum height. This is a boring function for most
 //instances. It gets more exciting for lists - see `__GuiSolverListFitHeight()`. This function also
 //preliminarily sets the final calculated height for the instance (`layoutHeight`).

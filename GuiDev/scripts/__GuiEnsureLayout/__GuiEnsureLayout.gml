@@ -37,14 +37,6 @@ function __GuiEnsureLayout()
             ++_i;
         }
         
-        //Reflow text
-        var _i = 0;
-        repeat(_instanceCount)
-        {
-            _layoutOrder[_i].__LayoutReflow();
-            ++_i;
-        }
-        
         //ulate static heights of instances
         var _i = _instanceCount-1;
         repeat(_instanceCount)
