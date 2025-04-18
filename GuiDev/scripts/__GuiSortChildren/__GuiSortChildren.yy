@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiSortChildren",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "name":"Priority & Sorting",
+    "path":"folders/Library/(System)/Priority & Sorting.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

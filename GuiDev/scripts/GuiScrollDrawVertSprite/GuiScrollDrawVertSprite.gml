@@ -16,7 +16,7 @@ function GuiScrollDrawVertSprite(_left, _top, _right, _bottom, _barSprite, _hand
 {
     with(_instance)
     {
-        if (not _instance.__scrollEnabled) return;
+        if (not _instance.__scrollVert) return;
         
         var _scrollSize = __scrollMaxY - __scrollMinY;
         if (_scrollSize <= 0) return;

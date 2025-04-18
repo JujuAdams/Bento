@@ -94,4 +94,5 @@ function GuiStep()
         --_i;
     }
     
+    __GuiEnsureScrollLimits();
 }

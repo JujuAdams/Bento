@@ -23,6 +23,6 @@ function GuiDestroyChildren(_parent = id)
         __funcDestroy(__childArray);
         
         //No children = No problem
-        __orderDirty = false;
+        __priorityDirty = false;
     }
 }

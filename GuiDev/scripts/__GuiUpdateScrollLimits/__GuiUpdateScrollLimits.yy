@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiUpdateScrollLimits",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiUpdateScrollLimits",
+  "parent":{
+    "name":"Scroll",
+    "path":"folders/Library/(System)/Scroll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

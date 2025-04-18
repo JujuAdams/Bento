@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiEnsureCorrectChildOrder",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "name":"Ensure",
+    "path":"folders/Library/(System)/Ensure.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

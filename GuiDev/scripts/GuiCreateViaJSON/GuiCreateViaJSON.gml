@@ -107,31 +107,31 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
                     
                     if (_name == "offset")
                     {
-                        __GuiLayoutJSON_offset(_instance, _value);
+                        __GuiJSONLayout_offset(_instance, _value);
                     }
                     else if (_name == "size")
                     {
-                        __GuiLayoutJSON_size(_instance, _value);
+                        __GuiJSONLayout_size(_instance, _value);
                     }
                     else if (_name == "minSize")
                     {
-                        __GuiLayoutJSON_minSize(_instance, _value);
+                        __GuiJSONLayout_minSize(_instance, _value);
                     }
                     else if (_name == "maxSize")
                     {
-                        __GuiLayoutJSON_maxSize(_instance, _value);
+                        __GuiJSONLayout_maxSize(_instance, _value);
                     }
                     else if (_name == "resize")
                     {
-                        __GuiLayoutJSON_resize(_instance, _value);
+                        __GuiJSONLayout_resize(_instance, _value);
                     }
                     else if (_name == "padding")
                     {
-                        __GuiLayoutJSON_padding(_instance, _value);
+                        __GuiJSONLayout_padding(_instance, _value);
                     }
                     else if (_name == "align")
                     {
-                        __GuiLayoutJSON_align(_instance, _value);
+                        __GuiJSONLayout_align(_instance, _value);
                     }
                     else if (_name == "gutter")
                     {
@@ -140,7 +140,7 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
                             __GuiError($"Cannot use .gutter on an object ({object_get_name(_object)}) that does not inherit from {object_get_name(oGuiLibList)} or {object_get_name(oGuiLibGrid)}");
                         }
                         
-                        __GuiLayoutJSON_gutter(_instance, _value);
+                        __GuiJSONLayout_gutter(_instance, _value);
                     }
                     else if (_name == "listAlign")
                     {
@@ -149,7 +149,7 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
                             __GuiError($"Cannot use .listAlign on an object ({object_get_name(_object)}) that does not inherit from {object_get_name(oGuiLibList)}");
                         }
                         
-                        __GuiLayoutJSON_listAlign(_instance, _value);
+                        __GuiJSONLayout_listAlign(_instance, _value);
                     }
                     else if (_name == "listAxis")
                     {
@@ -158,7 +158,7 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
                             __GuiError($"Cannot use .listAxis on an object ({object_get_name(_object)}) that does not inherit from {object_get_name(oGuiLibList)}");
                         }
                         
-                        __GuiLayoutJSON_listAxis(_instance, _value);
+                        __GuiJSONLayout_listAxis(_instance, _value);
                     }
                     else if (_name == "gridSize")
                     {
@@ -167,7 +167,7 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
                             __GuiError($"Cannot use .gridSize on an object ({object_get_name(_object)}) that does not inherit from {object_get_name(oGuiLibGrid)}");
                         }
                         
-                        __GuiLayoutJSON_gridSize(_instance, _value);
+                        __GuiJSONLayout_gridSize(_instance, _value);
                     }
                     else
                     {
@@ -215,6 +215,74 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
             }
         }
         
+        var _scissor = _json[$ "scissor"];
+        if (_scissor != undefined)
+        {
+            if (not is_struct(_children))
+            {
+                __GuiError($".scissor property must be a struct (was {typeof(_children)})");
+            }
+            else
+            {
+                var _nameArray = variable_struct_get_names(_layout);
+                var _i = 0;
+                repeat(array_length(_nameArray))
+                {
+                    var _name  = _nameArray[_i];
+                    var _value = _layout[$ _name];
+                    
+                    if (_name == "enabled")
+                    {
+                        __GuiJSONScissor_enabled(_instance, _value);
+                    }
+                    else if (_name == "padding")
+                    {
+                        __GuiJSONScissor_padding(_instance, _value);
+                    }
+                    else
+                    {
+                        __GuiError($"Scissor property name \"{_name}\" not recognized or not supported");
+                    }
+                    
+                    ++_i;
+                }
+            }
+        }
+        
+        var _scroll = _json[$ "scroll"];
+        if (_scroll != undefined)
+        {
+            if (not is_struct(_children))
+            {
+                __GuiError($".scroll property must be a struct (was {typeof(_children)})");
+            }
+            else
+            {
+                var _nameArray = variable_struct_get_names(_layout);
+                var _i = 0;
+                repeat(array_length(_nameArray))
+                {
+                    var _name  = _nameArray[_i];
+                    var _value = _layout[$ _name];
+                    
+                    if (_name == "enabled")
+                    {
+                        __GuiJSONScroll_enabled(_instance, _value);
+                    }
+                    else if (_name == "padding")
+                    {
+                        __GuiJSONScroll_padding(_instance, _value);
+                    }
+                    else
+                    {
+                        __GuiError($"Scroll property name \"{_name}\" not recognized or not supported");
+                    }
+                    
+                    ++_i;
+                }
+            }
+        }
+        
         return _instance;
     }
     else
@@ -228,7 +296,7 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
 ////////
 // .offset
 ////////
-function __GuiLayoutJSON_offset(_instance, _value)
+function __GuiJSONLayout_offset(_instance, _value)
 {
     if (is_array(_value))
     {
@@ -254,7 +322,7 @@ function __GuiLayoutJSON_offset(_instance, _value)
 ////////
 // .size
 ////////
-function __GuiLayoutJSON_size(_instance, _value)
+function __GuiJSONLayout_size(_instance, _value)
 {
     var _width  = undefined;
     var _height = undefined;
@@ -289,7 +357,7 @@ function __GuiLayoutJSON_size(_instance, _value)
 ////////
 // .minSize
 ////////
-function __GuiLayoutJSON_minSize(_instance, _value)
+function __GuiJSONLayout_minSize(_instance, _value)
 {
     var _width  = undefined;
     var _height = undefined;
@@ -324,7 +392,7 @@ function __GuiLayoutJSON_minSize(_instance, _value)
 ////////
 // .maxSize
 ////////
-function __GuiLayoutJSON_maxSize(_instance, _value)
+function __GuiJSONLayout_maxSize(_instance, _value)
 {
     var _width  = undefined;
     var _height = undefined;
@@ -359,7 +427,7 @@ function __GuiLayoutJSON_maxSize(_instance, _value)
 ////////
 // .resize
 ////////
-function __GuiLayoutJSON_resize(_instance, _value)
+function __GuiJSONLayout_resize(_instance, _value)
 {
     var _x = undefined;
     var _y = undefined;
@@ -454,7 +522,7 @@ function __GuiLayoutJSON_resize(_instance, _value)
 ////////
 // .padding
 ////////
-function __GuiLayoutJSON_padding(_instance, _value)
+function __GuiJSONLayout_padding(_instance, _value)
 {
     if (is_array(_value))
     {
@@ -484,7 +552,7 @@ function __GuiLayoutJSON_padding(_instance, _value)
 ////////
 // .gutter
 ////////
-function __GuiLayoutJSON_gutter(_instance, _value)
+function __GuiJSONLayout_gutter(_instance, _value)
 {
     if (is_array(_value))
     {
@@ -510,7 +578,7 @@ function __GuiLayoutJSON_gutter(_instance, _value)
 ////////
 // .align
 ////////
-function __GuiLayoutJSON_align(_instance, _value)
+function __GuiJSONLayout_align(_instance, _value)
 {
     var _h = undefined;
     var _v = undefined;
@@ -605,7 +673,7 @@ function __GuiLayoutJSON_align(_instance, _value)
 ////////
 // .listAlign
 ////////
-function __GuiLayoutJSON_listAlign(_instance, _value)
+function __GuiJSONLayout_listAlign(_instance, _value)
 {
     var _h = undefined;
     var _v = undefined;
@@ -700,7 +768,7 @@ function __GuiLayoutJSON_listAlign(_instance, _value)
 ////////
 // .listAxis
 ////////
-function __GuiLayoutJSON_listAxis(_instance, _value)
+function __GuiJSONLayout_listAxis(_instance, _value)
 {
     if (is_numeric(_value))
     {
@@ -737,7 +805,7 @@ function __GuiLayoutJSON_listAxis(_instance, _value)
 ////////
 // .gridSize
 ////////
-function __GuiLayoutJSON_gridSize(_instance, _value)
+function __GuiJSONLayout_gridSize(_instance, _value)
 {
     if (is_array(_value))
     {
@@ -757,5 +825,99 @@ function __GuiLayoutJSON_gridSize(_instance, _value)
     else
     {
         __GuiError($".gridSize layout property must be a two-element array or a struct (typeof \"{typeof(_value)}\")");
+    }
+}
+
+
+
+////////
+// .enabled
+////////
+function __GuiJSONScissor_enabled(_instance, _value)
+{
+    if (is_bool(_value))
+    {
+        GuiScissorSet(_value, _instance);
+    }
+    else
+    {
+        __GuiError($".enabled scissor property must be a boolean (was {typeof(_value)})");
+    }
+}
+
+
+
+////////
+// .padding
+////////
+function __GuiJSONScissor_padding(_instance, _value)
+{
+    if (is_array(_value))
+    {
+        if (array_length(_value) != 4)
+        {
+            __GuiError($".padding scissor property must have 4 elements if it is an array (length = {array_length(_value)})");
+        }
+        
+        GuiScissorSetPadding(_value[0], _value[1], _value[2], _value[3], _instance);
+    }
+    else if (is_struct(_value))
+    {
+        GuiScissorSetPadding(_value[$ "l"] ?? _value[$ "left"],
+                             _value[$ "t"] ?? _value[$ "top"],
+                             _value[$ "r"] ?? _value[$ "right"],
+                             _value[$ "b"] ?? _value[$ "bottom"],
+                             _instance);
+    }
+    else
+    {
+        __GuiError($".padding scissor property must be a 4-element array or a struct (typeof \"{typeof(_value)}\")");
+    }
+}
+
+
+
+////////
+// .enabled
+////////
+function __GuiJSONScroll_enabled(_instance, _value)
+{
+    if (is_bool(_value))
+    {
+        GuiScrollSetEnabled(_value, _instance);
+    }
+    else
+    {
+        __GuiError($".enabled scroll property must be a boolean (was {typeof(_value)})");
+    }
+}
+
+
+
+////////
+// .padding
+////////
+function __GuiJSONScroll_padding(_instance, _value)
+{
+    if (is_array(_value))
+    {
+        if (array_length(_value) != 4)
+        {
+            __GuiError($".padding scroll property must have 4 elements if it is an array (length = {array_length(_value)})");
+        }
+        
+        GuiScissorSetPadding(_value[0], _value[1], _value[2], _value[3], _instance);
+    }
+    else if (is_struct(_value))
+    {
+        GuiScrollSetPadding(_value[$ "l"] ?? _value[$ "left"],
+                            _value[$ "t"] ?? _value[$ "top"],
+                            _value[$ "r"] ?? _value[$ "right"],
+                            _value[$ "b"] ?? _value[$ "bottom"],
+                            _instance);
+    }
+    else
+    {
+        __GuiError($".padding scroll property must be a 4-element array or a struct (typeof \"{typeof(_value)}\")");
     }
 }

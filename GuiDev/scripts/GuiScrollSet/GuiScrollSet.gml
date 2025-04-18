@@ -10,7 +10,7 @@ function GuiScrollSet(_scrollX, _scrollY, _instance = id)
 {
     with(_instance)
     {
-        if (not __scrollEnabled) return;
+        if ((not __scrollHori) && (not __scrollVert)) return;
         
         var _oldX = __scrollX;
         var _oldY = __scrollY;

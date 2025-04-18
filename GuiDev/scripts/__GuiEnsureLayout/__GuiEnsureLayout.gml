@@ -39,7 +39,7 @@ function __GuiEnsureLayout()
         var _i = 0;
         repeat(_instanceCount)
         {
-            _layoutOrder[_i].__LayoutReflowText();
+            _layoutOrder[_i].__LayoutReflow();
             ++_i;
         }
         

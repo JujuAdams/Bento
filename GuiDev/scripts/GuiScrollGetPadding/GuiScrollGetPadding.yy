@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScrollSetRegionAbsolute",
+  "%Name":"GuiScrollGetPadding",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScrollSetRegionAbsolute",
+  "name":"GuiScrollGetPadding",
   "parent":{
     "name":"Setup",
-    "path":"folders/Library/Scroll/Setup.yy",
+    "path":"folders/Library/Scissor & Scroll/Scroll/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

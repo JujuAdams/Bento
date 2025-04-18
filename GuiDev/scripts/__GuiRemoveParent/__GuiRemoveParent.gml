@@ -22,5 +22,7 @@ function __GuiRemoveParent(_child)
         _funcRemove(_parent.__childArray,  _child);
     }
     
+    GuiScrollLimitsMarkDirty(_parent);
+    
     _child.__parent = noone;
 }

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollGetRegion",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Library/Scroll/Setup.yy",
+    "name":"Getters",
+    "path":"folders/Library/Scissor & Scroll/Scroll/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

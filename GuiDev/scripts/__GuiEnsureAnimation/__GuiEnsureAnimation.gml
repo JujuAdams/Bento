@@ -50,8 +50,6 @@ function __GuiEnsureAnimationInner(_instance, _parentXOffset, _parentYOffset, _p
         var _childArray = __childArray;
         if (array_length(_childArray) > 0)
         {
-            _x += __scrollX;
-            _y += __scrollY;
             var _angle = image_angle;
             
             var _childArray = __childArray;

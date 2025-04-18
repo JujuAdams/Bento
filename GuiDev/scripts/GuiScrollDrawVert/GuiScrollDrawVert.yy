@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollDrawVert",
   "parent":{
-    "name":"Draw",
-    "path":"folders/Library/Scroll/Draw.yy",
+    "name":"OLD",
+    "path":"folders/Library/Scissor & Scroll/Scroll/OLD.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

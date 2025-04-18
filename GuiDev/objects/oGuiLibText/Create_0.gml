@@ -11,39 +11,56 @@ __SolverFitWidth = function()
 {
     draw_set_font(font);
     
-    var _width    = __layoutWidthPref;
-    var _height   = __layoutHeightPref;
-    
-    if (_width  <= 0) _width  = string_width( text);
-    if (_height <= 0) _height = string_height(text);
-    
     if (__layoutWidthResize == GUI_RESIZE_FIT)
     {
-        layoutWidth = string_width_ext(text, -1, min(999999, __layoutWidthMin)); //Not sure how well GameMaker handle `infinity` for some internal functions
+        //Use the wrapped width of the text as the initial guess for a good layout width. The
+        //algorithm will refine this.
+        //
+        //P.S. Not sure how well GameMaker handles `infinity` for some internal functions.
+        layoutWidth = max(__layoutWidthMin, string_width_ext(text, -1, min(999999, __layoutWidthMax)));
+        
+        //Use a conveniently small string to act as a baseline minimum width if no minimum width has been specified.
+        __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : string_width("Adams");
     }
     else
     {
-        layoutWidth = clamp(_width, __layoutWidthMin, __layoutWidthMax);
+        //Determine the preferred width for the text. If the preferred width isn't set then we use the
+        //full width of the text string itself.
+        var _widthPref = (__layoutWidthPref > 0)? __layoutWidthPref : string_width(text);
+        layoutWidth = clamp(_widthPref, __layoutWidthMin, __layoutWidthMax);
+        
+        if (__layoutWidthResize == GUI_RESIZE_GROW)
+        {
+            //Use a conveniently small string to act as a baseline minimum width if no minimum width has been specified.
+            __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : string_width("Adams");
+        }
+        else
+        {
+            //For static (non-resizing) text, we treat the width of the text as a hard limit.
+            __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : _widthPref;
+        }
     }
     
-    __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : ((__layoutWidthResize == GUI_RESIZE_STATIC)? _width : string_width("Hello"));
+    //Whatever the weather, the width for the purpose of fitting the parent is whatever layout
+    //width guess we've made.
     __solverFitWidth = layoutWidth;
     
     draw_set_font(-1);
 }
 
-__LayoutReflowText = function()
+__LayoutReflow = function()
 {
-    draw_set_font(font);
-    
     if (__layoutWidthResize == GUI_RESIZE_FIT)
     {
+        draw_set_font(font);
+        
+        //Calculate a new, more accurate width.
         var _width = string_width_ext(text, -1, layoutWidth);
         layoutWidth = _width;
         __solverFitWidth = _width;
+        
+        draw_set_font(-1);
     }
-    
-    draw_set_font(-1);
 }
 
 __SolverFitHeight = function()
@@ -52,14 +69,18 @@ __SolverFitHeight = function()
     
     if (__layoutHeightResize == GUI_RESIZE_FIT)
     {
-        var _height = max(__layoutHeightMin, string_height_ext(text, -1, layoutWidth)); //Not sure how well GameMaker handle `infinity` for some internal functions
+        //Change the height of this instance based on the new wrapping rules.
+        //
+        //P.S. Not sure how well GameMaker handles `infinity` for some internal functions
+        var _height = max(__layoutHeightMin, string_height_ext(text, -1, layoutWidth));
         __solverMinHeight = _height;
-        layoutHeight    = _height;
+        layoutHeight      = _height;
     }
     else
     {
+        //
         __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : string_height(text);
-        layoutHeight    = clamp(__layoutHeightPref, __layoutHeightMin, __layoutHeightMax);
+        layoutHeight      = clamp(__layoutHeightPref, __layoutHeightMin, __layoutHeightMax);
     }
     
     __solverFitHeight = layoutHeight;

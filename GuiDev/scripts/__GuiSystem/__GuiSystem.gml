@@ -36,7 +36,9 @@ function __GuiSystem()
         __drawOrder = [];
         __drawDirty = true;
         
-        __dirtyOrderArray = [];
+        __dirtyPriorityArray = [];
+        
+        __dirtyScrollLimitsArray = [];
         
         __scissorStack = [];
         

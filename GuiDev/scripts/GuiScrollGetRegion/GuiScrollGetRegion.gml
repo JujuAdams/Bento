@@ -6,14 +6,14 @@ function GuiScrollGetRegion(_instance = id)
 {
     static _result = {};
     
-    if (instance_exists(_instance) && _instance.__scissorState)
+    if (instance_exists(_instance) && _instance.__scissorEnabled)
     {
         with(_instance)
         {
-            _result.left   = __scissorLeft;
-            _result.top    = __scissorTop;
-            _result.right  = __scissorRight;
-            _result.bottom = __scissorBottom;
+            _result.left   = bbox_left   + __scissorPadLeft;
+            _result.top    = bbox_top    + __scissorPadTop;
+            _result.right  = bbox_right  - __scissorPadRight;
+            _result.bottom = bbox_bottom - __scissorPadBottom;
         }
     }
     else

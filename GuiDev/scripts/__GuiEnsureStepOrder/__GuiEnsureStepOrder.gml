@@ -16,7 +16,6 @@ function __GuiEnsureStepOrder()
         __popUpRoot = noone;
         
         __GuiEnsureCorrectChildOrder();
-        
         __GuiEnsureStepOrderInner((__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? GUI_ROOT) : GUI_ROOT);
         
         return __stepOrder;
@@ -38,7 +37,7 @@ function __GuiEnsureStepOrderInner(_instance)
         
         if ((not __focusable) || _focused)
         {
-            if (__scissorState)
+            if (__scissorEnabled)
             {
                 array_insert(_stepOrder, 0, method(self, __GuiStepMethodScissorPush));
             }
@@ -55,7 +54,7 @@ function __GuiEnsureStepOrderInner(_instance)
                 --_i;
             }
             
-            if (__scissorState)
+            if (__scissorEnabled)
             {
                 array_insert(_stepOrder, 0, method(self, __GuiScissorPop));
             }
@@ -95,7 +94,7 @@ function __GuiEnsureStepOrderInner(_instance)
             //Other behaviors are not hoverable (or selectable) so we don't push them to the Step
             //order unless they're pushing scissor state
             
-            if (__scissorState)
+            if (__scissorEnabled)
             {
                 array_insert(_stepOrder, 0, method(self, __GuiStepMethod));
             }
@@ -115,5 +114,8 @@ function __GuiStepMethod()
 
 function __GuiStepMethodScissorPush()
 {
-    __GuiScissorPush(__scissorLeft, __scissorTop, __scissorRight, __scissorBottom);
+    __GuiScissorPush(bbox_left   + __scissorPadLeft,
+                     bbox_top    + __scissorPadTop,
+                     bbox_right  - __scissorPadRight,
+                     bbox_bottom - __scissorPadBottom);
 }

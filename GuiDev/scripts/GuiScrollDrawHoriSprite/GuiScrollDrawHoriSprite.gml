@@ -16,7 +16,7 @@ function GuiScrollDrawHoriSprite(_left, _top, _right, _bottom, _barSprite, _hand
 {
     with(_instance)
     {
-        if (not _instance.__scrollEnabled) return;
+        if (not _instance.__scrollHori) return;
         
         var _scrollSize = __scrollMaxX - __scrollMinX;
         if (_scrollSize <= 0) return;

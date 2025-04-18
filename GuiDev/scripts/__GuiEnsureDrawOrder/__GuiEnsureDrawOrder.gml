@@ -33,7 +33,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         
         if (__drawEnd)
         {
-            if (__scissorState)
+            if (__scissorEnabled)
             {
                 array_insert(_drawOrder, 0, method(self, function()
                 {
@@ -51,7 +51,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         }
         else
         {
-            if (__scissorState)
+            if (__scissorEnabled)
             {
                 array_insert(_drawOrder, 0, method(self, __GuiScissorPop));
             }
@@ -67,7 +67,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         }
         
         //Always push ourselves to the Draw order
-        if (__scissorState)
+        if (__scissorEnabled)
         {
             array_insert(_drawOrder, 0, method(self, function()
             {
@@ -76,7 +76,10 @@ function __GuiEnsureDrawOrderInner(_instance)
                     event_user(GUI_USER_EVENT_DRAW);
                 }
                 
-                __GuiScissorPush(__scissorLeft, __scissorTop, __scissorRight, __scissorBottom);
+                __GuiScissorPush(bbox_left   + __scissorPadLeft,
+                                 bbox_top    + __scissorPadTop,
+                                 bbox_right  - __scissorPadRight,
+                                 bbox_bottom - __scissorPadBottom);
             }));
         }
         else

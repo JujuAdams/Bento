@@ -6,7 +6,7 @@
   "name":"GuiScrollClipOn",
   "parent":{
     "name":"Draw",
-    "path":"folders/Library/Scroll/Draw.yy",
+    "path":"folders/Library/Scissor & Scroll/Scroll/Draw.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

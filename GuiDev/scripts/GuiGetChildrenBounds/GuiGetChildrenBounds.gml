@@ -1,9 +1,8 @@
 // Feather disable all
 
-/// Returns the bounding box that encompasses all children (inside and outside) of the target
-/// instance. The `padding` parameter allows you to add space around the edge of the bounding box,
-/// applied equally in all directions. A static struct is returned with the following member
-/// variables:
+/// Returns the bounding box that encompasses all children of the target  instance. The `padding`
+/// parameter allows you to add space around the edge of the bounding box, applied equally in all
+/// directions. A static struct is returned with the following member variables:
 /// 
 /// .x:      x-position of the middle of the bounding box
 /// .y:      y-position of the middle of the bounding box

@@ -8,7 +8,7 @@
 function GuiSetPriority(_priority, _instance = id)
 {
     static _system          = __GuiSystem();
-    static _dirtyOrderArray = __GuiSystem().__dirtyOrderArray;
+    static _dirtyPriorityArray = __GuiSystem().__dirtyPriorityArray;
     
     if (not instance_exists(_instance)) return;
     if (_priority == _instance.__priority) return;
@@ -19,12 +19,5 @@ function GuiSetPriority(_priority, _instance = id)
     
     _instance.__priority = _priority;
     
-    with(_instance.__parent)
-    {
-        if (not __orderDirty)
-        {
-            __orderDirty = true;
-            array_push(_dirtyOrderArray, id);
-        }
-    }
+    __GuiMarkPriorityDirty(_instance.__parent);
 }

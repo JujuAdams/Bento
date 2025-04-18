@@ -9,8 +9,7 @@
 
 function GuiSetParent(_parent, _targetInstance = id)
 {
-    static _system          = __GuiSystem();
-    static _dirtyOrderArray = __GuiSystem().__dirtyOrderArray;
+    static _system = __GuiSystem();
     
     if (not instance_exists(_targetInstance)) return;
     
@@ -23,18 +22,10 @@ function GuiSetParent(_parent, _targetInstance = id)
     
     with(_parent)
     {
-        if (_targetInstance.__editorRootInstance == undefined)
-        {
-            _targetInstance.__editorRootInstance = __editorRootInstance;
-        }
-        
         array_push(__childArray, _targetInstance);
         
-        if (not __orderDirty)
-        {
-            __orderDirty = true;
-            array_push(_dirtyOrderArray, id);
-        }
+        __GuiMarkPriorityDirty(id);
+        GuiScrollLimitsMarkDirty(id);
     }
     
     if (not instance_exists(_targetInstance)) return;

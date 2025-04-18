@@ -22,10 +22,10 @@ function GuiNavSetFocus(_state, _instance = id)
                 
                 if (__focusBlockHover)
                 {
-                    if (__scissorState)
+                    if (__scissorEnabled)
                     {
-                        _system.__directionalLastX = __scissorLeft;
-                        _system.__directionalLastY = __scissorTop;
+                        _system.__directionalLastX = bbox_left + __scissorPadLeft;
+                        _system.__directionalLastY = bbox_top  + __scissorPadTop;
                     }
                     else
                     {

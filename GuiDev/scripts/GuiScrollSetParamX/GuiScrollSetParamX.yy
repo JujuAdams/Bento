@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollSetParamX",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Library/Scroll/Setup.yy",
+    "name":"Actions",
+    "path":"folders/Library/Scissor & Scroll/Scroll/Actions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

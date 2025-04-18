@@ -63,10 +63,10 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
             
             with(method_get_self(_stepOrder[_i]))
             {
-                _scissorL = max(_scissorL, __scissorLeft  );
-                _scissorT = max(_scissorT, __scissorTop   );
-                _scissorR = min(_scissorR, __scissorRight );
-                _scissorB = min(_scissorB, __scissorBottom);
+                _scissorL = max(_scissorL, bbox_left   + __scissorPadLeft  );
+                _scissorT = max(_scissorT, bbox_top    + __scissorPadTop   );
+                _scissorR = min(_scissorR, bbox_right  - __scissorPadRight );
+                _scissorB = min(_scissorB, bbox_bottom - __scissorPadBottom);
             }
             
             _insideScissor = ((_mouseX >= _scissorL) && (_mouseY >= _scissorT) && (_mouseX <= _scissorR) && (_mouseY <= _scissorB));

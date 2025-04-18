@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScrollSetupHori",
+  "%Name":"GuiScrollGetEnabled",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScrollSetupHori",
+  "name":"GuiScrollGetEnabled",
   "parent":{
     "name":"Setup",
-    "path":"folders/Library/Scroll/Setup.yy",
+    "path":"folders/Library/Scissor & Scroll/Scroll/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

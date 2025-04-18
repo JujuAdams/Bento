@@ -2,8 +2,8 @@
 
 function __GuiEnsureCorrectChildOrder()
 {
-    static _dirtyOrderArray = __GuiSystem().__dirtyOrderArray;
+    static _dirtyPriorityArray = __GuiSystem().__dirtyPriorityArray;
     
-    array_foreach(_dirtyOrderArray, __GuiSortChildren);
-    array_resize(_dirtyOrderArray, 0);
+    array_foreach(_dirtyPriorityArray, __GuiSortChildren);
+    array_resize(_dirtyPriorityArray, 0);
 }

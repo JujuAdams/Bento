@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// Returns the bounding box that encompasses all children (inside and outside) of the target
-/// instance. The `padding` parameter allows you to add space around the edge of the bounding box.
-/// A static struct is returned with the following member variables:
+/// Returns the bounding box that encompasses all children of the target instance. The `padding`
+/// parameter allows you to add space around the edge of the bounding box. A static struct is
+/// returned with the following member variables:
 /// 
 /// .x:      x-position of the middle of the bounding box
 /// .y:      y-position of the middle of the bounding box
@@ -65,23 +65,41 @@ function GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _inst
                 bottom = _bottom + _padBottom;
             }
         }
+        else
+        {
+            var _x = x;
+            var _y = y;
+            
+            with(_result)
+            {
+                x = _x;
+                y = _y;
+                
+                width  = _padLeft + _padRight;
+                height = _padTop + _padBottom;
+                
+                left   = _x - _padLeft;
+                top    = _y - _padTop;
+                right  = _x + _padRight;
+                bottom = _y + _padBottom;
+            }
+        }
+        
+        return _result;
     }
     
-    if (_empty)
+    with(_result)
     {
-        with(_result)
-        {
-            x = 0.5*(_padRight - _padLeft);
-            y = 0.5*(_padBottom - _padTop);
-            
-            width  = _padLeft + _padRight;
-            height = _padTop + _padBottom;
-            
-            left   = -_padLeft;
-            top    = -_padTop;
-            right  =  _padRight;
-            bottom =  _padBottom;
-        }
+        x = 0.5*(_padRight - _padLeft);
+        y = 0.5*(_padBottom - _padTop);
+        
+        width  = _padLeft + _padRight;
+        height = _padTop + _padBottom;
+        
+        left   = -_padLeft;
+        top    = -_padTop;
+        right  =  _padRight;
+        bottom =  _padBottom;
     }
     
     return _result;
