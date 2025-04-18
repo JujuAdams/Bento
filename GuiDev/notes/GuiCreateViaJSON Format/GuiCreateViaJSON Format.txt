@@ -7,6 +7,9 @@ GameMaker object that will be instantiated when creating the GUI instance. The `
 can be the name of the object as a string, a GameMaker handle, or a stringified GameMaker handle.
 Objects must inherit from `oGuiLibAncestor`.
 
+Instance definitions struct may also contain a `.name` property. This value will be passed to
+`GuiNameSet()` targetting the created instance.
+
 Instance definition structs may also contain a `.children` property. If specified, this should be
 an array of GUI instance definitions. These GUI instance definitions, when instantiated, will be
 created as childred of the parent instance.

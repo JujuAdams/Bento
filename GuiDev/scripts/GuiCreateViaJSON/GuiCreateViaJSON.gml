@@ -88,6 +88,30 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
         //Create the instance itself
         var _instance = GuiCreate(_object, _vars, _parent);
         
+        //Name the instance
+        var _name = _json[$ "name"];
+        if (_name != undefined)
+        {
+            if (is_method(_name))
+            {
+                _name = _name(_metadata);
+                
+                if (not is_string(_name))
+                {
+                    __GuiError($".name method did not return a string (was {typeof(_name)})");
+                }
+            }
+            
+            if (is_string(_name))
+            {
+                GuiNameSet(_name, _instance);
+            }
+            else
+            {
+                __GuiError($".name property is incorrect datatype, must be a string (was \"{typeof(_vars)}\")");
+            }
+        }
+        
         //Apply layout options
         var _layout = _json[$ "layout"];
         if (_layout != undefined)
