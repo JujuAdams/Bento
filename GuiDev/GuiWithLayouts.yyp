@@ -41,6 +41,7 @@
     {"$GMFolder":"","%Name":"Nav Mode","folderPath":"folders/Library/Navigation/Nav Mode.yy","name":"Nav Mode","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Setup","folderPath":"folders/Library/Navigation/Setup.yy","name":"Setup","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Library/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Library/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Priority","folderPath":"folders/Library/Priority.yy","name":"Priority","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scissor & Scroll","folderPath":"folders/Library/Scissor & Scroll.yy","name":"Scissor & Scroll","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scissor","folderPath":"folders/Library/Scissor & Scroll/Scissor.yy","name":"Scissor","resourceType":"GMFolder","resourceVersion":"2.0",},
