@@ -8,6 +8,8 @@ function __GuiSolverGridPositions(_x, _y)
     layoutLeft = _x;
     layoutTop  = _y;
     
+    event_user(GUI_USER_EVENT_REPOSITION);
+    
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     

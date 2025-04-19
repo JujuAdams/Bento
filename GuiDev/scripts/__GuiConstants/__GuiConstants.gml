@@ -46,6 +46,7 @@
 #macro GUI_NAV_DIRECTIONAL  2
 #macro GUI_NAV_TOUCH        3
 
-#macro GUI_USER_EVENT_STEP      0
-#macro GUI_USER_EVENT_DRAW      1
-#macro GUI_USER_EVENT_DRAW_END  2
+#macro GUI_USER_EVENT_STEP        0
+#macro GUI_USER_EVENT_DRAW        1
+#macro GUI_USER_EVENT_DRAW_END    2
+#macro GUI_USER_EVENT_REPOSITION  3
