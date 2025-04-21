@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiCreateViaJSON",
+  "%Name":"GuiLayoutSetFromJSON",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiCreateViaJSON",
+  "name":"GuiLayoutSetFromJSON",
   "parent":{
-    "name":"Library",
-    "path":"folders/Library.yy",
+    "name":"Layout",
+    "path":"folders/Library/Layout.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

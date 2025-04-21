@@ -13,7 +13,7 @@ function __GuiEnsureDrawOrder()
         array_resize(__drawOrder, 0);
         __drawDirty = false;
         
-        __GuiEnsureCorrectChildOrder();
+        __GuiEnsureChildOrder();
         
         __GuiEnsureDrawOrderInner(GUI_ROOT);
         

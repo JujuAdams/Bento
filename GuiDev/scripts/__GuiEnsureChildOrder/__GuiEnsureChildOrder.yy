@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiEnsureAnimation",
+  "%Name":"__GuiEnsureChildOrder",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiEnsureAnimation",
+  "name":"__GuiEnsureChildOrder",
   "parent":{
     "name":"Ensure",
     "path":"folders/Library/(System)/Ensure.yy",

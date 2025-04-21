@@ -15,9 +15,9 @@ an array of GUI instance definitions. These GUI instance definitions, when insta
 created as childred of the parent instance.
 
 The `.children` property may also be a method. This method will be executed when
-`GuiCreateViaJSON()` is called. This method should return an array that contains GUI instance
+`GuiCreateFromJSON()` is called. This method should return an array that contains GUI instance
 definitions; these instances will then be created as children. This method will be executed with
-one argument, that is the metadata provided when calling `GuiCreateViaJSON()`.
+one argument, that is the metadata provided when calling `GuiCreateFromJSON()`.
 
 The `.children` property may also be a string. In this case, the string will be passed to a
 function that you define using the `GUI_JSON_CHILDREN_STRING_PROCESSOR` macro. This string
@@ -25,7 +25,7 @@ processor function should return an array of GUI instance definitions which will
 This feature is intended for use with runtime code compilation and execution - you can compile the
 string found in JSON to then create children. The function specified by the above macro is called
 with two arguments: the first is the string, the second is the metadata provided when calling
-`GuiCreateViaJSON()`.
+`GuiCreateFromJSON()`.
 
 Instance definition structs may contain a `.vars` property. If specified, this should be a struct
 that contains variable definitions that will be passed to the created instance. These variables

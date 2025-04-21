@@ -10,14 +10,14 @@ function GuiScrollSet(_scrollX, _scrollY, _instance = id)
 {
     with(_instance)
     {
-        if ((not __scrollHori) && (not __scrollVert)) return;
+        if (not __scrollHori) _scrollX = 0;
+        if (not __scrollVert) _scrollY = 0;
         
-        var _oldX = __scrollX;
-        var _oldY = __scrollY;
+        if ((_scrollX == __scrollX) && (_scrollY == __scrollY)) return;
         
         __scrollX = clamp(_scrollX, __scrollMinX, __scrollMaxX);
         __scrollY = clamp(_scrollY, __scrollMinY, __scrollMaxY);
         
-        __GuiScrollApply(_instance, __scrollX - _oldX, __scrollY - _oldY);
+        __GuiMarkAnimAndScrollDirty(id)
     }
 }

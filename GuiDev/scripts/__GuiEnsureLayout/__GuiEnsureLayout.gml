@@ -7,15 +7,17 @@ function __GuiEnsureLayout()
     
     with(_system)
     {
-        __animationDirty = true;
+        var _guiRoot = GUI_ROOT;
+        
+        //Ensure a full reset of the animation/scroll positions
+        array_resize(__animAndScrollDirtyArray, 0);
+        array_push(__animAndScrollDirtyArray, _guiRoot);
         
         var _layoutOrder = __layoutOrder;
         array_resize(_layoutOrder, 0);
         __layoutDirty = false;
         
-        __GuiEnsureCorrectChildOrder();
-        
-        var _guiRoot = GUI_ROOT;
+        __GuiEnsureChildOrder();
         
         //Ensure that our layout order is up-to-date
         __GuiEnsureLayerOrderInner(_guiRoot);
@@ -54,7 +56,7 @@ function __GuiEnsureLayout()
         }
         
         //Final pass to set positions in stone
-        _guiRoot.__SolverPositions(0, 0, _guiRoot.layoutWidth, _guiRoot.layoutHeight);
+        _guiRoot.__SolverPositions(0, 0, _guiRoot.__solvedWidth, _guiRoot.__solvedHeight);
     }
 }
 

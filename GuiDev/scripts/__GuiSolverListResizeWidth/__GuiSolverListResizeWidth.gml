@@ -5,7 +5,7 @@ function __GuiSolverListResizeWidth()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = layoutWidth - __solverFitWidth;
+    var _remaining = __solvedWidth - __solverFitWidth;
     
     if (__listAxis == GUI_AXIS_Y)
     {
@@ -13,7 +13,7 @@ function __GuiSolverListResizeWidth()
         // Minor Axis - Stretch grow elements to the maximum available space
         //////
             
-        var _available = layoutWidth - (__layoutPadLeft + __layoutPadRight);
+        var _available = __solvedWidth - (__layoutPadLeft + __layoutPadRight);
         if (_available > 0)
         {
             var _i = 0;
@@ -23,11 +23,11 @@ function __GuiSolverListResizeWidth()
                 {
                     if (__layoutWidthResize == GUI_RESIZE_FIT)
                     {
-                        layoutWidth = clamp(min(layoutWidth, _available), __layoutWidthMin, __layoutWidthMax);
+                        __solvedWidth = clamp(min(__solvedWidth, _available), __layoutWidthMin, __layoutWidthMax);
                     }
                     else if (__layoutWidthResize == GUI_RESIZE_GROW)
                     {
-                        layoutWidth = clamp(_available, __layoutWidthMin, __layoutWidthMax);
+                        __solvedWidth = clamp(_available, __layoutWidthMin, __layoutWidthMax);
                     }
                 }
                 
@@ -72,7 +72,7 @@ function __GuiSolverListResizeWidth()
                 {
                     var _child = _modifiableArray[_i];
                     
-                    var _childSize = _child.layoutWidth;
+                    var _childSize = _child.__solvedWidth;
                     if (_childSize < _min)
                     {
                         _secondMin = _min;
@@ -103,7 +103,7 @@ function __GuiSolverListResizeWidth()
                 {
                     var _child = _modifyingArray[_i];
                     
-                    var _prevSize = _child.layoutWidth;
+                    var _prevSize = _child.__solvedWidth;
                     if (_prevSize == _min)
                     {
                         if (_prevSize + _addition >= _child.__layoutWidthMax)
@@ -116,7 +116,7 @@ function __GuiSolverListResizeWidth()
                             var _newSize = _prevSize + _addition;
                         }
                         
-                        _child.layoutWidth = _newSize;
+                        _child.__solvedWidth = _newSize;
                         _remaining += _prevSize - _newSize;
                     }
                     
@@ -156,7 +156,7 @@ function __GuiSolverListResizeWidth()
                 {
                     var _child = _modifiableArray[_i];
                     
-                    var _childSize = _child.layoutWidth;
+                    var _childSize = _child.__solvedWidth;
                     if (_childSize > _max)
                     {
                         _secondMax = _max;
@@ -187,7 +187,7 @@ function __GuiSolverListResizeWidth()
                 {
                     var _child = _modifyingArray[_i];
                     
-                    var _prevSize = _child.layoutWidth;
+                    var _prevSize = _child.__solvedWidth;
                     if (_prevSize == _max)
                     {
                         if (_prevSize + _addition <= _child.__layoutWidthMin)
@@ -200,7 +200,7 @@ function __GuiSolverListResizeWidth()
                             var _newSize = _prevSize + _addition;
                         }
                         
-                        _child.layoutWidth = _newSize;
+                        _child.__solvedWidth = _newSize;
                         _remaining += _prevSize - _newSize;
                     }
                     

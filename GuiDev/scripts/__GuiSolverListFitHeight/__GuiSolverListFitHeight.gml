@@ -48,11 +48,11 @@ function __GuiSolverListFitHeight()
     
     if (__layoutHeightResize == GUI_RESIZE_FIT)
     {
-        layoutHeight = max(_minSize, min(_fitSize, __layoutHeightMax));
+        __solvedHeight = max(_minSize, min(_fitSize, __layoutHeightMax));
     }
     else
     {
-        layoutHeight = max(_minSize, __layoutHeightPref);
+        __solvedHeight = max(_minSize, __layoutHeightPref);
     }
     
     __solverFitHeight = _fitSize;

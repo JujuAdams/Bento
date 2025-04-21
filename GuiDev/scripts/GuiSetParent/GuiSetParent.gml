@@ -24,7 +24,7 @@ function GuiSetParent(_parent, _targetInstance = id)
     {
         array_push(__childArray, _targetInstance);
         
-        __GuiMarkPriorityDirty(id);
+        __GuiMarkChildOrderDirty(id);
         GuiScrollLimitsMarkDirty(id);
     }
     

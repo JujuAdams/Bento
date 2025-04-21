@@ -29,7 +29,7 @@ function __GuiSystem()
         __layoutOrder = [];
         __layoutDirty = true;
         
-        __animationDirty = true;
+        __animAndScrollDirtyArray = [];
         
         __stepRootStack = [];
         __stepOrder     = [];
@@ -38,7 +38,7 @@ function __GuiSystem()
         __drawOrder = [];
         __drawDirty = true;
         
-        __dirtyPriorityArray = [];
+        __dirtyChildOrderArray = [];
         
         __dirtyScrollLimitsArray = [];
         

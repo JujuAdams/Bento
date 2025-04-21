@@ -24,8 +24,8 @@ function __GuiSortChildren(_parent)
     
     with(_parent)
     {
-        if (not __priorityDirty) return;
-        __priorityDirty = false;
+        if (not __childOrderDirty) return;
+        __childOrderDirty = false;
         
         array_sort(__childArray, _funcSort);
     }

@@ -15,7 +15,7 @@ function GuiAnimSetOffset(_x, _y, _instance = id)
             if (__animXOffset != _x)
             {
                 __animXOffset = _x;
-                _system.__animationDirty = true;
+                __GuiMarkAnimAndScrollDirty(id);
             }
         }
         
@@ -24,7 +24,7 @@ function GuiAnimSetOffset(_x, _y, _instance = id)
             if (__animYOffset != _y)
             {
                 __animYOffset = _y;
-                _system.__animationDirty = true;
+                __GuiMarkAnimAndScrollDirty(id);
             }
         }
     }

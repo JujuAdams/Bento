@@ -15,7 +15,7 @@ function __GuiEnsureStepOrder()
         
         __popUpRoot = noone;
         
-        __GuiEnsureCorrectChildOrder();
+        __GuiEnsureChildOrder();
         __GuiEnsureStepOrderInner((__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? GUI_ROOT) : GUI_ROOT);
         
         return __stepOrder;

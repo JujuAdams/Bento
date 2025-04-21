@@ -10,10 +10,8 @@
 /// @param object
 /// @param [variableStruct]
 /// @param [parent=id]
-/// @param [relativeX=0]
-/// @param [relativeY=0]
 
-function GuiCreate(_object, _struct = undefined, _parent = id, _x = 0, _y = 0)
+function GuiCreate(_object, _struct = undefined, _parent = id)
 {
     static _system = __GuiSystem();
     static _emptyStruct = {};
@@ -29,11 +27,11 @@ function GuiCreate(_object, _struct = undefined, _parent = id, _x = 0, _y = 0)
     
     if (GUI_CREATE_LAYER != undefined)
     {
-        var _instance = instance_create_layer(_x + _parent.x, _y + _parent.y, GUI_CREATE_LAYER, _object, _struct ?? _emptyStruct);
+        var _instance = instance_create_layer(_parent.x, _parent.y, GUI_CREATE_LAYER, _object, _struct ?? _emptyStruct);
     }
     else
     {
-        var _instance = instance_create_depth(_x + _parent.x, _y + _parent.y, GUI_CREATE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
+        var _instance = instance_create_depth(_parent.x, _parent.y, GUI_CREATE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
     }
     
     _system.__tempParent = GUI_ROOT;

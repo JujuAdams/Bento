@@ -114,4 +114,4 @@ var _json = {
     ],
 };
 
-gridInstance = GuiCreateViaJSON(_json, GUI_ROOT, { count: 11 });
+gridInstance = GuiCreateFromJSON(_json, GUI_ROOT, { count: 11 });

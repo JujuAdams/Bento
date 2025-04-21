@@ -9,10 +9,8 @@ function __GuiUpdateScrollLimits(_parent)
         if (not __scrollLimitsDirty) return;
         __scrollLimitsDirty = false;
         
-        var _oldX = __scrollX;
-        var _oldY = __scrollY;
-        var _newX = _oldX;
-        var _newY = _oldY;
+        var _newX = __scrollX;
+        var _newY = __scrollY;
         
         if (__scrollHori || __scrollVert)
         {
@@ -91,8 +89,8 @@ function __GuiUpdateScrollLimits(_parent)
                 __scrollMaxY = 0;
             }
             
-            _newX = clamp(_oldX, __scrollMinX, __scrollMaxX);
-            _newY = clamp(_oldY, __scrollMinY, __scrollMaxY);
+            _newX = clamp(_newX, __scrollMinX, __scrollMaxX);
+            _newY = clamp(_newY, __scrollMinY, __scrollMaxY);
         }
         else
         {
@@ -107,6 +105,6 @@ function __GuiUpdateScrollLimits(_parent)
             __scrollMaxY = 0;
         }
         
-        __GuiScrollApply(id, _newX - _oldX, _newY - _oldY);
+        GuiScrollSet(id, _newX, _newY);
     }
 }

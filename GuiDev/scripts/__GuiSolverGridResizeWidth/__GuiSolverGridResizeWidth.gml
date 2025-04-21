@@ -5,7 +5,7 @@ function __GuiSolverGridResizeWidth()
     var _childArray   = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _available = layoutWidth - (__layoutPadLeft + __layoutPadRight + max(0, __gridColumns-1)*__layoutGutterX);
+    var _available = __solvedWidth - (__layoutPadLeft + __layoutPadRight + max(0, __gridColumns-1)*__layoutGutterX);
     var _cellSize = floor(_available / max(1, __gridColumns));
     
     if (_available > 0)
@@ -17,11 +17,11 @@ function __GuiSolverGridResizeWidth()
             {
                 if (__layoutWidthResize == GUI_RESIZE_FIT)
                 {
-                    layoutWidth = clamp(min(layoutWidth, _cellSize), __layoutWidthMin, __layoutWidthMax);
+                    __solvedWidth = clamp(min(__solvedWidth, _cellSize), __layoutWidthMin, __layoutWidthMax);
                 }
                 else if (__layoutWidthResize == GUI_RESIZE_GROW)
                 {
-                    layoutWidth = clamp(_cellSize, __layoutWidthMin, __layoutWidthMax);
+                    __solvedWidth = clamp(_cellSize, __layoutWidthMin, __layoutWidthMax);
                 }
             }
             

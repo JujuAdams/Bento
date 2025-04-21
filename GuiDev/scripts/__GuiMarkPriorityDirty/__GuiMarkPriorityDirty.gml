@@ -2,15 +2,15 @@
 
 /// @param parent
 
-function __GuiMarkPriorityDirty(_parent)
+function __GuiMarkChildOrderDirty(_parent)
 {
-    static _dirtyPriorityArray = __GuiSystem().__dirtyPriorityArray;
+    static _dirtyChildOrderArray = __GuiSystem().__dirtyChildOrderArray;
     
     if (not instance_exists(_parent)) return;
     
-    if (not __priorityDirty)
+    if (not _parent.__childOrderDirty)
     {
-        _parent.__priorityDirty = true;
-        array_push(_dirtyPriorityArray, _parent);
+        _parent.__childOrderDirty = true;
+        array_push(_dirtyChildOrderArray, _parent);
     }
 }

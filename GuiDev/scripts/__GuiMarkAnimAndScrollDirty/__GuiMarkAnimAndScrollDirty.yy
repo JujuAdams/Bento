@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiMarkAnimAndScrollDirty",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiMarkAnimAndScrollDirty",
+  "parent":{
+    "name":"Scroll",
+    "path":"folders/Library/(System)/Scroll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

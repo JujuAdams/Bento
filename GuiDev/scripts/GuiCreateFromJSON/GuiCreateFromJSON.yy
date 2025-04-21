@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiScrollApply",
+  "%Name":"GuiCreateFromJSON",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiScrollApply",
+  "name":"GuiCreateFromJSON",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "name":"Library",
+    "path":"folders/Library.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

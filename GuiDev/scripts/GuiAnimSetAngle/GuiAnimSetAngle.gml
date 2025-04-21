@@ -15,7 +15,7 @@ function GuiAnimSetAngle(_angle, _force, _instance = id)
             if (__animAngle != _angle)
             {
                 __animAngle = _angle;
-                _system.__animationDirty = true;
+                __GuiMarkAnimAndScrollDirty(id);
             }
         }
         
@@ -24,7 +24,7 @@ function GuiAnimSetAngle(_angle, _force, _instance = id)
             if (__animAngleForce != _force)
             {
                 __animAngleForce = _force;
-                _system.__animationDirty = true;
+                __GuiMarkAnimAndScrollDirty(id);
             }
         }
     }

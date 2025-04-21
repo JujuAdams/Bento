@@ -34,10 +34,11 @@ GuiSetIfNotDefined("navDown",  noone);
 //                       //
 ///////////////////////////
 
-layoutLeft   = x - image_xscale*sprite_get_xoffset(sprite_index);
-layoutTop    = y - image_yscale*sprite_get_yoffset(sprite_index);
+layoutLeft   = x;
+layoutTop    = y;
 layoutWidth  = sprite_width;
 layoutHeight = sprite_height;
+layoutAngle  = image_angle;
 
 /////////////////////////
 //                     //
@@ -78,10 +79,12 @@ __raycastDisableVert = false;
 __childArray = [];
 
 //This variable is set on demand by various functions
-__priorityDirty = false;
+__childOrderDirty = false;
 
 //This variable is set on demand by various functions
 //__scrollLimitsDirty = false;
+
+__animAndScrollDirty = false;
 
 __updating = false;
 
@@ -105,6 +108,13 @@ __animating = false;
 //  Layout & Solver Variables  //
 //                             //
 /////////////////////////////////
+
+//Final output values from the solver. These are subsequently transforms to give us the `layout*`
+//values that are exposed to the user.
+__solvedLeft   = x;
+__solvedTop    = y;
+__solvedWidth  = sprite_width;
+__solvedHeight = sprite_height;
 
 //Fixed offset applied against the calculated layout left/top position. Applied at the very end of
 //the solver algorithm.
@@ -146,14 +156,14 @@ __solverMinHeight = 0;
 
 //Function that sets the solver's fit width and minimum width. This is a boring function for most
 //instances. It gets more exciting for lists - see `__GuiSolverListFitWidth()`. This function also
-//preliminarily sets the final calculated width for the instance (`layoutWidth`).
+//preliminarily sets the final calculated width for the instance (`__solvedWidth`).
 __SolverFitWidth = function()
 {
     // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-    layoutWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(sprite_index)? sprite_get_width(sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
+    __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(sprite_index)? sprite_get_width(sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
     
-    __solverFitWidth = layoutWidth;
-    __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : layoutWidth;
+    __solverFitWidth = __solvedWidth;
+    __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
 }
 
 //Resizes both this instance and any child instances that are set to "fit" or "grow" resize types.
@@ -166,14 +176,14 @@ __SolverResizeWidth = function()
 }
 //Function that sets the solver's fit height and minimum height. This is a boring function for most
 //instances. It gets more exciting for lists - see `__GuiSolverListFitHeight()`. This function also
-//preliminarily sets the final calculated height for the instance (`layoutHeight`).
+//preliminarily sets the final calculated height for the instance (`__solvedHeight`).
 __SolverFitHeight = function()
 {
     // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-    layoutHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(sprite_index)? sprite_get_height(sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
+    __solvedHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(sprite_index)? sprite_get_height(sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
     
-    __solverFitHeight = layoutHeight;
-    __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : layoutHeight;
+    __solverFitHeight = __solvedHeight;
+    __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
 }
 
 //Resizes both this instance and any child instances that are set to "fit" or "grow" resize types.
@@ -195,30 +205,30 @@ __SolverPositions = function(_left, _top, _allocatedWidth, _allocatedHeight)
     
     if (__layoutHAlign == fa_center)
     {
-        _left += 0.5*(_allocatedWidth - layoutWidth);
+        _left += 0.5*(_allocatedWidth - __solvedWidth);
     }
     else if (__layoutVAlign == fa_right)
     {
-        _left += _allocatedWidth - layoutWidth;
+        _left += _allocatedWidth - __solvedWidth;
     }
     
     if (__layoutVAlign == fa_middle)
     {
-        _top += 0.5*(_allocatedHeight - layoutHeight);
+        _top += 0.5*(_allocatedHeight - __solvedHeight);
     }
     else if (__layoutVAlign == fa_bottom)
     {
-        _top += _allocatedHeight - layoutHeight;
+        _top += _allocatedHeight - __solvedHeight;
     }
     
     _left += __layoutXOffset;
     _top  += __layoutYOffset;
     
-    layoutLeft = _left;
-    layoutTop  = _top;
+    __solvedLeft = _left;
+    __solvedTop  = _top;
     
-    var _width  = layoutWidth;
-    var _height = layoutHeight;
+    var _width  = __solvedWidth;
+    var _height = __solvedHeight;
     
     var _childArray = __childArray;
     var _i = 0;

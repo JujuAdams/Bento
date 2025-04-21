@@ -11,7 +11,7 @@ function GuiStep()
     static _system = __GuiSystem();
     
     __GuiEnsureLayout();
-    __GuiEnsureAnimation();
+    __GuiEnsureAnimAndScroll();
     
     __GuiScissorReset();
     var _stepOrder = __GuiEnsureStepOrder();

@@ -42,3 +42,5 @@ if (keyboard_check_pressed(ord("D")))
     GuiDebugStepOrder();
     GuiDebugDrawOrder();
 }
+
+GuiAnimSetOffset(50*(0.5 + 0.5*dsin(current_time/15)), 0, gridInstance);

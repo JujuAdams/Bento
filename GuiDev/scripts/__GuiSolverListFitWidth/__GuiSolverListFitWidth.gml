@@ -48,11 +48,11 @@ function __GuiSolverListFitWidth()
     
     if (__layoutWidthResize == GUI_RESIZE_FIT)
     {
-        layoutWidth = max(_minSize, min(_fitSize, __layoutWidthMax));
+        __solvedWidth = max(_minSize, min(_fitSize, __layoutWidthMax));
     }
     else
     {
-        layoutWidth = max(_minSize, __layoutWidthPref);
+        __solvedWidth = max(_minSize, __layoutWidthPref);
     }
     
     __solverFitWidth = _fitSize;
