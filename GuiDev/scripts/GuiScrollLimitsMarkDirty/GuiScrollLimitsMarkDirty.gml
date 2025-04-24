@@ -17,7 +17,7 @@ function GuiScrollLimitsMarkDirty(_instance)
         
         if (not __scrollLimitsDirty)
         {
-            _instance.__scrollLimitsDirty = true;
+            __scrollLimitsDirty = true;
             array_push(_dirtyScrollLimitsArray, _instance);
         }
     }

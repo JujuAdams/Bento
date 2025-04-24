@@ -3,14 +3,13 @@
   "%Name":"oGuiLibList",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"oGuiLibList",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Library/Objects.yy",
+    "name":"Parent Objects",
+    "path":"folders/Library/Parent Objects.yy",
   },
   "parentObjectId":{
     "name":"oGuiLibRect",

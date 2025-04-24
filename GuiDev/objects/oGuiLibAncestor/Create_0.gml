@@ -84,7 +84,7 @@ __childArray = [];
 __childOrderDirty = false;
 
 //This variable is set on demand by various functions
-//__scrollLimitsDirty = false;
+__scrollLimitsDirty = false;
 
 __animAndScrollDirty = false;
 

@@ -20,7 +20,7 @@ function GuiCreateFromJSON(_json, _parent = id, _metadata = undefined)
         var _i = 0;
         repeat(array_length(_json))
         {
-            var _instance = __GuiCreateViaJSONInner(_json, _parent, _metadata);
+            var _instance = __GuiCreateViaJSONInner(_json[_i], _parent, _metadata);
             
             if (_firstInstance == undefined)
             {
@@ -87,6 +87,12 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
         
         //Create the instance itself
         var _instance = GuiCreate(_object, _vars, _parent);
+        
+        var _behavior = _json[$ "behavior"];
+        if (_behavior != undefined)
+        {
+            GuiSetBehavior(_behavior, _instance);
+        }
         
         //Name the instance
         var _name = _json[$ "name"];
@@ -163,18 +169,18 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
         var _scissor = _json[$ "scissor"];
         if (_scissor != undefined)
         {
-            if (not is_struct(_children))
+            if (not is_struct(_scissor))
             {
                 __GuiError($".scissor property must be a struct (was {typeof(_children)})");
             }
             else
             {
-                var _nameArray = variable_struct_get_names(_layout);
+                var _nameArray = variable_struct_get_names(_scissor);
                 var _i = 0;
                 repeat(array_length(_nameArray))
                 {
                     var _name  = _nameArray[_i];
-                    var _value = _layout[$ _name];
+                    var _value = _scissor[$ _name];
                     
                     if (_name == "enabled")
                     {
@@ -197,18 +203,18 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
         var _scroll = _json[$ "scroll"];
         if (_scroll != undefined)
         {
-            if (not is_struct(_children))
+            if (not is_struct(_scroll))
             {
-                __GuiError($".scroll property must be a struct (was {typeof(_children)})");
+                __GuiError($".scroll property must be a struct (was {typeof(_scroll)})");
             }
             else
             {
-                var _nameArray = variable_struct_get_names(_layout);
+                var _nameArray = variable_struct_get_names(_scroll);
                 var _i = 0;
                 repeat(array_length(_nameArray))
                 {
                     var _name  = _nameArray[_i];
-                    var _value = _layout[$ _name];
+                    var _value = _scroll[$ _name];
                     
                     if (_name == "enabled")
                     {
@@ -245,7 +251,7 @@ function __GuiJSONScissor_enabled(_instance, _value)
 {
     if (is_bool(_value))
     {
-        GuiScissorSet(_value, _instance);
+        GuiScissorSetEnabled(_value, _instance);
     }
     else
     {
@@ -290,13 +296,24 @@ function __GuiJSONScissor_padding(_instance, _value)
 ////////
 function __GuiJSONScroll_enabled(_instance, _value)
 {
-    if (is_bool(_value))
+    if (is_array(_value))
     {
-        GuiScrollSetEnabled(_value, _instance);
+        if (array_length(_value) != 2)
+        {
+            __GuiError($".padding scroll property must have 2 elements if it is an array (length = {array_length(_value)})");
+        }
+        
+        GuiScrollSetEnabled(_value[0], _value[1], _instance);
+    }
+    else if (is_struct(_value))
+    {
+        GuiScrollSetEnabled(_value[$ "h"] ?? _value[$ "x"],
+                            _value[$ "v"] ?? _value[$ "y"],
+                            _instance);
     }
     else
     {
-        __GuiError($".enabled scroll property must be a boolean (was {typeof(_value)})");
+        __GuiError($".enabled scroll property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
     }
 }
 

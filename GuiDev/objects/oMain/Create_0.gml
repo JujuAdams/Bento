@@ -39,32 +39,32 @@ GuiInputConfigureNavigation(10, 9, 4, 5);
 //    }
 //}
 
-var _json = {
-    object: oGuiLibGrid,
-    vars: {
-        image_blend: c_navy,
-    },
-    layout: {
-        gridSize: [6, 2],
-        size:     [600, 200],
-        resize:   [GUI_RESIZE_FIT, GUI_RESIZE_FIT],
-        padding:  [10, 10, 10, 10],
-        gutter:   [10, 10],
-    },
-    children: function(_metadata) {
-        //Create identical copies of references to the same struct
-        //This is purely for demonstration purposes; real code would do this differently
-        return array_create(_metadata.count, {
-            object: oGuiLibRect,
-            vars: {
-                image_blend: c_blue,
-            },
-            layout: {
-                resize: [GUI_RESIZE_GROW, GUI_RESIZE_GROW],
-            },
-        });
-    },
-};
+//var _json = {
+//    object: oGuiLibGrid,
+//    vars: {
+//        image_blend: c_navy,
+//    },
+//    layout: {
+//        gridSize: [6, 2],
+//        size:     [600, 200],
+//        resize:   [GUI_RESIZE_FIT, GUI_RESIZE_FIT],
+//        padding:  [10, 10, 10, 10],
+//        gutter:   [10, 10],
+//    },
+//    children: function(_metadata) {
+//        //Create identical copies of references to the same struct
+//        //This is purely for demonstration purposes; real code would do this differently
+//        return array_create(_metadata.count, {
+//            object: oGuiLibRect,
+//            vars: {
+//                image_blend: c_blue,
+//            },
+//            layout: {
+//                resize: [GUI_RESIZE_GROW, GUI_RESIZE_GROW],
+//            },
+//        });
+//    },
+//};
 
 //var _json = {
 //    object: oGuiLibList,
@@ -128,5 +128,50 @@ var _json = {
 //        },
 //    ],
 //};
+
+var _json = [
+    {
+        object: oGuiLibButton,
+        vars: {
+            image_blend: c_red,
+        },
+        layout: {
+            offset: [10, 10],
+        }
+    },
+    {
+        object: oGuiLibButton,
+        vars: {
+            image_blend: c_lime,
+        },
+        layout: {
+            offset: [100, 10],
+        }
+    },
+    {
+        object: oGuiLibListWithScroll,
+        vars: {
+            image_blend: c_navy,
+        },
+        layout: {
+            offset:  [300, 200],
+            size:    [200, 120],
+            maxSize: [200, 320],
+            resize:  [GUI_RESIZE_FIT, GUI_RESIZE_FIT],
+            padding: [10, 10, 10, 10],
+            gutter:  [10, 10],
+        },
+        children: function(_metadata) {
+            //Create identical copies of references to the same struct
+            //This is purely for demonstration purposes; real code would do this differently
+            return array_create(_metadata.count, {
+                object: oGuiLibRect,
+                vars: {
+                    image_blend: c_blue,
+                },
+            });
+        },
+    },
+];
 
 gridInstance = GuiCreateFromJSON(_json, GUI_ROOT, { count: 11 });

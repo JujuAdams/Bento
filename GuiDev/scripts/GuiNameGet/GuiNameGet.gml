@@ -2,9 +2,9 @@
 
 /// Returns the name of an instance, as set by `GuiNameSet()`.
 /// 
-/// @param instance
+/// @param [instance=id]
 
-function GuiNameGet(_instance)
+function GuiNameGet(_instance = id)
 {
     if (not instance_exists(_instance)) return undefined;
     
