@@ -30,7 +30,7 @@ function __GuiEnsureAnimAndScroll()
                 with(_parent)
                 {
                     __GuiEnsureAnimationInner(_instance,
-                                              layoutX + __scrollX, layoutY + __scrollY,
+                                              layoutX, layoutY,
                                               layoutWidth / max(1, __solvedWidth), layoutHeight / max(1, __solvedHeight), layoutAngle,
                                               __GuiEnsureAnimationGetOriginX() - __scrollX, __GuiEnsureAnimationGetOriginY() - __scrollY);
                 }
@@ -98,17 +98,8 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
         var _childArray = __childArray;
         if (array_length(_childArray) > 0)
         {
-            var _cos =  dcos(_angle);
-            var _sin = -dsin(_angle);
-            
-            var _scrollX = __scrollX;
-            var _scrollY = __scrollY;
-            
-            _x += _cos*_scrollX - _sin*_scrollY;
-            _y += _sin*_scrollX + _cos*_scrollY;
-            
-            _xOrigin -= _scrollX;
-            _yOrigin -= _scrollY;
+            _xOrigin -= __scrollX;
+            _yOrigin -= __scrollY;
             
             var _childArray = __childArray;
             var _i = 0;

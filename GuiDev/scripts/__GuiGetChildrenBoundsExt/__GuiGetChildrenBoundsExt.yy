@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiGetChildrenBoundsExt",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiGetChildrenBoundsExt",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Library/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

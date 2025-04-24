@@ -131,7 +131,7 @@ GuiInputConfigureNavigation(10, 9, 4, 5);
 
 var _json = [
     {
-        object: oGuiLibButton,
+        object: oExampleButton,
         vars: {
             image_blend: c_red,
         },
@@ -140,7 +140,7 @@ var _json = [
         }
     },
     {
-        object: oGuiLibButton,
+        object: oExampleButton,
         vars: {
             image_blend: c_lime,
         },
@@ -149,7 +149,7 @@ var _json = [
         }
     },
     {
-        object: oGuiLibListWithScroll,
+        object: oExampleListWithScroll,
         vars: {
             image_blend: c_navy,
         },
@@ -175,3 +175,4 @@ var _json = [
 ];
 
 gridInstance = GuiCreateFromJSON(_json, GUI_ROOT, { count: 11 });
+GuiAnimSetAngle(45, undefined, oExampleListWithScroll);

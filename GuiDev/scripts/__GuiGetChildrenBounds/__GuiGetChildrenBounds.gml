@@ -16,7 +16,7 @@
 /// @param [padding=0]
 /// @param [instance=id]
 
-function GuiGetChildrenBounds(_padding = 0, _instance = id)
+function __GuiGetChildrenBounds(_padding = 0, _instance = id)
 {
-    return GuiGetChildrenBoundsExt(_padding, _padding, _padding, _padding, _instance);
+    return __GuiGetChildrenBoundsExt(_padding, _padding, _padding, _padding, _instance);
 }

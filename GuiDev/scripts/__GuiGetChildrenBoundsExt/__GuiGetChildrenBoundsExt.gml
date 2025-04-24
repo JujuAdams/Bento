@@ -19,7 +19,7 @@
 /// @param padBottom
 /// @param [instance=id]
 
-function GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _instance = id)
+function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _instance = id)
 {
     static _result = {};
     
@@ -42,10 +42,10 @@ function GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _inst
             {
                 with(_childArray[_i])
                 {
-                    _left   = min(_left,   bbox_left);
-                    _top    = min(_top,    bbox_top);
-                    _right  = max(_right,  bbox_right);
-                    _bottom = max(_bottom, bbox_bottom);
+                    _left   = min(_left,   __solvedLeftLocal);
+                    _top    = min(_top,    __solvedTopLocal);
+                    _right  = max(_right,  __solvedLeftLocal + __solvedWidth);
+                    _bottom = max(_bottom, __solvedTopLocal  + __solvedHeight);
                 }
                 
                 ++_i;

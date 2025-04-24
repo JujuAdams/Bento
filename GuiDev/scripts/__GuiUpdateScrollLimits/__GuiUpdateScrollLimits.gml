@@ -17,23 +17,12 @@ function __GuiUpdateScrollLimits(_parent)
             //Only do hard work if we have to!
             
             //Calculate the physical bounds of the children of this parent. Positions are in world-space
-            var _bounds = GuiGetChildrenBounds();
+            var _bounds = __GuiGetChildrenBounds();
             
             if (__scrollHori)
             {
                 //Calculate how much visible width we have to play with
-                if (__scissorEnabled)
-                {
-                    var _scissorMin = bbox_left + __scissorPadLeft;
-                    var _scissorMax = bbox_right - __scissorPadRight;
-                }
-                else
-                {
-                    var _scissorMin = bbox_left;
-                    var _scissorMax = bbox_right;
-                }
-                
-                var _visibleSize = _scissorMax - _scissorMin;
+                var _visibleSize = __scissorEnabled? __solvedWidth - (__scissorPadLeft + __scissorPadRight) : __solvedWidth;
                 
                 //Compare the children's width to the total scrollable area
                 if (_bounds.width > _visibleSize - (__scrollPadLeft + __scrollPadRight))
@@ -59,18 +48,7 @@ function __GuiUpdateScrollLimits(_parent)
             //Same as above but in the y-axis
             if (__scrollVert)
             {
-                if (__scissorEnabled)
-                {
-                    var _scissorMin = bbox_top + __scissorPadTop;
-                    var _scissorMax = bbox_bottom - __scissorPadBottom;
-                }
-                else
-                {
-                    var _scissorMin = bbox_top;
-                    var _scissorMax = bbox_bottom;
-                }
-                
-                var _visibleSize = _scissorMax - _scissorMin;
+                var _visibleSize = __scissorEnabled? __solvedHeight - (__scissorPadTop + __scissorPadBottom) : __solvedHeight;
                 
                 if (_bounds.height > _visibleSize - (__scrollPadTop + __scrollPadBottom))
                 {
@@ -105,6 +83,6 @@ function __GuiUpdateScrollLimits(_parent)
             __scrollMaxY = 0;
         }
         
-        GuiScrollSet(id, _newX, _newY);
+        GuiScrollSet(_newX, _newY);
     }
 }
