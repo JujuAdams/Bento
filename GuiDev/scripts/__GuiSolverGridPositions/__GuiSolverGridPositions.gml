@@ -1,12 +1,9 @@
 // Feather disable all
 
-function __GuiSolverGridPositions(_x, _y)
+function __GuiSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeight)
 {
-    _x += __layoutXOffset;
-    _y += __layoutYOffset;
-    
-    __solvedLeft = _x;
-    __solvedTop  = _y;
+    __solvedLeftLocal = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
+    __solvedTopLocal  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
@@ -19,21 +16,21 @@ function __GuiSolverGridPositions(_x, _y)
     
     var _gridX = 0;
     
-    var _xChild = __solvedLeft + __layoutPadLeft;
-    var _yChild = __solvedTop  + __layoutPadTop;
-    var _xStart = _xChild;
+    var _childLeft = __layoutPadLeft;
+    var _childTop  = __layoutPadTop;
+    var _startLeft = _childLeft;
     var _i = 0;
     repeat(_childCount)
     {
-        _childArray[_i].__SolverPositions(_xChild, _yChild, _cellWidth, _cellHeight);
+        _childArray[_i].__SolverPositions(_childLeft, _childTop, _cellWidth, _cellHeight);
         
-        _xChild += _cellWidth + __layoutGutterX;
+        _childLeft += _cellWidth + __layoutGutterX;
         ++_gridX;
         
         if (_gridX >= __gridColumns)
         {
-            _xChild  = _xStart;
-            _yChild += _cellHeight + __layoutGutterY;
+            _childLeft  = _startLeft;
+            _childTop  += _cellHeight + __layoutGutterY;
             
             _gridX = 0;
         }

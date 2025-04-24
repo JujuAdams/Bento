@@ -11,14 +11,36 @@ function __GuiEnsureAnimAndScroll()
     {
         __GuiEnsureChildOrder();
         
+        //Sort from newest instance to oldest instance. This will usually get the following loop to
+        //execute from the most senior node to the most junior leaf.
+        array_sort(_animAndScrollDirtyArray, true);
+        
         while(array_length(_animAndScrollDirtyArray) > 0)
         {
-            __GuiEnsureAnimationInner(array_pop(_animAndScrollDirtyArray), 0, 0, 1, 1, 0, 1, 0);
+            var _instance = array_shift(_animAndScrollDirtyArray);
+            
+            var _parent = _instance.__parent;
+            if (not instance_exists(_parent))
+            {
+                //No parent, probably the root node?
+                __GuiEnsureAnimationInner(_instance, 0, 0, 1, 1, 0, 0, 0);
+            }
+            else
+            {
+                with(_parent)
+                {
+                    __GuiEnsureAnimationInner(_instance,
+                                              layoutX + __scrollX, layoutY + __scrollY,
+                                              layoutWidth / max(1, __solvedWidth), layoutHeight / max(1, __solvedHeight), layoutAngle,
+                                              __GuiEnsureAnimationGetOriginX() - __scrollX, __GuiEnsureAnimationGetOriginY() - __scrollY);
+                }
+                
+            }
         }
     }
 }
 
-function __GuiEnsureAnimationInner(_instance, _parentXOffset, _parentYOffset, _parentXScale, _parentYScale, _parentAngle, _parentCos, _parentSin)
+function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale, _parentYScale, _parentAngle, _parentOriginX, _parentOriginY)
 {
     static _animAndScrollDirtyArray = __GuiSystem().__animAndScrollDirtyArray;
     
@@ -32,48 +54,107 @@ function __GuiEnsureAnimationInner(_instance, _parentXOffset, _parentYOffset, _p
             if (_index >= 0) array_delete(_animAndScrollDirtyArray, _index, 1);
         }
         
-        var _x0 = _parentXScale*__animXOffset;
-        var _y0 = _parentYScale*__animYOffset;
-        var _x  = _parentXOffset + _parentCos*_x0 - _parentSin*_y0;
-        var _y  = _parentYOffset + _parentSin*_x0 + _parentCos*_y0;
+        var _xOrigin = __GuiEnsureAnimationGetOriginX();
+        var _yOrigin = __GuiEnsureAnimationGetOriginY();
         
+        //Calculate where our center is on the parent
+        var _xCenterLocal = __solvedLeftLocal + __animOffsetX + _xOrigin - _parentOriginX;
+        var _yCenterLocal = __solvedTopLocal  + __animOffsetY + _yOrigin - _parentOriginY;
+        
+        //Transform our central point based on the parent's transform
+        var _cos =  dcos(_parentAngle);
+        var _sin = -dsin(_parentAngle);
+        
+        var _x = _cos*_parentXScale*_xCenterLocal - _sin*_parentYScale*_yCenterLocal;
+        var _y = _sin*_parentXScale*_xCenterLocal + _cos*_parentYScale*_yCenterLocal;
+        
+        _x += _parentX;
+        _y += _parentY;
+        
+        //Calculate our own scaling factor and angle
         if (__animScaleForce)
         {
-            var _xScale = __animXScale;
-            var _yScale = __animYScale;
+            var _xScale = __animScaleX;
+            var _yScale = __animScaleY;
         }
         else
         {
-            var _xScale = _parentXScale*__animXScale;
-            var _yScale = _parentYScale*__animYScale;
+            var _xScale = __animScaleX*_parentXScale;
+            var _yScale = __animScaleY*_parentYScale;
         }
         
-        var _angle = __animAngleForce? __animAngle : (_parentAngle + __animAngle);
+        var _angle = __animAngleForce? __animAngle : (__animAngle + _parentAngle);
         
-        layoutLeft   = _x + __solvedLeft;
-        layoutTop    = _y + __solvedTop;
+        //Set final variables ready for the reposition user event
+        layoutX      = _x;
+        layoutY      = _y;
         layoutWidth  = _xScale*__solvedWidth;
         layoutHeight = _yScale*__solvedHeight;
         layoutAngle  = _angle;
         
         event_user(GUI_USER_EVENT_REPOSITION);
         
+        //Pass values on to our children
         var _childArray = __childArray;
         if (array_length(_childArray) > 0)
         {
             var _cos =  dcos(_angle);
             var _sin = -dsin(_angle);
             
-            _x += __scrollX;
-            _y += __scrollY;
+            var _scrollX = __scrollX;
+            var _scrollY = __scrollY;
+            
+            _x += _cos*_scrollX - _sin*_scrollY;
+            _y += _sin*_scrollX + _cos*_scrollY;
+            
+            _xOrigin -= _scrollX;
+            _yOrigin -= _scrollY;
             
             var _childArray = __childArray;
             var _i = 0;
             repeat(array_length(_childArray))
             {
-                __GuiEnsureAnimationInner(_childArray[_i], _x, _y, _xScale, _yScale, _angle, _cos, _sin);
+                __GuiEnsureAnimationInner(_childArray[_i], _x, _y, _xScale, _yScale, _angle, _xOrigin, _yOrigin);
                 ++_i;
             }
         }
+    }
+}
+
+function __GuiEnsureAnimationGetOriginX()
+{
+    var _originProportion = __animOriginX;
+    
+    if (_originProportion != undefined)
+    {
+        return _originProportion*__solvedWidth;
+    }
+    
+    if (sprite_exists(sprite_index))
+    {
+        return (sprite_get_xoffset(sprite_index) / sprite_get_width(sprite_index))*__solvedWidth;
+    }
+    else
+    {
+        return GUI_FALLBACK_ORIGIN_X*__solvedWidth;
+    }
+}
+
+function __GuiEnsureAnimationGetOriginY()
+{
+    var _originProportion = __animOriginY;
+    
+    if (_originProportion != undefined)
+    {
+        return _originProportion*__solvedHeight;
+    }
+    
+    if (sprite_exists(sprite_index))
+    {
+        return (sprite_get_yoffset(sprite_index) / sprite_get_height(sprite_index))*__solvedHeight;
+    }
+    else
+    {
+        return GUI_FALLBACK_ORIGIN_Y*__solvedHeight;
     }
 }

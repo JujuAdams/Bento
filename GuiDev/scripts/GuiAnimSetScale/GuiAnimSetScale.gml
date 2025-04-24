@@ -1,30 +1,30 @@
 // Feather disable all
 
-/// @param [x]
-/// @param [y]
+/// @param [xScale]
+/// @param [yScale]
 /// @param [force]
 /// @param [instance=id]
 
-function GuiAnimSetScale(_x, _y, _force, _instance = id)
+function GuiAnimSetScale(_xScale, _yScale, _force, _instance = id)
 {
     static _system = __GuiSystem();
     
     with(_instance)
     {
-        if (_x != undefined)
+        if (_xScale != undefined)
         {
-            if (__animXScale != _x)
+            if (__animScaleX != _xScale)
             {
-                __animXScale = _x;
+                __animScaleX = _xScale;
                 __GuiMarkAnimAndScrollDirty(id);
             }
         }
         
-        if (_y != undefined)
+        if (_yScale != undefined)
         {
-            if (__animYScale != _y)
+            if (__animScaleY != _yScale)
             {
-                __animYScale = _y;
+                __animScaleY = _yScale;
                 __GuiMarkAnimAndScrollDirty(id);
             }
         }

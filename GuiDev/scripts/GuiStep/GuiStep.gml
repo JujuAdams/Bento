@@ -10,6 +10,11 @@ function GuiStep()
 {
     static _system = __GuiSystem();
     
+    with(GUI_ROOT)
+    {
+        GuiLayoutSetSize(room_width, room_height);
+    }
+    
     __GuiEnsureLayout();
     __GuiEnsureAnimAndScroll();
     

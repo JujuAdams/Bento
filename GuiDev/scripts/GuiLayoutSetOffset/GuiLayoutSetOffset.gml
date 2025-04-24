@@ -12,18 +12,18 @@ function GuiLayoutSetOffset(_x, _y, _instance = id)
     {
         if (_x != undefined)
         {
-            if (__layoutXOffset != _x)
+            if (__layoutOffsetX != _x)
             {
-                __layoutXOffset = _x;
+                __layoutOffsetX = _x;
                 _system.__layoutDirty = true;
             }
         }
         
         if (_y != undefined)
         {
-            if (__layoutYOffset != _y)
+            if (__layoutOffsetY != _y)
             {
-                __layoutYOffset = _y;
+                __layoutOffsetY = _y;
                 _system.__layoutDirty = true;
             }
         }

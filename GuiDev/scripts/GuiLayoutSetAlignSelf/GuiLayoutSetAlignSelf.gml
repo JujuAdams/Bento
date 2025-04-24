@@ -12,18 +12,18 @@ function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = id)
     {
         if (_hAlign != undefined)
         {
-            if (__layoutHAlign != _hAlign)
+            if (__layoutAlignH != _hAlign)
             {
-                __layoutHAlign = _hAlign;
+                __layoutAlignH = _hAlign;
                 _system.__layoutDirty = true;
             }
         }
         
         if (_vAlign != undefined)
         {
-            if (__layoutVAlign != _vAlign)
+            if (__layoutAlignV != _vAlign)
             {
-                __layoutVAlign = _vAlign;
+                __layoutAlignV = _vAlign;
                 _system.__layoutDirty = true;
             }
         }

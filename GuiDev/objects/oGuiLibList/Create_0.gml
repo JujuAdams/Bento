@@ -2,11 +2,6 @@
 
 event_inherited();
 
-__layoutPadLeft   = 0
-__layoutPadTop    = 0
-__layoutPadRight  = 0
-__layoutPadBottom = 0
-
 __layoutGutterX = 0;
 __layoutGutterY = 0;
 

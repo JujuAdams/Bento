@@ -405,66 +405,14 @@ function __GuiLayoutSetFromJSON_align(_instance, _value)
         __GuiError($".align layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
     }
     
-    if (is_numeric(_h))
+    if (not is_numeric(_h))
     {
-        if ((_h != fa_left) && (_h != fa_center) && (_h != fa_right))
-        {
-            __GuiError($".align.h layout property must be \"left\", \"fit\", \"grow\", {fa_left}, {fa_center}, or {fa_right} (value was {_h})");
-        }
-    }
-    else if (is_string(_h))
-    {
-        if (_h == "left")
-        {
-            _h = fa_left;
-        }
-        else if ((_h == "center") || (_h == "centre"))
-        {
-            _h = fa_center;
-        }
-        else if (_h == "right")
-        {
-            _h = fa_right;
-        }
-        else
-        {
-            __GuiError($".align.h layout property invalid (value was {_h}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
-        }
-    }
-    else
-    {
-        __GuiError($".align.h layout property invalid (value was {_h}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
+        __GuiError($".align.h layout property must be a number (was \"{typeof(_h)}\")");;
     }
     
-    if (is_numeric(_v))
+    if (not is_numeric(_v))
     {
-        if ((_v != fa_top) && (_v != fa_middle) && (_v != fa_bottom))
-        {
-            __GuiError($".align.y layout property must be \"top\", \"middle\", \"bottom\", {fa_top}, {fa_middle}, or {fa_bottom} (value was {_v})");
-        }
-    }
-    else if (is_string(_v))
-    {
-        if (_v == "top")
-        {
-            _v = fa_top;
-        }
-        else if (_v == "middle")
-        {
-            _v = fa_middle;
-        }
-        else if (_v == "bottom")
-        {
-            _v = fa_bottom;
-        }
-        else
-        {
-            __GuiError($".align.v layout property invalid (value was {_v}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
-        }
-    }
-    else
-    {
-        __GuiError($".align.v layout property invalid (value was {_v}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
+        __GuiError($".align.v layout property must be a number (was \"{typeof(_v)}\")");;
     }
     
     GuiLayoutSetAlignSelf(_h, _v, _instance);

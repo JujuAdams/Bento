@@ -1,6 +1,6 @@
 /// @desc Reposition
 
-x = layoutLeft;
-y = layoutTop;
+x = layoutX;
+y = layoutY;
 
 image_angle = layoutAngle;

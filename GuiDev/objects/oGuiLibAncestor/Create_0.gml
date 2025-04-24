@@ -34,8 +34,8 @@ GuiSetIfNotDefined("navDown",  noone);
 //                       //
 ///////////////////////////
 
-layoutLeft   = x;
-layoutTop    = y;
+layoutX      = x;
+layoutY      = y;
 layoutWidth  = sprite_width;
 layoutHeight = sprite_height;
 layoutAngle  = image_angle;
@@ -46,10 +46,12 @@ layoutAngle  = image_angle;
 //                     //
 /////////////////////////
 
-__animXOffset    = 0;
-__animYOffset    = 0;
-__animXScale     = 1;
-__animYScale     = 1;
+__animOriginX    = undefined;
+__animOriginY    = undefined;
+__animOffsetX    = 0;
+__animOffsetY    = 0;
+__animScaleX     = 1;
+__animScaleY     = 1;
 __animScaleForce = false;
 __animAngle      = 0;
 __animAngleForce = false;
@@ -109,23 +111,23 @@ __animating = false;
 //                             //
 /////////////////////////////////
 
-//Final output values from the solver. These are subsequently transforms to give us the `layout*`
-//values that are exposed to the user.
-__solvedLeft   = x;
-__solvedTop    = y;
-__solvedWidth  = sprite_width;
-__solvedHeight = sprite_height;
+//Output values from the solver. Positions are relative to the left-top of the parent. All four
+//values are subsequently transforms to give us the `layout*` values that are exposed to the user.
+__solvedLeftLocal = x;
+__solvedTopLocal  = y;
+__solvedWidth     = sprite_width;
+__solvedHeight    = sprite_height;
 
 //Fixed offset applied against the calculated layout left/top position. Applied at the very end of
 //the solver algorithm.
-__layoutXOffset = 0;
-__layoutYOffset = 0;
+__layoutOffsetX = 0;
+__layoutOffsetY = 0;
 
 //Alignment against the region that the parent has allocated for this instance. This is especially
 //useful for children of non-list / non-grid parents where you might want to position the instance
 //relative to edges and corners.
-__layoutHAlign = fa_center;
-__layoutVAlign = fa_middle;
+__layoutAlignH = GUI_DEFAULT_LAYOUT_ALIGN_H;
+__layoutAlignV = GUI_DEFAULT_LAYOUT_ALIGN_V;
 
 //The "preferred" (ideal) size for the instance. A value of 0 (or less) indicates that this value
 //is unset and should be inferred from some other property.
@@ -138,6 +140,11 @@ __layoutWidthMin  = 0;
 __layoutHeightMin = 0;
 __layoutWidthMax  = infinity;
 __layoutHeightMax = infinity;
+
+__layoutPadLeft   = 0;
+__layoutPadTop    = 0;
+__layoutPadRight  = 0;
+__layoutPadBottom = 0;
 
 //How the instance should resize. "Static" is as the name suggests - the instance won't change
 //size. "Fit" will cause the instance to shrink down to fit any children it has inside. If an
@@ -201,40 +208,21 @@ __SolverResizeHeight = function()
 //grid then the allocated space will be smaller.
 __SolverPositions = function(_left, _top, _allocatedWidth, _allocatedHeight)
 {
-    // N.B. `oGuiLibList`, `oGuiLibGrid` overrides this function.
+    // N.B. `____oGuiLibRoot`, `oGuiLibList`, `oGuiLibGrid` override this function.
     
-    if (__layoutHAlign == fa_center)
-    {
-        _left += 0.5*(_allocatedWidth - __solvedWidth);
-    }
-    else if (__layoutVAlign == fa_right)
-    {
-        _left += _allocatedWidth - __solvedWidth;
-    }
+    __solvedLeftLocal = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
+    __solvedTopLocal  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
-    if (__layoutVAlign == fa_middle)
-    {
-        _top += 0.5*(_allocatedHeight - __solvedHeight);
-    }
-    else if (__layoutVAlign == fa_bottom)
-    {
-        _top += _allocatedHeight - __solvedHeight;
-    }
-    
-    _left += __layoutXOffset;
-    _top  += __layoutYOffset;
-    
-    __solvedLeft = _left;
-    __solvedTop  = _top;
-    
-    var _width  = __solvedWidth;
-    var _height = __solvedHeight;
+    var _childX      = __layoutPadLeft;
+    var _childY      = __layoutPadTop;
+    var _childWidth  = __solvedWidth  - (__layoutPadLeft + __layoutPadRight);
+    var _childHeight = __solvedHeight - (__layoutPadTop + __layoutPadBottom);
     
     var _childArray = __childArray;
     var _i = 0;
     repeat(array_length(_childArray))
     {
-        _childArray[_i].__SolverPositions(_left, _top, _width, _height);
+        _childArray[_i].__SolverPositions(_childX, _childY, _childWidth, _childHeight);
         ++_i;
     }
 }

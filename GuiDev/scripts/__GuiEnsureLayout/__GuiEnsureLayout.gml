@@ -23,7 +23,7 @@ function __GuiEnsureLayout()
         __GuiEnsureLayerOrderInner(_guiRoot);
         var _instanceCount = array_length(_layoutOrder);
         
-        //ulate static widths of instances
+        //Populate static widths of instances
         var _i = _instanceCount-1;
         repeat(_instanceCount)
         {
@@ -39,7 +39,7 @@ function __GuiEnsureLayout()
             ++_i;
         }
         
-        //ulate static heights of instances
+        //Populate static heights of instances
         var _i = _instanceCount-1;
         repeat(_instanceCount)
         {

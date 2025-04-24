@@ -1,16 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"oGuiLibRect",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"__oGuiLibRoot",
+  "eventList":[],
   "managed":true,
-  "name":"oGuiLibRect",
+  "name":"__oGuiLibRoot",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Library/Objects.yy",
+    "name":"(System)",
+    "path":"folders/Library/(System).yy",
   },
   "parentObjectId":{
     "name":"oGuiLibAncestor",
@@ -34,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sGuiMaskRectangle",
-    "path":"sprites/sGuiMaskRectangle/sGuiMaskRectangle.yy",
+    "name":"sGuiMaskEmpty",
+    "path":"sprites/sGuiMaskEmpty/sGuiMaskEmpty.yy",
   },
   "spriteMaskId":null,
   "visible":true,

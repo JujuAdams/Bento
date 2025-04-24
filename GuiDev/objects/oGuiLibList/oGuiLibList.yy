@@ -13,8 +13,8 @@
     "path":"folders/Library/Objects.yy",
   },
   "parentObjectId":{
-    "name":"oGuiLibAncestor",
-    "path":"objects/oGuiLibAncestor/oGuiLibAncestor.yy",
+    "name":"oGuiLibRect",
+    "path":"objects/oGuiLibRect/oGuiLibRect.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

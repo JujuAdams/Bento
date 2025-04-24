@@ -1,10 +1,10 @@
 // Feather disable all
 
-/// @param [x]
-/// @param [y]
+/// @param x
+/// @param y
 /// @param [instance=id]
 
-function GuiAnimSetOffset(_x, _y, _instance = id)
+function GuiAnimSetOrigin(_x, _y, _instance = id)
 {
     static _system = __GuiSystem();
     
@@ -12,18 +12,18 @@ function GuiAnimSetOffset(_x, _y, _instance = id)
     {
         if (_x != undefined)
         {
-            if (__animOffsetX != _x)
+            if (__animOriginX != _x)
             {
-                __animOffsetX = _x;
+                __animOriginX = _x;
                 __GuiMarkAnimAndScrollDirty(id);
             }
         }
         
         if (_y != undefined)
         {
-            if (__animOffsetY != _y)
+            if (__animOriginY != _y)
             {
-                __animOffsetY = _y;
+                __animOriginY = _y;
                 __GuiMarkAnimAndScrollDirty(id);
             }
         }

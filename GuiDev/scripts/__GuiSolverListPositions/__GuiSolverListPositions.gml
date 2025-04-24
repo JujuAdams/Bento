@@ -1,20 +1,17 @@
 // Feather disable all
 
-function __GuiSolverListPositions(_x, _y)
+function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight)
 {
-    _x += __layoutXOffset;
-    _y += __layoutYOffset;
-    
-    __solvedLeft = _x;
-    __solvedTop  = _y;
+    __solvedLeftLocal = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
+    __solvedTopLocal  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
     if (__listAxis == GUI_AXIS_X)
     {
-        var _majorPos = __solvedLeft + __layoutPadLeft;
-        var _minorPos = __solvedTop  + __layoutPadTop;
+        var _majorPos = __layoutPadLeft;
+        var _minorPos = __layoutPadTop;
         var _gutter   = __layoutGutterX;
         
         var _majorSize = 0;
@@ -63,8 +60,8 @@ function __GuiSolverListPositions(_x, _y)
     }
     else
     {
-        var _majorPos = __solvedTop + __layoutPadTop;
-        var _minorPos = __solvedLeft + __layoutPadLeft;
+        var _majorPos = __layoutPadTop;
+        var _minorPos = __layoutPadLeft;
         var _gutter   = __layoutGutterY;
         
         var _majorSize = 0;

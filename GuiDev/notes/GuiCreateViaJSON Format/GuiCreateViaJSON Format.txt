@@ -193,24 +193,7 @@ Here is a brief example:
             "v": <v align>
         }
     
-    Horizontal alignment values must be one of the following:
-    - "left"
-    - "center"
-    - "centre"
-    - "right"
-    - 0 (equal to fa_left)
-    - 1 (equal to fa_center)
-    - 2 (equal to fa_right)
-    
-    Vertical alignment values must be one of the following:
-    - "right"
-    - "middle"
-    - "bottom"
-    - 0 (equal to fa_right)
-    - 1 (equal to fa_middle)
-    - 2 (equal to fa_bottom)
-    
-    You may also use `null` for either value to indicate that no change should be made.
+    "x" and "y" can be used instead of "h" and "v" respectively. Alignment values must be numbers.
 
 .gutter
     Calls the `GuiLayoutSetGutter()` function on the created instance. This property can only be
