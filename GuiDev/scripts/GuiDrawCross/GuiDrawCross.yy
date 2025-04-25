@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiDrawOrigin",
+  "%Name":"GuiDrawCross",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiDrawOrigin",
+  "name":"GuiDrawCross",
   "parent":{
     "name":"Draw Helpers",
     "path":"folders/Library/Draw Helpers.yy",

@@ -156,7 +156,7 @@ var _json = [
         layout: {
             offset:  [300, 200],
             size:    [200, 120],
-            maxSize: [200, 320],
+            maxSize: [200, 295],
             resize:  [GUI_RESIZE_FIT, GUI_RESIZE_FIT],
             padding: 10,
             gutter:  10,
@@ -165,7 +165,7 @@ var _json = [
             //Create identical copies of references to the same struct
             //This is purely for demonstration purposes; real code would do this differently
             return array_create(_metadata.count, {
-                object: oGuiLibRect,
+                object: oExampleButton,
                 vars: {
                     image_blend: c_blue,
                 },

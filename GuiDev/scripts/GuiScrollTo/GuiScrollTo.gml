@@ -19,17 +19,27 @@ function GuiScrollTo(_instance)
         
         if (__scrollHori)
         {
-            if (_instance.sprite_width > sprite_width)
+            if (_instance.__solvedWidth > __solvedWidth)
             {
                 //Try to place the instance in the middle of the parent
-                _dX = 0.5*(bbox_left + bbox_right) - 0.5*(_instance.bbox_left + _instance.bbox_right);
+                _dX = 0.5*__solvedWidth - (_instance.__solvedLeftLocal + 0.5*_instance.__solvedWidth);
             }
             else
             {
-                var _instL = _instance.bbox_left  - (variable_instance_get(_instance, "scrollMarginLeft" ) ?? 0);
-                var _instR = _instance.bbox_right + (variable_instance_get(_instance, "scrollMarginRight") ?? 0);
-                var _parL  = __scissorEnabled? (bbox_left  + __scissorPadLeft ) : bbox_left;
-                var _parR  = __scissorEnabled? (bbox_right - __scissorPadRight) : bbox_right;
+                var _instL = _instance.__solvedLeftLocal + __scrollX - GUI_SCROLL_TO_PADDING;
+                var _instR = _instance.__solvedLeftLocal + _instance.__solvedWidth + __scrollX + GUI_SCROLL_TO_PADDING;
+                
+                if (__scissorEnabled)
+                {
+                    _parL = __scissorPadLeft;
+                    _parR = __solvedWidth - __scissorPadRight;
+                }
+                else
+                {
+                    var _parL = 0;
+                    var _parR = __solvedWidth;
+                }
+                
                 var _distL = _parL - _instL;
                 var _distR = _parR - _instR;
                 
@@ -53,17 +63,27 @@ function GuiScrollTo(_instance)
         
         if (__scrollVert)
         {
-            if (_instance.sprite_height > sprite_height)
+            if (_instance.__solvedHeight > __solvedHeight)
             {
                 //Try to place the instance in the middle of the parent
-                _dY = 0.5*(bbox_top + bbox_bottom) - 0.5*(_instance.bbox_top + _instance.bbox_bottom);
+                _dY = 0.5*__solvedHeight - (_instance.__solvedTopLocal + 0.5*_instance.__solvedHeight);
             }
             else
             {
-                var _instT = _instance.bbox_top    - (variable_instance_get(_instance, "scrollMarginTop"   ) ?? 0);
-                var _instB = _instance.bbox_bottom + (variable_instance_get(_instance, "scrollMarginBottom") ?? 0);
-                var _parT  = __scissorEnabled? (bbox_top    + __scissorPadTop   ) : bbox_top;
-                var _parB  = __scissorEnabled? (bbox_bottom - __scissorPadBottom) : bbox_bottom;
+                var _instT = _instance.__solvedTopLocal + __scrollY - GUI_SCROLL_TO_PADDING;
+                var _instB = _instance.__solvedTopLocal + _instance.__solvedHeight + __scrollY + GUI_SCROLL_TO_PADDING;
+                
+                if (__scissorEnabled)
+                {
+                    var _parT = __scissorPadTop;
+                    var _parB = __solvedHeight - __scissorPadBottom;
+                }
+                else
+                {
+                    var _parT = 0;
+                    var _parB = __solvedHeight;
+                }
+                
                 var _distT = _parT - _instT;
                 var _distB = _parB - _instB;
                 

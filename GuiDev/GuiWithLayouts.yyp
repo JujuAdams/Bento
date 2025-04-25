@@ -149,7 +149,7 @@
     {"id":{"name":"GuiDestroyChildren","path":"scripts/GuiDestroyChildren/GuiDestroyChildren.yy",},},
     {"id":{"name":"GuiDraw","path":"scripts/GuiDraw/GuiDraw.yy",},},
     {"id":{"name":"GuiDrawClear","path":"scripts/GuiDrawClear/GuiDrawClear.yy",},},
-    {"id":{"name":"GuiDrawOrigin","path":"scripts/GuiDrawOrigin/GuiDrawOrigin.yy",},},
+    {"id":{"name":"GuiDrawCross","path":"scripts/GuiDrawCross/GuiDrawCross.yy",},},
     {"id":{"name":"GuiDrawScissorOff","path":"scripts/GuiDrawScissorOff/GuiDrawScissorOff.yy",},},
     {"id":{"name":"GuiDrawScissorOn","path":"scripts/GuiDrawScissorOn/GuiDrawScissorOn.yy",},},
     {"id":{"name":"GuiDrawSpriteRegion","path":"scripts/GuiDrawSpriteRegion/GuiDrawSpriteRegion.yy",},},
