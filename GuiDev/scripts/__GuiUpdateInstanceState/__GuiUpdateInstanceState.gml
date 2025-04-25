@@ -62,7 +62,7 @@ function __GuiUpdateInstanceState()
             {
                 //System says the player has clicked
                 
-                if (GuiNavGetOver() && (not GuiNavGetHold()))
+                if (GuiNavGetOver(_instance) && (not GuiNavGetHold(_instance)))
                 {
                     __holdState = GUI_PRESS;
                     _system.__holdInstance = _instance;
@@ -104,7 +104,7 @@ function __GuiUpdateInstanceState()
                             }
                             else
                             {
-                                if (GuiNavGetOver()) __click = true;
+                                if (GuiNavGetOver(_instance)) __click = true;
                             }
                         }
                     }

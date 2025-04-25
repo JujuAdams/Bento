@@ -53,19 +53,19 @@ function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
             //Choose a predefined navigable instance if possible
             if (_dX < 0)
             {
-                _nextInstance = _prevGui.navLeft;
+                _nextInstance = _prevGui.__navLeft;
             }
             else if (_dX > 0)
             {
-                _nextInstance = _prevGui.navRight;
+                _nextInstance = _prevGui.__navRight;
             }
             else if (_dY < 0)
             {
-                _nextInstance = _prevGui.navUp;
+                _nextInstance = _prevGui.__navUp;
             }
             else if (_dY > 0)
             {
-                _nextInstance = _prevGui.navDown;
+                _nextInstance = _prevGui.__navDown;
             }
             
             //Only check if the next instance is properly visible if it's nested inside a different scroller to

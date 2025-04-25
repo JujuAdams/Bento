@@ -69,8 +69,8 @@ function __GuiEnsureAnimAndScroll()
                     {
                         __GuiEnsureAnimationInner(_instance,
                                                   layoutX, layoutY,
-                                                  layoutWidth / max(1, __solvedWidth), layoutHeight / max(1, __solvedHeight), layoutAngle,
-                                                  __GuiEnsureAnimationGetOriginX() - __scrollX, __GuiEnsureAnimationGetOriginY() - __scrollY);
+                                                  layoutWidth / max(1, __gui.__solvedWidth), layoutHeight / max(1, __gui.__solvedHeight), layoutAngle,
+                                                  __GuiEnsureAnimationGetOriginX(_parent) - __gui.__scrollX, __GuiEnsureAnimationGetOriginY(_parent) - __gui.__scrollY);
                     }
                 }
             }
@@ -92,8 +92,8 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
             if (_index >= 0) array_delete(_animAndScrollDirtyArray, _index, 1);
         }
         
-        var _xOrigin = __GuiEnsureAnimationGetOriginX();
-        var _yOrigin = __GuiEnsureAnimationGetOriginY();
+        var _xOrigin = __GuiEnsureAnimationGetOriginX(_instance);
+        var _yOrigin = __GuiEnsureAnimationGetOriginY(_instance);
         
         //Calculate where our center is on the parent
         var _xCenterLocal = __solvedLeftLocal + __animOffsetX + _xOrigin - _parentOriginX;
@@ -125,13 +125,16 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
         var _angle = __animAngleForce? __animAngle : (__animAngle + _parentAngle);
         
         //Set final variables ready for the reposition user event
-        layoutX      = _x;
-        layoutY      = _y;
-        layoutWidth  = _xScale*__solvedWidth;
-        layoutHeight = _yScale*__solvedHeight;
-        layoutAngle  = _angle;
-        
-        event_user(GUI_USER_EVENT_REPOSITION);
+        with(_instance)
+        {
+            layoutX      = _x;
+            layoutY      = _y;
+            layoutWidth  = _xScale*other.__solvedWidth;
+            layoutHeight = _yScale*other.__solvedHeight;
+            layoutAngle  = _angle;
+            
+            event_user(GUI_USER_EVENT_REPOSITION);
+        }
         
         //Pass values on to our children
         var _childArray = __childArray;
@@ -151,40 +154,46 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
     }
 }
 
-function __GuiEnsureAnimationGetOriginX()
+function __GuiEnsureAnimationGetOriginX(_instance)
 {
-    var _originProportion = __animOriginX;
-    
-    if (_originProportion != undefined)
+    with(_instance)
     {
-        return _originProportion*__solvedWidth;
-    }
-    
-    if (sprite_exists(sprite_index))
-    {
-        return (sprite_get_xoffset(sprite_index) / sprite_get_width(sprite_index))*__solvedWidth;
-    }
-    else
-    {
-        return GUI_FALLBACK_ORIGIN_X*__solvedWidth;
+        var _originProportion = __gui.__animOriginX;
+        
+        if (_originProportion != undefined)
+        {
+            return _originProportion*__gui.__solvedWidth;
+        }
+        
+        if (sprite_exists(sprite_index))
+        {
+            return (sprite_get_xoffset(sprite_index) / sprite_get_width(sprite_index))*__gui.__solvedWidth;
+        }
+        else
+        {
+            return GUI_FALLBACK_ORIGIN_X*__gui.__solvedWidth;
+        }
     }
 }
 
-function __GuiEnsureAnimationGetOriginY()
+function __GuiEnsureAnimationGetOriginY(_instance)
 {
-    var _originProportion = __animOriginY;
-    
-    if (_originProportion != undefined)
+    with(_instance)
     {
-        return _originProportion*__solvedHeight;
-    }
-    
-    if (sprite_exists(sprite_index))
-    {
-        return (sprite_get_yoffset(sprite_index) / sprite_get_height(sprite_index))*__solvedHeight;
-    }
-    else
-    {
-        return GUI_FALLBACK_ORIGIN_Y*__solvedHeight;
+        var _originProportion = __gui.__animOriginY;
+        
+        if (_originProportion != undefined)
+        {
+            return _originProportion*__gui.__solvedHeight;
+        }
+        
+        if (sprite_exists(sprite_index))
+        {
+            return (sprite_get_yoffset(sprite_index) / sprite_get_height(sprite_index))*__gui.__solvedHeight;
+        }
+        else
+        {
+            return GUI_FALLBACK_ORIGIN_Y*__gui.__solvedHeight;
+        }
     }
 }

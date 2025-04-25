@@ -21,7 +21,7 @@ function __GuiEnsureScrollLimits()
                 //Only do hard work if we have to!
                 
                 //Calculate the physical bounds of the children of this parent. Positions are in world-space
-                var _bounds = __GuiGetChildrenBounds();
+                var _bounds = __GuiGetChildrenBounds(0, _parent);
                 
                 if (__scrollHori)
                 {
@@ -89,7 +89,7 @@ function __GuiEnsureScrollLimits()
                 __scrollMaxY = 0;
             }
             
-            GuiScrollSet(_newX, _newY);
+            GuiScrollSet(_newX, _newY, undefined, _parent);
         }
     }
     

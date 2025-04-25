@@ -1,15 +1,15 @@
 // Feather disable all
 
-/// Sets a variable on an instance if it has not already been defined.
+/// Sets a variable on an instance or struct if it has not already been defined.
 /// 
 /// @param variableName
 /// @param value
-/// @param [instance=id]
+/// @param [target=self]
 
-function GuiSetIfNotDefined(_variableName, _value, _instance = id)
+function GuiSetIfNotDefined(_variableName, _value, _target = self)
 {
-    if (not variable_instance_exists(_instance, _variableName))
+    if (not variable_struct_exists(_target, _variableName))
     {
-        variable_instance_set(_instance, _variableName, _value);
+        variable_struct_set(_target, _variableName, _value);
     }
 }

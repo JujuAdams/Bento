@@ -39,7 +39,7 @@ function __GuiEnsureStepOrderInner(_instance)
         {
             if (__scissorEnabled)
             {
-                array_insert(_stepOrder, 0, method(self, __GuiStepMethodScissorPush));
+                array_insert(_stepOrder, 0, method(_instance, __GuiStepMethodScissorPush));
             }
             
             //Add children created inside the parent to the Step order. If we encounter a blocking
@@ -56,22 +56,22 @@ function __GuiEnsureStepOrderInner(_instance)
             
             if (__scissorEnabled)
             {
-                array_insert(_stepOrder, 0, method(self, __GuiScissorPop));
+                array_insert(_stepOrder, 0, method(_instance, __GuiScissorPop));
             }
         }
         
         if ((__behavior == GUI_BEHAVIOR_BUTTON) || (__behavior == GUI_BEHAVIOR_LISTENER))
         {
-            array_insert(_stepOrder, 0, method(self, __GuiStepMethod));
+            array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
         }
         else if (__behavior == GUI_BEHAVIOR_MODAL)
         {
-            array_insert(_stepOrder, 0, method(self, __GuiStepMethod));
+            array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
             return __GUI_RETURN_MODAL;
         }
         else if (__behavior == GUI_BEHAVIOR_BLOCK_SIBLINGS)
         {
-            array_insert(_stepOrder, 0, method(self, __GuiStepMethod));
+            array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
             return __GUI_RETURN_BLOCK_SIBLINGS;
         }
         else if (__behavior == GUI_BEHAVIOR_POP_UP)
@@ -82,7 +82,7 @@ function __GuiEnsureStepOrderInner(_instance)
             
             //Pop-ups are not selectable but are still hoverable. This means we need to push them
             //to the Step order
-            array_insert(_stepOrder, 0, method(self, __GuiStepMethod));
+            array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
             
             if (not GUI_POP_UP_CLICK_THROUGH)
             {
@@ -96,7 +96,7 @@ function __GuiEnsureStepOrderInner(_instance)
             
             if (__scissorEnabled)
             {
-                array_insert(_stepOrder, 0, method(self, __GuiStepMethod));
+                array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
             }
         }
     }
@@ -115,8 +115,8 @@ function __GuiStepMethod()
 function __GuiStepMethodScissorPush()
 {
     //TODO - Use accurate values (layout values)
-    __GuiScissorPush(bbox_left   + __scissorPadLeft,
-                     bbox_top    + __scissorPadTop,
-                     bbox_right  - __scissorPadRight,
-                     bbox_bottom - __scissorPadBottom);
+    __GuiScissorPush(bbox_left   + __gui.__scissorPadLeft,
+                     bbox_top    + __gui.__scissorPadTop,
+                     bbox_right  - __gui.__scissorPadRight,
+                     bbox_bottom - __gui.__scissorPadBottom);
 }

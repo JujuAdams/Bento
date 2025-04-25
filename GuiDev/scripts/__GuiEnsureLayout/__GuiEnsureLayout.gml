@@ -7,11 +7,12 @@ function __GuiEnsureLayout()
     
     with(_system)
     {
-        var _rootGui = GUI_ROOT.__gui;
+        var _rootInstance = GUI_ROOT;
+        var _rootGui = _rootInstance.__gui;
         
         //Ensure a full reset of the animation/scroll positions
         array_resize(__animAndScrollDirtyArray, 0);
-        array_push(__animAndScrollDirtyArray, _rootGui);
+        array_push(__animAndScrollDirtyArray, _rootInstance);
         
         var _layoutOrder = __layoutOrder;
         array_resize(_layoutOrder, 0);
@@ -20,7 +21,7 @@ function __GuiEnsureLayout()
         __GuiEnsureChildOrder();
         
         //Ensure that our layout order is up-to-date
-        __GuiEnsureLayerOrderInner(_rootGui);
+        __GuiEnsureLayerOrderInner(_rootInstance);
         var _count = array_length(_layoutOrder);
         
         //Populate static widths of instances

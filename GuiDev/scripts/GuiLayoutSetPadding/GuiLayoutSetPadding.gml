@@ -12,11 +12,6 @@ function GuiLayoutSetPadding(_left, _top, _right, _bottom, _instance = id)
     
     if (not instance_exists(_instance)) return;
     
-    if (not variable_instance_exists(_instance, "__layoutPadLeft"))
-    {
-        __GuiError("Can only set list padding on objects that inherit from `oGuiLibList` or `oGuiLibGrid`");
-    }
-    
     with(_instance.__gui)
     {
         if (_left != undefined)

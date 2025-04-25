@@ -35,7 +35,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         {
             if (__scissorEnabled)
             {
-                array_insert(_drawOrder, 0, method(self, function()
+                array_insert(_drawOrder, 0, method(_instance, function()
                 {
                     __GuiScissorPop();
                     event_user(GUI_USER_EVENT_DRAW_END);
@@ -43,7 +43,7 @@ function __GuiEnsureDrawOrderInner(_instance)
             }
             else
             {
-                array_insert(_drawOrder, 0, method(self, function()
+                array_insert(_drawOrder, 0, method(_instance, function()
                 {
                     event_user(GUI_USER_EVENT_DRAW_END);
                 }));
@@ -53,7 +53,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         {
             if (__scissorEnabled)
             {
-                array_insert(_drawOrder, 0, method(self, __GuiScissorPop));
+                array_insert(_drawOrder, 0, method(_instance, __GuiScissorPop));
             }
         }
         
@@ -69,7 +69,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         //Always push ourselves to the Draw order
         if (__scissorEnabled)
         {
-            array_insert(_drawOrder, 0, method(self, function()
+            array_insert(_drawOrder, 0, method(_instance, function()
             {
                 if (visible)
                 {
@@ -77,15 +77,15 @@ function __GuiEnsureDrawOrderInner(_instance)
                 }
                 
                 //TODO - Use accurate values (layout values)
-                __GuiScissorPush(bbox_left   + __scissorPadLeft,
-                                 bbox_top    + __scissorPadTop,
-                                 bbox_right  - __scissorPadRight,
-                                 bbox_bottom - __scissorPadBottom);
+                __GuiScissorPush(bbox_left   + __gui.__scissorPadLeft,
+                                 bbox_top    + __gui.__scissorPadTop,
+                                 bbox_right  - __gui.__scissorPadRight,
+                                 bbox_bottom - __gui.__scissorPadBottom);
             }));
         }
         else
         {
-            array_insert(_drawOrder, 0, method(self, function()
+            array_insert(_drawOrder, 0, method(_instance, function()
             {
                 if (visible)
                 {

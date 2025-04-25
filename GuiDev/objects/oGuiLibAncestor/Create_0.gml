@@ -11,6 +11,24 @@ if ((not sprite_exists(mask_index)) && (not sprite_exists(sprite_index)))
     sprite_index = sGuiMaskRectangle;
 }
 
+///////////////////////////
+//                       //
+//  Read-Only Variables  //
+//                       //
+///////////////////////////
+
+layoutX      = x;
+layoutY      = y;
+layoutWidth  = sprite_width;
+layoutHeight = sprite_height;
+layoutAngle  = image_angle;
+    
+/////////////////////////
+//                     //
+//  Private Variables  //
+//                     //
+/////////////////////////
+
 __gui = {};
 with(__gui)
 {
@@ -25,29 +43,6 @@ with(__gui)
         __debugUUID = __GuiMakeUUID(other.id, other.object_index, _globalCount);
         _system.__debugDict[$ __debugUUID] = self;
     }
-    
-    GuiSetIfNotDefined("navLeft",  noone);
-    GuiSetIfNotDefined("navRight", noone);
-    GuiSetIfNotDefined("navUp",    noone);
-    GuiSetIfNotDefined("navDown",  noone);
-    
-    ///////////////////////////
-    //                       //
-    //  Read-Only Variables  //
-    //                       //
-    ///////////////////////////
-    
-    layoutX      = x;
-    layoutY      = y;
-    layoutWidth  = sprite_width;
-    layoutHeight = sprite_height;
-    layoutAngle  = image_angle;
-    
-    /////////////////////////
-    //                     //
-    //  Private Variables  //
-    //                     //
-    /////////////////////////
     
     __animOriginX    = undefined;
     __animOriginY    = undefined;
@@ -65,7 +60,7 @@ with(__gui)
     
     __parent   = noone;
     __priority = 0;
-    GuiSetParent(_system.__tempParent, id);
+    GuiSetParent(_system.__tempParent, other.id);
     
     __behavior = GUI_BEHAVIOR_COSMETIC;
     __drawEnd  = false;
@@ -77,6 +72,11 @@ with(__gui)
     __focusable       = false;
     __focused         = false;
     __focusBlockHover = false;
+    
+    __navLeft  = noone;
+    __navRight = noone;
+    __navUp    = noone;
+    __navDown  = noone;
     
     __raycastDisableHori = false;
     __raycastDisableVert = false;
@@ -116,10 +116,10 @@ with(__gui)
     
     //Output values from the solver. Positions are relative to the left-top of the parent. All four
     //values are subsequently transforms to give us the `layout*` values that are exposed to the user.
-    __solvedLeftLocal = x;
-    __solvedTopLocal  = y;
-    __solvedWidth     = sprite_width;
-    __solvedHeight    = sprite_height;
+    __solvedLeftLocal = other.x;
+    __solvedTopLocal  = other.y;
+    __solvedWidth     = other.sprite_width;
+    __solvedHeight    = other.sprite_height;
     
     //Fixed offset applied against the calculated layout left/top position. Applied at the very end of
     //the solver algorithm.
@@ -170,7 +170,7 @@ with(__gui)
     __SolverFitWidth = function()
     {
         // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-        __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(sprite_index)? sprite_get_width(sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
+        __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(__attachedInstance.sprite_index)? sprite_get_width(__attachedInstance.sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
         
         __solverFitWidth = __solvedWidth;
         __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
@@ -191,7 +191,7 @@ with(__gui)
     __SolverFitHeight = function()
     {
         // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-        __solvedHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(sprite_index)? sprite_get_height(sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
+        __solvedHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(__attachedInstance.sprite_index)? sprite_get_height(__attachedInstance.sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
         
         __solverFitHeight = __solvedHeight;
         __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
@@ -226,7 +226,7 @@ with(__gui)
         var _i = 0;
         repeat(array_length(_childArray))
         {
-            _childArray[_i].__SolverPositions(_childX, _childY, _childWidth, _childHeight);
+            _childArray[_i].__gui.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
             ++_i;
         }
     }

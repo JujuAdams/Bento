@@ -12,10 +12,10 @@ function GuiScrollMove(_dX = 0, _dY = 0, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED
     var _scroller = __GuiScrollFindParent(_instance);
     if (not instance_exists(_scroller)) return;
     
-    with(_scroller.__gui)
+    with(_scroller)
     {
-        var _xScale = layoutWidth / max(1, __solvedWidth);
-        var _yScale = layoutHeight / max(1, __solvedHeight);
+        var _xScale = layoutWidth / max(1, __gui.__solvedWidth);
+        var _yScale = layoutHeight / max(1, __gui.__solvedHeight);
         
         if ((_xScale != 0) && (_yScale != 0))
         {

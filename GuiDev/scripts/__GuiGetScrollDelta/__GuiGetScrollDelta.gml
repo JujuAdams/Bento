@@ -16,101 +16,104 @@ function __GuiGetScrollDelta(_instance = id)
         var _instanceGui = _instance.__gui;
         
         var _parent = __GuiScrollFindParent(_instanceGui.__parent);
-        with(_parent.__gui)
+        if (instance_exists(_parent))
         {
-            if (__scissorEnabled)
+            with(_parent.__gui)
             {
-                var _instanceLeft   = _instanceGui.__solvedLeftLocal;
-                var _instanceTop    = _instanceGui.__solvedTopLocal;
-                var _instanceWidth  = _instanceGui.__solvedWidth;
-                var _instanceHeight = _instanceGui.__solvedHeight;
-                
-                if (__scrollHori)
+                if (__scissorEnabled)
                 {
-                    if (_instanceWidth > __solvedWidth)
+                    var _instanceLeft   = _instanceGui.__solvedLeftLocal;
+                    var _instanceTop    = _instanceGui.__solvedTopLocal;
+                    var _instanceWidth  = _instanceGui.__solvedWidth;
+                    var _instanceHeight = _instanceGui.__solvedHeight;
+                    
+                    if (__scrollHori)
                     {
-                        //Try to place the instance in the middle of the parent
-                        _dX = (0.5*__solvedWidth - (_instanceLeft + 0.5*_instanceWidth)) - __scrollX;
-                        _tooBig = true;
-                    }
-                    else
-                    {
-                        var _instL = __scrollX + _instanceLeft - GUI_SCROLL_TO_PADDING;
-                        var _instR = __scrollX + _instanceLeft + _instanceWidth + GUI_SCROLL_TO_PADDING;
-                        
-                        if (__scissorEnabled)
+                        if (_instanceWidth > __solvedWidth)
                         {
-                            _parL = __scissorPadLeft;
-                            _parR = __solvedWidth - __scissorPadRight;
+                            //Try to place the instance in the middle of the parent
+                            _dX = (0.5*__solvedWidth - (_instanceLeft + 0.5*_instanceWidth)) - __scrollX;
+                            _tooBig = true;
                         }
                         else
                         {
-                            var _parL = 0;
-                            var _parR = __solvedWidth;
-                        }
-                        
-                        var _distL = _parL - _instL;
-                        var _distR = _parR - _instR;
-                        
-                        if (_distL > 0)
-                        {
-                            if (_distR < 0)
+                            var _instL = __scrollX + _instanceLeft - GUI_SCROLL_TO_PADDING;
+                            var _instR = __scrollX + _instanceLeft + _instanceWidth + GUI_SCROLL_TO_PADDING;
+                            
+                            if (__scissorEnabled)
                             {
-                                _dX = (abs(_distL) < abs(_distR))? _distL : _distR;
+                                _parL = __scissorPadLeft;
+                                _parR = __solvedWidth - __scissorPadRight;
                             }
                             else
                             {
-                                _dX = _distL;
+                                var _parL = 0;
+                                var _parR = __solvedWidth;
+                            }
+                            
+                            var _distL = _parL - _instL;
+                            var _distR = _parR - _instR;
+                            
+                            if (_distL > 0)
+                            {
+                                if (_distR < 0)
+                                {
+                                    _dX = (abs(_distL) < abs(_distR))? _distL : _distR;
+                                }
+                                else
+                                {
+                                    _dX = _distL;
+                                }
+                            }
+                            else if (_distR < 0)
+                            {
+                                _dX = _distR;
                             }
                         }
-                        else if (_distR < 0)
-                        {
-                            _dX = _distR;
-                        }
                     }
-                }
-                
-                if (__scrollVert)
-                {
-                    if (_instanceHeight > __solvedHeight)
+                    
+                    if (__scrollVert)
                     {
-                        //Try to place the instance in the middle of the parent
-                        _dY = (0.5*__solvedHeight - (_instanceTop + 0.5*_instanceHeight)) - __scrollY;
-                        _tooBig = true;
-                    }
-                    else
-                    {
-                        var _instT = _instanceTop + __scrollY - GUI_SCROLL_TO_PADDING;
-                        var _instB = _instanceTop + _instanceHeight + __scrollY + GUI_SCROLL_TO_PADDING;
-                        
-                        if (__scissorEnabled)
+                        if (_instanceHeight > __solvedHeight)
                         {
-                            var _parT = __scissorPadTop;
-                            var _parB = __solvedHeight - __scissorPadBottom;
+                            //Try to place the instance in the middle of the parent
+                            _dY = (0.5*__solvedHeight - (_instanceTop + 0.5*_instanceHeight)) - __scrollY;
+                            _tooBig = true;
                         }
                         else
                         {
-                            var _parT = 0;
-                            var _parB = __solvedHeight;
-                        }
-                        
-                        var _distT = _parT - _instT;
-                        var _distB = _parB - _instB;
-                        
-                        if (_distT > 0)
-                        {
-                            if (_distB < 0)
+                            var _instT = _instanceTop + __scrollY - GUI_SCROLL_TO_PADDING;
+                            var _instB = _instanceTop + _instanceHeight + __scrollY + GUI_SCROLL_TO_PADDING;
+                            
+                            if (__scissorEnabled)
                             {
-                                _dY = (abs(_distT) < abs(_distB))? _distT : _distB;
+                                var _parT = __scissorPadTop;
+                                var _parB = __solvedHeight - __scissorPadBottom;
                             }
                             else
                             {
-                                _dY = _distT;
+                                var _parT = 0;
+                                var _parB = __solvedHeight;
                             }
-                        }
-                        else if (_distB < 0)
-                        {
-                            _dY = _distB;
+                            
+                            var _distT = _parT - _instT;
+                            var _distB = _parB - _instB;
+                            
+                            if (_distT > 0)
+                            {
+                                if (_distB < 0)
+                                {
+                                    _dY = (abs(_distT) < abs(_distB))? _distT : _distB;
+                                }
+                                else
+                                {
+                                    _dY = _distT;
+                                }
+                            }
+                            else if (_distB < 0)
+                            {
+                                _dY = _distB;
+                            }
                         }
                     }
                 }

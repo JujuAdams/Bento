@@ -10,13 +10,13 @@ function GuiLayoutSetGutter(_x, _y, _instance = id)
     
     if (not instance_exists(_instance)) return;
     
-    if (not variable_instance_exists(_instance, "__layoutGutterX"))
-    {
-        __GuiError("Can only set list gutters on objects that inherit from `oGuiLibList` or `oGuiLibGrid`");
-    }
-    
     with(_instance.__gui)
     {
+        if (not variable_struct_exists(self, "__layoutGutterX"))
+        {
+            __GuiError("Can only set list gutters on objects that inherit from `oGuiLibList` or `oGuiLibGrid`");
+        }
+        
         if (_x != undefined)
         {
             if (__layoutGutterX != _x)

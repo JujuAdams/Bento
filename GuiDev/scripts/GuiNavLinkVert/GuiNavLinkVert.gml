@@ -8,6 +8,6 @@
 
 function GuiNavLinkVert(_up, _down)
 {
-    if (instance_exists(_up)) _up.__gui.navDown = _down;
-    if (instance_exists(_down)) _down.__gui.navUp = _up;
+    if (instance_exists(_up)) _up.__gui.__navDown = _down;
+    if (instance_exists(_down)) _down.__gui.__navUp = _up;
 }

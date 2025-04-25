@@ -10,13 +10,13 @@ function GuiLayoutSetListAlign(_horizontal, _vertical, _instance = id)
     
     if (not instance_exists(_instance)) return;
     
-    if (not variable_instance_exists(_instance, "__layoutHAlignChildren"))
-    {
-        __GuiError("Can only set list child alignment on objects that inherit from `oGuiLibList`");
-    }
-    
     with(_instance.__gui)
     {
+        if (not variable_struct_exists(self, "__layoutHAlignChildren"))
+        {
+            __GuiError("Can only set list child alignment on objects that inherit from `oGuiLibList`");
+        }
+        
         if (_horizontal != undefined)
         {
             if (__layoutHAlignChildren != _horizontal)

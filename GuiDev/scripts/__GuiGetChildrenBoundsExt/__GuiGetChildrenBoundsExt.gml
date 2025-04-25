@@ -42,7 +42,7 @@ function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _in
                 var _i = 0;
                 repeat(array_length(_childArray))
                 {
-                    with(_childArray[_i])
+                    with(_childArray[_i].__gui)
                     {
                         _left   = min(_left,   __solvedLeftLocal);
                         _top    = min(_top,    __solvedTopLocal);
