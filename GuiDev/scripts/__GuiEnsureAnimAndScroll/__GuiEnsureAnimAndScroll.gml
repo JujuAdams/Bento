@@ -68,8 +68,8 @@ function __GuiEnsureAnimAndScroll()
                     with(_parent)
                     {
                         __GuiEnsureAnimationInner(_instance,
-                                                  layoutX, layoutY,
-                                                  layoutWidth / max(1, __gui.__solvedWidth), layoutHeight / max(1, __gui.__solvedHeight), layoutAngle,
+                                                  guiX, guiY,
+                                                  guiWidth / max(1, __gui.__solvedWidth), guiHeight / max(1, __gui.__solvedHeight), guiAngle,
                                                   __GuiEnsureAnimationGetOriginX(_parent) - __gui.__scrollX, __GuiEnsureAnimationGetOriginY(_parent) - __gui.__scrollY);
                     }
                 }
@@ -127,11 +127,11 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
         //Set final variables ready for the reposition user event
         with(_instance)
         {
-            layoutX      = _x;
-            layoutY      = _y;
-            layoutWidth  = _xScale*other.__solvedWidth;
-            layoutHeight = _yScale*other.__solvedHeight;
-            layoutAngle  = _angle;
+            guiX      = _x;
+            guiY      = _y;
+            guiWidth  = _xScale*other.__solvedWidth;
+            guiHeight = _yScale*other.__solvedHeight;
+            guiAngle  = _angle;
             
             event_user(GUI_USER_EVENT_REPOSITION);
         }

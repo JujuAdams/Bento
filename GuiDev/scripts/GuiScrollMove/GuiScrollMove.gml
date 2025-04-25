@@ -14,13 +14,13 @@ function GuiScrollMove(_dX = 0, _dY = 0, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED
     
     with(_scroller)
     {
-        var _xScale = layoutWidth / max(1, __gui.__solvedWidth);
-        var _yScale = layoutHeight / max(1, __gui.__solvedHeight);
+        var _xScale = guiWidth / max(1, __gui.__solvedWidth);
+        var _yScale = guiHeight / max(1, __gui.__solvedHeight);
         
         if ((_xScale != 0) && (_yScale != 0))
         {
-            var _cos =  dcos(-layoutAngle);
-            var _sin = -dsin(-layoutAngle);
+            var _cos =  dcos(-guiAngle);
+            var _sin = -dsin(-guiAngle);
             
             //We need to transform the navigation delta into the local coordinate space of the UI element
             var _transformedDX = (_dX*_cos - _dY*_sin) / _xScale;

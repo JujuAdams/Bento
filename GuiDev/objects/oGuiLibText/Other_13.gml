@@ -1,6 +1,6 @@
 /// @desc Reposition
 
-x = layoutX;
-y = layoutY;
+x = guiX;
+y = guiY;
 
-image_angle = layoutAngle;
+image_angle = guiAngle;

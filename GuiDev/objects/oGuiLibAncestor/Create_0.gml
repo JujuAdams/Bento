@@ -17,11 +17,11 @@ if ((not sprite_exists(mask_index)) && (not sprite_exists(sprite_index)))
 //                       //
 ///////////////////////////
 
-layoutX      = x;
-layoutY      = y;
-layoutWidth  = sprite_width;
-layoutHeight = sprite_height;
-layoutAngle  = image_angle;
+guiX      = x;
+guiY      = y;
+guiWidth  = sprite_width;
+guiHeight = sprite_height;
+guiAngle  = image_angle;
     
 /////////////////////////
 //                     //
