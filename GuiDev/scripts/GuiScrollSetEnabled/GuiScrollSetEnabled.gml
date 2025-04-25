@@ -20,6 +20,9 @@ function GuiScrollSetEnabled(_horizontal, _vertical, _instance = id)
                 GuiSetIfNotDefined("__scrollPadTop",    0);
                 GuiSetIfNotDefined("__scrollPadRight",  0);
                 GuiSetIfNotDefined("__scrollPadBottom", 0);
+                GuiSetIfNotDefined("__scrollTargetX",   __scrollX);
+                GuiSetIfNotDefined("__scrollTargetY",   __scrollY);
+                GuiSetIfNotDefined("__scrollSpeed",     infinity);
             }
             
             GuiScrollLimitsMarkDirty(id);

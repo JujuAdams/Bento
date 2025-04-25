@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScrollGetFinished",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScrollGetFinished",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Library/Scissor & Scroll/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -7,6 +7,15 @@
 
 draw_self();
 
+if (text != "")
+{
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text(0.5*(bbox_left + bbox_right), 0.5*(bbox_top + bbox_bottom), text);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+}
+
 // Draw a highlight over the button is the instance is being hovered by the Gui system's cursor
 // (which applies to both pointer-driven and directional input). Alternatively, if this is a tab
 // button and this button cause a page to be opened by the tab group then we also highlight the

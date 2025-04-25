@@ -10,10 +10,12 @@
 /// @param directionX
 /// @param directionY
 /// @param [excludeArray]
+/// @param [scrollParent]
 
-function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [])
+function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = undefined)
 {
-    static _stepOrder = __GuiSystem().__stepOrder;
+    static _system    = __GuiSystem();
+    static _stepOrder = _system.__stepOrder;
    
     var _baseDist = dot_product(_dX, _dY, _x, _y);
     
@@ -40,7 +42,7 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [])
                 var _weight = point_distance(_x, _y, _nearestX, _nearestY);
                 if (_weight < _minWeight)
                 {
-                    if (GuiGetHoverable(id))
+                    if (GuiGetHoverable(id, (_scrollParent == undefined) || (_scrollParent != __GuiScrollFindParent(id))))
                     {
                         _instance = id;
                         _minWeight = _weight;

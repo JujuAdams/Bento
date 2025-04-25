@@ -4,9 +4,10 @@
 /// This function should be called in the Step user event (`GUI_USER_EVENT_STEP`) for both the
 /// parent and any children.
 /// 
+/// @param [scrollSpeed]
 /// @param [instance=id]
 
-function GuiScrollOnPointer(_instance = id)
+function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance = id)
 {
     static _system = __GuiSystem();
     
@@ -19,7 +20,7 @@ function GuiScrollOnPointer(_instance = id)
                 var _parent = __GuiScrollFindParent(_instance);
                 if (_instance == _parent)
                 {
-                    GuiScrollMove(GuiNavGetDX(), GuiNavGetDY(), _parent);
+                    GuiScrollMove(GuiNavGetDX(), GuiNavGetDY(), infinity, _parent);
                 }
                 else
                 {
@@ -46,7 +47,7 @@ function GuiScrollOnPointer(_instance = id)
                 _dY -= GUI_MOUSE_WHEEL_SCROLL_SPEED;
             }
             
-            GuiScrollMove(_dX, _dY, _instance);
+            GuiScrollMove(_dX, _dY, _scrollSpeed, _instance);
         }
     }
 }

@@ -3,10 +3,11 @@
 /// Returns whether an instance is hoverable (i.e. its "over" state can be set).
 /// 
 /// @param [instance=id]
+/// @param [checkVisible=true]
 
-function GuiGetHoverable(_instance = id)
+function GuiGetHoverable(_instance = id, _checkVisible = true)
 {
-    if (not __GuiGetHoverableInner(_instance)) return false;
+    if (not __GuiGetHoverableInner(_instance, _checkVisible)) return false;
     
     if (__GuiStepOrderGetIndex(_instance) == undefined)
     {
@@ -18,7 +19,7 @@ function GuiGetHoverable(_instance = id)
     return true;
 }
 
-function __GuiGetHoverableInner(_instance)
+function __GuiGetHoverableInner(_instance, _checkVisible)
 {
     static _system = __GuiSystem();
     
@@ -43,6 +44,11 @@ function __GuiGetHoverableInner(_instance)
             {
                 return false;
             }
+        }
+        
+        if (_checkVisible && (not GuiGetVisibleInScroll(true, _instance)))
+        {
+            return false;
         }
     }
     

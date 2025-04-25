@@ -6,5 +6,8 @@ GuiScrollOnPointer();
 
 if (GuiNavGetClick())
 {
-    show_debug_message($"{id} = {GuiNameGet()}");
+    if (is_callable(clickFunc))
+    {
+        clickFunc();
+    }
 }

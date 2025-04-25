@@ -16,7 +16,7 @@ function __GuiNavStartOver(_instance)
             {
                 __directionalLastX = _instance.x;
                 __directionalLastY = _instance.y;
-                GuiScrollTo(_instance);
+                GuiScrollTo(undefined, _instance);
             }
             
             __overInstance = _instance;

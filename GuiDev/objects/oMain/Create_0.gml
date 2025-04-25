@@ -164,14 +164,18 @@ var _json = [
         children: function(_metadata) {
             //Create identical copies of references to the same struct
             //This is purely for demonstration purposes; real code would do this differently
-            return array_create(_metadata.count, {
-                object: oExampleButton,
-                vars: {
-                    image_blend: c_blue,
-                },
+            return array_create_ext(_metadata.count, function(_index)
+            {
+                return {
+                    object: oExampleButton,
+                    vars: {
+                        image_blend: c_blue,
+                        text: string(_index),
+                    },
+                };
             });
         },
     },
 ];
 
-gridInstance = GuiCreateFromJSON(_json, GUI_ROOT, { count: 6 });
+gridInstance = GuiCreateFromJSON(_json, GUI_ROOT, { count: 11 });

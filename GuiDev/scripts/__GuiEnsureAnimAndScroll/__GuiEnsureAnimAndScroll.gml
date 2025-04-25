@@ -2,8 +2,37 @@
 
 function __GuiEnsureAnimAndScroll()
 {
-    static _system = __GuiSystem();
-    static _animAndScrollDirtyArray = __GuiSystem().__animAndScrollDirtyArray;
+    static _system                  = __GuiSystem();
+    static _scrollDirtyArray        = _system.__scrollDirtyArray;
+    static _animAndScrollDirtyArray = _system.__animAndScrollDirtyArray;
+    
+    var _i = array_length(_scrollDirtyArray)-1;
+    repeat(array_length(_scrollDirtyArray))
+    {
+        with(_scrollDirtyArray[_i])
+        {
+            var _dX = __scrollTargetX - __scrollX;
+            var _dY = __scrollTargetY - __scrollY;
+            
+            var _distance = sqrt(_dX*_dX + _dY*_dY);
+            if (_distance <= 0)
+            {
+                array_delete(_scrollDirtyArray, _i, 1);
+            }
+            else
+            {
+                _dX *= min(1, min(999999, __scrollSpeed) / _distance);
+                _dY *= min(1, min(999999, __scrollSpeed) / _distance);
+                
+                __scrollX += _dX;
+                __scrollY += _dY;
+                
+                __GuiMarkAnimAndScrollDirty(id)
+            }
+        }
+        
+        --_i;
+    }
     
     if (array_length(_animAndScrollDirtyArray) <= 0) return;
     

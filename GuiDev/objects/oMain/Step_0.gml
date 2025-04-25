@@ -12,9 +12,20 @@ if (keyboard_check_pressed(ord("3"))) GuiNavSetMode(GUI_NAV_TOUCH);
 // configure the auto-scroll behavior by calling `GuiInputConfigureNavigation()`. The primary
 // action parameter should be a continuous "held" value too. The Gui system handles the "pressed"
 // and "released" state internally.
-GuiInputDirectional(keyboard_check(vk_right) - keyboard_check(vk_left),
-                    keyboard_check(vk_down) - keyboard_check(vk_up),
-                    keyboard_check(vk_space));
+var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
+var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
+var _primary = keyboard_check(vk_space);
+
+if (gamepad_is_connected(0))
+{
+    var _gamepadDX = gamepad_axis_value(0, gp_axislh);
+    var _gamepadDY = gamepad_axis_value(0, gp_axislv);
+    if (abs(_gamepadDX) > 0.2) _dX += sign(_gamepadDX);
+    if (abs(_gamepadDY) > 0.2) _dY += sign(_gamepadDY);
+    _primary |= gamepad_button_check(0, gp_face1);
+}
+
+GuiInputDirectional(_dX, _dY, _primary);
 
 // Pointer input generalises both mouse and touch input. As above, the primary action should be a
 // continuous "held" value. The coordinate space for the x/y coordinates should be the same as the
@@ -42,3 +53,6 @@ if (keyboard_check_pressed(ord("D")))
     GuiDebugStepOrder();
     GuiDebugDrawOrder();
 }
+
+//GuiAnimSetAngle(45, false, oExampleListWithScroll);
+GuiAnimSetScale(1, 1, false, oExampleListWithScroll);

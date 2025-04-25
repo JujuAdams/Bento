@@ -30,6 +30,7 @@ function __GuiSystem()
         __layoutDirty = true;
         
         __animAndScrollDirtyArray = [];
+        __scrollDirtyArray = [];
         
         __stepRootStack = [];
         __stepOrder     = [];

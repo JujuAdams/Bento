@@ -58,13 +58,13 @@ function GuiStep(_rootWidth, _rootHeight, _rootX = 0, _rootY = 0)
             if (not __navPointer) //Not using a pointer
             {
                 __holdState = __directionalPrevHold? (__directionalHold? GUI_HOLD : GUI_RELEASE) : (__directionalHold? GUI_PRESS : GUI_OFF);
-                if (not GuiGetHoverable(__holdInstance)) __holdInstance = noone;
+                if (not GuiGetHoverable(__holdInstance, false)) __holdInstance = noone;
                 __GuiNavStartOver(__GuiGetDirectionalOver(__overInstance, __directionalStateX.__output, __directionalStateY.__output));
             }
             else //Using a pointer
             {
                 __holdState = __mousePrevHold? (__mouseHold? GUI_HOLD : GUI_RELEASE) : (__mouseHold? GUI_PRESS : GUI_OFF);
-                if (not GuiGetHoverable(__holdInstance)) __holdInstance = noone;
+                if (not GuiGetHoverable(__holdInstance, false)) __holdInstance = noone;
                 __GuiNavStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
                 
                 //Detect clicking off of a pop-up
@@ -94,6 +94,10 @@ function GuiStep(_rootWidth, _rootHeight, _rootX = 0, _rootY = 0)
         }
         
         __GuiUpdateInstanceState();
+        
+        __directionalDX   = 0;
+        __directionalDY   = 0;
+        __directionalHold = false;
     }
     
     //Surprise! We go in reverse
