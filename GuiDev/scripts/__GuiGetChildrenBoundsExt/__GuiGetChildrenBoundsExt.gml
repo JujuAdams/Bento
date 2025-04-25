@@ -25,67 +25,70 @@ function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _in
     
     var _empty = true;
     
-    with(_instance)
+    if (instance_exists(_instance))
     {
-        var _childArray = __childArray;
-        if (array_length(_childArray) > 0)
+        with(_instance.__gui)
         {
-            _empty = false;
-            
-            var _left   =  infinity;
-            var _top    =  infinity; 
-            var _right  = -infinity;
-            var _bottom = -infinity;
-            
-            var _i = 0;
-            repeat(array_length(_childArray))
+            var _childArray = __childArray;
+            if (array_length(_childArray) > 0)
             {
-                with(_childArray[_i])
+                _empty = false;
+                
+                var _left   =  infinity;
+                var _top    =  infinity; 
+                var _right  = -infinity;
+                var _bottom = -infinity;
+                
+                var _i = 0;
+                repeat(array_length(_childArray))
                 {
-                    _left   = min(_left,   __solvedLeftLocal);
-                    _top    = min(_top,    __solvedTopLocal);
-                    _right  = max(_right,  __solvedLeftLocal + __solvedWidth);
-                    _bottom = max(_bottom, __solvedTopLocal  + __solvedHeight);
+                    with(_childArray[_i])
+                    {
+                        _left   = min(_left,   __solvedLeftLocal);
+                        _top    = min(_top,    __solvedTopLocal);
+                        _right  = max(_right,  __solvedLeftLocal + __solvedWidth);
+                        _bottom = max(_bottom, __solvedTopLocal  + __solvedHeight);
+                    }
+                    
+                    ++_i;
                 }
                 
-                ++_i;
+                with(_result)
+                {
+                    x = 0.5*(_left - _padLeft + _right + _padRight);
+                    y = 0.5*(_top - _padTop + _bottom + _padBottom);
+                    
+                    width  = _right - _left + _padLeft + _padRight;
+                    height = _bottom - _top + _padTop + _padBottom;
+                    
+                    left   = _left - _padLeft;
+                    top    = _top - _padTop;
+                    right  = _right + _padRight;
+                    bottom = _bottom + _padBottom;
+                }
+            }
+            else
+            {
+                var _x = x;
+                var _y = y;
+                
+                with(_result)
+                {
+                    x = _x;
+                    y = _y;
+                    
+                    width  = _padLeft + _padRight;
+                    height = _padTop + _padBottom;
+                    
+                    left   = _x - _padLeft;
+                    top    = _y - _padTop;
+                    right  = _x + _padRight;
+                    bottom = _y + _padBottom;
+                }
             }
             
-            with(_result)
-            {
-                x = 0.5*(_left - _padLeft + _right + _padRight);
-                y = 0.5*(_top - _padTop + _bottom + _padBottom);
-                
-                width  = _right - _left + _padLeft + _padRight;
-                height = _bottom - _top + _padTop + _padBottom;
-                
-                left   = _left - _padLeft;
-                top    = _top - _padTop;
-                right  = _right + _padRight;
-                bottom = _bottom + _padBottom;
-            }
+            return _result;
         }
-        else
-        {
-            var _x = x;
-            var _y = y;
-            
-            with(_result)
-            {
-                x = _x;
-                y = _y;
-                
-                width  = _padLeft + _padRight;
-                height = _padTop + _padBottom;
-                
-                left   = _x - _padLeft;
-                top    = _y - _padTop;
-                right  = _x + _padRight;
-                bottom = _y + _padBottom;
-            }
-        }
-        
-        return _result;
     }
     
     with(_result)

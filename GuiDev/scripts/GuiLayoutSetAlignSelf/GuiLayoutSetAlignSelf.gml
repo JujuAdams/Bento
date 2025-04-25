@@ -8,7 +8,9 @@ function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = id)
 {
     static _system = __GuiSystem();
     
-    with(_instance)
+    if (not instance_exists(_instance)) return;
+    
+    with(_instance.__gui)
     {
         if (_hAlign != undefined)
         {

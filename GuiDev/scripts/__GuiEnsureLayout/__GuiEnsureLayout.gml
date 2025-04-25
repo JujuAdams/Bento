@@ -7,11 +7,11 @@ function __GuiEnsureLayout()
     
     with(_system)
     {
-        var _guiRoot = GUI_ROOT;
+        var _rootGui = GUI_ROOT.__gui;
         
         //Ensure a full reset of the animation/scroll positions
         array_resize(__animAndScrollDirtyArray, 0);
-        array_push(__animAndScrollDirtyArray, _guiRoot);
+        array_push(__animAndScrollDirtyArray, _rootGui);
         
         var _layoutOrder = __layoutOrder;
         array_resize(_layoutOrder, 0);
@@ -20,12 +20,12 @@ function __GuiEnsureLayout()
         __GuiEnsureChildOrder();
         
         //Ensure that our layout order is up-to-date
-        __GuiEnsureLayerOrderInner(_guiRoot);
-        var _instanceCount = array_length(_layoutOrder);
+        __GuiEnsureLayerOrderInner(_rootGui);
+        var _count = array_length(_layoutOrder);
         
         //Populate static widths of instances
-        var _i = _instanceCount-1;
-        repeat(_instanceCount)
+        var _i = _count-1;
+        repeat(_count)
         {
             _layoutOrder[_i].__SolverFitWidth();
             --_i;
@@ -33,15 +33,15 @@ function __GuiEnsureLayout()
         
         //Redistribute instance widths, shrinking and growing instances
         var _i = 0;
-        repeat(_instanceCount)
+        repeat(_count)
         {
             _layoutOrder[_i].__SolverResizeWidth();
             ++_i;
         }
         
         //Populate static heights of instances
-        var _i = _instanceCount-1;
-        repeat(_instanceCount)
+        var _i = _count-1;
+        repeat(_count)
         {
             _layoutOrder[_i].__SolverFitHeight();
             --_i;
@@ -49,25 +49,25 @@ function __GuiEnsureLayout()
         
         //Redistribute instance heights, shrinking and growing instances
         var _i = 0;
-        repeat(_instanceCount)
+        repeat(_count)
         {
             _layoutOrder[_i].__SolverResizeHeight();
             ++_i;
         }
         
         //Final pass to set positions in stone
-        _guiRoot.__SolverPositions(0, 0, _guiRoot.__solvedWidth, _guiRoot.__solvedHeight);
+        _rootGui.__SolverPositions(0, 0, _rootGui.__solvedWidth, _rootGui.__solvedHeight);
     }
 }
 
 function __GuiEnsureLayerOrderInner(_instance)
 {
     static _system      = __GuiSystem();
-    static _layoutOrder = __GuiSystem().__layoutOrder;
+    static _layoutOrder = _system.__layoutOrder;
     
-    with(_instance)
+    with(_instance.__gui)
     {
-        array_push(_layoutOrder, id);
+        array_push(_layoutOrder, self);
         
         var _array = __childArray;
         var _i = 0;

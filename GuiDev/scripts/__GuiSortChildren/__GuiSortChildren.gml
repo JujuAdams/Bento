@@ -8,11 +8,13 @@ function __GuiSortChildren(_parent)
 {
     static _funcSort = function(_a, _b)
     {
-        if (_a.__priority > _b.__priority)
+        var _delta = (_a.__gui.__priority - _b.__gui.__priority);
+        
+        if (_delta > 0)
         {
             return 1;
         }
-        else if (_a.__priority < _b.__priority)
+        else if (_delta < 0)
         {
             return -1;
         }

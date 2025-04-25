@@ -24,20 +24,21 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
     static _system = __GuiSystem();
     
     if (not instance_exists(_instance)) return false;
+    var _gui = _instance.__gui;
     
-    if ((not _instance.visible) || _instance.__disable || _instance.__focusBlockHover)
+    if ((not _instance.visible) || _gui.__disable || _gui.__focusBlockHover)
     {
         return false;
     }
     
     if (_system.__navMode == GUI_NAV_DIRECTIONAL)
     {
-        if (_instance.__behavior != GUI_BEHAVIOR_BUTTON)
+        if (_gui.__behavior != GUI_BEHAVIOR_BUTTON)
         {
             return false;
         }
         
-        var _tabData = __GuiTabGetData(_instance.__tabIdent);
+        var _tabData = __GuiTabGetData(_gui.__tabIdent);
         if (_tabData != undefined)
         {
             if (_tabData.__blockDirectionalWhenOpen && instance_exists(_tabData.__child))

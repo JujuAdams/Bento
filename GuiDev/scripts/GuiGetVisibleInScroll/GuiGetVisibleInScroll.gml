@@ -13,8 +13,8 @@ function GuiGetVisibleInScroll(_partial = false, _instance = id)
     if (_partial || _result.__tooBig)
     {
         //If the UI element is too big then settle for partially visible
-        return ((_result.__dX < _instance.__solvedWidth ) && (_result.__dX >= 0)
-             && (_result.__dY < _instance.__solvedHeight) && (_result.__dY >= 0));
+        return ((_result.__dX < _instance.__gui.__solvedWidth ) && (_result.__dX >= 0)
+             && (_result.__dY < _instance.__gui.__solvedHeight) && (_result.__dY >= 0));
     }
     else
     {

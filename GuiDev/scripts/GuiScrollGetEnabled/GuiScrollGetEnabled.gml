@@ -11,8 +11,8 @@ function GuiScrollGetEnabled(_instance = id)
     
     if (instance_exists(_instance))
     {
-        _result.horizontal = _instance.__scrollHori;
-        _result.vertical   = _instance.__scrollVert;
+        _result.horizontal = _instance.__gui.__scrollHori;
+        _result.vertical   = _instance.__gui.__scrollVert;
     }
     else
     {

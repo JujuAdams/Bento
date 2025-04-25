@@ -9,5 +9,5 @@ function GuiGetBehavior(_instance = id)
 {
     if (not instance_exists(_instance)) return undefined;
     
-    return _instance.__behavior;
+    return _instance.__gui.__behavior;
 }

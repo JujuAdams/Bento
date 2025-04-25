@@ -9,25 +9,33 @@ function __GuiEnsureAnimAndScroll()
     var _i = array_length(_scrollDirtyArray)-1;
     repeat(array_length(_scrollDirtyArray))
     {
-        with(_scrollDirtyArray[_i])
+        var _instance = _scrollDirtyArray[_i];
+        if (not instance_exists(_instance))
         {
-            var _dX = __scrollTargetX - __scrollX;
-            var _dY = __scrollTargetY - __scrollY;
-            
-            var _distance = sqrt(_dX*_dX + _dY*_dY);
-            if (_distance <= 0)
+            array_delete(_scrollDirtyArray, _i, 1);
+        }
+        else
+        {
+            with(_instance.__gui)
             {
-                array_delete(_scrollDirtyArray, _i, 1);
-            }
-            else
-            {
-                _dX *= min(1, min(999999, __scrollSpeed) / _distance);
-                _dY *= min(1, min(999999, __scrollSpeed) / _distance);
+                var _dX = __scrollTargetX - __scrollX;
+                var _dY = __scrollTargetY - __scrollY;
                 
-                __scrollX += _dX;
-                __scrollY += _dY;
-                
-                __GuiMarkAnimAndScrollDirty(id)
+                var _distance = sqrt(_dX*_dX + _dY*_dY);
+                if (_distance <= 0)
+                {
+                    array_delete(_scrollDirtyArray, _i, 1);
+                }
+                else
+                {
+                    _dX *= min(1, min(999999, __scrollSpeed) / _distance);
+                    _dY *= min(1, min(999999, __scrollSpeed) / _distance);
+                    
+                    __scrollX += _dX;
+                    __scrollY += _dY;
+                    
+                    __GuiMarkAnimAndScrollDirty(_instance)
+                }
             }
         }
         
@@ -47,23 +55,24 @@ function __GuiEnsureAnimAndScroll()
         while(array_length(_animAndScrollDirtyArray) > 0)
         {
             var _instance = array_shift(_animAndScrollDirtyArray);
-            
-            var _parent = _instance.__parent;
-            if (not instance_exists(_parent))
+            if (instance_exists(_instance))
             {
-                //No parent, probably the root node?
-                __GuiEnsureAnimationInner(_instance, 0, 0, 1, 1, 0, 0, 0);
-            }
-            else
-            {
-                with(_parent)
+                var _parent = _instance.__gui.__parent;
+                if (not instance_exists(_parent))
                 {
-                    __GuiEnsureAnimationInner(_instance,
-                                              layoutX, layoutY,
-                                              layoutWidth / max(1, __solvedWidth), layoutHeight / max(1, __solvedHeight), layoutAngle,
-                                              __GuiEnsureAnimationGetOriginX() - __scrollX, __GuiEnsureAnimationGetOriginY() - __scrollY);
+                    //No parent, probably the root node?
+                    __GuiEnsureAnimationInner(_instance, 0, 0, 1, 1, 0, 0, 0);
                 }
-                
+                else
+                {
+                    with(_parent)
+                    {
+                        __GuiEnsureAnimationInner(_instance,
+                                                  layoutX, layoutY,
+                                                  layoutWidth / max(1, __solvedWidth), layoutHeight / max(1, __solvedHeight), layoutAngle,
+                                                  __GuiEnsureAnimationGetOriginX() - __scrollX, __GuiEnsureAnimationGetOriginY() - __scrollY);
+                    }
+                }
             }
         }
     }
@@ -73,13 +82,13 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
 {
     static _animAndScrollDirtyArray = __GuiSystem().__animAndScrollDirtyArray;
     
-    with(_instance)
+    with(_instance.__gui)
     {
         if (__animAndScrollDirty)
         {
             __animAndScrollDirty = false;
             
-            var _index = array_get_index(_animAndScrollDirtyArray, id);
+            var _index = array_get_index(_animAndScrollDirtyArray, _instance);
             if (_index >= 0) array_delete(_animAndScrollDirtyArray, _index, 1);
         }
         

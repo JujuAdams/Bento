@@ -46,13 +46,5 @@ GuiInputHotkey("escape", keyboard_check(vk_escape));
 // Step user events (GUI_USER_EVENT_STEP, 0) are executed by this function where appropriate.
 GuiStep(room_width, room_height);
 
-if (keyboard_check_pressed(ord("D")))
-{
-    // A very helpful debug function that outputs the structure of Gui instances.
-    //show_debug_message(GuiDebugStructure());
-    GuiDebugStepOrder();
-    GuiDebugDrawOrder();
-}
-
 //GuiAnimSetAngle(45, false, oExampleListWithScroll);
 GuiAnimSetScale(1, 1, false, oExampleListWithScroll);

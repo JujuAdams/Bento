@@ -1,55 +1,60 @@
 // Feather disable all
 
-__GuiRemoveParent(id);
-GuiDestroyChildren(id);
+var _id = id;
 
-if (instance_exists(__selectOnDestroy))
+with(__gui)
 {
-    GuiNavSelectSoft(__selectOnDestroy);
-}
-
-if (__focusable) GuiNavSetFocus(false);
-
-if (__tabIdent != undefined)
-{
-    var _tabData = __GuiTabGetData(__tabIdent);
-    if ((_tabData.__host == id) || (_tabData.__button == id))
+    __GuiRemoveParent(_id);
+    GuiDestroyChildren(_id);
+    
+    if (instance_exists(__selectOnDestroy))
     {
-        GuiTabClose(__tabIdent);
+        GuiNavSelectSoft(__selectOnDestroy);
     }
-}
-
-if (__tabIdentChildOf != undefined)
-{
-    var _tabData = __GuiTabGetData(__tabIdentChildOf);
-    if (_tabData.__child == id)
+    
+    if (__focusable) GuiNavSetFocus(false);
+    
+    if (__tabIdent != undefined)
     {
-        if (not instance_exists(__selectOnDestroy))
+        var _tabData = __GuiTabGetData(__tabIdent);
+        if ((_tabData.__host == _id) || (_tabData.__button == _id))
         {
-            GuiNavSelect(_tabData.__button);
+            GuiTabClose(__tabIdent);
         }
     }
-}
-
-with(__GuiSystem())
-{
-    __layoutDirty = true;
-    __stepDirty   = true;
-    __drawDirty   = true;
     
-    var _instance = __nameMap[? other.__name];
-    if (_instance == other.id) ds_map_delete(__nameMap, other.__name);
-    
-    if (__popUpRoot == other.id) __popUpRoot = noone;
-    
-    if (other.__animating)
+    if (__tabIdentChildOf != undefined)
     {
-        other.__animating = false;
-        __animCount--;
+        var _tabData = __GuiTabGetData(__tabIdentChildOf);
+        if (_tabData.__child == _id)
+        {
+            if (not instance_exists(__selectOnDestroy))
+            {
+                GuiNavSelect(_tabData.__button);
+            }
+        }
     }
     
-    if (__GUI_DEBUG)
+    with(__GuiSystem())
     {
-        variable_struct_remove(__debugDict, __debugUUID);
+        __layoutDirty = true;
+        __stepDirty   = true;
+        __drawDirty   = true;
+        
+        var _instance = __nameMap[? other.__name];
+        if (_instance == _id) ds_map_delete(__nameMap, other.__name);
+        
+        if (__popUpRoot == _id) __popUpRoot = noone;
+        
+        if (other.__animating)
+        {
+            other.__animating = false;
+            __animCount--;
+        }
+        
+        if (__GUI_DEBUG)
+        {
+            variable_struct_remove(__debugDict, __debugUUID);
+        }
     }
 }

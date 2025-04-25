@@ -7,22 +7,18 @@
 
 function __GuiRemoveParent(_child)
 {
-    static _funcRemove = function(_array, _child)
+    if (not instance_exists(_child)) return;
+    
+    var _parent = _child.__gui.__parent;
+    
+    if (instance_exists(_parent))
     {
+        var _array = _parent.__gui.__childArray;
         var _index = array_get_index(_array, _child);
         if (_index >= 0) array_delete(_array, _index, 1);
     }
     
-    if (not instance_exists(_child)) return;
-    
-    var _parent = _child.__parent;
-    
-    if (instance_exists(_parent))
-    {
-        _funcRemove(_parent.__childArray,  _child);
-    }
-    
     GuiScrollLimitsMarkDirty(_parent);
     
-    _child.__parent = noone;
+    _child.__gui.__parent = noone;
 }

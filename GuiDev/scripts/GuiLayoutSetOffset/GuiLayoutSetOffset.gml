@@ -8,7 +8,9 @@ function GuiLayoutSetOffset(_x, _y, _instance = id)
 {
     static _system = __GuiSystem();
     
-    with(_instance)
+    if (not instance_exists(_instance)) return;
+    
+    with(_instance.__gui)
     {
         if (_x != undefined)
         {

@@ -10,7 +10,7 @@ function __GuiNavStartHold(_instance)
     
     if (instance_exists(_instance) && (not GuiNavGetHold(_instance)))
     {
-        _instance.__holdState = GUI_PRESS;
+        _instance.__gui.__holdState = GUI_PRESS;
         _system.__holdInstance = _instance;
         __GuiSetInstanceUpdating(_instance);
     }

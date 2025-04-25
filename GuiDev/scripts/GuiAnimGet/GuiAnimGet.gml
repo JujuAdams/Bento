@@ -6,5 +6,5 @@
 
 function GuiAnimGet(_instance = id)
 {
-    return instance_exists(_instance)? _instance.__animating : false;
+    return instance_exists(_instance)? _instance.__gui.__animating : false;
 }

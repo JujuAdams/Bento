@@ -6,7 +6,7 @@
 function __GuiGetPointerOver(_mouseX, _mouseY)
 {
     static _system    = __GuiSystem();
-    static _stepOrder = __GuiSystem().__stepOrder;
+    static _stepOrder = _system.__stepOrder;
     
     var _scissorStack = __GuiScissorReset();
     var _scissorL = -infinity;
@@ -63,6 +63,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
             
             with(method_get_self(_stepOrder[_i]))
             {
+                //TODO - Use accurate layout values
                 _scissorL = max(_scissorL, bbox_left   + __scissorPadLeft  );
                 _scissorT = max(_scissorT, bbox_top    + __scissorPadTop   );
                 _scissorR = min(_scissorR, bbox_right  - __scissorPadRight );

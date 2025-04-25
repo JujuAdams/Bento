@@ -9,8 +9,8 @@
 
 function GuiScrollMoveLocal(_dX = 0, _dY = 0, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance = id)
 {
-    var _parent = __GuiScrollFindParent(_instance);
-    if (not instance_exists(_parent)) return;
+    var _scroller = __GuiScrollFindParent(_instance);
+    if (not instance_exists(_scroller)) return;
     
-    GuiScrollSet(_parent.__scrollX + _dX, _parent.__scrollY + _dY, _scrollSpeed, _parent);
+    GuiScrollSet(_scroller.__gui.__scrollX + _dX, _scroller.__gui.__scrollY + _dY, _scrollSpeed, _scroller);
 }

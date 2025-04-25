@@ -12,18 +12,19 @@ function GuiTabOpen(_child, _button = id)
         __GuiError("Button instance doesn't exist");
     }
     
-    if (_button.__tabIdent == undefined)
+    var _tabIdent = _button.__gui.__tabIdent;
+    if (_tabIdent == undefined)
     {
         __GuiError("GuiTabSetupButton() hasn't been called for the button instance");
     }
     
-    with(__GuiTabEnsure(_button.__tabIdent))
+    with(__GuiTabEnsure(_tabIdent))
     {
         GuiDestroy(__child);
         
         __button = _button;
         __child  = _child;
         
-        _child.__tabIdentChildOf = _button.__tabIdent;
+        _child.__tabIdentChildOf = _tabIdent;
     }
 }

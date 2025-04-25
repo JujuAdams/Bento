@@ -8,5 +8,5 @@ function GuiScrollGetX(_instance = id)
 {
     if (not instance_exists(_instance)) return 0;
     
-    return _instance.__scrollX;
+    return _instance.__gui.__scrollX;
 }

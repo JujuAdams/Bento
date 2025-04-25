@@ -4,5 +4,5 @@
 
 function GuiNavToggleFocus(_instance = id)
 {
-    GuiNavSetFocus(not GuiNavGetFocus(_instance), _instance)
+    GuiNavSetFocus(not GuiNavGetFocus(_instance), _instance);
 }

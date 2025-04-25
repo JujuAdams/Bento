@@ -6,8 +6,10 @@
 
 function GuiDestroyChildren(_parent = id)
 {
-    static __funcDestroy = function(_array)
+    with(_parent)
     {
+        var _array = __childArray;
+        
         var _i = array_length(_array)-1;
         repeat(array_length(_array))
         {
@@ -16,11 +18,6 @@ function GuiDestroyChildren(_parent = id)
         }
         
         array_resize(_array, 0);
-    }
-    
-    with(_parent)
-    {
-        __funcDestroy(__childArray);
         
         //No children = No problem
         __childOrderDirty = false;

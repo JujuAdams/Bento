@@ -9,5 +9,6 @@ function GuiTabButtonIsOpen(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
     
-    return (GuiTabIsOpen(_instance.__tabIdent) && (GuiTabGetButton(_instance.__tabIdent) == _instance));
+    var _tabIdent = _instance.__gui.__tabIdent;
+    return (GuiTabIsOpen(_tabIdent) && (GuiTabGetButton(_tabIdent) == _instance));
 }

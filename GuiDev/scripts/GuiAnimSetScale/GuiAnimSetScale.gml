@@ -9,14 +9,16 @@ function GuiAnimSetScale(_xScale, _yScale, _force, _instance = id)
 {
     static _system = __GuiSystem();
     
-    with(_instance)
+    if (not instance_exists(_instance)) return;
+    
+    with(_instance.__gui)
     {
         if (_xScale != undefined)
         {
             if (__animScaleX != _xScale)
             {
                 __animScaleX = _xScale;
-                __GuiMarkAnimAndScrollDirty(id);
+                __GuiMarkAnimAndScrollDirty(_instance);
             }
         }
         
@@ -25,7 +27,7 @@ function GuiAnimSetScale(_xScale, _yScale, _force, _instance = id)
             if (__animScaleY != _yScale)
             {
                 __animScaleY = _yScale;
-                __GuiMarkAnimAndScrollDirty(id);
+                __GuiMarkAnimAndScrollDirty(_instance);
             }
         }
         
@@ -34,7 +36,7 @@ function GuiAnimSetScale(_xScale, _yScale, _force, _instance = id)
             if (__animScaleForce != _force)
             {
                 __animScaleForce = _force;
-                __GuiMarkAnimAndScrollDirty(id);
+                __GuiMarkAnimAndScrollDirty(_instance);
             }
         }
     }

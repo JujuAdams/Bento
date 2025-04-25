@@ -7,13 +7,15 @@ function GuiNavSetFocusable(_state, _instance = id)
 {
     static _system = __GuiSystem();
     
-    with(_instance)
+    if (not instance_exists(_instance)) return;
+    
+    with(_instance.__gui)
     {
         if (__focusable == _state) return;
         
         _system.__stepDirty = true;
         
-        if (not _state) GuiNavSetFocus(false);
+        if (not _state) GuiNavSetFocus(false, _instance);
         __focusable = _state;
     }
     

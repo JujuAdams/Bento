@@ -11,7 +11,10 @@ function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT
 {
     static _scrollDirtyArray = __GuiSystem().__scrollDirtyArray;
     
-    with(__GuiScrollFindParent(_instance))
+    var _scroller = __GuiScrollFindParent(_instance);
+    if (not instance_exists(_scroller)) return;
+    
+    with(_scroller.__gui)
     {
         if (not __scrollHori) _scrollTargetX = 0;
         if (not __scrollVert) _scrollTargetY = 0;
@@ -23,15 +26,15 @@ function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT
         
         if ((_scrollTargetX == __scrollTargetX) && (_scrollTargetY == __scrollTargetY)) return;
         
-        if (array_get_index(_scrollDirtyArray, id) < 0)
+        if (array_get_index(_scrollDirtyArray, _scroller) < 0)
         {
-            array_push(_scrollDirtyArray, id);
+            array_push(_scrollDirtyArray, _scroller);
         }
         
         __scrollTargetX = _scrollTargetX;
         __scrollTargetY = _scrollTargetY;
         __scrollSpeed   = _scrollSpeed;
         
-        __GuiMarkAnimAndScrollDirty(id)
+        __GuiMarkAnimAndScrollDirty(_scroller)
     }
 }

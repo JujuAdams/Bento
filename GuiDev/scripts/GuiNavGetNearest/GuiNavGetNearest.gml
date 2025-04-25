@@ -10,7 +10,7 @@
 function GuiNavGetNearest(_x, _y, _excludeArray = [])
 {
     static _system    = __GuiSystem();
-    static _stepOrder = __GuiSystem().__stepOrder;
+    static _stepOrder = _system.__stepOrder;
     
     var _instance = noone;
     

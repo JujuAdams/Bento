@@ -8,14 +8,16 @@ function GuiAnimSetOrigin(_x, _y, _instance = id)
 {
     static _system = __GuiSystem();
     
-    with(_instance)
+    if (not instance_exists(_instance)) return;
+    
+    with(_instance.__gui)
     {
         if (_x != undefined)
         {
             if (__animOriginX != _x)
             {
                 __animOriginX = _x;
-                __GuiMarkAnimAndScrollDirty(id);
+                __GuiMarkAnimAndScrollDirty(_instance);
             }
         }
         
@@ -24,7 +26,7 @@ function GuiAnimSetOrigin(_x, _y, _instance = id)
             if (__animOriginY != _y)
             {
                 __animOriginY = _y;
-                __GuiMarkAnimAndScrollDirty(id);
+                __GuiMarkAnimAndScrollDirty(_instance);
             }
         }
     }

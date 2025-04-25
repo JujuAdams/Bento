@@ -6,7 +6,9 @@
 
 function GuiScrollSetEnabled(_horizontal, _vertical, _instance = id)
 {
-    with(_instance)
+    if (not instance_exists(_instance)) return;
+    
+    with(_instance.__gui)
     {
         if ((__scrollHori != _horizontal) || (__scrollVert != _vertical))
         {
@@ -25,7 +27,7 @@ function GuiScrollSetEnabled(_horizontal, _vertical, _instance = id)
                 GuiSetIfNotDefined("__scrollSpeed",     infinity);
             }
             
-            GuiScrollLimitsMarkDirty(id);
+            GuiScrollLimitsMarkDirty(_instance);
         }
     }
 }

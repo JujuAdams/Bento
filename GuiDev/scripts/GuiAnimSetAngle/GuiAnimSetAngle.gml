@@ -8,14 +8,16 @@ function GuiAnimSetAngle(_angle, _force, _instance = id)
 {
     static _system = __GuiSystem();
     
-    with(_instance)
+    if (not instance_exists(_instance)) return;
+    
+    with(_instance.__gui)
     {
         if (_angle != undefined)
         {
             if (__animAngle != _angle)
             {
                 __animAngle = _angle;
-                __GuiMarkAnimAndScrollDirty(id);
+                __GuiMarkAnimAndScrollDirty(_instance);
             }
         }
         
@@ -24,7 +26,7 @@ function GuiAnimSetAngle(_angle, _force, _instance = id)
             if (__animAngleForce != _force)
             {
                 __animAngleForce = _force;
-                __GuiMarkAnimAndScrollDirty(id);
+                __GuiMarkAnimAndScrollDirty(_instance);
             }
         }
     }

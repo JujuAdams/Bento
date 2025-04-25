@@ -11,23 +11,25 @@ function __GuiUpdateInstanceState()
     {
         static _system = __GuiSystem();
         
-        with(_instance)
+        if (not instance_exists(_instance)) return false;
+        
+        with(_instance.__gui)
         {
             var _clickOnPress = (GuiNavUsingDirectional() ||
                                  (GUI_POINTER_CLICK_ON_PRESS
                                && _system.__navPointer
-                               && (not instance_exists(__GuiScrollFindParent(id)))));
+                               && (not instance_exists(__GuiScrollFindParent(_instance)))));
             
             __click = false;
             
             //Manage over state
-            if (_system.__overInstance == id)
+            if (_system.__overInstance == _instance)
             {
                 //System says this instance is selected
                 
                 if (__overState == GUI_ENTER)
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(id)}: enter -> over");
+                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_instance)}: enter -> over");
                     __overState = GUI_OVER;
                 }
                 else if (__overState == GUI_OVER)
@@ -36,7 +38,7 @@ function __GuiUpdateInstanceState()
                 }
                 else
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(id)}: -> enter");
+                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_instance)}: -> enter");
                     __overState = GUI_ENTER;
                 }
             }
@@ -50,7 +52,7 @@ function __GuiUpdateInstanceState()
                 }
                 else if (__overState != GUI_OFF)
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(id)}: over -> leave");
+                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_instance)}: over -> leave");
                     __overState = GUI_LEAVE;
                 }
             }
@@ -71,7 +73,7 @@ function __GuiUpdateInstanceState()
             }
             else
             {
-                if ((_system.__holdState == GUI_HOLD) && (_system.__holdInstance == id))
+                if ((_system.__holdState == GUI_HOLD) && (_system.__holdInstance == _instance))
                 {
                     //If we're being continuously held move into the HOLD state
                     if (__holdState == GUI_PRESS)
@@ -82,7 +84,7 @@ function __GuiUpdateInstanceState()
                 else
                 {
                     //Unset the system's hold instance if it's us
-                    if (_system.__holdInstance == id) _system.__holdInstance = noone;
+                    if (_system.__holdInstance == _instance) _system.__holdInstance = noone;
                     
                     if (__holdState == GUI_RELEASE)
                     {

@@ -25,7 +25,7 @@ function __GuiEnsureDrawOrderInner(_instance)
 {
     static _drawOrder = __GuiSystem().__drawOrder;
     
-    with(_instance)
+    with(_instance.__gui)
     {
         if (__disable) return;
         
@@ -76,6 +76,7 @@ function __GuiEnsureDrawOrderInner(_instance)
                     event_user(GUI_USER_EVENT_DRAW);
                 }
                 
+                //TODO - Use accurate values (layout values)
                 __GuiScissorPush(bbox_left   + __scissorPadLeft,
                                  bbox_top    + __scissorPadTop,
                                  bbox_right  - __scissorPadRight,

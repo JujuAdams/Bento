@@ -27,7 +27,7 @@ function __GuiEnsureStepOrderInner(_instance)
     static _system    = __GuiSystem();
     static _stepOrder = __GuiSystem().__stepOrder;
     
-    with(_instance)
+    with(_instance.__gui)
     {
         if (__disable) return __GUI_RETURN_NORMAL;
         
@@ -114,6 +114,7 @@ function __GuiStepMethod()
 
 function __GuiStepMethodScissorPush()
 {
+    //TODO - Use accurate values (layout values)
     __GuiScissorPush(bbox_left   + __scissorPadLeft,
                      bbox_top    + __scissorPadTop,
                      bbox_right  - __scissorPadRight,

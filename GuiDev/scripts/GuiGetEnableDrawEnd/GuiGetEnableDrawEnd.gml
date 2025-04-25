@@ -8,5 +8,5 @@ function GuiGetEnableDrawEnd(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
     
-    return _instance.__drawEnd;
+    return _instance.__gui.__drawEnd;
 }

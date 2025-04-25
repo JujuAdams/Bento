@@ -8,9 +8,9 @@ function __GuiMarkChildOrderDirty(_parent)
     
     if (not instance_exists(_parent)) return;
     
-    if (not _parent.__childOrderDirty)
+    if (not _parent.__gui.__childOrderDirty)
     {
-        _parent.__childOrderDirty = true;
+        _parent.__gui.__childOrderDirty = true;
         array_push(_dirtyChildOrderArray, _parent);
     }
 }

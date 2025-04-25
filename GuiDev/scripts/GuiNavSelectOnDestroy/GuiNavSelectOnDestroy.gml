@@ -11,5 +11,5 @@ function GuiNavSelectOnDestroy(_trigger, _target)
 {
     if (not instance_exists(_trigger)) return;
     
-    _trigger.__selectOnDestroy = _target;
+    _trigger.__gui.__selectOnDestroy = _target;
 }

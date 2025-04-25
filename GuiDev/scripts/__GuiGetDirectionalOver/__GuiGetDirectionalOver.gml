@@ -33,6 +33,8 @@ function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
     }
     else
     {
+        var _prevGui = _prevInstance.__gui;
+        
         //Previously selected instance is valid, process navigation
         if ((_dX == 0) && (_dY == 0))
         {
@@ -51,19 +53,19 @@ function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
             //Choose a predefined navigable instance if possible
             if (_dX < 0)
             {
-                _nextInstance = _prevInstance.navLeft;
+                _nextInstance = _prevGui.navLeft;
             }
             else if (_dX > 0)
             {
-                _nextInstance = _prevInstance.navRight;
+                _nextInstance = _prevGui.navRight;
             }
             else if (_dY < 0)
             {
-                _nextInstance = _prevInstance.navUp;
+                _nextInstance = _prevGui.navUp;
             }
             else if (_dY > 0)
             {
-                _nextInstance = _prevInstance.navDown;
+                _nextInstance = _prevGui.navDown;
             }
             
             //Only check if the next instance is properly visible if it's nested inside a different scroller to
@@ -79,7 +81,7 @@ function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
             {
                 //If the navigation instance isn't selectable then fall back on a raycast
                 
-                if (((_dX != 0) && _prevInstance.__raycastDisableHori) || ((_dY != 0) && _prevInstance.__raycastDisableVert))
+                if (((_dX != 0) && _prevGui.__raycastDisableHori) || ((_dY != 0) && _prevGui.__raycastDisableVert))
                 {
                     //Raycast is disabled for the previous instance!
                     _nextInstance = _prevInstance;

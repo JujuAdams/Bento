@@ -4,7 +4,10 @@
 
 function GuiScrollGetSpeed(_instance = id)
 {
-    with(__GuiScrollFindParent(_instance))
+    var _scroller = __GuiScrollFindParent(_instance);
+    if (not instance_exists(_scroller)) return 0;
+    
+    with(_scroller.__gui)
     {
         if ((not __scrollHori) && (not __scrollVert)) return 0;
         return __scrollSpeed;

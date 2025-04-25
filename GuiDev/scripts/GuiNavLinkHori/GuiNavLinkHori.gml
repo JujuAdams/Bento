@@ -8,6 +8,6 @@
 
 function GuiNavLinkHori(_left, _right)
 {
-    if (instance_exists(_left)) _left.navRight = _right;
-    if (instance_exists(_right)) _right.navLeft = _left;
+    if (instance_exists(_left)) _left.__gui.navRight = _right;
+    if (instance_exists(_right)) _right.__gui.navLeft = _left;
 }

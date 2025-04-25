@@ -8,7 +8,9 @@ function GuiNavSetFocus(_state, _instance = id)
     static _system        = __GuiSystem();
     static _stepRootStack = _system.__stepRootStack;
     
-    with(_instance)
+    if (not instance_exists(_instance)) return;
+    
+    with(_instance.__gui)
     {
         if (__focusable)
         {
@@ -22,6 +24,8 @@ function GuiNavSetFocus(_state, _instance = id)
                 
                 if (__focusBlockHover)
                 {
+                    //TODO - Use accurate value from layout variables
+                    
                     if (__scissorEnabled)
                     {
                         _system.__directionalLastX = bbox_left + __scissorPadLeft;
@@ -34,11 +38,11 @@ function GuiNavSetFocus(_state, _instance = id)
                     }
                 }
                 
-                array_push(_stepRootStack, id);
+                array_push(_stepRootStack, _instance);
             }
             else
             {
-                var _index = array_get_index(_stepRootStack, id);
+                var _index = array_get_index(_stepRootStack, _instance);
                 if (_index >= 0)
                 {
                     // Mark everything above us in the step root stack as unfocused
@@ -61,7 +65,7 @@ function GuiNavSetFocus(_state, _instance = id)
         }
         else
         {
-            __GuiTrace($"{object_get_name(object_index)}:{id} is not focusable");
+            __GuiTrace($"{object_get_name(object_index)}:{_instance.id} is not focusable");
         }
     }
 }
