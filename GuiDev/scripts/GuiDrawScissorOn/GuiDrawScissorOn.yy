@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScrollClipOn",
+  "%Name":"GuiDrawScissorOn",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScrollClipOn",
+  "name":"GuiDrawScissorOn",
   "parent":{
-    "name":"Draw",
-    "path":"folders/Library/Scissor & Scroll/Scroll/Draw.yy",
+    "name":"Actions",
+    "path":"folders/Library/Scissor & Scroll/Actions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

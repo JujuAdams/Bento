@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiMarkAnimAndScrollDirty",
   "parent":{
-    "name":"Scroll",
-    "path":"folders/Library/(System)/Scroll.yy",
+    "name":"Scissor & Scroll",
+    "path":"folders/Library/(System)/Scissor & Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

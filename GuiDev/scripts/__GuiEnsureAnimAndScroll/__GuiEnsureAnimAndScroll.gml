@@ -62,6 +62,7 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
         var _yCenterLocal = __solvedTopLocal  + __animOffsetY + _yOrigin - _parentOriginY;
         
         //Transform our central point based on the parent's transform
+        //TODO - Optimize
         var _cos =  dcos(_parentAngle);
         var _sin = -dsin(_parentAngle);
         

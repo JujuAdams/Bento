@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiScissorReset",
   "parent":{
-    "name":"Scissor",
-    "path":"folders/Library/(System)/Scissor.yy",
+    "name":"Scissor & Scroll",
+    "path":"folders/Library/(System)/Scissor & Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

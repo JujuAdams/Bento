@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScrollDrawHori",
+  "%Name":"GuiDrawOrigin",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScrollDrawHori",
+  "name":"GuiDrawOrigin",
   "parent":{
-    "name":"OLD",
-    "path":"folders/Library/Scissor & Scroll/OLD.yy",
+    "name":"Draw Helpers",
+    "path":"folders/Library/Draw Helpers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,7 +6,7 @@
   "name":"GuiScrollDrawVert",
   "parent":{
     "name":"OLD",
-    "path":"folders/Library/Scissor & Scroll/Scroll/OLD.yy",
+    "path":"folders/Library/Scissor & Scroll/OLD.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

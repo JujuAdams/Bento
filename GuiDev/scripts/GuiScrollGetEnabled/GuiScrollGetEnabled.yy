@@ -6,7 +6,7 @@
   "name":"GuiScrollGetEnabled",
   "parent":{
     "name":"Setup",
-    "path":"folders/Library/Scissor & Scroll/Scroll/Setup.yy",
+    "path":"folders/Library/Scissor & Scroll/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

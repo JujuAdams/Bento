@@ -5,14 +5,20 @@
 /// - `GuiInputPointer()`
 /// - `GuiInputDirectional()`
 /// - `GuiInputHotkey()`
+/// 
+/// @param rootWidth
+/// @param rootHeight
+/// @param [rootX=0]
+/// @param [rootY=0]
 
-function GuiStep()
+function GuiStep(_rootWidth, _rootHeight, _rootX = 0, _rootY = 0)
 {
     static _system = __GuiSystem();
     
     with(GUI_ROOT)
     {
-        GuiLayoutSetSize(room_width, room_height);
+        GuiLayoutSetOffset(_rootX, _rootY);
+        GuiLayoutSetSize(_rootWidth, _rootHeight);
     }
     
     __GuiEnsureLayout();

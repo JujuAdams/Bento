@@ -326,7 +326,11 @@ function __GuiLayoutSetFromJSON_resize(_instance, _value)
 ////////
 function __GuiLayoutSetFromJSON_padding(_instance, _value)
 {
-    if (is_array(_value))
+    if (is_numeric(_value))
+    {
+        GuiLayoutSetPadding(_value, _value, _value, _value, _instance);
+    }
+    else if (is_array(_value))
     {
         if (array_length(_value) != 4)
         {
@@ -345,7 +349,7 @@ function __GuiLayoutSetFromJSON_padding(_instance, _value)
     }
     else
     {
-        __GuiError($".padding layout property must be a 4-element array or a struct (typeof \"{typeof(_value)}\")");
+        __GuiError($".padding layout property must be a number, a 4-element array, or a struct (typeof \"{typeof(_value)}\")");
     }
 }
 
@@ -356,7 +360,11 @@ function __GuiLayoutSetFromJSON_padding(_instance, _value)
 ////////
 function __GuiLayoutSetFromJSON_gutter(_instance, _value)
 {
-    if (is_array(_value))
+    if (is_numeric(_value))
+    {
+        GuiLayoutSetGutter(_value, _value, _instance);
+    }
+    else if (is_array(_value))
     {
         if (array_length(_value) != 2)
         {
@@ -371,7 +379,7 @@ function __GuiLayoutSetFromJSON_gutter(_instance, _value)
     }
     else
     {
-        __GuiError($".gutter layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
+        __GuiError($".gutter layout property must be a number, a 2-element array, or a struct (typeof \"{typeof(_value)}\")");
     }
 }
 

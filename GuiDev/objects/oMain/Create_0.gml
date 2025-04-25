@@ -158,8 +158,8 @@ var _json = [
             size:    [200, 120],
             maxSize: [200, 320],
             resize:  [GUI_RESIZE_FIT, GUI_RESIZE_FIT],
-            padding: [10, 10, 10, 10],
-            gutter:  [10, 10],
+            padding: 10,
+            gutter:  10,
         },
         children: function(_metadata) {
             //Create identical copies of references to the same struct
@@ -174,5 +174,4 @@ var _json = [
     },
 ];
 
-gridInstance = GuiCreateFromJSON(_json, GUI_ROOT, { count: 11 });
-GuiAnimSetAngle(45, undefined, oExampleListWithScroll);
+gridInstance = GuiCreateFromJSON(_json, GUI_ROOT, { count: 6 });

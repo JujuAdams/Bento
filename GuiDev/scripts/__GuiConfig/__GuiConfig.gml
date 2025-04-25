@@ -35,7 +35,7 @@
 
 // Normally, desktop OSs will default to setting the navigation mode to `GUI_NAV_MOUSE` when the
 // library initializes. Set this macro to `true` to instead default to `GUI_NAV_DIRECTIONAL`.
-#macro GUI_DESKTOP_DEFAULT_TO_DIRECTIONAL  true
+#macro GUI_DESKTOP_DEFAULT_TO_DIRECTIONAL  false
 
 // Debug only. Set this macro to `true` to show verbose output in the debug log that shows which
 // instances are being hovered / un-hovered.
