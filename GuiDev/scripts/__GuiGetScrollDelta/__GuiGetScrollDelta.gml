@@ -13,12 +13,12 @@ function __GuiGetScrollDelta(_instance = id)
     
     if (instance_exists(_instance))
     {
-        var _instanceGui = _instance.__gui;
+        var _instanceGui = _instance.GUI_STRUCT;
         
         var _parent = __GuiScrollFindParent(_instanceGui.__parent);
         if (instance_exists(_parent))
         {
-            with(_parent.__gui)
+            with(_parent.GUI_STRUCT)
             {
                 if (__scissorEnabled)
                 {

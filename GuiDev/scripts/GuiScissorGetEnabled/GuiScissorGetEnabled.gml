@@ -4,5 +4,5 @@
 
 function GuiScissorGetEnabled(_instance = id)
 {
-    return instance_exists(_instance)? _instance.__gui.__scissorEnabled : false;
+    return instance_exists(_instance)? _instance.GUI_STRUCT.__scissorEnabled : false;
 }

@@ -8,5 +8,5 @@ function GuiGetPriority(_instance = id)
 {
     if (not instance_exists(_instance)) return 0;
     
-    return _instance.__gui.__priority;
+    return _instance.GUI_STRUCT.__priority;
 }

@@ -8,9 +8,9 @@ function __GuiMarkAnimAndScrollDirty(_instance)
     
     if (not instance_exists(_instance)) return;
     
-    if (not _instance.__gui.__animAndScrollDirty)
+    if (not _instance.GUI_STRUCT.__animAndScrollDirty)
     {
-        _instance.__gui.__animAndScrollDirty = true;
+        _instance.GUI_STRUCT.__animAndScrollDirty = true;
         array_push(_animAndScrollDirtyArray, _instance);
     }
 }

@@ -2,7 +2,7 @@
 
 var _id = id;
 
-with(__gui)
+with(GUI_STRUCT)
 {
     __GuiRemoveParent(_id);
     GuiDestroyChildren(_id);

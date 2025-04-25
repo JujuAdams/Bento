@@ -7,5 +7,5 @@
 function GuiNavGetLeave(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
-    return (_instance.__gui.__overState == GUI_LEAVE);
+    return (_instance.GUI_STRUCT.__overState == GUI_LEAVE);
 }

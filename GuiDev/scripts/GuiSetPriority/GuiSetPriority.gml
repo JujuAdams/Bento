@@ -11,13 +11,13 @@ function GuiSetPriority(_priority, _instance = id)
     static _dirtyChildOrderArray = __GuiSystem().__dirtyChildOrderArray;
     
     if (not instance_exists(_instance)) return;
-    if (_priority == _instance.__gui.__priority) return;
+    if (_priority == _instance.GUI_STRUCT.__priority) return;
     
     _system.__layoutDirty = true;
     _system.__stepDirty   = true;
     _system.__drawDirty   = true;
     
-    _instance.__gui.__priority = _priority;
+    _instance.GUI_STRUCT.__priority = _priority;
     
-    __GuiMarkChildOrderDirty(_instance.__gui.__parent);
+    __GuiMarkChildOrderDirty(_instance.GUI_STRUCT.__parent);
 }

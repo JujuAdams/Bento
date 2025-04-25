@@ -2,7 +2,7 @@
 
 event_inherited();
 
-with(__gui)
+with(GUI_STRUCT)
 {
     __layoutGutterX = 0;
     __layoutGutterY = 0;

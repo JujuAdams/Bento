@@ -10,7 +10,7 @@ function GuiScrollSetPadding(_left, _top, _right, _bottom, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.__gui)
+    with(_instance.GUI_STRUCT)
     {
         if ((_left   != __scrollPadLeft)
         ||  (_top    != __scrollPadTop)

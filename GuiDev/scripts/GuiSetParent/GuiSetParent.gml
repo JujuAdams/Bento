@@ -18,11 +18,11 @@ function GuiSetParent(_parent, _targetInstance = id)
     _system.__drawDirty   = true;
     
     __GuiRemoveParent(_targetInstance);
-    _targetInstance.__gui.__parent = _parent;
+    _targetInstance.GUI_STRUCT.__parent = _parent;
     
     with(_parent)
     {
-        array_push(__gui.__childArray, _targetInstance);
+        array_push(GUI_STRUCT.__childArray, _targetInstance);
         
         __GuiMarkChildOrderDirty(id);
         GuiScrollLimitsMarkDirty(id);

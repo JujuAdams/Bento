@@ -9,7 +9,7 @@ function GuiSetPriorityTop(_instance = id, _delta = 1)
 {
     if (not instance_exists(_instance)) return;
     
-    var _parent = _instance.__gui.__parent;
+    var _parent = _instance.GUI_STRUCT.__parent;
     if (not instance_exists(_parent)) return;
     
     var _array = _parent.__childArray;

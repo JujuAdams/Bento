@@ -16,7 +16,7 @@ function __GuiEnsureAnimAndScroll()
         }
         else
         {
-            with(_instance.__gui)
+            with(_instance.GUI_STRUCT)
             {
                 var _dX = __scrollTargetX - __scrollX;
                 var _dY = __scrollTargetY - __scrollY;
@@ -57,7 +57,7 @@ function __GuiEnsureAnimAndScroll()
             var _instance = array_shift(_animAndScrollDirtyArray);
             if (instance_exists(_instance))
             {
-                var _parent = _instance.__gui.__parent;
+                var _parent = _instance.GUI_STRUCT.__parent;
                 if (not instance_exists(_parent))
                 {
                     //No parent, probably the root node?
@@ -69,8 +69,8 @@ function __GuiEnsureAnimAndScroll()
                     {
                         __GuiEnsureAnimationInner(_instance,
                                                   guiX, guiY,
-                                                  guiWidth / max(1, __gui.__solvedWidth), guiHeight / max(1, __gui.__solvedHeight), guiAngle,
-                                                  __GuiEnsureAnimationGetOriginX(_parent) - __gui.__scrollX, __GuiEnsureAnimationGetOriginY(_parent) - __gui.__scrollY);
+                                                  guiWidth / max(1, GUI_STRUCT.__solvedWidth), guiHeight / max(1, GUI_STRUCT.__solvedHeight), guiAngle,
+                                                  __GuiEnsureAnimationGetOriginX(_parent) - GUI_STRUCT.__scrollX, __GuiEnsureAnimationGetOriginY(_parent) - GUI_STRUCT.__scrollY);
                     }
                 }
             }
@@ -82,7 +82,7 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
 {
     static _animAndScrollDirtyArray = __GuiSystem().__animAndScrollDirtyArray;
     
-    with(_instance.__gui)
+    with(_instance.GUI_STRUCT)
     {
         if (__animAndScrollDirty)
         {
@@ -158,20 +158,20 @@ function __GuiEnsureAnimationGetOriginX(_instance)
 {
     with(_instance)
     {
-        var _originProportion = __gui.__animOriginX;
+        var _originProportion = GUI_STRUCT.__animOriginX;
         
         if (_originProportion != undefined)
         {
-            return _originProportion*__gui.__solvedWidth;
+            return _originProportion*GUI_STRUCT.__solvedWidth;
         }
         
         if (sprite_exists(sprite_index))
         {
-            return (sprite_get_xoffset(sprite_index) / sprite_get_width(sprite_index))*__gui.__solvedWidth;
+            return (sprite_get_xoffset(sprite_index) / sprite_get_width(sprite_index))*GUI_STRUCT.__solvedWidth;
         }
         else
         {
-            return GUI_FALLBACK_ORIGIN_X*__gui.__solvedWidth;
+            return GUI_FALLBACK_ORIGIN_X*GUI_STRUCT.__solvedWidth;
         }
     }
 }
@@ -180,20 +180,20 @@ function __GuiEnsureAnimationGetOriginY(_instance)
 {
     with(_instance)
     {
-        var _originProportion = __gui.__animOriginY;
+        var _originProportion = GUI_STRUCT.__animOriginY;
         
         if (_originProportion != undefined)
         {
-            return _originProportion*__gui.__solvedHeight;
+            return _originProportion*GUI_STRUCT.__solvedHeight;
         }
         
         if (sprite_exists(sprite_index))
         {
-            return (sprite_get_yoffset(sprite_index) / sprite_get_height(sprite_index))*__gui.__solvedHeight;
+            return (sprite_get_yoffset(sprite_index) / sprite_get_height(sprite_index))*GUI_STRUCT.__solvedHeight;
         }
         else
         {
-            return GUI_FALLBACK_ORIGIN_Y*__gui.__solvedHeight;
+            return GUI_FALLBACK_ORIGIN_Y*GUI_STRUCT.__solvedHeight;
         }
     }
 }

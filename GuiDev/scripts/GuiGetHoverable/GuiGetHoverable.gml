@@ -24,7 +24,7 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
     static _system = __GuiSystem();
     
     if (not instance_exists(_instance)) return false;
-    var _gui = _instance.__gui;
+    var _gui = _instance.GUI_STRUCT;
     
     if ((not _instance.visible) || _gui.__disable || _gui.__focusBlockHover)
     {

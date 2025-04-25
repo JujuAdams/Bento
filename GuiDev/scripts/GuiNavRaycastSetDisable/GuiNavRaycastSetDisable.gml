@@ -13,6 +13,6 @@ function GuiNavRaycastSetDisable(_disableHori, _disableVert, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
-    _instance.__gui.__raycastDisableHori = _disableHori;
-    _instance.__gui.__raycastDisableVert = _disableVert;
+    _instance.GUI_STRUCT.__raycastDisableHori = _disableHori;
+    _instance.GUI_STRUCT.__raycastDisableVert = _disableVert;
 }

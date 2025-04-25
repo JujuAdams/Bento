@@ -7,7 +7,7 @@ GuiSetIfNotDefined("font", -1);
 GuiSetIfNotDefined("hAlign", fa_left);
 GuiSetIfNotDefined("vAlign", fa_top);
 
-with(__gui)
+with(GUI_STRUCT)
 {
     __SolverFitWidth = function()
     {

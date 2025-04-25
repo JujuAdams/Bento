@@ -4,5 +4,5 @@
 
 function GuiNavGetFocus(_instance = id)
 {
-    return instance_exists(_instance)? _instance.__gui.__focused : false;
+    return instance_exists(_instance)? _instance.GUI_STRUCT.__focused : false;
 }

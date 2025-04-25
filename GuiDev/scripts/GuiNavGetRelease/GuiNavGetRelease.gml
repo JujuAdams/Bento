@@ -11,5 +11,5 @@
 function GuiNavGetRelease(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
-    return (_instance.__gui.__holdState == GUI_RELEASE);
+    return (_instance.GUI_STRUCT.__holdState == GUI_RELEASE);
 }

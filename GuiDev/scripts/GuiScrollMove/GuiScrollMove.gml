@@ -14,8 +14,8 @@ function GuiScrollMove(_dX = 0, _dY = 0, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED
     
     with(_scroller)
     {
-        var _xScale = guiWidth / max(1, __gui.__solvedWidth);
-        var _yScale = guiHeight / max(1, __gui.__solvedHeight);
+        var _xScale = guiWidth / max(1, GUI_STRUCT.__solvedWidth);
+        var _yScale = guiHeight / max(1, GUI_STRUCT.__solvedHeight);
         
         if ((_xScale != 0) && (_yScale != 0))
         {

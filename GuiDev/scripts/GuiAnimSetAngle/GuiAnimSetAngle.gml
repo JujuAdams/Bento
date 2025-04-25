@@ -10,7 +10,7 @@ function GuiAnimSetAngle(_angle, _force, _instance = id)
     
     if (not instance_exists(_instance)) return;
     
-    with(_instance.__gui)
+    with(_instance.GUI_STRUCT)
     {
         if (_angle != undefined)
         {

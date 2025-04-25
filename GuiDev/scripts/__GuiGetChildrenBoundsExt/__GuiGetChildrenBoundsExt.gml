@@ -27,7 +27,7 @@ function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _in
     
     if (instance_exists(_instance))
     {
-        with(_instance.__gui)
+        with(_instance.GUI_STRUCT)
         {
             var _childArray = __childArray;
             if (array_length(_childArray) > 0)
@@ -42,7 +42,7 @@ function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _in
                 var _i = 0;
                 repeat(array_length(_childArray))
                 {
-                    with(_childArray[_i].__gui)
+                    with(_childArray[_i].GUI_STRUCT)
                     {
                         _left   = min(_left,   __solvedLeftLocal);
                         _top    = min(_top,    __solvedTopLocal);

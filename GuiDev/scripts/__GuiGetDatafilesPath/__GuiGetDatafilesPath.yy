@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiGetDatafilesPath",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "name":"Support",
+    "path":"folders/Library/(System)/Support.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

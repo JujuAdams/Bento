@@ -13,7 +13,7 @@ function GuiScrollDrawHori(_left, _top, _right, _bottom, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.__gui)
+    with(_instance.GUI_STRUCT)
     {
         if (not _instance.__scrollHori) return;
         

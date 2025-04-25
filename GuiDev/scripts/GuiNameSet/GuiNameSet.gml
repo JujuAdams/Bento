@@ -17,7 +17,7 @@ function GuiNameSet(_name, _instance = id, _overwrite = false)
     {
         if (_overwrite)
         {
-            _oldInstance.__gui.__name = undefined;
+            _oldInstance.GUI_STRUCT.__name = undefined;
         }
         else
         {
@@ -36,5 +36,5 @@ function GuiNameSet(_name, _instance = id, _overwrite = false)
     }
     
     _nameMap[? _name] = _instance;
-    _instance.__gui.__name = _name;
+    _instance.GUI_STRUCT.__name = _name;
 }

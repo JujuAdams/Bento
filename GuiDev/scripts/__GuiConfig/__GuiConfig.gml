@@ -57,4 +57,6 @@
 
 #macro GUI_SCROLL_TO_PADDING  10
 
-#macro GUI_DEFAULT_SCROLL_SPEED  7
+#macro GUI_DEFAULT_SCROLL_SPEED  8
+
+#macro GUI_STRUCT  __guiVars

@@ -7,5 +7,5 @@
 function GuiNavGetEnter(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
-    return (_instance.__gui.__overState == GUI_ENTER);
+    return (_instance.GUI_STRUCT.__overState == GUI_ENTER);
 }

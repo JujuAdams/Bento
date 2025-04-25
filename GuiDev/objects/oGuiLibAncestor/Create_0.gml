@@ -29,8 +29,8 @@ guiAngle  = image_angle;
 //                     //
 /////////////////////////
 
-__gui = {};
-with(__gui)
+GUI_STRUCT = {};
+with(GUI_STRUCT)
 {
     __attachedInstance = other.id;
     
@@ -226,7 +226,7 @@ with(__gui)
         var _i = 0;
         repeat(array_length(_childArray))
         {
-            _childArray[_i].__gui.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
+            _childArray[_i].GUI_STRUCT.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
             ++_i;
         }
     }

@@ -17,5 +17,5 @@ function __GuiIsAncestorInner(_ancestor, _child)
     if (not instance_exists(_child)) return false;
     if (_ancestor == _child) return true;
     
-    return __GuiIsAncestorInner(_ancestor, _child.__gui.__parent);
+    return __GuiIsAncestorInner(_ancestor, _child.GUI_STRUCT.__parent);
 }

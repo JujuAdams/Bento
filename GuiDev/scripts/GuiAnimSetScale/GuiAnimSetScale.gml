@@ -11,7 +11,7 @@ function GuiAnimSetScale(_xScale, _yScale, _force, _instance = id)
     
     if (not instance_exists(_instance)) return;
     
-    with(_instance.__gui)
+    with(_instance.GUI_STRUCT)
     {
         if (_xScale != undefined)
         {

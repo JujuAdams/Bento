@@ -8,7 +8,7 @@ function __GuiEnsureLayout()
     with(_system)
     {
         var _rootInstance = GUI_ROOT;
-        var _rootGui = _rootInstance.__gui;
+        var _rootGui = _rootInstance.GUI_STRUCT;
         
         //Ensure a full reset of the animation/scroll positions
         array_resize(__animAndScrollDirtyArray, 0);
@@ -66,7 +66,7 @@ function __GuiEnsureLayerOrderInner(_instance)
     static _system      = __GuiSystem();
     static _layoutOrder = _system.__layoutOrder;
     
-    with(_instance.__gui)
+    with(_instance.GUI_STRUCT)
     {
         array_push(_layoutOrder, self);
         

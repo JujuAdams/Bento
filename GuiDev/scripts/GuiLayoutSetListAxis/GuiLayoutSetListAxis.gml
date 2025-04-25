@@ -9,7 +9,7 @@ function GuiLayoutSetListAxis(_axis, _instance = id)
     
     if (not instance_exists(_instance)) return;
     
-    with(_instance.__gui)
+    with(_instance.GUI_STRUCT)
     {
         if (not variable_struct_exists(self, "__listAxis"))
         {

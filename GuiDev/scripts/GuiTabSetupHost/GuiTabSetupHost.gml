@@ -19,5 +19,5 @@ function GuiTabSetupHost(_tabIdent, _blockDirectionalWhenOpen = false, _instance
     _tabData.__host = _instance;
     _tabData.__blockDirectionalWhenOpen = _blockDirectionalWhenOpen;
     
-    _instance.__gui.__tabIdent = _tabIdent;
+    _instance.GUI_STRUCT.__tabIdent = _tabIdent;
 }

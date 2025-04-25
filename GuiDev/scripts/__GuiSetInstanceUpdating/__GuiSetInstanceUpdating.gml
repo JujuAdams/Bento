@@ -9,9 +9,9 @@ function __GuiSetInstanceUpdating(_instance)
     
     if (not instance_exists(_instance)) return;
     
-    if (not _instance.__gui.__updating)
+    if (not _instance.GUI_STRUCT.__updating)
     {
-        _instance.__gui.__updating = true;
+        _instance.GUI_STRUCT.__updating = true;
         array_push(_updateInstanceArray, _instance)
     }
 }

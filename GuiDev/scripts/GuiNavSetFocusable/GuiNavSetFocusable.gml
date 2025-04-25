@@ -9,7 +9,7 @@ function GuiNavSetFocusable(_state, _instance = id)
     
     if (not instance_exists(_instance)) return;
     
-    with(_instance.__gui)
+    with(_instance.GUI_STRUCT)
     {
         if (__focusable == _state) return;
         

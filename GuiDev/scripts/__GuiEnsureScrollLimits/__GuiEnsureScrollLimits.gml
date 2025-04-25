@@ -8,7 +8,7 @@ function __GuiEnsureScrollLimits()
     {
         if (not instance_exists(_parent)) return;
         
-        with(_parent.__gui)
+        with(_parent.GUI_STRUCT)
         {
             if (not __scrollLimitsDirty) return;
             __scrollLimitsDirty = false;

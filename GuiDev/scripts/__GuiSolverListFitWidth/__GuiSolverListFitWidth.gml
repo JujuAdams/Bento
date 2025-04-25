@@ -18,8 +18,8 @@ function __GuiSolverListFitWidth()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _fitSize += _child.__gui.__solverFitWidth;
-            _minSize += _child.__gui.__solverMinWidth;
+            _fitSize += _child.GUI_STRUCT.__solverFitWidth;
+            _minSize += _child.GUI_STRUCT.__solverMinWidth;
             ++_i;
         }
         
@@ -35,8 +35,8 @@ function __GuiSolverListFitWidth()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _fitSize = max(_fitSize, _child.__gui.__solverFitWidth);
-            _minSize = max(_minSize, _child.__gui.__solverMinWidth);
+            _fitSize = max(_fitSize, _child.GUI_STRUCT.__solverFitWidth);
+            _minSize = max(_minSize, _child.GUI_STRUCT.__solverMinWidth);
             ++_i;
         }
         

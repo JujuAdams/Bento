@@ -42,10 +42,10 @@ function GuiSetBehavior(_behavior, _instance = id)
     static _system = __GuiSystem();
     
     if (not instance_exists(_instance)) return;
-    if (_instance.__gui.__behavior == _behavior) return;
+    if (_instance.GUI_STRUCT.__behavior == _behavior) return;
     
     _system.__stepDirty = true;
     _system.__drawDirty = true;
     
-    _instance.__gui.__behavior = _behavior;
+    _instance.GUI_STRUCT.__behavior = _behavior;
 }
