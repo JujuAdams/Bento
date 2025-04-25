@@ -75,7 +75,7 @@ function __GuiSystem()
             __navMode = GUI_NAV_MOUSE;
         }
         
-        __navPointer = false;
+        __navPointer = ((__navMode == GUI_NAV_MOUSE) || (__navMode == GUI_NAV_TOUCH));
         
         __mouseX        = 0;
         __mouseY        = 0;
