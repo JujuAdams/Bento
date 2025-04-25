@@ -258,6 +258,7 @@
     {"id":{"name":"GuiScrollGetY","path":"scripts/GuiScrollGetY/GuiScrollGetY.yy",},},
     {"id":{"name":"GuiScrollLimitsMarkDirty","path":"scripts/GuiScrollLimitsMarkDirty/GuiScrollLimitsMarkDirty.yy",},},
     {"id":{"name":"GuiScrollMove","path":"scripts/GuiScrollMove/GuiScrollMove.yy",},},
+    {"id":{"name":"GuiScrollMoveLocal","path":"scripts/GuiScrollMoveLocal/GuiScrollMoveLocal.yy",},},
     {"id":{"name":"GuiScrollOnPointer","path":"scripts/GuiScrollOnPointer/GuiScrollOnPointer.yy",},},
     {"id":{"name":"GuiScrollSet","path":"scripts/GuiScrollSet/GuiScrollSet.yy",},},
     {"id":{"name":"GuiScrollSetEnabled","path":"scripts/GuiScrollSetEnabled/GuiScrollSetEnabled.yy",},},
