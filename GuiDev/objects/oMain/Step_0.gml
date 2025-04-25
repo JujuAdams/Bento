@@ -42,7 +42,3 @@ if (keyboard_check_pressed(ord("D")))
     GuiDebugStepOrder();
     GuiDebugDrawOrder();
 }
-
-GuiAnimSetOffset(0, 20*(0.5 + 0.5*dsin(current_time/10)), GuiNameFind("first"));
-GuiAnimSetAngle(405 * mouse_x / room_width, false, GuiNameFind("list"))
-GuiAnimSetAngle(current_time/6, false, GuiNameFind("second"))

@@ -30,8 +30,8 @@
 
 // Button names to use to enable mouse wheel scrolling with `GuiScrollOnPointer()`. This macros
 // should be used with `GuiInputHotkey()` to trigger scrolling.
-#macro GUI_HOTKEY_MOUSE_WHEEL_UP     "mouse wheel up"
-#macro GUI_HOTKEY_MOUSE_WHEEL_DOWN   "mouse wheel down"
+#macro GUI_HOTKEY_MOUSE_WHEEL_UP    "mouse wheel up"
+#macro GUI_HOTKEY_MOUSE_WHEEL_DOWN  "mouse wheel down"
 
 // Normally, desktop OSs will default to setting the navigation mode to `GUI_NAV_MOUSE` when the
 // library initializes. Set this macro to `true` to instead default to `GUI_NAV_DIRECTIONAL`.
