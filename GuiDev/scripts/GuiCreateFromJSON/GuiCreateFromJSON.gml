@@ -266,7 +266,11 @@ function __GuiJSONScissor_enabled(_instance, _value)
 ////////
 function __GuiJSONScissor_padding(_instance, _value)
 {
-    if (is_array(_value))
+    if (is_numeric(_value))
+    {
+        GuiScissorSetPadding(_value, _value, _value, _value, _instance);
+    }
+    else if (is_array(_value))
     {
         if (array_length(_value) != 4)
         {
@@ -285,7 +289,7 @@ function __GuiJSONScissor_padding(_instance, _value)
     }
     else
     {
-        __GuiError($".padding scissor property must be a 4-element array or a struct (typeof \"{typeof(_value)}\")");
+        __GuiError($".padding scissor property must be a number, a 4-element array, or a struct (typeof \"{typeof(_value)}\")");
     }
 }
 

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiGetScrollDelta",
   "parent":{
-    "name":"Getters",
-    "path":"folders/Library/Scissor & Scroll/Getters.yy",
+    "name":"Scissor & Scroll",
+    "path":"folders/Library/(System)/Scissor & Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
