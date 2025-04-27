@@ -4,9 +4,9 @@
 /// This is a helpful function to call when drawing modals.
 /// 
 /// @param [color=black]
-/// @param [alpha=0.45]
+/// @param [alpha=0.4]
 
-function GuiDrawClear(_color = c_black, _alpha = 0.45)
+function GuiDrawClear(_color = c_black, _alpha = 0.4)
 {
     var _oldColor = draw_get_color();
     var _oldAlpha = draw_get_alpha();

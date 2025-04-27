@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestAlignSelf",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestAlignSelf",
+  "parent":{
+    "name":"Examples",
+    "path":"folders/Examples.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
