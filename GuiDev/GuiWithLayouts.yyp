@@ -60,6 +60,7 @@
   },
   "name":"GuiWithLayouts",
   "resources":[
+    {"id":{"name":"GUI Behaviors","path":"notes/GUI Behaviors/GUI Behaviors.yy",},},
     {"id":{"name":"GuiCreateViaJSON Format","path":"notes/GuiCreateViaJSON Format/GuiCreateViaJSON Format.yy",},},
     {"id":{"name":"TODO","path":"notes/TODO/TODO.yy",},},
     {"id":{"name":"__oGuiLibRoot","path":"objects/__oGuiLibRoot/__oGuiLibRoot.yy",},},
