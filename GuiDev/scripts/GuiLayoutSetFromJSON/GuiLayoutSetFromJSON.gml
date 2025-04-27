@@ -18,8 +18,12 @@ function GuiLayoutSetFromJSON(_json, _instance = id)
         {
             var _name  = _nameArray[_i];
             var _value = _json[$ _name];
-                    
-            if (_name == "offset")
+            
+            if (_name == "clampInside")
+            {
+                __GuiLayoutSetFromJSON_clampInside(_instance, _value);
+            }
+            else if (_name == "offset")
             {
                 __GuiLayoutSetFromJSON_offset(_instance, _value);
             }
@@ -43,9 +47,9 @@ function GuiLayoutSetFromJSON(_json, _instance = id)
             {
                 __GuiLayoutSetFromJSON_padding(_instance, _value);
             }
-            else if (_name == "align")
+            else if (_name == "alignSelf")
             {
-                __GuiLayoutSetFromJSON_align(_instance, _value);
+                __GuiLayoutSetFromJSON_alignSelf(_instance, _value);
             }
             else if (_name == "gutter")
             {
@@ -90,6 +94,23 @@ function GuiLayoutSetFromJSON(_json, _instance = id)
                     
             ++_i;
         }
+    }
+}
+
+
+
+////////
+// .clampInside
+////////
+function __GuiLayoutSetFromJSON_clampInside(_instance, _value)
+{
+    if (is_bool(_value))
+    {
+        GuiLayoutSetClampInside(_value, _instance);
+    }
+    else
+    {
+        __GuiError($".offset layout property must be a boolean (typeof \"{typeof(_value)}\")");
     }
 }
 
@@ -386,9 +407,9 @@ function __GuiLayoutSetFromJSON_gutter(_instance, _value)
 
 
 ////////
-// .align
+// .alignSelf
 ////////
-function __GuiLayoutSetFromJSON_align(_instance, _value)
+function __GuiLayoutSetFromJSON_alignSelf(_instance, _value)
 {
     var _h = undefined;
     var _v = undefined;

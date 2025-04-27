@@ -172,6 +172,7 @@
     {"id":{"name":"GuiIsAncestor","path":"scripts/GuiIsAncestor/GuiIsAncestor.yy",},},
     {"id":{"name":"GuiIsButton","path":"scripts/GuiIsButton/GuiIsButton.yy",},},
     {"id":{"name":"GuiLayoutSetAlignSelf","path":"scripts/GuiLayoutSetAlignSelf/GuiLayoutSetAlignSelf.yy",},},
+    {"id":{"name":"GuiLayoutSetClampInside","path":"scripts/GuiLayoutSetClampInside/GuiLayoutSetClampInside.yy",},},
     {"id":{"name":"GuiLayoutSetFromJSON","path":"scripts/GuiLayoutSetFromJSON/GuiLayoutSetFromJSON.yy",},},
     {"id":{"name":"GuiLayoutSetGridSize","path":"scripts/GuiLayoutSetGridSize/GuiLayoutSetGridSize.yy",},},
     {"id":{"name":"GuiLayoutSetGutter","path":"scripts/GuiLayoutSetGutter/GuiLayoutSetGutter.yy",},},

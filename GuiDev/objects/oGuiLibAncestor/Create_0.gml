@@ -121,6 +121,8 @@ with(GUI_STRUCT)
     __solvedWidth     = other.sprite_width;
     __solvedHeight    = other.sprite_height;
     
+    __layoutClampInside = false;
+    
     //Fixed offset applied against the calculated layout left/top position. Applied at the very end of
     //the solver algorithm.
     __layoutOffsetX = 0;

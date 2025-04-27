@@ -47,4 +47,4 @@ GuiInputHotkey("escape", keyboard_check(vk_escape));
 GuiStep(room_width, room_height);
 
 //GuiAnimSetAngle(45, false, oExampleListWithScroll);
-GuiAnimSetScale(1, 1, false, oExampleListWithScroll);
+//GuiAnimSetScale(1, 1, false, oExampleListWithScroll);

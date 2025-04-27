@@ -99,6 +99,44 @@ function __GuiEnsureAnimationInner(_instance, _parentX, _parentY, _parentXScale,
         var _xCenterLocal = __solvedLeftLocal + __animOffsetX + _xOrigin - _parentOriginX;
         var _yCenterLocal = __solvedTopLocal  + __animOffsetY + _yOrigin - _parentOriginY;
         
+        //Ensure the UI element sits inside the root boundary before we transform
+        if (__layoutClampInside)
+        {
+            var _rootGui    = GUI_ROOT.GUI_STRUCT;
+            var _rootWidth  = _rootGui.__solvedWidth;
+            var _rootHeight = _rootGui.__solvedHeight;
+            
+            var _leftWorld   = __solvedLeftLocal + _parentX - _parentOriginX;
+            var _topWorld    = __solvedTopLocal  + _parentY - _parentOriginY;
+            var _rightWorld  = _leftWorld + __solvedWidth;
+            var _bottomWorld = _topWorld  + __solvedHeight;
+            
+            if (__solvedWidth <= _rootWidth)
+            {
+                var _deltaLeft  = max(0, -_leftWorld);
+                var _deltaRight = min(0, _rootWidth - _rightWorld);
+                var _deltaX     = (_deltaLeft > -_deltaRight)? _deltaLeft : _deltaRight;
+            }
+            else
+            {
+                var _deltaX = _leftWorld - 0.5*(__solvedWidth - _rootWidth);
+            }
+            
+            if (__solvedHeight <= _rootHeight)
+            {
+                var _deltaTop    = max(0, -_topWorld);
+                var _deltaBottom = min(0, _rootHeight - _bottomWorld);
+                var _deltaY      = (_deltaTop > -_deltaBottom)? _deltaTop : _deltaBottom;
+            }
+            else
+            {
+                var _deltaY = _topWorld - 0.5*(__solvedHeight - _rootHeight);
+            }
+            
+            _xCenterLocal += _deltaX;
+            _yCenterLocal += _deltaY;
+        }
+        
         //Transform our central point based on the parent's transform
         //TODO - Optimize
         var _cos =  dcos(_parentAngle);
