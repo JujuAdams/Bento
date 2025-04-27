@@ -6,7 +6,7 @@
   "name":"GuiNameGet",
   "parent":{
     "name":"Instance Names",
-    "path":"folders/Library/Extras/Instance Names.yy",
+    "path":"folders/Library/Instance Names.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
