@@ -45,7 +45,7 @@ function GuiNavSetFocus(_state, _instance = id)
                 var _index = array_get_index(_stepRootStack, _instance);
                 if (_index >= 0)
                 {
-                    // Mark everything above us in the step root stack as unfocused
+                    // Mark everything after us in the step root stack as unfocused
                     var _i = _index;
                     repeat(array_length(_stepRootStack) - _index)
                     {
@@ -58,7 +58,7 @@ function GuiNavSetFocus(_state, _instance = id)
                         ++_i;
                     }
                     
-                    // And then clear out the step root stack
+                    // And then clear out those UI elements we've just unfocused
                     array_delete(_stepRootStack, _index, array_length(_stepRootStack) - _index);
                 }
             }

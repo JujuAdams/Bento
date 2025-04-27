@@ -30,12 +30,13 @@ function GuiStep(_rootWidth, _rootHeight, _rootX = 0, _rootY = 0)
     {
         ++__frame;
         
-        // ulate directional x/y deltas
+        //Calculate directional x/y deltas
         __directionalStateX.__Update(__directionalDX, __frame);
         __directionalStateY.__Update(__directionalDY, __frame);
         
         if (not GuiFreezeGetAny())
         {
+            //Update hotkey state
             var _i = 0;
             repeat(array_length(__hotkeyArray))
             {

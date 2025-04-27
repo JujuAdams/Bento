@@ -48,8 +48,6 @@
 // Function to call when showing errors. (These cannot be disabled!)
 #macro GUI_SHOW_ERROR  show_error
 
-#macro GUI_VALIDATE_CREATE_VIA_JSON  true
-
 #macro GUI_JSON_CHILDREN_STRING_PROCESSOR  undefined
 
 #macro GUI_DEFAULT_LAYOUT_ALIGN_H  0

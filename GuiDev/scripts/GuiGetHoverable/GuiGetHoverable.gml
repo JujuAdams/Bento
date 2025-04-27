@@ -26,13 +26,26 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
     if (not instance_exists(_instance)) return false;
     var _gui = _instance.GUI_STRUCT;
     
-    if ((not _instance.visible) || _gui.__disable || _gui.__focusBlockHover)
+    //Basic validity checks
+    if ((not _instance.visible) || _gui.__disable)
+    {
+        return false;
+    }
+    
+    //We're not hoverable if we're focused and we have children (see `GuiNavSetFocus()`)
+    if (_gui.__focusBlockHover)
+    {
+        return false;
+    }
+    
+    if (instance_exists(_system.__popUpRoot) && (not GuiIsAncestor(_system.__popUpRoot, _instance)))
     {
         return false;
     }
     
     if (_system.__navMode == GUI_NAV_DIRECTIONAL)
     {
+        //In directional mode, only buttons are selectable
         if (_gui.__behavior != GUI_BEHAVIOR_BUTTON)
         {
             return false;
@@ -51,12 +64,6 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
         {
             return false;
         }
-    }
-    
-    if (instance_exists(_system.__popUpRoot) && (not GuiIsAncestor(_system.__popUpRoot, _instance)))
-    {
-        //This instance is outside the root pop-up
-        return false;
     }
     
     return true;

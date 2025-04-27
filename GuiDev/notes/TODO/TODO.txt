@@ -1,1 +1,7 @@
-Figure out how scrolling should work in terms of adjusting x/y positions
+Fix //TODO comments
+Layers for modals? Behaviors? Both?
+Multiplayer support?
+Do we need to be able to block siblings?
+Rewrite examples
+Test focus
+Cursor persistence per layer

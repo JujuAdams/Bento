@@ -25,7 +25,7 @@ function __GuiUpdateInstanceState()
             //Manage over state
             if (_system.__overInstance == _instance)
             {
-                //System says this instance is selected
+                //System says this instance is hovered
                 
                 if (__overState == GUI_ENTER)
                 {
@@ -44,7 +44,7 @@ function __GuiUpdateInstanceState()
             }
             else
             {
-                //System says this instance is not selected
+                //System says this instance is not hovered
                 
                 if (__overState == GUI_LEAVE)
                 {
