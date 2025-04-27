@@ -6,7 +6,9 @@
 
 function GuiDestroyChildren(_parent = id)
 {
-    with(_parent)
+    if (not instance_exists(_parent)) return;
+    
+    with(_parent.GUI_STRUCT)
     {
         var _array = __childArray;
         

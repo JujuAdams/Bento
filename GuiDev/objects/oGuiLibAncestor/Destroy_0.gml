@@ -54,7 +54,7 @@ with(GUI_STRUCT)
         
         if (__GUI_DEBUG)
         {
-            variable_struct_remove(__debugDict, __debugUUID);
+            variable_struct_remove(__debugDict, other.__debugUUID);
         }
     }
 }
