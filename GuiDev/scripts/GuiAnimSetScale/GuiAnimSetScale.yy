@@ -6,7 +6,7 @@
   "name":"GuiAnimSetScale",
   "parent":{
     "name":"Animation",
-    "path":"folders/Library/Animation.yy",
+    "path":"folders/Library/Functions/Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

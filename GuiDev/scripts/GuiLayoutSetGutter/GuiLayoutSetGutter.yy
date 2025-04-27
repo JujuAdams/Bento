@@ -6,7 +6,7 @@
   "name":"GuiLayoutSetGutter",
   "parent":{
     "name":"Lists & Grids",
-    "path":"folders/Library/Layout/Lists & Grids.yy",
+    "path":"folders/Library/Functions/Layout/Lists & Grids.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

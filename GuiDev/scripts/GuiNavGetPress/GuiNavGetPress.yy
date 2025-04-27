@@ -6,7 +6,7 @@
   "name":"GuiNavGetPress",
   "parent":{
     "name":"Getters",
-    "path":"folders/Library/Navigation/Getters.yy",
+    "path":"folders/Library/Functions/Navigation/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

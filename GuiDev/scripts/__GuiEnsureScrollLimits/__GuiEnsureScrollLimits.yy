@@ -6,7 +6,7 @@
   "name":"__GuiEnsureScrollLimits",
   "parent":{
     "name":"Ensure",
-    "path":"folders/Library/(System)/Ensure.yy",
+    "path":"folders/Library/Functions/(System)/Ensure.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

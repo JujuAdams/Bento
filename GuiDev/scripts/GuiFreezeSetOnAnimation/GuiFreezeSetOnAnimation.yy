@@ -6,7 +6,7 @@
   "name":"GuiFreezeSetOnAnimation",
   "parent":{
     "name":"Freeze",
-    "path":"folders/Library/Extras/Freeze.yy",
+    "path":"folders/Library/Functions/Extras/Freeze.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

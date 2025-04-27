@@ -6,7 +6,7 @@
   "name":"GuiSetParent",
   "parent":{
     "name":"Children",
-    "path":"folders/Library/Children.yy",
+    "path":"folders/Library/Functions/Children.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

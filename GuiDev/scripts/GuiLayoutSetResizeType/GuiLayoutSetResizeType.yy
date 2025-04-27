@@ -6,7 +6,7 @@
   "name":"GuiLayoutSetResizeType",
   "parent":{
     "name":"Layout",
-    "path":"folders/Library/Layout.yy",
+    "path":"folders/Library/Functions/Layout.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

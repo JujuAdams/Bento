@@ -6,7 +6,7 @@
   "name":"GuiScrollGetParamY",
   "parent":{
     "name":"Getters",
-    "path":"folders/Library/Scissor & Scroll/Getters.yy",
+    "path":"folders/Library/Functions/Scissor & Scroll/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

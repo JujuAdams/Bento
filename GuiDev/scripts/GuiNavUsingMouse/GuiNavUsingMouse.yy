@@ -6,7 +6,7 @@
   "name":"GuiNavUsingMouse",
   "parent":{
     "name":"Nav Mode",
-    "path":"folders/Library/Navigation/Nav Mode.yy",
+    "path":"folders/Library/Functions/Navigation/Nav Mode.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

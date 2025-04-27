@@ -6,7 +6,7 @@
   "name":"GuiInputButton",
   "parent":{
     "name":"Input",
-    "path":"folders/Library/Input.yy",
+    "path":"folders/Library/Functions/Input.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

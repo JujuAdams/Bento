@@ -6,7 +6,7 @@
   "name":"GuiSetBehavior",
   "parent":{
     "name":"Instances",
-    "path":"folders/Library/Instances.yy",
+    "path":"folders/Library/Functions/Instances.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

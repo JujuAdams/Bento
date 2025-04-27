@@ -6,7 +6,7 @@
   "name":"GuiNameExists",
   "parent":{
     "name":"Instance Names",
-    "path":"folders/Library/Instance Names.yy",
+    "path":"folders/Library/Functions/Instance Names.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

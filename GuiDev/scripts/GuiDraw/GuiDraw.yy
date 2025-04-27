@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiDraw",
   "parent":{
-    "name":"Library",
-    "path":"folders/Library.yy",
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,7 +6,7 @@
   "name":"GuiSetPriorityBelow",
   "parent":{
     "name":"Priority",
-    "path":"folders/Library/Priority.yy",
+    "path":"folders/Library/Functions/Priority.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

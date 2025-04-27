@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Sprites",
-    "path":"folders/Library/Parent Objects/Sprites.yy",
+    "path":"folders/Library/Functions/Parent Objects/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

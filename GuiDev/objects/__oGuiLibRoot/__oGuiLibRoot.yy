@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "path":"folders/Library/Functions/(System).yy",
   },
   "parentObjectId":{
     "name":"oGuiLibAncestor",

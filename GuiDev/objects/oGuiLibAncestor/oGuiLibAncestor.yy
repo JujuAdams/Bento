@@ -16,7 +16,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Parent Objects",
-    "path":"folders/Library/Parent Objects.yy",
+    "path":"folders/Library/Functions/Parent Objects.yy",
   },
   "parentObjectId":null,
   "persistent":true,

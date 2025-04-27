@@ -6,7 +6,7 @@
   "name":"GuiNavGetNearest",
   "parent":{
     "name":"Actions",
-    "path":"folders/Library/Navigation/Actions.yy",
+    "path":"folders/Library/Functions/Navigation/Actions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

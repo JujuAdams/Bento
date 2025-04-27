@@ -6,7 +6,7 @@
   "name":"__GuiScrollFindParent",
   "parent":{
     "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "path":"folders/Library/Functions/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

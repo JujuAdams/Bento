@@ -6,7 +6,7 @@
   "name":"__GuiError",
   "parent":{
     "name":"Support",
-    "path":"folders/Library/(System)/Support.yy",
+    "path":"folders/Library/Functions/(System)/Support.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

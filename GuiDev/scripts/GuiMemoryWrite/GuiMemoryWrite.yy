@@ -6,7 +6,7 @@
   "name":"GuiMemoryWrite",
   "parent":{
     "name":"Memory",
-    "path":"folders/Library/Extras/Memory.yy",
+    "path":"folders/Library/Functions/Extras/Memory.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

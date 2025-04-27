@@ -6,7 +6,7 @@
   "name":"__GuiMarkAnimAndScrollDirty",
   "parent":{
     "name":"Scissor & Scroll",
-    "path":"folders/Library/(System)/Scissor & Scroll.yy",
+    "path":"folders/Library/Functions/(System)/Scissor & Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

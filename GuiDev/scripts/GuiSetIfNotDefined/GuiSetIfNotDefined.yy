@@ -6,7 +6,7 @@
   "name":"GuiSetIfNotDefined",
   "parent":{
     "name":"Extras",
-    "path":"folders/Library/Extras.yy",
+    "path":"folders/Library/Functions/Extras.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

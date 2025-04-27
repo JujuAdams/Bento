@@ -6,7 +6,7 @@
   "name":"GuiAnimGet",
   "parent":{
     "name":"Animation",
-    "path":"folders/Library/Extras/Animation.yy",
+    "path":"folders/Library/Functions/Extras/Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
