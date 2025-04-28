@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"TestScroll",
+  "%Name":"TestListWithScroll",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TestScroll",
+  "name":"TestListWithScroll",
   "parent":{
     "name":"Examples",
     "path":"folders/Examples.yy",

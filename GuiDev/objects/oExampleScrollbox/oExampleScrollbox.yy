@@ -1,19 +1,23 @@
 {
   "$GMObject":"",
-  "%Name":"GuiExamplePopUpMenu",
+  "%Name":"oExampleScrollbox",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"GuiExamplePopUpMenu",
+  "name":"oExampleScrollbox",
   "overriddenProperties":[],
   "parent":{
-    "name":"(Old Content)",
-    "path":"folders/(Old Content).yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oGuiLibList",
+    "path":"objects/oGuiLibList/oGuiLibList.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,7 +35,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sGuiMaskRectangle",
+    "path":"sprites/sGuiMaskRectangle/sGuiMaskRectangle.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
