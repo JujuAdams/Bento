@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiTabClose",
+  "%Name":"TestCarousel",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiTabClose",
+  "name":"TestCarousel",
   "parent":{
-    "name":"Tabs",
-    "path":"folders/Library/Functions/Tabs.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

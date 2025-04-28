@@ -45,16 +45,5 @@ with(GUI_STRUCT)
         if (_instance == _id) ds_map_delete(__nameMap, other.__name);
         
         if (__popUpRoot == _id) __popUpRoot = noone;
-        
-        if (other.__animating)
-        {
-            other.__animating = false;
-            __animCount--;
-        }
-        
-        if (__GUI_DEBUG)
-        {
-            variable_struct_remove(__debugDict, other.__debugUUID);
-        }
     }
 }

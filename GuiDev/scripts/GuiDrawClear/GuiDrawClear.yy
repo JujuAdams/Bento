@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiDrawClear",
   "parent":{
-    "name":"Draw Helpers",
-    "path":"folders/Library/Functions/Draw Helpers.yy",
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

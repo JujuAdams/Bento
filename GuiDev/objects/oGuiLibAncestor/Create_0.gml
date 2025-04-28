@@ -34,16 +34,6 @@ with(GUI_STRUCT)
 {
     __attachedInstance = other.id;
     
-    if (__GUI_DEBUG)
-    {
-        var _globalCount = _system.__debugGlobalCount;
-        ++_globalCount;
-        _system.__debugGlobalCount = _globalCount;
-        
-        __debugUUID = __GuiMakeUUID(other.id, other.object_index, _globalCount);
-        _system.__debugDict[$ __debugUUID] = self;
-    }
-    
     __animOriginX    = undefined;
     __animOriginY    = undefined;
     __animOffsetX    = 0;

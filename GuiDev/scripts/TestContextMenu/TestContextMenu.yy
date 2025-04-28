@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiTabClose",
+  "%Name":"TestContextMenu",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiTabClose",
+  "name":"TestContextMenu",
   "parent":{
-    "name":"Tabs",
-    "path":"folders/Library/Functions/Tabs.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

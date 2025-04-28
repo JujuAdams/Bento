@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiSetIfNotDefined",
   "parent":{
-    "name":"Extras",
-    "path":"folders/Library/Functions/Extras.yy",
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

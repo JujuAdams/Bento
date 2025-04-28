@@ -44,8 +44,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Sprites",
-    "path":"folders/Library/Functions/Parent Objects/Sprites.yy",
+    "name":"Placeholder Sprites",
+    "path":"folders/Library/Functions/Placeholder Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

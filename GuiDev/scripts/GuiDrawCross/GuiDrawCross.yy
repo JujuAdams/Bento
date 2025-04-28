@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiDrawCross",
   "parent":{
-    "name":"Draw Helpers",
-    "path":"folders/Library/Functions/Draw Helpers.yy",
+    "name":"GuiWithLayouts",
+    "path":"GuiWithLayouts.yyp",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

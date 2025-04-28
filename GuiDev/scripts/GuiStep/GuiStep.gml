@@ -34,8 +34,8 @@ function GuiStep(_rootWidth, _rootHeight, _rootX = 0, _rootY = 0)
         __directionalStateX.__Update(__directionalDX, __frame);
         __directionalStateY.__Update(__directionalDY, __frame);
         
-        if (not GuiFreezeGetAny())
-        {
+        //if (not GuiFreezeGetAny())
+        //{
             //Update hotkey state
             var _i = 0;
             repeat(array_length(__hotkeyArray))
@@ -92,7 +92,7 @@ function GuiStep(_rootWidth, _rootHeight, _rootX = 0, _rootY = 0)
             {
                 __primaryConsumed = false;
             }
-        }
+        //}
         
         __GuiUpdateInstanceState();
         

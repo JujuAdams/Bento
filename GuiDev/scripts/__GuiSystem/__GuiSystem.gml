@@ -45,12 +45,6 @@ function __GuiSystem()
         
         __scissorStack = [];
         
-        if (__GUI_DEBUG)
-        {
-            __debugGlobalCount = 0;
-            __debugDict = {};
-        }
-        
         if ((os_type == os_switch)
         ||  (os_type == os_ps4)
         ||  (os_type == os_ps5)
@@ -121,24 +115,12 @@ function __GuiSystem()
         
         __tempParent = undefined;
         
-        __animCount = 0;
-        
-        __freeze = false;
-        __freezeOnAnimation = true;
-        
         __tabDict = {};
-        
-        __memoryStruct = {};
     }
     
     if (GUI_RUNNING_FROM_IDE)
     {
         global.GuiSystem = _system;
-        
-        if (__GUI_DEBUG)
-        {
-            global.GuiSystemInstances = _system.__debugDict;
-        }
     }
     
     return _system;
