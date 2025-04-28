@@ -34,8 +34,7 @@ function __GuiEnsureStepOrderInner(_instance)
         //N.B. We iterate over instances backwards to handle modals and blockers elegantly
         
         var _focused = (__focused && (_system.__navMode == GUI_NAV_DIRECTIONAL));
-        
-        if ((not __focusable) || _focused)
+        if ((not __focusable) || _system.__navPointer || _focused)
         {
             if (__scissorEnabled)
             {

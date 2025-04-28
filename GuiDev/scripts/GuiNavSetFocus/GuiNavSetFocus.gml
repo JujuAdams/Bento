@@ -28,13 +28,13 @@ function GuiNavSetFocus(_state, _instance = id)
                     
                     if (__scissorEnabled)
                     {
-                        _system.__directionalLastX = bbox_left + __scissorPadLeft;
-                        _system.__directionalLastY = bbox_top  + __scissorPadTop;
+                        _system.__directionalLastX = _instance.bbox_left + __scissorPadLeft;
+                        _system.__directionalLastY = _instance.bbox_top  + __scissorPadTop;
                     }
                     else
                     {
-                        _system.__directionalLastX = x;
-                        _system.__directionalLastY = y;
+                        _system.__directionalLastX = _instance.x;
+                        _system.__directionalLastY = _instance.y;
                     }
                 }
                 
@@ -49,7 +49,7 @@ function GuiNavSetFocus(_state, _instance = id)
                     var _i = _index;
                     repeat(array_length(_stepRootStack) - _index)
                     {
-                        with(_stepRootStack[_i])
+                        with(_stepRootStack[_i].GUI_STRUCT)
                         {
                             __focused         = false;
                             __focusBlockHover = false;

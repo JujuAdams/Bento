@@ -6,16 +6,6 @@ var height = 100;
 var _bodyT = y + 1 + padding;
 var _bodyB = y + height-2 - padding;
 
-if (keyboard_check(vk_escape))
-{
-    show_debug_message("1");
-}
-
-if (GuiHotkeyGetPress("escape"))
-{
-    show_debug_message("escape pressed");
-}
-
 if (showScrollbar)
 {
     if (GuiNavUsingDirectional())

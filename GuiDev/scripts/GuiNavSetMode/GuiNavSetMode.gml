@@ -15,6 +15,11 @@ function GuiNavSetMode(_mode)
     
     with(_system)
     {
+        if (__navMode == _mode) return;
+        
+        //Changing navigation mode may change whether elements are selectable underneath focusable parents
+        __stepDirty = true;
+        
         if (_mode == GUI_NAV_DIRECTIONAL)
         {
             if (__navPointer)
