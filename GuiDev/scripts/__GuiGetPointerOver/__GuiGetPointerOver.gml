@@ -63,11 +63,11 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
             
             with(method_get_self(_stepOrder[_i]))
             {
-                //TODO - Use accurate layout values
-                _scissorL = max(_scissorL, guiLeft   + GUI_STRUCT.__scissorPadLeft  );
-                _scissorT = max(_scissorT, guiTop    + GUI_STRUCT.__scissorPadTop   );
-                _scissorR = min(_scissorR, guiRight  - GUI_STRUCT.__scissorPadRight );
-                _scissorB = min(_scissorB, guiBottom - GUI_STRUCT.__scissorPadBottom);
+                var _guiStruct = GUI_STRUCT;
+                _scissorL = max(_scissorL, guiLeft   + _guiStruct.__scissorPadLeft  );
+                _scissorT = max(_scissorT, guiTop    + _guiStruct.__scissorPadTop   );
+                _scissorR = min(_scissorR, guiRight  - _guiStruct.__scissorPadRight );
+                _scissorB = min(_scissorB, guiBottom - _guiStruct.__scissorPadBottom);
             }
             
             _insideScissor = ((_mouseX >= _scissorL) && (_mouseY >= _scissorT) && (_mouseX <= _scissorR) && (_mouseY <= _scissorB));

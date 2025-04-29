@@ -29,6 +29,5 @@ draw_set_halign(fa_center);
 draw_text(_x, _y, value);
 draw_set_halign(fa_left);
 
-//TODO - Reimplement
 draw_triangle(bbox_left+5, _y+10, bbox_left+15, _y+5, bbox_left+15, _y+15, false); 
 draw_triangle(bbox_right-5, _y+10, bbox_right-15, _y+5, bbox_right-15, _y+15, false); 

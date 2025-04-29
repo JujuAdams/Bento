@@ -33,6 +33,5 @@ if (array_length(optionArray) > 0)
     draw_text(_x, _y+5, optionArray[option]);
 }
 
-//TODO - Reimplement
 draw_triangle(bbox_left+5, _y+10, bbox_left+15, _y+5, bbox_left+15, _y+15, false); 
 draw_triangle(bbox_right-5, _y+10, bbox_right-15, _y+5, bbox_right-15, _y+15, false); 

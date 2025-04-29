@@ -1,6 +1,6 @@
-Fix //TODO comments
 Rewrite examples
-Test focus
-Multiplayer support?
-Layers for modals? Behaviors? Both?
-Cursor persistence per layer
+Test focus for e.g. scrollers
+Environments
+Layers (modals + pages + persistence)
+Do we need inline modals and blockers if we have layers?
+Multiplayer support in the same environment?

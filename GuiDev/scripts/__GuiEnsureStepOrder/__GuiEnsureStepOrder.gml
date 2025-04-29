@@ -113,7 +113,6 @@ function __GuiStepMethod()
 
 function __GuiStepMethodScissorPush()
 {
-    //TODO - Check these values are accurate
     var _guiStruct = GUI_STRUCT;
     __GuiScissorPush(guiLeft   + _guiStruct.__scissorPadLeft,
                      guiTop    + _guiStruct.__scissorPadTop,

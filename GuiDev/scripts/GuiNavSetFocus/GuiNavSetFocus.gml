@@ -24,8 +24,6 @@ function GuiNavSetFocus(_state, _instance = id)
                 
                 if (__focusBlockHover)
                 {
-                    //TODO - Use accurate value from layout variables
-                    
                     if (__scissorEnabled)
                     {
                         _system.__directionalLastX = _instance.guiLeft + __scissorPadLeft;
@@ -33,8 +31,8 @@ function GuiNavSetFocus(_state, _instance = id)
                     }
                     else
                     {
-                        _system.__directionalLastX = _instance.guiX;
-                        _system.__directionalLastY = _instance.guiY;
+                        _system.__directionalLastX = _instance.guiLeft;
+                        _system.__directionalLastY = _instance.guiTop;
                     }
                 }
                 
