@@ -54,7 +54,7 @@ function __GuiSystem()
         __layoutOrder = [];
         __layoutDirty = true;
         
-        __animAndScrollDirtyArray = [];
+        __transformAndScrollDirtyArray = [];
         __scrollDirtyArray = [];
         
         __stepRootStack = [];

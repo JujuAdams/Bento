@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiTransformSetOrigin",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiTransformSetOrigin",
+  "parent":{
+    "name":"Transform",
+    "path":"folders/Library/Functions/Transform.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -42,7 +42,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         //Calculate a lookup index based on the properties of this instance
         var _lookup = ((_instance.visible? __GUI_DRAW_ORDER_VISIBLE : 0)
                     |  (__scissorEnabled? __GUI_DRAW_ORDER_SCISSOR : 0)
-                    |  ((__animMatrix != undefined)? __GUI_DRAW_ORDER_MATRIX : 0));
+                    |  ((__transformMatrix != undefined)? __GUI_DRAW_ORDER_MATRIX : 0));
         
         //Find a Draw End function for the lookup index
         var _function = _functionLookupArray[_lookup | __GUI_DRAW_ORDER_DRAW_END];
@@ -83,13 +83,13 @@ function __GuiEnsureDrawOrderInner(_instance)
         
         _array[__GUI_DRAW_ORDER_MATRIX] = function()
         {
-            matrix_stack_push(GUI_STRUCT.__animMatrix);
+            matrix_stack_push(GUI_STRUCT.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
         }
         
         _array[__GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            matrix_stack_push(GUI_STRUCT.__animMatrix);
+            matrix_stack_push(GUI_STRUCT.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             __GuiScissorPushFromInstance();
         }
@@ -107,7 +107,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            matrix_stack_push(GUI_STRUCT.__animMatrix);
+            matrix_stack_push(GUI_STRUCT.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             event_user(GUI_USER_EVENT_DRAW);
         }
@@ -119,7 +119,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            matrix_stack_push(GUI_STRUCT.__animMatrix);
+            matrix_stack_push(GUI_STRUCT.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             event_user(GUI_USER_EVENT_DRAW);
             __GuiScissorPushFromInstance();

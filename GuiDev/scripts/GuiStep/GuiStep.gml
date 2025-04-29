@@ -110,5 +110,5 @@ function GuiStep(_rootWidth, _rootHeight, _rootX = 0, _rootY = 0)
     }
     
     __GuiEnsureScrollLimits();
-    __GuiEnsureAnimAndScroll();
+    __GuiEnsureTransformAndScroll();
 }

@@ -1,10 +1,10 @@
 // Feather disable allry.
 
-function __GuiEnsureAnimAndScroll()
+function __GuiEnsureTransformAndScroll()
 {
     static _system                  = __GuiSystem();
     static _scrollDirtyArray        = _system.__scrollDirtyArray;
-    static _animAndScrollDirtyArray = _system.__animAndScrollDirtyArray;
+    static _transformAndScrollDirtyArray = _system.__transformAndScrollDirtyArray;
     
     var _i = array_length(_scrollDirtyArray)-1;
     repeat(array_length(_scrollDirtyArray))
@@ -34,7 +34,7 @@ function __GuiEnsureAnimAndScroll()
                     __scrollX += _dX;
                     __scrollY += _dY;
                     
-                    __GuiMarkAnimAndScrollDirty(_instance)
+                    __GuiMarkTransformAndScrollDirty(_instance)
                 }
             }
         }
@@ -42,7 +42,7 @@ function __GuiEnsureAnimAndScroll()
         --_i;
     }
     
-    if (array_length(_animAndScrollDirtyArray) <= 0) return;
+    if (array_length(_transformAndScrollDirtyArray) <= 0) return;
     
     with(_system)
     {
@@ -50,24 +50,24 @@ function __GuiEnsureAnimAndScroll()
         
         //Sort from newest instance to oldest instance. This will usually get the following loop to
         //execute from the most senior node to the most junior leaf.
-        array_sort(_animAndScrollDirtyArray, true);
+        array_sort(_transformAndScrollDirtyArray, true);
         
-        while(array_length(_animAndScrollDirtyArray) > 0)
+        while(array_length(_transformAndScrollDirtyArray) > 0)
         {
-            var _instance = array_shift(_animAndScrollDirtyArray);
+            var _instance = array_shift(_transformAndScrollDirtyArray);
             if (instance_exists(_instance))
             {
                 var _parent = _instance.GUI_STRUCT.__parent;
                 if (not instance_exists(_parent))
                 {
                     //No parent, probably the root node?
-                    __GuiEnsureAnimationInner(_instance, 0, 0);
+                    __GuiEnsureTransformAndScrollInner(_instance, 0, 0);
                 }
                 else
                 {
                     with(_parent)
                     {
-                        __GuiEnsureAnimationInner(_instance, GUI_STRUCT.__scrollX, GUI_STRUCT.__scrollY);
+                        __GuiEnsureTransformAndScrollInner(_instance, GUI_STRUCT.__scrollX, GUI_STRUCT.__scrollY);
                     }
                 }
             }
@@ -75,9 +75,9 @@ function __GuiEnsureAnimAndScroll()
     }
 }
 
-function __GuiEnsureAnimationInner(_instance, _offsetX, _offsetY)
+function __GuiEnsureTransformAndScrollInner(_instance, _offsetX, _offsetY)
 {
-    static _animAndScrollDirtyArray = __GuiSystem().__animAndScrollDirtyArray;
+    static _transformAndScrollDirtyArray = __GuiSystem().__transformAndScrollDirtyArray;
     
     with(_instance.GUI_STRUCT)
     {
@@ -132,32 +132,32 @@ function __GuiEnsureAnimationInner(_instance, _offsetX, _offsetY)
         var _xWorld = _leftWorld + _originX;
         var _yWorld = _topWorld  + _originY;
         
-        if (__animAndScrollDirty)
+        if (__transformAndScrollDirty)
         {
-            __animAndScrollDirty = false;
+            __transformAndScrollDirty = false;
             
-            var _index = array_get_index(_animAndScrollDirtyArray, _instance);
-            if (_index >= 0) array_delete(_animAndScrollDirtyArray, _index, 1);
+            var _index = array_get_index(_transformAndScrollDirtyArray, _instance);
+            if (_index >= 0) array_delete(_transformAndScrollDirtyArray, _index, 1);
             
-            if ((__animOffsetX != 0) || (__animOffsetY != 0)
-             || (__animScaleX  != 1) || (__animScaleY  != 1)
-             || (__animAngle   != 0)
-             || (__animOriginX != undefined) || (__animOriginY != undefined))
+            if ((__transformOffsetX != 0) || (__transformOffsetY != 0)
+             || (__transformScaleX  != 1) || (__transformScaleY  != 1)
+             || (__transformAngle   != 0)
+             || (__transformOriginX != undefined) || (__transformOriginY != undefined))
             {
-                var _originX = _leftWorld + (__animOriginX ?? _originX);
-                var _originY = _topWorld  + (__animOriginY ?? _originY);
+                var _originX = _leftWorld + (__transformOriginX ?? _originX);
+                var _originY = _topWorld  + (__transformOriginY ?? _originY);
                 
-                var _cos =  dcos(__animAngle);
-                var _sin = -dsin(__animAngle);
+                var _cos =  dcos(__transformAngle);
+                var _sin = -dsin(__transformAngle);
                 
-                __animMatrix = [ __animScaleX*_cos, __animScaleX*_sin, 0, 0,
-                                -__animScaleY*_sin, __animScaleY*_cos, 0, 0,
+                __transformMatrix = [ __transformScaleX*_cos, __transformScaleX*_sin, 0, 0,
+                                -__transformScaleY*_sin, __transformScaleY*_cos, 0, 0,
                                  0, 0, 1, 0,
-                                 _originX - (_originX*__animScaleX*_cos - _originY*__animScaleY*_sin), _originY - (_originX*__animScaleX*_sin + _originY*__animScaleY*_cos), 0, 1];
+                                 _originX - (_originX*__transformScaleX*_cos - _originY*__transformScaleY*_sin), _originY - (_originX*__transformScaleX*_sin + _originY*__transformScaleY*_cos), 0, 1];
             }
             else
             {
-                __animMatrix = undefined;
+                __transformMatrix = undefined;
             }
         }
         
@@ -187,7 +187,7 @@ function __GuiEnsureAnimationInner(_instance, _offsetX, _offsetY)
             var _i = 0;
             repeat(array_length(_childArray))
             {
-                __GuiEnsureAnimationInner(_childArray[_i], _offsetX, _offsetY);
+                __GuiEnsureTransformAndScrollInner(_childArray[_i], _offsetX, _offsetY);
                 ++_i;
             }
         }

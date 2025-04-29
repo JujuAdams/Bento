@@ -6,14 +6,14 @@ function __GuiClassVariables(_attachedInstance) constructor
 {
     __attachedInstance = _attachedInstance;
     
-    __animMatrix  = undefined;
-    __animOriginX = undefined;
-    __animOriginY = undefined;
-    __animOffsetX = 0;
-    __animOffsetY = 0;
-    __animScaleX  = 1;
-    __animScaleY  = 1;
-    __animAngle   = 0;
+    __transformMatrix  = undefined;
+    __transformOriginX = undefined;
+    __transformOriginY = undefined;
+    __transformOffsetX = 0;
+    __transformOffsetY = 0;
+    __transformScaleX  = 1;
+    __transformScaleY  = 1;
+    __transformAngle   = 0;
     
     __overState = GUI_OFF;
     __holdState = GUI_OFF;
@@ -49,7 +49,7 @@ function __GuiClassVariables(_attachedInstance) constructor
     //This variable is set on demand by various functions
     __scrollLimitsDirty = false;
     
-    __animAndScrollDirty = false;
+    __transformAndScrollDirty = false;
     
     __updating = false;
     

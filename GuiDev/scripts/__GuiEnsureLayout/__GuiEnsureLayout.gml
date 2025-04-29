@@ -10,9 +10,9 @@ function __GuiEnsureLayout()
         var _rootInstance = GUI_ROOT;
         var _rootGui = _rootInstance.GUI_STRUCT;
         
-        //Ensure a full reset of the animation/scroll positions
-        array_resize(__animAndScrollDirtyArray, 0);
-        array_push(__animAndScrollDirtyArray, _rootInstance);
+        //Ensure a full reset of the transform/scroll positions
+        array_resize(__transformAndScrollDirtyArray, 0);
+        array_push(__transformAndScrollDirtyArray, _rootInstance);
         
         var _layoutOrder = __layoutOrder;
         array_resize(_layoutOrder, 0);

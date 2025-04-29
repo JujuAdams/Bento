@@ -35,6 +35,6 @@ function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT
         __scrollTargetY = _scrollTargetY;
         __scrollSpeed   = _scrollSpeed;
         
-        __GuiMarkAnimAndScrollDirty(_scroller)
+        __GuiMarkTransformAndScrollDirty(_scroller)
     }
 }
