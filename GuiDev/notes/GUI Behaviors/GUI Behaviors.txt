@@ -1,9 +1,17 @@
-By default:
+For most GUI behaviors:
 - STEP user event will trigger
 - DRAW user event will trigger
 - Hoverable in pointer mode (mouse & touch) only
 - Clickable in pointer mode only
 - Not considered a button by `GuiIsButton()`
+
+Any instance that is set to scrollable by `GuiScrollSetEnabled()` will override any behavior and
+will do the following:
+- STEP user event will trigger
+- Guaranteed to be hoverable in pointer mode
+- Guaranteed to be clickable in pointer mode
+
+Otherwise:
 
 GUI_BEHAVIOR_COSMETIC
 - STEP user event will not trigger
@@ -26,8 +34,8 @@ GUI_BEHAVIOR_MODAL
 
 GUI_BEHAVIOR_POP_UP
 - Cannot hover or click UI elements outside of the pop-up in directional mode
-- Destroyed if any point outside of the pop-up is clicked in pointer (mouse & touch) mode (this
-  is regardless of the value of `GUI_POP_UP_CLICK_THROUGH`)
+- Destroyed if any point outside of the pop-up is clicked in pointer mode (this is regardless of
+  the value of `GUI_POP_UP_CLICK_THROUGH`)
 - If `GUI_POP_UP_CLICK_THROUGH` is `false`, cannot hover or click UI elements outside of
   the pop-up
 - If `GUI_POP_UP_CLICK_THROUGH` is `true`, can hover and click UI elements outside of

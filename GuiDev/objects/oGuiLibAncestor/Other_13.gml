@@ -1,5 +1,9 @@
 /// @desc Reposition
 
+// This event is called whenever the library decides that the instance needs to be moved. This is
+// typically when the instance is created, the layout changes or when the player has scrolled a
+// UI element.
+
 if (sprite_exists(sprite_index))
 {
     image_xscale = guiWidth  / sprite_get_width(sprite_index);
