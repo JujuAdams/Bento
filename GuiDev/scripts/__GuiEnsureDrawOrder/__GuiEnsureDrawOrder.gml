@@ -20,10 +20,10 @@ function __GuiEnsureDrawOrder()
     }
 }
 
-#macro __GUI_DRAW_ORDER_VISIBLE   1
-#macro __GUI_DRAW_ORDER_SCISSOR   2
-#macro __GUI_DRAW_ORDER_MATRIX    4
-#macro __GUI_DRAW_ORDER_DRAW_END  8
+#macro __GUI_DRAW_ORDER_DRAW_END  1
+#macro __GUI_DRAW_ORDER_VISIBLE   2
+#macro __GUI_DRAW_ORDER_SCISSOR   4
+#macro __GUI_DRAW_ORDER_MATRIX    8
 
 function __GuiEnsureDrawOrderInner(_instance)
 {
@@ -83,31 +83,15 @@ function __GuiEnsureDrawOrderInner(_instance)
         
         _array[__GUI_DRAW_ORDER_MATRIX] = function()
         {
-            __GuiMatrixPush(__animMatrix);
+            matrix_stack_push(GUI_STRUCT.__animMatrix);
+            matrix_set(matrix_world, matrix_stack_top());
         }
-        
-        _array[__GUI_DRAW_ORDER_DRAW_END] = undefined;
         
         _array[__GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            __GuiMatrixPush(__animMatrix);
+            matrix_stack_push(GUI_STRUCT.__animMatrix);
+            matrix_set(matrix_world, matrix_stack_top());
             __GuiScissorPushFromInstance();
-        }
-        
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_SCISSOR] = function()
-        {
-            __GuiScissorPop();
-        }
-        
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_MATRIX] = function()
-        {
-            __GuiMatrixPop();
-        }
-        
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
-        {
-            __GuiScissorPop();
-            __GuiMatrixPop();
         }
         
         _array[__GUI_DRAW_ORDER_VISIBLE] = function()
@@ -123,7 +107,8 @@ function __GuiEnsureDrawOrderInner(_instance)
         
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            __GuiMatrixPush(GUI_STRUCT.__animMatrix);
+            matrix_stack_push(GUI_STRUCT.__animMatrix);
+            matrix_set(matrix_world, matrix_stack_top());
             event_user(GUI_USER_EVENT_DRAW);
         }
         
@@ -134,28 +119,51 @@ function __GuiEnsureDrawOrderInner(_instance)
         
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            __GuiMatrixPush(GUI_STRUCT.__animMatrix);
+            matrix_stack_push(GUI_STRUCT.__animMatrix);
+            matrix_set(matrix_world, matrix_stack_top());
             event_user(GUI_USER_EVENT_DRAW);
             __GuiScissorPushFromInstance();
         }
         
-        _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_SCISSOR] = function()
+        _array[__GUI_DRAW_ORDER_DRAW_END] = undefined;
+        
+        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_SCISSOR] = function()
+        {
+            __GuiScissorPop();
+        }
+        
+        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_MATRIX] = function()
+        {
+            matrix_stack_pop();
+            matrix_set(matrix_world, matrix_stack_top());
+        }
+        
+        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
+        {
+            __GuiScissorPop();
+            matrix_stack_pop();
+            matrix_set(matrix_world, matrix_stack_top());
+        }
+        
+        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR] = function()
         {
             __GuiScissorPop();
             event_user(GUI_USER_EVENT_DRAW_END);
         }
         
-        _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_MATRIX] = function()
+        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_MATRIX] = function()
         {
             event_user(GUI_USER_EVENT_DRAW_END);
-            __GuiMatrixPop();
+            matrix_stack_pop();
+            matrix_set(matrix_world, matrix_stack_top());
         }
         
-        _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
+        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
             __GuiScissorPop();
             event_user(GUI_USER_EVENT_DRAW_END);
-            __GuiMatrixPop();
+            matrix_stack_pop();
+            matrix_set(matrix_world, matrix_stack_top());
         }
         
         return _array;

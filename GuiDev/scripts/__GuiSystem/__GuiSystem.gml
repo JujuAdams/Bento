@@ -108,7 +108,6 @@ function __GuiSystem()
         __primaryConsumed = false;
         
         __updateInstanceArray = [];
-        __matrixStack = [];
         
         __nameMap = ds_map_create();
         

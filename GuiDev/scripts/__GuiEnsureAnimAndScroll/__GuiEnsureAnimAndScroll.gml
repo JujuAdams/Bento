@@ -147,11 +147,12 @@ function __GuiEnsureAnimationInner(_instance, _offsetX, _offsetY)
                  var _matrixOriginX = _leftWorld + (__animOriginX ?? _originX);
                  var _matrixOriginY = _topWorld  + (__animOriginY ?? _originY);
                  
-                 var _matrix = matrix_build(-_matrixOriginX, -_matrixOriginY, 0,   0,0,0,   1,1,1);
-                     _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0,0,0,   __animScaleX, __animScaleY, 1));
-                     _matrix = matrix_multiply(_matrix, matrix_build(0,0,0,   0,0,__animAngle,   1,1,1));
-                     _matrix = matrix_multiply(_matrix, matrix_build(_matrixOriginX, _matrixOriginY, 0,   0,0,0,   1,1,1));
-                 __animMatrix = _matrix;
+                 matrix_stack_set(matrix_build(_matrixOriginX, _matrixOriginY, 0,   0,0,0,   1,1,1));
+                 matrix_stack_push(matrix_build(0,0,0,   0,0,__animAngle,   1,1,1));
+                 matrix_stack_push(matrix_build(0,0,0,   0,0,0,   __animScaleX, __animScaleY, 1));
+                 matrix_stack_push(matrix_build(-_matrixOriginX, -_matrixOriginY, 0,   0,0,0,   1,1,1));
+                 __animMatrix = matrix_stack_top();
+                 matrix_stack_clear();
              }
              else
              {

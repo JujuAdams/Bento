@@ -95,8 +95,6 @@
     {"id":{"name":"__GuiMakeUUID","path":"scripts/__GuiMakeUUID/__GuiMakeUUID.yy",},},
     {"id":{"name":"__GuiMarkAnimAndScrollDirty","path":"scripts/__GuiMarkAnimAndScrollDirty/__GuiMarkAnimAndScrollDirty.yy",},},
     {"id":{"name":"__GuiMarkPriorityDirty","path":"scripts/__GuiMarkPriorityDirty/__GuiMarkPriorityDirty.yy",},},
-    {"id":{"name":"__GuiMatrixPop","path":"scripts/__GuiMatrixPop/__GuiMatrixPop.yy",},},
-    {"id":{"name":"__GuiMatrixPush","path":"scripts/__GuiMatrixPush/__GuiMatrixPush.yy",},},
     {"id":{"name":"__GuiNavStartHold","path":"scripts/__GuiNavStartHold/__GuiNavStartHold.yy",},},
     {"id":{"name":"__GuiNavStartOver","path":"scripts/__GuiNavStartOver/__GuiNavStartOver.yy",},},
     {"id":{"name":"__GuiObjectInheritsFrom","path":"scripts/__GuiObjectInheritsFrom/__GuiObjectInheritsFrom.yy",},},
