@@ -1,7 +1,6 @@
 Fix //TODO comments
-Layers for modals? Behaviors? Both?
-Multiplayer support?
-Do we need to be able to block siblings?
 Rewrite examples
 Test focus
+Multiplayer support?
+Layers for modals? Behaviors? Both?
 Cursor persistence per layer

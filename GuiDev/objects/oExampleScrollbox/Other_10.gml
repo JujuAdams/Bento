@@ -1,7 +1,8 @@
 /// @desc Step
 
-var width  = 100;
-var height = 100;
+var padding = 0;
+var width   = 100;
+var height  = 100;
 
 var _bodyT = y + 1 + padding;
 var _bodyB = y + height-2 - padding;
@@ -23,17 +24,17 @@ if (showScrollbar)
     }
     else if (GuiNavUsingPointer())
     {
-        if (GuiNavGetCursorX() == x + width-1 - padding)
+        if (GuiNavGetCursorX() == x + width-1)
         {
             if (not handleGrabbed)
             {
                 if (GuiNavGetClick())
                 {
-                    if (GuiNavGetCursorY() == y + padding)
+                    if (GuiNavGetCursorY() == y)
                     {
                         GuiScrollMove(0, 1);
                     }
-                    else if (GuiNavGetCursorY() == y + height-1 - padding)
+                    else if (GuiNavGetCursorY() == y + height-1)
                     {
                         GuiScrollMove(0, -1);
                     }

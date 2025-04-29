@@ -24,7 +24,6 @@
     {"$GMFolder":"","%Name":"Support","folderPath":"folders/Library/Functions/(System)/Support.yy","name":"Support","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Animation","folderPath":"folders/Library/Functions/Animation.yy","name":"Animation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Children","folderPath":"folders/Library/Functions/Children.yy","name":"Children","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Tabs","folderPath":"folders/Library/Functions/Tabs.yy","name":"Tabs","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Input","folderPath":"folders/Library/Functions/Input.yy","name":"Input","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Instance Names","folderPath":"folders/Library/Functions/Instance Names.yy","name":"Instance Names","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Instances","folderPath":"folders/Library/Functions/Instances.yy","name":"Instances","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -43,6 +42,7 @@
     {"$GMFolder":"","%Name":"Getters","folderPath":"folders/Library/Functions/Scissor & Scroll/Getters.yy","name":"Getters","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"OLD","folderPath":"folders/Library/Functions/Scissor & Scroll/OLD.yy","name":"OLD","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Setup","folderPath":"folders/Library/Functions/Scissor & Scroll/Setup.yy","name":"Setup","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Tabs","folderPath":"folders/Library/Functions/Tabs.yy","name":"Tabs","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
     {"$GMIncludedFile":"","%Name":"layout.ui","CopyToMask":-1,"filePath":"datafiles","name":"layout.ui","resourceType":"GMIncludedFile","resourceVersion":"2.0",},

@@ -2,7 +2,6 @@
 
 event_inherited();
 
-GuiSetIfNotDefined("padding",       0);
 GuiSetIfNotDefined("showScrollbar", true);
 GuiSetIfNotDefined("focusable",     true);
 
