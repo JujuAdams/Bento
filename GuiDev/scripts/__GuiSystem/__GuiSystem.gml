@@ -22,27 +22,6 @@ function __GuiSystem()
         
         show_debug_message($"Gui: Version {GUI_VERSION}, {GUI_DATE}");
         
-        __rootInstance = undefined;
-        
-        __layoutOrder = [];
-        __layoutDirty = true;
-        
-        __animAndScrollDirtyArray = [];
-        __scrollDirtyArray = [];
-        
-        __stepRootStack = [];
-        __stepOrder     = [];
-        __stepDirty     = true;
-        
-        __drawOrder = [];
-        __drawDirty = true;
-        
-        __dirtyChildOrderArray = [];
-        
-        __dirtyScrollLimitsArray = [];
-        
-        __scissorStack = [];
-        
         if ((os_type == os_switch)
         ||  (os_type == os_ps4)
         ||  (os_type == os_ps5)
@@ -69,6 +48,27 @@ function __GuiSystem()
         }
         
         __navPointer = ((__navMode == GUI_NAV_MOUSE) || (__navMode == GUI_NAV_TOUCH));
+        
+        __rootInstance = undefined;
+        
+        __layoutOrder = [];
+        __layoutDirty = true;
+        
+        __animAndScrollDirtyArray = [];
+        __scrollDirtyArray = [];
+        
+        __stepRootStack = [];
+        __stepOrder     = [];
+        __stepDirty     = true;
+        
+        __drawOrder = [];
+        __drawDirty = true;
+        
+        __dirtyChildOrderArray = [];
+        
+        __dirtyScrollLimitsArray = [];
+        
+        __scissorStack = [];
         
         __mouseX        = 0;
         __mouseY        = 0;
@@ -110,8 +110,6 @@ function __GuiSystem()
         __updateInstanceArray = [];
         
         __nameMap = ds_map_create();
-        
-        __tempParent = undefined;
         
         __tabDict = {};
     }

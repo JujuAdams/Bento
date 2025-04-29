@@ -32,7 +32,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sGuiMaskRectangle",
+    "path":"sprites/sGuiMaskRectangle/sGuiMaskRectangle.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

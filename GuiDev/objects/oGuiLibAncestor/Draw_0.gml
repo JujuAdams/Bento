@@ -1,3 +1,1 @@
 /// @desc Use "User Event 1" instead
-
-return;

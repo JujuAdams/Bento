@@ -44,8 +44,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Placeholder Sprites",
-    "path":"folders/Library/Functions/Placeholder Sprites.yy",
+    "name":"Fallback Sprites",
+    "path":"folders/Library/Fallback Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
