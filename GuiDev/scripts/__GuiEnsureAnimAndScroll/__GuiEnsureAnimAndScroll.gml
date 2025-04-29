@@ -143,21 +143,22 @@ function __GuiEnsureAnimationInner(_instance, _offsetX, _offsetY)
              || (__animScaleX  != 1) || (__animScaleY  != 1)
              || (__animAngle   != 0)
              || (__animOriginX != undefined) || (__animOriginY != undefined))
-             {
-                 var _matrixOriginX = _leftWorld + (__animOriginX ?? _originX);
-                 var _matrixOriginY = _topWorld  + (__animOriginY ?? _originY);
-                 
-                 matrix_stack_set(matrix_build(_matrixOriginX, _matrixOriginY, 0,   0,0,0,   1,1,1));
-                 matrix_stack_push(matrix_build(0,0,0,   0,0,__animAngle,   1,1,1));
-                 matrix_stack_push(matrix_build(0,0,0,   0,0,0,   __animScaleX, __animScaleY, 1));
-                 matrix_stack_push(matrix_build(-_matrixOriginX, -_matrixOriginY, 0,   0,0,0,   1,1,1));
-                 __animMatrix = matrix_stack_top();
-                 matrix_stack_clear();
-             }
-             else
-             {
-                 __animMatrix = undefined;
-             }
+            {
+                var _originX = _leftWorld + (__animOriginX ?? _originX);
+                var _originY = _topWorld  + (__animOriginY ?? _originY);
+                
+                var _cos =  dcos(__animAngle);
+                var _sin = -dsin(__animAngle);
+                
+                __animMatrix = [ __animScaleX*_cos, __animScaleX*_sin, 0, 0,
+                                -__animScaleY*_sin, __animScaleY*_cos, 0, 0,
+                                 0, 0, 1, 0,
+                                 _originX - (_originX*__animScaleX*_cos - _originY*__animScaleY*_sin), _originY - (_originX*__animScaleX*_sin + _originY*__animScaleY*_cos), 0, 1];
+            }
+            else
+            {
+                __animMatrix = undefined;
+            }
         }
         
         //Set final variables ready for the reposition user event
