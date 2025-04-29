@@ -44,10 +44,10 @@ function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _in
                 {
                     with(_childArray[_i].GUI_STRUCT)
                     {
-                        _left   = min(_left,   __solvedLeftLocal);
-                        _top    = min(_top,    __solvedTopLocal);
-                        _right  = max(_right,  __solvedLeftLocal + __solvedWidth);
-                        _bottom = max(_bottom, __solvedTopLocal  + __solvedHeight);
+                        _left   = min(_left,   __solvedLeft);
+                        _top    = min(_top,    __solvedTop);
+                        _right  = max(_right,  __solvedLeft + __solvedWidth);
+                        _bottom = max(_bottom, __solvedTop  + __solvedHeight);
                     }
                     
                     ++_i;

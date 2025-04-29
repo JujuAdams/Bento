@@ -2,8 +2,8 @@
 
 function __GuiSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeight)
 {
-    __solvedLeftLocal = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
-    __solvedTopLocal  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
+    __solvedLeft = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
+    __solvedTop  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
@@ -16,8 +16,8 @@ function __GuiSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeight
     
     var _gridX = 0;
     
-    var _childLeft = __layoutPadLeft;
-    var _childTop  = __layoutPadTop;
+    var _childLeft = __solvedLeft + __layoutPadLeft;
+    var _childTop  = __solvedTop  + __layoutPadTop;
     var _startLeft = _childLeft;
     var _i = 0;
     repeat(_childCount)

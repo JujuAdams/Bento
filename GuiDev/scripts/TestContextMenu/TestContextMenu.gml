@@ -16,7 +16,6 @@ function TestContextMenu()
                         object: oExampleContextMenu,
                         layout: {
                             size: [200, 300],
-                            alignSelf: [1, 1],
                             clampInside: true,
                         },
                         children: [

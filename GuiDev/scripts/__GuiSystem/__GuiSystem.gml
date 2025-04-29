@@ -9,8 +9,6 @@
 #macro __GUI_RETURN_MODAL           1
 #macro __GUI_RETURN_BLOCK_SIBLINGS  2
 
-#macro __GUI_DEBUG  GUI_RUNNING_FROM_IDE
-
 __GuiSystem();
 function __GuiSystem()
 {
@@ -110,6 +108,7 @@ function __GuiSystem()
         __primaryConsumed = false;
         
         __updateInstanceArray = [];
+        __matrixStack = [];
         
         __nameMap = ds_map_create();
         

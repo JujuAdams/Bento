@@ -33,8 +33,8 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = 
                 continue;
             }
             
-            var _nearestX = clamp(_x, bbox_left, bbox_right);
-            var _nearestY = clamp(_y, bbox_top, bbox_bottom);
+            var _nearestX = clamp(_x, guiLeft, guiRight);
+            var _nearestY = clamp(_y, guiTop, guiBottom);
             
             var _dot = dot_product(_dX, _dY, _nearestX, _nearestY) - _baseDist;
             if (_dot > 0)
@@ -42,7 +42,7 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = 
                 var _weight = point_distance(_x, _y, _nearestX, _nearestY);
                 if (_weight < _minWeight)
                 {
-                    if (GuiGetHoverable(id, (_scrollParent == undefined) || (_scrollParent != __GuiScrollFindParent(id))))
+                    if (GuiGetHoverable(id, (not instance_exists(_scrollParent)) || (_scrollParent != __GuiScrollFindParent(id))))
                     {
                         _instance = id;
                         _minWeight = _weight;

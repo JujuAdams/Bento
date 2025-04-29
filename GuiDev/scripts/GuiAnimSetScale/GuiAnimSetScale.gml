@@ -2,10 +2,9 @@
 
 /// @param [xScale]
 /// @param [yScale]
-/// @param [force]
 /// @param [instance=id]
 
-function GuiAnimSetScale(_xScale, _yScale, _force, _instance = id)
+function GuiAnimSetScale(_xScale, _yScale, _instance = id)
 {
     static _system = __GuiSystem();
     
@@ -27,15 +26,6 @@ function GuiAnimSetScale(_xScale, _yScale, _force, _instance = id)
             if (__animScaleY != _yScale)
             {
                 __animScaleY = _yScale;
-                __GuiMarkAnimAndScrollDirty(_instance);
-            }
-        }
-        
-        if (_force != undefined)
-        {
-            if (__animScaleForce != _force)
-            {
-                __animScaleForce = _force;
                 __GuiMarkAnimAndScrollDirty(_instance);
             }
         }

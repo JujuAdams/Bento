@@ -28,13 +28,13 @@ function GuiNavSetFocus(_state, _instance = id)
                     
                     if (__scissorEnabled)
                     {
-                        _system.__directionalLastX = _instance.bbox_left + __scissorPadLeft;
-                        _system.__directionalLastY = _instance.bbox_top  + __scissorPadTop;
+                        _system.__directionalLastX = _instance.guiLeft + __scissorPadLeft;
+                        _system.__directionalLastY = _instance.guiTop  + __scissorPadTop;
                     }
                     else
                     {
-                        _system.__directionalLastX = _instance.x;
-                        _system.__directionalLastY = _instance.y;
+                        _system.__directionalLastX = _instance.guiX;
+                        _system.__directionalLastY = _instance.guiY;
                     }
                 }
                 

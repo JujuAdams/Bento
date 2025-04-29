@@ -113,9 +113,10 @@ function __GuiStepMethod()
 
 function __GuiStepMethodScissorPush()
 {
-    //TODO - Use accurate values (layout values)
-    __GuiScissorPush(bbox_left   + GUI_STRUCT.__scissorPadLeft,
-                     bbox_top    + GUI_STRUCT.__scissorPadTop,
-                     bbox_right  - GUI_STRUCT.__scissorPadRight,
-                     bbox_bottom - GUI_STRUCT.__scissorPadBottom);
+    //TODO - Check these values are accurate
+    var _guiStruct = GUI_STRUCT;
+    __GuiScissorPush(guiLeft   + _guiStruct.__scissorPadLeft,
+                     guiTop    + _guiStruct.__scissorPadTop,
+                     guiRight  - _guiStruct.__scissorPadRight,
+                     guiBottom - _guiStruct.__scissorPadBottom);
 }

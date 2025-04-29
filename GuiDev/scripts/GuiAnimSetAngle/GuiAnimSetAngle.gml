@@ -1,10 +1,9 @@
 // Feather disable all
 
 /// @param [angle]
-/// @param [force]
 /// @param [instance=id]
 
-function GuiAnimSetAngle(_angle, _force, _instance = id)
+function GuiAnimSetAngle(_angle, _instance = id)
 {
     static _system = __GuiSystem();
     
@@ -17,15 +16,6 @@ function GuiAnimSetAngle(_angle, _force, _instance = id)
             if (__animAngle != _angle)
             {
                 __animAngle = _angle;
-                __GuiMarkAnimAndScrollDirty(_instance);
-            }
-        }
-        
-        if (_force != undefined)
-        {
-            if (__animAngleForce != _force)
-            {
-                __animAngleForce = _force;
                 __GuiMarkAnimAndScrollDirty(_instance);
             }
         }

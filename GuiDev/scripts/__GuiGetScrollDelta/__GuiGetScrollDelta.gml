@@ -22,35 +22,30 @@ function __GuiGetScrollDelta(_instance = id)
             {
                 if (__scissorEnabled)
                 {
-                    var _instanceLeft   = _instanceGui.__solvedLeftLocal;
-                    var _instanceTop    = _instanceGui.__solvedTopLocal;
-                    var _instanceWidth  = _instanceGui.__solvedWidth;
-                    var _instanceHeight = _instanceGui.__solvedHeight;
-                    
                     if (__scrollHori)
                     {
-                        if (_instanceWidth > __solvedWidth)
+                        var _instL = _instance.guiLeft  - GUI_SCROLL_TO_PADDING;
+                        var _instR = _instance.guiRight + GUI_SCROLL_TO_PADDING;
+                        
+                        if (__scissorEnabled)
+                        {
+                            var _parL = _parent.guiLeft  + __scissorPadLeft;
+                            var _parR = _parent.guiRight - __scissorPadRight;
+                        }
+                        else
+                        {
+                            var _parL = _parent.guiLeft;
+                            var _parR = _parent.guiRight;
+                        }
+                        
+                        if (_instR - _instL > __solvedWidth)
                         {
                             //Try to place the instance in the middle of the parent
-                            _dX = (0.5*__solvedWidth - (_instanceLeft + 0.5*_instanceWidth)) - __scrollX;
+                            _dX = (0.5*(_parL + _parR) - 0.5*(_instL + _instR)) - __scrollX;
                             _tooBig = true;
                         }
                         else
                         {
-                            var _instL = __scrollX + _instanceLeft - GUI_SCROLL_TO_PADDING;
-                            var _instR = __scrollX + _instanceLeft + _instanceWidth + GUI_SCROLL_TO_PADDING;
-                            
-                            if (__scissorEnabled)
-                            {
-                                _parL = __scissorPadLeft;
-                                _parR = __solvedWidth - __scissorPadRight;
-                            }
-                            else
-                            {
-                                var _parL = 0;
-                                var _parR = __solvedWidth;
-                            }
-                            
                             var _distL = _parL - _instL;
                             var _distR = _parR - _instR;
                             
@@ -74,28 +69,28 @@ function __GuiGetScrollDelta(_instance = id)
                     
                     if (__scrollVert)
                     {
-                        if (_instanceHeight > __solvedHeight)
+                        var _instT = _instance.guiTop    - GUI_SCROLL_TO_PADDING;
+                        var _instB = _instance.guiBottom + GUI_SCROLL_TO_PADDING;
+                        
+                        if (__scissorEnabled)
+                        {
+                            var _parT = _parent.guiTop    + __scissorPadTop;
+                            var _parB = _parent.guiBottom - __scissorPadBottom;
+                        }
+                        else
+                        {
+                            var _parT = _parent.guiTop;
+                            var _parB = _parent.guiBottom;
+                        }
+                        
+                        if (_instB - _instT > __solvedHeight)
                         {
                             //Try to place the instance in the middle of the parent
-                            _dY = (0.5*__solvedHeight - (_instanceTop + 0.5*_instanceHeight)) - __scrollY;
+                            _dY = (0.5*(_parT + _parB) - 0.5*(_instT + _instB)) - __scrollY;
                             _tooBig = true;
                         }
                         else
                         {
-                            var _instT = _instanceTop + __scrollY - GUI_SCROLL_TO_PADDING;
-                            var _instB = _instanceTop + _instanceHeight + __scrollY + GUI_SCROLL_TO_PADDING;
-                            
-                            if (__scissorEnabled)
-                            {
-                                var _parT = __scissorPadTop;
-                                var _parB = __solvedHeight - __scissorPadBottom;
-                            }
-                            else
-                            {
-                                var _parT = 0;
-                                var _parB = __solvedHeight;
-                            }
-                            
                             var _distT = _parT - _instT;
                             var _distB = _parB - _instB;
                             

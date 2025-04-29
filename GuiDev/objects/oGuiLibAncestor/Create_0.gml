@@ -6,6 +6,7 @@ var _system = __GuiSystem();
 persistent = true;
 
 // Guarantee that we have a sprite to ensure we always have a collision mask available.
+// TODO - Do we need this?
 if ((not sprite_exists(mask_index)) && (not sprite_exists(sprite_index)))
 {
     sprite_index = sGuiMaskRectangle;
@@ -17,11 +18,14 @@ if ((not sprite_exists(mask_index)) && (not sprite_exists(sprite_index)))
 //                       //
 ///////////////////////////
 
+guiLeft   = x - (sprite_exists(sprite_index)? sprite_get_xoffset(sprite_index) : 0);
+guiTop    = y - (sprite_exists(sprite_index)? sprite_get_yoffset(sprite_index) : 0);
+guiRight  = guiLeft + sprite_width;
+guiBottom = guiTop + sprite_height;
 guiX      = x;
 guiY      = y;
 guiWidth  = sprite_width;
 guiHeight = sprite_height;
-guiAngle  = image_angle;
     
 /////////////////////////
 //                     //
@@ -34,15 +38,14 @@ with(GUI_STRUCT)
 {
     __attachedInstance = other.id;
     
-    __animOriginX    = undefined;
-    __animOriginY    = undefined;
-    __animOffsetX    = 0;
-    __animOffsetY    = 0;
-    __animScaleX     = 1;
-    __animScaleY     = 1;
-    __animScaleForce = false;
-    __animAngle      = 0;
-    __animAngleForce = false;
+    __animMatrix  = undefined;
+    __animOriginX = undefined;
+    __animOriginY = undefined;
+    __animOffsetX = 0;
+    __animOffsetY = 0;
+    __animScaleX  = 1;
+    __animScaleY  = 1;
+    __animAngle   = 0;
     
     __overState = GUI_OFF;
     __holdState = GUI_OFF;
@@ -106,8 +109,8 @@ with(GUI_STRUCT)
     
     //Output values from the solver. Positions are relative to the left-top of the parent. All four
     //values are subsequently transforms to give us the `layout*` values that are exposed to the user.
-    __solvedLeftLocal = other.x;
-    __solvedTopLocal  = other.y;
+    __solvedLeft = other.x;
+    __solvedTop  = other.y;
     __solvedWidth     = other.sprite_width;
     __solvedHeight    = other.sprite_height;
     
@@ -206,11 +209,11 @@ with(GUI_STRUCT)
     {
         // N.B. `____oGuiLibRoot`, `oGuiLibList`, `oGuiLibGrid` override this function.
         
-        __solvedLeftLocal = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
-        __solvedTopLocal  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
+        __solvedLeft = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
+        __solvedTop  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
         
-        var _childX      = __layoutPadLeft;
-        var _childY      = __layoutPadTop;
+        var _childX      = __solvedLeft + __layoutPadLeft;
+        var _childY      = __solvedTop  + __layoutPadTop;
         var _childWidth  = __solvedWidth  - (__layoutPadLeft + __layoutPadRight);
         var _childHeight = __solvedHeight - (__layoutPadTop + __layoutPadBottom);
         
