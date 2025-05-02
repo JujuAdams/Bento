@@ -2,7 +2,7 @@
 
 /// Returns whether an instance has been disabled by `GuiSetDisable()`.
 /// 
-/// @param [instance=id]
+/// @param [instance=id
 
 function GuiGetDisable(_instance = id)
 {

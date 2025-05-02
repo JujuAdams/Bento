@@ -100,10 +100,7 @@ function __GuiEnsureStepOrderInner(_environment, _stepOrder, _instance)
 
 function __GuiStepMethod()
 {
-    if (visible)
-    {
-        event_user(GUI_USER_EVENT_STEP);
-    }
+    event_user(GUI_USER_EVENT_STEP);
 }
 
 function __GuiStepMethodScissorPush()

@@ -30,6 +30,7 @@ function __GuiClassVariables(_attachedInstance) constructor
     __name = undefined;
     
     __disable = false;
+    __visible = true;
     
     __focusable       = false;
     __focused         = false;

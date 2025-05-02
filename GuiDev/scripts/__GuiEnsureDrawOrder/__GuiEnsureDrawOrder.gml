@@ -34,7 +34,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         ///////////////////////////////////////////////////////////////////////////
         
         //Calculate a lookup index based on the properties of this instance
-        var _lookup = ((_instance.visible? __GUI_DRAW_ORDER_VISIBLE : 0)
+        var _lookup = ((__visible? __GUI_DRAW_ORDER_VISIBLE : 0)
                     |  (__scissorEnabled? __GUI_DRAW_ORDER_SCISSOR : 0)
                     |  ((__transformMatrix != undefined)? __GUI_DRAW_ORDER_MATRIX : 0));
         

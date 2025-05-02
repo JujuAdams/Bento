@@ -22,48 +22,50 @@ function GuiGetHoverable(_instance = id, _checkVisible = true)
 function __GuiGetHoverableInner(_instance, _checkVisible)
 {
     if (not instance_exists(_instance)) return false;
-    var _guiVars = _instance.GUI_VARS;
     
-    //Basic validity checks
-    if ((not _instance.visible) || _guiVars.__disable)
+    with(_instance.GUI_VARS)
     {
-        return false;
-    }
-    
-    //We're not hoverable if we're focused and we have children (see `GuiNavSetFocus()`)
-    if (_guiVars.__focusBlockHover)
-    {
-        return false;
-    }
-    
-    var _environment = _guiVars.__environment;
-    if (instance_exists(_environment.__popUpRoot) && (not GuiIsAncestor(_environment.__popUpRoot, _instance)))
-    {
-        return false;
-    }
-    
-    if (_environment.__navMode == GUI_NAV_DIRECTIONAL)
-    {
-        //In directional mode, only buttons are selectable
-        if (_guiVars.__behavior != GUI_BEHAVIOR_BUTTON)
+        //Basic disabled check
+        if (__disable)
         {
             return false;
         }
         
-        var _tabData = __GuiTabGetData(_guiVars.__tabIdent, _environment);
-        if (_tabData != undefined)
+        //We're not hoverable if we're focused and we have children (see `GuiNavSetFocus()`)
+        if (__focusBlockHover)
         {
-            if (_tabData.__blockDirectionalWhenOpen && instance_exists(_tabData.__child))
+            return false;
+        }
+        
+        var _environment = __environment;
+        if (instance_exists(_environment.__popUpRoot) && (not GuiIsAncestor(_environment.__popUpRoot, _instance)))
+        {
+            return false;
+        }
+        
+        if (_environment.__navMode == GUI_NAV_DIRECTIONAL)
+        {
+            //In directional mode, only buttons are selectable
+            if (__behavior != GUI_BEHAVIOR_BUTTON)
+            {
+                return false;
+            }
+            
+            var _tabData = __GuiTabGetData(__tabIdent, _environment);
+            if (_tabData != undefined)
+            {
+                if (_tabData.__blockDirectionalWhenOpen && instance_exists(_tabData.__child))
+                {
+                    return false;
+                }
+            }
+            
+            if (_checkVisible && (not GuiGetVisibleInScroll(true, _instance)))
             {
                 return false;
             }
         }
         
-        if (_checkVisible && (not GuiGetVisibleInScroll(true, _instance)))
-        {
-            return false;
-        }
+        return true;
     }
-    
-    return true;
 }

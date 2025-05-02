@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiSetVisible",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiSetVisible",
+  "parent":{
+    "name":"Instances",
+    "path":"folders/Library/Functions/Instances.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

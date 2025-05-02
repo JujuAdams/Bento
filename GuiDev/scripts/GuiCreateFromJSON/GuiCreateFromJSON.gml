@@ -94,6 +94,12 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
             GuiSetBehavior(_behavior, _instance);
         }
         
+        var _visible = _json[$ "visible"];
+        if (_visible != undefined)
+        {
+            GuiSetVisible(_visible, _instance);
+        }
+        
         //Name the instance
         var _name = _json[$ "name"];
         if (_name != undefined)

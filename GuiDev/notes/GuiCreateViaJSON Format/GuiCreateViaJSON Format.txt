@@ -52,9 +52,7 @@ Here is a brief example:
 
 {
     object: oGuiLibList,
-    vars: {
-        visible: false,
-    },
+    visible: false,
     layout: {
         resize: ["fit", "static"],
         size: [100, 70],
