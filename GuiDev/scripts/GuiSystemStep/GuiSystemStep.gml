@@ -6,7 +6,7 @@
 /// - `GuiInputDirectional()`
 /// - `GuiInputHotkey()`
 
-function GuiStep(_rootWidth, _rootHeight)
+function GuiSystemStep(_rootWidth, _rootHeight)
 {
     static _system = __GuiSystem();
     static _environmentArray = _system.__environmentArray;

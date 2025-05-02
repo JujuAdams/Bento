@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiStep",
+  "%Name":"GuiSystemStep",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiStep",
+  "name":"GuiSystemStep",
   "parent":{
     "name":"Functions",
     "path":"folders/Library/Functions.yy",

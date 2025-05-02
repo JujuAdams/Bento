@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiGetHoverable",
   "parent":{
-    "name":"Instances",
-    "path":"folders/Library/Functions/Instances.yy",
+    "name":"Properties",
+    "path":"folders/Library/Functions/Properties.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

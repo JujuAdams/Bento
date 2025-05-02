@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiDraw",
+  "%Name":"GuiSystemDraw",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiDraw",
+  "name":"GuiSystemDraw",
   "parent":{
     "name":"Functions",
     "path":"folders/Library/Functions.yy",

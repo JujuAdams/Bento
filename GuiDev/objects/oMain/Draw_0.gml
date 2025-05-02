@@ -3,8 +3,8 @@
 // Draws the entire Gui system. This should be in the same coordinate system as `GuiInputPointer()`.
 // Not all Gui instances will necessarily be drawn. Those that do will call the Draw user event
 // (`GUI_USER_EVENT_DRAW`, 1). If `GuiSetEnableDrawEnd()` has been called then the Draw End user
-// event for that instance will be called too by `GuiDraw()` (but won't by default).
-GuiDraw();
+// event for that instance will be called too by `GuiSystemDraw()` (but won't by default).
+GuiSystemDraw();
 
 // Some debug text:
 var _nodeName = "???";

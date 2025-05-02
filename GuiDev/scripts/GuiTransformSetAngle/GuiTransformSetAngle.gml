@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Applies a *visual* transformation to a UI element and its children. This is achieved by
-/// applying a world transformation matrix when drawing the UI element via `GuiDraw()`.
+/// applying a world transformation matrix when drawing the UI element via `GuiSystemDraw()`.
 /// 
 /// This particular function applies a rotation to a UI instance.
 /// 

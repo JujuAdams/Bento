@@ -2,7 +2,7 @@
 
 /// Draws the GUI system.
 
-function GuiDraw()
+function GuiSystemDraw()
 {
     static _environmentArray = __GuiSystem().__environmentArray;
     
