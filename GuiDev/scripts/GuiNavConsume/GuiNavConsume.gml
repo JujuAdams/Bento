@@ -4,16 +4,16 @@
 
 function GuiNavConsume()
 {
-    static _system = __GuiSystem();
+    static _globalHotkeyArray = __GuiSystem().__globalHotkeyArray;
     
-    with(_system)
+    with(GUI_ENVIRONMENT)
     {
         __primaryConsumed = true;
         
         var _i = 0;
-        repeat(array_length(__hotkeyArray))
+        repeat(array_length(_globalHotkeyArray))
         {
-            __hotkeyConsumedMap[? __hotkeyArray[_i]] = true;
+            __hotkeyConsumedMap[? _globalHotkeyArray[_i]] = true;
             ++_i;
         }
     }

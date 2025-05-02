@@ -10,8 +10,7 @@
 
 function GuiNavGetDX()
 {
-    static _system = __GuiSystem();
-    with(_system)
+    with(GUI_ENVIRONMENT)
     {
         if (__navPointer)
         {

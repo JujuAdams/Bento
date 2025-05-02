@@ -4,15 +4,14 @@
 
 function GuiDraw()
 {
-    static _system = __GuiSystem();
+    static _environmentArray = __GuiSystem().__environmentArray;
     
     __GuiScissorReset();
     
-    var _drawOrder = __GuiEnsureDrawOrder();
     var _i = 0;
-    repeat(array_length(_drawOrder))
+    repeat(array_length(_environmentArray))
     {
-        _drawOrder[_i]();
+        _environmentArray[_i].__Draw();
         ++_i;
     }
 }

@@ -2,9 +2,7 @@
 
 function GuiNavClearFocus()
 {
-    static _system = __GuiSystem();
-    
-    with(_system)
+    with(GUI_ENVIRONMENT)
     {
         var _i = 0;
         repeat(array_length(__stepRootStack))

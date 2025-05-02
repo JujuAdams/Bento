@@ -6,8 +6,6 @@
 
 function GuiLayoutSetResizeType(_width, _height, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -17,7 +15,7 @@ function GuiLayoutSetResizeType(_width, _height, _instance = id)
             if (__layoutWidthResize != _width)
             {
                 __layoutWidthResize = _width;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
         
@@ -26,7 +24,7 @@ function GuiLayoutSetResizeType(_width, _height, _instance = id)
             if (__layoutHeightResize != _height)
             {
                 __layoutHeightResize = _height;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
     }

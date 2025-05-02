@@ -14,8 +14,7 @@
 
 function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = undefined)
 {
-    static _system    = __GuiSystem();
-    static _stepOrder = _system.__stepOrder;
+    var _stepOrder = GUI_ENVIRONMENT.__stepOrder;
    
     var _baseDist = dot_product(_dX, _dY, _x, _y);
     

@@ -6,8 +6,6 @@
 
 function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -17,7 +15,7 @@ function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = id)
             if (__layoutAlignH != _hAlign)
             {
                 __layoutAlignH = _hAlign;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
         
@@ -26,7 +24,7 @@ function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = id)
             if (__layoutAlignV != _vAlign)
             {
                 __layoutAlignV = _vAlign;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
     }

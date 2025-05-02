@@ -4,8 +4,7 @@
 
 function __GuiTabEnsure(_tabIdent)
 {
-    static _tabDict = __GuiSystem().__tabDict;
-    
+    var _tabDict = GUI_ENVIRONMENT.__tabDict;
     var _tabData = _tabDict[$ _tabIdent];
     if (_tabData == undefined)
     {

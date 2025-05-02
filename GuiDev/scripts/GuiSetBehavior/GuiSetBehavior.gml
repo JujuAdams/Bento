@@ -39,13 +39,14 @@
 
 function GuiSetBehavior(_behavior, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
-    if (_instance.GUI_STRUCT.__behavior == _behavior) return;
     
-    _system.__stepDirty = true;
-    _system.__drawDirty = true;
-    
-    _instance.GUI_STRUCT.__behavior = _behavior;
+    with(_instance.GUI_STRUCT)
+    {
+        if (__behavior == _behavior) return;
+        __behavior = _behavior;
+        
+        __environment.__stepDirty = true;
+        __environment.__drawDirty = true;
+    }
 }

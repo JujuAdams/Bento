@@ -10,10 +10,9 @@
 
 function GuiHotkeyGetRelease(_name)
 {
-    static _hotkeyStateMap    = __GuiSystem().__hotkeyStateMap;
-    static _hotkeyConsumedMap = __GuiSystem().__hotkeyConsumedMap;
-    
-    if (_hotkeyConsumedMap[? _name] ?? false) return false;
-    
-    return (_hotkeyStateMap[? _name] == GUI_RELEASE);
+    with(GUI_ENVIRONMENT)
+    {
+        if (__hotkeyConsumedMap[? _name] ?? false) return false;
+        return (__hotkeyStateMap[? _name] == GUI_RELEASE);
+    }
 }

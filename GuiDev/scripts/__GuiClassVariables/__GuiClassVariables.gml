@@ -6,6 +6,8 @@ function __GuiClassVariables(_attachedInstance) constructor
 {
     __attachedInstance = _attachedInstance;
     
+    __environment = undefined;
+    
     __transformMatrix  = undefined;
     __transformOriginX = undefined;
     __transformOriginY = undefined;

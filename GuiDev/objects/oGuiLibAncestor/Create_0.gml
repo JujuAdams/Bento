@@ -24,3 +24,5 @@ guiX      = x;
 guiY      = y;
 guiWidth  = sprite_width;
 guiHeight = sprite_height;
+
+GuiSetParent(__GuiSystem().__tempParent);

@@ -22,96 +22,36 @@ function __GuiSystem()
         
         show_debug_message($"Gui: Version {GUI_VERSION}, {GUI_DATE}");
         
-        if ((os_type == os_switch)
-        ||  (os_type == os_ps4)
-        ||  (os_type == os_ps5)
-        ||  (os_type == os_xboxone)
-        ||  (os_type == os_xboxseriesxs))
-        {
-            __navMode = GUI_NAV_DIRECTIONAL;
-        }
-        else if ((os_type == os_android)
-              || (os_type == os_ios)
-              || (os_type == os_tvos))
-        {
-            __navMode = GUI_NAV_TOUCH;
-        }
-        else if ((os_type == os_windows)
-              || (os_type == os_macosx)
-              || (os_type == os_linux))
-        {
-            __navMode = GUI_DESKTOP_DEFAULT_TO_DIRECTIONAL? GUI_NAV_DIRECTIONAL : GUI_NAV_MOUSE;
-        }
-        else
-        {
-            __navMode = GUI_NAV_MOUSE;
-        }
-        
-        __navPointer = ((__navMode == GUI_NAV_MOUSE) || (__navMode == GUI_NAV_TOUCH));
-        
-        __rootInstance = undefined;
-        
-        __layoutOrder = [];
-        __layoutDirty = true;
-        
-        __transformAndScrollDirtyArray = [];
-        __scrollDirtyArray = [];
-        
-        __stepRootStack = [];
-        __stepOrder     = [];
-        __stepDirty     = true;
-        
-        __drawOrder = [];
-        __drawDirty = true;
-        
-        __dirtyChildOrderArray = [];
-        
-        __dirtyScrollLimitsArray = [];
-        
         __scissorStack = [];
+        __tempParent = noone;
         
-        __mouseX        = 0;
-        __mouseY        = 0;
-        __mouseHold     = false;
-        __mousePrevX    = 0;
-        __mousePrevY    = 0;
-        __mousePrevHold = false;
-        __mousePressX   = undefined;
-        __mousePressY   = undefined;
+        ////////
+        // Global input state
+        ////////
         
-        __directionalNavPreDelay     = 20;
-        __directionalNavDelay        = 9;
-        __directionalNavDelayCount   = 4;
-        __directionalNavDelayShorter = 5;
-        __directionalStateX          = new __GuiClassDirectionalState();
-        __directionalStateY          = new __GuiClassDirectionalState();
+        __globalMouseX    = 0;
+        __globalMouseY    = 0;
+        __globalMouseHold = false;
         
-        __directionalLastX    = 0;
-        __directionalLastY    = 0;
-        __directionalDX       = 0;
-        __directionalDY       = 0;
-        __directionalHold     = false;
-        __directionalPrevHold = false;
+        __globalDirectionalDX   = 0;
+        __globalDirectionalDY   = 0;
+        __globalDirectionalHold = false;
         
-        __overInstance     = noone;
-        __overInstanceSoft = noone;
-        __holdState        = GUI_OFF;
-        __holdInstance     = noone;
-        __popUpRoot        = noone;
+        __globalHotkeyInputMap = ds_map_create();
+        __globalHotkeyArray    = [];
         
-        __hotkeyInputMap    = ds_map_create();
-        __hotkeyPrevMap     = ds_map_create();
-        __hotkeyStateMap    = ds_map_create();
-        __hotkeyConsumedMap = ds_map_create();
-        __hotkeyArray       = [];
+        __globalNavDirPreDelay     = 20;
+        __globalNavDirDelay        = 9;
+        __globalNavDirDelayCount   = 4;
+        __globalNavDirDelayShorter = 5;
         
-        __primaryConsumed = false;
+        ////////
+        // Environments
+        ////////
         
-        __updateInstanceArray = [];
-        
-        __nameMap = ds_map_create();
-        
-        __tabDict = {};
+        __environmentShared  = new __GuiClassEnvironment();
+        __environmentArray   = [__environmentShared];
+        __environmentCurrent = __environmentShared;
     }
     
     if (GUI_RUNNING_FROM_IDE)

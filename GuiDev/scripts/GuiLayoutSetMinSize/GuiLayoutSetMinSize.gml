@@ -6,8 +6,6 @@
 
 function GuiLayoutSetMinSize(_width, _height, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -17,7 +15,7 @@ function GuiLayoutSetMinSize(_width, _height, _instance = id)
             if (__layoutWidthMin != _width)
             {
                 __layoutWidthMin = _width;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
         
@@ -26,7 +24,7 @@ function GuiLayoutSetMinSize(_width, _height, _instance = id)
             if (__layoutHeightMin != _height)
             {
                 __layoutHeightMin = _height;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
     }

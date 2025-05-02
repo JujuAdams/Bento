@@ -6,8 +6,6 @@
 
 function GuiLayoutSetGutter(_x, _y, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -22,7 +20,7 @@ function GuiLayoutSetGutter(_x, _y, _instance = id)
             if (__layoutGutterX != _x)
             {
                 __layoutGutterX = _x;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
         
@@ -31,7 +29,7 @@ function GuiLayoutSetGutter(_x, _y, _instance = id)
             if (__layoutGutterY != _y)
             {
                 __layoutGutterY = _y;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
     }

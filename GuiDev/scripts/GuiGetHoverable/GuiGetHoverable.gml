@@ -21,8 +21,6 @@ function GuiGetHoverable(_instance = id, _checkVisible = true)
 
 function __GuiGetHoverableInner(_instance, _checkVisible)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return false;
     var _gui = _instance.GUI_STRUCT;
     
@@ -38,12 +36,13 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
         return false;
     }
     
-    if (instance_exists(_system.__popUpRoot) && (not GuiIsAncestor(_system.__popUpRoot, _instance)))
+    var _environment = GUI_ENVIRONMENT;
+    if (instance_exists(_environment.__popUpRoot) && (not GuiIsAncestor(_environment.__popUpRoot, _instance)))
     {
         return false;
     }
     
-    if (_system.__navMode == GUI_NAV_DIRECTIONAL)
+    if (_environment.__navMode == GUI_NAV_DIRECTIONAL)
     {
         //In directional mode, only buttons are selectable
         if (_gui.__behavior != GUI_BEHAVIOR_BUTTON)

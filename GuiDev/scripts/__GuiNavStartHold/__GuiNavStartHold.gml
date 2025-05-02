@@ -6,12 +6,18 @@
 
 function __GuiNavStartHold(_instance)
 {
-    static _system = __GuiSystem();
-    
     if (instance_exists(_instance) && (not GuiNavGetHold(_instance)))
     {
-        _instance.GUI_STRUCT.__holdState = GUI_PRESS;
-        _system.__holdInstance = _instance;
-        __GuiSetInstanceUpdating(_instance);
+        with(_instance.GUI_STRUCT)
+        {
+            __holdState = GUI_PRESS;
+            __environment.__holdInstance = _instance;
+            
+            if (not __updating)
+            {
+                __updating = true;
+                array_push(__environment.__updateInstanceArray, _instance)
+            }
+        }
     }
 }

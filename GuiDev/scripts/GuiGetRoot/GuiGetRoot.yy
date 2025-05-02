@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiGetRoot",
+  "%Name":"GuiGetRoot",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiGetRoot",
+  "name":"GuiGetRoot",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/Functions/(System).yy",
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

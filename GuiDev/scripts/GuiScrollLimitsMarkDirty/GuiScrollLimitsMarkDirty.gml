@@ -9,8 +9,6 @@
 
 function GuiScrollLimitsMarkDirty(_instance)
 {
-    static _dirtyScrollLimitsArray = __GuiSystem().__dirtyScrollLimitsArray;
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -20,7 +18,7 @@ function GuiScrollLimitsMarkDirty(_instance)
         if (not __scrollLimitsDirty)
         {
             __scrollLimitsDirty = true;
-            array_push(_dirtyScrollLimitsArray, _instance);
+            array_push(__environment.__dirtyScrollLimitsArray, _instance);
         }
     }
 }

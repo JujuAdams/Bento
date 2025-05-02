@@ -11,9 +11,9 @@ function GuiInputConfigureNavigation(_preDelay, _delay, _count, _shortDelay)
     
     with(_system)
     {
-        __directionalNavPreDelay     = _preDelay;
-        __directionalNavDelay        = _delay;
-        __directionalNavDelayCount   = _count;
-        __directionalNavDelayShorter = _shortDelay;
+        __globalNavDirPreDelay     = _preDelay;
+        __globalNavDirDelay        = _delay;
+        __globalNavDirDelayCount   = _count;
+        __globalNavDirDelayShorter = _shortDelay;
     }
 }

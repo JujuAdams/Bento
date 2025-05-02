@@ -1,10 +1,13 @@
 // Feather disable all
 
+/// Must be called in the scope of `__GuiClassEnvironment`.
+
 function __GuiEnsureScrollLimits()
 {
-    static _dirtyScrollLimitsArray = __GuiSystem().__dirtyScrollLimitsArray;
+    array_foreach(__dirtyScrollLimitsArray, _funcApply);
+    array_resize(__dirtyScrollLimitsArray, 0);
     
-    static _func = function(_parent)
+    static _funcApply = function(_parent)
     {
         if (not instance_exists(_parent)) return;
         
@@ -92,7 +95,4 @@ function __GuiEnsureScrollLimits()
             GuiScrollSet(_newX, _newY, undefined, _parent);
         }
     }
-    
-    array_foreach(_dirtyScrollLimitsArray, _func);
-    array_resize(_dirtyScrollLimitsArray, 0);
 }

@@ -5,8 +5,6 @@
 
 function GuiLayoutSetListAxis(_axis, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -19,7 +17,7 @@ function GuiLayoutSetListAxis(_axis, _instance = id)
         if (__listAxis != _axis)
         {
             __listAxis = _axis;
-            _system.__layoutDirty = true;
+            __environment.__layoutDirty = true;
         }
     }
 }

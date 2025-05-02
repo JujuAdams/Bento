@@ -4,9 +4,7 @@
 
 function GuiNavGetCursorX()
 {
-    static _system = __GuiSystem();
-    
-    with(_system)
+    with(GUI_ENVIRONMENT)
     {
         if (__navMode == GUI_NAV_MOUSE)
         {

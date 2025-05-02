@@ -9,11 +9,9 @@
 
 function GuiNavGetNearest(_x, _y, _excludeArray = [])
 {
-    static _system    = __GuiSystem();
-    static _stepOrder = _system.__stepOrder;
+    var _stepOrder = GUI_ENVIRONMENT.__stepOrder;
     
     var _instance = noone;
-    
     var _nearestDistance = infinity;
     var _i = 0;
     repeat(array_length(_stepOrder))

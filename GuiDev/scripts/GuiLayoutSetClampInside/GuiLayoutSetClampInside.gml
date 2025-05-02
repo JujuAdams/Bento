@@ -5,8 +5,6 @@
 
 function GuiLayoutSetClampInside(_state, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -14,7 +12,7 @@ function GuiLayoutSetClampInside(_state, _instance = id)
         if (__layoutClampInside != _state)
         {
             __layoutClampInside = _state;
-            _system.__layoutDirty = true;
+            __environment.__layoutDirty = true;
         }
     }
 }

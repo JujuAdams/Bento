@@ -9,18 +9,16 @@
 /// 
 /// @param mode
 
-function GuiNavSetMode(_mode)
+function GuiNavSetMode(_newMode)
 {
-    static _system = __GuiSystem();
-    
-    with(_system)
+    with(GUI_ENVIRONMENT)
     {
-        if (__navMode == _mode) return;
+        if (__navMode == _newMode) return;
         
         //Changing navigation mode may change whether elements are selectable underneath focusable parents
         __stepDirty = true;
         
-        if (_mode == GUI_NAV_DIRECTIONAL)
+        if (_newMode == GUI_NAV_DIRECTIONAL)
         {
             if (__navPointer)
             {
@@ -29,10 +27,10 @@ function GuiNavSetMode(_mode)
                 
                 __directionalLastX = __mouseX;
                 __directionalLastY = __mouseY;
-                __mousePrevX  = __mouseX;
-                __mousePrevY  = __mouseY;
-                __mousePressX = undefined;
-                __mousePressY = undefined;
+                __mousePrevX       = __mouseX;
+                __mousePrevY       = __mouseY;
+                __mousePressX      = undefined;
+                __mousePressY      = undefined;
             }
         }
         else
@@ -40,7 +38,7 @@ function GuiNavSetMode(_mode)
             GuiNavClearFocus();
         }
         
-        __navMode = _mode;
-        __navPointer = ((_mode == GUI_NAV_MOUSE) || (_mode == GUI_NAV_TOUCH));
+        __navMode = _newMode;
+        __navPointer = ((_newMode == GUI_NAV_MOUSE) || (_newMode == GUI_NAV_TOUCH));
     }
 }

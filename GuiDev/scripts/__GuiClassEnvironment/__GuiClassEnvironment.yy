@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiSetInstanceUpdating",
+  "%Name":"__GuiClassEnvironment",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiSetInstanceUpdating",
+  "name":"__GuiClassEnvironment",
   "parent":{
     "name":"(System)",
     "path":"folders/Library/Functions/(System).yy",

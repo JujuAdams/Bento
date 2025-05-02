@@ -8,7 +8,5 @@
 
 function GuiNavSelectSoft(_instance)
 {
-    static _system = __GuiSystem();
-    
-    _system.__overInstanceSoft = _instance;
+    GUI_ENVIRONMENT.__overInstanceSoft = _instance;
 }

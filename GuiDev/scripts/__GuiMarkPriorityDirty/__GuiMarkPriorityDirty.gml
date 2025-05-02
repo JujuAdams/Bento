@@ -4,13 +4,14 @@
 
 function __GuiMarkChildOrderDirty(_parent)
 {
-    static _dirtyChildOrderArray = __GuiSystem().__dirtyChildOrderArray;
-    
     if (not instance_exists(_parent)) return;
     
-    if (not _parent.GUI_STRUCT.__childOrderDirty)
+    with(_parent.GUI_STRUCT)
     {
-        _parent.GUI_STRUCT.__childOrderDirty = true;
-        array_push(_dirtyChildOrderArray, _parent);
+        if (not __childOrderDirty)
+        {
+            __childOrderDirty = true;
+            array_push(__environment.__dirtyChildOrderArray, _parent);
+        }
     }
 }

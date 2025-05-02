@@ -18,7 +18,7 @@ function TestGrid()
             //Create identical copies of references to the same struct
             //This is purely for demonstration purposes; real code would do this differently
             return array_create(_metadata.count, {
-                object: oGuiLibRect,
+                object: oExampleButton,
                 vars: {
                     image_blend: c_blue,
                 },

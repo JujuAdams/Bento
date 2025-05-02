@@ -6,7 +6,5 @@
 
 function GuiNameExists(_name)
 {
-    static _nameMap = __GuiSystem().__nameMap;
-    
-    return instance_exists(_nameMap[? _name] ?? noone);
+    return instance_exists(GUI_ENVIRONMENT.__nameMap[? _name] ?? noone);
 }

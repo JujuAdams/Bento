@@ -4,7 +4,5 @@
 
 function __GuiTabGetData(_tabIdent)
 {
-    static _tabDict = __GuiSystem().__tabDict;
-    
-    return _tabDict[$ _tabIdent];
+    return GUI_ENVIRONMENT.__tabDict[$ _tabIdent];
 }

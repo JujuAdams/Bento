@@ -1,71 +1,64 @@
-// Feather disable allry.
+// Feather disable all
+
+/// Must be called in the scope of `__GuiClassEnvironment`.
 
 function __GuiEnsureLayout()
 {
-    static _system = __GuiSystem();
-    if (not _system.__layoutDirty) return;
+    if (not __layoutDirty) return;
+    __layoutDirty = false;
     
-    with(_system)
+    var _layoutOrder = __layoutOrder;
+    array_resize(_layoutOrder, 0);
+    
+    __GuiEnsureChildOrder();
+    
+    //Ensure that our layout order is up-to-date
+    __GuiEnsureLayerOrderInner(_layoutOrder, __rootInstance);
+    var _count = array_length(_layoutOrder);
+    
+    //Populate static widths of instances
+    var _i = _count-1;
+    repeat(_count)
     {
-        var _rootInstance = GUI_ROOT;
-        var _rootGui = _rootInstance.GUI_STRUCT;
-        
-        //Ensure a full reset of the transform/scroll positions
-        array_resize(__transformAndScrollDirtyArray, 0);
-        array_push(__transformAndScrollDirtyArray, _rootInstance);
-        
-        var _layoutOrder = __layoutOrder;
-        array_resize(_layoutOrder, 0);
-        __layoutDirty = false;
-        
-        __GuiEnsureChildOrder();
-        
-        //Ensure that our layout order is up-to-date
-        __GuiEnsureLayerOrderInner(_rootInstance);
-        var _count = array_length(_layoutOrder);
-        
-        //Populate static widths of instances
-        var _i = _count-1;
-        repeat(_count)
-        {
-            _layoutOrder[_i].__SolverFitWidth();
-            --_i;
-        }
-        
-        //Redistribute instance widths, shrinking and growing instances
-        var _i = 0;
-        repeat(_count)
-        {
-            _layoutOrder[_i].__SolverResizeWidth();
-            ++_i;
-        }
-        
-        //Populate static heights of instances
-        var _i = _count-1;
-        repeat(_count)
-        {
-            _layoutOrder[_i].__SolverFitHeight();
-            --_i;
-        }
-        
-        //Redistribute instance heights, shrinking and growing instances
-        var _i = 0;
-        repeat(_count)
-        {
-            _layoutOrder[_i].__SolverResizeHeight();
-            ++_i;
-        }
-        
-        //Final pass to set positions in stone
-        _rootGui.__SolverPositions(0, 0, _rootGui.__solvedWidth, _rootGui.__solvedHeight);
+        _layoutOrder[_i].__SolverFitWidth();
+        --_i;
     }
+    
+    //Redistribute instance widths, shrinking and growing instances
+    var _i = 0;
+    repeat(_count)
+    {
+        _layoutOrder[_i].__SolverResizeWidth();
+        ++_i;
+    }
+    
+    //Populate static heights of instances
+    var _i = _count-1;
+    repeat(_count)
+    {
+        _layoutOrder[_i].__SolverFitHeight();
+        --_i;
+    }
+    
+    //Redistribute instance heights, shrinking and growing instances
+    var _i = 0;
+    repeat(_count)
+    {
+        _layoutOrder[_i].__SolverResizeHeight();
+        ++_i;
+    }
+    
+    //Final pass to set positions in stone
+    var _rootGui = __rootInstance.GUI_STRUCT;
+    _rootGui.__SolverPositions(0, 0, _rootGui.__solvedWidth, _rootGui.__solvedHeight);
+    
+    //Ensure a full reset of the transform/scroll positions
+    array_resize(__transformAndScrollDirtyArray, 0);
+    array_push(__transformAndScrollDirtyArray, __rootInstance);
 }
 
-function __GuiEnsureLayerOrderInner(_instance)
+function __GuiEnsureLayerOrderInner(_layoutOrder, _instance)
 {
-    static _system      = __GuiSystem();
-    static _layoutOrder = _system.__layoutOrder;
-    
     with(_instance.GUI_STRUCT)
     {
         array_push(_layoutOrder, self);
@@ -74,7 +67,7 @@ function __GuiEnsureLayerOrderInner(_instance)
         var _i = 0;
         repeat(array_length(_array))
         {
-            __GuiEnsureLayerOrderInner(_array[_i]);
+            __GuiEnsureLayerOrderInner(_layoutOrder, _array[_i]);
             ++_i;
         }
     }

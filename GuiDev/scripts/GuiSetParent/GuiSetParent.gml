@@ -9,24 +9,37 @@
 
 function GuiSetParent(_parent, _targetInstance = id)
 {
-    static _system = __GuiSystem();
-    
-    if (not instance_exists(_targetInstance)) return;
-    
-    _system.__layoutDirty = true;
-    _system.__stepDirty   = true;
-    _system.__drawDirty   = true;
+    if ((not instance_exists(_parent)) || (not instance_exists(_targetInstance))) return;
     
     __GuiRemoveParent(_targetInstance);
-    _targetInstance.GUI_STRUCT.__parent = _parent;
     
-    with(_parent)
+    with(_targetInstance.GUI_STRUCT)
     {
-        array_push(GUI_STRUCT.__childArray, _targetInstance);
+        //Mark the environment we're leaving as dirty
+        with(__environment)
+        {
+            __layoutDirty = true;
+            __stepDirty   = true;
+            __drawDirty   = true;
+        }
         
-        __GuiMarkChildOrderDirty(id);
-        GuiScrollLimitsMarkDirty(id);
+        __parent = _parent;
+        __environment = _parent.GUI_STRUCT.__environment;
+        
+        //Mark the environment we're entering as dirty
+        with(__environment)
+        {
+            __layoutDirty = true;
+            __stepDirty   = true;
+            __drawDirty   = true;
+        }
+        
+        with(_parent)
+        {
+            array_push(GUI_STRUCT.__childArray, _targetInstance);
+        
+            __GuiMarkChildOrderDirty(id);
+            GuiScrollLimitsMarkDirty(id);
+        }
     }
-    
-    if (not instance_exists(_targetInstance)) return;
 }

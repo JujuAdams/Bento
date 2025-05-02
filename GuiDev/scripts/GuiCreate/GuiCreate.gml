@@ -23,6 +23,9 @@ function GuiCreate(_object, _struct = undefined, _parent = id)
         __GuiError($"Object {object_get_name(_object)} isn't a descendent of oGuiLibAncestor");
     }
     
+    var _oldParent = _system.__tempParent;
+    _system.__tempParent = _parent;
+    
     if (GUI_CREATE_LAYER != undefined)
     {
         var _instance = instance_create_layer(_parent.x, _parent.y, GUI_CREATE_LAYER, _object, _struct ?? _emptyStruct);
@@ -32,7 +35,7 @@ function GuiCreate(_object, _struct = undefined, _parent = id)
         var _instance = instance_create_depth(_parent.x, _parent.y, GUI_CREATE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
     }
     
-    GuiSetParent(_parent, _instance);
+    _system.__tempParent = _oldParent;
     
     return _instance;
 }

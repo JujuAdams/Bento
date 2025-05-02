@@ -7,8 +7,6 @@
 
 function GuiLayoutSetOrigin(_x, _y, _instance = id, _proportional = true)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -16,19 +14,19 @@ function GuiLayoutSetOrigin(_x, _y, _instance = id, _proportional = true)
         if (__layoutOriginX != _x)
         {
             __layoutOriginX = _x;
-            _system.__layoutDirty = true;
+            __environment.__layoutDirty = true;
         }
         
         if (__layoutOriginY != _y)
         {
             __layoutOriginY = _y;
-            _system.__layoutDirty = true;
+            __environment.__layoutDirty = true;
         }
         
         if (__layoutOriginProp != _proportional)
         {
             __layoutOriginProp = _proportional;
-            _system.__layoutDirty = true;
+            __environment.__layoutDirty = true;
         }
     }
 }

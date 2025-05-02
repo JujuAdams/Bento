@@ -22,8 +22,6 @@
 
 function GuiTransformSetScale(_xScale, _yScale, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)

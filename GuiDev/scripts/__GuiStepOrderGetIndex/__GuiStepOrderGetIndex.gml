@@ -7,8 +7,9 @@
 
 function __GuiStepOrderGetIndex(_instance)
 {
-    static _stepOrder = __GuiSystem().__stepOrder;
+    if (not instance_exists(_instance)) return undefined;
     
+    var _stepOrder = _instance.GUI_STRUCT.__environment.__stepOrder;
     var _i = 0;
     repeat(array_length(_stepOrder))
     {

@@ -6,8 +6,6 @@
 
 function GuiLayoutSetListAlign(_horizontal, _vertical, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -22,7 +20,7 @@ function GuiLayoutSetListAlign(_horizontal, _vertical, _instance = id)
             if (__layoutHAlignChildren != _horizontal)
             {
                 __layoutHAlignChildren = _horizontal;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
         
@@ -31,7 +29,7 @@ function GuiLayoutSetListAlign(_horizontal, _vertical, _instance = id)
             if (__layoutVAlignChildren != _vertical)
             {
                 __layoutVAlignChildren = _vertical;
-                _system.__layoutDirty = true;
+                __environment.__layoutDirty = true;
             }
         }
     }

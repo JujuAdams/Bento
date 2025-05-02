@@ -10,7 +10,7 @@
 
 function GuiNameSet(_name, _instance = id, _overwrite = false)
 {
-    static _nameMap = __GuiSystem().__nameMap;
+    var _nameMap = GUI_ENVIRONMENT.__nameMap;
     
     var _oldInstance = _nameMap[? _name];
     if ((_oldInstance != undefined) && instance_exists(_oldInstance))

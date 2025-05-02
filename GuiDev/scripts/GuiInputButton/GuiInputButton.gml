@@ -10,13 +10,14 @@
 
 function GuiInputHotkey(_name, _value)
 {
-    static _hotkeyInputMap = __GuiSystem().__hotkeyInputMap;
-    static _hotkeyArray    = __GuiSystem().__hotkeyArray;
-    
-    if (not ds_map_exists(_hotkeyInputMap, _name))
+    static _system = __GuiSystem();
+    with(_system)
     {
-        array_push(_hotkeyArray, _name);
+        if (not ds_map_exists(__globalHotkeyInputMap, _name))
+        {
+            array_push(__globalHotkeyArray, _name);
+        }
+        
+        __globalHotkeyInputMap[? _name] = _value;
     }
-    
-    _hotkeyInputMap[? _name] = _value;
 }

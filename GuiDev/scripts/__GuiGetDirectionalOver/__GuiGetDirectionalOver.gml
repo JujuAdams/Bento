@@ -10,7 +10,6 @@
 
 function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
 {
-    static _system       = __GuiSystem();
     static _excludeArray = [];
     
     _excludeArray[0] = _prevInstance;
@@ -20,15 +19,15 @@ function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
     {
         //The instance we were previously highlighting is no longer valid (see GuiGetHoverable())
         
-        if (GuiGetHoverable(_system.__overInstanceSoft, false))
+        if (GuiGetHoverable(__overInstanceSoft, false))
         {
             //Choose the soft selection if possible
-            _nextInstance = _system.__overInstanceSoft;
+            _nextInstance = __overInstanceSoft;
         }
         else
         {
             //Otherwise fall back on searching for the nearest selectable instance
-            _nextInstance = GuiNavGetNearest(_system.__directionalLastX, _system.__directionalLastY, _excludeArray);
+            _nextInstance = GuiNavGetNearest(__directionalLastX, __directionalLastY, _excludeArray);
         }
     }
     else
@@ -88,7 +87,7 @@ function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
                 }
                 else
                 {
-                    _nextInstance = GuiNavGetRaycast(_system.__directionalLastX, _system.__directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
+                    _nextInstance = GuiNavGetRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
                     
                     if (not instance_exists(_nextInstance))
                     {

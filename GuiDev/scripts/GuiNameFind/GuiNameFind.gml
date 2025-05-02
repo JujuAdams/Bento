@@ -7,7 +7,5 @@
 
 function GuiNameFind(_name)
 {
-    static _nameMap = __GuiSystem().__nameMap;
-    
-    return (_nameMap[? _name] ?? noone);
+    return (GUI_ENVIRONMENT.__nameMap[? _name] ?? noone);
 }

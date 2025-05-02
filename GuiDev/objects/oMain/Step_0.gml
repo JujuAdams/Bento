@@ -6,6 +6,11 @@ if (keyboard_check_pressed(ord("1"))) GuiNavSetMode(GUI_NAV_MOUSE);
 if (keyboard_check_pressed(ord("2"))) GuiNavSetMode(GUI_NAV_DIRECTIONAL);
 if (keyboard_check_pressed(ord("3"))) GuiNavSetMode(GUI_NAV_TOUCH);
 
+if (keyboard_check_pressed(ord("J")))
+{
+    show_debug_message("1");
+}
+
 // "Gampead" input is, in reality, a generic directional input. Sending in a directional value
 // will push the Gui cursor in that direction. When holding a directional input, the Gui system
 // will automatically retrigger the directional input leading to auto-scrolling on menus. You can

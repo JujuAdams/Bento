@@ -6,9 +6,12 @@
 
 function GuiNavGetClick(_instance = id)
 {
-    static _system = __GuiSystem();
-    if (_system.__primaryConsumed) return false;
-    
     if (not instance_exists(_instance)) return false;
-    return _instance.GUI_STRUCT.__click;
+    
+    with(_instance.GUI_STRUCT)
+    {
+        return __environment.__primaryConsumed? false : __click;
+    }
+    
+    return false;
 }

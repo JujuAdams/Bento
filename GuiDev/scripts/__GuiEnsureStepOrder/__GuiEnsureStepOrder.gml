@@ -2,39 +2,34 @@
 
 /// Ensures that a valid step order exists on the system struct. This step order has be marked
 /// as "dirty" by many operations and this function updates the step order only when necessary.
+/// 
+/// Must be called in the scope of `__GuiClassEnvironment`.
 
 function __GuiEnsureStepOrder()
 {
-    static _system = __GuiSystem();
-    if (not _system.__stepDirty) return _system.__stepOrder;
+    if (not __stepDirty) return;
+    __stepDirty = false;
     
-    with(_system)
-    {
-        array_resize(__stepOrder, 0);
-        __stepDirty = false;
-        
-        __popUpRoot = noone;
-        
-        __GuiEnsureChildOrder();
-        __GuiEnsureStepOrderInner((__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? GUI_ROOT) : GUI_ROOT);
-        
-        return __stepOrder;
-    }
+    array_resize(__stepOrder, 0);
+    
+    __popUpRoot = noone;
+    
+    __GuiEnsureChildOrder();
+    __GuiEnsureStepOrderInner(self, __stepOrder, (__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? __rootInstance) : __rootInstance);
+    
+    return __stepOrder;
 }
 
-function __GuiEnsureStepOrderInner(_instance)
+function __GuiEnsureStepOrderInner(_environment, _stepOrder, _instance)
 {
-    static _system    = __GuiSystem();
-    static _stepOrder = __GuiSystem().__stepOrder;
-    
     with(_instance.GUI_STRUCT)
     {
         if (__disable) return __GUI_RETURN_NORMAL;
         
         //N.B. We iterate over instances backwards to handle modals and blockers elegantly
         
-        var _focused = (__focused && (_system.__navMode == GUI_NAV_DIRECTIONAL));
-        if ((not __focusable) || _system.__navPointer || _focused)
+        var _focused = (__focused && (_environment.__navMode == GUI_NAV_DIRECTIONAL));
+        if ((not __focusable) || _environment.__navPointer || _focused)
         {
             if (__scissorEnabled)
             {
@@ -48,7 +43,7 @@ function __GuiEnsureStepOrderInner(_instance)
             var _i = array_length(_array)-1;
             repeat(array_length(_array))
             {
-                var _return = __GuiEnsureStepOrderInner(_array[_i]);
+                var _return = __GuiEnsureStepOrderInner(_environment, _stepOrder, _array[_i]);
                 if ((_return == __GUI_RETURN_MODAL) || (_return == __GUI_RETURN_BLOCK_SIBLINGS)) break;
                 --_i;
             }
@@ -77,7 +72,7 @@ function __GuiEnsureStepOrderInner(_instance)
         {
             //Store the first pop-up instance we see so we can detect when the user clicks off of
             //the pop-up (which will destroy it)
-            if (not instance_exists(_system.__popUpRoot)) _system.__popUpRoot = _instance;
+            if (not instance_exists(_environment.__popUpRoot)) _environment.__popUpRoot = _instance;
             
             //Pop-ups are not selectable but are still hoverable. This means we need to push them
             //to the Step order

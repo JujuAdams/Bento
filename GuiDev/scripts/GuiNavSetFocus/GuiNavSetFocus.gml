@@ -5,9 +5,6 @@
 
 function GuiNavSetFocus(_state, _instance = id)
 {
-    static _system        = __GuiSystem();
-    static _stepRootStack = _system.__stepRootStack;
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -15,7 +12,9 @@ function GuiNavSetFocus(_state, _instance = id)
         if (__focusable)
         {
             if (__focused == _state) return;
-            _system.__stepDirty = true;
+            
+            __environment.__stepDirty = true;
+            var _stepRootStack = __environment.__stepRootStack;
             
             if (_state)
             {
@@ -26,13 +25,13 @@ function GuiNavSetFocus(_state, _instance = id)
                 {
                     if (__scissorEnabled)
                     {
-                        _system.__directionalLastX = _instance.guiLeft + __scissorPadLeft;
-                        _system.__directionalLastY = _instance.guiTop  + __scissorPadTop;
+                        __environment.__directionalLastX = _instance.guiLeft + __scissorPadLeft;
+                        __environment.__directionalLastY = _instance.guiTop  + __scissorPadTop;
                     }
                     else
                     {
-                        _system.__directionalLastX = _instance.guiLeft;
-                        _system.__directionalLastY = _instance.guiTop;
+                        __environment.__directionalLastX = _instance.guiLeft;
+                        __environment.__directionalLastY = _instance.guiTop;
                     }
                 }
                 

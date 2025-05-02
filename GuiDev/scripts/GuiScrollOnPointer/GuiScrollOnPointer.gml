@@ -9,11 +9,12 @@
 
 function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance = id)
 {
-    static _system = __GuiSystem();
+    if (not instance_exists(_instance)) return;
     
-    if (_system.__navPointer)
+    var _environment = _instance.GUI_STRUCT.__environment;
+    if (_environment.__navPointer)
     {
-        if ((GUI_SCROLL_ON_MOUSE_DRAG || (_system.__navMode == GUI_NAV_TOUCH)) && GuiNavGetHold(_instance))
+        if ((GUI_SCROLL_ON_MOUSE_DRAG || (_environment.__navMode == GUI_NAV_TOUCH)) && GuiNavGetHold(_instance))
         {
             if (GuiNavGetDragDistance() > GUI_SCROLL_THRESHOLD)
             {

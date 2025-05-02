@@ -4,7 +4,5 @@
 
 function GuiNavUsingPointer()
 {
-    static _system = __GuiSystem();
-    
-    return _system.__navPointer;
+    return GUI_ENVIRONMENT.__navPointer;
 }

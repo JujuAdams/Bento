@@ -2,22 +2,18 @@
 
 /// Ensures that a valid draw order exists on the system struct. This draw order has be marked
 /// as "dirty" by many operations and this function updates the draw order only when necessary.
+/// 
+/// Must be called in the scope of `__GuiClassEnvironment`.
 
 function __GuiEnsureDrawOrder()
 {
-    static _system = __GuiSystem();
-    if (not _system.__drawDirty) return _system.__drawOrder;
+    if (not __drawDirty) return;
     
-    with(_system)
-    {
-        array_resize(__drawOrder, 0);
-        __drawDirty = false;
-        
-        __GuiEnsureChildOrder();
-        __GuiEnsureDrawOrderInner(GUI_ROOT);
-        
-        return __drawOrder;
-    }
+    array_resize(__drawOrder, 0);
+    __drawDirty = false;
+    
+    __GuiEnsureChildOrder();
+    __GuiEnsureDrawOrderInner(__drawOrder, __rootInstance);
 }
 
 #macro __GUI_DRAW_ORDER_DRAW_END  1
@@ -25,10 +21,8 @@ function __GuiEnsureDrawOrder()
 #macro __GUI_DRAW_ORDER_SCISSOR   4
 #macro __GUI_DRAW_ORDER_MATRIX    8
 
-function __GuiEnsureDrawOrderInner(_instance)
+function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
 {
-    static _drawOrder = __GuiSystem().__drawOrder;
-    
     with(_instance.GUI_STRUCT)
     {
         if (__disable) return;
@@ -53,7 +47,7 @@ function __GuiEnsureDrawOrderInner(_instance)
         var _i = array_length(_array)-1;
         repeat(array_length(_array))
         {
-            if (__GuiEnsureDrawOrderInner(_array[_i]) == __GUI_RETURN_BLOCK_SIBLINGS) break;
+            if (__GuiEnsureDrawOrderInner(_drawOrder, _array[_i]) == __GUI_RETURN_BLOCK_SIBLINGS) break;
             --_i;
         }
         

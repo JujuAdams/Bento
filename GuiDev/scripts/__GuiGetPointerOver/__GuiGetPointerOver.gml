@@ -5,19 +5,17 @@
 
 function __GuiGetPointerOver(_mouseX, _mouseY)
 {
-    static _system    = __GuiSystem();
-    static _stepOrder = _system.__stepOrder;
-    
-    var _scissorStack = __GuiScissorReset();
-    var _scissorL = -infinity;
-    var _scissorT = -infinity;
-    var _scissorR =  infinity;
-    var _scissorB =  infinity;
-    var _insideScissor = true;
-    
-    var _holdInstance = _system.__holdInstance;
+    var _scissorStack  = __GuiScissorReset();
+    var _scissorL      = -infinity;
+    var _scissorT      = -infinity;
+    var _scissorR      =  infinity;
+    var _scissorB      =  infinity;
+    var _insideScissor =  true;
     
     var _instance = noone;
+    
+    var _holdInstance = __holdInstance;
+    var _stepOrder = __stepOrder;
     var _i = 0;
     repeat(array_length(_stepOrder))
     {

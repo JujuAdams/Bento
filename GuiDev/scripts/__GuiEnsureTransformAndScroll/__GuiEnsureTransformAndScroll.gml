@@ -1,11 +1,10 @@
-// Feather disable allry.
+// Feather disable all
+
+/// Must be called in the scope of `__GuiClassEnvironment`.
 
 function __GuiEnsureTransformAndScroll()
 {
-    static _system                  = __GuiSystem();
-    static _scrollDirtyArray        = _system.__scrollDirtyArray;
-    static _transformAndScrollDirtyArray = _system.__transformAndScrollDirtyArray;
-    
+    var _scrollDirtyArray = __scrollDirtyArray;
     var _i = array_length(_scrollDirtyArray)-1;
     repeat(array_length(_scrollDirtyArray))
     {
@@ -42,43 +41,39 @@ function __GuiEnsureTransformAndScroll()
         --_i;
     }
     
+    var _transformAndScrollDirtyArray = __transformAndScrollDirtyArray;
     if (array_length(_transformAndScrollDirtyArray) <= 0) return;
     
-    with(_system)
+    __GuiEnsureChildOrder();
+    
+    //Sort from newest instance to oldest instance. This will usually get the following loop to
+    //execute from the most senior node to the most junior leaf.
+    array_sort(_transformAndScrollDirtyArray, true);
+    
+    while(array_length(_transformAndScrollDirtyArray) > 0)
     {
-        __GuiEnsureChildOrder();
-        
-        //Sort from newest instance to oldest instance. This will usually get the following loop to
-        //execute from the most senior node to the most junior leaf.
-        array_sort(_transformAndScrollDirtyArray, true);
-        
-        while(array_length(_transformAndScrollDirtyArray) > 0)
+        var _instance = array_shift(_transformAndScrollDirtyArray);
+        if (instance_exists(_instance))
         {
-            var _instance = array_shift(_transformAndScrollDirtyArray);
-            if (instance_exists(_instance))
+            var _parent = _instance.GUI_STRUCT.__parent;
+            if (not instance_exists(_parent))
             {
-                var _parent = _instance.GUI_STRUCT.__parent;
-                if (not instance_exists(_parent))
+                //No parent, probably the root node?
+                __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, 0, 0);
+            }
+            else
+            {
+                with(_parent)
                 {
-                    //No parent, probably the root node?
-                    __GuiEnsureTransformAndScrollInner(_instance, 0, 0);
-                }
-                else
-                {
-                    with(_parent)
-                    {
-                        __GuiEnsureTransformAndScrollInner(_instance, GUI_STRUCT.__scrollX, GUI_STRUCT.__scrollY);
-                    }
+                    __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, GUI_STRUCT.__scrollX, GUI_STRUCT.__scrollY);
                 }
             }
         }
     }
 }
 
-function __GuiEnsureTransformAndScrollInner(_instance, _offsetX, _offsetY)
+function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, _offsetX, _offsetY)
 {
-    static _transformAndScrollDirtyArray = __GuiSystem().__transformAndScrollDirtyArray;
-    
     with(_instance.GUI_STRUCT)
     {
         var _width  = __solvedWidth;
@@ -151,9 +146,9 @@ function __GuiEnsureTransformAndScrollInner(_instance, _offsetX, _offsetY)
                 var _sin = -dsin(__transformAngle);
                 
                 __transformMatrix = [ __transformScaleX*_cos, __transformScaleX*_sin, 0, 0,
-                                -__transformScaleY*_sin, __transformScaleY*_cos, 0, 0,
-                                 0, 0, 1, 0,
-                                 _originX - (_originX*__transformScaleX*_cos - _originY*__transformScaleY*_sin), _originY - (_originX*__transformScaleX*_sin + _originY*__transformScaleY*_cos), 0, 1];
+                                     -__transformScaleY*_sin, __transformScaleY*_cos, 0, 0,
+                                      0, 0, 1, 0,
+                                      _originX - (_originX*__transformScaleX*_cos - _originY*__transformScaleY*_sin), _originY - (_originX*__transformScaleX*_sin + _originY*__transformScaleY*_cos), 0, 1];
             }
             else
             {
@@ -187,7 +182,7 @@ function __GuiEnsureTransformAndScrollInner(_instance, _offsetX, _offsetY)
             var _i = 0;
             repeat(array_length(_childArray))
             {
-                __GuiEnsureTransformAndScrollInner(_childArray[_i], _offsetX, _offsetY);
+                __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _childArray[_i], _offsetX, _offsetY);
                 ++_i;
             }
         }

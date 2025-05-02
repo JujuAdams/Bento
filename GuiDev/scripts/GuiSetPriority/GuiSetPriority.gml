@@ -7,17 +7,17 @@
 
 function GuiSetPriority(_priority, _instance = id)
 {
-    static _system = __GuiSystem();
-    static _dirtyChildOrderArray = __GuiSystem().__dirtyChildOrderArray;
-    
     if (not instance_exists(_instance)) return;
-    if (_priority == _instance.GUI_STRUCT.__priority) return;
     
-    _system.__layoutDirty = true;
-    _system.__stepDirty   = true;
-    _system.__drawDirty   = true;
-    
-    _instance.GUI_STRUCT.__priority = _priority;
-    
-    __GuiMarkChildOrderDirty(_instance.GUI_STRUCT.__parent);
+    with(_instance.GUI_STRUCT)
+    {
+        if (_priority == __priority) return;
+        __priority = _priority;
+        
+        __environment.__layoutDirty = true;
+        __environment.__stepDirty   = true;
+        __environment.__drawDirty   = true;
+        
+        __GuiMarkChildOrderDirty(__parent);
+    }
 }

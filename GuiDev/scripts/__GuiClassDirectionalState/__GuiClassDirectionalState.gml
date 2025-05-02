@@ -47,7 +47,7 @@ function __GuiClassDirectionalState() constructor
         {
             if (__stage == 0)
             {
-                if (((__pressTime - _frame) mod _system.__directionalNavPreDelay) == 0)
+                if (((__pressTime - _frame) mod _system.__globalNavDirPreDelay) == 0)
                 {
                     __output = __direction;
                     
@@ -66,12 +66,12 @@ function __GuiClassDirectionalState() constructor
             }
             else if (__stage == 1)
             {
-                if (((__pressTime - _frame) mod _system.__directionalNavDelay) == 0)
+                if (((__pressTime - _frame) mod _system.__globalNavDirDelay) == 0)
                 {
                     __output = __direction;
                     
                     ++__count;
-                    if (__count >= _system.__directionalNavDelayCount)
+                    if (__count >= _system.__globalNavDirDelayCount)
                     {
                         __pressTime = _frame;
                         ++__stage;
@@ -85,7 +85,7 @@ function __GuiClassDirectionalState() constructor
             }
             else if (__stage == 2)
             {
-                if (((__pressTime - _frame) mod _system.__directionalNavDelayShorter) == 0)
+                if (((__pressTime - _frame) mod _system.__globalNavDirDelayShorter) == 0)
                 {
                     __output = __direction;
                 }

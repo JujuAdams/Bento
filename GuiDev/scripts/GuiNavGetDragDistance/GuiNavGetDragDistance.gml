@@ -5,12 +5,8 @@
 
 function GuiNavGetDragDistance()
 {
-    static _system = __GuiSystem();
-    
-    with(_system)
+    with(GUI_ENVIRONMENT)
     {
-        if (not __navPointer) return 0;
-        
-        return point_distance(__mousePressX, __mousePressY, __mouseX, __mouseY);
+        return __navPointer? point_distance(__mousePressX, __mousePressY, __mouseX, __mouseY) : 0;
     }
 }

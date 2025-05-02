@@ -6,8 +6,6 @@
 
 function GuiLayoutSetGridSize(_columns, _rows, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -20,13 +18,13 @@ function GuiLayoutSetGridSize(_columns, _rows, _instance = id)
         if (__gridColumns != _columns)
         {
             __gridColumns = _columns;
-            _system.__layoutDirty = true;
+            __environment.__layoutDirty = true;
         }
         
         if (__gridRows != _rows)
         {
             __gridRows = _rows;
-            _system.__layoutDirty = true;
+            __environment.__layoutDirty = true;
         }
     }
 }

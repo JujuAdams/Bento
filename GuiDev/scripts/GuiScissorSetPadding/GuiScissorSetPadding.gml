@@ -8,8 +8,6 @@
 
 function GuiScissorSetPadding(_left, _top, _right, _bottom, _instance = id)
 {
-    static _system = __GuiSystem();
-    
     if (not instance_exists(_instance)) return;
     
     with(_instance.GUI_STRUCT)
@@ -24,8 +22,8 @@ function GuiScissorSetPadding(_left, _top, _right, _bottom, _instance = id)
             __scissorPadRight  = _right;
             __scissorPadBottom = _bottom;
             
-            _system.__stepDirty = true;
-            _system.__drawDirty = true;
+            __environment.__stepDirty = true;
+            __environment.__drawDirty = true;
         }
     }
 }

@@ -11,31 +11,10 @@
 function GuiInputPointer(_x, _y, _primaryAction)
 {
     static _system = __GuiSystem();
-    
     with(_system)
     {
-        if (__navPointer)
-        {
-            __mousePrevHold = __mouseHold;
-            
-            if (__mousePrevHold)
-            {
-                __mousePrevX = __mouseX;
-                __mousePrevY = __mouseY;
-            }
-            
-            __mouseHold = _primaryAction;
-            
-            if ((__navMode == GUI_NAV_TOUCH) && (not _primaryAction))
-            {
-                __mouseX = -__GUI_VERY_LARGE;
-                __mouseY = -__GUI_VERY_LARGE;
-            }
-            else
-            {
-                __mouseX = _x;
-                __mouseY = _y;
-            }
-        }
+        __globalMouseX    = _x;
+        __globalMouseY    = _y;
+        __globalMouseHold = _primaryAction;
     }
 }
