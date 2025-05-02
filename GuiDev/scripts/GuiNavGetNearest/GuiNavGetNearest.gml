@@ -6,10 +6,14 @@
 /// @param x
 /// @param y
 /// @param [excludeArray]
+/// @param [environment=current]
 
-function GuiNavGetNearest(_x, _y, _excludeArray = [])
+function GuiNavGetNearest(_x, _y, _excludeArray = [], _environment = undefined)
 {
-    var _stepOrder = GUI_ENVIRONMENT.__stepOrder;
+    static _system = __GuiSystem();
+    
+    _environment ??= _system.__environmentCurrent;
+    var _stepOrder = _environment.__stepOrder;
     
     var _instance = noone;
     var _nearestDistance = infinity;

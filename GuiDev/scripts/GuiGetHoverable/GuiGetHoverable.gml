@@ -22,21 +22,21 @@ function GuiGetHoverable(_instance = id, _checkVisible = true)
 function __GuiGetHoverableInner(_instance, _checkVisible)
 {
     if (not instance_exists(_instance)) return false;
-    var _gui = _instance.GUI_STRUCT;
+    var _guiVars = _instance.GUI_STRUCT;
     
     //Basic validity checks
-    if ((not _instance.visible) || _gui.__disable)
+    if ((not _instance.visible) || _guiVars.__disable)
     {
         return false;
     }
     
     //We're not hoverable if we're focused and we have children (see `GuiNavSetFocus()`)
-    if (_gui.__focusBlockHover)
+    if (_guiVars.__focusBlockHover)
     {
         return false;
     }
     
-    var _environment = GUI_ENVIRONMENT;
+    var _environment = _guiVars.__environment;
     if (instance_exists(_environment.__popUpRoot) && (not GuiIsAncestor(_environment.__popUpRoot, _instance)))
     {
         return false;
@@ -45,12 +45,12 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
     if (_environment.__navMode == GUI_NAV_DIRECTIONAL)
     {
         //In directional mode, only buttons are selectable
-        if (_gui.__behavior != GUI_BEHAVIOR_BUTTON)
+        if (_guiVars.__behavior != GUI_BEHAVIOR_BUTTON)
         {
             return false;
         }
         
-        var _tabData = __GuiTabGetData(_gui.__tabIdent);
+        var _tabData = __GuiTabGetData(_guiVars.__tabIdent, _environment);
         if (_tabData != undefined)
         {
             if (_tabData.__blockDirectionalWhenOpen && instance_exists(_tabData.__child))

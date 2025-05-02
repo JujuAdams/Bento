@@ -11,16 +11,20 @@
 /// @param directionY
 /// @param [excludeArray]
 /// @param [scrollParent]
+/// @param [environment=current]
 
-function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = undefined)
+function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = undefined, _environment = undefined)
 {
-    var _stepOrder = GUI_ENVIRONMENT.__stepOrder;
-   
+    static _system = __GuiSystem();
+    
     var _baseDist = dot_product(_dX, _dY, _x, _y);
     
-    var _instance = noone;
-    
+    _environment ??= _system.__environmentCurrent;
+    var _stepOrder = _environment.__stepOrder;
+   
+    var _instance  = noone;
     var _minWeight = infinity;
+    
     var _i = 0;
     repeat(array_length(_stepOrder))
     {

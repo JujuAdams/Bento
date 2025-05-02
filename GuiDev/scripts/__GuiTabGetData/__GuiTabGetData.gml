@@ -1,8 +1,12 @@
 // Feather disable all
 
 /// @param tabIdent
+/// @param [environment=current]
 
-function __GuiTabGetData(_tabIdent)
+function __GuiTabGetData(_tabIdent, _environment = undefined)
 {
-    return GUI_ENVIRONMENT.__tabDict[$ _tabIdent];
+    static _system = __GuiSystem();
+    
+    _environment ??= _system.__environmentCurrent;
+    return _environment.__tabDict[$ _tabIdent];
 }

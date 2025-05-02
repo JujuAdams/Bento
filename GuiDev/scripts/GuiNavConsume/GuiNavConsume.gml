@@ -1,12 +1,15 @@
 // Feather disable all
 
 /// "Consumes" all user input.
+/// 
+/// @param [environment=current]
 
-function GuiNavConsume()
+function GuiNavConsume(_environment = undefined)
 {
-    static _globalHotkeyArray = __GuiSystem().__globalHotkeyArray;
+    static _system = __GuiSystem();
+    static _globalHotkeyArray = _system.__globalHotkeyArray;
     
-    with(GUI_ENVIRONMENT)
+    with(_environment ?? _system.__environmentCurrent)
     {
         __primaryConsumed = true;
         

@@ -7,8 +7,13 @@
 /// - `GUI_NAV_MOUSE`
 /// - `GUI_NAV_DIRECTIONAL`
 /// - `GUI_NAV_TOUCH`
+/// 
+/// @param [environment=current]
 
-function GuiNavGetMode()
+function GuiNavGetMode(_environment = undefined)
 {
-    return GUI_ENVIRONMENT.__navMode;
+    static _system = __GuiSystem();
+    
+    _environment ??= _system.__environmentCurrent;
+    return _environment.__navMode;
 }

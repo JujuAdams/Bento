@@ -1,10 +1,14 @@
 // Feather disable all
 
 /// Returns the x-coordinate of the cursor's position.
+/// 
+/// @param [environment=current]
 
-function GuiNavGetCursorX()
+function GuiNavGetCursorX(_environment = undefined)
 {
-    with(GUI_ENVIRONMENT)
+    static _system = __GuiSystem();
+    
+    with(_environment ?? _system.__environmentCurrent)
     {
         if (__navMode == GUI_NAV_MOUSE)
         {

@@ -4,10 +4,11 @@
 /// if no tab is open.
 /// 
 /// @param tabIdent
+/// @param [environment=current]
 
-function GuiTabGetButton(_tabIdent)
+function GuiTabGetButton(_tabIdent, _environment = undefined)
 {
-    var _tabData = __GuiTabGetData(_tabIdent);
+    var _tabData = __GuiTabGetData(_tabIdent, _environment);
     if (_tabData == undefined) return noone;
     
     return _tabData.__button;

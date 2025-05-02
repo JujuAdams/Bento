@@ -10,7 +10,9 @@
 
 function GuiNameSet(_name, _instance = id, _overwrite = false)
 {
-    var _nameMap = GUI_ENVIRONMENT.__nameMap;
+    if (not instance_exists(_instance)) return;
+    
+    var _nameMap = _instance.GUI_STRUCT.__environment.__nameMap;
     
     var _oldInstance = _nameMap[? _name];
     if ((_oldInstance != undefined) && instance_exists(_oldInstance))
@@ -23,16 +25,6 @@ function GuiNameSet(_name, _instance = id, _overwrite = false)
         {
             __GuiError($"Instance with name \"{_name}\" already exists (id={_oldInstance.id}, type={_oldInstance.object_index})");
         }
-    }
-    
-    if (not instance_exists(_instance))
-    {
-        if (_overwrite)
-        {
-            ds_map_delete(_nameMap, _name);
-        }
-        
-        return;
     }
     
     _nameMap[? _name] = _instance;

@@ -7,10 +7,14 @@
 /// 
 /// - If the navigation mode is set to `GUI_NAV_DIRECTIONAL` then this function returns the `dY` value
 ///   set by `GuiInputDirectional()`.
+/// 
+/// @param [environment=current]
 
-function GuiNavGetDY()
+function GuiNavGetDY(_environment = undefined)
 {
-    with(GUI_ENVIRONMENT)
+    static _system = __GuiSystem();
+    
+    with(_environment ?? _system.__environmentCurrent)
     {
         if (__navPointer)
         {

@@ -15,7 +15,7 @@ function GuiTabSetupHost(_tabIdent, _blockDirectionalWhenOpen = false, _instance
         __GuiError("Tab ident cannot be `undefined`");
     }
     
-    var _tabData = __GuiTabEnsure(_tabIdent);
+    var _tabData = __GuiTabEnsure(_tabIdent, _instance.GUI_STRUCT.__environment);
     _tabData.__host = _instance;
     _tabData.__blockDirectionalWhenOpen = _blockDirectionalWhenOpen;
     

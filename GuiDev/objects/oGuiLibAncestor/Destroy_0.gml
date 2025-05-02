@@ -16,7 +16,7 @@ with(GUI_STRUCT)
     
     if (__tabIdent != undefined)
     {
-        var _tabData = __GuiTabGetData(__tabIdent);
+        var _tabData = __GuiTabGetData(__tabIdent, __environment);
         if ((_tabData.__host == _id) || (_tabData.__button == _id))
         {
             GuiTabClose(__tabIdent);
@@ -25,7 +25,7 @@ with(GUI_STRUCT)
     
     if (__tabIdentChildOf != undefined)
     {
-        var _tabData = __GuiTabGetData(__tabIdentChildOf);
+        var _tabData = __GuiTabGetData(__tabIdentChildOf, __environment);
         if (_tabData.__child == _id)
         {
             if (not instance_exists(__selectOnDestroy))

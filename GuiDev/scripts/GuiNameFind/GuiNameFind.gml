@@ -4,8 +4,12 @@
 /// will return `noone`.
 /// 
 /// @param name
+/// @param [environment=current]
 
-function GuiNameFind(_name)
+function GuiNameFind(_name, _environment = undefined)
 {
-    return (GUI_ENVIRONMENT.__nameMap[? _name] ?? noone);
+    static _system = __GuiSystem();
+    
+    _environment ??= _system.__environmentCurrent;
+    return (_environment.__nameMap[? _name] ?? noone);
 }
