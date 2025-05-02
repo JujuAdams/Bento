@@ -6,7 +6,7 @@ function __GuiMarkChildOrderDirty(_parent)
 {
     if (not instance_exists(_parent)) return;
     
-    with(_parent.GUI_STRUCT)
+    with(_parent.GUI_VARS)
     {
         if (not __childOrderDirty)
         {

@@ -12,14 +12,14 @@ function GuiNameSet(_name, _instance = id, _overwrite = false)
 {
     if (not instance_exists(_instance)) return;
     
-    var _nameMap = _instance.GUI_STRUCT.__environment.__nameMap;
+    var _nameMap = _instance.GUI_VARS.__environment.__nameMap;
     
     var _oldInstance = _nameMap[? _name];
     if ((_oldInstance != undefined) && instance_exists(_oldInstance))
     {
         if (_overwrite)
         {
-            _oldInstance.GUI_STRUCT.__name = undefined;
+            _oldInstance.GUI_VARS.__name = undefined;
         }
         else
         {
@@ -28,5 +28,5 @@ function GuiNameSet(_name, _instance = id, _overwrite = false)
     }
     
     _nameMap[? _name] = _instance;
-    _instance.GUI_STRUCT.__name = _name;
+    _instance.GUI_VARS.__name = _name;
 }

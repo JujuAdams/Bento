@@ -22,7 +22,7 @@ function __GuiEnsureStepOrder()
 
 function __GuiEnsureStepOrderInner(_environment, _stepOrder, _instance)
 {
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if (__disable) return __GUI_RETURN_NORMAL;
         
@@ -108,7 +108,7 @@ function __GuiStepMethod()
 
 function __GuiStepMethodScissorPush()
 {
-    var _guiStruct = GUI_STRUCT;
+    var _guiStruct = GUI_VARS;
     __GuiScissorPush(guiLeft   + _guiStruct.__scissorPadLeft,
                      guiTop    + _guiStruct.__scissorPadTop,
                      guiRight  - _guiStruct.__scissorPadRight,

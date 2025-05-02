@@ -11,7 +11,7 @@ function __GuiUpdateInstanceState()
     {
         if (not instance_exists(_instance)) return false;
         
-        with(_instance.GUI_STRUCT)
+        with(_instance.GUI_VARS)
         {
             var _clickOnPress = (GuiNavUsingDirectional() ||
                                  (GUI_POINTER_CLICK_ON_PRESS

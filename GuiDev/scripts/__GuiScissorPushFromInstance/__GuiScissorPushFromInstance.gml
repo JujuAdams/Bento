@@ -2,7 +2,7 @@
 
 function __GuiScissorPushFromInstance()
 {
-    var _guiStruct = GUI_STRUCT;
+    var _guiStruct = GUI_VARS;
     __GuiScissorPush(guiLeft   + _guiStruct.__scissorPadLeft,
                      guiTop    + _guiStruct.__scissorPadTop,
                      guiRight  - _guiStruct.__scissorPadRight,

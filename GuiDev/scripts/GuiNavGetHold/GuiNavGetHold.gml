@@ -7,5 +7,5 @@
 function GuiNavGetHold(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
-    return ((_instance.GUI_STRUCT.__holdState == GUI_ENTER) || (_instance.GUI_STRUCT.__holdState == GUI_HOLD));
+    return ((_instance.GUI_VARS.__holdState == GUI_ENTER) || (_instance.GUI_VARS.__holdState == GUI_HOLD));
 }

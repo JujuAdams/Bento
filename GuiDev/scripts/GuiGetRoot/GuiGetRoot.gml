@@ -22,7 +22,7 @@ function GuiGetRoot(_environment = undefined)
                 __rootInstance = instance_create_depth(0, 0, GUI_CREATE_DEPTH ?? 0, __oGuiLibRoot);
             }
             
-            __rootInstance.GUI_STRUCT.__environment = self;
+            __rootInstance.GUI_VARS.__environment = self;
         }
         
         return __rootInstance;

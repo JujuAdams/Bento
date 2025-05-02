@@ -11,5 +11,5 @@
 function GuiNavGetPress(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
-    return (_instance.GUI_STRUCT.__holdState == GUI_PRESS);
+    return (_instance.GUI_VARS.__holdState == GUI_PRESS);
 }

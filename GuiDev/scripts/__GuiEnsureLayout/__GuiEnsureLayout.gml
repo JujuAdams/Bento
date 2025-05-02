@@ -49,7 +49,7 @@ function __GuiEnsureLayout()
     }
     
     //Final pass to set positions in stone
-    var _rootGui = __rootInstance.GUI_STRUCT;
+    var _rootGui = __rootInstance.GUI_VARS;
     _rootGui.__SolverPositions(0, 0, _rootGui.__solvedWidth, _rootGui.__solvedHeight);
     
     //Ensure a full reset of the transform/scroll positions
@@ -59,7 +59,7 @@ function __GuiEnsureLayout()
 
 function __GuiEnsureLayerOrderInner(_layoutOrder, _instance)
 {
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         array_push(_layoutOrder, self);
         

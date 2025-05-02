@@ -24,7 +24,7 @@ function GuiTransformSetOffset(_x, _y, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if (_x != undefined)
         {

@@ -188,7 +188,7 @@ function __GuiClassVariables(_attachedInstance) constructor
         var _i = 0;
         repeat(array_length(_childArray))
         {
-            _childArray[_i].GUI_STRUCT.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
+            _childArray[_i].GUI_VARS.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
             ++_i;
         }
     }

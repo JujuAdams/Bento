@@ -13,7 +13,7 @@ function GuiSetParent(_parent, _targetInstance = id)
     
     __GuiRemoveParent(_targetInstance);
     
-    with(_targetInstance.GUI_STRUCT)
+    with(_targetInstance.GUI_VARS)
     {
         //Mark the environment we're leaving as dirty
         with(__environment)
@@ -24,7 +24,7 @@ function GuiSetParent(_parent, _targetInstance = id)
         }
         
         __parent = _parent;
-        __environment = _parent.GUI_STRUCT.__environment;
+        __environment = _parent.GUI_VARS.__environment;
         
         //Mark the environment we're entering as dirty
         with(__environment)
@@ -36,7 +36,7 @@ function GuiSetParent(_parent, _targetInstance = id)
         
         with(_parent)
         {
-            array_push(GUI_STRUCT.__childArray, _targetInstance);
+            array_push(GUI_VARS.__childArray, _targetInstance);
         
             __GuiMarkChildOrderDirty(id);
             GuiScrollLimitsMarkDirty(id);

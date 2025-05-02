@@ -22,7 +22,7 @@ function __GuiSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeight
     var _i = 0;
     repeat(_childCount)
     {
-        _childArray[_i].GUI_STRUCT.__SolverPositions(_childLeft, _childTop, _cellWidth, _cellHeight);
+        _childArray[_i].GUI_VARS.__SolverPositions(_childLeft, _childTop, _cellWidth, _cellHeight);
         
         _childLeft += _cellWidth + __layoutGutterX;
         ++_gridX;

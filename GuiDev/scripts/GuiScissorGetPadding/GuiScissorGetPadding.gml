@@ -6,9 +6,9 @@ function GuiScissorGetPadding(_instance = id)
 {
     static _result = {};
     
-    if (instance_exists(_instance) && _instance.GUI_STRUCT.__scissorEnabled)
+    if (instance_exists(_instance) && _instance.GUI_VARS.__scissorEnabled)
     {
-        with(_instance.GUI_STRUCT)
+        with(_instance.GUI_VARS)
         {
             _result.left   = __scissorPadLeft;
             _result.top    = __scissorPadTop;

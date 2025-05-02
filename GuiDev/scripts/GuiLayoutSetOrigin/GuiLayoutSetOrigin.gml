@@ -9,7 +9,7 @@ function GuiLayoutSetOrigin(_x, _y, _instance = id, _proportional = true)
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if (__layoutOriginX != _x)
         {

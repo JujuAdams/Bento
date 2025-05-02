@@ -6,9 +6,9 @@ function GuiScrollGetPadding(_instance = id)
 {
     static _result = {};
     
-    if (instance_exists(_instance) && _instance.GUI_STRUCT.__scrollHori && _instance.GUI_STRUCT.__scrollVert)
+    if (instance_exists(_instance) && _instance.GUI_VARS.__scrollHori && _instance.GUI_VARS.__scrollVert)
     {
-        with(_instance.GUI_STRUCT)
+        with(_instance.GUI_VARS)
         {
             _result.left   = __scrollPadLeft;
             _result.top    = __scrollPadTop;

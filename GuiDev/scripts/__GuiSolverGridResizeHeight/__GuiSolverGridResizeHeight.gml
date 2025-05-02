@@ -13,7 +13,7 @@ function __GuiSolverGridResizeHeight()
         var _i = 0;
         repeat(_childCount)
         {
-            with( _childArray[_i].GUI_STRUCT)
+            with( _childArray[_i].GUI_VARS)
             {
                 if (__layoutHeightResize == GUI_RESIZE_FIT)
                 {

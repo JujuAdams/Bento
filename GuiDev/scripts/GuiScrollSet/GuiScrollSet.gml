@@ -12,7 +12,7 @@ function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT
     var _scroller = __GuiScrollFindParent(_instance);
     if (not instance_exists(_scroller)) return;
     
-    with(_scroller.GUI_STRUCT)
+    with(_scroller.GUI_VARS)
     {
         if (not __scrollHori) _scrollTargetX = 0;
         if (not __scrollVert) _scrollTargetY = 0;

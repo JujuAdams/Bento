@@ -7,7 +7,7 @@ function GuiNavSetFocus(_state, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if (__focusable)
         {
@@ -46,7 +46,7 @@ function GuiNavSetFocus(_state, _instance = id)
                     var _i = _index;
                     repeat(array_length(_stepRootStack) - _index)
                     {
-                        with(_stepRootStack[_i].GUI_STRUCT)
+                        with(_stepRootStack[_i].GUI_VARS)
                         {
                             __focused         = false;
                             __focusBlockHover = false;

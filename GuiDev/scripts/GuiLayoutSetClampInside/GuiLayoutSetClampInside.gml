@@ -7,7 +7,7 @@ function GuiLayoutSetClampInside(_state, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if (__layoutClampInside != _state)
         {

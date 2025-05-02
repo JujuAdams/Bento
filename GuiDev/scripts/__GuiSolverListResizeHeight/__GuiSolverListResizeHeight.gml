@@ -19,7 +19,7 @@ function __GuiSolverListResizeHeight()
             var _i = 0;
             repeat(_childCount)
             {
-                with( _childArray[_i].GUI_STRUCT)
+                with( _childArray[_i].GUI_VARS)
                 {
                     if (__layoutHeightResize == GUI_RESIZE_FIT)
                     {
@@ -54,7 +54,7 @@ function __GuiSolverListResizeHeight()
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.GUI_STRUCT.__layoutHeightResize == GUI_RESIZE_GROW)
+                if (_child.GUI_VARS.__layoutHeightResize == GUI_RESIZE_GROW)
                 {
                     array_push(_modifiableArray, _child);
                 }
@@ -72,7 +72,7 @@ function __GuiSolverListResizeHeight()
                 {
                     var _child = _modifiableArray[_i];
                     
-                    var _childSize = _child.GUI_STRUCT.__solvedHeight;
+                    var _childSize = _child.GUI_VARS.__solvedHeight;
                     if (_childSize < _min)
                     {
                         _secondMin = _min;
@@ -103,7 +103,7 @@ function __GuiSolverListResizeHeight()
                 {
                     var _child = _modifyingArray[_i];
                     
-                    var _prevSize = _child.GUI_STRUCT.__solvedHeight;
+                    var _prevSize = _child.GUI_VARS.__solvedHeight;
                     if (_prevSize == _min)
                     {
                         if (_prevSize + _addition >= _child.__layoutHeightMax)
@@ -116,7 +116,7 @@ function __GuiSolverListResizeHeight()
                             var _newSize = _prevSize + _addition;
                         }
                         
-                        _child.GUI_STRUCT.__solvedHeight = _newSize;
+                        _child.GUI_VARS.__solvedHeight = _newSize;
                         _remaining += _prevSize - _newSize;
                     }
                     
@@ -138,7 +138,7 @@ function __GuiSolverListResizeHeight()
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.GUI_STRUCT.__layoutHeightResize != GUI_RESIZE_STATIC)
+                if (_child.GUI_VARS.__layoutHeightResize != GUI_RESIZE_STATIC)
                 {
                     array_push(_modifiableArray, _child);
                 }
@@ -156,7 +156,7 @@ function __GuiSolverListResizeHeight()
                 {
                     var _child = _modifiableArray[_i];
                     
-                    var _childSize = _child.GUI_STRUCT.__solvedHeight;
+                    var _childSize = _child.GUI_VARS.__solvedHeight;
                     if (_childSize > _max)
                     {
                         _secondMax = _max;
@@ -187,7 +187,7 @@ function __GuiSolverListResizeHeight()
                 {
                     var _child = _modifyingArray[_i];
                     
-                    var _prevSize = _child.GUI_STRUCT.__solvedHeight;
+                    var _prevSize = _child.GUI_VARS.__solvedHeight;
                     if (_prevSize == _max)
                     {
                         if (_prevSize + _addition <= _child.__layoutHeightMin)
@@ -200,7 +200,7 @@ function __GuiSolverListResizeHeight()
                             var _newSize = _prevSize + _addition;
                         }
                         
-                        _child.GUI_STRUCT.__solvedHeight = _newSize;
+                        _child.GUI_VARS.__solvedHeight = _newSize;
                         _remaining += _prevSize - _newSize;
                     }
                     

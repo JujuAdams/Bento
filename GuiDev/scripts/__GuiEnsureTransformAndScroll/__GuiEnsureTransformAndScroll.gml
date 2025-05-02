@@ -15,7 +15,7 @@ function __GuiEnsureTransformAndScroll()
         }
         else
         {
-            with(_instance.GUI_STRUCT)
+            with(_instance.GUI_VARS)
             {
                 var _dX = __scrollTargetX - __scrollX;
                 var _dY = __scrollTargetY - __scrollY;
@@ -55,7 +55,7 @@ function __GuiEnsureTransformAndScroll()
         var _instance = array_shift(_transformAndScrollDirtyArray);
         if (instance_exists(_instance))
         {
-            var _parent = _instance.GUI_STRUCT.__parent;
+            var _parent = _instance.GUI_VARS.__parent;
             if (not instance_exists(_parent))
             {
                 //No parent, probably the root node?
@@ -65,7 +65,7 @@ function __GuiEnsureTransformAndScroll()
             {
                 with(_parent)
                 {
-                    __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, GUI_STRUCT.__scrollX, GUI_STRUCT.__scrollY);
+                    __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, GUI_VARS.__scrollX, GUI_VARS.__scrollY);
                 }
             }
         }
@@ -74,7 +74,7 @@ function __GuiEnsureTransformAndScroll()
 
 function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, _offsetX, _offsetY)
 {
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         var _width  = __solvedWidth;
         var _height = __solvedHeight;
@@ -92,7 +92,7 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _inst
         //Ensure the UI element sits inside the root boundary before we transform
         if (__layoutClampInside)
         {
-            var _rootGui    = GUI_ROOT.GUI_STRUCT;
+            var _rootGui    = __environment.__rootInstance.GUI_VARS;
             var _rootWidth  = _rootGui.__solvedWidth;
             var _rootHeight = _rootGui.__solvedHeight;
             

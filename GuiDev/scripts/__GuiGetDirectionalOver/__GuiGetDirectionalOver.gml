@@ -32,7 +32,7 @@ function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
     }
     else
     {
-        var _prevGui = _prevInstance.GUI_STRUCT;
+        var _prevGui = _prevInstance.GUI_VARS;
         
         //Previously selected instance is valid, process navigation
         if ((_dX == 0) && (_dY == 0))

@@ -11,7 +11,7 @@ function GuiScrollLimitsMarkDirty(_instance)
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if ((not __scrollHori) && (not __scrollVert)) return;
         

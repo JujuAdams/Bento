@@ -16,7 +16,7 @@ function GuiScrollDrawHoriSprite(_left, _top, _right, _bottom, _barSprite, _hand
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if (not _instance.__scrollHori) return;
         

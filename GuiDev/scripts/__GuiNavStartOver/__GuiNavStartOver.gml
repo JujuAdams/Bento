@@ -17,7 +17,7 @@ function __GuiNavStartOver(_instance)
         
         __overInstance = _instance;
         
-        with(_instance.GUI_STRUCT)
+        with(_instance.GUI_VARS)
         {
             if (not __updating)
             {

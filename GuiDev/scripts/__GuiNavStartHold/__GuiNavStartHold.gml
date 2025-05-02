@@ -8,7 +8,7 @@ function __GuiNavStartHold(_instance)
 {
     if (instance_exists(_instance) && (not GuiNavGetHold(_instance)))
     {
-        with(_instance.GUI_STRUCT)
+        with(_instance.GUI_VARS)
         {
             __holdState = GUI_PRESS;
             __environment.__holdInstance = _instance;

@@ -14,7 +14,7 @@ function GuiTabSetupButton(_tabIdent, _instance = id)
         __GuiError("Tab ident cannot be `undefined`");
     }
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         __GuiTabEnsure(_tabIdent, __environment);
         __tabIdent = _tabIdent;

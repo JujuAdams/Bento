@@ -11,7 +11,7 @@ function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance =
 {
     if (not instance_exists(_instance)) return;
     
-    var _environment = _instance.GUI_STRUCT.__environment;
+    var _environment = _instance.GUI_VARS.__environment;
     if (_environment.__navPointer)
     {
         if ((GUI_SCROLL_ON_MOUSE_DRAG || (_environment.__navMode == GUI_NAV_TOUCH)) && GuiNavGetHold(_instance))

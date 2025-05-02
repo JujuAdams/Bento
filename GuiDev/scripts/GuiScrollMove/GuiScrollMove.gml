@@ -12,5 +12,5 @@ function GuiScrollMove(_dX = 0, _dY = 0, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED
     var _scroller = __GuiScrollFindParent(_instance);
     if (not instance_exists(_scroller)) return;
     
-    GuiScrollSet(_scroller.GUI_STRUCT.__scrollX + _dX, _scroller.GUI_STRUCT.__scrollY + _dY, _scrollSpeed, _scroller);
+    GuiScrollSet(_scroller.GUI_VARS.__scrollX + _dX, _scroller.GUI_VARS.__scrollY + _dY, _scrollSpeed, _scroller);
 }

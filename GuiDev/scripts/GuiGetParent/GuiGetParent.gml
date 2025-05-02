@@ -21,7 +21,7 @@ function __GuiGetParentInner(_depth = 1, _instance = id)
 {
     if (not instance_exists(_instance)) return noone;
     
-    var _parent = _instance.GUI_STRUCT.__parent;
+    var _parent = _instance.GUI_VARS.__parent;
     if (_depth <= 1) return _parent;
     
     return __GuiGetParentInner(_depth-1, _parent);

@@ -15,8 +15,8 @@
 #macro GUI_DATE     "2025-03-17"
 
 #macro GUI_RUNNING_FROM_IDE  (GM_build_type == "run")
-#macro GUI_ROOT  (GuiGetRoot())
-#macro GUI_ENVIRONMENT  (__GuiSystem().__environmentCurrent)  //TODO - Optimize uses by static-ing `_system`
+#macro GUI_ROOT              (GuiGetRoot())
+#macro GUI_ENVIRONMENT       (__GuiSystem().__environmentCurrent)
 
 #macro GUI_BEHAVIOR_COSMETIC        0
 #macro GUI_BEHAVIOR_BUTTON          1

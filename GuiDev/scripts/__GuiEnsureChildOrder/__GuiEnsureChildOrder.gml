@@ -8,7 +8,7 @@ function __GuiEnsureChildOrder()
     {
         static _funcSort = function(_a, _b)
         {
-            var _delta = (_a.GUI_STRUCT.__priority - _b.GUI_STRUCT.__priority);
+            var _delta = (_a.GUI_VARS.__priority - _b.GUI_VARS.__priority);
             
             if (_delta > 0)
             {
@@ -24,7 +24,7 @@ function __GuiEnsureChildOrder()
             }
         }
         
-        with(_instance.GUI_STRUCT)
+        with(_instance.GUI_VARS)
         {
             if (__childOrderDirty)
             {

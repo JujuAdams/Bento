@@ -23,7 +23,7 @@ function GuiTransformSetAngle(_angle, _instance = id)
 {
     if (not instance_exists(_instance)) return;
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if (_angle != undefined)
         {

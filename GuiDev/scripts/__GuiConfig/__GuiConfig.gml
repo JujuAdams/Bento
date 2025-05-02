@@ -57,4 +57,4 @@
 
 #macro GUI_DEFAULT_SCROLL_SPEED  8
 
-#macro GUI_STRUCT  __guiVars
+#macro GUI_VARS  __guiVars

@@ -8,7 +8,7 @@ function GuiNavGetClick(_instance = id)
 {
     if (not instance_exists(_instance)) return false;
     
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         return __environment.__primaryConsumed? false : __click;
     }

@@ -23,7 +23,7 @@ function __GuiEnsureDrawOrder()
 
 function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
 {
-    with(_instance.GUI_STRUCT)
+    with(_instance.GUI_VARS)
     {
         if (__disable) return;
         
@@ -77,13 +77,13 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         
         _array[__GUI_DRAW_ORDER_MATRIX] = function()
         {
-            matrix_stack_push(GUI_STRUCT.__transformMatrix);
+            matrix_stack_push(GUI_VARS.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
         }
         
         _array[__GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            matrix_stack_push(GUI_STRUCT.__transformMatrix);
+            matrix_stack_push(GUI_VARS.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             __GuiScissorPushFromInstance();
         }
@@ -101,7 +101,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            matrix_stack_push(GUI_STRUCT.__transformMatrix);
+            matrix_stack_push(GUI_VARS.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             event_user(GUI_USER_EVENT_DRAW);
         }
@@ -113,7 +113,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            matrix_stack_push(GUI_STRUCT.__transformMatrix);
+            matrix_stack_push(GUI_VARS.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             event_user(GUI_USER_EVENT_DRAW);
             __GuiScissorPushFromInstance();

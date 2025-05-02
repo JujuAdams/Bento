@@ -22,7 +22,7 @@ function GuiGetHoverable(_instance = id, _checkVisible = true)
 function __GuiGetHoverableInner(_instance, _checkVisible)
 {
     if (not instance_exists(_instance)) return false;
-    var _guiVars = _instance.GUI_STRUCT;
+    var _guiVars = _instance.GUI_VARS;
     
     //Basic validity checks
     if ((not _instance.visible) || _guiVars.__disable)

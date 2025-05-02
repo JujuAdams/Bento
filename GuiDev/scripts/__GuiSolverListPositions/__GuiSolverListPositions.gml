@@ -18,7 +18,7 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
         var _i = 0;
         repeat(_childCount)
         {
-            _majorSize += _childArray[_i].GUI_STRUCT.__solvedWidth;
+            _majorSize += _childArray[_i].GUI_VARS.__solvedWidth;
             ++_i;
         }
         
@@ -40,7 +40,7 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
         var _i = 0;
         repeat(_childCount)
         {
-            with(_childArray[_i].GUI_STRUCT)
+            with(_childArray[_i].GUI_VARS)
             {
                 if (_minorAlign == fa_middle)
                 {
@@ -68,7 +68,7 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
         var _i = 0;
         repeat(_childCount)
         {
-            _majorSize += _childArray[_i].GUI_STRUCT.__solvedHeight;
+            _majorSize += _childArray[_i].GUI_VARS.__solvedHeight;
             ++_i;
         }
         
@@ -90,7 +90,7 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
         var _i = 0;
         repeat(_childCount)
         {
-            with(_childArray[_i].GUI_STRUCT)
+            with(_childArray[_i].GUI_VARS)
             {
                 if (_minorAlign == fa_middle)
                 {

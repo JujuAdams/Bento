@@ -12,5 +12,5 @@ function GuiGetParentObject(_object, _instance = id)
     
     if (_instance.object_index == _object) return _instance;
     
-    return GuiGetParentObject(_object, _instance.GUI_STRUCT.__parent);
+    return GuiGetParentObject(_object, _instance.GUI_VARS.__parent);
 }
