@@ -17,11 +17,11 @@
 /// The center of rotation and translation can be set using `GuiTransformSetOrigin()`.
 /// 
 /// @param [angle]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiTransformSetAngle(_angle, _instance = id)
+function GuiTransformSetAngle(_angle, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

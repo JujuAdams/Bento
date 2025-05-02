@@ -2,10 +2,10 @@
 
 /// Returns whether an instance is hoverable (i.e. its "over" state can be set).
 /// 
-/// @param [instance=id]
+/// @param [instance=self]
 /// @param [checkVisible=true]
 
-function GuiGetHoverable(_instance = id, _checkVisible = true)
+function GuiGetHoverable(_instance = self, _checkVisible = true)
 {
     if (not __GuiGetHoverableInner(_instance, _checkVisible)) return false;
     
@@ -21,7 +21,7 @@ function GuiGetHoverable(_instance = id, _checkVisible = true)
 
 function __GuiGetHoverableInner(_instance, _checkVisible)
 {
-    if (not instance_exists(_instance)) return false;
+    if (not GUI_EXISTS(_instance)) return false;
     
     with(_instance.GUI_VARS)
     {
@@ -38,7 +38,7 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
         }
         
         var _environment = __environment;
-        if (instance_exists(_environment.__popUpRoot) && (not GuiIsAncestor(_environment.__popUpRoot, _instance)))
+        if (GUI_EXISTS(_environment.__popUpRoot) && (not GuiIsAncestor(_environment.__popUpRoot, _instance)))
         {
             return false;
         }
@@ -54,7 +54,7 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
             var _tabData = __GuiTabGetData(__tabIdent, _environment);
             if (_tabData != undefined)
             {
-                if (_tabData.__blockDirectionalWhenOpen && instance_exists(_tabData.__child))
+                if (_tabData.__blockDirectionalWhenOpen && GUI_EXISTS(_tabData.__child))
                 {
                     return false;
                 }

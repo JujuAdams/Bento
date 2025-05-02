@@ -4,7 +4,7 @@
 persistent = true;
 
 //Make a struct to contain GUI-related variables. This keeps the instance clean in the debugger.
-GUI_VARS = new __GuiClassVariables(id);
+GUI_VARS = new __GuiClassVariables(self);
 
 ///////////////////////////
 //                       //

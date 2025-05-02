@@ -8,8 +8,8 @@
 /// 
 /// @param [instance]
 
-function GuiNavGetRelease(_instance = id)
+function GuiNavGetRelease(_instance = self)
 {
-    if (not instance_exists(_instance)) return false;
+    if (not GUI_EXISTS(_instance)) return false;
     return (_instance.GUI_VARS.__holdState == GUI_RELEASE);
 }

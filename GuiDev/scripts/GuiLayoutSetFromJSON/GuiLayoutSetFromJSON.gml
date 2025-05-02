@@ -1,9 +1,9 @@
 // Feather disable all
 
 /// @param json
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiLayoutSetFromJSON(_json, _instance = id)
+function GuiLayoutSetFromJSON(_json, _instance = self)
 {
     if (not is_struct(_json))
     {

@@ -5,11 +5,11 @@
 /// target instance will be used.
 /// 
 /// @param parent
-/// @param [targetInstance=id]
+/// @param [targetInstance=self]
 
-function GuiSetParent(_parent, _targetInstance = id)
+function GuiSetParent(_parent, _targetInstance = self)
 {
-    if ((not instance_exists(_parent)) || (not instance_exists(_targetInstance))) return;
+    if ((not GUI_EXISTS(_parent)) || (not GUI_EXISTS(_targetInstance))) return;
     
     __GuiRemoveParent(_targetInstance);
     
@@ -38,8 +38,8 @@ function GuiSetParent(_parent, _targetInstance = id)
         {
             array_push(GUI_VARS.__childArray, _targetInstance);
         
-            __GuiMarkChildOrderDirty(id);
-            GuiScrollLimitsMarkDirty(id);
+            __GuiMarkChildOrderDirty(self);
+            GuiScrollLimitsMarkDirty(self);
         }
     }
 }

@@ -6,7 +6,7 @@
 
 function __GuiNavStartOver(_instance)
 {
-    if (instance_exists(_instance))
+    if (GUI_EXISTS(_instance))
     {
         if (__navMode == GUI_NAV_DIRECTIONAL)
         {

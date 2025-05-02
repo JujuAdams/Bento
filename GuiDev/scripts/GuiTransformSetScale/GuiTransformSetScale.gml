@@ -18,11 +18,11 @@
 /// 
 /// @param [xScale]
 /// @param [yScale]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiTransformSetScale(_xScale, _yScale, _instance = id)
+function GuiTransformSetScale(_xScale, _yScale, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

@@ -1,10 +1,10 @@
 // Feather disable all
 
-// What room layer to create instances on when using `GuiCreate()`. Use `undefined` to
+// What room layer to create instances on when using `GuiCreateObject()`. Use `undefined` to
 // instead create instances using a particular depth see `GUI_CREATE_DEPTH`.
 #macro GUI_CREATE_LAYER  undefined
 
-// What depth to create instances on when using `GuiCreate()`. This macro will only be used
+// What depth to create instances on when using `GuiCreateObject()`. This macro will only be used
 // if `GUI_CREATE_LAYER` is set to `undefined`.
 #macro GUI_CREATE_DEPTH  0
 

@@ -9,7 +9,7 @@ function __GuiEnsureScrollLimits()
     
     static _funcApply = function(_parent)
     {
-        if (not instance_exists(_parent)) return;
+        if (not GUI_EXISTS(_parent)) return;
         
         with(_parent.GUI_VARS)
         {

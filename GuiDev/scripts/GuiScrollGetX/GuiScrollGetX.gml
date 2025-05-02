@@ -2,11 +2,11 @@
 
 /// Returns the current scroll x-offset.
 /// 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiScrollGetX(_instance = id)
+function GuiScrollGetX(_instance = self)
 {
-    if (not instance_exists(_instance)) return 0;
+    if (not GUI_EXISTS(_instance)) return 0;
     
     return _instance.GUI_VARS.__scrollX;
 }

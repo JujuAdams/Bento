@@ -2,11 +2,11 @@
 
 /// Returns whether the instance has been clicked.
 /// 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiNavGetClick(_instance = id)
+function GuiNavGetClick(_instance = self)
 {
-    if (not instance_exists(_instance)) return false;
+    if (not GUI_EXISTS(_instance)) return false;
     
     with(_instance.GUI_VARS)
     {

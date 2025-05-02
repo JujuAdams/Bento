@@ -17,15 +17,15 @@
 /// @param padTop
 /// @param padRight
 /// @param padBottom
-/// @param [instance=id]
+/// @param [instance=self]
 
-function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _instance = id)
+function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _instance = self)
 {
     static _result = {};
     
     var _empty = true;
     
-    if (instance_exists(_instance))
+    if (GUI_EXISTS(_instance))
     {
         with(_instance.GUI_VARS)
         {

@@ -5,9 +5,9 @@
 
 event_inherited();
 
-if (not variable_instance_exists(id, "padding"      )) padding = 1;
-if (not variable_instance_exists(id, "showScrollbar")) showScrollbar = true;
-if (not variable_instance_exists(id, "focusable"    )) focusable = true;
+GuiSetIfNotDefined("padding",       1);
+GuiSetIfNotDefined("showScrollbar", true);
+GuiSetIfNotDefined("focusable",     true);
 
 if ((width == 0) || (width == 0))
 {

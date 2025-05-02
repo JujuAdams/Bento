@@ -28,9 +28,9 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
             {
                 with(method_get_self(_stepOrder[_i]))
                 {
-                    if (((not instance_exists(_holdInstance)) || (_holdInstance == id)) && instance_position(_mouseX, _mouseY, id))
+                    if (((not GUI_EXISTS(_holdInstance)) || (_holdInstance == self)) && instance_position(_mouseX, _mouseY, self))
                     {
-                        _instance = id;
+                        _instance = self;
                     }
                 }
             }

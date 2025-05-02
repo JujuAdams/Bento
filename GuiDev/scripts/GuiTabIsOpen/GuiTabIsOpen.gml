@@ -6,5 +6,5 @@
 
 function GuiTabIsOpen(_tabIdent)
 {
-    return instance_exists(GuiTabGetChild(_tabIdent));
+    return GUI_EXISTS(GuiTabGetChild(_tabIdent));
 }

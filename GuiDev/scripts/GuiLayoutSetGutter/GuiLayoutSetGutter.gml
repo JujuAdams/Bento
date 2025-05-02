@@ -2,11 +2,11 @@
 
 /// @param [x]
 /// @param [y]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiLayoutSetGutter(_x, _y, _instance = id)
+function GuiLayoutSetGutter(_x, _y, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

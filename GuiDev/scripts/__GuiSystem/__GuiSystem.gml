@@ -56,6 +56,7 @@ function __GuiSystem()
     
     if (GUI_RUNNING_FROM_IDE)
     {
+        global.GuiElementMap = ds_map_create();
         global.GuiSystem = _system;
     }
     

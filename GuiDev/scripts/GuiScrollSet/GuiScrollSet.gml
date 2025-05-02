@@ -5,12 +5,12 @@
 /// @param scrollTargetX
 /// @param scrollTargetY
 /// @param [scrollSpeed]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance = id)
+function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance = self)
 {
     var _scroller = __GuiScrollFindParent(_instance);
-    if (not instance_exists(_scroller)) return;
+    if (not GUI_EXISTS(_scroller)) return;
     
     with(_scroller.GUI_VARS)
     {

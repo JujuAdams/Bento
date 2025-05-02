@@ -3,11 +3,11 @@
 /// Opens a tab in a tab group. The existing tab child, if one exists, will be destroyed.
 /// 
 /// @param child
-/// @param [button=id]
+/// @param [button=self]
 
-function GuiTabOpen(_child, _button = id)
+function GuiTabOpen(_child, _button = self)
 {
-    if (not instance_exists(_button))
+    if (not GUI_EXISTS(_button))
     {
         __GuiError("Button instance doesn't exist");
     }

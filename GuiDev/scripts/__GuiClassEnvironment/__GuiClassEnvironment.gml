@@ -200,13 +200,13 @@ function __GuiClassEnvironment() constructor
                 {
                     __holdState = (__mouseHold? GUI_PRESS : GUI_OFF);
                 }
-            
+                
                 if (not GuiGetHoverable(__holdInstance, false)) __holdInstance = noone;
                 __GuiNavStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
                 
                 //Detect clicking off of a pop-up
                 if ((__holdState == GUI_PRESS)
-                &&  instance_exists(__popUpRoot)
+                &&  GUI_EXISTS(__popUpRoot)
                 &&  (__popUpRoot != __overInstance) //Don't destroy a pop-up if we're hovering directly over it
                 &&  (not GuiIsAncestor(__popUpRoot, __overInstance))) //Also don't destroy if we're hovering over a child of the pop-up
                 {

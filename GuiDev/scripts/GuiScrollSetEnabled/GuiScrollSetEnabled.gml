@@ -2,11 +2,11 @@
 
 /// @param horizontal
 /// @param vertical
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiScrollSetEnabled(_horizontal, _vertical, _instance = id)
+function GuiScrollSetEnabled(_horizontal, _vertical, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

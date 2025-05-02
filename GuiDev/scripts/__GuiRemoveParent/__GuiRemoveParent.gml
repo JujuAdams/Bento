@@ -7,11 +7,11 @@
 
 function __GuiRemoveParent(_child)
 {
-    if (not instance_exists(_child)) return;
+    if (not GUI_EXISTS(_child)) return;
     
     var _parent = _child.GUI_VARS.__parent;
     
-    if (instance_exists(_parent))
+    if (GUI_EXISTS(_parent))
     {
         var _array = _parent.GUI_VARS.__childArray;
         var _index = array_get_index(_array, _child);

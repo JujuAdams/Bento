@@ -2,11 +2,11 @@
 
 /// Returns the tab group ident for a tab group host or tab group button.
 /// 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiTabGetIdent(_instance = id)
+function GuiTabGetIdent(_instance = self)
 {
-    if (not instance_exists(_instance)) return undefined;
+    if (not GUI_EXISTS(_instance)) return undefined;
     
     return _instance.GUI_VARS.__tabIdent;
 }

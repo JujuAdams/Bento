@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiCreate",
+  "%Name":"GuiCreateObject",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiCreate",
+  "name":"GuiCreateObject",
   "parent":{
     "name":"Functions",
     "path":"folders/Library/Functions.yy",

@@ -11,7 +11,7 @@ function GuiGetRoot(_environment = undefined)
     
     with(_environment ?? _system.__environmentCurrent)
     {
-        if (not instance_exists(__rootInstance))
+        if (not GUI_EXISTS(__rootInstance))
         {
             if (GUI_CREATE_LAYER != undefined)
             {

@@ -22,19 +22,19 @@ function GuiNavGetNearest(_x, _y, _excludeArray = [], _environment = undefined)
     {
         with(method_get_self(_stepOrder[_i]))
         {
-            if (array_get_index(_excludeArray, id) >= 0)
+            if (array_get_index(_excludeArray, self) >= 0)
             {
                 //Skip this instance
                 continue;
             }
             
-            if (__GuiGetHoverableInner(id, true))
+            if (__GuiGetHoverableInner(self, true))
             {
                 var _distance = point_distance(x, y, _x, _y);
                 if (_distance < _nearestDistance)
                 {
                     _nearestDistance = _distance;
-                    _instance = id;
+                    _instance = self;
                 }
             }
         }

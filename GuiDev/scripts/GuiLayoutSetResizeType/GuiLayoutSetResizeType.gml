@@ -2,11 +2,11 @@
 
 /// @param [width]
 /// @param [height]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiLayoutSetResizeType(_width, _height, _instance = id)
+function GuiLayoutSetResizeType(_width, _height, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

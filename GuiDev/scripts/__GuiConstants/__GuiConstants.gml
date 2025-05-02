@@ -17,6 +17,7 @@
 #macro GUI_RUNNING_FROM_IDE  (GM_build_type == "run")
 #macro GUI_ROOT              (GuiGetRoot())
 #macro GUI_ENVIRONMENT       (__GuiSystem().__environmentCurrent)
+#macro GUI_EXISTS            instance_exists
 
 #macro GUI_BEHAVIOR_COSMETIC        0
 #macro GUI_BEHAVIOR_BUTTON          1

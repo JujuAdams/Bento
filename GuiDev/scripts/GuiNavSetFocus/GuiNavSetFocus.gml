@@ -1,11 +1,11 @@
 // Feather disable all
 
 /// @param state
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiNavSetFocus(_state, _instance = id)
+function GuiNavSetFocus(_state, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {
@@ -62,7 +62,7 @@ function GuiNavSetFocus(_state, _instance = id)
         }
         else
         {
-            __GuiTrace($"{object_get_name(object_index)}:{_instance.id} is not focusable");
+            __GuiTrace($"UI element {_instance.GUI_VARS.__globalIndex} {object_get_name(object_index)} is not focusable");
         }
     }
 }

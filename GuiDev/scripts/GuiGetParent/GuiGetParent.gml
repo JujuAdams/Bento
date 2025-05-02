@@ -6,20 +6,20 @@
 /// returned.
 /// 
 /// @param [depth=1]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiGetParent(_depth = 1, _instance = id)
+function GuiGetParent(_depth = 1, _instance = self)
 {
     if (_depth <= 0) return _instance;
     return __GuiGetParentInner(_depth, _instance);
 }
 
 /// @param [depth=1]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function __GuiGetParentInner(_depth = 1, _instance = id)
+function __GuiGetParentInner(_depth = 1, _instance = self)
 {
-    if (not instance_exists(_instance)) return noone;
+    if (not GUI_EXISTS(_instance)) return noone;
     
     var _parent = _instance.GUI_VARS.__parent;
     if (_depth <= 1) return _parent;

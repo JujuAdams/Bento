@@ -1,10 +1,10 @@
 // Feather disable all
 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiScrollGetParamX(_instance = id)
+function GuiScrollGetParamX(_instance = self)
 {
-    if (not instance_exists(_instance)) return 0;
+    if (not GUI_EXISTS(_instance)) return 0;
     
     with(_instance.GUI_VARS)
     {

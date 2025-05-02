@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiNavToggleFocus(_instance = id)
+function GuiNavToggleFocus(_instance = self)
 {
     GuiNavSetFocus(not GuiNavGetFocus(_instance), _instance);
 }

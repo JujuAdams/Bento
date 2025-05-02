@@ -5,11 +5,11 @@
 /// parent and any children.
 /// 
 /// @param [scrollSpeed]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance = id)
+function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     var _environment = _instance.GUI_VARS.__environment;
     if (_environment.__navPointer)

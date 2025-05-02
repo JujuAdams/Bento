@@ -2,10 +2,10 @@
 
 /// Returns whether the cursor has entered (newly hovered) the instance.
 /// 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiNavGetEnter(_instance = id)
+function GuiNavGetEnter(_instance = self)
 {
-    if (not instance_exists(_instance)) return false;
+    if (not GUI_EXISTS(_instance)) return false;
     return (_instance.GUI_VARS.__overState == GUI_ENTER);
 }

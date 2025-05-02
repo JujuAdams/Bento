@@ -10,5 +10,5 @@ function GuiNameExists(_name, _environment = undefined)
     static _system = __GuiSystem();
     
     _environment ??= _system.__environmentCurrent;
-    return instance_exists(_environment.__nameMap[? _name] ?? noone);
+    return GUI_EXISTS(_environment.__nameMap[? _name] ?? noone);
 }

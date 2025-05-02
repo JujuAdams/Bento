@@ -9,14 +9,14 @@
 /// 
 /// @param object
 /// @param [variableStruct]
-/// @param [parent=id]
+/// @param [parent=self]
 
-function GuiCreate(_object, _struct = undefined, _parent = id)
+function GuiCreateObject(_object, _struct = undefined, _parent = self)
 {
     static _system = __GuiSystem();
     static _emptyStruct = {};
     
-    if (not instance_exists(_parent)) __GuiError("Parent doesn't exist");
+    if (not GUI_EXISTS(_parent)) __GuiError("Parent doesn't exist");
     
     if ((_object != oGuiLibAncestor) && (not object_is_ancestor(_object, oGuiLibAncestor)))
     {

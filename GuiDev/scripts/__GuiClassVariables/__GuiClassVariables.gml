@@ -4,6 +4,14 @@
 
 function __GuiClassVariables(_attachedInstance) constructor
 {
+    static _globalCount = 0;
+    __globalIndex = _globalCount++;
+    
+    if (GUI_RUNNING_FROM_IDE)
+    {
+        global.GuiElementMap[? __globalIndex] = self;
+    }
+    
     __attachedInstance = _attachedInstance;
     
     __environment = undefined;

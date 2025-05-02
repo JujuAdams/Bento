@@ -4,11 +4,11 @@
 /// 
 /// @param tabIdent
 /// @param [blockDirectionalWhenOpen=false]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiTabSetupHost(_tabIdent, _blockDirectionalWhenOpen = false, _instance = id)
+function GuiTabSetupHost(_tabIdent, _blockDirectionalWhenOpen = false, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     if (_tabIdent == undefined)
     {

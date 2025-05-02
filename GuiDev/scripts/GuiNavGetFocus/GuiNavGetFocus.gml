@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiNavGetFocus(_instance = id)
+function GuiNavGetFocus(_instance = self)
 {
-    return instance_exists(_instance)? _instance.GUI_VARS.__focused : false;
+    return GUI_EXISTS(_instance)? _instance.GUI_VARS.__focused : false;
 }

@@ -4,11 +4,11 @@
 /// @param top
 /// @param right
 /// @param bottom
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiScissorSetPadding(_left, _top, _right, _bottom, _instance = id)
+function GuiScissorSetPadding(_left, _top, _right, _bottom, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

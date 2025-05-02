@@ -2,10 +2,10 @@
 
 /// Returns whether the cursor has left (newly un-hovered) the instance.
 /// 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiNavGetLeave(_instance = id)
+function GuiNavGetLeave(_instance = self)
 {
-    if (not instance_exists(_instance)) return false;
+    if (not GUI_EXISTS(_instance)) return false;
     return (_instance.GUI_VARS.__overState == GUI_LEAVE);
 }

@@ -16,11 +16,11 @@ GuiSetBehavior(GUI_BEHAVIOR_BUTTON);
 // raycasting so that it doesn't interfere with scrolling through options.
 GuiNavRaycastSetDisable(true, false);
 
-if (not variable_instance_exists(id, "title"    )) title = "Example";
-if (not variable_instance_exists(id, "valueStep")) valueStep = 1;
-if (not variable_instance_exists(id, "valueMin" )) valueMin = 0;
-if (not variable_instance_exists(id, "valueMax" )) valueMax = 100;
-if (not variable_instance_exists(id, "value"    )) value = valueMax;
-if (not variable_instance_exists(id, "func"     )) func = function(){};
+GuiSetIfNotDefined("title",     "Example");
+GuiSetIfNotDefined("valueStep", 1);
+GuiSetIfNotDefined("valueMin",  0);
+GuiSetIfNotDefined("valueMax",  100);
+GuiSetIfNotDefined("value",     valueMax);
+GuiSetIfNotDefined("func",      function(){});
 
 GuiLayoutSetSize(string_width(title) + 20, string_height(title) + 20);

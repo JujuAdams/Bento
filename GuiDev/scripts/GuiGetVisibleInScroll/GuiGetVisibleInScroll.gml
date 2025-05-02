@@ -1,14 +1,14 @@
 // Feather disable all
 
 /// @param [partial=false]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiGetVisibleInScroll(_partial = false, _instance = id)
+function GuiGetVisibleInScroll(_partial = false, _instance = self)
 {
-    if (not instance_exists(_instance)) return false;
+    if (not GUI_EXISTS(_instance)) return false;
     
     var _result = __GuiGetScrollDelta(_instance);
-    if (not instance_exists(_result.__parent)) return true;
+    if (not GUI_EXISTS(_result.__parent)) return true;
     
     if (_partial || _result.__tooBig)
     {

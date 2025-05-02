@@ -4,7 +4,7 @@
 
 function __GuiMarkTransformAndScrollDirty(_instance)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

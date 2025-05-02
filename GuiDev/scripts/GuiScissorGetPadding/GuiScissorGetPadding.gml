@@ -1,12 +1,12 @@
 // Feather disable all
 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiScissorGetPadding(_instance = id)
+function GuiScissorGetPadding(_instance = self)
 {
     static _result = {};
     
-    if (instance_exists(_instance) && _instance.GUI_VARS.__scissorEnabled)
+    if (GUI_EXISTS(_instance) && _instance.GUI_VARS.__scissorEnabled)
     {
         with(_instance.GUI_VARS)
         {

@@ -30,7 +30,7 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = 
     {
         with(method_get_self(_stepOrder[_i]))
         {
-            if (array_get_index(_excludeArray, id) >= 0)
+            if (array_get_index(_excludeArray, self) >= 0)
             {
                 //Skip this instance
                 continue;
@@ -45,9 +45,9 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = 
                 var _weight = point_distance(_x, _y, _nearestX, _nearestY);
                 if (_weight < _minWeight)
                 {
-                    if (GuiGetHoverable(id, (not instance_exists(_scrollParent)) || (_scrollParent != __GuiScrollFindParent(id))))
+                    if (GuiGetHoverable(self, (not GUI_EXISTS(_scrollParent)) || (_scrollParent != __GuiScrollFindParent(self))))
                     {
-                        _instance = id;
+                        _instance = self;
                         _minWeight = _weight;
                     }
                 }

@@ -2,11 +2,11 @@
 
 /// @param [columns]
 /// @param [rows]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiLayoutSetGridSize(_columns, _rows, _instance = id)
+function GuiLayoutSetGridSize(_columns, _rows, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

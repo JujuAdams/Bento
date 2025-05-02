@@ -14,9 +14,9 @@
 /// .bottom: y-position of the bottom of the bounding box
 /// 
 /// @param [padding=0]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function __GuiGetChildrenBounds(_padding = 0, _instance = id)
+function __GuiGetChildrenBounds(_padding = 0, _instance = self)
 {
     return __GuiGetChildrenBoundsExt(_padding, _padding, _padding, _padding, _instance);
 }

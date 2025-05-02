@@ -3,11 +3,11 @@
 /// Sets up an instance as a tab button in a tab group.
 /// 
 /// @param tabIdent
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiTabSetupButton(_tabIdent, _instance = id)
+function GuiTabSetupButton(_tabIdent, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     if (_tabIdent == undefined)
     {

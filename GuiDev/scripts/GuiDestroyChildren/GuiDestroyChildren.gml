@@ -2,11 +2,11 @@
 
 /// Destroys every child of a parent GUI instance.
 /// 
-/// @param [parent=id]
+/// @param [parent=self]
 
-function GuiDestroyChildren(_parent = id)
+function GuiDestroyChildren(_parent = self)
 {
-    if (not instance_exists(_parent)) return;
+    if (not GUI_EXISTS(_parent)) return;
     
     with(_parent.GUI_VARS)
     {

@@ -8,10 +8,10 @@
 /// an array, this function will return the first instance that gets created.
 /// 
 /// @param json
-/// @param [parentInstance=id]
+/// @param [parentInstance=self]
 /// @param [metadata]
 
-function GuiCreateFromJSON(_json, _parent = id, _metadata = undefined)
+function GuiCreateFromJSON(_json, _parent = self, _metadata = undefined)
 {
     var _firstInstance = undefined;
     
@@ -38,7 +38,7 @@ function GuiCreateFromJSON(_json, _parent = id, _metadata = undefined)
     }
 }
 
-function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
+function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
 {
     if (is_array(_json))
     {
@@ -86,7 +86,7 @@ function __GuiCreateViaJSONInner(_json, _parent = id, _metadata = undefined)
         }
         
         //Create the instance itself
-        var _instance = GuiCreate(_object, _vars, _parent);
+        var _instance = GuiCreateObject(_object, _vars, _parent);
         
         var _behavior = _json[$ "behavior"];
         if (_behavior != undefined)

@@ -7,14 +7,14 @@
 
 function GuiIsAncestor(_ancestor, _child)
 {
-    if (not instance_exists(_ancestor)) return false;
+    if (not GUI_EXISTS(_ancestor)) return false;
     
     return __GuiIsAncestorInner(_ancestor, _child);
 }
 
 function __GuiIsAncestorInner(_ancestor, _child)
 {
-    if (not instance_exists(_child)) return false;
+    if (not GUI_EXISTS(_child)) return false;
     if (_ancestor == _child) return true;
     
     return __GuiIsAncestorInner(_ancestor, _child.GUI_VARS.__parent);

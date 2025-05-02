@@ -2,15 +2,15 @@
 
 /// Sets the priority of an instance to be at the bottom of its siblings.
 /// 
-/// @param [instance=id]
+/// @param [instance=self]
 /// @param [delta=1]
 
-function GuiSetPriorityBottom(_instance = id, _delta = 1)
+function GuiSetPriorityBottom(_instance = self, _delta = 1)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     var _parent = _instance.GUI_VARS.__parent;
-    if (not instance_exists(_parent)) return;
+    if (not GUI_EXISTS(_parent)) return;
     
     var _array = _parent.__childArray;
     var _length = array_length(_array);
@@ -18,7 +18,7 @@ function GuiSetPriorityBottom(_instance = id, _delta = 1)
     var _i = 0;
     repeat(_length)
     {
-        if (instance_exists(_array[_i]))
+        if (GUI_EXISTS(_array[_i]))
         {
             GuiSetPriority(_array[_i].__priority - _delta, _instance);
             return;

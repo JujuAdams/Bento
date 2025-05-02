@@ -2,11 +2,11 @@
 
 /// @param [hAlign]
 /// @param [vAlign]
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = id)
+function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

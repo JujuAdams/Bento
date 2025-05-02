@@ -2,7 +2,7 @@
 
 function TestShrinkAndGrow()
 {
-    with(GuiCreate(oGuiLibList, undefined, GUI_ROOT))
+    with(GuiCreateObject(oGuiLibList, undefined, GUI_ROOT))
     {
         image_blend = c_navy;
         
@@ -12,27 +12,27 @@ function TestShrinkAndGrow()
         GuiLayoutSetPadding(10, 10, 10, 10);
         GuiLayoutSetGutter(10, 10);
         
-        with(GuiCreate(oGuiLibList))
+        with(GuiCreateObject(oGuiLibList))
         {
             image_blend = c_red;
             GuiLayoutSetSize(100, 100);
         }
         
-        with(GuiCreate(oGuiLibList))
+        with(GuiCreateObject(oGuiLibList))
         {
             image_blend = c_yellow;
             GuiLayoutSetSize(100, 50);
             GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
         }
         
-        with(GuiCreate(oGuiLibList))
+        with(GuiCreateObject(oGuiLibList))
         {
             image_blend = c_yellow;
             GuiLayoutSetSize(100, 100);
             GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
         }
         
-        with(GuiCreate(oGuiLibList))
+        with(GuiCreateObject(oGuiLibList))
         {
             image_blend = c_blue;
             GuiLayoutSetSize(100, 100);

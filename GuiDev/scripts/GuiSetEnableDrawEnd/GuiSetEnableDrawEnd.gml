@@ -6,11 +6,11 @@
 /// executed *before* outside child instances.
 /// 
 /// @param state
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiSetEnableDrawEnd(_state, _instance = id)
+function GuiSetEnableDrawEnd(_state, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

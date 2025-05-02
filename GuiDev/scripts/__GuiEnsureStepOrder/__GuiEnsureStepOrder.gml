@@ -72,7 +72,7 @@ function __GuiEnsureStepOrderInner(_environment, _stepOrder, _instance)
         {
             //Store the first pop-up instance we see so we can detect when the user clicks off of
             //the pop-up (which will destroy it)
-            if (not instance_exists(_environment.__popUpRoot)) _environment.__popUpRoot = _instance;
+            if (not GUI_EXISTS(_environment.__popUpRoot)) _environment.__popUpRoot = _instance;
             
             //Pop-ups are not selectable but are still hoverable. This means we need to push them
             //to the Step order

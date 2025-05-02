@@ -3,11 +3,11 @@
 /// Sets the priority for an instance.
 /// 
 /// @param priority
-/// @param [instance=id]
+/// @param [instance=self]
 
-function GuiSetPriority(_priority, _instance = id)
+function GuiSetPriority(_priority, _instance = self)
 {
-    if (not instance_exists(_instance)) return;
+    if (not GUI_EXISTS(_instance)) return;
     
     with(_instance.GUI_VARS)
     {

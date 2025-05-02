@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// @param [instance=id]
+/// @param [instance=self]
 
-function __GuiGetScrollDelta(_instance = id)
+function __GuiGetScrollDelta(_instance = self)
 {
     static _result = {};
     
@@ -11,12 +11,12 @@ function __GuiGetScrollDelta(_instance = id)
     var _parent = noone;
     var _tooBig = false;
     
-    if (instance_exists(_instance))
+    if (GUI_EXISTS(_instance))
     {
         var _instanceGui = _instance.GUI_VARS;
         
         var _parent = __GuiScrollFindParent(_instanceGui.__parent);
-        if (instance_exists(_parent))
+        if (GUI_EXISTS(_parent))
         {
             with(_parent.GUI_VARS)
             {

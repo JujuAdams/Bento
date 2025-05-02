@@ -9,7 +9,7 @@ function __GuiEnsureTransformAndScroll()
     repeat(array_length(_scrollDirtyArray))
     {
         var _instance = _scrollDirtyArray[_i];
-        if (not instance_exists(_instance))
+        if (not GUI_EXISTS(_instance))
         {
             array_delete(_scrollDirtyArray, _i, 1);
         }
@@ -53,10 +53,10 @@ function __GuiEnsureTransformAndScroll()
     while(array_length(_transformAndScrollDirtyArray) > 0)
     {
         var _instance = array_shift(_transformAndScrollDirtyArray);
-        if (instance_exists(_instance))
+        if (GUI_EXISTS(_instance))
         {
             var _parent = _instance.GUI_VARS.__parent;
-            if (not instance_exists(_parent))
+            if (not GUI_EXISTS(_parent))
             {
                 //No parent, probably the root node?
                 __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, 0, 0);

@@ -4,8 +4,8 @@
 /// 
 /// @param [instance]
 
-function GuiNavGetOver(_instance = id)
+function GuiNavGetOver(_instance = self)
 {
-    if (not instance_exists(_instance)) return false;
+    if (not GUI_EXISTS(_instance)) return false;
     return ((_instance.GUI_VARS.__overState == GUI_ENTER) || (_instance.GUI_VARS.__overState == GUI_OVER));
 }
