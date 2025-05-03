@@ -120,7 +120,7 @@ function __GuiClassVariables(_attachedElement) constructor
         });
     }
     
-    __eventScissorPush = method(_attachedElement, __GuiStepMethodScissorPush);
+    __eventScissorPush = method(_attachedElement, __GuiScissorPushFromElement);
     __eventScissorPop  = method(_attachedElement, __GuiScissorPop);
     
     /////////////////////////////////

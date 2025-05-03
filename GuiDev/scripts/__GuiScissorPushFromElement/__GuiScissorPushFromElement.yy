@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiStepMethodScissorPush",
+  "%Name":"__GuiScissorPushFromElement",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiStepMethodScissorPush",
+  "name":"__GuiScissorPushFromElement",
   "parent":{
     "name":"Scissor & Scroll",
     "path":"folders/Library/Functions/(System)/Scissor & Scroll.yy",

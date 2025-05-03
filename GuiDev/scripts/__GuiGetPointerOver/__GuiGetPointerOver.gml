@@ -22,7 +22,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
         var _method = _stepOrder[_i];
         var _methodFunc = method_get_index(_method);
         
-        if (_methodFunc == __GuiStepMethodScissorPush)
+        if (_methodFunc == __GuiScissorPushFromElement)
         {
             //Restore the previous state
             var _bounds = array_pop(_scissorStack);

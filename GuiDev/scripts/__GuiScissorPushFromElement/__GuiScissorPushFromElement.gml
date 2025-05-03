@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __GuiStepMethodScissorPush()
+function __GuiScissorPushFromElement()
 {
     var _guiStruct = GUI_VARS;
     __GuiScissorPush(guiLeft   + _guiStruct.__scissorPadLeft,
