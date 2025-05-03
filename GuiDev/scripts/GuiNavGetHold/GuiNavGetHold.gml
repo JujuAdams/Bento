@@ -2,10 +2,10 @@
 
 /// Returns whether the primary action has been activated and held on the instance.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiNavGetHold(_instance = self)
+function GuiNavGetHold(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return false;
-    return ((_instance.GUI_VARS.__holdState == GUI_ENTER) || (_instance.GUI_VARS.__holdState == GUI_HOLD));
+    if (not GUI_EXISTS(_element)) return false;
+    return ((_element.GUI_VARS.__holdState == GUI_ENTER) || (_element.GUI_VARS.__holdState == GUI_HOLD));
 }

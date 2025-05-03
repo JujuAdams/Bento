@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiUpdateInstanceState",
+  "%Name":"__GuiUpdateElementState",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiUpdateInstanceState",
+  "name":"__GuiUpdateElementState",
   "parent":{
     "name":"(System)",
     "path":"folders/Library/Functions/(System).yy",

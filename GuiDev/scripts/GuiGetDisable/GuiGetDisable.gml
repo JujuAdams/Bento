@@ -2,11 +2,11 @@
 
 /// Returns whether an instance has been disabled by `GuiSetDisable()`.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiGetDisable(_instance = self)
+function GuiGetDisable(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return false;
+    if (not GUI_EXISTS(_element)) return false;
     
-    return _instance.GUI_VARS.__disable;
+    return _element.GUI_VARS.__disable;
 }

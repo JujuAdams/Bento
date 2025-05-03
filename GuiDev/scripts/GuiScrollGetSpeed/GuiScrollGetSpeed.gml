@@ -1,10 +1,10 @@
 // Feather disable all
 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollGetSpeed(_instance = self)
+function GuiScrollGetSpeed(_element = self)
 {
-    var _scroller = __GuiScrollFindParent(_instance);
+    var _scroller = __GuiScrollFindParent(_element);
     if (not GUI_EXISTS(_scroller)) return 0;
     
     with(_scroller.GUI_VARS)

@@ -8,14 +8,14 @@ function __GuiEnsureTransformAndScroll()
     var _i = array_length(_scrollDirtyArray)-1;
     repeat(array_length(_scrollDirtyArray))
     {
-        var _instance = _scrollDirtyArray[_i];
-        if (not GUI_EXISTS(_instance))
+        var _element = _scrollDirtyArray[_i];
+        if (not GUI_EXISTS(_element))
         {
             array_delete(_scrollDirtyArray, _i, 1);
         }
         else
         {
-            with(_instance.GUI_VARS)
+            with(_element.GUI_VARS)
             {
                 var _dX = __scrollTargetX - __scrollX;
                 var _dY = __scrollTargetY - __scrollY;
@@ -33,7 +33,7 @@ function __GuiEnsureTransformAndScroll()
                     __scrollX += _dX;
                     __scrollY += _dY;
                     
-                    __GuiMarkTransformAndScrollDirty(_instance)
+                    __GuiMarkTransformAndScrollDirty(_element)
                 }
             }
         }
@@ -52,34 +52,34 @@ function __GuiEnsureTransformAndScroll()
     
     while(array_length(_transformAndScrollDirtyArray) > 0)
     {
-        var _instance = array_shift(_transformAndScrollDirtyArray);
-        if (GUI_EXISTS(_instance))
+        var _element = array_shift(_transformAndScrollDirtyArray);
+        if (GUI_EXISTS(_element))
         {
-            var _parent = _instance.GUI_VARS.__parent;
+            var _parent = _element.GUI_VARS.__parent;
             if (not GUI_EXISTS(_parent))
             {
                 //No parent, probably the root node?
-                __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, 0, 0);
+                __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _element, 0, 0);
             }
             else
             {
                 with(_parent)
                 {
-                    __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, GUI_VARS.__scrollX, GUI_VARS.__scrollY);
+                    __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _element, GUI_VARS.__scrollX, GUI_VARS.__scrollY);
                 }
             }
         }
     }
 }
 
-function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _instance, _offsetX, _offsetY)
+function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _element, _offsetX, _offsetY)
 {
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         var _width  = __solvedWidth;
         var _height = __solvedHeight;
         
-        var _sprite = _instance.sprite_index;
+        var _sprite = _element.sprite_index;
         var _originX = _width*(sprite_exists(_sprite)? (sprite_get_xoffset(_sprite) / sprite_get_width(_sprite)) : GUI_FALLBACK_ORIGIN_X);
         var _originY = _height*(sprite_exists(_sprite)? (sprite_get_yoffset(_sprite) / sprite_get_height(_sprite)) : GUI_FALLBACK_ORIGIN_Y);
         
@@ -92,7 +92,7 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _inst
         //Ensure the UI element sits inside the root boundary before we transform
         if (__layoutClampInside)
         {
-            var _rootGui    = __layer.__rootInstance.GUI_VARS;
+            var _rootGui    = __layer.__rootElement.GUI_VARS;
             var _rootWidth  = _rootGui.__solvedWidth;
             var _rootHeight = _rootGui.__solvedHeight;
             
@@ -131,7 +131,7 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _inst
         {
             __transformAndScrollDirty = false;
             
-            var _index = array_get_index(_transformAndScrollDirtyArray, _instance);
+            var _index = array_get_index(_transformAndScrollDirtyArray, _element);
             if (_index >= 0) array_delete(_transformAndScrollDirtyArray, _index, 1);
             
             if ((__transformOffsetX != 0) || (__transformOffsetY != 0)
@@ -157,7 +157,7 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _inst
         }
         
         //Set final variables ready for the reposition user event
-        with(_instance)
+        with(_element)
         {
             guiLeft   = _leftWorld;
             guiTop    = _topWorld;

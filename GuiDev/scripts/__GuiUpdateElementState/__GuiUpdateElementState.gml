@@ -4,30 +4,30 @@
 /// 
 /// Must be called in the scope of `__GuiClassLayer`.
 
-function __GuiUpdateInstanceState()
+function __GuiUpdateElementState()
 {
     //Reset instance state for updating instances
-    array_resize(__updateInstanceArray, array_filter_ext(__updateInstanceArray, function(_instance)
+    array_resize(__updateElementArray, array_filter_ext(__updateElementArray, function(_element)
     {
-        if (not GUI_EXISTS(_instance)) return false;
+        if (not GUI_EXISTS(_element)) return false;
         
-        with(_instance.GUI_VARS)
+        with(_element.GUI_VARS)
         {
             var _clickOnPress = (GuiNavUsingDirectional() ||
                                  (GUI_POINTER_CLICK_ON_PRESS
                                && other.__navPointer
-                               && (not GUI_EXISTS(__GuiScrollFindParent(_instance)))));
+                               && (not GUI_EXISTS(__GuiScrollFindParent(_element)))));
             
             __click = false;
             
             //Manage over state
-            if (other.__overInstance == _instance)
+            if (other.__overElement == _element)
             {
                 //System says this instance is hovered
                 
                 if (__overState == GUI_ENTER)
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_instance)}: enter -> over");
+                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: enter -> over");
                     __overState = GUI_OVER;
                 }
                 else if (__overState == GUI_OVER)
@@ -36,7 +36,7 @@ function __GuiUpdateInstanceState()
                 }
                 else
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_instance)}: -> enter");
+                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: -> enter");
                     __overState = GUI_ENTER;
                 }
             }
@@ -50,7 +50,7 @@ function __GuiUpdateInstanceState()
                 }
                 else if (__overState != GUI_OFF)
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_instance)}: over -> leave");
+                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: over -> leave");
                     __overState = GUI_LEAVE;
                 }
             }
@@ -60,10 +60,10 @@ function __GuiUpdateInstanceState()
             {
                 //System says the player has clicked
                 
-                if (GuiNavGetOver(_instance) && (not GuiNavGetHold(_instance)))
+                if (GuiNavGetOver(_element) && (not GuiNavGetHold(_element)))
                 {
                     __holdState = GUI_PRESS;
-                    other.__holdInstance = _instance;
+                    other.__holdElement = _element;
                     
                     //Pass through a click signal to the instance if we're clicking on press
                     if (_clickOnPress) __click = true;
@@ -71,7 +71,7 @@ function __GuiUpdateInstanceState()
             }
             else
             {
-                if ((other.__holdState == GUI_HOLD) && (other.__holdInstance == _instance))
+                if ((other.__holdState == GUI_HOLD) && (other.__holdElement == _element))
                 {
                     //If we're being continuously held move into the HOLD state
                     if (__holdState == GUI_PRESS)
@@ -82,7 +82,7 @@ function __GuiUpdateInstanceState()
                 else
                 {
                     //Unset the system's hold instance if it's us
-                    if (other.__holdInstance == _instance) other.__holdInstance = noone;
+                    if (other.__holdElement == _element) other.__holdElement = noone;
                     
                     if (__holdState == GUI_RELEASE)
                     {
@@ -102,7 +102,7 @@ function __GuiUpdateInstanceState()
                             }
                             else
                             {
-                                if (GuiNavGetOver(_instance)) __click = true;
+                                if (GuiNavGetOver(_element)) __click = true;
                             }
                         }
                     }

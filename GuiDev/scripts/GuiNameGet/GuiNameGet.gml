@@ -2,11 +2,11 @@
 
 /// Returns the name of an instance, as set by `GuiNameSet()`.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiNameGet(_instance = self)
+function GuiNameGet(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return undefined;
+    if (not GUI_EXISTS(_element)) return undefined;
     
-    return _instance.GUI_VARS.__name;
+    return _element.GUI_VARS.__name;
 }

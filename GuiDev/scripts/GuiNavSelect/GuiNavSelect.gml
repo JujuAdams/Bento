@@ -6,13 +6,13 @@
 /// @param instance
 /// @param [layer=current]
 
-function GuiNavSelect(_instance, _layer = undefined)
+function GuiNavSelect(_element, _layer = undefined)
 {
     static _system = __GuiSystem();
     
     with(_layer ?? _system.__layerCurrent)
     {
-        __overInstance     = _instance;
-        __overInstanceSoft = noone;
+        __overElement     = _element;
+        __overElementSoft = noone;
     }
 }

@@ -18,20 +18,20 @@
 /// 
 /// @param [x]
 /// @param [y]
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiTransformSetOffset(_x, _y, _instance = self)
+function GuiTransformSetOffset(_x, _y, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (_x != undefined)
         {
             if (__transformOffsetX != _x)
             {
                 __transformOffsetX = _x;
-                __GuiMarkTransformAndScrollDirty(_instance);
+                __GuiMarkTransformAndScrollDirty(_element);
             }
         }
         
@@ -40,7 +40,7 @@ function GuiTransformSetOffset(_x, _y, _instance = self)
             if (__transformOffsetY != _y)
             {
                 __transformOffsetY = _y;
-                __GuiMarkTransformAndScrollDirty(_instance);
+                __GuiMarkTransformAndScrollDirty(_element);
             }
         }
     }

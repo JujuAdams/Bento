@@ -4,13 +4,13 @@
 /// @param top
 /// @param right
 /// @param bottom
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollSetPadding(_left, _top, _right, _bottom, _instance = self)
+function GuiScrollSetPadding(_left, _top, _right, _bottom, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if ((_left   != __scrollPadLeft)
         ||  (_top    != __scrollPadTop)
@@ -22,7 +22,7 @@ function GuiScrollSetPadding(_left, _top, _right, _bottom, _instance = self)
             __scrollPadRight  = _right;
             __scrollPadBottom = _bottom;
             
-            GuiScrollLimitsMarkDirty(_instance);
+            GuiScrollLimitsMarkDirty(_element);
         }
     }
 }

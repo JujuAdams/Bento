@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// @param [instance=self]
+/// @param [element=self]
 
-function __GuiGetScrollDelta(_instance = self)
+function __GuiGetScrollDelta(_element = self)
 {
     static _result = {};
     
@@ -11,9 +11,9 @@ function __GuiGetScrollDelta(_instance = self)
     var _parent = noone;
     var _tooBig = false;
     
-    if (GUI_EXISTS(_instance))
+    if (GUI_EXISTS(_element))
     {
-        var _instanceGui = _instance.GUI_VARS;
+        var _instanceGui = _element.GUI_VARS;
         
         var _parent = __GuiScrollFindParent(_instanceGui.__parent);
         if (GUI_EXISTS(_parent))
@@ -24,8 +24,8 @@ function __GuiGetScrollDelta(_instance = self)
                 {
                     if (__scrollHori)
                     {
-                        var _instL = _instance.guiLeft  - GUI_SCROLL_TO_PADDING;
-                        var _instR = _instance.guiRight + GUI_SCROLL_TO_PADDING;
+                        var _instL = _element.guiLeft  - GUI_SCROLL_TO_PADDING;
+                        var _instR = _element.guiRight + GUI_SCROLL_TO_PADDING;
                         
                         if (__scissorEnabled)
                         {
@@ -69,8 +69,8 @@ function __GuiGetScrollDelta(_instance = self)
                     
                     if (__scrollVert)
                     {
-                        var _instT = _instance.guiTop    - GUI_SCROLL_TO_PADDING;
-                        var _instB = _instance.guiBottom + GUI_SCROLL_TO_PADDING;
+                        var _instT = _element.guiTop    - GUI_SCROLL_TO_PADDING;
+                        var _instB = _element.guiBottom + GUI_SCROLL_TO_PADDING;
                         
                         if (__scissorEnabled)
                         {

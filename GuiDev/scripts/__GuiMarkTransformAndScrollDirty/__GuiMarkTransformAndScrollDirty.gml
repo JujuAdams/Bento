@@ -2,16 +2,16 @@
 
 /// @param instance
 
-function __GuiMarkTransformAndScrollDirty(_instance)
+function __GuiMarkTransformAndScrollDirty(_element)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (not __transformAndScrollDirty)
         {
             __transformAndScrollDirty = true;
-            array_push(__layer.__transformAndScrollDirtyArray, _instance);
+            array_push(__layer.__transformAndScrollDirtyArray, _element);
         }
     }
 }

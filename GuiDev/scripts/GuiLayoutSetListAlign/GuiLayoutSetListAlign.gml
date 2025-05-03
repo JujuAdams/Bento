@@ -2,13 +2,13 @@
 
 /// @param [horizontal]
 /// @param [vertical]
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiLayoutSetListAlign(_horizontal, _vertical, _instance = self)
+function GuiLayoutSetListAlign(_horizontal, _vertical, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (not variable_struct_exists(self, "__layoutHAlignChildren"))
         {

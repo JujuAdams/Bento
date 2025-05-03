@@ -10,9 +10,9 @@
 
 function GuiNameGetVar(_name, _variableName, _default = undefined)
 {
-    var _instance = GuiNameFind(_name);
-    if (not GUI_EXISTS(_instance)) return _default;
-    if (not variable_instance_exists(_instance, _variableName)) return _default;
+    var _element = GuiNameFind(_name);
+    if (not GUI_EXISTS(_element)) return _default;
+    if (not variable_instance_exists(_element, _variableName)) return _default;
     
-    return variable_instance_get(_instance, _variableName);
+    return variable_instance_get(_element, _variableName);
 }

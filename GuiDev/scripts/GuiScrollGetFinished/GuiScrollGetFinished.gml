@@ -1,10 +1,10 @@
 // Feather disable all
 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollGetFinished(_instance = self)
+function GuiScrollGetFinished(_element = self)
 {
-    var _scroller = __GuiScrollFindParent(_instance);
+    var _scroller = __GuiScrollFindParent(_element);
     if (not GUI_EXISTS(_scroller)) return false;
     
     with(_scroller.GUI_VARS)

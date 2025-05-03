@@ -4,32 +4,32 @@
 /// 
 /// @param instance
 
-function __GuiNavStartOver(_instance)
+function __GuiNavStartOver(_element)
 {
-    if (GUI_EXISTS(_instance))
+    if (GUI_EXISTS(_element))
     {
         if (__navMode == GUI_NAV_DIRECTIONAL)
         {
-            __directionalLastX = _instance.x;
-            __directionalLastY = _instance.y;
-            GuiScrollTo(undefined, _instance);
+            __directionalLastX = _element.x;
+            __directionalLastY = _element.y;
+            GuiScrollTo(undefined, _element);
         }
         
-        __overInstance = _instance;
+        __overElement = _element;
         
-        with(_instance.GUI_VARS)
+        with(_element.GUI_VARS)
         {
             if (not __updating)
             {
                 __updating = true;
-                array_push(__layer.__updateInstanceArray, _instance)
+                array_push(__layer.__updateElementArray, _element)
             }
         }
     }
     else
     {
-        __overInstance = noone;
+        __overElement = noone;
     }
     
-    __overInstanceSoft = noone;
+    __overElementSoft = noone;
 }

@@ -10,15 +10,15 @@
 /// @param barSprite
 /// @param handleSprite
 /// @param handlePadding
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollDrawHoriSprite(_left, _top, _right, _bottom, _barSprite, _handleSprite, _handlePadding, _instance = self)
+function GuiScrollDrawHoriSprite(_left, _top, _right, _bottom, _barSprite, _handleSprite, _handlePadding, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
-        if (not _instance.__scrollHori) return;
+        if (not _element.__scrollHori) return;
         
         var _scrollSize = __scrollMaxX - __scrollMinX;
         if (_scrollSize <= 0) return;

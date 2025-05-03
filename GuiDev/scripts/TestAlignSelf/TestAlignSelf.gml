@@ -65,5 +65,5 @@ function TestAlignSelf()
         ],
     };
     
-    gridInstance = GuiCreateFromJSON(_json, GUI_ROOT, { count: 11 });
+    gridElement = GuiCreateFromJSON(_json, GUI_ROOT, { count: 11 });
 }

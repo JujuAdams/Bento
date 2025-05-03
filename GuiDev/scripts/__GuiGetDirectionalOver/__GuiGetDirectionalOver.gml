@@ -8,96 +8,96 @@
 /// @param dX
 /// @param dY
 
-function __GuiGetDirectionalOver(_prevInstance, _dX, _dY)
+function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
 {
     static _excludeArray = [];
     
-    _excludeArray[0] = _prevInstance;
-    var _nextInstance = noone;
+    _excludeArray[0] = _prevElement;
+    var _nextElement = noone;
     
-    if (not GuiGetHoverable(_prevInstance, false))
+    if (not GuiGetHoverable(_prevElement, false))
     {
         //The instance we were previously highlighting is no longer valid (see GuiGetHoverable())
         
-        if (GuiGetHoverable(__overInstanceSoft, false))
+        if (GuiGetHoverable(__overElementSoft, false))
         {
             //Choose the soft selection if possible
-            _nextInstance = __overInstanceSoft;
+            _nextElement = __overElementSoft;
         }
         else
         {
             //Otherwise fall back on searching for the nearest selectable instance
-            _nextInstance = GuiNavGetNearest(__directionalLastX, __directionalLastY, _excludeArray);
+            _nextElement = GuiNavGetNearest(__directionalLastX, __directionalLastY, _excludeArray);
         }
     }
     else
     {
-        var _prevGui = _prevInstance.GUI_VARS;
+        var _prevGui = _prevElement.GUI_VARS;
         
         //Previously selected instance is valid, process navigation
         if ((_dX == 0) && (_dY == 0))
         {
             //No movement, keep the same instance we had before
-            _nextInstance = _prevInstance;
+            _nextElement = _prevElement;
         }
         else
         {
             //Don't allow selection of the next instance if we're not visible
-            if (not GuiGetVisibleInScroll(false, _prevInstance))
+            if (not GuiGetVisibleInScroll(false, _prevElement))
             {
-                GuiScrollTo(GuiScrollGetSpeed(_prevInstance), _prevInstance);
-                return _prevInstance;
+                GuiScrollTo(GuiScrollGetSpeed(_prevElement), _prevElement);
+                return _prevElement;
             }
             
             //Choose a predefined navigable instance if possible
             if (_dX < 0)
             {
-                _nextInstance = _prevGui.__navLeft;
+                _nextElement = _prevGui.__navLeft;
             }
             else if (_dX > 0)
             {
-                _nextInstance = _prevGui.__navRight;
+                _nextElement = _prevGui.__navRight;
             }
             else if (_dY < 0)
             {
-                _nextInstance = _prevGui.__navUp;
+                _nextElement = _prevGui.__navUp;
             }
             else if (_dY > 0)
             {
-                _nextInstance = _prevGui.__navDown;
+                _nextElement = _prevGui.__navDown;
             }
             
             //Only check if the next instance is properly visible if it's nested inside a different scroller to
             //the previous instance. This ensures non-visible instances never get selected but that it's possible
             //to navigate to visually hidden instances inside the scroller.
-            var _prevScrollParent = __GuiScrollFindParent(_prevInstance);
-            if (not GuiGetHoverable(_nextInstance, (_prevScrollParent != __GuiScrollFindParent(_nextInstance))))
+            var _prevScrollParent = __GuiScrollFindParent(_prevElement);
+            if (not GuiGetHoverable(_nextElement, (_prevScrollParent != __GuiScrollFindParent(_nextElement))))
             {
-                _nextInstance = noone;
+                _nextElement = noone;
             }
             
-            if (not GUI_EXISTS(_nextInstance))
+            if (not GUI_EXISTS(_nextElement))
             {
                 //If the navigation instance isn't selectable then fall back on a raycast
                 
                 if (((_dX != 0) && _prevGui.__raycastDisableHori) || ((_dY != 0) && _prevGui.__raycastDisableVert))
                 {
                     //Raycast is disabled for the previous instance!
-                    _nextInstance = _prevInstance;
+                    _nextElement = _prevElement;
                 }
                 else
                 {
-                    _nextInstance = GuiNavGetRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
+                    _nextElement = GuiNavGetRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
                     
-                    if (not GUI_EXISTS(_nextInstance))
+                    if (not GUI_EXISTS(_nextElement))
                     {
                         //Raycast failed, no new instance can be selected
-                        _nextInstance = _prevInstance;
+                        _nextElement = _prevElement;
                     }
                 }
             }
         }
     }
     
-    return _nextInstance;
+    return _nextElement;
 }

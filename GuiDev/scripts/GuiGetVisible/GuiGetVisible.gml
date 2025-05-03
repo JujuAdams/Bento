@@ -1,10 +1,10 @@
 // Feather disable all
 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiGetVisible(_instance = self)
+function GuiGetVisible(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return false;
+    if (not GUI_EXISTS(_element)) return false;
     
-    return _instance.GUI_VARS.__visible;
+    return _element.GUI_VARS.__visible;
 }

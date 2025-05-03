@@ -1,12 +1,12 @@
 // Feather disable all
 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollGetParamX(_instance = self)
+function GuiScrollGetParamX(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return 0;
+    if (not GUI_EXISTS(_element)) return 0;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         return 1 - clamp((__scrollX - __scrollMinX) / max(0.0001, __scrollMaxX - __scrollMinX), 0, 1);
     }

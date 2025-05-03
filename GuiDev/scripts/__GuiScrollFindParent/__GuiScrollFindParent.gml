@@ -4,12 +4,12 @@
 /// 
 /// @param instance
 
-function __GuiScrollFindParent(_instance)
+function __GuiScrollFindParent(_element)
 {
-    if (not GUI_EXISTS(_instance)) return noone;
+    if (not GUI_EXISTS(_element)) return noone;
     
-    var _guiVars = _instance.GUI_VARS;
-    if (_guiVars.__scrollHori || _guiVars.__scrollVert) return _instance;
+    var _guiVars = _element.GUI_VARS;
+    if (_guiVars.__scrollHori || _guiVars.__scrollVert) return _element;
     
     return __GuiScrollFindParent(_guiVars.__parent);
 }

@@ -18,20 +18,20 @@
 /// 
 /// @param [xScale]
 /// @param [yScale]
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiTransformSetScale(_xScale, _yScale, _instance = self)
+function GuiTransformSetScale(_xScale, _yScale, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (_xScale != undefined)
         {
             if (__transformScaleX != _xScale)
             {
                 __transformScaleX = _xScale;
-                __GuiMarkTransformAndScrollDirty(_instance);
+                __GuiMarkTransformAndScrollDirty(_element);
             }
         }
         
@@ -40,7 +40,7 @@ function GuiTransformSetScale(_xScale, _yScale, _instance = self)
             if (__transformScaleY != _yScale)
             {
                 __transformScaleY = _yScale;
-                __GuiMarkTransformAndScrollDirty(_instance);
+                __GuiMarkTransformAndScrollDirty(_element);
             }
         }
     }

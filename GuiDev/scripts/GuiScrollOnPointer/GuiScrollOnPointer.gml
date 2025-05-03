@@ -5,21 +5,21 @@
 /// parent and any children.
 /// 
 /// @param [scrollSpeed]
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance = self)
+function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    var _layer = _instance.GUI_VARS.__layer;
+    var _layer = _element.GUI_VARS.__layer;
     if (_layer.__navPointer)
     {
-        if ((GUI_SCROLL_ON_MOUSE_DRAG || (_layer.__navMode == GUI_NAV_TOUCH)) && GuiNavGetHold(_instance))
+        if ((GUI_SCROLL_ON_MOUSE_DRAG || (_layer.__navMode == GUI_NAV_TOUCH)) && GuiNavGetHold(_element))
         {
             if (GuiNavGetDragDistance() > GUI_SCROLL_THRESHOLD)
             {
-                var _parent = __GuiScrollFindParent(_instance);
-                if (_instance == _parent)
+                var _parent = __GuiScrollFindParent(_element);
+                if (_element == _parent)
                 {
                     GuiScrollMove(GuiNavGetDX(), GuiNavGetDY(), infinity, _parent);
                 }
@@ -29,7 +29,7 @@ function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance =
                 }
             }
         }
-        else if (GuiNavGetOver(_instance))
+        else if (GuiNavGetOver(_element))
         {
             //Mouse wheel input can be pretty noisy so we filter out as much as possible
             
@@ -48,7 +48,7 @@ function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _instance =
                 _dY -= GUI_MOUSE_WHEEL_SCROLL_SPEED;
             }
             
-            GuiScrollMove(_dX, _dY, _scrollSpeed, _instance);
+            GuiScrollMove(_dX, _dY, _scrollSpeed, _element);
         }
     }
 }

@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScissorGetEnabled(_instance = self)
+function GuiScissorGetEnabled(_element = self)
 {
-    return GUI_EXISTS(_instance)? _instance.GUI_VARS.__scissorEnabled : false;
+    return GUI_EXISTS(_element)? _element.GUI_VARS.__scissorEnabled : false;
 }

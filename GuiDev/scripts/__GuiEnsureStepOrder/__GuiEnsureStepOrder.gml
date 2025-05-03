@@ -15,14 +15,14 @@ function __GuiEnsureStepOrder()
     __popUpRoot = noone;
     
     __GuiEnsureChildOrder();
-    __GuiEnsureStepOrderInner(self, __stepOrder, (__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? __rootInstance) : __rootInstance);
+    __GuiEnsureStepOrderInner(self, __stepOrder, (__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? __rootElement) : __rootElement);
     
     return __stepOrder;
 }
 
-function __GuiEnsureStepOrderInner(_layer, _stepOrder, _instance)
+function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
 {
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (__disable) return __GUI_RETURN_NORMAL;
         
@@ -33,7 +33,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _instance)
         {
             if (__scissorEnabled)
             {
-                array_insert(_stepOrder, 0, method(_instance, __GuiStepMethodScissorPush));
+                array_insert(_stepOrder, 0, method(_element, __GuiStepMethodScissorPush));
             }
             
             //Add children created inside the parent to the Step order. If we encounter a blocking
@@ -50,33 +50,33 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _instance)
             
             if (__scissorEnabled)
             {
-                array_insert(_stepOrder, 0, method(_instance, __GuiScissorPop));
+                array_insert(_stepOrder, 0, method(_element, __GuiScissorPop));
             }
         }
         
         if ((__behavior == GUI_BEHAVIOR_BUTTON) || (__behavior == GUI_BEHAVIOR_LISTENER))
         {
-            array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
+            array_insert(_stepOrder, 0, method(_element, __GuiStepMethod));
         }
         else if (__behavior == GUI_BEHAVIOR_MODAL)
         {
-            array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
+            array_insert(_stepOrder, 0, method(_element, __GuiStepMethod));
             return __GUI_RETURN_MODAL;
         }
         else if (__behavior == GUI_BEHAVIOR_BLOCK_SIBLINGS)
         {
-            array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
+            array_insert(_stepOrder, 0, method(_element, __GuiStepMethod));
             return __GUI_RETURN_BLOCK_SIBLINGS;
         }
         else if (__behavior == GUI_BEHAVIOR_POP_UP)
         {
             //Store the first pop-up instance we see so we can detect when the user clicks off of
             //the pop-up (which will destroy it)
-            if (not GUI_EXISTS(_layer.__popUpRoot)) _layer.__popUpRoot = _instance;
+            if (not GUI_EXISTS(_layer.__popUpRoot)) _layer.__popUpRoot = _element;
             
             //Pop-ups are not selectable but are still hoverable. This means we need to push them
             //to the Step order
-            array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
+            array_insert(_stepOrder, 0, method(_element, __GuiStepMethod));
             
             if (not GUI_POP_UP_CLICK_THROUGH)
             {
@@ -90,7 +90,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _instance)
             
             if (__scissorEnabled)
             {
-                array_insert(_stepOrder, 0, method(_instance, __GuiStepMethod));
+                array_insert(_stepOrder, 0, method(_element, __GuiStepMethod));
             }
         }
     }

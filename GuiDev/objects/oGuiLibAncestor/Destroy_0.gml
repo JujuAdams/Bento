@@ -20,8 +20,8 @@ with(GUI_VARS)
         __stepDirty   = true;
         __drawDirty   = true;
         
-        var _instance = __nameMap[? other.__name];
-        if (_instance == _self) ds_map_delete(__nameMap, other.__name);
+        var _element = __nameMap[? other.__name];
+        if (_element == _self) ds_map_delete(__nameMap, other.__name);
         
         if (__popUpRoot == _self) __popUpRoot = noone;
     }

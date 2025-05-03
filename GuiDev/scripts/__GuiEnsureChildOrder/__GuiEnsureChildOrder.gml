@@ -4,7 +4,7 @@
 
 function __GuiEnsureChildOrder()
 {
-    static _funcForEach = function(_instance)
+    static _funcForEach = function(_element)
     {
         static _funcSort = function(_a, _b)
         {
@@ -27,7 +27,7 @@ function __GuiEnsureChildOrder()
             }
         }
         
-        with(_instance.GUI_VARS)
+        with(_element.GUI_VARS)
         {
             if (__childOrderDirty)
             {

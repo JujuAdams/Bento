@@ -17,17 +17,17 @@
 /// @param padTop
 /// @param padRight
 /// @param padBottom
-/// @param [instance=self]
+/// @param [element=self]
 
-function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _instance = self)
+function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _element = self)
 {
     static _result = {};
     
     var _empty = true;
     
-    if (GUI_EXISTS(_instance))
+    if (GUI_EXISTS(_element))
     {
-        with(_instance.GUI_VARS)
+        with(_element.GUI_VARS)
         {
             var _childArray = __childArray;
             if (array_length(_childArray) > 0)

@@ -5,13 +5,13 @@
 /// Disabled instance will still affect layouts, however.
 /// 
 /// @param state
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiSetDisable(_state, _instance = self)
+function GuiSetDisable(_state, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (__disable == _state) return;
         __disable = _state;

@@ -15,7 +15,7 @@ function __GuiClassLayer(_environment, _name) constructor
     ////////
     
     __frozen = false;
-    __rootInstance = noone;
+    __rootElement = noone;
     
     ////////
     // Set up a default navigation mode for convenience
@@ -88,15 +88,15 @@ function __GuiClassLayer(_environment, _name) constructor
     
     __dirtyScrollLimitsArray = [];
     
-    __overInstance     = noone;
-    __overInstanceSoft = noone;
-    __holdState        = GUI_OFF;
-    __holdInstance     = noone;
-    __popUpRoot        = noone;
+    __overElement     = noone;
+    __overElementSoft = noone;
+    __holdState       = GUI_OFF;
+    __holdElement     = noone;
+    __popUpRoot       = noone;
     
     __primaryConsumed = false;
     
-    __updateInstanceArray = [];
+    __updateElementArray = [];
     
     __nameMap = ds_map_create();
     
@@ -106,7 +106,7 @@ function __GuiClassLayer(_environment, _name) constructor
     
     static __Destroy = function()
     {
-        instance_destroy(__rootInstance);
+        instance_destroy(__rootElement);
         __environment.__RemoveLayer(self);
     }
     
@@ -187,7 +187,7 @@ function __GuiClassLayer(_environment, _name) constructor
         ///////
         
         //Ensure our root instance is the same size as the overall GUI space
-        GuiLayoutSetSize(_rootWidth, _rootHeight, __rootInstance);
+        GuiLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
         
         //Keep our layout and step order updated as necessary
         __GuiEnsureLayout();
@@ -212,8 +212,8 @@ function __GuiClassLayer(_environment, _name) constructor
                     __holdState = (__directionalHold? GUI_PRESS : GUI_OFF);
                 }
                 
-                if (not GuiGetHoverable(__holdInstance, false)) __holdInstance = noone;
-                __GuiNavStartOver(__GuiGetDirectionalOver(__overInstance, __directionalStateX.__output, __directionalStateY.__output));
+                if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
+                __GuiNavStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
             }
             else //Using a pointer
             {
@@ -226,14 +226,14 @@ function __GuiClassLayer(_environment, _name) constructor
                     __holdState = (__mouseHold? GUI_PRESS : GUI_OFF);
                 }
                 
-                if (not GuiGetHoverable(__holdInstance, false)) __holdInstance = noone;
+                if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
                 __GuiNavStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
                 
                 //Detect clicking off of a pop-up
                 if ((__holdState == GUI_PRESS)
                 &&  GUI_EXISTS(__popUpRoot)
-                &&  (__popUpRoot != __overInstance) //Don't destroy a pop-up if we're hovering directly over it
-                &&  (not GuiIsAncestor(__popUpRoot, __overInstance))) //Also don't destroy if we're hovering over a child of the pop-up
+                &&  (__popUpRoot != __overElement) //Don't destroy a pop-up if we're hovering directly over it
+                &&  (not GuiIsAncestor(__popUpRoot, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
                 {
                     GuiDestroy(__popUpRoot);
                     if (not GUI_POP_UP_CLICK_THROUGH) __holdState = GUI_OFF;
@@ -245,7 +245,7 @@ function __GuiClassLayer(_environment, _name) constructor
                 __primaryConsumed = false;
             }
             
-            __GuiUpdateInstanceState();
+            __GuiUpdateElementState();
         }
         
         ///////

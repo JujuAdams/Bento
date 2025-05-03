@@ -7,15 +7,15 @@
 /// @param top
 /// @param right
 /// @param bottom
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollDrawVert(_left, _top, _right, _bottom, _instance = self)
+function GuiScrollDrawVert(_left, _top, _right, _bottom, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
-        if (not _instance.__scrollVert) return;
+        if (not _element.__scrollVert) return;
         
         var _scrollSize = __scrollMaxY - __scrollMinY;
         if (_scrollSize <= 0) return;

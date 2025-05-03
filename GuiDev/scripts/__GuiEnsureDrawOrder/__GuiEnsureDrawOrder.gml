@@ -13,7 +13,7 @@ function __GuiEnsureDrawOrder()
     __drawDirty = false;
     
     __GuiEnsureChildOrder();
-    __GuiEnsureDrawOrderInner(__drawOrder, __rootInstance);
+    __GuiEnsureDrawOrderInner(__drawOrder, __rootElement);
 }
 
 #macro __GUI_DRAW_ORDER_DRAW_END  1
@@ -21,9 +21,9 @@ function __GuiEnsureDrawOrder()
 #macro __GUI_DRAW_ORDER_SCISSOR   4
 #macro __GUI_DRAW_ORDER_MATRIX    8
 
-function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
+function __GuiEnsureDrawOrderInner(_drawOrder, _element)
 {
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (__disable) return;
         
@@ -40,7 +40,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         
         //Find a Draw End function for the lookup index
         var _function = _functionLookupArray[_lookup | __GUI_DRAW_ORDER_DRAW_END];
-        if (_function != undefined)  array_insert(_drawOrder, 0, method(_instance, _function));
+        if (_function != undefined)  array_insert(_drawOrder, 0, method(_element, _function));
         
         //Add children created inside the parent to the Draw order
         var _array = __childArray;
@@ -53,7 +53,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         
         //Find a Draw function for the lookup index
         var _function = _functionLookupArray[_lookup];
-        if (_function != undefined)  array_insert(_drawOrder, 0, method(_instance, _function));
+        if (_function != undefined)  array_insert(_drawOrder, 0, method(_element, _function));
         
         //If we're a blocker, nope out
         if (__behavior == GUI_BEHAVIOR_BLOCK_SIBLINGS)
@@ -72,7 +72,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         
         _array[__GUI_DRAW_ORDER_SCISSOR] = function()
         {
-            __GuiScissorPushFromInstance();
+            __GuiScissorPushFromElement();
         }
         
         _array[__GUI_DRAW_ORDER_MATRIX] = function()
@@ -85,7 +85,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         {
             matrix_stack_push(GUI_VARS.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
-            __GuiScissorPushFromInstance();
+            __GuiScissorPushFromElement();
         }
         
         _array[__GUI_DRAW_ORDER_VISIBLE] = function()
@@ -96,7 +96,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR] = function()
         {
             event_user(GUI_USER_EVENT_DRAW);
-            __GuiScissorPushFromInstance();
+            __GuiScissorPushFromElement();
         }
         
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_MATRIX] = function()
@@ -116,7 +116,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _instance)
             matrix_stack_push(GUI_VARS.__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             event_user(GUI_USER_EVENT_DRAW);
-            __GuiScissorPushFromInstance();
+            __GuiScissorPushFromElement();
         }
         
         _array[__GUI_DRAW_ORDER_DRAW_END] = undefined;

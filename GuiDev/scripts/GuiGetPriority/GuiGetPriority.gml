@@ -2,11 +2,11 @@
 
 /// Returns the priority for an instance.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiGetPriority(_instance = self)
+function GuiGetPriority(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return 0;
+    if (not GUI_EXISTS(_element)) return 0;
     
-    return _instance.GUI_VARS.__priority;
+    return _element.GUI_VARS.__priority;
 }

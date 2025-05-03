@@ -21,20 +21,20 @@
 /// 
 /// @param x
 /// @param y
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiTransformSetOrigin(_x, _y, _instance = self)
+function GuiTransformSetOrigin(_x, _y, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (_x != undefined)
         {
             if (__transformOriginX != _x)
             {
                 __transformOriginX = _x;
-                __GuiMarkTransformAndScrollDirty(_instance);
+                __GuiMarkTransformAndScrollDirty(_element);
             }
         }
         
@@ -43,7 +43,7 @@ function GuiTransformSetOrigin(_x, _y, _instance = self)
             if (__transformOriginY != _y)
             {
                 __transformOriginY = _y;
-                __GuiMarkTransformAndScrollDirty(_instance);
+                __GuiMarkTransformAndScrollDirty(_element);
             }
         }
     }

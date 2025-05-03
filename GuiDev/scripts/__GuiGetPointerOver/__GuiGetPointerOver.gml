@@ -12,9 +12,9 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     var _scissorB      =  infinity;
     var _insideScissor =  true;
     
-    var _instance = noone;
+    var _element = noone;
     
-    var _holdInstance = __holdInstance;
+    var _holdElement = __holdElement;
     var _stepOrder = __stepOrder;
     var _i = 0;
     repeat(array_length(_stepOrder))
@@ -28,9 +28,9 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
             {
                 with(method_get_self(_stepOrder[_i]))
                 {
-                    if (((not GUI_EXISTS(_holdInstance)) || (_holdInstance == self)) && instance_position(_mouseX, _mouseY, self))
+                    if (((not GUI_EXISTS(_holdElement)) || (_holdElement == self)) && instance_position(_mouseX, _mouseY, self))
                     {
-                        _instance = self;
+                        _element = self;
                     }
                 }
             }
@@ -72,5 +72,5 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
         ++_i;
     }
     
-    return _instance;
+    return _element;
 }

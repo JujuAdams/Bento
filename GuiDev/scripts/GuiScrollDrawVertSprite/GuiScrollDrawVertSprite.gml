@@ -10,15 +10,15 @@
 /// @param barSprite
 /// @param handleSprite
 /// @param handlePadding
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollDrawVertSprite(_left, _top, _right, _bottom, _barSprite, _handleSprite, _handlePadding, _instance = self)
+function GuiScrollDrawVertSprite(_left, _top, _right, _bottom, _barSprite, _handleSprite, _handlePadding, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
-        if (not _instance.__scrollVert) return;
+        if (not _element.__scrollVert) return;
         
         var _scrollSize = __scrollMaxY - __scrollMinY;
         if (_scrollSize <= 0) return;

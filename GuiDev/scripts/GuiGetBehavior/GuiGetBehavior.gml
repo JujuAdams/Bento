@@ -3,11 +3,11 @@
 /// Returns the behavior set for a GUI instance. For more information, please see the setter
 /// function `GuiSetBehavior()`.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiGetBehavior(_instance = self)
+function GuiGetBehavior(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return undefined;
+    if (not GUI_EXISTS(_element)) return undefined;
     
-    return _instance.GUI_VARS.__behavior;
+    return _element.GUI_VARS.__behavior;
 }

@@ -8,8 +8,8 @@
 /// 
 /// @param [instance]
 
-function GuiNavGetPress(_instance = self)
+function GuiNavGetPress(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return false;
-    return (_instance.GUI_VARS.__holdState == GUI_PRESS);
+    if (not GUI_EXISTS(_element)) return false;
+    return (_element.GUI_VARS.__holdState == GUI_PRESS);
 }

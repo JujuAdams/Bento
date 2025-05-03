@@ -2,13 +2,13 @@
 
 /// Returns whether the instance has been clicked.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiNavGetClick(_instance = self)
+function GuiNavGetClick(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return false;
+    if (not GUI_EXISTS(_element)) return false;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         return __layer.__primaryConsumed? false : __click;
     }

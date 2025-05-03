@@ -2,13 +2,13 @@
 
 /// @param horizontal
 /// @param vertical
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollSetEnabled(_horizontal, _vertical, _instance = self)
+function GuiScrollSetEnabled(_horizontal, _vertical, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if ((__scrollHori != _horizontal) || (__scrollVert != _vertical))
         {
@@ -27,7 +27,7 @@ function GuiScrollSetEnabled(_horizontal, _vertical, _instance = self)
                 GuiSetIfNotDefined("__scrollSpeed",     infinity);
             }
             
-            GuiScrollLimitsMarkDirty(_instance);
+            GuiScrollLimitsMarkDirty(_element);
         }
     }
 }

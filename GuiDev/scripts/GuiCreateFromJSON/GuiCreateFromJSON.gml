@@ -13,24 +13,24 @@
 
 function GuiCreateFromJSON(_json, _parent = self, _metadata = undefined)
 {
-    var _firstInstance = undefined;
+    var _firstElement = undefined;
     
     if (is_array(_json))
     {
         var _i = 0;
         repeat(array_length(_json))
         {
-            var _instance = __GuiCreateViaJSONInner(_json[_i], _parent, _metadata);
+            var _element = __GuiCreateViaJSONInner(_json[_i], _parent, _metadata);
             
-            if (_firstInstance == undefined)
+            if (_firstElement == undefined)
             {
-                _firstInstance = _instance;
+                _firstElement = _element;
             }
             
             ++_i;
         }
         
-        return _firstInstance;
+        return _firstElement;
     }
     else
     {
@@ -86,18 +86,18 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
         }
         
         //Create the instance itself
-        var _instance = GuiCreateObject(_object, _vars, _parent);
+        var _element = GuiCreateObject(_object, _vars, _parent);
         
         var _behavior = _json[$ "behavior"];
         if (_behavior != undefined)
         {
-            GuiSetBehavior(_behavior, _instance);
+            GuiSetBehavior(_behavior, _element);
         }
         
         var _visible = _json[$ "visible"];
         if (_visible != undefined)
         {
-            GuiSetVisible(_visible, _instance);
+            GuiSetVisible(_visible, _element);
         }
         
         //Name the instance
@@ -116,7 +116,7 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
             
             if (is_string(_name))
             {
-                GuiNameSet(_name, _instance);
+                GuiNameSet(_name, _element);
             }
             else
             {
@@ -133,7 +133,7 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
                 __GuiError($".layout property is incorrect datatype, must be a struct (was \"{typeof(_json)}\")");
             }
             
-            GuiLayoutSetFromJSON(_layout, _instance);
+            GuiLayoutSetFromJSON(_layout, _element);
         }
         
         var _children = _json[$ "children"];
@@ -168,7 +168,7 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
             }
             else
             {
-                __GuiCreateViaJSONInner(_children, _instance, _metadata);
+                __GuiCreateViaJSONInner(_children, _element, _metadata);
             }
         }
         
@@ -190,11 +190,11 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
                     
                     if (_name == "enabled")
                     {
-                        __GuiJSONScissor_enabled(_instance, _value);
+                        __GuiJSONScissor_enabled(_element, _value);
                     }
                     else if (_name == "padding")
                     {
-                        __GuiJSONScissor_padding(_instance, _value);
+                        __GuiJSONScissor_padding(_element, _value);
                     }
                     else
                     {
@@ -224,11 +224,11 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
                     
                     if (_name == "enabled")
                     {
-                        __GuiJSONScroll_enabled(_instance, _value);
+                        __GuiJSONScroll_enabled(_element, _value);
                     }
                     else if (_name == "padding")
                     {
-                        __GuiJSONScroll_padding(_instance, _value);
+                        __GuiJSONScroll_padding(_element, _value);
                     }
                     else
                     {
@@ -240,7 +240,7 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
             }
         }
         
-        return _instance;
+        return _element;
     }
     else
     {
@@ -253,11 +253,11 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
 ////////
 // .enabled
 ////////
-function __GuiJSONScissor_enabled(_instance, _value)
+function __GuiJSONScissor_enabled(_element, _value)
 {
     if (is_bool(_value))
     {
-        GuiScissorSetEnabled(_value, _instance);
+        GuiScissorSetEnabled(_value, _element);
     }
     else
     {
@@ -270,11 +270,11 @@ function __GuiJSONScissor_enabled(_instance, _value)
 ////////
 // .padding
 ////////
-function __GuiJSONScissor_padding(_instance, _value)
+function __GuiJSONScissor_padding(_element, _value)
 {
     if (is_numeric(_value))
     {
-        GuiScissorSetPadding(_value, _value, _value, _value, _instance);
+        GuiScissorSetPadding(_value, _value, _value, _value, _element);
     }
     else if (is_array(_value))
     {
@@ -283,7 +283,7 @@ function __GuiJSONScissor_padding(_instance, _value)
             __GuiError($".padding scissor property must have 4 elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiScissorSetPadding(_value[0], _value[1], _value[2], _value[3], _instance);
+        GuiScissorSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
     }
     else if (is_struct(_value))
     {
@@ -291,7 +291,7 @@ function __GuiJSONScissor_padding(_instance, _value)
                              _value[$ "t"] ?? _value[$ "top"],
                              _value[$ "r"] ?? _value[$ "right"],
                              _value[$ "b"] ?? _value[$ "bottom"],
-                             _instance);
+                             _element);
     }
     else
     {
@@ -304,7 +304,7 @@ function __GuiJSONScissor_padding(_instance, _value)
 ////////
 // .enabled
 ////////
-function __GuiJSONScroll_enabled(_instance, _value)
+function __GuiJSONScroll_enabled(_element, _value)
 {
     if (is_array(_value))
     {
@@ -313,13 +313,13 @@ function __GuiJSONScroll_enabled(_instance, _value)
             __GuiError($".padding scroll property must have 2 elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiScrollSetEnabled(_value[0], _value[1], _instance);
+        GuiScrollSetEnabled(_value[0], _value[1], _element);
     }
     else if (is_struct(_value))
     {
         GuiScrollSetEnabled(_value[$ "h"] ?? _value[$ "x"],
                             _value[$ "v"] ?? _value[$ "y"],
-                            _instance);
+                            _element);
     }
     else
     {
@@ -332,7 +332,7 @@ function __GuiJSONScroll_enabled(_instance, _value)
 ////////
 // .padding
 ////////
-function __GuiJSONScroll_padding(_instance, _value)
+function __GuiJSONScroll_padding(_element, _value)
 {
     if (is_array(_value))
     {
@@ -341,7 +341,7 @@ function __GuiJSONScroll_padding(_instance, _value)
             __GuiError($".padding scroll property must have 4 elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiScissorSetPadding(_value[0], _value[1], _value[2], _value[3], _instance);
+        GuiScissorSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
     }
     else if (is_struct(_value))
     {
@@ -349,7 +349,7 @@ function __GuiJSONScroll_padding(_instance, _value)
                             _value[$ "t"] ?? _value[$ "top"],
                             _value[$ "r"] ?? _value[$ "right"],
                             _value[$ "b"] ?? _value[$ "bottom"],
-                            _instance);
+                            _element);
     }
     else
     {

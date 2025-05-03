@@ -35,13 +35,13 @@
 ///   directly using the primary action. This behavior is useful for creating pages.
 /// 
 /// @param behavior
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiSetBehavior(_behavior, _instance = self)
+function GuiSetBehavior(_behavior, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (__behavior == _behavior) return;
         __behavior = _behavior;

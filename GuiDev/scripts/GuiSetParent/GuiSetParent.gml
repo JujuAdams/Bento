@@ -5,15 +5,15 @@
 /// target instance will be used.
 /// 
 /// @param parent
-/// @param [targetInstance=self]
+/// @param [target=self]
 
-function GuiSetParent(_parent, _targetInstance = self)
+function GuiSetParent(_parent, _target = self)
 {
-    if ((not GUI_EXISTS(_parent)) || (not GUI_EXISTS(_targetInstance))) return;
+    if ((not GUI_EXISTS(_parent)) || (not GUI_EXISTS(_target))) return;
     
-    __GuiRemoveParent(_targetInstance);
+    __GuiRemoveParent(_target);
     
-    with(_targetInstance.GUI_VARS)
+    with(_target.GUI_VARS)
     {
         //Mark the layer we're leaving as dirty
         with(__layer)
@@ -36,7 +36,7 @@ function GuiSetParent(_parent, _targetInstance = self)
         
         with(_parent)
         {
-            array_push(GUI_VARS.__childArray, _targetInstance);
+            array_push(GUI_VARS.__childArray, _target);
         
             __GuiMarkChildOrderDirty(self);
             GuiScrollLimitsMarkDirty(self);

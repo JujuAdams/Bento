@@ -2,11 +2,11 @@
 
 /// Returns whether an instance has its Draw End user event enabled for use by `GuiSetEnableDrawEnd()`.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiGetEnableDrawEnd(_instance = self)
+function GuiGetEnableDrawEnd(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return false;
+    if (not GUI_EXISTS(_element)) return false;
     
-    return _instance.GUI_VARS.__drawEnd;
+    return _element.GUI_VARS.__drawEnd;
 }

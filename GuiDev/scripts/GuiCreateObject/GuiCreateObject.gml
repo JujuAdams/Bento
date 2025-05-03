@@ -28,14 +28,13 @@ function GuiCreateObject(_object, _struct = undefined, _parent = self)
     
     if (GUI_CREATE_LAYER != undefined)
     {
-        var _instance = instance_create_layer(_parent.x, _parent.y, GUI_CREATE_LAYER, _object, _struct ?? _emptyStruct);
+        var _element = instance_create_layer(_parent.x, _parent.y, GUI_CREATE_LAYER, _object, _struct ?? _emptyStruct);
     }
     else
     {
-        var _instance = instance_create_depth(_parent.x, _parent.y, GUI_CREATE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
+        var _element = instance_create_depth(_parent.x, _parent.y, GUI_CREATE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
     }
     
     _system.__tempParent = _oldParent;
-    
-    return _instance;
+    return _element;
 }

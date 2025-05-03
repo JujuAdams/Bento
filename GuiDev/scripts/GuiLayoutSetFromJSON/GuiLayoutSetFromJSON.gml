@@ -1,16 +1,16 @@
 // Feather disable all
 
 /// @param json
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiLayoutSetFromJSON(_json, _instance = self)
+function GuiLayoutSetFromJSON(_json, _element = self)
 {
     if (not is_struct(_json))
     {
         __GuiError($"Layout JSON is incorrect datatype, must be a struct (was \"{typeof(_json)}\")");
     }
     
-    with(_instance)
+    with(_element)
     {
         var _nameArray = variable_struct_get_names(_json);
         var _i = 0;
@@ -21,35 +21,35 @@ function GuiLayoutSetFromJSON(_json, _instance = self)
             
             if (_name == "clampInside")
             {
-                __GuiLayoutSetFromJSON_clampInside(_instance, _value);
+                __GuiLayoutSetFromJSON_clampInside(_element, _value);
             }
             else if (_name == "offset")
             {
-                __GuiLayoutSetFromJSON_offset(_instance, _value);
+                __GuiLayoutSetFromJSON_offset(_element, _value);
             }
             else if (_name == "size")
             {
-                __GuiLayoutSetFromJSON_size(_instance, _value);
+                __GuiLayoutSetFromJSON_size(_element, _value);
             }
             else if (_name == "minSize")
             {
-                __GuiLayoutSetFromJSON_minSize(_instance, _value);
+                __GuiLayoutSetFromJSON_minSize(_element, _value);
             }
             else if (_name == "maxSize")
             {
-                __GuiLayoutSetFromJSON_maxSize(_instance, _value);
+                __GuiLayoutSetFromJSON_maxSize(_element, _value);
             }
             else if (_name == "resize")
             {
-                __GuiLayoutSetFromJSON_resize(_instance, _value);
+                __GuiLayoutSetFromJSON_resize(_element, _value);
             }
             else if (_name == "padding")
             {
-                __GuiLayoutSetFromJSON_padding(_instance, _value);
+                __GuiLayoutSetFromJSON_padding(_element, _value);
             }
             else if (_name == "alignSelf")
             {
-                __GuiLayoutSetFromJSON_alignSelf(_instance, _value);
+                __GuiLayoutSetFromJSON_alignSelf(_element, _value);
             }
             else if (_name == "gutter")
             {
@@ -58,7 +58,7 @@ function GuiLayoutSetFromJSON(_json, _instance = self)
                     __GuiError($"Cannot use .gutter on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)} or {object_get_name(oGuiLibGrid)}");
                 }
                 
-                __GuiLayoutSetFromJSON_gutter(_instance, _value);
+                __GuiLayoutSetFromJSON_gutter(_element, _value);
             }
             else if (_name == "listAlign")
             {
@@ -67,7 +67,7 @@ function GuiLayoutSetFromJSON(_json, _instance = self)
                     __GuiError($"Cannot use .listAlign on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)}");
                 }
                 
-                __GuiLayoutSetFromJSON_listAlign(_instance, _value);
+                __GuiLayoutSetFromJSON_listAlign(_element, _value);
             }
             else if (_name == "listAxis")
             {
@@ -76,7 +76,7 @@ function GuiLayoutSetFromJSON(_json, _instance = self)
                     __GuiError($"Cannot use .listAxis on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)}");
                 }
                 
-                __GuiLayoutSetFromJSON_listAxis(_instance, _value);
+                __GuiLayoutSetFromJSON_listAxis(_element, _value);
             }
             else if (_name == "gridSize")
             {
@@ -85,7 +85,7 @@ function GuiLayoutSetFromJSON(_json, _instance = self)
                     __GuiError($"Cannot use .gridSize on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibGrid)}");
                 }
                         
-                __GuiLayoutSetFromJSON_gridSize(_instance, _value);
+                __GuiLayoutSetFromJSON_gridSize(_element, _value);
             }
             else
             {
@@ -102,11 +102,11 @@ function GuiLayoutSetFromJSON(_json, _instance = self)
 ////////
 // .clampInside
 ////////
-function __GuiLayoutSetFromJSON_clampInside(_instance, _value)
+function __GuiLayoutSetFromJSON_clampInside(_element, _value)
 {
     if (is_bool(_value))
     {
-        GuiLayoutSetClampInside(_value, _instance);
+        GuiLayoutSetClampInside(_value, _element);
     }
     else
     {
@@ -119,7 +119,7 @@ function __GuiLayoutSetFromJSON_clampInside(_instance, _value)
 ////////
 // .offset
 ////////
-function __GuiLayoutSetFromJSON_offset(_instance, _value)
+function __GuiLayoutSetFromJSON_offset(_element, _value)
 {
     if (is_array(_value))
     {
@@ -128,11 +128,11 @@ function __GuiLayoutSetFromJSON_offset(_instance, _value)
             __GuiError($".offset layout property must have 2 elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiLayoutSetOffset(_value[0], _value[1], _instance);
+        GuiLayoutSetOffset(_value[0], _value[1], _element);
     }
     else if (is_struct(_value))
     {
-        GuiLayoutSetOffset(_value[$ "x"], _value[$ "y"], _instance);
+        GuiLayoutSetOffset(_value[$ "x"], _value[$ "y"], _element);
     }
     else
     {
@@ -145,7 +145,7 @@ function __GuiLayoutSetFromJSON_offset(_instance, _value)
 ////////
 // .size
 ////////
-function __GuiLayoutSetFromJSON_size(_instance, _value)
+function __GuiLayoutSetFromJSON_size(_element, _value)
 {
     var _width  = undefined;
     var _height = undefined;
@@ -172,7 +172,7 @@ function __GuiLayoutSetFromJSON_size(_instance, _value)
         __GuiError($".size layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
     }
     
-    GuiLayoutSetSize(_width, _height, _instance);
+    GuiLayoutSetSize(_width, _height, _element);
 }
 
 
@@ -180,7 +180,7 @@ function __GuiLayoutSetFromJSON_size(_instance, _value)
 ////////
 // .minSize
 ////////
-function __GuiLayoutSetFromJSON_minSize(_instance, _value)
+function __GuiLayoutSetFromJSON_minSize(_element, _value)
 {
     var _width  = undefined;
     var _height = undefined;
@@ -207,7 +207,7 @@ function __GuiLayoutSetFromJSON_minSize(_instance, _value)
         __GuiError($".minSize layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
     }
     
-    GuiLayoutSetMinSize(_width, _height, _instance);
+    GuiLayoutSetMinSize(_width, _height, _element);
 }
 
 
@@ -215,7 +215,7 @@ function __GuiLayoutSetFromJSON_minSize(_instance, _value)
 ////////
 // .maxSize
 ////////
-function __GuiLayoutSetFromJSON_maxSize(_instance, _value)
+function __GuiLayoutSetFromJSON_maxSize(_element, _value)
 {
     var _width  = undefined;
     var _height = undefined;
@@ -242,7 +242,7 @@ function __GuiLayoutSetFromJSON_maxSize(_instance, _value)
         __GuiError($".maxSize layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
     }
     
-    GuiLayoutSetMaxSize(_width, _height, _instance);
+    GuiLayoutSetMaxSize(_width, _height, _element);
 }
 
 
@@ -250,7 +250,7 @@ function __GuiLayoutSetFromJSON_maxSize(_instance, _value)
 ////////
 // .resize
 ////////
-function __GuiLayoutSetFromJSON_resize(_instance, _value)
+function __GuiLayoutSetFromJSON_resize(_element, _value)
 {
     var _x = undefined;
     var _y = undefined;
@@ -337,7 +337,7 @@ function __GuiLayoutSetFromJSON_resize(_instance, _value)
         __GuiError($".resize.y layout property must be \"static\", \"fit\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_FIT}, or {GUI_RESIZE_GROW} (value was {_y})");
     }
     
-    GuiLayoutSetResizeType(_x, _y, _instance);
+    GuiLayoutSetResizeType(_x, _y, _element);
 }
 
 
@@ -345,11 +345,11 @@ function __GuiLayoutSetFromJSON_resize(_instance, _value)
 ////////
 // .padding
 ////////
-function __GuiLayoutSetFromJSON_padding(_instance, _value)
+function __GuiLayoutSetFromJSON_padding(_element, _value)
 {
     if (is_numeric(_value))
     {
-        GuiLayoutSetPadding(_value, _value, _value, _value, _instance);
+        GuiLayoutSetPadding(_value, _value, _value, _value, _element);
     }
     else if (is_array(_value))
     {
@@ -358,7 +358,7 @@ function __GuiLayoutSetFromJSON_padding(_instance, _value)
             __GuiError($".padding layout property must have 4 elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiLayoutSetPadding(_value[0], _value[1], _value[2], _value[3], _instance);
+        GuiLayoutSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
     }
     else if (is_struct(_value))
     {
@@ -366,7 +366,7 @@ function __GuiLayoutSetFromJSON_padding(_instance, _value)
                             _value[$ "t"] ?? _value[$ "top"],
                             _value[$ "r"] ?? _value[$ "right"],
                             _value[$ "b"] ?? _value[$ "bottom"],
-                            _instance);
+                            _element);
     }
     else
     {
@@ -379,11 +379,11 @@ function __GuiLayoutSetFromJSON_padding(_instance, _value)
 ////////
 // .gutter
 ////////
-function __GuiLayoutSetFromJSON_gutter(_instance, _value)
+function __GuiLayoutSetFromJSON_gutter(_element, _value)
 {
     if (is_numeric(_value))
     {
-        GuiLayoutSetGutter(_value, _value, _instance);
+        GuiLayoutSetGutter(_value, _value, _element);
     }
     else if (is_array(_value))
     {
@@ -392,11 +392,11 @@ function __GuiLayoutSetFromJSON_gutter(_instance, _value)
             __GuiError($".gutter layout property must have 2 elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiLayoutSetGutter(_value[0], _value[1], _instance);
+        GuiLayoutSetGutter(_value[0], _value[1], _element);
     }
     else if (is_struct(_value))
     {
-        GuiLayoutSetGutter(_value[$ "x"] ?? _value[$ "h"], _value[$ "y"] ?? _value[$ "v"], _instance);
+        GuiLayoutSetGutter(_value[$ "x"] ?? _value[$ "h"], _value[$ "y"] ?? _value[$ "v"], _element);
     }
     else
     {
@@ -409,7 +409,7 @@ function __GuiLayoutSetFromJSON_gutter(_instance, _value)
 ////////
 // .alignSelf
 ////////
-function __GuiLayoutSetFromJSON_alignSelf(_instance, _value)
+function __GuiLayoutSetFromJSON_alignSelf(_element, _value)
 {
     var _h = undefined;
     var _v = undefined;
@@ -444,7 +444,7 @@ function __GuiLayoutSetFromJSON_alignSelf(_instance, _value)
         __GuiError($".align.v layout property must be a number (was \"{typeof(_v)}\")");;
     }
     
-    GuiLayoutSetAlignSelf(_h, _v, _instance);
+    GuiLayoutSetAlignSelf(_h, _v, _element);
 }
 
 
@@ -452,7 +452,7 @@ function __GuiLayoutSetFromJSON_alignSelf(_instance, _value)
 ////////
 // .listAlign
 ////////
-function __GuiLayoutSetFromJSON_listAlign(_instance, _value)
+function __GuiLayoutSetFromJSON_listAlign(_element, _value)
 {
     var _h = undefined;
     var _v = undefined;
@@ -539,7 +539,7 @@ function __GuiLayoutSetFromJSON_listAlign(_instance, _value)
         __GuiError($".listAlign.v layout property invalid (value was {_v}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
     }
     
-    GuiLayoutSetListAlign(_h, _v, _instance);
+    GuiLayoutSetListAlign(_h, _v, _element);
 }
 
 
@@ -547,7 +547,7 @@ function __GuiLayoutSetFromJSON_listAlign(_instance, _value)
 ////////
 // .listAxis
 ////////
-function __GuiLayoutSetFromJSON_listAxis(_instance, _value)
+function __GuiLayoutSetFromJSON_listAxis(_element, _value)
 {
     if (is_numeric(_value))
     {
@@ -576,7 +576,7 @@ function __GuiLayoutSetFromJSON_listAxis(_instance, _value)
         __GuiError($".listAxis layout property must be \"x\", \"y\", {GUI_AXIS_X}, or {GUI_AXIS_Y} (value was {_value})");
     }
     
-    GuiLayoutSetListAxis(_value, _instance);
+    GuiLayoutSetListAxis(_value, _element);
 }
 
 
@@ -584,7 +584,7 @@ function __GuiLayoutSetFromJSON_listAxis(_instance, _value)
 ////////
 // .gridSize
 ////////
-function __GuiLayoutSetFromJSON_gridSize(_instance, _value)
+function __GuiLayoutSetFromJSON_gridSize(_element, _value)
 {
     if (is_array(_value))
     {
@@ -593,13 +593,13 @@ function __GuiLayoutSetFromJSON_gridSize(_instance, _value)
             __GuiError($".gridSize layout property must have two elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiLayoutSetGridSize(_value[0], _value[1], _instance);
+        GuiLayoutSetGridSize(_value[0], _value[1], _element);
     }
     else if (is_struct(_value))
     {
         GuiLayoutSetGridSize(_value[$ "columns"],
                        _value[$ "rows"   ],
-                       _instance);
+                       _element);
     }
     else
     {

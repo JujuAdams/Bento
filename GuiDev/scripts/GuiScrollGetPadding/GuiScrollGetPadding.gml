@@ -1,14 +1,14 @@
 // Feather disable all
 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollGetPadding(_instance = self)
+function GuiScrollGetPadding(_element = self)
 {
     static _result = {};
     
-    if (GUI_EXISTS(_instance) && _instance.GUI_VARS.__scrollHori && _instance.GUI_VARS.__scrollVert)
+    if (GUI_EXISTS(_element) && _element.GUI_VARS.__scrollHori && _element.GUI_VARS.__scrollVert)
     {
-        with(_instance.GUI_VARS)
+        with(_element.GUI_VARS)
         {
             _result.left   = __scrollPadLeft;
             _result.top    = __scrollPadTop;

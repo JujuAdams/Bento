@@ -2,9 +2,9 @@
 
 /// Destroys a GUI instance.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiDestroy(_instance = self)
+function GuiDestroy(_element = self)
 {
-    instance_destroy(_instance);
+    instance_destroy(_element);
 }

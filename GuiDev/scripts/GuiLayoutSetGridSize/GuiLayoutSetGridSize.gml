@@ -2,13 +2,13 @@
 
 /// @param [columns]
 /// @param [rows]
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiLayoutSetGridSize(_columns, _rows, _instance = self)
+function GuiLayoutSetGridSize(_columns, _rows, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (not variable_struct_exists(self, "__gridColumns"))
         {

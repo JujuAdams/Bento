@@ -2,14 +2,14 @@
 
 /// @param x
 /// @param y
-/// @param [instance=self]
+/// @param [element=self]
 /// @param [proportional=true]
 
-function GuiLayoutSetOrigin(_x, _y, _instance = self, _proportional = true)
+function GuiLayoutSetOrigin(_x, _y, _element = self, _proportional = true)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (__layoutOriginX != _x)
         {

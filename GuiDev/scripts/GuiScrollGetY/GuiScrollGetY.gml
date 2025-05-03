@@ -2,11 +2,11 @@
 
 /// Returns the current scroll y-offset.
 /// 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollGetY(_instance = self)
+function GuiScrollGetY(_element = self)
 {
-    if (not GUI_EXISTS(_instance)) return 0;
+    if (not GUI_EXISTS(_element)) return 0;
     
-    return _instance.GUI_VARS.__scrollY;
+    return _element.GUI_VARS.__scrollY;
 }

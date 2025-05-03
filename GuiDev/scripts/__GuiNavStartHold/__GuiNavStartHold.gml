@@ -4,19 +4,19 @@
 /// 
 /// @param instance
 
-function __GuiNavStartHold(_instance)
+function __GuiNavStartHold(_element)
 {
-    if (GUI_EXISTS(_instance) && (not GuiNavGetHold(_instance)))
+    if (GUI_EXISTS(_element) && (not GuiNavGetHold(_element)))
     {
-        with(_instance.GUI_VARS)
+        with(_element.GUI_VARS)
         {
             __holdState = GUI_PRESS;
-            __layer.__holdInstance = _instance;
+            __layer.__holdElement = _element;
             
             if (not __updating)
             {
                 __updating = true;
-                array_push(__layer.__updateInstanceArray, _instance)
+                array_push(__layer.__updateElementArray, _element)
             }
         }
     }

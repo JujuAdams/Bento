@@ -15,7 +15,7 @@ function GuiNavGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
     _layer ??= _system.__layerCurrent;
     var _stepOrder = _layer.__stepOrder;
     
-    var _instance = noone;
+    var _element = noone;
     var _nearestDistance = infinity;
     var _i = 0;
     repeat(array_length(_stepOrder))
@@ -34,7 +34,7 @@ function GuiNavGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
                 if (_distance < _nearestDistance)
                 {
                     _nearestDistance = _distance;
-                    _instance = self;
+                    _element = self;
                 }
             }
         }
@@ -42,5 +42,5 @@ function GuiNavGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
         ++_i;
     }
     
-    return _instance;
+    return _element;
 }

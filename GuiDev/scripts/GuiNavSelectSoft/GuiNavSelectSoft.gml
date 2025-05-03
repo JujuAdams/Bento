@@ -7,10 +7,10 @@
 /// @param instance
 /// @param [layer=current]
 
-function GuiNavSelectSoft(_instance, _layer = undefined)
+function GuiNavSelectSoft(_element, _layer = undefined)
 {
     static _system = __GuiSystem();
     
     _layer ??= _system.__layerCurrent;
-    _layer.__overInstanceSoft = _instance;
+    _layer.__overElementSoft = _element;
 }

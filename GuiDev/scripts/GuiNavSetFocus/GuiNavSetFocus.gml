@@ -1,13 +1,13 @@
 // Feather disable all
 
 /// @param state
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiNavSetFocus(_state, _instance = self)
+function GuiNavSetFocus(_state, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (__focusable)
         {
@@ -25,21 +25,21 @@ function GuiNavSetFocus(_state, _instance = self)
                 {
                     if (__scissorEnabled)
                     {
-                        __layer.__directionalLastX = _instance.guiLeft + __scissorPadLeft;
-                        __layer.__directionalLastY = _instance.guiTop  + __scissorPadTop;
+                        __layer.__directionalLastX = _element.guiLeft + __scissorPadLeft;
+                        __layer.__directionalLastY = _element.guiTop  + __scissorPadTop;
                     }
                     else
                     {
-                        __layer.__directionalLastX = _instance.guiLeft;
-                        __layer.__directionalLastY = _instance.guiTop;
+                        __layer.__directionalLastX = _element.guiLeft;
+                        __layer.__directionalLastY = _element.guiTop;
                     }
                 }
                 
-                array_push(_stepRootStack, _instance);
+                array_push(_stepRootStack, _element);
             }
             else
             {
-                var _index = array_get_index(_stepRootStack, _instance);
+                var _index = array_get_index(_stepRootStack, _element);
                 if (_index >= 0)
                 {
                     // Mark everything after us in the step root stack as unfocused
@@ -62,7 +62,7 @@ function GuiNavSetFocus(_state, _instance = self)
         }
         else
         {
-            __GuiTrace($"UI element {_instance.GUI_VARS.__envIndex} {object_get_name(object_index)} is not focusable");
+            __GuiTrace($"UI element {_element.GUI_VARS.__envIndex} {object_get_name(object_index)} is not focusable");
         }
     }
 }

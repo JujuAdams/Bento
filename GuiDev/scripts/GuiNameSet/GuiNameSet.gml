@@ -5,28 +5,28 @@
 /// a matching name will have its name removed.
 /// 
 /// @param name
-/// @param [instance=self]
+/// @param [element=self]
 /// @param [overwrite=false]
 
-function GuiNameSet(_name, _instance = self, _overwrite = false)
+function GuiNameSet(_name, _element = self, _overwrite = false)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    var _nameMap = _instance.GUI_VARS.__layer.__nameMap;
+    var _nameMap = _element.GUI_VARS.__layer.__nameMap;
     
-    var _oldInstance = _nameMap[? _name];
-    if ((_oldInstance != undefined) && GUI_EXISTS(_oldInstance))
+    var _oldElement = _nameMap[? _name];
+    if ((_oldElement != undefined) && GUI_EXISTS(_oldElement))
     {
         if (_overwrite)
         {
-            _oldInstance.GUI_VARS.__name = undefined;
+            _oldElement.GUI_VARS.__name = undefined;
         }
         else
         {
-            __GuiError($"Instance with name \"{_name}\" already exists (UI element {_oldInstance.GUI_VARS.__envIndex} {object_get_name(_oldInstance.object_index)})");
+            __GuiError($"Element with name \"{_name}\" already exists (UI element {_oldElement.GUI_VARS.__envIndex} {object_get_name(_oldElement.object_index)})");
         }
     }
     
-    _nameMap[? _name] = _instance;
-    _instance.GUI_VARS.__name = _name;
+    _nameMap[? _name] = _element;
+    _element.GUI_VARS.__name = _name;
 }

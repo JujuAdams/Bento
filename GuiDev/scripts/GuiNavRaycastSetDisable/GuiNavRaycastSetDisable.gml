@@ -7,12 +7,12 @@
 /// 
 /// @param disableHori
 /// @param disableVert
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiNavRaycastSetDisable(_disableHori, _disableVert, _instance = self)
+function GuiNavRaycastSetDisable(_disableHori, _disableVert, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    _instance.GUI_VARS.__raycastDisableHori = _disableHori;
-    _instance.GUI_VARS.__raycastDisableVert = _disableVert;
+    _element.GUI_VARS.__raycastDisableHori = _disableHori;
+    _element.GUI_VARS.__raycastDisableVert = _disableVert;
 }

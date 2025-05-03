@@ -2,7 +2,7 @@
 
 /// @param attachedInstance
 
-function __GuiClassVariables(_attachedInstance) constructor
+function __GuiClassVariables(_attachedElement) constructor
 {
     static _globalCount = 0;
     __envIndex = _globalCount++;
@@ -12,7 +12,7 @@ function __GuiClassVariables(_attachedInstance) constructor
         global.GuiElementMap[? __envIndex] = self;
     }
     
-    __attachedInstance = _attachedInstance;
+    __attachedElement = _attachedElement;
     
     __layer = undefined;
     
@@ -83,10 +83,10 @@ function __GuiClassVariables(_attachedInstance) constructor
     
     //Output values from the solver. Positions are relative to the left-top of the parent. All four
     //values are subsequently transforms to give us the `layout*` values that are exposed to the user.
-    __solvedLeft   = _attachedInstance.x;
-    __solvedTop    = _attachedInstance.y;
-    __solvedWidth  = _attachedInstance.sprite_width;
-    __solvedHeight = _attachedInstance.sprite_height;
+    __solvedLeft   = _attachedElement.x;
+    __solvedTop    = _attachedElement.y;
+    __solvedWidth  = _attachedElement.sprite_width;
+    __solvedHeight = _attachedElement.sprite_height;
     
     __layoutClampInside = false;
     
@@ -139,7 +139,7 @@ function __GuiClassVariables(_attachedInstance) constructor
     __SolverFitWidth = function()
     {
         // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-        __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(__attachedInstance.sprite_index)? sprite_get_width(__attachedInstance.sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
+        __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(__attachedElement.sprite_index)? sprite_get_width(__attachedElement.sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
         
         __solverFitWidth = __solvedWidth;
         __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
@@ -160,7 +160,7 @@ function __GuiClassVariables(_attachedInstance) constructor
     __SolverFitHeight = function()
     {
         // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-        __solvedHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(__attachedInstance.sprite_index)? sprite_get_height(__attachedInstance.sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
+        __solvedHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(__attachedElement.sprite_index)? sprite_get_height(__attachedElement.sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
         
         __solverFitHeight = __solvedHeight;
         __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;

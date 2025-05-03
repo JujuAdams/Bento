@@ -7,18 +7,18 @@
 /// 
 /// @param instance
 
-function GuiScrollLimitsMarkDirty(_instance)
+function GuiScrollLimitsMarkDirty(_element)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if ((not __scrollHori) && (not __scrollVert)) return;
         
         if (not __scrollLimitsDirty)
         {
             __scrollLimitsDirty = true;
-            array_push(__layer.__dirtyScrollLimitsArray, _instance);
+            array_push(__layer.__dirtyScrollLimitsArray, _element);
         }
     }
 }

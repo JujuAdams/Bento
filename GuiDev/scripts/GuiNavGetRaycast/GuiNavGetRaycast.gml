@@ -22,7 +22,7 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = 
     _layer ??= _system.__layerCurrent;
     var _stepOrder = _layer.__stepOrder;
    
-    var _instance  = noone;
+    var _element  = noone;
     var _minWeight = infinity;
     
     var _i = 0;
@@ -47,7 +47,7 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = 
                 {
                     if (GuiGetHoverable(self, (not GUI_EXISTS(_scrollParent)) || (_scrollParent != __GuiScrollFindParent(self))))
                     {
-                        _instance = self;
+                        _element = self;
                         _minWeight = _weight;
                     }
                 }
@@ -57,5 +57,5 @@ function GuiNavGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = 
         ++_i;
     }
     
-    return _instance;
+    return _element;
 }

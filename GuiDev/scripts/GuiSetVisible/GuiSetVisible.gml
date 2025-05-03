@@ -1,13 +1,13 @@
 // Feather disable all
 
 /// @param state
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiSetVisible(_state, _instance = self)
+function GuiSetVisible(_state, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (__visible == _state) return;
         __visible = _state;

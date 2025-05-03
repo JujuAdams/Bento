@@ -1,18 +1,18 @@
 // Feather disable all
 
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiScrollGetEnabled(_instance = self)
+function GuiScrollGetEnabled(_element = self)
 {
     static _result = {
         horizontal: false,
         vertical:   false,
     };
     
-    if (GUI_EXISTS(_instance))
+    if (GUI_EXISTS(_element))
     {
-        _result.horizontal = _instance.GUI_VARS.__scrollHori;
-        _result.vertical   = _instance.GUI_VARS.__scrollVert;
+        _result.horizontal = _element.GUI_VARS.__scrollHori;
+        _result.vertical   = _element.GUI_VARS.__scrollVert;
     }
     else
     {

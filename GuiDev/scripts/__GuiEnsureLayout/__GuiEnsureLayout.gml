@@ -13,7 +13,7 @@ function __GuiEnsureLayout()
     __GuiEnsureChildOrder();
     
     //Ensure that our layout order is up-to-date
-    __GuiEnsureLayerOrderInner(_layoutOrder, __rootInstance);
+    __GuiEnsureLayerOrderInner(_layoutOrder, __rootElement);
     var _count = array_length(_layoutOrder);
     
     //Populate static widths of instances
@@ -49,17 +49,17 @@ function __GuiEnsureLayout()
     }
     
     //Final pass to set positions in stone
-    var _rootGui = __rootInstance.GUI_VARS;
+    var _rootGui = __rootElement.GUI_VARS;
     _rootGui.__SolverPositions(0, 0, _rootGui.__solvedWidth, _rootGui.__solvedHeight);
     
     //Ensure a full reset of the transform/scroll positions
     array_resize(__transformAndScrollDirtyArray, 0);
-    array_push(__transformAndScrollDirtyArray, __rootInstance);
+    array_push(__transformAndScrollDirtyArray, __rootElement);
 }
 
-function __GuiEnsureLayerOrderInner(_layoutOrder, _instance)
+function __GuiEnsureLayerOrderInner(_layoutOrder, _element)
 {
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         array_push(_layoutOrder, self);
         

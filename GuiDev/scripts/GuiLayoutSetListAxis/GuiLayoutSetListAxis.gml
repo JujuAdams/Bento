@@ -1,13 +1,13 @@
 // Feather disable all
 
 /// @param axis
-/// @param [instance=self]
+/// @param [element=self]
 
-function GuiLayoutSetListAxis(_axis, _instance = self)
+function GuiLayoutSetListAxis(_axis, _element = self)
 {
-    if (not GUI_EXISTS(_instance)) return;
+    if (not GUI_EXISTS(_element)) return;
     
-    with(_instance.GUI_VARS)
+    with(_element.GUI_VARS)
     {
         if (not variable_struct_exists(self, "__listAxis"))
         {
