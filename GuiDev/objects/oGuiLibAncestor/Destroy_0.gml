@@ -14,27 +14,6 @@ with(GUI_VARS)
     
     if (__focusable) GuiNavSetFocus(false);
     
-    if (__tabIdent != undefined)
-    {
-        var _tabData = __GuiTabGetData(__tabIdent, __layer);
-        if ((_tabData.__host == _self) || (_tabData.__button == _self))
-        {
-            GuiTabClose(__tabIdent);
-        }
-    }
-    
-    if (__tabIdentChildOf != undefined)
-    {
-        var _tabData = __GuiTabGetData(__tabIdentChildOf, __layer);
-        if (_tabData.__child == _self)
-        {
-            if (not GUI_EXISTS(__selectOnDestroy))
-            {
-                GuiNavSelect(_tabData.__button);
-            }
-        }
-    }
-    
     with(__layer)
     {
         __layoutDirty = true;

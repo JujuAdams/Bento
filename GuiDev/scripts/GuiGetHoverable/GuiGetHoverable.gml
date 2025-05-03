@@ -7,16 +7,26 @@
 
 function GuiGetHoverable(_instance = self, _checkVisible = true)
 {
-    if (not __GuiGetHoverableInner(_instance, _checkVisible)) return false;
-    
-    if (__GuiStepOrderGetIndex(_instance) == undefined)
+    if (__GuiGetHoverableInner(_instance, _checkVisible))
     {
-        //This instance doesn't exist in the Step order
-        //This usually happens when a modal has overwritten prior instances
-        return false;
+        //Don't return `true` if the instance isn't 
+        var _stepOrder = _instance.GUI_VARS.__layer.__stepOrder;
+        var _i = 0;
+        repeat(array_length(_stepOrder))
+        {
+            with(method_get_self(_stepOrder[_i]))
+            {
+                if (self == _instance)
+                {
+                    return true;
+                }
+            }
+            
+            ++_i;
+        }
     }
     
-    return true;
+    return false;
 }
 
 function __GuiGetHoverableInner(_instance, _checkVisible)
@@ -49,15 +59,6 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
             if (__behavior != GUI_BEHAVIOR_BUTTON)
             {
                 return false;
-            }
-            
-            var _tabData = __GuiTabGetData(__tabIdent, _layer);
-            if (_tabData != undefined)
-            {
-                if (_tabData.__blockDirectionalWhenOpen && GUI_EXISTS(_tabData.__child))
-                {
-                    return false;
-                }
             }
             
             if (_checkVisible && (not GuiGetVisibleInScroll(true, _instance)))

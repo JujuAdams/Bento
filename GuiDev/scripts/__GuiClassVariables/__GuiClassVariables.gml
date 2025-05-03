@@ -73,8 +73,6 @@ function __GuiClassVariables(_attachedInstance) constructor
     __scrollX = 0;
     __scrollY = 0;
     
-    __tabIdent        = undefined;
-    __tabIdentChildOf = undefined;
     __selectOnDestroy = noone;
     
     /////////////////////////////////

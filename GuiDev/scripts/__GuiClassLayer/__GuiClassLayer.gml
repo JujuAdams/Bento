@@ -100,8 +100,6 @@ function __GuiClassLayer(_environment, _name) constructor
     
     __nameMap = ds_map_create();
     
-    __tabDict = {};
-    
     
     
     

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiClassEnvironment",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/Functions/(System).yy",
+    "name":"Classes",
+    "path":"folders/Library/Functions/(System)/Classes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
