@@ -92,13 +92,15 @@ function __GuiClassLayer(_environment, _name) constructor
     __overElementSoft = noone;
     __holdState       = GUI_OFF;
     __holdElement     = noone;
-    __popUpRoot       = noone;
     
     __primaryConsumed = false;
     
     __updateElementArray = [];
     
     __nameMap = ds_map_create();
+    
+    __branchStack = [];
+    __branchTop   = undefined;
     
     
     
@@ -231,12 +233,13 @@ function __GuiClassLayer(_environment, _name) constructor
                 
                 //Detect clicking off of a pop-up
                 if ((__holdState == GUI_PRESS)
-                &&  __GuiExists(__popUpRoot)
-                &&  (__popUpRoot != __overElement) //Don't destroy a pop-up if we're hovering directly over it
-                &&  (not GuiIsAncestor(__popUpRoot, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                &&  __GuiExists(__branchTop)
+                &&  __branchTop.GUI_VARS.__branchClickDismiss
+                &&  (__branchTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
+                &&  (not GuiIsAncestor(__branchTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
                 {
-                    GuiDestroy(__popUpRoot);
-                    if (not GUI_POP_UP_CLICK_THROUGH) __holdState = GUI_OFF;
+                    GuiDestroy(__branchTop);
+                    __holdState = GUI_OFF;
                 }
             }
             

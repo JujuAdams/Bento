@@ -32,15 +32,6 @@ GUI_BEHAVIOR_MODAL
   - Cannot be hovered
   - Cannot be clicked
 
-GUI_BEHAVIOR_POP_UP
-- Cannot hover or click UI elements outside of the pop-up in directional mode
-- Destroyed if any point outside of the pop-up is clicked in pointer mode (this is regardless of
-  the value of `GUI_POP_UP_CLICK_THROUGH`)
-- If `GUI_POP_UP_CLICK_THROUGH` is `false`, cannot hover or click UI elements outside of
-  the pop-up
-- If `GUI_POP_UP_CLICK_THROUGH` is `true`, can hover and click UI elements outside of
-  the pop-up
-
 GUI_BEHAVIOR_BLOCK_SIBLINGS
 - Affects lower priority UI siblings:
   - STEP user event will not trigger

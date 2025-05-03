@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiNavBranchOpen",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiNavBranchOpen",
+  "parent":{
+    "name":"Actions",
+    "path":"folders/Library/Functions/Navigation/Actions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -44,6 +44,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __focused         = false;
     __focusBlockHover = false;
     
+    __branched = false;
+    __branchClickDismiss = false;
+    
     __navLeft  = noone;
     __navRight = noone;
     __navUp    = noone;
@@ -255,6 +258,31 @@ function __GuiClassVariables(_attachedElement) constructor
         {
             _childArray[_i].GUI_VARS.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
             ++_i;
+        }
+    }
+    
+    static __Destroy = function()
+    {
+        __GuiRemoveParent(__attachedElement);
+        GuiDestroyChildren(__attachedElement);
+        
+        if (__GuiExists(__selectOnDestroy))
+        {
+            GuiNavSelectSoft(__selectOnDestroy);
+        }
+        
+        if (__focusable) GuiNavSetFocus(false);
+        
+        GuiNavBranchClose(__attachedElement);
+        
+        var _element = __layer.__nameMap[? __name];
+        if (_element == __attachedElement) ds_map_delete(__layer.__nameMap, __name);
+        
+        with(__layer)
+        {
+            __layoutDirty = true;
+            __stepDirty   = true;
+            __drawDirty   = true;
         }
     }
 }

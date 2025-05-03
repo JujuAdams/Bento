@@ -23,11 +23,6 @@
 // nav mode.
 #macro GUI_SCROLL_ON_MOUSE_DRAG  true
 
-// Whether pop-ups will allow you to click instances behind the pop-up. If this macro is set to
-// `true` then instances can be highlighted and clicked. Setting this macro to `false` will prevent
-// background instances from being clicked but the pop-up will still be destroyed.
-#macro GUI_POP_UP_CLICK_THROUGH  false
-
 // Button names to use to enable mouse wheel scrolling with `GuiScrollOnPointer()`. This macros
 // should be used with `GuiInputHotkey()` to trigger scrolling.
 #macro GUI_HOTKEY_MOUSE_WHEEL_UP    "mouse wheel up"

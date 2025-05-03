@@ -48,7 +48,7 @@ function __GuiGetHoverableInner(_element, _checkVisible)
         }
         
         var _layer = __layer;
-        if (__GuiExists(_layer.__popUpRoot) && (not GuiIsAncestor(_layer.__popUpRoot, _element)))
+        if (__GuiExists(_layer.__branchTop) && (not GuiIsAncestor(_layer.__branchTop, _element)))
         {
             return false;
         }

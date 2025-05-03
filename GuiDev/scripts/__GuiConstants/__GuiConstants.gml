@@ -23,8 +23,7 @@
 #macro GUI_BEHAVIOR_BUTTON          1
 #macro GUI_BEHAVIOR_LISTENER        2
 #macro GUI_BEHAVIOR_MODAL           3
-#macro GUI_BEHAVIOR_POP_UP          4
-#macro GUI_BEHAVIOR_BLOCK_SIBLINGS  5
+#macro GUI_BEHAVIOR_BLOCK_SIBLINGS  4
 
 #macro GUI_AXIS_X  0
 #macro GUI_AXIS_Y  1

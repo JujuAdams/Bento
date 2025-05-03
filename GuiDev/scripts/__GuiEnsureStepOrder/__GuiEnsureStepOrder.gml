@@ -12,8 +12,6 @@ function __GuiEnsureStepOrder()
     
     array_resize(__stepOrder, 0);
     
-    __popUpRoot = noone;
-    
     __GuiEnsureChildOrder();
     __GuiEnsureStepOrderInner(self, __stepOrder, (__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? __rootElement) : __rootElement);
     
@@ -67,21 +65,6 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
         {
             array_insert(_stepOrder, 0, __eventStep);
             return __GUI_RETURN_BLOCK_SIBLINGS;
-        }
-        else if (__behavior == GUI_BEHAVIOR_POP_UP)
-        {
-            //Store the first pop-up instance we see so we can detect when the user clicks off of
-            //the pop-up (which will destroy it)
-            if (not __GuiExists(_layer.__popUpRoot)) _layer.__popUpRoot = _element;
-            
-            //Pop-ups are not selectable but are still hoverable. This means we need to push them
-            //to the Step order
-            array_insert(_stepOrder, 0, __eventStep);
-            
-            if (not GUI_POP_UP_CLICK_THROUGH)
-            {
-                return __GUI_RETURN_MODAL;
-            }
         }
         else
         {

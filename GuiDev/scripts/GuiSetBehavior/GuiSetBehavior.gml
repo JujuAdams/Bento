@@ -23,12 +23,6 @@
 ///   through to lower priority GUI instances. This is useful for confirmation questions that
 ///   should prevent player input until the question has been answered.
 /// 
-/// - `GUI_BEHAVIOR_POP_UP`
-///   A variant on `GUI_BEHAVIOR_LISTENER` with the added effect of self-destructing when a GUI
-///   instance with a lower priority is clicked. Unlike modals, pop-ups will not block inputs to
-///   lower priority instances. When using the `GUI_NAV_DIRECTIONAL` mode, selection will be limited to
-///   GUI instances inside the pop-up.
-/// 
 /// - `GUI_BEHAVIOR_BLOCK_SIBLINGS`
 ///   Prevents interaction and rendering for sibling instances with a lower priority. The instance
 ///   itself will still have its Step and Draw user event executed but it cannot be interacted with
