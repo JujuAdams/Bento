@@ -2,7 +2,7 @@
 
 event_inherited();
 
-GuiNavBranchOpen(self, true);
+GuiNavBranchOpen(self, true, true);
 
 GuiLayoutSetClampInside(true);
 GuiLayoutSetResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);

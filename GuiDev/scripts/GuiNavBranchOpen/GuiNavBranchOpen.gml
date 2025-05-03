@@ -1,9 +1,10 @@
 // Feather disable all
 
 /// @param element
+/// @param blockPointer
 /// @param clickDimiss
 
-function GuiNavBranchOpen(_element, _clickDimiss)
+function GuiNavBranchOpen(_element, _blockPointer, _clickDimiss)
 {
     if (not __GuiExists(_element)) return;
     
@@ -12,6 +13,7 @@ function GuiNavBranchOpen(_element, _clickDimiss)
         if (not __branched)
         {
             __branched = true;
+            __layer.__stepDirty = true;
             
             var _branchStack = __layer.__branchStack;
             
@@ -38,6 +40,7 @@ function GuiNavBranchOpen(_element, _clickDimiss)
             __layer.__branchTop = _element;
         }
         
+        __branchBlockPointer = _blockPointer;
         __branchClickDismiss = _clickDimiss;
     }
 }

@@ -56,6 +56,15 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
         {
             array_insert(_stepOrder, 0, __eventStep);
         }
+        else if (__branched)
+        {
+            array_insert(_stepOrder, 0, __eventStep);
+            
+            if ((not __layer.__navPointer) || __branchBlockPointer)
+            {
+                return __GUI_RETURN_MODAL;
+            }
+        }
         else if (__behavior == GUI_BEHAVIOR_MODAL)
         {
             array_insert(_stepOrder, 0, __eventStep);

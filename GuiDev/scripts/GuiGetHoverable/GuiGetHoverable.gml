@@ -48,12 +48,14 @@ function __GuiGetHoverableInner(_element, _checkVisible)
         }
         
         var _layer = __layer;
-        if (__GuiExists(_layer.__branchTop) && (not GuiIsAncestor(_layer.__branchTop, _element)))
+        
+        var _branchTop = _layer.__branchTop;
+        if (__GuiExists(_branchTop) && (not GuiIsAncestor(_branchTop, _element)))
         {
             return false;
         }
         
-        if (_layer.__navMode == GUI_NAV_DIRECTIONAL)
+        if (not _layer.__navPointer)
         {
             //In directional mode, only buttons are selectable
             if (__behavior != GUI_BEHAVIOR_BUTTON)

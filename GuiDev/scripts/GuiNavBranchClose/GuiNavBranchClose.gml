@@ -10,13 +10,15 @@ function GuiNavBranchClose(_element)
     {
         if (__branched)
         {
+            __layer.__stepDirty = true;
+            
             var _branchStack = __layer.__branchStack;
             
             var _index = array_get_index(_branchStack, _element);
             var _i = array_length(_branchStack)-1;
             repeat(array_length(_branchStack) - _index)
             {
-                _branchStack[_i].GUI_VARS.__branched = true;
+                _branchStack[_i].GUI_VARS.__branched = false;
                 --_i;
             }
             
