@@ -22,7 +22,7 @@ function __GuiNavStartOver(_instance)
             if (not __updating)
             {
                 __updating = true;
-                array_push(__environment.__updateInstanceArray, _instance)
+                array_push(__layer.__updateInstanceArray, _instance)
             }
         }
     }

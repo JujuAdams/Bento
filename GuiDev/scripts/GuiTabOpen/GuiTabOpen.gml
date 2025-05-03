@@ -18,7 +18,7 @@ function GuiTabOpen(_child, _button = self)
         __GuiError("GuiTabSetupButton() hasn't been called for the button instance");
     }
     
-    with(__GuiTabEnsure(_tabIdent, _child.GUI_VARS.__environment))
+    with(__GuiTabEnsure(_tabIdent, _child.GUI_VARS.__layer))
     {
         GuiDestroy(__child);
         

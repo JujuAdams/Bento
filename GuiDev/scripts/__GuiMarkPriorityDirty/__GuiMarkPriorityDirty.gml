@@ -11,7 +11,7 @@ function __GuiMarkChildOrderDirty(_parent)
         if (not __childOrderDirty)
         {
             __childOrderDirty = true;
-            array_push(__environment.__dirtyChildOrderArray, _parent);
+            array_push(__layer.__dirtyChildOrderArray, _parent);
         }
     }
 }

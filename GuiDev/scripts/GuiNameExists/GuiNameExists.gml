@@ -3,12 +3,12 @@
 /// Returns whether an instance with the given name exists.
 /// 
 /// @param name
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNameExists(_name, _environment = undefined)
+function GuiNameExists(_name, _layer = undefined)
 {
     static _system = __GuiSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    return GUI_EXISTS(_environment.__nameMap[? _name] ?? noone);
+    _layer ??= _system.__layerCurrent;
+    return GUI_EXISTS(_layer.__nameMap[? _name] ?? noone);
 }

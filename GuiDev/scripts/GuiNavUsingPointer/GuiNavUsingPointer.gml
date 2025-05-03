@@ -2,12 +2,12 @@
 
 /// Returns whether the navigation mode has been set to `GUI_NAV_MOUSE` or `GUI_NAV_TOUCH`.
 /// 
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavUsingPointer(_environment = undefined)
+function GuiNavUsingPointer(_layer = undefined)
 {
     static _system = __GuiSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    return _environment.__navPointer;
+    _layer ??= _system.__layerCurrent;
+    return _layer.__navPointer;
 }

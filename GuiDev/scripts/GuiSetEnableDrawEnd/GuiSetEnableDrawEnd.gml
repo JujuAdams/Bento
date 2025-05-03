@@ -17,6 +17,6 @@ function GuiSetEnableDrawEnd(_state, _instance = self)
         if (__drawEnd == _state) return;
         __drawEnd = _state;
         
-        __environment.__drawDirty = true;
+        __layer.__drawDirty = true;
     }
 }

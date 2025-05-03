@@ -1,14 +1,14 @@
 // Feather disable all
 
 /// @param tabIdent
-/// @param [environment=current]
+/// @param [layer=current]
 
-function __GuiTabEnsure(_tabIdent, _environment = undefined)
+function __GuiTabEnsure(_tabIdent, _layer = undefined)
 {
     static _system = __GuiSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    var _tabDict = _environment.__tabDict;
+    _layer ??= _system.__layerCurrent;
+    var _tabDict = _layer.__tabDict;
     
     var _tabData = _tabDict[$ _tabIdent];
     if (_tabData == undefined)

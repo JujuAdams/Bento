@@ -11,12 +11,12 @@ function __GuiNavStartHold(_instance)
         with(_instance.GUI_VARS)
         {
             __holdState = GUI_PRESS;
-            __environment.__holdInstance = _instance;
+            __layer.__holdInstance = _instance;
             
             if (not __updating)
             {
                 __updating = true;
-                array_push(__environment.__updateInstanceArray, _instance)
+                array_push(__layer.__updateInstanceArray, _instance)
             }
         }
     }

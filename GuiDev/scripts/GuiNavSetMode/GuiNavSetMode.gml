@@ -8,13 +8,13 @@
 /// - `GUI_NAV_TOUCH`
 /// 
 /// @param mode
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavSetMode(_newMode, _environment = undefined)
+function GuiNavSetMode(_newMode, _layer = undefined)
 {
     static _system = __GuiSystem();
     
-    with(_environment ?? _system.__environmentCurrent)
+    with(_layer ?? _system.__layerCurrent)
     {
         if (__navMode == _newMode) return;
         

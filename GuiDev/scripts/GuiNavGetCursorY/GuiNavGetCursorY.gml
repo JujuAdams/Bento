@@ -2,13 +2,13 @@
 
 /// Returns the y-coordinate of the cursor's position.
 /// 
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavGetCursorY(_environment = undefined)
+function GuiNavGetCursorY(_layer = undefined)
 {
     static _system = __GuiSystem();
     
-    with(_environment ?? _system.__environmentCurrent)
+    with(_layer ?? _system.__layerCurrent)
     {
         if (__navMode == GUI_NAV_MOUSE)
         {

@@ -11,7 +11,7 @@ function GuiNavSetFocusable(_state, _instance = self)
     {
         if (__focusable == _state) return;
         
-        __environment.__stepDirty = true;
+        __layer.__stepDirty = true;
         
         if (not _state) GuiNavSetFocus(false, _instance);
         __focusable = _state;

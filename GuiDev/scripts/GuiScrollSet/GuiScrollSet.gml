@@ -24,9 +24,9 @@ function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT
         
         if ((_scrollTargetX == __scrollTargetX) && (_scrollTargetY == __scrollTargetY)) return;
         
-        if (array_get_index(__environment.__scrollDirtyArray, _scroller) < 0)
+        if (array_get_index(__layer.__scrollDirtyArray, _scroller) < 0)
         {
-            array_push(__environment.__scrollDirtyArray, _scroller);
+            array_push(__layer.__scrollDirtyArray, _scroller);
         }
         
         __scrollTargetX = _scrollTargetX;

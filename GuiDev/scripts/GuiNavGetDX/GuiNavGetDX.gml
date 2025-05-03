@@ -8,13 +8,13 @@
 /// - If the navigation mode is set to `GUI_NAV_DIRECTIONAL` then this function returns the `dX` value
 ///   set by `GuiInputDirectional()`.
 /// 
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavGetDX(_environment = undefined)
+function GuiNavGetDX(_layer = undefined)
 {
     static _system = __GuiSystem();
     
-    with(_environment ?? _system.__environmentCurrent)
+    with(_layer ?? _system.__layerCurrent)
     {
         if (__navPointer)
         {

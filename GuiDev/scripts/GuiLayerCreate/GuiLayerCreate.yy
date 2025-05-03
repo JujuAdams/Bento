@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayerCreate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayerCreate",
+  "parent":{
+    "name":"Layers",
+    "path":"folders/Library/Functions/Layers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

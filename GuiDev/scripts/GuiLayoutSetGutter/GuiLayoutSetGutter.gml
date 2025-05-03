@@ -20,7 +20,7 @@ function GuiLayoutSetGutter(_x, _y, _instance = self)
             if (__layoutGutterX != _x)
             {
                 __layoutGutterX = _x;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
         
@@ -29,7 +29,7 @@ function GuiLayoutSetGutter(_x, _y, _instance = self)
             if (__layoutGutterY != _y)
             {
                 __layoutGutterY = _y;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
     }

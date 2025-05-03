@@ -11,10 +11,10 @@
 function GuiInputPointer(_x, _y, _primaryAction)
 {
     static _system = __GuiSystem();
-    with(_system)
+    with(_system.__environmentCurrent)
     {
-        __globalMouseX    = _x;
-        __globalMouseY    = _y;
-        __globalMouseHold = _primaryAction;
+        __envMouseX    = _x;
+        __envMouseY    = _y;
+        __envMouseHold = _primaryAction;
     }
 }

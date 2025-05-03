@@ -15,7 +15,7 @@ function GuiLayoutSetResizeType(_width, _height, _instance = self)
             if (__layoutWidthResize != _width)
             {
                 __layoutWidthResize = _width;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
         
@@ -24,7 +24,7 @@ function GuiLayoutSetResizeType(_width, _height, _instance = self)
             if (__layoutHeightResize != _height)
             {
                 __layoutHeightResize = _height;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
     }

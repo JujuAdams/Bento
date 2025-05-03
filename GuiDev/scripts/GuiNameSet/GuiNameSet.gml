@@ -12,7 +12,7 @@ function GuiNameSet(_name, _instance = self, _overwrite = false)
 {
     if (not GUI_EXISTS(_instance)) return;
     
-    var _nameMap = _instance.GUI_VARS.__environment.__nameMap;
+    var _nameMap = _instance.GUI_VARS.__layer.__nameMap;
     
     var _oldInstance = _nameMap[? _name];
     if ((_oldInstance != undefined) && GUI_EXISTS(_oldInstance))
@@ -23,7 +23,7 @@ function GuiNameSet(_name, _instance = self, _overwrite = false)
         }
         else
         {
-            __GuiError($"Instance with name \"{_name}\" already exists (UI element {_oldInstance.GUI_VARS.__globalIndex} {object_get_name(_oldInstance.object_index)})");
+            __GuiError($"Instance with name \"{_name}\" already exists (UI element {_oldInstance.GUI_VARS.__envIndex} {object_get_name(_oldInstance.object_index)})");
         }
     }
     

@@ -2,12 +2,12 @@
 
 /// Returns whether the navigation mode has been set to `GUI_NAV_MOUSE`.
 /// 
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavUsingMouse(_environment = undefined)
+function GuiNavUsingMouse(_layer = undefined)
 {
     static _system = __GuiSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    return (_environment.__navMode == GUI_NAV_MOUSE);
+    _layer ??= _system.__layerCurrent;
+    return (_layer.__navMode == GUI_NAV_MOUSE);
 }

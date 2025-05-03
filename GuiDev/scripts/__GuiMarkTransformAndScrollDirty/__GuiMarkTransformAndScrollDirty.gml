@@ -11,7 +11,7 @@ function __GuiMarkTransformAndScrollDirty(_instance)
         if (not __transformAndScrollDirty)
         {
             __transformAndScrollDirty = true;
-            array_push(__environment.__transformAndScrollDirtyArray, _instance);
+            array_push(__layer.__transformAndScrollDirtyArray, _instance);
         }
     }
 }

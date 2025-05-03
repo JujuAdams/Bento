@@ -10,7 +10,7 @@ function GuiNavGetClick(_instance = self)
     
     with(_instance.GUI_VARS)
     {
-        return __environment.__primaryConsumed? false : __click;
+        return __layer.__primaryConsumed? false : __click;
     }
     
     return false;

@@ -22,8 +22,8 @@ function GuiScissorSetPadding(_left, _top, _right, _bottom, _instance = self)
             __scissorPadRight  = _right;
             __scissorPadBottom = _bottom;
             
-            __environment.__stepDirty = true;
-            __environment.__drawDirty = true;
+            __layer.__stepDirty = true;
+            __layer.__drawDirty = true;
         }
     }
 }

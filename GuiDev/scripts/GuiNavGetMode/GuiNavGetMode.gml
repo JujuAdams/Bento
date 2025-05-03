@@ -8,12 +8,12 @@
 /// - `GUI_NAV_DIRECTIONAL`
 /// - `GUI_NAV_TOUCH`
 /// 
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavGetMode(_environment = undefined)
+function GuiNavGetMode(_layer = undefined)
 {
     static _system = __GuiSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    return _environment.__navMode;
+    _layer ??= _system.__layerCurrent;
+    return _layer.__navMode;
 }

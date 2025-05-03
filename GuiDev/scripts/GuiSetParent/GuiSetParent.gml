@@ -15,8 +15,8 @@ function GuiSetParent(_parent, _targetInstance = self)
     
     with(_targetInstance.GUI_VARS)
     {
-        //Mark the environment we're leaving as dirty
-        with(__environment)
+        //Mark the layer we're leaving as dirty
+        with(__layer)
         {
             __layoutDirty = true;
             __stepDirty   = true;
@@ -24,10 +24,10 @@ function GuiSetParent(_parent, _targetInstance = self)
         }
         
         __parent = _parent;
-        __environment = _parent.GUI_VARS.__environment;
+        __layer = _parent.GUI_VARS.__layer;
         
-        //Mark the environment we're entering as dirty
-        with(__environment)
+        //Mark the layer we're entering as dirty
+        with(__layer)
         {
             __layoutDirty = true;
             __stepDirty   = true;

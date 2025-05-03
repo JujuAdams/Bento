@@ -15,7 +15,7 @@ function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = self)
             if (__layoutAlignH != _hAlign)
             {
                 __layoutAlignH = _hAlign;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
         
@@ -24,7 +24,7 @@ function GuiLayoutSetAlignSelf(_hAlign, _vAlign, _instance = self)
             if (__layoutAlignV != _vAlign)
             {
                 __layoutAlignV = _vAlign;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
     }

@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Must be called in the scope of `__GuiClassEnvironment`.
+/// Must be called in the scope of `__GuiClassLayer`.
 
 function __GuiEnsureChildOrder()
 {
@@ -23,7 +23,7 @@ function __GuiEnsureChildOrder()
             }
             else
             {
-                return sign(_a.__globalIndex - _b.__globalIndex);
+                return sign(_a.__envIndex - _b.__envIndex);
             }
         }
         

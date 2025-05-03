@@ -25,33 +25,19 @@ function __GuiSystem()
         __scissorStack = [];
         __tempParent = noone;
         
-        ////////
-        // Global input state
-        ////////
+        __globalDirPreDelay     = 20;
+        __globalDirDelay        = 9;
+        __globalDirDelayCount   = 4;
+        __globalDirDelayShorter = 5;
         
-        __globalMouseX    = 0;
-        __globalMouseY    = 0;
-        __globalMouseHold = false;
+        __environmentArray = [];
+        var _environment = GuiEnvironmentCreate("default");
         
-        __globalDirectionalDX   = 0;
-        __globalDirectionalDY   = 0;
-        __globalDirectionalHold = false;
+        __environmentStack = [];
+        __environmentCurrent = _environment;
         
-        __globalHotkeyInputMap = ds_map_create();
-        __globalHotkeyArray    = [];
-        
-        __globalNavDirPreDelay     = 20;
-        __globalNavDirDelay        = 9;
-        __globalNavDirDelayCount   = 4;
-        __globalNavDirDelayShorter = 5;
-        
-        ////////
-        // Environments
-        ////////
-        
-        __environmentShared  = new __GuiClassEnvironment();
-        __environmentArray   = [__environmentShared];
-        __environmentCurrent = __environmentShared;
+        __layerStack = [];
+        __layerCurrent = __environmentCurrent.__layerCurrent;
     }
     
     if (GUI_RUNNING_FROM_IDE)

@@ -8,12 +8,11 @@
 function GuiInputConfigureNavigation(_preDelay, _delay, _count, _shortDelay)
 {
     static _system = __GuiSystem();
-    
     with(_system)
     {
-        __globalNavDirPreDelay     = _preDelay;
-        __globalNavDirDelay        = _delay;
-        __globalNavDirDelayCount   = _count;
-        __globalNavDirDelayShorter = _shortDelay;
+        __globalDirPreDelay     = _preDelay;
+        __globalDirDelay        = _delay;
+        __globalDirDelayCount   = _count;
+        __globalDirDelayShorter = _shortDelay;
     }
 }

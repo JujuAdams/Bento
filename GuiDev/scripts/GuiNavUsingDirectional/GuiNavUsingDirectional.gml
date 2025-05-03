@@ -2,12 +2,12 @@
 
 /// Returns whether the navigation mode has been set to `GUI_NAV_DIRECTIONAL`.
 /// 
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavUsingDirectional(_environment = undefined)
+function GuiNavUsingDirectional(_layer = undefined)
 {
     static _system = __GuiSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    return (_environment.__navMode == GUI_NAV_DIRECTIONAL);
+    _layer ??= _system.__layerCurrent;
+    return (_layer.__navMode == GUI_NAV_DIRECTIONAL);
 }

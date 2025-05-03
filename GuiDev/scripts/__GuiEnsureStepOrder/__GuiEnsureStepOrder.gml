@@ -3,7 +3,7 @@
 /// Ensures that a valid step order exists on the system struct. This step order has be marked
 /// as "dirty" by many operations and this function updates the step order only when necessary.
 /// 
-/// Must be called in the scope of `__GuiClassEnvironment`.
+/// Must be called in the scope of `__GuiClassLayer`.
 
 function __GuiEnsureStepOrder()
 {
@@ -20,7 +20,7 @@ function __GuiEnsureStepOrder()
     return __stepOrder;
 }
 
-function __GuiEnsureStepOrderInner(_environment, _stepOrder, _instance)
+function __GuiEnsureStepOrderInner(_layer, _stepOrder, _instance)
 {
     with(_instance.GUI_VARS)
     {
@@ -28,8 +28,8 @@ function __GuiEnsureStepOrderInner(_environment, _stepOrder, _instance)
         
         //N.B. We iterate over instances backwards to handle modals and blockers elegantly
         
-        var _focused = (__focused && (_environment.__navMode == GUI_NAV_DIRECTIONAL));
-        if ((not __focusable) || _environment.__navPointer || _focused)
+        var _focused = (__focused && (_layer.__navMode == GUI_NAV_DIRECTIONAL));
+        if ((not __focusable) || _layer.__navPointer || _focused)
         {
             if (__scissorEnabled)
             {
@@ -43,7 +43,7 @@ function __GuiEnsureStepOrderInner(_environment, _stepOrder, _instance)
             var _i = array_length(_array)-1;
             repeat(array_length(_array))
             {
-                var _return = __GuiEnsureStepOrderInner(_environment, _stepOrder, _array[_i]);
+                var _return = __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i]);
                 if ((_return == __GUI_RETURN_MODAL) || (_return == __GUI_RETURN_BLOCK_SIBLINGS)) break;
                 --_i;
             }
@@ -72,7 +72,7 @@ function __GuiEnsureStepOrderInner(_environment, _stepOrder, _instance)
         {
             //Store the first pop-up instance we see so we can detect when the user clicks off of
             //the pop-up (which will destroy it)
-            if (not GUI_EXISTS(_environment.__popUpRoot)) _environment.__popUpRoot = _instance;
+            if (not GUI_EXISTS(_layer.__popUpRoot)) _layer.__popUpRoot = _instance;
             
             //Pop-ups are not selectable but are still hoverable. This means we need to push them
             //to the Step order

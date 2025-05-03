@@ -3,7 +3,7 @@
 /// Ensures that a valid draw order exists on the system struct. This draw order has be marked
 /// as "dirty" by many operations and this function updates the draw order only when necessary.
 /// 
-/// Must be called in the scope of `__GuiClassEnvironment`.
+/// Must be called in the scope of `__GuiClassLayer`.
 
 function __GuiEnsureDrawOrder()
 {

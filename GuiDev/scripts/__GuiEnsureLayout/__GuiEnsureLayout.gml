@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Must be called in the scope of `__GuiClassEnvironment`.
+/// Must be called in the scope of `__GuiClassLayer`.
 
 function __GuiEnsureLayout()
 {

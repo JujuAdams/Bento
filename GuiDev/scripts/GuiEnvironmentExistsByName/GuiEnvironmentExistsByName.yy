@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiEnvironmentExistsByName",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiEnvironmentExistsByName",
+  "parent":{
+    "name":"Environments",
+    "path":"folders/Library/Functions/Environments.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -5,12 +5,12 @@
 /// when the navigation mode is set to `GUI_NAV_DIRECTIONAL`.
 /// 
 /// @param instance
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavSelectSoft(_instance, _environment = undefined)
+function GuiNavSelectSoft(_instance, _layer = undefined)
 {
     static _system = __GuiSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    _environment.__overInstanceSoft = _instance;
+    _layer ??= _system.__layerCurrent;
+    _layer.__overInstanceSoft = _instance;
 }

@@ -13,8 +13,8 @@ function GuiNavSetFocus(_state, _instance = self)
         {
             if (__focused == _state) return;
             
-            __environment.__stepDirty = true;
-            var _stepRootStack = __environment.__stepRootStack;
+            __layer.__stepDirty = true;
+            var _stepRootStack = __layer.__stepRootStack;
             
             if (_state)
             {
@@ -25,13 +25,13 @@ function GuiNavSetFocus(_state, _instance = self)
                 {
                     if (__scissorEnabled)
                     {
-                        __environment.__directionalLastX = _instance.guiLeft + __scissorPadLeft;
-                        __environment.__directionalLastY = _instance.guiTop  + __scissorPadTop;
+                        __layer.__directionalLastX = _instance.guiLeft + __scissorPadLeft;
+                        __layer.__directionalLastY = _instance.guiTop  + __scissorPadTop;
                     }
                     else
                     {
-                        __environment.__directionalLastX = _instance.guiLeft;
-                        __environment.__directionalLastY = _instance.guiTop;
+                        __layer.__directionalLastX = _instance.guiLeft;
+                        __layer.__directionalLastY = _instance.guiTop;
                     }
                 }
                 
@@ -62,7 +62,7 @@ function GuiNavSetFocus(_state, _instance = self)
         }
         else
         {
-            __GuiTrace($"UI element {_instance.GUI_VARS.__globalIndex} {object_get_name(object_index)} is not focusable");
+            __GuiTrace($"UI element {_instance.GUI_VARS.__envIndex} {object_get_name(object_index)} is not focusable");
         }
     }
 }

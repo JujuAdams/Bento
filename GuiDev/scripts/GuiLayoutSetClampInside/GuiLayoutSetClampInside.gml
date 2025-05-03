@@ -12,7 +12,7 @@ function GuiLayoutSetClampInside(_state, _instance = self)
         if (__layoutClampInside != _state)
         {
             __layoutClampInside = _state;
-            __environment.__layoutDirty = true;
+            __layer.__layoutDirty = true;
         }
     }
 }

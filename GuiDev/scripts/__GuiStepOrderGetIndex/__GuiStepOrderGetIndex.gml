@@ -9,7 +9,7 @@ function __GuiStepOrderGetIndex(_instance)
 {
     if (not GUI_EXISTS(_instance)) return undefined;
     
-    var _stepOrder = _instance.GUI_VARS.__environment.__stepOrder;
+    var _stepOrder = _instance.GUI_VARS.__layer.__stepOrder;
     var _i = 0;
     repeat(array_length(_stepOrder))
     {

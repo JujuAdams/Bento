@@ -4,13 +4,13 @@
 /// `GUI_NAV_DIRECTIONAL`.
 /// 
 /// @param instance
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavSelect(_instance, _environment = undefined)
+function GuiNavSelect(_instance, _layer = undefined)
 {
     static _system = __GuiSystem();
     
-    with(_environment ?? _system.__environmentCurrent)
+    with(_layer ?? _system.__layerCurrent)
     {
         __overInstance     = _instance;
         __overInstanceSoft = noone;

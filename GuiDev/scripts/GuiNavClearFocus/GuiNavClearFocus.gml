@@ -1,12 +1,12 @@
 // Feather disable all
 
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavClearFocus(_environment = undefined)
+function GuiNavClearFocus(_layer = undefined)
 {
     static _system = __GuiSystem();
     
-    with(_environment ?? _system.__environmentCurrent)
+    with(_layer ?? _system.__layerCurrent)
     {
         var _i = 0;
         repeat(array_length(__stepRootStack))

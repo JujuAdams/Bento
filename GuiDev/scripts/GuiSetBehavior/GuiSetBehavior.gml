@@ -46,7 +46,7 @@ function GuiSetBehavior(_behavior, _instance = self)
         if (__behavior == _behavior) return;
         __behavior = _behavior;
         
-        __environment.__stepDirty = true;
-        __environment.__drawDirty = true;
+        __layer.__stepDirty = true;
+        __layer.__drawDirty = true;
     }
 }

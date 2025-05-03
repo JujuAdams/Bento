@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Must be called in the scope of `__GuiClassEnvironment`.
+/// Must be called in the scope of `__GuiClassLayer`.
 
 function __GuiEnsureTransformAndScroll()
 {
@@ -92,7 +92,7 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _inst
         //Ensure the UI element sits inside the root boundary before we transform
         if (__layoutClampInside)
         {
-            var _rootGui    = __environment.__rootInstance.GUI_VARS;
+            var _rootGui    = __layer.__rootInstance.GUI_VARS;
             var _rootWidth  = _rootGui.__solvedWidth;
             var _rootHeight = _rootGui.__solvedHeight;
             

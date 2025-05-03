@@ -2,7 +2,7 @@
 
 /// Updates library state for instances that need it.
 /// 
-/// Must be called in the scope of `__GuiClassEnvironment`.
+/// Must be called in the scope of `__GuiClassLayer`.
 
 function __GuiUpdateInstanceState()
 {

@@ -6,14 +6,14 @@
 /// @param x
 /// @param y
 /// @param [excludeArray]
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavGetNearest(_x, _y, _excludeArray = [], _environment = undefined)
+function GuiNavGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
 {
     static _system = __GuiSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    var _stepOrder = _environment.__stepOrder;
+    _layer ??= _system.__layerCurrent;
+    var _stepOrder = _layer.__stepOrder;
     
     var _instance = noone;
     var _nearestDistance = infinity;

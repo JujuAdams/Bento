@@ -16,7 +16,7 @@ with(GUI_VARS)
     
     if (__tabIdent != undefined)
     {
-        var _tabData = __GuiTabGetData(__tabIdent, __environment);
+        var _tabData = __GuiTabGetData(__tabIdent, __layer);
         if ((_tabData.__host == _self) || (_tabData.__button == _self))
         {
             GuiTabClose(__tabIdent);
@@ -25,7 +25,7 @@ with(GUI_VARS)
     
     if (__tabIdentChildOf != undefined)
     {
-        var _tabData = __GuiTabGetData(__tabIdentChildOf, __environment);
+        var _tabData = __GuiTabGetData(__tabIdentChildOf, __layer);
         if (_tabData.__child == _self)
         {
             if (not GUI_EXISTS(__selectOnDestroy))
@@ -35,7 +35,7 @@ with(GUI_VARS)
         }
     }
     
-    with(__environment)
+    with(__layer)
     {
         __layoutDirty = true;
         __stepDirty   = true;

@@ -11,13 +11,13 @@
 function GuiInputHotkey(_name, _value)
 {
     static _system = __GuiSystem();
-    with(_system)
+    with(_system.__environmentCurrent)
     {
-        if (not ds_map_exists(__globalHotkeyInputMap, _name))
+        if (not ds_map_exists(__envHotkeyInputMap, _name))
         {
-            array_push(__globalHotkeyArray, _name);
+            array_push(__envHotkeyArray, _name);
         }
         
-        __globalHotkeyInputMap[? _name] = _value;
+        __envHotkeyInputMap[? _name] = _value;
     }
 }

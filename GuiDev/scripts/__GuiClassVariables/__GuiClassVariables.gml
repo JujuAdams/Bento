@@ -5,16 +5,16 @@
 function __GuiClassVariables(_attachedInstance) constructor
 {
     static _globalCount = 0;
-    __globalIndex = _globalCount++;
+    __envIndex = _globalCount++;
     
     if (GUI_RUNNING_FROM_IDE)
     {
-        global.GuiElementMap[? __globalIndex] = self;
+        global.GuiElementMap[? __envIndex] = self;
     }
     
     __attachedInstance = _attachedInstance;
     
-    __environment = undefined;
+    __layer = undefined;
     
     __transformMatrix  = undefined;
     __transformOriginX = undefined;

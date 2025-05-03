@@ -11,10 +11,10 @@
 function GuiInputDirectional(_dX, _dY, _primaryAction)
 {
     static _system = __GuiSystem();
-    with(_system)
+    with(_system.__environmentCurrent)
     {
-        __globalDirectionalDX   = _dX;
-        __globalDirectionalDY   = _dY;
-        __globalDirectionalHold = _primaryAction;
+        __envDirectionalDX   = _dX;
+        __envDirectionalDY   = _dY;
+        __envDirectionalHold = _primaryAction;
     }
 }

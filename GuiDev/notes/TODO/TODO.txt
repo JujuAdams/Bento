@@ -1,6 +1,6 @@
 Rewrite examples
 Test focus for e.g. scrollers
-Environments
+Layers
 Layers (modals + pages + persistence)
 Do we need inline modals and blockers if we have layers?
-Multiplayer support in the same environment?
+Multiplayer support in the same layer?

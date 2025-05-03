@@ -14,9 +14,9 @@ function GuiSetPriority(_priority, _instance = self)
         if (_priority == __priority) return;
         __priority = _priority;
         
-        __environment.__layoutDirty = true;
-        __environment.__stepDirty   = true;
-        __environment.__drawDirty   = true;
+        __layer.__layoutDirty = true;
+        __layer.__stepDirty   = true;
+        __layer.__drawDirty   = true;
         
         __GuiMarkChildOrderDirty(__parent);
     }

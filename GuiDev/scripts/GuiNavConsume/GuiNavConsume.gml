@@ -2,14 +2,14 @@
 
 /// "Consumes" all user input.
 /// 
-/// @param [environment=current]
+/// @param [layer=current]
 
-function GuiNavConsume(_environment = undefined)
+function GuiNavConsume(_layer = undefined)
 {
     static _system = __GuiSystem();
-    static _globalHotkeyArray = _system.__globalHotkeyArray;
+    static _globalHotkeyArray = _system.__envHotkeyArray;
     
-    with(_environment ?? _system.__environmentCurrent)
+    with(_layer ?? _system.__layerCurrent)
     {
         __primaryConsumed = true;
         

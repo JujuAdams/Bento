@@ -12,7 +12,7 @@ function GuiSetVisible(_state, _instance = self)
         if (__visible == _state) return;
         __visible = _state;
     
-        __environment.__stepDirty = true;
-        __environment.__drawDirty = true;
+        __layer.__stepDirty = true;
+        __layer.__drawDirty = true;
     }
 }

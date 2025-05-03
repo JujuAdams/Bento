@@ -17,7 +17,7 @@ function GuiLayoutSetPadding(_left, _top, _right, _bottom, _instance = self)
             if (__layoutPadLeft != _left)
             {
                 __layoutPadLeft = _left;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
         
@@ -26,7 +26,7 @@ function GuiLayoutSetPadding(_left, _top, _right, _bottom, _instance = self)
             if (__layoutPadTop != _top)
             {
                 __layoutPadTop = _top;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
         
@@ -35,7 +35,7 @@ function GuiLayoutSetPadding(_left, _top, _right, _bottom, _instance = self)
             if (__layoutPadRight != _right)
             {
                 __layoutPadRight = _right;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
         
@@ -44,7 +44,7 @@ function GuiLayoutSetPadding(_left, _top, _right, _bottom, _instance = self)
             if (__layoutPadBottom != _bottom)
             {
                 __layoutPadBottom = _bottom;
-                __environment.__layoutDirty = true;
+                __layer.__layoutDirty = true;
             }
         }
     }

@@ -13,8 +13,8 @@ function GuiScissorSetEnabled(_state, _instance = self)
         {
             __scissorEnabled = _state;
             
-            __environment.__stepDirty = true;
-            __environment.__drawDirty = true;
+            __layer.__stepDirty = true;
+            __layer.__drawDirty = true;
             
             //Ensure we have additional scissor variables set
             if (_state)

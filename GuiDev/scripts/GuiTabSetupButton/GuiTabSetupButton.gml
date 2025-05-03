@@ -16,7 +16,7 @@ function GuiTabSetupButton(_tabIdent, _instance = self)
     
     with(_instance.GUI_VARS)
     {
-        __GuiTabEnsure(_tabIdent, __environment);
+        __GuiTabEnsure(_tabIdent, __layer);
         __tabIdent = _tabIdent;
     }
 }

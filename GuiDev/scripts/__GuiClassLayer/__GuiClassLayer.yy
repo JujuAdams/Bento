@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiClassLayer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiClassLayer",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Library/Functions/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

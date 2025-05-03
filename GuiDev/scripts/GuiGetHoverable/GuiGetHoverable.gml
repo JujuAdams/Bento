@@ -37,13 +37,13 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
             return false;
         }
         
-        var _environment = __environment;
-        if (GUI_EXISTS(_environment.__popUpRoot) && (not GuiIsAncestor(_environment.__popUpRoot, _instance)))
+        var _layer = __layer;
+        if (GUI_EXISTS(_layer.__popUpRoot) && (not GuiIsAncestor(_layer.__popUpRoot, _instance)))
         {
             return false;
         }
         
-        if (_environment.__navMode == GUI_NAV_DIRECTIONAL)
+        if (_layer.__navMode == GUI_NAV_DIRECTIONAL)
         {
             //In directional mode, only buttons are selectable
             if (__behavior != GUI_BEHAVIOR_BUTTON)
@@ -51,7 +51,7 @@ function __GuiGetHoverableInner(_instance, _checkVisible)
                 return false;
             }
             
-            var _tabData = __GuiTabGetData(__tabIdent, _environment);
+            var _tabData = __GuiTabGetData(__tabIdent, _layer);
             if (_tabData != undefined)
             {
                 if (_tabData.__blockDirectionalWhenOpen && GUI_EXISTS(_tabData.__child))
