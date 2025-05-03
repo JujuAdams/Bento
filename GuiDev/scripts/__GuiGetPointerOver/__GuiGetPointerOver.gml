@@ -22,20 +22,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
         var _method = _stepOrder[_i];
         var _methodFunc = method_get_index(_method);
         
-        if (_methodFunc == __GuiStepMethod)
-        {
-            if (_insideScissor)
-            {
-                with(method_get_self(_stepOrder[_i]))
-                {
-                    if (((not GUI_EXISTS(_holdElement)) || (_holdElement == self)) && instance_position(_mouseX, _mouseY, self))
-                    {
-                        _element = self;
-                    }
-                }
-            }
-        }
-        else if (_methodFunc == __GuiStepMethodScissorPush)
+        if (_methodFunc == __GuiStepMethodScissorPush)
         {
             //Restore the previous state
             var _bounds = array_pop(_scissorStack);
@@ -67,6 +54,19 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
             }
             
             _insideScissor = ((_mouseX >= _scissorL) && (_mouseY >= _scissorT) && (_mouseX <= _scissorR) && (_mouseY <= _scissorB));
+        }
+        else
+        {
+            if (_insideScissor)
+            {
+                with(method_get_self(_stepOrder[_i]))
+                {
+                    if (((not __GuiExists(_holdElement)) || (_holdElement == self)) && instance_position(_mouseX, _mouseY, self))
+                    {
+                        _element = self;
+                    }
+                }
+            }
         }
         
         ++_i;

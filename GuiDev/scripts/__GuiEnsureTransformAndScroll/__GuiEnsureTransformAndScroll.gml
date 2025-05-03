@@ -9,7 +9,7 @@ function __GuiEnsureTransformAndScroll()
     repeat(array_length(_scrollDirtyArray))
     {
         var _element = _scrollDirtyArray[_i];
-        if (not GUI_EXISTS(_element))
+        if (not __GuiExists(_element))
         {
             array_delete(_scrollDirtyArray, _i, 1);
         }
@@ -53,10 +53,10 @@ function __GuiEnsureTransformAndScroll()
     while(array_length(_transformAndScrollDirtyArray) > 0)
     {
         var _element = array_shift(_transformAndScrollDirtyArray);
-        if (GUI_EXISTS(_element))
+        if (__GuiExists(_element))
         {
             var _parent = _element.GUI_VARS.__parent;
-            if (not GUI_EXISTS(_parent))
+            if (not __GuiExists(_parent))
             {
                 //No parent, probably the root node?
                 __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _element, 0, 0);
@@ -79,9 +79,17 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _elem
         var _width  = __solvedWidth;
         var _height = __solvedHeight;
         
-        var _sprite = _element.sprite_index;
-        var _originX = _width*(sprite_exists(_sprite)? (sprite_get_xoffset(_sprite) / sprite_get_width(_sprite)) : GUI_FALLBACK_ORIGIN_X);
-        var _originY = _height*(sprite_exists(_sprite)? (sprite_get_yoffset(_sprite) / sprite_get_height(_sprite)) : GUI_FALLBACK_ORIGIN_Y);
+        if (__GuiIsInstance(_element))
+        {
+            var _sprite  = _element.sprite_index;
+            var _originX = _width*(sprite_exists(_sprite)? (sprite_get_xoffset(_sprite) / sprite_get_width(_sprite)) : GUI_FALLBACK_ORIGIN_X);
+            var _originY = _height*(sprite_exists(_sprite)? (sprite_get_yoffset(_sprite) / sprite_get_height(_sprite)) : GUI_FALLBACK_ORIGIN_Y);
+        }
+        else
+        {
+            var _originX = 0;
+            var _originY = 0;
+        }
         
         //Calculate where our center is on the parent
         var _leftWorld   = __solvedLeft + _offsetX;
@@ -167,9 +175,9 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _elem
             guiY      = _yWorld;
             guiWidth  = _width;
             guiHeight = _height;
-            
-            event_user(GUI_USER_EVENT_REPOSITION);
         }
+        
+        __eventReposition();
         
         //Pass values on to our children
         var _childArray = __childArray;

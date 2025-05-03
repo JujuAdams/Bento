@@ -5,7 +5,7 @@
 function GuiScrollGetFinished(_element = self)
 {
     var _scroller = __GuiScrollFindParent(_element);
-    if (not GUI_EXISTS(_scroller)) return false;
+    if (not __GuiExists(_scroller)) return false;
     
     with(_scroller.GUI_VARS)
     {

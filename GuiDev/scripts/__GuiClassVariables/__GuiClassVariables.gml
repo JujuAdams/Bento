@@ -75,6 +75,54 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __selectOnDestroy = noone;
     
+    if (__GuiIsInstance(_attachedElement))
+    {
+        __eventStep = method(_attachedElement, function()
+        {
+            event_user(GUI_USER_EVENT_STEP);
+        });
+        
+        __eventDraw = method(_attachedElement, function()
+        {
+            event_user(GUI_USER_EVENT_DRAW);
+        });
+        
+        __eventDrawEnd = method(_attachedElement, function()
+        {
+            event_user(GUI_USER_EVENT_DRAW_END);
+        });
+        
+        __eventReposition = method(_attachedElement, function()
+        {
+            event_user(GUI_USER_EVENT_REPOSITION);
+        });
+    }
+    else
+    {
+        __eventStep = method(_attachedElement, function()
+        {
+            funcStep();
+        });
+        
+        __eventDraw = method(_attachedElement, function()
+        {
+            funcDraw();
+        });
+        
+        __eventDrawEnd = method(_attachedElement, function()
+        {
+            funcDrawEnd();
+        });
+        
+        __eventReposition = method(_attachedElement, function()
+        {
+            funcReposition();
+        });
+    }
+    
+    __eventScissorPush = method(_attachedElement, __GuiStepMethodScissorPush);
+    __eventScissorPop  = method(_attachedElement, __GuiScissorPop);
+    
     /////////////////////////////////
     //                             //
     //  Layout & Solver Variables  //
@@ -83,10 +131,20 @@ function __GuiClassVariables(_attachedElement) constructor
     
     //Output values from the solver. Positions are relative to the left-top of the parent. All four
     //values are subsequently transforms to give us the `layout*` values that are exposed to the user.
-    __solvedLeft   = _attachedElement.x;
-    __solvedTop    = _attachedElement.y;
-    __solvedWidth  = _attachedElement.sprite_width;
-    __solvedHeight = _attachedElement.sprite_height;
+    if (__GuiIsInstance(_attachedElement))
+    {
+        __solvedLeft   = _attachedElement.x;
+        __solvedTop    = _attachedElement.y;
+        __solvedWidth  = _attachedElement.sprite_width;
+        __solvedHeight = _attachedElement.sprite_height;
+    }
+    else
+    {
+        __solvedLeft   = 0;
+        __solvedTop    = 0;
+        __solvedWidth  = 0;
+        __solvedHeight = 0;
+    }
     
     __layoutClampInside = false;
     
@@ -181,7 +239,7 @@ function __GuiClassVariables(_attachedElement) constructor
     //grid then the allocated space will be smaller.
     __SolverPositions = function(_left, _top, _allocatedWidth, _allocatedHeight)
     {
-        // N.B. `____oGuiLibRoot`, `oGuiLibList`, `oGuiLibGrid` override this function.
+        // N.B. `oGuiLibList`, `oGuiLibGrid` override this function.
         
         __solvedLeft = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
         __solvedTop  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);

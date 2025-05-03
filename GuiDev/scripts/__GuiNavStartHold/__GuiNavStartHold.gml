@@ -6,7 +6,7 @@
 
 function __GuiNavStartHold(_element)
 {
-    if (GUI_EXISTS(_element) && (not GuiNavGetHold(_element)))
+    if (__GuiExists(_element) && (not GuiNavGetHold(_element)))
     {
         with(_element.GUI_VARS)
         {

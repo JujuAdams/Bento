@@ -3,9 +3,6 @@
 //Library instances are expected to persist between rooms.
 persistent = true;
 
-//Make a struct to contain GUI-related variables. This keeps the instance clean in the debugger.
-GUI_VARS = new __GuiClassVariables(self);
-
 ///////////////////////////
 //                       //
 //  Read-Only Variables  //
@@ -25,4 +22,8 @@ guiY      = y;
 guiWidth  = sprite_width;
 guiHeight = sprite_height;
 
+//Make a struct to contain GUI-related variables. This keeps the instance clean in the debugger.
+GUI_VARS = new __GuiClassVariables(self);
+
+//Set the parent before going to the Create event for the instance
 GuiSetParent(__GuiSystem().__tempParent);

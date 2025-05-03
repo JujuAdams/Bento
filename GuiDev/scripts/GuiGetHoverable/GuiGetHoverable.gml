@@ -31,7 +31,7 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
 
 function __GuiGetHoverableInner(_element, _checkVisible)
 {
-    if (not GUI_EXISTS(_element)) return false;
+    if (not __GuiExists(_element)) return false;
     
     with(_element.GUI_VARS)
     {
@@ -48,7 +48,7 @@ function __GuiGetHoverableInner(_element, _checkVisible)
         }
         
         var _layer = __layer;
-        if (GUI_EXISTS(_layer.__popUpRoot) && (not GuiIsAncestor(_layer.__popUpRoot, _element)))
+        if (__GuiExists(_layer.__popUpRoot) && (not GuiIsAncestor(_layer.__popUpRoot, _element)))
         {
             return false;
         }

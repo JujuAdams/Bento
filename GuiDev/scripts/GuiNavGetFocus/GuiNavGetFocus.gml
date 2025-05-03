@@ -4,5 +4,5 @@
 
 function GuiNavGetFocus(_element = self)
 {
-    return GUI_EXISTS(_element)? _element.GUI_VARS.__focused : false;
+    return __GuiExists(_element)? _element.GUI_VARS.__focused : false;
 }

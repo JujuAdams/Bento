@@ -25,7 +25,7 @@ function __GuiGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _el
     
     var _empty = true;
     
-    if (GUI_EXISTS(_element))
+    if (__GuiExists(_element))
     {
         with(_element.GUI_VARS)
         {

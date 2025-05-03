@@ -6,7 +6,7 @@
 
 function GuiScrollGetTargetX(_element = self)
 {
-    if (not GUI_EXISTS(_element)) return 0;
+    if (not __GuiExists(_element)) return 0;
     
     return _element.GUI_VARS.__scrollTargetX;
 }

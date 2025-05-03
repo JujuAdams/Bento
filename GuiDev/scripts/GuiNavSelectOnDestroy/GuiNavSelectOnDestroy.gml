@@ -9,7 +9,7 @@
 
 function GuiNavSelectOnDestroy(_trigger, _target)
 {
-    if (not GUI_EXISTS(_trigger)) return;
+    if (not __GuiExists(_trigger)) return;
     
     _trigger.GUI_VARS.__selectOnDestroy = _target;
 }

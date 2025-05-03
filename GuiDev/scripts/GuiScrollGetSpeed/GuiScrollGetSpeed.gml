@@ -5,7 +5,7 @@
 function GuiScrollGetSpeed(_element = self)
 {
     var _scroller = __GuiScrollFindParent(_element);
-    if (not GUI_EXISTS(_scroller)) return 0;
+    if (not __GuiExists(_scroller)) return 0;
     
     with(_scroller.GUI_VARS)
     {

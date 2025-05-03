@@ -37,6 +37,6 @@ function TestContextMenu()
             },
         },
     ];
-
+    
     gridElement = GuiCreateFromJSON(_json, GUI_ROOT);
 }

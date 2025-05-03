@@ -11,17 +11,9 @@ function GuiGetRoot(_layer = undefined)
     
     with(_layer ?? _system.__layerCurrent)
     {
-        if (not GUI_EXISTS(__rootElement))
+        if (not __GuiExists(__rootElement))
         {
-            if (GUI_CREATE_LAYER != undefined)
-            {
-                __rootElement = instance_create_layer(0, 0, GUI_CREATE_LAYER, __oGuiLibRoot);
-            }
-            else
-            {
-                __rootElement = instance_create_depth(0, 0, GUI_CREATE_DEPTH ?? 0, __oGuiLibRoot);
-            }
-            
+            __rootElement = new GuiClassElement();
             __rootElement.GUI_VARS.__layer = self;
         }
         

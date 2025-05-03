@@ -7,7 +7,7 @@ with(GUI_VARS)
     __GuiRemoveParent(_self);
     GuiDestroyChildren(_self);
     
-    if (GUI_EXISTS(__selectOnDestroy))
+    if (__GuiExists(__selectOnDestroy))
     {
         GuiNavSelectSoft(__selectOnDestroy);
     }

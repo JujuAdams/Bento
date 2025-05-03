@@ -14,7 +14,7 @@
 
 function GuiScrollDrawVertSprite(_left, _top, _right, _bottom, _barSprite, _handleSprite, _handlePadding, _element = self)
 {
-    if (not GUI_EXISTS(_element)) return;
+    if (not __GuiExists(_element)) return;
     
     with(_element.GUI_VARS)
     {

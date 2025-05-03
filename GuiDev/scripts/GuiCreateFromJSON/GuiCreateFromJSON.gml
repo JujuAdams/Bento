@@ -8,7 +8,7 @@
 /// an array, this function will return the first instance that gets created.
 /// 
 /// @param json
-/// @param [parentInstance=self]
+/// @param [parent=self]
 /// @param [metadata]
 
 function GuiCreateFromJSON(_json, _parent = self, _metadata = undefined)

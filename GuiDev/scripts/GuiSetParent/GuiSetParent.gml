@@ -9,7 +9,7 @@
 
 function GuiSetParent(_parent, _target = self)
 {
-    if ((not GUI_EXISTS(_parent)) || (not GUI_EXISTS(_target))) return;
+    if ((not __GuiExists(_parent)) || (not __GuiExists(_target))) return;
     
     __GuiRemoveParent(_target);
     

@@ -16,7 +16,7 @@ function GuiCreateObject(_object, _struct = undefined, _parent = self)
     static _system = __GuiSystem();
     static _emptyStruct = {};
     
-    if (not GUI_EXISTS(_parent)) __GuiError("Parent doesn't exist");
+    if (not __GuiExists(_parent)) __GuiError("Parent doesn't exist");
     
     if ((_object != oGuiLibAncestor) && (not object_is_ancestor(_object, oGuiLibAncestor)))
     {
@@ -28,11 +28,11 @@ function GuiCreateObject(_object, _struct = undefined, _parent = self)
     
     if (GUI_CREATE_LAYER != undefined)
     {
-        var _element = instance_create_layer(_parent.x, _parent.y, GUI_CREATE_LAYER, _object, _struct ?? _emptyStruct);
+        var _element = instance_create_layer(_parent.guiX, _parent.guiY, GUI_CREATE_LAYER, _object, _struct ?? _emptyStruct);
     }
     else
     {
-        var _element = instance_create_depth(_parent.x, _parent.y, GUI_CREATE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
+        var _element = instance_create_depth(_parent.guiX, _parent.guiY, GUI_CREATE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
     }
     
     _system.__tempParent = _oldParent;

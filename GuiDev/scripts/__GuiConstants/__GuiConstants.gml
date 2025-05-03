@@ -18,7 +18,6 @@
 #macro GUI_ENVIRONMENT       (__GuiSystem().__environment)
 #macro GUI_LAYER             (__GuiSystem().__environment.__layerCurrent)
 #macro GUI_ROOT              (GuiGetRoot())
-#macro GUI_EXISTS            instance_exists
 
 #macro GUI_BEHAVIOR_COSMETIC        0
 #macro GUI_BEHAVIOR_BUTTON          1

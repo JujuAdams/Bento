@@ -10,6 +10,6 @@
 
 function GuiNavGetRelease(_element = self)
 {
-    if (not GUI_EXISTS(_element)) return false;
+    if (not __GuiExists(_element)) return false;
     return (_element.GUI_VARS.__holdState == GUI_RELEASE);
 }

@@ -7,10 +7,10 @@
 
 function GuiSetPriorityBottom(_element = self, _delta = 1)
 {
-    if (not GUI_EXISTS(_element)) return;
+    if (not __GuiExists(_element)) return;
     
     var _parent = _element.GUI_VARS.__parent;
-    if (not GUI_EXISTS(_parent)) return;
+    if (not __GuiExists(_parent)) return;
     
     var _array = _parent.__childArray;
     var _length = array_length(_array);
@@ -18,7 +18,7 @@ function GuiSetPriorityBottom(_element = self, _delta = 1)
     var _i = 0;
     repeat(_length)
     {
-        if (GUI_EXISTS(_array[_i]))
+        if (__GuiExists(_array[_i]))
         {
             GuiSetPriority(_array[_i].__priority - _delta, _element);
             return;

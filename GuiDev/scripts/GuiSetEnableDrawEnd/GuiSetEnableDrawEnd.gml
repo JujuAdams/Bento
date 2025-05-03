@@ -10,7 +10,7 @@
 
 function GuiSetEnableDrawEnd(_state, _element = self)
 {
-    if (not GUI_EXISTS(_element)) return;
+    if (not __GuiExists(_element)) return;
     
     with(_element.GUI_VARS)
     {

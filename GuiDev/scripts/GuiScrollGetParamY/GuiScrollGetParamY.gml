@@ -4,7 +4,7 @@
 
 function GuiScrollGetParamY(_element = self)
 {
-    if (not GUI_EXISTS(_element)) return 0;
+    if (not __GuiExists(_element)) return 0;
     
     with(_element.GUI_VARS)
     {

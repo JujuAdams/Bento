@@ -6,7 +6,7 @@
 
 function GuiDestroyChildren(_parent = self)
 {
-    if (not GUI_EXISTS(_parent)) return;
+    if (not __GuiExists(_parent)) return;
     
     with(_parent.GUI_VARS)
     {

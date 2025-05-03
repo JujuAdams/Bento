@@ -10,5 +10,5 @@ function GuiNameExists(_name, _layer = undefined)
     static _system = __GuiSystem();
     
     _layer ??= _system.__layerCurrent;
-    return GUI_EXISTS(_layer.__nameMap[? _name] ?? noone);
+    return __GuiExists(_layer.__nameMap[? _name] ?? noone);
 }
