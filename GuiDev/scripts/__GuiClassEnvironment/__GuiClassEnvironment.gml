@@ -54,10 +54,21 @@ function __GuiClassEnvironment(_name) constructor
     
     static __Update = function(_rootWidth, _rootHeight)
     {
-        if (array_length(__layerArray) <= 0) return;
+        var _layerArray = __layerArray;
+        
+        var _layerCount = array_length(_layerArray);
+        if (_layerCount <= 0) return;
         
         __GuiEnvironmentTargetPush(self);
-        array_last(__layerArray).__Update(_rootWidth, _rootHeight);
+        
+        var _i = 0;
+        repeat(_layerCount-1)
+        {
+            _layerArray[_i].__Update(_rootWidth, _rootHeight, true);
+            ++_i;
+        }
+        
+        _layerArray[_i].__Update(_rootWidth, _rootHeight, false);
         __GuiEnvironmentTargetPop();
     }
     

@@ -112,76 +112,79 @@ function __GuiClassLayer(_environment, _name) constructor
         __environment.__RemoveLayer(self);
     }
     
-    static __Update = function(_rootWidth, _rootHeight)
+    static __Update = function(_rootWidth, _rootHeight, _ensureOnly)
     {
         var _environment = __environment;
         
         __GuiLayerTargetPush(self);
         
-        ///////
-        // Input handling
-        ///////
-        
-        //Update mouse (pointer) input
-        __mousePrevHold = __mouseHold;
-        __mouseHold     = _environment.__envMouseHold;
-        
-        if ((__navMode == GUI_NAV_TOUCH) && (not __mouseHold))
+        if (not _ensureOnly)
         {
-            var _mouseX = -__GUI_VERY_LARGE;
-            var _mouseY = -__GUI_VERY_LARGE;
-        }
-        else
-        {
-            var _mouseX = _environment.__envMouseX;
-            var _mouseY = _environment.__envMouseY;
-        }
-        
-        __mousePrevX = __mouseX;
-        __mousePrevY = __mouseY;
-        
-        __mouseX = _mouseX;
-        __mouseY = _mouseY;
-        
-        if (__mouseHold && (not __mousePrevHold))
-        {
-            __mousePressX = _mouseX;
-            __mousePressY = _mouseY;
+            ///////
+            // Input handling
+            ///////
             
-            __mousePrevX = _mouseX;
-            __mousePrevY = _mouseY;
-        }
-        
-        //Update directional input
-        __directionalPrevHold = __directionalHold;
-        __directionalHold     = _environment.__envDirectionalHold;
-        
-        __directionalDX = _environment.__envDirectionalDX;
-        __directionalDY = _environment.__envDirectionalDY;
-        
-        __directionalStateX.__Update(__directionalDX, _system.__frame);
-        __directionalStateY.__Update(__directionalDY, _system.__frame);
-        
-        //Update hotkey input
-        var _globalHotkeyInputMap = __environment.__envHotkeyInputMap;
-        var _globalHotkeyArray    = __environment.__envHotkeyArray;
-        var _i = 0;
-        repeat(array_length(_globalHotkeyArray))
-        {
-            var _key = _globalHotkeyArray[_i];
+            //Update mouse (pointer) input
+            __mousePrevHold = __mouseHold;
+            __mouseHold     = _environment.__envMouseHold;
             
-            var _prev  = __hotkeyPrevMap[? _key] ?? false;
-            var _input = _globalHotkeyInputMap[? _key] ?? false;
-            
-            if (_input && (not _prev))
+            if ((__navMode == GUI_NAV_TOUCH) && (not __mouseHold))
             {
-                __hotkeyConsumedMap[? _key] = false;
+                var _mouseX = -__GUI_VERY_LARGE;
+                var _mouseY = -__GUI_VERY_LARGE;
+            }
+            else
+            {
+                var _mouseX = _environment.__envMouseX;
+                var _mouseY = _environment.__envMouseY;
             }
             
-            __hotkeyPrevMap[?  _key] = _input;
-            __hotkeyStateMap[? _key] = _prev? (_input? GUI_HOLD : GUI_RELEASE) : (_input? GUI_PRESS : GUI_OFF);
+            __mousePrevX = __mouseX;
+            __mousePrevY = __mouseY;
             
-            ++_i;
+            __mouseX = _mouseX;
+            __mouseY = _mouseY;
+            
+            if (__mouseHold && (not __mousePrevHold))
+            {
+                __mousePressX = _mouseX;
+                __mousePressY = _mouseY;
+            
+                __mousePrevX = _mouseX;
+                __mousePrevY = _mouseY;
+            }
+            
+            //Update directional input
+            __directionalPrevHold = __directionalHold;
+            __directionalHold     = _environment.__envDirectionalHold;
+            
+            __directionalDX = _environment.__envDirectionalDX;
+            __directionalDY = _environment.__envDirectionalDY;
+            
+            __directionalStateX.__Update(__directionalDX, _system.__frame);
+            __directionalStateY.__Update(__directionalDY, _system.__frame);
+            
+            //Update hotkey input
+            var _globalHotkeyInputMap = __environment.__envHotkeyInputMap;
+            var _globalHotkeyArray    = __environment.__envHotkeyArray;
+            var _i = 0;
+            repeat(array_length(_globalHotkeyArray))
+            {
+                var _key = _globalHotkeyArray[_i];
+                
+                var _prev  = __hotkeyPrevMap[? _key] ?? false;
+                var _input = _globalHotkeyInputMap[? _key] ?? false;
+                
+                if (_input && (not _prev))
+                {
+                    __hotkeyConsumedMap[? _key] = false;
+                }
+                
+                __hotkeyPrevMap[?  _key] = _input;
+                __hotkeyStateMap[? _key] = _prev? (_input? GUI_HOLD : GUI_RELEASE) : (_input? GUI_PRESS : GUI_OFF);
+                
+                ++_i;
+            }
         }
         
         ///////
@@ -195,73 +198,76 @@ function __GuiClassLayer(_environment, _name) constructor
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
         
-        ///////
-        // Navigation
-        ///////
-        
-        __GuiScissorReset();
-        
-        if (not __frozen)
+        if (not _ensureOnly)
         {
-            if (not __navPointer) //Not using a pointer
+            ///////
+            // Navigation
+            ///////
+            
+            __GuiScissorReset();
+            
+            if (not __frozen)
             {
-                if (__directionalPrevHold)
+                if (not __navPointer) //Not using a pointer
                 {
-                    __holdState = (__directionalHold? GUI_HOLD : GUI_RELEASE);
+                    if (__directionalPrevHold)
+                    {
+                        __holdState = (__directionalHold? GUI_HOLD : GUI_RELEASE);
+                    }
+                    else
+                    {
+                        __holdState = (__directionalHold? GUI_PRESS : GUI_OFF);
+                    }
+                    
+                    if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
+                    __GuiNavStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
-                else
+                else //Using a pointer
                 {
-                    __holdState = (__directionalHold? GUI_PRESS : GUI_OFF);
+                    if (__mousePrevHold)
+                    {
+                        __holdState = (__mouseHold? GUI_HOLD : GUI_RELEASE);
+                    }
+                    else
+                    {
+                        __holdState = (__mouseHold? GUI_PRESS : GUI_OFF);
+                    }
+                    
+                    if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
+                    __GuiNavStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
+                    
+                    //Detect clicking off of a pop-up
+                    if ((__holdState == GUI_PRESS)
+                    &&  __GuiExists(__branchTop)
+                    &&  __branchTop.GUI_VARS.__branchClickDismiss
+                    &&  (__branchTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
+                    &&  (not GuiIsAncestor(__branchTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                    {
+                        GuiDestroy(__branchTop);
+                        __holdState = GUI_OFF;
+                    }
                 }
                 
-                if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
-                __GuiNavStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
-            }
-            else //Using a pointer
-            {
-                if (__mousePrevHold)
+                if (__holdState == GUI_PRESS)
                 {
-                    __holdState = (__mouseHold? GUI_HOLD : GUI_RELEASE);
-                }
-                else
-                {
-                    __holdState = (__mouseHold? GUI_PRESS : GUI_OFF);
+                    __primaryConsumed = false;
                 }
                 
-                if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
-                __GuiNavStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
-                
-                //Detect clicking off of a pop-up
-                if ((__holdState == GUI_PRESS)
-                &&  __GuiExists(__branchTop)
-                &&  __branchTop.GUI_VARS.__branchClickDismiss
-                &&  (__branchTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
-                &&  (not GuiIsAncestor(__branchTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
-                {
-                    GuiDestroy(__branchTop);
-                    __holdState = GUI_OFF;
-                }
+                __GuiUpdateElementState();
             }
             
-            if (__holdState == GUI_PRESS)
-            {
-                __primaryConsumed = false;
-            }
+            ///////
+            // Step user event execution
+            ///////
             
-            __GuiUpdateElementState();
-        }
-        
-        ///////
-        // Step user event execution
-        ///////
-        
-        //Surprise! We go in reverse
-        var _stepOrder = __stepOrder;
-        var _i = array_length(_stepOrder)-1;
-        repeat(array_length(_stepOrder))
-        {
-            _stepOrder[_i]();
-            --_i;
+            //Surprise! We go in reverse
+            var _stepOrder = __stepOrder;
+            var _i = array_length(_stepOrder)-1;
+            repeat(array_length(_stepOrder))
+            {
+                _stepOrder[_i]();
+                --_i;
+            }
         }
         
         ///////

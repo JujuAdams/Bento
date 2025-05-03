@@ -24,41 +24,13 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
     {
         if (__disable) return __GUI_RETURN_NORMAL;
         
-        //N.B. We iterate over instances backwards to handle modals and blockers elegantly
-        
-        var _focused = (__focused && (_layer.__navMode == GUI_NAV_DIRECTIONAL));
-        if ((not __focusable) || _layer.__navPointer || _focused)
-        {
-            if (__scissorEnabled)
-            {
-                array_insert(_stepOrder, 0, __eventScissorPush);
-            }
-            
-            //Add children created inside the parent to the Step order. If we encounter a blocking
-            //instance inside the parent then only prevent adding of instances that are inside the
-            //parent.
-            var _array = __childArray;
-            var _i = array_length(_array)-1;
-            repeat(array_length(_array))
-            {
-                var _return = __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i]);
-                if ((_return == __GUI_RETURN_MODAL) || (_return == __GUI_RETURN_BLOCK_SIBLINGS)) break;
-                --_i;
-            }
-            
-            if (__scissorEnabled)
-            {
-                array_insert(_stepOrder, 0, __eventScissorPop);
-            }
-        }
-        
         if ((__behavior == GUI_BEHAVIOR_BUTTON) || (__behavior == GUI_BEHAVIOR_LISTENER))
         {
-            array_insert(_stepOrder, 0, __eventStep);
+            array_push(_stepOrder, __eventStep);
         }
         else if (__branched)
         {
-            array_insert(_stepOrder, 0, __eventStep);
+            array_push(_stepOrder, __eventStep);
             
             if ((not __layer.__navPointer) || __branchBlockPointer)
             {
@@ -67,12 +39,12 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
         }
         else if (__behavior == GUI_BEHAVIOR_MODAL)
         {
-            array_insert(_stepOrder, 0, __eventStep);
+            array_push(_stepOrder, __eventStep);
             return __GUI_RETURN_MODAL;
         }
         else if (__behavior == GUI_BEHAVIOR_BLOCK_SIBLINGS)
         {
-            array_insert(_stepOrder, 0, __eventStep);
+            array_push(_stepOrder, __eventStep);
             return __GUI_RETURN_BLOCK_SIBLINGS;
         }
         else
@@ -82,7 +54,33 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
             
             if (__scissorEnabled)
             {
-                array_insert(_stepOrder, 0, __eventStep);
+                array_push(_stepOrder, __eventStep);
+            }
+        }
+        
+        var _focused = (__focused && (_layer.__navMode == GUI_NAV_DIRECTIONAL));
+        if ((not __focusable) || _layer.__navPointer || _focused)
+        {
+            if (__scissorEnabled)
+            {
+                array_push(_stepOrder, __eventScissorPush);
+            }
+            
+            //Add children created inside the parent to the Step order. If we encounter a blocking
+            //instance inside the parent then only prevent adding of instances that are inside the
+            //parent.
+            var _array = __childArray;
+            var _i = 0;
+            repeat(array_length(_array))
+            {
+                var _return = __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i]);
+                if ((_return == __GUI_RETURN_MODAL) || (_return == __GUI_RETURN_BLOCK_SIBLINGS)) break;
+                ++_i;
+            }
+            
+            if (__scissorEnabled)
+            {
+                array_push(_stepOrder, __eventScissorPop);
             }
         }
     }
