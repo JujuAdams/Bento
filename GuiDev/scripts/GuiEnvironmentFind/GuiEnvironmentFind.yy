@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiEnvironmentExistsByName",
+  "%Name":"GuiEnvironmentFind",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiEnvironmentExistsByName",
+  "name":"GuiEnvironmentFind",
   "parent":{
     "name":"Environments",
     "path":"folders/Library/Functions/Environments.yy",

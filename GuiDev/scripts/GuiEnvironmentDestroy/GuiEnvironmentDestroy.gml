@@ -1,9 +1,19 @@
 // Feather disable all
 
-/// @param environment
+/// @param environmentOrName
 
-function GuiEnvironmentDestroy(_environment)
+function GuiEnvironmentDestroy(_environmentOrName)
 {
-    if (_environment == undefined) return;
+    if (is_string(_environmentOrName))
+    {
+        var _environment = GuiEnvironmentFind(_environmentOrName);
+    }
+    else if (is_struct(_environmentOrName))
+    {
+        var _environment = _environmentOrName;
+    }
+    
+    if (not is_struct(_environment)) return;
+    
     _environment.__Destroy();
 }

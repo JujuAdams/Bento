@@ -1,15 +1,13 @@
 // Feather disable all
 
 /// @param name
-/// @param [environment=current]
 
-function GuiLayerFind(_name, _environment = undefined)
+function GuiEnvironmentFind(_name)
 {
     static _system = __GuiSystem();
-    with(_environment ?? _system.__environmentCurrent)
+    with(_system)
     {
-        var _array = __layerArray;
-        
+        var _array = __environmentArray;
         var _i = 0;
         repeat(array_length(_array))
         {

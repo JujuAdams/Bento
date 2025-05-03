@@ -2,7 +2,7 @@
 
 /// @param layer
 
-function GuiLayerPush(_layer)
+function __GuiLayerTargetPush(_layer)
 {
     static _system = __GuiSystem();
     static _layerStack = _system.__layerStack;

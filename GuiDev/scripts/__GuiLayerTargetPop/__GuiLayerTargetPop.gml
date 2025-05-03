@@ -1,6 +1,6 @@
 // Feather disable all
 
-function GuiLayerPop()
+function __GuiLayerTargetPop()
 {
     static _system = __GuiSystem();
     static _layerStack = _system.__layerStack;

@@ -3,13 +3,12 @@
 /// @param name
 /// @param [environment=current]
 
-function GuiEnvironmentExistsByName(_name, _environment = undefined)
+function GuiLayerFind(_name, _environment = undefined)
 {
     static _system = __GuiSystem();
-    with(_system)
+    with(_environment ?? _system.__environmentCurrent)
     {
-        var _array = __environmentArray;
-        
+        var _array = __layerArray;
         var _i = 0;
         repeat(array_length(_array))
         {

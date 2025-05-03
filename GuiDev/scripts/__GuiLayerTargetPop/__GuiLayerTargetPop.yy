@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiLayerExistsByName",
+  "%Name":"__GuiLayerTargetPop",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiLayerExistsByName",
+  "name":"__GuiLayerTargetPop",
   "parent":{
-    "name":"Layers",
-    "path":"folders/Library/Functions/Layers.yy",
+    "name":"(System)",
+    "path":"folders/Library/Functions/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

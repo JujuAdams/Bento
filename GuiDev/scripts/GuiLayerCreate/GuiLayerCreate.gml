@@ -8,10 +8,18 @@ function GuiLayerCreate(_name, _environment = undefined)
     static _system = __GuiSystem();
     
     _environment ??= _system.__environmentCurrent;
-    if (GuiLayerFind(_name, _environment) != undefined)
+    with(_environment)
     {
-        __GuiError($"Layer called \"{_name}\" already exist (environment \"{_environment.__name}\")");
+        if (GuiLayerExists(_name, self))
+        {
+            __GuiError($"Layer called \"{_name}\" already exist (environment \"{__name}\")");
+        }
+        
+        var _layer = new __GuiClassLayer(self, _name);
+        array_push(__layerArray, _layer);
+        
+        return _layer;
     }
     
-    return new __GuiClassLayer(_environment, _name);
+    return undefined;
 }

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiLayerPop",
+  "%Name":"GuiLayerFind",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiLayerPop",
+  "name":"GuiLayerFind",
   "parent":{
     "name":"Layers",
     "path":"folders/Library/Functions/Layers.yy",

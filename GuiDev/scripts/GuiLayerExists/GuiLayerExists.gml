@@ -1,9 +1,21 @@
 // Feather disable all
 
-/// @param layer
+/// @param layerOrName
+/// @param [environment=current]
 
-function GuiLayerExists(_layer)
+function GuiLayerExists(_layerOrName, _environment = undefined)
 {
-    if (_layer == undefined) return false;
-    return (array_get_index(_layer.__environment.__layerArray, _layer) >= 0);
+    static _system = __GuiSystem();
+    
+    if (is_string(_layerOrName))
+    {
+        return (GuiLayerFind(_layerOrName, _environment ?? _system.__environmentCurrent) != undefined);
+    }
+    else if (is_struct(_layerOrName))
+    {
+        _environment ??= _layer.__environment;
+        return (array_get_index(_environment.__layerArray, _layerOrName) >= 0);
+    }
+    
+    return false;
 }

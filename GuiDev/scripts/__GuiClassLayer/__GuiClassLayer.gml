@@ -116,7 +116,7 @@ function __GuiClassLayer(_environment, _name) constructor
     {
         var _environment = __environment;
         
-        GuiLayerPush(self);
+        __GuiLayerTargetPush(self);
         
         ///////
         // Input handling
@@ -270,12 +270,12 @@ function __GuiClassLayer(_environment, _name) constructor
         __GuiEnsureScrollLimits();
         __GuiEnsureTransformAndScroll();
         
-        GuiLayerPop();
+        __GuiLayerTargetPop();
     }
     
     static __Draw = function()
     {
-        GuiLayerPush(self);
+        __GuiLayerTargetPush(self);
         
         __GuiEnsureDrawOrder();
         
@@ -287,6 +287,6 @@ function __GuiClassLayer(_environment, _name) constructor
             ++_i;
         }
         
-        GuiLayerPop();
+        __GuiLayerTargetPop();
     }
 }

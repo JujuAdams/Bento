@@ -28,6 +28,14 @@ function __GuiClassEnvironment(_name) constructor
     
     static __Destroy = function()
     {
+        var _index = array_get_index(_system.__environmentArray, self);
+        if (_index >= 0) array_delete(_system.__environmentArray, _index, 1);
+        
+        if (_system.__environmentCurrent == self)
+        {
+            __GuiEnvironmentTargetPop();
+        }
+        
         var _layerArray = __layerArray;
         
         var _i = array_length(_layerArray)-1;
@@ -36,9 +44,6 @@ function __GuiClassEnvironment(_name) constructor
             _layerArray[_i].__Destroy();
             --_i;
         }
-        
-        var _index = array_get_index(_system.__environmentArray, self);
-        if (_index >= 0) array_delete(_system.__environmentArray, _index, 1);
     }
     
     static __RemoveLayer = function(_layer)
@@ -49,22 +54,16 @@ function __GuiClassEnvironment(_name) constructor
     
     static __Update = function(_rootWidth, _rootHeight)
     {
-        GuiEnvironmentPush(self);
+        if (array_length(__layerArray) <= 0) return;
         
-        var _layerArray = __layerArray;
-        var _i = 0;
-        repeat(array_length(_layerArray))
-        {
-            _layerArray[_i].__Update(_rootWidth, _rootHeight);
-            ++_i;
-        }
-        
-        GuiEnvironmentPop();
+        __GuiEnvironmentTargetPush(self);
+        array_last(__layerArray).__Update(_rootWidth, _rootHeight);
+        __GuiEnvironmentTargetPop();
     }
     
     static __Draw = function()
     {
-        GuiEnvironmentPush(self);
+        __GuiEnvironmentTargetPush(self);
         
         var _layerArray = __layerArray;
         var _i = 0;
@@ -74,6 +73,6 @@ function __GuiClassEnvironment(_name) constructor
             ++_i;
         }
         
-        GuiEnvironmentPop();
+        __GuiEnvironmentTargetPop();
     }
 }
