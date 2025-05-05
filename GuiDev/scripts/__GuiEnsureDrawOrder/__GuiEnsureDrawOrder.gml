@@ -27,42 +27,28 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _element)
     {
         if (__disable) return;
         
-        ///////////////////////////////////////////////////////////////////////////
-        //                                                                       //
-        //  N.B. We build the draw order backwards to handle blockers elegantly  //
-        //                                                                       //
-        ///////////////////////////////////////////////////////////////////////////
-        
         //Calculate a lookup index based on the properties of this instance
         var _lookup = ((__visible? __GUI_DRAW_ORDER_VISIBLE : 0)
                     |  (__scissorEnabled? __GUI_DRAW_ORDER_SCISSOR : 0)
                     |  ((__transformMatrix != undefined)? __GUI_DRAW_ORDER_MATRIX : 0));
         
-        //Find a Draw End function for the lookup index
-        var _function = _functionLookupArray[_lookup | __GUI_DRAW_ORDER_DRAW_END];
-        if (_function != undefined)  array_insert(_drawOrder, 0, method(_element, _function));
+        //Find a Draw function for the lookup index
+        var _function = _functionLookupArray[_lookup];
+        if (_function != undefined) array_push(_drawOrder, method(_element, _function));
         
         //Add children created inside the parent to the Draw order
         var _array = __childArray;
-        var _i = array_length(_array)-1;
+        var _i = 0;
         repeat(array_length(_array))
         {
-            if (__GuiEnsureDrawOrderInner(_drawOrder, _array[_i]) == __GUI_RETURN_BLOCK_SIBLINGS) break;
-            --_i;
+            __GuiEnsureDrawOrderInner(_drawOrder, _array[_i]);
+            ++_i;
         }
         
-        //Find a Draw function for the lookup index
-        var _function = _functionLookupArray[_lookup];
-        if (_function != undefined) array_insert(_drawOrder, 0, method(_element, _function));
-        
-        //If we're a blocker, nope out
-        if (__behavior == GUI_BEHAVIOR_BLOCK_SIBLINGS)
-        {
-            return __GUI_RETURN_BLOCK_SIBLINGS;
-        }
+        //Find a Draw End function for the lookup index
+        var _function = _functionLookupArray[_lookup | __GUI_DRAW_ORDER_DRAW_END];
+        if (_function != undefined) array_push(_drawOrder, method(_element, _function));
     }
-    
-    return __GUI_RETURN_NORMAL;
     
     static _functionLookupArray = (function()
     {

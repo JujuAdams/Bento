@@ -11,15 +11,15 @@ if (showScrollbar)
 {
     if (GuiNavUsingDirectional())
     {
-        if (GuiNavGetClick())
+        if (GuiNavGetClick() && focusable)
         {
-            GuiNavSetFocus(true);
+            GuiNavBranchOpen(GUI_BRANCH_POINTER_CANCEL_ALWAYS);
         }
         
         if (GuiHotkeyGetPress("escape"))
         {
             GuiNavConsume();
-            GuiNavSetFocus(false);
+            GuiNavBranchClose();
         }
     }
     else if (GuiNavUsingPointer())

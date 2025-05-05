@@ -5,10 +5,6 @@
 //Many GM functions don't support using `infinity`
 #macro __GUI_VERY_LARGE  999999
 
-#macro __GUI_RETURN_NORMAL          0
-#macro __GUI_RETURN_MODAL           1
-#macro __GUI_RETURN_BLOCK_SIBLINGS  2
-
 __GuiSystem();
 function __GuiSystem()
 {

@@ -40,10 +40,6 @@ function __GuiClassVariables(_attachedElement) constructor
     __disable = false;
     __visible = true;
     
-    __focusable       = false;
-    __focused         = false;
-    __focusBlockHover = false;
-    
     __branched = false;
     __branchClickDismiss = false;
     
@@ -270,8 +266,6 @@ function __GuiClassVariables(_attachedElement) constructor
         {
             GuiNavSelectSoft(__selectOnDestroy);
         }
-        
-        if (__focusable) GuiNavSetFocus(false);
         
         GuiNavBranchClose(__attachedElement);
         

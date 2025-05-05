@@ -9,7 +9,7 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
 {
     if (__GuiGetHoverableInner(_element, _checkVisible))
     {
-        //Don't return `true` if the instance isn't 
+        //TODO - We can cache this data when renewing the Step order
         var _stepOrder = _element.GUI_VARS.__layer.__stepOrder;
         var _i = 0;
         repeat(array_length(_stepOrder))
@@ -35,28 +35,34 @@ function __GuiGetHoverableInner(_element, _checkVisible)
     
     with(_element.GUI_VARS)
     {
-        //Basic disabled check
-        if (__disable)
-        {
-            return false;
-        }
+        if (__disable) return false;
         
-        //We're not hoverable if we're focused and we have children (see `GuiNavSetFocus()`)
-        if (__focusBlockHover)
+        //Don't hover ourselves if we have children
+        //TODO - We can cache this data when renewing the Step order
+        if (__branched && (array_length(__childArray) > 0))
         {
             return false;
         }
         
         var _layer = __layer;
-        
         var _branchTop = _layer.__branchTop;
-        if (__GuiExists(_branchTop) && (not GuiIsAncestor(_branchTop, _element)))
-        {
-            return false;
-        }
         
-        if (not _layer.__navPointer)
+        if (_layer.__navPointer)
         {
+            if (__GuiExists(_branchTop)
+            &&  (_branchTop.GUI_VARS.__branchType == GUI_BRANCH_POINTER_CONSTRAIN)
+            &&  (not GuiIsAncestor(_branchTop, _element)))
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (__GuiExists(_branchTop) && (not GuiIsAncestor(_branchTop, _element)))
+            {
+                return false;
+            }
+            
             //In directional mode, only buttons are selectable
             if (__behavior != GUI_BEHAVIOR_BUTTON)
             {

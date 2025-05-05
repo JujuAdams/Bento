@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"Note4",
+  "name":"Note4",
+  "parent":{
+    "name":"GuiWithLayouts",
+    "path":"GuiWithLayouts.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}

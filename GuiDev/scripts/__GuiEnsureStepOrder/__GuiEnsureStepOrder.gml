@@ -12,8 +12,20 @@ function __GuiEnsureStepOrder()
     
     array_resize(__stepOrder, 0);
     
+    //Determine where to start the Step order processing
+    //FIXME - Walk up branch stack to find a pointer constrain element rather than only looking at the top one
+    var _branchTop = __branchTop;
+    if (__GuiExists(_branchTop) && ((not __navPointer) || (_branchTop.GUI_VARS.__branchType == GUI_BRANCH_POINTER_CONSTRAIN)))
+    {
+        var _root = _branchTop;
+    }
+    else
+    {
+        var _root = __rootElement;
+    }
+    
     __GuiEnsureChildOrder();
-    __GuiEnsureStepOrderInner(self, __stepOrder, (__navMode == GUI_NAV_DIRECTIONAL)? (array_last(__stepRootStack) ?? __rootElement) : __rootElement);
+    __GuiEnsureStepOrderInner(self, __stepOrder, _root);
     
     return __stepOrder;
 }
@@ -22,68 +34,49 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
 {
     with(_element.GUI_VARS)
     {
-        if (__disable) return __GUI_RETURN_NORMAL;
+        if (__disable) return true;
         
-        if ((__behavior == GUI_BEHAVIOR_BUTTON) || (__behavior == GUI_BEHAVIOR_LISTENER))
-        {
-            array_push(_stepOrder, __eventStep);
-        }
-        else if (__branched)
+        //Determine whether we need to execute the Step user event
+        if (__branched)
         {
             array_push(_stepOrder, __eventStep);
             
-            if ((not __layer.__navPointer) || __branchBlockPointer)
+            if ((not __layer.__navPointer) || (__branchType == GUI_BRANCH_POINTER_CONSTRAIN))
             {
-                return __GUI_RETURN_MODAL;
+                //return false;
             }
         }
-        else if (__behavior == GUI_BEHAVIOR_MODAL)
+        else if ((__behavior != GUI_BEHAVIOR_COSMETIC) || __scissorEnabled)
         {
             array_push(_stepOrder, __eventStep);
-            return __GUI_RETURN_MODAL;
-        }
-        else if (__behavior == GUI_BEHAVIOR_BLOCK_SIBLINGS)
-        {
-            array_push(_stepOrder, __eventStep);
-            return __GUI_RETURN_BLOCK_SIBLINGS;
-        }
-        else
-        {
-            //Other behaviors are not hoverable (or selectable) so we don't push them to the Step
-            //order unless they're pushing scissor state
-            
-            if (__scissorEnabled)
-            {
-                array_push(_stepOrder, __eventStep);
-            }
         }
         
-        var _focused = (__focused && (_layer.__navMode == GUI_NAV_DIRECTIONAL));
-        if ((not __focusable) || _layer.__navPointer || _focused)
+        //Then move on to our children
+        var _array = __childArray;
+        if (__scissorEnabled)
         {
-            if (__scissorEnabled)
-            {
-                array_push(_stepOrder, __eventScissorPush);
-            }
+            array_push(_stepOrder, __eventScissorPush);
             
-            //Add children created inside the parent to the Step order. If we encounter a blocking
-            //instance inside the parent then only prevent adding of instances that are inside the
-            //parent.
-            var _array = __childArray;
             var _i = 0;
             repeat(array_length(_array))
             {
-                var _return = __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i]);
-                if ((_return == __GUI_RETURN_MODAL) || (_return == __GUI_RETURN_BLOCK_SIBLINGS)) break;
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i]);
                 ++_i;
             }
             
-            if (__scissorEnabled)
+            array_push(_stepOrder, __eventScissorPop);
+        }
+        else
+        {
+            //Same as above, just without the scissor events
+            var _i = 0;
+            repeat(array_length(_array))
             {
-                array_push(_stepOrder, __eventScissorPop);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i]);
+                ++_i;
             }
         }
     }
     
-    return __GUI_RETURN_NORMAL;
+    return true;
 }

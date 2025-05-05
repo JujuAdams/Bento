@@ -13,5 +13,4 @@ GuiScrollSetEnabled(true, true);
 if (focusable)
 {
     GuiSetBehavior(GUI_BEHAVIOR_BUTTON);
-    GuiNavSetFocusable(true);
 }

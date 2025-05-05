@@ -1,10 +1,8 @@
 // Feather disable all
 
-/// @param element
+/// @param [element=self]
 
-function GuiNavGetBranched(_element)
+function GuiNavGetBranched(_element = self)
 {
-    if (not __GuiExists(_element)) return false;
-    
-    return _element.GUI_VARS.__branched;
+    return __GuiExists(_element)? _element.GUI_VARS.__branched : false;
 }

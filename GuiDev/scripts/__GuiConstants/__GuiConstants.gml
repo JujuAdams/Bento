@@ -19,11 +19,9 @@
 #macro GUI_LAYER             (__GuiSystem().__environment.__layerCurrent)
 #macro GUI_ROOT              (GuiGetRoot())
 
-#macro GUI_BEHAVIOR_COSMETIC        0
-#macro GUI_BEHAVIOR_BUTTON          1
-#macro GUI_BEHAVIOR_LISTENER        2
-#macro GUI_BEHAVIOR_MODAL           3
-#macro GUI_BEHAVIOR_BLOCK_SIBLINGS  4
+#macro GUI_BEHAVIOR_COSMETIC  0
+#macro GUI_BEHAVIOR_BUTTON    1
+#macro GUI_BEHAVIOR_LISTENER  2
 
 #macro GUI_AXIS_X  0
 #macro GUI_AXIS_Y  1
@@ -54,3 +52,8 @@
 
 #macro GUI_FALLBACK_ORIGIN_X  (GUI_DEFAULT_LAYOUT_ALIGN_H)
 #macro GUI_FALLBACK_ORIGIN_Y  (GUI_DEFAULT_LAYOUT_ALIGN_V)
+
+#macro GUI_BRANCH_POINTER_CONSTRAIN        0
+#macro GUI_BRANCH_POINTER_IGNORE           1
+#macro GUI_BRANCH_POINTER_CANCEL_ON_CLICK  2
+#macro GUI_BRANCH_POINTER_CANCEL_ALWAYS    3

@@ -1,0 +1,76 @@
+Branching Types:
+
+- Focus
+NavBranchOpen(element, GUI_BRANCH.POINTER_CANCEL_ALWAYS)
+
+Applies only when using directional input
+Must be cancelled using a function call
+Automatically cancelled entirely when in pointer mode
+No navigation away from focused UI element
+Used to take control of e.g. carousels and scrollers
+
+
+
+- Navigate Inside
+NavBranchOpen(element, GUI_BRANCH.POINTER_CANCEL_ALWAYS)
+
+Applies only when using directional input
+Must be cancelled using a function call
+Automatically cancelled entirely when in pointer mode
+Navigation can only happen inside the focused UI element
+Used to take control of scrollboxes when using keyboard+gamepad input
+
+
+
+- Pop-up
+NavBranchOpen(element, GUI_BRANCH.POINTER_CANCEL_ON_CLICK)
+
+Applies in both directional and pointer modes
+Can be cancelled using a function call
+Cancelled in pointer mode by clicking off the focused UI element (or its children)
+Navigation can only happen inside the focused UI element
+Used for context menus etc.
+
+
+
+- Modal
+NavBranchOpen(element, GUI_BRANCH.POINTER_CONSTRAIN)
+
+Applies in both directional and pointer modes
+Must be cancelled using a function call
+Navigation can only happen inside the focused UI element
+
+
+
+- Tabs
+NavBranchOpen(element, GUI_BRANCH.POINTER_IGNORE)
+
+Applies only when using directional input
+Ignored but not cancelled when in pointer mode
+Must be cancelled using a function call
+Navigation can only happen inside the focused UI element
+Used for restricting interaction when in directional mode
+
+
+
+Branching:
+- Always applies in directional mode and may apply in pointer mode
+- Can always be cancelled by a function call
+- Pointer can do one of three things: always cancel branching, cancel only when clicking off the branched tree, or never cancel
+- Navigation can always only happen inside the branched UI element
+- If an element has no selectable elements, the UI element itself remains selected
+- In one case, pointer can ignore the branch
+
+NavBranchOpen(element, branchType)
+NavBranchClose(element)
+NavBranchExists(element)
+NavBranchGetType(element)
+
+GUI_BRANCH_POINTER_CONSTRAIN
+  Pointer is constrained in the same way that directional input is
+GUI_BRANCH_POINTER_IGNORE
+  Pointer will ignore the branch but not cancel it. Swapping back to directional mode will re-establish contraints
+GUI_BRANCH_POINTER_CANCEL_ON_CLICK
+  Pointer will ignore the branch. Pointer mode can further cancel the branch when clicking outside the branch tree. Swapping back to directional mode will re-establish contraints
+GUI_BRANCH_POINTER_CANCEL_ALWAYS
+  Pointer mode will cancel branch immediately when the mode is set

@@ -18,16 +18,6 @@
 ///   the primary action input. The instance will still have its Step user event called, however,
 ///   and you can scan for button inputs using `GetNavGetButton()`.
 /// 
-/// - `GUI_BEHAVIOR_MODAL`
-///   A variant on `GUI_BEHAVIOR_LISTENER` with the added effect of blocking all inputs passing
-///   through to lower priority GUI instances. This is useful for confirmation questions that
-///   should prevent player input until the question has been answered.
-/// 
-/// - `GUI_BEHAVIOR_BLOCK_SIBLINGS`
-///   Prevents interaction and rendering for sibling instances with a lower priority. The instance
-///   itself will still have its Step and Draw user event executed but it cannot be interacted with
-///   directly using the primary action. This behavior is useful for creating pages.
-/// 
 /// @param behavior
 /// @param [element=self]
 

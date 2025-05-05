@@ -77,7 +77,6 @@ function __GuiClassLayer(_environment, _name) constructor
     __transformAndScrollDirtyArray = [];
     __scrollDirtyArray = [];
     
-    __stepRootStack = [];
     __stepOrder     = [];
     __stepDirty     = true;
     
@@ -239,7 +238,7 @@ function __GuiClassLayer(_environment, _name) constructor
                     //Detect clicking off of a pop-up
                     if ((__holdState == GUI_PRESS)
                     &&  __GuiExists(__branchTop)
-                    &&  __branchTop.GUI_VARS.__branchClickDismiss
+                    &&  (__branchTop.GUI_VARS.__branchType == GUI_BRANCH_POINTER_CANCEL_ON_CLICK)
                     &&  (__branchTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
                     &&  (not GuiIsAncestor(__branchTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
                     {
@@ -260,13 +259,12 @@ function __GuiClassLayer(_environment, _name) constructor
             // Step user event execution
             ///////
             
-            //Surprise! We go in reverse
             var _stepOrder = __stepOrder;
-            var _i = array_length(_stepOrder)-1;
+            var _i = 0;
             repeat(array_length(_stepOrder))
             {
                 _stepOrder[_i]();
-                --_i;
+                ++_i;
             }
         }
         

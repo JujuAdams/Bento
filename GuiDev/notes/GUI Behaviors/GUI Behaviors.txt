@@ -1,6 +1,5 @@
 For most GUI behaviors:
 - STEP user event will trigger
-- DRAW user event will trigger
 - Hoverable in pointer mode (mouse & touch) only
 - Clickable in pointer mode only
 - Not considered a button by `GuiIsButton()`
@@ -24,17 +23,6 @@ GUI_BEHAVIOR_BUTTON
 - Considered a button by `GuiIsButton()`
 
 GUI_BEHAVIOR_LISTENER
-- As default
-
-GUI_BEHAVIOR_MODAL
-- Affects lower priority UI siblings:
-  - STEP user event will not trigger
-  - Cannot be hovered
-  - Cannot be clicked
-
-GUI_BEHAVIOR_BLOCK_SIBLINGS
-- Affects lower priority UI siblings:
-  - STEP user event will not trigger
-  - DRAW user event will not trigger
-  - Cannot be hovered
-  - Cannot be clicked
+- Hoverable in pointer mode (mouse & touch) only
+- Clickable in pointer mode only
+- Not considered a button by `GuiIsButton()`

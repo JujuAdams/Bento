@@ -18,7 +18,7 @@ function GuiNavSetMode(_newMode, _layer = undefined)
     {
         if (__navMode == _newMode) return;
         
-        //Changing navigation mode may change whether elements are selectable underneath focusable parents
+        //Changing navigation mode may change whether elements are hoverable in branches
         __stepDirty = true;
         
         if (_newMode == GUI_NAV_DIRECTIONAL)
@@ -35,13 +35,29 @@ function GuiNavSetMode(_newMode, _layer = undefined)
                 __mousePressX      = undefined;
                 __mousePressY      = undefined;
             }
+            
+            __navPointer = false;
         }
         else
         {
-            GuiNavClearFocus();
+            //Find any branch that needs to be cancelled if we've swapped to a pointer mode
+            var _branchStack = __branchStack;
+            var _i = 0;
+            repeat(array_length(_branchStack))
+            {
+                var _element = _branchStack[_i];
+                if (_element.GUI_VARS.__branchType == GUI_BRANCH_POINTER_CANCEL_ALWAYS)
+                {
+                    GuiNavBranchClose(_element);
+                    break;
+                }
+                
+                ++_i;
+            }
+            
+            __navPointer = true;
         }
         
         __navMode = _newMode;
-        __navPointer = ((_newMode == GUI_NAV_MOUSE) || (_newMode == GUI_NAV_TOUCH));
     }
 }

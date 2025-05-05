@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiNavBranchClose",
+  "%Name":"GuiNavBranchCloseAll",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiNavBranchClose",
+  "name":"GuiNavBranchCloseAll",
   "parent":{
     "name":"Branching",
     "path":"folders/Library/Functions/Branching.yy",
