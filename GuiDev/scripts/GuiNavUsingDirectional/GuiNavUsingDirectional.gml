@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether the navigation mode has been set to `GUI_NAV_DIRECTIONAL`.
+/// Returns whether the navigation mode has been set to `GUI_NAV_KEYBOARD` or `GUI_NAV_GAMEPAD`.
 /// 
 /// @param [layer=current]
 

@@ -28,8 +28,8 @@
 #macro GUI_HOTKEY_MOUSE_WHEEL_UP    "mouse wheel up"
 #macro GUI_HOTKEY_MOUSE_WHEEL_DOWN  "mouse wheel down"
 
-// Normally, desktop OSs will default to setting the navigation mode to `GUI_NAV_MOUSE` when the
-// library initializes. Set this macro to `true` to instead default to `GUI_NAV_KEYBOARD`.
+// Which navigation mode to default to when running on desktop platforms. Must be a `GUI_NAV_*`
+// constant.
 #macro GUI_DESKTOP_DEFAULT_NAV_MODE  GUI_NAV_MOUSE
 
 // Debug only. Set this macro to `true` to show verbose output in the debug log that shows which
