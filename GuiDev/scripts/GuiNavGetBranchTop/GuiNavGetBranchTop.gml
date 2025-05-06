@@ -2,7 +2,7 @@
 
 /// @param [layer=current]
 
-function GuiNavBranchCloseAll(_layer = undefined)
+function GuiNavGetBranchTop(_layer = undefined)
 {
     static _system = __GuiSystem();
     
