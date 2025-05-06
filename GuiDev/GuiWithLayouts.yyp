@@ -219,6 +219,8 @@
     {"id":{"name":"GuiNavSelectSoft","path":"scripts/GuiNavSelectSoft/GuiNavSelectSoft.yy",},},
     {"id":{"name":"GuiNavSetMode","path":"scripts/GuiNavSetMode/GuiNavSetMode.yy",},},
     {"id":{"name":"GuiNavUsingDirectional","path":"scripts/GuiNavUsingDirectional/GuiNavUsingDirectional.yy",},},
+    {"id":{"name":"GuiNavUsingGamepad","path":"scripts/GuiNavUsingGamepad/GuiNavUsingGamepad.yy",},},
+    {"id":{"name":"GuiNavUsingKeyboard","path":"scripts/GuiNavUsingKeyboard/GuiNavUsingKeyboard.yy",},},
     {"id":{"name":"GuiNavUsingMouse","path":"scripts/GuiNavUsingMouse/GuiNavUsingMouse.yy",},},
     {"id":{"name":"GuiNavUsingPointer","path":"scripts/GuiNavUsingPointer/GuiNavUsingPointer.yy",},},
     {"id":{"name":"GuiNavUsingTouch","path":"scripts/GuiNavUsingTouch/GuiNavUsingTouch.yy",},},
