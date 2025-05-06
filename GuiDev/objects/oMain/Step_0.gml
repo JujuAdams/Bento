@@ -3,8 +3,9 @@
 // Swap the navigation mode depending on what number row key has been pressed. In the main
 // project, this is handled when the player hotswaps to another input device.
 if (keyboard_check_pressed(ord("1"))) GuiNavSetMode(GUI_NAV_MOUSE);
-if (keyboard_check_pressed(ord("2"))) GuiNavSetMode(GUI_NAV_DIRECTIONAL);
-if (keyboard_check_pressed(ord("3"))) GuiNavSetMode(GUI_NAV_TOUCH);
+if (keyboard_check_pressed(ord("2"))) GuiNavSetMode(GUI_NAV_KEYBOARD);
+if (keyboard_check_pressed(ord("3"))) GuiNavSetMode(GUI_NAV_GAMEPAD);
+if (keyboard_check_pressed(ord("4"))) GuiNavSetMode(GUI_NAV_TOUCH);
 
 if (keyboard_check_pressed(ord("J")))
 {

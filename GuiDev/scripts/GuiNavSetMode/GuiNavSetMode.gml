@@ -21,7 +21,7 @@ function GuiNavSetMode(_newMode, _layer = undefined)
         //Changing navigation mode may change whether elements are hoverable when focused
         __stepDirty = true;
         
-        if (_newMode == GUI_NAV_DIRECTIONAL)
+        if ((_newMode == GUI_NAV_KEYBOARD) || (_newMode == GUI_NAV_GAMEPAD))
         {
             if (__navPointer)
             {

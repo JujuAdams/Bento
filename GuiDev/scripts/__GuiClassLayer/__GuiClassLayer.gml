@@ -23,7 +23,7 @@ function __GuiClassLayer(_environment, _name) constructor
     
     if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
     {
-        __navMode = GUI_NAV_DIRECTIONAL;
+        __navMode = GUI_NAV_GAMEPAD;
     }
     else if ((os_type == os_android) || (os_type == os_ios) || (os_type == os_tvos))
     {
@@ -31,7 +31,7 @@ function __GuiClassLayer(_environment, _name) constructor
     }
     else if ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
     {
-        __navMode = GUI_DESKTOP_DEFAULT_TO_DIRECTIONAL? GUI_NAV_DIRECTIONAL : GUI_NAV_MOUSE;
+        __navMode = GUI_DESKTOP_DEFAULT_NAV_MODE;
     }
     else
     {
@@ -42,7 +42,7 @@ function __GuiClassLayer(_environment, _name) constructor
     __navPointer = ((__navMode == GUI_NAV_MOUSE) || (__navMode == GUI_NAV_TOUCH));
     
     //Explicitly using a keyboard or gamepad
-    __navDirectional = (__navMode == GUI_NAV_DIRECTIONAL);
+    __navDirectional = ((__navMode == GUI_NAV_KEYBOARD) || (__navMode == GUI_NAV_GAMEPAD));
     
     ////////
     // Input state
