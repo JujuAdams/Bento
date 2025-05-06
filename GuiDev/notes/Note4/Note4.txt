@@ -1,7 +1,7 @@
-Branching Types:
+Focus Types:
 
 - Focus
-NavBranchOpen(element, GUI_BRANCH.POINTER_CANCEL_ALWAYS)
+FocusOpen(element, GUI_FOCUS.POINTER_CANCEL_ALWAYS)
 
 Applies only when using directional input
 Must be cancelled using a function call
@@ -12,7 +12,7 @@ Used to take control of e.g. carousels and scrollers
 
 
 - Navigate Inside
-NavBranchOpen(element, GUI_BRANCH.POINTER_CANCEL_ALWAYS)
+FocusOpen(element, GUI_FOCUS.POINTER_CANCEL_ALWAYS)
 
 Applies only when using directional input
 Must be cancelled using a function call
@@ -23,7 +23,7 @@ Used to take control of scrollboxes when using keyboard+gamepad input
 
 
 - Pop-up
-NavBranchOpen(element, GUI_BRANCH.POINTER_CANCEL_ON_CLICK)
+FocusOpen(element, GUI_FOCUS.POINTER_CANCEL_ON_CLICK)
 
 Applies in both directional and pointer modes
 Can be cancelled using a function call
@@ -34,7 +34,7 @@ Used for context menus etc.
 
 
 - Modal
-NavBranchOpen(element, GUI_BRANCH.POINTER_CONSTRAIN)
+FocusOpen(element, GUI_FOCUS.POINTER_CONSTRAIN)
 
 Applies in both directional and pointer modes
 Must be cancelled using a function call
@@ -43,7 +43,7 @@ Navigation can only happen inside the focused UI element
 
 
 - Tabs
-NavBranchOpen(element, GUI_BRANCH.POINTER_IGNORE)
+FocusOpen(element, GUI_FOCUS.POINTER_IGNORE)
 
 Applies only when using directional input
 Ignored but not cancelled when in pointer mode
@@ -53,24 +53,24 @@ Used for restricting interaction when in directional mode
 
 
 
-Branching:
+Focusing:
 - Always applies in directional mode and may apply in pointer mode
 - Can always be cancelled by a function call
-- Pointer can do one of three things: always cancel branching, cancel only when clicking off the branched tree, or never cancel
-- Navigation can always only happen inside the branched UI element
+- Pointer can do one of three things: always cancel focusing, cancel only when clicking off the focused tree, or never cancel
+- Navigation can always only happen inside the focused UI element
 - If an element has no selectable elements, the UI element itself remains selected
-- In one case, pointer can ignore the branch
+- In one case, pointer can ignore the focus
 
-NavBranchOpen(element, branchType)
-NavBranchClose(element)
-NavBranchExists(element)
-NavBranchGetType(element)
+FocusOpen(element, focusType)
+FocusClose(element)
+FocusExists(element)
+FocusGetType(element)
 
-GUI_BRANCH_POINTER_CONSTRAIN
+GUI_FOCUS_POINTER_CONSTRAIN
   Pointer is constrained in the same way that directional input is
-GUI_BRANCH_POINTER_IGNORE
-  Pointer will ignore the branch but not cancel it. Swapping back to directional mode will re-establish contraints
-GUI_BRANCH_POINTER_CANCEL_ON_CLICK
-  Pointer will ignore the branch. Pointer mode can further cancel the branch when clicking outside the branch tree. Swapping back to directional mode will re-establish contraints
-GUI_BRANCH_POINTER_CANCEL_ALWAYS
-  Pointer mode will cancel branch immediately when the mode is set
+GUI_FOCUS_POINTER_IGNORE
+  Pointer will ignore the focus but not cancel it. Swapping back to directional mode will re-establish contraints
+GUI_FOCUS_POINTER_CANCEL_ON_CLICK
+  Pointer will ignore the focus. Pointer mode can further cancel the focus when clicking outside the focus tree. Swapping back to directional mode will re-establish contraints
+GUI_FOCUS_POINTER_CANCEL_ALWAYS
+  Pointer mode will cancel focus immediately when the mode is set

@@ -2,12 +2,12 @@
 
 /// @param [layer=current]
 
-function GuiNavGetBranchTop(_layer = undefined)
+function GuiFocusGetTop(_layer = undefined)
 {
     static _system = __GuiSystem();
     
     with(_layer ?? _system.__layerCurrent)
     {
-        return __branchTop;
+        return __focusTop;
     }
 }

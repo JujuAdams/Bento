@@ -13,11 +13,11 @@ function __GuiEnsureStepOrder()
     array_resize(__stepOrder, 0);
     
     //Determine where to start the Step order processing
-    //FIXME - Walk up branch stack to find a pointer constrain element rather than only looking at the top one
-    var _branchTop = __branchTop;
-    if (__GuiExists(_branchTop) && ((not __navPointer) || (_branchTop.GUI_VARS.__branchType == GUI_BRANCH_POINTER_CONSTRAIN)))
+    //FIXME - Walk up focus stack to find a pointer constrain element rather than only looking at the top one
+    var _focusTop = __focusTop;
+    if (__GuiExists(_focusTop) && ((not __navPointer) || (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)))
     {
-        var _root = _branchTop;
+        var _root = _focusTop;
     }
     else
     {
@@ -37,11 +37,11 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
         if (__disable) return true;
         
         //Determine whether we need to execute the Step user event
-        if (__branched)
+        if (__focused)
         {
             array_push(_stepOrder, __eventStep);
             
-            if ((not __layer.__navPointer) || (__branchType == GUI_BRANCH_POINTER_CONSTRAIN))
+            if ((not __layer.__navPointer) || (__focusType == GUI_FOCUS_POINTER_CONSTRAIN))
             {
                 //return false;
             }

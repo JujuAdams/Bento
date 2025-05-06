@@ -18,7 +18,7 @@ function GuiNavSetMode(_newMode, _layer = undefined)
     {
         if (__navMode == _newMode) return;
         
-        //Changing navigation mode may change whether elements are hoverable in branches
+        //Changing navigation mode may change whether elements are hoverable when focused
         __stepDirty = true;
         
         if (_newMode == GUI_NAV_DIRECTIONAL)
@@ -40,15 +40,15 @@ function GuiNavSetMode(_newMode, _layer = undefined)
         }
         else
         {
-            //Find any branch that needs to be cancelled if we've swapped to a pointer mode
-            var _branchStack = __branchStack;
+            //Find any focused element that needs to be closed if we've swapped to a pointer mode
+            var _focusStack = __focusStack;
             var _i = 0;
-            repeat(array_length(_branchStack))
+            repeat(array_length(_focusStack))
             {
-                var _element = _branchStack[_i];
-                if (_element.GUI_VARS.__branchType == GUI_BRANCH_POINTER_CANCEL_ALWAYS)
+                var _element = _focusStack[_i];
+                if (_element.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CANCEL_ALWAYS)
                 {
-                    GuiNavBranchClose(_element);
+                    GuiFocusClose(_element);
                     break;
                 }
                 

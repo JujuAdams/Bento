@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiNavBranchClose",
+  "%Name":"GuiFocusGetTop",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiNavBranchClose",
+  "name":"GuiFocusGetTop",
   "parent":{
-    "name":"Branching",
-    "path":"folders/Library/Functions/Branching.yy",
+    "name":"Focus",
+    "path":"folders/Library/Functions/Focus.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

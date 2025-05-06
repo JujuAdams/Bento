@@ -98,8 +98,8 @@ function __GuiClassLayer(_environment, _name) constructor
     
     __nameMap = ds_map_create();
     
-    __branchStack = [];
-    __branchTop   = undefined;
+    __focusStack = [];
+    __focusTop   = undefined;
     
     
     
@@ -237,12 +237,12 @@ function __GuiClassLayer(_environment, _name) constructor
                     
                     //Detect clicking off of a pop-up
                     if ((__holdState == GUI_PRESS)
-                    &&  __GuiExists(__branchTop)
-                    &&  (__branchTop.GUI_VARS.__branchType == GUI_BRANCH_POINTER_CANCEL_ON_CLICK)
-                    &&  (__branchTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
-                    &&  (not GuiIsAncestor(__branchTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                    &&  __GuiExists(__focusTop)
+                    &&  (__focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
+                    &&  (__focusTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
+                    &&  (not GuiIsAncestor(__focusTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
                     {
-                        GuiDestroy(__branchTop);
+                        GuiDestroy(__focusTop);
                         __holdState = GUI_OFF;
                     }
                 }

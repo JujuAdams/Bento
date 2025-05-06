@@ -39,26 +39,26 @@ function __GuiGetHoverableInner(_element, _checkVisible)
         
         //Don't hover ourselves if we have children
         //TODO - We can cache this data when renewing the Step order
-        if (__branched && (array_length(__childArray) > 0))
+        if (__focused && (array_length(__childArray) > 0))
         {
             return false;
         }
         
         var _layer = __layer;
-        var _branchTop = _layer.__branchTop;
+        var _focusTop = _layer.__focusTop;
         
         if (_layer.__navPointer)
         {
-            if (__GuiExists(_branchTop)
-            &&  (_branchTop.GUI_VARS.__branchType == GUI_BRANCH_POINTER_CONSTRAIN)
-            &&  (not GuiIsAncestor(_branchTop, _element)))
+            if (__GuiExists(_focusTop)
+            &&  (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)
+            &&  (not GuiIsAncestor(_focusTop, _element)))
             {
                 return false;
             }
         }
         else
         {
-            if (__GuiExists(_branchTop) && (not GuiIsAncestor(_branchTop, _element)))
+            if (__GuiExists(_focusTop) && (not GuiIsAncestor(_focusTop, _element)))
             {
                 return false;
             }

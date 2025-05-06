@@ -13,13 +13,13 @@ if (showScrollbar)
     {
         if (GuiNavGetClick() && focusable)
         {
-            GuiNavBranchOpen(GUI_BRANCH_POINTER_CANCEL_ALWAYS);
+            GuiFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
         }
         
         if (GuiHotkeyGetPress("escape"))
         {
             GuiNavConsume();
-            GuiNavBranchClose();
+            GuiFocusClose();
         }
     }
     else if (GuiNavUsingPointer())

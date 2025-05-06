@@ -1,9 +1,9 @@
 // Feather disable all
 
-/// @param branchType
+/// @param focusType
 /// @param [element=self]
 
-function GuiNavBranchOpen(_branchType, _element = self)
+function GuiFocusOpen(_focusType, _element = self)
 {
     if (not __GuiExists(_element)) return;
     
@@ -11,43 +11,43 @@ function GuiNavBranchOpen(_branchType, _element = self)
     {
         var _layer = __layer;
         
-        __branchType = _branchType;
+        __focusType = _focusType;
         
-        //If the player is using a pointer but we want to always cancel branching when using a pointer
+        //If the player is using a pointer but we want to always cancel focus when using a pointer
         //then sort that out
-        if (_layer.__navPointer && (_branchType == GUI_BRANCH_POINTER_CANCEL_ALWAYS))
+        if (_layer.__navPointer && (_focusType == GUI_FOCUS_POINTER_CANCEL_ALWAYS))
         {
-            GuiNavBranchClose(_element);
+            GuiFocusClose(_element);
             return;
         }
         
-        if (not __branched)
+        if (not __focused)
         {
-            __branched = true;
+            __focused = true;
             _layer.__stepDirty = true;
             
-            var _branchStack = __layer.__branchStack;
+            var _focusStack = __layer.__focusStack;
             
-            var _i = array_length(_branchStack)-1;
+            var _i = array_length(_focusStack)-1;
             if (_i >= 0)
             {
-                var _branchElement = undefined;
-                repeat(array_length(_branchStack))
+                var _focusElement = undefined;
+                repeat(array_length(_focusStack))
                 {
-                    if (GuiIsAncestor(_branchStack[_i], _element))
+                    if (GuiIsAncestor(_focusStack[_i], _element))
                     {
-                        _branchElement = _branchStack[_i];
+                        _focusElement = _focusStack[_i];
                         break;
                     }
                     
                     --_i;
                 }
                 
-                GuiNavBranchClose(_branchElement);
+                GuiFocusClose(_focusElement);
             }
             
-            array_push(_branchStack, _element);
-            _layer.__branchTop = _element;
+            array_push(_focusStack, _element);
+            _layer.__focusTop = _element;
             
             if (__scissorEnabled)
             {

@@ -40,8 +40,8 @@ function __GuiClassVariables(_attachedElement) constructor
     __disable = false;
     __visible = true;
     
-    __branched = false;
-    __branchClickDismiss = false;
+    __focused = false;
+    __focusClickDismiss = false;
     
     __navLeft  = noone;
     __navRight = noone;
@@ -267,7 +267,7 @@ function __GuiClassVariables(_attachedElement) constructor
             GuiNavSelectSoft(__selectOnDestroy);
         }
         
-        GuiNavBranchClose(__attachedElement);
+        GuiFocusClose(__attachedElement);
         
         var _element = __layer.__nameMap[? __name];
         if (_element == __attachedElement) ds_map_delete(__layer.__nameMap, __name);

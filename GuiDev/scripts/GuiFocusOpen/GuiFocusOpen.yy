@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiFocusOpen",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiFocusOpen",
+  "parent":{
+    "name":"Focus",
+    "path":"folders/Library/Functions/Focus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

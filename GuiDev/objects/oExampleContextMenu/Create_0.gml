@@ -2,7 +2,7 @@
 
 event_inherited();
 
-GuiNavBranchOpen(GUI_BRANCH_POINTER_IGNORE);
+GuiFocusOpen(GUI_FOCUS_POINTER_IGNORE);
 
 GuiLayoutSetClampInside(true);
 GuiLayoutSetResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);
