@@ -7,22 +7,20 @@ if (keyboard_check_pressed(ord("2"))) GuiNavSetMode(GUI_NAV_KEYBOARD);
 if (keyboard_check_pressed(ord("3"))) GuiNavSetMode(GUI_NAV_GAMEPAD);
 if (keyboard_check_pressed(ord("4"))) GuiNavSetMode(GUI_NAV_TOUCH);
 
-if (keyboard_check_pressed(ord("J")))
-{
-    show_debug_message("1");
-}
-
 // "Gampead" input is, in reality, a generic directional input. Sending in a directional value
 // will push the Gui cursor in that direction. When holding a directional input, the Gui system
 // will automatically retrigger the directional input leading to auto-scrolling on menus. You can
 // configure the auto-scroll behavior by calling `GuiInputConfigureNavigation()`. The primary
 // action parameter should be a continuous "held" value too. The Gui system handles the "pressed"
 // and "released" state internally.
-var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
-var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
-var _primary = keyboard_check(vk_space);
-
-if (gamepad_is_connected(0))
+if (GuiNavUsingKeyboard())
+{
+    var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
+    var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
+    var _primary = keyboard_check(vk_space);
+    GuiInputDirectional(_dX, _dY, _primary);
+}
+else if (GuiNavUsingGamepad() && gamepad_is_connected(0))
 {
     var _gamepadDX = gamepad_axis_value(0, gp_axislh);
     var _gamepadDY = gamepad_axis_value(0, gp_axislv);
@@ -31,14 +29,16 @@ if (gamepad_is_connected(0))
     _primary |= gamepad_button_check(0, gp_face1);
 }
 
-GuiInputDirectional(_dX, _dY, _primary);
 
 // Pointer input generalises both mouse and touch input. As above, the primary action should be a
 // continuous "held" value. The coordinate space for the x/y coordinates should be the same as the
 // coordinate space that the Gui is drawn in. In this example, we're drawing the Gui in the
 // standard Draw event which means we need to use room-space coordinates. If you're drawing in a
 // Draw GUI event then you should use GUI-space coordinates.
-GuiInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(0, mb_left));
+if (GuiNavUsingPointer())
+{
+    GuiInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(0, mb_left));
+}
 
 // No matter what navigation mode we're in, we can funnel "button" input into the system. "Button"\
 // is an abstract input that doesn't necessarily have to map to a physical input at all. Button
