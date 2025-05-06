@@ -20,7 +20,7 @@ function GuiNavGetDX(_layer = undefined)
         {
             return __mouseHold? (__mouseX - __mousePrevX) : 0;
         }
-        else if (__navMode == GUI_NAV_DIRECTIONAL)
+        else if (__navDirectional)
         {
             return __directionalStateX.__output;
         }

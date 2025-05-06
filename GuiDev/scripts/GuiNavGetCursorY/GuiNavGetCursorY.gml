@@ -14,7 +14,7 @@ function GuiNavGetCursorY(_layer = undefined)
         {
             return __mouseY;
         }
-        else if (__navMode == GUI_NAV_DIRECTIONAL)
+        else if (__navDirectional)
         {
             return __directionalLastY;
         }

@@ -56,7 +56,7 @@ function __GuiGetHoverableInner(_element, _checkVisible)
                 return false;
             }
         }
-        else
+        else if (_layer.__navDirectional)
         {
             if (__GuiExists(_focusTop) && (not GuiIsAncestor(_focusTop, _element)))
             {
@@ -73,6 +73,11 @@ function __GuiGetHoverableInner(_element, _checkVisible)
             {
                 return false;
             }
+        }
+        else
+        {
+            //Invalid navigation mode, perhaps `GUI_NAV_UNKNOWN`
+            return false;
         }
         
         return true;

@@ -14,7 +14,7 @@ function GuiNavGetCursorX(_layer = undefined)
         {
             return __mouseX;
         }
-        else if (__navMode == GUI_NAV_DIRECTIONAL)
+        else if (__navDirectional)
         {
             return __directionalLastX;
         }

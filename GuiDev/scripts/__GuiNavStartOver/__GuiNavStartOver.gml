@@ -8,7 +8,7 @@ function __GuiNavStartOver(_element)
 {
     if (__GuiExists(_element))
     {
-        if (__navMode == GUI_NAV_DIRECTIONAL)
+        if (__navDirectional)
         {
             __directionalLastX = _element.x;
             __directionalLastY = _element.y;

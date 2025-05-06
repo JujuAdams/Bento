@@ -36,9 +36,10 @@ function GuiNavSetMode(_newMode, _layer = undefined)
                 __mousePressY      = undefined;
             }
             
-            __navPointer = false;
+            __navPointer     = false;
+            __navDirectional = true;
         }
-        else
+        else if ((_newMode == GUI_NAV_MOUSE) || (_newMode == GUI_NAV_TOUCH))
         {
             //Find any focused element that needs to be closed if we've swapped to a pointer mode
             var _focusStack = __focusStack;
@@ -55,7 +56,14 @@ function GuiNavSetMode(_newMode, _layer = undefined)
                 ++_i;
             }
             
-            __navPointer = true;
+            __navPointer     = true;
+            __navDirectional = false;
+        }
+        else
+        {
+            //Some undefined navigation mode, perhaps `GUI_NAV_UNKNOWN`
+            __navPointer     = false;
+            __navDirectional = false;
         }
         
         __navMode = _newMode;

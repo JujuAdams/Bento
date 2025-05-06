@@ -9,5 +9,5 @@ function GuiNavUsingDirectional(_layer = undefined)
     static _system = __GuiSystem();
     
     _layer ??= _system.__layerCurrent;
-    return (_layer.__navMode == GUI_NAV_DIRECTIONAL);
+    return _layer.__navDirectional;
 }

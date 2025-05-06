@@ -15,7 +15,7 @@ function __GuiEnsureStepOrder()
     //Determine where to start the Step order processing
     //FIXME - Walk up focus stack to find a pointer constrain element rather than only looking at the top one
     var _focusTop = __focusTop;
-    if (__GuiExists(_focusTop) && ((not __navPointer) || (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)))
+    if (__GuiExists(_focusTop) && (__navDirectional || (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)))
     {
         var _root = _focusTop;
     }
@@ -41,10 +41,10 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
         {
             array_push(_stepOrder, __eventStep);
             
-            if ((not __layer.__navPointer) || (__focusType == GUI_FOCUS_POINTER_CONSTRAIN))
-            {
-                //return false;
-            }
+            //if (__layer.__navDirectional || (__focusType == GUI_FOCUS_POINTER_CONSTRAIN))
+            //{
+            //    return false;
+            //}
         }
         else if ((__behavior != GUI_BEHAVIOR_COSMETIC) || __scissorEnabled)
         {

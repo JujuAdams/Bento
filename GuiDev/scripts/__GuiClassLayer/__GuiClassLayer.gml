@@ -38,7 +38,11 @@ function __GuiClassLayer(_environment, _name) constructor
         __navMode = GUI_NAV_MOUSE;
     }
     
+    //Explicitly using a mouse or touch input
     __navPointer = ((__navMode == GUI_NAV_MOUSE) || (__navMode == GUI_NAV_TOUCH));
+    
+    //Explicitly using a keyboard or gamepad
+    __navDirectional = (__navMode == GUI_NAV_DIRECTIONAL);
     
     ////////
     // Input state
@@ -207,7 +211,7 @@ function __GuiClassLayer(_environment, _name) constructor
             
             if (not __frozen)
             {
-                if (not __navPointer) //Not using a pointer
+                if (__navDirectional)
                 {
                     if (__directionalPrevHold)
                     {
@@ -221,7 +225,7 @@ function __GuiClassLayer(_environment, _name) constructor
                     if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
                     __GuiNavStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
-                else //Using a pointer
+                else if (__navPointer)
                 {
                     if (__mousePrevHold)
                     {
@@ -245,6 +249,12 @@ function __GuiClassLayer(_environment, _name) constructor
                         GuiDestroy(__focusTop);
                         __holdState = GUI_OFF;
                     }
+                }
+                else //Some other navigation mode, perhaps `GUI_NAV_UNKNOWN`
+                {
+                    __holdState = (__directionalPrevHold? GUI_RELEASE : GUI_OFF);
+                    __holdElement = noone;
+                    __GuiNavStartOver(noone);
                 }
                 
                 if (__holdState == GUI_PRESS)
