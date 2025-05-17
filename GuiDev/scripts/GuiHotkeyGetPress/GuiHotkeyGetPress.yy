@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiHotkeyGetPress",
   "parent":{
-    "name":"Getters",
-    "path":"folders/Library/Functions/Navigation/Getters.yy",
+    "name":"Hotkeys",
+    "path":"folders/Library/Functions/Navigation/Hotkeys.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

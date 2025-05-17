@@ -6,7 +6,7 @@
   "name":"GuiUsingTouch",
   "parent":{
     "name":"Mode",
-    "path":"folders/Library/Functions/Navigation/Mode.yy",
+    "path":"folders/Library/Functions/Input/Mode.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiConsume",
+  "%Name":"GuiInputConsume",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiConsume",
+  "name":"GuiInputConsume",
   "parent":{
-    "name":"Actions",
-    "path":"folders/Library/Functions/Navigation/Actions.yy",
+    "name":"Input",
+    "path":"folders/Library/Functions/Input.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

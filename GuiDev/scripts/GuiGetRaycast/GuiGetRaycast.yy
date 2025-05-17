@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiGetRaycast",
   "parent":{
-    "name":"Actions",
-    "path":"folders/Library/Functions/Navigation/Actions.yy",
+    "name":"Instances",
+    "path":"folders/Library/Functions/Instances.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

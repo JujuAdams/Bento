@@ -176,7 +176,8 @@ function __GuiClassLayer(_environment, _name) constructor
         //Ensure our root instance is the same size as the overall GUI space
         GuiLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
         
-        //Keep our layout and step order updated as necessary
+        //Keep our layout and step order updated as necessary. Updating the layer and step order here
+        //catches any weird stuff the dev might've done between calls to `GuiSystemStep()`
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
         
@@ -257,9 +258,9 @@ function __GuiClassLayer(_environment, _name) constructor
         // Position updates
         ///////
         
+        //Check to see if we need to update the layout and step order again
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
-        
         __GuiEnsureScrollLimits();
         __GuiEnsureTransformAndScroll();
         

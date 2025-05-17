@@ -18,7 +18,7 @@ if (showScrollbar)
         
         if (GuiHotkeyGetPress("escape"))
         {
-            GuiConsume();
+            GuiInputConsume();
             GuiFocusClose();
         }
     }

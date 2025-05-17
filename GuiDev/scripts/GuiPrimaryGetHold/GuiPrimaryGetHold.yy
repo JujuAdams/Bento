@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiPrimaryGetHold",
   "parent":{
-    "name":"Getters",
-    "path":"folders/Library/Functions/Navigation/Getters.yy",
+    "name":"Primary",
+    "path":"folders/Library/Functions/Navigation/Primary.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -4,7 +4,7 @@
 /// 
 /// @param [layer=current]
 
-function GuiConsume(_layer = undefined)
+function GuiInputConsume(_layer = undefined)
 {
     static _system = __GuiSystem();
     

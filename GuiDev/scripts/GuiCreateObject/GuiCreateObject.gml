@@ -20,7 +20,7 @@ function GuiCreateObject(_object, _struct = undefined, _parent = self)
     
     if ((_object != oGuiLibAncestor) && (not object_is_ancestor(_object, oGuiLibAncestor)))
     {
-        __GuiError($"Object {object_get_name(_object)} isn't a descendent of oGuiLibAncestor");
+        __GuiError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oGuiLibAncestor)}");
     }
     
     var _oldParent = _system.__tempParent;
