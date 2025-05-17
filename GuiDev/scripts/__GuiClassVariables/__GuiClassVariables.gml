@@ -41,7 +41,6 @@ function __GuiClassVariables(_attachedElement) constructor
     __visible = true;
     
     __focused = false;
-    __focusClickDismiss = false;
     
     __navLeft  = noone;
     __navRight = noone;
@@ -53,24 +52,29 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __childArray = [];
     
-    //This variable is set on demand by various functions
-    __childOrderDirty = false;
-    
-    //This variable is set on demand by various functions
-    __scrollLimitsDirty = false;
-    
+    __childOrderDirty         = false;
+    __scrollLimitsDirty       = false;
     __transformAndScrollDirty = false;
     
     __updating = false;
     
-    __scissorEnabled = false;
-    //Further scissor variables set in `GuiScissorSetEnabled()`
+    __scissorEnabled   = false;
+    __scissorPadLeft   = 0;
+    __scissorPadTop    = 0;
+    __scissorPadRight  = 0;
+    __scissorPadBottom = 0;
     
-    __scrollHori = false;
-    __scrollVert = false;
-    //Further scroll variables set in `GuiScrollSetEnabled()`
-    __scrollX = 0;
-    __scrollY = 0;
+    __scrollHori      = false;
+    __scrollVert      = false;
+    __scrollPadLeft   = 0;
+    __scrollPadTop    = 0;
+    __scrollPadRight  = 0;
+    __scrollPadBottom = 0;
+    __scrollX         = 0;
+    __scrollY         = 0;
+    __scrollTargetX   = 0;
+    __scrollTargetY   = 0;
+    __scrollSpeed     = infinity;
     
     __selectOnDestroy = noone;
     

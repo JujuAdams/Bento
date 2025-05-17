@@ -44,8 +44,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Fallback Sprites",
-    "path":"folders/Library/Fallback Sprites.yy",
+    "name":"Default Sprites",
+    "path":"folders/Library/Default Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
