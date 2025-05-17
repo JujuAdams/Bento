@@ -8,7 +8,7 @@
 /// @param state
 /// @param [element=self]
 
-function GuiSetEnableDrawEnd(_state, _element = self)
+function GuiSetDrawEnd(_state, _element = self)
 {
     if (not __GuiExists(_element)) return;
     

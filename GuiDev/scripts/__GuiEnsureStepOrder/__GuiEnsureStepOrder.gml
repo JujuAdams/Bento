@@ -25,12 +25,12 @@ function __GuiEnsureStepOrder()
     }
     
     __GuiEnsureChildOrder();
-    __GuiEnsureStepOrderInner(self, __stepOrder, _root);
+    __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_ALWAYS);
     
     return __stepOrder;
 }
 
-function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
+function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _minButtonType)
 {
     with(_element.GUI_VARS)
     {
@@ -46,7 +46,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
             //    return false;
             //}
         }
-        else if ((__behavior != GUI_BEHAVIOR_COSMETIC) || __scissorEnabled)
+        else if ((__buttonType >= _minButtonType) || __listener || __scissorEnabled)
         {
             array_push(_stepOrder, __eventStep);
         }
@@ -60,7 +60,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i]);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _minButtonType);
                 ++_i;
             }
             
@@ -72,7 +72,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element)
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i]);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _minButtonType);
                 ++_i;
             }
         }

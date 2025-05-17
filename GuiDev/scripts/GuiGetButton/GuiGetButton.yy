@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiGetEnableDrawEnd",
+  "%Name":"GuiGetButton",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiGetEnableDrawEnd",
+  "name":"GuiGetButton",
   "parent":{
     "name":"Properties",
     "path":"folders/Library/Functions/Properties.yy",

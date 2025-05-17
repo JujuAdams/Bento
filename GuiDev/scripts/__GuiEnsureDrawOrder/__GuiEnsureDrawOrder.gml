@@ -92,11 +92,6 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _element)
             GUI_VARS.__eventDraw();
         }
         
-        _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_DRAW_END] = function()
-        {
-            GUI_VARS.__eventDrawEnd();
-        }
-        
         _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
             matrix_stack_push(GUI_VARS.__transformMatrix);

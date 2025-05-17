@@ -49,8 +49,13 @@ function __GuiGetHoverableInner(_element, _checkVisible)
         
         if (_layer.__navPointer)
         {
+            if (__buttonType == GUI_BUTTON_NEVER)
+            {
+                return false;
+            }
+            
             if (__GuiExists(_focusTop)
-            &&  (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)
+            &&  (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN) //TODO - Iterate over focus stack to find a POINTER_CONSTRAIN
             &&  (not GuiIsAncestor(_focusTop, _element)))
             {
                 return false;
@@ -64,7 +69,7 @@ function __GuiGetHoverableInner(_element, _checkVisible)
             }
             
             //In directional mode, only buttons are selectable
-            if (__behavior != GUI_BEHAVIOR_BUTTON)
+            if (__buttonType != GUI_BUTTON_ALWAYS)
             {
                 return false;
             }

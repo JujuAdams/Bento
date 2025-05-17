@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiGetBehavior",
+  "%Name":"GuiGetDrawEnd",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiGetBehavior",
+  "name":"GuiGetDrawEnd",
   "parent":{
     "name":"Properties",
     "path":"folders/Library/Functions/Properties.yy",

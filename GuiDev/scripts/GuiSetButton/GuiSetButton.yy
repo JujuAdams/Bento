@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiSetEnableDrawEnd",
+  "%Name":"GuiSetButton",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiSetEnableDrawEnd",
+  "name":"GuiSetButton",
   "parent":{
     "name":"Properties",
     "path":"folders/Library/Functions/Properties.yy",

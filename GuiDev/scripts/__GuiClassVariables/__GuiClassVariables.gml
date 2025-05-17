@@ -32,8 +32,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __parent   = noone;
     __priority = 0;
     
-    __behavior = GUI_BEHAVIOR_COSMETIC;
-    __drawEnd  = false;
+    __listener   = false;
+    __buttonType = GUI_BUTTON_NEVER;
+    __drawEnd    = false; //TODO - Reimplement
     
     __name = undefined;
     

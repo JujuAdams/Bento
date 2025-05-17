@@ -1,10 +1,10 @@
 // Feather disable all
 
-/// Returns whether an instance has its Draw End user event enabled for use by `GuiSetEnableDrawEnd()`.
+/// Returns whether an instance has its Draw End user event enabled for use by `GuiSetDrawEnd()`.
 /// 
 /// @param [element=self]
 
-function GuiGetEnableDrawEnd(_element = self)
+function GuiGetDrawEnd(_element = self)
 {
     if (not __GuiExists(_element)) return false;
     

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiIsButton",
+  "%Name":"GuiGetExecutesStep",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiIsButton",
+  "name":"GuiGetExecutesStep",
   "parent":{
     "name":"Properties",
     "path":"folders/Library/Functions/Properties.yy",

@@ -19,9 +19,9 @@
 #macro GUI_LAYER             (__GuiSystem().__environment.__layerCurrent)
 #macro GUI_ROOT              (GuiGetRoot())
 
-#macro GUI_BEHAVIOR_COSMETIC  0
-#macro GUI_BEHAVIOR_BUTTON    1
-#macro GUI_BEHAVIOR_LISTENER  2
+#macro GUI_BUTTON_NEVER    0
+#macro GUI_BUTTON_POINTER  1
+#macro GUI_BUTTON_ALWAYS   2
 
 #macro GUI_AXIS_X  0
 #macro GUI_AXIS_Y  1
