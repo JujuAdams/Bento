@@ -8,6 +8,6 @@
 
 function GuiLinkVert(_up, _down)
 {
-    if (__GuiExists(_up)) _up.GUI_VARS.__navDown = _down;
-    if (__GuiExists(_down)) _down.GUI_VARS.__navUp = _up;
+    if (__GuiExists(_up)) _up.GUI_VARS.__linkDown = _down;
+    if (__GuiExists(_down)) _down.GUI_VARS.__linkUp = _up;
 }

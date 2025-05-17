@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiSetListener",
+  "%Name":"GuiSetForceStep",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiSetListener",
+  "name":"GuiSetForceStep",
   "parent":{
     "name":"Properties",
     "path":"folders/Library/Functions/Properties.yy",

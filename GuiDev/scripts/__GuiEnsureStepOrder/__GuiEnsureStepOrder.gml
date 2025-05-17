@@ -34,20 +34,18 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType)
 {
     with(_element.GUI_VARS)
     {
-        if (__disable) return;
-        
-        if (GUI_ALWAYS_EXECUTE_STEP)
+        if (__disable)
         {
-            array_push(_stepOrder, __eventStep);
+            __executesStep = false;
+            return;
         }
-        else
+        
+        //Determine whether we need to execute the Step user event
+        //This should match the code in `GuiGetExecutesStep()`
+        if (GUI_ALWAYS_EXECUTE_STEP || (__buttonType & _buttonType) || __forceStep || __focused || __scissorEnabled)
         {
-            //Determine whether we need to execute the Step user event
-            //This should match the code in `GuiGetExecutesStep()`
-            if ((__buttonType & _buttonType) || __listener || __focused || __scissorEnabled)
-            {
-                array_push(_stepOrder, __eventStep);
-            }
+            __executesStep = true;
+            array_push(_stepOrder, __eventStep);
         }
         
         //Then move on to our children

@@ -32,9 +32,10 @@ function __GuiClassVariables(_attachedElement) constructor
     __parent   = noone;
     __priority = 0;
     
-    __listener   = false;
-    __buttonType = GUI_BUTTON_NEVER;
-    __drawEnd    = false; //TODO - Reimplement
+    __forceStep     = false;
+    __buttonType   = GUI_BUTTON_NEVER;
+    __executesStep = false;
+    __drawEnd      = false; //TODO - Reimplement
     
     __name = undefined;
     
@@ -43,10 +44,10 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __focused = false;
     
-    __navLeft  = noone;
-    __navRight = noone;
-    __navUp    = noone;
-    __navDown  = noone;
+    __linkLeft  = noone;
+    __linkRight = noone;
+    __linkUp    = noone;
+    __linkDown  = noone;
     
     __raycastDisableHori = false;
     __raycastDisableVert = false;
