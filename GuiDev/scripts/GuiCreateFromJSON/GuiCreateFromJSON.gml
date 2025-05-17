@@ -51,42 +51,66 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
     }
     else if (is_struct(_json))
     {
-        //Determine object to create
-        //We accept object handles, stringified object handles, and object names
-        var _object = _json[$ "object"];
-        if (is_string(_object))
+        if (variable_struct_exists(_json, "object"))
         {
-            var _convertedObject = asset_get_index(_object);
-            
-            if (not object_exists(_convertedObject))
+            if (variable_struct_exists(_json, "struct"))
             {
-                _convertedObject = handle_parse(_object);
+                __GuiError($"JSON must only contain .object or .struct");
+            }
+            
+            //Determine object to create
+            //We accept object handles, stringified object handles, and object names
+            var _object = _json[$ "object"];
+            if (is_string(_object))
+            {
+                var _convertedObject = asset_get_index(_object);
+            
+                if (not object_exists(_convertedObject))
+                {
+                    _convertedObject = handle_parse(_object);
+                }
+            }
+            else if (not is_handle(_object))
+            {
+                __GuiError($"Could not find object \"{object_get_name(_object)}\" (wrong datatype \"{typeof(_object)}\")");
+            }
+            
+            if (not object_exists(_object))
+            {
+                __GuiError($"Could not find object \"{object_get_name(_object)}\"");
+            }
+            
+            if (not __GuiObjectInheritsFrom(_object, oGuiLibAncestor))
+            {
+                __GuiError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oGuiLibAncestor)}");
+            }
+            
+            //Unpack and validate the .vars property
+            var _vars = _json[$ "vars"];
+            if ((_vars != undefined) && (not is_struct(_vars)))
+            {
+                __GuiError($".vars property is incorrect datatype, must be a struct (was \"{typeof(_vars)}\")");
+            }
+            
+            //Create the instance itself
+            var _element = GuiCreateObject(_object, _vars, _parent);
+        }
+        else if (variable_struct_exists(_json, "struct"))
+        {
+            var _struct = _json[$ "struct"];
+            if (is_struct(_struct))
+            {
+                var _element = _struct;
+            }
+            else
+            {
+                __GuiError($".struct property is incorrect datatyle, must be a struct (wrong datatype \"{typeof(_object)}\")");
             }
         }
-        else if (not is_handle(_object))
+        else
         {
-            __GuiError($"Could not find object \"{object_get_name(_object)}\" (wrong datatype \"{typeof(_object)}\")");
+            __GuiError($"JSON must contain one of either .object or .struct");
         }
-        
-        if (not object_exists(_object))
-        {
-            __GuiError($"Could not find object \"{object_get_name(_object)}\"");
-        }
-        
-        if (not __GuiObjectInheritsFrom(_object, oGuiLibAncestor))
-        {
-            __GuiError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oGuiLibAncestor)}");
-        }
-        
-        //Unpack and validate the .vars property
-        var _vars = _json[$ "vars"];
-        if ((_vars != undefined) && (not is_struct(_vars)))
-        {
-            __GuiError($".vars property is incorrect datatype, must be a struct (was \"{typeof(_vars)}\")");
-        }
-        
-        //Create the instance itself
-        var _element = GuiCreateObject(_object, _vars, _parent);
         
         var _forceStep = _json[$ "forceStep"];
         if (_forceStep != undefined)
