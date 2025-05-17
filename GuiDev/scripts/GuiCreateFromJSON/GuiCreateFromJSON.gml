@@ -88,10 +88,16 @@ function __GuiCreateViaJSONInner(_json, _parent = self, _metadata = undefined)
         //Create the instance itself
         var _element = GuiCreateObject(_object, _vars, _parent);
         
-        var _behavior = _json[$ "behavior"];
-        if (_behavior != undefined)
+        var _listener = _json[$ "listener"];
+        if (_listener != undefined)
         {
-            GuiSetBehavior(_behavior, _element);
+            GuiSetListener(_listener, _element);
+        }
+        
+        var _button = _json[$ "button"];
+        if (_button != undefined)
+        {
+            GuiSetButton(_button, _element);
         }
         
         var _visible = _json[$ "visible"];

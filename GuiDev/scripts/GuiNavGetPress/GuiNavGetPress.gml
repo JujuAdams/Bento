@@ -11,5 +11,5 @@
 function GuiNavGetPress(_element = self)
 {
     if (not __GuiExists(_element)) return false;
-    return (_element.GUI_VARS.__holdState == GUI_PRESS);
+    return (_element.GUI_VARS.__primaryState == GUI_PRESS);
 }

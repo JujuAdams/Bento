@@ -56,13 +56,13 @@ function __GuiUpdateElementState()
             }
             
             //Manage hold state
-            if (other.__holdState == GUI_PRESS)
+            if (other.__primaryState == GUI_PRESS)
             {
                 //System says the player has clicked
                 
                 if (GuiNavGetOver(_element) && (not GuiNavGetHold(_element)))
                 {
-                    __holdState = GUI_PRESS;
+                    __primaryState = GUI_PRESS;
                     other.__holdElement = _element;
                     
                     //Pass through a click signal to the instance if we're clicking on press
@@ -71,12 +71,12 @@ function __GuiUpdateElementState()
             }
             else
             {
-                if ((other.__holdState == GUI_HOLD) && (other.__holdElement == _element))
+                if ((other.__primaryState == GUI_HOLD) && (other.__holdElement == _element))
                 {
                     //If we're being continuously held move into the HOLD state
-                    if (__holdState == GUI_PRESS)
+                    if (__primaryState == GUI_PRESS)
                     {
-                        __holdState = GUI_HOLD;
+                        __primaryState = GUI_HOLD;
                     }
                 }
                 else
@@ -84,16 +84,16 @@ function __GuiUpdateElementState()
                     //Unset the system's hold instance if it's us
                     if (other.__holdElement == _element) other.__holdElement = noone;
                     
-                    if (__holdState == GUI_RELEASE)
+                    if (__primaryState == GUI_RELEASE)
                     {
-                        __holdState = GUI_OFF;
+                        __primaryState = GUI_OFF;
                     }
-                    else if (__holdState != GUI_OFF)
+                    else if (__primaryState != GUI_OFF)
                     {
-                        __holdState = GUI_RELEASE;
+                        __primaryState = GUI_RELEASE;
                         
                         //Pass through a click signal to the instance if we're clicking on released (and the instance is still selected)
-                        if ((not _clickOnPress) && (other.__holdState == GUI_RELEASE))
+                        if ((not _clickOnPress) && (other.__primaryState == GUI_RELEASE))
                         {
                             if (other.__navMode == GUI_NAV_TOUCH)
                             {
@@ -110,7 +110,7 @@ function __GuiUpdateElementState()
             }
             
             //Remove this instance from the update loop if it's inactive
-            if ((__overState == GUI_OFF) && (__holdState == GUI_OFF))
+            if ((__overState == GUI_OFF) && (__primaryState == GUI_OFF))
             {
                 __updating = false;
                 return false;

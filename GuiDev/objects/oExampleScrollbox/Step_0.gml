@@ -4,5 +4,5 @@ event_inherited();
 
 if (focusable)
 {
-    GuiSetBehavior(GuiNavUsingDirectional()? GUI_BEHAVIOR_BUTTON : GUI_BEHAVIOR_COSMETIC);
+    GuiSetButton(GuiNavUsingDirectional()? GUI_BUTTON_ALWAYS : GUI_BUTTON_NEVER);
 }

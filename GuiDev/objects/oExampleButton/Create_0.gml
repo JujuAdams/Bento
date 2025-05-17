@@ -11,4 +11,4 @@ GuiSetIfNotDefined("clickFunc", function()
 //Ensure the click function is scoped to this instance
 clickFunc = method(self, clickFunc);
 
-GuiSetBehavior(GUI_BEHAVIOR_BUTTON);
+GuiSetButton(GUI_BUTTON_ALWAYS);

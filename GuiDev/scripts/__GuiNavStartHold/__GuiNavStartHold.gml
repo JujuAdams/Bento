@@ -10,7 +10,7 @@ function __GuiNavStartHold(_element)
     {
         with(_element.GUI_VARS)
         {
-            __holdState = GUI_PRESS;
+            __primaryState = GUI_PRESS;
             __layer.__holdElement = _element;
             
             if (not __updating)

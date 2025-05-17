@@ -11,5 +11,5 @@
 function GuiNavGetRelease(_element = self)
 {
     if (not __GuiExists(_element)) return false;
-    return (_element.GUI_VARS.__holdState == GUI_RELEASE);
+    return (_element.GUI_VARS.__primaryState == GUI_RELEASE);
 }

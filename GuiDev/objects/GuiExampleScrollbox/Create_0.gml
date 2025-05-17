@@ -20,6 +20,6 @@ GuiScrollSetRegionExt(padding, padding, (showScrollbar? 1 : 0) + padding, paddin
 
 if (focusable)
 {
-    GuiSetBehavior(GUI_BEHAVIOR_BUTTON);
+    GuiSetButton(GUI_BUTTON_ALWAYS);
     GuiNavSetFocusable(true);
 }

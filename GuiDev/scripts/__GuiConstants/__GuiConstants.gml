@@ -30,15 +30,15 @@
 #macro GUI_RESIZE_FIT     1
 #macro GUI_RESIZE_GROW    2
 
-#macro GUI_OFF      0
-#macro GUI_PRESS    1
-#macro GUI_HOLD     2
-#macro GUI_RELEASE  3
+#macro GUI_OFF      0b00
+#macro GUI_PRESS    0b10
+#macro GUI_HOLD     0b11
+#macro GUI_RELEASE  0b01
 
 // Analogues for the above
-#macro GUI_ENTER  1
-#macro GUI_OVER   2
-#macro GUI_LEAVE  3
+#macro GUI_ENTER  GUI_PRESS
+#macro GUI_OVER   GUI_HOLD
+#macro GUI_LEAVE  GUI_RELEASE
 
 #macro GUI_NAV_UNKNOWN   0
 #macro GUI_NAV_MOUSE     1

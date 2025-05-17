@@ -26,7 +26,7 @@ function __GuiClassVariables(_attachedElement) constructor
     __transformAngle   = 0;
     
     __overState = GUI_OFF;
-    __holdState = GUI_OFF;
+    __primaryState = GUI_OFF;
     __click     = false;
     
     __parent   = noone;
