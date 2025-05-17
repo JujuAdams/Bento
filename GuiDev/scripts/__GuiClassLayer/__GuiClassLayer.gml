@@ -254,12 +254,16 @@ function __GuiClassLayer(_environment, _name) constructor
         }
         
         ///////
-        // Pre-draw position updates
+        // Position updates
         ///////
+        
+        __GuiEnsureLayout();
+        __GuiEnsureStepOrder();
         
         __GuiEnsureScrollLimits();
         __GuiEnsureTransformAndScroll();
         
+        //And we're done
         __GuiLayerTargetPop();
     }
     
