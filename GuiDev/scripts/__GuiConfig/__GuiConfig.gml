@@ -19,7 +19,7 @@
 // wheel scrolling (or just don't use `GUI_HOTKEY_MOUSE_WHEEL_UP` or `GUI_HOTKEY_MOUSE_WHEEL_DOWN`).
 #macro GUI_MOUSE_WHEEL_SCROLL_SPEED  20
 
-// Whether clicking and dragging on a scrollable UI element should scroll in the `GUI_NAV_MOUSE`
+// Whether clicking and dragging on a scrollable UI element should scroll in the `GUI_MODE_MOUSE`
 // nav mode.
 #macro GUI_SCROLL_ON_MOUSE_DRAG  true
 
@@ -28,9 +28,9 @@
 #macro GUI_HOTKEY_MOUSE_WHEEL_UP    "mouse wheel up"
 #macro GUI_HOTKEY_MOUSE_WHEEL_DOWN  "mouse wheel down"
 
-// Which navigation mode to default to when running on desktop platforms. Must be a `GUI_NAV_*`
+// Which navigation mode to default to when running on desktop platforms. Must be a `GUI_MODE_*`
 // constant.
-#macro GUI_DESKTOP_DEFAULT_NAV_MODE  GUI_NAV_MOUSE
+#macro GUI_DESKTOP_DEFAULT_NAV_MODE  GUI_MODE_MOUSE
 
 // Debug only. Set this macro to `true` to show verbose output in the debug log that shows which
 // instances are being hovered / un-hovered.

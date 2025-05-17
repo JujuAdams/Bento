@@ -13,7 +13,7 @@ function __GuiUpdateElementState()
         
         with(_element.GUI_VARS)
         {
-            var _clickOnPress = (GuiNavUsingDirectional() ||
+            var _clickOnPress = (GuiUsingDirectional() ||
                                  (GUI_POINTER_CLICK_ON_PRESS
                                && other.__navPointer
                                && (not __GuiExists(__GuiScrollFindParent(_element)))));
@@ -60,7 +60,7 @@ function __GuiUpdateElementState()
             {
                 //System says the player has clicked
                 
-                if (GuiNavGetOver(_element) && (not GuiNavGetHold(_element)))
+                if (GuiCursorGetOver(_element) && (not GuiPrimaryGetHold(_element)))
                 {
                     __primaryState = GUI_PRESS;
                     other.__holdElement = _element;
@@ -95,14 +95,14 @@ function __GuiUpdateElementState()
                         //Pass through a click signal to the instance if we're clicking on released (and the instance is still selected)
                         if ((not _clickOnPress) && (other.__primaryState == GUI_RELEASE))
                         {
-                            if (other.__navMode == GUI_NAV_TOUCH)
+                            if (other.__navMode == GUI_MODE_TOUCH)
                             {
                                 //Touch mode triggers the leave state early
                                 if (__overState == GUI_LEAVE) __click = true;
                             }
                             else
                             {
-                                if (GuiNavGetOver(_element)) __click = true;
+                                if (GuiCursorGetOver(_element)) __click = true;
                             }
                         }
                     }

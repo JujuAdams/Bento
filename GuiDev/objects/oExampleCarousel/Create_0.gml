@@ -14,7 +14,7 @@ GuiSetButton(GUI_BUTTON_ALWAYS);
 // is used to work out which instance to jump to when pushing in a particular direction. This does
 // not apply to navigation links created with `GuiNavLink*()` functions. We disable horizontal
 // raycasting so that it doesn't interfere with scrolling through options.
-GuiNavRaycastSetDisable(true, false);
+GuiSetRaycastDisable(true, false);
 
 GuiSetIfNotDefined("title",       "Example");
 GuiSetIfNotDefined("optionArray", []);

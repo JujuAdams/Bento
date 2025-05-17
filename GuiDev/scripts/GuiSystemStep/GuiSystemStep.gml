@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Updates the GUI system based on the navigation mode (`GuiNavSetMode()`) and user input:
+/// Updates the GUI system based on the navigation mode (`GuiSetMode()`) and user input:
 /// 
 /// - `GuiInputPointer()`
 /// - `GuiInputDirectional()`

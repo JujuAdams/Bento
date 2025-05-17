@@ -4,7 +4,7 @@ event_inherited();
 
 GuiScrollOnPointer();
 
-if (GuiNavGetClick())
+if (GuiPrimaryGetClick())
 {
     if (is_callable(clickFunc))
     {

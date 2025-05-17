@@ -9,38 +9,38 @@ var _bodyB = y + height-2 - padding;
 
 if (showScrollbar)
 {
-    if (GuiNavUsingDirectional())
+    if (GuiUsingDirectional())
     {
-        if (GuiNavGetClick() && focusable)
+        if (GuiPrimaryGetClick() && focusable)
         {
             GuiFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
         }
         
         if (GuiHotkeyGetPress("escape"))
         {
-            GuiNavConsume();
+            GuiConsume();
             GuiFocusClose();
         }
     }
-    else if (GuiNavUsingPointer())
+    else if (GuiUsingPointer())
     {
-        if (GuiNavGetCursorX() == x + width-1)
+        if (GuiCursorGetX() == x + width-1)
         {
             if (not handleGrabbed)
             {
-                if (GuiNavGetClick())
+                if (GuiPrimaryGetClick())
                 {
-                    if (GuiNavGetCursorY() == y)
+                    if (GuiCursorGetY() == y)
                     {
                         GuiScrollMove(0, 1);
                     }
-                    else if (GuiNavGetCursorY() == y + height-1)
+                    else if (GuiCursorGetY() == y + height-1)
                     {
                         GuiScrollMove(0, -1);
                     }
                 }
                 
-                if (GuiNavGetOver())
+                if (GuiCursorGetOver())
                 {
                     if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_UP))
                     {
@@ -56,15 +56,15 @@ if (showScrollbar)
             
             var _handlePos = round(lerp(_bodyT, _bodyB, GuiScrollGetParamY()));
             
-            if (GuiNavGetCursorY() >= _bodyT) && (GuiNavGetCursorY() <= _bodyB)
+            if (GuiCursorGetY() >= _bodyT) && (GuiCursorGetY() <= _bodyB)
             {
-                if (GuiNavGetPress() && (GuiNavGetCursorY() == _handlePos))
+                if (GuiPrimaryGetPress() && (GuiCursorGetY() == _handlePos))
                 {
                     handleGrabbed = true;
                 }
-                else if (GuiNavGetClick())
+                else if (GuiPrimaryGetClick())
                 {
-                    GuiScrollSetParamY((GuiNavGetCursorY() - _bodyT) / (_bodyB - _bodyT));
+                    GuiScrollSetParamY((GuiCursorGetY() - _bodyT) / (_bodyB - _bodyT));
                 }
             }
         }
@@ -76,13 +76,13 @@ if (showScrollbar)
             }
         }
         
-        if (showScrollbar && handleGrabbed && GuiNavGetHold())
+        if (showScrollbar && handleGrabbed && GuiPrimaryGetHold())
         {
-            GuiScrollSetParamY((GuiNavGetCursorY() - _bodyT) / (_bodyB - _bodyT));
+            GuiScrollSetParamY((GuiCursorGetY() - _bodyT) / (_bodyB - _bodyT));
         }
     }
     
-    if (not GuiNavGetHold())
+    if (not GuiPrimaryGetHold())
     {
         handleGrabbed = false;
     }

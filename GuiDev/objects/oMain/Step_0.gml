@@ -2,10 +2,10 @@
 
 // Swap the navigation mode depending on what number row key has been pressed. In the main
 // project, this is handled when the player hotswaps to another input device.
-if (keyboard_check_pressed(ord("1"))) GuiNavSetMode(GUI_NAV_MOUSE);
-if (keyboard_check_pressed(ord("2"))) GuiNavSetMode(GUI_NAV_KEYBOARD);
-if (keyboard_check_pressed(ord("3"))) GuiNavSetMode(GUI_NAV_GAMEPAD);
-if (keyboard_check_pressed(ord("4"))) GuiNavSetMode(GUI_NAV_TOUCH);
+if (keyboard_check_pressed(ord("1"))) GuiSetMode(GUI_MODE_MOUSE);
+if (keyboard_check_pressed(ord("2"))) GuiSetMode(GUI_MODE_KEYBOARD);
+if (keyboard_check_pressed(ord("3"))) GuiSetMode(GUI_MODE_GAMEPAD);
+if (keyboard_check_pressed(ord("4"))) GuiSetMode(GUI_MODE_TOUCH);
 
 // "Gampead" input is, in reality, a generic directional input. Sending in a directional value
 // will push the Gui cursor in that direction. When holding a directional input, the Gui system
@@ -13,14 +13,14 @@ if (keyboard_check_pressed(ord("4"))) GuiNavSetMode(GUI_NAV_TOUCH);
 // configure the auto-scroll behavior by calling `GuiInputConfigureNavigation()`. The primary
 // action parameter should be a continuous "held" value too. The Gui system handles the "pressed"
 // and "released" state internally.
-if (GuiNavUsingKeyboard())
+if (GuiUsingKeyboard())
 {
     var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
     var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
     var _primary = keyboard_check(vk_space);
     GuiInputDirectional(_dX, _dY, _primary);
 }
-else if (GuiNavUsingGamepad() && gamepad_is_connected(0))
+else if (GuiUsingGamepad() && gamepad_is_connected(0))
 {
     var _gamepadDX = gamepad_axis_value(0, gp_axislh);
     var _gamepadDY = gamepad_axis_value(0, gp_axislv);
@@ -35,7 +35,7 @@ else if (GuiNavUsingGamepad() && gamepad_is_connected(0))
 // coordinate space that the Gui is drawn in. In this example, we're drawing the Gui in the
 // standard Draw event which means we need to use room-space coordinates. If you're drawing in a
 // Draw GUI event then you should use GUI-space coordinates.
-if (GuiNavUsingPointer())
+if (GuiUsingPointer())
 {
     GuiInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(0, mb_left));
 }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiUsingKeyboard",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiUsingKeyboard",
+  "parent":{
+    "name":"Mode",
+    "path":"folders/Library/Functions/Navigation/Mode.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

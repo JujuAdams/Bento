@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Handles scrolling behavior when using the `GUI_NAV_MOUSE` or `GUI_NAV_TOUCH` navigation modes.
+/// Handles scrolling behavior when using the `GUI_MODE_MOUSE` or `GUI_MODE_TOUCH` navigation modes.
 /// This function should be called in the Step user event (`GUI_USER_EVENT_STEP`) for both the
 /// parent and any children.
 /// 
@@ -14,22 +14,22 @@ function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = 
     var _layer = _element.GUI_VARS.__layer;
     if (_layer.__navPointer)
     {
-        if ((GUI_SCROLL_ON_MOUSE_DRAG || (_layer.__navMode == GUI_NAV_TOUCH)) && GuiNavGetHold(_element))
+        if ((GUI_SCROLL_ON_MOUSE_DRAG || (_layer.__navMode == GUI_MODE_TOUCH)) && GuiPrimaryGetHold(_element))
         {
-            if (GuiNavGetDragDistance() > GUI_SCROLL_THRESHOLD)
+            if (GuiPrimaryGetDragDistance() > GUI_SCROLL_THRESHOLD)
             {
                 var _parent = __GuiScrollFindParent(_element);
                 if (_element == _parent)
                 {
-                    GuiScrollMove(GuiNavGetDX(), GuiNavGetDY(), infinity, _parent);
+                    GuiScrollMove(GuiCursorGetDX(), GuiCursorGetDY(), infinity, _parent);
                 }
                 else
                 {
-                    __GuiNavStartHold(_parent);
+                    __GuiStartHold(_parent);
                 }
             }
         }
-        else if (GuiNavGetOver(_element))
+        else if (GuiCursorGetOver(_element))
         {
             //Mouse wheel input can be pretty noisy so we filter out as much as possible
             

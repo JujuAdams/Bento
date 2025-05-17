@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiInputHotkey",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiInputHotkey",
+  "parent":{
+    "name":"Input",
+    "path":"folders/Library/Functions/Input.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

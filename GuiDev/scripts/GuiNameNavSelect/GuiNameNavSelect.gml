@@ -6,5 +6,5 @@
 
 function GuiNameNavSelect(_name)
 {
-    return GuiNavSelect(GuiNameFind(_name));
+    return GuiSelect(GuiNameFind(_name));
 }

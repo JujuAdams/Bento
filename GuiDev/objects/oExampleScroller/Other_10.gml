@@ -16,21 +16,21 @@ GuiScrollOnPointer();
 
 var _delta = 0;
 
-if (GuiNavUsingPointer())
+if (GuiUsingPointer())
 {
     // Detect clicks to scroll through the option array.
-    if (GuiNavGetClick())
+    if (GuiPrimaryGetClick())
     {
-        _delta = sign(GuiNavGetCursorX() - x);
+        _delta = sign(GuiCursorGetX() - x);
         if (_delta == 0) _delta = 1;
     }
 }
-else if (GuiNavUsingDirectional())
+else if (GuiUsingDirectional())
 {
     // Detect directional input to scroll throught the option array.
-    if (GuiNavGetOver())
+    if (GuiCursorGetOver())
     {
-        _delta = sign(GuiNavGetDX());
+        _delta = sign(GuiCursorGetDX());
     }
 }
 

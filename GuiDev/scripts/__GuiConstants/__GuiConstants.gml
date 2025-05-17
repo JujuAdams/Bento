@@ -40,11 +40,11 @@
 #macro GUI_OVER   GUI_HOLD
 #macro GUI_LEAVE  GUI_RELEASE
 
-#macro GUI_NAV_UNKNOWN   0
-#macro GUI_NAV_MOUSE     1
-#macro GUI_NAV_KEYBOARD  2
-#macro GUI_NAV_GAMEPAD   3
-#macro GUI_NAV_TOUCH     4
+#macro GUI_MODE_UNKNOWN   0
+#macro GUI_MODE_MOUSE     1
+#macro GUI_MODE_KEYBOARD  2
+#macro GUI_MODE_GAMEPAD   3
+#macro GUI_MODE_TOUCH     4
 
 #macro GUI_USER_EVENT_STEP        0
 #macro GUI_USER_EVENT_DRAW        1

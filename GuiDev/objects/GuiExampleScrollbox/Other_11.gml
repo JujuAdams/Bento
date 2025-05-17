@@ -4,12 +4,12 @@
 
 event_inherited();
 
-if (GuiNavGetHold() && (not (focusable && GuiNavUsingDirectional())))
+if (GuiPrimaryGetHold() && (not (focusable && GuiUsingDirectional())))
 {
     var _fgColor = c_gray;
     var _bgColor = c_white;
 }
-else if (GuiNavGetOver())
+else if (GuiCursorGetOver())
 {
     var _fgColor = c_white;
     var _bgColor = c_dkgray;
@@ -20,7 +20,7 @@ else
     var _bgColor = c_gray;
 }
 
-if (focusable && GuiNavUsingDirectional())
+if (focusable && GuiUsingDirectional())
 {
     draw_set_color(_fgColor);
     draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, false);

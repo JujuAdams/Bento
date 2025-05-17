@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiinkHori",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiinkHori",
+  "parent":{
+    "name":"Setup",
+    "path":"folders/Library/Functions/Navigation/Setup.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

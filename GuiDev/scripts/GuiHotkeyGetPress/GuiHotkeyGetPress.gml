@@ -3,7 +3,7 @@
 /// Returns whether the named button has been pressed (newly held) based on input via
 /// `GuiInputHotkey()`.
 /// 
-/// N.B. Button state is global. After processing button input, you should call `GuiNavConsume()`
+/// N.B. Button state is global. After processing button input, you should call `GuiConsume()`
 ///      to ensure button state doesn't leak to other instances.
 /// 
 /// @param name

@@ -11,23 +11,23 @@ GuiScrollOnPointer();
 var _length = array_length(optionArray);
 if (_length > 0)
 {
-    if (GuiNavUsingPointer())
+    if (GuiUsingPointer())
     {
         // Detect clicks to scroll through the option array.
-        if (GuiNavGetClick())
+        if (GuiPrimaryGetClick())
         {
-            var _delta = sign(GuiNavGetCursorX() - x);
+            var _delta = sign(GuiCursorGetX() - x);
             if (_delta == 0) _delta = 1;
             option = (option + _delta + _length) mod _length;
             func(option, optionArray[option]); //Execute the callback
         }
     }
-    else if (GuiNavUsingDirectional())
+    else if (GuiUsingDirectional())
     {
         // Detect directional input to scroll throught the option array.
-        if (GuiNavGetOver() && (GuiNavGetDX() != 0))
+        if (GuiCursorGetOver() && (GuiCursorGetDX() != 0))
         {
-            option = (option + sign(GuiNavGetDX()) + _length) mod _length;
+            option = (option + sign(GuiCursorGetDX()) + _length) mod _length;
             func(option, optionArray[option]); //Execute the callback
         }
     }

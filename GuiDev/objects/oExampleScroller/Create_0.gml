@@ -12,9 +12,9 @@ GuiSetButton(GUI_BUTTON_ALWAYS);
 
 // Disables raycasting in particular axes. This only applies to directional input where raycasting
 // is used to work out which instance to jump to when pushing in a particular direction. This does
-// not apply to navigation links created with `GuiNavLink*()` functions. We disable horizontal
+// not apply to navigation links created with `GuiLink*()` functions. We disable horizontal
 // raycasting so that it doesn't interfere with scrolling through options.
-GuiNavRaycastSetDisable(true, false);
+GuiSetRaycastDisable(true, false);
 
 GuiSetIfNotDefined("title",     "Example");
 GuiSetIfNotDefined("valueStep", 1);

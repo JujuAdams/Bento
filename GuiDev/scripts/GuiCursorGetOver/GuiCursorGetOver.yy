@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiCursorGetOver",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiCursorGetOver",
+  "parent":{
+    "name":"Cursor",
+    "path":"folders/Library/Functions/Navigation/Cursor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

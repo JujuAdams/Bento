@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiPrimaryGetRelease",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiPrimaryGetRelease",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Library/Functions/Navigation/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

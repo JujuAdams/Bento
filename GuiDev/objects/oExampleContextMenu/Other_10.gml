@@ -3,5 +3,5 @@
 if (GuiHotkeyGetPress("escape"))
 {
     GuiDestroy();
-    GuiNavConsume();
+    GuiConsume();
 }

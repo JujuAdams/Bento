@@ -57,7 +57,7 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
         }
         else
         {
-            //Invalid navigation mode, perhaps `GUI_NAV_UNKNOWN`
+            //Invalid navigation mode, perhaps `GUI_MODE_UNKNOWN`
             return false;
         }
         

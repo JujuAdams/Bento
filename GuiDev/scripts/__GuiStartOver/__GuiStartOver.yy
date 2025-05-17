@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiStartOver",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiStartOver",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Library/Functions/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

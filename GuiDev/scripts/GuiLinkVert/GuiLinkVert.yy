@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLinkVert",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLinkVert",
+  "parent":{
+    "name":"Setup",
+    "path":"folders/Library/Functions/Navigation/Setup.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

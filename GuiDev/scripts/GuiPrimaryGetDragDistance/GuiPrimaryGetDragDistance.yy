@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiPrimaryGetDragDistance",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiPrimaryGetDragDistance",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Library/Functions/Navigation/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

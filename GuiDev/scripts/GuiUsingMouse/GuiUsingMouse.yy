@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiUsingMouse",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiUsingMouse",
+  "parent":{
+    "name":"Mode",
+    "path":"folders/Library/Functions/Navigation/Mode.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

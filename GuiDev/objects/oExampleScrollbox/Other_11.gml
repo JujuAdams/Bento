@@ -5,12 +5,12 @@
 // Inherit the parent event
 event_inherited();
 
-if (GuiNavGetHold() && (not (focusable && GuiNavUsingDirectional())))
+if (GuiPrimaryGetHold() && (not (focusable && GuiUsingDirectional())))
 {
     var _fgColor = c_gray;
     var _bgColor = c_white;
 }
-else if (GuiNavGetOver())
+else if (GuiCursorGetOver())
 {
     var _fgColor = c_white;
     var _bgColor = c_dkgray;
@@ -21,7 +21,7 @@ else
     var _bgColor = c_gray;
 }
 
-if (focusable && GuiNavUsingDirectional())
+if (focusable && GuiUsingDirectional())
 {
     draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, _fgColor, image_alpha);
 }

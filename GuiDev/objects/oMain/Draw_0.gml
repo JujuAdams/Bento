@@ -8,12 +8,12 @@ GuiSystemDraw();
 
 // Some debug text:
 var _nodeName = "???";
-switch(GuiNavGetMode())
+switch(GuiGetMode())
 {
-    case GUI_NAV_MOUSE:    _nodeName = "Mouse";    break;
-    case GUI_NAV_KEYBOARD: _nodeName = "Keyboard"; break;
-    case GUI_NAV_GAMEPAD:  _nodeName = "Gamepad";  break;
-    case GUI_NAV_TOUCH:    _nodeName = "Touch";    break;
+    case GUI_MODE_MOUSE:    _nodeName = "Mouse";    break;
+    case GUI_MODE_KEYBOARD: _nodeName = "Keyboard"; break;
+    case GUI_MODE_GAMEPAD:  _nodeName = "Gamepad";  break;
+    case GUI_MODE_TOUCH:    _nodeName = "Touch";    break;
 }
 
 draw_set_halign(fa_right);

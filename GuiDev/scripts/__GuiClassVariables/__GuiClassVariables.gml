@@ -269,7 +269,7 @@ function __GuiClassVariables(_attachedElement) constructor
         
         if (__GuiExists(__selectOnDestroy))
         {
-            GuiNavSelectSoft(__selectOnDestroy);
+            GuiSelectSoft(__selectOnDestroy);
         }
         
         GuiFocusClose(__attachedElement);

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiCursorGetDY",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiCursorGetDY",
+  "parent":{
+    "name":"Cursor",
+    "path":"folders/Library/Functions/Navigation/Cursor.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

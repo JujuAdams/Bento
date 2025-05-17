@@ -23,11 +23,11 @@ function __GuiClassLayer(_environment, _name) constructor
     
     if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
     {
-        __navMode = GUI_NAV_GAMEPAD;
+        __navMode = GUI_MODE_GAMEPAD;
     }
     else if ((os_type == os_android) || (os_type == os_ios) || (os_type == os_tvos))
     {
-        __navMode = GUI_NAV_TOUCH;
+        __navMode = GUI_MODE_TOUCH;
     }
     else if ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
     {
@@ -35,14 +35,14 @@ function __GuiClassLayer(_environment, _name) constructor
     }
     else
     {
-        __navMode = GUI_NAV_MOUSE;
+        __navMode = GUI_MODE_MOUSE;
     }
     
     //Explicitly using a mouse or touch input
-    __navPointer = ((__navMode == GUI_NAV_MOUSE) || (__navMode == GUI_NAV_TOUCH));
+    __navPointer = ((__navMode == GUI_MODE_MOUSE) || (__navMode == GUI_MODE_TOUCH));
     
     //Explicitly using a keyboard or gamepad
-    __navDirectional = ((__navMode == GUI_NAV_KEYBOARD) || (__navMode == GUI_NAV_GAMEPAD));
+    __navDirectional = ((__navMode == GUI_MODE_KEYBOARD) || (__navMode == GUI_MODE_GAMEPAD));
     
     ////////
     // Input state
@@ -129,7 +129,7 @@ function __GuiClassLayer(_environment, _name) constructor
             
             __mouseHold = _environment.__envMouseHold;
             
-            if ((__navMode == GUI_NAV_TOUCH) && (not __mouseHold))
+            if ((__navMode == GUI_MODE_TOUCH) && (not __mouseHold))
             {
                 __mouseX = -__GUI_VERY_LARGE;
                 __mouseY = -__GUI_VERY_LARGE;
@@ -197,14 +197,14 @@ function __GuiClassLayer(_environment, _name) constructor
                     if (__directionalHold) __primaryState |= GUI_PRESS;
                     
                     if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
-                    __GuiNavStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
+                    __GuiStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
                 else if (__navPointer)
                 {
                     if (__mouseHold) __primaryState |= GUI_PRESS;
                     
                     if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
-                    __GuiNavStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
+                    __GuiStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
                     
                     //Detect clicking off of a pop-up
                     if ((__primaryState == GUI_PRESS)
@@ -226,10 +226,10 @@ function __GuiClassLayer(_environment, _name) constructor
                         __mousePrevY = __mouseY;
                     }
                 }
-                else //Some other navigation mode, perhaps `GUI_NAV_UNKNOWN`
+                else //Some other navigation mode, perhaps `GUI_MODE_UNKNOWN`
                 {
                     __holdElement = noone;
-                    __GuiNavStartOver(noone);
+                    __GuiStartOver(noone);
                 }
                 
                 if (__primaryState == GUI_PRESS)
