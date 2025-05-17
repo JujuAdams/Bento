@@ -36,19 +36,27 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _minButtonType)
     {
         if (__disable) return true;
         
-        //Determine whether we need to execute the Step user event
-        if (__focused)
+        if (GUI_ALWAYS_EXECUTE_STEP)
         {
             array_push(_stepOrder, __eventStep);
-            
-            //if (__layer.__navDirectional || (__focusType == GUI_FOCUS_POINTER_CONSTRAIN))
-            //{
-            //    return false;
-            //}
         }
-        else if ((__buttonType >= _minButtonType) || __listener || __scissorEnabled)
+        else
         {
-            array_push(_stepOrder, __eventStep);
+            //Determine whether we need to execute the Step user event
+            if (__focused)
+            {
+                array_push(_stepOrder, __eventStep);
+                
+                //Don't need this code any more since we're starting iteration at the focused element
+                //if (__layer.__navDirectional || (__focusType == GUI_FOCUS_POINTER_CONSTRAIN))
+                //{
+                //    return false;
+                //}
+            }
+            else if ((__buttonType >= _minButtonType) || __listener || __scissorEnabled)
+            {
+                array_push(_stepOrder, __eventStep);
+            }
         }
         
         //Then move on to our children

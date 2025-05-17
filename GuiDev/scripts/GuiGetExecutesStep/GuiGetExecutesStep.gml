@@ -6,6 +6,8 @@ function GuiGetExecutesStep(_element = self)
 {
     if (not __GuiExists(_element)) return false;
     
+    if (GUI_ALWAYS_EXECUTE_STEP) return true;
+    
     with(_element.GUI_VARS)
     {
         if (__disable) return false;

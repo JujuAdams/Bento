@@ -53,3 +53,5 @@
 #macro GUI_DEFAULT_SCROLL_SPEED  8
 
 #macro GUI_VARS  __guiVars
+
+#macro GUI_ALWAYS_EXECUTE_STEP  false
