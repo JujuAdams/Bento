@@ -15,13 +15,14 @@
 #macro GUI_DATE     "2025-03-17"
 
 #macro GUI_RUNNING_FROM_IDE  (GM_build_type == "run")
-#macro GUI_ENVIRONMENT       (__GuiSystem().__environment)
+#macro GUI_ENVIRONMENT       (__GuiSystem().__environme nt)
 #macro GUI_LAYER             (__GuiSystem().__environment.__layerCurrent)
 #macro GUI_ROOT              (GuiGetRoot())
 
-#macro GUI_BUTTON_NEVER    0
-#macro GUI_BUTTON_POINTER  1
-#macro GUI_BUTTON_ALWAYS   2
+#macro GUI_BUTTON_NEVER        0b00
+#macro GUI_BUTTON_POINTER      0b01
+#macro GUI_BUTTON_DIRECTIONAL  0b10
+#macro GUI_BUTTON_ALWAYS       0b11
 
 #macro GUI_AXIS_X  0
 #macro GUI_AXIS_Y  1
@@ -29,16 +30,6 @@
 #macro GUI_RESIZE_STATIC  0
 #macro GUI_RESIZE_FIT     1
 #macro GUI_RESIZE_GROW    2
-
-#macro GUI_OFF      0b00
-#macro GUI_PRESS    0b10
-#macro GUI_HOLD     0b11
-#macro GUI_RELEASE  0b01
-
-// Analogues for the above
-#macro GUI_ENTER  GUI_PRESS
-#macro GUI_OVER   GUI_HOLD
-#macro GUI_LEAVE  GUI_RELEASE
 
 #macro GUI_MODE_UNKNOWN   0
 #macro GUI_MODE_MOUSE     1

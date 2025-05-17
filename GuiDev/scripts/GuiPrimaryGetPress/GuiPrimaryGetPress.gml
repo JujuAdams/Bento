@@ -11,5 +11,5 @@
 function GuiPrimaryGetPress(_element = self)
 {
     if (not __GuiExists(_element)) return false;
-    return (_element.GUI_VARS.__primaryState == GUI_PRESS);
+    return (_element.GUI_VARS.__primaryState == __GUI_START);
 }

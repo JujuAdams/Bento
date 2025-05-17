@@ -25,44 +25,44 @@ function __GuiUpdateElementState()
             {
                 //System says this instance is hovered
                 
-                if (__overState == GUI_ENTER)
+                if (__overState == __GUI_START)
                 {
                     if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: enter -> over");
-                    __overState = GUI_OVER;
+                    __overState = __GUI_ON;
                 }
-                else if (__overState == GUI_OVER)
+                else if (__overState == __GUI_ON)
                 {
                     //Do nothing
                 }
                 else
                 {
                     if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: -> enter");
-                    __overState = GUI_ENTER;
+                    __overState = __GUI_START;
                 }
             }
             else
             {
                 //System says this instance is not hovered
                 
-                if (__overState == GUI_LEAVE)
+                if (__overState == __GUI_END)
                 {
-                    __overState = GUI_OFF;
+                    __overState = __GUI_OFF;
                 }
-                else if (__overState != GUI_OFF)
+                else if (__overState != __GUI_OFF)
                 {
                     if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: over -> leave");
-                    __overState = GUI_LEAVE;
+                    __overState = __GUI_END;
                 }
             }
             
             //Manage hold state
-            if (other.__primaryState == GUI_PRESS)
+            if (other.__primaryState == __GUI_START)
             {
                 //System says the player has clicked
                 
                 if (GuiCursorGetOver(_element) && (not GuiPrimaryGetHold(_element)))
                 {
-                    __primaryState = GUI_PRESS;
+                    __primaryState = __GUI_START;
                     other.__holdElement = _element;
                     
                     //Pass through a click signal to the instance if we're clicking on press
@@ -71,12 +71,12 @@ function __GuiUpdateElementState()
             }
             else
             {
-                if ((other.__primaryState == GUI_HOLD) && (other.__holdElement == _element))
+                if ((other.__primaryState == __GUI_ON) && (other.__holdElement == _element))
                 {
                     //If we're being continuously held move into the HOLD state
-                    if (__primaryState == GUI_PRESS)
+                    if (__primaryState == __GUI_START)
                     {
-                        __primaryState = GUI_HOLD;
+                        __primaryState = __GUI_ON;
                     }
                 }
                 else
@@ -84,21 +84,21 @@ function __GuiUpdateElementState()
                     //Unset the system's hold instance if it's us
                     if (other.__holdElement == _element) other.__holdElement = noone;
                     
-                    if (__primaryState == GUI_RELEASE)
+                    if (__primaryState == __GUI_END)
                     {
-                        __primaryState = GUI_OFF;
+                        __primaryState = __GUI_OFF;
                     }
-                    else if (__primaryState != GUI_OFF)
+                    else if (__primaryState != __GUI_OFF)
                     {
-                        __primaryState = GUI_RELEASE;
+                        __primaryState = __GUI_END;
                         
                         //Pass through a click signal to the instance if we're clicking on released (and the instance is still selected)
-                        if ((not _clickOnPress) && (other.__primaryState == GUI_RELEASE))
+                        if ((not _clickOnPress) && (other.__primaryState == __GUI_END))
                         {
                             if (other.__navMode == GUI_MODE_TOUCH)
                             {
                                 //Touch mode triggers the leave state early
-                                if (__overState == GUI_LEAVE) __click = true;
+                                if (__overState == __GUI_END) __click = true;
                             }
                             else
                             {
@@ -110,7 +110,7 @@ function __GuiUpdateElementState()
             }
             
             //Remove this instance from the update loop if it's inactive
-            if ((__overState == GUI_OFF) && (__primaryState == GUI_OFF))
+            if ((__overState == __GUI_OFF) && (__primaryState == __GUI_OFF))
             {
                 __updating = false;
                 return false;

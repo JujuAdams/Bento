@@ -12,5 +12,5 @@ GuiScrollSetEnabled(true, true);
 
 if (focusable)
 {
-    GuiSetButton(GUI_BUTTON_ALWAYS);
+    GuiSetButton(GUI_BUTTON_DIRECTIONAL);
 }

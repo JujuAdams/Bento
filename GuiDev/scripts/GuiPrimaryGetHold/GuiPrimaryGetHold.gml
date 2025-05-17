@@ -7,5 +7,5 @@
 function GuiPrimaryGetHold(_element = self)
 {
     if (not __GuiExists(_element)) return false;
-    return ((_element.GUI_VARS.__primaryState & GUI_PRESS) > 0);
+    return ((_element.GUI_VARS.__primaryState & __GUI_START) > 0);
 }

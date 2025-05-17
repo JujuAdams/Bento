@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiinkHori",
+  "%Name":"GuiLinkHori",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiinkHori",
+  "name":"GuiLinkHori",
   "parent":{
     "name":"Setup",
     "path":"folders/Library/Functions/Navigation/Setup.yy",

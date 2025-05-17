@@ -5,6 +5,11 @@
 //Many GM functions don't support using `infinity`
 #macro __GUI_VERY_LARGE  999999
 
+#macro __GUI_OFF    0b00  //0
+#macro __GUI_START  0b10  //2
+#macro __GUI_ON     0b11  //3
+#macro __GUI_END    0b01  //1
+
 __GuiSystem();
 function __GuiSystem()
 {

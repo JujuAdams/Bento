@@ -16,6 +16,6 @@ function GuiHotkeyGetPress(_name, _layer = undefined)
     with(_layer ?? _system.__layerCurrent)
     {
         if (__hotkeyConsumedMap[? _name] ?? false) return false;
-        return (__hotkeyStateMap[? _name] == GUI_PRESS);
+        return (__hotkeyStateMap[? _name] == __GUI_START);
     }
 }

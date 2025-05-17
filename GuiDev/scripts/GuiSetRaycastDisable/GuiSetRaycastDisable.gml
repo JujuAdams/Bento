@@ -2,7 +2,7 @@
 
 /// Sets whether raycasting should be disabled in particular axes. This is helpful when creating
 /// scrolling UI elements that treat e.g. left and right input as a way to adjust a setting. You
-/// *don't* need to call this function if you have set up a navigation link with `GuiinkHori()`
+/// *don't* need to call this function if you have set up a navigation link with `GuiLinkHori()`
 /// or `GuiLinkVert()`.
 /// 
 /// @param disableHori

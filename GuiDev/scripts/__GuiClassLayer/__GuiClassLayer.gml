@@ -90,7 +90,7 @@ function __GuiClassLayer(_environment, _name) constructor
     
     __overElement     = noone;
     __overElementSoft = noone;
-    __primaryState    = GUI_OFF;
+    __primaryState    = __GUI_OFF;
     __primaryConsumed = false;
     __holdElement     = noone;
     
@@ -156,11 +156,11 @@ function __GuiClassLayer(_environment, _name) constructor
             {
                 var _key = _globalHotkeyArray[_i];
                 
-                var _state = (__hotkeyStateMap[? _key] ?? GUI_OFF) >> 1;
-                if (_globalHotkeyInputMap[? _key] ?? false) _state |= GUI_PRESS;
+                var _state = (__hotkeyStateMap[? _key] ?? __GUI_OFF) >> 1;
+                if (_globalHotkeyInputMap[? _key] ?? false) _state |= __GUI_START;
                 __hotkeyStateMap[? _key] = _state;
                 
-                if (_state == GUI_PRESS)
+                if (_state == __GUI_START)
                 {
                     __hotkeyConsumedMap[? _key] = false;
                 }
@@ -194,30 +194,30 @@ function __GuiClassLayer(_environment, _name) constructor
                 
                 if (__navDirectional)
                 {
-                    if (__directionalHold) __primaryState |= GUI_PRESS;
+                    if (__directionalHold) __primaryState |= __GUI_START;
                     
                     if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
                     __GuiStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
                 else if (__navPointer)
                 {
-                    if (__mouseHold) __primaryState |= GUI_PRESS;
+                    if (__mouseHold) __primaryState |= __GUI_START;
                     
                     if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
                     __GuiStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
                     
                     //Detect clicking off of a pop-up
-                    if ((__primaryState == GUI_PRESS)
+                    if ((__primaryState == __GUI_START)
                     &&  __GuiExists(__focusTop)
                     &&  (__focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
                     &&  (__focusTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
                     &&  (not GuiIsAncestor(__focusTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
                     {
                         GuiDestroy(__focusTop);
-                        __primaryState = GUI_OFF;
+                        __primaryState = __GUI_OFF;
                     }
                     
-                    if (__primaryState == GUI_PRESS)
+                    if (__primaryState == __GUI_START)
                     {
                         __mousePressX = __mouseX;
                         __mousePressY = __mouseY;
@@ -232,7 +232,7 @@ function __GuiClassLayer(_environment, _name) constructor
                     __GuiStartOver(noone);
                 }
                 
-                if (__primaryState == GUI_PRESS)
+                if (__primaryState == __GUI_START)
                 {
                     __primaryConsumed = false;
                 }

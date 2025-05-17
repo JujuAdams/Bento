@@ -10,7 +10,7 @@ function __GuiStartHold(_element)
     {
         with(_element.GUI_VARS)
         {
-            __primaryState = GUI_PRESS;
+            __primaryState = __GUI_START;
             __layer.__holdElement = _element;
             
             if (not __updating)

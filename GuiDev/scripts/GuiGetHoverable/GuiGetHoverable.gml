@@ -25,7 +25,7 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
         
         if (_layer.__navPointer)
         {
-            if (__buttonType == GUI_BUTTON_NEVER)
+            if not (__buttonType & GUI_BUTTON_POINTER)
             {
                 return false;
             }
@@ -39,13 +39,12 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
         }
         else if (_layer.__navDirectional)
         {
-            if (__GuiExists(_focusTop) && (not GuiIsAncestor(_focusTop, _element)))
+            if not (__buttonType & GUI_BUTTON_DIRECTIONAL)
             {
                 return false;
             }
             
-            //In directional mode, only buttons are selectable
-            if (__buttonType != GUI_BUTTON_ALWAYS)
+            if (__GuiExists(_focusTop) && (not GuiIsAncestor(_focusTop, _element)))
             {
                 return false;
             }

@@ -7,5 +7,5 @@
 function GuiCursorGetOver(_element = self)
 {
     if (not __GuiExists(_element)) return false;
-    return ((_element.GUI_VARS.__overState == GUI_ENTER) || (_element.GUI_VARS.__overState == GUI_OVER));
+    return ((_element.GUI_VARS.__overState == __GUI_START) || (_element.GUI_VARS.__overState == __GUI_ON));
 }

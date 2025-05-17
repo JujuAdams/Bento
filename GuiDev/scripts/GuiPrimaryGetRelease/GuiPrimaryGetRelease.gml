@@ -11,5 +11,5 @@
 function GuiPrimaryGetRelease(_element = self)
 {
     if (not __GuiExists(_element)) return false;
-    return (_element.GUI_VARS.__primaryState == GUI_RELEASE);
+    return (_element.GUI_VARS.__primaryState == __GUI_END);
 }

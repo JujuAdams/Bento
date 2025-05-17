@@ -25,12 +25,12 @@ function __GuiEnsureStepOrder()
     }
     
     __GuiEnsureChildOrder();
-    __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_ALWAYS);
+    __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL);
     
     return __stepOrder;
 }
 
-function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _minButtonType)
+function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType)
 {
     with(_element.GUI_VARS)
     {
@@ -44,7 +44,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _minButtonType)
         {
             //Determine whether we need to execute the Step user event
             //This should match the code in `GuiGetExecutesStep()`
-            if ((__buttonType >= _minButtonType) || __listener || __focused || __scissorEnabled)
+            if ((__buttonType & _buttonType) || __listener || __focused || __scissorEnabled)
             {
                 array_push(_stepOrder, __eventStep);
             }
@@ -59,7 +59,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _minButtonType)
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _minButtonType);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _buttonType);
                 ++_i;
             }
             
@@ -71,7 +71,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _minButtonType)
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _minButtonType);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _buttonType);
                 ++_i;
             }
         }
