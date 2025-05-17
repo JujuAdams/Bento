@@ -7,30 +7,6 @@
 
 function GuiGetHoverable(_element = self, _checkVisible = true)
 {
-    if (__GuiGetHoverableInner(_element, _checkVisible))
-    {
-        //TODO - We can cache this data when renewing the Step order
-        var _stepOrder = _element.GUI_VARS.__layer.__stepOrder;
-        var _i = 0;
-        repeat(array_length(_stepOrder))
-        {
-            with(method_get_self(_stepOrder[_i]))
-            {
-                if (self == _element)
-                {
-                    return true;
-                }
-            }
-            
-            ++_i;
-        }
-    }
-    
-    return false;
-}
-
-function __GuiGetHoverableInner(_element, _checkVisible)
-{
     if (not __GuiExists(_element)) return false;
     
     with(_element.GUI_VARS)
@@ -87,4 +63,6 @@ function __GuiGetHoverableInner(_element, _checkVisible)
         
         return true;
     }
+    
+    return false;
 }

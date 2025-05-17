@@ -10,6 +10,7 @@ function GuiGetExecutesStep(_element = self)
     
     with(_element.GUI_VARS)
     {
+        //This should match the code in `__GuiEnsureStepOrderInner()`
         if (__disable) return false;
         if (__listener || __scissorEnabled || __focused) return true;
         if (__buttonType >= (__layer.__navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_ALWAYS)) return true; //TODO - Cache the minimum button type when changing input mode

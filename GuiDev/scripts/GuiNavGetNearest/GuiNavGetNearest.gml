@@ -28,7 +28,7 @@ function GuiNavGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
                 continue;
             }
             
-            if (__GuiGetHoverableInner(self, true))
+            if (GuiGetHoverable(self, true))
             {
                 var _distance = point_distance(0.5*(guiLeft + guiRight), 0.5*(guiTop + guiBottom), _x, _y);
                 if (_distance < _nearestDistance)
