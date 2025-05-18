@@ -8,8 +8,8 @@
   "name":"oGuiLibSprite",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parent Objects",
-    "path":"folders/Library/Parent Objects.yy",
+    "name":"Inheritable Templates",
+    "path":"folders/Library/Inheritable Templates.yy",
   },
   "parentObjectId":{
     "name":"oGuiLibAncestor",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiCreateObject",
   "parent":{
-    "name":"Instances",
-    "path":"folders/Library/Functions/Instances.yy",
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

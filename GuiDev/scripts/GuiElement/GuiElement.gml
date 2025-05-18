@@ -1,6 +1,10 @@
 // Feather disable all
 
-function GuiClassElement() constructor
+/// 
+/// 
+/// @param parent
+
+function GuiElement(_parent) constructor
 {
     funcStep = function()
     {
@@ -42,5 +46,5 @@ function GuiClassElement() constructor
     guiHeight = 0;
     
     GUI_VARS = new __GuiClassVariables(self);
-    GuiSetParent(__GuiSystem().__tempParent);
+    GuiSetParent(_parent);
 }

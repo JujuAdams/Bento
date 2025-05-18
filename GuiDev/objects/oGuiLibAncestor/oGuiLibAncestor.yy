@@ -15,8 +15,8 @@
   "name":"oGuiLibAncestor",
   "overriddenProperties":[],
   "parent":{
-    "name":"Parent Objects",
-    "path":"folders/Library/Parent Objects.yy",
+    "name":"Inheritable Templates",
+    "path":"folders/Library/Inheritable Templates.yy",
   },
   "parentObjectId":null,
   "persistent":true,

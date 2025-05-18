@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiClassElement",
+  "%Name":"GuiElement",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiClassElement",
+  "name":"GuiElement",
   "parent":{
-    "name":"Parent Objects",
-    "path":"folders/Library/Parent Objects.yy",
+    "name":"Inheritable Templates",
+    "path":"folders/Library/Inheritable Templates.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
