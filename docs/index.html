@@ -335,31 +335,35 @@
 				font-weight: bold;
 			}
 			
-		/* !! -- alynne begin -- !! */
-			
 			.app-nav>ul>li>a:hover, .app-nav>ul>li>span:hover {
 				color: #293338;
 			}
+
+			/* .markdown-section h2 + p code:not([class*=lang-]):not([class*=language-]) {
+				display: inline-block;
+				max-width: 100%;
+				overflow-x: auto;
+			} */
 			
 			/* wrap function headers via gnysek */
-			.markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]) {
+ 			/* .markdown-section h2 a code:not([class*="lang-"]):not([class*="language-"]) {
 				display: block;
 				position: relative;
 				white-space: normal;
 				padding-left: 2ch;
 				text-indent: -1ch;
 				overflow: hidden;
-			}
+			} */
 			
 			/* line break indicators */
-			.markdown-section h2 a code:after {    
+ 			/* .markdown-section h2 a code:after {    
 				content: "\A ↳ \A ↳ \A ↳ \A ↳ \A ↳ \A ↳";
 				position: absolute;
 				left: 14px;
 				top: 0;
 				opacity: 0.5;
 				white-space: break-spaces;
-			}
+			} */
 			
 			/* wrap function index */
 			@media (max-width: 1440px) {
@@ -384,6 +388,27 @@
 					opacity: 0.5;
 				}
 			}
+			
+			/* css hack to fix scroll to anchor in docsify tabs */
+			.docsify-tabs:not(:has(> button.docsify-tabs__tab--active))>.docsify-tabs__content[class]:nth-child(2) {
+				visibility: visible;
+				position: relative;
+				overflow: auto;
+				height: auto;
+
+				padding: var(--docsifytabs-content-padding);
+			}
+
+			.sidebar { overflow-y: scroll; }
+
+			/* scroll oversized function */
+			/*
+			h3 + p code {
+				width: 100%;
+				display: inline-block;
+				overflow: auto;
+			}
+			*/
 		</style>
 		<script>
 			/* Add word break opportunity after function opening parentheses */
