@@ -4,7 +4,7 @@
 /// 
 /// @param parent
 
-function GuiElement(_parent) constructor
+function GuiConstrAncestor(_parent) constructor
 {
     funcStep = function()
     {

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiElement",
+  "%Name":"GuiConstrAncestor",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiElement",
+  "name":"GuiConstrAncestor",
   "parent":{
     "name":"Inheritable Templates",
     "path":"folders/Library/Inheritable Templates.yy",
