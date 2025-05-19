@@ -2,15 +2,29 @@
 
 &nbsp;
 
-This page covers the technology behind Bento. Because Bento is a framework that is intended to be used as the basis for later custom UI solutions, it's important that it's clear how things work and why. By reading it you should get an understanding of some of the design decisions that have been made. I encourage you to read Bento's source code as you read about its technology.
+?> This page covers some of the technology behind Bento. Because Bento is a framework that is intended to be used as the basis for later custom UI solutions, it's important that it's clear how things work and why. I encourage you to read Bento's source code as you read through this page.
 
 &nbsp;
 
 ## UI Elements
 
-Bento centres its operation around the "user interface element". You'll see this abbreviated as "UI element" or "element" throughout the documentation for Bento. A user interface element is either an instance or struct that has been set up for use with Bento. Whilst you could in theory set this up yourself, the easiest way to define an object or constructor that produces elements is to inherit from `oBentoAncestor` or `BentoConstrAncestor`.
+Bento centres its operation around the "user interface element". You'll see this abbreviated as "UI element" or "element" throughout the documentation for Bento. A user interface element is either an instance or struct that has been set up for use with Bento. If the element is an instance, then that instance's object must inherit from the `oBentoAncestor` object. If the element is a struct, then that struct's constructor must inherit from `BentoConstrAncestor`.
 
-Elements have a number of properties that change how Bento interfaces with them.
+Elements have a number of properties that change how Bento interfaces with them. These are explained in detail on pages, but briefly:
+
+- Button type
+- Enabled / disabled
+- Layout dimensions and behaviour
+- Bento parent (used for layout, ownership etc.)
+- Navigation
+- Visibility
+- Scroll
+- Clipping (scissor test)
+- Focus
+- Step and/or Draw End forced execution
+- Matrix transform
+
+&nbsp;
 
 ## Instance Elements
 

@@ -1,7 +1,12 @@
 - [Home](README)
 - [Alternatives](Alternatives)
-- [Technology](Technology)
 - [Setting Up](Setting-Up)
+
+---
+
+**Technology**
+
+- [UI Elements](Tech-UI-Elements)
 
 ---
 

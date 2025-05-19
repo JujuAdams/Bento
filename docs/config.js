@@ -22,8 +22,8 @@
 const config = {
 	name: 'Bento',
 	description: 'UI framework for GameMaker',
-	latestVersion: '0.1',
-	otherVersions: [],
+	latestVersion: '0.2',
+	otherVersions: ['0.1'],
 	favicon: 'assets/favicon.ico',
 	themeColor: '#f46159',
 };
