@@ -33,9 +33,9 @@ Looking at the event list we see four User Events:
 
 The normal GameMaker Step, Draw, and Draw End events have got comments in them directing you to use the User Event equivalent instead. Unless you have a good reason to do so, you should heed this advice. No such warning exists for the normal Step event, however.
 
-So what's going on here? Bento uses a custom Step and Draw loop. Elements (instances and structs) will only execute Step behaviour and Draw behaviour when requested by Bento downstream of a call to `BentoSystemStep()` and `BentoSystemDraw()`. This is an important affordance for performance. The less code is running, the faster your game will run! However, this does mean that GameMaker's native Draw events aren't applicable for Bento elements.
+So what's going on here? Bento uses a custom Step and Draw loop. Elements (instances and structs) will only execute Step behaviour and Draw behaviour when requested by Bento downstream of a call to `BentoSystemStep()` and `BentoSystemDraw()`. This is an important affordance for performance. The less code is running, the faster your game will run! However, this does mean that GameMaker's native Draw events aren't applicable for Bento elements. You can still use them if you want but they're unlikely to be helpful.
 
-However, you'll note that the normal Step event does not carry the same warning as the Draw events. This is because the standard GameMaker Step event may still be useful for many types of elements and I wouldn't want Bento developers to think its use was banned. That having been said, you'll want to put most of your Step code in User Event 0.
+However, you'll note that the normal Step event does not carry the same warning as the Draw events. This is because the standard GameMaker Step event may still be useful for many types of elements and I wouldn't want Bento developers to think its use was banned. That having been said, you'll want to put most of your update logic in User Event 0.
 
 ## Struct Elements
 
@@ -51,3 +51,14 @@ function CustomElement(_parent) : BentoConstrAncestor(_parent) constructor
 
 }
 ```
+
+Struct elements have four callbacks that correspond to the User Events that instance elements rely (see above). These are respectively:
+
+- `funcStep`
+- `funcDraw`
+- `funcDrawEnd`
+- `funcReposition`
+
+As you may have guessed, these callbacks are executed when necessary by `BentoSystemStep()` and `BentoSystemDraw()`.
+
+## Step / UE0 / `funcStep`
