@@ -8,9 +8,11 @@
 
 ## UI Elements
 
-Bento centres its operation around the "user interface element". You'll see this abbreviated as "UI element" or "element" throughout the documentation for Bento. A user interface element is either an instance or struct that has been set up for use with Bento. If the element is an instance, then that instance's object must inherit from the `oBentoAncestor` object. If the element is a struct, then that struct's constructor must inherit from `BentoConstrAncestor`.
+Bento centres its operation around the "user interface element". You'll see this abbreviated as "UI element" or "element" throughout the documentation for Bento. A user interface element is either an instance or struct that has been set up for use with Bento. If the element is an instance then that instance's object must inherit from the `oBentoAncestor` object. If the element is a struct then that struct's constructor must inherit from `BentoConstrAncestor`.
 
-Elements have a number of properties that change how Bento interfaces with them. These are explained in detail on pages, but briefly:
+Most parts of an interactive UI would constitute an "element" using Bento's terminology. Buttons, checkboxes, sliders, scrollboxes and so on are examples of elements. Elements can also be non-interactive: text labels, graphics, and frames/containers would also all be elements. Bento offers flexibility beyond very basic components: a button with text written on it could be implemented as a button element that contains a text element, or you could create a special "text button" element that handles the button and the text at the same time.
+
+An "element" is therefore a very general concept and much of your time using Bento will be spent thinking about the position, appearance, and functionality of UI elements. They are the building blocks for your user interface. Bento's core library ships with several examples of basic UI elements but any serious use will inevitably require writing custom element types that perform tasks unique to your game. As such, elements have a number of properties that change how Bento interfaces with them. These are explained in detail on other pages, but briefly they are:
 
 - Button type
 - Enabled / disabled
@@ -24,13 +26,15 @@ Elements have a number of properties that change how Bento interfaces with them.
 - Step and/or Draw End forced execution
 - Matrix transform
 
+This page will discuss the basic mechanics of text elements within Bento's source code. Understanding the operation of elements is a prerequisite for an understanding of further features.
+
 &nbsp;
 
 ## Instance Elements
 
-Let's look at what `oBentoAncestor` is actually doing. In the [Create event](https://github.com/JujuAdams/Bento/blob/master/objects/oBentoAncestor/Create_0.gml) we can see code that needs to be executed by all instance-based elements (struct elements have similar that we'll look at later).
+As previously mentioned, if the element is an instance then that instance's object must inherit from the `oBentoAncestor` object, but let's look at what `oBentoAncestor` is actually doing. Our first stop is the [Create event](https://github.com/JujuAdams/Bento/blob/master/objects/oBentoAncestor/Create_0.gml). In this event we can see code that needs to be executed by all instance-based elements (struct elements have similar that we'll look at later).
 
-Firstly, we see that all instance elements are set as [persistent](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Instances/Instance_Variables/persistent.htm). This is a necessary step to ensure that as we move between rooms, elements aren't lost. You can of course destroy elements when you move between rooms by calling `BentoDestroy()` but Bento requires that you explicitly do so.
+At the very top of the Create event, we see that all instance elements are set as [persistent](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Reference/Asset_Management/Instances/Instance_Variables/persistent.htm). This is a necessary step to ensure that as we move between rooms elements aren't lost. You can of course manually destroy elements when you move between rooms by calling `BentoDestroy()` but Bento requires that you explicitly do so.
 
 In the Create event we also see several read-only variables. These are `bentoLeft`, `bentoWidth` etc. and are used to store position information for the instance. Whenever Bento determines that the layout needs to be recalculated, these variables will be re-set. Regardless, the default position values are initialized based on the sprite used for the instance.
 
@@ -38,18 +42,20 @@ Next, a special variable called `BENTO_VARS` is created by instantiating a const
 
 Finally, the instance is automatically set as a child to the currently scoped parent. This value is an internal variable within the library's system and is set via `BentoCreateObject()` or `BentoCreateFromJSON()`. All elements must have a parent and this line of code ensures this happens.
 
-Looking at the event list we see four User Events:
+Looking at the event list we see four User Events that are used as callbacks by the central Bento system:
 
 - `User Event 0 - Step`
 - `User Event 1 - Draw`
 - `User Event 2 - Draw End`
 - `User Event 3 - Reposition`
 
-The normal GameMaker Step, Draw, and Draw End events have got comments in them directing you to use the User Event equivalent instead. Unless you have a good reason to do so, you should heed this advice. No such warning exists for the normal Step event, however.
+?> The normal GameMaker Draw, and Draw End events have got comments in them directing you to use the User Event equivalent instead. Unless you have a good reason to do so, you should heed this advice. The normal Step event still has some utility and you may find it useful but you will need to be careful not to adversely affect performance or introduce bugs.
 
-So what's going on here? Bento uses a custom Step and Draw loop. Elements (instances and structs) will only execute Step behaviour and Draw behaviour when requested by Bento downstream of a call to `BentoSystemStep()` and `BentoSystemDraw()`. This is an important affordance for performance. The less code is running, the faster your game will run! However, this does mean that GameMaker's native Draw events aren't applicable for Bento elements. You can still use them if you want but they're unlikely to be helpful.
+So what's going on here? Bento uses a custom Step and Draw loop. Elements (instances and structs) will only execute Step behaviour and Draw behaviour when requested by Bento downstream of a call to `BentoSystemStep()` and `BentoSystemDraw()`. When Bento decides that an instance element needs to execute its Step code then it'll execute User Event 0 for that instance, and so on. These user events are effectively callbacks.
 
-However, you'll note that the normal Step event does not carry the same warning as the Draw events. This is because the standard GameMaker Step event may still be useful for many types of elements and I wouldn't want Bento developers to think its use was banned. That having been said, you'll want to put most of your update logic in User Event 0.
+Whilst separating out element logic into User Events seems like a lot of work, it is an important affordance for performance. The less code is running the faster your game will run and so Bento wants to have tight control over what is being executed so that it can run optimally. However, this does mean that GameMaker's native Draw events aren't applicable for Bento elements. You can still use them if you want but they're unlikely to be helpful.
+
+&nbsp;
 
 ## Struct Elements
 
@@ -73,6 +79,14 @@ Struct elements have four callbacks that correspond to the User Events that inst
 - `funcDrawEnd`
 - `funcReposition`
 
-As you may have guessed, these callbacks are executed when necessary by `BentoSystemStep()` and `BentoSystemDraw()`.
+As you may have guessed, these callbacks are executed when necessary by `BentoSystemStep()` and `BentoSystemDraw()` much like the User Events for instance elements. Struct element callbacks are executed in exactly the same places and for exactly the same reasons as instance element User Events. Indeed, Bento tends not to differentiate between instance elements and struct elements internally (for example, instance elements have their own set of `func*` callbacks that redirect to their User Events).
+
+However, there is one place that Bento does differentiate between instance elements and struct elements. Struct elements can only be partially destroyed by `BentoDestroy()` owing to GameMaker's own implementation of structs. In the abstract general case, it's not possible to destroy a struct anywhere in GameMaker so long as a (strong) reference to that struct remains. This means that, unlike instances, we cannot ever manually remove a struct from memory; we must instead wait for the garbage collector to remove it for us.
+
+How GameMaker treats structs has a knock-on effect on Bento. When you call `BentoDestroy()` on a struct element, that struct element will be removed from its parent and any children of the destroyed struct element will also be destroyed (which will then destroy _their_ children and so on). Instance elements are destroyed here using GameMaker's native `instance_destroy()`. This invalidates any references to the instance element and accessing the instance directly will result in a standard GameMaker "instance does not exist" error. However, structs cannot be destroyed whilst references to them exist and so you can end up in a situation where you have called `BentoDestroy()` but you can still access the struct. This is potentially dangerous. Bento offers a `BentoExists()` function to resolve this ambiguity.
+
+!> When using struct elements you should take special care to use `BentoExists()` to check if the struct has been destroyed by Bento.
+
+&nbsp;
 
 ## Step / UE0 / `funcStep`
