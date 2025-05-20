@@ -21,7 +21,7 @@ An "element" is therefore a very general concept and much of your time using Ben
 - Navigation
 - Visibility
 - Scroll
-- Clipping (scissor test)
+- Scissor test (clipping region)
 - Focus
 - Step and/or Draw End forced execution
 - Matrix transform
@@ -91,22 +91,65 @@ How GameMaker treats structs has a knock-on effect on Bento. When you call `Bent
 
 ## Step
 
+Bento's step order is a recursive algorithm as follows:
+
+1. If the element is diabled, abort
+2. If the element is eligible, execute Step code
+3. Iterate over children of the element in order and process them
+
+This is therefore a depth-first tree traversal. Bento's step order is cached and is executed by iterating over an array of method calls to avoid re-executing the same logic every single frame - see [`__GuiEnsureStepOrder()`].
+
 When an element executes its Step code, either User Event 0 will be executed (for instance elements) or the `funcStep` method will be executed (struct elements).
+
+Elements only execute Step code if they need to, though many element behaviours will automatically cause this to happen. An element will execute Step code in the following situations:
+
+- The element's button type (as set by `BentoSetButton()`) is active for the current input mode (e.g. is set to `BENTO_BUTTON_POINTER` and the player is using a mouse)
+- `GUI_ALWAYS_EXECUTE_STEP` has been set to `true`
+- `BentoGetForceStep()` has been called for the element
+- The element has been focused with `GuiFocusOpen()`
+- The element has a scissor text (clipping region) set up with `BentoScissorSetEnabled()`
+
+However, you can always prevent Step code (and other code) from being executed if an element is disabled using `BentoSetDisabled()`. This overrides any other logic.
 
 &nbsp;
 
 ## Draw
 
+Bento's draw order is a recursive algorithm as follows:
+
+1. If the element is diabled, abort
+2. Set a transformation matrix if necessary
+3. If the element is visible, execute Draw code
+4. Set a scissor test (clipping region) if necessary
+5. Iterate over children of the element in order and try to draw them
+6. Reset the clipping region
+7. If the element is visible and has been set up to do so, execute Draw End code
+8. Reset the transformation matrix
+
+This is therefore a depth-first tree traversal and follows the [Painter's algorithm](https://en.wikipedia.org/wiki/Painter%27s_algorithm) like the rest of GameMaker. Bento's draw order is cached and is executed by iterating over an array of method calls to avoid re-executing the same logic every single frame - see [`__BentoEnsureDrawOrder()`].
+
 When an element executes its Draw code, either User Event 1 will be executed (for instance elements) or the `funcDraw` method will be executed (struct elements).
 
-&nbsp;
+All elements will execute Draw code unless they are set as invisible by calling `BentoSetVisible()` or have been disabled by `BentoSetDisable()`. An **invisible element** will not draw itself but will draw its children. A **disabled** element will draw neither itself nor its children.
 
-## Draw End
+!> Instance elements will not respect the native GameMaker `visible` property.
+
+If an element has a visual transform set up (such as `BentoTransformSetAngle()`) then that transform will apply to the element and will also apply to its children. Visual transforms will not affect the collision mask for an element - they are purely for visual effect, such as panels sliding in.
+
+### Draw End
 
 When an element executes its Draw End code, either User Event 2 will be executed (for instance elements) or the `funcDrawEnd` method will be executed (struct elements).
+
+An element does not normally execute any Draw End code for the sake of efficiency. If you would like an element to execute Draw End code, you should use `BentoSetDrawEnd()` to set this up.
+
+Much like Draw code, Draw End code will not get executed if an element is invisible or has be disabled. Draw End code is also affected by any visual transform that you have set up for the element.
 
 &nbsp;
 
 ## Reposition
 
-When an element executes its Reposition code, either User Event 3 will be executed (for instance elements) or the `funcStep` method will be executed (struct elements).
+When an element executes its Reposition code, either User Event 3 will be executed (for instance elements) or the `funcReposition` method will be executed (struct elements).
+
+Reposition callback code is a special feature of Bento. This code is executed whenever Bento recalculates the UI layout. Reposition code is helpful when creating custom components as a way to update any cached values you might have that rely on Bento's calculated layout positions (`bentoLeft` `bentoWidth` etc.).
+
+?> You can read more about layouts [here](Tech-Layouts).
