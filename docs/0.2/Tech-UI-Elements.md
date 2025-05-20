@@ -89,4 +89,24 @@ How GameMaker treats structs has a knock-on effect on Bento. When you call `Bent
 
 &nbsp;
 
-## Step / UE0 / `funcStep`
+## Step
+
+When an element executes its Step code, either User Event 0 will be executed (for instance elements) or the `funcStep` method will be executed (struct elements).
+
+&nbsp;
+
+## Draw
+
+When an element executes its Draw code, either User Event 1 will be executed (for instance elements) or the `funcDraw` method will be executed (struct elements).
+
+&nbsp;
+
+## Draw End
+
+When an element executes its Draw End code, either User Event 2 will be executed (for instance elements) or the `funcDrawEnd` method will be executed (struct elements).
+
+&nbsp;
+
+## Reposition
+
+When an element executes its Reposition code, either User Event 3 will be executed (for instance elements) or the `funcStep` method will be executed (struct elements).
