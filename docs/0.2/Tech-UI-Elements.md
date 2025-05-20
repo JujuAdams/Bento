@@ -1,12 +1,10 @@
-# Technology
+# Technology - UI Elements
 
 &nbsp;
 
 ?> This page covers some of the technology behind Bento. Because Bento is a framework that is intended to be used as the basis for later custom UI solutions, it's important that it's clear how things work and why. I encourage you to read Bento's source code as you read through this page.
 
 &nbsp;
-
-## UI Elements
 
 Bento centres its operation around the "user interface element". You'll see this abbreviated as "UI element" or "element" throughout the documentation for Bento. A user interface element is either an instance or struct that has been set up for use with Bento. If the element is an instance then that instance's object must inherit from the `oBentoAncestor` object. If the element is a struct then that struct's constructor must inherit from `BentoConstrAncestor`.
 
