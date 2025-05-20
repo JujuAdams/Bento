@@ -11,7 +11,7 @@
 Bento is a cross-platform device-agnostic UI framework. It simplifies much of the tedious UI construction process by providing you with tools to lay out and control a user interface whilst remaining efficient and convenient. It has all the basics you'd expect:
 
 - Mouse, keyboard, gamepad, and touchscreen input
-- Focus, scroll, and clipping (scissor test) features
+- Focus, scroll, and scissor test (clipping region) features
 - Separate layers for modals, separate environments for multiplayer
 - Custom layout engine that is considerably simpler than GameMaker's native flexpanels
 - Fast with operations cached wherever possible
