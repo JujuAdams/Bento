@@ -6,7 +6,7 @@
 
 Bento's step order is a recursive algorithm as follows:
 
-1. If the element is diabled, abort
+1. If the element is disabled, abort
 2. If the element is eligible, execute Step code
 3. Iterate over children of the element in order and process them
 

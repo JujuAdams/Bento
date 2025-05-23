@@ -19,7 +19,8 @@ An "element" is therefore a very general concept and much of your time using Ben
 - Scroll
 - Scissor test (clipping region)
 - Focus
-- Step and/or Draw End forced execution
+- Step code forced execution
+- Draw After forced execution
 - Matrix transform
 
 This page will discuss the basic mechanics of text elements within Bento's source code. Understanding the operation of elements is a prerequisite for an understanding of further features.
@@ -42,14 +43,14 @@ Looking at the event list we see four User Events that are used as callbacks by 
 
 - `User Event 0 - Step`
 - `User Event 1 - Draw`
-- `User Event 2 - Draw End`
+- `User Event 2 - Draw After`
 - `User Event 3 - Reposition`
-
-?> The normal GameMaker Draw, and Draw End events have got comments in them directing you to use the User Event equivalent instead. Unless you have a good reason to do so, you should heed this advice. The normal Step event still has some utility and you may find it useful but you will need to be careful not to adversely affect performance or introduce bugs.
 
 So what's going on here? Bento uses a custom Step and Draw loop. Elements (instances and structs) will only execute Step behaviour and Draw behaviour when requested by Bento downstream of a call to `BentoSystemStep()` and `BentoSystemDraw()`. When Bento decides that an instance element needs to execute its Step code then it'll execute User Event 0 for that instance, and so on. These user events are effectively callbacks.
 
 Whilst separating out element logic into User Events seems like a lot of work, it is an important affordance for performance. The less code is running the faster your game will run and so Bento wants to have tight control over what is being executed so that it can run optimally. However, this does mean that GameMaker's native Draw events aren't applicable for Bento elements. You can still use them if you want but they're unlikely to be helpful.
+
+?> You should avoid using the standard GameMaker Draw events as they are broadly incompatible with Bento. Similarly, the standard Step event is only useful in specific situations and should only be used if you need code that is guaranteed to be executed every frame.
 
 &nbsp;
 
@@ -72,7 +73,7 @@ Struct elements have four callbacks that correspond to the User Events that inst
 
 - `funcStep`
 - `funcDraw`
-- `funcDrawEnd`
+- `funcDrawAfter`
 - `funcReposition`
 
 As you may have guessed, these callbacks are executed when necessary by `BentoSystemStep()` and `BentoSystemDraw()` much like the User Events for instance elements. Struct element callbacks are executed in exactly the same places and for exactly the same reasons as instance element User Events. Indeed, Bento tends not to differentiate between instance elements and struct elements internally (for example, instance elements have their own set of `func*` callbacks that redirect to their User Events).
