@@ -9,7 +9,7 @@
 
 - [UI Elements](Tech-UI-Elements)
 - [Step Code](Tech-Step)
-- [Draw & Draw End Code](Tech-Draw-and-Draw-End)
+- [Draw & Draw After Code](Tech-Draw-and-Draw-After)
 - [Reposition Code](Tech-Reposition)
 - [Environments & Layers](Tech-Environments-and-Layers)
 
