@@ -19,6 +19,8 @@ This page is pretty long and, ideally, you should read it all ... having said th
 
 GameMaker allows you to import assets directly into your project via the "Local Package" system. From the [Releases](https://github.com/JujuAdams/Bento/releases) tab for this repo, download the .yymp file for the latest version. In the GM IDE, load up your project and click on "Tools" on the main window toolbar. Select "Import Local Package" from the drop-down menu then import all scripts, objects, and sprites from the Bento package.
 
+Updating is basically the same process.
+
 ## Object Parents
 
 You'll want to make it as easy as possible to update Bento in the future. Perhaps there's a version with a new feature that you want, or there's a bug fix in a newer version that you need. When using [instance elements](Tech-UI-Elements) you will need to inherit from an object called `oBentoAncestor` that is packaged with the library. Unfortunately, GameMaker behaves in an irritating way when importing packages: if a parent object is overwritten by an incoming package then all children of that object will lose their parent.
@@ -47,16 +49,57 @@ Before doing anything with Bento, you must decide what coordinate space you want
 
 Next, choose a persistent instance that will exist in all rooms in your game. If you chose to use a GUI-space coordinate system, create a **Draw GUI** event and call `BentoSystemDraw()` in it; otherwise, create a standard **Draw** event and call `BentoSystemDraw()` in it. `BentoSystemDraw()` is responsible for rendering every element that you create with Bento and must be run every frame for the player to be able to see anything.
 
-## User Input
+## User Input and Step
 
-Bento supports multiple forms of user input: mouse, keyboard, gamepad, and touchscreen. Bento however does not concern itself with collecting user input and instead you will need to tell Bento what inputs the user is making. You can pass user input data into Bento by using the `BentoInput*()` functions. For example, for basic mouse input you'd execute this code:
+Bento supports multiple forms of user input: mouse, keyboard, gamepad, and touchscreen. Bento however does not concern itself with collecting user input and instead you will need to tell Bento what inputs the user is making. You can pass user input data into Bento by using the `BentoInput*()` functions.
+
+If you've chosen the GUI-space coordinate system this would look like:
 
 ```gml
 /// GUI-space
-GuiInputPointer(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), device_mouse_check_button(0, mb_left));
-
-/// View-space or room-space
-GuiInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(0, mb_left));
+var _x = device_mouse_x_to_gui(0);
+var _y = device_mouse_y_to_gui(0);
+BentoInputPointer(_x, _y, device_mouse_check_button(0, mb_left));
 ```
 
-?> If you're looking for a convenient tool to wrangle different input devices, I recommend [Input}(https://github.com/offalynne/Input).
+If you've chosen the view-space or room-space coordinate system this would look like:
+
+```
+/// View-space or room-space
+var _x = device_mouse_x(0);
+var _y = device_mouse_y(0);
+BentoInputPointer(_x, _y, device_mouse_check_button(0, mb_left));
+```
+
+?> There are also input functions for directional control as well. You can read more about input modes [on a different page](Tech-Input).
+
+Once you've collected user input then you'll need to run Bento's native update loop using `BentoSystemStep()`. You should run `BentoSystemStep()` immediately after collecting player input in the Step event in most cases. This means that your Step event, for basic mouse input and using only GUI-space for brevity, should look something like this:
+
+```gml
+/// GUI-space mouse input
+var _x = device_mouse_x_to_gui(0);
+var _y = device_mouse_y_to_gui(0);
+BentoInputPointer(_x, _y, device_mouse_check_button(0, mb_left));
+
+//Update Bento
+BentoSystemStep();
+```
+
+?> If you're using some sort of lockstep solution (such as [iota](https://www.jujuadams.com/iota/)) then you should place `BentoSystemStep()` inside your lockstep loop.
+
+## Your First Instance
+
+Now that the basic skeleton of Bento is set up you can start to create elements and play around with the full Bento featureset. There are a few ways to create elements (as instances, as structs, or from JSON) but for simplicity we'll create a UI element using an object.
+
+Instance elements are basically normal object instances with some extra bells and whistles. To make instance elements you must call `BentoCreate()` and to destroy them you must call `BentoDestroy()`. The most basic kind of element is a rectangle and the Bento library comes with a template rectangle UI element built in called `oBentoLibRect`.
+
+For the sake of an example, add this to the Create event of the persistent instance you've used for `BentoSystemStep()` and `BentoSystemDraw()`:
+
+
+```gml
+BentoCreate(oBentoLibRect, { image_blend: c_red }, GUI_ROOT);
+```
+
+This particular function will create a new instance of `oBentoLibRoot` and place it inside the root element for the current [layer](Tech-Environments-and-Layers) which is given by the `GUI_ROOT` macro. Note that we've specified that the `image_blend` variable for the rectangle should be red. If you take a look at User Event 1 for `oBentoLibRect` you'll see that the object is using `draw_self()` for rendering.
+
+Now that Bento is set up and we've created a UI element, let's run the game. You should see a small red square in the top-left of the game window. If you can't see it, make sure that no other graphics in the game are rendering over the top of it (which might happen if you have an existing user interface).
