@@ -39,7 +39,7 @@ Whilst the mouse and touch navigation modes work basically the same, there are a
 
 ## Directional (keyboard, gamepad)
 
-Directional input generalizes keyboard and gamepad input. Unlike pointer navigation modes, Bento's virtual cursor cannot move freely. Instead, the cursor will jump between elements that have been marked as buttons (which you can do with `GuiSetButton()`). You can push the cursor between buttons by using `BentoInputDirectional()`:
+Directional input generalizes keyboard and gamepad input. Unlike pointer navigation modes, Bento's virtual cursor cannot move freely. Instead, the cursor will jump between elements that have been marked as buttons (which you can do with `BentoSetButton()`). You can push the cursor between buttons by using `BentoInputDirectional()`:
 
 ```gml
 if (BentoUsingKeyboard())
@@ -67,7 +67,9 @@ You need to be sensitive to the coordinate space that your user interface is des
 
 ## Detecting Input
 
-Bento allows you to detect input in the Step user event for instance elements or the `funcStep` callback for struct elements.
+Bento allows you to detect input in the Step user event for instance elements or the `funcStep` callback for struct elements. There are a variety of [input getter functions](). These functions can be used in the Step, Draw, and Draw After user events (and struct element callbacks).
+
+The most important and useful input getter function is undoubtedly `BentoPrimaryGetClick()`. This function will return if an element has been clicked by the player. This should be the function that you check to see if a button has been activated. You can also directly check the press/hold/release state of the primary button on an instance but you should **not** rely on these functions to determine whether the player has clicked a button.
 
 ## Hotkeys
 
