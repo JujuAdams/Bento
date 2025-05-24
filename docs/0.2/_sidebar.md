@@ -17,5 +17,5 @@
 
 **API**
 
-- [Basics](Basics)
-- [Input](Input)
+- [Basics](API-Basics)
+- [Input](API-Input)
