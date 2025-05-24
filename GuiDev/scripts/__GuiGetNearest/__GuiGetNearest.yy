@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiGetNearest",
+  "%Name":"__GuiGetNearest",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiGetNearest",
+  "name":"__GuiGetNearest",
   "parent":{
-    "name":"Instances",
-    "path":"folders/Library/Functions/Instances.yy",
+    "name":"(System)",
+    "path":"folders/Library/Functions/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiSetParent",
+  "%Name":"GuiInputConfigure",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiSetParent",
+  "name":"GuiInputConfigure",
   "parent":{
-    "name":"Elements",
-    "path":"folders/Library/Functions/Elements.yy",
+    "name":"Setup",
+    "path":"folders/Library/Functions/Input/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,11 +1,6 @@
 // Feather disable all
 
-/// Creates a GUI instance "inside" a parent GUI instance. Instances inside a parent will be:
-/// 
-/// - clipped if scissoring is turned on for the parent
-/// - scrolled if scrolling is turned on for the parent
-/// - drawn after the parent
-/// - follow the parent instance if the parent instance is moved with GuiMove()
+/// Creates a UI element using an object and places it inside a parent UI element.
 /// 
 /// @param object
 /// @param [variableStruct]

@@ -1,5 +1,5 @@
 // Feather disable all
 
-GuiInputConfigureNavigation(10, 9, 4, 5);
+GuiInputConfigure(10, 9, 4, 5);
 
 TestContextMenu();

@@ -13,7 +13,7 @@
 /// @param [scrollParent]
 /// @param [layer=current]
 
-function GuiGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = undefined, _layer = undefined)
+function __GuiGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = undefined, _layer = undefined)
 {
     static _system = __GuiSystem();
     

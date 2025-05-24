@@ -6,7 +6,7 @@
   "name":"GuiHotkeyGetHold",
   "parent":{
     "name":"Hotkeys",
-    "path":"folders/Library/Functions/Navigation/Hotkeys.yy",
+    "path":"folders/Library/Functions/Input/Hotkeys.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

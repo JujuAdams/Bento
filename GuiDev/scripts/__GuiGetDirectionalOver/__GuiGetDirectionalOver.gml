@@ -27,7 +27,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
         else
         {
             //Otherwise fall back on searching for the nearest selectable instance
-            _nextElement = GuiGetNearest(__directionalLastX, __directionalLastY, _excludeArray);
+            _nextElement = __GuiGetNearest(__directionalLastX, __directionalLastY, _excludeArray);
         }
     }
     else
@@ -87,7 +87,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
                 }
                 else
                 {
-                    _nextElement = GuiGetRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
+                    _nextElement = __GuiGetRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
                     
                     if (not __GuiExists(_nextElement))
                     {

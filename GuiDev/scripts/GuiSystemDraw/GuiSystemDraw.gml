@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Draws the GUI system.
+/// Draws all environments, layers, and elements.
 
 function GuiSystemDraw()
 {

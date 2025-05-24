@@ -1,8 +1,6 @@
 // Feather disable all
 
-/// Sets the parent for an instance, and whether that instance is "inside" or "outside" the new
-/// parent. If the `inside` optional parameter isn't defined, the current "inside" state of the
-/// target instance will be used.
+/// Sets the parent for an instance.
 /// 
 /// @param parent
 /// @param [target=self]

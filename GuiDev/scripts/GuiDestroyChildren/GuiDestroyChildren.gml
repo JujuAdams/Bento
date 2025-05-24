@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Destroys every child of a parent GUI instance.
+/// Destroys every child of a parent UI element.
 /// 
 /// @param [parent=self]
 

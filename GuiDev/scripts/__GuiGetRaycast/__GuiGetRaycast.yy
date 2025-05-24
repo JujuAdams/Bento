@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiGetRaycast",
+  "%Name":"__GuiGetRaycast",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiGetRaycast",
+  "name":"__GuiGetRaycast",
   "parent":{
-    "name":"Instances",
-    "path":"folders/Library/Functions/Instances.yy",
+    "name":"(System)",
+    "path":"folders/Library/Functions/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

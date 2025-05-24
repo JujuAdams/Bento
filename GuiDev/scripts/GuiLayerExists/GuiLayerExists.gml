@@ -13,7 +13,7 @@ function GuiLayerExists(_layerOrName, _environment = undefined)
     }
     else if (is_struct(_layerOrName))
     {
-        _environment ??= _layer.__environment;
+        _environment ??= _layerOrName.__environment;
         return (array_get_index(_environment.__layerArray, _layerOrName) >= 0);
     }
     

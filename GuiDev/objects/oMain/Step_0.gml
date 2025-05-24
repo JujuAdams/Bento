@@ -10,7 +10,7 @@ if (keyboard_check_pressed(ord("4"))) GuiSetMode(GUI_MODE_TOUCH);
 // "Gampead" input is, in reality, a generic directional input. Sending in a directional value
 // will push the Gui cursor in that direction. When holding a directional input, the Gui system
 // will automatically retrigger the directional input leading to auto-scrolling on menus. You can
-// configure the auto-scroll behavior by calling `GuiInputConfigureNavigation()`. The primary
+// configure the auto-scroll behavior by calling `GuiInputConfigure()`. The primary
 // action parameter should be a continuous "held" value too. The Gui system handles the "pressed"
 // and "released" state internally.
 if (GuiUsingKeyboard())
@@ -26,7 +26,7 @@ else if (GuiUsingGamepad() && gamepad_is_connected(0))
     var _gamepadDY = gamepad_axis_value(0, gp_axislv);
     if (abs(_gamepadDX) > 0.2) _dX += sign(_gamepadDX);
     if (abs(_gamepadDY) > 0.2) _dY += sign(_gamepadDY);
-    _primary |= gamepad_button_check(0, gp_face1);
+    GuiInputDirectional(_dX, _dY, gamepad_button_check(0, gp_face1));
 }
 
 

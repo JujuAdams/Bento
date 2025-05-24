@@ -31,10 +31,11 @@ function GuiSetMode(_newMode, _layer = undefined)
                 
                 __directionalLastX = __mouseX;
                 __directionalLastY = __mouseY;
-                __mousePrevX       = __mouseX;
-                __mousePrevY       = __mouseY;
-                __mousePressX      = undefined;
-                __mousePressY      = undefined;
+                
+                __mousePrevX  = __mouseX;
+                __mousePrevY  = __mouseY;
+                __mousePressX = undefined;
+                __mousePressY = undefined;
             }
             
             __navPointer     = false;

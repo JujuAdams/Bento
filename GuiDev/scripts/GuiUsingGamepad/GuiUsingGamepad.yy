@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiUsingGamepad",
   "parent":{
-    "name":"Mode",
-    "path":"folders/Library/Functions/Input/Mode.yy",
+    "name":"Input",
+    "path":"folders/Library/Functions/Input.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

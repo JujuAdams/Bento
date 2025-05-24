@@ -1,10 +1,6 @@
 // Feather disable all
 
-/// Updates the GUI system based on the navigation mode (`GuiSetMode()`) and user input:
-/// 
-/// - `GuiInputPointer()`
-/// - `GuiInputDirectional()`
-/// - `GuiInputHotkey()`
+/// Updates environments, layers, and UI elements.
 
 function GuiSystemStep(_rootWidth, _rootHeight)
 {

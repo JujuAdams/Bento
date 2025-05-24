@@ -8,7 +8,7 @@
 /// @param [excludeArray]
 /// @param [layer=current]
 
-function GuiGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
+function __GuiGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
 {
     static _system = __GuiSystem();
     

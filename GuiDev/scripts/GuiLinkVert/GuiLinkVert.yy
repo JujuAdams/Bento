@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiLinkVert",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Library/Functions/Navigation/Setup.yy",
+    "name":"Navigation",
+    "path":"folders/Library/Functions/Navigation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

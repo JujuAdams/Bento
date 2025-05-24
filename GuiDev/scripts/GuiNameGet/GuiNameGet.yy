@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiNameGet",
   "parent":{
-    "name":"Instance Names",
-    "path":"folders/Library/Functions/Instance Names.yy",
+    "name":"Element Names",
+    "path":"folders/Library/Functions/Element Names.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

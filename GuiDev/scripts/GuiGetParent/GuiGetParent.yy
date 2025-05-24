@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiGetParent",
   "parent":{
-    "name":"Instances",
-    "path":"folders/Library/Functions/Instances.yy",
+    "name":"Elements",
+    "path":"folders/Library/Functions/Elements.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

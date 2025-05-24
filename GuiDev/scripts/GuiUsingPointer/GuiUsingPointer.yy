@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiUsingPointer",
   "parent":{
-    "name":"Mode",
-    "path":"folders/Library/Functions/Input/Mode.yy",
+    "name":"Setup",
+    "path":"folders/Library/Functions/Input/Setup.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,6 +6,7 @@
 /// - `GUI_MODE_UNKNOWN`
 /// - `GUI_MODE_MOUSE`
 /// - `GUI_MODE_KEYBOARD`
+/// - `GUI_MODE_GAMEPAD`
 /// - `GUI_MODE_TOUCH`
 /// 
 /// @param [layer=current]

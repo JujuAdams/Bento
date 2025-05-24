@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiSetParent",
+  "%Name":"GuiCursorGetBox",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiSetParent",
+  "name":"GuiCursorGetBox",
   "parent":{
-    "name":"Elements",
-    "path":"folders/Library/Functions/Elements.yy",
+    "name":"Cursor",
+    "path":"folders/Library/Functions/Input/Cursor.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
