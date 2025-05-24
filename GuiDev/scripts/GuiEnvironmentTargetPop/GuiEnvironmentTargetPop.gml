@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __GuiEnvironmentTargetPop()
+function GuiEnvironmentTargetPop()
 {
     static _system = __GuiSystem();
     static _environmentStack = _system.__environmentStack;

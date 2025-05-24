@@ -2,7 +2,7 @@
 
 /// @param environment
 
-function __GuiEnvironmentTargetPush(_environment)
+function GuiEnvironmentTargetPush(_environment)
 {
     static _system = __GuiSystem();
     static _environmentStack = _system.__environmentStack;
