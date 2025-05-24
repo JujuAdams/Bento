@@ -1,6 +1,7 @@
 - [Home](README)
 - [Alternatives](Alternatives)
 - [Setting Up](Setting-Up)
+- [Writing Custom UI](Writing-Custom-UI)
 
 ---
 
