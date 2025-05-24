@@ -24,17 +24,17 @@ Bento's step order is a recursive algorithm as follows:
 2. If the element is eligible, execute Step code
 3. Iterate over children of the element in order and process them
 
- As an example, let's consider a Bento layer that is constructed like so:
+As an example, let's consider a Bento layer that is constructed like so:
 
 ```
 Bento layer
 ╰─ Root element
    ╰─ Inventory window
       ├─ Scrollbox
-      │  ├─ Apple item
-      │  ├─ Banana item
+      │  ├─ Apple
+      │  ├─ Banana
       │  │  ╰─ Peel button
-      │  ╰─ Cherry item
+      │  ╰─ Cherry
       ╰─ Close button
 ```
 
@@ -42,10 +42,11 @@ Presuming that all elements are eligible to execute Step code, the Step code ord
 
 1. Root element
 2. Inventory window
-3. Apple item
-4. Banana item
+2. Scrollbox
+3. Apple
+4. Banana
 5. Peel button
-6. Cherry item
+6. Cherry
 7. Close button
 
 ?> The [Draw order](Tech-Draw-and-Draw-After) is built in broadly the same way. When detecting which element (if any) the pointer is hovering over, Bento iterates over the Step order but in reverse.
