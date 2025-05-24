@@ -71,7 +71,7 @@ var _y = device_mouse_y(0);
 BentoInputPointer(_x, _y, device_mouse_check_button(0, mb_left));
 ```
 
-?> There are also input functions for directional control as well. You can read more about input modes [on a different page](Tech-Input).
+?> There are also input functions for directional control as well. You can read more about navigation modes [on a different page](Tech-Input).
 
 Once you've collected user input then you'll need to run Bento's native update loop using `BentoSystemStep()`. You should run `BentoSystemStep()` immediately after collecting player input in the Step event in most cases. This means that your Step event, for basic mouse input and using only GUI-space for brevity, should look something like this:
 

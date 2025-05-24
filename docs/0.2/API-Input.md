@@ -20,7 +20,7 @@
 
 Sets input values for pointer input (mouse and/or touch). The `primaryAction` argument should be set to the current held state of the primary "accept" or "confirm" button, conventionally the left mouse button (e.g. `device_mouse_check_button(0, mb_left)`). Pointer input generalises both mouse and touch input. The coordinate space for the x/y parameters should be the same as the coordinate space that `BentoSystemDraw()` is called in.
 
-?> Pointer input is only valid when using the mouse or touch input modes. Pointer input will be ignored in other input modes.
+?> Pointer input is only valid when using the mouse or touch navigation modes. Pointer input will be ignored in other navigation modes.
 
 #### **Examples**
 
@@ -69,7 +69,7 @@ Sets input values for directional input (gamepad and keyboard). The `primaryActi
 
 Sending in a directional value will push Bento's cursor in that direction. When holding a directional input, the Bento will automatically retrigger the directional input leading to auto-scrolling on menus. You can configure the auto-scroll behavior by calling `BentoInputConfigure()`.
 
-?> Directional input is only valid when using the keyboard or gamepad input modes. Directional input will be ignored in other input modes.
+?> Directional input is only valid when using the keyboard or gamepad navigation modes. Directional input will be ignored in other navigation modes.
 
 #### **Examples**
 
@@ -119,7 +119,7 @@ if (BentoUsingGamepad() && gamepad_is_connected(_gamepad))
 
 Sets input values for a named hotkey input. The name should be chosen to reflect the purpose of the input e.g. `"back"` or `"pause"` or `"scroll up"`. Button values can be read later uing the `BentoHotkeyGet*()` functions. The `value` parameter should be set to the current hold state of the hotkey e.g. `keyboard_check(vk_escape)`.
 
-Hotkey input is available in all input modes. A "hotkey" is an abstract input that doesn't necessarily have to map to a physical input at all. Button input could be triggered by a tutorial, a cutscene, a touch gesture etc. ... or it could be a button. You can retrieve hotkey sate by calling the `InputHotkeyGet*()` functions.
+Hotkey input is available in all navigation modes. A "hotkey" is an abstract input that doesn't necessarily have to map to a physical input at all. Button input could be triggered by a tutorial, a cutscene, a touch gesture etc. ... or it could be a button. You can retrieve hotkey sate by calling the `InputHotkeyGet*()` functions.
 
 #### **Examples**
 
@@ -203,10 +203,10 @@ GuiInputConfigure(10, 9, 4, 5);
 
 **Returns:** N/A (`undefined`)
 
-|Name     |Datatype|Purpose                                            |
-|---------|--------|---------------------------------------------------|
-|`mode`   |integer |Input mode to set, one of the `BENTO_MODE_*` macros|
-|`[layer]`|layer   |Layer to target                                    |
+|Name     |Datatype|Purpose                                                 |
+|---------|--------|--------------------------------------------------------|
+|`mode`   |integer |Navigation mode to set, one of the `BENTO_MODE_*` macros|
+|`[layer]`|layer   |Layer to target                                         |
 
 Sets the current navigation mode. This should be one of the following constants:
 
@@ -218,7 +218,7 @@ Sets the current navigation mode. This should be one of the following constants:
 
 Bento will consider mouse and touch input as "pointer" input and keyboard and gamepad input as "directional" input.
 
-?> Setting the input mode to `BENTO_MODE_UNKNOWN` will disable all input.
+?> Setting the navigation mode to `BENTO_MODE_UNKNOWN` will disable all input.
 
 #### **Example**
 
@@ -247,7 +247,7 @@ else if (keyboard_check_pressed(vk_space))
 
 #### **Description**
 
-**Returns:** Integer, the input mode set for the given layer
+**Returns:** Integer, the navigation mode set for the given layer
 
 |Name     |Datatype|Purpose        |
 |---------|--------|---------------|

@@ -8,7 +8,7 @@ When an element executes its Step code, either User Event 0 will be executed (fo
 
 Elements only execute Step code if they need to, though many element behaviours will automatically cause this to happen. An element will execute Step code in the following situations:
 
-- The element's button type (as set by `BentoSetButton()`) is active for the current input mode (e.g. is set to `BENTO_BUTTON_POINTER` and the player is using a mouse)
+- The element's button type (as set by `BentoSetButton()`) is active for the current navigation mode (e.g. is set to `BENTO_BUTTON_POINTER` and the player is using a mouse)
 - `GUI_ALWAYS_EXECUTE_STEP` has been set to `true`
 - `BentoGetForceStep()` has been called for the element
 - The element has been focused with `GuiFocusOpen()`
