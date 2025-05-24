@@ -1,3 +1,3 @@
-/// @desc Draw End
+/// @desc Draw After
 
-// This user event is disabled by default. Call `GuiSetDrawEnd()` to enable it.
+// This user event is disabled by default. Call `GuiSetDrawAfter()` to enable it.

@@ -16,10 +16,9 @@ function __GuiEnsureDrawOrder()
     __GuiEnsureDrawOrderInner(__drawOrder, __rootElement);
 }
 
-#macro __GUI_DRAW_ORDER_DRAW_END  1
-#macro __GUI_DRAW_ORDER_VISIBLE   2
-#macro __GUI_DRAW_ORDER_SCISSOR   4
-#macro __GUI_DRAW_ORDER_MATRIX    8
+#macro __GUI_DRAW_ORDER_VISIBLE  1
+#macro __GUI_DRAW_ORDER_SCISSOR  2
+#macro __GUI_DRAW_ORDER_MATRIX   4
 
 function __GuiEnsureDrawOrderInner(_drawOrder, _element)
 {
@@ -33,7 +32,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _element)
                     |  ((__transformMatrix != undefined)? __GUI_DRAW_ORDER_MATRIX : 0));
         
         //Find a Draw function for the lookup index
-        var _function = _functionLookupArray[_lookup];
+        var _function = _functionDrawLookupArray[_lookup];
         if (_function != undefined) array_push(_drawOrder, method(_element, _function));
         
         //Add children created inside the parent to the Draw order
@@ -45,14 +44,17 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _element)
             ++_i;
         }
         
-        //Find a Draw End function for the lookup index
-        var _function = _functionLookupArray[_lookup | __GUI_DRAW_ORDER_DRAW_END];
+        //Update the lookup index based on the "Draw After" visibility state
+        if (not __drawAfter) _lookup &= (~__GUI_DRAW_ORDER_VISIBLE);
+        
+        //Find a Draw After function for the lookup index
+        var _function = _functionDrawAfterLookupArray[_lookup];
         if (_function != undefined) array_push(_drawOrder, method(_element, _function));
     }
     
-    static _functionLookupArray = (function()
+    static _functionDrawLookupArray = (function()
     {
-        var _array = array_create(2*__GUI_DRAW_ORDER_DRAW_END - 1, undefined);
+        var _array = array_create((__GUI_DRAW_ORDER_MATRIX << 1), undefined);
         
         _array[0] = undefined;
         
@@ -100,43 +102,50 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _element)
             __GuiScissorPushFromElement();
         }
         
-        _array[__GUI_DRAW_ORDER_DRAW_END] = undefined;
+        return _array;
+    })();
+    
+    static _functionDrawAfterLookupArray = (function()
+    {
+        var _array = array_create((__GUI_DRAW_ORDER_MATRIX << 1) - 1, undefined);
         
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_SCISSOR] = function()
+        _array[0] = undefined;
+        
+        _array[__GUI_DRAW_ORDER_SCISSOR] = function()
         {
             __GuiScissorPop();
         }
         
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_MATRIX] = function()
+        _array[__GUI_DRAW_ORDER_MATRIX] = function()
         {
             matrix_stack_pop();
             matrix_set(matrix_world, matrix_stack_top());
         }
         
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
+        _array[__GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
             __GuiScissorPop();
             matrix_stack_pop();
             matrix_set(matrix_world, matrix_stack_top());
         }
         
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR] = function()
+        _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR] = function()
         {
             __GuiScissorPop();
-            GUI_VARS.__eventDrawEnd();
+            GUI_VARS.__eventDrawAfter();
         }
         
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_MATRIX] = function()
+        _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_MATRIX] = function()
         {
-            GUI_VARS.__eventDrawEnd();
+            GUI_VARS.__eventDrawAfter();
             matrix_stack_pop();
             matrix_set(matrix_world, matrix_stack_top());
         }
         
-        _array[__GUI_DRAW_ORDER_DRAW_END | __GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
+        _array[__GUI_DRAW_ORDER_VISIBLE | __GUI_DRAW_ORDER_SCISSOR | __GUI_DRAW_ORDER_MATRIX] = function()
         {
             __GuiScissorPop();
-            GUI_VARS.__eventDrawEnd();
+            GUI_VARS.__eventDrawAfter();
             matrix_stack_pop();
             matrix_set(matrix_world, matrix_stack_top());
         }

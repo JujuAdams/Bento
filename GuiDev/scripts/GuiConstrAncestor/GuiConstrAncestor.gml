@@ -16,7 +16,7 @@ function GuiConstrAncestor(_parent) constructor
         
     }
     
-    funcDrawEnd = function()
+    funcDrawAfter = function()
     {
         
     }

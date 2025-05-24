@@ -32,10 +32,10 @@ function __GuiClassVariables(_attachedElement) constructor
     __parent   = noone;
     __priority = 0;
     
-    __forceStep     = false;
+    __forceStep    = false;
     __buttonType   = GUI_BUTTON_NEVER;
     __executesStep = false;
-    __drawEnd      = false; //TODO - Reimplement
+    __drawAfter    = false;
     
     __name = undefined;
     
@@ -92,9 +92,9 @@ function __GuiClassVariables(_attachedElement) constructor
             event_user(GUI_USER_EVENT_DRAW);
         });
         
-        __eventDrawEnd = method(_attachedElement, function()
+        __eventDrawAfter = method(_attachedElement, function()
         {
-            event_user(GUI_USER_EVENT_DRAW_END);
+            event_user(GUI_USER_EVENT_DRAW_AFTER);
         });
         
         __eventReposition = method(_attachedElement, function()
@@ -114,9 +114,9 @@ function __GuiClassVariables(_attachedElement) constructor
             funcDraw();
         });
         
-        __eventDrawEnd = method(_attachedElement, function()
+        __eventDrawAfter = method(_attachedElement, function()
         {
-            funcDrawEnd();
+            funcDrawAfter();
         });
         
         __eventReposition = method(_attachedElement, function()
