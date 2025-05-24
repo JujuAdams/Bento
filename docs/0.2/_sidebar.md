@@ -11,6 +11,7 @@
 - [Step Code](Tech-Step)
 - [Draw & Draw After Code](Tech-Draw-and-Draw-After)
 - [Reposition Code](Tech-Reposition)
+- [Input](Tech-Input)
 - [Environments & Layers](Tech-Environments-and-Layers)
 
 ---
