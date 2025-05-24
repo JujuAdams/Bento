@@ -16,7 +16,7 @@ function GuiCursorGetX(_layer = undefined)
         }
         else if (__navDirectional)
         {
-            return __directionalLastX;
+            return 0.5*(__cursorLastL + __cursorLastR);
         }
         else if (__navMode == GUI_MODE_TOUCH)
         {

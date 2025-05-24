@@ -62,6 +62,11 @@ function __GuiClassLayer(_environment, _name) constructor
     __directionalLastX = 0;
     __directionalLastY = 0;
     
+    __cursorLastL = 0;
+    __cursorLastT = 0;
+    __cursorLastR = 0;
+    __cursorLastB = 0;
+    
     __directionalStateX = new __GuiClassDirectionalState();
     __directionalStateY = new __GuiClassDirectionalState();
     

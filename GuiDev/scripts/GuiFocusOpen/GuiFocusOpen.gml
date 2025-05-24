@@ -49,8 +49,14 @@ function GuiFocusOpen(_focusType, _element = self)
             array_push(_focusStack, _element);
             _layer.__focusTop = _element;
             
+            _layer.__cursorLastL = _element.guiLeft;
+            _layer.__cursorLastT = _element.guiTop;
+            _layer.__cursorLastR = _element.guiRight;
+            _layer.__cursorLastB = _element.guiBottom;
+            
             if (__scissorEnabled)
             {
+                //Use the smaller scissor region
                 _layer.__directionalLastX = _element.guiLeft + __scissorPadLeft;
                 _layer.__directionalLastY = _element.guiTop  + __scissorPadTop;
             }
