@@ -8,7 +8,7 @@ When an element executes its Draw code, either User Event 1 will be executed (fo
 
 All elements will execute Draw code unless they are set as invisible by calling `BentoSetVisible()` or have been disabled by `BentoSetDisable()`. An **invisible element** will not draw itself but will draw its children. A **disabled** element will draw neither itself nor its children.
 
-!> Instance elements will not respect the native GameMaker `visible` property.
+!> Instance elements will not respect the native GameMaker `visible` property. Please use `BentoSetVisible()` instead.
 
 If an element has a visual transform set up (such as `BentoTransformSetAngle()`) then that transform will apply to the element and will also apply to its children. Visual transforms will not affect the collision mask for an element - they are purely for visual effect, such as panels sliding in.
 
