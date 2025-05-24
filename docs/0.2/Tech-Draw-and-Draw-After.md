@@ -12,9 +12,15 @@ All elements will execute Draw code unless they are set as invisible by calling 
 
 If an element has a visual transform set up (such as `BentoTransformSetAngle()`) then that transform will apply to the element and will also apply to its children. Visual transforms will not affect the collision mask for an element - they are purely for visual effect, such as panels sliding in.
 
-&nbsp;
+## Draw After
 
-## Draw
+When an element executes its Draw After code, either User Event 2 will be executed (for instance elements) or the `funcDrawAfter` method will be executed (struct elements). Draw After code is executed after an element draws its children but before the next element is drawn.
+
+An element does not normally execute any Draw After code for the sake of efficiency. If you would like an element to execute Draw After code, you should use `BentoSetDrawAfter()` to set this up.
+
+Much like Draw code, Draw After code will not get executed if an element is invisible or has be disabled. Draw After code is also affected by any visual transform that you have set up for the element.
+
+## Draw Order
 
 Bento's draw order is a recursive algorithm as follows:
 
@@ -56,11 +62,3 @@ Let's say that the scrollbox is set up with a scissor test (clipping region). Le
 11. Inventory window **draw after**
 
 This is therefore a depth-first tree traversal and follows the [Painter's algorithm](https://en.wikipedia.org/wiki/Painter%27s_algorithm) like the rest of GameMaker. Bento's draw order is cached and is executed by iterating over an array of method calls to avoid re-executing the same logic every single frame - see [`__BentoEnsureDrawOrder()`].
-
-### Draw After
-
-When an element executes its Draw After code, either User Event 2 will be executed (for instance elements) or the `funcDrawAfter` method will be executed (struct elements).
-
-An element does not normally execute any Draw After code for the sake of efficiency. If you would like an element to execute Draw After code, you should use `BentoSetDrawAfter()` to set this up.
-
-Much like Draw code, Draw After code will not get executed if an element is invisible or has be disabled. Draw After code is also affected by any visual transform that you have set up for the element.
