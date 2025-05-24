@@ -20,3 +20,5 @@
 - [Basics](API-Basics)
 - [Input](API-Input)
 - [Elements](API-Elements)
+- [Layers](API-Layers)
+- [Environments](API-Environments)
