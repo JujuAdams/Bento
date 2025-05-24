@@ -7,11 +7,11 @@
 This page is pretty long and, ideally, you should read it all ... having said that, here's the executive summary if you're in a rush:
 
 1. Import the .yymps from [the repo](https://github.com/JujuAdams/Bento/releases)
-2. Create a new object called `oBentoAncestorMirror`. It should inherit from `oBentoAncestor`. This object should contain no other code
+2. Create a new object called `oBentoAncestorMirror`. It should inherit from `oBentoAncestor`. All custom Bento objects that you create should inherit from `oBentoAncestorMirror`
 3. Decide what [coordinate space](Setting-Up?id=coordinate-spaces) you want to work in. Usually this will be GUI-space
-4. Create (or choose an existing) a persistent instance that will be in every room. Add `BentoSystemDraw()` to an event: Draw GUI for GUI-space, Draw for other coordinate spaces
+4. Create (or choose an existing) a persistent instance that will be in every room. Add `BentoSystemDraw()` to an event: **Draw GUI** for GUI-space, **Draw** for other coordinate spaces
 5. In the same persistant instance, hook up user input in the Step event by calling `BentoInput*()` functions. Add `BentoSystemStep()` to the end of the Step event
-6. Create a test instance with `BentoCreate()` and run the game
+6. Create a test instance with `BentoCreate()` and run the game.
 
 &nbsp;
 
@@ -21,11 +21,19 @@ GameMaker allows you to import assets directly into your project via the "Local 
 
 ## Object Parents
 
-You'll want to make it as easy as possible to update Bento in the future. Perhaps there's a new version with a new feature that you want, or there's a bug fix in a newer version that you want. When using [instance elements](Tech-UI-Elements) you will need to inherit from an object called `oBentoAncestor` that is packaged with the library. Unfortunately, GameMaker behaves in an irritating way when importing packages: if a parent object is overwritten by an incoming package then all children of that object will lose their parent.
+You'll want to make it as easy as possible to update Bento in the future. Perhaps there's a version with a new feature that you want, or there's a bug fix in a newer version that you need. When using [instance elements](Tech-UI-Elements) you will need to inherit from an object called `oBentoAncestor` that is packaged with the library. Unfortunately, GameMaker behaves in an irritating way when importing packages: if a parent object is overwritten by an incoming package then all children of that object will lose their parent.
 
 Let's give a practical example. Let's say I import Bento and make a new object called `oCoolButton` that inherits from `oBentoAncestor`. In a couple months, I spot a Bento update that I want. I download the package, import it into GameMaker, and overwrite all existing code. `oCoolButton` will now no longer inherit from `oBentoAncestor` and the game will crash when I try to interact with `oCoolButton`.
 
-For one or two objects, re-establishing object inheritance is no big deal. However, as your project grows you are liable to need dozens of specific UI objects, all inheriting from `oBentoAncestor`. Whilst there's no true "fix" for GameMaker breaking inheritance when importing a package, we can instead work around the problem by minimizing the impact.
+For one or two objects, re-establishing object inheritance is no big deal. However, as your project grows you are liable to need dozens of specific UI objects, all inheriting from `oBentoAncestor`. Whilst there's no true "fix" for GameMaker breaking inheritance when importing a package, we can instead work around the problem by minimizing the impact:
+
+1. Create a new object called `oBentoAncestorMirror`
+2. Set `oBentoAncestorMirror` to inherit from the library object `oBentoAncestor`
+3. All custom Bento objects that you create should inherit from `oBentoAncestorMirror`
+
+Whilst this setup is circuitious, it will make life a lot less painful down the road.
+
+?> [Struct elements](Tech-UI-Elements) don't need any special consideration and can inherit directly from `BentoConstrAncestor`.
 
 ## Coordinate Spaces
 
@@ -37,7 +45,7 @@ Before doing anything with Bento, you must decide what coordinate space you want
 
 3. **Room-space**. This is similar to view-space but without the "view" bit. Most games will be using cameras and views so room-space UIs aren't especially helpful; however, room-space UIs are applicable for simple games or for testing Bento without needing to set up other infrastructure.
 
-Next, choose a persistent instance that will exist in all rooms in your game. If you chose to use a GUI-space coordinate system, create a Draw GUI event and call `BentoSystemDraw()` in it; otherwise, create a standard Draw event and call `BentoSystemDraw()` in it. `BentoSystemDraw()` is responsible for rendering every element that you create with Bento and must be run every frame for the player to be able to see anything.
+Next, choose a persistent instance that will exist in all rooms in your game. If you chose to use a GUI-space coordinate system, create a **Draw GUI** event and call `BentoSystemDraw()` in it; otherwise, create a standard **Draw** event and call `BentoSystemDraw()` in it. `BentoSystemDraw()` is responsible for rendering every element that you create with Bento and must be run every frame for the player to be able to see anything.
 
 ## User Input
 
