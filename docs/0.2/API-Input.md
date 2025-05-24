@@ -18,7 +18,9 @@
 |`y`            |number  |y-coordinate of the pointer                         |
 |`primaryAction`|boolean |Whether the primary action button is being held down|
 
-Sets input values for pointer input (mouse and/or touch). The `primaryAction` argument should be set to the current held state of the primary "accept" or "confirm" button, conventionally the left mouse button (e.g. `device_mouse_check_button(0, mb_left)`).
+Sets input values for pointer input (mouse and/or touch). The `primaryAction` argument should be set to the current held state of the primary "accept" or "confirm" button, conventionally the left mouse button (e.g. `device_mouse_check_button(0, mb_left)`). Pointer input generalises both mouse and touch input. The coordinate space for the x/y parameters should be the same as the coordinate space that `BentoSystemDraw()` is called in.
+
+?> Pointer input is only valid when using the mouse or touch input modes. Pointer input will be ignored in other input modes.
 
 #### **Examples**
 
@@ -64,6 +66,10 @@ if (BentoUsingPointer())
 |`primaryAction`|boolean |Whether the primary action button is being held down|
 
 Sets input values for directional input (gamepad and keyboard). The `primaryAction` argument should be set to the current held state of the primary "accept" or "confirm" button, conventionally the "A" button on a gamepad or the spacebar on a keyboard.
+
+Sending in a directional value will push Bento's cursor in that direction. When holding a directional input, the Bento will automatically retrigger the directional input leading to auto-scrolling on menus. You can configure the auto-scroll behavior by calling `BentoInputConfigure()`.
+
+?> Directional input is only valid when using the keyboard or gamepad input modes. Directional input will be ignored in other input modes.
 
 #### **Examples**
 
@@ -112,6 +118,8 @@ if (BentoUsingGamepad() && gamepad_is_connected(_gamepad))
 |`value`|boolean |Whether the hotkey is being held down|
 
 Sets input values for a named hotkey input. The name should be chosen to reflect the purpose of the input e.g. `"back"` or `"pause"` or `"scroll up"`. Button values can be read later uing the `BentoHotkeyGet*()` functions. The `value` parameter should be set to the current hold state of the hotkey e.g. `keyboard_check(vk_escape)`.
+
+Hotkey input is available in all input modes. A "hotkey" is an abstract input that doesn't necessarily have to map to a physical input at all. Button input could be triggered by a tutorial, a cutscene, a touch gesture etc. ... or it could be a button. You can retrieve hotkey sate by calling the `InputHotkeyGet*()` functions.
 
 #### **Examples**
 
