@@ -1,12 +1,31 @@
 # Setting Up
 
-?> Unlike most of my other libraries, Bento has a number of essential steps to take before it can be used. Please follow these instructions closely.
+!> Unlike most of my other libraries, Bento has a number of essential steps to take before it can be used. Please follow these instructions closely.
+
+### tl;dr
+
+This page is pretty long and, ideally, you should read it all ... having said that, here's the executive summary if you're in a rush:
+
+1. Import the .yymps from [the repo](https://github.com/JujuAdams/Bento/releases)
+2. Create a new object called `oBentoAncestorMirror`. It should inherit from `oBentoAncestor`. This object should contain no other code
+3. Decide what [coordinate space](Setting-Up?id=coordinate-spaces) you want to work in. Usually this will be GUI-space
+4. Create (or choose an existing) a persistent instance that will be in every room. Add `BentoSystemDraw()` to an event: Draw GUI for GUI-space, Draw for other coordinate spaces
+5. In the same persistant instance, hook up user input in the Step event by calling `BentoInput*()` functions. Add `BentoSystemStep()` to the end of the Step event
+6. Create a test instance with `BentoCreate()` and run the game
 
 &nbsp;
 
 ## Importing Bento
 
 GameMaker allows you to import assets directly into your project via the "Local Package" system. From the [Releases](https://github.com/JujuAdams/Bento/releases) tab for this repo, download the .yymp file for the latest version. In the GM IDE, load up your project and click on "Tools" on the main window toolbar. Select "Import Local Package" from the drop-down menu then import all scripts, objects, and sprites from the Bento package.
+
+## Object Parents
+
+You'll want to make it as easy as possible to update Bento in the future. Perhaps there's a new version with a new feature that you want, or there's a bug fix in a newer version that you want. When using [instance elements](Tech-UI-Elements) you will need to inherit from an object called `oBentoAncestor` that is packaged with the library. Unfortunately, GameMaker behaves in an irritating way when importing packages: if a parent object is overwritten by an incoming package then all children of that object will lose their parent.
+
+Let's give a practical example. Let's say I import Bento and make a new object called `oCoolButton` that inherits from `oBentoAncestor`. In a couple months, I spot a Bento update that I want. I download the package, import it into GameMaker, and overwrite all existing code. `oCoolButton` will now no longer inherit from `oBentoAncestor` and the game will crash when I try to interact with `oCoolButton`.
+
+For one or two objects, re-establishing object inheritance is no big deal. However, as your project grows you are liable to need dozens of specific UI objects, all inheriting from `oBentoAncestor`. Whilst there's no true "fix" for GameMaker breaking inheritance when importing a package, we can instead work around the problem by minimizing the impact.
 
 ## Coordinate Spaces
 

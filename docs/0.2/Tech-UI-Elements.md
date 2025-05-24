@@ -25,8 +25,6 @@ An "element" is therefore a very general concept and much of your time using Ben
 
 This page will discuss the basic mechanics of text elements within Bento's source code. Understanding the operation of elements is a prerequisite for an understanding of further features.
 
-&nbsp;
-
 ## Instance Elements
 
 As previously mentioned, if the element is an instance then that instance's object must inherit from the `oBentoAncestor` object, but let's look at what `oBentoAncestor` is actually doing. Our first stop is the [Create event](https://github.com/JujuAdams/Bento/blob/master/objects/oBentoAncestor/Create_0.gml). In this event we can see code that needs to be executed by all instance-based elements (struct elements have similar that we'll look at later).
@@ -51,8 +49,6 @@ So what's going on here? Bento uses a custom Step and Draw loop. Elements (insta
 Whilst separating out element logic into User Events seems like a lot of work, it is an important affordance for performance. The less code is running the faster your game will run and so Bento wants to have tight control over what is being executed so that it can run optimally. However, this does mean that GameMaker's native Draw events aren't applicable for Bento elements. You can still use them if you want but they're unlikely to be helpful.
 
 ?> You should avoid using the standard GameMaker Draw events as they are broadly incompatible with Bento. Similarly, the standard Step event is only useful in specific situations and should only be used if you need code that is guaranteed to be executed every frame.
-
-&nbsp;
 
 ## Struct Elements
 

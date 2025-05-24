@@ -4,8 +4,6 @@
 
 &nbsp;
 
-## Step Code
-
 When an element executes its Step code, either User Event 0 will be executed (for instance elements) or the `funcStep` method will be executed (struct elements).
 
 Elements only execute Step code if they need to, though many element behaviours will automatically cause this to happen. An element will execute Step code in the following situations:
@@ -17,8 +15,6 @@ Elements only execute Step code if they need to, though many element behaviours 
 - The element has a scissor text (clipping region) set up with `BentoScissorSetEnabled()`
 
 However, you can always prevent Step code (and other code) from being executed if an element is disabled using `BentoSetDisabled()`. This overrides any other logic.
-
-&nbsp;
 
 ## Step Order
 

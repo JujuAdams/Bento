@@ -45,8 +45,6 @@ In plain English: Bento can contain multiple environments, environments can cont
 
 We'll discuss layers first as they are very helpful for handling common tricky UI tasks.
 
-&nbsp;
-
 ## Layers
 
 When quitting a game from a pause menu, it's good practice to show a confirmation box to confirm whether the player truly intended to quit. When you disconnect a gamepad, you should pause the game and show a disconnection warning; indeed, this is a compliance requirement on consoles. When you choose to exit from a level editor, the UI should ask if you want to save your changes. These user interface windows all interrupt the flow of the game to ensure the player has an opportunity to respond to the information that is being presented to them.
@@ -56,8 +54,6 @@ These sorts windows are typically implemented as [modals](https://www.nngroup.co
 Bento achieves this by using "layers". Only the top-most layer will permit user interaction with lower layers retaining state. When the top-most layer is destroyed, control will be allowed on the new top-most layer. By pushing and popping layers, you can support many different scenarios. Let's say the player disconnects their gamepad whilst another modal is open - by pushing a new layer that shows the gamepad disconnection message, you can wait for the player to connect a new gamepad before returning player control to the prior modal.
 
 For the avoidance of doubt, lower layers are still drawn and are drawn in ascending index order, starting with index 0. "Top-most" refers to the layer with the highest index in the array of layers for an environment i.e. if there are three layers in an environment then the layer at index 2 in the array is the top-most layer and is drawn last.
-
-&nbsp;
 
 ## Environments
 
