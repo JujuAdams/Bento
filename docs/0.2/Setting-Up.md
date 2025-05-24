@@ -64,7 +64,7 @@ BentoInputPointer(_x, _y, device_mouse_check_button(0, mb_left));
 
 If you've chosen the view-space or room-space coordinate system this would look like:
 
-```
+```gml
 /// View-space or room-space
 var _x = device_mouse_x(0);
 var _y = device_mouse_y(0);
