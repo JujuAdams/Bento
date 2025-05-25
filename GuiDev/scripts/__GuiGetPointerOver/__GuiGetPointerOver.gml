@@ -15,9 +15,11 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     var _element = noone;
     
     var _holdElement = __holdElement;
+    var _holdElementDoesntExist = not __GuiExists(_holdElement);
+    
     var _stepOrder = __stepOrder;
     var _i = 0;
-    repeat(array_length(_stepOrder))
+    repeat(array_length(_stepOrder)) //FIXME - Prebuild this array
     {
         var _method = _stepOrder[_i];
         var _methodFunc = method_get_index(_method);
@@ -61,9 +63,22 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
             {
                 with(method_get_self(_stepOrder[_i]))
                 {
-                    if (((not __GuiExists(_holdElement)) || (_holdElement == self)) && instance_position(_mouseX, _mouseY, self))
+                    if (_holdElementDoesntExist || (_holdElement == self))
                     {
-                        _element = self;
+                        if (__GuiIsInstance(_element))
+                        {
+                            if (instance_position(_mouseX, _mouseY, self))
+                            {
+                                _element = self; 
+                            }
+                        }
+                        else
+                        {
+                            if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
+                            {
+                                _element = self; 
+                            }
+                        }
                     }
                 }
             }
