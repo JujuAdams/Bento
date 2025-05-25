@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExampleConstrButton",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExampleConstrButton",
+  "parent":{
+    "name":"Structs",
+    "path":"folders/Examples/Structs.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

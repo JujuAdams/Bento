@@ -10,8 +10,8 @@
   "name":"oExampleCarousel",
   "overriddenProperties":[],
   "parent":{
-    "name":"Examples",
-    "path":"folders/Examples.yy",
+    "name":"Objects",
+    "path":"folders/Examples/Objects.yy",
   },
   "parentObjectId":{
     "name":"oGuiLibRect",

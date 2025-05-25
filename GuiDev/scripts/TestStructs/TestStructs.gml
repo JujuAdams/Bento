@@ -16,8 +16,8 @@ function TestStructs()
         var _text = GuiCreateObject(oGuiLibText, { text: "Hello World", hAlign: fa_center });
         GuiLayoutSetResizeType(GUI_RESIZE_GROW, undefined, _text);
         
-        new GuiConstrRect();
-        new GuiConstrRect();
+        new ExampleConstrButton(undefined, "Test");
+        new ExampleConstrButton(undefined, "Test");
         
         var _grid = new GuiConstrGrid();
         with(_grid)
@@ -32,7 +32,7 @@ function TestStructs()
             
             repeat(10)
             {
-                with(new GuiConstrRect())
+                with(new ExampleConstrButton())
                 {
                     GuiLayoutSetAlignSelf(0.5, 0.5);
                 }

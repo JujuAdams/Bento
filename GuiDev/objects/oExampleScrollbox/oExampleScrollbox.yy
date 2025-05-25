@@ -10,8 +10,8 @@
   "name":"oExampleScrollbox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Examples",
-    "path":"folders/Examples.yy",
+    "name":"Objects",
+    "path":"folders/Examples/Objects.yy",
   },
   "parentObjectId":{
     "name":"oGuiLibList",
