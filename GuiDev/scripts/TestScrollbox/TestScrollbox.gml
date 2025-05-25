@@ -33,5 +33,5 @@ function TestScrollbox()
         },
     ];
     
-    gridElement = GuiCreateFromJSON(_json, GUI_ROOT, { count: 11 });
+    gridElement = GuiCreateFromJSON(_json, GuiGetRoot(), { count: 11 });
 }

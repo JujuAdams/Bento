@@ -38,5 +38,5 @@ function TestCarousel()
         },
     ];
     
-    gridElement = GuiCreateFromJSON(_json, GUI_ROOT);
+    gridElement = GuiCreateFromJSON(_json, GuiGetRoot());
 }

@@ -15,9 +15,6 @@
 #macro GUI_DATE     "2025-03-17"
 
 #macro GUI_RUNNING_FROM_IDE  (GM_build_type == "run")
-#macro GUI_ENVIRONMENT       (__GuiSystem().__environme nt)
-#macro GUI_LAYER             (__GuiSystem().__environment.__layerCurrent)
-#macro GUI_ROOT              (GuiGetRoot())
 
 #macro GUI_BUTTON_NEVER        0b00
 #macro GUI_BUTTON_POINTER      0b01

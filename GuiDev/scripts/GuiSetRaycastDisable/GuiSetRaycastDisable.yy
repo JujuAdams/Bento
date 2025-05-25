@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiSetRaycastDisable",
   "parent":{
-    "name":"Navigation",
-    "path":"folders/Library/Functions/Navigation.yy",
+    "name":"Directional Only",
+    "path":"folders/Library/Functions/Input & Navigation/Directional Only.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

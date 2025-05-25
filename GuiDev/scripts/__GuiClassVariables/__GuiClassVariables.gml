@@ -128,6 +128,29 @@ function __GuiClassVariables(_attachedElement) constructor
     __eventScissorPush = method(_attachedElement, __GuiScissorPushFromElement);
     __eventScissorPop  = method(_attachedElement, __GuiScissorPop);
     
+    static __Destroy = function()
+    {
+        __GuiRemoveParent(__attachedElement);
+        GuiDestroyChildren(__attachedElement);
+        
+        if (__GuiExists(__selectOnDestroy))
+        {
+            GuiSelectSoft(__selectOnDestroy);
+        }
+        
+        GuiFocusClose(__attachedElement);
+        
+        var _element = __layer.__nameMap[? __name];
+        if (_element == __attachedElement) ds_map_delete(__layer.__nameMap, __name);
+        
+        with(__layer)
+        {
+            __layoutDirty = true;
+            __stepDirty   = true;
+            __drawDirty   = true;
+        }
+    }
+    
     /////////////////////////////////
     //                             //
     //  Layout & Solver Variables  //
@@ -202,7 +225,25 @@ function __GuiClassVariables(_attachedElement) constructor
     __SolverShrinkWidth = function()
     {
         // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-        __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(__attachedElement.sprite_index)? sprite_get_width(__attachedElement.sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
+        
+        //Determine the preferred width
+        if (__layoutWidthPref > 0)
+        {
+            //If the preferred width is greater than 0 then use the preferred width
+            var _width = __layoutWidthPref;
+        }
+        else if (__GuiIsInstance(__attachedElement) && sprite_exists(__attachedElement.sprite_index))
+        {
+            //Otherwise use the width of the element's sprite (if it's an instance element)
+            var _width = sprite_get_width(__attachedElement.sprite_index);
+        }
+        else
+        {
+            //Fall back on the minimum width if we can't find a suitable preferred width
+            var _width = __layoutWidthMin;
+        }
+        
+        __solvedWidth = clamp(_width, __layoutWidthMin, __layoutWidthMax);
         
         __solverShrinkWidth = __solvedWidth;
         __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
@@ -223,7 +264,25 @@ function __GuiClassVariables(_attachedElement) constructor
     __SolverShrinkHeight = function()
     {
         // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-        __solvedHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(__attachedElement.sprite_index)? sprite_get_height(__attachedElement.sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
+        
+        //Determine the preferred height
+        if (__layoutHeightPref > 0)
+        {
+            //If the preferred height is greater than 0 then use the preferred height
+            var _height = __layoutHeightPref;
+        }
+        else if (__GuiIsInstance(__attachedElement) && sprite_exists(__attachedElement.sprite_index))
+        {
+            //Otherwise use the height of the element's sprite (if it's an instance element)
+            var _height = sprite_get_height(__attachedElement.sprite_index);
+        }
+        else
+        {
+            //Fall back on the minimum height if we can't find a suitable preferred height
+            var _height = __layoutHeightMin;
+        }
+        
+        __solvedHeight = clamp(_height, __layoutHeightMin, __layoutHeightMax);
         
         __solverShrinkHeight = __solvedHeight;
         __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
@@ -260,29 +319,6 @@ function __GuiClassVariables(_attachedElement) constructor
         {
             _childArray[_i].GUI_VARS.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
             ++_i;
-        }
-    }
-    
-    static __Destroy = function()
-    {
-        __GuiRemoveParent(__attachedElement);
-        GuiDestroyChildren(__attachedElement);
-        
-        if (__GuiExists(__selectOnDestroy))
-        {
-            GuiSelectSoft(__selectOnDestroy);
-        }
-        
-        GuiFocusClose(__attachedElement);
-        
-        var _element = __layer.__nameMap[? __name];
-        if (_element == __attachedElement) ds_map_delete(__layer.__nameMap, __name);
-        
-        with(__layer)
-        {
-            __layoutDirty = true;
-            __stepDirty   = true;
-            __drawDirty   = true;
         }
     }
 }

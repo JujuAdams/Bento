@@ -2,7 +2,7 @@
 
 function TestShrinkAndGrow()
 {
-    with(GuiCreateObject(oGuiLibList, undefined, GUI_ROOT))
+    with(GuiCreateObject(oGuiLibList, undefined, GuiGetRoot()))
     {
         image_blend = c_navy;
         
