@@ -1,15 +1,10 @@
 // Feather disable all
 
-/// @param width
-/// @param height
 /// @param [parent=self]
 
-function GuiConstrRect(_width, _height, _parent = other) : GuiConstrAncestor(_parent) constructor
+function GuiConstrRect(_parent = other) : GuiConstrAncestor(_parent) constructor
 {
-    width  = _width;
-    height = _height;
-    
-    GuiLayoutSetSize(_width, _height);
+    GuiLayoutSetSize(sprite_get_width(sGuiMaskRectangle), sprite_get_height(sGuiMaskRectangle));
     GuiLayoutSetOrigin(sprite_get_xoffset(sGuiMaskRectangle) / sprite_get_width(sGuiMaskRectangle),
                        sprite_get_yoffset(sGuiMaskRectangle) / sprite_get_height(sGuiMaskRectangle));
     
