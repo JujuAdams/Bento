@@ -108,7 +108,6 @@
     {"id":{"name":"__GuiIsInstance","path":"scripts/__GuiIsInstance/__GuiIsInstance.yy",},},
     {"id":{"name":"__GuiLayerTargetPop","path":"scripts/__GuiLayerTargetPop/__GuiLayerTargetPop.yy",},},
     {"id":{"name":"__GuiLayerTargetPush","path":"scripts/__GuiLayerTargetPush/__GuiLayerTargetPush.yy",},},
-    {"id":{"name":"__GuiMakeUUID","path":"scripts/__GuiMakeUUID/__GuiMakeUUID.yy",},},
     {"id":{"name":"__GuiMarkPriorityDirty","path":"scripts/__GuiMarkPriorityDirty/__GuiMarkPriorityDirty.yy",},},
     {"id":{"name":"__GuiMarkTransformAndScrollDirty","path":"scripts/__GuiMarkTransformAndScrollDirty/__GuiMarkTransformAndScrollDirty.yy",},},
     {"id":{"name":"__GuiObjectInheritsFrom","path":"scripts/__GuiObjectInheritsFrom/__GuiObjectInheritsFrom.yy",},},

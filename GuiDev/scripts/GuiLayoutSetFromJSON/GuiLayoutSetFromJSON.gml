@@ -53,6 +53,7 @@ function GuiLayoutSetFromJSON(_json, _element = self)
             }
             else if (_name == "gutter")
             {
+                //FIXME - Reimplement to include struct elements
                 //if ((not __GuiObjectInheritsFrom(object_index, oGuiLibList)) && (not __GuiObjectInheritsFrom(object_index, oGuiLibGrid)))
                 //{
                 //    __GuiError($"Cannot use .gutter on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)} or {object_get_name(oGuiLibGrid)}");
@@ -62,6 +63,7 @@ function GuiLayoutSetFromJSON(_json, _element = self)
             }
             else if (_name == "listAlign")
             {
+                //FIXME - Reimplement to include struct elements
                 //if (not __GuiObjectInheritsFrom(object_index, oGuiLibList))
                 //{
                 //    __GuiError($"Cannot use .listAlign on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)}");
@@ -71,6 +73,7 @@ function GuiLayoutSetFromJSON(_json, _element = self)
             }
             else if (_name == "listAxis")
             {
+                //FIXME - Reimplement to include struct elements
                 //if (not __GuiObjectInheritsFrom(object_index, oGuiLibList))
                 //{
                 //    __GuiError($"Cannot use .listAxis on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)}");
@@ -80,6 +83,7 @@ function GuiLayoutSetFromJSON(_json, _element = self)
             }
             else if (_name == "gridSize")
             {
+                //FIXME - Reimplement to include struct elements
                 //if (not __GuiObjectInheritsFrom(object_index, oGuiLibGrid))
                 //{
                 //    __GuiError($"Cannot use .gridSize on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibGrid)}");
