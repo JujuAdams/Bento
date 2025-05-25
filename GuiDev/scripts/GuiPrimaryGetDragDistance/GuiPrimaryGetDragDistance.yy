@@ -6,7 +6,7 @@
   "name":"GuiPrimaryGetDragDistance",
   "parent":{
     "name":"Primary",
-    "path":"folders/Library/Functions/Input/Primary.yy",
+    "path":"folders/Library/Functions/Input & Navigation/Getters/Primary.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

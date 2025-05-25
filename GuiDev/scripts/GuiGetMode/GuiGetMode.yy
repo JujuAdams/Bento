@@ -6,7 +6,7 @@
   "name":"GuiGetMode",
   "parent":{
     "name":"Modes",
-    "path":"folders/Library/Functions/Input/Modes.yy",
+    "path":"folders/Library/Functions/Input & Navigation/Modes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

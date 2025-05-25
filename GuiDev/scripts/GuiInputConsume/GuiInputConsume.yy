@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiInputConsume",
   "parent":{
-    "name":"Input",
-    "path":"folders/Library/Functions/Input.yy",
+    "name":"Input & Navigation",
+    "path":"folders/Library/Functions/Input & Navigation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

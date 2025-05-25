@@ -6,7 +6,7 @@
   "name":"GuiHotkeyGetPress",
   "parent":{
     "name":"Hotkeys",
-    "path":"folders/Library/Functions/Input/Hotkeys.yy",
+    "path":"folders/Library/Functions/Input & Navigation/Getters/Hotkeys.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

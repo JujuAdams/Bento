@@ -6,7 +6,7 @@
   "name":"GuiCursorGetBox",
   "parent":{
     "name":"Cursor",
-    "path":"folders/Library/Functions/Input/Cursor.yy",
+    "path":"folders/Library/Functions/Input & Navigation/Getters/Cursor.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
