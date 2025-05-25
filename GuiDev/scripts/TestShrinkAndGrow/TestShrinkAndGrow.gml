@@ -1,6 +1,6 @@
 // Feather disable all
 
-function TestShrinkAndGrow()
+function TestFitAndGrow()
 {
     with(GuiCreateObject(oGuiLibList, undefined, GUI_ROOT))
     {

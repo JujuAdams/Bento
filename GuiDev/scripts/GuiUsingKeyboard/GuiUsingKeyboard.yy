@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiUsingKeyboard",
   "parent":{
-    "name":"Input",
-    "path":"folders/Library/Functions/Input.yy",
+    "name":"Modes",
+    "path":"folders/Library/Functions/Input/Modes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

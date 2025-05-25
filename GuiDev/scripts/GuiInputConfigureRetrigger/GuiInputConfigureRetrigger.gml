@@ -5,7 +5,7 @@
 /// @param count
 /// @param shorterDelay
 
-function GuiInputConfigure(_preDelay, _delay, _count, _shortDelay)
+function GuiInputConfigureRetrigger(_preDelay, _delay, _count, _shortDelay)
 {
     static _system = __GuiSystem();
     with(_system)

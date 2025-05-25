@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiInputConfigureRetrigger",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiInputConfigureRetrigger",
+  "parent":{
+    "name":"Input",
+    "path":"folders/Library/Functions/Input.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

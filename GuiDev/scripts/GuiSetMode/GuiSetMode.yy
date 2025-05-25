@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiSetMode",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Library/Functions/Input/Setup.yy",
+    "name":"Modes",
+    "path":"folders/Library/Functions/Input/Modes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

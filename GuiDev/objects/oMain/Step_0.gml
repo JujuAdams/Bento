@@ -10,7 +10,7 @@ if (keyboard_check_pressed(ord("4"))) GuiSetMode(GUI_MODE_TOUCH);
 // "Gampead" input is, in reality, a generic directional input. Sending in a directional value
 // will push the Gui cursor in that direction. When holding a directional input, the Gui system
 // will automatically retrigger the directional input leading to auto-scrolling on menus. You can
-// configure the auto-scroll behavior by calling `GuiInputConfigure()`. The primary
+// configure the auto-scroll behavior by calling `GuiInputConfigureRetrigger()`. The primary
 // action parameter should be a continuous "held" value too. The Gui system handles the "pressed"
 // and "released" state internally.
 if (GuiUsingKeyboard())

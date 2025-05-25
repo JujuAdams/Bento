@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiInputConfigure",
+  "%Name":"GuiTransformReset",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiInputConfigure",
+  "name":"GuiTransformReset",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Library/Functions/Input/Setup.yy",
+    "name":"Transform",
+    "path":"folders/Library/Functions/Transform.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
