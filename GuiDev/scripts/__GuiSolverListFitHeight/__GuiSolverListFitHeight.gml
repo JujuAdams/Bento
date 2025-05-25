@@ -1,8 +1,8 @@
 // Feather disable all
 
-function __GuiSolverListFitHeight()
+function __GuiSolverListShrinkHeight()
 {
-    var _fitSize = 0;
+    var _shrinkSize = 0;
     var _minSize = 0;
     
     var _childArray = __childArray;
@@ -18,7 +18,7 @@ function __GuiSolverListFitHeight()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _fitSize += _child.GUI_VARS.__solverFitHeight;
+            _shrinkSize += _child.GUI_VARS.__solverShrinkHeight;
             _minSize += _child.GUI_VARS.__solverMinHeight;
             ++_i;
         }
@@ -35,7 +35,7 @@ function __GuiSolverListFitHeight()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _fitSize = max(_fitSize, _child.GUI_VARS.__solverFitHeight);
+            _shrinkSize = max(_shrinkSize, _child.GUI_VARS.__solverShrinkHeight);
             _minSize = max(_minSize, _child.GUI_VARS.__solverMinHeight);
             ++_i;
         }
@@ -43,10 +43,10 @@ function __GuiSolverListFitHeight()
         var _extra = __layoutPadTop + __layoutPadBottom;
     }
     
-    _fitSize += _extra
+    _shrinkSize += _extra
     _minSize += _extra;
     
     __solverMinHeight = max(__layoutHeightMin, _minSize);
-    __solverFitHeight = clamp((__layoutHeightResize == GUI_RESIZE_FIT)? _fitSize : __layoutHeightPref, __solverMinHeight, __layoutHeightMax);
-    __solvedHeight    = __solverFitHeight;
+    __solverShrinkHeight = clamp((__layoutHeightResize == GUI_RESIZE_SHRINK)? _shrinkSize : __layoutHeightPref, __solverMinHeight, __layoutHeightMax);
+    __solvedHeight    = __solverShrinkHeight;
 }

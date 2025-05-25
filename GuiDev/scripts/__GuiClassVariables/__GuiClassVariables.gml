@@ -182,33 +182,33 @@ function __GuiClassVariables(_attachedElement) constructor
     __layoutPadBottom = 0;
     
     //How the instance should resize. "Static" is as the name suggests - the instance won't change
-    //size. "Fit" will cause the instance to shrink down to fit any children it has inside. If an
-    //instance has no ch\ildren, the "fit" resize type will behave the same as "static". "Grow" will
+    //size. "Shrink" will cause the instance to shrink down to shrink any children it has inside. If an
+    //instance has no ch\ildren, the "shrink" resize type will behave the same as "static". "Grow" will
     //cause the instance to increase size in that axis to fill available space in the parent.
     __layoutWidthResize  = GUI_RESIZE_STATIC;
     __layoutHeightResize = GUI_RESIZE_STATIC;
     
-    //The size required to fit all of this instance's children at their preferred size.
-    __solverFitWidth  = 0;
-    __solverFitHeight = 0;
+    //The size required to shrink all of this instance's children at their preferred size.
+    __solverShrinkWidth  = 0;
+    __solverShrinkHeight = 0;
     
-    //The absolute minimum size that a parent can be to fit all of its children.
+    //The absolute minimum size that a parent can be to shrink all of its children.
     __solverMinWidth  = 0;
     __solverMinHeight = 0;
     
-    //Function that sets the solver's fit width and minimum width. This is a boring function for most
-    //instances. It gets more exciting for lists - see `__GuiSolverListFitWidth()`. This function also
+    //Function that sets the solver's shrink width and minimum width. This is a boring function for most
+    //instances. It gets more exciting for lists - see `__GuiSolverListShrinkWidth()`. This function also
     //preliminarily sets the final calculated width for the instance (`__solvedWidth`).
-    __SolverFitWidth = function()
+    __SolverShrinkWidth = function()
     {
         // N.B. `oGuiLibList`, `oGuiLibText` override this function.
         __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : (sprite_exists(__attachedElement.sprite_index)? sprite_get_width(__attachedElement.sprite_index) : __layoutWidthMin), __layoutWidthMin, __layoutWidthMax);
         
-        __solverFitWidth = __solvedWidth;
+        __solverShrinkWidth = __solvedWidth;
         __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
     }
     
-    //Resizes both this instance and any child instances that are set to "fit" or "grow" resize types.
+    //Resizes both this instance and any child instances that are set to "shrink" or "grow" resize types.
     //See `__GuiSolverListResizeWidth()` and `__GuiSolverListResizeHeight()`.
     __SolverResizeWidth = function()
     {
@@ -217,19 +217,19 @@ function __GuiClassVariables(_attachedElement) constructor
         //Do nothing
     }
     
-    //Function that sets the solver's fit height and minimum height. This is a boring function for most
-    //instances. It gets more exciting for lists - see `__GuiSolverListFitHeight()`. This function also
+    //Function that sets the solver's shrink height and minimum height. This is a boring function for most
+    //instances. It gets more exciting for lists - see `__GuiSolverListShrinkHeight()`. This function also
     //preliminarily sets the final calculated height for the instance (`__solvedHeight`).
-    __SolverFitHeight = function()
+    __SolverShrinkHeight = function()
     {
         // N.B. `oGuiLibList`, `oGuiLibText` override this function.
         __solvedHeight = clamp((__layoutHeightPref > 0)? __layoutHeightPref : (sprite_exists(__attachedElement.sprite_index)? sprite_get_height(__attachedElement.sprite_index) : __layoutHeightMin), __layoutHeightMin, __layoutHeightMax);
         
-        __solverFitHeight = __solvedHeight;
+        __solverShrinkHeight = __solvedHeight;
         __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
     }
     
-    //Resizes both this instance and any child instances that are set to "fit" or "grow" resize types.
+    //Resizes both this instance and any child instances that are set to "shrink" or "grow" resize types.
     //See `__GuiSolverListResizeWidth()` and `__GuiSolverListResizeHeight()`.
     __SolverResizeHeight = function()
     {

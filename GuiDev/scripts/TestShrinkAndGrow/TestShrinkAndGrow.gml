@@ -1,6 +1,6 @@
 // Feather disable all
 
-function TestFitAndGrow()
+function TestShrinkAndGrow()
 {
     with(GuiCreateObject(oGuiLibList, undefined, GUI_ROOT))
     {
@@ -8,7 +8,7 @@ function TestFitAndGrow()
         
         GuiLayoutSetListAxis(0);
         GuiLayoutSetSize(600, 200);
-        GuiLayoutSetResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);
+        GuiLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
         GuiLayoutSetPadding(10, 10, 10, 10);
         GuiLayoutSetGutter(10, 10);
         

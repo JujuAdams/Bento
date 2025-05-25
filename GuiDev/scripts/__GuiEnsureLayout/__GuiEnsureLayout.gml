@@ -20,7 +20,7 @@ function __GuiEnsureLayout()
     var _i = _count-1;
     repeat(_count)
     {
-        _layoutOrder[_i].__SolverFitWidth();
+        _layoutOrder[_i].__SolverShrinkWidth();
         --_i;
     }
     
@@ -36,7 +36,7 @@ function __GuiEnsureLayout()
     var _i = _count-1;
     repeat(_count)
     {
-        _layoutOrder[_i].__SolverFitHeight();
+        _layoutOrder[_i].__SolverShrinkHeight();
         --_i;
     }
     

@@ -5,7 +5,7 @@ function __GuiSolverListResizeWidth()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedWidth - __solverFitWidth;
+    var _remaining = __solvedWidth - __solverShrinkWidth;
     
     if (__listAxis == GUI_AXIS_Y)
     {
@@ -21,7 +21,7 @@ function __GuiSolverListResizeWidth()
             {
                 with( _childArray[_i].GUI_VARS)
                 {
-                    if (__layoutWidthResize == GUI_RESIZE_FIT)
+                    if (__layoutWidthResize == GUI_RESIZE_SHRINK)
                     {
                         __solvedWidth = clamp(min(__solvedWidth, _available), __layoutWidthMin, __layoutWidthMax);
                     }

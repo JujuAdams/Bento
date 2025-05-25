@@ -9,7 +9,7 @@ GuiSetIfNotDefined("vAlign", fa_top);
 
 with(GUI_VARS)
 {
-    __SolverFitWidth = function()
+    __SolverShrinkWidth = function()
     {
         draw_set_font(__attachedElement.font);
         
@@ -29,18 +29,18 @@ with(GUI_VARS)
             __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : string_width("Adams");
         }
         
-        //Whatever the weather, the width for the purpose of fitting the parent is whatever layout
+        //Whatever the weather, the width for the purpose of shrinking the parent is whatever layout
         //width guess we've made.
-        __solverFitWidth = __solvedWidth;
+        __solverShrinkWidth = __solvedWidth;
         
         draw_set_font(-1);
     }
     
-    __SolverFitHeight = function()
+    __SolverShrinkHeight = function()
     {
         draw_set_font(__attachedElement.font);
         
-        if (__layoutHeightResize == GUI_RESIZE_FIT)
+        if (__layoutHeightResize == GUI_RESIZE_SHRINK)
         {
             //Change the height of this instance based on the new wrapping rules.
             //
@@ -56,7 +56,7 @@ with(GUI_VARS)
             __solvedHeight      = clamp(__layoutHeightPref, __layoutHeightMin, __layoutHeightMax);
         }
         
-        __solverFitHeight = __solvedHeight;
+        __solverShrinkHeight = __solvedHeight;
         
         draw_set_font(-1);
     }

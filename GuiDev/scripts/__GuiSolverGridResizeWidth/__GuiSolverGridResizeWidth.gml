@@ -15,7 +15,7 @@ function __GuiSolverGridResizeWidth()
         {
             with( _childArray[_i].GUI_VARS)
             {
-                if (__layoutWidthResize == GUI_RESIZE_FIT)
+                if (__layoutWidthResize == GUI_RESIZE_SHRINK)
                 {
                     __solvedWidth = clamp(min(__solvedWidth, _cellSize), __layoutWidthMin, __layoutWidthMax);
                 }

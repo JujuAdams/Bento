@@ -54,7 +54,7 @@ Here is a brief example:
     object: oGuiLibList,
     visible: false,
     layout: {
-        resize: ["fit", "static"],
+        resize: ["shrink", "static"],
         size: [100, 70],
         axis: "x",
     },
@@ -155,10 +155,10 @@ Here is a brief example:
     
     Resize types must be one of the following:
     - "static"
-    - "fit"
+    - "shrink"
     - "grow"
     - 0 (equal to GUI_RESIZE_STATIC)
-    - 1 (equal to GUI_RESIZE_FIT)
+    - 1 (equal to GUI_RESIZE_SHRINK)
     - 2 (equal to GUI_RESIZE_GROW)
     
     You may also use `null` to indicate that no change should be made to a particular value.

@@ -12,7 +12,7 @@ function TestScrollbox()
                 offset:  [300, 200],
                 size:    [200, 120],
                 maxSize: [200, 295],
-                resize:  [GUI_RESIZE_FIT, GUI_RESIZE_FIT],
+                resize:  [GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK],
                 padding: 10,
                 gutter:  10,
             },

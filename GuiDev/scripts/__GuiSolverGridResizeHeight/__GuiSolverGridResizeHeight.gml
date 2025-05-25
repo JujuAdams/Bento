@@ -15,7 +15,7 @@ function __GuiSolverGridResizeHeight()
         {
             with( _childArray[_i].GUI_VARS)
             {
-                if (__layoutHeightResize == GUI_RESIZE_FIT)
+                if (__layoutHeightResize == GUI_RESIZE_SHRINK)
                 {
                     __solvedHeight = clamp(min(__solvedHeight, _cellSize), __layoutHeightMin, __layoutHeightMax);
                 }

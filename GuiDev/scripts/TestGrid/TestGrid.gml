@@ -10,7 +10,7 @@ function TestGrid()
         layout: {
             gridSize: [6, 2],
             size:     [600, 200],
-            resize:   [GUI_RESIZE_FIT, GUI_RESIZE_FIT],
+            resize:   [GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK],
             padding:  [10, 10, 10, 10],
             gutter:   [10, 10],
         },

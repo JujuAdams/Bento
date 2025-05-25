@@ -5,7 +5,7 @@ function __GuiSolverListResizeHeight()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedHeight - __solverFitHeight;
+    var _remaining = __solvedHeight - __solverShrinkHeight;
     
     if (__listAxis == GUI_AXIS_X)
     {
@@ -21,7 +21,7 @@ function __GuiSolverListResizeHeight()
             {
                 with( _childArray[_i].GUI_VARS)
                 {
-                    if (__layoutHeightResize == GUI_RESIZE_FIT)
+                    if (__layoutHeightResize == GUI_RESIZE_SHRINK)
                     {
                         __solvedHeight = clamp(min(__solvedHeight, _available), __layoutHeightMin, __layoutHeightMax);
                     }

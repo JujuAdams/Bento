@@ -277,9 +277,9 @@ function __GuiLayoutSetFromJSON_resize(_element, _value)
     
     if (is_numeric(_x))
     {
-        if ((_x != GUI_RESIZE_STATIC) && (_x != GUI_RESIZE_FIT) && (_x != GUI_RESIZE_GROW))
+        if ((_x != GUI_RESIZE_STATIC) && (_x != GUI_RESIZE_SHRINK) && (_x != GUI_RESIZE_GROW))
         {
-            __GuiError($".resize.x layout property must be \"static\", \"fit\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_FIT}, or {GUI_RESIZE_GROW} (value was {_x})");
+            __GuiError($".resize.x layout property must be \"static\", \"shrink\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_GROW} (value was {_x})");
         }
     }
     else if (is_string(_x))
@@ -288,9 +288,9 @@ function __GuiLayoutSetFromJSON_resize(_element, _value)
         {
             _x = GUI_RESIZE_STATIC;
         }
-        else if (_x == "fit")
+        else if (_x == "shrink")
         {
-            _x = GUI_RESIZE_FIT;
+            _x = GUI_RESIZE_SHRINK;
         }
         else if (_x == "grow")
         {
@@ -298,19 +298,19 @@ function __GuiLayoutSetFromJSON_resize(_element, _value)
         }
         else
         {
-            __GuiError($".resize.x layout property must be \"static\", \"fit\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_FIT}, or {GUI_RESIZE_GROW} (value was {_x})");
+            __GuiError($".resize.x layout property must be \"static\", \"shrink\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_GROW} (value was {_x})");
         }
     }
     else
     {
-        __GuiError($".resize.x layout property must be \"static\", \"fit\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_FIT}, or {GUI_RESIZE_GROW} (value was {_x})");
+        __GuiError($".resize.x layout property must be \"static\", \"shrink\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_GROW} (value was {_x})");
     }
     
     if (is_numeric(_y))
     {
-        if ((_y != GUI_RESIZE_STATIC) && (_y != GUI_RESIZE_FIT) && (_y != GUI_RESIZE_GROW))
+        if ((_y != GUI_RESIZE_STATIC) && (_y != GUI_RESIZE_SHRINK) && (_y != GUI_RESIZE_GROW))
         {
-            __GuiError($".resize.y layout property must be \"static\", \"fit\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_FIT}, or {GUI_RESIZE_GROW} (value was {_y})");
+            __GuiError($".resize.y layout property must be \"static\", \"shrink\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_GROW} (value was {_y})");
         }
     }
     else if (is_string(_y))
@@ -319,9 +319,9 @@ function __GuiLayoutSetFromJSON_resize(_element, _value)
         {
             _y = GUI_RESIZE_STATIC;
         }
-        else if (_y == "fit")
+        else if (_y == "shrink")
         {
-            _y = GUI_RESIZE_FIT;
+            _y = GUI_RESIZE_SHRINK;
         }
         else if (_y == "grow")
         {
@@ -329,12 +329,12 @@ function __GuiLayoutSetFromJSON_resize(_element, _value)
         }
         else
         {
-            __GuiError($".resize.y layout property must be \"static\", \"fit\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_FIT}, or {GUI_RESIZE_GROW} (value was {_y})");
+            __GuiError($".resize.y layout property must be \"static\", \"shrink\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_GROW} (value was {_y})");
         }
     }
     else
     {
-        __GuiError($".resize.y layout property must be \"static\", \"fit\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_FIT}, or {GUI_RESIZE_GROW} (value was {_y})");
+        __GuiError($".resize.y layout property must be \"static\", \"shrink\", \"grow\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_GROW} (value was {_y})");
     }
     
     GuiLayoutSetResizeType(_x, _y, _element);
@@ -481,7 +481,7 @@ function __GuiLayoutSetFromJSON_listAlign(_element, _value)
     {
         if ((_h != fa_left) && (_h != fa_center) && (_h != fa_right))
         {
-            __GuiError($".listAlign.h layout property must be \"left\", \"fit\", \"grow\", {fa_left}, {fa_center}, or {fa_right} (value was {_h})");
+            __GuiError($".listAlign.h layout property must be \"left\", \"shrink\", \"grow\", {fa_left}, {fa_center}, or {fa_right} (value was {_h})");
         }
     }
     else if (is_string(_h))

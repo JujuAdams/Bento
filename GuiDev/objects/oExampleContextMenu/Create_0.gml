@@ -5,7 +5,7 @@ event_inherited();
 GuiFocusOpen(GUI_FOCUS_POINTER_IGNORE);
 
 GuiLayoutSetClampInside(true);
-GuiLayoutSetResizeType(GUI_RESIZE_FIT, GUI_RESIZE_FIT);
+GuiLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
 GuiLayoutSetPadding(10, 10, 10, 10);
 GuiLayoutSetGutter(10, 10);
 GuiLayoutSetListAxis(GUI_AXIS_Y);
