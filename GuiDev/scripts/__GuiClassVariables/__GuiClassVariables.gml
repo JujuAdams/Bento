@@ -187,6 +187,10 @@ function __GuiClassVariables(_attachedElement) constructor
     __layoutAlignH = GUI_DEFAULT_LAYOUT_ALIGN_H;
     __layoutAlignV = GUI_DEFAULT_LAYOUT_ALIGN_V;
     
+    __layoutOriginX    = undefined;
+    __layoutOriginY    = undefined;
+    __layoutOriginPerc = true;
+    
     //The "preferred" (ideal) size for the instance. A value of 0 (or less) indicates that this value
     //is unset and should be inferred from some other property.
     __layoutWidthPref  = 0;

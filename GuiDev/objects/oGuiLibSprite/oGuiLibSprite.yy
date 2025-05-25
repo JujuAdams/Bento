@@ -8,8 +8,8 @@
   "name":"oGuiLibSprite",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inheritable Templates",
-    "path":"folders/Library/Inheritable Templates.yy",
+    "name":"Inheritable Objects",
+    "path":"folders/Library/Inheritable Objects.yy",
   },
   "parentObjectId":{
     "name":"oGuiLibAncestor",
@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sGuiMaskRectangle",
-    "path":"sprites/sGuiMaskRectangle/sGuiMaskRectangle.yy",
+    "name":"sGuiMaskDiamond",
+    "path":"sprites/sGuiMaskDiamond/sGuiMaskDiamond.yy",
   },
   "spriteMaskId":null,
   "visible":true,

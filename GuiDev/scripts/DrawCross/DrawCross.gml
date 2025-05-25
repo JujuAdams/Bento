@@ -6,7 +6,7 @@
 /// @param [color=white]
 /// @param [alpha=1]
 
-function GuiDrawCross(_x, _y, _size = 3, _color = c_white, _alpha = 1)
+function DrawCross(_x, _y, _size = 3, _color = c_white, _alpha = 1)
 {
     var _oldColor = draw_get_color();
     var _oldAlpha = draw_get_alpha();

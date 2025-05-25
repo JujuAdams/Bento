@@ -79,16 +79,50 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _elem
         var _width  = __solvedWidth;
         var _height = __solvedHeight;
         
+        var _ratioW = (_width  / max(1, __layoutWidthPref)); //FIXME - This divisor value should be the *actual* preferred width used in layout calculations
+        var _ratioH = (_height / max(1, __layoutHeightPref));
+        
         if (__GuiIsInstance(_element))
         {
-            var _sprite  = _element.sprite_index;
-            var _originX = _width*(sprite_exists(_sprite)? (sprite_get_xoffset(_sprite) / sprite_get_width(_sprite)) : GUI_FALLBACK_ORIGIN_X);
-            var _originY = _height*(sprite_exists(_sprite)? (sprite_get_yoffset(_sprite) / sprite_get_height(_sprite)) : GUI_FALLBACK_ORIGIN_Y);
+            var _sprite = _element.sprite_index;
+            
+            if (__layoutOriginX == undefined) 
+            {
+                var _originX = sprite_exists(_sprite)? (_ratioW * sprite_get_xoffset(_sprite)) : GUI_FALLBACK_ORIGIN_PERCENTAGE_X;
+            }
+            else
+            {
+                var _originX = __layoutOriginPerc? _width*__layoutOriginX : (_ratioW*__layoutOriginX);
+            }
+            
+            if (__layoutOriginY == undefined)
+            {
+                var _originY = sprite_exists(_sprite)? (_ratioH * sprite_get_yoffset(_sprite)) : GUI_FALLBACK_ORIGIN_PERCENTAGE_Y;
+            }
+            else
+            {
+                var _originY = __layoutOriginPerc? _height*_layoutOriginY : (_ratioH*__layoutOriginY);
+            }
         }
         else
         {
-            var _originX = 0;
-            var _originY = 0;
+            if (__layoutOriginX == undefined)
+            {
+                var _originX = GUI_FALLBACK_ORIGIN_PERCENTAGE_X;
+            }
+            else
+            {
+                var _originX = __layoutOriginPerc? _width*__layoutOriginX : (_ratioW*__layoutOriginX);
+            }
+            
+            if (__layoutOriginY == undefined)
+            {
+                var _originY = GUI_FALLBACK_ORIGIN_PERCENTAGE_Y;
+            }
+            else
+            {
+                var _originY = __layoutOriginPerc? _height*__layoutOriginY : (_ratioH*__layoutOriginY);
+            }
         }
         
         //Calculate where our center is on the parent

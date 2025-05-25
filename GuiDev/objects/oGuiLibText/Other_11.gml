@@ -28,4 +28,10 @@ else
     var _y = guiY + 0.5*guiHeight;
 }
 
+draw_set_font(font);
+draw_set_halign(hAlign);
+draw_set_valign(vAlign);
 draw_text_ext_transformed_color(_x, _y, text, -1, guiWidth, image_xscale, image_yscale, image_angle, image_blend, image_blend, image_blend, image_blend, image_alpha);
+draw_set_font(-1);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);

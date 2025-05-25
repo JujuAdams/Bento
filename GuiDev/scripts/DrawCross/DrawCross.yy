@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DrawCross",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DrawCross",
+  "parent":{
+    "name":"GuiWithLayouts",
+    "path":"GuiWithLayouts.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

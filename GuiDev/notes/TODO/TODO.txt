@@ -2,5 +2,3 @@ Rewrite examples
 Test focus for e.g. scrollers
 Layers
 Layers (modals + pages + persistence)
-Do we need inline modals and blockers if we have layers?
-Multiplayer support in the same layer?

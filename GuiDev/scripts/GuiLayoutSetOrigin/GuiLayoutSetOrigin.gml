@@ -3,7 +3,7 @@
 /// @param x
 /// @param y
 /// @param [element=self]
-/// @param [proportional=true]
+/// @param [percentage=true]
 
 function GuiLayoutSetOrigin(_x, _y, _element = self, _proportional = true)
 {
@@ -23,9 +23,9 @@ function GuiLayoutSetOrigin(_x, _y, _element = self, _proportional = true)
             __layer.__layoutDirty = true;
         }
         
-        if (__layoutOriginProp != _proportional)
+        if (__layoutOriginPerc != _proportional)
         {
-            __layoutOriginProp = _proportional;
+            __layoutOriginPerc = _proportional;
             __layer.__layoutDirty = true;
         }
     }

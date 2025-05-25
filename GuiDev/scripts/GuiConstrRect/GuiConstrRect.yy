@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiConstrAncestor",
+  "%Name":"GuiConstrRect",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiConstrAncestor",
+  "name":"GuiConstrRect",
   "parent":{
     "name":"Inheritable Constructors",
     "path":"folders/Library/Inheritable Constructors.yy",

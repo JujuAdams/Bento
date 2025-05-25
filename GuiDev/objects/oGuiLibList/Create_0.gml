@@ -17,9 +17,9 @@ with(GUI_VARS)
     __layoutHAlignChildren = fa_left;
     __layoutVAlignChildren = fa_top;
     
-    __SolverShrinkWidth     = method(self, __GuiSolverListShrinkWidth);
+    __SolverShrinkWidth  = method(self, __GuiSolverListShrinkWidth);
     __SolverResizeWidth  = method(self, __GuiSolverListResizeWidth);
-    __SolverShrinkHeight    = method(self, __GuiSolverListShrinkHeight);
+    __SolverShrinkHeight = method(self, __GuiSolverListShrinkHeight);
     __SolverResizeHeight = method(self, __GuiSolverListResizeHeight);
     __SolverPositions    = method(self, __GuiSolverListPositions);
 }

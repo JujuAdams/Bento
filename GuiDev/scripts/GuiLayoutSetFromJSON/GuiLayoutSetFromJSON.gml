@@ -53,37 +53,37 @@ function GuiLayoutSetFromJSON(_json, _element = self)
             }
             else if (_name == "gutter")
             {
-                if ((not __GuiObjectInheritsFrom(object_index, oGuiLibList)) && (not __GuiObjectInheritsFrom(object_index, oGuiLibGrid)))
-                {
-                    __GuiError($"Cannot use .gutter on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)} or {object_get_name(oGuiLibGrid)}");
-                }
+                //if ((not __GuiObjectInheritsFrom(object_index, oGuiLibList)) && (not __GuiObjectInheritsFrom(object_index, oGuiLibGrid)))
+                //{
+                //    __GuiError($"Cannot use .gutter on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)} or {object_get_name(oGuiLibGrid)}");
+                //}
                 
                 __GuiLayoutSetFromJSON_gutter(_element, _value);
             }
             else if (_name == "listAlign")
             {
-                if (not __GuiObjectInheritsFrom(object_index, oGuiLibList))
-                {
-                    __GuiError($"Cannot use .listAlign on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)}");
-                }
+                //if (not __GuiObjectInheritsFrom(object_index, oGuiLibList))
+                //{
+                //    __GuiError($"Cannot use .listAlign on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)}");
+                //}
                 
                 __GuiLayoutSetFromJSON_listAlign(_element, _value);
             }
             else if (_name == "listAxis")
             {
-                if (not __GuiObjectInheritsFrom(object_index, oGuiLibList))
-                {
-                    __GuiError($"Cannot use .listAxis on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)}");
-                }
+                //if (not __GuiObjectInheritsFrom(object_index, oGuiLibList))
+                //{
+                //    __GuiError($"Cannot use .listAxis on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibList)}");
+                //}
                 
                 __GuiLayoutSetFromJSON_listAxis(_element, _value);
             }
             else if (_name == "gridSize")
             {
-                if (not __GuiObjectInheritsFrom(object_index, oGuiLibGrid))
-                {
-                    __GuiError($"Cannot use .gridSize on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibGrid)}");
-                }
+                //if (not __GuiObjectInheritsFrom(object_index, oGuiLibGrid))
+                //{
+                //    __GuiError($"Cannot use .gridSize on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oGuiLibGrid)}");
+                //}
                         
                 __GuiLayoutSetFromJSON_gridSize(_element, _value);
             }

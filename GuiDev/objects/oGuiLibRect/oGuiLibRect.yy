@@ -8,8 +8,8 @@
   "name":"oGuiLibRect",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inheritable Templates",
-    "path":"folders/Library/Inheritable Templates.yy",
+    "name":"Inheritable Objects",
+    "path":"folders/Library/Inheritable Objects.yy",
   },
   "parentObjectId":{
     "name":"oGuiLibAncestor",

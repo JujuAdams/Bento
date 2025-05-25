@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiSolverListFitHeight",
+  "%Name":"__GuiSolverListShrinkWidth",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiSolverListFitHeight",
+  "name":"__GuiSolverListShrinkWidth",
   "parent":{
     "name":"List",
     "path":"folders/Library/Functions/(System)/Solver/List.yy",

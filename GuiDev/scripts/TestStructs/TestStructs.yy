@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiDrawCross",
+  "%Name":"TestStructs",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiDrawCross",
+  "name":"TestStructs",
   "parent":{
-    "name":"GuiWithLayouts",
-    "path":"GuiWithLayouts.yyp",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

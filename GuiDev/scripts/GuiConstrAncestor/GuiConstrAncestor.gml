@@ -1,7 +1,5 @@
 // Feather disable all
 
-/// 
-/// 
 /// @param parent
 
 function GuiConstrAncestor(_parent) constructor
