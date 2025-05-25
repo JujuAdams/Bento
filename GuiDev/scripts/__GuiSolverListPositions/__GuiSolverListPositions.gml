@@ -5,6 +5,14 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
     __solvedLeft = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
     __solvedTop  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
+    if (GUI_FLOOR_LAYOUT_POSITIONS)
+    {
+        __solvedLeft   = floor(__solvedLeft);
+        __solvedTop    = floor(__solvedTop);
+        __solvedWidth  = floor(__solvedWidth);
+        __solvedHeight = floor(__solvedHeight);
+    }
+    
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     

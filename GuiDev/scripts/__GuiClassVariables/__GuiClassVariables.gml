@@ -161,10 +161,20 @@ function __GuiClassVariables(_attachedElement) constructor
     //values are subsequently transforms to give us the `layout*` values that are exposed to the user.
     if (__GuiIsInstance(_attachedElement))
     {
-        __solvedLeft   = _attachedElement.x;
-        __solvedTop    = _attachedElement.y;
-        __solvedWidth  = _attachedElement.sprite_width;
-        __solvedHeight = _attachedElement.sprite_height;
+        if (GUI_FLOOR_LAYOUT_POSITIONS)
+        {
+            __solvedLeft   = floor(_attachedElement.x);
+            __solvedTop    = floor(_attachedElement.y);
+            __solvedWidth  = floor(_attachedElement.sprite_width);
+            __solvedHeight = floor(_attachedElement.sprite_height);
+        }
+        else
+        {
+            __solvedLeft   = _attachedElement.x;
+            __solvedTop    = _attachedElement.y;
+            __solvedWidth  = _attachedElement.sprite_width;
+            __solvedHeight = _attachedElement.sprite_height;
+        }
     }
     else
     {
@@ -311,6 +321,14 @@ function __GuiClassVariables(_attachedElement) constructor
         
         __solvedLeft = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
         __solvedTop  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
+        
+        if (GUI_FLOOR_LAYOUT_POSITIONS)
+        {
+            __solvedLeft   = floor(__solvedLeft);
+            __solvedTop    = floor(__solvedTop);
+            __solvedWidth  = floor(__solvedWidth);
+            __solvedHeight = floor(__solvedHeight);
+        }
         
         var _childX      = __solvedLeft + __layoutPadLeft;
         var _childY      = __solvedTop  + __layoutPadTop;

@@ -1,12 +1,14 @@
 // Feather disable all
 
+#macro GUI_FLOOR_LAYOUT_POSITIONS  false
+
 // What room layer to create instances on when using `GuiCreateObject()`. Use `undefined` to
-// instead create instances using a particular depth see `GUI_CREATE_DEPTH`.
-#macro GUI_CREATE_LAYER  undefined
+// instead create instances using a particular depth see `GUI_INSTANCE_DEPTH`.
+#macro GUI_INSTANCE_LAYER  undefined
 
 // What depth to create instances on when using `GuiCreateObject()`. This macro will only be used
-// if `GUI_CREATE_LAYER` is set to `undefined`.
-#macro GUI_CREATE_DEPTH  0
+// if `GUI_INSTANCE_LAYER` is set to `undefined`.
+#macro GUI_INSTANCE_DEPTH  0
 
 // How far the pointer must move before engaging scrolling when clicking and dragging.
 #macro GUI_SCROLL_THRESHOLD  4
