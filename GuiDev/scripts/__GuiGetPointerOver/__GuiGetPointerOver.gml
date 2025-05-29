@@ -24,7 +24,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
         var _method = _stepOrder[_i];
         var _methodFunc = method_get_index(_method);
         
-        if (_methodFunc == __GuiScissorPushFromElement)
+        if (_methodFunc == __GuiScissorPop)
         {
             //Restore the previous state
             var _bounds = array_pop(_scissorStack);
@@ -34,7 +34,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
             var _scissorB      = _bounds.h;
             var _insideScissor = _bounds[$ "__inside"] ?? false;
         }
-        else if (_methodFunc == __GuiScissorPop)
+        else if (_methodFunc == __GuiScissorPushFromElement)
         {
             //Store the previous scissor state
             array_push(_scissorStack, {

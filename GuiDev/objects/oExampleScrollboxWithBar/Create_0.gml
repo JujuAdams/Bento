@@ -10,6 +10,7 @@ GuiScissorSetEnabled(true);
 GuiScrollSetEnabled(true, true);
 
 GuiSetButton(GUI_BUTTON_ALWAYS);
+GuiFocusSetEncloseChildren(true);
 
 scrollbarWidth   = 10;
 scrollbarPadding = 10;

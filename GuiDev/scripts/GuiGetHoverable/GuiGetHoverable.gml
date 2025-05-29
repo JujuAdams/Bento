@@ -20,6 +20,11 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
             return false;
         }
         
+        if (__enclosedUnfocused)
+        {
+            return false;
+        }
+        
         var _layer = __layer;
         var _focusTop = _layer.__focusTop;
         

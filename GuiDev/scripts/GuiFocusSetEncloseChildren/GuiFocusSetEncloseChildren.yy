@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiFocusSetEncloseChildren",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiFocusSetEncloseChildren",
+  "parent":{
+    "name":"Focus",
+    "path":"folders/Library/Functions/Focus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

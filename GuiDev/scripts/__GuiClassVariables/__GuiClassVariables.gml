@@ -43,6 +43,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __visible = true;
     
     __focused = false;
+    __focusType = GUI_FOCUS_POINTER_CANCEL_ALWAYS;
+    __enclosedUnfocused = false;
+    __focusEncloseChildren = false;
     
     __linkLeft  = noone;
     __linkRight = noone;

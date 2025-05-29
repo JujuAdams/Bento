@@ -25,15 +25,17 @@ function __GuiEnsureStepOrder()
     }
     
     __GuiEnsureChildOrder();
-    __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL);
+    __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, false);
     
     return __stepOrder;
 }
 
-function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType)
+function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType, _enclosedUnfocused)
 {
     with(_element.GUI_VARS)
     {
+        __enclosedUnfocused = _enclosedUnfocused;
+        
         if (__disable)
         {
             __executesStep = false;
@@ -48,6 +50,11 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType)
             array_push(_stepOrder, __eventStep);
         }
         
+        if (__focusEncloseChildren && (not __focused) && (_buttonType == GUI_BUTTON_DIRECTIONAL))
+        {
+            _enclosedUnfocused = true;
+        }
+        
         //Then move on to our children
         var _array = __childArray;
         if (__scissorEnabled)
@@ -57,7 +64,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType)
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _buttonType);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _buttonType, _enclosedUnfocused);
                 ++_i;
             }
             
@@ -69,7 +76,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType)
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _buttonType);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _buttonType, _enclosedUnfocused);
                 ++_i;
             }
         }
