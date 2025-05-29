@@ -24,35 +24,54 @@ function __GuiEnsureStepOrder()
         var _root = __rootElement;
     }
     
+    //FIXME - Ban hover for elements outside of the top focus element
+    
     __GuiEnsureChildOrder();
     __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, false);
     
     return __stepOrder;
 }
 
-function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType, _enclosedUnfocused)
+function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banHover)
 {
     with(_element.GUI_VARS)
     {
-        __enclosedUnfocused = _enclosedUnfocused;
-        
         if (__disable)
         {
+            __hoverBanned = true; //Disabled elements always ban hover, understandably
             __executesStep = false;
             return;
         }
         
         //Determine whether we need to execute the Step user event
         //This should match the code in `GuiGetExecutesStep()`
-        if (GUI_ALWAYS_EXECUTE_STEP || (__buttonType & _buttonType) || __forceStep || __focused || __scissorEnabled)
+        if (GUI_ALWAYS_EXECUTE_STEP || (__buttonType & _navType) || __forceStep || __focused || __scissorEnabled)
         {
             __executesStep = true;
             array_push(_stepOrder, __eventStep);
         }
         
-        if (__focusEncloseChildren && (not __focused) && (_buttonType == GUI_BUTTON_DIRECTIONAL))
+        if (_banHover)
         {
-            _enclosedUnfocused = true;
+            //If our parent is banning hover then ban hover!
+            __hoverBanned = true;
+        }
+        else if (__focused)
+        {
+            //If we're focused then only ban hover if we haVe children
+            //Our children also will *not* be enclosed because we're focused
+            __hoverBanned = (array_length(__childArray) > 0);
+        }
+        else
+        {
+            //Otherwise don't ban hover
+            __hoverBanned = false;
+            
+            //Enclose our children if the enclose type matches the nav type
+            if (__focusEncloseType & _navType)
+            {
+                _banHover = true;
+            }
         }
         
         //Then move on to our children
@@ -64,7 +83,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType, _e
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _buttonType, _enclosedUnfocused);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _banHover);
                 ++_i;
             }
             
@@ -76,7 +95,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _buttonType, _e
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _buttonType, _enclosedUnfocused);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _banHover);
                 ++_i;
             }
         }

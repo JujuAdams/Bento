@@ -25,9 +25,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __transformScaleY  = 1;
     __transformAngle   = 0;
     
-    __overState = __GUI_OFF;
+    __overState    = __GUI_OFF;
     __primaryState = __GUI_OFF;
-    __click     = false;
+    __click        = false;
     
     __parent   = noone;
     __priority = 0;
@@ -41,11 +41,11 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __disable = false;
     __visible = true;
+    __hoverBanned = false;
     
-    __focused = false;
-    __focusType = GUI_FOCUS_POINTER_CANCEL_ALWAYS;
-    __enclosedUnfocused = false;
-    __focusEncloseChildren = false;
+    __focused          = false;
+    __focusType        = GUI_FOCUS_POINTER_CANCEL_ALWAYS;
+    __focusEncloseType = GUI_ENCLOSE_NEVER;
     
     __linkLeft  = noone;
     __linkRight = noone;

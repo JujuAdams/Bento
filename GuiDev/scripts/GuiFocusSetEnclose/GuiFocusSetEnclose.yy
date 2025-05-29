@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiFocusSetEncloseChildren",
+  "%Name":"GuiFocusSetEnclose",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiFocusSetEncloseChildren",
+  "name":"GuiFocusSetEnclose",
   "parent":{
     "name":"Focus",
     "path":"folders/Library/Functions/Focus.yy",

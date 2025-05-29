@@ -11,19 +11,7 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
     
     with(_element.GUI_VARS)
     {
-        if (__disable) return false;
-        
-        //Don't hover ourselves if we have children
-        //TODO - We can cache this data when renewing the Step order
-        if (__focused && (array_length(__childArray) > 0))
-        {
-            return false;
-        }
-        
-        if (__enclosedUnfocused)
-        {
-            return false;
-        }
+        if (__hoverBanned) return false;
         
         var _layer = __layer;
         var _focusTop = _layer.__focusTop;
