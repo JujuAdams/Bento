@@ -13,8 +13,8 @@ function TestScrollboxWithBar()
                 size:    [200, 120],
                 maxSize: [200, 295],
                 resize:  [GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK],
-                padding: 10,
-                gutter:  10,
+                padding: 30,
+                gutter:  30,
             },
             children: function(_metadata) {
                 //Create identical copies of references to the same struct

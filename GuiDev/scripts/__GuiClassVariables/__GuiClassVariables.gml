@@ -77,6 +77,10 @@ function __GuiClassVariables(_attachedElement) constructor
     __scrollTargetX   = 0;
     __scrollTargetY   = 0;
     __scrollSpeed     = infinity;
+    __scrollMinX      = 0;
+    __scrollMaxX      = 0;
+    __scrollMinY      = 0;
+    __scrollMaxY      = 0;
     
     __selectOnDestroy = noone;
     

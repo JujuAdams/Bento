@@ -9,6 +9,6 @@ function GuiScrollSetParamY(_param, _element = self)
     
     with(_element.GUI_VARS)
     {
-        GuiScrollSet(__scrollY, lerp(__scrollMinY, __scrollMaxY, 1 - clamp(_param, 0, 1)));
+        GuiScrollSet(__scrollY, lerp(__scrollMinY, __scrollMaxY, 1 - clamp(_param, 0, 1)), undefined, _element);
     }
 }

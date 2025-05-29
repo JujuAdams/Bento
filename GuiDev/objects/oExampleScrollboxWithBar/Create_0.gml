@@ -2,10 +2,10 @@
 
 event_inherited();
 
-GuiSetIfNotDefined("showScrollbar", true);
-GuiSetIfNotDefined("focusable",     true);
+GuiSetIfNotDefined("focusable", true);
 
 handleGrabbed = false;
+GuiSetDrawAfter(true);
 
 GuiScissorSetEnabled(true);
 GuiScrollSetEnabled(true, true);

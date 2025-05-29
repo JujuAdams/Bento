@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScrollGetHeight",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScrollGetHeight",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Library/Functions/Scissor & Scroll/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

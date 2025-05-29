@@ -1,89 +1,75 @@
 /// @desc Step
 
-var padding = 0;
-var width   = 100;
-var height  = 100;
+width   = 10;
+padding =  5;
 
-var _bodyT = y + 1 + padding;
-var _bodyB = y + height-2 - padding;
+var _bodyL = guiRight - width - padding;
+var _bodyT = guiTop + padding;
+var _bodyR = guiRight - padding;
+var _bodyB = guiBottom - padding;
 
-if (showScrollbar)
+var _handleH = (_bodyB - _bodyT) * clamp(guiHeight / GuiScrollGetHeight(), 0.1, 1);
+var _handleT = lerp(_bodyT, _bodyB - _handleH, GuiScrollGetParamY());
+var _handleB = _handleT + _handleH;
+
+if (GuiUsingDirectional())
 {
-    if (GuiUsingDirectional())
+    if (GuiPrimaryGetClick() && focusable)
     {
-        if (GuiPrimaryGetClick() && focusable)
+        GuiFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
+    }
+    
+    if (GuiHotkeyGetPress("escape"))
+    {
+        GuiInputConsume();
+        GuiFocusClose();
+    }
+}
+else if (GuiUsingPointer())
+{
+    if (not point_in_rectangle(GuiCursorGetX(), GuiCursorGetY(), _bodyL, _bodyT, _bodyR, _bodyB))
+    {
+        //Pointer isn't over the scrollbar, use standard logic
+        if (not handleGrabbed)
         {
-            GuiFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
-        }
-        
-        if (GuiHotkeyGetPress("escape"))
-        {
-            GuiInputConsume();
-            GuiFocusClose();
+            GuiScrollOnPointer();
         }
     }
-    else if (GuiUsingPointer())
+    else
     {
-        if (GuiCursorGetX() == x + width-1)
+        //Still allow use of mouse wheel whilst hovering the scrollbar
+        if (not handleGrabbed)
         {
-            if (not handleGrabbed)
+            if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_UP))
             {
-                if (GuiPrimaryGetClick())
-                {
-                    if (GuiCursorGetY() == y)
-                    {
-                        GuiScrollMove(0, 1);
-                    }
-                    else if (GuiCursorGetY() == y + height-1)
-                    {
-                        GuiScrollMove(0, -1);
-                    }
-                }
-                
-                if (GuiCursorGetOver())
-                {
-                    if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_UP))
-                    {
-                        GuiScrollMove(0, 1);
-                    }
-                    
-                    if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_DOWN))
-                    {
-                        GuiScrollMove(0, -1);
-                    }
-                }
+                GuiScrollMove(0, 1);
             }
             
-            var _handlePos = round(lerp(_bodyT, _bodyB, GuiScrollGetParamY()));
-            
-            if (GuiCursorGetY() >= _bodyT) && (GuiCursorGetY() <= _bodyB)
+            if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_DOWN))
             {
-                if (GuiPrimaryGetPress() && (GuiCursorGetY() == _handlePos))
-                {
-                    handleGrabbed = true;
-                }
-                else if (GuiPrimaryGetClick())
-                {
-                    GuiScrollSetParamY((GuiCursorGetY() - _bodyT) / (_bodyB - _bodyT));
-                }
-            }
-        }
-        else
-        {
-            if (not handleGrabbed)
-            {
-                GuiScrollOnPointer();
+                GuiScrollMove(0, -1);
             }
         }
         
-        if (showScrollbar && handleGrabbed && GuiPrimaryGetHold())
+        if (GuiPrimaryGetPress() && (GuiCursorGetY() >= _handleT) && (GuiCursorGetY() <= _handleB))
         {
+            //Allow grabbing of the handle
+            handleGrabbed = true;
+        }
+        else if (GuiPrimaryGetClick())
+        {
+            //Otherwise allow a single click to teleport the scroll handle
             GuiScrollSetParamY((GuiCursorGetY() - _bodyT) / (_bodyB - _bodyT));
         }
     }
     
-    if (not GuiPrimaryGetHold())
+    if (handleGrabbed && GuiPrimaryGetHold())
     {
-        handleGrabbed = false;
+        GuiScrollSetParamY((GuiCursorGetY() - _bodyT) / (_bodyB - _bodyT));
     }
+}
+
+if (not GuiPrimaryGetHold())
+{
+    handleGrabbed = false;
 }
