@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiSetSprite",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiSetSprite",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -79,52 +79,6 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _elem
         var _width  = __solvedWidth;
         var _height = __solvedHeight;
         
-        var _ratioW = (_width  / max(1, __layoutWidthPref)); //FIXME - This divisor value should be the *actual* preferred width used in layout calculations
-        var _ratioH = (_height / max(1, __layoutHeightPref));
-        
-        if (__GuiIsInstance(_element))
-        {
-            var _sprite = _element.sprite_index;
-            
-            if (__layoutOriginX == undefined) 
-            {
-                var _originX = sprite_exists(_sprite)? (_ratioW * sprite_get_xoffset(_sprite)) : GUI_FALLBACK_ORIGIN_PERCENTAGE_X;
-            }
-            else
-            {
-                var _originX = __layoutOriginPerc? _width*__layoutOriginX : (_ratioW*__layoutOriginX);
-            }
-            
-            if (__layoutOriginY == undefined)
-            {
-                var _originY = sprite_exists(_sprite)? (_ratioH * sprite_get_yoffset(_sprite)) : GUI_FALLBACK_ORIGIN_PERCENTAGE_Y;
-            }
-            else
-            {
-                var _originY = __layoutOriginPerc? _height*_layoutOriginY : (_ratioH*__layoutOriginY);
-            }
-        }
-        else
-        {
-            if (__layoutOriginX == undefined)
-            {
-                var _originX = GUI_FALLBACK_ORIGIN_PERCENTAGE_X;
-            }
-            else
-            {
-                var _originX = __layoutOriginPerc? _width*__layoutOriginX : (_ratioW*__layoutOriginX);
-            }
-            
-            if (__layoutOriginY == undefined)
-            {
-                var _originY = GUI_FALLBACK_ORIGIN_PERCENTAGE_Y;
-            }
-            else
-            {
-                var _originY = __layoutOriginPerc? _height*__layoutOriginY : (_ratioH*__layoutOriginY);
-            }
-        }
-        
         //Calculate where our center is on the parent
         var _leftWorld   = __solvedLeft + _offsetX;
         var _topWorld    = __solvedTop  + _offsetY;
@@ -166,8 +120,31 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _elem
             _bottomWorld += _deltaY;
         }
         
-        var _xWorld = _leftWorld + _originX;
-        var _yWorld = _topWorld  + _originY;
+        if (__layoutOriginAuto)
+        {
+            //If we're in auto mode, try to calculate the origin based on the instance's sprite
+            var _sprite = __attachedElement.sprite_index;
+            if (sprite_exists(_sprite))
+            {
+                var _xPerc = sprite_get_xoffset(_sprite) / sprite_get_width(_sprite);
+                var _yPerc = sprite_get_yoffset(_sprite) / sprite_get_height(_sprite);
+            }
+            else
+            {
+                //Fall back on the default alignment if we have no sprite
+                var _xPerc = GUI_DEFAULT_LAYOUT_ALIGN_H;
+                var _yPerc = GUI_DEFAULT_LAYOUT_ALIGN_V;
+            }
+            
+            var _xWorld = _leftWorld + _xPerc*_width;
+            var _yWorld = _topWorld  + _yPerc*_height;
+        }
+        else
+        {
+            //Otherwise use the static layout origin
+            var _xWorld = _leftWorld + __layoutOriginX;
+            var _yWorld = _topWorld  + __layoutOriginY;
+        }
         
         if (__transformAndScrollDirty)
         {
