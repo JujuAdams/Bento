@@ -10,7 +10,7 @@ function GuiLayoutSetSize(_width, _height, _element = self)
     
     with(_element.GUI_VARS)
     {
-        if (_width  != undefined)
+        if (_width != undefined)
         {
             if (__layoutWidthPref != _width)
             {

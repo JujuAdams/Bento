@@ -46,7 +46,7 @@ function __GuiSolverListShrinkHeight()
     _shrinkSize += _extra
     _minSize += _extra;
     
-    __solverMinHeight = max(__layoutHeightMin, _minSize);
-    __solverShrinkHeight = clamp((__layoutHeightResize == GUI_RESIZE_SHRINK)? _shrinkSize : __layoutHeightPref, __solverMinHeight, __layoutHeightMax);
-    __solvedHeight    = __solverShrinkHeight;
+    __solverMinHeight    = max(__layoutHeightMin, _minSize);
+    __solverShrinkHeight = clamp((__layoutHeightResize == GUI_RESIZE_SHRINK)? _shrinkSize : __solverPrefHeight, __solverMinHeight, __layoutHeightMax);
+    __solvedHeight       = __solverShrinkHeight;
 }

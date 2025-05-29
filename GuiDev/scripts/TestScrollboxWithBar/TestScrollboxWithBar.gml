@@ -1,10 +1,10 @@
 // Feather disable all
 
-function TestScrollbox()
+function TestScrollboxWithBar()
 {
     var _json = [
         {
-            object: oExampleScrollbox,
+            object: oExampleScrollboxWithBar,
             vars: {
                 image_blend: c_maroon,
             },
