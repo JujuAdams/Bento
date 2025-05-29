@@ -25,11 +25,6 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
         
         if (_layer.__navPointer)
         {
-            if not (__buttonType & GUI_BUTTON_POINTER)
-            {
-                return false;
-            }
-            
             if (__GuiExists(_focusTop)
             &&  (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN) //TODO - Iterate over focus stack to find a POINTER_CONSTRAIN
             &&  (not GuiIsAncestor(_focusTop, _element)))
