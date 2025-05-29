@@ -1,19 +1,13 @@
 /// @desc Step
 
-width   = 10;
-padding =  5;
-
-var _bodyL = guiRight - width - padding;
-var _bodyT = guiTop + padding;
-var _bodyR = guiRight - padding;
-var _bodyB = guiBottom - padding;
-
-var _handleH = (_bodyB - _bodyT) * clamp(guiHeight / GuiScrollGetHeight(), 0.1, 1);
-var _handleT = lerp(_bodyT, _bodyB - _handleH, GuiScrollGetParamY());
-var _handleB = _handleT + _handleH;
+scrollbarHandleTop    = lerp(scrollbarTop, scrollbarBottom - scrollbarHandleHeight, GuiScrollGetParamY());
+scrollbarHandleBottom = scrollbarHandleTop + scrollbarHandleHeight;
 
 if (GuiUsingDirectional())
 {
+    overScrollbar = false;
+    overHandle = false;
+    
     if (GuiPrimaryGetClick() && focusable)
     {
         GuiFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
@@ -27,49 +21,81 @@ if (GuiUsingDirectional())
 }
 else if (GuiUsingPointer())
 {
-    if (not point_in_rectangle(GuiCursorGetX(), GuiCursorGetY(), _bodyL, _bodyT, _bodyR, _bodyB))
+    if (handleGrabbed)
     {
-        //Pointer isn't over the scrollbar, use standard logic
-        if (not handleGrabbed)
+        if (GuiPrimaryGetHold())
         {
-            GuiScrollOnPointer();
+            var _top = GuiCursorGetY() + handleGrabbedRelativeY - scrollbarTop;
+            GuiScrollSetParamY(_top / scrollbarRangeHeight, infinity);
+            
+            //var _param = GuiScrollGetParamY();
+            //_param += GuiCursorGetDY() / scrollbarRangeHeight;
+            //GuiScrollSetParamY(_param, infinity);
         }
     }
     else
     {
-        //Still allow use of mouse wheel whilst hovering the scrollbar
-        if (not handleGrabbed)
+        if (not point_in_rectangle(GuiCursorGetX(), GuiCursorGetY(), scrollbarLeft, scrollbarTop, scrollbarRight, scrollbarBottom))
         {
-            if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_UP))
+            //Pointer isn't over the scrollbar, use standard logic
+            overScrollbar = false;
+            overHandle = false;
+            
+            GuiScrollOnPointer();
+        }
+        else
+        {
+            //Still allow use of mouse wheel whilst hovering the scrollbar
+            if ((GuiCursorGetY() >= scrollbarHandleTop) && (GuiCursorGetY() <= scrollbarHandleBottom))
             {
-                GuiScrollMove(0, 1);
+                overScrollbar = false;
+                overHandle = true;
+            }
+            else
+            {
+                overScrollbar = true;
+                overHandle = false;
             }
             
-            if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_DOWN))
+            if (overHandle && GuiPrimaryGetPress())
             {
-                GuiScrollMove(0, -1);
+                //Allow grabbing of the handle
+                handleGrabbed = true;
+                handleGrabbedRelativeY = scrollbarHandleTop - GuiCursorGetY();
+            }
+            else if (overScrollbar && GuiPrimaryGetClick())
+            {
+                //Otherwise allow a single click to teleport the scroll handle
+                var _param = GuiScrollGetParamY();
+                
+                if (GuiCursorGetY() > scrollbarHandleBottom)
+                {
+                    _param += (GuiCursorGetY() - scrollbarHandleBottom) / scrollbarRangeHeight;
+                }
+                else if (GuiCursorGetY() < scrollbarHandleTop)
+                {
+                    _param += (GuiCursorGetY() - scrollbarHandleTop) / scrollbarRangeHeight;
+                }
+                
+                GuiScrollSetParamY(_param, infinity);
+            }
+            else
+            {
+                if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_UP))
+                {
+                    GuiScrollMove(0, GUI_MOUSE_WHEEL_SCROLL_SPEED);
+                }
+                
+                if (GuiHotkeyGetPress(GUI_HOTKEY_MOUSE_WHEEL_DOWN))
+                {
+                    GuiScrollMove(0, -GUI_MOUSE_WHEEL_SCROLL_SPEED);
+                }
             }
         }
-        
-        if (GuiPrimaryGetPress() && (GuiCursorGetY() >= _handleT) && (GuiCursorGetY() <= _handleB))
-        {
-            //Allow grabbing of the handle
-            handleGrabbed = true;
-        }
-        else if (GuiPrimaryGetClick())
-        {
-            //Otherwise allow a single click to teleport the scroll handle
-            GuiScrollSetParamY((GuiCursorGetY() - _bodyT) / (_bodyB - _bodyT));
-        }
-    }
-    
-    if (handleGrabbed && GuiPrimaryGetHold())
-    {
-        GuiScrollSetParamY((GuiCursorGetY() - _bodyT) / (_bodyB - _bodyT));
     }
 }
 
-if (not GuiPrimaryGetHold())
+if handleGrabbed && (not GuiPrimaryGetHold())
 {
     handleGrabbed = false;
 }
