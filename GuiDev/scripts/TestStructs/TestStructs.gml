@@ -2,7 +2,7 @@
 
 function TestStructs()
 {
-    structTest = new GuiConstrRect(GuiGetRoot());
+    structTest = new GuiConstrSprite(undefined, GuiGetRoot());
     with(structTest)
     {
         GuiLayoutSetList(GUI_AXIS_Y, fa_left, fa_top);
@@ -19,7 +19,7 @@ function TestStructs()
         new ExampleConstrButton(undefined, "Test");
         new ExampleConstrButton(undefined, "Test");
         
-        var _grid = new GuiConstrRect();
+        var _grid = new GuiConstrSprite(sGuiMaskRectangle);
         with(_grid)
         {
             GuiLayoutSetGrid();

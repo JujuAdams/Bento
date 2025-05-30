@@ -60,7 +60,7 @@ Here is a brief example:
     },
     children: [
         {
-            object: oGuiLibRect,
+            object: oGuiLibSprite,
             vars: {
                 image_blend: c_red,
             },
@@ -70,7 +70,7 @@ Here is a brief example:
             },
         },
         {
-            object: oGuiLibRect,
+            object: oGuiLibSprite,
             vars: {
                 image_blend: c_blue,
             },

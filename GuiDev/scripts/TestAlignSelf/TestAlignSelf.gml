@@ -18,7 +18,7 @@ function TestAlignSelf()
         },
         children: [
             {
-                object: oGuiLibRect,
+                object: oGuiLibSprite,
                 name: "first",
                 vars: {
                     image_blend: c_gray,
@@ -29,7 +29,7 @@ function TestAlignSelf()
                 },
                 children: [
                     {
-                        object: oGuiLibRect,
+                        object: oGuiLibSprite,
                         name: "second",
                         vars: {
                             image_blend: c_dkgray,
@@ -42,7 +42,7 @@ function TestAlignSelf()
                 ],
             },
             {
-                object: oGuiLibRect,
+                object: oGuiLibSprite,
                 vars: {
                     image_blend: c_gray,
                 },
@@ -54,7 +54,7 @@ function TestAlignSelf()
                 },
             },
             {
-                object: oGuiLibRect,
+                object: oGuiLibSprite,
                 vars: {
                     image_blend: c_gray,
                 },
