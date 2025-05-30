@@ -6,7 +6,7 @@
 
 function __GuiStartHold(_element)
 {
-    if (__GuiExists(_element) && (not GuiPrimaryGetHold(_element)))
+    if (GuiExists(_element) && (not GuiPrimaryGetHold(_element)))
     {
         with(_element.GUI_VARS)
         {

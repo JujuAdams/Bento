@@ -11,7 +11,7 @@ function GuiGetRoot(_layer = undefined)
     
     with(_layer ?? _system.__layerCurrent)
     {
-        if (not __GuiExists(__rootElement))
+        if (not GuiExists(__rootElement))
         {
             __rootElement = new GuiConstrAncestor(undefined);
             __rootElement.GUI_VARS.__layer = self;

@@ -76,7 +76,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
                 _nextElement = noone;
             }
             
-            if (not __GuiExists(_nextElement))
+            if (not GuiExists(_nextElement))
             {
                 //If the navigation instance isn't selectable then fall back on a raycast
                 
@@ -89,7 +89,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
                 {
                     _nextElement = __GuiGetRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
                     
-                    if (not __GuiExists(_nextElement))
+                    if (not GuiExists(_nextElement))
                     {
                         //Raycast failed, no new instance can be selected
                         _nextElement = _prevElement;

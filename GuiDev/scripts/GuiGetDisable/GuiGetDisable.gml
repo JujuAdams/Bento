@@ -6,7 +6,7 @@
 
 function GuiGetDisable(_element = self)
 {
-    if (not __GuiExists(_element)) return false;
+    if (not GuiExists(_element)) return false;
     
     return _element.GUI_VARS.__disable;
 }

@@ -11,7 +11,7 @@ function GuiCreateObject(_object, _struct = undefined, _parent = self)
     static _system = __GuiSystem();
     static _emptyStruct = {};
     
-    if (not __GuiExists(_parent)) __GuiError("Parent doesn't exist");
+    if (not GuiExists(_parent)) __GuiError("Parent doesn't exist");
     
     if ((_object != oGuiLibAncestor) && (not object_is_ancestor(_object, oGuiLibAncestor)))
     {

@@ -214,7 +214,7 @@ function __GuiClassLayer(_environment, _name) constructor
                     
                     //Detect clicking off of a pop-up
                     if ((__primaryState == __GUI_START)
-                    &&  __GuiExists(__focusTop)
+                    &&  GuiExists(__focusTop)
                     &&  (__focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
                     &&  (__focusTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
                     &&  (not GuiIsAncestor(__focusTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up

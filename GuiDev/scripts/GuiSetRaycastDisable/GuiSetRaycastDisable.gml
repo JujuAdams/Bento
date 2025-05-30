@@ -11,7 +11,7 @@
 
 function GuiSetRaycastDisable(_disableHori, _disableVert, _element = self)
 {
-    if (not __GuiExists(_element)) return;
+    if (not GuiExists(_element)) return;
     
     _element.GUI_VARS.__raycastDisableHori = _disableHori;
     _element.GUI_VARS.__raycastDisableVert = _disableVert;

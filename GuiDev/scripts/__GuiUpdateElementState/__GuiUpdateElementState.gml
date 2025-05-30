@@ -9,14 +9,14 @@ function __GuiUpdateElementState()
     //Reset instance state for updating instances
     array_resize(__updateElementArray, array_filter_ext(__updateElementArray, function(_element)
     {
-        if (not __GuiExists(_element)) return false;
+        if (not GuiExists(_element)) return false;
         
         with(_element.GUI_VARS)
         {
             var _clickOnPress = (GuiUsingDirectional() ||
                                  (GUI_POINTER_CLICK_ON_PRESS
                                && other.__navPointer
-                               && (not __GuiExists(__GuiScrollFindParent(_element)))));
+                               && (not GuiExists(__GuiScrollFindParent(_element)))));
             
             __click = false;
             

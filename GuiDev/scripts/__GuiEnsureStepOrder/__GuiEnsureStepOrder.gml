@@ -15,7 +15,7 @@ function __GuiEnsureStepOrder()
     //Determine where to start the Step order processing
     //FIXME - Walk up focus stack to find a pointer constrain element rather than only looking at the top one
     var _focusTop = __focusTop;
-    if (__GuiExists(_focusTop) && (__navDirectional || (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)))
+    if (GuiExists(_focusTop) && (__navDirectional || (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)))
     {
         var _root = _focusTop;
     }

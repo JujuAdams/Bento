@@ -19,7 +19,7 @@ function GuiGetParent(_depth = 1, _element = self)
 
 function __GuiGetParentInner(_depth = 1, _element = self)
 {
-    if (not __GuiExists(_element)) return noone;
+    if (not GuiExists(_element)) return noone;
     
     var _parent = _element.GUI_VARS.__parent;
     if (_depth <= 1) return _parent;

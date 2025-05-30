@@ -6,7 +6,7 @@
 
 function __GuiStartOver(_element)
 {
-    if (__GuiExists(_element))
+    if (GuiExists(_element))
     {
         if (__navDirectional)
         {

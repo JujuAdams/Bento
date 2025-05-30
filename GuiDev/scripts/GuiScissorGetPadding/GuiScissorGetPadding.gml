@@ -6,7 +6,7 @@ function GuiScissorGetPadding(_element = self)
 {
     static _result = {};
     
-    if (__GuiExists(_element) && _element.GUI_VARS.__scissorEnabled)
+    if (GuiExists(_element) && _element.GUI_VARS.__scissorEnabled)
     {
         with(_element.GUI_VARS)
         {

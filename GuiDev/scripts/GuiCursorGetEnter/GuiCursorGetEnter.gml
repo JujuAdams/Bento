@@ -6,6 +6,6 @@
 
 function GuiCursorGetEnter(_element = self)
 {
-    if (not __GuiExists(_element)) return false;
+    if (not GuiExists(_element)) return false;
     return (_element.GUI_VARS.__overState == __GUI_START);
 }

@@ -10,12 +10,12 @@
 
 function GuiNameSet(_name, _element = self, _overwrite = false)
 {
-    if (not __GuiExists(_element)) return;
+    if (not GuiExists(_element)) return;
     
     var _nameMap = _element.GUI_VARS.__layer.__nameMap;
     
     var _oldElement = _nameMap[? _name];
-    if ((_oldElement != undefined) && __GuiExists(_oldElement))
+    if ((_oldElement != undefined) && GuiExists(_oldElement))
     {
         if (_overwrite)
         {

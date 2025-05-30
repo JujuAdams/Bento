@@ -10,7 +10,7 @@
 function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = self)
 {
     var _scroller = __GuiScrollFindParent(_element);
-    if (not __GuiExists(_scroller)) return;
+    if (not GuiExists(_scroller)) return;
     
     with(_scroller.GUI_VARS)
     {

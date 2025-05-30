@@ -4,7 +4,7 @@
 
 function GuiScrollGetHeight(_element = self)
 {
-    if (not __GuiExists(_element)) return 0;
+    if (not GuiExists(_element)) return 0;
     
     with(_element.GUI_VARS)
     {

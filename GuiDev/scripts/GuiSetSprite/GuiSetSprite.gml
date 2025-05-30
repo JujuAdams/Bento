@@ -5,7 +5,7 @@
 
 function GuiSetSprite(_sprite, _element = self)
 {
-    if (not __GuiExists(_element)) return;
+    if (not GuiExists(_element)) return;
     
     if (__GuiIsInstance(_element))
     {

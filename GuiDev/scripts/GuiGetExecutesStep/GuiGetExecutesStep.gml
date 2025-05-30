@@ -4,5 +4,5 @@
 
 function GuiGetExecutesStep(_element = self)
 {
-    return __GuiExists(_element)? _element.GUI_VARS.__executesStep : false;
+    return GuiExists(_element)? _element.GUI_VARS.__executesStep : false;
 }

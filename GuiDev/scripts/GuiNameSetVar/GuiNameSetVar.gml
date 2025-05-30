@@ -10,7 +10,7 @@
 function GuiNameSetVar(_name, _variableName, _value)
 {
     var _element = GuiNameFind(_name);
-    if (not __GuiExists(_element)) return;
+    if (not GuiExists(_element)) return;
     
     variable_instance_set(_element, _variableName, _value);
 }

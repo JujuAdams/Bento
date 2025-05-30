@@ -9,7 +9,7 @@ function __GuiEnsureTransformAndScroll()
     repeat(array_length(_scrollDirtyArray))
     {
         var _element = _scrollDirtyArray[_i];
-        if (not __GuiExists(_element))
+        if (not GuiExists(_element))
         {
             array_delete(_scrollDirtyArray, _i, 1);
         }
@@ -53,10 +53,10 @@ function __GuiEnsureTransformAndScroll()
     while(array_length(_transformAndScrollDirtyArray) > 0)
     {
         var _element = array_shift(_transformAndScrollDirtyArray);
-        if (__GuiExists(_element))
+        if (GuiExists(_element))
         {
             var _parent = _element.GUI_VARS.__parent;
-            if (not __GuiExists(_parent))
+            if (not GuiExists(_parent))
             {
                 //No parent, probably the root node?
                 __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _element, 0, 0);

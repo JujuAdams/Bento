@@ -5,10 +5,10 @@
 
 function GuiGetVisibleInScroll(_partial = false, _element = self)
 {
-    if (not __GuiExists(_element)) return false;
+    if (not GuiExists(_element)) return false;
     
     var _result = __GuiGetScrollDelta(_element);
-    if (not __GuiExists(_result.__parent)) return true;
+    if (not GuiExists(_result.__parent)) return true;
     
     if (_partial || _result.__tooBig)
     {

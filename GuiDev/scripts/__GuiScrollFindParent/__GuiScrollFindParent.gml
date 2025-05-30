@@ -6,7 +6,7 @@
 
 function __GuiScrollFindParent(_element)
 {
-    if (not __GuiExists(_element)) return noone;
+    if (not GuiExists(_element)) return noone;
     
     var _guiVars = _element.GUI_VARS;
     if (_guiVars.__scrollHori || _guiVars.__scrollVert) return _element;

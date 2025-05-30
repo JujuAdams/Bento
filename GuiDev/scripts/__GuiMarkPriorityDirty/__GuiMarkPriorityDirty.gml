@@ -4,7 +4,7 @@
 
 function __GuiMarkChildOrderDirty(_parent)
 {
-    if (not __GuiExists(_parent)) return;
+    if (not GuiExists(_parent)) return;
     
     with(_parent.GUI_VARS)
     {

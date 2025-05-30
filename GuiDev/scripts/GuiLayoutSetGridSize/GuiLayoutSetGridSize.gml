@@ -6,7 +6,7 @@
 
 function GuiLayoutSetGridSize(_columns, _rows, _element = self)
 {
-    if (not __GuiExists(_element)) return;
+    if (not GuiExists(_element)) return;
     
     with(_element.GUI_VARS)
     {

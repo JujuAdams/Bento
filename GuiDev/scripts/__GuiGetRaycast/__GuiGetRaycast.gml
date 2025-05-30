@@ -45,7 +45,7 @@ function __GuiGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = u
                 var _weight = point_distance(_x, _y, _nearestX, _nearestY);
                 if (_weight < _minWeight)
                 {
-                    if (GuiGetHoverable(self, (not __GuiExists(_scrollParent)) || (_scrollParent != __GuiScrollFindParent(self))))
+                    if (GuiGetHoverable(self, (not GuiExists(_scrollParent)) || (_scrollParent != __GuiScrollFindParent(self))))
                     {
                         _element = self;
                         _minWeight = _weight;

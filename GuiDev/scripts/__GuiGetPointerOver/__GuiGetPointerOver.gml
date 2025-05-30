@@ -15,7 +15,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     var _element = noone;
     
     var _holdElement = __holdElement;
-    var _holdElementDoesntExist = not __GuiExists(_holdElement);
+    var _holdElementDoesntExist = not GuiExists(_holdElement);
     
     var _stepOrder = __stepOrder;
     var _i = 0;

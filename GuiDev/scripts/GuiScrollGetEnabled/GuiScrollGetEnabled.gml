@@ -9,7 +9,7 @@ function GuiScrollGetEnabled(_element = self)
         vertical:   false,
     };
     
-    if (__GuiExists(_element))
+    if (GuiExists(_element))
     {
         _result.horizontal = _element.GUI_VARS.__scrollHori;
         _result.vertical   = _element.GUI_VARS.__scrollVert;

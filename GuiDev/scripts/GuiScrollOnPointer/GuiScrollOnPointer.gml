@@ -9,7 +9,7 @@
 
 function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = self)
 {
-    if (not __GuiExists(_element)) return;
+    if (not GuiExists(_element)) return;
     
     var _layer = _element.GUI_VARS.__layer;
     if (_layer.__navPointer)

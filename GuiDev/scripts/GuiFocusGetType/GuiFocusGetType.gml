@@ -4,5 +4,5 @@
 
 function GuiFocusGetType(_element = self)
 {
-    return __GuiExists(_element)? _element.GUI_VARS.__focusType : false;
+    return GuiExists(_element)? _element.GUI_VARS.__focusType : false;
 }

@@ -11,12 +11,12 @@ function __GuiGetScrollDelta(_element = self)
     var _parent = noone;
     var _tooBig = false;
     
-    if (__GuiExists(_element))
+    if (GuiExists(_element))
     {
         var _instanceGui = _element.GUI_VARS;
         
         var _parent = __GuiScrollFindParent(_instanceGui.__parent);
-        if (__GuiExists(_parent))
+        if (GuiExists(_parent))
         {
             with(_parent.GUI_VARS)
             {

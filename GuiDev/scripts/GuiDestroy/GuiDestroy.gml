@@ -6,7 +6,7 @@
 
 function GuiDestroy(_element = self)
 {
-    if (__GuiExists(_element))
+    if (GuiExists(_element))
     {
         if (instance_exists(_element))
         {

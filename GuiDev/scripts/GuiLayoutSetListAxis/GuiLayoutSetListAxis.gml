@@ -5,7 +5,7 @@
 
 function GuiLayoutSetListAxis(_axis, _element = self)
 {
-    if (not __GuiExists(_element)) return;
+    if (not GuiExists(_element)) return;
     
     with(_element.GUI_VARS)
     {

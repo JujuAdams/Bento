@@ -6,7 +6,7 @@ function GuiScrollGetPadding(_element = self)
 {
     static _result = {};
     
-    if (__GuiExists(_element) && _element.GUI_VARS.__scrollHori && _element.GUI_VARS.__scrollVert)
+    if (GuiExists(_element) && _element.GUI_VARS.__scrollHori && _element.GUI_VARS.__scrollVert)
     {
         with(_element.GUI_VARS)
         {

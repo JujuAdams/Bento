@@ -6,7 +6,7 @@
 
 function GuiNameGet(_element = self)
 {
-    if (not __GuiExists(_element)) return undefined;
+    if (not GuiExists(_element)) return undefined;
     
     return _element.GUI_VARS.__name;
 }

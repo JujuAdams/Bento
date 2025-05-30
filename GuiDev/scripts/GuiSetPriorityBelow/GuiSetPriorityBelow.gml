@@ -8,10 +8,10 @@
 
 function GuiSetPriorityBelow(_sibling, _element = self, _delta = 1)
 {
-    if (not __GuiExists(_element)) return;
+    if (not GuiExists(_element)) return;
     
     var _parent = _element.GUI_VARS.__parent;
-    if (not __GuiExists(_parent)) return;
+    if (not GuiExists(_parent)) return;
     
-    GuiSetPriority(__GuiExists(_sibling)? (_sibling.__priority - _delta) : 0, _element);
+    GuiSetPriority(GuiExists(_sibling)? (_sibling.__priority - _delta) : 0, _element);
 }

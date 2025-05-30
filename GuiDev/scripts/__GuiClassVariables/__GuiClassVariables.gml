@@ -140,7 +140,7 @@ function __GuiClassVariables(_attachedElement) constructor
         __GuiRemoveParent(__attachedElement);
         GuiDestroyChildren(__attachedElement);
         
-        if (__GuiExists(__selectOnDestroy))
+        if (GuiExists(__selectOnDestroy))
         {
             GuiSelectSoft(__selectOnDestroy);
         }
