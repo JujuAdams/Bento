@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiSelectSoft",
   "parent":{
-    "name":"Elements",
-    "path":"folders/Library/Functions/Elements.yy",
+    "name":"Directional Only",
+    "path":"folders/Library/Functions/Input & Navigation/Directional Only.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

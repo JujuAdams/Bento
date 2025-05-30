@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiGetRoot",
   "parent":{
-    "name":"Miscellaneous",
-    "path":"folders/Library/Functions/Miscellaneous.yy",
+    "name":"Parents & Children",
+    "path":"folders/Library/Functions/Parents & Children.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

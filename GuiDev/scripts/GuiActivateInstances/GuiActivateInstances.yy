@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiActivateInstances",
   "parent":{
-    "name":"Elements",
-    "path":"folders/Library/Functions/Elements.yy",
+    "name":"Miscellaneous",
+    "path":"folders/Library/Functions/Miscellaneous.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
