@@ -12,6 +12,8 @@ function GuiLayoutSetText(_funcWidth, _funcHeight, _element = self)
     {
         if (__layoutType != GUI_LAYOUT_TEXT)
         {
+            //Swapping into text layout, reset everything
+            
             __layoutType = GUI_LAYOUT_TEXT;
             __layer.__layoutDirty = true;
             
@@ -22,6 +24,20 @@ function GuiLayoutSetText(_funcWidth, _funcHeight, _element = self)
             __SolverPositions    = method(self, __GuiSolverRectPositions);
             __funcMeasureWidth   = method(__attachedElement, _funcWidth);
             __funcMeasureHeight  = method(__attachedElement, _funcHeight);
+        }
+        else
+        {
+            //We're already text, check to see if any parameters have changed
+            
+            if ((method_get_index(_funcWidth ) != method_get_index(__funcMeasureWidth ))
+            ||  (method_get_index(_funcHeight) != method_get_index(__funcMeasureHeight)))
+            {
+                __funcMeasureWidth  = method(__attachedElement, _funcWidth);
+                __funcMeasureHeight = method(__attachedElement, _funcHeight);
+                
+                //Parameters changed, update the layout!
+                __layer.__layoutDirty = true;
+            }
         }
     }
 }

@@ -5,11 +5,10 @@ function TestStructs()
     structTest = new GuiConstrRect(GuiGetRoot());
     with(structTest)
     {
-        GuiLayoutSetList();
+        GuiLayoutSetList(GUI_AXIS_Y, fa_left, fa_top);
         GuiLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
         GuiLayoutSetPadding(10, 10, 10, 10);
         GuiLayoutSetGutter(10, 10);
-        GuiLayoutSetListAxis(GUI_AXIS_Y);
         
         var _text = new GuiConstrText("Hello World", undefined, fa_center);
         GuiLayoutSetResizeType(GUI_RESIZE_GROW, undefined, _text);

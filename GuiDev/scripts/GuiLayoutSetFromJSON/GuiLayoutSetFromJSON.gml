@@ -602,8 +602,8 @@ function __GuiLayoutSetFromJSON_gridSize(_element, _value)
     else if (is_struct(_value))
     {
         GuiLayoutSetGridSize(_value[$ "columns"],
-                       _value[$ "rows"   ],
-                       _element);
+                             _value[$ "rows"   ],
+                             _element);
     }
     else
     {

@@ -2,13 +2,11 @@
 
 event_inherited();
 
-GuiLayoutSetList();
+GuiLayoutSetList(GUI_AXIS_Y, fa_center, fa_top);
 GuiLayoutSetClampInside(true);
 GuiLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
 GuiLayoutSetPadding(10, 10, 10, 10);
 GuiLayoutSetGutter(10, 10);
-GuiLayoutSetListAxis(GUI_AXIS_Y);
-GuiLayoutSetListAlign(fa_center, fa_top);
 GuiLayoutSetAlignSelf(fa_left, fa_top);
 GuiLayoutSetMinSize(32, 32);
 

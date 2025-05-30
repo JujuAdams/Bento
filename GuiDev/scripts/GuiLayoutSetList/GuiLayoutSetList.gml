@@ -1,8 +1,11 @@
 // Feather disable all
 
+/// @param listAxis
+/// @param hAlignChildren
+/// @param vAlignChidlren
 /// @param [element=self]
 
-function GuiLayoutSetList(_element = self)
+function GuiLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _element = self)
 {
     if (not GuiExists(_element)) return;
     
@@ -10,15 +13,17 @@ function GuiLayoutSetList(_element = self)
     {
         if (__layoutType != GUI_LAYOUT_LIST)
         {
+            //Swapping into list layout, reset everything
+            
             __layoutType = GUI_LAYOUT_LIST;
             __layer.__layoutDirty = true;
             
             __layoutGutterX = 0;
             __layoutGutterY = 0;
             
-            __listAxis = GUI_AXIS_Y;
-            __layoutHAlignChildren = fa_left;
-            __layoutVAlignChildren = fa_top;
+            __listAxis = _listAxis;
+            __layoutHAlignChildren = _hAlignChildren;
+            __layoutVAlignChildren = _vAlignChildren;
             
             __SolverShrinkWidth  = method(self, __GuiSolverListShrinkWidth);
             __SolverResizeWidth  = method(self, __GuiSolverListResizeWidth);
@@ -27,6 +32,22 @@ function GuiLayoutSetList(_element = self)
             __SolverPositions    = method(self, __GuiSolverListPositions);
             __funcMeasureWidth   = function() { return 1; }
             __funcMeasureHeight  = function() { return 1; }
+        }
+        else
+        {
+            //We're already a list, check to see if any parameters have changed
+            
+            if ((__listAxis != _listAxis)
+            ||  (__layoutHAlignChildren != _hAlignChildren)
+            ||  (__layoutVAlignChildren != _vAlignChildren))
+            {
+                __listAxis = _listAxis;
+                __layoutHAlignChildren = _hAlignChildren;
+                __layoutVAlignChildren = _vAlignChildren;
+                
+                //Parameters changed, update the layout!
+                __layer.__layoutDirty = true;
+            }
         }
     }
 }

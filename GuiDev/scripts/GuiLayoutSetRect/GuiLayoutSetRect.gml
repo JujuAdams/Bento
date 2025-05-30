@@ -10,6 +10,8 @@ function GuiLayoutSetRect(_element = self)
     {
         if (__layoutType != GUI_LAYOUT_RECT)
         {
+            //Swapping into rect layout, reset everything
+            
             __layoutType = GUI_LAYOUT_RECT;
             __layer.__layoutDirty = true;
             

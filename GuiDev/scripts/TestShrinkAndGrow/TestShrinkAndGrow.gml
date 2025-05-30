@@ -6,7 +6,7 @@ function TestShrinkAndGrow()
     {
         image_blend = c_navy;
         
-        GuiLayoutSetListAxis(0);
+        GuiLayoutSetList(GUI_AXIS_X, fa_left, fa_top);
         GuiLayoutSetSize(600, 200);
         GuiLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
         GuiLayoutSetPadding(10, 10, 10, 10);
