@@ -2,30 +2,30 @@
 
 if (hAlign == fa_left)
 {
-    var _x = guiX;
+    var _x = guiLeft;
 }
 else if (hAlign = fa_right)
 {
-    var _x = guiX + guiWidth;
+    var _x = guiRight;
 }
 else
 {
     //Default horizontal alignment to center
-    var _x = guiX + 0.5*guiWidth;
+    var _x = 0.5*(guiLeft + guiRight);
 }
 
 if (vAlign == fa_top)
 {
-    var _y = guiY;
+    var _y = guiTop;
 }
 else if (vAlign = fa_bottom)
 {
-    var _y = guiY + guiHeight;
+    var _y = guiBottom;
 }
 else
 {
     //Default horizontal alignment to middle
-    var _y = guiY + 0.5*guiHeight;
+    var _y = 0.5*(guiTop + guiBottom);
 }
 
 draw_set_font(font);

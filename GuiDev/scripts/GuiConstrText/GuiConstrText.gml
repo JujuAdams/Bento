@@ -13,34 +13,56 @@ function GuiConstrText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_top, _
     hAlign = _hAlign;
     vAlign = _vAlign;
     
+    GuiLayoutSetText(
+        function(_forceString) //Measure width
+        {
+            var _oldFont = draw_get_font();
+            draw_set_font(font);
+            var _result = string_width(_forceString ?? text);
+            draw_set_font(_oldFont);
+            
+            return _result;
+        },
+        
+        function(_forceString, _maxWidth) //Measure height
+        {
+            var _oldFont = draw_get_font();
+            draw_set_font(font);
+            var _result = string_height_ext(_forceString ?? text, -1, _maxWidth);
+            draw_set_font(_oldFont);
+            
+            return _result;
+        }
+    );
+    
     funcDraw = function()
     {
         if (hAlign == fa_left)
         {
-            var _x = guiX;
+            var _x = guiLeft;
         }
         else if (hAlign = fa_right)
         {
-            var _x = guiX + guiWidth;
+            var _x = guiRight;
         }
         else
         {
             //Default horizontal alignment to center
-            var _x = guiX + 0.5*guiWidth;
+            var _x = 0.5*(guiLeft + guiRight);
         }
         
         if (vAlign == fa_top)
         {
-            var _y = guiY;
+            var _y = guiTop;
         }
         else if (vAlign = fa_bottom)
         {
-            var _y = guiY + guiHeight;
+            var _y = guiBottom;
         }
         else
         {
             //Default horizontal alignment to middle
-            var _y = guiY + 0.5*guiHeight;
+            var _y = 0.5*(guiTop + guiBottom);
         }
         
         draw_set_font(font);
@@ -50,11 +72,5 @@ function GuiConstrText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_top, _
         draw_set_font(-1);
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);
-    }
-    
-    with(GUI_VARS)
-    {
-        __SolverShrinkWidth  = method(self, __GuiSolverTextShrinkWidth);
-        __SolverShrinkHeight = method(self, __GuiSolverTextShrinkHeight);
     }
 }

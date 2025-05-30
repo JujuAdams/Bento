@@ -9,9 +9,9 @@ function GuiLayoutSetListAxis(_axis, _element = self)
     
     with(_element.GUI_VARS)
     {
-        if (not variable_struct_exists(self, "__listAxis"))
+        if (__layoutType != GUI_LAYOUT_LIST)
         {
-            __GuiError("Can only apply list axis to objects that inherit from `oGuiLibList`");
+            __GuiError("Can only apply list axis to elements using a list layout");
         }
         
         if (__listAxis != _axis)

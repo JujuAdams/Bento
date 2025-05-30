@@ -10,9 +10,9 @@ function GuiLayoutSetGutter(_x, _y, _element = self)
     
     with(_element.GUI_VARS)
     {
-        if (not variable_struct_exists(self, "__layoutGutterX"))
+        if ((__layoutType != GUI_LAYOUT_LIST) && (__layoutType != GUI_LAYOUT_GRID))
         {
-            __GuiError("Can only set list gutters on objects that inherit from `oGuiLibList` or `oGuiLibGrid`");
+            __GuiError("Can only apply gutter to elements using a list or grid layout");
         }
         
         if (_x != undefined)

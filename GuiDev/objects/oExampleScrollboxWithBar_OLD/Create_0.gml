@@ -2,6 +2,7 @@
 
 event_inherited();
 
+GuiLayoutSetList();
 GuiLayoutSetListAxis(GUI_AXIS_X);
 GuiLayoutSetPadding(10, 10, 10, 10);
 GuiLayoutSetGutter(10, 10);

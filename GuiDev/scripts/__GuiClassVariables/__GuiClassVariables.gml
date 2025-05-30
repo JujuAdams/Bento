@@ -244,81 +244,38 @@ function __GuiClassVariables(_attachedElement) constructor
     __solverMinWidth  = 0;
     __solverMinHeight = 0;
     
+    __layoutType = GUI_LAYOUT_RECT;
+    
     //Function that sets the solver's shrink width and minimum width. This is a boring function for most
     //instances. It gets more exciting for lists - see `__GuiSolverListShrinkWidth()`. This function also
     //preliminarily sets the final calculated width for the instance (`__solvedWidth`).
-    __SolverShrinkWidth = function()
-    {
-        // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-        
-        //Determine the preferred width
-        if (__layoutWidthPref > 0)
-        {
-            //If the preferred width is greater than 0 then use the preferred width
-            var _width = __layoutWidthPref;
-        }
-        else if (__GuiIsInstance(__attachedElement) && sprite_exists(__attachedElement.sprite_index))
-        {
-            //Otherwise use the width of the element's sprite (if it's an instance element)
-            var _width = sprite_get_width(__attachedElement.sprite_index);
-        }
-        else
-        {
-            //Fall back on the minimum width if we can't find a suitable preferred width
-            var _width = __layoutWidthMin;
-        }
-        
-        __solvedWidth = clamp(_width, __layoutWidthMin, __layoutWidthMax);
-        
-        __solverShrinkWidth = __solvedWidth;
-        __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
-    }
+    //
+    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_TEXT` override this function.
+    __SolverShrinkWidth = method(self, __GuiSolverRectShrinkWidth);
     
     //Resizes both this instance and any child instances that are set to "shrink" or "grow" resize types.
     //See `__GuiSolverListResizeWidth()` and `__GuiSolverListResizeHeight()`.
+    //
+    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_GRID` override this function.
     __SolverResizeWidth = function()
     {
-        // N.B. `oGuiLibList`, `oGuiLibGrid` override this function.
-        
         //Do nothing
     }
     
     //Function that sets the solver's shrink height and minimum height. This is a boring function for most
     //instances. It gets more exciting for lists - see `__GuiSolverListShrinkHeight()`. This function also
     //preliminarily sets the final calculated height for the instance (`__solvedHeight`).
-    __SolverShrinkHeight = function()
-    {
-        // N.B. `oGuiLibList`, `oGuiLibText` override this function.
-        
-        //Determine the preferred height
-        if (__layoutHeightPref > 0)
-        {
-            //If the preferred height is greater than 0 then use the preferred height
-            var _height = __layoutHeightPref;
-        }
-        else if (__GuiIsInstance(__attachedElement) && sprite_exists(__attachedElement.sprite_index))
-        {
-            //Otherwise use the height of the element's sprite (if it's an instance element)
-            var _height = sprite_get_height(__attachedElement.sprite_index);
-        }
-        else
-        {
-            //Fall back on the minimum height if we can't find a suitable preferred height
-            var _height = __layoutHeightMin;
-        }
-        
-        __solvedHeight = clamp(_height, __layoutHeightMin, __layoutHeightMax);
-        
-        __solverShrinkHeight = __solvedHeight;
-        __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
-    }
+    //
+    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_TEXT` override this function.
+    __SolverShrinkHeight = method(self, __GuiSolverRectShrinkHeight);
     
     //Resizes both this instance and any child instances that are set to "shrink" or "grow" resize types.
     //See `__GuiSolverListResizeWidth()` and `__GuiSolverListResizeHeight()`.
+    //
+    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_GRID` override this function.
     __SolverResizeHeight = function()
     {
-        // N.B. `oGuiLibList`, `oGuiLibGrid` override this function.
-        
+                
         //Do nothing
     }
     
@@ -326,32 +283,11 @@ function __GuiClassVariables(_attachedElement) constructor
     //to occupy. For instances that are children of "boring" (non-list, non-grid) parents, the
     //allocated space is equal to the full size of the parent. If an instance is a parent of a list or
     //grid then the allocated space will be smaller.
-    __SolverPositions = function(_left, _top, _allocatedWidth, _allocatedHeight)
-    {
-        // N.B. `oGuiLibList`, `oGuiLibGrid` override this function.
-        
-        __solvedLeft = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
-        __solvedTop  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
-        
-        if (GUI_FLOOR_LAYOUT_POSITIONS)
-        {
-            __solvedLeft   = floor(__solvedLeft);
-            __solvedTop    = floor(__solvedTop);
-            __solvedWidth  = floor(__solvedWidth);
-            __solvedHeight = floor(__solvedHeight);
-        }
-        
-        var _childX      = __solvedLeft + __layoutPadLeft;
-        var _childY      = __solvedTop  + __layoutPadTop;
-        var _childWidth  = __solvedWidth  - (__layoutPadLeft + __layoutPadRight);
-        var _childHeight = __solvedHeight - (__layoutPadTop + __layoutPadBottom);
-        
-        var _childArray = __childArray;
-        var _i = 0;
-        repeat(array_length(_childArray))
-        {
-            _childArray[_i].GUI_VARS.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
-            ++_i;
-        }
-    }
+    //
+    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_GRID` override this function.
+    __SolverPositions = method(self, __GuiSolverRectPositions);
+    
+    //Only used for `GUI_LAYOUT_TEXT`
+    __funcMeasureWidth  = function() { return 1; }
+    __funcMeasureHeight = function() { return 1; }
 }

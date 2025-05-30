@@ -2,5 +2,6 @@
 
 event_inherited();
 
+GuiLayoutSetList();
 GuiScissorSetEnabled(true);
 GuiScrollSetEnabled(true, true);

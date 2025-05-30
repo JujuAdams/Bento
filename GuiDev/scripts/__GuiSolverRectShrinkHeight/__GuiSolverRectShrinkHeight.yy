@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiSolverRectShrinkHeight",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiSolverRectShrinkHeight",
+  "parent":{
+    "name":"Rect",
+    "path":"folders/Library/Functions/(System)/Solver/Rect.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

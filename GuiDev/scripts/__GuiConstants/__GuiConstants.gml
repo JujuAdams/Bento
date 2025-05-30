@@ -26,6 +26,11 @@
 #macro GUI_ENCLOSE_DIRECTIONAL  0b10
 #macro GUI_ENCLOSE_ALWAYS       0b11
 
+#macro GUI_LAYOUT_RECT  0
+#macro GUI_LAYOUT_LIST  1
+#macro GUI_LAYOUT_GRID  2
+#macro GUI_LAYOUT_TEXT  3
+
 #macro GUI_AXIS_X  0
 #macro GUI_AXIS_Y  1
 

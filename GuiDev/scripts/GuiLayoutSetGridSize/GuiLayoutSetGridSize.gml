@@ -10,9 +10,9 @@ function GuiLayoutSetGridSize(_columns, _rows, _element = self)
     
     with(_element.GUI_VARS)
     {
-        if (not variable_struct_exists(self, "__gridColumns"))
+        if (__layoutType != GUI_LAYOUT_GRID)
         {
-            __GuiError("Can only apply grid size to objects that inherit from `oGuiLibGrid`");
+            __GuiError("Can only apply grid size to elements using a list layout");
         }
         
         if (__gridColumns != _columns)

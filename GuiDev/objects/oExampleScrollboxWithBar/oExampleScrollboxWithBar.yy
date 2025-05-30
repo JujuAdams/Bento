@@ -12,8 +12,8 @@
     "path":"folders/Examples/Objects.yy",
   },
   "parentObjectId":{
-    "name":"oGuiLibList",
-    "path":"objects/oGuiLibList/oGuiLibList.yy",
+    "name":"oGuiLibRect",
+    "path":"objects/oGuiLibRect/oGuiLibRect.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

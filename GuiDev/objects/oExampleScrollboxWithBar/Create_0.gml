@@ -2,6 +2,7 @@
 
 event_inherited();
 
+GuiLayoutSetList();
 GuiLayoutSetListAxis(GUI_AXIS_X);
 GuiLayoutSetResizeType(GUI_RESIZE_STATIC, GUI_RESIZE_STATIC);
 

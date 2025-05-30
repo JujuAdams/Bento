@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayoutSetGrid",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayoutSetGrid",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Library/Functions/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
