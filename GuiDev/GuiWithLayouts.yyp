@@ -80,6 +80,7 @@
     {"id":{"name":"oGuiLibGrid","path":"objects/oGuiLibGrid/oGuiLibGrid.yy",},},
     {"id":{"name":"oGuiLibList","path":"objects/oGuiLibList/oGuiLibList.yy",},},
     {"id":{"name":"oGuiLibRect","path":"objects/oGuiLibRect/oGuiLibRect.yy",},},
+    {"id":{"name":"oGuiLibScrollbarV","path":"objects/oGuiLibScrollbarV/oGuiLibScrollbarV.yy",},},
     {"id":{"name":"oGuiLibSprite","path":"objects/oGuiLibSprite/oGuiLibSprite.yy",},},
     {"id":{"name":"oGuiLibText","path":"objects/oGuiLibText/oGuiLibText.yy",},},
     {"id":{"name":"oMain","path":"objects/oMain/oMain.yy",},},
