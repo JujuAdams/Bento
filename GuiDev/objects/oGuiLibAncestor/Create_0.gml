@@ -26,4 +26,5 @@ guiHeight = sprite_height;
 GUI_VARS = new __GuiClassVariables(self);
 
 //Set the parent before going to the Create event for the instance
-GuiSetParent(__GuiSystem().__tempParent);
+var _system = __GuiSystem();
+GuiSetParent(_system.__tempParent, self, _system.__tempIgnoreContainer);

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestScrollboxWithBar_OLD",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestScrollboxWithBar_OLD",
+  "parent":{
+    "name":"Examples",
+    "path":"folders/Examples.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

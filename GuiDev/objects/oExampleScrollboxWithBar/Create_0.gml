@@ -3,12 +3,10 @@
 event_inherited();
 
 GuiLayoutSetListAxis(GUI_AXIS_X);
-GuiLayoutSetPadding(10, 10, 10, 10);
-GuiLayoutSetGutter(10, 10);
 GuiLayoutSetResizeType(GUI_RESIZE_STATIC, GUI_RESIZE_STATIC);
 
-scrollbox = GuiCreateObject(oExampleScrollbox);
-with(scrollbox)
+var _scrollbox = GuiCreateObject(oExampleScrollbox);
+with(_scrollbox)
 {
     GuiSetVisible(false);
     GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
@@ -16,8 +14,9 @@ with(scrollbox)
     GuiLayoutSetListAlign(fa_center);
 }
 
-scrollbar = GuiCreateObject(oGuiLibScrollbarV, { target: scrollbox });
-with(scrollbar)
+with(GuiCreateObject(oGuiLibScrollbarV, { target: _scrollbox }))
 {
     GuiLayoutSetSize(10, undefined);
 }
+
+GuiSetContainer(_scrollbox);

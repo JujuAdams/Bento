@@ -5,8 +5,9 @@
 /// @param object
 /// @param [variableStruct]
 /// @param [parent=self]
+/// @param [ignoreContainer=false]
 
-function GuiCreateObject(_object, _struct = undefined, _parent = self)
+function GuiCreateObject(_object, _struct = undefined, _parent = self, _ignoreContainer = false)
 {
     static _system = __GuiSystem();
     static _emptyStruct = {};
@@ -18,8 +19,11 @@ function GuiCreateObject(_object, _struct = undefined, _parent = self)
         __GuiError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oGuiLibAncestor)}");
     }
     
-    var _oldParent = _system.__tempParent;
-    _system.__tempParent = _parent;
+    var _oldParent          = _system.__tempParent;
+    var _oldIgnoreContainer = _system.__tempIgnoreContainer;
+    
+    _system.__tempParent          = _parent;
+    _system.__tempIgnoreContainer = _ignoreContainer;
     
     if (GUI_INSTANCE_LAYER != undefined)
     {
@@ -30,6 +34,8 @@ function GuiCreateObject(_object, _struct = undefined, _parent = self)
         var _element = instance_create_depth(_parent.guiX, _parent.guiY, GUI_INSTANCE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
     }
     
-    _system.__tempParent = _oldParent;
+    _system.__tempParent          = _oldParent;
+    _system.__tempIgnoreContainer = _oldIgnoreContainer;
+    
     return _element;
 }

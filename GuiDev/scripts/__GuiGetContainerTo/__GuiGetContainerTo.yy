@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiGetContainerTo",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiGetContainerTo",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Library/Functions/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

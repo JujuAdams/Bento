@@ -24,7 +24,9 @@ function __GuiSystem()
         show_debug_message($"Gui: Version {GUI_VERSION}, {GUI_DATE}");
         
         __scissorStack = [];
-        __tempParent = noone;
+        
+        __tempParent          = noone;
+        __tempIgnoreContainer = false;
         
         __globalDirPreDelay     = 20;
         __globalDirDelay        = 9;

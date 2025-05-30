@@ -7,17 +7,33 @@
 /// 
 /// @param [depth=1]
 /// @param [element=self]
+/// @param [ignoreContainer=false]
 
-function GuiGetParent(_depth = 1, _element = self)
+function GuiGetParent(_depth = 1, _element = self, _ignoreContainer = false)
 {
     if (_depth <= 0) return _element;
-    return __GuiGetParentInner(_depth, _element);
+    return _ignoreContainer? __GuiGetParentInnerIgnoreContainer(_depth, _element) : __GuiGetParentInner(_depth, _element);
 }
 
 /// @param [depth=1]
 /// @param [element=self]
 
 function __GuiGetParentInner(_depth = 1, _element = self)
+{
+    if (not GuiExists(_element)) return noone;
+    
+    var _parent = __GuiGetContainerHost(_element.GUI_VARS.__parent);
+    if (_parent == undefined) return noone;
+    
+    if (_depth <= 1) return _parent;
+    
+    return __GuiGetParentInner(_depth-1, _parent);
+}
+
+/// @param [depth=1]
+/// @param [element=self]
+
+function __GuiGetParentInnerIgnoreContainer(_depth = 1, _element = self)
 {
     if (not GuiExists(_element)) return noone;
     
