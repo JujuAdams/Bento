@@ -106,9 +106,9 @@ function __GuiSolverListResizeHeight()
                     var _prevSize = _child.GUI_VARS.__solvedHeight;
                     if (_prevSize == _min)
                     {
-                        if (_prevSize + _addition >= _child.__layoutHeightMax)
+                        if (_prevSize + _addition >= _child.GUI_VARS.__layoutHeightMax)
                         {
-                            var _newSize = _child.__layoutHeightMax;
+                            var _newSize = _child.GUI_VARS.__layoutHeightMax;
                             array_delete(_modifiableArray, array_get_index(_modifiableArray, _child), 1);
                         }
                         else
@@ -190,9 +190,9 @@ function __GuiSolverListResizeHeight()
                     var _prevSize = _child.GUI_VARS.__solvedHeight;
                     if (_prevSize == _max)
                     {
-                        if (_prevSize + _addition <= _child.__layoutHeightMin)
+                        if (_prevSize + _addition <= _child.GUI_VARS.__layoutHeightMin)
                         {
-                            var _newSize = _child.__layoutHeightMin;
+                            var _newSize = _child.GUI_VARS.__layoutHeightMin;
                             array_delete(_modifiableArray, array_get_index(_modifiableArray, _child), 1);
                         }
                         else

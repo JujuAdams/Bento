@@ -4,7 +4,7 @@
 
 event_inherited();
 
-if (GuiPrimaryGetHold() && (not (focusable && GuiUsingDirectional())))
+if (GuiPrimaryGetHold() && (not GuiUsingDirectional()))
 {
     var _fgColor = c_gray;
     var _bgColor = c_white;
@@ -20,7 +20,7 @@ else
     var _bgColor = c_gray;
 }
 
-if (focusable && GuiUsingDirectional())
+if (GuiUsingDirectional())
 {
     draw_set_color(_fgColor);
     draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, false);

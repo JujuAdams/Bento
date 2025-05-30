@@ -1,28 +1,20 @@
 /// @desc Draw
 
-// Feather disable all
-
-// Inherit the parent event
-event_inherited();
-
-if (GuiPrimaryGetHold() && (not (focusable && GuiUsingDirectional())))
+if (GuiUsingDirectional())
 {
-    var _fgColor = c_gray;
-    var _bgColor = c_white;
-}
-else if (GuiCursorGetOver())
-{
-    var _fgColor = c_white;
-    var _bgColor = c_dkgray;
-}
-else
-{
-    var _fgColor = c_white;
-    var _bgColor = c_gray;
-}
-
-if (focusable && GuiUsingDirectional())
-{
+    if (GuiFocusGetType())
+    {
+        var _fgColor = c_gray;
+    }
+    else if (GuiCursorGetOver())
+    {
+        var _fgColor = c_white;
+    }
+    else
+    {
+        var _fgColor = c_white;
+    }
+    
     draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, _fgColor, image_alpha);
 }
 else

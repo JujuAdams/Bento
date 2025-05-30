@@ -2,30 +2,22 @@
 
 event_inherited();
 
-GuiSetIfNotDefined("focusable", true);
+GuiLayoutSetListAxis(GUI_AXIS_X);
+GuiLayoutSetPadding(10, 10, 10, 10);
+GuiLayoutSetGutter(10, 10);
+GuiLayoutSetResizeType(GUI_RESIZE_STATIC, GUI_RESIZE_STATIC);
 
-GuiSetDrawAfter(true);
+scrollbox = GuiCreateObject(oExampleScrollbox);
+with(scrollbox)
+{
+    GuiSetVisible(false);
+    GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
+    GuiLayoutSetGutter(10, 10);
+    GuiLayoutSetListAlign(fa_center);
+}
 
-GuiScissorSetEnabled(true);
-GuiScrollSetEnabled(true, true);
-
-GuiSetButton(GUI_BUTTON_ALWAYS);
-GuiFocusSetEnclose(GUI_ENCLOSE_DIRECTIONAL);
-
-scrollbarWidth   = 10;
-scrollbarPadding = 10;
-
-overScrollbar = false;
-overHandle = false;
-
-handleGrabbed = false;
-handleGrabbedRelativeY = 0;
-
-scrollbarLeft         = 0;
-scrollbarTop          = 0;
-scrollbarRight        = 0;
-scrollbarBottom       = 0;
-scrollbarHandleHeight = 0;
-scrollbarHandleTop    = 0;
-scrollbarHandleBottom = 0;
-scrollbarRangeHeight  = 0;
+scrollbar = GuiCreateObject(oGuiLibScrollbarV, { target: scrollbox });
+with(scrollbar)
+{
+    GuiLayoutSetSize(10, undefined);
+}

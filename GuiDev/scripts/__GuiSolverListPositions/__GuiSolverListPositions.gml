@@ -82,11 +82,11 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
         
         _majorSize += __layoutPadTop + __layoutPadBottom + max(_childCount-1, 0)*__layoutGutterY;
         
-        if (__layoutHAlignChildren == fa_middle)
+        if (__layoutVAlignChildren == fa_middle)
         {
             _majorPos += (__solvedHeight - _majorSize)/2;
         }
-        else if (__layoutHAlignChildren == fa_bottom)
+        else if (__layoutVAlignChildren == fa_bottom)
         {
             _majorPos += __solvedHeight - _majorSize;
         }
@@ -100,11 +100,11 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
         {
             with(_childArray[_i].GUI_VARS)
             {
-                if (_minorAlign == fa_middle)
+                if (_minorAlign == fa_center)
                 {
                     var _childMinorPos = _minorPos + (_minorAvailable - __solvedWidth) / 2;
                 }
-                else if (_minorAlign == fa_bottom)
+                else if (_minorAlign == fa_right)
                 {
                     var _childMinorPos = _minorPos + (_minorAvailable - __solvedWidth);
                 }

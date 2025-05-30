@@ -47,6 +47,6 @@ function __GuiSolverListShrinkWidth()
     _minSize += _extra;
     
     __solverMinWidth    = max(__layoutWidthMin, _minSize);
-    __solverShrinkWidth = clamp((__layoutWidthResize == GUI_RESIZE_SHRINK)? _shrinkSize : __solverPrefWidth, __solverMinWidth, __layoutWidthMax);
-    __solvedWidth       = __solverShrinkWidth;
+    __solverShrinkWidth = clamp(_shrinkSize, __solverMinWidth, __layoutWidthMax);
+    __solvedWidth       = clamp((__layoutWidthResize == GUI_RESIZE_STATIC)? __layoutWidthPref : _shrinkSize, __solverMinWidth, __layoutWidthMax);
 }

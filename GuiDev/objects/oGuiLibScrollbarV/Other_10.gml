@@ -20,17 +20,17 @@ if (GuiUsingPointer())
     else if (not GuiCursorGetOver())
     {
         //Pointer isn't over the scrollbar at all
-        overHandle = false;
+        handleOver = false;
     }
     else
     {
-        overHandle = ((GuiCursorGetY() >= scrollbarHandleTop) && (GuiCursorGetY() <= scrollbarHandleBottom));
+        handleOver = ((GuiCursorGetY() >= handleTop) && (GuiCursorGetY() <= handleBottom));
         
-        if (overHandle && GuiPrimaryGetPress())
+        if (handleOver && GuiPrimaryGetPress())
         {
             //Allow grabbing of the handle
             handleGrabbed = true;
-            handleGrabbedRelativeY = scrollbarHandleTop - GuiCursorGetY();
+            handleGrabbedRelativeY = handleTop - GuiCursorGetY();
         }
         else if (GuiPrimaryGetClick())
         {
@@ -61,6 +61,10 @@ if (GuiUsingPointer())
             }
         }
     }
+}
+else
+{
+    handleOver = false;
 }
 
 if (not GuiPrimaryGetHold())

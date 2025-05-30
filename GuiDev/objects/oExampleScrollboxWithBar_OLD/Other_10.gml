@@ -8,7 +8,7 @@ if (GuiUsingDirectional())
     overScrollbar = false;
     overHandle = false;
     
-    if (GuiPrimaryGetClick() && focusable)
+    if (GuiPrimaryGetClick())
     {
         GuiFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
     }
