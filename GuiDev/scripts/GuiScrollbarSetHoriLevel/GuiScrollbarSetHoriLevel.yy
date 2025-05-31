@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScrollDrawVert",
+  "%Name":"GuiScrollbarSetHoriLevel",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScrollDrawVert",
+  "name":"GuiScrollbarSetHoriLevel",
   "parent":{
     "name":"Scrollbar",
     "path":"folders/Library/Functions/Scrollbar.yy",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiDrawScissorOff",
   "parent":{
-    "name":"Actions",
-    "path":"folders/Library/Functions/Scissor & Scroll/Actions.yy",
+    "name":"Clipping Regions (Scissor Test)",
+    "path":"folders/Library/Functions/Clipping Regions (Scissor Test).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

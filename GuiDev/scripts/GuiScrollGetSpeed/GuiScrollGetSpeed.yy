@@ -6,7 +6,7 @@
   "name":"GuiScrollGetSpeed",
   "parent":{
     "name":"Getters",
-    "path":"folders/Library/Functions/Scissor & Scroll/Getters.yy",
+    "path":"folders/Library/Functions/Scroll/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

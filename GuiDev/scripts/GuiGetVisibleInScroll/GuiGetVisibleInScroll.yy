@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiGetVisibleInScroll",
   "parent":{
-    "name":"Getters",
-    "path":"folders/Library/Functions/Scissor & Scroll/Getters.yy",
+    "name":"Clipping Regions (Scissor Test)",
+    "path":"folders/Library/Functions/Clipping Regions (Scissor Test).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollGetEnabled",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Library/Functions/Scissor & Scroll/Setup.yy",
+    "name":"Getters",
+    "path":"folders/Library/Functions/Scroll/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

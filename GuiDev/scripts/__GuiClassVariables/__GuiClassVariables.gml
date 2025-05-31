@@ -88,6 +88,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __scrollMinY      = 0;
     __scrollMaxY      = 0;
     
+    __scrollbarHori = new __GuiClassScrollbarHori();
+    __scrollbarVert = new __GuiClassScrollbarVert();
+    
     __selectOnDestroy = noone;
     
     if (__GuiIsInstance(_attachedElement))

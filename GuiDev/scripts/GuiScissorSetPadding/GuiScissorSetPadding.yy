@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScissorSetPadding",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Library/Functions/Scissor & Scroll/Setup.yy",
+    "name":"Clipping Regions (Scissor Test)",
+    "path":"folders/Library/Functions/Clipping Regions (Scissor Test).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

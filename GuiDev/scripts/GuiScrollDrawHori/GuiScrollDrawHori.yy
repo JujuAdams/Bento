@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollDrawHori",
   "parent":{
-    "name":"OLD",
-    "path":"folders/Library/Functions/Scissor & Scroll/OLD.yy",
+    "name":"Scrollbar",
+    "path":"folders/Library/Functions/Scrollbar.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
