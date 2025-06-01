@@ -2,21 +2,10 @@
 
 event_inherited();
 
-GuiLayoutSetList(GUI_AXIS_X, fa_left, fa_top);
-GuiLayoutSetResizeType(GUI_RESIZE_STATIC, GUI_RESIZE_STATIC);
+GuiLayoutSetList(GUI_AXIS_Y, fa_left, fa_top);
+GuiScissorSetEnabled(true);
+GuiScrollSetEnabled(true, true);
+GuiSetButton(GUI_BUTTON_DIRECTIONAL);
+GuiFocusSetEnclose(GUI_ENCLOSE_DIRECTIONAL);
 
-var _scrollbox = GuiCreateObject(oExampleScrollbox);
-with(_scrollbox)
-{
-    GuiSetVisible(false);
-    GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
-    GuiLayoutSetGutter(10, 10);
-    GuiLayoutSetListAlign(fa_center, fa_top);
-}
-
-with(GuiCreateObject(oGuiLibScrollbarV, { target: _scrollbox }))
-{
-    GuiLayoutSetSize(10, undefined);
-}
-
-GuiSetContainer(_scrollbox);
+GuiScrollbarSetVert(false, 20, 10, 10, 10, 10);

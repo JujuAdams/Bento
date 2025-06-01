@@ -17,9 +17,6 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __layer = undefined;
     
-    __containerTarget = undefined;
-    __containerHost   = undefined;
-    
     __transformMatrix  = undefined;
     __transformOriginX = undefined;
     __transformOriginY = undefined;

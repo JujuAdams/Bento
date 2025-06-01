@@ -10,9 +10,8 @@
 /// @param json
 /// @param [parent=self]
 /// @param [metadata]
-/// @param [ignoreContainer=false]
 
-function GuiCreateFromJSON(_json, _parent = self, _metadata = undefined, _ignoreContainer = false)
+function GuiCreateFromJSON(_json, _parent = self, _metadata = undefined)
 {
     var _firstElement = undefined;
     
@@ -21,7 +20,7 @@ function GuiCreateFromJSON(_json, _parent = self, _metadata = undefined, _ignore
         var _i = 0;
         repeat(array_length(_json))
         {
-            var _element = __GuiCreateViaJSONInner(_json[_i], _parent, _metadata, _ignoreContainer);
+            var _element = __GuiCreateViaJSONInner(_json[_i], _parent, _metadata);
             
             if (_firstElement == undefined)
             {
@@ -35,23 +34,22 @@ function GuiCreateFromJSON(_json, _parent = self, _metadata = undefined, _ignore
     }
     else
     {
-        return __GuiCreateViaJSONInner(_json, _parent, _metadata, _ignoreContainer);
+        return __GuiCreateViaJSONInner(_json, _parent, _metadata);
     }
 }
 
 /// @param json
 /// @param parent
 /// @param metadata
-/// @param ignoreContainer
 
-function __GuiCreateViaJSONInner(_json, _parent, _metadata, _ignoreContainer)
+function __GuiCreateViaJSONInner(_json, _parent, _metadata)
 {
     if (is_array(_json))
     {
         var _i = 0;
         repeat(array_length(_json))
         {
-            __GuiCreateViaJSONInner(_json[_i], _parent, _metadata, _ignoreContainer);
+            __GuiCreateViaJSONInner(_json[_i], _parent, _metadata);
             ++_i;
         }
     }

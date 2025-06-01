@@ -27,4 +27,4 @@ GUI_VARS = new __GuiClassVariables(self);
 
 //Set the parent before going to the Create event for the instance
 var _system = __GuiSystem();
-GuiSetParent(_system.__tempParent, self, _system.__tempIgnoreContainer);
+GuiSetParent(_system.__tempParent, self);
