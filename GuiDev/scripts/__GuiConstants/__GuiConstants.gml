@@ -31,9 +31,6 @@
 #macro GUI_LAYOUT_GRID  2
 #macro GUI_LAYOUT_TEXT  3
 
-#macro GUI_SCROLLBAR_NEVER     0
-#macro GUI_SCROLLBAR_OVERFLOW  1
-#macro GUI_SCROLLBAR_ALWAYS    2
 
 #macro GUI_AXIS_X  0
 #macro GUI_AXIS_Y  1

@@ -1,12 +1,15 @@
 // Feather disable all
 
 /// @param orientTop
-/// @param height
-/// @param padding
-/// @param drawFunction
+/// @param thickness
+/// @param padLeft
+/// @param padTop
+/// @param padRight
+/// @param padBottom
+/// @param overlap
 /// @param [element=self]
 
-function GuiScrollbarSetHori(_mirror, _thickness, _padLeft, _padTop, _padRight, _padBottom, _element = self)
+function GuiScrollbarSetHori(_mirror, _thickness, _padLeft, _padTop, _padRight, _padBottom, _overlap, _element = self)
 {
     if (not GuiExists(_element)) return;
     
@@ -25,17 +28,18 @@ function GuiScrollbarSetHori(_mirror, _thickness, _padLeft, _padTop, _padRight, 
             __padTop    = _padTop;
             __padRight  = _padRight;
             __padBottom = _padBottom;
+            __overlap   = _overlap;
         }
         
         if (_mirror)
         {
-            __scissorScrollbarTop    = _padTop + _thickness + _padBottom;
+            __scissorScrollbarTop    = _overlap? 0 : _padTop + _thickness + _padBottom;
             __scissorScrollbarBottom = 0;
         }
         else
         {
             __scissorScrollbarTop    = 0;
-            __scissorScrollbarBottom = _padTop + _thickness + _padBottom;
+            __scissorScrollbarBottom = _overlap? 0 : _padTop + _thickness + _padBottom;
         }
         
         __layer.__stepDirty = true;

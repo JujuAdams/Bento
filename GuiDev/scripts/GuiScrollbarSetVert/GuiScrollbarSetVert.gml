@@ -6,9 +6,10 @@
 /// @param padTop
 /// @param padRight
 /// @param padBottom
+/// @param overlap
 /// @param [element=self]
 
-function GuiScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight, _padBottom, _element = self)
+function GuiScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight, _padBottom, _overlap, _element = self)
 {
     if (not GuiExists(_element)) return;
     
@@ -27,17 +28,18 @@ function GuiScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight, 
             __padTop    = _padTop;
             __padRight  = _padRight;
             __padBottom = _padBottom;
+            __overlap   = _overlap;
         }
         
         if (_mirror)
         {
-            __scissorScrollbarLeft  = _padLeft + _thickness + _padRight;
+            __scissorScrollbarLeft  = _overlap? 0 : _padLeft + _thickness + _padRight;
             __scissorScrollbarRight = 0;
         }
         else
         {
             __scissorScrollbarLeft  = 0;
-            __scissorScrollbarRight = _padLeft + _thickness + _padRight;
+            __scissorScrollbarRight = _overlap? 0 : _padLeft + _thickness + _padRight;
         }
         
         __layer.__stepDirty = true;
