@@ -18,8 +18,8 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
     
     if (__listAxis == GUI_AXIS_X)
     {
-        var _majorPos = __solvedLeft + __layoutPadLeft;
-        var _minorPos = __solvedTop  + __layoutPadTop;
+        var _majorPos = __solvedLeft + __solverPadLeft;
+        var _minorPos = __solvedTop  + __solverPadTop;
         var _gutter   = __layoutGutterX;
         
         var _majorSize = 0;
@@ -30,7 +30,7 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
             ++_i;
         }
         
-        _majorSize += __layoutPadLeft + __layoutPadRight + max(_childCount-1, 0)*__layoutGutterX;
+        _majorSize += __solverPadLeft + __solverPadRight + max(_childCount-1, 0)*__layoutGutterX;
         
         if (__layoutHAlignChildren == fa_center)
         {
@@ -41,7 +41,7 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
             _majorPos += __solvedWidth - _majorSize;
         }
         
-        var _minorAvailable = __solvedHeight - (__layoutPadTop + __layoutPadBottom);
+        var _minorAvailable = __solvedHeight - (__solverPadTop + __solverPadBottom);
         var _minorAlign = __layoutVAlignChildren;
         var _childMinorPos = _minorPos; //Default for fa_top
         
@@ -68,8 +68,8 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
     }
     else
     {
-        var _majorPos = __solvedTop  + __layoutPadTop;
-        var _minorPos = __solvedLeft + __layoutPadLeft;
+        var _majorPos = __solvedTop  + __solverPadTop;
+        var _minorPos = __solvedLeft + __solverPadLeft;
         var _gutter   = __layoutGutterY;
         
         var _majorSize = 0;
@@ -80,7 +80,7 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
             ++_i;
         }
         
-        _majorSize += __layoutPadTop + __layoutPadBottom + max(_childCount-1, 0)*__layoutGutterY;
+        _majorSize += __solverPadTop + __solverPadBottom + max(_childCount-1, 0)*__layoutGutterY;
         
         if (__layoutVAlignChildren == fa_middle)
         {
@@ -91,7 +91,7 @@ function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight
             _majorPos += __solvedHeight - _majorSize;
         }
         
-        var _minorAvailable = __solvedWidth - (__layoutPadLeft + __layoutPadRight);
+        var _minorAvailable = __solvedWidth - (__solverPadLeft + __solverPadRight);
         var _minorAlign = __layoutHAlignChildren;
         var _childMinorPos = _minorPos; //Default for fa_left
         

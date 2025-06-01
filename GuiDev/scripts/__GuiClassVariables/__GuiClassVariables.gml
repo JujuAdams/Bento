@@ -294,6 +294,11 @@ function __GuiClassVariables(_attachedElement) constructor
     __layoutPadRight  = 0;
     __layoutPadBottom = 0;
     
+    __solverPadLeft   = 0;
+    __solverPadTop    = 0;
+    __solverPadRight  = 0;
+    __solverPadBottom = 0;
+    
     //How the instance should resize. "Static" is as the name suggests - the instance won't change
     //size. "Shrink" will cause the instance to shrink down to shrink any children it has inside. If an
     //instance has no ch\ildren, the "shrink" resize type will behave the same as "static". "Grow" will

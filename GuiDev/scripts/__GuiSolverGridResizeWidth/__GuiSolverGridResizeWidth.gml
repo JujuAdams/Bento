@@ -5,7 +5,7 @@ function __GuiSolverGridResizeWidth()
     var _childArray   = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _available = __solvedWidth - (__layoutPadLeft + __layoutPadRight + max(0, __gridColumns-1)*__layoutGutterX);
+    var _available = __solvedWidth - (__solverPadLeft + __solverPadRight + max(0, __gridColumns-1)*__layoutGutterX);
     var _cellSize = floor(_available / max(1, __gridColumns));
     
     if (_available > 0)

@@ -23,7 +23,7 @@ function __GuiSolverListShrinkHeight()
             ++_i;
         }
         
-        var _extra = __layoutPadTop + __layoutPadBottom + max(_childCount-1, 0)*__layoutGutterY;
+        var _extra = __solverPadTop + __solverPadBottom + max(_childCount-1, 0)*__layoutGutterY;
     }
     else
     {
@@ -40,7 +40,7 @@ function __GuiSolverListShrinkHeight()
             ++_i;
         }
         
-        var _extra = __layoutPadTop + __layoutPadBottom;
+        var _extra = __solverPadTop + __solverPadBottom;
     }
     
     _shrinkSize += _extra

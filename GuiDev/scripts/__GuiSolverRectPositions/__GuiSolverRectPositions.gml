@@ -15,10 +15,10 @@ function __GuiSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeight
         __solvedHeight = floor(__solvedHeight);
     }
     
-    var _childX      = __solvedLeft + __layoutPadLeft;
-    var _childY      = __solvedTop  + __layoutPadTop;
-    var _childWidth  = __solvedWidth  - (__layoutPadLeft + __layoutPadRight);
-    var _childHeight = __solvedHeight - (__layoutPadTop + __layoutPadBottom);
+    var _childX      = __solvedLeft + __solverPadLeft;
+    var _childY      = __solvedTop  + __solverPadTop;
+    var _childWidth  = __solvedWidth  - (__solverPadLeft + __solverPadRight);
+    var _childHeight = __solvedHeight - (__solverPadTop + __solverPadBottom);
     
     var _childArray = __childArray;
     var _i = 0;

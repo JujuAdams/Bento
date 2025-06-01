@@ -16,16 +16,16 @@ function __GuiSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeight
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _availableWidth  = __solvedWidth  - (__layoutPadLeft + __layoutPadRight + max(0, __gridColumns-1)*__layoutGutterX);
-    var _availableHeight = __solvedHeight - (__layoutPadTop + __layoutPadBottom + max(0, __gridRows-1)*__layoutGutterY);
+    var _availableWidth  = __solvedWidth  - (__solverPadLeft + __solverPadRight + max(0, __gridColumns-1)*__layoutGutterX);
+    var _availableHeight = __solvedHeight - (__solverPadTop + __solverPadBottom + max(0, __gridRows-1)*__layoutGutterY);
     
     var _cellWidth  = floor(_availableWidth / max(1, __gridColumns));
     var _cellHeight = floor(_availableHeight / max(1, __gridRows));
     
     var _gridX = 0;
     
-    var _childLeft = __solvedLeft + __layoutPadLeft;
-    var _childTop  = __solvedTop  + __layoutPadTop;
+    var _childLeft = __solvedLeft + __solverPadLeft;
+    var _childTop  = __solvedTop  + __solverPadTop;
     var _startLeft = _childLeft;
     var _i = 0;
     repeat(_childCount)

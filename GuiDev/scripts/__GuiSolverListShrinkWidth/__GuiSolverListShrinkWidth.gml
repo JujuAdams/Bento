@@ -23,7 +23,7 @@ function __GuiSolverListShrinkWidth()
             ++_i;
         }
         
-        var _extra = __layoutPadLeft + __layoutPadRight + max(_childCount-1, 0)*__layoutGutterX;
+        var _extra = __solverPadLeft + __solverPadRight + max(_childCount-1, 0)*__layoutGutterX;
     }
     else
     {
@@ -40,7 +40,7 @@ function __GuiSolverListShrinkWidth()
             ++_i;
         }
         
-        var _extra = __layoutPadLeft + __layoutPadRight;
+        var _extra = __solverPadLeft + __solverPadRight;
     }
     
     _shrinkSize += _extra;

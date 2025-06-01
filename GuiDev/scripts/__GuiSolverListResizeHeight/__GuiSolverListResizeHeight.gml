@@ -13,7 +13,7 @@ function __GuiSolverListResizeHeight()
         // Minor Axis - Stretch grow elements to the maximum available space
         //////
             
-        var _available = __solvedHeight - (__layoutPadLeft + __layoutPadRight);
+        var _available = __solvedHeight - (__solverPadLeft + __solverPadRight);
         if (_available > 0)
         {
             var _i = 0;

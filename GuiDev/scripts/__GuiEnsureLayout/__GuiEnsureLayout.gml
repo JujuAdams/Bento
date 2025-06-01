@@ -63,6 +63,11 @@ function __GuiEnsureLayerOrderInner(_layoutOrder, _element)
     {
         array_push(_layoutOrder, self);
         
+        __solverPadLeft   = __layoutPadLeft   + __scissorPadLeft   + __scissorScrollbarLeft;
+        __solverPadTop    = __layoutPadTop    + __scissorPadTop    + __scissorScrollbarTop;
+        __solverPadRight  = __layoutPadRight  + __scissorPadRight  + __scissorScrollbarRight;
+        __solverPadBottom = __layoutPadBottom + __scissorPadBottom + __scissorScrollbarBottom;
+        
         var _array = __childArray;
         var _i = 0;
         repeat(array_length(_array))

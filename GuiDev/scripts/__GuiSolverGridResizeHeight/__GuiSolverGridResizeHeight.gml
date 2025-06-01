@@ -5,7 +5,7 @@ function __GuiSolverGridResizeHeight()
     var _childArray   = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _available = __solvedHeight - (__layoutPadTop + __layoutPadBottom + max(0, __gridRows-1)*__layoutGutterY);
+    var _available = __solvedHeight - (__solverPadTop + __solverPadBottom + max(0, __gridRows-1)*__layoutGutterY);
     var _cellSize = floor(_available / max(1, __gridRows));
     
     if (_available > 0)
