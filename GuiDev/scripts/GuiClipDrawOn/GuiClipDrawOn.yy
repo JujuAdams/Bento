@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiGetVisibleInScroll",
+  "%Name":"GuiClipDrawOn",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiGetVisibleInScroll",
+  "name":"GuiClipDrawOn",
   "parent":{
     "name":"Clipping Regions (Scissor Test)",
     "path":"folders/Library/Functions/Clipping Regions (Scissor Test).yy",

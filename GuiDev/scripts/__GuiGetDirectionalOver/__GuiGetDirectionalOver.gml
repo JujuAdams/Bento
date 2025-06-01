@@ -43,7 +43,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
         else
         {
             //Don't allow selection of the next instance if we're not visible
-            if (not GuiGetVisibleInScroll(false, _prevElement))
+            if (not GuiClipGetVisible(false, _prevElement))
             {
                 GuiScrollTo(GuiScrollGetSpeed(_prevElement), _prevElement);
                 return _prevElement;

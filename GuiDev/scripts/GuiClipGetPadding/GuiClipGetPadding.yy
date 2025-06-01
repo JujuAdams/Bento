@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScissorGetPadding",
+  "%Name":"GuiClipGetPadding",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScissorGetPadding",
+  "name":"GuiClipGetPadding",
   "parent":{
     "name":"Clipping Regions (Scissor Test)",
     "path":"folders/Library/Functions/Clipping Regions (Scissor Test).yy",

@@ -3,7 +3,7 @@
 /// @param [partial=false]
 /// @param [element=self]
 
-function GuiGetVisibleInScroll(_partial = false, _element = self)
+function GuiClipGetVisible(_partial = false, _element = self)
 {
     if (not GuiExists(_element)) return false;
     

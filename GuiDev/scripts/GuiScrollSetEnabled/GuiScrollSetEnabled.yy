@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollSetEnabled",
   "parent":{
-    "name":"Getters",
-    "path":"folders/Library/Functions/Scroll/Getters.yy",
+    "name":"Scroll",
+    "path":"folders/Library/Functions/Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

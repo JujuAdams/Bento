@@ -291,7 +291,7 @@ function __GuiJSONScissor_enabled(_element, _value)
 {
     if (is_bool(_value))
     {
-        GuiScissorSetEnabled(_value, _element);
+        GuiClipSetEnabled(_value, _element);
     }
     else
     {
@@ -308,7 +308,7 @@ function __GuiJSONScissor_padding(_element, _value)
 {
     if (is_numeric(_value))
     {
-        GuiScissorSetPadding(_value, _value, _value, _value, _element);
+        GuiClipSetPadding(_value, _value, _value, _value, _element);
     }
     else if (is_array(_value))
     {
@@ -317,11 +317,11 @@ function __GuiJSONScissor_padding(_element, _value)
             __GuiError($".padding scissor property must have 4 elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiScissorSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
+        GuiClipSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
     }
     else if (is_struct(_value))
     {
-        GuiScissorSetPadding(_value[$ "l"] ?? _value[$ "left"],
+        GuiClipSetPadding(_value[$ "l"] ?? _value[$ "left"],
                              _value[$ "t"] ?? _value[$ "top"],
                              _value[$ "r"] ?? _value[$ "right"],
                              _value[$ "b"] ?? _value[$ "bottom"],
@@ -375,7 +375,7 @@ function __GuiJSONScroll_padding(_element, _value)
             __GuiError($".padding scroll property must have 4 elements if it is an array (length = {array_length(_value)})");
         }
         
-        GuiScissorSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
+        GuiClipSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
     }
     else if (is_struct(_value))
     {

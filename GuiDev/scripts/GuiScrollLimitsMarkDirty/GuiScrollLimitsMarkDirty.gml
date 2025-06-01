@@ -3,7 +3,7 @@
 /// Marks an instance's scroll limits as "dirty" meaning that they will be updated the next time
 /// `GuiSystemStep()` is called. This function will rarely need to be called. It is provided for
 /// situations where the library may not be able to detect changes that affect calculation of
-/// scroll limits.
+/// scroll limits, such as changing the size of child elements.
 /// 
 /// @param instance
 

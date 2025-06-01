@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollGetHeight",
   "parent":{
-    "name":"Clipping Regions (Scissor Test)",
-    "path":"folders/Library/Functions/Clipping Regions (Scissor Test).yy",
+    "name":"Getters",
+    "path":"folders/Library/Functions/Scroll/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

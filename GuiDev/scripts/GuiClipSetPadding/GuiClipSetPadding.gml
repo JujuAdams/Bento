@@ -6,7 +6,7 @@
 /// @param bottom
 /// @param [element=self]
 
-function GuiScissorSetPadding(_left, _top, _right, _bottom, _element = self)
+function GuiClipSetPadding(_left, _top, _right, _bottom, _element = self)
 {
     if (not GuiExists(_element)) return;
     

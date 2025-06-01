@@ -3,7 +3,7 @@
 /// @param state
 /// @param [element=self]
 
-function GuiScissorSetEnabled(_state, _element = self)
+function GuiClipSetEnabled(_state, _element = self)
 {
     if (not GuiExists(_element)) return;
     

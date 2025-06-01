@@ -37,7 +37,7 @@ function GuiGetHoverable(_element = self, _checkVisible = true)
                 return false;
             }
             
-            if (_checkVisible && (not GuiGetVisibleInScroll(true, _element)))
+            if (_checkVisible && (not GuiClipGetVisible(true, _element)))
             {
                 return false;
             }

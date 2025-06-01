@@ -2,7 +2,7 @@
 
 /// @param [element=self]
 
-function GuiScissorGetPadding(_element = self)
+function GuiClipGetPadding(_element = self)
 {
     static _result = {};
     
