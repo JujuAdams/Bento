@@ -12,7 +12,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     var _scissorB      =  infinity;
     var _insideScissor =  true;
     
-    var _element = noone;
+    var _result = noone;
     
     var _holdElement = __holdElement;
     var _holdElementDoesntExist = not GuiExists(_holdElement);
@@ -65,27 +65,27 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
                 {
                     if ((_methodFunc == __GuiScrollbarUpdateVert) || (_methodFunc == __GuiScrollbarUpdateHori))
                     {
-                        if (overScrollbar && (_holdElementDoesntExist || ((_holdElement == __element) && grabHandle))) //FIXME - 
+                        if (overScrollbar && (_holdElementDoesntExist || ((_holdElement == __element) && grabHandle)))
                         {
-                            _element = __element;
+                            _result = __element;
                         }
                     }
                     else
                     {
                         if (_holdElementDoesntExist || (_holdElement == self))
                         {
-                            if (__GuiIsInstance(_element))
+                            if (__GuiIsInstance(self)) //FIXME - Precalculate this
                             {
                                 if (instance_position(_mouseX, _mouseY, self))
                                 {
-                                    _element = self; 
+                                    _result = self; 
                                 }
                             }
                             else
                             {
                                 if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
                                 {
-                                    _element = self; 
+                                    _result = self; 
                                 }
                             }
                         }
@@ -97,5 +97,5 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
         ++_i;
     }
     
-    return _element;
+    return _result;
 }
