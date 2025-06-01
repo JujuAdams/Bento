@@ -231,6 +231,11 @@ function __GuiClassLayer(_environment, _name) constructor
                         __mousePrevX = __mouseX;
                         __mousePrevY = __mouseY;
                     }
+                    else if (__primaryState == __GUI_END)
+                    {
+                        __mousePressX = undefined;
+                        __mousePressY = undefined;
+                    }
                 }
                 else //Some other navigation mode, perhaps `GUI_MODE_UNKNOWN`
                 {

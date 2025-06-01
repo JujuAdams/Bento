@@ -29,8 +29,8 @@ function __GuiGetScrollDelta(_element = self)
                         
                         if (__scissorEnabled)
                         {
-                            var _parL = _parent.guiLeft  + __scissorPadLeft;
-                            var _parR = _parent.guiRight - __scissorPadRight;
+                            var _parL = _parent.guiLeft  + __scissorPadLeft  + __scissorScrollbarLeft;
+                            var _parR = _parent.guiRight - __scissorPadRight + __scissorScrollbarRight;
                         }
                         else
                         {
@@ -74,8 +74,8 @@ function __GuiGetScrollDelta(_element = self)
                         
                         if (__scissorEnabled)
                         {
-                            var _parT = _parent.guiTop    + __scissorPadTop;
-                            var _parB = _parent.guiBottom - __scissorPadBottom;
+                            var _parT = _parent.guiTop    + __scissorPadTop    + __scissorScrollbarTop;
+                            var _parB = _parent.guiBottom - __scissorPadBottom - __scissorScrollbarBottom;
                         }
                         else
                         {

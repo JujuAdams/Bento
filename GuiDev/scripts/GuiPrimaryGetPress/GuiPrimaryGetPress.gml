@@ -6,7 +6,7 @@
 ///      reasons other than user intent. To check whether an instance has been clicked, please use
 ///      `GuiPrimaryGetClick()`.
 /// 
-/// @param [instance]
+/// @param [element]
 
 function GuiPrimaryGetPress(_element = self)
 {

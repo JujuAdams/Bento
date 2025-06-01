@@ -29,7 +29,7 @@ function __GuiEnsureScrollLimits()
                 if (__scrollHori)
                 {
                     //Calculate how much visible width we have to play with
-                    var _visibleSize = __scissorEnabled? __solvedWidth - (__scissorPadLeft + __scissorPadRight) : __solvedWidth;
+                    var _visibleSize = __scissorEnabled? __solvedWidth - (__scissorPadLeft + __scissorPadRight + __scissorScrollbarLeft + __scissorScrollbarRight) : __solvedWidth;
                     _visibleSize -= __layoutPadLeft + __layoutPadRight;
                     
                     //Compare the children's width to the total scrollable area
@@ -56,7 +56,7 @@ function __GuiEnsureScrollLimits()
                 //Same as above but in the y-axis
                 if (__scrollVert)
                 {
-                    var _visibleSize = __scissorEnabled? __solvedHeight - (__scissorPadTop + __scissorPadBottom) : __solvedHeight;
+                    var _visibleSize = __scissorEnabled? __solvedHeight - (__scissorPadTop + __scissorPadBottom + __scissorScrollbarTop + __scissorScrollbarBottom) : __solvedHeight;
                     _visibleSize -= __layoutPadTop + __layoutPadBottom;
                     
                     if (_bounds.height > _visibleSize - (__scrollPadTop + __scrollPadBottom))

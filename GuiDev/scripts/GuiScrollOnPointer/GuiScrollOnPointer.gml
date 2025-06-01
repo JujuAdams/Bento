@@ -16,6 +16,28 @@ function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = 
     {
         if ((GUI_SCROLL_ON_MOUSE_DRAG || (_layer.__navMode == GUI_MODE_TOUCH)) && GuiPrimaryGetHold(_element))
         {
+            with(_element.GUI_VARS)
+            {
+                var _pressX = __layer.__mousePressX;
+                var _pressY = __layer.__mousePressY;
+                
+                with(__scrollbarVert)
+                {
+                    if (point_in_rectangle(_pressX, _pressY, __barLeft, __barTop, __barRight, __barBottom))
+                    {
+                        return;
+                    }
+                }
+                
+                with(__scrollbarHori)
+                {
+                    if (point_in_rectangle(_pressX, _pressY, __barLeft, __barTop, __barRight, __barBottom))
+                    {
+                        return;
+                    }
+                }
+            }
+            
             if (GuiPrimaryGetDragDistance() > GUI_SCROLL_THRESHOLD)
             {
                 var _parent = __GuiScrollFindParent(_element);

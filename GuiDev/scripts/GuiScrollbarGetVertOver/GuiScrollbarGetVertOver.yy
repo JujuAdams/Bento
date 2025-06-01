@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScrollbarGetVertOver",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScrollbarGetVertOver",
+  "parent":{
+    "name":"Scrollbar",
+    "path":"folders/Library/Functions/Scrollbar.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

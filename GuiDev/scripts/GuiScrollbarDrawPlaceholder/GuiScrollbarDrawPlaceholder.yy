@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScrollbarDrawPlaceholder",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScrollbarDrawPlaceholder",
+  "parent":{
+    "name":"Scrollbar",
+    "path":"folders/Library/Functions/Scrollbar.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

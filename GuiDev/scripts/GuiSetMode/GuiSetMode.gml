@@ -32,14 +32,15 @@ function GuiSetMode(_newMode, _layer = undefined)
                 __directionalLastX = __mouseX;
                 __directionalLastY = __mouseY;
                 
-                __mousePrevX  = __mouseX;
-                __mousePrevY  = __mouseY;
-                __mousePressX = undefined;
-                __mousePressY = undefined;
+                __mousePrevX = __mouseX;
+                __mousePrevY = __mouseY;
             }
             
             __navPointer     = false;
             __navDirectional = true;
+            
+            __mousePressX = undefined;
+            __mousePressY = undefined;
         }
         else if ((_newMode == GUI_MODE_MOUSE) || (_newMode == GUI_MODE_TOUCH))
         {
@@ -66,6 +67,9 @@ function GuiSetMode(_newMode, _layer = undefined)
             //Some undefined navigation mode, perhaps `GUI_MODE_UNKNOWN`
             __navPointer     = false;
             __navDirectional = false;
+            
+            __mousePressX = undefined;
+            __mousePressY = undefined;
         }
         
         __navMode = _newMode;

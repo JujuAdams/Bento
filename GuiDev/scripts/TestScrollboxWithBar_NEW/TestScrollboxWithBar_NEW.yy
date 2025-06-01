@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScrollDrawHori",
+  "%Name":"TestScrollboxWithBar_NEW",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScrollDrawHori",
+  "name":"TestScrollboxWithBar_NEW",
   "parent":{
-    "name":"OLD",
-    "path":"folders/Library/Functions/Scrollbar/OLD.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

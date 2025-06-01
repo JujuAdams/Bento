@@ -2,9 +2,11 @@
 
 function __GuiScissorPushFromElement()
 {
-    var _guiStruct = GUI_VARS;
-    __GuiScissorPush(guiLeft   + _guiStruct.__scissorPadLeft,
-                     guiTop    + _guiStruct.__scissorPadTop,
-                     guiRight  - _guiStruct.__scissorPadRight,
-                     guiBottom - _guiStruct.__scissorPadBottom);
+    with(GUI_VARS)
+    {
+        __GuiScissorPush(other.guiLeft   + __scissorPadLeft   + __scissorScrollbarLeft,
+                         other.guiTop    + __scissorPadTop    + __scissorScrollbarTop,
+                         other.guiRight  - __scissorPadRight  - __scissorScrollbarRight,
+                         other.guiBottom - __scissorPadBottom - __scissorScrollbarBottom);
+    }
 }

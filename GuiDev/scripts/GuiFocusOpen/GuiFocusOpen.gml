@@ -57,8 +57,8 @@ function GuiFocusOpen(_focusType, _element = self)
             if (__scissorEnabled)
             {
                 //Use the smaller scissor region
-                _layer.__directionalLastX = _element.guiLeft + __scissorPadLeft;
-                _layer.__directionalLastY = _element.guiTop  + __scissorPadTop;
+                _layer.__directionalLastX = _element.guiLeft + __scissorPadLeft + __scissorScrollbarLeft;
+                _layer.__directionalLastY = _element.guiTop  + __scissorPadTop + __scissorScrollbarTop;
             }
             else
             {

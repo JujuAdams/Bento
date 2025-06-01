@@ -66,11 +66,15 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __updating = false;
     
-    __scissorEnabled   = false;
-    __scissorPadLeft   = 0;
-    __scissorPadTop    = 0;
-    __scissorPadRight  = 0;
-    __scissorPadBottom = 0;
+    __scissorEnabled         = false;
+    __scissorPadLeft         = 0;
+    __scissorPadTop          = 0;
+    __scissorPadRight        = 0;
+    __scissorPadBottom       = 0;
+    __scissorScrollbarLeft   = 0;
+    __scissorScrollbarTop    = 0;
+    __scissorScrollbarRight  = 0;
+    __scissorScrollbarBottom = 0;
     
     __scrollHori      = false;
     __scrollVert      = false;
@@ -88,8 +92,8 @@ function __GuiClassVariables(_attachedElement) constructor
     __scrollMinY      = 0;
     __scrollMaxY      = 0;
     
-    __scrollbarHori = new __GuiClassScrollbarHori();
-    __scrollbarVert = new __GuiClassScrollbarVert();
+    __scrollbarHori = undefined;
+    __scrollbarVert = undefined;
     
     __selectOnDestroy = noone;
     
@@ -97,6 +101,20 @@ function __GuiClassVariables(_attachedElement) constructor
     {
         __eventStep = method(_attachedElement, function()
         {
+            //FIXME - Improve efficiency
+            with(GUI_VARS)
+            {
+                if (__scrollbarVert != undefined)
+                {
+                    __scrollbarVert.__Update();
+                }
+                
+                if (__scrollbarHori != undefined)
+                {
+                    __scrollbarHori.__Update();
+                }
+            }
+            
             event_user(GUI_USER_EVENT_STEP);
         });
         
@@ -110,15 +128,44 @@ function __GuiClassVariables(_attachedElement) constructor
             event_user(GUI_USER_EVENT_DRAW_AFTER);
         });
         
-        __eventReposition = method(_attachedElement, function()
+        __eventReposition = function()
         {
-            event_user(GUI_USER_EVENT_REPOSITION);
-        });
+            //TODO - Improve efficiency
+            
+            if (__scrollbarVert != undefined)
+            {
+                __scrollbarVert.__SetSize();
+            }
+            
+            if (__scrollbarHori != undefined)
+            {
+                __scrollbarHori.__SetSize();
+            }
+            
+            with(__attachedElement)
+            {
+                event_user(GUI_USER_EVENT_REPOSITION);
+            }
+        };
     }
     else
     {
         __eventStep = method(_attachedElement, function()
         {
+            //FIXME - Improve efficiency
+            with(GUI_VARS)
+            {
+                if (__scrollbarVert != undefined)
+                {
+                    __scrollbarVert.__Update();
+                }
+                
+                if (__scrollbarHori != undefined)
+                {
+                    __scrollbarHori.__Update();
+                }
+            }
+            
             funcStep();
         });
         
@@ -132,10 +179,25 @@ function __GuiClassVariables(_attachedElement) constructor
             funcDrawAfter();
         });
         
-        __eventReposition = method(_attachedElement, function()
+        __eventReposition = function()
         {
-            funcReposition();
-        });
+            //TODO - Improve efficiency
+            
+            if (__scrollbarVert != undefined)
+            {
+                __scrollbarVert.__SetSize();
+            }
+            
+            if (__scrollbarHori != undefined)
+            {
+                __scrollbarHori.__SetSize();
+            }
+            
+            with(__attachedElement)
+            {
+                funcReposition();
+            }
+        };
     }
     
     __eventScissorPush = method(_attachedElement, __GuiScissorPushFromElement);

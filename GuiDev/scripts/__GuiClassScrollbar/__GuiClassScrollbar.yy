@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiClassScrollbar",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiClassScrollbar",
+  "parent":{
+    "name":"Classes",
+    "path":"folders/Library/Functions/(System)/Classes.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

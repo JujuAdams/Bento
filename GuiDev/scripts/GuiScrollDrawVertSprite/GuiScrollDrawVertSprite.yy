@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiScrollDrawVertSprite",
   "parent":{
-    "name":"Scrollbar",
-    "path":"folders/Library/Functions/Scrollbar.yy",
+    "name":"OLD",
+    "path":"folders/Library/Functions/Scrollbar/OLD.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
