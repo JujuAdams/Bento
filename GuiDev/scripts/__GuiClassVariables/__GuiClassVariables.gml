@@ -101,20 +101,6 @@ function __GuiClassVariables(_attachedElement) constructor
     {
         __eventStep = method(_attachedElement, function()
         {
-            //FIXME - Improve efficiency
-            with(GUI_VARS)
-            {
-                if (__scrollbarVert != undefined)
-                {
-                    __scrollbarVert.__Update();
-                }
-                
-                if (__scrollbarHori != undefined)
-                {
-                    __scrollbarHori.__Update();
-                }
-            }
-            
             event_user(GUI_USER_EVENT_STEP);
         });
         
@@ -152,20 +138,6 @@ function __GuiClassVariables(_attachedElement) constructor
     {
         __eventStep = method(_attachedElement, function()
         {
-            //FIXME - Improve efficiency
-            with(GUI_VARS)
-            {
-                if (__scrollbarVert != undefined)
-                {
-                    __scrollbarVert.__Update();
-                }
-                
-                if (__scrollbarHori != undefined)
-                {
-                    __scrollbarHori.__Update();
-                }
-            }
-            
             funcStep();
         });
         

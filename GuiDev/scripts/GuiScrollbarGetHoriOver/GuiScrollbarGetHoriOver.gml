@@ -4,5 +4,5 @@
 
 function GuiScrollbarGetHoriOver(_element = self)
 {
-    return (GuiExists(_element) && (__scrollbarHori == undefined))? _element.GUI_VARS.__scrollbarHori.__overScrollbar : false;
+    return (GuiExists(_element) && (__scrollbarHori == undefined))? _element.GUI_VARS.__scrollbarHori.overScrollbar : false;
 }

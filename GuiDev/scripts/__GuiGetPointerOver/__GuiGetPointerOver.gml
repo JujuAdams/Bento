@@ -19,7 +19,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     
     var _stepOrder = __stepOrder;
     var _i = 0;
-    repeat(array_length(_stepOrder)) //FIXME - Prebuild this array
+    repeat(array_length(_stepOrder)) //FIXME - Prebuild this array by making a "pointer over order" feature
     {
         var _method = _stepOrder[_i];
         var _methodFunc = method_get_index(_method);
@@ -46,7 +46,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
                 __inside: _insideScissor,
             });
             
-            var _element = method_get_self(_stepOrder[_i]);
+            var _element = method_get_self(_method);
             with(_element.GUI_VARS)
             {
                 _scissorL = max(_scissorL, _element.guiLeft   + __scissorPadLeft   + __scissorScrollbarLeft  );
@@ -61,22 +61,32 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
         {
             if (_insideScissor)
             {
-                with(method_get_self(_stepOrder[_i]))
+                with(method_get_self(_method))
                 {
-                    if (_holdElementDoesntExist || (_holdElement == self))
+                    if ((_methodFunc == __GuiScrollbarUpdateVert) || (_methodFunc == __GuiScrollbarUpdateHori))
                     {
-                        if (__GuiIsInstance(_element))
+                        if (overScrollbar && (_holdElementDoesntExist || ((_holdElement == __element) && grabHandle))) //FIXME - 
                         {
-                            if (instance_position(_mouseX, _mouseY, self))
-                            {
-                                _element = self; 
-                            }
+                            _element = __element;
                         }
-                        else
+                    }
+                    else
+                    {
+                        if (_holdElementDoesntExist || (_holdElement == self))
                         {
-                            if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
+                            if (__GuiIsInstance(_element))
                             {
-                                _element = self; 
+                                if (instance_position(_mouseX, _mouseY, self))
+                                {
+                                    _element = self; 
+                                }
+                            }
+                            else
+                            {
+                                if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
+                                {
+                                    _element = self; 
+                                }
                             }
                         }
                     }

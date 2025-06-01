@@ -9,23 +9,95 @@ function __GuiClassScrollbarHori(_element) : __GuiClassScrollbar(_element) const
         if (__mirror)
         {
             //Top
-            __barLeft   = _element.guiLeft + __padLeft;
-            __barTop    = _element.guiTop + __padTop;
-            __barRight  = _element.guiRight - __padRight;
-            __barBottom = _element.guiTop + (__padTop + __thickness);
+            barLeft   = _element.guiLeft + __padLeft;
+            barTop    = _element.guiTop + __padTop;
+            barRight  = _element.guiRight - __padRight;
+            barBottom = _element.guiTop + (__padTop + __thickness);
         }
         else
         {
             //Bottom
-            __barLeft   = _element.guiLeft + __padLeft;
-            __barTop    = _element.guiBottom - (__barBottom + __thickness);
-            __barRight  = _element.guiRight - __padRight;
-            __barBottom = _element.guiBottom - __padBottom;
+            barLeft   = _element.guiLeft + __padLeft;
+            barTop    = _element.guiBottom - (barBottom + __thickness);
+            barRight  = _element.guiRight - __padRight;
+            barBottom = _element.guiBottom - __padBottom;
         }
+        
+        barWidth  = barRight - barLeft;
+        barHeight = barBottom - barTop;
+        
+        handleTop    = barTop;
+        handleBottom = barBottom;
+        handleHeight = barHeight;
     }
     
     static __Update = function()
     {
+        var _element = __element;
+        var _cursorX = GuiCursorGetX();
+        var _cursorY = GuiCursorGetY();
         
+        handleWidth = barWidth*clamp(barWidth / GuiScrollGetWidth(_element), 0.1, 1);
+        handleLeft  = lerp(barLeft, barRight - handleWidth, GuiScrollGetParamX(_element));
+        handleRight = handleLeft + handleWidth;
+        
+        if (GuiUsingPointer())
+        {
+            var _rangeHeight = max(1, barWidth - handleWidth);
+            
+            if (grabHandle)
+            {
+                if (GuiPrimaryGetHold(_element))
+                {
+                    var _left = _cursorX + __grabDelta - barLeft;
+                    GuiScrollSetParamX(_left / _rangeHeight, infinity, _element);
+                }
+            }
+            else
+            {
+                overScrollbar = point_in_rectangle(_cursorX, _cursorY, barLeft, barTop, barRight, barBottom);
+                if (overScrollbar)
+                {
+                    overHandle = ((_cursorX >= handleLeft) && (_cursorX <= handleRight));
+                
+                    if (overHandle && GuiPrimaryGetPress(_element))
+                    {
+                        //Allow grabbing of the handle
+                        grabHandle = true;
+                        __grabDelta = handleLeft - _cursorX;
+                    }
+                    else if (GuiPrimaryGetClick(_element))
+                    {
+                        //Otherwise allow a single click to teleport the scroll handle
+                        var _param = GuiScrollGetParamX(_element);
+                        
+                        if (_cursorX > handleRight)
+                        {
+                            _param += (_cursorX - handleRight) / _rangeHeight;
+                        }
+                        else if (_cursorX < handleLeft)
+                        {
+                            _param += (_cursorX - handleLeft) / _rangeHeight;
+                        }
+                        
+                        GuiScrollSetParamX(_param, infinity, _element);
+                    }
+                }
+                else
+                {
+                    //Pointer isn't over the scrollbar at all
+                    overHandle = false;
+                }
+            }
+        }
+        else
+        {
+            overHandle = false;
+        }
+        
+        if (not GuiPrimaryGetHold(_element))
+        {
+            grabHandle = false;
+        }
     }
 }

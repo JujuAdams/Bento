@@ -40,6 +40,8 @@ function GuiScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight, 
             __scissorScrollbarRight = _padLeft + _thickness + _padRight;
         }
         
+        __layer.__stepDirty = true;
+        
         //FIXME - Don't mark the layout as dirty every time
         __layer.__layoutDirty = true;
     }

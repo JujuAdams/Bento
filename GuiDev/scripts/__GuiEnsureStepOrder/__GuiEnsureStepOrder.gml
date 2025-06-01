@@ -88,6 +88,17 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banH
             }
             
             array_push(_stepOrder, __eventScissorPop);
+            
+            //FIXME - Do we want to allow scrolls outside of scissoring?
+            if (__scrollbarHori != undefined)
+            {
+                array_push(_stepOrder, method(__scrollbarHori, __GuiScrollbarUpdateHori));
+            }
+            
+            if (__scrollbarVert != undefined)
+            {
+                array_push(_stepOrder, method(__scrollbarVert, __GuiScrollbarUpdateVert));
+            }
         }
         else
         {

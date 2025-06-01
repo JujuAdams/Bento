@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiScrollbarGetHoriData",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiScrollbarGetHoriData",
+  "parent":{
+    "name":"Scrollbar",
+    "path":"folders/Library/Functions/Scrollbar.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

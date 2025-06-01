@@ -23,7 +23,7 @@ function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = 
                 
                 with(__scrollbarVert)
                 {
-                    if (point_in_rectangle(_pressX, _pressY, __barLeft, __barTop, __barRight, __barBottom))
+                    if (point_in_rectangle(_pressX, _pressY, barLeft, barTop, barRight, barBottom))
                     {
                         return;
                     }
@@ -31,7 +31,7 @@ function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = 
                 
                 with(__scrollbarHori)
                 {
-                    if (point_in_rectangle(_pressX, _pressY, __barLeft, __barTop, __barRight, __barBottom))
+                    if (point_in_rectangle(_pressX, _pressY, barLeft, barTop, barRight, barBottom))
                     {
                         return;
                     }

@@ -2,7 +2,7 @@
 
 /// @param [element=self]
 
-function GuiScrollbarGetVertData(_element = self)
+function GuiScrollbarGetHoriData(_element = self)
 {
     static _nullResult = {
         barLeft:   0,
@@ -20,9 +20,9 @@ function GuiScrollbarGetVertData(_element = self)
         grabHandle:    false,
     };
     
-    if (GuiExists(_element) && (_element.GUI_VARS.__scrollbarVert != undefined))
+    if (GuiExists(_element) && (_element.GUI_VARS.__scrollbarHori != undefined))
     {
-        return _element.GUI_VARS.__scrollbarVert;
+        return _element.GUI_VARS.__scrollbarHori;
     }
     else
     {
