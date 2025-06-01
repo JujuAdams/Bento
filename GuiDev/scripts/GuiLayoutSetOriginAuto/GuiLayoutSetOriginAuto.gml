@@ -8,7 +8,7 @@ function GuiLayoutSetOriginAuto(_element = self)
     
     with(_element.GUI_VARS)
     {
-        if (__GuiIsInstance(__attachedElement) && (not __layoutOriginAuto))
+        if (__elementIsInstance && (not __layoutOriginAuto))
         {
             __layoutOriginAuto = true;
             __layer.__layoutDirty = true;

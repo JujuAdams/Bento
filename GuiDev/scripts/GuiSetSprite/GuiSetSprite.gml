@@ -7,7 +7,7 @@ function GuiSetSprite(_sprite, _element = self)
 {
     if (not GuiExists(_element)) return;
     
-    if (__GuiIsInstance(_element))
+    if (_element.GUI_VARS.__elementIsInstance)
     {
         if (_element.sprite_index != _sprite)
         {

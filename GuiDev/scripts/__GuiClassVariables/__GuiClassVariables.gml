@@ -13,6 +13,7 @@ function __GuiClassVariables(_attachedElement) constructor
     }
     
     __attachedElement = _attachedElement;
+    __elementIsInstance = __GuiIsInstance(_attachedElement);
     
     __layer = undefined;
     
@@ -97,7 +98,7 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __selectOnDestroy = noone;
     
-    if (__GuiIsInstance(_attachedElement))
+    if (__elementIsInstance)
     {
         __eventStep = method(_attachedElement, function()
         {
@@ -206,7 +207,7 @@ function __GuiClassVariables(_attachedElement) constructor
     
     //Output values from the solver. Positions are relative to the left-top of the parent. All four
     //values are subsequently transforms to give us the `layout*` values that are exposed to the user.
-    if (__GuiIsInstance(_attachedElement))
+    if (__elementIsInstance)
     {
         if (GUI_FLOOR_LAYOUT_POSITIONS)
         {
@@ -247,7 +248,7 @@ function __GuiClassVariables(_attachedElement) constructor
     //Origin position, used for setting `guiX` and `guiY`
     __layoutOriginX = 0;
     __layoutOriginY = 0;
-    __layoutOriginAuto = __GuiIsInstance(_attachedElement);
+    __layoutOriginAuto = __elementIsInstance; //Instances default to auto origin
     
     //The "preferred" (ideal) size for the instance. A value of 0 (or less) indicates that this value
     //is unset and should be inferred from some other property.

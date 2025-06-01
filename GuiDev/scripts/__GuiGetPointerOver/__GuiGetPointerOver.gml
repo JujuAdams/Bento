@@ -74,7 +74,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
                     {
                         if (_holdElementDoesntExist || (_holdElement == self))
                         {
-                            if (__GuiIsInstance(self)) //FIXME - Precalculate this
+                            if (GUI_VARS.__elementIsInstance)
                             {
                                 if (instance_position(_mouseX, _mouseY, self))
                                 {
