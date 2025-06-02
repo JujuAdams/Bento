@@ -31,7 +31,7 @@ function GuiTransformSetOffset(_x, _y, _element = self)
             if (__transformOffsetX != _x)
             {
                 __transformOffsetX = _x;
-                __GuiMarkTransformAndScrollDirty(_element);
+                __GuiMarkTransformDirty(_element);
             }
         }
         
@@ -40,7 +40,7 @@ function GuiTransformSetOffset(_x, _y, _element = self)
             if (__transformOffsetY != _y)
             {
                 __transformOffsetY = _y;
-                __GuiMarkTransformAndScrollDirty(_element);
+                __GuiMarkTransformDirty(_element);
             }
         }
     }

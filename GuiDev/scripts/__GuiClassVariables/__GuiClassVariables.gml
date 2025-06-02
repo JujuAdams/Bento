@@ -41,8 +41,8 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __name = undefined;
     
-    __disable = false;
-    __visible = true;
+    __disable     = false;
+    __visible     = true;
     __hoverBanned = false;
     
     __focused          = false;
@@ -60,9 +60,10 @@ function __GuiClassVariables(_attachedElement) constructor
     __childArray     = [];
     __childDrawArray = [];
     
-    __drawOrderDirty          = false;
-    __scrollLimitsDirty       = false;
-    __transformAndScrollDirty = false;
+    __drawOrderDirty    = false;
+    __scrollLimitsDirty = false;
+    __scrollPosDirty    = false;
+    __transformDirty    = false;
     
     __updating = false;
     

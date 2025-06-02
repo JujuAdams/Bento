@@ -2,16 +2,16 @@
 
 /// Must be called in the scope of `__GuiClassLayer`.
 
-function __GuiEnsureTransformAndScroll()
+function __GuiEnsureScroll()
 {
-    var _scrollDirtyArray = __scrollDirtyArray;
-    var _i = array_length(_scrollDirtyArray)-1;
-    repeat(array_length(_scrollDirtyArray))
+    var _scrollAnimatingArray = __scrollAnimatingArray;
+    var _i = array_length(_scrollAnimatingArray)-1;
+    repeat(array_length(_scrollAnimatingArray))
     {
-        var _element = _scrollDirtyArray[_i];
+        var _element = _scrollAnimatingArray[_i];
         if (not GuiExists(_element))
         {
-            array_delete(_scrollDirtyArray, _i, 1);
+            array_delete(_scrollAnimatingArray, _i, 1);
         }
         else
         {
@@ -23,7 +23,7 @@ function __GuiEnsureTransformAndScroll()
                 var _distance = sqrt(_dX*_dX + _dY*_dY);
                 if (_distance <= 0)
                 {
-                    array_delete(_scrollDirtyArray, _i, 1);
+                    array_delete(_scrollAnimatingArray, _i, 1);
                 }
                 else
                 {
@@ -33,7 +33,11 @@ function __GuiEnsureTransformAndScroll()
                     __scrollX += _dX;
                     __scrollY += _dY;
                     
-                    __GuiMarkTransformAndScrollDirty(_element)
+                    if (not __scrollPosDirty)
+                    {
+                        __scrollPosDirty = true;
+                        array_push(__layer.__dirtyScrollPosArray, _element);
+                    }
                 }
             }
         }
@@ -41,39 +45,47 @@ function __GuiEnsureTransformAndScroll()
         --_i;
     }
     
-    var _transformAndScrollDirtyArray = __transformAndScrollDirtyArray;
-    if (array_length(_transformAndScrollDirtyArray) <= 0) return;
+    var _dirtyScrollPosArray = __dirtyScrollPosArray;
+    if (array_length(_dirtyScrollPosArray) <= 0) return;
     
     //Sort from newest instance to oldest instance. This will usually get the following loop to
     //execute from the most senior node to the most junior leaf.
-    array_sort(_transformAndScrollDirtyArray, true);
+    array_sort(_dirtyScrollPosArray, true);
     
-    while(array_length(_transformAndScrollDirtyArray) > 0)
+    while(array_length(_dirtyScrollPosArray) > 0)
     {
-        var _element = array_shift(_transformAndScrollDirtyArray);
+        var _element = array_shift(_dirtyScrollPosArray);
         if (GuiExists(_element))
         {
             var _parent = _element.GUI_VARS.__parent;
             if (not GuiExists(_parent))
             {
                 //No parent, probably the root node?
-                __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _element, 0, 0);
+                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, 0, 0);
             }
             else
             {
                 with(_parent)
                 {
-                    __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _element, GUI_VARS.__scrollX, GUI_VARS.__scrollY);
+                    __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, GUI_VARS.__scrollX, GUI_VARS.__scrollY);
                 }
             }
         }
     }
 }
 
-function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _element, _offsetX, _offsetY)
+function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, _offsetY)
 {
     with(_element.GUI_VARS)
     {
+        if (__scrollPosDirty)
+        {
+            __scrollPosDirty = false;
+            
+            var _index = array_get_index(_dirtyScrollPosArray, _element);
+            if (_index >= 0) array_delete(_dirtyScrollPosArray, _index, 1);
+        }
+        
         var _width  = __solvedWidth;
         var _height = __solvedHeight;
         
@@ -144,35 +156,6 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _elem
             var _yWorld = _topWorld  + __layoutOriginY;
         }
         
-        if (__transformAndScrollDirty)
-        {
-            __transformAndScrollDirty = false;
-            
-            var _index = array_get_index(_transformAndScrollDirtyArray, _element);
-            if (_index >= 0) array_delete(_transformAndScrollDirtyArray, _index, 1);
-            
-            if ((__transformOffsetX != 0) || (__transformOffsetY != 0)
-             || (__transformScaleX  != 1) || (__transformScaleY  != 1)
-             || (__transformAngle   != 0)
-             || (__transformOriginX != undefined) || (__transformOriginY != undefined))
-            {
-                var _originX = _leftWorld + (__transformOriginX ?? _originX);
-                var _originY = _topWorld  + (__transformOriginY ?? _originY);
-                
-                var _cos =  dcos(__transformAngle);
-                var _sin = -dsin(__transformAngle);
-                
-                __transformMatrix = [ __transformScaleX*_cos, __transformScaleX*_sin, 0, 0,
-                                     -__transformScaleY*_sin, __transformScaleY*_cos, 0, 0,
-                                      0, 0, 1, 0,
-                                      _originX - (_originX*__transformScaleX*_cos - _originY*__transformScaleY*_sin), _originY - (_originX*__transformScaleX*_sin + _originY*__transformScaleY*_cos), 0, 1];
-            }
-            else
-            {
-                __transformMatrix = undefined;
-            }
-        }
-        
         //Set final variables ready for the reposition user event
         with(_element)
         {
@@ -199,7 +182,7 @@ function __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _elem
             var _i = 0;
             repeat(array_length(_childArray))
             {
-                __GuiEnsureTransformAndScrollInner(_transformAndScrollDirtyArray, _childArray[_i], _offsetX, _offsetY);
+                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _childArray[_i], _offsetX, _offsetY);
                 ++_i;
             }
         }

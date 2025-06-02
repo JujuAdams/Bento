@@ -31,7 +31,7 @@ function GuiTransformSetScale(_xScale, _yScale, _element = self)
             if (__transformScaleX != _xScale)
             {
                 __transformScaleX = _xScale;
-                __GuiMarkTransformAndScrollDirty(_element);
+                __GuiMarkTransformDirty(_element);
             }
         }
         
@@ -40,7 +40,7 @@ function GuiTransformSetScale(_xScale, _yScale, _element = self)
             if (__transformScaleY != _yScale)
             {
                 __transformScaleY = _yScale;
-                __GuiMarkTransformAndScrollDirty(_element);
+                __GuiMarkTransformDirty(_element);
             }
         }
     }

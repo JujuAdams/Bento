@@ -34,7 +34,7 @@ function GuiTransformSetOrigin(_x, _y, _element = self)
             if (__transformOriginX != _x)
             {
                 __transformOriginX = _x;
-                __GuiMarkTransformAndScrollDirty(_element);
+                __GuiMarkTransformDirty(_element);
             }
         }
         
@@ -43,7 +43,7 @@ function GuiTransformSetOrigin(_x, _y, _element = self)
             if (__transformOriginY != _y)
             {
                 __transformOriginY = _y;
-                __GuiMarkTransformAndScrollDirty(_element);
+                __GuiMarkTransformDirty(_element);
             }
         }
     }

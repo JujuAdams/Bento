@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiEnsureScroll",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiEnsureScroll",
+  "parent":{
+    "name":"Ensure",
+    "path":"folders/Library/Functions/(System)/Ensure.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

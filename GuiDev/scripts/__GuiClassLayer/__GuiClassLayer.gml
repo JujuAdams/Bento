@@ -80,8 +80,6 @@ function __GuiClassLayer(_environment, _name) constructor
     __layoutOrder = [];
     __layoutDirty = true;
     
-    __transformAndScrollDirtyArray = [];
-    __scrollDirtyArray = [];
     
     __stepOrder     = [];
     __stepDirty     = true;
@@ -89,9 +87,11 @@ function __GuiClassLayer(_environment, _name) constructor
     __drawOrder = [];
     __drawDirty = true;
     
-    __dirtyChildOrderArray = [];
-    
+    __dirtyChildOrderArray   = [];
     __dirtyScrollLimitsArray = [];
+    __dirtyScrollPosArray    = [];
+    __dirtyTransformsArray   = [];
+    __scrollAnimatingArray   = [];
     
     __overElement     = noone;
     __overElementSoft = noone;
@@ -272,7 +272,7 @@ function __GuiClassLayer(_environment, _name) constructor
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
         __GuiEnsureScrollLimits();
-        __GuiEnsureTransformAndScroll();
+        __GuiEnsureScroll();
         
         //And we're done
         __GuiLayerTargetPop();
@@ -283,6 +283,7 @@ function __GuiClassLayer(_environment, _name) constructor
         __GuiLayerTargetPush(self);
         
         __GuiEnsureDrawOrder();
+        __GuiEnsureTransforms();
         
         var _drawOrder = __drawOrder;
         var _i = 0;

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiEnsureTransformAndScroll",
+  "%Name":"__GuiEnsureTransforms",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiEnsureTransformAndScroll",
+  "name":"__GuiEnsureTransforms",
   "parent":{
     "name":"Ensure",
     "path":"folders/Library/Functions/(System)/Ensure.yy",

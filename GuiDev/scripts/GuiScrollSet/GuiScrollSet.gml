@@ -24,15 +24,19 @@ function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT
         
         if ((_scrollTargetX == __scrollTargetX) && (_scrollTargetY == __scrollTargetY)) return;
         
-        if (array_get_index(__layer.__scrollDirtyArray, _scroller) < 0)
+        if (array_get_index(__layer.__scrollAnimatingArray, _scroller) < 0)
         {
-            array_push(__layer.__scrollDirtyArray, _scroller);
+            array_push(__layer.__scrollAnimatingArray, _scroller);
         }
         
         __scrollTargetX = _scrollTargetX;
         __scrollTargetY = _scrollTargetY;
         __scrollSpeed   = _scrollSpeed;
         
-        __GuiMarkTransformAndScrollDirty(_scroller)
+        if (not __scrollPosDirty)
+        {
+            __scrollPosDirty = true;
+            array_push(__layer.__dirtyScrollPosArray, _scroller);
+        }
     }
 }

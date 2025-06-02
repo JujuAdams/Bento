@@ -30,7 +30,7 @@ function GuiTransformSetAngle(_angle, _element = self)
             if (__transformAngle != _angle)
             {
                 __transformAngle = _angle;
-                __GuiMarkTransformAndScrollDirty(_element);
+                __GuiMarkTransformDirty(_element);
             }
         }
     }
