@@ -15,7 +15,12 @@ function __GuiClassVariables(_attachedElement) constructor
     __attachedElement = _attachedElement;
     __elementIsInstance = __GuiIsInstance(_attachedElement);
     
+    __name  = undefined;
     __layer = undefined;
+    
+    __disable        = false;
+    __visible        = true;
+    __hoverableIndex = undefined;
     
     __transformMatrix  = undefined;
     __transformOriginX = undefined;
@@ -26,9 +31,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __transformScaleY  = 1;
     __transformAngle   = 0;
     
-    __overState    = __GUI_OFF;
-    __primaryState = __GUI_OFF;
-    __click        = false;
+    __overState      = __GUI_OFF;
+    __primaryState   = __GUI_OFF;
+    __click          = false;
     
     __parent     = noone;
     __localIndex = 0;
@@ -38,12 +43,6 @@ function __GuiClassVariables(_attachedElement) constructor
     __buttonType   = GUI_BUTTON_NEVER;
     __executesStep = false;
     __drawAfter    = false;
-    
-    __name = undefined;
-    
-    __disable     = false;
-    __visible     = true;
-    __hoverBanned = false;
     
     __focused          = false;
     __focusType        = GUI_FOCUS_POINTER_CANCEL_ALWAYS;
@@ -72,6 +71,11 @@ function __GuiClassVariables(_attachedElement) constructor
     __scissorPadTop          = 0;
     __scissorPadRight        = 0;
     __scissorPadBottom       = 0;
+    __scissorWorldLeft       = -infinity
+    __scissorWorldTop        = -infinity
+    __scissorWorldRight      =  infinity
+    __scissorWorldBottom     =  infinity
+    __scissorWorldVisible    = true;
     __scissorScrollbarLeft   = 0;
     __scissorScrollbarTop    = 0;
     __scissorScrollbarRight  = 0;

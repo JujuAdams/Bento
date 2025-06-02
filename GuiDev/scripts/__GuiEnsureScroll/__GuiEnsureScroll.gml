@@ -61,20 +61,25 @@ function __GuiEnsureScroll()
             if (not GuiExists(_parent))
             {
                 //No parent, probably the root node?
-                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, 0, 0);
+                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element,
+                                             0, 0,
+                                             -infinity, -infinity, infinity, infinity, true);
             }
             else
             {
-                with(_parent)
+                with(_parent.GUI_VARS)
                 {
-                    __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, GUI_VARS.__scrollX, GUI_VARS.__scrollY);
+                    //FIXME - Refactor to pass down the scissor parent
+                    __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element,
+                                                 __scrollX, __scrollY,
+                                                 __scissorWorldLeft, __scissorWorldTop, __scissorWorldRight, __scissorWorldBottom, __scissorWorldVisible);
                 }
             }
         }
     }
 }
 
-function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, _offsetY)
+function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisible)
 {
     with(_element.GUI_VARS)
     {
@@ -167,7 +172,28 @@ function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, 
             guiY      = _yWorld;
             guiWidth  = _width;
             guiHeight = _height;
+            
         }
+        
+        if (_scissorVisible)
+        {
+            _scissorVisible = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
+                                                     _scissorL, _scissorT, _scissorR, _scissorB);
+        }
+        
+        if (__scissorEnabled)
+        {
+            _scissorL = max(_scissorL, _leftWorld   + __scissorPadLeft   + __scissorScrollbarLeft  );
+            _scissorT = max(_scissorT, _topWorld    + __scissorPadTop    + __scissorScrollbarTop   );
+            _scissorR = min(_scissorR, _rightWorld  - __scissorPadRight  - __scissorScrollbarRight );
+            _scissorB = min(_scissorB, _bottomWorld - __scissorPadBottom - __scissorScrollbarBottom);
+        }
+        
+        __scissorWorldLeft    = _scissorL;
+        __scissorWorldTop     = _scissorT;
+        __scissorWorldRight   = _scissorR;
+        __scissorWorldBottom  = _scissorB;
+        __scissorWorldVisible = _scissorVisible;
         
         __eventReposition();
         
@@ -182,7 +208,7 @@ function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, 
             var _i = 0;
             repeat(array_length(_childArray))
             {
-                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _childArray[_i], _offsetX, _offsetY);
+                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _childArray[_i], _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisible);
                 ++_i;
             }
         }

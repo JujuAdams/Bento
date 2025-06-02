@@ -10,29 +10,13 @@ function __GuiEnsureStepOrder()
     if (not __stepDirty) return;
     __stepDirty = false;
     
+    __hoverableDirty = true; //FIXME
+    
     array_resize(__stepOrder, 0);
-    
-    //Determine where to start the Step order processing
-    //FIXME - Walk up focus stack to find a pointer constrain element rather than only looking at the top one
-    var _focusTop = __focusTop;
-    if (GuiExists(_focusTop) && (__navDirectional || (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)))
-    {
-        var _root = _focusTop;
-    }
-    else
-    {
-        var _root = __rootElement;
-    }
-    
-    //FIXME - Ban hover for elements outside of the top focus element. Right now this code won't add
-    //        unfocused elements to the Step order but that that doesn't stop unfocused elements from
-    //        being hovered.
-    __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, false, 0);
-    
-    return __stepOrder;
+    __GuiEnsureStepOrderInner(self, __stepOrder, __GetFocusRoot(), __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, 0);
 }
 
-function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banHover, _localIndex)
+function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _localIndex)
 {
     with(_element.GUI_VARS)
     {
@@ -40,7 +24,6 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banH
         
         if (__disable)
         {
-            __hoverBanned = true; //Disabled elements always ban hover, understandably
             __executesStep = false;
             return;
         }
@@ -53,29 +36,6 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banH
             array_push(_stepOrder, __eventStep);
         }
         
-        if (_banHover)
-        {
-            //If our parent is banning hover then ban hover!
-            __hoverBanned = true;
-        }
-        else if (__focused)
-        {
-            //If we're focused then only ban hover if we haVe children
-            //Our children also will *not* be enclosed because we're focused
-            __hoverBanned = (array_length(__childArray) > 0);
-        }
-        else
-        {
-            //Otherwise don't ban hover
-            __hoverBanned = false;
-            
-            //Enclose our children if the enclose type matches the nav type
-            if (__focusEncloseType & _navType)
-            {
-                _banHover = true;
-            }
-        }
-        
         //Then move on to our children
         var _array = __childArray;
         if (__scissorEnabled)
@@ -85,13 +45,13 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banH
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _banHover, _i);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _i);
                 ++_i;
             }
             
             array_push(_stepOrder, __eventScissorPop);
             
-            //FIXME - Do we want to allow scroll behaviour outside of scissoring?
+            //FIXME - Do we want to allow scrollbar behaviour outside of scissoring?
             if (__scrollbarHori != undefined)
             {
                 array_push(_stepOrder, method(__scrollbarHori, __GuiScrollbarUpdateHori));
@@ -108,7 +68,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banH
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _banHover, _i);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _i);
                 ++_i;
             }
         }

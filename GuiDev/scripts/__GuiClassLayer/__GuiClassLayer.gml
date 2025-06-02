@@ -80,9 +80,12 @@ function __GuiClassLayer(_environment, _name) constructor
     __layoutOrder = [];
     __layoutDirty = true;
     
+    __stepOrder = [];
+    __stepDirty = true;
     
-    __stepOrder     = [];
-    __stepDirty     = true;
+    __hoverableOrder = [];
+    __hoverableDirty = true;
+    __hoverableRegenCount = 0;
     
     __drawOrder = [];
     __drawDirty = true;
@@ -185,6 +188,7 @@ function __GuiClassLayer(_environment, _name) constructor
         //catches any weird stuff the dev might've done between calls to `GuiSystemStep()`
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
+        __GuiEnsureHoverableOrder();
         
         if (not _ensureOnly)
         {
@@ -209,8 +213,10 @@ function __GuiClassLayer(_environment, _name) constructor
                 {
                     if (__mouseHold) __primaryState |= __GUI_START;
                     
-                    if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
-                    __GuiStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
+                    if (not GuiGetHoverable(__holdElement, false))
+                    {
+                        __GuiStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
+                    }
                     
                     //Detect clicking off of a pop-up
                     if ((__primaryState == __GUI_START)
@@ -294,5 +300,20 @@ function __GuiClassLayer(_environment, _name) constructor
         }
         
         __GuiLayerTargetPop();
+    }
+    
+    static __GetFocusRoot = function()
+    {
+        //Determine where to start the Step order processing
+        //FIXME - Walk up focus stack to find a pointer constrain element rather than only looking at the top one
+        var _focusTop = __focusTop;
+        if (GuiExists(_focusTop) && (__navDirectional || (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)))
+        {
+            return _focusTop;
+        }
+        else
+        {
+            return __rootElement;
+        }
     }
 }

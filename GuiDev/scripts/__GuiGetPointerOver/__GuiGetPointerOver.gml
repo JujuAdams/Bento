@@ -5,6 +5,39 @@
 
 function __GuiGetPointerOver(_mouseX, _mouseY)
 {
+    var _hoverableOrder = __hoverableOrder;
+    var _hoverableCount = array_length(_hoverableOrder);
+    
+    var _i = _hoverableCount-1;
+    repeat(_hoverableCount)
+    {
+        with(_hoverableOrder[_i])
+        {
+            //FIXME - Restore detection for scrollbars
+            
+            if (GUI_VARS.__elementIsInstance)
+            {
+                if (instance_position(_mouseX, _mouseY, self))
+                {
+                    return self; 
+                }
+            }
+            else
+            {
+                if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
+                {
+                    return self; 
+                }
+            }
+        }
+        
+        --_i;
+    }
+}
+
+/*
+function __GuiGetPointerOver(_mouseX, _mouseY)
+{
     var _scissorStack  = __GuiScissorReset();
     var _scissorL      = -infinity;
     var _scissorT      = -infinity;
@@ -99,3 +132,4 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     
     return _result;
 }
+*/

@@ -64,7 +64,6 @@
   "resources":[
     {"id":{"name":"GuiCreateViaJSON Format","path":"notes/GuiCreateViaJSON Format/GuiCreateViaJSON Format.yy",},},
     {"id":{"name":"Note4","path":"notes/Note4/Note4.yy",},},
-    {"id":{"name":"TODO","path":"notes/TODO/TODO.yy",},},
     {"id":{"name":"oExampleButton","path":"objects/oExampleButton/oExampleButton.yy",},},
     {"id":{"name":"oExampleCarousel","path":"objects/oExampleCarousel/oExampleCarousel.yy",},},
     {"id":{"name":"oExampleContextMenu","path":"objects/oExampleContextMenu/oExampleContextMenu.yy",},},
@@ -89,6 +88,7 @@
     {"id":{"name":"__GuiConfig","path":"scripts/__GuiConfig/__GuiConfig.yy",},},
     {"id":{"name":"__GuiConstants","path":"scripts/__GuiConstants/__GuiConstants.yy",},},
     {"id":{"name":"__GuiEnsureDrawOrder","path":"scripts/__GuiEnsureDrawOrder/__GuiEnsureDrawOrder.yy",},},
+    {"id":{"name":"__GuiEnsureHoverableOrder","path":"scripts/__GuiEnsureHoverableOrder/__GuiEnsureHoverableOrder.yy",},},
     {"id":{"name":"__GuiEnsureLayout","path":"scripts/__GuiEnsureLayout/__GuiEnsureLayout.yy",},},
     {"id":{"name":"__GuiEnsureScroll","path":"scripts/__GuiEnsureScroll/__GuiEnsureScroll.yy",},},
     {"id":{"name":"__GuiEnsureScrollLimits","path":"scripts/__GuiEnsureScrollLimits/__GuiEnsureScrollLimits.yy",},},

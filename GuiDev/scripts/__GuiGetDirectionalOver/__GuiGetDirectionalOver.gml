@@ -71,6 +71,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
             //the previous instance. This ensures non-visible instances never get selected but that it's possible
             //to navigate to visually hidden instances inside the scroller.
             var _prevScrollParent = __GuiScrollFindParent(_prevElement);
+            //FIXME - This should be the joint scissor and scroll parent
             if (not GuiGetHoverable(_nextElement, (_prevScrollParent != __GuiScrollFindParent(_nextElement))))
             {
                 _nextElement = noone;

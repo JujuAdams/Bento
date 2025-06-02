@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiEnsureHoverableOrder",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiEnsureHoverableOrder",
+  "parent":{
+    "name":"Ensure",
+    "path":"folders/Library/Functions/(System)/Ensure.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
