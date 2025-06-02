@@ -42,9 +42,11 @@ function GuiScrollbarSetHori(_mirror, _thickness, _padLeft, _padTop, _padRight, 
             __scissorScrollbarBottom = _overlap? 0 : _padTop + _thickness + _padBottom;
         }
         
-        __layer.__stepDirty = true;
-        
-        //FIXME - Don't mark the layout as dirty every time
-        __layer.__layoutDirty = true;
+        //FIXME - Don't mark the as dirty every time
+        with(__layer)
+        {
+            __layoutDirty = true;
+            __stepDirty   = true;
+        }
     }
 }

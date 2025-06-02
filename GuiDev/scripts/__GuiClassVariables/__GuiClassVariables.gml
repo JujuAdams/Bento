@@ -30,8 +30,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __primaryState = __GUI_OFF;
     __click        = false;
     
-    __parent   = noone;
-    __priority = 0;
+    __parent     = noone;
+    __localIndex = 0;
+    __drawDepth  = 0;
     
     __forceStep    = false;
     __buttonType   = GUI_BUTTON_NEVER;
@@ -56,9 +57,10 @@ function __GuiClassVariables(_attachedElement) constructor
     __raycastDisableHori = false;
     __raycastDisableVert = false;
     
-    __childArray = [];
+    __childArray     = [];
+    __childDrawArray = [];
     
-    __childOrderDirty         = false;
+    __drawOrderDirty          = false;
     __scrollLimitsDirty       = false;
     __transformAndScrollDirty = false;
     

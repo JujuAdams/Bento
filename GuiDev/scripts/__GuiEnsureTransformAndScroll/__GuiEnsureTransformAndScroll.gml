@@ -44,8 +44,6 @@ function __GuiEnsureTransformAndScroll()
     var _transformAndScrollDirtyArray = __transformAndScrollDirtyArray;
     if (array_length(_transformAndScrollDirtyArray) <= 0) return;
     
-    __GuiEnsureChildOrder();
-    
     //Sort from newest instance to oldest instance. This will usually get the following loop to
     //execute from the most senior node to the most junior leaf.
     array_sort(_transformAndScrollDirtyArray, true);

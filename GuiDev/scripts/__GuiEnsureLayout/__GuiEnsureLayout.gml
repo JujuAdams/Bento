@@ -10,8 +10,6 @@ function __GuiEnsureLayout()
     var _layoutOrder = __layoutOrder;
     array_resize(_layoutOrder, 0);
     
-    __GuiEnsureChildOrder();
-    
     //Ensure that our layout order is up-to-date
     __GuiEnsureLayerOrderInner(_layoutOrder, __rootElement);
     var _count = array_length(_layoutOrder);

@@ -42,9 +42,11 @@ function GuiScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight, 
             __scissorScrollbarRight = _overlap? 0 : _padLeft + _thickness + _padRight;
         }
         
-        __layer.__stepDirty = true;
-        
-        //FIXME - Don't mark the layout as dirty every time
-        __layer.__layoutDirty = true;
+        //FIXME - Don't mark the as dirty every time
+        with(__layer)
+        {
+            __layoutDirty = true;
+            __stepDirty   = true;
+        }
     }
 }

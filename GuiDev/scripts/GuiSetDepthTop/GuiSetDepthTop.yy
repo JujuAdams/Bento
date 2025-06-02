@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiSetPriorityAbove",
+  "%Name":"GuiSetDepthTop",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiSetPriorityAbove",
+  "name":"GuiSetDepthTop",
   "parent":{
-    "name":"Priority",
-    "path":"folders/Library/Functions/Priority.yy",
+    "name":"Draw Order",
+    "path":"folders/Library/Functions/Draw Order.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

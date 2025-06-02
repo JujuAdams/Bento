@@ -35,8 +35,9 @@ function GuiSetParent(_parent, _target = self)
         with(_parent)
         {
             array_push(GUI_VARS.__childArray, _target);
+            array_push(GUI_VARS.__childDrawArray, _target);
         
-            __GuiMarkChildOrderDirty(self);
+            __GuiMarkDrawOrderDirty(self);
             GuiScrollLimitsMarkDirty(self);
         }
     }

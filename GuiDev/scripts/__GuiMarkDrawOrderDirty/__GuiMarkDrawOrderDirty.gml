@@ -2,16 +2,18 @@
 
 /// @param parent
 
-function __GuiMarkChildOrderDirty(_parent)
+function __GuiMarkDrawOrderDirty(_parent)
 {
     if (not GuiExists(_parent)) return;
     
     with(_parent.GUI_VARS)
     {
-        if (not __childOrderDirty)
+        if (not __drawOrderDirty)
         {
-            __childOrderDirty = true;
+            __drawOrderDirty = true;
             array_push(__layer.__dirtyChildOrderArray, _parent);
+            
+            __layer.__drawDirty = true;
         }
     }
 }

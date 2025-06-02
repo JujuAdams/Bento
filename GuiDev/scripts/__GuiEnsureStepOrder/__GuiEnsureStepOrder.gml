@@ -24,18 +24,20 @@ function __GuiEnsureStepOrder()
         var _root = __rootElement;
     }
     
-    //FIXME - Ban hover for elements outside of the top focus element
-    
-    __GuiEnsureChildOrder();
-    __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, false);
+    //FIXME - Ban hover for elements outside of the top focus element. Right now this code won't add
+    //        unfocused elements to the Step order but that that doesn't stop unfocused elements from
+    //        being hovered.
+    __GuiEnsureStepOrderInner(self, __stepOrder, _root, __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, false, 0);
     
     return __stepOrder;
 }
 
-function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banHover)
+function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banHover, _localIndex)
 {
     with(_element.GUI_VARS)
     {
+        __localIndex = _localIndex;
+        
         if (__disable)
         {
             __hoverBanned = true; //Disabled elements always ban hover, understandably
@@ -83,13 +85,13 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banH
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _banHover);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _banHover, _i);
                 ++_i;
             }
             
             array_push(_stepOrder, __eventScissorPop);
             
-            //FIXME - Do we want to allow scrolls outside of scissoring?
+            //FIXME - Do we want to allow scroll behaviour outside of scissoring?
             if (__scrollbarHori != undefined)
             {
                 array_push(_stepOrder, method(__scrollbarHori, __GuiScrollbarUpdateHori));
@@ -106,7 +108,7 @@ function __GuiEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _banH
             var _i = 0;
             repeat(array_length(_array))
             {
-                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _banHover);
+                __GuiEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType, _banHover, _i);
                 ++_i;
             }
         }

@@ -1,0 +1,39 @@
+// Feather disable all
+
+/// @param index
+/// @param [element=self]
+
+function GuiSetIndex(_index, _element = self)
+{
+    var _parent = GuiGetParent(1, _element);
+    if (not GuiExists(_parent)) return undefined;
+    
+    var _array = _parent.GUI_VARS.__childArray;
+    var _foundIndex = array_get_index(_array, _element);
+    if (_foundIndex < 0)
+    {
+        //?!
+        
+        if (GUI_RUNNING_FROM_IDE)
+        {
+            __GuiError("Could not find child within parent. Please report this error");
+        }
+        
+        return;
+    }
+    
+    _index = clamp(_index, 0, array_length(_array)-1);
+    if (_foundIndex == _index) return;
+    
+    array_delete(_array, _foundIndex, 1);
+    array_insert(_array, _index, _element);
+    
+    with(_element.GUI_VARS.__layer)
+    {
+        __layoutDirty = true;
+        __stepDirty   = true;
+        __drawDirty   = true;
+    }
+    
+    __GuiMarkDrawOrderDirty(_parent);
+}

@@ -1,11 +1,11 @@
 // Feather disable all
 
-/// Sets the priority of an instance to be at the top of its siblings.
+/// Sets the local depth of an instance to be at the top of its siblings.
 /// 
 /// @param [element=self]
 /// @param [delta=1]
 
-function GuiSetPriorityTop(_element = self, _delta = 1)
+function GuiSetDepthTop(_element = self, _delta = 1)
 {
     if (not GuiExists(_element)) return;
     
@@ -20,12 +20,12 @@ function GuiSetPriorityTop(_element = self, _delta = 1)
     {
         if (GuiExists(_array[_i]))
         {
-            GuiSetPriority(_array[_i].__priority + _delta, _element);
+            GuiSetDepth(_array[_i].__drawDepth - _delta, _element);
             return;
         }
         
         ++_i;
     }
     
-    GuiSetPriority(0, _element);
+    GuiSetDepth(0, _element);
 }

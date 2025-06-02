@@ -13,7 +13,13 @@ function __GuiRemoveParent(_child)
     
     if (GuiExists(_parent))
     {
-        var _array = _parent.GUI_VARS.__childArray;
+        var _parentVars = _parent.GUI_VARS;
+        
+        var _array = _parentVars.__childArray;
+        var _index = array_get_index(_array, _child);
+        if (_index >= 0) array_delete(_array, _index, 1);
+        
+        var _array = _parentVars.__childDrawArray;
         var _index = array_get_index(_array, _child);
         if (_index >= 0) array_delete(_array, _index, 1);
     }

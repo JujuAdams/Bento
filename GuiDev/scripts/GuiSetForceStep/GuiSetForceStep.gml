@@ -13,6 +13,5 @@ function GuiSetForceStep(_state, _element = self)
         __forceStep = _state;
         
         __layer.__stepDirty = true;
-        __layer.__drawDirty = true;
     }
 }

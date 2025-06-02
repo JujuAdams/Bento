@@ -13,6 +13,5 @@ function GuiSetButton(_buttonType, _element = self)
         __buttonType = _buttonType;
         
         __layer.__stepDirty = true;
-        __layer.__drawDirty = true;
     }
 }

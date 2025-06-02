@@ -7,12 +7,54 @@
 
 function __GuiEnsureDrawOrder()
 {
-    if (not __drawDirty) return;
+    //Function to call per element with a dirty local draw order
+    static _funcForEach = function(_element)
+    {
+        static _funcSort = function(_a, _b)
+        {
+            _a = _a.GUI_VARS;
+            _b = _b.GUI_VARS;
+            
+            var _delta = (_a.__drawDepth - _b.__drawDepth);
+            if (_delta < 0)
+            {
+                return 1;
+            }
+            else if (_delta > 0)
+            {
+                return -1;
+            }
+            else
+            {
+                //Fall back on the Step order
+                return sign(_a.__localIndex - _b.__localIndex);
+            }
+        }
+        
+        with(_element.GUI_VARS)
+        {
+            if (__drawOrderDirty)
+            {
+                __drawOrderDirty = false;
+                array_sort(__childDrawArray, _funcSort);
+            }
+        }
+    }
     
-    array_resize(__drawOrder, 0);
+    //Don't do anything if nothing is dirty!
+    if (not __drawDirty) return;
     __drawDirty = false;
     
-    __GuiEnsureChildOrder();
+    //Update the local draw order for dirty elements
+    if (array_length(__dirtyChildOrderArray) > 0)
+    {
+        __GuiEnsureStepOrder();
+        array_foreach(__dirtyChildOrderArray, _funcForEach);
+        array_resize(__dirtyChildOrderArray, 0);
+    }
+    
+    //Recursively build the global draw order
+    array_resize(__drawOrder, 0);
     __GuiEnsureDrawOrderInner(__drawOrder, __rootElement);
 }
 
@@ -36,7 +78,7 @@ function __GuiEnsureDrawOrderInner(_drawOrder, _element)
         if (_function != undefined) array_push(_drawOrder, method(_element, _function));
         
         //Add children created inside the parent to the Draw order
-        var _array = __childArray;
+        var _array = __childDrawArray;
         var _i = 0;
         repeat(array_length(_array))
         {

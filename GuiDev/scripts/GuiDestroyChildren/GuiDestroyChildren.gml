@@ -22,6 +22,6 @@ function GuiDestroyChildren(_parent = self)
         array_resize(_array, 0);
         
         //No children = No problem
-        __childOrderDirty = false;
+        __drawOrderDirty = false;
     }
 }
