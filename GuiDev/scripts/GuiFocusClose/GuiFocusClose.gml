@@ -10,7 +10,7 @@ function GuiFocusClose(_element = self)
     {
         if (__focused)
         {
-            _layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+            __layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
             
             var _focusStack = __layer.__focusStack;
             var _index = array_get_index(_focusStack, _element);

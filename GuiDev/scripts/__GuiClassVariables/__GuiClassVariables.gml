@@ -145,7 +145,15 @@ function __GuiClassVariables(_attachedElement) constructor
         {
             if (instance_position(_mouseX, _mouseY, self))
             {
-                return self;
+                var _guiVars = GUI_VARS;
+                if (point_in_rectangle(_mouseX, _mouseY, _guiVars.__scissorWorldLeft, _guiVars.__scissorWorldTop, _guiVars.__scissorWorldRight, _guiVars.__scissorWorldBottom))
+                {
+                    return self;
+                }
+                else
+                {
+                    return undefined;
+                }
             }
             else
             {
@@ -194,7 +202,15 @@ function __GuiClassVariables(_attachedElement) constructor
         {
             if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
             {
-                return self;
+                var _guiVars = GUI_VARS;
+                if (point_in_rectangle(_mouseX, _mouseY, _guiVars.__scissorWorldLeft, _guiVars.__scissorWorldTop, _guiVars.__scissorWorldRight, _guiVars.__scissorWorldBottom))
+                {
+                    return self;
+                }
+                else
+                {
+                    return undefined;
+                }
             }
             else
             {

@@ -183,6 +183,8 @@ function __GuiClassLayer(_environment, _name) constructor
         //catches any weird stuff the dev might've done between calls to `GuiSystemStep()`
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
+        __GuiEnsureScrollLimits();
+        __GuiEnsureScroll();
         __GuiEnsureHoverableOrder();
         
         if (not _ensureOnly)
