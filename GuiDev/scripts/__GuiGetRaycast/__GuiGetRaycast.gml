@@ -42,7 +42,7 @@ function __GuiGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = u
                     if (_weight < _minWeight)
                     {
                         //FIXME - This should be the joint scissor and scroll parent
-                        if (GuiGetHoverable(self, (not GuiExists(_scrollParent)) || (_scrollParent != __GuiScrollFindParent(self))))
+                        if (__GuiGetHoverableInternal(self, (not GuiExists(_scrollParent)) || (_scrollParent != __GuiScrollFindParent(self))))
                         {
                             _element = self;
                             _minWeight = _weight;

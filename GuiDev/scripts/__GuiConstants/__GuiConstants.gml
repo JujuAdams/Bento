@@ -16,6 +16,8 @@
 
 #macro GUI_RUNNING_FROM_IDE  (GM_build_type == "run")
 
+#macro GUI_NO_ELEMENT  noone
+
 #macro GUI_BUTTON_NEVER        0b00
 #macro GUI_BUTTON_POINTER      0b01
 #macro GUI_BUTTON_DIRECTIONAL  0b10

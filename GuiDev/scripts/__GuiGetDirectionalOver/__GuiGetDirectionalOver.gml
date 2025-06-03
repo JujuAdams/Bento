@@ -15,11 +15,11 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
     _excludeArray[0] = _prevElement;
     var _nextElement = GUI_NO_ELEMENT;
     
-    if (not GuiGetHoverable(_prevElement, false))
+    if (not __GuiGetHoverableInternal(_prevElement, false))
     {
-        //The instance we were previously highlighting is no longer valid (see GuiGetHoverable())
+        //The instance we were previously highlighting is no longer valid (see __GuiGetHoverableInternal())
         
-        if (GuiGetHoverable(__overElementSoft, false))
+        if (__GuiGetHoverableInternal(__overElementSoft, false))
         {
             //Choose the soft selection if possible
             _nextElement = __overElementSoft;
@@ -72,7 +72,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
             //to navigate to visually hidden instances inside the scroller.
             var _prevScrollParent = __GuiScrollFindParent(_prevElement);
             //FIXME - This should be the joint scissor and scroll parent
-            if (not GuiGetHoverable(_nextElement, (_prevScrollParent != __GuiScrollFindParent(_nextElement))))
+            if (not __GuiGetHoverableInternal(_nextElement, (_prevScrollParent != __GuiScrollFindParent(_nextElement))))
             {
                 _nextElement = GUI_NO_ELEMENT;
             }

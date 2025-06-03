@@ -208,7 +208,7 @@ function __GuiClassLayer(_environment, _name) constructor
                     if (__mouseHold) __primaryState |= __GUI_START;
                     
                     //Start hovering an element if we're not currently holding an element
-                    if (not GuiGetHoverable(__holdElement, false))
+                    if (not __GuiGetHoverableInternal(__holdElement, false))
                     {
                         __GuiStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
                     }
@@ -246,7 +246,7 @@ function __GuiClassLayer(_environment, _name) constructor
                     if (__directionalHold) __primaryState |= __GUI_START;
                     
                     //If the held element cannot be held then proactively reset the state variable
-                    if (not GuiGetHoverable(__holdElement, false)) __holdElement = GUI_NO_ELEMENT;
+                    if (not __GuiGetHoverableInternal(__holdElement, false)) __holdElement = GUI_NO_ELEMENT;
                     
                     //Move the cursor and hover a new element (maybe)
                     __GuiStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));

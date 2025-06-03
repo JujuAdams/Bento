@@ -7,6 +7,11 @@
 
 function GuiGetHoverable(_element = self, _checkVisible = true)
 {
+    return __GuiGetHoverableInternal(_element, _checkVisible);
+}
+
+function __GuiGetHoverableInternal(_element, _checkVisible)
+{
     if (not GuiExists(_element)) return false;
     
     with(_element.GUI_VARS)

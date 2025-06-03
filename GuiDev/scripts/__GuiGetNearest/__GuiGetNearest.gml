@@ -24,7 +24,7 @@ function __GuiGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
         {
             if (array_get_index(_excludeArray, self) < 0)
             {
-                if (GuiGetHoverable(self, true))
+                if (__GuiGetHoverableInternal(self, true))
                 {
                     var _distance = point_distance(0.5*(guiLeft + guiRight), 0.5*(guiTop + guiBottom), _x, _y);
                     if (_distance < _nearestDistance)
