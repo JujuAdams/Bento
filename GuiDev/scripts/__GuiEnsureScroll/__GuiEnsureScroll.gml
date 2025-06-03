@@ -4,6 +4,7 @@
 
 function __GuiEnsureScroll()
 {
+    //Animate all active scrolls
     var _scrollAnimatingArray = __scrollAnimatingArray;
     var _i = array_length(_scrollAnimatingArray)-1;
     repeat(array_length(_scrollAnimatingArray))
@@ -48,9 +49,8 @@ function __GuiEnsureScroll()
     var _dirtyScrollPosArray = __dirtyScrollPosArray;
     if (array_length(_dirtyScrollPosArray) <= 0) return;
     
-    //Sort from newest instance to oldest instance. This will usually get the following loop to
-    //execute from the most senior node to the most junior leaf.
-    array_sort(_dirtyScrollPosArray, true);
+    //TODO - Sort from newest instance to oldest instance. This will usually get the following loop to
+    //       execute from the most senior node to the most junior leaf.
     
     while(array_length(_dirtyScrollPosArray) > 0)
     {
@@ -63,7 +63,8 @@ function __GuiEnsureScroll()
                 //No parent, probably the root node?
                 __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element,
                                              0, 0,
-                                             -infinity, -infinity, infinity, infinity, true);
+                                             -infinity, -infinity, infinity, infinity,
+                                             GUI_VISIBLE_FULL);
             }
             else
             {
@@ -72,14 +73,25 @@ function __GuiEnsureScroll()
                     //FIXME - Refactor to pass down the scissor parent
                     __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element,
                                                  __scrollX, __scrollY,
-                                                 __scissorWorldLeft, __scissorWorldTop, __scissorWorldRight, __scissorWorldBottom, __scissorWorldVisible);
+                                                 __scissorWorldLeft, __scissorWorldTop, __scissorWorldRight, __scissorWorldBottom,
+                                                 __scissorVisibility);
                 }
             }
         }
     }
 }
 
-function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisible)
+/// @param dirtyScrollPosArray
+/// @param element
+/// @param offsetX
+/// @param offsetY
+/// @param scissorLeft
+/// @param scissorTop
+/// @param scissorRight
+/// @param scissorBottom
+/// @param scissorVisibility
+
+function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility)
 {
     with(_element.GUI_VARS)
     {
@@ -175,10 +187,10 @@ function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, 
             
         }
         
-        if (_scissorVisible)
+        if (_scissorVisibility != GUI_VISIBLE_NONE)
         {
-            _scissorVisible = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
-                                                     _scissorL, _scissorT, _scissorR, _scissorB);
+            _scissorVisibility = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
+                                                        _scissorL, _scissorT, _scissorR, _scissorB);
         }
         
         if (__scissorEnabled)
@@ -189,11 +201,11 @@ function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, 
             _scissorB = min(_scissorB, _bottomWorld - __scissorPadBottom - __scissorScrollbarBottom);
         }
         
-        __scissorWorldLeft    = _scissorL;
-        __scissorWorldTop     = _scissorT;
-        __scissorWorldRight   = _scissorR;
-        __scissorWorldBottom  = _scissorB;
-        __scissorWorldVisible = _scissorVisible;
+        __scissorWorldLeft   = _scissorL;
+        __scissorWorldTop    = _scissorT;
+        __scissorWorldRight  = _scissorR;
+        __scissorWorldBottom = _scissorB;
+        __scissorVisibility  = _scissorVisibility;
         
         __eventReposition();
         
@@ -208,7 +220,7 @@ function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, 
             var _i = 0;
             repeat(array_length(_childArray))
             {
-                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _childArray[_i], _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisible);
+                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _childArray[_i], _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility);
                 ++_i;
             }
         }

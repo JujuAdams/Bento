@@ -33,6 +33,10 @@
 #macro GUI_LAYOUT_GRID  2
 #macro GUI_LAYOUT_TEXT  3
 
+//As per GameMaker's native `rectangle_in_rectangle()` function
+#macro GUI_VISIBLE_NONE     0
+#macro GUI_VISIBLE_FULL     1
+#macro GUI_VISIBLE_PARTIAL  2
 
 #macro GUI_AXIS_X  0
 #macro GUI_AXIS_Y  1

@@ -38,7 +38,7 @@ function __GuiGetScrollDelta(_element = self)
                             var _parR = _parent.guiRight;
                         }
                         
-                        if (_instR - _instL > __solvedWidth)
+                        if (_instR - _instL > _parR - _parL)
                         {
                             //Try to place the instance in the middle of the parent
                             _dX = (0.5*(_parL + _parR) - 0.5*(_instL + _instR)) - __scrollX;
@@ -83,7 +83,7 @@ function __GuiGetScrollDelta(_element = self)
                             var _parB = _parent.guiBottom;
                         }
                         
-                        if (_instB - _instT > __solvedHeight)
+                        if (_instB - _instT > _parB - _parT)
                         {
                             //Try to place the instance in the middle of the parent
                             _dY = (0.5*(_parT + _parB) - 0.5*(_instT + _instB)) - __scrollY;

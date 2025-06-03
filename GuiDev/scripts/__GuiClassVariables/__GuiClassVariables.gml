@@ -66,20 +66,22 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __updating = false;
     
-    __scissorEnabled         = false;
-    __scissorPadLeft         = 0;
-    __scissorPadTop          = 0;
-    __scissorPadRight        = 0;
-    __scissorPadBottom       = 0;
-    __scissorWorldLeft       = -infinity
-    __scissorWorldTop        = -infinity
-    __scissorWorldRight      =  infinity
-    __scissorWorldBottom     =  infinity
-    __scissorWorldVisible    = true;
-    __scissorScrollbarLeft   = 0;
-    __scissorScrollbarTop    = 0;
-    __scissorScrollbarRight  = 0;
-    __scissorScrollbarBottom = 0;
+    __scissorEnabled   = false;
+    __scissorPadLeft   = 0;
+    __scissorPadTop    = 0;
+    __scissorPadRight  = 0;
+    __scissorPadBottom = 0;
+    
+    __scissorWorldLeft   = -infinity
+    __scissorWorldTop    = -infinity
+    __scissorWorldRight  =  infinity
+    __scissorWorldBottom =  infinity
+    __scissorVisibility  = GUI_VISIBLE_FULL;
+    
+    __scissorScrollbarLeft    = 0;
+    __scissorScrollbarTop     = 0;
+    __scissorScrollbarRight   = 0;
+    __scissorScrollbarBottom  = 0;
     
     __scrollHori      = false;
     __scrollVert      = false;
