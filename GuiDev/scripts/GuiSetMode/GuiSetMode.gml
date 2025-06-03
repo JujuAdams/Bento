@@ -21,6 +21,7 @@ function GuiSetMode(_newMode, _layer = undefined)
         
         //Changing navigation mode may change whether elements are hoverable when focused
         __stepDirty = true;
+        __hoverableDirty = true;
         
         if ((_newMode == GUI_MODE_KEYBOARD) || (_newMode == GUI_MODE_GAMEPAD))
         {

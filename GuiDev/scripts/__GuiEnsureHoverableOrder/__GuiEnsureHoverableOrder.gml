@@ -10,16 +10,13 @@ function __GuiEnsureHoverableOrder()
     ++__hoverableRegenCount;
     array_resize(__hoverableOrder, 0);
     
-    //FIXME - Ban hover for elements outside of the top focus element. Right now this code won't add
-    //        unfocused elements to the Step order but that that doesn't stop unfocused elements from
-    //        being hovered.
     if (__navPointer)
     {
-        __GuiEnsureHoverableOrderInnerPointer(__hoverableOrder, __GetFocusRoot(), __hoverableIndex);
+        __GuiEnsureHoverableOrderInnerPointer(__hoverableOrder, __GetFocusRoot(), __hoverableRegenCount);
     }
     else if (__navDirectional)
     {
-        __GuiEnsureHoverableOrderInnerDirectional(__hoverableOrder, __GetFocusRoot(), __hoverableIndex);
+        __GuiEnsureHoverableOrderInnerDirectional(__hoverableOrder, __GetFocusRoot(), __hoverableRegenCount);
     }
 }
 
@@ -30,12 +27,13 @@ function __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hover
         if (__disable) return; //Disabled elements always ban hover, understandably
         
         var _childHoverableIndex = _hoverableIndex;
+        var _childArray = __childArray;
         
         if (__focused)
         {
             //If we're focused then only ban hover if we haVe children
             //Our children also will *not* be enclosed because we're focused
-            if (array_length(__childArray) > 0)
+            if (array_length(_childArray) > 0)
             {
                 _hoverableIndex = undefined;
             }
@@ -50,15 +48,17 @@ function __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hover
         }
         
         __hoverableIndex = _hoverableIndex;
+        array_push(_hoverableOrder, _element);
         
         //Then move on to our children
-        var _array = __childArray;
         var _i = 0;
-        repeat(array_length(_array))
+        repeat(array_length(_childArray))
         {
-            __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _array[_i], _childHoverableIndex);
+            __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _childArray[_i], _childHoverableIndex);
             ++_i;
         }
+        
+        //TODO - Add scrollbar detection here
     }
 }
 
@@ -69,12 +69,13 @@ function __GuiEnsureHoverableOrderInnerDirectional(_hoverableOrder, _element, _h
         if (__disable) return; //Disabled elements always ban hover, understandably
         
         var _childHoverableIndex = _hoverableIndex;
+        var _childArray = __childArray;
         
         if (__focused)
         {
             //If we're focused then only ban hover if we haVe children
             //Our children also will *not* be enclosed because we're focused
-            if (array_length(__childArray) > 0)
+            if (array_length(_childArray) > 0)
             {
                 _hoverableIndex = undefined;
             }
@@ -89,14 +90,17 @@ function __GuiEnsureHoverableOrderInnerDirectional(_hoverableOrder, _element, _h
         }
         
         //Elements can only be selected if they're set up as buttons when in directional mode
-        __hoverableIndex = (__buttonType & GUI_BUTTON_DIRECTIONAL)? _hoverableIndex : undefined;
+        if ((_hoverableIndex != undefined) && (__buttonType & GUI_BUTTON_DIRECTIONAL))
+        {
+            __hoverableIndex = _hoverableIndex;
+            array_push(_hoverableOrder, _element);
+        }
         
         //Then move on to our children
-        var _array = __childArray;
         var _i = 0;
-        repeat(array_length(_array))
+        repeat(array_length(_childArray))
         {
-            __GuiEnsureHoverableOrderInnerDirectional(_hoverableOrder, _array[_i], _childHoverableIndex);
+            __GuiEnsureHoverableOrderInnerDirectional(_hoverableOrder, _childArray[_i], _childHoverableIndex);
             ++_i;
         }
     }

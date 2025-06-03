@@ -82,7 +82,10 @@ function __GuiUpdateElementState()
                 else
                 {
                     //Unset the system's hold instance if it's us
-                    if (other.__holdElement == _element) other.__holdElement = noone;
+                    if (other.__holdElement == _element)
+                    {
+                        other.__holdElement = noone;
+                    }
                     
                     if (__primaryState == __GUI_END)
                     {

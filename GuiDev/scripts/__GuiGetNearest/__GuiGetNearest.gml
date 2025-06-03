@@ -13,28 +13,25 @@ function __GuiGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
     static _system = __GuiSystem();
     
     _layer ??= _system.__layerCurrent;
-    var _stepOrder = _layer.__stepOrder;
+    var _hoverableOrder = _layer.__hoverableOrder;
     
     var _element = noone;
     var _nearestDistance = infinity;
     var _i = 0;
-    repeat(array_length(_stepOrder))
+    repeat(array_length(_hoverableOrder))
     {
-        with(method_get_self(_stepOrder[_i]))
+        with(_hoverableOrder[_i])
         {
-            if (array_get_index(_excludeArray, self) >= 0)
+            if (array_get_index(_excludeArray, self) < 0)
             {
-                //Skip this instance
-                continue;
-            }
-            
-            if (GuiGetHoverable(self, true))
-            {
-                var _distance = point_distance(0.5*(guiLeft + guiRight), 0.5*(guiTop + guiBottom), _x, _y);
-                if (_distance < _nearestDistance)
+                if (GuiGetHoverable(self, true))
                 {
-                    _nearestDistance = _distance;
-                    _element = self;
+                    var _distance = point_distance(0.5*(guiLeft + guiRight), 0.5*(guiTop + guiBottom), _x, _y);
+                    if (_distance < _nearestDistance)
+                    {
+                        _nearestDistance = _distance;
+                        _element = self;
+                    }
                 }
             }
         }

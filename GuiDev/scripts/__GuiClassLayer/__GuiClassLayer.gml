@@ -202,17 +202,12 @@ function __GuiClassLayer(_environment, _name) constructor
             {
                 __primaryState = (__primaryState >> 1);
                 
-                if (__navDirectional)
+                if (__navPointer)
                 {
-                    if (__directionalHold) __primaryState |= __GUI_START;
-                    
-                    if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
-                    __GuiStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
-                }
-                else if (__navPointer)
-                {
+                    //Update the primary button state based on mouse input
                     if (__mouseHold) __primaryState |= __GUI_START;
                     
+                    //Start hovering an element if we're not currently holding an element
                     if (not GuiGetHoverable(__holdElement, false))
                     {
                         __GuiStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
@@ -231,6 +226,7 @@ function __GuiClassLayer(_environment, _name) constructor
                     
                     if (__primaryState == __GUI_START)
                     {
+                        //Set some variable state if we've clicked the mouse
                         __mousePressX = __mouseX;
                         __mousePressY = __mouseY;
                         
@@ -239,9 +235,21 @@ function __GuiClassLayer(_environment, _name) constructor
                     }
                     else if (__primaryState == __GUI_END)
                     {
+                        //And reset the mouse state when we release
                         __mousePressX = undefined;
                         __mousePressY = undefined;
                     }
+                }
+                else if (__navDirectional)
+                {
+                    //Update the primary button state based on directional input
+                    if (__directionalHold) __primaryState |= __GUI_START;
+                    
+                    //If the held element cannot be held then proactively reset the state variable
+                    if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
+                    
+                    //Move the cursor and hover a new element (maybe)
+                    __GuiStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
                 else //Some other navigation mode, perhaps `GUI_MODE_UNKNOWN`
                 {
