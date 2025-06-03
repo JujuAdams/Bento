@@ -10,8 +10,6 @@ function __GuiEnsureStepOrder()
     if (not __stepDirty) return;
     __stepDirty = false;
     
-    __hoverableDirty = true; //FIXME
-    
     array_resize(__stepOrder, 0);
     __GuiEnsureStepOrderInner(self, __stepOrder, __GetFocusRoot(), __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, 0);
 }

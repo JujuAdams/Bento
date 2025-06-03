@@ -28,6 +28,7 @@ function GuiSetIndex(_index, _element = self)
     array_delete(_array, _foundIndex, 1);
     array_insert(_array, _index, _element);
     
+    //Changing the element order invalidates a lot of cached data
     with(_element.GUI_VARS.__layer)
     {
         __layoutDirty = true;

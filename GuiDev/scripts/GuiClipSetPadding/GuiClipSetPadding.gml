@@ -22,8 +22,12 @@ function GuiClipSetPadding(_left, _top, _right, _bottom, _element = self)
             __scissorPadRight  = _right;
             __scissorPadBottom = _bottom;
             
-            __layer.__stepDirty = true;
-            __layer.__drawDirty = true;
+            with(__layer)
+            {
+                __stepDirty      = true; //TODO - Do we need to regenerate Step order here?
+                __hoverableDirty = true;
+                __drawDirty      = true;
+            }
         }
     }
 }

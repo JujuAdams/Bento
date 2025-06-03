@@ -11,8 +11,7 @@ function GuiSetVisible(_state, _element = self)
     {
         if (__visible == _state) return;
         __visible = _state;
-    
-        __layer.__stepDirty = true;
+        
         __layer.__drawDirty = true;
     }
 }

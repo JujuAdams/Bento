@@ -197,9 +197,10 @@ function __GuiClassVariables(_attachedElement) constructor
         
         with(__layer)
         {
-            __layoutDirty = true;
-            __stepDirty   = true;
-            __drawDirty   = true;
+            __layoutDirty    = true;
+            __stepDirty      = true;
+            __hoverableDirty = true;
+            __drawDirty      = true;
         }
     }
     

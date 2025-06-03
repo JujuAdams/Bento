@@ -16,9 +16,13 @@ function __GuiGetHoverableInternal(_element, _checkVisible)
     
     with(_element.GUI_VARS)
     {
-        var _layer = __layer;
-        if (_layer.__navMode == GUI_MODE_UNKNOWN) return false;
-        if (__hoverableIndex != _layer.__hoverableRegenCount) return false;
+        //Can't hover invisible elements
+        if (not __visible) return false;
+        
+        //Can't hover elements that aren't in the most recent hoverable order array
+        if (__hoverableIndex != __layer.__hoverableRegenCount) return false;
+        
+        //Can't hover anything that's outside a clipping region
         return ((not _checkVisible) || __scissorWorldVisible);
     }
     

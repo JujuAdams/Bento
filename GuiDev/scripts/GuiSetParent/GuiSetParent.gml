@@ -16,9 +16,10 @@ function GuiSetParent(_parent, _target = self)
         //Mark the layer we're leaving as dirty
         with(__layer)
         {
-            __layoutDirty = true;
-            __stepDirty   = true;
-            __drawDirty   = true;
+            __layoutDirty    = true;
+            __stepDirty      = true;
+            __drawDirty      = true;
+            __hoverableDirty = true;
         }
         
         __parent = _parent;
@@ -27,9 +28,10 @@ function GuiSetParent(_parent, _target = self)
         //Mark the layer we're entering as dirty
         with(__layer)
         {
-            __layoutDirty = true;
-            __stepDirty   = true;
-            __drawDirty   = true;
+            __layoutDirty    = true;
+            __stepDirty      = true;
+            __drawDirty      = true;
+            __hoverableDirty = true;
         }
         
         with(_parent)

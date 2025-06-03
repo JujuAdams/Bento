@@ -16,7 +16,15 @@ function GuiFocusSetEnclose(_encloseType, _element = self)
         if (__focusEncloseType != _encloseType)
         {
             __focusEncloseType = _encloseType;
-            __layer.__stepDirty = true;
+            
+            //Enclosure affects
+            with(__layer)
+            {
+                //FIXME - Enclosure should affect Step event execution too maybe? At the very least, there should be
+                //        a public getter (`GuiGetEnclosed()` or `GuiGetClickable()` or both)
+                __stepDirty      = true;
+                __hoverableDirty = true;
+            }
         }
     }
 }

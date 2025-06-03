@@ -15,8 +15,14 @@ function GuiSetDisable(_state, _element = self)
     {
         if (__disable == _state) return;
         __disable = _state;
-    
-        __layer.__stepDirty = true;
-        __layer.__drawDirty = true;
+        
+        //Disabling elements invalidates a lot of cached data
+        with(__layer)
+        {
+            __layoutDirty    = true;
+            __stepDirty      = true;
+            __hoverableDirty = true;
+            __drawDirty      = true;
+        }
     }
 }

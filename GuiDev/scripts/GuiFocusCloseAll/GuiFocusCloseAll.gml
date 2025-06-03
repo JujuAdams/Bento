@@ -11,7 +11,11 @@ function GuiFocusCloseAll(_layer = undefined)
         var _focusStack = __layer.__focusStack;
         if (array_length(_focusStack) > 0)
         {
-            __layer.__stepDirty = true;
+            with(__layer)
+            {
+                __stepDirty      = true;
+                __hoverableDirty = true;
+            }
             
             var _i = 0;
             repeat(array_length(_focusStack))

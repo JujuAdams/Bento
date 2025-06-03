@@ -12,6 +12,11 @@ function GuiSetButton(_buttonType, _element = self)
         if (__buttonType == _buttonType) return;
         __buttonType = _buttonType;
         
-        __layer.__stepDirty = true;
+        //Update data relating to buttons
+        with(__layer)
+        {
+            __stepDirty      = true;
+            __hoverableDirty = true;
+        }
     }
 }
