@@ -3,7 +3,7 @@
 function TestGrid()
 {
     var _json = {
-        object: oGuiLibGrid,
+        object: oExampleGrid,
         vars: {
             image_blend: c_navy,
         },
