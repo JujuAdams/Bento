@@ -15,7 +15,7 @@ function __GuiGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
     _layer ??= _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
     
-    var _element = noone;
+    var _element = GUI_NO_ELEMENT;
     var _nearestDistance = infinity;
     var _i = 0;
     repeat(array_length(_hoverableOrder))

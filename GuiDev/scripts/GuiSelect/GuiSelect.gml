@@ -13,6 +13,6 @@ function GuiSelect(_element, _layer = undefined)
     with(_layer ?? _system.__layerCurrent)
     {
         __overElement     = _element;
-        __overElementSoft = noone;
+        __overElementSoft = GUI_NO_ELEMENT;
     }
 }

@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns which instance is highlighted using the directional input highlighting rules. This
-/// function can return `noone` if no instance is available to highlight. This function should
+/// function can return `GUI_NO_ELEMENT` if no instance is available to highlight. This function should
 /// only be called if we're using directional (keyboard and gamepad) input.
 /// 
 /// @param startInstance
@@ -13,7 +13,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
     static _excludeArray = [];
     
     _excludeArray[0] = _prevElement;
-    var _nextElement = noone;
+    var _nextElement = GUI_NO_ELEMENT;
     
     if (not GuiGetHoverable(_prevElement, false))
     {
@@ -74,7 +74,7 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
             //FIXME - This should be the joint scissor and scroll parent
             if (not GuiGetHoverable(_nextElement, (_prevScrollParent != __GuiScrollFindParent(_nextElement))))
             {
-                _nextElement = noone;
+                _nextElement = GUI_NO_ELEMENT;
             }
             
             if (not GuiExists(_nextElement))

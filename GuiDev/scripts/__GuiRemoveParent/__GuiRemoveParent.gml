@@ -26,5 +26,5 @@ function __GuiRemoveParent(_child)
     
     GuiScrollLimitsMarkDirty(_parent);
     
-    _child.GUI_VARS.__parent = noone;
+    _child.GUI_VARS.__parent = GUI_NO_ELEMENT;
 }

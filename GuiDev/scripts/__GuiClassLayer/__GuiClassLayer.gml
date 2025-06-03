@@ -15,7 +15,7 @@ function __GuiClassLayer(_environment, _name) constructor
     ////////
     
     __frozen = false;
-    __rootElement = noone;
+    __rootElement = GUI_NO_ELEMENT;
     
     ////////
     // Set up a default navigation mode for convenience
@@ -96,11 +96,11 @@ function __GuiClassLayer(_environment, _name) constructor
     __dirtyTransformsArray   = [];
     __scrollAnimatingArray   = [];
     
-    __overElement     = noone;
-    __overElementSoft = noone;
+    __overElement     = GUI_NO_ELEMENT;
+    __overElementSoft = GUI_NO_ELEMENT;
     __primaryState    = __GUI_OFF;
     __primaryConsumed = false;
-    __holdElement     = noone;
+    __holdElement     = GUI_NO_ELEMENT;
     
     __updateElementArray = [];
     
@@ -246,15 +246,15 @@ function __GuiClassLayer(_environment, _name) constructor
                     if (__directionalHold) __primaryState |= __GUI_START;
                     
                     //If the held element cannot be held then proactively reset the state variable
-                    if (not GuiGetHoverable(__holdElement, false)) __holdElement = noone;
+                    if (not GuiGetHoverable(__holdElement, false)) __holdElement = GUI_NO_ELEMENT;
                     
                     //Move the cursor and hover a new element (maybe)
                     __GuiStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
                 else //Some other navigation mode, perhaps `GUI_MODE_UNKNOWN`
                 {
-                    __holdElement = noone;
-                    __GuiStartOver(noone);
+                    __holdElement = GUI_NO_ELEMENT;
+                    __GuiStartOver(GUI_NO_ELEMENT);
                 }
                 
                 if (__primaryState == __GUI_START)

@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns which instance is highlighted using the mouse & touch highlighting rules. This function
-/// can return `noone` if no instance is highlighted.
+/// can return `GUI_NO_ELEMENT` if no instance is highlighted.
 
 function __GuiGetPointerOver(_mouseX, _mouseY)
 {
@@ -45,7 +45,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     var _scissorB      =  infinity;
     var _insideScissor =  true;
     
-    var _result = noone;
+    var _result = GUI_NO_ELEMENT;
     
     var _holdElement = __holdElement;
     var _holdElementDoesntExist = not GuiExists(_holdElement);

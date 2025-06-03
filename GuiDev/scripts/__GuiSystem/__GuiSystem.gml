@@ -25,7 +25,7 @@ function __GuiSystem()
         
         __scissorStack = [];
         
-        __tempParent = noone;
+        __tempParent = GUI_NO_ELEMENT;
         
         __globalDirPreDelay     = 20;
         __globalDirDelay        = 9;

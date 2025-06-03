@@ -34,8 +34,8 @@ function __GuiStartOver(_element)
     }
     else
     {
-        __overElement = noone;
+        __overElement = GUI_NO_ELEMENT;
     }
     
-    __overElementSoft = noone;
+    __overElementSoft = GUI_NO_ELEMENT;
 }

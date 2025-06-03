@@ -8,7 +8,7 @@ function __GuiGetScrollDelta(_element = self)
     
     var _dX     = 0;
     var _dY     = 0;
-    var _parent = noone;
+    var _parent = GUI_NO_ELEMENT;
     var _tooBig = false;
     
     if (GuiExists(_element))

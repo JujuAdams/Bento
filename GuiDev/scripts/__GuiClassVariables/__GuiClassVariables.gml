@@ -35,7 +35,7 @@ function __GuiClassVariables(_attachedElement) constructor
     __primaryState   = __GUI_OFF;
     __click          = false;
     
-    __parent     = noone;
+    __parent     = GUI_NO_ELEMENT;
     __localIndex = 0;
     __drawDepth  = 0;
     
@@ -48,10 +48,10 @@ function __GuiClassVariables(_attachedElement) constructor
     __focusType        = GUI_FOCUS_POINTER_CANCEL_ALWAYS;
     __focusEncloseType = GUI_ENCLOSE_NEVER;
     
-    __linkLeft  = noone;
-    __linkRight = noone;
-    __linkUp    = noone;
-    __linkDown  = noone;
+    __linkLeft  = GUI_NO_ELEMENT;
+    __linkRight = GUI_NO_ELEMENT;
+    __linkUp    = GUI_NO_ELEMENT;
+    __linkDown  = GUI_NO_ELEMENT;
     
     __raycastDisableHori = false;
     __raycastDisableVert = false;
@@ -100,7 +100,7 @@ function __GuiClassVariables(_attachedElement) constructor
     __scrollbarHori = undefined;
     __scrollbarVert = undefined;
     
-    __selectOnDestroy = noone;
+    __selectOnDestroy = GUI_NO_ELEMENT;
     
     if (__elementIsInstance)
     {

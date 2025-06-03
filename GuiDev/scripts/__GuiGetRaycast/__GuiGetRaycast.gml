@@ -22,7 +22,7 @@ function __GuiGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = u
     _layer ??= _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
    
-    var _element  = noone;
+    var _element  = GUI_NO_ELEMENT;
     var _minWeight = infinity;
     
     var _i = 0;
