@@ -15,7 +15,7 @@ function GuiLayoutSetMinSize(_width, _height, _element = self)
             if (__layoutWidthMin != _width)
             {
                 __layoutWidthMin = _width;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
         
@@ -24,7 +24,7 @@ function GuiLayoutSetMinSize(_width, _height, _element = self)
             if (__layoutHeightMin != _height)
             {
                 __layoutHeightMin = _height;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
     }

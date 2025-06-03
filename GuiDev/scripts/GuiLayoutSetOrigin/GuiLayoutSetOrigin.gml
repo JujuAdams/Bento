@@ -13,7 +13,7 @@ function GuiLayoutSetOrigin(_x, _y, _element = self)
         if (__layoutOriginAuto)
         {
             __layoutOriginAuto = false;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
         }
         
         if (_x != undefined)
@@ -21,7 +21,7 @@ function GuiLayoutSetOrigin(_x, _y, _element = self)
             if (__layoutOriginX != _x)
             {
                 __layoutOriginX = _x;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
         
@@ -30,7 +30,7 @@ function GuiLayoutSetOrigin(_x, _y, _element = self)
             if (__layoutOriginY != _y)
             {
                 __layoutOriginY = _y;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
     }

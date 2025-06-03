@@ -20,7 +20,7 @@ function GuiLayoutSetListAlign(_horizontal, _vertical, _element = self)
             if (__layoutHAlignChildren != _horizontal)
             {
                 __layoutHAlignChildren = _horizontal;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
         
@@ -29,7 +29,7 @@ function GuiLayoutSetListAlign(_horizontal, _vertical, _element = self)
             if (__layoutVAlignChildren != _vertical)
             {
                 __layoutVAlignChildren = _vertical;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
     }

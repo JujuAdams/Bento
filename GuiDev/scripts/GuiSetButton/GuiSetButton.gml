@@ -13,10 +13,6 @@ function GuiSetButton(_buttonType, _element = self)
         __buttonType = _buttonType;
         
         //Update data relating to buttons
-        with(__layer)
-        {
-            __stepDirty      = true;
-            __hoverableDirty = true;
-        }
+        __layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
     }
 }

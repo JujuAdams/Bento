@@ -15,7 +15,7 @@ function GuiLayoutSetGrid(_columns, _rows, _element = self)
             //Swapping into grid layout, reset everything
             
             __layoutType = GUI_LAYOUT_GRID;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             
             __layoutGutterX = 0;
             __layoutGutterY = 0;
@@ -42,7 +42,7 @@ function GuiLayoutSetGrid(_columns, _rows, _element = self)
                 __gridRows    = _rows;
                 
                 //Parameters changed, update the layout!
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
     }

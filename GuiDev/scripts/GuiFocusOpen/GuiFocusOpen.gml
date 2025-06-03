@@ -24,9 +24,7 @@ function GuiFocusOpen(_focusType, _element = self)
         if (not __focused)
         {
             __focused = true;
-            
-            _layer.__stepDirty      = true;
-            _layer.__hoverableDirty = true;
+            _layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
             
             var _focusStack = __layer.__focusStack;
             

@@ -18,13 +18,13 @@ function GuiLayoutSetGridSize(_columns, _rows, _element = self)
         if (__gridColumns != _columns)
         {
             __gridColumns = _columns;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
         }
         
         if (__gridRows != _rows)
         {
             __gridRows = _rows;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
         }
     }
 }

@@ -33,7 +33,7 @@ function __GuiEnsureTransforms()
                 //this element in the draw order
                 if (__transformMatrix == undefined)
                 {
-                    __layer.__drawDirty = true;
+                    __layer.__dirtyFlags |= __GUI_DIRTY_DRAW;
                 }
                 
                 //TODO - Don't generate a new transform matrix if we don't have to
@@ -48,7 +48,7 @@ function __GuiEnsureTransforms()
                 //this element in the draw order
                 if (__transformMatrix != undefined)
                 {
-                    __layer.__drawDirty = true;
+                    __layer.__dirtyFlags |= __GUI_DIRTY_DRAW;
                 }
                 
                 __transformMatrix = undefined;

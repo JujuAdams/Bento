@@ -11,7 +11,7 @@ function GuiLayoutSetOriginAuto(_element = self)
         if (__elementIsInstance && (not __layoutOriginAuto))
         {
             __layoutOriginAuto = true;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
         }
     }
 }

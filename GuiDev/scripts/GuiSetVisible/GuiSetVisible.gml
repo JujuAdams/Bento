@@ -12,6 +12,6 @@ function GuiSetVisible(_state, _element = self)
         if (__visible == _state) return;
         __visible = _state;
         
-        __layer.__drawDirty = true;
+        __layer.__dirtyFlags |= __GUI_DIRTY_DRAW;
     }
 }

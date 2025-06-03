@@ -43,11 +43,6 @@ function GuiScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight, 
         }
         
         //FIXME - Don't mark the as dirty every time
-        with(__layer)
-        {
-            __layoutDirty    = true;
-            __stepDirty      = true;
-            __hoverableDirty = true;
-        }
+        __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT | __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
     }
 }

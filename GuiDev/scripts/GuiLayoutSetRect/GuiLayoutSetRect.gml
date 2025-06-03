@@ -13,7 +13,7 @@ function GuiLayoutSetRect(_element = self)
             //Swapping into rect layout, reset everything
             
             __layoutType = GUI_LAYOUT_RECT;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             
             __SolverShrinkWidth  = method(self, __GuiSolverRectShrinkWidth);
             __SolverResizeWidth  = function() {}

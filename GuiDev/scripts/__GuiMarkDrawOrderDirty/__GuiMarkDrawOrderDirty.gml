@@ -13,7 +13,7 @@ function __GuiMarkDrawOrderDirty(_parent)
             __drawOrderDirty = true;
             array_push(__layer.__dirtyChildOrderArray, _parent);
             
-            __layer.__drawDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_DRAW;
         }
     }
 }

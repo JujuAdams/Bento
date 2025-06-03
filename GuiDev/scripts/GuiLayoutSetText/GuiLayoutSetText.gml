@@ -15,7 +15,7 @@ function GuiLayoutSetText(_funcWidth, _funcHeight, _element = self)
             //Swapping into text layout, reset everything
             
             __layoutType = GUI_LAYOUT_TEXT;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             
             __SolverShrinkWidth  = method(self, __GuiSolverTextShrinkWidth);
             __SolverResizeWidth  = function(){};
@@ -36,7 +36,7 @@ function GuiLayoutSetText(_funcWidth, _funcHeight, _element = self)
                 __funcMeasureHeight = method(__attachedElement, _funcHeight);
                 
                 //Parameters changed, update the layout!
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
     }

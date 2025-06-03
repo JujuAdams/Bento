@@ -77,18 +77,13 @@ function __GuiClassLayer(_environment, _name) constructor
     // Update tracking
     ////////
     
-    __layoutOrder = [];
-    __layoutDirty = true;
-    
-    __stepOrder = [];
-    __stepDirty = true;
-    
+    __layoutOrder    = [];
+    __stepOrder      = [];
     __hoverableOrder = [];
-    __hoverableDirty = true;
-    __hoverableRegenCount = 0;
+    __drawOrder      = [];
     
-    __drawOrder = [];
-    __drawDirty = true;
+    __dirtyFlags = __GUI_DIRTY_ALL;
+    __hoverableRegenCount = 0;
     
     __dirtyChildOrderArray   = [];
     __dirtyScrollLimitsArray = [];

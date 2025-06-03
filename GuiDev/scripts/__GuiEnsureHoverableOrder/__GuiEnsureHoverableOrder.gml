@@ -4,8 +4,8 @@
 
 function __GuiEnsureHoverableOrder()
 {
-    if (not __hoverableDirty) return;
-    __hoverableDirty = false;
+    if not (__dirtyFlags & __GUI_DIRTY_HOVERABLE) return;
+    __dirtyFlags = ~((~__dirtyFlags) | __GUI_DIRTY_HOVERABLE);
     
     ++__hoverableRegenCount;
     array_resize(__hoverableOrder, 0);

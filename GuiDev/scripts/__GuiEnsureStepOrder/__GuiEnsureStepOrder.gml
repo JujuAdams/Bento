@@ -7,8 +7,8 @@
 
 function __GuiEnsureStepOrder()
 {
-    if (not __stepDirty) return;
-    __stepDirty = false;
+    if not (__dirtyFlags & __GUI_DIRTY_STEP) return;
+    __dirtyFlags = ~((~__dirtyFlags) | __GUI_DIRTY_STEP);
     
     array_resize(__stepOrder, 0);
     __GuiEnsureStepOrderInner(self, __stepOrder, __GetFocusRoot(), __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, 0);

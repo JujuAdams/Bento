@@ -16,7 +16,7 @@ function GuiLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _element 
             //Swapping into list layout, reset everything
             
             __layoutType = GUI_LAYOUT_LIST;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             
             __layoutGutterX = 0;
             __layoutGutterY = 0;
@@ -46,7 +46,7 @@ function GuiLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _element 
                 __layoutVAlignChildren = _vAlignChildren;
                 
                 //Parameters changed, update the layout!
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
     }

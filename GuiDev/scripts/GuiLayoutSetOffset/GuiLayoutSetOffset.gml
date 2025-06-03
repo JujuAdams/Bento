@@ -15,7 +15,7 @@ function GuiLayoutSetOffset(_x, _y, _element = self)
             if (__layoutOffsetX != _x)
             {
                 __layoutOffsetX = _x;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
         
@@ -24,7 +24,7 @@ function GuiLayoutSetOffset(_x, _y, _element = self)
             if (__layoutOffsetY != _y)
             {
                 __layoutOffsetY = _y;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
     }

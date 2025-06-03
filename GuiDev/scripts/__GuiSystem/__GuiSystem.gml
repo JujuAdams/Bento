@@ -10,6 +10,12 @@
 #macro __GUI_ON     0b11  //3
 #macro __GUI_END    0b01  //1
 
+#macro __GUI_DIRTY_LAYOUT     0b0001
+#macro __GUI_DIRTY_STEP       0b0010
+#macro __GUI_DIRTY_HOVERABLE  0b0100
+#macro __GUI_DIRTY_DRAW       0b1000
+#macro __GUI_DIRTY_ALL        0b1111
+
 __GuiSystem();
 function __GuiSystem()
 {

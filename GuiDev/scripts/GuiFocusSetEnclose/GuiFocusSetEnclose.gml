@@ -22,8 +22,7 @@ function GuiFocusSetEnclose(_encloseType, _element = self)
             {
                 //FIXME - Enclosure should affect Step event execution too maybe? At the very least, there should be
                 //        a public getter (`GuiGetEnclosed()` or `GuiGetClickable()` or both)
-                __stepDirty      = true;
-                __hoverableDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
             }
         }
     }

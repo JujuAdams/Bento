@@ -4,8 +4,8 @@
 
 function __GuiEnsureLayout()
 {
-    if (not __layoutDirty) return;
-    __layoutDirty = false;
+    if not (__dirtyFlags & __GUI_DIRTY_LAYOUT) return;
+    __dirtyFlags = ~((~__dirtyFlags) | __GUI_DIRTY_LAYOUT);
     
     var _layoutOrder = __layoutOrder;
     array_resize(_layoutOrder, 0);

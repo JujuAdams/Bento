@@ -15,7 +15,7 @@ function GuiLayoutSetMaxSize(_width, _height, _element = self)
             if (__layoutWidthMax != _width)
             {
                 __layoutWidthMax = _width;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
         
@@ -24,7 +24,7 @@ function GuiLayoutSetMaxSize(_width, _height, _element = self)
             if (__layoutHeightMax != _height)
             {
                 __layoutHeightMax = _height;
-                __layer.__layoutDirty = true;
+                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             }
         }
     }

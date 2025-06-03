@@ -17,7 +17,7 @@ function GuiSetSprite(_sprite, _element = self)
             {
                 if (__layoutOriginAuto)
                 {
-                    __layer.__layoutDirty = true;
+                    __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
                 }
             }
         }

@@ -17,7 +17,7 @@ function GuiLayoutSetListAxis(_axis, _element = self)
         if (__listAxis != _axis)
         {
             __listAxis = _axis;
-            __layer.__layoutDirty = true;
+            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
         }
     }
 }

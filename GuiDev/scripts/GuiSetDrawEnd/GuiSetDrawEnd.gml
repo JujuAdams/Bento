@@ -16,6 +16,6 @@ function GuiSetDrawAfter(_state, _element = self)
         if (__drawAfter == _state) return;
         __drawAfter = _state;
         
-        __layer.__drawDirty = true;
+        __layer.__dirtyFlags |= __GUI_DIRTY_DRAW;
     }
 }

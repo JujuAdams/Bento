@@ -42,8 +42,8 @@ function __GuiEnsureDrawOrder()
     }
     
     //Don't do anything if nothing is dirty!
-    if (not __drawDirty) return;
-    __drawDirty = false;
+    if not (__dirtyFlags & __GUI_DIRTY_DRAW) return;
+    __dirtyFlags = ~((~__dirtyFlags) | __GUI_DIRTY_DRAW);
     
     //Update the local draw order for dirty elements
     if (array_length(__dirtyChildOrderArray) > 0)
