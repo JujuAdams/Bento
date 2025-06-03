@@ -138,6 +138,18 @@ function __GuiClassVariables(_attachedElement) constructor
                 event_user(GUI_USER_EVENT_REPOSITION);
             }
         };
+        
+        __funcHover = method(_attachedElement, function(_mouseX, _mouseY)
+        {
+            if (instance_position(_mouseX, _mouseY, self))
+            {
+                return self;
+            }
+            else
+            {
+                return undefined;
+            }
+        });
     }
     else
     {
@@ -175,6 +187,18 @@ function __GuiClassVariables(_attachedElement) constructor
                 funcReposition();
             }
         };
+        
+        __funcHover = method(_attachedElement, function(_mouseX, _mouseY)
+        {
+            if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
+            {
+                return self;
+            }
+            else
+            {
+                return undefined;
+            }
+        });
     }
     
     __eventScissorPush = method(_attachedElement, __GuiScissorPushFromElement);

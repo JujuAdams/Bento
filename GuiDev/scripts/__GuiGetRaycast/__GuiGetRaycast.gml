@@ -21,6 +21,11 @@ function __GuiGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = u
     
     _layer ??= _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
+    
+    if (not _layer.__navDirectional)
+    {
+        __GuiError("Can only use `__GuiGetRaycast()` in directional mode");
+    }
    
     var _element  = GUI_NO_ELEMENT;
     var _minWeight = infinity;

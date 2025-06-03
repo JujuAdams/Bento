@@ -8,27 +8,20 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     var _hoverableOrder = __hoverableOrder;
     var _hoverableCount = array_length(_hoverableOrder);
     
+    if (not __navPointer)
+    {
+        __GuiError("Can only use `__GuiGetPointerOver()` in pointer mode");
+    }
+    
+    var _holdElement = __holdElement;
+    
     var _i = _hoverableCount-1;
     repeat(_hoverableCount)
     {
-        with(_hoverableOrder[_i])
+        var _result = _hoverableOrder[_i](_mouseX, _mouseY, _holdElement);
+        if (_result != undefined)
         {
-            //FIXME - Restore detection for scrollbars
-            
-            if (GUI_VARS.__elementIsInstance)
-            {
-                if (instance_position(_mouseX, _mouseY, self))
-                {
-                    return self; 
-                }
-            }
-            else
-            {
-                if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
-                {
-                    return self; 
-                }
-            }
+            return _result;
         }
         
         --_i;

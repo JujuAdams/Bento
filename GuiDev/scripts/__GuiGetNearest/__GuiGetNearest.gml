@@ -15,6 +15,11 @@ function __GuiGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
     _layer ??= _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
     
+    if (not _layer.__navDirectional)
+    {
+        __GuiError("Can only use `__GuiGetNearest()` in directional mode");
+    }
+    
     var _element = GUI_NO_ELEMENT;
     var _nearestDistance = infinity;
     var _i = 0;

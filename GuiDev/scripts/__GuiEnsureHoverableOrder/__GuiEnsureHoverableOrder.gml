@@ -22,6 +22,18 @@ function __GuiEnsureHoverableOrder()
 
 function __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hoverableIndex)
 {
+    static _funcScrollbarCheck = function()
+    {
+        if (overScrollbar)
+        {
+            return __element;
+        }
+        else
+        {
+            return undefined;
+        }
+    }
+    
     with(_element.GUI_VARS)
     {
         if (__disable) return; //Disabled elements always ban hover, understandably
@@ -48,7 +60,7 @@ function __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hover
         }
         
         __hoverableIndex = _hoverableIndex;
-        array_push(_hoverableOrder, _element);
+        array_push(_hoverableOrder, __funcHover);
         
         //Then move on to our children
         var _i = 0;
@@ -58,7 +70,15 @@ function __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hover
             ++_i;
         }
         
-        //TODO - Add scrollbar detection here
+        if (__scrollbarHori != undefined)
+        {
+            array_push(_hoverableOrder, method(__scrollbarHori, _funcScrollbarCheck));
+        }
+        
+        if (__scrollbarVert != undefined)
+        {
+            array_push(_hoverableOrder, method(__scrollbarVert, _funcScrollbarCheck));
+        }
     }
 }
 

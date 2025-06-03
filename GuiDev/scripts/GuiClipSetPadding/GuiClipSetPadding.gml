@@ -23,7 +23,7 @@ function GuiClipSetPadding(_left, _top, _right, _bottom, _element = self)
             __scissorPadBottom = _bottom;
             
             //TODO - Do we need to regenerate Step order here?
-            _layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE | __GUI_DIRTY_DRAW;
+            __layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE | __GUI_DIRTY_DRAW;
         }
     }
 }
