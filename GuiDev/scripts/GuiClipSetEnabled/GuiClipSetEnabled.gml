@@ -13,7 +13,6 @@ function GuiClipSetEnabled(_state, _element = self)
         {
             __scissorEnabled = _state;
             
-            //TODO - Do we need to regenerate Step order here?
             __layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE | __GUI_DIRTY_DRAW;
         }
     }
