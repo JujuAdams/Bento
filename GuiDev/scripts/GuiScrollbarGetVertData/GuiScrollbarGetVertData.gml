@@ -15,9 +15,9 @@ function GuiScrollbarGetVertData(_element = self)
         handleRight:  0,
         handleBottom: 0,
         
-        overScrollbar: false,
-        overHandle:    false,
-        grabHandle:    false,
+        hoverScrollbar: false,
+        hoverHandle:    false,
+        grabHandle:     false,
     };
     
     if (GuiExists(_element) && (_element.GUI_VARS.__scrollbarVert != undefined))

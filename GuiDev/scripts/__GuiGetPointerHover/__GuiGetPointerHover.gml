@@ -3,14 +3,14 @@
 /// Returns which instance is highlighted using the mouse & touch highlighting rules. This function
 /// can return `GUI_NO_ELEMENT` if no instance is highlighted.
 
-function __GuiGetPointerOver(_mouseX, _mouseY)
+function __GuiGetPointerHover(_mouseX, _mouseY)
 {
     var _hoverableOrder = __hoverableOrder;
     var _hoverableCount = array_length(_hoverableOrder);
     
     if (not __navPointer)
     {
-        __GuiError("Can only use `__GuiGetPointerOver()` in pointer mode");
+        __GuiError("Can only use `__GuiGetPointerHover()` in pointer mode");
     }
     
     var _holdElement = __holdElement;
@@ -29,7 +29,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
 }
 
 /*
-function __GuiGetPointerOver(_mouseX, _mouseY)
+function __GuiGetPointerHover(_mouseX, _mouseY)
 {
     var _scissorStack  = __GuiScissorReset();
     var _scissorL      = -infinity;
@@ -45,7 +45,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
     
     var _stepOrder = __stepOrder;
     var _i = 0;
-    repeat(array_length(_stepOrder)) //FIXME - Prebuild this array by making a "pointer over order" feature
+    repeat(array_length(_stepOrder))
     {
         var _method = _stepOrder[_i];
         var _methodFunc = method_get_index(_method);
@@ -91,7 +91,7 @@ function __GuiGetPointerOver(_mouseX, _mouseY)
                 {
                     if ((_methodFunc == __GuiScrollbarUpdateVert) || (_methodFunc == __GuiScrollbarUpdateHori))
                     {
-                        if (overScrollbar && (_holdElementDoesntExist || ((_holdElement == __element) && grabHandle)))
+                        if (hoverScrollbar && (_holdElementDoesntExist || ((_holdElement == __element) && grabHandle)))
                         {
                             _result = __element;
                         }

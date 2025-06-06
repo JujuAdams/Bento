@@ -12,5 +12,5 @@ function GuiSelectSoft(_element, _layer = undefined)
     static _system = __GuiSystem();
     
     _layer ??= _system.__layerCurrent;
-    _layer.__overElementSoft = _element;
+    _layer.__hoverElementSoft = _element;
 }

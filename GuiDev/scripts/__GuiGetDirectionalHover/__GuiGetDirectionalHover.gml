@@ -8,7 +8,7 @@
 /// @param dX
 /// @param dY
 
-function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
+function __GuiGetDirectionalHover(_prevElement, _dX, _dY)
 {
     static _excludeArray = [];
     
@@ -19,10 +19,10 @@ function __GuiGetDirectionalOver(_prevElement, _dX, _dY)
     {
         //The instance we were previously highlighting is no longer valid (see __GuiGetHoverableInternal())
         
-        if (__GuiGetHoverableInternal(__overElementSoft, false))
+        if (__GuiGetHoverableInternal(__hoverElementSoft, false))
         {
             //Choose the soft selection if possible
-            _nextElement = __overElementSoft;
+            _nextElement = __hoverElementSoft;
         }
         else
         {

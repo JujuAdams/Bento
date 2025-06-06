@@ -51,7 +51,7 @@ function GuiScrollOnPointer(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = 
                 }
             }
         }
-        else if (GuiCursorGetOver(_element))
+        else if (GuiCursorGetHover(_element))
         {
             //Mouse wheel input can be pretty noisy so we filter out as much as possible
             

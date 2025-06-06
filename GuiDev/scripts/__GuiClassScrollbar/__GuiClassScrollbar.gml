@@ -30,7 +30,7 @@ function __GuiClassScrollbar(_element) constructor
     handleWidth  = 0;
     handleHeight = 0;
     
-    overScrollbar = false;
-    overHandle    = false;
-    grabHandle    = false;
+    hoverScrollbar = false;
+    hoverHandle    = false;
+    grabHandle     = false;
 }

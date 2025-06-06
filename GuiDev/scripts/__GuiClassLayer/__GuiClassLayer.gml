@@ -91,11 +91,11 @@ function __GuiClassLayer(_environment, _name) constructor
     __dirtyTransformsArray   = [];
     __scrollAnimatingArray   = [];
     
-    __overElement     = GUI_NO_ELEMENT;
-    __overElementSoft = GUI_NO_ELEMENT;
-    __primaryState    = __GUI_OFF;
-    __primaryConsumed = false;
-    __holdElement     = GUI_NO_ELEMENT;
+    __hoverElement     = GUI_NO_ELEMENT;
+    __hoverElementSoft = GUI_NO_ELEMENT;
+    __primaryState     = __GUI_OFF;
+    __primaryConsumed  = false;
+    __holdElement      = GUI_NO_ELEMENT;
     
     __updateElementArray = [];
     
@@ -207,15 +207,15 @@ function __GuiClassLayer(_environment, _name) constructor
                     //Start hovering an element if we're not currently holding an element
                     if (not __GuiGetHoverableInternal(__holdElement, false))
                     {
-                        __GuiStartOver(__GuiGetPointerOver(__mouseX, __mouseY));
+                        __GuiStartHover(__GuiGetPointerHover(__mouseX, __mouseY));
                     }
                     
                     //Detect clicking off of a pop-up
                     if ((__primaryState == __GUI_START)
                     &&  GuiExists(__focusTop)
                     &&  (__focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
-                    &&  (__focusTop != __overElement) //Don't destroy a pop-up if we're hovering directly over it
-                    &&  (not GuiIsAncestor(__focusTop, __overElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                    &&  (__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
+                    &&  (not GuiIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
                     {
                         GuiDestroy(__focusTop);
                         __primaryState = __GUI_OFF;
@@ -246,12 +246,12 @@ function __GuiClassLayer(_environment, _name) constructor
                     if (not __GuiGetHoverableInternal(__holdElement, false)) __holdElement = GUI_NO_ELEMENT;
                     
                     //Move the cursor and hover a new element (maybe)
-                    __GuiStartOver(__GuiGetDirectionalOver(__overElement, __directionalStateX.__output, __directionalStateY.__output));
+                    __GuiStartHover(__GuiGetDirectionalHover(__hoverElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
                 else //Some other navigation mode, perhaps `GUI_MODE_UNKNOWN`
                 {
                     __holdElement = GUI_NO_ELEMENT;
-                    __GuiStartOver(GUI_NO_ELEMENT);
+                    __GuiStartHover(GUI_NO_ELEMENT);
                 }
                 
                 if (__primaryState == __GUI_START)

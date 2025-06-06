@@ -25,7 +25,7 @@ if (_length > 0)
     else if (GuiUsingDirectional())
     {
         // Detect directional input to scroll throught the option array.
-        if (GuiCursorGetOver() && (GuiCursorGetDX() != 0))
+        if (GuiCursorGetHover() && (GuiCursorGetDX() != 0))
         {
             option = (option + sign(GuiCursorGetDX()) + _length) mod _length;
             func(option, optionArray[option]); //Execute the callback

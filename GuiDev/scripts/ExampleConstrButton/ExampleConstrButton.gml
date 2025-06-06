@@ -49,7 +49,7 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
         // (which applies to both pointer-driven and directional input). Alternatively, if this is a tab
         // button and this button cause a page to be opened by the tab group then we also highlight the
         // button.
-        if (GuiCursorGetOver())
+        if (GuiCursorGetHover())
         {
             gpu_set_fog(true, c_white, 0, 0);
             GuiDrawSprite(sGuiMaskRectangle, undefined, undefined, 0.5);

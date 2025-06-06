@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiCursorGetOver",
+  "%Name":"GuiCursorGetHover",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiCursorGetOver",
+  "name":"GuiCursorGetHover",
   "parent":{
     "name":"Cursor",
     "path":"folders/Library/Functions/Input & Navigation/Getters/Cursor.yy",

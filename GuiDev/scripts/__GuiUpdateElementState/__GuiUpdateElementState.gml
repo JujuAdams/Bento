@@ -20,38 +20,38 @@ function __GuiUpdateElementState()
             
             __click = false;
             
-            //Manage over state
-            if (other.__overElement == _element)
+            //Manage hover state
+            if (other.__hoverElement == _element)
             {
                 //System says this instance is hovered
                 
-                if (__overState == __GUI_START)
+                if (__hoverState == __GUI_START)
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: enter -> over");
-                    __overState = __GUI_ON;
+                    if (GUI_VERBOSE_HOVER_STATE) __GuiTrace($"{real(_element)}: enter -> hover");
+                    __hoverState = __GUI_ON;
                 }
-                else if (__overState == __GUI_ON)
+                else if (__hoverState == __GUI_ON)
                 {
                     //Do nothing
                 }
                 else
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: -> enter");
-                    __overState = __GUI_START;
+                    if (GUI_VERBOSE_HOVER_STATE) __GuiTrace($"{real(_element)}: -> enter");
+                    __hoverState = __GUI_START;
                 }
             }
             else
             {
                 //System says this instance is not hovered
                 
-                if (__overState == __GUI_END)
+                if (__hoverState == __GUI_END)
                 {
-                    __overState = __GUI_OFF;
+                    __hoverState = __GUI_OFF;
                 }
-                else if (__overState != __GUI_OFF)
+                else if (__hoverState != __GUI_OFF)
                 {
-                    if (GUI_VERBOSE_OVER_STATE) __GuiTrace($"{real(_element)}: over -> leave");
-                    __overState = __GUI_END;
+                    if (GUI_VERBOSE_HOVER_STATE) __GuiTrace($"{real(_element)}: hover -> leave");
+                    __hoverState = __GUI_END;
                 }
             }
             
@@ -60,7 +60,7 @@ function __GuiUpdateElementState()
             {
                 //System says the player has clicked
                 
-                if (GuiCursorGetOver(_element) && (not GuiPrimaryGetHold(_element)))
+                if (GuiCursorGetHover(_element) && (not GuiPrimaryGetHold(_element)))
                 {
                     __primaryState = __GUI_START;
                     other.__holdElement = _element;
@@ -101,11 +101,11 @@ function __GuiUpdateElementState()
                             if (other.__navMode == GUI_MODE_TOUCH)
                             {
                                 //Touch mode triggers the leave state early
-                                if (__overState == __GUI_END) __click = true;
+                                if (__hoverState == __GUI_END) __click = true;
                             }
                             else
                             {
-                                if (GuiCursorGetOver(_element)) __click = true;
+                                if (GuiCursorGetHover(_element)) __click = true;
                             }
                         }
                     }
@@ -113,7 +113,7 @@ function __GuiUpdateElementState()
             }
             
             //Remove this instance from the update loop if it's inactive
-            if ((__overState == __GUI_OFF) && (__primaryState == __GUI_OFF))
+            if ((__hoverState == __GUI_OFF) && (__primaryState == __GUI_OFF))
             {
                 __updating = false;
                 return false;

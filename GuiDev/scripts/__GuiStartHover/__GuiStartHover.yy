@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiStartOver",
+  "%Name":"__GuiStartHover",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiStartOver",
+  "name":"__GuiStartHover",
   "parent":{
     "name":"(System)",
     "path":"folders/Library/Functions/(System).yy",

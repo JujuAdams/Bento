@@ -6,7 +6,7 @@ if (GuiUsingDirectional())
     {
         var _fgColor = c_gray;
     }
-    else if (GuiCursorGetOver())
+    else if (GuiCursorGetHover())
     {
         var _fgColor = c_white;
     }

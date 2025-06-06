@@ -39,7 +39,7 @@
 
 // Debug only. Set this macro to `true` to show verbose output in the debug log that shows which
 // instances are being hovered / un-hovered.
-#macro GUI_VERBOSE_OVER_STATE  false
+#macro GUI_VERBOSE_HOVER_STATE  false
 
 // Functions to call when showing debug messages. Set this macro to `undefined` to disable all
 // debug messages.

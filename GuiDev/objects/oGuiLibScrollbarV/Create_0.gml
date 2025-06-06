@@ -17,6 +17,6 @@ GuiLayoutSetResizeType(GUI_RESIZE_STATIC, GUI_RESIZE_GROW);
 
 handleTop              = 0;
 handleBottom           = 0;
-handleOver             = false;
+handleHover            = false;
 handleGrabbed          = false;
 handleGrabbedRelativeY = 0;

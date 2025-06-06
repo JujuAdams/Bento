@@ -15,8 +15,8 @@ function GuiScrollbarGetHoriData(_element = self)
         handleRight:  0,
         handleBottom: 0,
         
-        overScrollbar: false,
-        overHandle:    false,
+        hoverScrollbar: false,
+        hoverHandle:    false,
         grabHandle:    false,
     };
     

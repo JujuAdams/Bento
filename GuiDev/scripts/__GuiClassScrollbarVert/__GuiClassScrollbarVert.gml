@@ -55,16 +55,16 @@ function __GuiClassScrollbarVert(_element) : __GuiClassScrollbar(_element) const
             }
             else
             {
-                if (not GuiCursorGetOver(_element))
+                if (not GuiCursorGetHover(_element))
                 {
-                    overScrollbar = false;
-                    overHandle = false;
+                    hoverScrollbar = false;
+                    hoverHandle = false;
                 }
-                else if (overScrollbar)
+                else if (hoverScrollbar)
                 {
-                    overHandle = ((_cursorY >= handleTop) && (_cursorY <= handleBottom));
+                    hoverHandle = ((_cursorY >= handleTop) && (_cursorY <= handleBottom));
                 
-                    if (overHandle && GuiPrimaryGetPress(_element))
+                    if (hoverHandle && GuiPrimaryGetPress(_element))
                     {
                         //Allow grabbing of the handle
                         grabHandle = true;
@@ -90,14 +90,14 @@ function __GuiClassScrollbarVert(_element) : __GuiClassScrollbar(_element) const
                 else
                 {
                     //Pointer isn't over the scrollbar at all
-                    overHandle = false;
+                    hoverHandle = false;
                 }
             }
         }
         else
         {
-            overScrollbar = false;
-            overHandle = false;
+            hoverScrollbar = false;
+            hoverHandle = false;
         }
         
         if (not GuiPrimaryGetHold(_element))

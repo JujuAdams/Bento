@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiGetDirectionalOver",
+  "%Name":"__GuiGetDirectionalHover",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiGetDirectionalOver",
+  "name":"__GuiGetDirectionalHover",
   "parent":{
     "name":"(System)",
     "path":"folders/Library/Functions/(System).yy",

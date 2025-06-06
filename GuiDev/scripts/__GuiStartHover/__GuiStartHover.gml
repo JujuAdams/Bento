@@ -4,7 +4,7 @@
 /// 
 /// @param instance
 
-function __GuiStartOver(_element)
+function __GuiStartHover(_element)
 {
     if (GuiExists(_element))
     {
@@ -21,7 +21,7 @@ function __GuiStartOver(_element)
             GuiScrollTo(undefined, _element);
         }
         
-        __overElement = _element;
+        __hoverElement = _element;
         
         with(_element.GUI_VARS)
         {
@@ -34,8 +34,8 @@ function __GuiStartOver(_element)
     }
     else
     {
-        __overElement = GUI_NO_ELEMENT;
+        __hoverElement = GUI_NO_ELEMENT;
     }
     
-    __overElementSoft = GUI_NO_ELEMENT;
+    __hoverElementSoft = GUI_NO_ELEMENT;
 }

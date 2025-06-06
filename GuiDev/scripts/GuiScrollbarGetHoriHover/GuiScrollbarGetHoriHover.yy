@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiScrollbarGetVertOver",
+  "%Name":"GuiScrollbarGetHoriHover",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiScrollbarGetVertOver",
+  "name":"GuiScrollbarGetHoriHover",
   "parent":{
     "name":"Scrollbar",
     "path":"folders/Library/Functions/Scrollbar.yy",

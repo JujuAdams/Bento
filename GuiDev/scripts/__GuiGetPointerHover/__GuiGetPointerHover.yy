@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiGetPointerOver",
+  "%Name":"__GuiGetPointerHover",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiGetPointerOver",
+  "name":"__GuiGetPointerHover",
   "parent":{
     "name":"(System)",
     "path":"folders/Library/Functions/(System).yy",

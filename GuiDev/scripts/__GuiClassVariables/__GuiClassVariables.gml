@@ -31,9 +31,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __transformScaleY  = 1;
     __transformAngle   = 0;
     
-    __overState      = __GUI_OFF;
-    __primaryState   = __GUI_OFF;
-    __click          = false;
+    __hoverState   = __GUI_OFF;
+    __primaryState = __GUI_OFF;
+    __click        = false;
     
     __parent     = GUI_NO_ELEMENT;
     __localIndex = 0;

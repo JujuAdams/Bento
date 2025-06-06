@@ -26,7 +26,7 @@ function __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hover
     {
         if (point_in_rectangle(_mouseX, _mouseY, barLeft, barTop, barRight, barBottom))
         {
-            overScrollbar = true;
+            hoverScrollbar = true;
             return __element;
         }
         else

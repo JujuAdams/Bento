@@ -28,7 +28,7 @@ if (GuiUsingPointer())
 else if (GuiUsingDirectional())
 {
     // Detect directional input to scroll throught the option array.
-    if (GuiCursorGetOver())
+    if (GuiCursorGetHover())
     {
         _delta = sign(GuiCursorGetDX());
     }
