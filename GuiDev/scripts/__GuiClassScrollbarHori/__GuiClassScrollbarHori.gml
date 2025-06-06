@@ -35,7 +35,6 @@ function __GuiClassScrollbarHori(_element) : __GuiClassScrollbar(_element) const
     {
         var _element = __element;
         var _cursorX = GuiCursorGetX();
-        var _cursorY = GuiCursorGetY();
         
         handleWidth = barWidth*clamp(barWidth / GuiScrollGetWidth(_element), 0.1, 1);
         handleLeft  = lerp(barLeft, barRight - handleWidth, GuiScrollGetParamX(_element));
@@ -43,20 +42,24 @@ function __GuiClassScrollbarHori(_element) : __GuiClassScrollbar(_element) const
         
         if (GuiUsingPointer())
         {
-            var _rangeHeight = max(1, barWidth - handleWidth);
+            var _rangeWidth = max(1, barWidth - handleWidth);
             
             if (grabHandle)
             {
                 if (GuiPrimaryGetHold(_element))
                 {
                     var _left = _cursorX + __grabDelta - barLeft;
-                    GuiScrollSetParamX(_left / _rangeHeight, infinity, _element);
+                    GuiScrollSetParamX(_left / _rangeWidth, infinity, _element);
                 }
             }
             else
             {
-                hoverScrollbar = (GuiCursorGetHover(_element) && point_in_rectangle(_cursorX, _cursorY, barLeft, barTop, barRight, barBottom));
-                if (hoverScrollbar)
+                if (not GuiCursorGetHover(_element))
+                {
+                    hoverScrollbar = false;
+                    hoverHandle = false;
+                }
+                else if (hoverScrollbar)
                 {
                     hoverHandle = ((_cursorX >= handleLeft) && (_cursorX <= handleRight));
                 
@@ -66,18 +69,18 @@ function __GuiClassScrollbarHori(_element) : __GuiClassScrollbar(_element) const
                         grabHandle = true;
                         __grabDelta = handleLeft - _cursorX;
                     }
-                    else if (GuiPrimaryGetClick(_element))
+                    else if (GuiPrimaryGetClick(_element)) //FIXME - This has stopped working?
                     {
                         //Otherwise allow a single click to teleport the scroll handle
                         var _param = GuiScrollGetParamX(_element);
                         
                         if (_cursorX > handleRight)
                         {
-                            _param += (_cursorX - handleRight) / _rangeHeight;
+                            _param += (_cursorX - handleRight) / _rangeWidth;
                         }
                         else if (_cursorX < handleLeft)
                         {
-                            _param += (_cursorX - handleLeft) / _rangeHeight;
+                            _param += (_cursorX - handleLeft) / _rangeWidth;
                         }
                         
                         GuiScrollSetParamX(_param, infinity, _element);
@@ -92,6 +95,7 @@ function __GuiClassScrollbarHori(_element) : __GuiClassScrollbar(_element) const
         }
         else
         {
+            hoverScrollbar = false;
             hoverHandle = false;
         }
         

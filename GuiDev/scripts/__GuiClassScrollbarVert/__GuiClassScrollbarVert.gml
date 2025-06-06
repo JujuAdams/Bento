@@ -34,7 +34,6 @@ function __GuiClassScrollbarVert(_element) : __GuiClassScrollbar(_element) const
     static __Update = function()
     {
         var _element = __element;
-        var _cursorX = GuiCursorGetX();
         var _cursorY = GuiCursorGetY();
         
         handleHeight = barHeight*clamp(barHeight / GuiScrollGetHeight(_element), 0.1, 1);

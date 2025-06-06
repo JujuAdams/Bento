@@ -71,6 +71,7 @@ function __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hover
             ++_i;
         }
         
+        //TODO - Move this scrollbar check code to a static method on the scrollbar struct itself
         if (__scrollbarHori != undefined)
         {
             array_push(_hoverableOrder, method(__scrollbarHori, _funcScrollbarCheck));

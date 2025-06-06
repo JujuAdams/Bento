@@ -116,8 +116,6 @@
     {"id":{"name":"__GuiScissorPushFromElement","path":"scripts/__GuiScissorPushFromElement/__GuiScissorPushFromElement.yy",},},
     {"id":{"name":"__GuiScissorReset","path":"scripts/__GuiScissorReset/__GuiScissorReset.yy",},},
     {"id":{"name":"__GuiScissorSet","path":"scripts/__GuiScissorSet/__GuiScissorSet.yy",},},
-    {"id":{"name":"__GuiScrollbarUpdateHori","path":"scripts/__GuiScrollbarUpdateHori/__GuiScrollbarUpdateHori.yy",},},
-    {"id":{"name":"__GuiScrollbarUpdateVert","path":"scripts/__GuiScrollbarUpdateVert/__GuiScrollbarUpdateVert.yy",},},
     {"id":{"name":"__GuiScrollFindParent","path":"scripts/__GuiScrollFindParent/__GuiScrollFindParent.yy",},},
     {"id":{"name":"__GuiSolverGridPositions","path":"scripts/__GuiSolverGridPositions/__GuiSolverGridPositions.yy",},},
     {"id":{"name":"__GuiSolverGridResizeHeight","path":"scripts/__GuiSolverGridResizeHeight/__GuiSolverGridResizeHeight.yy",},},
