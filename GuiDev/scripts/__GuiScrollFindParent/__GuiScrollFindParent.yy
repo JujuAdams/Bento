@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__GuiScrollFindParent",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Library/Functions/(System).yy",
+    "name":"Scissor & Scroll",
+    "path":"folders/Library/Functions/(System)/Scissor & Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
