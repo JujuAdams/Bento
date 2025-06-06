@@ -55,8 +55,12 @@ function __GuiClassScrollbarVert(_element) : __GuiClassScrollbar(_element) const
             }
             else
             {
-                overScrollbar = (GuiCursorGetOver(_element) && point_in_rectangle(_cursorX, _cursorY, barLeft, barTop, barRight, barBottom));
-                if (overScrollbar)
+                if (not GuiCursorGetOver(_element))
+                {
+                    overScrollbar = false;
+                    overHandle = false;
+                }
+                else if (overScrollbar)
                 {
                     overHandle = ((_cursorY >= handleTop) && (_cursorY <= handleBottom));
                 
@@ -92,6 +96,7 @@ function __GuiClassScrollbarVert(_element) : __GuiClassScrollbar(_element) const
         }
         else
         {
+            overScrollbar = false;
             overHandle = false;
         }
         

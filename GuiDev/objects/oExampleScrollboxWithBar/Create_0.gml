@@ -8,4 +8,5 @@ GuiScrollSetEnabled(true, true);
 GuiSetButton(GUI_BUTTON_DIRECTIONAL);
 GuiFocusSetEnclose(GUI_ENCLOSE_DIRECTIONAL);
 
-GuiScrollbarSetVert(false, 20, 10, 10, 10, 10);
+GuiScrollbarSetVert(false, 20, 10, 10, 10, 10, false);
+GuiSetDrawAfter(true);

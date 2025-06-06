@@ -21,5 +21,3 @@ else
 {
     draw_self();
 }
-
-GuiScrollbarDrawPlaceholder(GuiScrollbarGetVertData());

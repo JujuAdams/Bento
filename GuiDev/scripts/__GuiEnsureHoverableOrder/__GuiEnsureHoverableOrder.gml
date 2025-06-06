@@ -22,10 +22,11 @@ function __GuiEnsureHoverableOrder()
 
 function __GuiEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hoverableIndex)
 {
-    static _funcScrollbarCheck = function()
+    static _funcScrollbarCheck = function(_mouseX, _mouseY, _holdElement)
     {
-        if (overScrollbar)
+        if (point_in_rectangle(_mouseX, _mouseY, barLeft, barTop, barRight, barBottom))
         {
+            overScrollbar = true;
             return __element;
         }
         else
