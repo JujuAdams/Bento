@@ -49,8 +49,12 @@ function __GuiEnsureScroll()
     var _dirtyScrollPosArray = __dirtyScrollPosArray;
     if (array_length(_dirtyScrollPosArray) <= 0) return;
     
-    //TODO - Sort from newest instance to oldest instance. This will usually get the following loop to
-    //       execute from the most senior node to the most junior leaf.
+    //Sort from newest instance to oldest instance. This will usually get the following loop to
+    //execute from the most senior node to the most junior leaf.
+    array_sort(_dirtyScrollPosArray, function(_a, _b)
+    {
+        return -sign(_a.GUI_VARS.__envIndex - _b.GUI_VARS.__envIndex);
+    });
     
     while(array_length(_dirtyScrollPosArray) > 0)
     {
