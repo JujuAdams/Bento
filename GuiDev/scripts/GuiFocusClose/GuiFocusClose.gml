@@ -4,6 +4,11 @@
 
 function GuiFocusClose(_element = self)
 {
+    return __GuiFocusCloseInner(_element);
+}
+
+function __GuiFocusCloseInner(_element)
+{
     if (not GuiExists(_element)) return;
     
     with(_element.GUI_VARS)

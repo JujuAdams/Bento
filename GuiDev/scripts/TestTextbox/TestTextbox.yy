@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiTextStart",
+  "%Name":"TestTextbox",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiTextStart",
+  "name":"TestTextbox",
   "parent":{
-    "name":"Text Public",
-    "path":"folders/Library/Functions/(System)/Text Public.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

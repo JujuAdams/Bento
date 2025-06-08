@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiTextSystem",
+  "%Name":"GuiGetLayer",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiTextSystem",
+  "name":"GuiGetLayer",
   "parent":{
-    "name":"Text",
-    "path":"folders/Library/Functions/(System)/Text.yy",
+    "name":"Layers",
+    "path":"folders/Library/Functions/Layers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

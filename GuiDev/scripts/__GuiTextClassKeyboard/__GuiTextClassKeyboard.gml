@@ -7,9 +7,9 @@ function __GuiTextClassKeyboard(_initialText, _maxLength) constructor
 {
     _initialText = string_copy(_initialText, 1, _maxLength);
     
-    static _system  = __GuiTextSystem();
-    _system.__text  = _initialText;
-    _system.__state = GUI_TEXT_PENDING;
+    static _textSystem  = __GuiSystem().__textContainer;
+    _textSystem.__text  = _initialText;
+    _textSystem.__state = GUI_TEXT_PENDING;
     
     __maxLength = _maxLength;
     
@@ -36,7 +36,7 @@ function __GuiTextClassKeyboard(_initialText, _maxLength) constructor
         var _result = __GuiTextDetectChanges(__keyboardString, __keyboardStringPrev, _backspaceRepeatCount);
         
         //Modify the system's text string based on the removed characters and added characters
-        _system.__text = __GuiTextApplyChanges(_system.__text, _result.__removeCount, _result.__textDelta, __maxLength);
+        _textSystem.__text = __GuiTextApplyChanges(_textSystem.__text, _result.__removeCount, _result.__textDelta, __maxLength);
         
         //Whacking [enter] finishes single-line entry
         if (keyboard_check(vk_enter))
@@ -107,7 +107,13 @@ function __GuiTextClassKeyboard(_initialText, _maxLength) constructor
     
     static __Terminate = function(_state)
     {
-        _system.__state = _state;
+        with(_textSystem)
+        {
+            __state = _state;
+            
+            __GuiFocusCloseInner(__hostElement);
+            __hostElement = undefined;
+        }
         
         if (__timeSource != undefined)
         {

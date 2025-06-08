@@ -10,6 +10,5 @@
 
 function GuiPrimaryGetPress(_element = self)
 {
-    if (not GuiExists(_element)) return false;
-    return (_element.GUI_VARS.__primaryState == __GUI_START);
+    return GuiExists(_element)? (_element.GUI_VARS.__primaryState == __GUI_START) : false;
 }

@@ -237,7 +237,7 @@ function __GuiClassVariables(_attachedElement) constructor
         var _element = __layer.__nameMap[? __name];
         if (_element == __attachedElement) ds_map_delete(__layer.__nameMap, __name);
         
-        _layer.__dirtyFlags |= __GUI_DIRTY_ALL;
+        __layer.__dirtyFlags |= __GUI_DIRTY_ALL;
     }
     
     /////////////////////////////////

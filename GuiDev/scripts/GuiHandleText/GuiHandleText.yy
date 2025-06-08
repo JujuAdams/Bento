@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiTextClear",
+  "%Name":"GuiHandleText",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiTextClear",
+  "name":"GuiHandleText",
   "parent":{
-    "name":"Text Public",
-    "path":"folders/Library/Functions/(System)/Text Public.yy",
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

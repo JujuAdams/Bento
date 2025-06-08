@@ -211,14 +211,23 @@ function __GuiClassLayer(_environment, _name) constructor
                     }
                     
                     //Detect clicking off of a pop-up
-                    if ((__primaryState == __GUI_START)
-                    &&  GuiExists(__focusTop)
-                    &&  (__focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
-                    &&  (__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
-                    &&  (not GuiIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                    if ((__primaryState == __GUI_START) && GuiExists(__focusTop))
                     {
-                        GuiDestroy(__focusTop);
-                        __primaryState = __GUI_OFF;
+                        if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
+                        &&  (not GuiIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                        {
+                            var _focusType = __focusTop.GUI_VARS.__focusType;
+                            if (_focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
+                            {
+                                GuiFocusClose(__focusTop);
+                                __hoverElement = GUI_NO_ELEMENT;
+                            }
+                            else if (_focusType == GUI_FOCUS_POINTER_DESTROY_ON_CLICK)
+                            {
+                                GuiDestroy(__focusTop);
+                                __hoverElement = GUI_NO_ELEMENT;
+                            }
+                        }
                     }
                     
                     if (__primaryState == __GUI_START)

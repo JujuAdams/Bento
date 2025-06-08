@@ -8,9 +8,9 @@ function __GuiTextClassDialog(_initialText, _caption, _maxLength) constructor
 {
     _initialText = string_copy(_initialText, 1, _maxLength);
     
-    static _system = __GuiTextSystem();
+    static _textSystem = __GuiSystem().__textContainer;
     //Don't set `__text` here. We only set `__text` when the player confirms the dialog
-    _system.__state = GUI_TEXT_PENDING;
+    _textSystem.__state = GUI_TEXT_PENDING;
     
     __caption   = _caption;
     __maxLength = _maxLength;
@@ -32,7 +32,7 @@ function __GuiTextClassDialog(_initialText, _caption, _maxLength) constructor
     //Create a time source to ensure the controller is still alive
     __timeSource = time_source_create(time_source_global, 1, time_source_units_frames, function()
     {
-        if (_system.__state == GUI_TEXT_PENDING)
+        if (_textSystem.__state == GUI_TEXT_PENDING)
         {
             __GuiTextEnsureController().__dialog = self;
         }
@@ -51,7 +51,7 @@ function __GuiTextClassDialog(_initialText, _caption, _maxLength) constructor
             }
             else
             {
-                _system.__text = string_copy(_result, 1, __maxLength);
+                _textSystem.__text = string_copy(_result, 1, __maxLength);
                 __Terminate(GUI_TEXT_CONFIRM);
             }
         }
@@ -59,7 +59,13 @@ function __GuiTextClassDialog(_initialText, _caption, _maxLength) constructor
     
     static __Terminate = function(_state)
     {
-        _system.__state = _state;
+        with(_textSystem)
+        {
+            __state = _state;
+            
+            __GuiFocusCloseInner(__hostElement);
+            __hostElement = undefined;
+        }
         
         __asyncID = undefined;
         
