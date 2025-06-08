@@ -63,3 +63,31 @@
 #macro GUI_FOCUS_POINTER_IGNORE           1
 #macro GUI_FOCUS_POINTER_CANCEL_ON_CLICK  2
 #macro GUI_FOCUS_POINTER_CANCEL_ALWAYS    3
+
+#macro GUI_TEXT_ABORT    -1
+#macro GUI_TEXT_INACTIVE  0
+#macro GUI_TEXT_PENDING   1
+#macro GUI_TEXT_CONFIRM   2
+
+#macro GUI_TEXT_MODE_KEYBOARD  0
+#macro GUI_TEXT_MODE_MOBILE    1
+#macro GUI_TEXT_MODE_DIALOG    2
+#macro GUI_TEXT_MODE_STEAM     3
+
+#macro GUI_ON_WINDOWS  (os_type == os_windows)
+#macro GUI_ON_MACOS    (os_type == os_macosx)
+#macro GUI_ON_LINUX    (os_type == os_linux)
+#macro GUI_ON_DESKTOP  (GUI_ON_WINDOWS || GUI_ON_MACOS || GUI_ON_LINUX)
+#macro GUI_ON_IOS      (os_type == os_ios || os_type == os_tvos)
+#macro GUI_ON_ANDROID  (os_type == os_android)
+#macro GUI_ON_MOBILE   (GUI_ON_IOS || GUI_ON_ANDROID)
+#macro GUI_ON_XBOX     ((os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+#macro GUI_ON_PS4      (os_type == os_ps4)
+#macro GUI_ON_PS5      (os_type == os_ps5)
+#macro GUI_ON_SWITCH   (os_type == os_switch)
+#macro GUI_ON_CONSOLE  (GUI_ON_XBOX || GUI_ON_PS4 || GUI_ON_PS5 || GUI_ON_SWITCH)
+#macro GUI_ON_APPLE    (GUI_ON_MACOS || GUI_ON_IOS)
+#macro GUI_ON_OPERAGX  (os_type == os_operagx)
+#macro GUI_ON_WEB      ((os_browser != browser_not_a_browser) || GUI_ON_OPERAGX)
+
+#macro GUI_STEAMWORKS_SUPPORT   ((GUI_ON_LINUX || GUI_ON_WINDOWS) && (not GUI_ON_WEB))
