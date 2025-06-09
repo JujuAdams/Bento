@@ -321,13 +321,20 @@ function __GuiClassLayer(_environment, _name) constructor
         //Determine where to start the Step order processing
         //FIXME - Walk up focus stack to find a pointer constrain element rather than only looking at the top one
         var _focusTop = __focusTop;
-        if (GuiExists(_focusTop) && (__navDirectional || (_focusTop.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CONSTRAIN)))
+        if (GuiExists(_focusTop))
         {
-            return _focusTop;
+            if (__navDirectional) return _focusTop;
+            
+            var _focusType = _focusTop.GUI_VARS.__focusType;
+            if (_focusType == GUI_FOCUS_POINTER_CONSTRAIN) return _focusTop;
+            
+            if (GUI_FOCUS_BLOCKS_POINTER_HOVER
+            &&  ((_focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK) || (_focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)))
+            {
+                return _focusTop;
+            }
         }
-        else
-        {
-            return __rootElement;
-        }
+        
+        return __rootElement;
     }
 }

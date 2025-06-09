@@ -24,6 +24,8 @@
 // pointer. This won't apply if an element has a parent that is scrollable.
 #macro GUI_POINTER_CLICK_ON_PRESS  false
 
+#macro GUI_FOCUS_BLOCKS_POINTER_HOVER  true
+
 // Whether clicking and dragging on a scrollable UI element should scroll in the `GUI_MODE_MOUSE`
 // nav mode.
 #macro GUI_SCROLL_ON_MOUSE_DRAG  true
