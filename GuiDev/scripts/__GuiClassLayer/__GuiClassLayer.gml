@@ -205,10 +205,11 @@ function __GuiClassLayer(_environment, _name) constructor
                     if (__mouseHold) __primaryState |= __GUI_START;
                     
                     //Start hovering an element if we're not currently holding an element
-                    if (not __GuiGetHoverableInternal(__holdElement, false))
-                    {
-                        __GuiStartHover(__GuiGetPointerHover(__mouseX, __mouseY));
-                    }
+                    //We also want to check what element we're hovering if we've just released
+                    if (not __GuiGetHoverableInternal(__holdElement, false)) __holdElement = GUI_NO_ELEMENT;
+                    
+                    //Try to hover a new element (maybe)
+                    __GuiStartHover(__GuiGetPointerHover(__mouseX, __mouseY));
                     
                     //Detect clicking off of a pop-up
                     if ((__primaryState == __GUI_START) && GuiExists(__focusTop))

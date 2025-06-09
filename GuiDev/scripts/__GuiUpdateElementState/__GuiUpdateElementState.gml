@@ -13,10 +13,18 @@ function __GuiUpdateElementState()
         
         with(_element.GUI_VARS)
         {
-            var _clickOnPress = (GuiUsingDirectional() ||
-                                 (GUI_POINTER_CLICK_ON_PRESS
-                               && other.__navPointer
-                               && (not GuiExists(__GuiScrollFindParent(_element)))));
+            if (other.__navDirectional)
+            {
+                var _clickOnPress = true;
+            }
+            else if (not GuiExists(__GuiScrollFindParent(_element)))
+            {
+                var _clickOnPress = other.__navPointer && (GUI_POINTER_CLICK_ON_PRESS || (other.__navMode == GUI_MODE_TOUCH));
+            }
+            else
+            {
+                var _clickOnPress = false;
+            }
             
             __click = false;
             

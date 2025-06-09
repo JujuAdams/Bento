@@ -63,6 +63,7 @@
   },
   "name":"GuiWithLayouts",
   "resources":[
+    {"id":{"name":"fntDebug","path":"fonts/fntDebug/fntDebug.yy",},},
     {"id":{"name":"GuiCreateViaJSON Format","path":"notes/GuiCreateViaJSON Format/GuiCreateViaJSON Format.yy",},},
     {"id":{"name":"Note4","path":"notes/Note4/Note4.yy",},},
     {"id":{"name":"__GuiTextAsyncController","path":"objects/__GuiTextAsyncController/__GuiTextAsyncController.yy",},},
@@ -80,7 +81,8 @@
     {"id":{"name":"oGuiLibSprite","path":"objects/oGuiLibSprite/oGuiLibSprite.yy",},},
     {"id":{"name":"oGuiLibText","path":"objects/oGuiLibText/oGuiLibText.yy",},},
     {"id":{"name":"oMain","path":"objects/oMain/oMain.yy",},},
-    {"id":{"name":"rMain","path":"rooms/rMain/rMain.yy",},},
+    {"id":{"name":"rLandscape","path":"rooms/rLandscape/rLandscape.yy",},},
+    {"id":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
     {"id":{"name":"__GuiClassDirectionalState","path":"scripts/__GuiClassDirectionalState/__GuiClassDirectionalState.yy",},},
     {"id":{"name":"__GuiClassEnvironment","path":"scripts/__GuiClassEnvironment/__GuiClassEnvironment.yy",},},
     {"id":{"name":"__GuiClassLayer","path":"scripts/__GuiClassLayer/__GuiClassLayer.yy",},},
@@ -336,7 +338,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rMain","path":"rooms/rMain/rMain.yy",},},
+    {"roomId":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
+    {"roomId":{"name":"rLandscape","path":"rooms/rLandscape/rLandscape.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

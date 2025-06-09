@@ -6,6 +6,8 @@
 // event for that instance will be called too by `GuiSystemDraw()` (but won't by default).
 GuiSystemDraw();
 
+draw_set_font(fntDebug);
+
 // Some debug text:
 var _nodeName = "???";
 switch(GuiGetMode())
