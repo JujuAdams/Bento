@@ -17,10 +17,7 @@ if (GuiCursorGetHover() || (GuiFocusGetTop() == self))
 }
 
 var _text = text;
-if ((GuiFocusGetTop() == self) && ((current_time mod 600) > 300))
-{
-    _text += "|";
-}
+if (GuiTextGetTargeted() && ((GuiTextGetOpenDuration() mod 30) < 15)) _text += "|";
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);

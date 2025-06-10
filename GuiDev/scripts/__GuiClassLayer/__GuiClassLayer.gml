@@ -211,28 +211,36 @@ function __GuiClassLayer(_environment, _name) constructor
                     //Try to hover a new element (maybe)
                     __GuiStartHover(__GuiGetPointerHover(__mouseX, __mouseY));
                     
-                    //Detect clicking off of a pop-up
-                    if ((__primaryState == __GUI_START) && GuiExists(__focusTop))
+                    if (__primaryState == __GUI_START)
                     {
-                        if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
-                        &&  (not GuiIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                        if (__environment.__textHandler != undefined) //Detect clicking off of an input box
                         {
-                            var _focusType = __focusTop.GUI_VARS.__focusType;
-                            if (_focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
+                            if ((__environment.__textElement != __hoverElement)
+                            &&  (not GuiIsAncestor(__environment.__textElement, __hoverElement)))
                             {
-                                GuiFocusClose(__focusTop);
-                                __hoverElement = GUI_NO_ELEMENT;
-                            }
-                            else if (_focusType == GUI_FOCUS_POINTER_DESTROY_ON_CLICK)
-                            {
-                                GuiDestroy(__focusTop);
+                                __environment.__textHandler.__Terminate(GUI_TEXT_ABORT);
                                 __hoverElement = GUI_NO_ELEMENT;
                             }
                         }
-                    }
-                    
-                    if (__primaryState == __GUI_START)
-                    {
+                        else if (GuiExists(__focusTop)) //Detect clicking off of a pop-up
+                        {
+                            if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
+                            &&  (not GuiIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                            {
+                                var _focusType = __focusTop.GUI_VARS.__focusType;
+                                if (_focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
+                                {
+                                    GuiFocusClose(__focusTop);
+                                    __hoverElement = GUI_NO_ELEMENT;
+                                }
+                                else if (_focusType == GUI_FOCUS_POINTER_DESTROY_ON_CLICK)
+                                {
+                                    GuiDestroy(__focusTop);
+                                    __hoverElement = GUI_NO_ELEMENT;
+                                }
+                            }
+                        }
+                        
                         //Set some variable state if we've clicked the mouse
                         __mousePressX = __mouseX;
                         __mousePressY = __mouseY;
@@ -319,6 +327,12 @@ function __GuiClassLayer(_environment, _name) constructor
     
     static __GetFocusRoot = function()
     {
+        //If we're inputting text then we have to focus on that element
+        if (GuiExists(__environment.__textElement))
+        {
+            return __environment.__textElement;
+        }
+        
         //Determine where to start the Step order processing
         //FIXME - Walk up focus stack to find a pointer constrain element rather than only looking at the top one
         var _focusTop = __focusTop;

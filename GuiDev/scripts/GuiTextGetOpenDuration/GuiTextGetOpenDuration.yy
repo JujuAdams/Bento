@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiTextGetOpenDuration",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiTextGetOpenDuration",
+  "parent":{
+    "name":"Focus",
+    "path":"folders/Library/Functions/Focus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

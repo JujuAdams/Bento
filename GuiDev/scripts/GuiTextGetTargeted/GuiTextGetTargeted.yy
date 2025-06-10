@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiTextGetTargeted",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiTextGetTargeted",
+  "parent":{
+    "name":"Focus",
+    "path":"folders/Library/Functions/Focus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,44 @@
+// Feather disable all
+
+/// Returns whether the top-most layer for the given environment wants to block mouse input to
+/// other parts of your game. This can happen in the following situations:
+/// 
+/// - Any `GUI_BUTTON_POINTER` or `GUI_BUTTON_ALWAYS` UI element is being hovered.
+/// - Any UI element has been pressed and the primary button is being held.
+/// - Any UI element has been focused in a way that restricts the pointer.
+///
+/// Additionally, if the topmost layer is NOT using a pointer input mode, this function will always
+/// return `false`.
+/// 
+/// @param [environment=current]
+
+function GuiGetBlocksMouse(_environment = undefined)
+{
+    static _system = __GuiSystem();
+    with(_environment ?? _system.__environmentCurrent)
+    {
+        with(__layerCurrent)
+        {
+            if (not __navPointer) return false;
+            
+            var _focusType = (__focusTop != undefined)? __focusTop.GUI_VARS.__focusType : GUI_FOCUS_POINTER_IGNORE;
+            if ((_focusType != GUI_FOCUS_POINTER_IGNORE) && (_focusType != GUI_FOCUS_POINTER_CANCEL_ALWAYS))
+            {
+                return true;
+            }
+            
+            if (GuiExists(__holdElement))
+            {
+                
+                return true;
+            }
+            
+            if (GuiExists(__hoverElement) && (__hoverElement.GUI_VARS.__buttonType & GUI_BUTTON_POINTER))
+            {
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}

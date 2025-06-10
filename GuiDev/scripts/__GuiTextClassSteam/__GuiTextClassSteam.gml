@@ -1,28 +1,22 @@
 // Feather disable all
 
+/// @param environment
 /// @param initialText
-/// @param caption
+/// @param callback
 /// @param maxLength
+/// @param caption
 
-function __GuiTextClassSteam(_initialText, _caption, _maxLength) constructor
+function __GuiTextClassSteam(_environment, _initialText, _callback, _maxLength, _caption) : __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
 {
-    _initialText = string_copy(_initialText, 1, _maxLength);
-    
-    static _textSystem = __GuiSystem().__textContainer;
-    //Don't set `__text` here. We only set `__text` when the player confirms the dialog
-    _textSystem.__state = GUI_TEXT_PENDING;
-    
-    __caption   = _caption;
-    __maxLength = _maxLength;
-    
-    __timeSource = undefined;
+    __caption = _caption;
     
     var _result = steam_show_gamepad_text_input(steam_gamepad_text_input_mode_normal,
                                                 steam_gamepad_text_input_line_mode_single_line, 
-                                                _caption, _maxLength, _initialText);                
+                                                __caption, __maxLength, __initialText);                
     if (_result)
     {
         __GuiTextEnsureController().__steam = self;
+        __Callback();
     }
     else
     {
@@ -31,16 +25,15 @@ function __GuiTextClassSteam(_initialText, _caption, _maxLength) constructor
         return;
     }
     
-    //Create a time source to ensure the controller is still alive
-    __timeSource = time_source_create(time_source_global, 1, time_source_units_frames, function()
+    
+    
+    static __Step = function()
     {
-        if (_textSystem.__state == GUI_TEXT_PENDING)
+        if (__state == GUI_TEXT_PENDING)
         {
             __GuiTextEnsureController().__steam = self;
         }
-    },
-    [], -1);
-    time_source_start(__timeSource);
+    }
     
     static __AsyncEvent = function()
     {
@@ -50,9 +43,9 @@ function __GuiTextClassSteam(_initialText, _caption, _maxLength) constructor
             {
                 __Terminate(GUI_TEXT_ABORT);
             }
-            else if (_textSystem.__state == GUI_TEXT_PENDING)
+            else if (__state == GUI_TEXT_PENDING)
             {
-                _textSystem.__text = string_copy(steam_get_entered_gamepad_text_input(), 1, __maxLength);
+                __text = string_copy(steam_get_entered_gamepad_text_input(), 1, __maxLength);
                 __Terminate(GUI_TEXT_CONFIRM);
             }
         }
@@ -60,25 +53,12 @@ function __GuiTextClassSteam(_initialText, _caption, _maxLength) constructor
     
     static __Terminate = function(_state)
     {
-        with(_textSystem)
-        {
-            __state = _state;
-            
-            __GuiFocusCloseInner(__hostElement);
-            __hostElement = undefined;
-        }
-        
-        if (__timeSource != undefined)
-        {
-            time_source_stop(__timeSource);
-            time_source_destroy(__timeSource);
-            __timeSource = undefined;
-        }
-        
         with(__GuiTextAsyncController)
         {
             __steam = undefined;
             instance_destroy();
         }
+        
+        __TerminateShared(_state);
     }
 }

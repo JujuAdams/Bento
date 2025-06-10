@@ -1,35 +1,35 @@
 // Feather disable all
 
+/// @param environment
 /// @param initialText
+/// @param callback
 /// @param maxLength
-/// @param mobileSettings
+/// @param keyboardType
+/// @param returnKey
+/// @param capitalization
+/// @param textPrediction
 
-function __GuiTextClassMobile(_initialText, _maxLength, _mobileSettings) constructor
+function __GuiTextClassMobile(_environment, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction) : __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
 {
-    _initialText = string_copy(_initialText, 1, _maxLength);
+    __keyboardType   = _keyboardType;
+    __returnKey      = _returnKey;
+    __capitalization = _capitalization;
+    __textPrediction = _textPrediction;
     
-    static _textSystem  = __GuiSystem().__textContainer;
-    _textSystem.__text  = _initialText;
-    _textSystem.__state = GUI_TEXT_PENDING;
-    
-    __keyboardType   = _mobileSettings[$ "keyboardType"  ] ?? kbv_type_default;
-    __returnKey      = _mobileSettings[$ "returnKey"     ] ?? kbv_returnkey_default;
-    __capitalization = _mobileSettings[$ "capitalization"] ?? kbv_autocapitalize_none;
-    __textPrediction = _mobileSettings[$ "textPrediction"] ?? false;
-    
-    __maxLength = _maxLength;
-    
-    __keyboardStringPrev = _initialText;
-    __keyboardString     = _initialText;
-    keyboard_string      = _initialText;
+    __keyboardStringPrev = __text;
+    __keyboardString     = __text;
+    keyboard_string      = __text;
     
     __osPausedPrev      = os_is_paused();
     __virtualStatusPrev = false;
     
     keyboard_virtual_show(__keyboardType, __returnKey, __capitalization, __textPrediction);
     
-    //Define a function to execute every frame in a time source
-    var _stepFunction = function()
+    __Callback();
+    
+    
+    
+    static __Step = function()
     {
         var _keyboardString = keyboard_string;
         var _keyboardStringLength = string_length(_keyboardString);
@@ -85,30 +85,15 @@ function __GuiTextClassMobile(_initialText, _maxLength, _mobileSettings) constru
         var _result = __GuiTextDetectChanges(__keyboardString, __keyboardStringPrev, 0);
         
         //Modify the system's text string based on the removed characters and added characters
-        _textSystem.__text = __GuiTextApplyChanges(_textSystem.__text, _result.__removeCount, _result.__textDelta, __maxLength);
+        __text = __GuiTextApplyChanges(__text, _result.__removeCount, _result.__textDelta, __maxLength);
+        
+        __Callback();
     }
-    
-    //Set up that time source
-    __timeSource = time_source_create(time_source_global, 1, time_source_units_frames, _stepFunction, [], -1);
-    time_source_start(__timeSource);
     
     static __Terminate = function(_state)
     {
-        with(_textSystem)
-        {
-            __state = _state;
-            
-            __GuiFocusCloseInner(__hostElement);
-            __hostElement = undefined;
-        }
-        
         keyboard_virtual_hide();
         
-        if (__timeSource != undefined)
-        {
-            time_source_stop(__timeSource);
-            time_source_destroy(__timeSource);
-            __timeSource = undefined;
-        }
+        __TerminateShared(_state);
     }
 }

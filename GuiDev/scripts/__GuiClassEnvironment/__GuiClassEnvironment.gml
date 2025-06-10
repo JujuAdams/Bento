@@ -22,6 +22,9 @@ function __GuiClassEnvironment(_name) constructor
     __envHotkeyInputMap = ds_map_create();
     __envHotkeyArray    = [];
     
+    __textElement = undefined;
+    __textHandler = undefined;
+    
     
     
     
@@ -56,6 +59,20 @@ function __GuiClassEnvironment(_name) constructor
         
         GuiEnvironmentTargetPush(self);
         
+        //Update any text input
+        if (__textHandler != undefined)
+        {
+            if (GuiExists(__textElement))
+            {
+                __textHandler.__Step();
+            }
+            else
+            {
+                __textHandler.__Terminate(GUI_TEXT_INACTIVE);
+            }
+        }
+        
+        //All lower layers only ensure layouts etc.
         var _i = 0;
         repeat(_layerCount-1)
         {
@@ -63,7 +80,9 @@ function __GuiClassEnvironment(_name) constructor
             ++_i;
         }
         
+        //Top-most layer pulls in input if there's no text input
         _layerArray[_i].__Update(_rootWidth, _rootHeight, false);
+        
         GuiEnvironmentTargetPop();
     }
     

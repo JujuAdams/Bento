@@ -50,3 +50,5 @@ GuiInputHotkey("escape", keyboard_check(vk_escape));
 // The main state update function. This ticks the entire system (but doesn't do any drawing).
 // Step user events (GUI_USER_EVENT_STEP, 0) are executed by this function where appropriate.
 GuiSystemStep(room_width, room_height);
+
+window_set_cursor(GuiGetBlocksMouse()? cr_drag : cr_default);

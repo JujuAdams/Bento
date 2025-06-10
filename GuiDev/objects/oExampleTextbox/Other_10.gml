@@ -4,4 +4,10 @@
 
 event_inherited();
 
-text = GuiHandleText(text);
+if (GuiPrimaryGetClick())
+{
+    GuiTextOpen(text, function(_text, _state)
+    {
+        text = _text;
+    });
+}

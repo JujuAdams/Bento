@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__GuiTextClassShared",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__GuiTextClassShared",
+  "parent":{
+    "name":"Text",
+    "path":"folders/Library/Functions/(System)/Text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

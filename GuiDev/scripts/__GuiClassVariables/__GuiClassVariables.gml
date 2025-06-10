@@ -35,6 +35,16 @@ function __GuiClassVariables(_attachedElement) constructor
     __primaryState = __GUI_OFF;
     __click        = false;
     
+    __textConfig = {
+        __maxLength:      300,
+        __caption:        "",
+        __mode:           undefined,
+        __keyboardType:   kbv_type_default,
+        __returnKey:      kbv_returnkey_default,
+        __capitalization: kbv_autocapitalize_none,
+        __textPrediction: false,
+    };
+    
     __parent     = GUI_NO_ELEMENT;
     __localIndex = 0;
     __drawDepth  = 0;

@@ -18,15 +18,57 @@
 
 #macro GUI_NO_ELEMENT  noone
 
-#macro GUI_BUTTON_NEVER        0b00
-#macro GUI_BUTTON_POINTER      0b01
-#macro GUI_BUTTON_DIRECTIONAL  0b10
-#macro GUI_BUTTON_ALWAYS       0b11
 
-#macro GUI_ENCLOSE_NEVER        0b00
-#macro GUI_ENCLOSE_POINTER      0b01
+
+//Not a button. Cannot be clicked and cannot be hovered in directional input modes.
+#macro GUI_BUTTON_NEVER  0b00
+
+//Always hoverable and clickable in any input mode.
+#macro GUI_BUTTON_ALWAYS  0b11
+
+//Only a button in pointer input modes. Cannot be hovered in directional input modes.
+#macro GUI_BUTTON_POINTER  0b01
+
+//Only a button in directional input modes. Cannot be clicked in pointer input modes.
+#macro GUI_BUTTON_DIRECTIONAL  0b10
+
+
+
+//Pointer is constrained inside the focused part of the tree.
+#macro GUI_FOCUS_POINTER_CONSTRAIN  0
+
+//Pointer ignores focus. Any part of the tree can be interacted with whilst the focus is in
+//operation.
+#macro GUI_FOCUS_POINTER_IGNORE  1
+
+//Clicking off of the focused part of the free will cancel the focus.
+#macro GUI_FOCUS_POINTER_CANCEL_ON_CLICK  2
+
+//Clicking off of the focused part of the tree will destroy the focused element (this is good for
+//pop-up menus).
+#macro GUI_FOCUS_POINTER_DESTROY_ON_CLICK  3
+
+//Focus is cancelled automatically if the input mode is set to `GUI_MODE_POINTER`.
+#macro GUI_FOCUS_POINTER_CANCEL_ALWAYS  4
+
+
+
+//Child elements are never enclosed and can always be interacted with.
+#macro GUI_ENCLOSE_NEVER  0b00
+
+//Child elements are always enclosed and cannot be interacted with unless the parent is focused.
+#macro GUI_ENCLOSE_ALWAYS  0b11
+
+//Child elements are enclosed in directional navigation modes only. Pointer navigation modes will
+//be able to select elements freely. This is useful for scrollboxes.
 #macro GUI_ENCLOSE_DIRECTIONAL  0b10
-#macro GUI_ENCLOSE_ALWAYS       0b11
+
+//Child elements are enclosed in pointer navigation modes only. Directional navigation modes will
+//be able to select elements freely. This is probably never useful and is provided only for
+//completeness.
+#macro GUI_ENCLOSE_POINTER  0b01
+
+
 
 #macro GUI_LAYOUT_RECT  0
 #macro GUI_LAYOUT_LIST  1
@@ -58,12 +100,6 @@
 
 #macro GUI_FALLBACK_ORIGIN_PERCENTAGE_X  (GUI_DEFAULT_LAYOUT_ALIGN_H)
 #macro GUI_FALLBACK_ORIGIN_PERCENTAGE_Y  (GUI_DEFAULT_LAYOUT_ALIGN_V)
-
-#macro GUI_FOCUS_POINTER_CONSTRAIN         0
-#macro GUI_FOCUS_POINTER_IGNORE            1
-#macro GUI_FOCUS_POINTER_CANCEL_ON_CLICK   2
-#macro GUI_FOCUS_POINTER_DESTROY_ON_CLICK  3
-#macro GUI_FOCUS_POINTER_CANCEL_ALWAYS     4
 
 #macro GUI_TEXT_ABORT    -1
 #macro GUI_TEXT_INACTIVE  0

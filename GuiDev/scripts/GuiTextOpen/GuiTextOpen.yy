@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiHandleText",
+  "%Name":"GuiTextOpen",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiHandleText",
+  "name":"GuiTextOpen",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Library/Functions.yy",
+    "name":"Focus",
+    "path":"folders/Library/Functions/Focus.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
