@@ -68,6 +68,9 @@ function GuiTextOpen(_initialText, _callback, _hostElement = self)
                     __GuiError($"Invalid mode provided ({_mode})");
                 break;
             }
+            
+            //Make sure our layer is updated
+            __layerCurrent.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
         }
     }
 }

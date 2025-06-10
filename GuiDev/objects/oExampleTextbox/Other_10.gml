@@ -11,3 +11,11 @@ if (GuiPrimaryGetClick())
         text = _text;
     });
 }
+
+if (GuiTextGetTargeted())
+{
+    if (GuiHotkeyGetPress("escape"))
+    {
+        GuiTextClose();
+    }
+}

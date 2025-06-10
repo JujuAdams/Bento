@@ -30,6 +30,7 @@
     {"$GMFolder":"","%Name":"Draw Order","folderPath":"folders/Library/Functions/Draw Order.yy","name":"Draw Order","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Environments","folderPath":"folders/Library/Functions/Environments.yy","name":"Environments","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Focus","folderPath":"folders/Library/Functions/Focus.yy","name":"Focus","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Text","folderPath":"folders/Library/Functions/Text.yy","name":"Text","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Input & Navigation","folderPath":"folders/Library/Functions/Input & Navigation.yy","name":"Input & Navigation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Directional Only","folderPath":"folders/Library/Functions/Input & Navigation/Directional Only.yy","name":"Directional Only","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Getters","folderPath":"folders/Library/Functions/Input & Navigation/Getters.yy","name":"Getters","resourceType":"GMFolder","resourceVersion":"2.0",},

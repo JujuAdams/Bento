@@ -6,6 +6,7 @@
 /// - Any `GUI_BUTTON_POINTER` or `GUI_BUTTON_ALWAYS` UI element is being hovered.
 /// - Any UI element has been pressed and the primary button is being held.
 /// - Any UI element has been focused in a way that restricts the pointer.
+/// - The environment is receiving text input using `GuiTextOpen()`.
 ///
 /// Additionally, if the topmost layer is NOT using a pointer input mode, this function will always
 /// return `false`.
@@ -17,6 +18,8 @@ function GuiGetBlocksMouse(_environment = undefined)
     static _system = __GuiSystem();
     with(_environment ?? _system.__environmentCurrent)
     {
+        if (__textHandler != undefined) return true;
+        
         with(__layerCurrent)
         {
             if (not __navPointer) return false;

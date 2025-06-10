@@ -34,6 +34,9 @@ function __GuiTextClassShared(_environment, _initialText, _callback, _maxLength)
         {
             if (__textHandler == other) __textHandler = undefined;
             __textElement = undefined;
+            
+            //Make sure our layer is updated
+            __layerCurrent.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
         }
         
         __Callback();

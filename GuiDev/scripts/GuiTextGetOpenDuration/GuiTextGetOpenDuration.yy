@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"GuiTextGetOpenDuration",
   "parent":{
-    "name":"Focus",
-    "path":"folders/Library/Functions/Focus.yy",
+    "name":"Text",
+    "path":"folders/Library/Functions/Text.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
