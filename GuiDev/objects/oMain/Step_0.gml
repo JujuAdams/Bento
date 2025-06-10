@@ -24,11 +24,10 @@ else if (GuiUsingGamepad() && gamepad_is_connected(0))
 {
     var _gamepadDX = gamepad_axis_value(0, gp_axislh);
     var _gamepadDY = gamepad_axis_value(0, gp_axislv);
-    if (abs(_gamepadDX) > 0.2) _dX += sign(_gamepadDX);
-    if (abs(_gamepadDY) > 0.2) _dY += sign(_gamepadDY);
+    var _dX = (abs(_gamepadDX) > 0.2)? sign(_gamepadDX) : 0;
+    var _dY = (abs(_gamepadDY) > 0.2)? sign(_gamepadDY) : 0;
     GuiInputDirectional(_dX, _dY, gamepad_button_check(0, gp_face1));
 }
-
 
 // Pointer input generalises both mouse and touch input. As above, the primary action should be a
 // continuous "held" value. The coordinate space for the x/y coordinates should be the same as the

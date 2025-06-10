@@ -1,0 +1,6 @@
+Text:
+
+keyboard_string has serious problems beyond 1024 characters (or is it 1024 bytes?)
+Test if there're workarounds on iOS
+If there are both horizontal and vertical scrollbars, the positioning should adapt
+Need to figure out a way to cancel/abort text input when using gamepad input

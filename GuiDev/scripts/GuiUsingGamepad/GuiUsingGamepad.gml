@@ -9,5 +9,5 @@ function GuiUsingGamepad(_layer = undefined)
     static _system = __GuiSystem();
     
     _layer ??= _system.__layerCurrent;
-    return (_layer.__navMode == GUI_MODE_KEYBOARD);
+    return (_layer.__navMode == GUI_MODE_GAMEPAD);
 }
