@@ -106,11 +106,6 @@
 #macro GUI_TEXT_PENDING   1
 #macro GUI_TEXT_CONFIRM   2
 
-#macro GUI_TEXT_MODE_KEYBOARD  0
-#macro GUI_TEXT_MODE_MOBILE    1
-#macro GUI_TEXT_MODE_DIALOG    2
-#macro GUI_TEXT_MODE_STEAM     3
-
 #macro GUI_ON_WINDOWS  (os_type == os_windows)
 #macro GUI_ON_MACOS    (os_type == os_macosx)
 #macro GUI_ON_LINUX    (os_type == os_linux)

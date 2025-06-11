@@ -1,8 +1,5 @@
 // Feather disable all
 
-/// The optional `forceMode` parameter should be one of the `GUI_TEXT_MODE_*` constants. If this
-/// parameter is not provided (or set to `undefined`) then a suitable mode will be chosen for you.
-///
 /// `mobileSettings` should be a struct. The provided struct can optionally contain the following
 /// variables:
 /// 
@@ -23,21 +20,19 @@
 /// 
 /// @param [maxLength=300]
 /// @param [caption=""]
-/// @param [forceMode]
 /// @param [keyboardType]
 /// @param [returnKey]
 /// @param [capitalization]
 /// @param [textPrediction]
 /// @param [element=self]
 
-function GuiTextConfigure(_maxLength = 300, _caption = "", _mode = undefined, _keyboardType = kbv_type_default, _returnKey = kbv_returnkey_default, _capitalization = kbv_autocapitalize_none, _textPrediction = false, _hostElement = self)
+function GuiTextConfigure(_maxLength = 300, _caption = "", _keyboardType = kbv_type_default, _returnKey = kbv_returnkey_default, _capitalization = kbv_autocapitalize_none, _textPrediction = false, _hostElement = self)
 {
     if (not GuiExists(_hostElement)) return;
     with(_hostElement.GUI_VARS.__textConfig)
     {
         __maxLength      = _maxLength;
         __caption        = _caption;
-        __mode           = _mode;
         __keyboardType   = _keyboardType;
         __returnKey      = _returnKey;
         __capitalization = _capitalization;

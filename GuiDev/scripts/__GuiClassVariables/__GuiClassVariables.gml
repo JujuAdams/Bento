@@ -38,7 +38,6 @@ function __GuiClassVariables(_attachedElement) constructor
     __textConfig = {
         __maxLength:      300,
         __caption:        "",
-        __mode:           undefined,
         __keyboardType:   kbv_type_default,
         __returnKey:      kbv_returnkey_default,
         __capitalization: kbv_autocapitalize_none,

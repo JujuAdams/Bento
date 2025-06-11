@@ -18,9 +18,6 @@
 
 #macro __GUI_TEXT_IOS_MAX  1000
 
-#macro __GUI_BACKSPACE_REPEAT_DELAY     500
-#macro __GUI_BACKSPACE_REPEAT_INTERVAL   33
-
 __GuiSystem();
 function __GuiSystem()
 {

@@ -29,7 +29,6 @@ function GuiTextOpen(_initialText, _callback, _hostElement = self)
             {
                 var _maxLength      = __maxLength;
                 var _caption        = __caption;
-                var _mode           = __mode;
                 var _keyboardType   = __keyboardType;
                 var _returnKey      = __returnKey;
                 var _capitalization = __capitalization;
@@ -40,33 +39,31 @@ function GuiTextOpen(_initialText, _callback, _hostElement = self)
             _initialText = string_copy(_initialText, 1, _maxLength);
             
             //If there's no forced mode then figure it out
-            if (_mode == undefined)
+            if (GUI_ON_MOBILE)
             {
-                if (GUI_ON_MOBILE)
+                if (GUI_ON_IOS)
                 {
-                    _mode = GUI_TEXT_MODE_MOBILE;
-                }
-                else if (GUI_ON_DESKTOP)
-                {
-                    _mode = (GUI_STEAMWORKS_SUPPORT && _textUseSteamKeyboard)? GUI_TEXT_MODE_STEAM : GUI_TEXT_MODE_KEYBOARD;
+                    __textHandler = new __GuiTextClassiOS(self, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction);
                 }
                 else
                 {
-                    _mode = GUI_TEXT_MODE_MOBILE;
+                    __textHandler = new __GuiTextClassAndroid(self, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction);
                 }
             }
-            
-            //Make a new handler
-            switch(_mode)
+            else if (GUI_ON_DESKTOP)
             {
-                case GUI_TEXT_MODE_KEYBOARD: __textHandler = new __GuiTextClassKeyboard(self, _initialText, _callback, _maxLength); break;
-                case GUI_TEXT_MODE_MOBILE:   __textHandler = new __GuiTextClassMobile(  self, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction); break;
-                case GUI_TEXT_MODE_DIALOG:   __textHandler = new __GuiTextClassDialog(  self, _initialText, _callback, _maxLength, _caption); break;
-                case GUI_TEXT_MODE_STEAM:    __textHandler = new __GuiTextClassSteam(   self, _initialText, _callback, _maxLength, _caption); break;
-                
-                default:
-                    __GuiError($"Invalid mode provided ({_mode})");
-                break;
+                if (GUI_STEAMWORKS_SUPPORT && _textUseSteamKeyboard)
+                {
+                    __textHandler = new __GuiTextClassSteam(self, _initialText, _callback, _maxLength, _caption);
+                }
+                else
+                {
+                    __textHandler = new __GuiTextClassKeyboard(self, _initialText, _callback, _maxLength);
+                }
+            }
+            else
+            {
+                __textHandler = new __GuiTextClassDialog(self, _initialText, _callback, _maxLength, _caption);
             }
             
             //Make sure our layer is updated

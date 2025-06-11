@@ -9,16 +9,14 @@
 /// @param capitalization
 /// @param textPrediction
 
-function __GuiTextClassMobile(_environment, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction) : __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
+function __GuiTextClassAndroid(_environment, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction) : __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
 {
     __keyboardType   = _keyboardType;
     __returnKey      = _returnKey;
     __capitalization = _capitalization;
     __textPrediction = _textPrediction;
     
-    __keyboardStringPrev = __text;
-    __keyboardString     = __text;
-    keyboard_string      = __text;
+    keyboard_string = "";
     
     __osPausedPrev      = os_is_paused();
     __virtualStatusPrev = false;
@@ -33,15 +31,6 @@ function __GuiTextClassMobile(_environment, _initialText, _callback, _maxLength,
     {
         var _keyboardString = keyboard_string;
         var _keyboardStringLength = string_length(_keyboardString);
-        
-        if (GUI_ON_IOS)
-        {
-            if (_keyboardStringLength > __GUI_TEXT_IOS_MAX)
-            {
-                __Terminate(GUI_TEXT_ABORT);
-                return;
-            }
-        }
         
         //Keep the virtual keyboard visible
         var _osPaused = os_is_paused();
@@ -77,15 +66,13 @@ function __GuiTextClassMobile(_environment, _initialText, _callback, _maxLength,
         
         __virtualStatusPrev = _virtualStatus;
         
-        //Collect the keyboard string
-        __keyboardStringPrev = __keyboardString;
-        __keyboardString = __GuiTextCleanUp(_keyboardString);
+        if (keyboard_check_pressed(vk_backspace))
+        {
+            __text = string_copy(__text, 1, string_length(__text)-1);
+        }
         
-        //Detect changes between the two strings
-        var _result = __GuiTextDetectChanges(__keyboardString, __keyboardStringPrev, 0);
-        
-        //Modify the system's text string based on the removed characters and added characters
-        __text = __GuiTextApplyChanges(__text, _result.__removeCount, _result.__textDelta, __maxLength);
+        __text += __GuiTextCleanUp(_keyboardString);
+        keyboard_string = "";
         
         __Callback();
     }

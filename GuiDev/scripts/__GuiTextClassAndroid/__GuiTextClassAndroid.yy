@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiTextClassMobile",
+  "%Name":"__GuiTextClassAndroid",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiTextClassMobile",
+  "name":"__GuiTextClassAndroid",
   "parent":{
     "name":"Text",
     "path":"folders/Library/Functions/(System)/Text.yy",

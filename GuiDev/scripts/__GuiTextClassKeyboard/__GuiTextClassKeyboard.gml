@@ -7,14 +7,7 @@
 
 function __GuiTextClassKeyboard(_environment, _initialText, _callback, _maxLength) : __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
 {
-    __keyboardStringPrev = __text;
-    __keyboardString     = __text;
-    keyboard_string      = __text;
-    
-    __timePrevious         = current_time;
-    __backspacePressedTime = infinity;
-    __backspaceIgnore      = false;
-    __backspaceHeldPrev    = false;
+    keyboard_string = "";
     
     __Callback();
     
@@ -22,18 +15,13 @@ function __GuiTextClassKeyboard(_environment, _initialText, _callback, _maxLengt
     
     static __Step = function()
     {
-        //Manually track backspaces
-        var _backspaceRepeatCount = __UpdateBackspaceCount();
+        if (keyboard_check_pressed(vk_backspace))
+        {
+            __text = string_copy(__text, 1, string_length(__text)-1);
+        }
         
-        //Collect the keyboard string
-        __keyboardStringPrev = __keyboardString;
-        __keyboardString = __GuiTextCleanUp(keyboard_string);
-        
-        //Detect changes between the two strings
-        var _result = __GuiTextDetectChanges(__keyboardString, __keyboardStringPrev, _backspaceRepeatCount);
-        
-        //Modify the system's text string based on the removed characters and added characters
-        __text = __GuiTextApplyChanges(__text, _result.__removeCount, _result.__textDelta, __maxLength);
+        __text += __GuiTextCleanUp(keyboard_string);
+        keyboard_string = "";
         
         //Whacking [enter] finishes single-line entry
         if (keyboard_check(vk_enter))
@@ -44,62 +32,6 @@ function __GuiTextClassKeyboard(_environment, _initialText, _callback, _maxLengt
         {
             __Callback();
         }
-    }
-    
-    static __UpdateBackspaceCount = function()
-    {
-        var _backspaceRepeatCount = 0;
-        
-        var _currentTime    = current_time;
-        var _backspaceCheck = keyboard_check(vk_backspace) && (not keyboard_check(vk_control)) && (not keyboard_check(vk_alt));
-        var _backspaceHeld  = _backspaceCheck && ((keyboard_key == vk_backspace) || keyboard_check(ord(string_upper(keyboard_lastchar))));
-        
-        if (_backspaceHeld && keyboard_check_released(vk_anykey))
-        {
-            __backspacePressedTime = _currentTime;
-        }            
-        
-        if (__backspaceIgnore && (not _backspaceCheck))
-        {
-            __backspaceIgnore = false;
-        }
-        else if (keyboard_check(vk_anykey) && (not _backspaceHeld))
-        {
-            __backspaceIgnore = true;
-        }
-        
-        if ((not __backspaceIgnore) && _backspaceHeld)
-        {
-            if (not __backspaceHeldPrev)
-            {
-                //Initial press immediately removes a character
-                _backspaceRepeatCount = 1;
-                __backspacePressedTime = _currentTime;
-            }
-            else
-            {
-                //Held for more than one frame...
-                
-                var _heldTime = _currentTime - __backspacePressedTime;
-                if (_heldTime < __GUI_BACKSPACE_REPEAT_DELAY)
-                {
-                    //No repeat
-                    _backspaceRepeatCount = 0;
-                }
-                else
-                {
-                    var _repeatStart         = __backspacePressedTime + __GUI_BACKSPACE_REPEAT_DELAY;
-                    var _repeatCountPrevious = floor((__timePrevious  - _repeatStart) / __GUI_BACKSPACE_REPEAT_INTERVAL);
-                    var _repeatCountCurrent  = floor((_currentTime    - _repeatStart) / __GUI_BACKSPACE_REPEAT_INTERVAL);
-                    _backspaceRepeatCount    = max(0, _repeatCountCurrent - _repeatCountPrevious);
-                }
-            }
-        }
-        
-        __backspaceHeldPrev = _backspaceHeld;
-        __timePrevious = _currentTime;
-        
-        return _backspaceRepeatCount;
     }
     
     static __Terminate = function(_state)
