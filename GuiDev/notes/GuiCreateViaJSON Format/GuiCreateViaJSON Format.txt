@@ -34,9 +34,8 @@ are set before the Create event is executed for the new instance. This is analog
 
 Instance definition structs may contain a `.layout` property. If specified, this should be a struct
 that contains definitions for layout rules. Each layout property is associated with a layout
-function (`GuiLayoutSetOffset()` etc.). There are many layout properties that can be defined:
+function (`GuiSetOffset()` etc.). There are many layout properties that can be defined:
 
-.offset
 .size
 .minSize
 .maxSize
@@ -83,7 +82,7 @@ Here is a brief example:
 }
 
 .offset
-    Calls the `GuiLayoutSetOffset()` function on the created instance.
+    Calls the `GuiSetOffset()` function on the created instance.
     
     Can be a 2-element array:
         [ <x offset>, <y offset> ]

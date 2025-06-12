@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__GuiEnsureScroll",
+  "%Name":"__GuiEnsureOffset",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__GuiEnsureScroll",
+  "name":"__GuiEnsureOffset",
   "parent":{
     "name":"Ensure",
     "path":"folders/Library/Functions/(System)/Ensure.yy",

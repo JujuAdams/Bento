@@ -2,8 +2,8 @@
 
 function __GuiSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight)
 {
-    __solvedLeft = _left + __layoutOffsetX + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
-    __solvedTop  = _top  + __layoutOffsetY + __layoutAlignV*(_allocatedHeight - __solvedHeight);
+    __solvedLeft = _left + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
+    __solvedTop  = _top  + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
     if (GUI_FLOOR_LAYOUT_POSITIONS)
     {

@@ -22,6 +22,9 @@ function __GuiClassVariables(_attachedElement) constructor
     __visible        = true;
     __hoverableIndex = undefined;
     
+    __offsetX = 0;
+    __offsetY = 0;
+    
     __transformMatrix  = undefined;
     __transformOriginX = undefined;
     __transformOriginY = undefined;
@@ -283,11 +286,6 @@ function __GuiClassVariables(_attachedElement) constructor
     }
     
     __layoutClampInside = false;
-    
-    //Fixed offset applied against the calculated layout left/top position. Applied at the very end of
-    //the solver algorithm.
-    __layoutOffsetX = 0;
-    __layoutOffsetY = 0;
     
     //Alignment against the region that the parent has allocated for this instance. This is especially
     //useful for children of non-list / non-grid parents where you might want to position the instance

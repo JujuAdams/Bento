@@ -23,10 +23,6 @@ function GuiLayoutSetFromJSON(_json, _element = self)
             {
                 __GuiLayoutSetFromJSON_clampInside(_element, _value);
             }
-            else if (_name == "offset")
-            {
-                __GuiLayoutSetFromJSON_offset(_element, _value);
-            }
             else if (_name == "size")
             {
                 __GuiLayoutSetFromJSON_size(_element, _value);
@@ -115,32 +111,6 @@ function __GuiLayoutSetFromJSON_clampInside(_element, _value)
     else
     {
         __GuiError($".offset layout property must be a boolean (typeof \"{typeof(_value)}\")");
-    }
-}
-
-
-
-////////
-// .offset
-////////
-function __GuiLayoutSetFromJSON_offset(_element, _value)
-{
-    if (is_array(_value))
-    {
-        if (array_length(_value) != 2)
-        {
-            __GuiError($".offset layout property must have 2 elements if it is an array (length = {array_length(_value)})");
-        }
-        
-        GuiLayoutSetOffset(_value[0], _value[1], _element);
-    }
-    else if (is_struct(_value))
-    {
-        GuiLayoutSetOffset(_value[$ "x"], _value[$ "y"], _element);
-    }
-    else
-    {
-        __GuiError($".offset layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
     }
 }
 

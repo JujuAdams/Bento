@@ -5,14 +5,13 @@ function TestTextbox()
     var _json = [
         {
             object: oExampleTextbox,
-            layout: {
-                offset: [30, 30],
-            },
+            offset: [30, 30],
         },
         {
             object: oExampleButton,
+            offset: [30, 130],
             layout: {
-                offset: [30, 130],
+                size: [100, 100],
             },
         },
     ];

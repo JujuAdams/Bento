@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"GuiLayoutSetOffset",
+  "%Name":"GuiGetOffset",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"GuiLayoutSetOffset",
+  "name":"GuiGetOffset",
   "parent":{
-    "name":"Layout",
-    "path":"folders/Library/Functions/Layout.yy",
+    "name":"Properties",
+    "path":"folders/Library/Functions/Properties.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

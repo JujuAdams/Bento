@@ -4,28 +4,38 @@
 /// @param [y]
 /// @param [element=self]
 
-function GuiLayoutSetOffset(_x, _y, _element = self)
+function GuiSetOffset(_x, _y, _element = self)
 {
     if (not GuiExists(_element)) return;
     
     with(_element.GUI_VARS)
     {
+        var _dirty = false;
+        
         if (_x != undefined)
         {
-            if (__layoutOffsetX != _x)
+            if (__offsetX != _x)
             {
-                __layoutOffsetX = _x;
+                __offsetX = _x;
                 __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                _dirty = true;
             }
         }
         
         if (_y != undefined)
         {
-            if (__layoutOffsetY != _y)
+            if (__offsetY != _y)
             {
-                __layoutOffsetY = _y;
+                __offsetY = _y;
                 __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                _dirty = true;
             }
+        }
+        
+        if (_dirty)
+        {
+            __scrollPosDirty = true;
+            array_push(__layer.__dirtyScrollPosArray, _element);
         }
     }
 }

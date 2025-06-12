@@ -2,7 +2,7 @@
 
 /// Must be called in the scope of `__GuiClassLayer`.
 
-function __GuiEnsureScroll()
+function __GuiEnsureOffset()
 {
     //Animate all active scrolls
     var _scrollAnimatingArray = __scrollAnimatingArray;
@@ -111,8 +111,8 @@ function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, 
         var _height = __solvedHeight;
         
         //Calculate where our center is on the parent
-        var _leftWorld   = __solvedLeft + _offsetX;
-        var _topWorld    = __solvedTop  + _offsetY;
+        var _leftWorld   = __solvedLeft + __offsetX + _offsetX;
+        var _topWorld    = __solvedTop  + __offsetY + _offsetY;
         var _rightWorld  = _leftWorld + _width;
         var _bottomWorld = _topWorld  + _height;
         

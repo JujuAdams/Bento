@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiSetOffset",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiSetOffset",
+  "parent":{
+    "name":"Properties",
+    "path":"folders/Library/Functions/Properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

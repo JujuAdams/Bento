@@ -184,7 +184,7 @@ function __GuiClassLayer(_environment, _name) constructor
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
         __GuiEnsureScrollLimits();
-        __GuiEnsureScroll();
+        __GuiEnsureOffset();
         __GuiEnsureHoverableOrder();
         
         if (not _ensureOnly)
@@ -305,7 +305,7 @@ function __GuiClassLayer(_environment, _name) constructor
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
         __GuiEnsureScrollLimits();
-        __GuiEnsureScroll();
+        __GuiEnsureOffset();
         
         //And we're done
         __GuiLayerTargetPop();

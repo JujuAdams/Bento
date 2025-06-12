@@ -158,6 +158,29 @@ function __GuiCreateViaJSONInner(_json, _parent, _metadata)
             }
         }
         
+        //Offset the instance
+        var _offset = _json[$ "offset"];
+        if (_offset != undefined)
+        {
+            if (is_array(_offset))
+            {
+                if (array_length(_offset) != 2)
+                {
+                    __GuiError($".offset property must have 2 elements if it is an array (length = {array_length(_offset)})");
+                }
+        
+                GuiSetOffset(_offset[0], _offset[1], _element);
+            }
+            else if (is_struct(_offset))
+            {
+                GuiSetOffset(_offset[$ "x"], _offset[$ "y"], _element);
+            }
+            else
+            {
+                __GuiError($".offset property must be a 2-element array or a struct (typeof \"{typeof(_offset)}\")");
+            }
+        }
+        
         //Apply layout options
         var _layout = _json[$ "layout"];
         if (_layout != undefined)
