@@ -8,6 +8,7 @@
 function __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
 {
     static _system = __GuiSystem();
+    static __cancelOnClick = false;
     
     __environment = _environment;
     __text        = _initialText;

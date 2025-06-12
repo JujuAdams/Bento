@@ -11,6 +11,8 @@
 
 function __GuiTextClassiOS(_environment, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction) : __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
 {
+    static __cancelOnClick = true;
+    
     __keyboardType   = _keyboardType;
     __returnKey      = _returnKey;
     __capitalization = _capitalization;

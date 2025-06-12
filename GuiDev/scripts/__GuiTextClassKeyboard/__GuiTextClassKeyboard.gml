@@ -7,6 +7,8 @@
 
 function __GuiTextClassKeyboard(_environment, _initialText, _callback, _maxLength) : __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
 {
+    static __cancelOnClick = true;
+    
     keyboard_string = "";
     
     __Callback();

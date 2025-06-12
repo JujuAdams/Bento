@@ -11,6 +11,8 @@
 
 function __GuiTextClassAndroid(_environment, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction) : __GuiTextClassShared(_environment, _initialText, _callback, _maxLength) constructor
 {
+    static __cancelOnClick = true;
+    
     __keyboardType   = _keyboardType;
     __returnKey      = _returnKey;
     __capitalization = _capitalization;
@@ -42,16 +44,10 @@ function __GuiTextClassAndroid(_environment, _initialText, _callback, _maxLength
         
         __osPausedPrev = _osPaused;
         
-        //Detect the final character in the incoming string
-        var _tail = 0x00;
-        if (_keyboardStringLength > string_length(__keyboardStringPrev))
-        {
-            var _tail = ord(string_char_at(_keyboardString, _keyboardStringLength));
-        }
-        
         //We receive a line feed/carriage return if the user has confirmed the dialog
         var _virtualStatus = keyboard_virtual_status();
         
+        var _tail = ord(string_char_at(_keyboardString, _keyboardStringLength));
         if (keyboard_check_pressed(0x0A) || (_tail == 0x0A)  // Line feed
         ||  keyboard_check_pressed(0x0D) || (_tail == 0x0D)) // Carriage return
         {

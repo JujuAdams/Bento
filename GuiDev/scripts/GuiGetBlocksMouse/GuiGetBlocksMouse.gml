@@ -1,5 +1,8 @@
 // Feather disable all
 
+// TODO - Mouse-over detection and tracking needs improvement. This function may get expensive.
+// TODO - Should check every environment for a text handler
+
 /// Returns whether the top-most layer for the given environment wants to block mouse input to
 /// other parts of your game. This can happen in the following situations:
 /// 

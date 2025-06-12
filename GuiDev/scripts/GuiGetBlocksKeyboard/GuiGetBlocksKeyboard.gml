@@ -1,5 +1,7 @@
 // Feather disable all
 
+// TODO - Should check every environment for a text handler
+
 /// Returns whether the top-most layer for the given environment wants to block keyboard input to
 /// other parts of your game. This can happen in the following situations:
 /// 
@@ -14,12 +16,8 @@ function GuiGetBlocksKeyboard(_environment = undefined)
     
     with(_environment ?? _system.__environmentCurrent)
     {
-        if (__textHandler != undefined) return false;
-        
-        with(__layerCurrent)
-        {
-            if (__navMode == GUI_MODE_KEYBOARD) return true;
-        }
+        if (__textHandler != undefined) return true;
+        if (__layerCurrent.__navMode == GUI_MODE_KEYBOARD) return true;
     }
     
     return false;

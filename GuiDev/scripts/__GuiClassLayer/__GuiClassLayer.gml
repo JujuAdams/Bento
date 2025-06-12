@@ -209,14 +209,18 @@ function __GuiClassLayer(_environment, _name) constructor
                     if (not __GuiGetHoverableInternal(__holdElement, false)) __holdElement = GUI_NO_ELEMENT;
                     
                     //Try to hover a new element (maybe)
-                    __GuiStartHover(__GuiGetPointerHover(__mouseX, __mouseY));
+                    if ((not __mouseHold) || ((__navMode == GUI_MODE_TOUCH) && (__primaryState == __GUI_START)))
+                    {
+                        __GuiStartHover(__GuiGetPointerHover(__mouseX, __mouseY));
+                    }
                     
                     if (__primaryState == __GUI_START)
                     {
                         if (__environment.__textHandler != undefined) //Detect clicking off of an input box
                         {
                             if ((__environment.__textElement != __hoverElement)
-                            &&  (not GuiIsAncestor(__environment.__textElement, __hoverElement)))
+                            &&  (not GuiIsAncestor(__environment.__textElement, __hoverElement))
+                            &&  __environment.__textHandler.__cancelOnClick)
                             {
                                 __environment.__textHandler.__Terminate(GUI_TEXT_ABORT);
                                 __hoverElement = GUI_NO_ELEMENT;
