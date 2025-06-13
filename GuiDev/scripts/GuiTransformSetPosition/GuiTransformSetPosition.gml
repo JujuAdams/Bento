@@ -3,7 +3,8 @@
 /// Applies a *visual* transformation to a UI element and its children. This is achieved by
 /// applying a world transformation matrix when drawing the UI element via `GuiSystemDraw()`.
 /// 
-/// This particular function applies a rotation to a UI instance.
+/// This particular function applies a linear translation to visually move a UI element to that
+/// position.
 /// 
 /// N.B. This transformation only applies to how the UI instance is drawn. It does not affect
 ///      any collisions or raycasts. Transformations will not change `gui*` variables either.
@@ -16,22 +17,38 @@
 /// 3. Translation
 /// The center of the transform can be set using `GuiTransformSetOrigin()`.
 /// 
-/// @param [angle]
+/// @param [x]
+/// @param [y]
 /// @param [element=self]
 
-function GuiTransformSetAngle(_angle, _element = self)
+function GuiTransformSetPosition(_x, _y, _element = self)
 {
     if (not GuiExists(_element)) return;
     
     with(_element.GUI_VARS)
     {
-        if (_angle != undefined)
+        if (_x != undefined)
         {
-            if (__transformAngle != _angle)
+            if (__transformOffsetX != _x)
             {
-                __transformAngle = _angle;
+                __transformOffsetX = _x;
                 __GuiMarkTransformDirty(_element);
             }
+        }
+        
+        if (_y != undefined)
+        {
+            if (__transformOffsetY != _y)
+            {
+                __transformOffsetY = _y;
+                __GuiMarkTransformDirty(_element);
+            }
+        }
+        
+        if (not __transformOffsetAbsolute)
+        {
+            __transformOffsetAbsolute = true;
+            __GuiMarkTransformDirty(_element);
         }
     }
 }

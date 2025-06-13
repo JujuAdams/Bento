@@ -21,9 +21,7 @@ function __GuiEnsureTransforms()
             var _originX = __transformOriginX;
             var _originY = __transformOriginY;
             
-            if ((_offsetX != 0) || (_offsetY != 0)
-            ||  (_scaleX != 1) || (_scaleY != 1) || (_angle != 0)
-            ||  (_originX != undefined) || (_originY != undefined))
+            if ((_offsetX != 0) || (_offsetY != 0) || (_scaleX != 1) || (_scaleY != 1) || (_angle != 0))
             {
                 var _originX = (_originX == undefined)? __attachedElement.guiX : (__attachedElement.guiLeft + _originX);
                 var _originY = (_originY == undefined)? __attachedElement.guiY : (__attachedElement.guiTop  + _originY);
@@ -41,6 +39,12 @@ function __GuiEnsureTransforms()
                     //Create a new array for the matrix to live in
                     _transformMatrix = matrix_build_identity();
                     __transformMatrix = _transformMatrix;
+                }
+                
+                if (__transformOffsetAbsolute)
+                {
+                    _offsetX -= _originX;
+                    _offsetY -= _originY;
                 }
                 
                 //Update the existing matrix

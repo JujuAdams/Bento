@@ -11,13 +11,7 @@
 /// N.B. This transformation only applies to how the UI instance is drawn. It does not affect
 ///      any collisions or raycasts. Transformations will not change `gui*` variables either.
 ///      To move instances around in a way that also moves their collisions, please use the
-///      `GuiLayout*()` functions.
-/// 
-/// Transformations are applied in this order:
-/// 1. Scaling
-/// 2. Rotation
-/// 3. Translation
-/// The center of rotation and translation can be set using `GuiTransformSetOrigin()`.
+///      `GuiLayout*()` functions or `GuiSetOffset()`.
 /// 
 /// @param x
 /// @param y
