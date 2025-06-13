@@ -43,13 +43,13 @@ function __GuiSystem()
         __environmentArray = [];
         var _environment = GuiEnvironmentCreate("default");
         
-        __environmentStack = [];
+        __environmentStack   = [];
         __environmentCurrent = _environment;
         
-        __layerStack = [];
+        __layerStack   = [];
         __layerCurrent = __environmentCurrent.__layerCurrent;
         
-        __textUseSteamKeyboard = false;
+        __textUseSteamKeyboard   = false;
         __textHandlerEnvironment = undefined;
             
         if (GUI_STEAMWORKS_SUPPORT)

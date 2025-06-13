@@ -203,6 +203,7 @@
     {"id":{"name":"GuiGetButton","path":"scripts/GuiGetButton/GuiGetButton.yy",},},
     {"id":{"name":"GuiGetChild","path":"scripts/GuiGetChild/GuiGetChild.yy",},},
     {"id":{"name":"GuiGetChildCount","path":"scripts/GuiGetChildCount/GuiGetChildCount.yy",},},
+    {"id":{"name":"GuiGetClickable","path":"scripts/GuiGetClickable/GuiGetClickable.yy",},},
     {"id":{"name":"GuiGetDepth","path":"scripts/GuiGetDepth/GuiGetDepth.yy",},},
     {"id":{"name":"GuiGetDisable","path":"scripts/GuiGetDisable/GuiGetDisable.yy",},},
     {"id":{"name":"GuiGetDrawEnd","path":"scripts/GuiGetDrawEnd/GuiGetDrawEnd.yy",},},
