@@ -50,6 +50,7 @@ function __GuiSystem()
         __layerCurrent = __environmentCurrent.__layerCurrent;
         
         __textUseSteamKeyboard = false;
+        __textHandlerEnvironment = undefined;
             
         if (GUI_STEAMWORKS_SUPPORT)
         {

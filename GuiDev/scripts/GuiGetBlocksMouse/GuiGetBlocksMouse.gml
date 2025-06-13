@@ -19,10 +19,11 @@
 function GuiGetBlocksMouse(_environment = undefined)
 {
     static _system = __GuiSystem();
+    
+    if (_system.__textHandlerEnvironment != undefined) return true;
+    
     with(_environment ?? _system.__environmentCurrent)
     {
-        if (__textHandler != undefined) return true;
-        
         with(__layerCurrent)
         {
             if (not __navPointer) return false;
@@ -35,7 +36,6 @@ function GuiGetBlocksMouse(_environment = undefined)
             
             if (GuiExists(__holdElement))
             {
-                
                 return true;
             }
             

@@ -59,6 +59,7 @@ function __GuiTextClassDialog(_environment, _initialText, _callback, _maxLength,
             __dialog = undefined;
             instance_destroy();
         }
+        
         __TerminateShared(_state);
     }
 }

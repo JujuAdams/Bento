@@ -6,15 +6,27 @@
 
 function GuiTextOpen(_initialText, _callback, _hostElement = self)
 {
+    static _system = __GuiSystem();
     static _textUseSteamKeyboard = __GuiSystem().__textUseSteamKeyboard;
     
     if (not GuiExists(_hostElement)) return;
     
     with(_hostElement.GUI_VARS.__layer.__environment)
     {
-        //TODO - Make text input exclusive in global scope across environments
+        if ((_system.__textHandlerEnvironment != undefined) && (_system.__textHandlerEnvironment != self))
+        {
+            __GuiTrace("Cannot open text input, another environment is already receiving text input");
+            return;
+        }
         
-        if (__textElement != _hostElement)
+        if (__textElement == _hostElement)
+        {
+            if (__textHandler != undefined)
+            {
+                __textHandler.__callback = _callback;
+            }
+        }
+        else
         {
             //There can only be one!
             if (__textHandler != undefined)
@@ -23,6 +35,7 @@ function GuiTextOpen(_initialText, _callback, _hostElement = self)
             }
             
             __textElement = _hostElement;
+            _system.__textHandlerEnvironment = self;
             
             //Unpack text config
             with(_hostElement.GUI_VARS.__textConfig)

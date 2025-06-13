@@ -29,15 +29,28 @@ function __GuiTextClassShared(_environment, _initialText, _callback, _maxLength)
     
     static __TerminateShared = function(_state)
     {
+        var _self = self;
+        
         __state = _state;
         
-        with(__environment)
+        with(_system)
         {
-            if (__textHandler == other) __textHandler = undefined;
-            __textElement = undefined;
-            
-            //Make sure our layer is updated
-            __layerCurrent.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+            if (_self.__environment == __textHandlerEnvironment)
+            {
+                with(__textHandlerEnvironment)
+                {
+                    if (__textHandler == _self)
+                    {
+                        __textHandler = undefined;
+                        __textElement = undefined;
+                        
+                        //Make sure our layer is updated
+                        __layerCurrent.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+                    }
+                }
+                
+                __textHandlerEnvironment = undefined;
+            }
         }
         
         __Callback();

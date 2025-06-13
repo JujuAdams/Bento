@@ -1,15 +1,16 @@
 // Feather disable all
 
-/// @param [environment=current]
-
-function GuiTextClose(_environment = undefined)
+function GuiTextClose()
 {
     static _system = __GuiSystem();
-    with(_environment ?? _system.__environmentCurrent)
+    
+    with(_system.__textHandlerEnvironment)
     {
         if (__textHandler != undefined)
         {
             __textHandler.__Terminate(GUI_TEXT_INACTIVE);
         }
     }
+    
+    _system.__textHandlerEnvironment = undefined;
 }

@@ -4,5 +4,7 @@
 
 function GuiTextGetTargeted(_element = self)
 {
-    return GuiExists(_element)? (_element.GUI_VARS.__layer.__environment.__textElement == _element) : false;
+    static _system = __GuiSystem();
+    
+    return (_system.__textHandlerEnvironment != undefined)? (_system.__textHandlerEnvironment.__textElement == _element) : false;
 }
