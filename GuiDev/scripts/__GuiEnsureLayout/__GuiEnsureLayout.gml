@@ -51,8 +51,8 @@ function __GuiEnsureLayout()
     _rootGui.__SolverPositions(0, 0, _rootGui.__solvedWidth, _rootGui.__solvedHeight);
     
     //Ensure a full reset of the transform/scroll positions
-    array_resize(__dirtyScrollPosArray, 0);
-    array_push(__dirtyScrollPosArray, __rootElement);
+    array_resize(__dirtyOffsetArray, 0);
+    array_push(__dirtyOffsetArray, __rootElement);
 }
 
 function __GuiEnsureLayerOrderInner(_layoutOrder, _element)

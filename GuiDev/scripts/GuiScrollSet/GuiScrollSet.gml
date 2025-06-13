@@ -33,10 +33,11 @@ function GuiScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT
         __scrollTargetY = _scrollTargetY;
         __scrollSpeed   = _scrollSpeed;
         
-        if (not __scrollPosDirty)
+        //Mark our offset as dirty so we can update our children
+        if (not __offsetDirty)
         {
-            __scrollPosDirty = true;
-            array_push(__layer.__dirtyScrollPosArray, _scroller);
+            __offsetDirty = true;
+            array_push(__layer.__dirtyOffsetArray, _scroller);
         }
     }
 }

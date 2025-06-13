@@ -4,68 +4,26 @@
 
 function __GuiEnsureOffset()
 {
-    //Animate all active scrolls
-    var _scrollAnimatingArray = __scrollAnimatingArray;
-    var _i = array_length(_scrollAnimatingArray)-1;
-    repeat(array_length(_scrollAnimatingArray))
-    {
-        var _element = _scrollAnimatingArray[_i];
-        if (not GuiExists(_element))
-        {
-            array_delete(_scrollAnimatingArray, _i, 1);
-        }
-        else
-        {
-            with(_element.GUI_VARS)
-            {
-                var _dX = __scrollTargetX - __scrollX;
-                var _dY = __scrollTargetY - __scrollY;
-                
-                var _distance = sqrt(_dX*_dX + _dY*_dY);
-                if (_distance <= 0)
-                {
-                    array_delete(_scrollAnimatingArray, _i, 1);
-                }
-                else
-                {
-                    _dX *= min(1, min(999999, __scrollSpeed) / _distance);
-                    _dY *= min(1, min(999999, __scrollSpeed) / _distance);
-                    
-                    __scrollX += _dX;
-                    __scrollY += _dY;
-                    
-                    if (not __scrollPosDirty)
-                    {
-                        __scrollPosDirty = true;
-                        array_push(__layer.__dirtyScrollPosArray, _element);
-                    }
-                }
-            }
-        }
-        
-        --_i;
-    }
-    
-    var _dirtyScrollPosArray = __dirtyScrollPosArray;
-    if (array_length(_dirtyScrollPosArray) <= 0) return;
+    var _dirtyOffsetArray = __dirtyOffsetArray;
+    if (array_length(_dirtyOffsetArray) <= 0) return;
     
     //Sort from newest instance to oldest instance. This will usually get the following loop to
     //execute from the most senior node to the most junior leaf.
-    array_sort(_dirtyScrollPosArray, function(_a, _b)
+    array_sort(_dirtyOffsetArray, function(_a, _b)
     {
         return -sign(_a.GUI_VARS.__envIndex - _b.GUI_VARS.__envIndex);
     });
     
-    while(array_length(_dirtyScrollPosArray) > 0)
+    while(array_length(_dirtyOffsetArray) > 0)
     {
-        var _element = array_shift(_dirtyScrollPosArray);
+        var _element = array_shift(_dirtyOffsetArray);
         if (GuiExists(_element))
         {
             var _parent = _element.GUI_VARS.__parent;
             if (not GuiExists(_parent))
             {
                 //No parent, probably the root node?
-                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element,
+                __GuiMarkScrollPosDirtyInner(_dirtyOffsetArray, _element,
                                              0, 0,
                                              -infinity, -infinity, infinity, infinity,
                                              GUI_VISIBLE_FULL);
@@ -75,7 +33,7 @@ function __GuiEnsureOffset()
                 with(_parent.GUI_VARS)
                 {
                     //FIXME - Refactor to pass down the scissor parent
-                    __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element,
+                    __GuiMarkScrollPosDirtyInner(_dirtyOffsetArray, _element,
                                                  __scrollX, __scrollY,
                                                  __scissorWorldLeft, __scissorWorldTop, __scissorWorldRight, __scissorWorldBottom,
                                                  __scissorVisibility);
@@ -85,7 +43,7 @@ function __GuiEnsureOffset()
     }
 }
 
-/// @param dirtyScrollPosArray
+/// @param dirtyOffsetArray
 /// @param element
 /// @param offsetX
 /// @param offsetY
@@ -95,16 +53,16 @@ function __GuiEnsureOffset()
 /// @param scissorBottom
 /// @param scissorVisibility
 
-function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility)
+function __GuiMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility)
 {
     with(_element.GUI_VARS)
     {
-        if (__scrollPosDirty)
+        if (__offsetDirty)
         {
-            __scrollPosDirty = false;
+            __offsetDirty = false;
             
-            var _index = array_get_index(_dirtyScrollPosArray, _element);
-            if (_index >= 0) array_delete(_dirtyScrollPosArray, _index, 1);
+            var _index = array_get_index(_dirtyOffsetArray, _element);
+            if (_index >= 0) array_delete(_dirtyOffsetArray, _index, 1);
         }
         
         var _width  = __solvedWidth;
@@ -224,7 +182,7 @@ function __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _element, _offsetX, 
             var _i = 0;
             repeat(array_length(_childArray))
             {
-                __GuiMarkScrollPosDirtyInner(_dirtyScrollPosArray, _childArray[_i], _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility);
+                __GuiMarkScrollPosDirtyInner(_dirtyOffsetArray, _childArray[_i], _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility);
                 ++_i;
             }
         }

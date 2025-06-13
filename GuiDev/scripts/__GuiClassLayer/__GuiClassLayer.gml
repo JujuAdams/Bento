@@ -87,7 +87,7 @@ function __GuiClassLayer(_environment, _name) constructor
     
     __dirtyChildOrderArray   = [];
     __dirtyScrollLimitsArray = [];
-    __dirtyScrollPosArray    = [];
+    __dirtyOffsetArray       = [];
     __dirtyTransformsArray   = [];
     __scrollAnimatingArray   = [];
     
@@ -305,6 +305,7 @@ function __GuiClassLayer(_environment, _name) constructor
         __GuiEnsureLayout();
         __GuiEnsureStepOrder();
         __GuiEnsureScrollLimits();
+        __GuiAnimateScroll();
         __GuiEnsureOffset();
         
         //And we're done

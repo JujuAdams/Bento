@@ -34,8 +34,8 @@ function GuiSetOffset(_x, _y, _element = self)
         
         if (_dirty)
         {
-            __scrollPosDirty = true;
-            array_push(__layer.__dirtyScrollPosArray, _element);
+            __offsetDirty = true;
+            array_push(__layer.__dirtyOffsetArray, _element);
         }
     }
 }

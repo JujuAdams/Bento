@@ -30,6 +30,7 @@ function __GuiClassVariables(_attachedElement) constructor
     __transformOriginY = undefined;
     __transformOffsetX = 0;
     __transformOffsetY = 0;
+    __transformOffsetAbsolute = false;
     __transformScaleX  = 1;
     __transformScaleY  = 1;
     __transformAngle   = 0;
@@ -73,7 +74,7 @@ function __GuiClassVariables(_attachedElement) constructor
     
     __drawOrderDirty    = false;
     __scrollLimitsDirty = false;
-    __scrollPosDirty    = false;
+    __offsetDirty       = false;
     __transformDirty    = false;
     
     __updating = false;
