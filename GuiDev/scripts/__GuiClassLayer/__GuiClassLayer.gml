@@ -17,6 +17,9 @@ function __GuiClassLayer(_environment, _name) constructor
     __frozen = false;
     __rootElement = GUI_NO_ELEMENT;
     
+    __animatingMap   = ds_map_create();
+    __animatingArray = [];
+    
     ////////
     // Set up a default navigation mode for convenience
     ////////
@@ -122,6 +125,28 @@ function __GuiClassLayer(_environment, _name) constructor
         
         if (not _ensureOnly)
         {
+            //Check if any animating elements have timed out
+            var _i = 0;
+            repeat(array_length(__animatingArray))
+            {
+                var _animatingData = __animatingArray[_i];
+                if (current_time >= _animatingData.__timeout)
+                {
+                    array_delete(__animatingArray, _i, 1);
+                    ds_map_delete(__animatingMap, _animatingData.__element);
+                }
+                else
+                {
+                    ++_i;
+                }
+            }
+            
+            //If anything is animating, consume all input
+            if (not ds_map_empty(__animatingMap))
+            {
+                GuiInputConsume(self);
+            }
+            
             ///////
             // Input handling
             ///////

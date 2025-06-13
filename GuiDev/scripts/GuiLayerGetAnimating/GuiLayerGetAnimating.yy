@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GuiLayerGetAnimating",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GuiLayerGetAnimating",
+  "parent":{
+    "name":"Layers",
+    "path":"folders/Library/Functions/Layers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
