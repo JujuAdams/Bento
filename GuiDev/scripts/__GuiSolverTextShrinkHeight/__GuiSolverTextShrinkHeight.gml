@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __GuiSolverTextShrinkHeight()
+function __GuiSolverTextGetShrinkHeight()
 {
     draw_set_font(__attachedElement.font);
     
@@ -19,7 +19,7 @@ function __GuiSolverTextShrinkHeight()
         __solvedHeight    = clamp(__solverMinHeight, __layoutHeightMin, __layoutHeightMax);
     }
     
-    __solverShrinkHeight = __solvedHeight;
+    __solverGetShrinkHeight = __solvedHeight;
     
     draw_set_font(-1);
 }

@@ -11,10 +11,10 @@ function TestStructs()
         GuiLayoutSetGutter(10, 10);
         
         var _text = new GuiConstrText("Hello World", undefined, fa_center);
-        GuiLayoutSetResizeType(GUI_RESIZE_GROW, undefined, _text);
+        GuiLayoutSetResizeType(GUI_RESIZE_EXPAND, undefined, _text);
         
         var _text = GuiCreateObject(oGuiLibText, { text: "Hello World", hAlign: fa_center });
-        GuiLayoutSetResizeType(GUI_RESIZE_GROW, undefined, _text);
+        GuiLayoutSetResizeType(GUI_RESIZE_EXPAND, undefined, _text);
         
         new ExampleConstrButton(undefined, "Test");
         new ExampleConstrButton(undefined, "Test");

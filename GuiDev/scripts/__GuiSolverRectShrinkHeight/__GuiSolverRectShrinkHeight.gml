@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __GuiSolverRectShrinkHeight()
+function __GuiSolverRectGetShrinkHeight()
 {
     //Determine the preferred height
     if (__layoutHeightPref > 0)
@@ -21,6 +21,6 @@ function __GuiSolverRectShrinkHeight()
     
     __solvedHeight = clamp(_height, __layoutHeightMin, __layoutHeightMax);
     
-    __solverShrinkHeight = __solvedHeight;
+    __solverGetShrinkHeight = __solvedHeight;
     __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
 }

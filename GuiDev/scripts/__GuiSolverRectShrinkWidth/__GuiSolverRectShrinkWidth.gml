@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __GuiSolverRectShrinkWidth()
+function __GuiSolverRectGetShrinkWidth()
 {
     //Determine the preferred width
     if (__layoutWidthPref > 0)
@@ -21,6 +21,6 @@ function __GuiSolverRectShrinkWidth()
     
     __solvedWidth = clamp(_width, __layoutWidthMin, __layoutWidthMax);
     
-    __solverShrinkWidth = __solvedWidth;
+    __solverGetShrinkWidth = __solvedWidth;
     __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
 }

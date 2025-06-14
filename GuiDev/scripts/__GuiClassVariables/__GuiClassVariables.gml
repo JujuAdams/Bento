@@ -323,14 +323,14 @@ function __GuiClassVariables(_attachedElement) constructor
     
     //How the instance should resize. "Static" is as the name suggests - the instance won't change
     //size. "Shrink" will cause the instance to shrink down to shrink any children it has inside. If an
-    //instance has no ch\ildren, the "shrink" resize type will behave the same as "static". "Grow" will
+    //instance has no ch\ildren, the "shrink" resize type will behave the same as "static". "expand" will
     //cause the instance to increase size in that axis to fill available space in the parent.
     __layoutWidthResize  = GUI_RESIZE_STATIC;
     __layoutHeightResize = GUI_RESIZE_STATIC;
     
     //The size required to shrink all of this instance's children at their preferred size.
-    __solverShrinkWidth  = 0;
-    __solverShrinkHeight = 0;
+    __solverGetShrinkWidth  = 0;
+    __solverGetShrinkHeight = 0;
     
     //The absolute minimum size that a parent can be to shrink all of its children.
     __solverMinWidth  = 0;
@@ -339,13 +339,13 @@ function __GuiClassVariables(_attachedElement) constructor
     __layoutType = GUI_LAYOUT_RECT;
     
     //Function that sets the solver's shrink width and minimum width. This is a boring function for most
-    //instances. It gets more exciting for lists - see `__GuiSolverListShrinkWidth()`. This function also
+    //instances. It gets more exciting for lists - see `__GuiSolverListGetShrinkWidth()`. This function also
     //preliminarily sets the final calculated width for the instance (`__solvedWidth`).
     //
     // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_TEXT` override this function.
-    __SolverShrinkWidth = method(self, __GuiSolverRectShrinkWidth);
+    __SolverGetShrinkWidth = method(self, __GuiSolverRectGetShrinkWidth);
     
-    //Resizes both this instance and any child instances that are set to "shrink" or "grow" resize types.
+    //Resizes both this instance and any child instances that are set to "shrink" or "expand" resize types.
     //See `__GuiSolverListResizeWidth()` and `__GuiSolverListResizeHeight()`.
     //
     // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_GRID` override this function.
@@ -355,13 +355,13 @@ function __GuiClassVariables(_attachedElement) constructor
     }
     
     //Function that sets the solver's shrink height and minimum height. This is a boring function for most
-    //instances. It gets more exciting for lists - see `__GuiSolverListShrinkHeight()`. This function also
+    //instances. It gets more exciting for lists - see `__GuiSolverListGetShrinkHeight()`. This function also
     //preliminarily sets the final calculated height for the instance (`__solvedHeight`).
     //
     // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_TEXT` override this function.
-    __SolverShrinkHeight = method(self, __GuiSolverRectShrinkHeight);
+    __SolverGetShrinkHeight = method(self, __GuiSolverRectGetShrinkHeight);
     
-    //Resizes both this instance and any child instances that are set to "shrink" or "grow" resize types.
+    //Resizes both this instance and any child instances that are set to "shrink" or "expand" resize types.
     //See `__GuiSolverListResizeWidth()` and `__GuiSolverListResizeHeight()`.
     //
     // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_GRID` override this function.

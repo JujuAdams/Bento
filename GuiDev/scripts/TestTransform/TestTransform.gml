@@ -19,7 +19,7 @@ function TestTransform()
                         image_blend: c_red,
                     },
                     layout: {
-                        resize: [GUI_RESIZE_GROW, GUI_RESIZE_GROW],
+                        resize: [GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND],
                     },
                 },
                 {
@@ -28,7 +28,7 @@ function TestTransform()
                         image_blend: c_lime,
                     },
                     layout: {
-                        resize: [GUI_RESIZE_GROW, GUI_RESIZE_GROW],
+                        resize: [GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND],
                     },
                 },
                 {
@@ -37,7 +37,7 @@ function TestTransform()
                         image_blend: c_blue,
                     },
                     layout: {
-                        resize: [GUI_RESIZE_GROW, GUI_RESIZE_GROW],
+                        resize: [GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND],
                     },
                 },
                 {
@@ -46,7 +46,7 @@ function TestTransform()
                         image_blend: c_yellow,
                     },
                     layout: {
-                        resize: [GUI_RESIZE_GROW, GUI_RESIZE_GROW],
+                        resize: [GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND],
                     },
                 },
             ],

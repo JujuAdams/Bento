@@ -15,9 +15,9 @@ function GuiLayoutSetRect(_element = self)
             __layoutType = GUI_LAYOUT_RECT;
             __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             
-            __SolverShrinkWidth  = method(self, __GuiSolverRectShrinkWidth);
+            __SolverGetShrinkWidth  = method(self, __GuiSolverRectGetShrinkWidth);
             __SolverResizeWidth  = function() {}
-            __SolverShrinkHeight = method(self, __GuiSolverRectShrinkHeight);
+            __SolverGetShrinkHeight = method(self, __GuiSolverRectGetShrinkHeight);
             __SolverResizeHeight = function() {}
             __SolverPositions    = method(self, __GuiSolverRectPositions);
             __funcMeasureWidth   = function() { return 1; }

@@ -5,12 +5,12 @@ function __GuiSolverListResizeHeight()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedHeight - __solverShrinkHeight;
+    var _remaining = __solvedHeight - __solverGetShrinkHeight;
     
     if (__listAxis == GUI_AXIS_X)
     {
         //////
-        // Minor Axis - Stretch grow elements to the maximum available space
+        // Minor Axis - Stretch expand elements to the maximum available space
         //////
             
         var _available = __solvedHeight - (__solverPadLeft + __solverPadRight);
@@ -25,7 +25,7 @@ function __GuiSolverListResizeHeight()
                     {
                         __solvedHeight = clamp(min(__solvedHeight, _available), __layoutHeightMin, __layoutHeightMax);
                     }
-                    else if (__layoutHeightResize == GUI_RESIZE_GROW)
+                    else if (__layoutHeightResize == GUI_RESIZE_EXPAND)
                     {
                         __solvedHeight = clamp(_available, __layoutHeightMin, __layoutHeightMax);
                     }
@@ -47,14 +47,14 @@ function __GuiSolverListResizeHeight()
         if (_remaining > 0)
         {
             //////
-            // Grow children
+            // expand children
             //////
                 
             var _i = 0;
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.GUI_VARS.__layoutHeightResize == GUI_RESIZE_GROW)
+                if (_child.GUI_VARS.__layoutHeightResize == GUI_RESIZE_EXPAND)
                 {
                     array_push(_modifiableArray, _child);
                 }

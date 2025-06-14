@@ -344,7 +344,7 @@
     {"id":{"name":"TestScrollbox","path":"scripts/TestScrollbox/TestScrollbox.yy",},},
     {"id":{"name":"TestScrollboxWithBar","path":"scripts/TestScrollboxWithBar/TestScrollboxWithBar.yy",},},
     {"id":{"name":"TestScroller","path":"scripts/TestScroller/TestScroller.yy",},},
-    {"id":{"name":"TestShrinkAndGrow","path":"scripts/TestShrinkAndGrow/TestShrinkAndGrow.yy",},},
+    {"id":{"name":"TestShrinkAndExpand","path":"scripts/TestShrinkAndExpand/TestShrinkAndExpand.yy",},},
     {"id":{"name":"TestStructs","path":"scripts/TestStructs/TestStructs.yy",},},
     {"id":{"name":"TestTextbox","path":"scripts/TestTextbox/TestTextbox.yy",},},
     {"id":{"name":"TestTransform","path":"scripts/TestTransform/TestTransform.yy",},},

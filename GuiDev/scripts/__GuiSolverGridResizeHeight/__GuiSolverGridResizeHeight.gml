@@ -19,7 +19,7 @@ function __GuiSolverGridResizeHeight()
                 {
                     __solvedHeight = clamp(min(__solvedHeight, _cellSize), __layoutHeightMin, __layoutHeightMax);
                 }
-                else if (__layoutHeightResize == GUI_RESIZE_GROW)
+                else if (__layoutHeightResize == GUI_RESIZE_EXPAND)
                 {
                     __solvedHeight = clamp(_cellSize, __layoutHeightMin, __layoutHeightMax);
                 }

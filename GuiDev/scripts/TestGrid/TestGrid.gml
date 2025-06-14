@@ -23,7 +23,7 @@ function TestGrid()
                     image_blend: c_blue,
                 },
                 layout: {
-                    resize: [GUI_RESIZE_GROW, GUI_RESIZE_GROW],
+                    resize: [GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND],
                 },
             });
         },

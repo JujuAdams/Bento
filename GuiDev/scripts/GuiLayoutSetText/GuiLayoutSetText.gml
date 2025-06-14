@@ -17,9 +17,9 @@ function GuiLayoutSetText(_funcWidth, _funcHeight, _element = self)
             __layoutType = GUI_LAYOUT_TEXT;
             __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
             
-            __SolverShrinkWidth  = method(self, __GuiSolverTextShrinkWidth);
+            __SolverGetShrinkWidth  = method(self, __GuiSolverTextGetShrinkWidth);
             __SolverResizeWidth  = function(){};
-            __SolverShrinkHeight = method(self, __GuiSolverTextShrinkHeight);
+            __SolverGetShrinkHeight = method(self, __GuiSolverTextGetShrinkHeight);
             __SolverResizeHeight = function(){};
             __SolverPositions    = method(self, __GuiSolverRectPositions);
             __funcMeasureWidth   = method(__attachedElement, _funcWidth);

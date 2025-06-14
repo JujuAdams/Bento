@@ -25,7 +25,7 @@ function TestAlignSelf()
                 },
                 layout: {
                     size: [100, 100],
-                    resize: [GUI_RESIZE_STATIC, GUI_RESIZE_GROW],
+                    resize: [GUI_RESIZE_STATIC, GUI_RESIZE_EXPAND],
                 },
                 children: [
                     {
@@ -50,7 +50,7 @@ function TestAlignSelf()
                     size: [200, 100],
                     minSize: [50, 0],
                     maxSize: [450, undefined],
-                    resize: [GUI_RESIZE_GROW, GUI_RESIZE_STATIC],
+                    resize: [GUI_RESIZE_EXPAND, GUI_RESIZE_STATIC],
                 },
             },
             {

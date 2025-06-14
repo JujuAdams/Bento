@@ -18,11 +18,11 @@ function __GuiEnsureLayout()
     var _i = _count-1;
     repeat(_count)
     {
-        _layoutOrder[_i].__SolverShrinkWidth();
+        _layoutOrder[_i].__SolverGetShrinkWidth();
         --_i;
     }
     
-    //Redistribute instance widths, shrinking and growing instances
+    //Redistribute instance widths, shrinking and expanding instances
     var _i = 0;
     repeat(_count)
     {
@@ -34,11 +34,11 @@ function __GuiEnsureLayout()
     var _i = _count-1;
     repeat(_count)
     {
-        _layoutOrder[_i].__SolverShrinkHeight();
+        _layoutOrder[_i].__SolverGetShrinkHeight();
         --_i;
     }
     
-    //Redistribute instance heights, shrinking and growing instances
+    //Redistribute instance heights, shrinking and expanding instances
     var _i = 0;
     repeat(_count)
     {

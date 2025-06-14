@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"TestShrinkAndGrow",
+  "%Name":"TestShrinkAndExpand",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TestShrinkAndGrow",
+  "name":"TestShrinkAndExpand",
   "parent":{
     "name":"Examples",
     "path":"folders/Examples.yy",

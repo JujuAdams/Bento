@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __GuiSolverListShrinkWidth()
+function __GuiSolverListGetShrinkWidth()
 {
     var _shrinkSize = 0;
     var _minSize = 0;
@@ -18,7 +18,7 @@ function __GuiSolverListShrinkWidth()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _shrinkSize += _child.GUI_VARS.__solverShrinkWidth;
+            _shrinkSize += _child.GUI_VARS.__solverGetShrinkWidth;
             _minSize += _child.GUI_VARS.__solverMinWidth;
             ++_i;
         }
@@ -35,7 +35,7 @@ function __GuiSolverListShrinkWidth()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _shrinkSize = max(_shrinkSize, _child.GUI_VARS.__solverShrinkWidth);
+            _shrinkSize = max(_shrinkSize, _child.GUI_VARS.__solverGetShrinkWidth);
             _minSize = max(_minSize, _child.GUI_VARS.__solverMinWidth);
             ++_i;
         }
@@ -47,6 +47,6 @@ function __GuiSolverListShrinkWidth()
     _minSize += _extra;
     
     __solverMinWidth    = max(__layoutWidthMin, _minSize);
-    __solverShrinkWidth = clamp(_shrinkSize, __solverMinWidth, __layoutWidthMax);
+    __solverGetShrinkWidth = clamp(_shrinkSize, __solverMinWidth, __layoutWidthMax);
     __solvedWidth       = clamp((__layoutWidthResize == GUI_RESIZE_STATIC)? __layoutWidthPref : _shrinkSize, __solverMinWidth, __layoutWidthMax);
 }

@@ -1,8 +1,8 @@
 // Feather disable all
 
-function TestShrinkAndGrow()
+function TestShrinkAndExpand()
 {
-    with(GuiCreateObject(oGuiLibList, undefined, GuiGetRoot()))
+    with(GuiCreateObject(oExampleListWithScroll, undefined, GuiGetRoot()))
     {
         image_blend = c_navy;
         
@@ -12,27 +12,27 @@ function TestShrinkAndGrow()
         GuiLayoutSetPadding(10, 10, 10, 10);
         GuiLayoutSetGutter(10, 10);
         
-        with(GuiCreateObject(oGuiLibList))
+        with(GuiCreateObject(oGuiLibSprite))
         {
             image_blend = c_red;
             GuiLayoutSetSize(100, 100);
         }
         
-        with(GuiCreateObject(oGuiLibList))
+        with(GuiCreateObject(oGuiLibSprite))
         {
             image_blend = c_yellow;
             GuiLayoutSetSize(100, 50);
-            GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
+            GuiLayoutSetResizeType(GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND);
         }
         
-        with(GuiCreateObject(oGuiLibList))
+        with(GuiCreateObject(oGuiLibSprite))
         {
             image_blend = c_yellow;
-            GuiLayoutSetSize(100, 100);
-            GuiLayoutSetResizeType(GUI_RESIZE_GROW, GUI_RESIZE_GROW);
+            GuiLayoutSetSize(50, 100);
+            GuiLayoutSetResizeType(GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND);
         }
         
-        with(GuiCreateObject(oGuiLibList))
+        with(GuiCreateObject(oGuiLibSprite))
         {
             image_blend = c_blue;
             GuiLayoutSetSize(100, 100);

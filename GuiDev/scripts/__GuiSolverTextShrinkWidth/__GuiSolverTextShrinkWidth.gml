@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __GuiSolverTextShrinkWidth()
+function __GuiSolverTextGetShrinkWidth()
 {
     draw_set_font(__attachedElement.font);
     
@@ -22,7 +22,7 @@ function __GuiSolverTextShrinkWidth()
     
     //Whatever the weather, the width for the purpose of shrinking the parent is whatever layout
     //width guess we've made.
-    __solverShrinkWidth = __solvedWidth;
+    __solverGetShrinkWidth = __solvedWidth;
     
     draw_set_font(-1);
 }

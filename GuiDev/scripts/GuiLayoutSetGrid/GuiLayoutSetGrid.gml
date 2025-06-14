@@ -23,9 +23,9 @@ function GuiLayoutSetGrid(_columns, _rows, _element = self)
             __gridColumns = max(1, _columns);
             __gridRows    = max(1, _rows);
             
-            __SolverShrinkWidth  = method(self, __GuiSolverRectShrinkWidth);
+            __SolverGetShrinkWidth  = method(self, __GuiSolverRectGetShrinkWidth);
             __SolverResizeWidth  = method(self, __GuiSolverGridResizeWidth);
-            __SolverShrinkHeight = method(self, __GuiSolverRectShrinkHeight);
+            __SolverGetShrinkHeight = method(self, __GuiSolverRectGetShrinkHeight);
             __SolverResizeHeight = method(self, __GuiSolverGridResizeHeight);
             __SolverPositions    = method(self, __GuiSolverGridPositions);
             __funcMeasureWidth   = function() { return 1; }

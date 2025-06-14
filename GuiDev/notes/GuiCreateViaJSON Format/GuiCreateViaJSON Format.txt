@@ -64,7 +64,7 @@ Here is a brief example:
                 image_blend: c_red,
             },
             layout: {
-                resize: ["static", "grow"],
+                resize: ["static", "expand"],
                 size: [30, 30],
             },
         },
@@ -74,7 +74,7 @@ Here is a brief example:
                 image_blend: c_blue,
             },
             layout: {
-                resize: ["static", "grow"],
+                resize: ["static", "expand"],
                 size: [30, 30],
             },
         },
@@ -155,10 +155,10 @@ Here is a brief example:
     Resize types must be one of the following:
     - "static"
     - "shrink"
-    - "grow"
+    - "expand"
     - 0 (equal to GUI_RESIZE_STATIC)
     - 1 (equal to GUI_RESIZE_SHRINK)
-    - 2 (equal to GUI_RESIZE_GROW)
+    - 2 (equal to GUI_RESIZE_EXPAND)
     
     You may also use `null` to indicate that no change should be made to a particular value.
 

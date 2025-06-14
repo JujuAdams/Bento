@@ -19,7 +19,7 @@ function __GuiSolverGridResizeWidth()
                 {
                     __solvedWidth = clamp(min(__solvedWidth, _cellSize), __layoutWidthMin, __layoutWidthMax);
                 }
-                else if (__layoutWidthResize == GUI_RESIZE_GROW)
+                else if (__layoutWidthResize == GUI_RESIZE_EXPAND)
                 {
                     __solvedWidth = clamp(_cellSize, __layoutWidthMin, __layoutWidthMax);
                 }

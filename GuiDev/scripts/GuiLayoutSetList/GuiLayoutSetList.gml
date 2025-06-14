@@ -25,9 +25,9 @@ function GuiLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _element 
             __layoutHAlignChildren = _hAlignChildren;
             __layoutVAlignChildren = _vAlignChildren;
             
-            __SolverShrinkWidth  = method(self, __GuiSolverListShrinkWidth);
+            __SolverGetShrinkWidth  = method(self, __GuiSolverListGetShrinkWidth);
             __SolverResizeWidth  = method(self, __GuiSolverListResizeWidth);
-            __SolverShrinkHeight = method(self, __GuiSolverListShrinkHeight);
+            __SolverGetShrinkHeight = method(self, __GuiSolverListGetShrinkHeight);
             __SolverResizeHeight = method(self, __GuiSolverListResizeHeight);
             __SolverPositions    = method(self, __GuiSolverListPositions);
             __funcMeasureWidth   = function() { return 1; }

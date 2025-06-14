@@ -85,7 +85,7 @@
 
 #macro GUI_RESIZE_STATIC  0
 #macro GUI_RESIZE_SHRINK  1
-#macro GUI_RESIZE_GROW    2
+#macro GUI_RESIZE_EXPAND  2
 
 #macro GUI_MODE_UNKNOWN   0
 #macro GUI_MODE_MOUSE     1
