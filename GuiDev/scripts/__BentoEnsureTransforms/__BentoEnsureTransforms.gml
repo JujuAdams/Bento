@@ -21,11 +21,11 @@ function __BentoEnsureTransforms()
             var _originX = __transformOriginX;
             var _originY = __transformOriginY;
             
+            var _originX = (_originX == undefined)? __attachedElement.bentoX : (__attachedElement.bentoLeft + _originX);
+            var _originY = (_originY == undefined)? __attachedElement.bentoY : (__attachedElement.bentoTop  + _originY);
+            
             if ((_offsetX != 0) || (_offsetY != 0) || (_scaleX != 1) || (_scaleY != 1) || (_angle != 0))
             {
-                var _originX = (_originX == undefined)? __attachedElement.bentoX : (__attachedElement.bentoLeft + _originX);
-                var _originY = (_originY == undefined)? __attachedElement.bentoY : (__attachedElement.bentoTop  + _originY);
-                
                 var _cos =  dcos(_angle);
                 var _sin = -dsin(_angle);
                 
