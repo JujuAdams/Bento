@@ -14,6 +14,8 @@
 /// @param mode
 /// @param [layerOrName=current]
 
+// TODO - Move input mode to environment?
+
 function BentoSetMode(_newMode, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
