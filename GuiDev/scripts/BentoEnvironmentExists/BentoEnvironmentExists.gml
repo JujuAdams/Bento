@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns if an environment with the given name exists.
+/// 
 /// @param environmentOrName
 
 function BentoEnvironmentExists(_environmentOrName)
@@ -8,7 +10,7 @@ function BentoEnvironmentExists(_environmentOrName)
     
     if (is_string(_environmentOrName))
     {
-        var _environment = BentoEnvironmentFind(_environmentOrName);
+        var _environment = __BentoEnvironmentFind(_environmentOrName);
     }
     else if (is_struct(_environmentOrName))
     {

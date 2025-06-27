@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Closes focus for all focused elements on the given layer.
+/// 
 /// @param [layer=current]
 
 function BentoFocusCloseAll(_layer = undefined)

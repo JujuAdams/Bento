@@ -8,15 +8,15 @@
 /// - Any environment is receiving text input using `BentoTextOpen()`
 /// - The top-most layer is using the keyboard input mode
 /// 
-/// @param [environment=current]
+/// @param [environmentName=current]
 
-function BentoGetBlocksKeyboard(_environment = undefined)
+function BentoGetBlocksKeyboard(_environmentName = undefined)
 {
     static _system = __BentoSystem();
     
     if (_system.__textHandlerEnvironment != undefined) return true;
     
-    with(_environment ?? _system.__environmentCurrent)
+    with(__BentoEnvironmentEnsure(_environmentName))
     {
         if (__layerCurrent.__navMode == GUI_MODE_KEYBOARD) return true;
     }

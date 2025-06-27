@@ -14,15 +14,15 @@
 /// Additionally, if the topmost layer is NOT using a pointer input mode, this function will always
 /// return `false`.
 /// 
-/// @param [environment=current]
+/// @param [environmentName=current]
 
-function BentoGetBlocksMouse(_environment = undefined)
+function BentoGetBlocksMouse(_environmentName = undefined)
 {
     static _system = __BentoSystem();
     
     if (_system.__textHandlerEnvironment != undefined) return true;
     
-    with(_environment ?? _system.__environmentCurrent)
+    with(__BentoEnvironmentEnsure(_environmentName))
     {
         with(__layerCurrent)
         {

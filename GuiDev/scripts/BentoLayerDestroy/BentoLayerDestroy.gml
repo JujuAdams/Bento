@@ -6,7 +6,7 @@ function BentoLayerDestroy(_layerOrName = undefined)
 {
     static _system = __BentoSystem();
     
-    if (is_undefined(_layerOrName))
+    if (_layerOrName == undefined)
     {
         var _layer = _system.__layerCurrent;
     }

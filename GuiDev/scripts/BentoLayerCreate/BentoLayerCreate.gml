@@ -1,21 +1,20 @@
 // Feather disable all
 
-/// @param name
-/// @param [environment=current]
+/// @param layerName
+/// @param [environmentName=current]
 
-function BentoLayerCreate(_name, _environment = undefined)
+function BentoLayerCreate(_layerName, _environmentName = undefined)
 {
     static _system = __BentoSystem();
     
-    _environment ??= _system.__environmentCurrent;
-    with(_environment)
+    with(__BentoEnvironmentEnsure(_environmentName))
     {
-        if (BentoLayerExists(_name, self))
+        if (BentoLayerExists(_layerName, self))
         {
-            __BentoError($"Layer called \"{_name}\" already exist (environment \"{__name}\")");
+            __BentoError($"Layer called \"{_layerName}\" already exists (environment \"{__name}\")");
         }
         
-        var _layer = new __BentoClassLayer(self, _name);
+        var _layer = new __BentoClassLayer(self, _layerName);
         array_push(__layerArray, _layer);
         
         return _layer;

@@ -2,7 +2,7 @@
 
 /// @param name
 
-function BentoEnvironmentFind(_name)
+function __BentoEnvironmentFind(_name)
 {
     static _system = __BentoSystem();
     with(_system)

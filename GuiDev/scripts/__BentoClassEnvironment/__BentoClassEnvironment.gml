@@ -57,7 +57,7 @@ function __BentoClassEnvironment(_name) constructor
         var _layerCount = array_length(_layerArray);
         if (_layerCount <= 0) return;
         
-        BentoEnvironmentTargetPush(self);
+        __BentoEnvironmentTargetPush(self);
         
         //Update any text input
         if (__textHandler != undefined)
@@ -83,12 +83,12 @@ function __BentoClassEnvironment(_name) constructor
         //Top-most layer pulls in input if there's no text input
         _layerArray[_i].__Update(_rootWidth, _rootHeight, false);
         
-        BentoEnvironmentTargetPop();
+        __BentoEnvironmentTargetPop();
     }
     
     static __Draw = function()
     {
-        BentoEnvironmentTargetPush(self);
+        __BentoEnvironmentTargetPush(self);
         
         var _layerArray = __layerArray;
         var _i = 0;
@@ -98,6 +98,6 @@ function __BentoClassEnvironment(_name) constructor
             ++_i;
         }
         
-        BentoEnvironmentTargetPop();
+        __BentoEnvironmentTargetPop();
     }
 }

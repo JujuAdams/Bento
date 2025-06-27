@@ -113,7 +113,7 @@ function __BentoClassLayer(_environment, _name) constructor
     
     static __Destroy = function()
     {
-        instance_destroy(__rootElement);
+        BentoDestroy(__rootElement);
         __environment.__RemoveLayer(self);
     }
     

@@ -1,11 +1,11 @@
 // Feather disable all
 
 /// @param name
-/// @param [environment=current]
+/// @param [environmentName=current]
 
-function BentoLayerStopAnimating(_name, _environment = undefined)
+function BentoLayerStopAnimating(_name, _environmentName = undefined)
 {
-    var _layerStruct = BentoLayerFind(_name, _environment);
+    var _layerStruct = __BentoLayerFind(_name, __BentoEnvironmentEnsure(_environmentName));
     if (_layerStruct == undefined) return;
     
     ds_map_clear(_layerStruct.__animatingMap);

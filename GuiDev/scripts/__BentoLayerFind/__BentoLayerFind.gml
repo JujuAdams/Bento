@@ -1,12 +1,12 @@
 // Feather disable all
 
 /// @param name
-/// @param [environment=current]
+/// @param [environmentName=current]
 
-function BentoLayerFind(_name, _environment = undefined)
+function __BentoLayerFind(_name, _environmentName = undefined)
 {
     static _system = __BentoSystem();
-    with(_environment ?? _system.__environmentCurrent)
+    with(__BentoEnvironmentEnsure(_environmentName))
     {
         var _array = __layerArray;
         var _i = 0;

@@ -1,6 +1,6 @@
 // Feather disable all
 
-function BentoEnvironmentTargetPop()
+function __BentoEnvironmentTargetPop()
 {
     static _system = __BentoSystem();
     static _environmentStack = _system.__environmentStack;

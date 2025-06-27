@@ -1,8 +1,6 @@
 // Feather disable all
 
-/// @param environment
-
-function BentoEnvironmentTargetPush(_environment)
+function __BentoEnvironmentTargetPush(_environment)
 {
     static _system = __BentoSystem();
     static _environmentStack = _system.__environmentStack;
