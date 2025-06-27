@@ -11,7 +11,7 @@ function BentoTextOpen(_initialText, _callback, _hostElement = self)
     
     if (not BentoExists(_hostElement)) return;
     
-    with(_hostElement.GUI_VARS.__layer.__environment)
+    with(_hostElement.BENTO_VARS.__layer.__environment)
     {
         if ((_system.__textHandlerEnvironment != undefined) && (_system.__textHandlerEnvironment != self))
         {
@@ -31,14 +31,14 @@ function BentoTextOpen(_initialText, _callback, _hostElement = self)
             //There can only be one!
             if (__textHandler != undefined)
             {
-                __textHandler.__Terminate(GUI_TEXT_INACTIVE);
+                __textHandler.__Terminate(BENTO_TEXT_INACTIVE);
             }
             
             __textElement = _hostElement;
             _system.__textHandlerEnvironment = self;
             
             //Unpack text config
-            with(_hostElement.GUI_VARS.__textConfig)
+            with(_hostElement.BENTO_VARS.__textConfig)
             {
                 var _maxLength      = __maxLength;
                 var _caption        = __caption;
@@ -52,9 +52,9 @@ function BentoTextOpen(_initialText, _callback, _hostElement = self)
             _initialText = string_copy(_initialText, 1, _maxLength);
             
             //If there's no forced mode then figure it out
-            if (GUI_ON_MOBILE)
+            if (BENTO_ON_MOBILE)
             {
-                if (GUI_ON_IOS)
+                if (BENTO_ON_IOS)
                 {
                     __textHandler = new __BentoTextClassiOS(self, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction);
                 }
@@ -63,9 +63,9 @@ function BentoTextOpen(_initialText, _callback, _hostElement = self)
                     __textHandler = new __BentoTextClassAndroid(self, _initialText, _callback, _maxLength, _keyboardType, _returnKey, _capitalization, _textPrediction);
                 }
             }
-            else if (GUI_ON_DESKTOP)
+            else if (BENTO_ON_DESKTOP)
             {
-                if (GUI_STEAMWORKS_SUPPORT && _textUseSteamKeyboard)
+                if (BENTO_STEAMWORKS_SUPPORT && _textUseSteamKeyboard)
                 {
                     __textHandler = new __BentoTextClassSteam(self, _initialText, _callback, _maxLength, _caption);
                 }
@@ -80,7 +80,7 @@ function BentoTextOpen(_initialText, _callback, _hostElement = self)
             }
             
             //Make sure our layer is updated
-            __layerCurrent.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+            __layerCurrent.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
         }
     }
 }

@@ -7,16 +7,16 @@
 
 function __BentoEnsureStepOrder()
 {
-    if not (__dirtyFlags & __GUI_DIRTY_STEP) return;
-    __dirtyFlags = ~((~__dirtyFlags) | __GUI_DIRTY_STEP);
+    if not (__dirtyFlags & __BENTO_DIRTY_STEP) return;
+    __dirtyFlags = ~((~__dirtyFlags) | __BENTO_DIRTY_STEP);
     
     array_resize(__stepOrder, 0);
-    __BentoEnsureStepOrderInner(self, __stepOrder, __GetFocusRoot(), __navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL, 0);
+    __BentoEnsureStepOrderInner(self, __stepOrder, __GetFocusRoot(), __navPointer? BENTO_BUTTON_POINTER : BENTO_BUTTON_DIRECTIONAL, 0);
 }
 
 function __BentoEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _localIndex)
 {
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         __localIndex = _localIndex;
         
@@ -28,7 +28,7 @@ function __BentoEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _lo
         
         //Determine whether we need to execute the Step user event
         //This should match the code in `BentoGetExecutesStep()`
-        if (GUI_ALWAYS_EXECUTE_STEP || (__buttonType & _navType) || __forceStep || __focused || __scissorEnabled)
+        if (BENTO_ALWAYS_EXECUTE_STEP || (__buttonType & _navType) || __forceStep || __focused || __scissorEnabled)
         {
             __executesStep = true;
             array_push(_stepOrder, __eventStep);

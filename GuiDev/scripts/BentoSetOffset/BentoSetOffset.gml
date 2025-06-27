@@ -8,7 +8,7 @@ function BentoSetOffset(_x, _y, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         var _dirty = false;
         
@@ -17,7 +17,7 @@ function BentoSetOffset(_x, _y, _element = self)
             if (__offsetX != _x)
             {
                 __offsetX = _x;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
                 _dirty = true;
             }
         }
@@ -27,7 +27,7 @@ function BentoSetOffset(_x, _y, _element = self)
             if (__offsetY != _y)
             {
                 __offsetY = _y;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
                 _dirty = true;
             }
         }

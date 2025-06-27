@@ -14,8 +14,8 @@ function BentoConstrSprite(_sprite, _parent = other) : BentoConstrAncestor(_pare
     funcDraw = function()
     {
         draw_sprite_ext(sprite, 0,
-                        guiX, guiY,
-                        guiWidth/sprite_get_width(sprite), guiHeight/sprite_get_height(sprite), 0,
+                        bentoX, bentoY,
+                        bentoWidth/sprite_get_width(sprite), bentoHeight/sprite_get_height(sprite), 0,
                         c_white, 1);
     }
 }

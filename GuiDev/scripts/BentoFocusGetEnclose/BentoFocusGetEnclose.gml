@@ -4,5 +4,5 @@
 
 function BentoFocusGetEnclose(_element = self)
 {
-    return BentoExists(_element)? _element.GUI_VARS.__focusEncloseType : false;
+    return BentoExists(_element)? _element.BENTO_VARS.__focusEncloseType : false;
 }

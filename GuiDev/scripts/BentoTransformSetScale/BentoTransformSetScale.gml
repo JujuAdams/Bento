@@ -6,7 +6,7 @@
 /// This particular function applies a linear scaling to a UI instance.
 /// 
 /// N.B. This transformation only applies to how the UI instance is drawn. It does not affect
-///      any collisions or raycasts. Transformations will not change `gui*` variables either.
+///      any collisions or raycasts. Transformations will not change `bento*` variables either.
 ///      To move instances around in a way that also moves their collisions, please use the
 ///      `BentoLayout*()` functions or `BentoSetOffset()`.
 /// 
@@ -24,7 +24,7 @@ function BentoTransformSetScale(_xScale, _yScale, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (_xScale != undefined)
         {

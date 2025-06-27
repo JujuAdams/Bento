@@ -4,7 +4,7 @@ function __BentoSolverTextGetShrinkHeight()
 {
     draw_set_font(__attachedElement.font);
     
-    if (__layoutHeightResize == GUI_RESIZE_SHRINK)
+    if (__layoutHeightResize == BENTO_RESIZE_SHRINK)
     {
         //Change the height of this instance based on the new wrapping rules.
         //

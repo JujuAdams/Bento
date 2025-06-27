@@ -8,12 +8,12 @@ function BentoLayoutSetOrigin(_x, _y, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (__layoutOriginAuto)
         {
             __layoutOriginAuto = false;
-            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
         }
         
         if (_x != undefined)
@@ -21,7 +21,7 @@ function BentoLayoutSetOrigin(_x, _y, _element = self)
             if (__layoutOriginX != _x)
             {
                 __layoutOriginX = _x;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
         
@@ -30,7 +30,7 @@ function BentoLayoutSetOrigin(_x, _y, _element = self)
             if (__layoutOriginY != _y)
             {
                 __layoutOriginY = _y;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
     }

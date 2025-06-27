@@ -20,7 +20,7 @@ function __BentoGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
         __BentoError("Can only use `__BentoGetNearest()` in directional mode");
     }
     
-    var _element = GUI_NO_ELEMENT;
+    var _element = BENTO_NO_ELEMENT;
     var _nearestDistance = infinity;
     var _i = 0;
     repeat(array_length(_hoverableOrder))
@@ -31,7 +31,7 @@ function __BentoGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
             {
                 if (__BentoGetHoverableInternal(self, true))
                 {
-                    var _distance = point_distance(0.5*(guiLeft + guiRight), 0.5*(guiTop + guiBottom), _x, _y);
+                    var _distance = point_distance(0.5*(bentoLeft + bentoRight), 0.5*(bentoTop + bentoBottom), _x, _y);
                     if (_distance < _nearestDistance)
                     {
                         _nearestDistance = _distance;

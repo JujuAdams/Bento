@@ -2,11 +2,11 @@
 
 function __BentoScissorPushFromElement()
 {
-    with(GUI_VARS)
+    with(BENTO_VARS)
     {
-        __BentoScissorPush(other.guiLeft   + __scissorPadLeft   + __scissorScrollbarLeft,
-                         other.guiTop    + __scissorPadTop    + __scissorScrollbarTop,
-                         other.guiRight  - __scissorPadRight  - __scissorScrollbarRight,
-                         other.guiBottom - __scissorPadBottom - __scissorScrollbarBottom);
+        __BentoScissorPush(other.bentoLeft   + __scissorPadLeft   + __scissorScrollbarLeft,
+                           other.bentoTop    + __scissorPadTop    + __scissorScrollbarTop,
+                           other.bentoRight  - __scissorPadRight  - __scissorScrollbarRight,
+                           other.bentoBottom - __scissorPadBottom - __scissorScrollbarBottom);
     }
 }

@@ -28,7 +28,7 @@ function __BentoTextClassKeyboard(_environment, _initialText, _callback, _maxLen
         //Whacking [enter] finishes single-line entry
         if (keyboard_check(vk_enter))
         {
-            __Terminate(GUI_TEXT_CONFIRM);
+            __Terminate(BENTO_TEXT_CONFIRM);
         }
         else
         {

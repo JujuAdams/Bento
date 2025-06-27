@@ -39,36 +39,36 @@ function BentoConstrText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_top,
     {
         if (hAlign == fa_left)
         {
-            var _x = guiLeft;
+            var _x = bentoLeft;
         }
         else if (hAlign = fa_right)
         {
-            var _x = guiRight;
+            var _x = bentoRight;
         }
         else
         {
             //Default horizontal alignment to center
-            var _x = 0.5*(guiLeft + guiRight);
+            var _x = 0.5*(bentoLeft + bentoRight);
         }
         
         if (vAlign == fa_top)
         {
-            var _y = guiTop;
+            var _y = bentoTop;
         }
         else if (vAlign = fa_bottom)
         {
-            var _y = guiBottom;
+            var _y = bentoBottom;
         }
         else
         {
             //Default horizontal alignment to middle
-            var _y = 0.5*(guiTop + guiBottom);
+            var _y = 0.5*(bentoTop + bentoBottom);
         }
         
         draw_set_font(font);
         draw_set_halign(hAlign);
         draw_set_valign(vAlign);
-        draw_text_ext(_x, _y, text, -1, guiWidth);
+        draw_text_ext(_x, _y, text, -1, bentoWidth);
         draw_set_font(-1);
         draw_set_halign(fa_left);
         draw_set_valign(fa_top);

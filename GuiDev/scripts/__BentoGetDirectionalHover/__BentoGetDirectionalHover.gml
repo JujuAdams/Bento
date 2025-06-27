@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns which instance is highlighted using the directional input highlighting rules. This
-/// function can return `GUI_NO_ELEMENT` if no instance is available to highlight. This function should
+/// function can return `BENTO_NO_ELEMENT` if no instance is available to highlight. This function should
 /// only be called if we're using directional (keyboard and gamepad) input.
 /// 
 /// @param startInstance
@@ -13,7 +13,7 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
     static _excludeArray = [];
     
     _excludeArray[0] = _prevElement;
-    var _nextElement = GUI_NO_ELEMENT;
+    var _nextElement = BENTO_NO_ELEMENT;
     
     if (not __BentoGetHoverableInternal(_prevElement, false))
     {
@@ -32,7 +32,7 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
     }
     else
     {
-        var _prevBento = _prevElement.GUI_VARS;
+        var _prevBento = _prevElement.BENTO_VARS;
         
         //Previously selected instance is valid, process navigation
         if ((_dX == 0) && (_dY == 0))
@@ -74,7 +74,7 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
             //FIXME - This should be the joint scissor and scroll parent
             if (not __BentoGetHoverableInternal(_nextElement, (_prevScrollParent != __BentoScrollFindParent(_nextElement))))
             {
-                _nextElement = GUI_NO_ELEMENT;
+                _nextElement = BENTO_NO_ELEMENT;
             }
             
             if (not BentoExists(_nextElement))

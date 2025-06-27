@@ -1,3 +1,3 @@
 // Feather disable all
 
-GUI_VARS.__Destroy();
+BENTO_VARS.__Destroy();

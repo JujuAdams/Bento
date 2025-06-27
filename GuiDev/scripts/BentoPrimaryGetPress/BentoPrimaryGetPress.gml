@@ -10,5 +10,5 @@
 
 function BentoPrimaryGetPress(_element = self)
 {
-    return BentoExists(_element)? (_element.GUI_VARS.__primaryState == __GUI_START) : false;
+    return BentoExists(_element)? (_element.BENTO_VARS.__primaryState == __BENTO_START) : false;
 }

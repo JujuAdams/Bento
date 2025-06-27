@@ -8,6 +8,6 @@ function BentoTextGetOpenDuration(_element = self)
     
     if (not BentoExists(_element)) return 0;
     
-    var _textHandler = _element.GUI_VARS.__layer.__environment.__textHandler;
+    var _textHandler = _element.BENTO_VARS.__layer.__environment.__textHandler;
     return (_textHandler == undefined)? 0 : (_system.__frame - _textHandler.__openFrame);
 }

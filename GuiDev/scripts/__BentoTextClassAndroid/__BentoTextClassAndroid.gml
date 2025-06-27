@@ -51,12 +51,12 @@ function __BentoTextClassAndroid(_environment, _initialText, _callback, _maxLeng
         if (keyboard_check_pressed(0x0A) || (_tail == 0x0A)  // Line feed
         ||  keyboard_check_pressed(0x0D) || (_tail == 0x0D)) // Carriage return
         {
-            __Terminate(GUI_TEXT_CONFIRM);
+            __Terminate(BENTO_TEXT_CONFIRM);
             return;
         }                
         else if ((not _osPaused) && (not _virtualStatus) && __virtualStatusPrev)
         {
-            __Terminate(GUI_TEXT_ABORT);
+            __Terminate(BENTO_TEXT_ABORT);
             return;
         }
         

@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether the navigation mode has been set to `GUI_MODE_MOUSE` or `GUI_MODE_TOUCH`.
+/// Returns whether the navigation mode has been set to `BENTO_MODE_MOUSE` or `BENTO_MODE_TOUCH`.
 /// 
 /// @param [layer=current]
 

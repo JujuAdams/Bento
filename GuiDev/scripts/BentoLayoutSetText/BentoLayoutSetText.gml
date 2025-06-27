@@ -8,14 +8,14 @@ function BentoLayoutSetText(_funcWidth, _funcHeight, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
-        if (__layoutType != GUI_LAYOUT_TEXT)
+        if (__layoutType != BENTO_LAYOUT_TEXT)
         {
             //Swapping into text layout, reset everything
             
-            __layoutType = GUI_LAYOUT_TEXT;
-            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+            __layoutType = BENTO_LAYOUT_TEXT;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
             __SolverGetShrinkWidth  = method(self, __BentoSolverTextGetShrinkWidth);
             __SolverResizeWidth  = function(){};
@@ -36,7 +36,7 @@ function BentoLayoutSetText(_funcWidth, _funcHeight, _element = self)
                 __funcMeasureHeight = method(__attachedElement, _funcHeight);
                 
                 //Parameters changed, update the layout!
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
     }

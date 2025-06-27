@@ -8,5 +8,5 @@ function BentoGetDisable(_element = self)
 {
     if (not BentoExists(_element)) return false;
     
-    return _element.GUI_VARS.__disable;
+    return _element.BENTO_VARS.__disable;
 }

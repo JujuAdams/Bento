@@ -11,7 +11,7 @@ function BentoGetOffset(_element = self)
     
     if (BentoExists(_element))
     {
-        with(_element.GUI_VARS)
+        with(_element.BENTO_VARS)
         {
             _result.x = __offsetX;
             _result.y = __offsetY;

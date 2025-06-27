@@ -13,17 +13,17 @@ persistent = true;
 //read-only in the sense that they are liable to get overwritten by the library at unexpected
 //times.
 
-guiLeft   = x - (sprite_exists(sprite_index)? sprite_get_xoffset(sprite_index) : 0);
-guiTop    = y - (sprite_exists(sprite_index)? sprite_get_yoffset(sprite_index) : 0);
-guiRight  = guiLeft + sprite_width;
-guiBottom = guiTop + sprite_height;
-guiX      = x;
-guiY      = y;
-guiWidth  = sprite_width;
-guiHeight = sprite_height;
+bentoLeft   = x - (sprite_exists(sprite_index)? sprite_get_xoffset(sprite_index) : 0);
+bentoTop    = y - (sprite_exists(sprite_index)? sprite_get_yoffset(sprite_index) : 0);
+bentoRight  = bentoLeft + sprite_width;
+bentoBottom = bentoTop + sprite_height;
+bentoX      = x;
+bentoY      = y;
+bentoWidth  = sprite_width;
+bentoHeight = sprite_height;
 
-//Make a struct to contain GUI-related variables. This keeps the instance clean in the debugger.
-GUI_VARS = new __BentoClassVariables(self);
+//Make a struct to contain Bento-related variables. This keeps the instance clean in the debugger.
+BENTO_VARS = new __BentoClassVariables(self);
 
 //Set the parent before going to the Create event for the instance
 var _system = __BentoSystem();

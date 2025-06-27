@@ -67,7 +67,7 @@
   "name":"GuiWithLayouts",
   "resources":[
     {"id":{"name":"fntDebug","path":"fonts/fntDebug/fntDebug.yy",},},
-    {"id":{"name":"BentoCreateViaJSON Format","path":"notes/BentoCreateViaJSON Format/BentoCreateViaJSON Format.yy",},},
+    {"id":{"name":"BentoCreateFromJSON Format","path":"notes/BentoCreateFromJSON Format/BentoCreateFromJSON Format.yy",},},
     {"id":{"name":"Note4","path":"notes/Note4/Note4.yy",},},
     {"id":{"name":"TODO","path":"notes/TODO/TODO.yy",},},
     {"id":{"name":"__BentoTextAsyncController","path":"objects/__BentoTextAsyncController/__BentoTextAsyncController.yy",},},

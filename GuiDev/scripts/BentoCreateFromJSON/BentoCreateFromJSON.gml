@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// Creates a GUI instances based on input JSON data. This function can be used to create multiple
+/// Creates a Bento instances based on input JSON data. This function can be used to create multiple
 /// instances and define multiple properties for those instances. More information on the expected
-/// JSON format can be found in the `GUI JSON Format` note.
+/// JSON format can be found in the `BentoCreateFromJSON Format` note.
 /// 
 /// This function will return the instance that gets created or, if the root node of the JSON is
 /// an array, this function will return the first instance that gets created.
@@ -198,14 +198,14 @@ function __BentoCreateViaJSONInner(_json, _parent, _metadata)
         {
             if (is_string(_children))
             {
-                var _processor = GUI_JSON_CHILDREN_STRING_PROCESSOR;
+                var _processor = BENTO_JSON_CHILDREN_STRING_PROCESSOR;
                 if (is_callable(_processor))
                 {
                     _children = _processor(_children, _metadata);
                 }
                 else
                 {
-                    __BentoError($".children was provided as a string but `GUI_JSON_CHILDREN_STRING_PROCESSOR` is not a function");
+                    __BentoError($".children was provided as a string but `BENTO_JSON_CHILDREN_STRING_PROCESSOR` is not a function");
                 }
             }
             

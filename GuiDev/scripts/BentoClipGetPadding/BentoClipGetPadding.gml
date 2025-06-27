@@ -6,9 +6,9 @@ function BentoClipGetPadding(_element = self)
 {
     static _result = {};
     
-    if (BentoExists(_element) && _element.GUI_VARS.__scissorEnabled)
+    if (BentoExists(_element) && _element.BENTO_VARS.__scissorEnabled)
     {
-        with(_element.GUI_VARS)
+        with(_element.BENTO_VARS)
         {
             _result.left   = __scissorPadLeft;
             _result.top    = __scissorPadTop;

@@ -9,7 +9,7 @@ function __BentoSolverTextGetShrinkWidth()
     var _widthPref = clamp((__layoutWidthPref > 0)? __layoutWidthPref : string_width(__attachedElement.text), __layoutWidthMin, __layoutWidthMax);
     __solvedWidth = _widthPref;
             
-    if (__layoutWidthResize == GUI_RESIZE_STATIC)
+    if (__layoutWidthResize == BENTO_RESIZE_STATIC)
     {
         //For static (non-resizing) text, we treat the width of the text as a hard limit.
         __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : _widthPref;

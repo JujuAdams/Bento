@@ -6,7 +6,7 @@ function BentoAnimEnd(_element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS.__layer)
+    with(_element.BENTO_VARS.__layer)
     {
         ds_map_delete(__animatingMap, _element);
         

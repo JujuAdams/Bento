@@ -9,18 +9,18 @@ function __BentoClassScrollbarVert(_element) : __BentoClassScrollbar(_element) c
         if (__mirror)
         {
             //Left
-            barLeft   = _element.guiLeft + __padLeft;
-            barTop    = _element.guiTop + __padTop;
-            barRight  = _element.guiLeft + (__padLeft + __thickness);
-            barBottom = _element.guiBottom - __padBottom;
+            barLeft   = _element.bentoLeft + __padLeft;
+            barTop    = _element.bentoTop + __padTop;
+            barRight  = _element.bentoLeft + (__padLeft + __thickness);
+            barBottom = _element.bentoBottom - __padBottom;
         }
         else
         {
             //Right
-            barLeft   = _element.guiRight - (__padRight + __thickness);
-            barTop    = _element.guiTop + __padTop;
-            barRight  = _element.guiRight - __padRight;
-            barBottom = _element.guiBottom - __padBottom;
+            barLeft   = _element.bentoRight - (__padRight + __thickness);
+            barTop    = _element.bentoTop + __padTop;
+            barRight  = _element.bentoRight - __padRight;
+            barBottom = _element.bentoBottom - __padBottom;
         }
         
         barWidth  = barRight - barLeft;

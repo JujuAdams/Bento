@@ -5,7 +5,7 @@ function __BentoSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeig
     __solvedLeft = _left + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
     __solvedTop  = _top  + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
-    if (GUI_FLOOR_LAYOUT_POSITIONS)
+    if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {
         __solvedLeft   = floor(__solvedLeft);
         __solvedTop    = floor(__solvedTop);
@@ -30,7 +30,7 @@ function __BentoSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeig
     var _i = 0;
     repeat(_childCount)
     {
-        _childArray[_i].GUI_VARS.__SolverPositions(_childLeft, _childTop, _cellWidth, _cellHeight);
+        _childArray[_i].BENTO_VARS.__SolverPositions(_childLeft, _childTop, _cellWidth, _cellHeight);
         
         _childLeft += _cellWidth + __layoutGutterX;
         ++_gridX;

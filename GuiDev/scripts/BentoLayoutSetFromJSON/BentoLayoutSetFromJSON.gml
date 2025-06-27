@@ -251,64 +251,64 @@ function __BentoLayoutSetFromJSON_resize(_element, _value)
     
     if (is_numeric(_x))
     {
-        if ((_x != GUI_RESIZE_STATIC) && (_x != GUI_RESIZE_SHRINK) && (_x != GUI_RESIZE_EXPAND))
+        if ((_x != BENTO_RESIZE_STATIC) && (_x != BENTO_RESIZE_SHRINK) && (_x != BENTO_RESIZE_EXPAND))
         {
-            __BentoError($".resize.x layout property must be \"static\", \"shrink\", \"expand\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_EXPAND} (value was {_x})");
+            __BentoError($".resize.x layout property must be \"static\", \"shrink\", \"expand\", {BENTO_RESIZE_STATIC}, {BENTO_RESIZE_SHRINK}, or {BENTO_RESIZE_EXPAND} (value was {_x})");
         }
     }
     else if (is_string(_x))
     {
         if (_x == "static")
         {
-            _x = GUI_RESIZE_STATIC;
+            _x = BENTO_RESIZE_STATIC;
         }
         else if (_x == "shrink")
         {
-            _x = GUI_RESIZE_SHRINK;
+            _x = BENTO_RESIZE_SHRINK;
         }
         else if (_x == "expand")
         {
-            _x = GUI_RESIZE_EXPAND;
+            _x = BENTO_RESIZE_EXPAND;
         }
         else
         {
-            __BentoError($".resize.x layout property must be \"static\", \"shrink\", \"expand\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_EXPAND} (value was {_x})");
+            __BentoError($".resize.x layout property must be \"static\", \"shrink\", \"expand\", {BENTO_RESIZE_STATIC}, {BENTO_RESIZE_SHRINK}, or {BENTO_RESIZE_EXPAND} (value was {_x})");
         }
     }
     else
     {
-        __BentoError($".resize.x layout property must be \"static\", \"shrink\", \"expand\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_EXPAND} (value was {_x})");
+        __BentoError($".resize.x layout property must be \"static\", \"shrink\", \"expand\", {BENTO_RESIZE_STATIC}, {BENTO_RESIZE_SHRINK}, or {BENTO_RESIZE_EXPAND} (value was {_x})");
     }
     
     if (is_numeric(_y))
     {
-        if ((_y != GUI_RESIZE_STATIC) && (_y != GUI_RESIZE_SHRINK) && (_y != GUI_RESIZE_EXPAND))
+        if ((_y != BENTO_RESIZE_STATIC) && (_y != BENTO_RESIZE_SHRINK) && (_y != BENTO_RESIZE_EXPAND))
         {
-            __BentoError($".resize.y layout property must be \"static\", \"shrink\", \"expand\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_EXPAND} (value was {_y})");
+            __BentoError($".resize.y layout property must be \"static\", \"shrink\", \"expand\", {BENTO_RESIZE_STATIC}, {BENTO_RESIZE_SHRINK}, or {BENTO_RESIZE_EXPAND} (value was {_y})");
         }
     }
     else if (is_string(_y))
     {
         if (_y == "static")
         {
-            _y = GUI_RESIZE_STATIC;
+            _y = BENTO_RESIZE_STATIC;
         }
         else if (_y == "shrink")
         {
-            _y = GUI_RESIZE_SHRINK;
+            _y = BENTO_RESIZE_SHRINK;
         }
         else if (_y == "expand")
         {
-            _y = GUI_RESIZE_EXPAND;
+            _y = BENTO_RESIZE_EXPAND;
         }
         else
         {
-            __BentoError($".resize.y layout property must be \"static\", \"shrink\", \"expand\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_EXPAND} (value was {_y})");
+            __BentoError($".resize.y layout property must be \"static\", \"shrink\", \"expand\", {BENTO_RESIZE_STATIC}, {BENTO_RESIZE_SHRINK}, or {BENTO_RESIZE_EXPAND} (value was {_y})");
         }
     }
     else
     {
-        __BentoError($".resize.y layout property must be \"static\", \"shrink\", \"expand\", {GUI_RESIZE_STATIC}, {GUI_RESIZE_SHRINK}, or {GUI_RESIZE_EXPAND} (value was {_y})");
+        __BentoError($".resize.y layout property must be \"static\", \"shrink\", \"expand\", {BENTO_RESIZE_STATIC}, {BENTO_RESIZE_SHRINK}, or {BENTO_RESIZE_EXPAND} (value was {_y})");
     }
     
     BentoLayoutSetResizeType(_x, _y, _element);
@@ -525,29 +525,29 @@ function __BentoLayoutSetFromJSON_listAxis(_element, _value)
 {
     if (is_numeric(_value))
     {
-        if ((_value != GUI_AXIS_X) && (_value != GUI_AXIS_Y))
+        if ((_value != BENTO_AXIS_X) && (_value != BENTO_AXIS_Y))
         {
-            __BentoError($".listAxis layout property must be \"x\", \"y\", {GUI_AXIS_X}, or {GUI_AXIS_Y} (value was {_value})");
+            __BentoError($".listAxis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_value})");
         }
     }
     else if (is_string(_value))
     {
         if (_value == "x")
         {
-            _value = GUI_AXIS_X;
+            _value = BENTO_AXIS_X;
         }
         else if (_value == "y")
         {
-            _value = GUI_AXIS_Y;
+            _value = BENTO_AXIS_Y;
         }
         else
         {
-            __BentoError($".listAxis layout property must be \"x\", \"y\", {GUI_AXIS_X}, or {GUI_AXIS_Y} (value was {_value})");
+            __BentoError($".listAxis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_value})");
         }
     }
     else
     {
-        __BentoError($".listAxis layout property must be \"x\", \"y\", {GUI_AXIS_X}, or {GUI_AXIS_Y} (value was {_value})");
+        __BentoError($".listAxis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_value})");
     }
     
     BentoLayoutSetListAxis(_value, _element);

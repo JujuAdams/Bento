@@ -2,11 +2,11 @@
 
 /// Sets the current navigation mode. This should be one of the following constants:
 /// 
-/// - `GUI_MODE_UNKNOWN`
-/// - `GUI_MODE_MOUSE`
-/// - `GUI_MODE_KEYBOARD`
-/// - `GUI_MODE_GAMEPAD`
-/// - `GUI_MODE_TOUCH`
+/// - `BENTO_MODE_UNKNOWN`
+/// - `BENTO_MODE_MOUSE`
+/// - `BENTO_MODE_KEYBOARD`
+/// - `BENTO_MODE_GAMEPAD`
+/// - `BENTO_MODE_TOUCH`
 /// 
 /// @param mode
 /// @param [layer=current]
@@ -21,9 +21,9 @@ function BentoSetMode(_newMode, _layer = undefined)
         
         //Changing navigation mode may change whether elements execute their step event and are hoverable
         //when focused
-        __dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+        __dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
         
-        if ((_newMode == GUI_MODE_KEYBOARD) || (_newMode == GUI_MODE_GAMEPAD))
+        if ((_newMode == BENTO_MODE_KEYBOARD) || (_newMode == BENTO_MODE_GAMEPAD))
         {
             if (__navPointer)
             {
@@ -43,7 +43,7 @@ function BentoSetMode(_newMode, _layer = undefined)
             __mousePressX = undefined;
             __mousePressY = undefined;
         }
-        else if ((_newMode == GUI_MODE_MOUSE) || (_newMode == GUI_MODE_TOUCH))
+        else if ((_newMode == BENTO_MODE_MOUSE) || (_newMode == BENTO_MODE_TOUCH))
         {
             //Find any focused element that needs to be closed if we've swapped to a pointer mode
             var _focusStack = __focusStack;
@@ -51,7 +51,7 @@ function BentoSetMode(_newMode, _layer = undefined)
             repeat(array_length(_focusStack))
             {
                 var _element = _focusStack[_i];
-                if (_element.GUI_VARS.__focusType == GUI_FOCUS_POINTER_CANCEL_ALWAYS)
+                if (_element.BENTO_VARS.__focusType == BENTO_FOCUS_POINTER_CANCEL_ALWAYS)
                 {
                     BentoFocusClose(_element);
                     break;
@@ -65,7 +65,7 @@ function BentoSetMode(_newMode, _layer = undefined)
         }
         else
         {
-            //Some undefined navigation mode, perhaps `GUI_MODE_UNKNOWN`
+            //Some undefined navigation mode, perhaps `BENTO_MODE_UNKNOWN`
             __navPointer     = false;
             __navDirectional = false;
             

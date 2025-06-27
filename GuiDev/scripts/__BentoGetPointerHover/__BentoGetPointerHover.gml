@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns which instance is highlighted using the mouse & touch highlighting rules. This function
-/// can return `GUI_NO_ELEMENT` if no instance is highlighted.
+/// can return `BENTO_NO_ELEMENT` if no instance is highlighted.
 
 function __BentoGetPointerHover(_mouseX, _mouseY)
 {
@@ -38,7 +38,7 @@ function __BentoGetPointerHover(_mouseX, _mouseY)
     var _scissorB      =  infinity;
     var _insideScissor =  true;
     
-    var _result = GUI_NO_ELEMENT;
+    var _result = BENTO_NO_ELEMENT;
     
     var _holdElement = __holdElement;
     var _holdElementDoesntExist = not BentoExists(_holdElement);
@@ -73,12 +73,12 @@ function __BentoGetPointerHover(_mouseX, _mouseY)
             });
             
             var _element = method_get_self(_method);
-            with(_element.GUI_VARS)
+            with(_element.BENTO_VARS)
             {
-                _scissorL = max(_scissorL, _element.guiLeft   + __scissorPadLeft   + __scissorScrollbarLeft  );
-                _scissorT = max(_scissorT, _element.guiTop    + __scissorPadTop    + __scissorScrollbarTop   );
-                _scissorR = min(_scissorR, _element.guiRight  - __scissorPadRight  - __scissorScrollbarRight );
-                _scissorB = min(_scissorB, _element.guiBottom - __scissorPadBottom - __scissorScrollbarBottom);
+                _scissorL = max(_scissorL, _element.bentoLeft   + __scissorPadLeft   + __scissorScrollbarLeft  );
+                _scissorT = max(_scissorT, _element.bentoTop    + __scissorPadTop    + __scissorScrollbarTop   );
+                _scissorR = min(_scissorR, _element.bentoRight  - __scissorPadRight  - __scissorScrollbarRight );
+                _scissorB = min(_scissorB, _element.bentoBottom - __scissorPadBottom - __scissorScrollbarBottom);
             }
             
             _insideScissor = ((_mouseX >= _scissorL) && (_mouseY >= _scissorT) && (_mouseX <= _scissorR) && (_mouseY <= _scissorB));
@@ -100,7 +100,7 @@ function __BentoGetPointerHover(_mouseX, _mouseY)
                     {
                         if (_holdElementDoesntExist || (_holdElement == self))
                         {
-                            if (GUI_VARS.__elementIsInstance)
+                            if (BENTO_VARS.__elementIsInstance)
                             {
                                 if (instance_position(_mouseX, _mouseY, self))
                                 {
@@ -109,7 +109,7 @@ function __BentoGetPointerHover(_mouseX, _mouseY)
                             }
                             else
                             {
-                                if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
+                                if (point_in_rectangle(_mouseX, _mouseY, bentoLeft, bentoTop, bentoRight, bentoBottom))
                                 {
                                     _result = self; 
                                 }

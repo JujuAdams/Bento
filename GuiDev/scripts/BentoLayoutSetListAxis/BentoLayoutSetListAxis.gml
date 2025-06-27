@@ -7,9 +7,9 @@ function BentoLayoutSetListAxis(_axis, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
-        if (__layoutType != GUI_LAYOUT_LIST)
+        if (__layoutType != BENTO_LAYOUT_LIST)
         {
             __BentoError("Can only apply list axis to elements using a list layout");
         }
@@ -17,7 +17,7 @@ function BentoLayoutSetListAxis(_axis, _element = self)
         if (__listAxis != _axis)
         {
             __listAxis = _axis;
-            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
         }
     }
 }

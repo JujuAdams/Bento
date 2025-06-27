@@ -8,7 +8,7 @@ function BentoTextClose()
     {
         if (__textHandler != undefined)
         {
-            __textHandler.__Terminate(GUI_TEXT_INACTIVE);
+            __textHandler.__Terminate(BENTO_TEXT_INACTIVE);
         }
     }
     

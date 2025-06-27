@@ -8,5 +8,5 @@ function BentoScrollGetTargetX(_element = self)
 {
     if (not BentoExists(_element)) return 0;
     
-    return _element.GUI_VARS.__scrollTargetX;
+    return _element.BENTO_VARS.__scrollTargetX;
 }

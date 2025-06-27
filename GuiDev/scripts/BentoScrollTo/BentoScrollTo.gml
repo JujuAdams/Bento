@@ -5,7 +5,7 @@
 /// @param [scrollSpeed]
 /// @param [element=self]
 
-function BentoScrollTo(_scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = self)
+function BentoScrollTo(_scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = self)
 {
     if (not BentoExists(_element)) return;
     

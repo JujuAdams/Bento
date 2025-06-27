@@ -13,6 +13,6 @@ function BentoSetRaycastEnable(_enableHori, _enableVert, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    _element.GUI_VARS.__raycastEnableHori = _enableHori;
-    _element.GUI_VARS.__raycastEnableVert = _enableVert;
+    _element.BENTO_VARS.__raycastEnableHori = _enableHori;
+    _element.BENTO_VARS.__raycastEnableVert = _enableVert;
 }

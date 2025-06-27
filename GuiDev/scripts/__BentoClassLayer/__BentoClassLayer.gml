@@ -15,7 +15,7 @@ function __BentoClassLayer(_environment, _name) constructor
     ////////
     
     __frozen = false;
-    __rootElement = GUI_NO_ELEMENT;
+    __rootElement = BENTO_NO_ELEMENT;
     
     __animatingMap   = ds_map_create();
     __animatingArray = [];
@@ -26,26 +26,26 @@ function __BentoClassLayer(_environment, _name) constructor
     
     if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
     {
-        __navMode = GUI_MODE_GAMEPAD;
+        __navMode = BENTO_MODE_GAMEPAD;
     }
     else if ((os_type == os_android) || (os_type == os_ios) || (os_type == os_tvos))
     {
-        __navMode = GUI_MODE_TOUCH;
+        __navMode = BENTO_MODE_TOUCH;
     }
     else if ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
     {
-        __navMode = GUI_DESKTOP_DEFAULT_NAV_MODE;
+        __navMode = BENTO_DESKTOP_DEFAULT_NAV_MODE;
     }
     else
     {
-        __navMode = GUI_MODE_MOUSE;
+        __navMode = BENTO_MODE_MOUSE;
     }
     
     //Explicitly using a mouse or touch input
-    __navPointer = ((__navMode == GUI_MODE_MOUSE) || (__navMode == GUI_MODE_TOUCH));
+    __navPointer = ((__navMode == BENTO_MODE_MOUSE) || (__navMode == BENTO_MODE_TOUCH));
     
     //Explicitly using a keyboard or gamepad
-    __navDirectional = ((__navMode == GUI_MODE_KEYBOARD) || (__navMode == GUI_MODE_GAMEPAD));
+    __navDirectional = ((__navMode == BENTO_MODE_KEYBOARD) || (__navMode == BENTO_MODE_GAMEPAD));
     
     ////////
     // Input state
@@ -85,7 +85,7 @@ function __BentoClassLayer(_environment, _name) constructor
     __hoverableOrder = [];
     __drawOrder      = [];
     
-    __dirtyFlags = __GUI_DIRTY_ALL;
+    __dirtyFlags = __BENTO_DIRTY_ALL;
     __hoverableRegenCount = 0;
     
     __dirtyChildOrderArray   = [];
@@ -94,11 +94,11 @@ function __BentoClassLayer(_environment, _name) constructor
     __dirtyTransformsArray   = [];
     __scrollAnimatingArray   = [];
     
-    __hoverElement     = GUI_NO_ELEMENT;
-    __hoverElementSoft = GUI_NO_ELEMENT;
-    __primaryState     = __GUI_OFF;
+    __hoverElement     = BENTO_NO_ELEMENT;
+    __hoverElementSoft = BENTO_NO_ELEMENT;
+    __primaryState     = __BENTO_OFF;
     __primaryConsumed  = false;
-    __holdElement      = GUI_NO_ELEMENT;
+    __holdElement      = BENTO_NO_ELEMENT;
     
     __updateElementArray = [];
     
@@ -157,10 +157,10 @@ function __BentoClassLayer(_environment, _name) constructor
             
             __mouseHold = _environment.__envMouseHold;
             
-            if ((__navMode == GUI_MODE_TOUCH) && (not __mouseHold))
+            if ((__navMode == BENTO_MODE_TOUCH) && (not __mouseHold))
             {
-                __mouseX = -__GUI_VERY_LARGE;
-                __mouseY = -__GUI_VERY_LARGE;
+                __mouseX = -__BENTO_VERY_LARGE;
+                __mouseY = -__BENTO_VERY_LARGE;
             }
             else
             {
@@ -184,11 +184,11 @@ function __BentoClassLayer(_environment, _name) constructor
             {
                 var _key = _globalHotkeyArray[_i];
                 
-                var _state = (__hotkeyStateMap[? _key] ?? __GUI_OFF) >> 1;
-                if (_globalHotkeyInputMap[? _key] ?? false) _state |= __GUI_START;
+                var _state = (__hotkeyStateMap[? _key] ?? __BENTO_OFF) >> 1;
+                if (_globalHotkeyInputMap[? _key] ?? false) _state |= __BENTO_START;
                 __hotkeyStateMap[? _key] = _state;
                 
-                if (_state == __GUI_START)
+                if (_state == __BENTO_START)
                 {
                     __hotkeyConsumedMap[? _key] = false;
                 }
@@ -201,7 +201,7 @@ function __BentoClassLayer(_environment, _name) constructor
         // Layout and step order
         ///////
         
-        //Ensure our root instance is the same size as the overall GUI space
+        //Ensure our root instance is the same size as the overall Bento space
         BentoLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
         
         //Keep our layout and step order updated as necessary. Updating the layer and step order here
@@ -227,19 +227,19 @@ function __BentoClassLayer(_environment, _name) constructor
                 if (__navPointer)
                 {
                     //Update the primary button state based on mouse input
-                    if (__mouseHold) __primaryState |= __GUI_START;
+                    if (__mouseHold) __primaryState |= __BENTO_START;
                     
                     //Start hovering an element if we're not currently holding an element
                     //We also want to check what element we're hovering if we've just released
-                    if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = GUI_NO_ELEMENT;
+                    if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
                     
                     //Try to hover a new element (maybe)
-                    if ((not __mouseHold) || ((__navMode == GUI_MODE_TOUCH) && (__primaryState == __GUI_START)))
+                    if ((not __mouseHold) || ((__navMode == BENTO_MODE_TOUCH) && (__primaryState == __BENTO_START)))
                     {
                         __BentoStartHover(__BentoGetPointerHover(__mouseX, __mouseY));
                     }
                     
-                    if (__primaryState == __GUI_START)
+                    if (__primaryState == __BENTO_START)
                     {
                         if (__environment.__textHandler != undefined) //Detect clicking off of an input box
                         {
@@ -247,8 +247,8 @@ function __BentoClassLayer(_environment, _name) constructor
                             &&  (not BentoIsAncestor(__environment.__textElement, __hoverElement))
                             &&  __environment.__textHandler.__cancelOnClick)
                             {
-                                __environment.__textHandler.__Terminate(GUI_TEXT_ABORT);
-                                __hoverElement = GUI_NO_ELEMENT;
+                                __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
+                                __hoverElement = BENTO_NO_ELEMENT;
                             }
                         }
                         else if (BentoExists(__focusTop)) //Detect clicking off of a pop-up
@@ -256,16 +256,16 @@ function __BentoClassLayer(_environment, _name) constructor
                             if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
                             &&  (not BentoIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
                             {
-                                var _focusType = __focusTop.GUI_VARS.__focusType;
-                                if (_focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)
+                                var _focusType = __focusTop.BENTO_VARS.__focusType;
+                                if (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
                                 {
                                     BentoFocusClose(__focusTop);
-                                    __hoverElement = GUI_NO_ELEMENT;
+                                    __hoverElement = BENTO_NO_ELEMENT;
                                 }
-                                else if (_focusType == GUI_FOCUS_POINTER_DESTROY_ON_CLICK)
+                                else if (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK)
                                 {
                                     BentoDestroy(__focusTop);
-                                    __hoverElement = GUI_NO_ELEMENT;
+                                    __hoverElement = BENTO_NO_ELEMENT;
                                 }
                             }
                         }
@@ -277,7 +277,7 @@ function __BentoClassLayer(_environment, _name) constructor
                         __mousePrevX = __mouseX;
                         __mousePrevY = __mouseY;
                     }
-                    else if (__primaryState == __GUI_END)
+                    else if (__primaryState == __BENTO_END)
                     {
                         //And reset the mouse state when we release
                         __mousePressX = undefined;
@@ -287,21 +287,21 @@ function __BentoClassLayer(_environment, _name) constructor
                 else if (__navDirectional)
                 {
                     //Update the primary button state based on directional input
-                    if (__directionalHold) __primaryState |= __GUI_START;
+                    if (__directionalHold) __primaryState |= __BENTO_START;
                     
                     //If the held element cannot be held then proactively reset the state variable
-                    if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = GUI_NO_ELEMENT;
+                    if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
                     
                     //Move the cursor and hover a new element (maybe)
                     __BentoStartHover(__BentoGetDirectionalHover(__hoverElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
-                else //Some other navigation mode, perhaps `GUI_MODE_UNKNOWN`
+                else //Some other navigation mode, perhaps `BENTO_MODE_UNKNOWN`
                 {
-                    __holdElement = GUI_NO_ELEMENT;
-                    __BentoStartHover(GUI_NO_ELEMENT);
+                    __holdElement = BENTO_NO_ELEMENT;
+                    __BentoStartHover(BENTO_NO_ELEMENT);
                 }
                 
-                if (__primaryState == __GUI_START)
+                if (__primaryState == __BENTO_START)
                 {
                     __primaryConsumed = false;
                 }
@@ -370,11 +370,11 @@ function __BentoClassLayer(_environment, _name) constructor
         {
             if (__navDirectional) return _focusTop;
             
-            var _focusType = _focusTop.GUI_VARS.__focusType;
-            if (_focusType == GUI_FOCUS_POINTER_CONSTRAIN) return _focusTop;
+            var _focusType = _focusTop.BENTO_VARS.__focusType;
+            if (_focusType == BENTO_FOCUS_POINTER_CONSTRAIN) return _focusTop;
             
-            if (GUI_FOCUS_BLOCKS_POINTER_HOVER
-            &&  ((_focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK) || (_focusType == GUI_FOCUS_POINTER_CANCEL_ON_CLICK)))
+            if (BENTO_FOCUS_BLOCKS_POINTER_HOVER
+            &&  ((_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK) || (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)))
             {
                 return _focusTop;
             }

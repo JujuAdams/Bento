@@ -6,5 +6,5 @@ function BentoClipGetPartiallyVisible(_element = self)
 {
     if (not BentoExists(_element)) return false;
     
-    return (_element.GUI_VARS.__scissorVisibility != GUI_VISIBLE_NONE);
+    return (_element.BENTO_VARS.__scissorVisibility != BENTO_VISIBLE_NONE);
 }

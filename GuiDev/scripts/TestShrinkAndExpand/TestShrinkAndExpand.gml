@@ -6,9 +6,9 @@ function TestShrinkAndExpand()
     {
         image_blend = c_navy;
         
-        BentoLayoutSetList(GUI_AXIS_X, fa_left, fa_top);
+        BentoLayoutSetList(BENTO_AXIS_X, fa_left, fa_top);
         BentoLayoutSetSize(600, 200);
-        BentoLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
+        BentoLayoutSetResizeType(BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK);
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
@@ -22,14 +22,14 @@ function TestShrinkAndExpand()
         {
             image_blend = c_yellow;
             BentoLayoutSetSize(100, 50);
-            BentoLayoutSetResizeType(GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND);
+            BentoLayoutSetResizeType(BENTO_RESIZE_EXPAND, BENTO_RESIZE_EXPAND);
         }
         
         with(BentoCreateObject(oBentoSprite))
         {
             image_blend = c_yellow;
             BentoLayoutSetSize(50, 100);
-            BentoLayoutSetResizeType(GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND);
+            BentoLayoutSetResizeType(BENTO_RESIZE_EXPAND, BENTO_RESIZE_EXPAND);
         }
         
         with(BentoCreateObject(oBentoSprite))

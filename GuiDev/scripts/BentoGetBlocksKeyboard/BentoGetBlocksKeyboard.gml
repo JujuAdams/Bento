@@ -18,7 +18,7 @@ function BentoGetBlocksKeyboard(_environmentName = undefined)
     
     with(__BentoEnvironmentEnsure(_environmentName))
     {
-        if (__layerCurrent.__navMode == GUI_MODE_KEYBOARD) return true;
+        if (__layerCurrent.__navMode == BENTO_MODE_KEYBOARD) return true;
     }
     
     return false;

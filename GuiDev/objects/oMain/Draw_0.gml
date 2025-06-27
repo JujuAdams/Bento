@@ -2,7 +2,7 @@
 
 // Draws the entire Bento system. This should be in the same coordinate system as `BentoInputPointer()`.
 // Not all Bento instances will necessarily be drawn. Those that do will call the Draw user event
-// (`GUI_USER_EVENT_DRAW`, 1). If `BentoSetDrawAfter()` has been called then the Draw After user
+// (`BENTO_USER_EVENT_DRAW`, 1). If `BentoSetDrawAfter()` has been called then the Draw After user
 // event for that instance will be called too by `BentoSystemDraw()` (but won't by default).
 BentoSystemDraw();
 
@@ -12,10 +12,10 @@ draw_set_font(fntDebug);
 var _nodeName = "???";
 switch(BentoGetMode())
 {
-    case GUI_MODE_MOUSE:    _nodeName = "Mouse";    break;
-    case GUI_MODE_KEYBOARD: _nodeName = "Keyboard"; break;
-    case GUI_MODE_GAMEPAD:  _nodeName = "Gamepad";  break;
-    case GUI_MODE_TOUCH:    _nodeName = "Touch";    break;
+    case BENTO_MODE_MOUSE:    _nodeName = "Mouse";    break;
+    case BENTO_MODE_KEYBOARD: _nodeName = "Keyboard"; break;
+    case BENTO_MODE_GAMEPAD:  _nodeName = "Gamepad";  break;
+    case BENTO_MODE_TOUCH:    _nodeName = "Touch";    break;
 }
 
 draw_set_halign(fa_right);

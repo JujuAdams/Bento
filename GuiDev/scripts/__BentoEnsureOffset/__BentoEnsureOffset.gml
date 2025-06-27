@@ -11,7 +11,7 @@ function __BentoEnsureOffset()
     //execute from the most senior node to the most junior leaf.
     array_sort(_dirtyOffsetArray, function(_a, _b)
     {
-        return -sign(_a.GUI_VARS.__envIndex - _b.GUI_VARS.__envIndex);
+        return -sign(_a.BENTO_VARS.__envIndex - _b.BENTO_VARS.__envIndex);
     });
     
     while(array_length(_dirtyOffsetArray) > 0)
@@ -19,18 +19,18 @@ function __BentoEnsureOffset()
         var _element = array_shift(_dirtyOffsetArray);
         if (BentoExists(_element))
         {
-            var _parent = _element.GUI_VARS.__parent;
+            var _parent = _element.BENTO_VARS.__parent;
             if (not BentoExists(_parent))
             {
                 //No parent, probably the root node?
                 __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element,
                                              0, 0,
                                              -infinity, -infinity, infinity, infinity,
-                                             GUI_VISIBLE_FULL);
+                                             BENTO_VISIBLE_FULL);
             }
             else
             {
-                with(_parent.GUI_VARS)
+                with(_parent.BENTO_VARS)
                 {
                     //FIXME - Refactor to pass down the scissor parent
                     __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element,
@@ -55,7 +55,7 @@ function __BentoEnsureOffset()
 
 function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility)
 {
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (__offsetDirty)
         {
@@ -77,7 +77,7 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _
         //Ensure the UI element sits inside the root boundary before we transform
         if (__layoutClampInside)
         {
-            var _rootBento    = __layer.__rootElement.GUI_VARS;
+            var _rootBento    = __layer.__rootElement.BENTO_VARS;
             var _rootWidth  = _rootBento.__solvedWidth;
             var _rootHeight = _rootBento.__solvedHeight;
             
@@ -121,8 +121,8 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _
             else
             {
                 //Fall back on the default alignment if we have no sprite
-                var _xPerc = GUI_DEFAULT_LAYOUT_ALIGN_H;
-                var _yPerc = GUI_DEFAULT_LAYOUT_ALIGN_V;
+                var _xPerc = BENTO_DEFAULT_LAYOUT_ALIGN_H;
+                var _yPerc = BENTO_DEFAULT_LAYOUT_ALIGN_V;
             }
             
             var _xWorld = _leftWorld + _xPerc*_width;
@@ -138,18 +138,18 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _
         //Set final variables ready for the reposition user event
         with(_element)
         {
-            guiLeft   = _leftWorld;
-            guiTop    = _topWorld;
-            guiRight  = _rightWorld;
-            guiBottom = _bottomWorld;
-            guiX      = _xWorld;
-            guiY      = _yWorld;
-            guiWidth  = _width;
-            guiHeight = _height;
+            bentoLeft   = _leftWorld;
+            bentoTop    = _topWorld;
+            bentoRight  = _rightWorld;
+            bentoBottom = _bottomWorld;
+            bentoX      = _xWorld;
+            bentoY      = _yWorld;
+            bentoWidth  = _width;
+            bentoHeight = _height;
             
         }
         
-        if (_scissorVisibility != GUI_VISIBLE_NONE)
+        if (_scissorVisibility != BENTO_VISIBLE_NONE)
         {
             _scissorVisibility = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
                                                         _scissorL, _scissorT, _scissorR, _scissorB);

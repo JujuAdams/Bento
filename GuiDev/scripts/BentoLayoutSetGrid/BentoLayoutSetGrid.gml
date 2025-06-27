@@ -8,14 +8,14 @@ function BentoLayoutSetGrid(_columns, _rows, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
-        if (__layoutType != GUI_LAYOUT_GRID)
+        if (__layoutType != BENTO_LAYOUT_GRID)
         {
             //Swapping into grid layout, reset everything
             
-            __layoutType = GUI_LAYOUT_GRID;
-            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+            __layoutType = BENTO_LAYOUT_GRID;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
             __layoutGutterX = 0;
             __layoutGutterY = 0;
@@ -42,7 +42,7 @@ function BentoLayoutSetGrid(_columns, _rows, _element = self)
                 __gridRows    = _rows;
                 
                 //Parameters changed, update the layout!
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
     }

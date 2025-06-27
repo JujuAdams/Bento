@@ -8,7 +8,7 @@ function BentoScrollSetEnabled(_horizontal, _vertical, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if ((__scrollHori != _horizontal) || (__scrollVert != _vertical))
         {

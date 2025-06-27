@@ -11,4 +11,4 @@ BentoSetIfNotDefined("clickFunc", function()
 //Ensure the click function is scoped to this instance
 clickFunc = method(self, clickFunc);
 
-BentoSetButton(GUI_BUTTON_ALWAYS);
+BentoSetButton(BENTO_BUTTON_ALWAYS);

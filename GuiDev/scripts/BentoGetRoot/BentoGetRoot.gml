@@ -14,7 +14,7 @@ function BentoGetRoot(_layer = undefined)
         if (not BentoExists(__rootElement))
         {
             __rootElement = new BentoConstrAncestor(undefined);
-            __rootElement.GUI_VARS.__layer = self;
+            __rootElement.BENTO_VARS.__layer = self;
         }
         
         return __rootElement;

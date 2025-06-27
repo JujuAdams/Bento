@@ -6,7 +6,7 @@ function BentoScrollGetWidth(_element = self)
 {
     if (not BentoExists(_element)) return 0;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (not __scrollHori) return 0;
         return max(0, __scrollMaxX - __scrollMinX);

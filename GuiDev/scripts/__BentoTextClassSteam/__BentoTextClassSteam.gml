@@ -21,7 +21,7 @@ function __BentoTextClassSteam(_environment, _initialText, _callback, _maxLength
     else
     {
         show_debug_message("Failed to open Steam gamepad text input");
-        __Terminate(GUI_TEXT_ABORT);
+        __Terminate(BENTO_TEXT_ABORT);
         return;
     }
     
@@ -29,7 +29,7 @@ function __BentoTextClassSteam(_environment, _initialText, _callback, _maxLength
     
     static __Step = function()
     {
-        if (__state == GUI_TEXT_PENDING)
+        if (__state == BENTO_TEXT_PENDING)
         {
             __BentoTextEnsureController().__steam = self;
         }
@@ -41,12 +41,12 @@ function __BentoTextClassSteam(_environment, _initialText, _callback, _maxLength
         {
             if (not async_load[? "submitted"])
             {
-                __Terminate(GUI_TEXT_ABORT);
+                __Terminate(BENTO_TEXT_ABORT);
             }
-            else if (__state == GUI_TEXT_PENDING)
+            else if (__state == BENTO_TEXT_PENDING)
             {
                 __text = string_copy(steam_get_entered_gamepad_text_input(), 1, __maxLength);
-                __Terminate(GUI_TEXT_CONFIRM);
+                __Terminate(BENTO_TEXT_CONFIRM);
             }
         }
     }

@@ -6,14 +6,14 @@ function BentoLayoutSetRect(_element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
-        if (__layoutType != GUI_LAYOUT_RECT)
+        if (__layoutType != BENTO_LAYOUT_RECT)
         {
             //Swapping into rect layout, reset everything
             
-            __layoutType = GUI_LAYOUT_RECT;
-            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+            __layoutType = BENTO_LAYOUT_RECT;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
             __SolverGetShrinkWidth  = method(self, __BentoSolverRectGetShrinkWidth);
             __SolverResizeWidth  = function() {}

@@ -9,18 +9,18 @@ function __BentoClassScrollbarHori(_element) : __BentoClassScrollbar(_element) c
         if (__mirror)
         {
             //Top
-            barLeft   = _element.guiLeft + __padLeft;
-            barTop    = _element.guiTop + __padTop;
-            barRight  = _element.guiRight - __padRight;
-            barBottom = _element.guiTop + (__padTop + __thickness);
+            barLeft   = _element.bentoLeft + __padLeft;
+            barTop    = _element.bentoTop + __padTop;
+            barRight  = _element.bentoRight - __padRight;
+            barBottom = _element.bentoTop + (__padTop + __thickness);
         }
         else
         {
             //Bottom
-            barLeft   = _element.guiLeft + __padLeft;
-            barTop    = _element.guiBottom - (barBottom + __thickness);
-            barRight  = _element.guiRight - __padRight;
-            barBottom = _element.guiBottom - __padBottom;
+            barLeft   = _element.bentoLeft + __padLeft;
+            barTop    = _element.bentoBottom - (barBottom + __thickness);
+            barRight  = _element.bentoRight - __padRight;
+            barBottom = _element.bentoBottom - __padBottom;
         }
         
         barWidth  = barRight - barLeft;

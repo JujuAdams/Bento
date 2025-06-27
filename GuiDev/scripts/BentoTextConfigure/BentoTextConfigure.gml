@@ -29,7 +29,7 @@
 function BentoTextConfigure(_maxLength = 300, _caption = "", _keyboardType = kbv_type_default, _returnKey = kbv_returnkey_default, _capitalization = kbv_autocapitalize_none, _textPrediction = false, _hostElement = self)
 {
     if (not BentoExists(_hostElement)) return;
-    with(_hostElement.GUI_VARS.__textConfig)
+    with(_hostElement.BENTO_VARS.__textConfig)
     {
         __maxLength      = _maxLength;
         __caption        = _caption;

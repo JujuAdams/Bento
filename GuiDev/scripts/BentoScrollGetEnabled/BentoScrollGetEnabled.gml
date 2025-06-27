@@ -11,8 +11,8 @@ function BentoScrollGetEnabled(_element = self)
     
     if (BentoExists(_element))
     {
-        _result.horizontal = _element.GUI_VARS.__scrollHori;
-        _result.vertical   = _element.GUI_VARS.__scrollVert;
+        _result.horizontal = _element.BENTO_VARS.__scrollHori;
+        _result.vertical   = _element.BENTO_VARS.__scrollVert;
     }
     else
     {

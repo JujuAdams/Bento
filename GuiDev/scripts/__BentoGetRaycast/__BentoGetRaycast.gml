@@ -27,7 +27,7 @@ function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent =
         __BentoError("Can only use `__BentoGetRaycast()` in directional mode");
     }
    
-    var _element  = GUI_NO_ELEMENT;
+    var _element  = BENTO_NO_ELEMENT;
     var _minWeight = infinity;
     
     var _i = 0;
@@ -37,8 +37,8 @@ function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent =
         {
             if (array_get_index(_excludeArray, self) < 0)
             {
-                var _nearestX = clamp(_x, guiLeft, guiRight);
-                var _nearestY = clamp(_y, guiTop, guiBottom);
+                var _nearestX = clamp(_x, bentoLeft, bentoRight);
+                var _nearestY = clamp(_y, bentoTop, bentoBottom);
                 
                 var _dot = dot_product(_dX, _dY, _nearestX, _nearestY) - _baseDist;
                 if (_dot > 0)

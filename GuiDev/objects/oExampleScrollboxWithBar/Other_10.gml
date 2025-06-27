@@ -6,7 +6,7 @@ if (BentoUsingDirectional())
 {
     if (BentoPrimaryGetClick())
     {
-        BentoFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
+        BentoFocusOpen(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
     }
     
     if (BentoHotkeyGetPress("escape"))

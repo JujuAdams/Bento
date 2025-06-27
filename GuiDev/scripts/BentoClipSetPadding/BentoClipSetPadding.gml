@@ -10,7 +10,7 @@ function BentoClipSetPadding(_left, _top, _right, _bottom, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if ((_left   != __scissorPadLeft)
         ||  (_top    != __scissorPadTop)
@@ -22,7 +22,7 @@ function BentoClipSetPadding(_left, _top, _right, _bottom, _element = self)
             __scissorPadRight  = _right;
             __scissorPadBottom = _bottom;
             
-            __layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE | __GUI_DIRTY_DRAW;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE | __BENTO_DIRTY_DRAW;
         }
     }
 }

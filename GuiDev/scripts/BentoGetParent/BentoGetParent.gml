@@ -19,9 +19,9 @@ function BentoGetParent(_depth = 1, _element = self)
 
 function __BentoGetParentInner(_depth = 1, _element = self)
 {
-    if (not BentoExists(_element)) return GUI_NO_ELEMENT;
+    if (not BentoExists(_element)) return BENTO_NO_ELEMENT;
     
-    var _parent = _element.GUI_VARS.__parent;
+    var _parent = _element.BENTO_VARS.__parent;
     if (_depth <= 1) return _parent;
     
     return __BentoGetParentInner(_depth-1, _parent);

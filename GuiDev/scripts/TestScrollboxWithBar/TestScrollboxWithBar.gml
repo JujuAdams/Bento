@@ -12,7 +12,7 @@ function TestScrollboxWithBar()
                 offset:  [300, 200],
                 size:    [200, 120],
                 maxSize: [200, 295],
-                resize:  [GUI_RESIZE_SHRINK, GUI_RESIZE_STATIC],
+                resize:  [BENTO_RESIZE_SHRINK, BENTO_RESIZE_STATIC],
                 padding: 10,
             },
             children: function(_metadata) {

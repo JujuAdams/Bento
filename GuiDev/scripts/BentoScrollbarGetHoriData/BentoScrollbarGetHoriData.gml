@@ -20,9 +20,9 @@ function BentoScrollbarGetHoriData(_element = self)
         grabHandle:    false,
     };
     
-    if (BentoExists(_element) && (_element.GUI_VARS.__scrollbarHori != undefined))
+    if (BentoExists(_element) && (_element.BENTO_VARS.__scrollbarHori != undefined))
     {
-        return _element.GUI_VARS.__scrollbarHori;
+        return _element.BENTO_VARS.__scrollbarHori;
     }
     else
     {

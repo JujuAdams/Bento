@@ -8,7 +8,7 @@ function __BentoSolverListGetShrinkHeight()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    if (__listAxis == GUI_AXIS_Y)
+    if (__listAxis == BENTO_AXIS_Y)
     {
         //////
         // Major Axis - Add up sizes
@@ -18,8 +18,8 @@ function __BentoSolverListGetShrinkHeight()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _shrinkSize += _child.GUI_VARS.__solverGetShrinkHeight;
-            _minSize += _child.GUI_VARS.__solverMinHeight;
+            _shrinkSize += _child.BENTO_VARS.__solverGetShrinkHeight;
+            _minSize += _child.BENTO_VARS.__solverMinHeight;
             ++_i;
         }
         
@@ -35,8 +35,8 @@ function __BentoSolverListGetShrinkHeight()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _shrinkSize = max(_shrinkSize, _child.GUI_VARS.__solverGetShrinkHeight);
-            _minSize = max(_minSize, _child.GUI_VARS.__solverMinHeight);
+            _shrinkSize = max(_shrinkSize, _child.BENTO_VARS.__solverGetShrinkHeight);
+            _minSize = max(_minSize, _child.BENTO_VARS.__solverMinHeight);
             ++_i;
         }
         
@@ -48,5 +48,5 @@ function __BentoSolverListGetShrinkHeight()
     
     __solverMinHeight    = max(__layoutHeightMin, _minSize);
     __solverGetShrinkHeight = clamp(_shrinkSize, __solverMinHeight, __layoutHeightMax);
-    __solvedHeight       = clamp((__layoutHeightResize == GUI_RESIZE_STATIC)? __layoutHeightPref : _shrinkSize, __solverMinHeight, __layoutHeightMax);
+    __solvedHeight       = clamp((__layoutHeightResize == BENTO_RESIZE_STATIC)? __layoutHeightPref : _shrinkSize, __solverMinHeight, __layoutHeightMax);
 }

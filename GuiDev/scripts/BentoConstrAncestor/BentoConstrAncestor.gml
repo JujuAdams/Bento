@@ -34,15 +34,15 @@ function BentoConstrAncestor(_parent) constructor
     //read-only in the sense that they are liable to get overwritten by the library at unexpected
     //times.
     
-    guiLeft   = 0;
-    guiTop    = 0;
-    guiRight  = 0;
-    guiBottom = 0;
-    guiX      = 0;
-    guiY      = 0;
-    guiWidth  = 0;
-    guiHeight = 0;
+    bentoLeft   = 0;
+    bentoTop    = 0;
+    bentoRight  = 0;
+    bentoBottom = 0;
+    bentoX      = 0;
+    bentoY      = 0;
+    bentoWidth  = 0;
+    bentoHeight = 0;
     
-    GUI_VARS = new __BentoClassVariables(self);
+    BENTO_VARS = new __BentoClassVariables(self);
     BentoSetParent(_parent);
 }

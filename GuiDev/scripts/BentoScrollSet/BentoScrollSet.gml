@@ -7,12 +7,12 @@
 /// @param [scrollSpeed]
 /// @param [element=self]
 
-function BentoScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = GUI_DEFAULT_SCROLL_SPEED, _element = self)
+function BentoScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = self)
 {
     var _scroller = __BentoScrollFindParent(_element);
     if (not BentoExists(_scroller)) return;
     
-    with(_scroller.GUI_VARS)
+    with(_scroller.BENTO_VARS)
     {
         if (not __scrollHori) _scrollTargetX = 0;
         if (not __scrollVert) _scrollTargetY = 0;

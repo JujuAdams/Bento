@@ -2,10 +2,10 @@
 
 // Swap the navigation mode depending on what number row key has been pressed. In the main
 // project, this is handled when the player hotswaps to another input device.
-if (keyboard_check_pressed(ord("1"))) BentoSetMode(GUI_MODE_MOUSE);
-if (keyboard_check_pressed(ord("2"))) BentoSetMode(GUI_MODE_KEYBOARD);
-if (keyboard_check_pressed(ord("3"))) BentoSetMode(GUI_MODE_GAMEPAD);
-if (keyboard_check_pressed(ord("4"))) BentoSetMode(GUI_MODE_TOUCH);
+if (keyboard_check_pressed(ord("1"))) BentoSetMode(BENTO_MODE_MOUSE);
+if (keyboard_check_pressed(ord("2"))) BentoSetMode(BENTO_MODE_KEYBOARD);
+if (keyboard_check_pressed(ord("3"))) BentoSetMode(BENTO_MODE_GAMEPAD);
+if (keyboard_check_pressed(ord("4"))) BentoSetMode(BENTO_MODE_TOUCH);
 
 // "Gampead" input is, in reality, a generic directional input. Sending in a directional value
 // will push the Bento cursor in that direction. When holding a directional input, the Bento system
@@ -33,7 +33,7 @@ else if (BentoUsingGamepad() && gamepad_is_connected(0))
 // continuous "held" value. The coordinate space for the x/y coordinates should be the same as the
 // coordinate space that the Bento is drawn in. In this example, we're drawing the Bento in the
 // standard Draw event which means we need to use room-space coordinates. If you're drawing in a
-// Draw GUI event then you should use GUI-space coordinates.
+// Draw Bento event then you should use GUI-space coordinates.
 if (BentoUsingPointer())
 {
     BentoInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(0, mb_left));
@@ -43,12 +43,12 @@ if (BentoUsingPointer())
 // is an abstract input that doesn't necessarily have to map to a physical input at all. Button
 // input could be triggered by a tutorial, a cutscene, a touch gesture etc. ... or it could be a
 // button. Buttons have a "pressed", "held", and "released" state that is accessed via functions.
-BentoInputHotkey(GUI_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
-BentoInputHotkey(GUI_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
+BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
+BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
 BentoInputHotkey("escape", keyboard_check(vk_escape));
 
 // The main state update function. This ticks the entire system (but doesn't do any drawing).
-// Step user events (GUI_USER_EVENT_STEP, 0) are executed by this function where appropriate.
+// Step user events (BENTO_USER_EVENT_STEP, 0) are executed by this function where appropriate.
 BentoSystemStep(room_width, room_height);
 
 window_set_cursor(BentoGetBlocksMouse()? cr_drag : cr_default);

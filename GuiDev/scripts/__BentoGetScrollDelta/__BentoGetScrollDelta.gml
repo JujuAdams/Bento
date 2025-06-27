@@ -8,34 +8,34 @@ function __BentoGetScrollDelta(_element = self)
     
     var _dX     = 0;
     var _dY     = 0;
-    var _parent = GUI_NO_ELEMENT;
+    var _parent = BENTO_NO_ELEMENT;
     var _tooBig = false;
     
     if (BentoExists(_element))
     {
-        var _instanceBento = _element.GUI_VARS;
+        var _instanceBento = _element.BENTO_VARS;
         
         var _parent = __BentoScrollFindParent(_instanceBento.__parent);
         if (BentoExists(_parent))
         {
-            with(_parent.GUI_VARS)
+            with(_parent.BENTO_VARS)
             {
                 if (__scissorEnabled)
                 {
                     if (__scrollHori)
                     {
-                        var _instL = _element.guiLeft  - GUI_SCROLL_TO_PADDING;
-                        var _instR = _element.guiRight + GUI_SCROLL_TO_PADDING;
+                        var _instL = _element.bentoLeft  - BENTO_SCROLL_TO_PADDING;
+                        var _instR = _element.bentoRight + BENTO_SCROLL_TO_PADDING;
                         
                         if (__scissorEnabled)
                         {
-                            var _parL = _parent.guiLeft  + __scissorPadLeft  + __scissorScrollbarLeft;
-                            var _parR = _parent.guiRight - __scissorPadRight + __scissorScrollbarRight;
+                            var _parL = _parent.bentoLeft  + __scissorPadLeft  + __scissorScrollbarLeft;
+                            var _parR = _parent.bentoRight - __scissorPadRight + __scissorScrollbarRight;
                         }
                         else
                         {
-                            var _parL = _parent.guiLeft;
-                            var _parR = _parent.guiRight;
+                            var _parL = _parent.bentoLeft;
+                            var _parR = _parent.bentoRight;
                         }
                         
                         if (_instR - _instL > _parR - _parL)
@@ -69,18 +69,18 @@ function __BentoGetScrollDelta(_element = self)
                     
                     if (__scrollVert)
                     {
-                        var _instT = _element.guiTop    - GUI_SCROLL_TO_PADDING;
-                        var _instB = _element.guiBottom + GUI_SCROLL_TO_PADDING;
+                        var _instT = _element.bentoTop    - BENTO_SCROLL_TO_PADDING;
+                        var _instB = _element.bentoBottom + BENTO_SCROLL_TO_PADDING;
                         
                         if (__scissorEnabled)
                         {
-                            var _parT = _parent.guiTop    + __scissorPadTop    + __scissorScrollbarTop;
-                            var _parB = _parent.guiBottom - __scissorPadBottom - __scissorScrollbarBottom;
+                            var _parT = _parent.bentoTop    + __scissorPadTop    + __scissorScrollbarTop;
+                            var _parB = _parent.bentoBottom - __scissorPadBottom - __scissorScrollbarBottom;
                         }
                         else
                         {
-                            var _parT = _parent.guiTop;
-                            var _parB = _parent.guiBottom;
+                            var _parT = _parent.bentoTop;
+                            var _parB = _parent.bentoBottom;
                         }
                         
                         if (_instB - _instT > _parB - _parT)

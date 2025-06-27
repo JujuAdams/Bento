@@ -4,5 +4,5 @@
 
 function BentoGetButton(_element = self)
 {
-    return BentoExists(_element)? _element.GUI_VARS.__buttonType : GUI_BUTTON_NEVER;
+    return BentoExists(_element)? _element.BENTO_VARS.__buttonType : BENTO_BUTTON_NEVER;
 }

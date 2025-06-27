@@ -11,11 +11,11 @@ function __BentoFocusCloseInner(_element)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (__focused)
         {
-            __layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
             
             var _focusStack = __layer.__focusStack;
             var _index = array_get_index(_focusStack, _element);
@@ -24,7 +24,7 @@ function __BentoFocusCloseInner(_element)
                 var _i = array_length(_focusStack)-1;
                 repeat(array_length(_focusStack) - _index)
                 {
-                    _focusStack[_i].GUI_VARS.__focused = false;
+                    _focusStack[_i].BENTO_VARS.__focused = false;
                     --_i;
                 }
             }

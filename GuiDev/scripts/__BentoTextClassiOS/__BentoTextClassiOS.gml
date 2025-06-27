@@ -36,9 +36,9 @@ function __BentoTextClassiOS(_environment, _initialText, _callback, _maxLength, 
         var _keyboardString = keyboard_string;
         var _keyboardStringLength = string_length(_keyboardString);
         
-        if (_keyboardStringLength > __GUI_TEXT_IOS_MAX)
+        if (_keyboardStringLength > __BENTO_TEXT_IOS_MAX)
         {
-            __Terminate(GUI_TEXT_ABORT);
+            __Terminate(BENTO_TEXT_ABORT);
             return;
         }
         
@@ -65,12 +65,12 @@ function __BentoTextClassiOS(_environment, _initialText, _callback, _maxLength, 
         if (keyboard_check_pressed(0x0A) || (_tail == 0x0A)  // Line feed
         ||  keyboard_check_pressed(0x0D) || (_tail == 0x0D)) // Carriage return
         {
-            __Terminate(GUI_TEXT_CONFIRM);
+            __Terminate(BENTO_TEXT_CONFIRM);
             return;
         }                
         else if ((not _osPaused) && (not _virtualStatus) && __virtualStatusPrev)
         {
-            __Terminate(GUI_TEXT_ABORT);
+            __Terminate(BENTO_TEXT_ABORT);
             return;
         }
         

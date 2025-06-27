@@ -9,14 +9,14 @@ function BentoLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _elemen
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
-        if (__layoutType != GUI_LAYOUT_LIST)
+        if (__layoutType != BENTO_LAYOUT_LIST)
         {
             //Swapping into list layout, reset everything
             
-            __layoutType = GUI_LAYOUT_LIST;
-            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+            __layoutType = BENTO_LAYOUT_LIST;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
             __layoutGutterX = 0;
             __layoutGutterY = 0;
@@ -46,7 +46,7 @@ function BentoLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _elemen
                 __layoutVAlignChildren = _vAlignChildren;
                 
                 //Parameters changed, update the layout!
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
     }

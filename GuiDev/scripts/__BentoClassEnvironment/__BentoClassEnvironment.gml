@@ -68,7 +68,7 @@ function __BentoClassEnvironment(_name) constructor
             }
             else
             {
-                __textHandler.__Terminate(GUI_TEXT_INACTIVE);
+                __textHandler.__Terminate(BENTO_TEXT_INACTIVE);
             }
         }
         

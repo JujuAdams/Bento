@@ -20,9 +20,9 @@ function BentoScrollbarGetVertData(_element = self)
         grabHandle:     false,
     };
     
-    if (BentoExists(_element) && (_element.GUI_VARS.__scrollbarVert != undefined))
+    if (BentoExists(_element) && (_element.BENTO_VARS.__scrollbarVert != undefined))
     {
-        return _element.GUI_VARS.__scrollbarVert;
+        return _element.BENTO_VARS.__scrollbarVert;
     }
     else
     {

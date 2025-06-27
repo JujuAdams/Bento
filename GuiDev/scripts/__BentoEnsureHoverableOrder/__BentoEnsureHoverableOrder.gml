@@ -4,8 +4,8 @@
 
 function __BentoEnsureHoverableOrder()
 {
-    if not (__dirtyFlags & __GUI_DIRTY_HOVERABLE) return;
-    __dirtyFlags = ~((~__dirtyFlags) | __GUI_DIRTY_HOVERABLE);
+    if not (__dirtyFlags & __BENTO_DIRTY_HOVERABLE) return;
+    __dirtyFlags = ~((~__dirtyFlags) | __BENTO_DIRTY_HOVERABLE);
     
     ++__hoverableRegenCount;
     array_resize(__hoverableOrder, 0);
@@ -35,7 +35,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hov
         }
     }
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (__disable) return; //Disabled elements always ban hover, understandably
         
@@ -54,7 +54,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hov
         else
         {
             //Enclose our children if the enclose type matches the nav type
-            if (__focusEncloseType & GUI_ENCLOSE_POINTER)
+            if (__focusEncloseType & BENTO_ENCLOSE_POINTER)
             {
                 _childHoverableIndex = undefined;
             }
@@ -86,7 +86,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hov
 
 function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _element, _hoverableIndex)
 {
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (__disable) return; //Disabled elements always ban hover, understandably
         
@@ -105,14 +105,14 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _element, 
         else
         {
             //Enclose our children if the enclose type matches the nav type
-            if (__focusEncloseType & GUI_ENCLOSE_DIRECTIONAL)
+            if (__focusEncloseType & BENTO_ENCLOSE_DIRECTIONAL)
             {
                 _childHoverableIndex = undefined;
             }
         }
         
         //Elements can only be selected if they're set up as buttons when in directional mode
-        if ((_hoverableIndex != undefined) && (__buttonType & GUI_BUTTON_DIRECTIONAL))
+        if ((_hoverableIndex != undefined) && (__buttonType & BENTO_BUTTON_DIRECTIONAL))
         {
             __hoverableIndex = _hoverableIndex;
             array_push(_hoverableOrder, _element);

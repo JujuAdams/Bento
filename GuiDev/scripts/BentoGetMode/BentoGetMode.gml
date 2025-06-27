@@ -3,11 +3,11 @@
 /// Returns the current navigation mode, as set by `BentoSetMode()`. This will be one of the
 /// following constants:
 /// 
-/// - `GUI_MODE_UNKNOWN`
-/// - `GUI_MODE_MOUSE`
-/// - `GUI_MODE_KEYBOARD`
-/// - `GUI_MODE_GAMEPAD`
-/// - `GUI_MODE_TOUCH`
+/// - `BENTO_MODE_UNKNOWN`
+/// - `BENTO_MODE_MOUSE`
+/// - `BENTO_MODE_KEYBOARD`
+/// - `BENTO_MODE_GAMEPAD`
+/// - `BENTO_MODE_TOUCH`
 /// 
 /// @param [layer=current]
 

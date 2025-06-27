@@ -10,20 +10,20 @@ function __BentoStartHover(_element)
     {
         if (__navDirectional)
         {
-            __directionalLastX = _element.guiLeft;
-            __directionalLastY = _element.guiTop;
+            __directionalLastX = _element.bentoLeft;
+            __directionalLastY = _element.bentoTop;
             
-            __cursorLastL = _element.guiLeft;
-            __cursorLastT = _element.guiTop;
-            __cursorLastR = _element.guiRight;
-            __cursorLastB = _element.guiBottom;
+            __cursorLastL = _element.bentoLeft;
+            __cursorLastT = _element.bentoTop;
+            __cursorLastR = _element.bentoRight;
+            __cursorLastB = _element.bentoBottom;
             
             BentoScrollTo(undefined, _element);
         }
         
         __hoverElement = _element;
         
-        with(_element.GUI_VARS)
+        with(_element.BENTO_VARS)
         {
             if (not __updating)
             {
@@ -34,8 +34,8 @@ function __BentoStartHover(_element)
     }
     else
     {
-        __hoverElement = GUI_NO_ELEMENT;
+        __hoverElement = BENTO_NO_ELEMENT;
     }
     
-    __hoverElementSoft = GUI_NO_ELEMENT;
+    __hoverElementSoft = BENTO_NO_ELEMENT;
 }

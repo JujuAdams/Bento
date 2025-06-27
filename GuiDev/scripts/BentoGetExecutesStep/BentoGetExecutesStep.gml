@@ -4,5 +4,5 @@
 
 function BentoGetExecutesStep(_element = self)
 {
-    return BentoExists(_element)? _element.GUI_VARS.__executesStep : false;
+    return BentoExists(_element)? _element.BENTO_VARS.__executesStep : false;
 }

@@ -2,7 +2,7 @@
 
 /// Preferentially selects an element if no other element is selected. A soft select will only
 /// last for a frame and can be overwritten by `BentoSelect()`. This function further only works
-/// when the navigation mode is set to `GUI_MODE_KEYBOARD` or `GUI_MODE_GAMEPAD`.
+/// when the navigation mode is set to `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD`.
 /// 
 /// @param element
 /// @param [layer=current]

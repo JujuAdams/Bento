@@ -8,6 +8,6 @@
 
 function BentoLinkHori(_left, _right)
 {
-    if (BentoExists(_left)) _left.GUI_VARS.__linkRight = _right;
-    if (BentoExists(_right)) _right.GUI_VARS.__linkLeft = _left;
+    if (BentoExists(_left)) _left.BENTO_VARS.__linkRight = _right;
+    if (BentoExists(_right)) _right.BENTO_VARS.__linkLeft = _left;
 }

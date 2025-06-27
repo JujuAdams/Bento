@@ -8,14 +8,14 @@ function BentoLayoutSetAlignSelf(_hAlign, _vAlign, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (_hAlign != undefined)
         {
             if (__layoutAlignH != _hAlign)
             {
                 __layoutAlignH = _hAlign;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
         
@@ -24,7 +24,7 @@ function BentoLayoutSetAlignSelf(_hAlign, _vAlign, _element = self)
             if (__layoutAlignV != _vAlign)
             {
                 __layoutAlignV = _vAlign;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
     }

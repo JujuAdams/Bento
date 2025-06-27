@@ -8,7 +8,7 @@ function BentoDestroyChildren(_parent = self)
 {
     if (not BentoExists(_parent)) return;
     
-    with(_parent.GUI_VARS)
+    with(_parent.BENTO_VARS)
     {
         var _array = __childArray;
         

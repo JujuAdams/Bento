@@ -11,7 +11,7 @@ function __BentoEnsureScrollLimits()
     {
         if (not BentoExists(_parent)) return;
         
-        with(_parent.GUI_VARS)
+        with(_parent.BENTO_VARS)
         {
             if (not __scrollLimitsDirty) return;
             __scrollLimitsDirty = false;

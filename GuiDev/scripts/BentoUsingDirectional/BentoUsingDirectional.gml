@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether the navigation mode has been set to `GUI_MODE_KEYBOARD` or `GUI_MODE_GAMEPAD`.
+/// Returns whether the navigation mode has been set to `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD`.
 /// 
 /// @param [layer=current]
 

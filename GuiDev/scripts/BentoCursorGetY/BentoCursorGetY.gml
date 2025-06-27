@@ -10,7 +10,7 @@ function BentoCursorGetY(_layer = undefined)
     
     with(_layer ?? _system.__layerCurrent)
     {
-        if (__navMode == GUI_MODE_MOUSE)
+        if (__navMode == BENTO_MODE_MOUSE)
         {
             return __mouseY;
         }
@@ -18,7 +18,7 @@ function BentoCursorGetY(_layer = undefined)
         {
             return 0.5*(__cursorLastT + __cursorLastB);
         }
-        else if (__navMode == GUI_MODE_TOUCH)
+        else if (__navMode == BENTO_MODE_TOUCH)
         {
             return __mouseHold? __mouseY : __mousePrevY;
         }

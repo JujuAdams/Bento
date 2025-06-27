@@ -6,7 +6,7 @@
 /// Returns whether the top-most layer for the given environment wants to block mouse input to
 /// other parts of your game. This can happen in the following situations:
 /// 
-/// - Any `GUI_BUTTON_POINTER` or `GUI_BUTTON_ALWAYS` UI element is being hovered.
+/// - Any `BENTO_BUTTON_POINTER` or `BENTO_BUTTON_ALWAYS` UI element is being hovered.
 /// - Any UI element has been pressed and the primary button is being held.
 /// - Any UI element has been focused in a way that restricts the pointer.
 /// - The environment is receiving text input using `BentoTextOpen()`.
@@ -28,8 +28,8 @@ function BentoGetBlocksMouse(_environmentName = undefined)
         {
             if (not __navPointer) return false;
             
-            var _focusType = (__focusTop != undefined)? __focusTop.GUI_VARS.__focusType : GUI_FOCUS_POINTER_IGNORE;
-            if ((_focusType != GUI_FOCUS_POINTER_IGNORE) && (_focusType != GUI_FOCUS_POINTER_CANCEL_ALWAYS))
+            var _focusType = (__focusTop != undefined)? __focusTop.BENTO_VARS.__focusType : BENTO_FOCUS_POINTER_IGNORE;
+            if ((_focusType != BENTO_FOCUS_POINTER_IGNORE) && (_focusType != BENTO_FOCUS_POINTER_CANCEL_ALWAYS))
             {
                 return true;
             }
@@ -39,7 +39,7 @@ function BentoGetBlocksMouse(_environmentName = undefined)
                 return true;
             }
             
-            if (BentoExists(__hoverElement) && (__hoverElement.GUI_VARS.__buttonType & GUI_BUTTON_POINTER))
+            if (BentoExists(__hoverElement) && (__hoverElement.BENTO_VARS.__buttonType & BENTO_BUTTON_POINTER))
             {
                 return true;
             }

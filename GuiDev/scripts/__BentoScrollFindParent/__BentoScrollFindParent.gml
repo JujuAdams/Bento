@@ -6,10 +6,10 @@
 
 function __BentoScrollFindParent(_element)
 {
-    if (not BentoExists(_element)) return GUI_NO_ELEMENT;
+    if (not BentoExists(_element)) return BENTO_NO_ELEMENT;
     
-    var _guiVars = _element.GUI_VARS;
-    if (_guiVars.__scrollHori || _guiVars.__scrollVert) return _element;
+    var _bentoVars = _element.BENTO_VARS;
+    if (_bentoVars.__scrollHori || _bentoVars.__scrollVert) return _element;
     
-    return __BentoScrollFindParent(_guiVars.__parent);
+    return __BentoScrollFindParent(_bentoVars.__parent);
 }

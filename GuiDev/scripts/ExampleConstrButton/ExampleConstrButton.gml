@@ -17,7 +17,7 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
     text      = _text;
     clickFunc = method(self, _clickFunc);
     
-    BentoSetButton(GUI_BUTTON_ALWAYS);
+    BentoSetButton(BENTO_BUTTON_ALWAYS);
     
     funcStep = function()
     {
@@ -40,7 +40,7 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
         {
             draw_set_halign(fa_center);
             draw_set_valign(fa_middle);
-            draw_text(0.5*(guiLeft + guiRight), 0.5*(guiTop + guiBottom), text);
+            draw_text(0.5*(bentoLeft + bentoRight), 0.5*(bentoTop + bentoBottom), text);
             draw_set_halign(fa_left);
             draw_set_valign(fa_top);
         }

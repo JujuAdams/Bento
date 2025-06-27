@@ -6,9 +6,9 @@ function BentoScrollGetPadding(_element = self)
 {
     static _result = {};
     
-    if (BentoExists(_element) && _element.GUI_VARS.__scrollHori && _element.GUI_VARS.__scrollVert)
+    if (BentoExists(_element) && _element.BENTO_VARS.__scrollHori && _element.BENTO_VARS.__scrollVert)
     {
-        with(_element.GUI_VARS)
+        with(_element.BENTO_VARS)
         {
             _result.left   = __scrollPadLeft;
             _result.top    = __scrollPadTop;

@@ -17,7 +17,7 @@ function __BentoTextClassShared(_environment, _initialText, _callback, _maxLengt
     
     __openFrame = _system.__frame;
     
-    __state = GUI_TEXT_PENDING;
+    __state = BENTO_TEXT_PENDING;
     
     
     
@@ -45,7 +45,7 @@ function __BentoTextClassShared(_environment, _initialText, _callback, _maxLengt
                         __textElement = undefined;
                         
                         //Make sure our layer is updated
-                        __layerCurrent.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+                        __layerCurrent.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
                     }
                 }
                 

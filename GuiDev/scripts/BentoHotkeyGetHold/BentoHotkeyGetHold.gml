@@ -12,6 +12,6 @@ function BentoHotkeyGetHold(_name, _layer = undefined)
     with(_layer ?? _system.__layerCurrent)
     {
         if (__hotkeyConsumedMap[? _name] ?? false) return false;
-        return (__hotkeyStateMap[? _name] == __GUI_ON);
+        return (__hotkeyStateMap[? _name] == __BENTO_ON);
     }
 }

@@ -6,14 +6,14 @@ function __BentoMarkDrawOrderDirty(_parent)
 {
     if (not BentoExists(_parent)) return;
     
-    with(_parent.GUI_VARS)
+    with(_parent.BENTO_VARS)
     {
         if (not __drawOrderDirty)
         {
             __drawOrderDirty = true;
             array_push(__layer.__dirtyChildOrderArray, _parent);
             
-            __layer.__dirtyFlags |= __GUI_DIRTY_DRAW;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_DRAW;
         }
     }
 }

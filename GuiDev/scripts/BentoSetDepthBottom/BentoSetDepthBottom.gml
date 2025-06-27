@@ -9,7 +9,7 @@ function BentoSetDepthBottom(_element = self, _delta = 1)
 {
     if (not BentoExists(_element)) return;
     
-    var _parent = _element.GUI_VARS.__parent;
+    var _parent = _element.BENTO_VARS.__parent;
     if (not BentoExists(_parent)) return;
     
     var _array = _parent.__childArray;

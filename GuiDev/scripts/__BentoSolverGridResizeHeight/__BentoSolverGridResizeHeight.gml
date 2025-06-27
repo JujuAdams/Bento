@@ -13,13 +13,13 @@ function __BentoSolverGridResizeHeight()
         var _i = 0;
         repeat(_childCount)
         {
-            with( _childArray[_i].GUI_VARS)
+            with( _childArray[_i].BENTO_VARS)
             {
-                if (__layoutHeightResize == GUI_RESIZE_SHRINK)
+                if (__layoutHeightResize == BENTO_RESIZE_SHRINK)
                 {
                     __solvedHeight = clamp(min(__solvedHeight, _cellSize), __layoutHeightMin, __layoutHeightMax);
                 }
-                else if (__layoutHeightResize == GUI_RESIZE_EXPAND)
+                else if (__layoutHeightResize == BENTO_RESIZE_EXPAND)
                 {
                     __solvedHeight = clamp(_cellSize, __layoutHeightMin, __layoutHeightMax);
                 }

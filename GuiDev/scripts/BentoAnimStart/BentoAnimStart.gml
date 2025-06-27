@@ -7,7 +7,7 @@ function BentoAnimStart(_maxDuration = 10_000, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS.__layer)
+    with(_element.BENTO_VARS.__layer)
     {
         if (ds_map_exists(__animatingMap, _element))
         {

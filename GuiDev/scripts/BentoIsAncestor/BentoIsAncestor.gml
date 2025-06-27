@@ -16,8 +16,8 @@ function __BentoIsAncestorInner(_ancestor, _child)
 {
     if (not BentoExists(_child)) return false;
     
-    //Compare the GUI_VARS struct because sometimes GameMaker does weird things with instance references
-    if (_ancestor.GUI_VARS == _child.GUI_VARS) return true;
+    //Compare the BENTO_VARS struct because sometimes GameMaker does weird things with instance references
+    if (_ancestor.BENTO_VARS == _child.BENTO_VARS) return true;
     
-    return __BentoIsAncestorInner(_ancestor, _child.GUI_VARS.__parent);
+    return __BentoIsAncestorInner(_ancestor, _child.BENTO_VARS.__parent);
 }

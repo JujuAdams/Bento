@@ -2,8 +2,8 @@
 
 event_inherited();
 
-BentoLayoutSetList(GUI_AXIS_Y, fa_left, fa_top);
+BentoLayoutSetList(BENTO_AXIS_Y, fa_left, fa_top);
 BentoClipSetEnabled(true);
 BentoScrollSetEnabled(true, true);
-BentoSetButton(GUI_BUTTON_DIRECTIONAL);
-BentoFocusSetEnclose(GUI_ENCLOSE_DIRECTIONAL);
+BentoSetButton(BENTO_BUTTON_DIRECTIONAL);
+BentoFocusSetEnclose(BENTO_ENCLOSE_DIRECTIONAL);

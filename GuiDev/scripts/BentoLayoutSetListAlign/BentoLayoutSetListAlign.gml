@@ -8,9 +8,9 @@ function BentoLayoutSetListAlign(_horizontal, _vertical, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
-        if (__layoutType != GUI_LAYOUT_LIST)
+        if (__layoutType != BENTO_LAYOUT_LIST)
         {
             __BentoError("Can only set list child alignment for elements using a list layout");
         }
@@ -20,7 +20,7 @@ function BentoLayoutSetListAlign(_horizontal, _vertical, _element = self)
             if (__layoutHAlignChildren != _horizontal)
             {
                 __layoutHAlignChildren = _horizontal;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
         
@@ -29,7 +29,7 @@ function BentoLayoutSetListAlign(_horizontal, _vertical, _element = self)
             if (__layoutVAlignChildren != _vertical)
             {
                 __layoutVAlignChildren = _vertical;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
     }

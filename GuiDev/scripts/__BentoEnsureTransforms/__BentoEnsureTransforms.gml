@@ -7,9 +7,9 @@ function __BentoEnsureTransforms()
     array_foreach(__dirtyTransformsArray, _funcApply);
     array_resize(__dirtyTransformsArray, 0);
     
-    static _funcApply = function(_guiVars)
+    static _funcApply = function(_bentoVars)
     {
-        with(_guiVars)
+        with(_bentoVars)
         {
             __transformDirty = false;
             
@@ -23,8 +23,8 @@ function __BentoEnsureTransforms()
             
             if ((_offsetX != 0) || (_offsetY != 0) || (_scaleX != 1) || (_scaleY != 1) || (_angle != 0))
             {
-                var _originX = (_originX == undefined)? __attachedElement.guiX : (__attachedElement.guiLeft + _originX);
-                var _originY = (_originY == undefined)? __attachedElement.guiY : (__attachedElement.guiTop  + _originY);
+                var _originX = (_originX == undefined)? __attachedElement.bentoX : (__attachedElement.bentoLeft + _originX);
+                var _originY = (_originY == undefined)? __attachedElement.bentoY : (__attachedElement.bentoTop  + _originY);
                 
                 var _cos =  dcos(_angle);
                 var _sin = -dsin(_angle);
@@ -34,7 +34,7 @@ function __BentoEnsureTransforms()
                 var _transformMatrix = __transformMatrix;
                 if (_transformMatrix == undefined)
                 {
-                    __layer.__dirtyFlags |= __GUI_DIRTY_DRAW;
+                    __layer.__dirtyFlags |= __BENTO_DIRTY_DRAW;
                     
                     //Create a new array for the matrix to live in
                     _transformMatrix = matrix_build_identity();
@@ -61,7 +61,7 @@ function __BentoEnsureTransforms()
                 //this element in the draw order
                 if (__transformMatrix != undefined)
                 {
-                    __layer.__dirtyFlags |= __GUI_DIRTY_DRAW;
+                    __layer.__dirtyFlags |= __BENTO_DIRTY_DRAW;
                 }
                 
                 __transformMatrix = undefined;

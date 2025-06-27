@@ -8,9 +8,9 @@ function __BentoStartHold(_element)
 {
     if (BentoExists(_element) && (not BentoPrimaryGetHold(_element)))
     {
-        with(_element.GUI_VARS)
+        with(_element.BENTO_VARS)
         {
-            __primaryState = __GUI_START;
+            __primaryState = __BENTO_START;
             __layer.__holdElement = _element;
             
             if (not __updating)

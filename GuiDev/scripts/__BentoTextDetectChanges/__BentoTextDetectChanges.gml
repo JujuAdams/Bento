@@ -45,7 +45,7 @@ function __BentoTextDetectChanges(_keyboardString, _keyboardStringPrev, _backspa
         }
         else
         {
-            _result.__removeCount = (GUI_ON_MACOS || GUI_ON_LINUX)? _backspaceRepeatCount : 0;
+            _result.__removeCount = (BENTO_ON_MACOS || BENTO_ON_LINUX)? _backspaceRepeatCount : 0;
         }
     }
     

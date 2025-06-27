@@ -27,7 +27,7 @@ function __BentoGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _
     
     if (BentoExists(_element))
     {
-        with(_element.GUI_VARS)
+        with(_element.BENTO_VARS)
         {
             var _childArray = __childArray;
             if (array_length(_childArray) > 0)
@@ -42,7 +42,7 @@ function __BentoGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _
                 var _i = 0;
                 repeat(array_length(_childArray))
                 {
-                    with(_childArray[_i].GUI_VARS)
+                    with(_childArray[_i].BENTO_VARS)
                     {
                         _left   = min(_left,   __solvedLeft);
                         _top    = min(_top,    __solvedTop);

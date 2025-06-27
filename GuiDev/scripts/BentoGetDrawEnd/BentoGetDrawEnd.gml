@@ -8,5 +8,5 @@ function BentoGetDrawAfter(_element = self)
 {
     if (not BentoExists(_element)) return false;
     
-    return _element.GUI_VARS.__drawAfter;
+    return _element.BENTO_VARS.__drawAfter;
 }

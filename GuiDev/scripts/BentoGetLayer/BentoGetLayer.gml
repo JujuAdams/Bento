@@ -4,5 +4,5 @@
 
 function BentoGetLayer(_element = self)
 {
-    return BentoExists(_element)? _element.GUI_VARS.__layer : undefined;
+    return BentoExists(_element)? _element.BENTO_VARS.__layer : undefined;
 }

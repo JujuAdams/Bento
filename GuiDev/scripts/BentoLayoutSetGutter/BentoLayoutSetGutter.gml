@@ -8,9 +8,9 @@ function BentoLayoutSetGutter(_x, _y, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
-        if ((__layoutType != GUI_LAYOUT_LIST) && (__layoutType != GUI_LAYOUT_GRID))
+        if ((__layoutType != BENTO_LAYOUT_LIST) && (__layoutType != BENTO_LAYOUT_GRID))
         {
             __BentoError("Can only apply gutter to elements using a list or grid layout");
         }
@@ -20,7 +20,7 @@ function BentoLayoutSetGutter(_x, _y, _element = self)
             if (__layoutGutterX != _x)
             {
                 __layoutGutterX = _x;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
         
@@ -29,7 +29,7 @@ function BentoLayoutSetGutter(_x, _y, _element = self)
             if (__layoutGutterY != _y)
             {
                 __layoutGutterY = _y;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
     }

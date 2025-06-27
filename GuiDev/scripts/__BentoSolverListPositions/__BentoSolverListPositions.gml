@@ -5,7 +5,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
     __solvedLeft = _left + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
     __solvedTop  = _top  + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
-    if (GUI_FLOOR_LAYOUT_POSITIONS)
+    if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {
         __solvedLeft   = floor(__solvedLeft);
         __solvedTop    = floor(__solvedTop);
@@ -16,7 +16,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    if (__listAxis == GUI_AXIS_X)
+    if (__listAxis == BENTO_AXIS_X)
     {
         var _majorPos = __solvedLeft + __solverPadLeft;
         var _minorPos = __solvedTop  + __solverPadTop;
@@ -26,7 +26,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _i = 0;
         repeat(_childCount)
         {
-            _majorSize += _childArray[_i].GUI_VARS.__solvedWidth;
+            _majorSize += _childArray[_i].BENTO_VARS.__solvedWidth;
             ++_i;
         }
         
@@ -48,7 +48,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _i = 0;
         repeat(_childCount)
         {
-            with(_childArray[_i].GUI_VARS)
+            with(_childArray[_i].BENTO_VARS)
             {
                 if (_minorAlign == fa_middle)
                 {
@@ -76,7 +76,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _i = 0;
         repeat(_childCount)
         {
-            _majorSize += _childArray[_i].GUI_VARS.__solvedHeight;
+            _majorSize += _childArray[_i].BENTO_VARS.__solvedHeight;
             ++_i;
         }
         
@@ -98,7 +98,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _i = 0;
         repeat(_childCount)
         {
-            with(_childArray[_i].GUI_VARS)
+            with(_childArray[_i].BENTO_VARS)
             {
                 if (_minorAlign == fa_center)
                 {

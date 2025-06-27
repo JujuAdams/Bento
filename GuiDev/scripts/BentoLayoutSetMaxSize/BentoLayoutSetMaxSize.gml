@@ -8,14 +8,14 @@ function BentoLayoutSetMaxSize(_width, _height, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (_width != undefined)
         {
             if (__layoutWidthMax != _width)
             {
                 __layoutWidthMax = _width;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
         
@@ -24,7 +24,7 @@ function BentoLayoutSetMaxSize(_width, _height, _element = self)
             if (__layoutHeightMax != _height)
             {
                 __layoutHeightMax = _height;
-                __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
     }

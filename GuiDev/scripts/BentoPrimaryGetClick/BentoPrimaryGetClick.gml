@@ -8,7 +8,7 @@ function BentoPrimaryGetClick(_element = self)
 {
     if (not BentoExists(_element)) return false;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         return __layer.__primaryConsumed? false : __click;
     }

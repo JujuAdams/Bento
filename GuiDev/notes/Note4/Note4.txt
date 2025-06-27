@@ -1,7 +1,7 @@
 Focus Types:
 
 - Focus
-FocusOpen(element, GUI_FOCUS.POINTER_CANCEL_ALWAYS)
+FocusOpen(element, BENTO_FOCUS.POINTER_CANCEL_ALWAYS)
 
 Applies only when using directional input
 Must be cancelled using a function call
@@ -12,7 +12,7 @@ Used to take control of e.g. carousels and scrollers
 
 
 - Navigate Inside
-FocusOpen(element, GUI_FOCUS.POINTER_CANCEL_ALWAYS)
+FocusOpen(element, BENTO_FOCUS.POINTER_CANCEL_ALWAYS)
 
 Applies only when using directional input
 Must be cancelled using a function call
@@ -23,7 +23,7 @@ Used to take control of scrollboxes when using keyboard+gamepad input
 
 
 - Pop-up
-FocusOpen(element, GUI_FOCUS.POINTER_CANCEL_ON_CLICK)
+FocusOpen(element, BENTO_FOCUS.POINTER_CANCEL_ON_CLICK)
 
 Applies in both directional and pointer modes
 Can be cancelled using a function call
@@ -34,7 +34,7 @@ Used for context menus etc.
 
 
 - Modal
-FocusOpen(element, GUI_FOCUS.POINTER_CONSTRAIN)
+FocusOpen(element, BENTO_FOCUS.POINTER_CONSTRAIN)
 
 Applies in both directional and pointer modes
 Must be cancelled using a function call
@@ -43,7 +43,7 @@ Navigation can only happen inside the focused UI element
 
 
 - Tabs
-FocusOpen(element, GUI_FOCUS.POINTER_IGNORE)
+FocusOpen(element, BENTO_FOCUS.POINTER_IGNORE)
 
 Applies only when using directional input
 Ignored but not cancelled when in pointer mode
@@ -66,11 +66,11 @@ FocusClose(element)
 FocusExists(element)
 FocusGetType(element)
 
-GUI_FOCUS_POINTER_CONSTRAIN
+BENTO_FOCUS_POINTER_CONSTRAIN
   Pointer is constrained in the same way that directional input is
-GUI_FOCUS_POINTER_IGNORE
+BENTO_FOCUS_POINTER_IGNORE
   Pointer will ignore the focus but not cancel it. Swapping back to directional mode will re-establish contraints
-GUI_FOCUS_POINTER_CANCEL_ON_CLICK
+BENTO_FOCUS_POINTER_CANCEL_ON_CLICK
   Pointer will ignore the focus. Pointer mode can further cancel the focus when clicking outside the focus tree. Swapping back to directional mode will re-establish contraints
-GUI_FOCUS_POINTER_CANCEL_ALWAYS
+BENTO_FOCUS_POINTER_CANCEL_ALWAYS
   Pointer mode will cancel focus immediately when the mode is set

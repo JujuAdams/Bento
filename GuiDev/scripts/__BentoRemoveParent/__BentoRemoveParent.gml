@@ -9,11 +9,11 @@ function __BentoRemoveParent(_child)
 {
     if (not BentoExists(_child)) return;
     
-    var _parent = _child.GUI_VARS.__parent;
+    var _parent = _child.BENTO_VARS.__parent;
     
     if (BentoExists(_parent))
     {
-        var _parentVars = _parent.GUI_VARS;
+        var _parentVars = _parent.BENTO_VARS;
         
         var _array = _parentVars.__childArray;
         var _index = array_get_index(_array, _child);
@@ -26,5 +26,5 @@ function __BentoRemoveParent(_child)
     
     BentoScrollLimitsMarkDirty(_parent);
     
-    _child.GUI_VARS.__parent = GUI_NO_ELEMENT;
+    _child.BENTO_VARS.__parent = BENTO_NO_ELEMENT;
 }

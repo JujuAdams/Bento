@@ -8,8 +8,8 @@ function BentoGetRaycastEnable(_disableHori, _disableVert, _element = self)
     
     if (not BentoExists(_element))
     {
-        _result.hori = _element.GUI_VARS.__raycastEnableHori;
-        _result.vert = _element.GUI_VARS.__raycastEnableVert;
+        _result.hori = _element.BENTO_VARS.__raycastEnableHori;
+        _result.vert = _element.BENTO_VARS.__raycastEnableVert;
     }
     else
     {

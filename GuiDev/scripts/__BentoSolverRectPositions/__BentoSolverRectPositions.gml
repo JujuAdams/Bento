@@ -2,12 +2,12 @@
 
 function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeight)
 {
-    // N.B. `GUI_LAYOUT_LIST`, `GUI_LAYOUT_GRID` override this function.
+    // N.B. `BENTO_LAYOUT_LIST`, `BENTO_LAYOUT_GRID` override this function.
     
     __solvedLeft = _left + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
     __solvedTop  = _top  + __layoutAlignV*(_allocatedHeight - __solvedHeight);
     
-    if (GUI_FLOOR_LAYOUT_POSITIONS)
+    if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {
         __solvedLeft   = floor(__solvedLeft);
         __solvedTop    = floor(__solvedTop);
@@ -24,7 +24,7 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     var _i = 0;
     repeat(array_length(_childArray))
     {
-        _childArray[_i].GUI_VARS.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
+        _childArray[_i].BENTO_VARS.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
         ++_i;
     }
 }

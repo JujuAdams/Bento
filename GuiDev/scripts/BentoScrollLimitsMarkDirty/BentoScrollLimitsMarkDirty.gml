@@ -11,7 +11,7 @@ function BentoScrollLimitsMarkDirty(_element)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if ((not __scrollHori) && (not __scrollVert)) return;
         

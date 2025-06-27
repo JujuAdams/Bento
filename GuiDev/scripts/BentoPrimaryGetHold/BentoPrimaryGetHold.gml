@@ -7,5 +7,5 @@
 function BentoPrimaryGetHold(_element = self)
 {
     if (not BentoExists(_element)) return false;
-    return ((_element.GUI_VARS.__primaryState & __GUI_START) > 0);
+    return ((_element.BENTO_VARS.__primaryState & __BENTO_START) > 0);
 }

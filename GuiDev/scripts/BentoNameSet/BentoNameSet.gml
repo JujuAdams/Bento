@@ -12,21 +12,21 @@ function BentoNameSet(_name, _element = self, _overwrite = false)
 {
     if (not BentoExists(_element)) return;
     
-    var _nameMap = _element.GUI_VARS.__layer.__nameMap;
+    var _nameMap = _element.BENTO_VARS.__layer.__nameMap;
     
     var _oldElement = _nameMap[? _name];
     if ((_oldElement != undefined) && BentoExists(_oldElement))
     {
         if (_overwrite)
         {
-            _oldElement.GUI_VARS.__name = undefined;
+            _oldElement.BENTO_VARS.__name = undefined;
         }
         else
         {
-            __BentoError($"Element with name \"{_name}\" already exists (UI element {_oldElement.GUI_VARS.__envIndex} {object_get_name(_oldElement.object_index)})");
+            __BentoError($"Element with name \"{_name}\" already exists (UI element {_oldElement.BENTO_VARS.__envIndex} {object_get_name(_oldElement.object_index)})");
         }
     }
     
     _nameMap[? _name] = _element;
-    _element.GUI_VARS.__name = _name;
+    _element.BENTO_VARS.__name = _name;
 }

@@ -7,7 +7,7 @@ function __BentoClassVariables(_attachedElement) constructor
     static _globalCount = 0;
     __envIndex = _globalCount++;
     
-    if (GUI_RUNNING_FROM_IDE)
+    if (BENTO_RUNNING_FROM_IDE)
     {
         global.BentoElementMap[? __envIndex] = self;
     }
@@ -35,8 +35,8 @@ function __BentoClassVariables(_attachedElement) constructor
     __transformScaleY  = 1;
     __transformAngle   = 0;
     
-    __hoverState   = __GUI_OFF;
-    __primaryState = __GUI_OFF;
+    __hoverState   = __BENTO_OFF;
+    __primaryState = __BENTO_OFF;
     __click        = false;
     
     __textConfig = {
@@ -48,23 +48,23 @@ function __BentoClassVariables(_attachedElement) constructor
         __textPrediction: false,
     };
     
-    __parent     = GUI_NO_ELEMENT;
+    __parent     = BENTO_NO_ELEMENT;
     __localIndex = 0;
     __drawDepth  = 0;
     
     __forceStep    = false;
-    __buttonType   = GUI_BUTTON_NEVER;
+    __buttonType   = BENTO_BUTTON_NEVER;
     __executesStep = false;
     __drawAfter    = false;
     
     __focused          = false;
-    __focusType        = GUI_FOCUS_POINTER_CANCEL_ALWAYS;
-    __focusEncloseType = GUI_ENCLOSE_NEVER;
+    __focusType        = BENTO_FOCUS_POINTER_CANCEL_ALWAYS;
+    __focusEncloseType = BENTO_ENCLOSE_NEVER;
     
-    __linkLeft  = GUI_NO_ELEMENT;
-    __linkRight = GUI_NO_ELEMENT;
-    __linkUp    = GUI_NO_ELEMENT;
-    __linkDown  = GUI_NO_ELEMENT;
+    __linkLeft  = BENTO_NO_ELEMENT;
+    __linkRight = BENTO_NO_ELEMENT;
+    __linkUp    = BENTO_NO_ELEMENT;
+    __linkDown  = BENTO_NO_ELEMENT;
     
     __raycastEnableHori = false;
     __raycastEnableVert = false;
@@ -89,7 +89,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __scissorWorldTop    = -infinity
     __scissorWorldRight  =  infinity
     __scissorWorldBottom =  infinity
-    __scissorVisibility  = GUI_VISIBLE_FULL;
+    __scissorVisibility  = BENTO_VISIBLE_FULL;
     
     __scissorScrollbarLeft    = 0;
     __scissorScrollbarTop     = 0;
@@ -115,23 +115,23 @@ function __BentoClassVariables(_attachedElement) constructor
     __scrollbarHori = undefined;
     __scrollbarVert = undefined;
     
-    __selectOnDestroy = GUI_NO_ELEMENT;
+    __selectOnDestroy = BENTO_NO_ELEMENT;
     
     if (__elementIsInstance)
     {
         __eventStep = method(_attachedElement, function()
         {
-            event_user(GUI_USER_EVENT_STEP);
+            event_user(BENTO_USER_EVENT_STEP);
         });
         
         __eventDraw = method(_attachedElement, function()
         {
-            event_user(GUI_USER_EVENT_DRAW);
+            event_user(BENTO_USER_EVENT_DRAW);
         });
         
         __eventDrawAfter = method(_attachedElement, function()
         {
-            event_user(GUI_USER_EVENT_DRAW_AFTER);
+            event_user(BENTO_USER_EVENT_DRAW_AFTER);
         });
         
         __eventReposition = function()
@@ -150,7 +150,7 @@ function __BentoClassVariables(_attachedElement) constructor
             
             with(__attachedElement)
             {
-                event_user(GUI_USER_EVENT_REPOSITION);
+                event_user(BENTO_USER_EVENT_REPOSITION);
             }
         };
         
@@ -158,8 +158,8 @@ function __BentoClassVariables(_attachedElement) constructor
         {
             if (instance_position(_mouseX, _mouseY, self))
             {
-                var _guiVars = GUI_VARS;
-                if (point_in_rectangle(_mouseX, _mouseY, _guiVars.__scissorWorldLeft, _guiVars.__scissorWorldTop, _guiVars.__scissorWorldRight, _guiVars.__scissorWorldBottom))
+                var _bentoVars = BENTO_VARS;
+                if (point_in_rectangle(_mouseX, _mouseY, _bentoVars.__scissorWorldLeft, _bentoVars.__scissorWorldTop, _bentoVars.__scissorWorldRight, _bentoVars.__scissorWorldBottom))
                 {
                     return self;
                 }
@@ -213,10 +213,10 @@ function __BentoClassVariables(_attachedElement) constructor
         
         __funcHover = method(_attachedElement, function(_mouseX, _mouseY)
         {
-            if (point_in_rectangle(_mouseX, _mouseY, guiLeft, guiTop, guiRight, guiBottom))
+            if (point_in_rectangle(_mouseX, _mouseY, bentoLeft, bentoTop, bentoRight, bentoBottom))
             {
-                var _guiVars = GUI_VARS;
-                if (point_in_rectangle(_mouseX, _mouseY, _guiVars.__scissorWorldLeft, _guiVars.__scissorWorldTop, _guiVars.__scissorWorldRight, _guiVars.__scissorWorldBottom))
+                var _bentoVars = BENTO_VARS;
+                if (point_in_rectangle(_mouseX, _mouseY, _bentoVars.__scissorWorldLeft, _bentoVars.__scissorWorldTop, _bentoVars.__scissorWorldRight, _bentoVars.__scissorWorldBottom))
                 {
                     return self;
                 }
@@ -250,7 +250,7 @@ function __BentoClassVariables(_attachedElement) constructor
         var _element = __layer.__nameMap[? __name];
         if (_element == __attachedElement) ds_map_delete(__layer.__nameMap, __name);
         
-        __layer.__dirtyFlags |= __GUI_DIRTY_ALL;
+        __layer.__dirtyFlags |= __BENTO_DIRTY_ALL;
     }
     
     /////////////////////////////////
@@ -263,7 +263,7 @@ function __BentoClassVariables(_attachedElement) constructor
     //values are subsequently transforms to give us the `layout*` values that are exposed to the user.
     if (__elementIsInstance)
     {
-        if (GUI_FLOOR_LAYOUT_POSITIONS)
+        if (BENTO_FLOOR_LAYOUT_POSITIONS)
         {
             __solvedLeft   = floor(_attachedElement.x);
             __solvedTop    = floor(_attachedElement.y);
@@ -291,10 +291,10 @@ function __BentoClassVariables(_attachedElement) constructor
     //Alignment against the region that the parent has allocated for this instance. This is especially
     //useful for children of non-list / non-grid parents where you might want to position the instance
     //relative to edges and corners.
-    __layoutAlignH = GUI_DEFAULT_LAYOUT_ALIGN_H;
-    __layoutAlignV = GUI_DEFAULT_LAYOUT_ALIGN_V;
+    __layoutAlignH = BENTO_DEFAULT_LAYOUT_ALIGN_H;
+    __layoutAlignV = BENTO_DEFAULT_LAYOUT_ALIGN_V;
     
-    //Origin position, used for setting `guiX` and `guiY`
+    //Origin position, used for setting `bentoX` and `bentoY`
     __layoutOriginX = 0;
     __layoutOriginY = 0;
     __layoutOriginAuto = __elementIsInstance; //Instances default to auto origin
@@ -325,8 +325,8 @@ function __BentoClassVariables(_attachedElement) constructor
     //size. "Shrink" will cause the instance to shrink down to shrink any children it has inside. If an
     //instance has no ch\ildren, the "shrink" resize type will behave the same as "static". "expand" will
     //cause the instance to increase size in that axis to fill available space in the parent.
-    __layoutWidthResize  = GUI_RESIZE_STATIC;
-    __layoutHeightResize = GUI_RESIZE_STATIC;
+    __layoutWidthResize  = BENTO_RESIZE_STATIC;
+    __layoutHeightResize = BENTO_RESIZE_STATIC;
     
     //The size required to shrink all of this instance's children at their preferred size.
     __solverGetShrinkWidth  = 0;
@@ -336,19 +336,19 @@ function __BentoClassVariables(_attachedElement) constructor
     __solverMinWidth  = 0;
     __solverMinHeight = 0;
     
-    __layoutType = GUI_LAYOUT_RECT;
+    __layoutType = BENTO_LAYOUT_RECT;
     
     //Function that sets the solver's shrink width and minimum width. This is a boring function for most
     //instances. It gets more exciting for lists - see `__BentoSolverListGetShrinkWidth()`. This function also
     //preliminarily sets the final calculated width for the instance (`__solvedWidth`).
     //
-    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_TEXT` override this function.
+    // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_TEXT` override this function.
     __SolverGetShrinkWidth = method(self, __BentoSolverRectGetShrinkWidth);
     
     //Resizes both this instance and any child instances that are set to "shrink" or "expand" resize types.
     //See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
     //
-    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_GRID` override this function.
+    // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
     __SolverResizeWidth = function()
     {
         //Do nothing
@@ -358,13 +358,13 @@ function __BentoClassVariables(_attachedElement) constructor
     //instances. It gets more exciting for lists - see `__BentoSolverListGetShrinkHeight()`. This function also
     //preliminarily sets the final calculated height for the instance (`__solvedHeight`).
     //
-    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_TEXT` override this function.
+    // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_TEXT` override this function.
     __SolverGetShrinkHeight = method(self, __BentoSolverRectGetShrinkHeight);
     
     //Resizes both this instance and any child instances that are set to "shrink" or "expand" resize types.
     //See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
     //
-    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_GRID` override this function.
+    // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
     __SolverResizeHeight = function()
     {
                 
@@ -376,10 +376,10 @@ function __BentoClassVariables(_attachedElement) constructor
     //allocated space is equal to the full size of the parent. If an instance is a parent of a list or
     //grid then the allocated space will be smaller.
     //
-    // N.B. `GUI_LAYOUT_LIST` and `GUI_LAYOUT_GRID` override this function.
+    // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
     __SolverPositions = method(self, __BentoSolverRectPositions);
     
-    //Only used for `GUI_LAYOUT_TEXT`
+    //Only used for `BENTO_LAYOUT_TEXT`
     __funcMeasureWidth  = function() { return 1; }
     __funcMeasureHeight = function() { return 1; }
 }

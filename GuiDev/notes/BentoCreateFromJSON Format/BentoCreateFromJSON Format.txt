@@ -1,9 +1,9 @@
 Root node can be an array or a JS object (hereafter called a "struct" in keeping with GameMaker's
 terminology). If the root node is an array, all members of that array must be structs and those
-structs must conform to the general GUI instance definition spec.
+structs must conform to the general Bento instance definition spec.
 
-GUI instance definitions are structs. The struct must contain an `.object` property. This is the
-GameMaker object that will be instantiated when creating the GUI instance. The `.object` property
+Bento instance definitions are structs. The struct must contain an `.object` property. This is the
+GameMaker object that will be instantiated when creating the Bento instance. The `.object` property
 can be the name of the object as a string, a GameMaker handle, or a stringified GameMaker handle.
 Objects must inherit from `oBentoAncestor`.
 
@@ -11,17 +11,17 @@ Instance definitions struct may also contain a `.name` property. This value will
 `BentoNameSet()` targetting the created instance.
 
 Instance definition structs may also contain a `.children` property. If specified, this should be
-an array of GUI instance definitions. These GUI instance definitions, when instantiated, will be
+an array of Bento instance definitions. These Bento instance definitions, when instantiated, will be
 created as childred of the parent instance.
 
 The `.children` property may also be a method. This method will be executed when
-`BentoCreateFromJSON()` is called. This method should return an array that contains GUI instance
+`BentoCreateFromJSON()` is called. This method should return an array that contains Bento instance
 definitions; these instances will then be created as children. This method will be executed with
 one argument, that is the metadata provided when calling `BentoCreateFromJSON()`.
 
 The `.children` property may also be a string. In this case, the string will be passed to a
-function that you define using the `GUI_JSON_CHILDREN_STRING_PROCESSOR` macro. This string
-processor function should return an array of GUI instance definitions which will then be created.
+function that you define using the `BENTO_JSON_CHILDREN_STRING_PROCESSOR` macro. This string
+processor function should return an array of Bento instance definitions which will then be created.
 This feature is intended for use with runtime code compilation and execution - you can compile the
 string found in JSON to then create children. The function specified by the above macro is called
 with two arguments: the first is the string, the second is the metadata provided when calling
@@ -156,9 +156,9 @@ Here is a brief example:
     - "static"
     - "shrink"
     - "expand"
-    - 0 (equal to GUI_RESIZE_STATIC)
-    - 1 (equal to GUI_RESIZE_SHRINK)
-    - 2 (equal to GUI_RESIZE_EXPAND)
+    - 0 (equal to BENTO_RESIZE_STATIC)
+    - 1 (equal to BENTO_RESIZE_SHRINK)
+    - 2 (equal to BENTO_RESIZE_EXPAND)
     
     You may also use `null` to indicate that no change should be made to a particular value.
 
@@ -245,8 +245,8 @@ Here is a brief example:
     List axis values must be one of the following:
     - "x"
     - "y"
-    - 0 (equal to GUI_AXIS_X)
-    - 1 (equal to GUI_AXIS_Y)
+    - 0 (equal to BENTO_AXIS_X)
+    - 1 (equal to BENTO_AXIS_Y)
     
     You may also use `null` for either value to indicate that no change should be made.
     

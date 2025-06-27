@@ -8,7 +8,7 @@ function BentoGetClickable(_element = self)
 {
     if (not BentoExists(_element)) return false;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         //Can't click invisible elements
         if (not __visible) return false;
@@ -17,10 +17,10 @@ function BentoGetClickable(_element = self)
         if (__hoverableIndex != __layer.__hoverableRegenCount) return false;
         
         //Can't click anything that's outside a clipping region
-        if (__scissorVisibility == GUI_VISIBLE_NONE) return false;
+        if (__scissorVisibility == BENTO_VISIBLE_NONE) return false;
         
         //Can only click it if the button type matches the input mode
-        return (__buttonType & (__layer.__navPointer? GUI_BUTTON_POINTER : GUI_BUTTON_DIRECTIONAL));
+        return (__buttonType & (__layer.__navPointer? BENTO_BUTTON_POINTER : BENTO_BUTTON_DIRECTIONAL));
     }
     
     return false;

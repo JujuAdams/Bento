@@ -9,7 +9,7 @@
 /// default behavior (using the sprite's origin).
 /// 
 /// N.B. This transformation only applies to how the UI instance is drawn. It does not affect
-///      any collisions or raycasts. Transformations will not change `gui*` variables either.
+///      any collisions or raycasts. Transformations will not change `bento*` variables either.
 ///      To move instances around in a way that also moves their collisions, please use the
 ///      `BentoLayout*()` functions or `BentoSetOffset()`.
 /// 
@@ -21,7 +21,7 @@ function BentoTransformSetOrigin(_x, _y, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (_x != undefined)
         {

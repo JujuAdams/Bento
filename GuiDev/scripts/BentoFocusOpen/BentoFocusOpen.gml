@@ -7,7 +7,7 @@ function BentoFocusOpen(_focusType, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         var _layer = __layer;
         
@@ -15,7 +15,7 @@ function BentoFocusOpen(_focusType, _element = self)
         
         //If the player is using a pointer but we want to always cancel focus when using a pointer
         //then sort that out
-        if (_layer.__navPointer && (_focusType == GUI_FOCUS_POINTER_CANCEL_ALWAYS))
+        if (_layer.__navPointer && (_focusType == BENTO_FOCUS_POINTER_CANCEL_ALWAYS))
         {
             BentoFocusClose(_element);
             return;
@@ -24,7 +24,7 @@ function BentoFocusOpen(_focusType, _element = self)
         if (not __focused)
         {
             __focused = true;
-            _layer.__dirtyFlags |= __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+            _layer.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
             
             var _focusStack = __layer.__focusStack;
             
@@ -49,21 +49,21 @@ function BentoFocusOpen(_focusType, _element = self)
             array_push(_focusStack, _element);
             _layer.__focusTop = _element;
             
-            _layer.__cursorLastL = _element.guiLeft;
-            _layer.__cursorLastT = _element.guiTop;
-            _layer.__cursorLastR = _element.guiRight;
-            _layer.__cursorLastB = _element.guiBottom;
+            _layer.__cursorLastL = _element.bentoLeft;
+            _layer.__cursorLastT = _element.bentoTop;
+            _layer.__cursorLastR = _element.bentoRight;
+            _layer.__cursorLastB = _element.bentoBottom;
             
             if (__scissorEnabled)
             {
                 //Use the smaller scissor region
-                _layer.__directionalLastX = _element.guiLeft + __scissorPadLeft + __scissorScrollbarLeft;
-                _layer.__directionalLastY = _element.guiTop  + __scissorPadTop + __scissorScrollbarTop;
+                _layer.__directionalLastX = _element.bentoLeft + __scissorPadLeft + __scissorScrollbarLeft;
+                _layer.__directionalLastY = _element.bentoTop  + __scissorPadTop + __scissorScrollbarTop;
             }
             else
             {
-                _layer.__directionalLastX = _element.guiLeft;
-                _layer.__directionalLastY = _element.guiTop;
+                _layer.__directionalLastX = _element.bentoLeft;
+                _layer.__directionalLastY = _element.bentoTop;
             }
         }
     }

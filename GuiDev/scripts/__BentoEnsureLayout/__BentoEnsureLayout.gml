@@ -4,8 +4,8 @@
 
 function __BentoEnsureLayout()
 {
-    if not (__dirtyFlags & __GUI_DIRTY_LAYOUT) return;
-    __dirtyFlags = ~((~__dirtyFlags) | __GUI_DIRTY_LAYOUT);
+    if not (__dirtyFlags & __BENTO_DIRTY_LAYOUT) return;
+    __dirtyFlags = ~((~__dirtyFlags) | __BENTO_DIRTY_LAYOUT);
     
     var _layoutOrder = __layoutOrder;
     array_resize(_layoutOrder, 0);
@@ -47,7 +47,7 @@ function __BentoEnsureLayout()
     }
     
     //Final pass to set positions in stone
-    var _rootBento = __rootElement.GUI_VARS;
+    var _rootBento = __rootElement.BENTO_VARS;
     _rootBento.__SolverPositions(0, 0, _rootBento.__solvedWidth, _rootBento.__solvedHeight);
     
     //Ensure a full reset of the transform/scroll positions
@@ -57,7 +57,7 @@ function __BentoEnsureLayout()
 
 function __BentoEnsureLayerOrderInner(_layoutOrder, _element)
 {
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         array_push(_layoutOrder, self);
         

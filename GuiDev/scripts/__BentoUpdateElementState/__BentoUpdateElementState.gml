@@ -11,7 +11,7 @@ function __BentoUpdateElementState()
     {
         if (not BentoExists(_element)) return false;
         
-        with(_element.GUI_VARS)
+        with(_element.BENTO_VARS)
         {
             if (other.__navDirectional)
             {
@@ -19,7 +19,7 @@ function __BentoUpdateElementState()
             }
             else if (not BentoExists(__BentoScrollFindParent(_element)))
             {
-                var _clickOnPress = other.__navPointer && (GUI_POINTER_CLICK_ON_PRESS || (other.__navMode == GUI_MODE_TOUCH));
+                var _clickOnPress = other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH));
             }
             else
             {
@@ -33,44 +33,44 @@ function __BentoUpdateElementState()
             {
                 //System says this instance is hovered
                 
-                if (__hoverState == __GUI_START)
+                if (__hoverState == __BENTO_START)
                 {
-                    if (GUI_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: enter -> hover");
-                    __hoverState = __GUI_ON;
+                    if (BENTO_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: enter -> hover");
+                    __hoverState = __BENTO_ON;
                 }
-                else if (__hoverState == __GUI_ON)
+                else if (__hoverState == __BENTO_ON)
                 {
                     //Do nothing
                 }
                 else
                 {
-                    if (GUI_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: -> enter");
-                    __hoverState = __GUI_START;
+                    if (BENTO_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: -> enter");
+                    __hoverState = __BENTO_START;
                 }
             }
             else
             {
                 //System says this instance is not hovered
                 
-                if (__hoverState == __GUI_END)
+                if (__hoverState == __BENTO_END)
                 {
-                    __hoverState = __GUI_OFF;
+                    __hoverState = __BENTO_OFF;
                 }
-                else if (__hoverState != __GUI_OFF)
+                else if (__hoverState != __BENTO_OFF)
                 {
-                    if (GUI_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: hover -> leave");
-                    __hoverState = __GUI_END;
+                    if (BENTO_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: hover -> leave");
+                    __hoverState = __BENTO_END;
                 }
             }
             
             //Manage hold state
-            if (other.__primaryState == __GUI_START)
+            if (other.__primaryState == __BENTO_START)
             {
                 //System says the player has clicked
                 
                 if (BentoCursorGetHover(_element) && (not BentoPrimaryGetHold(_element)))
                 {
-                    __primaryState = __GUI_START;
+                    __primaryState = __BENTO_START;
                     other.__holdElement = _element;
                     
                     //Pass through a click signal to the instance if we're clicking on press
@@ -79,12 +79,12 @@ function __BentoUpdateElementState()
             }
             else
             {
-                if ((other.__primaryState == __GUI_ON) && (other.__holdElement == _element))
+                if ((other.__primaryState == __BENTO_ON) && (other.__holdElement == _element))
                 {
                     //If we're being continuously held move into the HOLD state
-                    if (__primaryState == __GUI_START)
+                    if (__primaryState == __BENTO_START)
                     {
-                        __primaryState = __GUI_ON;
+                        __primaryState = __BENTO_ON;
                     }
                 }
                 else
@@ -92,24 +92,24 @@ function __BentoUpdateElementState()
                     //Unset the system's hold instance if it's us
                     if (other.__holdElement == _element)
                     {
-                        other.__holdElement = GUI_NO_ELEMENT;
+                        other.__holdElement = BENTO_NO_ELEMENT;
                     }
                     
-                    if (__primaryState == __GUI_END)
+                    if (__primaryState == __BENTO_END)
                     {
-                        __primaryState = __GUI_OFF;
+                        __primaryState = __BENTO_OFF;
                     }
-                    else if (__primaryState != __GUI_OFF)
+                    else if (__primaryState != __BENTO_OFF)
                     {
-                        __primaryState = __GUI_END;
+                        __primaryState = __BENTO_END;
                         
                         //Pass through a click signal to the instance if we're clicking on released (and the instance is still selected)
-                        if ((not _clickOnPress) && (other.__primaryState == __GUI_END))
+                        if ((not _clickOnPress) && (other.__primaryState == __BENTO_END))
                         {
-                            if (other.__navMode == GUI_MODE_TOUCH)
+                            if (other.__navMode == BENTO_MODE_TOUCH)
                             {
                                 //Touch mode triggers the leave state early
-                                if (__hoverState == __GUI_END) __click = true;
+                                if (__hoverState == __BENTO_END) __click = true;
                             }
                             else
                             {
@@ -121,7 +121,7 @@ function __BentoUpdateElementState()
             }
             
             //Remove this instance from the update loop if it's inactive
-            if ((__hoverState == __GUI_OFF) && (__primaryState == __GUI_OFF))
+            if ((__hoverState == __BENTO_OFF) && (__primaryState == __BENTO_OFF))
             {
                 __updating = false;
                 return false;

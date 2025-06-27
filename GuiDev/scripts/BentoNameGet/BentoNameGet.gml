@@ -8,5 +8,5 @@ function BentoNameGet(_element = self)
 {
     if (not BentoExists(_element)) return undefined;
     
-    return _element.GUI_VARS.__name;
+    return _element.BENTO_VARS.__name;
 }

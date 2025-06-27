@@ -1,4 +1,4 @@
 /// @desc Reposition
 
-x = guiX;
-y = guiY;
+x = bentoX;
+y = bentoY;

@@ -2,7 +2,7 @@
 
 /// Temporarily disables GPU scissoring.
 /// 
-/// N.B. This function should only be used in a Draw user event (`GUI_USER_EVENT_DRAW`). You also
+/// N.B. This function should only be used in a Draw user event (`BENTO_USER_EVENT_DRAW`). You also
 ///      be careful to guarantee `BentoClipDrawOn()` is called to turn scissoring back on.
 
 function BentoClipDrawOff()

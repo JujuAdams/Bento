@@ -19,7 +19,7 @@ function __BentoTextClassDialog(_environment, _initialText, _callback, _maxLengt
     else
     {
         show_debug_message("Failed to open dialog window");
-        __Terminate(GUI_TEXT_ABORT);
+        __Terminate(BENTO_TEXT_ABORT);
         return;
     }
     
@@ -27,7 +27,7 @@ function __BentoTextClassDialog(_environment, _initialText, _callback, _maxLengt
     
     static __Step = function()
     {
-        if (__state == GUI_TEXT_PENDING)
+        if (__state == BENTO_TEXT_PENDING)
         {
             __BentoTextEnsureController().__dialog = self;
         }
@@ -40,12 +40,12 @@ function __BentoTextClassDialog(_environment, _initialText, _callback, _maxLengt
             var _result = async_load[? "result"];
             if ((not async_load[? "status"]) || (_result == undefined))
             {
-                __Terminate(GUI_TEXT_ABORT);
+                __Terminate(BENTO_TEXT_ABORT);
             }
             else
             {
                 __text = string_copy(_result, 1, __maxLength);
-                __Terminate(GUI_TEXT_CONFIRM);
+                __Terminate(BENTO_TEXT_CONFIRM);
             }
         }
     }

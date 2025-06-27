@@ -8,9 +8,9 @@ function BentoLayoutSetGridSize(_columns, _rows, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
-        if (__layoutType != GUI_LAYOUT_GRID)
+        if (__layoutType != BENTO_LAYOUT_GRID)
         {
             __BentoError("Can only apply grid size to elements using a list layout");
         }
@@ -18,13 +18,13 @@ function BentoLayoutSetGridSize(_columns, _rows, _element = self)
         if (__gridColumns != _columns)
         {
             __gridColumns = _columns;
-            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
         }
         
         if (__gridRows != _rows)
         {
             __gridRows = _rows;
-            __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
         }
     }
 }

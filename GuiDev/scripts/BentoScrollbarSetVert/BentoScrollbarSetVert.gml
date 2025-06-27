@@ -13,7 +13,7 @@ function BentoScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.GUI_VARS)
+    with(_element.BENTO_VARS)
     {
         if (__scrollbarVert == undefined)
         {
@@ -43,6 +43,6 @@ function BentoScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight
         }
         
         //FIXME - Don't mark the as dirty every time
-        __layer.__dirtyFlags |= __GUI_DIRTY_LAYOUT | __GUI_DIRTY_STEP | __GUI_DIRTY_HOVERABLE;
+        __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT | __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
     }
 }

@@ -14,7 +14,7 @@ function BentoDestroy(_element = self)
         }
         else if (is_struct(_element))
         {
-            _element.GUI_VARS.__Destroy();
+            _element.BENTO_VARS.__Destroy();
         }
     }
 }

@@ -6,5 +6,5 @@ function BentoGetVisible(_element = self)
 {
     if (not BentoExists(_element)) return false;
     
-    return _element.GUI_VARS.__visible;
+    return _element.BENTO_VARS.__visible;
 }

@@ -14,7 +14,7 @@ function __BentoAnimateScroll()
         }
         else
         {
-            with(_element.GUI_VARS)
+            with(_element.BENTO_VARS)
             {
                 var _dX = __scrollTargetX - __scrollX;
                 var _dY = __scrollTargetY - __scrollY;

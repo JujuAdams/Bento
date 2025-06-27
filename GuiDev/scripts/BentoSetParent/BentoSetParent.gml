@@ -11,27 +11,27 @@ function BentoSetParent(_parent, _target = self)
     
     __BentoRemoveParent(_target);
     
-    with(_target.GUI_VARS)
+    with(_target.BENTO_VARS)
     {
         //Mark the layer we're leaving as dirty
         with(__layer)
         {
-            __dirtyFlags |= __GUI_DIRTY_ALL;
+            __dirtyFlags |= __BENTO_DIRTY_ALL;
         }
         
         __parent = _parent;
-        __layer = _parent.GUI_VARS.__layer;
+        __layer = _parent.BENTO_VARS.__layer;
         
         //Mark the layer we're entering as dirty
         with(__layer)
         {
-            __dirtyFlags |= __GUI_DIRTY_ALL;
+            __dirtyFlags |= __BENTO_DIRTY_ALL;
         }
         
         with(_parent)
         {
-            array_push(GUI_VARS.__childArray, _target);
-            array_push(GUI_VARS.__childDrawArray, _target);
+            array_push(BENTO_VARS.__childArray, _target);
+            array_push(BENTO_VARS.__childDrawArray, _target);
         
             __BentoMarkDrawOrderDirty(self);
             BentoScrollLimitsMarkDirty(self);

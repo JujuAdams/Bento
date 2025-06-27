@@ -8,7 +8,7 @@
 
 event_inherited();
 
-BentoSetButton(GUI_BUTTON_ALWAYS);
+BentoSetButton(BENTO_BUTTON_ALWAYS);
 
 // Disables raycasting in particular axes. This only applies to directional input where raycasting
 // is used to work out which instance to jump to when pushing in a particular direction. This does

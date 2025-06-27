@@ -13,7 +13,7 @@ function BentoDrawClear(_color = c_black, _alpha = 0.4)
     
     draw_set_color(_color);
     draw_set_alpha(_alpha);
-    draw_rectangle(-__GUI_VERY_LARGE, -__GUI_VERY_LARGE, __GUI_VERY_LARGE, __GUI_VERY_LARGE, false);
+    draw_rectangle(-__BENTO_VERY_LARGE, -__BENTO_VERY_LARGE, __BENTO_VERY_LARGE, __BENTO_VERY_LARGE, false);
     
     draw_set_color(_oldColor);
     draw_set_alpha(_oldAlpha);
