@@ -18,6 +18,14 @@
 /// and those structs must conform to the general Bento element definition specification in this
 /// document.
 /// 
+/// As an overview, the following properties are valid for an element definition:
+/// `.object` or `.construct` (mutually exclusive)
+/// `.vars` (only when using `.object`)
+/// `.offset`
+/// `.name`
+/// `.children`
+/// `.layout`
+/// 
 /// 
 /// 
 /// Bento element definitions are structs. The struct must contain either an `.object` property or a
@@ -83,6 +91,25 @@
 /// {
 ///     construct: [BentoConstrSprite, sBentoMaskCircle]
 ///     //This executes `BentoConstrSprite(sBentoMaskCircle)`
+/// }
+/// ```
+/// 
+/// 
+/// 
+/// Element definition structs may contain an `.offset` property. If specified, this must be either
+/// an array with two entries (being the x and y offsets respectively) or a struct with an `.x`
+/// and `.y` properties.
+/// 
+/// Example:
+/// ```
+/// {
+///     object: oBentoSprite,
+///     offset: [10, 20]
+/// }
+/// 
+/// {
+///     object: oBentoSprite,
+///     offset: {x: 10, y: 20}
 /// }
 /// ```
 /// 
@@ -184,25 +211,6 @@
 ///     object: oBentoSprite,
 ///     children: "generate 20"
 /// });
-/// ```
-/// 
-/// 
-/// 
-/// Element definition structs may contain a `.layout` property. If specified, this must be either
-/// an array with two entries (being the x and y offsets respectively) or a struct with an `.x`
-/// and `.y` properties.
-/// 
-/// Example:
-/// ```
-/// {
-///     object: oBentoSprite,
-///     offset: [10, 20]
-/// }
-/// 
-/// {
-///     object: oBentoSprite,
-///     offset: {x: 10, y: 20}
-/// }
 /// ```
 /// 
 /// 

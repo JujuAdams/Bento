@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns the length of time that text input has been open for the given element. If text input
+/// is not targeting the element then this function will return `0`.
+/// 
 /// @param [element=self]
 
 function BentoTextGetOpenDuration(_element = self)

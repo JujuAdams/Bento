@@ -27,6 +27,14 @@
 ///     hover, hold, or click elements outside of the focused part of the tree.
 ///     N.B. You should be careful with this focus type as it is possible to softlock your game!
 /// 
+/// You may stack focused elements provided that all focused elements are ancestors/descendents of
+/// each other in the tree. This means you can have e.g. context menus inside context menus if you
+/// so desire. Opening the focus for an element will close the focus for any other element that is
+/// not an ancestor.
+/// 
+/// N.B. Elements that are receiving text input by calling `BentoTextOpen()` will override focus
+///      rules whilst text input is open.
+/// 
 /// @param focusType
 /// @param [element=self]
 

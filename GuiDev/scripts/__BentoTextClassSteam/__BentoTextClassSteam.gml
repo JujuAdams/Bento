@@ -21,7 +21,7 @@ function __BentoTextClassSteam(_environment, _initialText, _callback, _maxLength
     else
     {
         show_debug_message("Failed to open Steam gamepad text input");
-        __Terminate(BENTO_TEXT_ABORT);
+        __Terminate(BENTO_TEXT_ERROR);
         return;
     }
     

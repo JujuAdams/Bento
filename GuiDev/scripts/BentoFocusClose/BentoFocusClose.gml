@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Closes focus for an element.
+/// 
 /// @param [element=self]
 
 function BentoFocusClose(_element = self)

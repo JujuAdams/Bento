@@ -38,7 +38,7 @@ function __BentoTextClassiOS(_environment, _initialText, _callback, _maxLength, 
         
         if (_keyboardStringLength > __BENTO_TEXT_IOS_MAX)
         {
-            __Terminate(BENTO_TEXT_ABORT);
+            __Terminate(BENTO_TEXT_ERROR);
             return;
         }
         

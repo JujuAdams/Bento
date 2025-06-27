@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the top-most focused element for the layer.
+/// 
 /// @param [layerOrName=current]
 
 function BentoFocusGetTop(_layerOrName = undefined)

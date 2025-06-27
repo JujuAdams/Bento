@@ -1,5 +1,37 @@
 // Feather disable all
 
+/// Starts text input, targeting the given element. Only one element may be targeted for text input
+/// globally across all Bento environments. Text input will automatically close on most platforms
+/// but on desktop platforms (Windows, MacOS, Linux) where direct text input from a keyboard is
+/// supported, you will need to detect user input and then call `BentoTextClose()` as is
+/// appropriate.
+/// 
+/// N.B. Elements that are receiving text input by calling `BentoTextOpen()` will override focus
+///      rules whilst text input is open.
+/// 
+/// The `callback` argument must be provided when calling this function. The callback will be
+/// executed whenever text changes. The callback will also be executed when text input has been
+/// closed by the OS on non-desktop platforms (consoles and mobile devices etc.).
+/// 
+/// The callback will be executed with two arguments: the new text that has been inputted, and the
+/// text input state (in that order). The text input state will be one of the following constants;
+/// 
+/// `BENTO_TEXT_PENDING`
+///     Text input is on-going.
+/// 
+/// `BENTO_TEXT_CONFIRM`
+///     The user has confirmed text input e.g. by pressing the return key on the onscreen keyboard.
+/// 
+/// `BENTO_TEXT_ABORT`
+///     The user has aborted text input e.g. by pressing the back button on the touchscreen.
+/// 
+/// `BENTO_TEXT_ERROR`
+///     Aan upstream error has occurred causing text input to fail.
+/// 
+/// `BENTO_TEXT_INACTIVE`
+///     The text input subsystem is inactive and no element is being targeted. This state shouldn't
+///     be passed but you should still handle it in case of a programming error.
+/// 
 /// @param initialText
 /// @param callback
 /// @param [element=self]

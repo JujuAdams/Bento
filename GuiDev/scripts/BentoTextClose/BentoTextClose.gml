@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Closes text input.
+
 function BentoTextClose()
 {
     static _system = __BentoSystem();

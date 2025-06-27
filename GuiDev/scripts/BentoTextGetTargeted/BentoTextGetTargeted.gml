@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns whether the element is the current active text input target.
+/// 
 /// @param [element=self]
 
 function BentoTextGetTargeted(_element = self)
