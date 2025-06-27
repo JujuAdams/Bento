@@ -8,7 +8,7 @@
 /// override that. You may set either of the `x` or `y` arguments to `undefined` to restore the
 /// default behavior (using the sprite's origin).
 /// 
-/// N.B. This transformation only applies to how the UI instance is drawn. It does not affect
+/// N.B. This transformation only applies to how the element is drawn. It does not affect
 ///      any collisions or raycasts. Transformations will not change `bento*` variables either.
 ///      To move instances around in a way that also moves their collisions, please use the
 ///      `BentoLayout*()` functions or `BentoSetOffset()`.

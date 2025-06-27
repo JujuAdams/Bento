@@ -51,5 +51,5 @@ function TestListWithScroll()
         },
     ];
     
-    gridElement = BentoCreateFromJSON(_json, BentoGetRoot(), { count: 11 });
+    gridElement = BentoCreateFromJSON(_json, { count: 11 }, BentoGetRoot());
 }

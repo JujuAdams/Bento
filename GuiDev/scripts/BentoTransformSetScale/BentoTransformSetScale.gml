@@ -3,9 +3,9 @@
 /// Applies a *visual* transformation to a UI element and its children. This is achieved by
 /// applying a world transformation matrix when drawing the UI element via `BentoSystemDraw()`.
 /// 
-/// This particular function applies a linear scaling to a UI instance.
+/// This particular function applies a linear scaling to an element.
 /// 
-/// N.B. This transformation only applies to how the UI instance is drawn. It does not affect
+/// N.B. This transformation only applies to how the element is drawn. It does not affect
 ///      any collisions or raycasts. Transformations will not change `bento*` variables either.
 ///      To move instances around in a way that also moves their collisions, please use the
 ///      `BentoLayout*()` functions or `BentoSetOffset()`.

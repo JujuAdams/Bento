@@ -47,5 +47,5 @@ function TestContextMenu()
         },
     ];
     
-    gridElement = BentoCreateFromJSON(_json, BentoGetRoot());
+    gridElement = BentoCreateFromJSON(_json, undefined, BentoGetRoot());
 }

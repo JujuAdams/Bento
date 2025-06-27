@@ -1,7 +1,246 @@
 // Feather disable all
 
+/// Sets the layout configuration for a Bento element using JSON data. The format for the JSON
+/// data is explained below.
+/// 
 /// @param json
 /// @param [element=self]
+/// 
+/// 
+/// 
+/// Each layout property is associated with a layout function (`BentoSetOffset()` etc.). There are
+/// many layout properties that can be modified using this function:
+/// 
+/// `.offset`    executes `BentoSetOffset()`
+/// `.size`      executes `BentoLayoutSetSize()`
+/// `.minSize`   executes `BentoLayoutSetMinSize()`
+/// `.maxSize`   executes `BentoLayoutSetMaxSize()`
+/// `.resize`    executes `BentoLayoutSetResizeType()`
+/// `.padding`   executes `BentoLayoutSetPadding()`
+/// `.align`     executes `BentoLayoutSetAlignSelf()`
+/// `.gutter`    executes `BentoLayoutSetGutter()`
+/// `.listAlign` executes `BentoLayoutSetListAlign()`
+/// `.listAxis`  executes `BentoLayoutSetListAxis()`
+/// `.gridSize`  executes `BentoLayoutSetGridSize()`
+/// 
+/// Example:
+/// ```
+/// {
+///     object: oBentoList,
+///     visible: false,
+///     layout: {
+///         resize: ["shrink", "static"],
+///         size: [100, 70],
+///         axis: "x",
+///     },
+///     children: [
+///         {
+///             object: oBentoSprite,
+///             vars: {
+///                 image_blend: c_red,
+///             },
+///             layout: {
+///                 resize: ["static", "expand"],
+///                 size: [30, 30],
+///             },
+///         },
+///         {
+///             object: oBentoSprite,
+///             vars: {
+///                 image_blend: c_blue,
+///             },
+///             layout: {
+///                 resize: ["static", "expand"],
+///                 size: [30, 30],
+///             },
+///         },
+///     ],
+/// }
+/// ```
+/// 
+/// `.offset`
+///     Calls the `BentoSetOffset()` function on the created element.
+///     
+///     Can be a 2-element array:
+///         [ <x offset>, <y offset> ]
+///     or a struct:
+///         {
+///             "x": <x offset>,
+///             "y": <y offset>
+///         }
+///     
+///     Offset values must be numbers, or you may use `null` to indicate that no change should be made
+///     to a particular value.
+///     
+/// `.size`
+///     Calls the `BentoLayoutSetSize()` function on the created element. "Size" means the "preferred
+///     size" which is an important detail in the layout algorithm.
+///     
+///     Can be a 2-element array:
+///         [ <width>, <height> ]
+///     or a struct:
+///         {
+///             "w": <width>,
+///             "h": <height>
+///         }
+///     
+///     "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
+///     values must be numbers, or you may use `null` to indicate that no change should be made to a
+///     particular value.
+///     
+/// `.minSize`
+///     Calls the `BentoLayoutSetMinSize()` function on the created element.
+///     
+///     Can be a 2-element array:
+///         [ <width>, <height> ]
+///     or a struct:
+///         {
+///             "w": <width>,
+///             "h": <height>
+///         }
+///     
+///     "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
+///     values must be numbers, or you may use `null` to indicate that no change should be made to a
+///     particular value.
+///     
+/// `.maxSize`
+///     Calls the `BentoLayoutSetMaxSize()` function on the created element.
+///     
+///     Can be a 2-element array:
+///         [ <width>, <height> ]
+///     or a struct:
+///         {
+///             "w": <width>,
+///             "h": <height>
+///         }
+///     
+///     "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
+///     values must be numbers, or you may use `null` to indicate that no change should be made to a
+///     particular value.
+/// 
+/// `.resize`
+///     Calls the `BentoLayoutSetResizeType()` function on the created element.
+///     
+///     Can be a 2-element array:
+///         [ <x type>, <y type> ]
+///     or a struct:
+///         {
+///             "x": <x type>,
+///             "y": <y type>
+///         }
+///     
+///     Resize types must be one of the following:
+///     - "static"
+///     - "shrink"
+///     - "expand"
+///     - 0 (equal to BENTO_RESIZE_STATIC)
+///     - 1 (equal to BENTO_RESIZE_SHRINK)
+///     - 2 (equal to BENTO_RESIZE_EXPAND)
+///     
+///     You may also use `null` to indicate that no change should be made to a particular value.
+/// 
+/// `.padding`
+///     Calls the `BentoLayoutSetPadding()` function on the created element.
+///     
+///     Can be a 2-element array:
+///         [ <left>, <top>, <right>, <bottom> ]
+///     or a struct:
+///         {
+///             "l": <left>,
+///             "t": <top>,
+///             "r": <right>,
+///             "b": <bottom>
+///         }
+///     
+///     "left", "top", "right, "bottom" instead of "l", "t", "r", "b" respectively. Padding values
+///     must be numbers, or you may use `null` to indicate that no change should be made to a
+///     particular value.
+/// 
+/// `.align`
+///     Calls the `BentoLayoutSetAlignSelf()` function on the created element.
+///     
+///     Can be a 2-element array:
+///         [ <h align>, <v align> ]
+///     or a struct:
+///         {
+///             "h": <h align>,
+///             "v": <v align>
+///         }
+///     
+///     "x" and "y" can be used instead of "h" and "v" respectively. Alignment values must be numbers.
+/// 
+/// `.gutter`
+///     Calls the `BentoLayoutSetGutter()` function on the created element. This property can only be
+///     used for objects that inherit from `oBentoList` or `oBentoGrid`.
+///     
+///     Can be a 2-element array:
+///         [ <x size>, <y size> ]
+///     or a struct:
+///         {
+///             "x": <x size>,
+///             "y": <y size>
+///         }
+///     
+///     Gutter sizes must be numbers, or you may use `null` to indicate that no change should be made
+///     to a particular value.
+/// 
+/// `.listAlign`
+///     Calls the `BentoLayoutSetListAlign()` function on the created element. This property can only be used
+///     for objects that inherit from `oBentoList`.
+///     
+///     Can be a 2-element array:
+///         [ <h align>, <v align> ]
+///     or a struct:
+///         {
+///             "h": <h align>,
+///             "v": <v align>
+///         }
+///     
+///     Horizontal alignment values must be one of the following:
+///     - "left"
+///     - "center"
+///     - "centre"
+///     - "right"
+///     - 0 (equal to fa_left)
+///     - 1 (equal to fa_center)
+///     - 2 (equal to fa_right)
+///     
+///     Vertical alignment values must be one of the following:
+///     - "right"
+///     - "middle"
+///     - "bottom"
+///     - 0 (equal to fa_top)
+///     - 1 (equal to fa_middle)
+///     - 2 (equal to fa_bottom)
+///     
+///     You may also use `null` for either value to indicate that no change should be made.
+/// 
+/// `.listAxis`
+///     Calls the `BentoLayoutSetListAxis()` function on the created element. This property can only be used
+///     for objects that inherit from `oBentoList`.
+///     
+///     List axis values must be one of the following:
+///     - "x"
+///     - "y"
+///     - 0 (equal to BENTO_AXIS_X)
+///     - 1 (equal to BENTO_AXIS_Y)
+///     
+///     You may also use `null` for either value to indicate that no change should be made.
+///     
+/// `.gridSize`
+///     Calls the `BentoLayoutSetGridSize()` function on the created element. This property can only be used
+///     for objects that inherit from `oBentoGrid`.
+///     
+///     Can be a 2-element array:
+///         [ <columns>, <rows> ]
+///     or a struct:
+///         {
+///             "columns": <columns>,
+///             "rows": <rows>
+///         }
+///     
+///     Column and row values must be integers, or you may use `null` to indicate that no change should
+///     be made to a particular value.
 
 function BentoLayoutSetFromJSON(_json, _element = self)
 {
