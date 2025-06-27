@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns the distance that the pointer has moved between after pressing the primary action. If
-/// the navigation mode isn't `BENTO_MODE_MOUSE` or `BENTO_MODE_TOUCH` this function returns `0`.
+/// the input mode isn't `BENTO_MODE_MOUSE` or `BENTO_MODE_TOUCH` this function returns `0`.
 /// 
 /// @param [layerOrName=current]
 

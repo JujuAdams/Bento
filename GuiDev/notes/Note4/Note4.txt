@@ -6,7 +6,7 @@ FocusOpen(element, BENTO_FOCUS.POINTER_CANCEL_ALWAYS)
 Applies only when using directional input
 Must be cancelled using a function call
 Automatically cancelled entirely when in pointer mode
-No navigation away from focused UI element
+No navigation away from focused element
 Used to take control of e.g. carousels and scrollers
 
 
@@ -17,7 +17,7 @@ FocusOpen(element, BENTO_FOCUS.POINTER_CANCEL_ALWAYS)
 Applies only when using directional input
 Must be cancelled using a function call
 Automatically cancelled entirely when in pointer mode
-Navigation can only happen inside the focused UI element
+Navigation can only happen inside the focused element
 Used to take control of scrollboxes when using keyboard+gamepad input
 
 
@@ -27,8 +27,8 @@ FocusOpen(element, BENTO_FOCUS.POINTER_CANCEL_ON_CLICK)
 
 Applies in both directional and pointer modes
 Can be cancelled using a function call
-Cancelled in pointer mode by clicking off the focused UI element (or its children)
-Navigation can only happen inside the focused UI element
+Cancelled in pointer mode by clicking off the focused element (or its children)
+Navigation can only happen inside the focused element
 Used for context menus etc.
 
 
@@ -38,7 +38,7 @@ FocusOpen(element, BENTO_FOCUS.POINTER_CONSTRAIN)
 
 Applies in both directional and pointer modes
 Must be cancelled using a function call
-Navigation can only happen inside the focused UI element
+Navigation can only happen inside the focused element
 
 
 
@@ -48,7 +48,7 @@ FocusOpen(element, BENTO_FOCUS.POINTER_IGNORE)
 Applies only when using directional input
 Ignored but not cancelled when in pointer mode
 Must be cancelled using a function call
-Navigation can only happen inside the focused UI element
+Navigation can only happen inside the focused element
 Used for restricting interaction when in directional mode
 
 
@@ -57,8 +57,8 @@ Focusing:
 - Always applies in directional mode and may apply in pointer mode
 - Can always be cancelled by a function call
 - Pointer can do one of three things: always cancel focusing, cancel only when clicking off the focused tree, or never cancel
-- Navigation can always only happen inside the focused UI element
-- If an element has no selectable elements, the UI element itself remains selected
+- Navigation can always only happen inside the focused element
+- If an element has no selectable elements, the element itself remains selected
 - In one case, pointer can ignore the focus
 
 FocusOpen(element, focusType)

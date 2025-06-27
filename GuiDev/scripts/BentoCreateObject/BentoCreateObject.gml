@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Creates a UI element using an object and places it inside a parent UI element.
+/// Creates an element using an object and places it inside a parent element.
 /// 
 /// @param object
 /// @param [variableStruct]

@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether the cursor has entered (newly hovered) the instance.
+/// Returns whether the cursor has entered (newly hovered) the element.
 /// 
 /// @param [element=self]
 

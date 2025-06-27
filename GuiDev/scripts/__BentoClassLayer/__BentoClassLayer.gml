@@ -21,7 +21,7 @@ function __BentoClassLayer(_environment, _name) constructor
     __animatingArray = [];
     
     ////////
-    // Set up a default navigation mode for convenience
+    // Set up a default input mode for convenience
     ////////
     
     if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
@@ -295,7 +295,7 @@ function __BentoClassLayer(_environment, _name) constructor
                     //Move the cursor and hover a new element (maybe)
                     __BentoStartHover(__BentoGetDirectionalHover(__hoverElement, __directionalStateX.__output, __directionalStateY.__output));
                 }
-                else //Some other navigation mode, perhaps `BENTO_MODE_UNKNOWN`
+                else //Some other input mode, perhaps `BENTO_MODE_UNKNOWN`
                 {
                     __holdElement = BENTO_NO_ELEMENT;
                     __BentoStartHover(BENTO_NO_ELEMENT);

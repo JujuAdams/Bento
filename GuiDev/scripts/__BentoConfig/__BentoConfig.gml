@@ -6,7 +6,7 @@
 // General
 ///////
 
-// Which navigation mode to default to when running on desktop platforms. Must be a `BENTO_MODE_*`
+// Which input mode to default to when running on desktop platforms. Must be a `BENTO_MODE_*`
 // constant.
 #macro BENTO_DESKTOP_DEFAULT_NAV_MODE  BENTO_MODE_MOUSE
 
@@ -52,7 +52,7 @@
 // Default speed that scrolling element scroll at. Measured in pixels per frame.
 #macro BENTO_DEFAULT_SCROLL_SPEED  8
 
-// Whether clicking and dragging on a scrollable UI element should scroll in the `BENTO_MODE_MOUSE`
+// Whether clicking and dragging on a scrollable element should scroll in the `BENTO_MODE_MOUSE`
 // nav mode.
 #macro BENTO_SCROLL_ON_MOUSE_DRAG  true
 

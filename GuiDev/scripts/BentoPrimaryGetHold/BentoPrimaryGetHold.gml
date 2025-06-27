@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether the primary action has been activated and held on the instance.
+/// Returns whether the primary action has been activated and held on the element.
 /// 
 /// @param [element=self]
 

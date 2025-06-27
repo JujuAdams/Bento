@@ -1,7 +1,7 @@
 // Feather disable all
 
-/// Applies a *visual* transformation to a UI element and its children. This is achieved by
-/// applying a world transformation matrix when drawing the UI element via `BentoSystemDraw()`.
+/// Applies a *visual* transformation to an element and its children. This is achieved by
+/// applying a world transformation matrix when drawing the element via `BentoSystemDraw()`.
 /// 
 /// This particular function sets the "origin" of transforms. By default, the origin of transforms
 /// will be the same as the origin of the instance's `sprite_index`. This function allows you to

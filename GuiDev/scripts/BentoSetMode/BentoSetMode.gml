@@ -1,12 +1,15 @@
 // Feather disable all
 
-/// Sets the current navigation mode. This should be one of the following constants:
+/// Sets the input mode for a layer. This should be one of the following constants:
 /// 
 /// - `BENTO_MODE_UNKNOWN`
 /// - `BENTO_MODE_MOUSE`
 /// - `BENTO_MODE_KEYBOARD`
 /// - `BENTO_MODE_GAMEPAD`
 /// - `BENTO_MODE_TOUCH`
+/// 
+/// The mouse and touch input modes are considered "pointer" input modes. The keyboard and gamepad
+/// input modes are considered "directional" input modes.
 /// 
 /// @param mode
 /// @param [layerOrName=current]
@@ -17,7 +20,7 @@ function BentoSetMode(_newMode, _layerOrName = undefined)
     {
         if (__navMode == _newMode) return;
         
-        //Changing navigation mode may change whether elements execute their step event and are hoverable
+        //Changing input mode may change whether elements execute their step event and are hoverable
         //when focused
         __dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
         
@@ -63,7 +66,7 @@ function BentoSetMode(_newMode, _layerOrName = undefined)
         }
         else
         {
-            //Some undefined navigation mode, perhaps `BENTO_MODE_UNKNOWN`
+            //Some undefined input mode, perhaps `BENTO_MODE_UNKNOWN`
             __navPointer     = false;
             __navDirectional = false;
             

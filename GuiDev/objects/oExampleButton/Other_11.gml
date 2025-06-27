@@ -3,7 +3,7 @@
 // Feather disable all
 
 // Juju: Really simple draw code for a button. This is generally applicable for most interactible
-//       UI elements.
+//       elements.
 
 draw_self();
 

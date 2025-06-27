@@ -1,9 +1,15 @@
 // Feather disable all
 
-/// Sets up a condition that selects the `target` instance when the `trigger` instance is
-/// destroyed. You can set up this condition in any navigation mode but the `target` instance
-/// will only be selected when the navigation mode is set to `BENTO_MODE_KEYBOARD` or
-/// `BENTO_MODE_GAMEPAD`.
+/// Sets up a condition that selects the `target` element when the `trigger` element is destroyed.
+/// You may call this function multiple times to override the target. You may set the target to
+/// `undefined` to select no target.
+/// 
+/// N.B. You can set up this condition in any input mode but the `target` element will only be
+///      selected when the input mode is set to `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD`.
+/// 
+/// N.B. If multiple elements with triggers are destroyed at the same time, which element ends up
+///      getting selected in not guaranteed. Try to only set up one trigger at a time to avoid
+///      unexpected results.
 /// 
 /// @param trigger
 /// @param target

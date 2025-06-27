@@ -23,7 +23,7 @@ function BentoNameSet(_name, _element = self, _overwrite = false)
         }
         else
         {
-            __BentoError($"Element with name \"{_name}\" already exists (UI element {_oldElement.BENTO_VARS.__envIndex} {object_get_name(_oldElement.object_index)})");
+            __BentoError($"Element with name \"{_name}\" already exists (element {_oldElement.BENTO_VARS.__envIndex} {object_get_name(_oldElement.object_index)})");
         }
     }
     

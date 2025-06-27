@@ -1,12 +1,12 @@
 // Feather disable all
 
-/// Applies a *visual* transformation to a UI element and its children. This is achieved by
-/// applying a world transformation matrix when drawing the UI element via `BentoSystemDraw()`.
+/// Applies a *visual* transformation to an element and its children. This is achieved by
+/// applying a world transformation matrix when drawing the element via `BentoSystemDraw()`.
 /// 
-/// This particular function applies a linear translation to a UI element relative to that
+/// This particular function applies a linear translation to an element relative to that
 /// element's layout position (`bentoX` and `bentoY`). 
 /// 
-/// N.B. This transformation only applies to how the UI element is drawn. It does not affect
+/// N.B. This transformation only applies to how the element is drawn. It does not affect
 ///      any collisions or raycasts. Transformations will not change `bento*` variables either.
 ///      To move instances around in a way that also moves their collisions, please use the
 ///      `BentoLayout*()` functions or `BentoSetOffset()`.

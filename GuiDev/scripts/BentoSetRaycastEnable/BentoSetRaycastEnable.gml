@@ -1,18 +1,19 @@
 // Feather disable all
 
-/// Sets whether raycasting should be disabled in particular axes. This is helpful when creating
-/// scrolling UI elements that treat e.g. left and right input as a way to adjust a setting. You
-/// *don't* need to call this function if you have set up a navigation link with `BentoLinkHori()`
-/// or `BentoLinkVert()`.
+/// Sets whether raycasting should be enabled in each axis (by default, it is indeed enabled in
+/// both axes). This is helpful when creating scrolling elements that treat e.g. left and right
+/// input as a way to adjust a setting.
 /// 
-/// @param enableHori
-/// @param enableVert
+/// N.B. Links created by `BentoLinkHori()` and `BentoLinkVert()` will override raycasting.
+/// 
+/// @param enableX
+/// @param enableY
 /// @param [element=self]
 
-function BentoSetRaycastEnable(_enableHori, _enableVert, _element = self)
+function BentoSetRaycastEnable(_enableX, _enableY, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    _element.BENTO_VARS.__raycastEnableHori = _enableHori;
-    _element.BENTO_VARS.__raycastEnableVert = _enableVert;
+    _element.BENTO_VARS.__raycastEnableX = _enableX;
+    _element.BENTO_VARS.__raycastEnableY = _enableY;
 }

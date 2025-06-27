@@ -1,7 +1,5 @@
 // Feather disable all
 
-// TODO - Should check every environment for a text handler
-
 /// Returns whether the top-most layer for the given environment wants to block keyboard input to
 /// other parts of your game. This can happen in the following situations:
 /// 

@@ -74,7 +74,7 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _
         var _rightWorld  = _leftWorld + _width;
         var _bottomWorld = _topWorld  + _height;
         
-        //Ensure the UI element sits inside the root boundary before we transform
+        //Ensure the element sits inside the root boundary before we transform
         if (__layoutClampInside)
         {
             var _rootBento    = __layer.__rootElement.BENTO_VARS;

@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether the navigation mode has been set to `BENTO_MODE_MOUSE`.
+/// Returns whether the input mode has been set to `BENTO_MODE_MOUSE`.
 /// 
 /// @param [layerOrName=current]
 

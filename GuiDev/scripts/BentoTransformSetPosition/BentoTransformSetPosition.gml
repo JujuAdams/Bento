@@ -1,9 +1,9 @@
 // Feather disable all
 
-/// Applies a *visual* transformation to a UI element and its children. This is achieved by
-/// applying a world transformation matrix when drawing the UI element via `BentoSystemDraw()`.
+/// Applies a *visual* transformation to an element and its children. This is achieved by
+/// applying a world transformation matrix when drawing the element via `BentoSystemDraw()`.
 /// 
-/// This particular function applies a linear translation to visually move a UI element to that
+/// This particular function applies a linear translation to visually move an element to that
 /// position.
 /// 
 /// N.B. This transformation only applies to how the element is drawn. It does not affect

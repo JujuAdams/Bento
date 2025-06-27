@@ -1,7 +1,10 @@
 // Feather disable all
 
-/// Creates a vertical navigation link between two instances. When pressing up or down with
-/// directional input, the cursor will jump between the two instances.
+/// Creates a vertical navigation link between two elements. When pressing up or down with
+/// directional input, the cursor will jump between the two elements rather than performing a
+/// general raycast.
+/// 
+/// N.B. The linking feature only applies to directional (keyboard and gamepad) input.
 /// 
 /// @param up
 /// @param down

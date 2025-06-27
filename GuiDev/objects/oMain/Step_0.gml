@@ -1,6 +1,6 @@
 // Feather disable all
 
-// Swap the navigation mode depending on what number row key has been pressed. In the main
+// Swap the input mode depending on what number row key has been pressed. In the main
 // project, this is handled when the player hotswaps to another input device.
 if (keyboard_check_pressed(ord("1"))) BentoSetMode(BENTO_MODE_MOUSE);
 if (keyboard_check_pressed(ord("2"))) BentoSetMode(BENTO_MODE_KEYBOARD);
@@ -39,7 +39,7 @@ if (BentoUsingPointer())
     BentoInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(0, mb_left));
 }
 
-// No matter what navigation mode we're in, we can funnel "button" input into the system. "Button"\
+// No matter what input mode we're in, we can funnel "button" input into the system. "Button"\
 // is an abstract input that doesn't necessarily have to map to a physical input at all. Button
 // input could be triggered by a tutorial, a cutscene, a touch gesture etc. ... or it could be a
 // button. Buttons have a "pressed", "held", and "released" state that is accessed via functions.

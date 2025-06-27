@@ -1,7 +1,7 @@
 // Feather disable all
 
-/// Applies a *visual* transformation to a UI element and its children. This is achieved by
-/// applying a world transformation matrix when drawing the UI element via `BentoSystemDraw()`.
+/// Applies a *visual* transformation to an element and its children. This is achieved by
+/// applying a world transformation matrix when drawing the element via `BentoSystemDraw()`.
 /// 
 /// This particular function applies a linear scaling to an element.
 /// 

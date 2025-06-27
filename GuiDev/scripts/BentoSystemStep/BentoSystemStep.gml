@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Updates environments, layers, and UI elements.
+/// Updates environments, layers, and elements.
 
 function BentoSystemStep(_rootWidth, _rootHeight)
 {

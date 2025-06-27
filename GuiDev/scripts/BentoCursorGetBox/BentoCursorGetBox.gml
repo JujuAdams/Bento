@@ -1,5 +1,13 @@
 // Feather disable all
 
+/// Returns a struct that contains four variables: `.left` `.top` `.right` `.bottom`. These
+/// variables contain the x/y coordinates of the axis-aligned bounding box for the last element
+/// that was hovered.
+/// 
+/// N.B. This function will still return valid coordinates even if the last element has been
+///      destroyed or is unhoverable. Typically, you should check if there is a valid element being
+///      hovered before doing anything with these coordinates .
+/// 
 /// @param [layerOrName=current]
 
 function BentoCursorGetBox(_layerOrName = undefined)

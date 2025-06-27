@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns the current navigation mode, as set by `BentoSetMode()`. This will be one of the
+/// Returns the input mode for a layer, as set by `BentoSetMode()`. This will be one of the
 /// following constants:
 /// 
 /// - `BENTO_MODE_UNKNOWN`

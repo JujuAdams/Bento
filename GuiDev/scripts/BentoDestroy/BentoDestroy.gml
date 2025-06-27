@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Destroys a UI element.
+/// Destroys an element.
 /// 
 /// @param [element=self]
 

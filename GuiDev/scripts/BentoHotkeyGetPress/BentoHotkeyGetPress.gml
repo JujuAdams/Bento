@@ -4,7 +4,7 @@
 /// `BentoInputHotkey()`.
 /// 
 /// N.B. Button state is global. After processing button input, you should call `BentoInputConsume()`
-///      to ensure button state doesn't leak to other instances.
+///      to ensure button state doesn't leak to other elements.
 /// 
 /// @param name
 /// @param [layerOrName=current]

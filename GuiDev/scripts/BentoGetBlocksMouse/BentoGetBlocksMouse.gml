@@ -1,18 +1,17 @@
 // Feather disable all
 
 // TODO - Mouse-over detection and tracking needs improvement. This function may get expensive.
-// TODO - Should check every environment for a text handler
 
 /// Returns whether the top-most layer for the given environment wants to block mouse input to
 /// other parts of your game. This can happen in the following situations:
 /// 
-/// - Any `BENTO_BUTTON_POINTER` or `BENTO_BUTTON_ALWAYS` UI element is being hovered.
-/// - Any UI element has been pressed and the primary button is being held.
-/// - Any UI element has been focused in a way that restricts the pointer.
+/// - Any `BENTO_BUTTON_POINTER` or `BENTO_BUTTON_ALWAYS` element is being hovered.
+/// - Any element has been pressed and the primary button is being held.
+/// - Any element has been focused in a way that restricts the pointer.
 /// - The environment is receiving text input using `BentoTextOpen()`.
 ///
-/// Additionally, if the topmost layer is NOT using a pointer input mode, this function will always
-/// return `false`.
+/// Additionally, if the topmost layer is **not** using a pointer input mode, this function will
+/// always return `false`.
 /// 
 /// @param [environmentName=current]
 

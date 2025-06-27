@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether the cursor is hovering the instance.
+/// Returns whether the cursor is hovering the given element.
 /// 
 /// @param [element=self]
 

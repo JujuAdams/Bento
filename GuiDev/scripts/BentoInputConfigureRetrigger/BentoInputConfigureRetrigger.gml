@@ -1,5 +1,10 @@
 // Feather disable all
 
+/// Sets the global directional input retrigger behavior. This is also called "turbo" or "repeat"
+/// or "rapid fire" input. The retrigger behavior applies only to up/down/left/right inputs. You
+/// can use this function to control two phases of repeating inputs: a slower rate and, after a
+/// certain number of triggers, a faster rate.
+/// 
 /// @param preDelay
 /// @param delay
 /// @param count

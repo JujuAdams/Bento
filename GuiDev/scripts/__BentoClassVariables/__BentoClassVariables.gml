@@ -66,8 +66,8 @@ function __BentoClassVariables(_attachedElement) constructor
     __linkUp    = BENTO_NO_ELEMENT;
     __linkDown  = BENTO_NO_ELEMENT;
     
-    __raycastEnableHori = false;
-    __raycastEnableVert = false;
+    __raycastEnableX = false;
+    __raycastEnableY = false;
     
     __childArray     = [];
     __childDrawArray = [];

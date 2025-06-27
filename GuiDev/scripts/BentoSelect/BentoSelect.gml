@@ -1,9 +1,9 @@
 // Feather disable all
 
-/// Selects an instance (if possible). This function only works when the navigation mode is set to
-/// `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD`.
+/// Selects an element (if possible). This function only works when the input mode is set to
+/// `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD` on the layer in question.
 /// 
-/// @param instance
+/// @param element
 /// @param [layerOrName=current]
 
 function BentoSelect(_element, _layerOrName = undefined)

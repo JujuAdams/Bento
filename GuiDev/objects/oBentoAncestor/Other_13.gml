@@ -2,7 +2,7 @@
 
 // This event is called whenever the library decides that the instance needs to be moved. This is
 // typically when the instance is created, the layout changes or when the player has scrolled a
-// UI element.
+// element.
 
 if (sprite_exists(sprite_index))
 {
