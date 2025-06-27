@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Text",
-    "path":"folders/Library/Functions/(System)/Text.yy",
+    "path":"folders/Library/(System)/Text.yy",
   },
   "parentObjectId":null,
   "persistent":true,

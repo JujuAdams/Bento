@@ -6,7 +6,7 @@
   "name":"__BentoLayerTargetPush",
   "parent":{
     "name":"(System)",
-    "path":"folders/Library/Functions/(System).yy",
+    "path":"folders/Library/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

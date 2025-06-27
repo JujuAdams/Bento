@@ -6,7 +6,7 @@
   "name":"__BentoEnvironmentEnsure",
   "parent":{
     "name":"Environments & Layers",
-    "path":"folders/Library/Functions/(System)/Environments & Layers.yy",
+    "path":"folders/Library/(System)/Environments & Layers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

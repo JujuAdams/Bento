@@ -6,7 +6,7 @@
   "name":"__BentoSolverListPositions",
   "parent":{
     "name":"List",
-    "path":"folders/Library/Functions/(System)/Solver/List.yy",
+    "path":"folders/Library/(System)/Solver/List.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

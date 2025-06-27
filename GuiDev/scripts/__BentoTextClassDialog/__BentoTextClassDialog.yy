@@ -6,7 +6,7 @@
   "name":"__BentoTextClassDialog",
   "parent":{
     "name":"Text",
-    "path":"folders/Library/Functions/(System)/Text.yy",
+    "path":"folders/Library/(System)/Text.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

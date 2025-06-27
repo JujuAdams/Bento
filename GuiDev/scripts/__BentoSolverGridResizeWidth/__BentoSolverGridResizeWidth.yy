@@ -6,7 +6,7 @@
   "name":"__BentoSolverGridResizeWidth",
   "parent":{
     "name":"Grid",
-    "path":"folders/Library/Functions/(System)/Solver/Grid.yy",
+    "path":"folders/Library/(System)/Solver/Grid.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

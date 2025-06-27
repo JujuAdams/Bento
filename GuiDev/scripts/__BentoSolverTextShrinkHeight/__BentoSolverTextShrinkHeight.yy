@@ -6,7 +6,7 @@
   "name":"__BentoSolverTextShrinkHeight",
   "parent":{
     "name":"Text",
-    "path":"folders/Library/Functions/(System)/Solver/Text.yy",
+    "path":"folders/Library/(System)/Solver/Text.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

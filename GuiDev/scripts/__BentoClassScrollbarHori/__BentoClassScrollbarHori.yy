@@ -6,7 +6,7 @@
   "name":"__BentoClassScrollbarHori",
   "parent":{
     "name":"Classes",
-    "path":"folders/Library/Functions/(System)/Classes.yy",
+    "path":"folders/Library/(System)/Classes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
