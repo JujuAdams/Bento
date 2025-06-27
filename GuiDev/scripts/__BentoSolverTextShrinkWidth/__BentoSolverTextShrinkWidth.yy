@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoSolverTextShrinkWidth",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoSolverTextShrinkWidth",
+  "parent":{
+    "name":"Text",
+    "path":"folders/Library/Functions/(System)/Solver/Text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

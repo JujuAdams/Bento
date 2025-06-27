@@ -2,9 +2,9 @@
 
 event_inherited();
 
-GuiScrollOnPointer();
+BentoScrollOnPointer();
 
-if (GuiPrimaryGetClick())
+if (BentoPrimaryGetClick())
 {
     if (is_callable(clickFunc))
     {

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoAnimateScroll",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoAnimateScroll",
+  "parent":{
+    "name":"Ensure",
+    "path":"folders/Library/Functions/(System)/Ensure.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

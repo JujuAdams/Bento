@@ -16,5 +16,5 @@ function TestTextbox()
         },
     ];
     
-    textboxElement = GuiCreateFromJSON(_json, GuiGetRoot());
+    textboxElement = BentoCreateFromJSON(_json, BentoGetRoot());
 }

@@ -16,11 +16,11 @@ if (text != "")
     draw_set_valign(fa_top);
 }
 
-// Draw a highlight over the button is the instance is being hovered by the Gui system's cursor
+// Draw a highlight over the button is the instance is being hovered by the Bento system's cursor
 // (which applies to both pointer-driven and directional input). Alternatively, if this is a tab
 // button and this button cause a page to be opened by the tab group then we also highlight the
 // button.
-if (GuiCursorGetHover())
+if (BentoCursorGetHover())
 {
     gpu_set_fog(true, c_white, 0, 0);
     draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 0.5*image_alpha);

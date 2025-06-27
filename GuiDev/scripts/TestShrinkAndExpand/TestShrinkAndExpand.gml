@@ -2,40 +2,40 @@
 
 function TestShrinkAndExpand()
 {
-    with(GuiCreateObject(oExampleListWithScroll, undefined, GuiGetRoot()))
+    with(BentoCreateObject(oExampleListWithScroll, undefined, BentoGetRoot()))
     {
         image_blend = c_navy;
         
-        GuiLayoutSetList(GUI_AXIS_X, fa_left, fa_top);
-        GuiLayoutSetSize(600, 200);
-        GuiLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
-        GuiLayoutSetPadding(10, 10, 10, 10);
-        GuiLayoutSetGutter(10, 10);
+        BentoLayoutSetList(GUI_AXIS_X, fa_left, fa_top);
+        BentoLayoutSetSize(600, 200);
+        BentoLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
+        BentoLayoutSetPadding(10, 10, 10, 10);
+        BentoLayoutSetGutter(10, 10);
         
-        with(GuiCreateObject(oGuiLibSprite))
+        with(BentoCreateObject(oBentoLibSprite))
         {
             image_blend = c_red;
-            GuiLayoutSetSize(100, 100);
+            BentoLayoutSetSize(100, 100);
         }
         
-        with(GuiCreateObject(oGuiLibSprite))
+        with(BentoCreateObject(oBentoLibSprite))
         {
             image_blend = c_yellow;
-            GuiLayoutSetSize(100, 50);
-            GuiLayoutSetResizeType(GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND);
+            BentoLayoutSetSize(100, 50);
+            BentoLayoutSetResizeType(GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND);
         }
         
-        with(GuiCreateObject(oGuiLibSprite))
+        with(BentoCreateObject(oBentoLibSprite))
         {
             image_blend = c_yellow;
-            GuiLayoutSetSize(50, 100);
-            GuiLayoutSetResizeType(GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND);
+            BentoLayoutSetSize(50, 100);
+            BentoLayoutSetResizeType(GUI_RESIZE_EXPAND, GUI_RESIZE_EXPAND);
         }
         
-        with(GuiCreateObject(oGuiLibSprite))
+        with(BentoCreateObject(oBentoLibSprite))
         {
             image_blend = c_blue;
-            GuiLayoutSetSize(100, 100);
+            BentoLayoutSetSize(100, 100);
         }
     }
 }

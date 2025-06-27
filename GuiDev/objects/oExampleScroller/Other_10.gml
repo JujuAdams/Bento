@@ -10,27 +10,27 @@
 
 event_inherited();
 
-// Magic function to pass pointer context to the nearest scrollable instance up the Gui inheritance
+// Magic function to pass pointer context to the nearest scrollable instance up the Bento inheritance
 // stack. This is crucial for creating click-and-drag scrolling.
-GuiScrollOnPointer();
+BentoScrollOnPointer();
 
 var _delta = 0;
 
-if (GuiUsingPointer())
+if (BentoUsingPointer())
 {
     // Detect clicks to scroll through the option array.
-    if (GuiPrimaryGetClick())
+    if (BentoPrimaryGetClick())
     {
-        _delta = sign(GuiCursorGetX() - x);
+        _delta = sign(BentoCursorGetX() - x);
         if (_delta == 0) _delta = 1;
     }
 }
-else if (GuiUsingDirectional())
+else if (BentoUsingDirectional())
 {
     // Detect directional input to scroll throught the option array.
-    if (GuiCursorGetHover())
+    if (BentoCursorGetHover())
     {
-        _delta = sign(GuiCursorGetDX());
+        _delta = sign(BentoCursorGetDX());
     }
 }
 

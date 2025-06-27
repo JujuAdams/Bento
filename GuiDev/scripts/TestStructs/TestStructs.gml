@@ -2,28 +2,28 @@
 
 function TestStructs()
 {
-    structTest = new GuiConstrSprite(undefined, GuiGetRoot());
+    structTest = new BentoConstrSprite(undefined, BentoGetRoot());
     with(structTest)
     {
-        GuiLayoutSetList(GUI_AXIS_Y, fa_left, fa_top);
-        GuiLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
-        GuiLayoutSetPadding(10, 10, 10, 10);
-        GuiLayoutSetGutter(10, 10);
+        BentoLayoutSetList(GUI_AXIS_Y, fa_left, fa_top);
+        BentoLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
+        BentoLayoutSetPadding(10, 10, 10, 10);
+        BentoLayoutSetGutter(10, 10);
         
-        var _text = new GuiConstrText("Hello World", undefined, fa_center);
-        GuiLayoutSetResizeType(GUI_RESIZE_EXPAND, undefined, _text);
+        var _text = new BentoConstrText("Hello World", undefined, fa_center);
+        BentoLayoutSetResizeType(GUI_RESIZE_EXPAND, undefined, _text);
         
-        var _text = GuiCreateObject(oGuiLibText, { text: "Hello World", hAlign: fa_center });
-        GuiLayoutSetResizeType(GUI_RESIZE_EXPAND, undefined, _text);
+        var _text = BentoCreateObject(oBentoLibText, { text: "Hello World", hAlign: fa_center });
+        BentoLayoutSetResizeType(GUI_RESIZE_EXPAND, undefined, _text);
         
         new ExampleConstrButton(undefined, "Test");
         new ExampleConstrButton(undefined, "Test");
         
-        var _grid = new GuiConstrSprite(sGuiMaskRectangle);
+        var _grid = new BentoConstrSprite(sBentoMaskRectangle);
         with(_grid)
         {
-            GuiLayoutSetGrid();
-            GuiLayoutSetFromJSON({
+            BentoLayoutSetGrid();
+            BentoLayoutSetFromJSON({
                 gridSize: [6, 2],
                 size:     [600, 200],
                 resize:   [GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK],
@@ -35,7 +35,7 @@ function TestStructs()
             {
                 with(new ExampleConstrButton())
                 {
-                    GuiLayoutSetAlignSelf(0.5, 0.5);
+                    BentoLayoutSetAlignSelf(0.5, 0.5);
                 }
             }
         }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoEnsureScrollLimits",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoEnsureScrollLimits",
+  "parent":{
+    "name":"Ensure",
+    "path":"folders/Library/Functions/(System)/Ensure.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

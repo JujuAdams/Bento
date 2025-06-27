@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayoutSetPadding",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayoutSetPadding",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Library/Functions/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

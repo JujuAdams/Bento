@@ -2,4 +2,4 @@
 
 event_inherited();
 
-GuiLayoutSetGrid();
+BentoLayoutSetGrid();

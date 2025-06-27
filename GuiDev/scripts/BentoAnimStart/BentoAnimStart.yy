@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoAnimStart",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoAnimStart",
+  "parent":{
+    "name":"Transform",
+    "path":"folders/Library/Functions/Transform.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

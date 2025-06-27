@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoScrollLimitsMarkDirty",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoScrollLimitsMarkDirty",
+  "parent":{
+    "name":"Scroll",
+    "path":"folders/Library/Functions/Scroll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

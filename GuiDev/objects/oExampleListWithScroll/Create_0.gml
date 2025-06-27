@@ -2,6 +2,6 @@
 
 event_inherited();
 
-GuiLayoutSetList(GUI_AXIS_Y, fa_left, fa_top);
-GuiClipSetEnabled(true);
-GuiScrollSetEnabled(true, true);
+BentoLayoutSetList(GUI_AXIS_Y, fa_left, fa_top);
+BentoClipSetEnabled(true);
+BentoScrollSetEnabled(true, true);

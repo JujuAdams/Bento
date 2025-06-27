@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoClassVariables",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoClassVariables",
+  "parent":{
+    "name":"Classes",
+    "path":"folders/Library/Functions/(System)/Classes.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -14,7 +14,7 @@ function TestTransform()
             },
             children: [
                 {
-                    object: oGuiLibSprite,
+                    object: oBentoLibSprite,
                     vars: {
                         image_blend: c_red,
                     },
@@ -23,7 +23,7 @@ function TestTransform()
                     },
                 },
                 {
-                    object: oGuiLibSprite,
+                    object: oBentoLibSprite,
                     vars: {
                         image_blend: c_lime,
                     },
@@ -32,7 +32,7 @@ function TestTransform()
                     },
                 },
                 {
-                    object: oGuiLibSprite,
+                    object: oBentoLibSprite,
                     vars: {
                         image_blend: c_blue,
                     },
@@ -41,7 +41,7 @@ function TestTransform()
                     },
                 },
                 {
-                    object: oGuiLibSprite,
+                    object: oBentoLibSprite,
                     vars: {
                         image_blend: c_yellow,
                     },
@@ -53,5 +53,5 @@ function TestTransform()
         },
     ];
     
-    gridElement = GuiCreateFromJSON(_json, GuiGetRoot());
+    gridElement = BentoCreateFromJSON(_json, BentoGetRoot());
 }

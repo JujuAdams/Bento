@@ -1,5 +1,5 @@
 // Feather disable all
 
-GuiInputConfigureRetrigger(10, 9, 4, 5);
+BentoInputConfigureRetrigger(10, 9, 4, 5);
 
 TestShrinkAndExpand();

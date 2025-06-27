@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoScrollMove",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoScrollMove",
+  "parent":{
+    "name":"Scroll",
+    "path":"folders/Library/Functions/Scroll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

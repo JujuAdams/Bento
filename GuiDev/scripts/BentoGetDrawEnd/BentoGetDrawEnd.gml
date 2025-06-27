@@ -1,0 +1,12 @@
+// Feather disable all
+
+/// Returns whether an instance has its Draw After user event enabled for use by `BentoSetDrawAfter()`.
+/// 
+/// @param [element=self]
+
+function BentoGetDrawAfter(_element = self)
+{
+    if (not BentoExists(_element)) return false;
+    
+    return _element.GUI_VARS.__drawAfter;
+}

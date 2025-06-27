@@ -4,18 +4,18 @@
 
 event_inherited();
 
-if (GuiPrimaryGetClick())
+if (BentoPrimaryGetClick())
 {
-    GuiTextOpen(text, function(_text, _state)
+    BentoTextOpen(text, function(_text, _state)
     {
         text = _text;
     });
 }
 
-if (GuiTextGetTargeted())
+if (BentoTextGetTargeted())
 {
-    if (GuiHotkeyGetPress("escape"))
+    if (BentoHotkeyGetPress("escape"))
     {
-        GuiTextClose();
+        BentoTextClose();
     }
 }

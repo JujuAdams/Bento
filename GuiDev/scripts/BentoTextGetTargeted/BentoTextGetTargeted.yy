@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoTextGetTargeted",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoTextGetTargeted",
+  "parent":{
+    "name":"Text",
+    "path":"folders/Library/Functions/Text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

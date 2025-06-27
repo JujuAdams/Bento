@@ -29,5 +29,5 @@ function TestGrid()
         },
     };
     
-    gridElement = GuiCreateFromJSON(_json, GuiGetRoot(), { count: 11 });
+    gridElement = BentoCreateFromJSON(_json, BentoGetRoot(), { count: 11 });
 }

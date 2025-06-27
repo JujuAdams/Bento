@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoScrollOnPointer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoScrollOnPointer",
+  "parent":{
+    "name":"Scroll",
+    "path":"folders/Library/Functions/Scroll.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

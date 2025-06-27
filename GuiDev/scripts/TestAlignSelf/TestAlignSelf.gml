@@ -3,7 +3,7 @@
 function TestAlignSelf()
 {
     var _json = {
-        object: oGuiLibList,
+        object: oBentoLibList,
         name: "list",
         vars: {
             image_blend: c_ltgray,
@@ -18,7 +18,7 @@ function TestAlignSelf()
         },
         children: [
             {
-                object: oGuiLibSprite,
+                object: oBentoLibSprite,
                 name: "first",
                 vars: {
                     image_blend: c_gray,
@@ -29,7 +29,7 @@ function TestAlignSelf()
                 },
                 children: [
                     {
-                        object: oGuiLibSprite,
+                        object: oBentoLibSprite,
                         name: "second",
                         vars: {
                             image_blend: c_dkgray,
@@ -42,7 +42,7 @@ function TestAlignSelf()
                 ],
             },
             {
-                object: oGuiLibSprite,
+                object: oBentoLibSprite,
                 vars: {
                     image_blend: c_gray,
                 },
@@ -54,7 +54,7 @@ function TestAlignSelf()
                 },
             },
             {
-                object: oGuiLibSprite,
+                object: oBentoLibSprite,
                 vars: {
                     image_blend: c_gray,
                 },
@@ -65,5 +65,5 @@ function TestAlignSelf()
         ],
     };
     
-    gridElement = GuiCreateFromJSON(_json, GuiGetRoot(), { count: 11 });
+    gridElement = BentoCreateFromJSON(_json, BentoGetRoot(), { count: 11 });
 }

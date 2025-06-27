@@ -14,8 +14,8 @@
     "path":"folders/Examples/Objects.yy",
   },
   "parentObjectId":{
-    "name":"oGuiLibSprite",
-    "path":"objects/oGuiLibSprite/oGuiLibSprite.yy",
+    "name":"oBentoLibSprite",
+    "path":"objects/oBentoLibSprite/oBentoLibSprite.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sGuiMaskRectangle",
-    "path":"sprites/sGuiMaskRectangle/sGuiMaskRectangle.yy",
+    "name":"sBentoMaskRectangle",
+    "path":"sprites/sBentoMaskRectangle/sBentoMaskRectangle.yy",
   },
   "spriteMaskId":null,
   "visible":true,

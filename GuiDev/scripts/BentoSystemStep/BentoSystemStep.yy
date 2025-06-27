@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoSystemStep",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoSystemStep",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,12 +1,12 @@
 /// @desc Draw
 
-if (GuiUsingDirectional())
+if (BentoUsingDirectional())
 {
-    if (GuiFocusGetType())
+    if (BentoFocusGetType())
     {
         var _fgColor = c_gray;
     }
-    else if (GuiCursorGetHover())
+    else if (BentoCursorGetHover())
     {
         var _fgColor = c_white;
     }

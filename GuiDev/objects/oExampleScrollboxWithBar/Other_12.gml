@@ -1,3 +1,3 @@
 /// @desc Draw After
 
-GuiScrollbarDrawPlaceholder(GuiScrollbarGetVertData());
+BentoScrollbarDrawPlaceholder(BentoScrollbarGetVertData());

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoTextClassKeyboard",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoTextClassKeyboard",
+  "parent":{
+    "name":"Text",
+    "path":"folders/Library/Functions/(System)/Text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

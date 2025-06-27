@@ -9,7 +9,7 @@ var _y = 0.5*(bbox_top + bbox_bottom);
 
 draw_self();
 
-if (GuiCursorGetHover() || (GuiFocusGetTop() == self))
+if (BentoCursorGetHover() || (BentoFocusGetTop() == self))
 {
     gpu_set_fog(true, c_white, 0, 0);
     draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 0.3*image_alpha);
@@ -17,7 +17,7 @@ if (GuiCursorGetHover() || (GuiFocusGetTop() == self))
 }
 
 var _text = text;
-if (GuiTextGetTargeted() && ((GuiTextGetOpenDuration() mod 30) < 15)) _text += "|";
+if (BentoTextGetTargeted() && ((BentoTextGetOpenDuration() mod 30) < 15)) _text += "|";
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);

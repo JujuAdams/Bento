@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoTrace",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoTrace",
+  "parent":{
+    "name":"Support",
+    "path":"folders/Library/Functions/(System)/Support.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

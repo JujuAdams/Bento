@@ -1,0 +1,21 @@
+// Feather disable all
+
+/// @param layerOrName
+/// @param [environment=current]
+
+function BentoLayerExists(_layerOrName, _environment = undefined)
+{
+    static _system = __BentoSystem();
+    
+    if (is_string(_layerOrName))
+    {
+        return (BentoLayerFind(_layerOrName, _environment ?? _system.__environmentCurrent) != undefined);
+    }
+    else if (is_struct(_layerOrName))
+    {
+        _environment ??= _layerOrName.__environment;
+        return (array_get_index(_environment.__layerArray, _layerOrName) >= 0);
+    }
+    
+    return false;
+}

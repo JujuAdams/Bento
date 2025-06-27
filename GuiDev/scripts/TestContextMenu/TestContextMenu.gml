@@ -21,7 +21,7 @@ function TestContextMenu()
                 image_blend: c_red,
                 clickFunc: function()
                 {
-                    GuiCreateFromJSON({
+                    BentoCreateFromJSON({
                         object: oExampleContextMenu,
                         layout: {
                             size: [200, 300],
@@ -47,5 +47,5 @@ function TestContextMenu()
         },
     ];
     
-    gridElement = GuiCreateFromJSON(_json, GuiGetRoot());
+    gridElement = BentoCreateFromJSON(_json, BentoGetRoot());
 }

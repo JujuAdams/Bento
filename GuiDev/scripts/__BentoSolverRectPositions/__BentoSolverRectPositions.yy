@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoSolverRectPositions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoSolverRectPositions",
+  "parent":{
+    "name":"Rect",
+    "path":"folders/Library/Functions/(System)/Solver/Rect.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

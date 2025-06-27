@@ -33,5 +33,5 @@ function TestScrollbox()
         },
     ];
     
-    scrollboxElement = GuiCreateFromJSON(_json, GuiGetRoot(), { count: 11 });
+    scrollboxElement = BentoCreateFromJSON(_json, BentoGetRoot(), { count: 11 });
 }

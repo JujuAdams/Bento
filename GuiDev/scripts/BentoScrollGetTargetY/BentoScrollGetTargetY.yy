@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoScrollGetTargetY",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoScrollGetTargetY",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Library/Functions/Scroll/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

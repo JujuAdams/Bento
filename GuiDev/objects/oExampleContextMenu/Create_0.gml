@@ -2,12 +2,12 @@
 
 event_inherited();
 
-GuiLayoutSetList(GUI_AXIS_Y, fa_center, fa_top);
-GuiLayoutSetClampInside(true);
-GuiLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
-GuiLayoutSetPadding(10, 10, 10, 10);
-GuiLayoutSetGutter(10, 10);
-GuiLayoutSetAlignSelf(fa_left, fa_top);
-GuiLayoutSetMinSize(32, 32);
+BentoLayoutSetList(GUI_AXIS_Y, fa_center, fa_top);
+BentoLayoutSetClampInside(true);
+BentoLayoutSetResizeType(GUI_RESIZE_SHRINK, GUI_RESIZE_SHRINK);
+BentoLayoutSetPadding(10, 10, 10, 10);
+BentoLayoutSetGutter(10, 10);
+BentoLayoutSetAlignSelf(fa_left, fa_top);
+BentoLayoutSetMinSize(32, 32);
 
-GuiFocusOpen(GUI_FOCUS_POINTER_IGNORE);
+BentoFocusOpen(GUI_FOCUS_POINTER_IGNORE);

@@ -4,7 +4,7 @@ function TestCarousel()
 {
     var _json = [
         {
-            object: oGuiLibList,
+            object: oBentoLibList,
             layout: {
                 offset: [-30, -30],
                 alignSelf: [1, 1],
@@ -38,5 +38,5 @@ function TestCarousel()
         },
     ];
     
-    gridElement = GuiCreateFromJSON(_json, GuiGetRoot());
+    gridElement = BentoCreateFromJSON(_json, BentoGetRoot());
 }

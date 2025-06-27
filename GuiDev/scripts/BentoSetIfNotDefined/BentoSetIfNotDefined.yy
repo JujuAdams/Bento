@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoSetIfNotDefined",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoSetIfNotDefined",
+  "parent":{
+    "name":"Miscellaneous",
+    "path":"folders/Library/Functions/Miscellaneous.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,3 +1,3 @@
 // Feather disable all
 
-GuiTransformSetAngle(current_time/20);
+BentoTransformSetAngle(current_time/20);

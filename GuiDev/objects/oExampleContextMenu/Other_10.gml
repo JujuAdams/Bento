@@ -1,7 +1,7 @@
 /// @desc Step
 
-if (GuiHotkeyGetPress("escape"))
+if (BentoHotkeyGetPress("escape"))
 {
-    GuiDestroy();
-    GuiInputConsume();
+    BentoDestroy();
+    BentoInputConsume();
 }

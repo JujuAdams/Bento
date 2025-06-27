@@ -4,7 +4,7 @@
 /// @param [text]
 /// @param [parent=self]
 
-function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other) : GuiConstrSprite(sGuiMaskRectangle, _parent) constructor
+function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other) : BentoConstrSprite(sBentoMaskRectangle, _parent) constructor
 {
     if (_clickFunc == undefined)
     {
@@ -17,13 +17,13 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
     text      = _text;
     clickFunc = method(self, _clickFunc);
     
-    GuiSetButton(GUI_BUTTON_ALWAYS);
+    BentoSetButton(GUI_BUTTON_ALWAYS);
     
     funcStep = function()
     {
-        GuiScrollOnPointer();
+        BentoScrollOnPointer();
         
-        if (GuiPrimaryGetClick())
+        if (BentoPrimaryGetClick())
         {
             if (is_callable(clickFunc))
             {
@@ -34,7 +34,7 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
     
     funcDraw = function()
     {
-        GuiDrawSprite(sGuiMaskRectangle);
+        BentoDrawSprite(sBentoMaskRectangle);
         
         if (text != "")
         {
@@ -45,14 +45,14 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
             draw_set_valign(fa_top);
         }
         
-        // Draw a highlight over the button is the instance is being hovered by the Gui system's cursor
+        // Draw a highlight over the button is the instance is being hovered by the Bento system's cursor
         // (which applies to both pointer-driven and directional input). Alternatively, if this is a tab
         // button and this button cause a page to be opened by the tab group then we also highlight the
         // button.
-        if (GuiCursorGetHover())
+        if (BentoCursorGetHover())
         {
             gpu_set_fog(true, c_white, 0, 0);
-            GuiDrawSprite(sGuiMaskRectangle, undefined, undefined, 0.5);
+            BentoDrawSprite(sBentoMaskRectangle, undefined, undefined, 0.5);
             gpu_set_fog(false, c_fuchsia, 0, 0);
         }
     }

@@ -4,30 +4,30 @@
 
 event_inherited();
 
-// Magic function to pass pointer context to the nearest scrollable instance up the Gui inheritance
+// Magic function to pass pointer context to the nearest scrollable instance up the Bento inheritance
 // stack. This is crucial for creating click-and-drag scrolling.
-GuiScrollOnPointer();
+BentoScrollOnPointer();
 
 var _length = array_length(optionArray);
 if (_length > 0)
 {
-    if (GuiUsingPointer())
+    if (BentoUsingPointer())
     {
         // Detect clicks to scroll through the option array.
-        if (GuiPrimaryGetClick())
+        if (BentoPrimaryGetClick())
         {
-            var _delta = sign(GuiCursorGetX() - x);
+            var _delta = sign(BentoCursorGetX() - x);
             if (_delta == 0) _delta = 1;
             option = (option + _delta + _length) mod _length;
             func(option, optionArray[option]); //Execute the callback
         }
     }
-    else if (GuiUsingDirectional())
+    else if (BentoUsingDirectional())
     {
         // Detect directional input to scroll throught the option array.
-        if (GuiCursorGetHover() && (GuiCursorGetDX() != 0))
+        if (BentoCursorGetHover() && (BentoCursorGetDX() != 0))
         {
-            option = (option + sign(GuiCursorGetDX()) + _length) mod _length;
+            option = (option + sign(BentoCursorGetDX()) + _length) mod _length;
             func(option, optionArray[option]); //Execute the callback
         }
     }

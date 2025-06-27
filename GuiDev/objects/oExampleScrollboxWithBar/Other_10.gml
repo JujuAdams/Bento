@@ -2,20 +2,20 @@
 
 event_inherited();
 
-if (GuiUsingDirectional())
+if (BentoUsingDirectional())
 {
-    if (GuiPrimaryGetClick())
+    if (BentoPrimaryGetClick())
     {
-        GuiFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
+        BentoFocusOpen(GUI_FOCUS_POINTER_CANCEL_ALWAYS);
     }
     
-    if (GuiHotkeyGetPress("escape"))
+    if (BentoHotkeyGetPress("escape"))
     {
-        GuiInputConsume();
-        GuiFocusClose();
+        BentoInputConsume();
+        BentoFocusClose();
     }
 }
-else if (GuiUsingPointer())
+else if (BentoUsingPointer())
 {
-    GuiScrollOnPointer();
+    BentoScrollOnPointer();
 }

@@ -2,8 +2,8 @@
 
 event_inherited();
 
-GuiSetIfNotDefined("text", "");
-GuiSetIfNotDefined("clickFunc", function()
+BentoSetIfNotDefined("text", "");
+BentoSetIfNotDefined("clickFunc", function()
 {
     show_debug_message($"Button {id} clicked");
 });
@@ -11,4 +11,4 @@ GuiSetIfNotDefined("clickFunc", function()
 //Ensure the click function is scoped to this instance
 clickFunc = method(self, clickFunc);
 
-GuiSetButton(GUI_BUTTON_ALWAYS);
+BentoSetButton(GUI_BUTTON_ALWAYS);

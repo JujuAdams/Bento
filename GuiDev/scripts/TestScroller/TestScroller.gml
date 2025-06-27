@@ -4,7 +4,7 @@ function TestScroller()
 {
     var _json = [
         {
-            object: oGuiLibList,
+            object: oBentoLibList,
             layout: {
                 offset: [30, 30],
                 padding: 10,
@@ -21,5 +21,5 @@ function TestScroller()
         },
     ];
     
-    gridElement = GuiCreateFromJSON(_json, GuiGetRoot());
+    gridElement = BentoCreateFromJSON(_json, BentoGetRoot());
 }

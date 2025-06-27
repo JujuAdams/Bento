@@ -1,0 +1,11 @@
+// Feather disable all
+
+/// Returns whether the cursor has entered (newly hovered) the instance.
+/// 
+/// @param [element=self]
+
+function BentoCursorGetEnter(_element = self)
+{
+    if (not BentoExists(_element)) return false;
+    return (_element.GUI_VARS.__hoverState == __GUI_START);
+}

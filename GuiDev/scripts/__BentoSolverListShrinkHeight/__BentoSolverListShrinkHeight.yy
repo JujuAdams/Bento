@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoSolverListShrinkHeight",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoSolverListShrinkHeight",
+  "parent":{
+    "name":"List",
+    "path":"folders/Library/Functions/(System)/Solver/List.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,3 +1,3 @@
 /// @desc Step
 
-GuiScrollOnPointer();
+BentoScrollOnPointer();

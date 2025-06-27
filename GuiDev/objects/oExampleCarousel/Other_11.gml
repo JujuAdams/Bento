@@ -9,7 +9,7 @@ var _y = 0.5*(bbox_top + bbox_bottom);
 
 draw_self();
 
-if (GuiCursorGetHover())
+if (BentoCursorGetHover())
 {
     gpu_set_fog(true, c_white, 0, 0);
     draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 0.3*image_alpha);

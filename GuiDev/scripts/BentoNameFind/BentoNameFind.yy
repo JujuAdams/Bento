@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoNameFind",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoNameFind",
+  "parent":{
+    "name":"Names",
+    "path":"folders/Library/Functions/Names.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

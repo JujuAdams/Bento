@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoTextGetOpenDuration",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoTextGetOpenDuration",
+  "parent":{
+    "name":"Text",
+    "path":"folders/Library/Functions/Text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

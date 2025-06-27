@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoClassScrollbar",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoClassScrollbar",
+  "parent":{
+    "name":"Classes",
+    "path":"folders/Library/Functions/(System)/Classes.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

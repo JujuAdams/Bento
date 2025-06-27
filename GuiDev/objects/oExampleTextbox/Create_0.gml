@@ -4,5 +4,5 @@ event_inherited();
 
 text = "test text";
 
-GuiSetButton(GUI_BUTTON_ALWAYS);
-GuiLayoutSetSize(300);
+BentoSetButton(GUI_BUTTON_ALWAYS);
+BentoLayoutSetSize(300);

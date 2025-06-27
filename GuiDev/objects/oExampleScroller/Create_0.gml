@@ -8,19 +8,19 @@
 
 event_inherited();
 
-GuiSetButton(GUI_BUTTON_ALWAYS);
+BentoSetButton(GUI_BUTTON_ALWAYS);
 
 // Disables raycasting in particular axes. This only applies to directional input where raycasting
 // is used to work out which instance to jump to when pushing in a particular direction. This does
-// not apply to navigation links created with `GuiLink*()` functions. We disable horizontal
+// not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
 // raycasting so that it doesn't interfere with scrolling through options.
-GuiSetRaycastDisable(true, false);
+BentoSetRaycastDisable(true, false);
 
-GuiSetIfNotDefined("title",     "Example");
-GuiSetIfNotDefined("valueStep", 1);
-GuiSetIfNotDefined("valueMin",  0);
-GuiSetIfNotDefined("valueMax",  100);
-GuiSetIfNotDefined("value",     valueMax);
-GuiSetIfNotDefined("func",      function(){});
+BentoSetIfNotDefined("title",     "Example");
+BentoSetIfNotDefined("valueStep", 1);
+BentoSetIfNotDefined("valueMin",  0);
+BentoSetIfNotDefined("valueMax",  100);
+BentoSetIfNotDefined("value",     valueMax);
+BentoSetIfNotDefined("func",      function(){});
 
-GuiLayoutSetSize(string_width(title) + 20, string_height(title) + 20);
+BentoLayoutSetSize(string_width(title) + 20, string_height(title) + 20);
