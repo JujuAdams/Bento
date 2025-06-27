@@ -51,7 +51,6 @@ function BentoTextOpen(_initialText, _callback, _hostElement = self)
             //All handler want to trim the initial text
             _initialText = string_copy(_initialText, 1, _maxLength);
             
-            //If there's no forced mode then figure it out
             if (BENTO_ON_MOBILE)
             {
                 if (BENTO_ON_IOS)

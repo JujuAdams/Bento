@@ -1,7 +1,35 @@
 // Feather disable all
 
+/// Starts focusing on an element. Generally speaking, only the focused element or descendents of
+/// the focused element will be hoverable. This will completely restrict interaction and navigation
+/// inside the focused container. This is especially helpful for setting up contextual regions of
+/// the user interface without needing to create and manage new layers.
+/// 
+/// You must specify a particular focus type which controls how the element focus interacts with
+/// the pointer. All focus types will restrict the what elements can be hovered in directional
+/// input modes (as above). The focus type must be one of the following constants:
+/// 
+/// `BENTO_FOCUS_POINTER_IGNORE`
+///     Pointer ignores focus. Any part of the tree can be interacted with whilst the focus is in
+///     operation.
+/// 
+/// `BENTO_FOCUS_POINTER_CANCEL_ON_CLICK`
+///     Clicking outside of the focused part of the free will cancel the focus.
+/// 
+/// `BENTO_FOCUS_POINTER_DESTROY_ON_CLICK`
+///     Clicking off of the focused part of the tree will destroy the focused element.
+/// 
+/// `BENTO_FOCUS_POINTER_CANCEL_ALWAYS`
+///     Focus is cancelled automatically if the input mode is set to `BENTO_MODE_POINTER`.
+/// 
+/// `BENTO_FOCUS_POINTER_CONSTRAIN`
+///     Pointer is constrained inside the focused part of the tree. The user will not be able to
+///     hover, hold, or click elements outside of the focused part of the tree.
+///     N.B. You should be careful with this focus type as it is possible to softlock your game!
+/// 
 /// @param focusType
 /// @param [element=self]
+
 
 function BentoFocusOpen(_focusType, _element = self)
 {
