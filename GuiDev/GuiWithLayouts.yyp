@@ -49,7 +49,7 @@
     {"$GMFolder":"","%Name":"Getters","folderPath":"folders/Library/Functions/Scroll/Getters.yy","name":"Getters","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scrollbar","folderPath":"folders/Library/Functions/Scrollbar.yy","name":"Scrollbar","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Text","folderPath":"folders/Library/Functions/Text.yy","name":"Text","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Transform","folderPath":"folders/Library/Functions/Transform.yy","name":"Transform","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Transform & Animation","folderPath":"folders/Library/Functions/Transform & Animation.yy","name":"Transform & Animation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Other Resources","folderPath":"folders/Library/Other Resources.yy","name":"Other Resources","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Inheritable Constructors","folderPath":"folders/Library/Other Resources/Inheritable Constructors.yy","name":"Inheritable Constructors","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Inheritable Objects","folderPath":"folders/Library/Other Resources/Inheritable Objects.yy","name":"Inheritable Objects","resourceType":"GMFolder","resourceVersion":"2.0",},

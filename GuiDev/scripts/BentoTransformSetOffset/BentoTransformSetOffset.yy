@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoTransformSetOffset",
   "parent":{
-    "name":"Transform",
-    "path":"folders/Library/Functions/Transform.yy",
+    "name":"Transform & Animation",
+    "path":"folders/Library/Functions/Transform & Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
