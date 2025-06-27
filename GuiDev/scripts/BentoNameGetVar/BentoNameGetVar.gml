@@ -12,7 +12,7 @@ function BentoNameGetVar(_name, _variableName, _default = undefined)
 {
     var _element = BentoNameFind(_name);
     if (not BentoExists(_element)) return _default;
-    if (not variable_instance_exists(_element, _variableName)) return _default;
+    if (not variable_struct_exists(_element, _variableName)) return _default;
     
-    return variable_instance_get(_element, _variableName);
+    return _element[$ _variableName];
 }

@@ -12,5 +12,5 @@ function BentoNameSetVar(_name, _variableName, _value)
     var _element = BentoNameFind(_name);
     if (not BentoExists(_element)) return;
     
-    variable_instance_set(_element, _variableName, _value);
+    _element[$ _variableName] = _value;
 }
