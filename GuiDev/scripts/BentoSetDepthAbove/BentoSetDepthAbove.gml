@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Sets the local depth of an instance to be above (numerically less than) a sibling instance.
+/// Sets the local depth of an element to be above (numerically less than) a sibling element.
 /// 
 /// @param sibling
 /// @param [element=self]

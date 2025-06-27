@@ -1,7 +1,6 @@
 // Feather disable all
 
-/// Returns the root instance. This should always exist! If it doesn't then something very bad has
-/// happened and this function will throw an error accordingly.
+/// Returns the root element for the layer.
 /// 
 /// @param [layerOrName=current]
 

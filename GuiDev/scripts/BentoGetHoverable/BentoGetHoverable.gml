@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether an instance is hoverable (i.e. its "over" state can be set).
+/// Returns whether an element is hoverable (i.e. its "over" state can be set).
 /// 
 /// @param [element=self]
 /// @param [checkVisible=true]

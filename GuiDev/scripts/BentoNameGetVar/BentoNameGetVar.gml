@@ -1,7 +1,7 @@
 // Feather disable all
 
-/// Returns the value of a variable for the instance with a matching name. If no instance exists
-/// or the named variable doesn't exist, this function will return the value stored in the
+/// Returns the value of a variable for the element with a matching name. If no element exists
+/// or the named variable doesn't exist, this function will return the value provied by the
 /// `default` parameter.
 /// 
 /// @param name

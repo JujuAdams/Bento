@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns the local depth for an instance.
+/// Returns the local depth for an element.
 /// 
 /// @param [element=self]
 

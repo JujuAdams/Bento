@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns a hierarchy ancestor of an instance. The default depth (`1`) will return an instance's
+/// Returns the tree parent of an element. The default depth (`1`) will return an element's
 /// immediate parent. Setting the depth parameter higher will return an ancestor further up the
 /// tree. If a `depth` parameter is higher than the number of ancestors, `BentoGetRoot()` will be
 /// returned.

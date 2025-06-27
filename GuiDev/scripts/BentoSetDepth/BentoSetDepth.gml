@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Sets the local depth for an instance.
+/// Sets the local draw depth for an element. This only applies within Bento and within the draw
+/// order for the element's parent.
 /// 
 /// @param depth
 /// @param [element=self]

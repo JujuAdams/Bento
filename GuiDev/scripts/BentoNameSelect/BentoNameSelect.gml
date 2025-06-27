@@ -1,10 +1,13 @@
 // Feather disable all
 
-/// Selects the instance with a mathcing name for navigation.
+// TODO - Move name map to environment?
+
+/// Selects the element with a matching name.
 /// 
 /// @param name
+/// @param [layerOrName=current]
 
-function BentoNameSelect(_name)
+function BentoNameSelect(_name, _layerOrName = undefined)
 {
-    return BentoSelect(BentoNameFind(_name));
+    return BentoSelect(BentoNameFind(_name, _layerOrName));
 }

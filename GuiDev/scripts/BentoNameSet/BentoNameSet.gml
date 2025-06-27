@@ -1,14 +1,14 @@
 // Feather disable all
 
-/// Sets the name of an instance. If `overwrite` is set to `false` then a naming conflict will
-/// cause this function to throw an error. If `overwrite` is set to `true` then the instance with
-/// a matching name will have its name removed.
+/// Sets the name of an element. If `overwrite` is set to `false` then a naming conflict will
+/// cause this function to throw an error. If `overwrite` is set to `true` then the existing
+/// named element will have its name removed.
 /// 
 /// @param name
 /// @param [element=self]
-/// @param [overwrite=false]
+/// @param [overwrite=true]
 
-function BentoNameSet(_name, _element = self, _overwrite = false)
+function BentoNameSet(_name, _element = self, _overwrite = true)
 {
     if (not BentoExists(_element)) return;
     

@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Scrolls to highlight an instance inside a parent.
+/// Scrolls to highlight an element inside a parent.
 /// 
 /// @param [scrollSpeed]
 /// @param [element=self]

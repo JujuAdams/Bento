@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether an instance is clickable (i.e. `BentoPrimaryGetClick()` can return `true`).
+/// Returns whether an element is clickable (i.e. `BentoPrimaryGetClick()` can return `true`).
 /// 
 /// @param [element=self]
 

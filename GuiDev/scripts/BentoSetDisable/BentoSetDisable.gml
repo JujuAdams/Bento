@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// Sets whether a Bento element is disabled. A disabled instance will not be interactible nor will
-/// it be visible. The children of a disabled instance will not be interactible or visible either.
-/// Disabled instance will still affect layouts, however.
+/// Sets whether a Bento element is disabled. A disabled element will not be interactible nor will
+/// it be visible. The children of a disabled element will not be interactible or visible either.
+/// Disabled element will still affect layouts, however.
 /// 
 /// @param state
 /// @param [element=self]

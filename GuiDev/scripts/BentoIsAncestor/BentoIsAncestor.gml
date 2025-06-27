@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns if the given child instance is a descendent of the given ancestor instance.
+/// Returns if the given child element is a descendent of the given ancestor element.
 /// 
 /// @param ancestor
 /// @param child

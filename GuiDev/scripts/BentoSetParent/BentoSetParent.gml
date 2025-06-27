@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Sets the parent for an instance.
+/// Sets the parent for an element.
 /// 
 /// @param parent
 /// @param [target=self]

@@ -1,10 +1,11 @@
 // Feather disable all
 
-/// Destroys an instance with a matching name, if it exists.
+/// Destroys the element with the matching name, if it exists.
 /// 
 /// @param name
+/// @param [layerOrName=current]
 
-function BentoNameDestroy(_name)
+function BentoNameDestroy(_name, _layerOrName = undefined)
 {
-    BentoDestroy(BentoNameFind(_name));
+    BentoDestroy(BentoNameFind(_name, _layerOrName));
 }

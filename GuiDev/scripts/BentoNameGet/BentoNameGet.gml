@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns the name of an instance, as set by `BentoNameSet()`.
+/// Returns the name of an element, as set by `BentoNameSet()`.
 /// 
 /// @param [element=self]
 

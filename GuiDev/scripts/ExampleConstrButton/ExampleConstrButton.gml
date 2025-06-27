@@ -45,7 +45,7 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
             draw_set_valign(fa_top);
         }
         
-        // Draw a highlight over the button is the instance is being hovered by the Bento system's cursor
+        // Draw a highlight over the button is the element is being hovered by the Bento system's cursor
         // (which applies to both pointer-driven and directional input). Alternatively, if this is a tab
         // button and this button cause a page to be opened by the tab group then we also highlight the
         // button.

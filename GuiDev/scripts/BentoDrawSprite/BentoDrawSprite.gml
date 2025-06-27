@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Convenience function that draws a sprite stretched to fit a Bento element.
+/// 
 /// @param sprite
 /// @param [image=-1]
 /// @param [blend=white]

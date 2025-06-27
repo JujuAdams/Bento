@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether an instance has been disabled by `BentoSetDisable()`.
+/// Returns whether an element has been disabled by `BentoSetDisable()`.
 /// 
 /// @param [element=self]
 

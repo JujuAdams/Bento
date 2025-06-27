@@ -1,7 +1,7 @@
 // Feather disable all
 
-/// Returns the `id` of the instance with a matching name. If no instance exists, this function
-/// will return `BENTO_NO_ELEMENT`.
+/// Returns the element with a matching name. If no such element exists, this function will return
+/// `BENTO_NO_ELEMENT`.
 /// 
 /// @param name
 /// @param [layerOrName=current]

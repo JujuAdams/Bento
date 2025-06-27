@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether an instance with the given name exists.
+/// Returns whether an element with the given name exists.
 /// 
 /// @param name
 /// @param [layerOrName=current]
@@ -14,6 +14,6 @@ function BentoNameExists(_name, _layerOrName = undefined)
     }
     else
     {
-        return BENTO_NO_ELEMENT;
+        return false;
     }
 }
