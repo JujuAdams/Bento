@@ -1,13 +1,13 @@
 // Feather disable all
 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoFocusGetTop(_layer = undefined)
+function BentoFocusGetTop(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         return __focusTop;
     }
+    
+    return BENTO_NO_ELEMENT;
 }

@@ -12,8 +12,8 @@ function __BentoScissorSet(_left, _top, _width, _height)
     var _surface = surface_get_target();
     if (_surface < 0)
     {
-        var _xScale = window_get_width() / display_get_bento_width();
-        var _yScale = window_get_height() / display_get_bento_height();
+        var _xScale = window_get_width() / display_get_gui_width();
+        var _yScale = window_get_height() / display_get_gui_height();
         
         _left   *= _xScale;
         _top    *= _yScale;

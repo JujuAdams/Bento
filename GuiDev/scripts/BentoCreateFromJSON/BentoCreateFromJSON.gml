@@ -152,11 +152,11 @@
 /// 
 /// The `.children` property may also be a string. In this case, the string will be passed to a
 /// function that you define using the `BENTO_JSON_CHILDREN_STRING_PROCESSOR` macro. This string
-/// processor function should return an array of Bento element definitions which will then be created.
-/// This feature is intended for use with runtime code compilation and execution - you can compile the
-/// string found in JSON to then create children. The function specified by the above macro is called
-/// with two arguments: the first is the string, the second is the metadata provided when calling
-/// `BentoCreateFromJSON()`.
+/// processor function should return an array of Bento element definitions which will then be
+/// created. This feature is intended for use with runtime code compilation and execution - you can
+/// compile the string found in JSON to then create children. The function specified by the above
+/// macro is called with two arguments: the first is the string, the second is the metadata
+/// provided when calling `BentoCreateFromJSON()`.
 /// 
 /// Example:
 /// ```
@@ -188,9 +188,33 @@
 /// 
 /// 
 /// 
-/// Element definition structs may contain a `.layout` property. If specified, this should be a struct
-/// that contains definitions for layout rules. This struct is passed to `BentoLayoutSetFromJSON()`
-/// targetting the created element. Please see that function for documentation.
+/// Element definition structs may contain a `.layout` property. If specified, this must be either
+/// an array with two entries (being the x and y offsets respectively) or a struct with an `.x`
+/// and `.y` properties.
+/// 
+/// Example:
+/// ```
+/// {
+///     object: oBentoSprite,
+///     offset: [10, 20]
+/// }
+/// 
+/// {
+///     object: oBentoSprite,
+///     offset: {x: 10, y: 20}
+/// }
+/// ```
+/// 
+/// 
+/// 
+/// Element definition structs may contain a `.layout` property. If specified, this should be a
+/// struct that contains definitions for layout rules. This struct is passed to
+/// `BentoLayoutSetFromJSON()` targetting the created element. Please see that function for
+/// documentation.
+/// 
+/// N.B. The layout property may itself contain an `.offset` property which will conflict with an
+///      `.offset` property defined in the main element struct. In this situation, the layout struct
+///      will take precedence.
 /// 
 /// Example:
 /// ```

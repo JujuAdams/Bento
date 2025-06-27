@@ -4,12 +4,17 @@
 /// will return `BENTO_NO_ELEMENT`.
 /// 
 /// @param name
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoNameFind(_name, _layer = undefined)
+function BentoNameFind(_name, _layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    _layer ??= _system.__layerCurrent;
-    return (_layer.__nameMap[? _name] ?? BENTO_NO_ELEMENT);
+    var _layer = __BentoLayerEnsure(_layerOrName);
+    if (_layer != undefined)
+    {
+        return (_layer.__nameMap[? _name] ?? BENTO_NO_ELEMENT);
+    }
+    else
+    {
+        return BENTO_NO_ELEMENT;
+    }
 }

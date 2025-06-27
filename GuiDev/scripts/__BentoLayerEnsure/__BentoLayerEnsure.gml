@@ -2,9 +2,9 @@
 
 /// @param layerOrName
 /// @param environmentOrName
-/// @param [fallback=current]
+/// @param [fallbackLayer=current]
 
-function __BentoLayerEnsure(_layerOrName, _environmentOrName = undefined, _fallback = undefined)
+function __BentoLayerEnsure(_layerOrName, _environmentOrName = undefined, _fallbackLayer = undefined)
 {
     static _system = __BentoSystem();
     
@@ -18,5 +18,5 @@ function __BentoLayerEnsure(_layerOrName, _environmentOrName = undefined, _fallb
         return __BentoLayerFind(_layerOrName, __BentoEnvironmentEnsure(_environmentOrName));
     }
     
-    return _fallback ?? _system.__layerCurrent;
+    return _fallbackLayer ?? _system.__layerCurrent;
 }

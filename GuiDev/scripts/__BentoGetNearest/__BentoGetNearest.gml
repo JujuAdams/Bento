@@ -5,14 +5,13 @@
 /// 
 /// @param x
 /// @param y
-/// @param [excludeArray]
-/// @param [layer=current]
+/// @param excludeArray
 
-function __BentoGetNearest(_x, _y, _excludeArray = [], _layer = undefined)
+function __BentoGetNearest(_x, _y, _excludeArray)
 {
     static _system = __BentoSystem();
     
-    _layer ??= _system.__layerCurrent;
+    var _layer = _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
     
     if (not _layer.__navDirectional)

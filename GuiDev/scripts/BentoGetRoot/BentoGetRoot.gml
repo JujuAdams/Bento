@@ -3,13 +3,11 @@
 /// Returns the root instance. This should always exist! If it doesn't then something very bad has
 /// happened and this function will throw an error accordingly.
 /// 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoGetRoot(_layer = undefined)
+function BentoGetRoot(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         if (not BentoExists(__rootElement))
         {
@@ -19,4 +17,6 @@ function BentoGetRoot(_layer = undefined)
         
         return __rootElement;
     }
+    
+    return BENTO_NO_ELEMENT;
 }

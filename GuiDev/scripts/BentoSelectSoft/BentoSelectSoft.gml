@@ -5,12 +5,10 @@
 /// when the navigation mode is set to `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD`.
 /// 
 /// @param element
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoSelectSoft(_element, _layer = undefined)
+function BentoSelectSoft(_element, _layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    _layer ??= _system.__layerCurrent;
-    _layer.__hoverElementSoft = _element;
+    var _layer = __BentoLayerEnsure(_layerOrName);
+    if (_layer != undefined) _layer.__hoverElementSoft = _element;
 }

@@ -2,13 +2,11 @@
 
 /// Returns the x-coordinate of the cursor's position.
 /// 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoCursorGetX(_layer = undefined)
+function BentoCursorGetX(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         if (__navMode == BENTO_MODE_MOUSE)
         {
@@ -22,9 +20,7 @@ function BentoCursorGetX(_layer = undefined)
         {
             return __mouseHold? __mouseX : __mousePrevX;
         }
-        else
-        {
-            return 0;
-        }
     }
+    
+    return 0;
 }

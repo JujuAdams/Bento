@@ -4,13 +4,11 @@
 /// `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD`.
 /// 
 /// @param instance
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoSelect(_element, _layer = undefined)
+function BentoSelect(_element, _layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         __hoverElement     = _element;
         __hoverElementSoft = BENTO_NO_ELEMENT;

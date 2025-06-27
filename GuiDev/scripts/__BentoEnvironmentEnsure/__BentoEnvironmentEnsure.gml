@@ -14,8 +14,8 @@ function __BentoEnvironmentEnsure(_environmentOrName, _fallback = undefined)
     
     if (is_string(_environmentOrName))
     {
-        var _environmentOrName = __BentoEnvironmentFind(_environmentOrName);
-        if (_environmentOrName != undefined) return _environmentOrName;
+        var _environment = __BentoEnvironmentFind(_environmentOrName);
+        if (_environment != undefined) return _environment;
     }
     
     return _fallback ?? _system.__environmentCurrent;

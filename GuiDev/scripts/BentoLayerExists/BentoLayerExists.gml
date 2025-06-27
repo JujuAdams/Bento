@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns if a layer exists.
+/// 
 /// @param layerOrName
 /// @param [environmentName=current]
 

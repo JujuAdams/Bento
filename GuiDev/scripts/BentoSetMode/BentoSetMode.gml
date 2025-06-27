@@ -9,13 +9,11 @@
 /// - `BENTO_MODE_TOUCH`
 /// 
 /// @param mode
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoSetMode(_newMode, _layer = undefined)
+function BentoSetMode(_newMode, _layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         if (__navMode == _newMode) return;
         

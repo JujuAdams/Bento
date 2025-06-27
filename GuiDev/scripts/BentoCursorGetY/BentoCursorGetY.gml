@@ -2,13 +2,11 @@
 
 /// Returns the y-coordinate of the cursor's position.
 /// 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoCursorGetY(_layer = undefined)
+function BentoCursorGetY(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         if (__navMode == BENTO_MODE_MOUSE)
         {
@@ -22,9 +20,7 @@ function BentoCursorGetY(_layer = undefined)
         {
             return __mouseHold? __mouseY : __mousePrevY;
         }
-        else
-        {
-            return 0;
-        }
     }
+    
+    return 0;
 }

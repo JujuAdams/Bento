@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Stops all animations on a layer.
+/// 
 /// @param name
 /// @param [environmentName=current]
 

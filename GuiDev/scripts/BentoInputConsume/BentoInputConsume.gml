@@ -2,13 +2,11 @@
 
 /// "Consumes" all user input.
 /// 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoInputConsume(_layer = undefined)
+function BentoInputConsume(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         __primaryConsumed = true;
         

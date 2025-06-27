@@ -1,13 +1,13 @@
 // Feather disable all
 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoCursorGetPressY(_layer = undefined)
+function BentoCursorGetPressY(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         return __navPointer? __mousePressY : __directionalLastY;
     }
+    
+    return 0;
 }

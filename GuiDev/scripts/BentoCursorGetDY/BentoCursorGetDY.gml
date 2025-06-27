@@ -8,13 +8,11 @@
 /// - If the navigation mode is set to `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD` then this function
 ///   returns the `dY` value set by `BentoInputDirectional()`.
 /// 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoCursorGetDY(_layer = undefined)
+function BentoCursorGetDY(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         if (__navPointer)
         {

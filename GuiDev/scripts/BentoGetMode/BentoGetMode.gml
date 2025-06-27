@@ -9,12 +9,26 @@
 /// - `BENTO_MODE_GAMEPAD`
 /// - `BENTO_MODE_TOUCH`
 /// 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoGetMode(_layer = undefined)
+function BentoGetMode(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
+    var _layer = __BentoLayerEnsure(_layerOrName);
+    if (_layer == undefined)
+    {
+        if (is_struct(_layerOrName))
+        {
+            __BentoError("Could not find layer (datatype=struct)");
+        }
+        else if (is_array(_layerOrName))
+        {
+            __BentoError("Could not find layer (datatype=array)");
+        }
+        else
+        {
+            __BentoError($"Could not find layer \"{_layerOrName}\"");
+        }
+    }
     
-    _layer ??= _system.__layerCurrent;
     return _layer.__navMode;
 }

@@ -2,13 +2,11 @@
 
 /// Closes focus for all focused elements on the given layer.
 /// 
-/// @param [layer=current]
+/// @param [layerOrName=current]
 
-function BentoFocusCloseAll(_layer = undefined)
+function BentoFocusCloseAll(_layerOrName = undefined)
 {
-    static _system = __BentoSystem();
-    
-    with(_layer ?? _system.__layerCurrent)
+    with(__BentoLayerEnsure(_layerOrName))
     {
         var _focusStack = __layer.__focusStack;
         if (array_length(_focusStack) > 0)

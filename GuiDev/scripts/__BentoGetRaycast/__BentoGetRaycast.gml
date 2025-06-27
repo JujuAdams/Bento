@@ -9,17 +9,16 @@
 /// @param y
 /// @param directionX
 /// @param directionY
-/// @param [excludeArray]
-/// @param [scrollParent]
-/// @param [layer=current]
+/// @param excludeArray
+/// @param scrollParent
 
-function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray = [], _scrollParent = undefined, _layer = undefined)
+function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollParent)
 {
     static _system = __BentoSystem();
     
     var _baseDist = dot_product(_dX, _dY, _x, _y);
     
-    _layer ??= _system.__layerCurrent;
+    var _layer = _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
     
     if (not _layer.__navDirectional)

@@ -1,11 +1,13 @@
 // Feather disable all
 
-/// @param name
+/// Returns if a layer contains any animating elements.
+/// 
+/// @param layerOrName
 /// @param [environmentName=current]
 
-function BentoLayerGetAnimating(_name, _environmentName = undefined)
+function BentoLayerGetAnimating(_layerOrName, _environmentName = undefined)
 {
-    var _layerStruct = __BentoLayerFind(_name, __BentoEnvironmentEnsure(_environmentName));
+    var _layerStruct = __BentoLayerEnsure(_layerOrName, __BentoEnvironmentEnsure(_environmentName));
     if (_layerStruct == undefined) return;
     
     return (not ds_map_empty(_layerStruct.__animatingMap));
