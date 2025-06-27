@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoSetRaycastDisable",
+  "%Name":"BentoGetRaycastEnable",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoSetRaycastDisable",
+  "name":"BentoGetRaycastEnable",
   "parent":{
     "name":"Directional Only",
     "path":"folders/Library/Functions/Input & Navigation/Directional Only.yy",

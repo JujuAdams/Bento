@@ -3,7 +3,7 @@
 function TestAlignSelf()
 {
     var _json = {
-        object: oBentoLibList,
+        object: oBentoList,
         name: "list",
         vars: {
             image_blend: c_ltgray,
@@ -18,7 +18,7 @@ function TestAlignSelf()
         },
         children: [
             {
-                object: oBentoLibSprite,
+                object: oBentoSprite,
                 name: "first",
                 vars: {
                     image_blend: c_gray,
@@ -29,7 +29,7 @@ function TestAlignSelf()
                 },
                 children: [
                     {
-                        object: oBentoLibSprite,
+                        object: oBentoSprite,
                         name: "second",
                         vars: {
                             image_blend: c_dkgray,
@@ -42,7 +42,7 @@ function TestAlignSelf()
                 ],
             },
             {
-                object: oBentoLibSprite,
+                object: oBentoSprite,
                 vars: {
                     image_blend: c_gray,
                 },
@@ -54,7 +54,7 @@ function TestAlignSelf()
                 },
             },
             {
-                object: oBentoLibSprite,
+                object: oBentoSprite,
                 vars: {
                     image_blend: c_gray,
                 },

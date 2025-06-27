@@ -9,7 +9,7 @@ function BentoConstrSprite(_sprite, _parent = other) : BentoConstrAncestor(_pare
     
     BentoLayoutSetSize(sprite_get_width(sprite), sprite_get_height(sprite));
     BentoLayoutSetOrigin(sprite_get_xoffset(_sprite) / sprite_get_width(_sprite),
-                       sprite_get_yoffset(_sprite) / sprite_get_height(_sprite));
+                         sprite_get_yoffset(_sprite) / sprite_get_height(_sprite));
     
     funcDraw = function()
     {

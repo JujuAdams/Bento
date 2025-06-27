@@ -5,7 +5,7 @@ structs must conform to the general GUI instance definition spec.
 GUI instance definitions are structs. The struct must contain an `.object` property. This is the
 GameMaker object that will be instantiated when creating the GUI instance. The `.object` property
 can be the name of the object as a string, a GameMaker handle, or a stringified GameMaker handle.
-Objects must inherit from `oBentoLibAncestor`.
+Objects must inherit from `oBentoAncestor`.
 
 Instance definitions struct may also contain a `.name` property. This value will be passed to
 `BentoNameSet()` targetting the created instance.
@@ -50,7 +50,7 @@ function (`BentoSetOffset()` etc.). There are many layout properties that can be
 Here is a brief example:
 
 {
-    object: oBentoLibList,
+    object: oBentoList,
     visible: false,
     layout: {
         resize: ["shrink", "static"],
@@ -59,7 +59,7 @@ Here is a brief example:
     },
     children: [
         {
-            object: oBentoLibSprite,
+            object: oBentoSprite,
             vars: {
                 image_blend: c_red,
             },
@@ -69,7 +69,7 @@ Here is a brief example:
             },
         },
         {
-            object: oBentoLibSprite,
+            object: oBentoSprite,
             vars: {
                 image_blend: c_blue,
             },
@@ -194,7 +194,7 @@ Here is a brief example:
 
 .gutter
     Calls the `BentoLayoutSetGutter()` function on the created instance. This property can only be
-    used for objects that inherit from `oBentoLibList` or `oBentoLibGrid`.
+    used for objects that inherit from `oBentoList` or `oBentoGrid`.
     
     Can be a 2-element array:
         [ <x size>, <y size> ]
@@ -209,7 +209,7 @@ Here is a brief example:
 
 .listAlign
     Calls the `BentoLayoutSetListAlign()` function on the created instance. This property can only be used
-    for objects that inherit from `oBentoLibList`.
+    for objects that inherit from `oBentoList`.
     
     Can be a 2-element array:
         [ <h align>, <v align> ]
@@ -240,7 +240,7 @@ Here is a brief example:
 
 .listAxis
     Calls the `BentoLayoutSetListAxis()` function on the created instance. This property can only be used
-    for objects that inherit from `oBentoLibList`.
+    for objects that inherit from `oBentoList`.
     
     List axis values must be one of the following:
     - "x"
@@ -252,7 +252,7 @@ Here is a brief example:
     
 .gridSize
     Calls the `BentoLayoutSetGridSize()` function on the created instance. This property can only be used
-    for objects that inherit from `oBentoLibGrid`.
+    for objects that inherit from `oBentoGrid`.
     
     Can be a 2-element array:
         [ <columns>, <rows> ]

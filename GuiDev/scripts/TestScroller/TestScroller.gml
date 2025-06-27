@@ -4,7 +4,7 @@ function TestScroller()
 {
     var _json = [
         {
-            object: oBentoLibList,
+            object: oBentoList,
             layout: {
                 offset: [30, 30],
                 padding: 10,

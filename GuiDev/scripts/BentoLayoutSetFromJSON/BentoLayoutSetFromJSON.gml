@@ -50,9 +50,9 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             else if (_name == "gutter")
             {
                 //FIXME - Reimplement to include struct elements
-                //if ((not __BentoObjectInheritsFrom(object_index, oBentoLibList)) && (not __BentoObjectInheritsFrom(object_index, oBentoLibGrid)))
+                //if ((not __BentoObjectInheritsFrom(object_index, oBentoList)) && (not __BentoObjectInheritsFrom(object_index, oBentoGrid)))
                 //{
-                //    __BentoError($"Cannot use .gutter on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoLibList)} or {object_get_name(oBentoLibGrid)}");
+                //    __BentoError($"Cannot use .gutter on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoList)} or {object_get_name(oBentoGrid)}");
                 //}
                 
                 __BentoLayoutSetFromJSON_gutter(_element, _value);
@@ -60,9 +60,9 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             else if (_name == "listAlign")
             {
                 //FIXME - Reimplement to include struct elements
-                //if (not __BentoObjectInheritsFrom(object_index, oBentoLibList))
+                //if (not __BentoObjectInheritsFrom(object_index, oBentoList))
                 //{
-                //    __BentoError($"Cannot use .listAlign on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoLibList)}");
+                //    __BentoError($"Cannot use .listAlign on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoList)}");
                 //}
                 
                 __BentoLayoutSetFromJSON_listAlign(_element, _value);
@@ -70,9 +70,9 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             else if (_name == "listAxis")
             {
                 //FIXME - Reimplement to include struct elements
-                //if (not __BentoObjectInheritsFrom(object_index, oBentoLibList))
+                //if (not __BentoObjectInheritsFrom(object_index, oBentoList))
                 //{
-                //    __BentoError($"Cannot use .listAxis on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoLibList)}");
+                //    __BentoError($"Cannot use .listAxis on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoList)}");
                 //}
                 
                 __BentoLayoutSetFromJSON_listAxis(_element, _value);
@@ -80,9 +80,9 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             else if (_name == "gridSize")
             {
                 //FIXME - Reimplement to include struct elements
-                //if (not __BentoObjectInheritsFrom(object_index, oBentoLibGrid))
+                //if (not __BentoObjectInheritsFrom(object_index, oBentoGrid))
                 //{
-                //    __BentoError($"Cannot use .gridSize on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoLibGrid)}");
+                //    __BentoError($"Cannot use .gridSize on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoGrid)}");
                 //}
                         
                 __BentoLayoutSetFromJSON_gridSize(_element, _value);

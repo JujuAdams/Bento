@@ -13,9 +13,9 @@ function BentoCreateObject(_object, _struct = undefined, _parent = self)
     
     if (not BentoExists(_parent)) __BentoError("Parent doesn't exist");
     
-    if ((_object != oBentoLibAncestor) && (not object_is_ancestor(_object, oBentoLibAncestor)))
+    if ((_object != oBentoAncestor) && (not object_is_ancestor(_object, oBentoAncestor)))
     {
-        __BentoError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oBentoLibAncestor)}");
+        __BentoError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oBentoAncestor)}");
     }
     
     var _oldParent = _system.__tempParent;

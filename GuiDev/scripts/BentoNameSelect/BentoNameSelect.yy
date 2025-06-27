@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoNameNavSelect",
+  "%Name":"BentoNameSelect",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoNameNavSelect",
+  "name":"BentoNameSelect",
   "parent":{
     "name":"Names",
     "path":"folders/Library/Functions/Names.yy",

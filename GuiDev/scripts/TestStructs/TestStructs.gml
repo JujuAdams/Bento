@@ -13,7 +13,7 @@ function TestStructs()
         var _text = new BentoConstrText("Hello World", undefined, fa_center);
         BentoLayoutSetResizeType(GUI_RESIZE_EXPAND, undefined, _text);
         
-        var _text = BentoCreateObject(oBentoLibText, { text: "Hello World", hAlign: fa_center });
+        var _text = BentoCreateObject(oBentoText, { text: "Hello World", hAlign: fa_center });
         BentoLayoutSetResizeType(GUI_RESIZE_EXPAND, undefined, _text);
         
         new ExampleConstrButton(undefined, "Test");

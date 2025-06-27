@@ -81,7 +81,7 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
             {
                 //If the navigation instance isn't selectable then fall back on a raycast
                 
-                if (((_dX != 0) && _prevBento.__raycastDisableHori) || ((_dY != 0) && _prevBento.__raycastDisableVert))
+                if (((_dX != 0) && (not _prevBento.__raycastEnableHori)) || ((_dY != 0) && (not _prevBento.__raycastEnableVert)))
                 {
                     //Raycast is disabled for the previous instance!
                     _nextElement = _prevElement;

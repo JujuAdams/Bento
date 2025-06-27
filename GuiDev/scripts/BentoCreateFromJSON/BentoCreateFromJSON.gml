@@ -84,9 +84,9 @@ function __BentoCreateViaJSONInner(_json, _parent, _metadata)
                 __BentoError($"Could not find object \"{object_get_name(_object)}\"");
             }
             
-            if (not __BentoObjectInheritsFrom(_object, oBentoLibAncestor))
+            if (not __BentoObjectInheritsFrom(_object, oBentoAncestor))
             {
-                __BentoError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oBentoLibAncestor)}");
+                __BentoError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oBentoAncestor)}");
             }
             
             //Unpack and validate the .vars property

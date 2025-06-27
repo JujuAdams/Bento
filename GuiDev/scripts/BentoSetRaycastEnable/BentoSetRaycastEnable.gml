@@ -5,14 +5,14 @@
 /// *don't* need to call this function if you have set up a navigation link with `BentoLinkHori()`
 /// or `BentoLinkVert()`.
 /// 
-/// @param disableHori
-/// @param disableVert
+/// @param enableHori
+/// @param enableVert
 /// @param [element=self]
 
-function BentoSetRaycastDisable(_disableHori, _disableVert, _element = self)
+function BentoSetRaycastEnable(_enableHori, _enableVert, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    _element.GUI_VARS.__raycastDisableHori = _disableHori;
-    _element.GUI_VARS.__raycastDisableVert = _disableVert;
+    _element.GUI_VARS.__raycastEnableHori = _enableHori;
+    _element.GUI_VARS.__raycastEnableVert = _enableVert;
 }

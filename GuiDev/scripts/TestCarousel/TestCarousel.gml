@@ -4,7 +4,7 @@ function TestCarousel()
 {
     var _json = [
         {
-            object: oBentoLibList,
+            object: oBentoList,
             layout: {
                 offset: [-30, -30],
                 alignSelf: [1, 1],

@@ -4,7 +4,7 @@
 /// 
 /// @param name
 
-function BentoNameNavSelect(_name)
+function BentoNameSelect(_name)
 {
     return BentoSelect(BentoNameFind(_name));
 }

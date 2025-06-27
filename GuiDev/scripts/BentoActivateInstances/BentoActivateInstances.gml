@@ -5,5 +5,5 @@
 
 function BentoActivateInstances()
 {
-    instance_activate_object(oBentoLibAncestor);
+    instance_activate_object(oBentoAncestor);
 }
