@@ -22,9 +22,13 @@
 /// `.object` or `.construct` (mutually exclusive)
 /// `.vars` (only when using `.object`)
 /// `.offset`
+/// `.button`  //TODO - Write documentation
+/// `.visible` //TODO - Write documentation
 /// `.name`
 /// `.children`
 /// `.layout`
+/// `.scissor` //TODO - Move to separate function, write docs
+/// `.scroll`  //TODO - Move to separate function, write docs
 /// 
 /// 
 /// 
@@ -354,12 +358,6 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
         else
         {
             __BentoError($"JSON must contain one of either .object or .struct");
-        }
-        
-        var _forceStep = _json[$ "forceStep"];
-        if (_forceStep != undefined)
-        {
-            BentoSetForceStep(_forceStep, _element);
         }
         
         var _button = _json[$ "button"];

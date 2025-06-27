@@ -19,9 +19,11 @@
 /// `.padding`   executes `BentoLayoutSetPadding()`
 /// `.align`     executes `BentoLayoutSetAlignSelf()`
 /// `.gutter`    executes `BentoLayoutSetGutter()`
-/// `.listAlign` executes `BentoLayoutSetListAlign()`
-/// `.listAxis`  executes `BentoLayoutSetListAxis()`
-/// `.gridSize`  executes `BentoLayoutSetGridSize()`
+/// `.list`      executes `BentoLayoutSetList()` //TODO
+/// `.grid`      executes `BentoLayoutSetGrid()` //TODO
+/// `.listAlign` executes `BentoLayoutSetListAlign()` //TODO - Remove in favour of the above
+/// `.listAxis`  executes `BentoLayoutSetListAxis()`  //TODO - Remove in favour of the above
+/// `.gridSize`  executes `BentoLayoutSetGridSize()`  //TODO - Remove in favour of the above
 /// 
 /// Example:
 /// ```
