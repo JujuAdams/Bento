@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// @param attachedInstance
+/// @param attachedElement
 
 function __BentoClassVariables(_attachedElement) constructor
 {
@@ -288,8 +288,8 @@ function __BentoClassVariables(_attachedElement) constructor
     
     __layoutClampInside = false;
     
-    //Alignment against the region that the parent has allocated for this instance. This is especially
-    //useful for children of non-list / non-grid parents where you might want to position the instance
+    //Alignment against the region that the parent has allocated for this element. This is especially
+    //useful for children of non-list / non-grid parents where you might want to position the element
     //relative to edges and corners.
     __layoutAlignH = BENTO_DEFAULT_LAYOUT_ALIGN_H;
     __layoutAlignV = BENTO_DEFAULT_LAYOUT_ALIGN_V;
@@ -299,12 +299,12 @@ function __BentoClassVariables(_attachedElement) constructor
     __layoutOriginY = 0;
     __layoutOriginAuto = __elementIsInstance; //Instances default to auto origin
     
-    //The "preferred" (ideal) size for the instance. A value of 0 (or less) indicates that this value
+    //The "preferred" (ideal) size for the element. A value of 0 (or less) indicates that this value
     //is unset and should be inferred from some other property.
     __layoutWidthPref  = 0;
     __layoutHeightPref = 0;
     
-    //The upper and lower bounds for the instance. The preferred size is always clamped within this
+    //The upper and lower bounds for the element. The preferred size is always clamped within this
     //range.
     __layoutWidthMin  = 0;
     __layoutHeightMin = 0;
@@ -321,14 +321,14 @@ function __BentoClassVariables(_attachedElement) constructor
     __solverPadRight  = 0;
     __solverPadBottom = 0;
     
-    //How the instance should resize. "Static" is as the name suggests - the instance won't change
-    //size. "Shrink" will cause the instance to shrink down to shrink any children it has inside. If an
-    //instance has no ch\ildren, the "shrink" resize type will behave the same as "static". "expand" will
-    //cause the instance to increase size in that axis to fill available space in the parent.
+    //How the element should resize. "Static" is as the name suggests - the element won't change
+    //size. "Shrink" will cause the element to shrink down to shrink any children it has inside. If an
+    //element has no ch\ildren, the "shrink" resize type will behave the same as "static". "expand" will
+    //cause the element to increase size in that axis to fill available space in the parent.
     __layoutWidthResize  = BENTO_RESIZE_STATIC;
     __layoutHeightResize = BENTO_RESIZE_STATIC;
     
-    //The size required to shrink all of this instance's children at their preferred size.
+    //The size required to shrink all of this element's children at their preferred size.
     __solverGetShrinkWidth  = 0;
     __solverGetShrinkHeight = 0;
     
@@ -339,13 +339,13 @@ function __BentoClassVariables(_attachedElement) constructor
     __layoutType = BENTO_LAYOUT_RECT;
     
     //Function that sets the solver's shrink width and minimum width. This is a boring function for most
-    //instances. It gets more exciting for lists - see `__BentoSolverListGetShrinkWidth()`. This function also
-    //preliminarily sets the final calculated width for the instance (`__solvedWidth`).
+    //elements. It gets more exciting for lists - see `__BentoSolverListGetShrinkWidth()`. This function also
+    //preliminarily sets the final calculated width for the element (`__solvedWidth`).
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_TEXT` override this function.
     __SolverGetShrinkWidth = method(self, __BentoSolverRectGetShrinkWidth);
     
-    //Resizes both this instance and any child instances that are set to "shrink" or "expand" resize types.
+    //Resizes both this element and any child elements that are set to "shrink" or "expand" resize types.
     //See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
@@ -355,13 +355,13 @@ function __BentoClassVariables(_attachedElement) constructor
     }
     
     //Function that sets the solver's shrink height and minimum height. This is a boring function for most
-    //instances. It gets more exciting for lists - see `__BentoSolverListGetShrinkHeight()`. This function also
-    //preliminarily sets the final calculated height for the instance (`__solvedHeight`).
+    //elements. It gets more exciting for lists - see `__BentoSolverListGetShrinkHeight()`. This function also
+    //preliminarily sets the final calculated height for the element (`__solvedHeight`).
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_TEXT` override this function.
     __SolverGetShrinkHeight = method(self, __BentoSolverRectGetShrinkHeight);
     
-    //Resizes both this instance and any child instances that are set to "shrink" or "expand" resize types.
+    //Resizes both this element and any child elements that are set to "shrink" or "expand" resize types.
     //See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
@@ -371,9 +371,9 @@ function __BentoClassVariables(_attachedElement) constructor
         //Do nothing
     }
     
-    //Final pass to set the instance's position. Instances are given a region that they are permitted
-    //to occupy. For instances that are children of "boring" (non-list, non-grid) parents, the
-    //allocated space is equal to the full size of the parent. If an instance is a parent of a list or
+    //Final pass to set the element's position. Elements are given a region that they are permitted
+    //to occupy. For elements that are children of "boring" (non-list, non-grid) parents, the
+    //allocated space is equal to the full size of the parent. If an element is a parent of a list or
     //grid then the allocated space will be smaller.
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.

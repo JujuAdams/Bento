@@ -297,7 +297,7 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
     {
         if (variable_struct_exists(_json, "object"))
         {
-            if (variable_struct_exists(_json, "struct"))
+            if (variable_struct_exists(_json, "struct")) //TODO - Swap `.struct` out for `.construct`
             {
                 __BentoError($"JSON must only contain .object or .struct");
             }

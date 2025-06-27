@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// @param instance
+/// @param element
 
 function __BentoMarkTransformDirty(_element)
 {

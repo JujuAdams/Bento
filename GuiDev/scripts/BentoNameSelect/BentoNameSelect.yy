@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoNameSelect",
   "parent":{
-    "name":"Names",
-    "path":"folders/Library/Functions/Names.yy",
+    "name":"Functions",
+    "path":"folders/Library/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

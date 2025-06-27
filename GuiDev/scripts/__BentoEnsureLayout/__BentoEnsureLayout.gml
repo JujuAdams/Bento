@@ -14,7 +14,7 @@ function __BentoEnsureLayout()
     __BentoEnsureLayerOrderInner(_layoutOrder, __rootElement);
     var _count = array_length(_layoutOrder);
     
-    //Populate static widths of instances
+    //Populate static widths of elements
     var _i = _count-1;
     repeat(_count)
     {
@@ -22,7 +22,7 @@ function __BentoEnsureLayout()
         --_i;
     }
     
-    //Redistribute instance widths, shrinking and expanding instances
+    //Redistribute element widths, shrinking and expanding elements
     var _i = 0;
     repeat(_count)
     {
@@ -30,7 +30,7 @@ function __BentoEnsureLayout()
         ++_i;
     }
     
-    //Populate static heights of instances
+    //Populate static heights of elements
     var _i = _count-1;
     repeat(_count)
     {
@@ -38,7 +38,7 @@ function __BentoEnsureLayout()
         --_i;
     }
     
-    //Redistribute instance heights, shrinking and expanding instances
+    //Redistribute element heights, shrinking and expanding elements
     var _i = 0;
     repeat(_count)
     {

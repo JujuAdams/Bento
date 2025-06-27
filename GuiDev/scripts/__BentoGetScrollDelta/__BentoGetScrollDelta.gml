@@ -40,7 +40,7 @@ function __BentoGetScrollDelta(_element = self)
                         
                         if (_instR - _instL > _parR - _parL)
                         {
-                            //Try to place the instance in the middle of the parent
+                            //Try to place the element in the middle of the parent
                             _dX = (0.5*(_parL + _parR) - 0.5*(_instL + _instR)) - __scrollX;
                             _tooBig = true;
                         }
@@ -85,7 +85,7 @@ function __BentoGetScrollDelta(_element = self)
                         
                         if (_instB - _instT > _parB - _parT)
                         {
-                            //Try to place the instance in the middle of the parent
+                            //Try to place the element in the middle of the parent
                             _dY = (0.5*(_parT + _parB) - 0.5*(_instT + _instB)) - __scrollY;
                             _tooBig = true;
                         }

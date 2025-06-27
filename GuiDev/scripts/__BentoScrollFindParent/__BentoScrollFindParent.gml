@@ -2,7 +2,7 @@
 
 /// Finds the nearest scrollable ancestor up the hierarchy.
 /// 
-/// @param instance
+/// @param element
 
 function __BentoScrollFindParent(_element)
 {

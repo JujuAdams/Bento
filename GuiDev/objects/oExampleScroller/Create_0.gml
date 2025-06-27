@@ -11,10 +11,10 @@ event_inherited();
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 
 // Disables raycasting in particular axes. This only applies to directional input where raycasting
-// is used to work out which instance to jump to when pushing in a particular direction. This does
+// is used to work out which element to jump to when pushing in a particular direction. This does
 // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
 // raycasting so that it doesn't interfere with scrolling through options.
-BentoSetRaycastDisable(true, false);
+BentoSetRaycastEnable(false, true);
 
 BentoSetIfNotDefined("title",     "Example");
 BentoSetIfNotDefined("valueStep", 1);

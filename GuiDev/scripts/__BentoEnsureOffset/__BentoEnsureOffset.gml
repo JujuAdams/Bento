@@ -7,7 +7,7 @@ function __BentoEnsureOffset()
     var _dirtyOffsetArray = __dirtyOffsetArray;
     if (array_length(_dirtyOffsetArray) <= 0) return;
     
-    //Sort from newest instance to oldest instance. This will usually get the following loop to
+    //Sort from newest element to oldest element. This will usually get the following loop to
     //execute from the most senior node to the most junior leaf.
     array_sort(_dirtyOffsetArray, function(_a, _b)
     {

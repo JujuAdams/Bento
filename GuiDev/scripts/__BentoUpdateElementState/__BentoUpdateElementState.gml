@@ -1,12 +1,12 @@
 // Feather disable all
 
-/// Updates library state for instances that need it.
+/// Updates library state for elements that need it.
 /// 
 /// Must be called in the scope of `__BentoClassLayer`.
 
 function __BentoUpdateElementState()
 {
-    //Reset instance state for updating instances
+    //Reset state for updating elements
     array_resize(__updateElementArray, array_filter_ext(__updateElementArray, function(_element)
     {
         if (not BentoExists(_element)) return false;
@@ -31,7 +31,7 @@ function __BentoUpdateElementState()
             //Manage hover state
             if (other.__hoverElement == _element)
             {
-                //System says this instance is hovered
+                //System says this element is hovered
                 
                 if (__hoverState == __BENTO_START)
                 {
@@ -50,7 +50,7 @@ function __BentoUpdateElementState()
             }
             else
             {
-                //System says this instance is not hovered
+                //System says this element is not hovered
                 
                 if (__hoverState == __BENTO_END)
                 {
@@ -73,7 +73,7 @@ function __BentoUpdateElementState()
                     __primaryState = __BENTO_START;
                     other.__holdElement = _element;
                     
-                    //Pass through a click signal to the instance if we're clicking on press
+                    //Pass through a click signal to the element if we're clicking on press
                     if (_clickOnPress) __click = true;
                 }
             }
@@ -89,7 +89,7 @@ function __BentoUpdateElementState()
                 }
                 else
                 {
-                    //Unset the system's hold instance if it's us
+                    //Unset the system's hold element if it's us
                     if (other.__holdElement == _element)
                     {
                         other.__holdElement = BENTO_NO_ELEMENT;
@@ -103,7 +103,7 @@ function __BentoUpdateElementState()
                     {
                         __primaryState = __BENTO_END;
                         
-                        //Pass through a click signal to the instance if we're clicking on released (and the instance is still selected)
+                        //Pass through a click signal to the element if we're clicking on released (and the element is still selected)
                         if ((not _clickOnPress) && (other.__primaryState == __BENTO_END))
                         {
                             if (other.__navMode == BENTO_MODE_TOUCH)
@@ -120,7 +120,7 @@ function __BentoUpdateElementState()
                 }
             }
             
-            //Remove this instance from the update loop if it's inactive
+            //Remove this element from the update loop if it's inactive
             if ((__hoverState == __BENTO_OFF) && (__primaryState == __BENTO_OFF))
             {
                 __updating = false;

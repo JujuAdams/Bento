@@ -201,7 +201,7 @@ function __BentoClassLayer(_environment, _name) constructor
         // Layout and step order
         ///////
         
-        //Ensure our root instance is the same size as the overall Bento space
+        //Ensure our root element is the same size as the overall Bento space
         BentoLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
         
         //Keep our layout and step order updated as necessary. Updating the layer and step order here

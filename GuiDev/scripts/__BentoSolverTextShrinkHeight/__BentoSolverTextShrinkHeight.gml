@@ -6,7 +6,7 @@ function __BentoSolverTextGetShrinkHeight()
     
     if (__layoutHeightResize == BENTO_RESIZE_SHRINK)
     {
-        //Change the height of this instance based on the new wrapping rules.
+        //Change the height of this element based on the new wrapping rules.
         //
         //P.S. Not sure how well GameMaker handles `infinity` for some internal functions
         var _height = clamp(string_height_ext(__attachedElement.text, -1, __solvedWidth), __layoutHeightMin, __layoutHeightMax);

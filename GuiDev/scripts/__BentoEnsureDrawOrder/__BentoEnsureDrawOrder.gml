@@ -68,7 +68,7 @@ function __BentoEnsureDrawOrderInner(_drawOrder, _element)
     {
         if (__disable) return;
         
-        //Calculate a lookup index based on the properties of this instance
+        //Calculate a lookup index based on the properties of this element
         var _lookup = ((__visible? __BENTO_DRAW_ORDER_VISIBLE : 0)
                     |  (__scissorEnabled? __BENTO_DRAW_ORDER_SCISSOR : 0)
                     |  ((__transformMatrix != undefined)? __BENTO_DRAW_ORDER_MATRIX : 0));

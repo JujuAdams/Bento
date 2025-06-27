@@ -1,10 +1,10 @@
 // Feather disable all
 
-/// Returns which instance is highlighted using the directional input highlighting rules. This
-/// function can return `BENTO_NO_ELEMENT` if no instance is available to highlight. This function should
+/// Returns which element is highlighted using the directional input highlighting rules. This
+/// function can return `BENTO_NO_ELEMENT` if no element is available to highlight. This function should
 /// only be called if we're using directional (keyboard and gamepad) input.
 /// 
-/// @param startInstance
+/// @param startElement
 /// @param dX
 /// @param dY
 
@@ -17,7 +17,7 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
     
     if (not __BentoGetHoverableInternal(_prevElement, false))
     {
-        //The instance we were previously highlighting is no longer valid (see __BentoGetHoverableInternal())
+        //The element we were previously highlighting is no longer valid (see __BentoGetHoverableInternal())
         
         if (__BentoGetHoverableInternal(__hoverElementSoft, false))
         {
@@ -26,7 +26,7 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
         }
         else
         {
-            //Otherwise fall back on searching for the nearest selectable instance
+            //Otherwise fall back on searching for the nearest selectable element
             _nextElement = __BentoGetNearest(__directionalLastX, __directionalLastY, _excludeArray);
         }
     }
@@ -34,22 +34,22 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
     {
         var _prevBento = _prevElement.BENTO_VARS;
         
-        //Previously selected instance is valid, process navigation
+        //Previously selected element is valid, process navigation
         if ((_dX == 0) && (_dY == 0))
         {
-            //No movement, keep the same instance we had before
+            //No movement, keep the same element we had before
             _nextElement = _prevElement;
         }
         else
         {
-            //Don't allow selection of the next instance if we're not visible
+            //Don't allow selection of the next element if we're not visible
             if (not BentoClipGetFullyVisible(_prevElement))
             {
                 BentoScrollTo(BentoScrollGetSpeed(_prevElement), _prevElement);
                 return _prevElement;
             }
             
-            //Choose a predefined navigable instance if possible
+            //Choose a predefined navigable element if possible
             if (_dX < 0)
             {
                 _nextElement = _prevBento.__linkLeft;
@@ -67,9 +67,9 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
                 _nextElement = _prevBento.__linkDown;
             }
             
-            //Only check if the next instance is properly visible if it's nested inside a different scroller to
-            //the previous instance. This ensures non-visible instances never get selected but that it's possible
-            //to navigate to visually hidden instances inside the scroller.
+            //Only check if the next element is properly visible if it's nested inside a different scroller to
+            //the previous element. This ensures non-visible elements never get selected but that it's possible
+            //to navigate to visually hidden elements inside the scroller.
             var _prevScrollParent = __BentoScrollFindParent(_prevElement);
             //FIXME - This should be the joint scissor and scroll parent
             if (not __BentoGetHoverableInternal(_nextElement, (_prevScrollParent != __BentoScrollFindParent(_nextElement))))
@@ -79,11 +79,11 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
             
             if (not BentoExists(_nextElement))
             {
-                //If the navigation instance isn't selectable then fall back on a raycast
+                //If the navigation element isn't selectable then fall back on a raycast
                 
                 if (((_dX != 0) && (not _prevBento.__raycastEnableX)) || ((_dY != 0) && (not _prevBento.__raycastEnableY)))
                 {
-                    //Raycast is disabled for the previous instance!
+                    //Raycast is disabled for the previous element!
                     _nextElement = _prevElement;
                 }
                 else
@@ -92,7 +92,7 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
                     
                     if (not BentoExists(_nextElement))
                     {
-                        //Raycast failed, no new instance can be selected
+                        //Raycast failed, no new element can be selected
                         _nextElement = _prevElement;
                     }
                 }

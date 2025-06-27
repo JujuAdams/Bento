@@ -1,7 +1,7 @@
 // Feather disable all
 
-/// Returns which instance is highlighted using the mouse & touch highlighting rules. This function
-/// can return `BENTO_NO_ELEMENT` if no instance is highlighted.
+/// Returns which element is highlighted using the mouse & touch highlighting rules. This function
+/// can return `BENTO_NO_ELEMENT` if no element is highlighted.
 
 function __BentoGetPointerHover(_mouseX, _mouseY)
 {
@@ -27,6 +27,8 @@ function __BentoGetPointerHover(_mouseX, _mouseY)
         --_i;
     }
 }
+
+// TODO - Remove
 
 /*
 function __BentoGetPointerHover(_mouseX, _mouseY)

@@ -10,7 +10,7 @@ function __BentoSolverRectGetShrinkWidth()
     }
     else if (__elementIsInstance && sprite_exists(__attachedElement.sprite_index))
     {
-        //Otherwise use the width of the element's sprite (if it's an instance element)
+        //Otherwise use the width of the element's sprite (if it's an instance)
         var _width = sprite_get_width(__attachedElement.sprite_index);
     }
     else

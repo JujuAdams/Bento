@@ -1,8 +1,8 @@
 // Feather disable all
 
-/// Starts the hold state for an instance.
+/// Starts the hold state for an element.
 /// 
-/// @param instance
+/// @param element
 
 function __BentoStartHold(_element)
 {

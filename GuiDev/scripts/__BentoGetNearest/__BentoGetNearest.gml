@@ -1,7 +1,7 @@
 // Feather disable all
 
-/// Returns the nearest instance to the given coordinate. The `excludeArray` argument can be set to
-/// an array of instance IDs that should be ignored by this function.
+/// Returns the nearest element to the given coordinate. The `excludeArray` argument can be set to
+/// an array of element IDs that should be ignored by this function.
 /// 
 /// @param x
 /// @param y

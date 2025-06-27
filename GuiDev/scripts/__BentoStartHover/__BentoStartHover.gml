@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Starts the hover state for an element.
+/// 
 /// @param element
 
 function __BentoStartHover(_element)

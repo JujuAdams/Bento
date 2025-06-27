@@ -10,7 +10,7 @@ function __BentoSolverRectGetShrinkHeight()
     }
     else if (__elementIsInstance && sprite_exists(__attachedElement.sprite_index))
     {
-        //Otherwise use the height of the element's sprite (if it's an instance element)
+        //Otherwise use the height of the element's sprite (if it's an instance)
         var _height = sprite_get_height(__attachedElement.sprite_index);
     }
     else
