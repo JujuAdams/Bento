@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoGetDrawEnd",
+  "%Name":"BentoSetDrawAfter",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoGetDrawEnd",
+  "name":"BentoSetDrawAfter",
   "parent":{
     "name":"Properties",
     "path":"folders/Library/Functions/Properties.yy",

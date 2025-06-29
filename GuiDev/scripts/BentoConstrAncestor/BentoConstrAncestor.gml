@@ -1,8 +1,16 @@
 // Feather disable all
 
-/// @param parent
+/// This constructor is the common ancestor for all (struct-based) Bento elements. All structs that
+/// you intend to work with Bento **must** be instantiated with a constructor that inherits from
+/// `BentoConstrAncestor`.
+/// 
+/// Any custom constructor you make that inherits from `BentoConstrAncestor()` can, and probably
+/// should, override the callback methods that exist by default. Additionally, there are a handful
+/// of read-only variables that you can use to get where Bento has positioned the struct.
+/// 
+/// @param [parent=self]
 
-function BentoConstrAncestor(_parent) constructor
+function BentoConstrAncestor(_parent = other) constructor
 {
     funcStep = function()
     {
@@ -35,15 +43,9 @@ function BentoConstrAncestor(_parent) constructor
         // element.
     }
     
-    ///////////////////////////
-    //                       //
-    //  Read-Only Variables  //
-    //                       //
-    ///////////////////////////
-    
-    //These variables give the position of various parts of this element in worldspace. They're
-    //read-only in the sense that they are liable to get overwritten by the library at unexpected
-    //times.
+    // These **read-only** variables give the position of various parts of this element in worldspace.
+    // They're read-only in the sense that they are liable to get overwritten by the library at unexpected
+    // times.
     
     bentoLeft   = 0;
     bentoTop    = 0;

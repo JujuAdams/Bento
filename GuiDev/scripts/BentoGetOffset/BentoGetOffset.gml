@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns a struct that contains two variables (`.x` and `.y`) that hold the x/y offset for the
+/// element. If the element doesn't exist, both `.x` and `.y` will be set to 0.
+/// 
 /// @param [element=self]
 
 function BentoGetOffset(_element = self)

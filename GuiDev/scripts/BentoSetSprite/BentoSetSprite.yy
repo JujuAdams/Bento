@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoSetSprite",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Library/Functions.yy",
+    "name":"Properties",
+    "path":"folders/Library/Functions/Properties.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

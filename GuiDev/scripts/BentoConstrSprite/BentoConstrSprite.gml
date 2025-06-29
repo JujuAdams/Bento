@@ -1,5 +1,12 @@
 // Feather disable all
 
+/// This constructor defines a simple sprite element that can be used within a Bento UI layout.
+/// 
+/// Example:
+/// ```
+/// new BentoConstrSprite(sprite_index);
+/// ```
+///
 /// @param sprite
 /// @param [parent=self]
 

@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns whether the element is visible.
+/// 
 /// @param [element=self]
 
 function BentoGetVisible(_element = self)

@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns whether an element is hoverable (i.e. its "over" state can be set).
+/// Returns whether an element is hoverable (i.e. its "hover" state can be set by Bento).
 /// 
 /// @param [element=self]
 /// @param [checkVisible=true]

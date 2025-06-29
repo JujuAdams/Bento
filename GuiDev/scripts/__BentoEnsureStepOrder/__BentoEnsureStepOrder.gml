@@ -28,6 +28,8 @@ function __BentoEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _lo
         
         //Determine whether we need to execute the Step user event
         //This should match the code in `BentoGetExecutesStep()`
+        //
+        //NOTE - This logic must match `BentoGetExecutesStep()`
         if (BENTO_ALWAYS_EXECUTE_STEP || (__buttonType & _navType) || __forceStep || __focused || __scissorEnabled)
         {
             __executesStep = true;

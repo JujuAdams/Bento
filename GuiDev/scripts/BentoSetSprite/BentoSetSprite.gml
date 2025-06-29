@@ -1,19 +1,23 @@
 // Feather disable all
 
+/// Safely sets the sprite for an instance-based Bento element. This function ensures that any
+/// automatic layouts are properly updated.
+/// 
 /// @param sprite
-/// @param [element=self]
+/// @param [instance=self]
+/// @param [force=false]
 
-function BentoSetSprite(_sprite, _element = self)
+function BentoSetSprite(_sprite, _instance = self, _force = false)
 {
-    if (not BentoExists(_element)) return;
+    if (not BentoExists(_instance)) return;
     
-    if (_element.BENTO_VARS.__elementIsInstance)
+    if (_instance.BENTO_VARS.__elementIsInstance)
     {
-        if (_element.sprite_index != _sprite)
+        if ((_instance.sprite_index != _sprite) || _force)
         {
-            _element.sprite_index = _sprite;
+            _instance.sprite_index = _sprite;
             
-            with(_element.BENTO_VARS)
+            with(_instance.BENTO_VARS)
             {
                 if (__layoutOriginAuto)
                 {

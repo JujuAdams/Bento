@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Returns whether an element has its Draw After user event enabled for use by `BentoSetDrawAfter()`.
+/// Returns whether an element has its Draw After user event / callback enabled for use by
+/// `BentoSetDrawAfter()`.
 /// 
 /// @param [element=self]
 

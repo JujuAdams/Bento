@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Sets whether the Step user event / callback is forced on for the given element.
+/// 
 /// @param state
 /// @param [element=self]
 
