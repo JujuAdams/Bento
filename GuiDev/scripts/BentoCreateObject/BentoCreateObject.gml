@@ -6,12 +6,17 @@
 /// @param [variableStruct]
 /// @param [parent=self]
 
-function BentoCreateObject(_object, _struct = undefined, _parent = self)
+function BentoCreate(_object, _struct = undefined, _parent = self)
 {
     static _system = __BentoSystem();
     static _emptyStruct = {};
     
     if (not BentoExists(_parent)) __BentoError("Parent doesn't exist");
+    
+    if ((not is_handle(_object)) || (not object_exists(_object)))
+    {
+        __BentoError($"`BentoCreate()` may only be used to create object instances (object reference was \"{typeof(_object)}\"");
+    }
     
     if ((_object != oBentoAncestor) && (not object_is_ancestor(_object, oBentoAncestor)))
     {

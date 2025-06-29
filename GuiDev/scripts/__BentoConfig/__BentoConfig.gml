@@ -66,12 +66,12 @@
 // Instances
 ///////
 
-// What room layer to create instances on when using `BentoCreateObject()`. Use `undefined` to
-// instead create instances using a particular depth see `BENTO_INSTANCE_DEPTH`.
+// What room layer to create instances on when using `BentoCreate()`. Use `undefined` to instead
+// create instances using a particular depth see `BENTO_INSTANCE_DEPTH`.
 #macro BENTO_INSTANCE_LAYER  undefined
 
-// What depth to create instances on when using `BentoCreateObject()`. This macro will only be used
-// if `BENTO_INSTANCE_LAYER` is set to `undefined`.
+// What depth to create instances on when using `BentoCreate()`. This macro will only be used if
+// `BENTO_INSTANCE_LAYER` is set to `undefined`.
 #macro BENTO_INSTANCE_DEPTH  0
 
 

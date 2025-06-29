@@ -341,7 +341,7 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             }
             
             //Create the instance itself
-            var _element = BentoCreateObject(_object, _vars, _parent);
+            var _element = BentoCreate(_object, _vars, _parent);
         }
         else if (variable_struct_exists(_json, "struct"))
         {

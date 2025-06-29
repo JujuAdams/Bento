@@ -4,7 +4,7 @@
 // 
 // Example:
 // ```
-// BentoCreateObject(oBentoSprite, { sprite_index: sBentoMaskCircle });
+// BentoCreate(oBentoSprite, { sprite_index: sBentoMaskCircle });
 // ```
 
 event_inherited();

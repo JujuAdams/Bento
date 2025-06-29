@@ -1,12 +1,12 @@
 // Feather disable all
 
 // This object is the common ancestor for all (object-based) Bento elements. All objects that you
-// intend to work with Bento (i.e. to be created by `BentoCreateObject()`) **must** inherit from
+// intend to work with Bento (i.e. to be created by `BentoCreate()`) **must** inherit from
 // `oBentoAncestor`.
 
 // Check we've been created correctly.
 var _system = __BentoSystem();
-if (not _system.__creatingObject) __BentoError("Bento instances must be created with `BentoCreateObject()`");
+if (not _system.__creatingObject) __BentoError("Bento instances must be created with `BentoCreate()`");
 
 // These variables give the position of various parts of this element in worldspace. They're
 // read-only in the sense that they are liable to get overwritten by the library at unexpected

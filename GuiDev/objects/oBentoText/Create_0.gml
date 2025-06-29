@@ -4,7 +4,7 @@
 // 
 // Example:
 // ```
-// BentoCreateObject(oBentoText, { text: "Prefilled text", emptyText: "Enter text here!" });
+// BentoCreate(oBentoText, { text: "Prefilled text", emptyText: "Enter text here!" });
 // ```
 
 event_inherited();
