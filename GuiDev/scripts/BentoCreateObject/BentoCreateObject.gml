@@ -18,8 +18,11 @@ function BentoCreateObject(_object, _struct = undefined, _parent = self)
         __BentoError($"Object \"{object_get_name(_object)}\" does not inherit from {object_get_name(oBentoAncestor)}");
     }
     
-    var _oldParent = _system.__tempParent;
-    _system.__tempParent = _parent;
+    var _oldCreatingObject = _system.__creatingObject;
+    var _oldParent         = _system.__tempParent;
+    
+    _system.__creatingObject = true;
+    _system.__tempParent     = _parent;
     
     if (BENTO_INSTANCE_LAYER != undefined)
     {
@@ -30,7 +33,8 @@ function BentoCreateObject(_object, _struct = undefined, _parent = self)
         var _element = instance_create_depth(_parent.bentoX, _parent.bentoY, BENTO_INSTANCE_DEPTH ?? 0, _object, _struct ?? _emptyStruct);
     }
     
-    _system.__tempParent = _oldParent;
+    _system.__creatingObject = _oldCreatingObject;
+    _system.__tempParent     = _oldParent;
     
     return _element;
 }

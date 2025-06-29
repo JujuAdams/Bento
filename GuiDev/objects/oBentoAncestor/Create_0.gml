@@ -4,6 +4,10 @@
 // intend to work with Bento (i.e. to be created by `BentoCreateObject()`) **must** inherit from
 // `oBentoAncestor`.
 
+// Check we've been created correctly.
+var _system = __BentoSystem();
+if (not _system.__creatingObject) __BentoError("Bento instances must be created with `BentoCreateObject()`");
+
 // These variables give the position of various parts of this element in worldspace. They're
 // read-only in the sense that they are liable to get overwritten by the library at unexpected
 // times.
@@ -24,5 +28,4 @@ persistent = true;
 BENTO_VARS = new __BentoClassVariables(self);
 
 // Set the parent before going to the Create event for the element.
-var _system = __BentoSystem();
 BentoSetParent(_system.__tempParent, self);
