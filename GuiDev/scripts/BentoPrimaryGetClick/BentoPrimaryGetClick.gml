@@ -12,20 +12,6 @@
 /// 
 /// @param [element=self]
 
-
-            if (other.__navDirectional)
-            {
-                var _clickOnPress = true;
-            }
-            else if (not BentoExists(__BentoScrollFindParent(_element)))
-            {
-                var _clickOnPress = other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH));
-            }
-            else
-            {
-                var _clickOnPress = false;
-            }
-
 function BentoPrimaryGetClick(_element = self)
 {
     if (not BentoExists(_element)) return false;
