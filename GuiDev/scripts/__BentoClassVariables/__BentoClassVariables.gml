@@ -117,6 +117,23 @@ function __BentoClassVariables(_attachedElement) constructor
     
     __selectOnDestroy = BENTO_NO_ELEMENT;
     
+    __animSimple = __BENTO_ANIM_INACTIVE;
+    __animString = "";
+    
+    __animDestroyAtEnd = false;
+    
+    __animSimpleXFrom      = 0;
+    __animSimpleYFrom      = 0;
+    __animSimpleXScaleFrom = 1;
+    __animSimpleYScaleFrom = 1;
+    __animSimpleAlphaFrom  = 1;
+    
+    __animSimpleXTo      = 0;
+    __animSimpleYTo      = 0;
+    __animSimpleXScaleTo = 1;
+    __animSimpleYScaleTo = 1;
+    __animSimpleAlphaTo  = 1;
+    
     if (__elementIsInstance)
     {
         __eventStep = method(_attachedElement, function()

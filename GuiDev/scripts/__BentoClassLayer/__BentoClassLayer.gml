@@ -330,7 +330,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureLayout();
         __BentoEnsureStepOrder();
         __BentoEnsureScrollLimits();
-        __BentoAnimateScroll();
+        __BentoAnimManualateScroll();
         __BentoEnsureOffset();
         
         //And we're done

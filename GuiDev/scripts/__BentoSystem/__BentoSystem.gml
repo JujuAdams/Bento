@@ -16,6 +16,12 @@
 #macro __BENTO_DIRTY_DRAW       0b1000
 #macro __BENTO_DIRTY_ALL        0b1111
 
+#macro __BENTO_ANIM_INACTIVE    0
+#macro __BENTO_ANIM_MANUAL      1
+#macro __BENTO_ANIM_NOT_SIMPLE  2
+#macro __BENTO_ANIM_SIMPLE_IN   3
+#macro __BENTO_ANIM_SIMPLE_OUT  4
+
 #macro __BENTO_TEXT_IOS_MAX  1000
 
 __BentoSystem();

@@ -1,26 +1,20 @@
 // Feather disable all
 
+/// @param [skip=true]
 /// @param [element=self]
 
-function BentoAnimEnd(_element = self)
+function BentoAnimEnd(_skip = true, _element = self)
 {
     if (not BentoExists(_element)) return;
     
-    with(_element.BENTO_VARS.__layer)
+    with(_element.BENTO_VARS)
     {
-        ds_map_delete(__animatingMap, _element);
-        
-        var _animatingArray = __animatingArray;
-        var _i = 0;
-        repeat(array_length(_animatingArray))
+        if (_skip)
         {
-            if (_animatingArray[_i].__element == _element)
-            {
-                array_delete(_animatingArray, _i, 1);
-                break;
-            }
             
-            ++_i;
         }
+        
+        __animSimple = __BENTO_ANIM_INACTIVE;
+        __animString = "";
     }
 }

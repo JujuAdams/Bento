@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoAnimStart",
   "parent":{
-    "name":"Transform & Animation",
-    "path":"folders/Library/Functions/Transform & Animation.yy",
+    "name":"Animation",
+    "path":"folders/Library/Functions/Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

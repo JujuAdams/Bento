@@ -1,22 +1,14 @@
 // Feather disable all
 
-/// @param [maxDuration=10s]
-/// @param [element=self]
+/// @param string
 
-function BentoAnimStart(_maxDuration = 10_000, _element = self)
+function BentoAnimStart(_string)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS.__layer)
+    with(_element)
     {
-        if (ds_map_exists(__animatingMap, _element))
-        {
-            array_push(__animatingArray, {
-                __element: _element,
-                __timeout: current_time + _maxDuration,
-            });
-        }
+        __animSimple = __BENTO_ANIM_NOT_SIMPLE;
+        __animString = _string;
         
-        __animatingMap[? _element] = true;
+        __animDestroyAtEnd = false;
     }
 }
