@@ -32,5 +32,5 @@ function __BentoClassScrollbar(_element) constructor
     
     hoverScrollbar = false;
     hoverHandle    = false;
-    grabHandle     = false;
+    holdHandle     = false;
 }

@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns a struct containing four variables (`.left` `.top` `.right` `.bottom`) that contain
+/// the padding values for the clipping region, as set by `BentoClipSetPadding()`.
+/// 
 /// @param [element=self]
 
 function BentoClipGetPadding(_element = self)

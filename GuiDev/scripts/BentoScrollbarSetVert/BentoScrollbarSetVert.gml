@@ -1,5 +1,18 @@
 // Feather disable all
 
+/// Sets up a vertical scrollbar on an element. You may enable both a vertical and horizontal
+/// scrollbar at the same time.
+/// 
+/// If the `orientLeft` parameter is set to `false`, the scrollbar will be placed on the righthand
+/// side of the element. If the `overlap` parameter is set to `true` then children of the element
+/// will be allowed to extend underneath the scrollbar. If the `overlap` parameter is set to
+/// `false` then the scroll region will be reduced in size to accommodate the scrollbar.
+/// 
+/// N.B. This function will **not** automatically draw the scrollbar, it only sets up the
+///      interaction logic. You should use `BentoScrollbarGetVertData()` to collect information
+///      about the scrollbar's current state in a Draw After user event / callback and render
+///      graphics accordingly.
+/// 
 /// @param orientLeft
 /// @param thickness
 /// @param padLeft

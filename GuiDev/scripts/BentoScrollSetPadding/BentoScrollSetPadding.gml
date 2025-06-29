@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Sets the padding values for the scroll area for an element. These values position the scroll
+/// area relative to the element's bounding box.
+/// 
 /// @param left
 /// @param top
 /// @param right

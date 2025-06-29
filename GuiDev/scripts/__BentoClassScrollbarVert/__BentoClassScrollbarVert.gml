@@ -44,7 +44,7 @@ function __BentoClassScrollbarVert(_element) : __BentoClassScrollbar(_element) c
         {
             var _rangeHeight = max(1, barHeight - handleHeight);
             
-            if (grabHandle)
+            if (holdHandle)
             {
                 if (BentoPrimaryGetHold(_element))
                 {
@@ -66,7 +66,7 @@ function __BentoClassScrollbarVert(_element) : __BentoClassScrollbar(_element) c
                     if (hoverHandle && BentoPrimaryGetPress(_element))
                     {
                         //Allow grabbing of the handle
-                        grabHandle = true;
+                        holdHandle = true;
                         __grabDelta = handleTop - _cursorY;
                     }
                     else if (BentoPrimaryGetClick(_element)) //FIXME - This has stopped working?
@@ -101,7 +101,7 @@ function __BentoClassScrollbarVert(_element) : __BentoClassScrollbar(_element) c
         
         if (not BentoPrimaryGetHold(_element))
         {
-            grabHandle = false;
+            holdHandle = false;
         }
     }
 }

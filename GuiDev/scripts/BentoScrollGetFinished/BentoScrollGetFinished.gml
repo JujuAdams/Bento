@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns whether the scroll animation has reached its final target position.
+/// 
 /// @param [element=self]
 
 function BentoScrollGetFinished(_element = self)

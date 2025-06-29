@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Sets whether the clipping region is enabled for an element.
+/// 
 /// @param state
 /// @param [element=self]
 

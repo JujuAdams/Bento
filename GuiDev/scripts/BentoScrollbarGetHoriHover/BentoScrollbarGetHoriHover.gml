@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns whether the horizontal scrollbar is being hovered.
+/// 
 /// @param [element=self]
 
 function BentoScrollbarGetHoriHover(_element = self)

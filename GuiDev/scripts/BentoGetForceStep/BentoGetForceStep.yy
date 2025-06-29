@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoGetForceStep",
   "parent":{
-    "name":"Properties",
-    "path":"folders/Library/Functions/Properties.yy",
+    "name":"Getters",
+    "path":"folders/Library/Functions/Properties/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

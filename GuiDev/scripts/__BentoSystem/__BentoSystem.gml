@@ -33,7 +33,8 @@ function __BentoSystem()
         
         __scissorStack = [];
         
-        __tempParent = BENTO_NO_ELEMENT;
+        __creatingObject = false;
+        __tempParent     = BENTO_NO_ELEMENT;
         
         __globalDirPreDelay     = 20;
         __globalDirDelay        = 9;

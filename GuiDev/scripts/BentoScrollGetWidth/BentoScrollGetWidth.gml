@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the width of the scrollable content.
+/// 
 /// @param [element=self]
 
 function BentoScrollGetWidth(_element = self)

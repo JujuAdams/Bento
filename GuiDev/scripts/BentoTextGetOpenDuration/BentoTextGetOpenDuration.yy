@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoTextGetOpenDuration",
   "parent":{
-    "name":"Text",
-    "path":"folders/Library/Functions/Text.yy",
+    "name":"Text Input",
+    "path":"folders/Library/Functions/Text Input.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

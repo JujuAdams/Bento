@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns a struct containing four variables (`.left` `.top` `.right` `.bottom`) that contain
+/// the padding values for the scroll area, as set by `BentoScrollSetPadding()`.
+/// 
 /// @param [element=self]
 
 function BentoScrollGetPadding(_element = self)

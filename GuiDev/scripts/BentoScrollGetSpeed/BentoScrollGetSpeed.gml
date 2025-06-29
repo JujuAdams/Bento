@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the scroll speed for an element, in pixels per frame.
+/// 
 /// @param [element=self]
 
 function BentoScrollGetSpeed(_element = self)

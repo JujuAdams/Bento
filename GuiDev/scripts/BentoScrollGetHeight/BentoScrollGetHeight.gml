@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the height of the scrollable content.
+/// 
 /// @param [element=self]
 
 function BentoScrollGetHeight(_element = self)

@@ -1,13 +1,15 @@
 // Feather disable all
 
-/// Sets the scroll offset.
+/// Sets the scroll target per axis, and the overall scroll speed. Bento will smoothly animate
+/// towards the target. You may use a value of `undefined` for either axis to indicate that the
+/// current value should not change.
 /// 
-/// @param scrollTargetX
-/// @param scrollTargetY
-/// @param [scrollSpeed]
+/// @param [scrollTargetX]
+/// @param [scrollTargetY]
+/// @param [scrollSpeed=BENTO_DEFAULT_SCROLL_SPEED]
 /// @param [element=self]
 
-function BentoScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = self)
+function BentoScrollSetPos(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = self)
 {
     var _scroller = __BentoScrollFindParent(_element);
     if (not BentoExists(_scroller)) return;
@@ -16,6 +18,9 @@ function BentoScrollSet(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_DEF
     {
         if (not __scrollHori) _scrollTargetX = 0;
         if (not __scrollVert) _scrollTargetY = 0;
+        
+        _scrollTargetX ??= __scrollX;
+        _scrollTargetY ??= __scrollY;
         
         if ((_scrollTargetX == __scrollX) && (_scrollTargetY == __scrollY)) return;
         

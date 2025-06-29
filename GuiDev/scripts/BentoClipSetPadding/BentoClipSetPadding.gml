@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Sets the padding values for the clipping region for an element. These values position the
+/// clipping region relative to the element's bounding box.
+/// 
 /// @param left
 /// @param top
 /// @param right

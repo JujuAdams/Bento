@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns whether an element is partially visible through any clipping regions.
+/// 
 /// @param [element=self]
 
 function BentoClipGetPartiallyVisible(_element = self)

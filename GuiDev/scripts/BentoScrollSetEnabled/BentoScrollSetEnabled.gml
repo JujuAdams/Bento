@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Sets whether scrolling is enable in either axis.
+/// 
 /// @param horizontal
 /// @param vertical
 /// @param [element=self]

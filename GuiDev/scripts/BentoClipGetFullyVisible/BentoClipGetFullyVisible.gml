@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns whether an element is fully visible and is not obscured by any clipping regions.
+/// 
 /// @param [element=self]
 
 function BentoClipGetFullyVisible(_element = self)

@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns a struct containing two variables (`.horizontal` and `.vertical`) that indicate whether
+/// scrolling is enabled in either axis.
+/// 
 /// @param [element=self]
 
 function BentoScrollGetEnabled(_element = self)
