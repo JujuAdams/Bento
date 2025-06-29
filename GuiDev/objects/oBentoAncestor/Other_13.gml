@@ -1,7 +1,7 @@
 /// @desc Reposition
 
-// This event is called whenever the library decides that the instance needs to be moved. This is
-// typically when the instance is created, the layout changes or when the player has scrolled a
+// This event is called whenever the library decides that the element needs to be moved. This is
+// typically when the element is created, the layout changes, or when the player has scrolled a
 // element.
 
 if (sprite_exists(sprite_index))

@@ -9,7 +9,7 @@ persistent = true;
 //                       //
 ///////////////////////////
 
-//These variables give the position of various parts of this instance in worldspace. They're
+//These variables give the position of various parts of this element in worldspace. They're
 //read-only in the sense that they are liable to get overwritten by the library at unexpected
 //times.
 
@@ -25,6 +25,6 @@ bentoHeight = sprite_height;
 //Make a struct to contain Bento-related variables. This keeps the instance clean in the debugger.
 BENTO_VARS = new __BentoClassVariables(self);
 
-//Set the parent before going to the Create event for the instance
+//Set the parent before going to the Create event for the element.
 var _system = __BentoSystem();
 BentoSetParent(_system.__tempParent, self);
