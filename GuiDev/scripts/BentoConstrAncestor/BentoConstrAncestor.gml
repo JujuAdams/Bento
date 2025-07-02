@@ -57,5 +57,9 @@ function BentoConstrAncestor(_parent = other) constructor
     bentoHeight = 0;
     
     BENTO_VARS = new __BentoClassVariables(self);
-    BentoSetParent(_parent);
+    
+    if (_parent != __BENTO_NO_PARENT)
+    {
+        BentoSetParent(_parent);
+    }
 }

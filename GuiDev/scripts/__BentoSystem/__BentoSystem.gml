@@ -5,6 +5,8 @@
 //Many GM functions don't support using `infinity`
 #macro __BENTO_VERY_LARGE  999999
 
+#macro __BENTO_NO_PARENT  -666
+
 #macro __BENTO_OFF    0b00  //0
 #macro __BENTO_START  0b10  //2
 #macro __BENTO_ON     0b11  //3
