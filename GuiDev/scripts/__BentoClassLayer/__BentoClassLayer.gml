@@ -126,19 +126,25 @@ function __BentoClassLayer(_environment, _name) constructor
         if (not _ensureOnly)
         {
             //Check if any animating elements have timed out
-            var _i = 0;
-            repeat(array_length(__animatingArray))
+            var _i = array_length(__animatingArray)-1;
+            repeat(array_length(__animPending))
             {
-                var _animatingData = __animatingArray[_i];
-                if (current_time >= _animatingData.__timeout)
+                with(__animPending[_i])
                 {
-                    array_delete(__animatingArray, _i, 1);
-                    ds_map_delete(__animatingMap, _animatingData.__element);
+                    ++__animElapsed;
+                    
+                    var _t = min(1, __animElapsed / __animDuration);
+                    if (_t >= 1)
+                    {
+                        BentoAnimEnd(true, self);
+                    }
+                    else
+                    {
+                        __animMethod(_t, __animMethodMetadata);
+                    }
                 }
-                else
-                {
-                    ++_i;
-                }
+                
+                --_i;
             }
             
             //If anything is animating, consume all input
@@ -330,7 +336,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureLayout();
         __BentoEnsureStepOrder();
         __BentoEnsureScrollLimits();
-        __BentoAnimManualateScroll();
+        __BentoAnimateScroll();
         __BentoEnsureOffset();
         
         //And we're done

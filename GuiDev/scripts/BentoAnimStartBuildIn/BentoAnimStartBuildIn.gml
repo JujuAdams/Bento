@@ -1,31 +1,30 @@
 // Feather disable all
 
-/// @param [xOffset=0]
-/// @param [yOffset=0]
-/// @param [scale=1]
-/// @param [alpha]
+/// @param [xFrom=0]
+/// @param [yFrom=0]
+/// @param [scaleFrom=1]
+/// @param [alphaFrom]
 /// @param duration
 /// @param [animCurve=linear]
 /// @param [element=self]
 
-function BentoAnimStart(_xTo = 0, _yTo = 0, _scaleTo = 1, _alphaTo = undefined, _duration, _animCurve = __acBentoLinear, _element = self)
+function BentoAnimStartBuildIn(_xFrom = 0, _yFrom = 0, _scaleFrom = 1, _alphaFrom = undefined, _duration, _animCurve = __acBentoLinear, _element = self)
 {
-    var _from = BentoTransformGetData(_element);
     BentoAnimStartMethod(method(
     {
         __curveChannel: animcurve_get_channel(_animCurve, 0),
         
-        __xFrom:      _from.xOffset,
-        __yFrom:      _from.yOffset,
-        __xScaleFrom: _from.xScale,
-        __yScaleFrom: _from.yScale,
-        __alphaFrom:  _element.image_alpha,
+        __xFrom:      _xFrom,
+        __yFrom:      _yFrom,
+        __xScaleFrom: _scaleFrom,
+        __yScaleFrom: _scaleFrom,
+        __alphaFrom:  _alphaFrom,
         
-        __xTo:      _xTo,
-        __yTo:      _yTo,
-        __xScaleTo: _scaleTo,
-        __yScaleTo: _scaleTo,
-        __alphaTo:  _alphaTo,
+        __xTo:      0,
+        __yTo:      0,
+        __xScaleTo: 1,
+        __yScaleTo: 1,
+        __alphaTo:  1,
     },
     function(_t, _metadata)
     {
@@ -34,7 +33,7 @@ function BentoAnimStart(_xTo = 0, _yTo = 0, _scaleTo = 1, _alphaTo = undefined, 
         BentoTransformSetPosition(lerp(__xFrom, __xTo, _q), lerp(__yFrom, __yTo, _q), _metadata);
         BentoTransformSetScale(lerp(__xScaleFrom, __xScaleTo, _q), lerp(__yScaleFrom, __yScaleTo, _q), _metadata);
         
-        if (__alphaTo != undefined)
+        if (__alphaFrom != undefined)
         {
             _metadata.image_alpha = lerp(__alphaFrom, __alphaTo, _q);
         }

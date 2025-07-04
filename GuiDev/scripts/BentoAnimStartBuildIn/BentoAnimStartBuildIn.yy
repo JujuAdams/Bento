@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoAnimManualStart",
+  "%Name":"BentoAnimStartBuildIn",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoAnimManualStart",
+  "name":"BentoAnimStartBuildIn",
   "parent":{
     "name":"Animation",
     "path":"folders/Library/Functions/Animation.yy",

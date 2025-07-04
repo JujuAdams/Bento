@@ -43,6 +43,10 @@ function BentoConstrAncestor(_parent = other) constructor
         // element.
     }
     
+    // We include `image_alpha` on all Bento structs for parity with objects. You're free to 
+    
+    image_alpha  = 1;
+    
     // These **read-only** variables give the position of various parts of this element in worldspace.
     // They're read-only in the sense that they are liable to get overwritten by the library at unexpected
     // times.

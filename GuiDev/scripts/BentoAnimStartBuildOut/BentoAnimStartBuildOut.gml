@@ -1,14 +1,14 @@
 // Feather disable all
 
-/// @param [xOffset=0]
-/// @param [yOffset=0]
-/// @param [scale=1]
-/// @param [alpha]
+/// @param [xTo=0]
+/// @param [yTo=0]
+/// @param [scaleTo=1]
+/// @param [alphaTo]
 /// @param duration
 /// @param [animCurve=linear]
 /// @param [element=self]
 
-function BentoAnimStart(_xTo = 0, _yTo = 0, _scaleTo = 1, _alphaTo = undefined, _duration, _animCurve = __acBentoLinear, _element = self)
+function BentoAnimStartBuildOut(_xTo = 0, _yTo = 0, _scaleTo = 1, _alphaTo = undefined, _duration, _animCurve = __acBentoLinear, _element = self)
 {
     var _from = BentoTransformGetData(_element);
     BentoAnimStartMethod(method(
@@ -39,5 +39,5 @@ function BentoAnimStart(_xTo = 0, _yTo = 0, _scaleTo = 1, _alphaTo = undefined, 
             _metadata.image_alpha = lerp(__alphaFrom, __alphaTo, _q);
         }
     }),
-    _duration, false, _element);
+    _duration, true, _element);
 }

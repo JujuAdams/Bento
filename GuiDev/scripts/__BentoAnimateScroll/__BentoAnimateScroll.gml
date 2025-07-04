@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __BentoAnimManualateScroll()
+function __BentoAnimateScroll()
 {
     var _scrollAnimatingArray = __scrollAnimatingArray;
     var _i = array_length(_scrollAnimatingArray)-1;
