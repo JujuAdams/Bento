@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the number of children of a parent element.
+/// 
 /// @param [parent=self]
 
 function BentoGetChildCount(_parent = self)

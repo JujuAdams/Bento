@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Sets an element's position in its parent's child order. This will move other elements around.
+/// 
 /// @param index
 /// @param [element=self]
 

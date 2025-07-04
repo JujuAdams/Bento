@@ -1,5 +1,9 @@
 // Feather disable all
 
+/// Returns the nth child of a parent, where an index of `0` will return the first child element.
+/// If a child cannot be found (the index is too high or too low) then this function will return
+/// `undefined`.
+/// 
 /// @param index
 /// @param [parent=self]
 

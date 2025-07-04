@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Example of a struct-based button.
+/// 
 /// @param [clickFunc]
 /// @param [text]
 /// @param [parent=self]
