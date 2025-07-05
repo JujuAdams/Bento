@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoAnimPlayMethod",
+  "%Name":"BentoAnimPlayCustom",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoAnimPlayMethod",
+  "name":"BentoAnimPlayCustom",
   "parent":{
     "name":"Animation",
     "path":"folders/Library/Functions/Animation.yy",

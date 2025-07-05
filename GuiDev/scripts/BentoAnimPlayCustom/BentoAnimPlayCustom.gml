@@ -32,7 +32,7 @@
 /// @param [metadata]
 /// @param [element=self]
 
-function BentoAnimPlayMethod(_duration, _delay, _method, _metadata = undefined, _element = self)
+function BentoAnimPlayCustom(_duration, _delay, _method, _metadata = undefined, _element = self)
 {
     if (not BentoExists(_element)) return;
     

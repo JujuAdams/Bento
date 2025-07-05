@@ -28,7 +28,7 @@ function BentoAnimPlay(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo = undef
     if (not BentoExists(_element)) return;
     
     var _from = BentoTransformGetData(_element);
-    BentoAnimPlayMethod(_duration, _delay,
+    BentoAnimPlayCustom(_duration, _delay,
                          method(
                          {
                              __curveChannel: animcurve_get_channel(_animCurve, 0),
