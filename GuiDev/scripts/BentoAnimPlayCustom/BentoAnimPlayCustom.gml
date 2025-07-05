@@ -1,7 +1,9 @@
 // Feather disable all
 
 /// Starts playing an animation using a custom method (function). You can use this function to
-/// perform an animation operations that you'd like.
+/// perform an animation operations that you'd like. If you'd like this to be a blocking
+/// animation then please set the optional `blocking` parameter to `true`. By default, however,
+/// animations played using this function are non-blocking.
 /// 
 /// N.B. Only one animation per element can play at a time. This function will immediately stop
 ///      any animation playing on the element.
@@ -30,9 +32,10 @@
 /// @param delay
 /// @param method
 /// @param [metadata]
+/// @param [blocking=false]
 /// @param [element=self]
 
-function BentoAnimPlayCustom(_duration, _delay, _method, _metadata = undefined, _element = self)
+function BentoAnimPlayCustom(_duration, _delay, _method, _metadata = undefined, _blocking = false, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -41,6 +44,7 @@ function BentoAnimPlayCustom(_duration, _delay, _method, _metadata = undefined, 
         BentoAnimStop(true, __attachedElement);
         
         __animPlaying  = true;
+        __animBlocking = _blocking;
         __animDuration = max(1, _duration);
         __animDelay    = max(0, _delay);
         __animMethod   = _method;
@@ -48,10 +52,17 @@ function BentoAnimPlayCustom(_duration, _delay, _method, _metadata = undefined, 
         
         with(__layer)
         {
-            if (not ds_map_exists(__animatingMap, self))
+            if (not ds_map_exists(__animPlayingMap, other))
             {
-                array_push(__animatingArray, self);
-                __animatingMap[? self] = true;
+                array_push(__animPlayingArray, other);
+            }
+            
+            __animPlayingMap[? other] = true;
+            
+            if (_blocking)
+            {
+                __animAnyBlocking = true;
+                __animBlockingMap[? other] = true;
             }
         }
         

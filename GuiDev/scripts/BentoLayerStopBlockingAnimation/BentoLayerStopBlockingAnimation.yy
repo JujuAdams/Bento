@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoLayerGetAnimating",
+  "%Name":"BentoLayerStopBlockingAnimation",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoLayerGetAnimating",
+  "name":"BentoLayerStopBlockingAnimation",
   "parent":{
     "name":"Layers",
     "path":"folders/Library/Functions/Layers.yy",

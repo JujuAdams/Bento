@@ -1,8 +1,13 @@
 // Feather disable all
 
-/// Starts playing an aniamtion. This function allows you to adjust transform values over time
+/// Starts playing an animation. This function allows you to adjust transform values over time
 /// can be used to perform basic movement and scaling. This function further allows to you to
-/// change the `image_alpha` variable on the element over time.
+/// change the `image_alpha` variable on the element over time. If you'd like this to be a blocking
+/// animation then please set the optional `blocking` parameter to `true`. By default, however,
+/// animations played using this function are non-blocking.
+/// 
+/// N.B. Only one animation per element can play at a time. This function will immediately stop
+///      any animation playing on the element.
 /// 
 /// N.B. This function will overwrite any values previously set by the `BentoTransformSet*()`
 ///      functions. If the `alpha` parameter is set then this function will override the
@@ -21,9 +26,10 @@
 /// @param scale
 /// @param [alpha]
 /// @param [animCurve=linear]
+/// @param [blocking=false]
 /// @param [element=self]
 
-function BentoAnimPlay(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo = undefined, _animCurve = acBentoLinear, _element = self)
+function BentoAnimPlay(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo = undefined, _animCurve = acBentoLinear, _blocking = false, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -57,5 +63,5 @@ function BentoAnimPlay(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo = undef
                                  _element.image_alpha = lerp(__alphaFrom, __alphaTo, _t); //Always linear
                              }
                          }),
-                         undefined, _element);
+                         undefined, _blocking, _element);
 }

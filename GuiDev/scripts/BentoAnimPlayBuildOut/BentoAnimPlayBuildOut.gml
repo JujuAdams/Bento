@@ -3,6 +3,14 @@
 /// Starts playing an animation set up for convenient use as a build-out. Once the animation has
 /// finished playing, the element will be destroyed.
 /// 
+/// N.B. This is a **blocking** animation by default. Unless you set the optinal `blocking`
+///      parameter to `false`, all user input to the element's layer will be ignored for the
+///      duration of the animation. If you'd like to execute a callback once all animation has
+///      finished, please use `BentoLayerSetUnblockCallback()`.
+/// 
+/// N.B. Only one animation per element can play at a time. This function will immediately stop
+///      any animation playing on the element.
+/// 
 /// N.B. This function will overwrite any values previously set by the `BentoTransformSet*()`
 ///      functions. If the `alpha` parameter is set then this function will override the
 ///      `image_alpha` variable on the element itself.
@@ -21,6 +29,7 @@
 /// @param scale
 /// @param [alpha]
 /// @param [animCurve=linear]
+/// @param [blocking=true]
 /// @param [element=self]
 
 function BentoAnimPlayBuildOut(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo = undefined, _animCurve = acBentoLinear, _element = self)
@@ -62,5 +71,5 @@ function BentoAnimPlayBuildOut(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo
                                  BentoDestroy(_element);
                              }
                          }),
-                         undefined, _element);
+                         undefined, true, _element);
 }

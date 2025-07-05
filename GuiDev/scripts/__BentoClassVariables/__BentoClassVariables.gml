@@ -117,10 +117,11 @@ function __BentoClassVariables(_attachedElement) constructor
     
     __selectOnDestroy = BENTO_NO_ELEMENT;
     
-    __animPlaying        = false;
-    __animDuration       = 1;
-    __animDelay          = 0;
-    __animMethod         = undefined;
+    __animPlaying  = false;
+    __animBlocking = false;
+    __animDuration = 1;
+    __animDelay    = 0;
+    __animMethod   = undefined;
     __animMetadata = undefined
     
     

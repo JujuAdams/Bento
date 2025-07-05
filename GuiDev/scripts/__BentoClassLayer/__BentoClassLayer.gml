@@ -17,8 +17,13 @@ function __BentoClassLayer(_environment, _name) constructor
     __frozen = false;
     __rootElement = BENTO_NO_ELEMENT;
     
-    __animatingMap   = ds_map_create();
-    __animatingArray = [];
+    __animPlayingArray = [];
+    __animPlayingMap   = ds_map_create();
+    __animBlockingMap  = ds_map_create();
+    __animAnyBlocking  = false;
+    __animUnblockedCallback = undefined;
+    __animUnblockedMetadata = undefined;
+    __animUnblockedPersist  = false;
     
     ////////
     // Set up a default input mode for convenience
@@ -125,11 +130,11 @@ function __BentoClassLayer(_environment, _name) constructor
         
         if (not _ensureOnly)
         {
-            //Check if any animating elements have timed out
-            var _i = array_length(__animatingArray)-1;
-            repeat(array_length(__animPlaying))
+            //Update any animations
+            var _i = array_length(__animPlayingArray)-1;
+            repeat(array_length(__animPlayingArray))
             {
-                with(__animPlaying[_i])
+                with(__animPlayingArray[_i])
                 {
                     ++__animElapsed;
                     
@@ -148,7 +153,11 @@ function __BentoClassLayer(_environment, _name) constructor
             }
             
             //If anything is animating, consume all input
-            if (not ds_map_empty(__animatingMap))
+            if (ds_map_empty(__animBlockingMap))
+            {
+                __CheckUnblocked();
+            }
+            else
             {
                 BentoInputConsume(self);
             }
@@ -387,5 +396,26 @@ function __BentoClassLayer(_environment, _name) constructor
         }
         
         return __rootElement;
+    }
+    
+    static __CheckUnblocked = function()
+    {
+        if (__animAnyBlocking)
+        {
+            __animAnyBlocking = false;
+            
+            if (is_callable(__animUnblockedCallback))
+            {
+                __animUnblockedCallback(__name, __animUnblockedMetadata);
+                
+                //Reset values, including the metadata in case that should be GC'd
+                if (not __animUnblockedPersist)
+                {
+                    __animUnblockedCallback = undefined;
+                    __animUnblockedMetadata = undefined;
+                    __animUnblockedPersist  = false;
+                }
+            }
+        }
     }
 }

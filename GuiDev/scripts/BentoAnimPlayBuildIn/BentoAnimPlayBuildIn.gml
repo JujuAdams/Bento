@@ -2,6 +2,14 @@
 
 /// Starts playing an animation set up for convenient use as a build-in.
 /// 
+/// N.B. This is a **blocking** animation by default. Unless you set the optinal `blocking`
+///      parameter to `false`, all user input to the element's layer will be ignored for the
+///      duration of the animation. If you'd like to execute a callback once all animation has
+///      finished, please use `BentoLayerSetUnblockCallback()`.
+/// 
+/// N.B. Only one animation per element can play at a time. This function will immediately stop
+///      any animation playing on the element.
+/// 
 /// N.B. This function will overwrite any values previously set by the `BentoTransformSet*()`
 ///      functions. If the `alphaFrom` parameter is set then this function will override the
 ///      `image_alpha` variable on the element itself.
@@ -22,9 +30,10 @@
 /// @param scaleFrom
 /// @param [alphaFrom]
 /// @param [animCurve=linear]
+/// @param [blocking=true]
 /// @param [element=self]
 
-function BentoAnimPlayBuildIn(_duration, _delay, _xFrom, _yFrom, _scaleFrom, _alphaFrom = undefined, _animCurve = acBentoLinear, _element = self)
+function BentoAnimPlayBuildIn(_duration, _delay, _xFrom, _yFrom, _scaleFrom, _alphaFrom = undefined, _animCurve = acBentoLinear, _blocking = true, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -57,5 +66,5 @@ function BentoAnimPlayBuildIn(_duration, _delay, _xFrom, _yFrom, _scaleFrom, _al
                                  _element.image_alpha = lerp(__alphaFrom, __alphaTo, _t); //Always linear
                              }
                          }),
-                         undefined, _element);
+                         undefined, _blocking, _element);
 }

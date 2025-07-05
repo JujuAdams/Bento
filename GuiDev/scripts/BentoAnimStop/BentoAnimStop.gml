@@ -25,6 +25,7 @@ function BentoAnimStop(_finalize = true, _element = self)
             }
            
             __animPlaying  = false;
+            __animBlocking = false;
             __animElapsed  = 0;
             __animDuration = 0;
             __animDelay    = 0;
@@ -34,10 +35,11 @@ function BentoAnimStop(_finalize = true, _element = self)
         
         with(__layer)
         {
-            ds_map_delete(__animatingMap, self);
+            ds_map_delete(__animPlayingMap,  self);
+            ds_map_delete(__animBlockingMap, self);
             
-            var _index = array_get_index(__animatingArray, self);
-            if (_index >= 0) array_delete(__animatingArray, _index, 1);
+            var _index = array_get_index(__animPlayingArray, self);
+            if (_index >= 0) array_delete(__animPlayingArray, _index, 1);
         }
     }
 }

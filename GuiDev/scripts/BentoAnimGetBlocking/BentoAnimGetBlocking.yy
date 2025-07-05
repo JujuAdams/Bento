@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoAnimGetBlocking",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoAnimGetBlocking",
+  "parent":{
+    "name":"Animation",
+    "path":"folders/Library/Functions/Animation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
