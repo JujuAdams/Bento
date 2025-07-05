@@ -127,20 +127,20 @@ function __BentoClassLayer(_environment, _name) constructor
         {
             //Check if any animating elements have timed out
             var _i = array_length(__animatingArray)-1;
-            repeat(array_length(__animPending))
+            repeat(array_length(__animPlaying))
             {
-                with(__animPending[_i])
+                with(__animPlaying[_i])
                 {
                     ++__animElapsed;
                     
-                    var _t = min(1, __animElapsed / __animDuration);
+                    var _t = clamp((__animElapsed - __animDelay) / __animDuration, 0, 1);
                     if (_t >= 1)
                     {
-                        BentoAnimEnd(true, self);
+                        BentoAnimStop(true, __attachedElement);
                     }
                     else
                     {
-                        __animMethod(_t, __animMethodMetadata);
+                        __animMethod(__attachedElement, _t, __animMetadata);
                     }
                 }
                 

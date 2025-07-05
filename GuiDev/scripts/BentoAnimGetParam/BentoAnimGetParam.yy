@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoAnimStart",
+  "%Name":"BentoAnimGetParam",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoAnimStart",
+  "name":"BentoAnimGetParam",
   "parent":{
     "name":"Animation",
     "path":"folders/Library/Functions/Animation.yy",

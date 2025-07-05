@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoAnimPlayBuildOut",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoAnimPlayBuildOut",
+  "parent":{
+    "name":"Animation",
+    "path":"folders/Library/Functions/Animation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
