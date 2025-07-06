@@ -11,19 +11,16 @@
 /// Each layout property is associated with a layout function (`BentoSetOffset()` etc.). There are
 /// many layout properties that can be modified using this function:
 /// 
-/// `.offset`    executes `BentoSetOffset()`
-/// `.size`      executes `BentoLayoutSetSize()`
-/// `.minSize`   executes `BentoLayoutSetMinSize()`
-/// `.maxSize`   executes `BentoLayoutSetMaxSize()`
-/// `.resize`    executes `BentoLayoutSetResizeType()`
-/// `.padding`   executes `BentoLayoutSetPadding()`
-/// `.align`     executes `BentoLayoutSetAlignSelf()`
-/// `.gutter`    executes `BentoLayoutSetGutter()`
-/// `.list`      executes `BentoLayoutSetList()` //TODO
-/// `.grid`      executes `BentoLayoutSetGrid()` //TODO
-/// `.listAlign` executes `BentoLayoutSetListAlign()` //TODO - Remove in favour of the above
-/// `.listAxis`  executes `BentoLayoutSetListAxis()`  //TODO - Remove in favour of the above
-/// `.gridSize`  executes `BentoLayoutSetGridSize()`  //TODO - Remove in favour of the above
+/// `.offset`  executes `BentoSetOffset()`
+/// `.size`    executes `BentoLayoutSetSize()`
+/// `.minSize` executes `BentoLayoutSetMinSize()`
+/// `.maxSize` executes `BentoLayoutSetMaxSize()`
+/// `.resize`  executes `BentoLayoutSetResizeType()`
+/// `.padding` executes `BentoLayoutSetPadding()`
+/// `.align`   executes `BentoLayoutSetAlignSelf()`
+/// `.gutter`  executes `BentoLayoutSetGutter()`
+/// `.list`    executes `BentoLayoutSetList()`
+/// `.grid`    executes `BentoLayoutSetGrid()`
 /// 
 /// Example:
 /// ```
@@ -186,17 +183,23 @@
 ///     Gutter sizes must be numbers, or you may use `null` to indicate that no change should be made
 ///     to a particular value.
 /// 
-/// `.listAlign`
-///     Calls the `BentoLayoutSetListAlign()` function on the created element. This property can only be used
-///     for objects that inherit from `oBentoList`.
+/// `.list`
+///     Calls the `BentoLayoutSetList()` function on the created element.
 ///     
-///     Can be a 2-element array:
-///         [ <h align>, <v align> ]
+///     Can be a 3-element array:
+///         [ <list axis>, <h align>, <v align> ]
 ///     or a struct:
 ///         {
+///             "axis": <list axis>,
 ///             "h": <h align>,
 ///             "v": <v align>
 ///         }
+///     
+///     List axis values must be one of the following:
+///     - "x"
+///     - "y"
+///     - 0 (equal to BENTO_AXIS_X)
+///     - 1 (equal to BENTO_AXIS_Y)
 ///     
 ///     Horizontal alignment values must be one of the following:
 ///     - "left"
@@ -215,23 +218,10 @@
 ///     - 1 (equal to fa_middle)
 ///     - 2 (equal to fa_bottom)
 ///     
-///     You may also use `null` for either value to indicate that no change should be made.
-/// 
-/// `.listAxis`
-///     Calls the `BentoLayoutSetListAxis()` function on the created element. This property can only be used
-///     for objects that inherit from `oBentoList`.
+///     You may also use `null` for any value to indicate that no change should be made.
 ///     
-///     List axis values must be one of the following:
-///     - "x"
-///     - "y"
-///     - 0 (equal to BENTO_AXIS_X)
-///     - 1 (equal to BENTO_AXIS_Y)
-///     
-///     You may also use `null` for either value to indicate that no change should be made.
-///     
-/// `.gridSize`
-///     Calls the `BentoLayoutSetGridSize()` function on the created element. This property can only be used
-///     for objects that inherit from `oBentoGrid`.
+/// `.grid`
+///     Calls the `BentoLayoutSetGrid()` function on the created element.
 ///     
 ///     Can be a 2-element array:
 ///         [ <columns>, <rows> ]
@@ -290,42 +280,26 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             }
             else if (_name == "gutter")
             {
-                //FIXME - Reimplement to include struct elements
-                //if ((not __BentoObjectInheritsFrom(object_index, oBentoList)) && (not __BentoObjectInheritsFrom(object_index, oBentoGrid)))
-                //{
-                //    __BentoError($"Cannot use .gutter on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoList)} or {object_get_name(oBentoGrid)}");
-                //}
-                
                 __BentoLayoutSetFromJSON_gutter(_element, _value);
+            }
+            else if (_name == "list")
+            {
+                __BentoLayoutSetFromJSON_list(_element, _value);
+            }
+            else if (_name == "grid")
+            {
+                __BentoLayoutSetFromJSON_grid(_element, _value);
             }
             else if (_name == "listAlign")
             {
-                //FIXME - Reimplement to include struct elements
-                //if (not __BentoObjectInheritsFrom(object_index, oBentoList))
-                //{
-                //    __BentoError($"Cannot use .listAlign on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoList)}");
-                //}
-                
                 __BentoLayoutSetFromJSON_listAlign(_element, _value);
             }
             else if (_name == "listAxis")
             {
-                //FIXME - Reimplement to include struct elements
-                //if (not __BentoObjectInheritsFrom(object_index, oBentoList))
-                //{
-                //    __BentoError($"Cannot use .listAxis on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoList)}");
-                //}
-                
                 __BentoLayoutSetFromJSON_listAxis(_element, _value);
             }
             else if (_name == "gridSize")
-            {
-                //FIXME - Reimplement to include struct elements
-                //if (not __BentoObjectInheritsFrom(object_index, oBentoGrid))
-                //{
-                //    __BentoError($"Cannot use .gridSize on an object ({object_get_name(object_index)}) that does not inherit from {object_get_name(oBentoGrid)}");
-                //}
-                        
+            { 
                 __BentoLayoutSetFromJSON_gridSize(_element, _value);
             }
             else
@@ -665,156 +639,149 @@ function __BentoLayoutSetFromJSON_alignSelf(_element, _value)
 
 
 ////////
-// .listAlign
+// .list
 ////////
-function __BentoLayoutSetFromJSON_listAlign(_element, _value)
+function __BentoLayoutSetFromJSON_list(_element, _value)
 {
-    var _h = undefined;
-    var _v = undefined;
+    var _axis   = undefined;
+    var _hAlign = undefined;
+    var _vAlign = undefined;
     
     if (is_array(_value))
     {
-        if (array_length(_value) != 2)
+        if (array_length(_value) != 3)
         {
-            __BentoError($".listAlign layout property must have 2 elements if it is an array (length = {array_length(_value)})");
+            __BentoError($".list layout property must have 3 elements if it is an array (length = {array_length(_value)})");
         }
         
-        _h = _value[0];
-        _v = _value[1];
+        _axis   = _value[0];
+        _hAlign = _value[1];
+        _vAlign = _value[2];
     }
     else if (is_struct(_value))
     {
-        _h = _value[$ "h"] ?? _value[$ "x"];
-        _v = _value[$ "v"] ?? _value[$ "y"];
+        _axis   = _value[$ "axis"];
+        _hAlign = _value[$ "h"] ?? _value[$ "x"];
+        _vAlign = _value[$ "v"] ?? _value[$ "y"];
     }
     else
     {
-        __BentoError($".listAlign layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
+        __BentoError($".list layout property must be a 3-element array or a struct (typeof \"{typeof(_value)}\")");
     }
     
-    if (is_numeric(_h))
+    if (is_numeric(_axis))
     {
-        if ((_h != fa_left) && (_h != fa_center) && (_h != fa_right))
+        if ((_axis != BENTO_AXIS_X) && (_axis != BENTO_AXIS_Y))
         {
-            __BentoError($".listAlign.h layout property must be \"left\", \"shrink\", \"expand\", {fa_left}, {fa_center}, or {fa_right} (value was {_h})");
+            __BentoError($".list.axis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_axis})");
         }
     }
-    else if (is_string(_h))
+    else if (is_string(_axis))
     {
-        if (_h == "left")
+        if (_axis == "x")
         {
-            _h = fa_left;
+            _axis = BENTO_AXIS_X;
         }
-        else if ((_h == "center") || (_h == "centre"))
+        else if (_axis == "y")
         {
-            _h = fa_center;
-        }
-        else if (_h == "right")
-        {
-            _h = fa_right;
+            _axis = BENTO_AXIS_Y;
         }
         else
         {
-            __BentoError($".listAlign.h layout property invalid (value was {_h}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
+            __BentoError($".list.axis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_axis})");
         }
     }
     else
     {
-        __BentoError($".listAlign.h layout property invalid (value was {_h}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
+        __BentoError($".list.axis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_axis})");
     }
     
-    if (is_numeric(_v))
+    if (is_numeric(_hAlign))
     {
-        if ((_v != fa_top) && (_v != fa_middle) && (_v != fa_bottom))
+        if ((_hAlign != fa_left) && (_hAlign != fa_center) && (_hAlign != fa_right))
         {
-            __BentoError($".listAlign.y layout property must be \"top\", \"middle\", \"bottom\", {fa_top}, {fa_middle}, or {fa_bottom} (value was {_v})");
+            __BentoError($".list.h layout property must be \"left\", \"shrink\", \"expand\", {fa_left}, {fa_center}, or {fa_right} (value was {_hAlign})");
         }
     }
-    else if (is_string(_v))
+    else if (is_string(_hAlign))
     {
-        if (_v == "top")
+        if (_hAlign == "left")
         {
-            _v = fa_top;
+            _hAlign = fa_left;
         }
-        else if (_v == "middle")
+        else if ((_hAlign == "center") || (_hAlign == "centre"))
         {
-            _v = fa_middle;
+            _hAlign = fa_center;
         }
-        else if (_v == "bottom")
+        else if (_hAlign == "right")
         {
-            _v = fa_bottom;
+            _hAlign = fa_right;
         }
         else
         {
-            __BentoError($".listAlign.v layout property invalid (value was {_v}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
+            __BentoError($".listAlign.h layout property invalid (value was {_hAlign}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
         }
     }
     else
     {
-        __BentoError($".listAlign.v layout property invalid (value was {_v}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
+        __BentoError($".listAlign.h layout property invalid (value was {_hAlign}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
     }
     
-    BentoLayoutSetListAlign(_h, _v, _element);
+    if (is_numeric(_vAlign))
+    {
+        if ((_vAlign != fa_top) && (_vAlign != fa_middle) && (_vAlign != fa_bottom))
+        {
+            __BentoError($".listAlign.y layout property must be \"top\", \"middle\", \"bottom\", {fa_top}, {fa_middle}, or {fa_bottom} (value was {_vAlign})");
+        }
+    }
+    else if (is_string(_vAlign))
+    {
+        if (_vAlign == "top")
+        {
+            _vAlign = fa_top;
+        }
+        else if (_vAlign == "middle")
+        {
+            _vAlign = fa_middle;
+        }
+        else if (_vAlign == "bottom")
+        {
+            _vAlign = fa_bottom;
+        }
+        else
+        {
+            __BentoError($".listAlign.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
+        }
+    }
+    else
+    {
+        __BentoError($".listAlign.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
+    }
+    
+    BentoLayoutSetList(_axis, _hAlign, _vAlign, _element);
 }
 
 
 
 ////////
-// .listAxis
+// .grid
 ////////
-function __BentoLayoutSetFromJSON_listAxis(_element, _value)
-{
-    if (is_numeric(_value))
-    {
-        if ((_value != BENTO_AXIS_X) && (_value != BENTO_AXIS_Y))
-        {
-            __BentoError($".listAxis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_value})");
-        }
-    }
-    else if (is_string(_value))
-    {
-        if (_value == "x")
-        {
-            _value = BENTO_AXIS_X;
-        }
-        else if (_value == "y")
-        {
-            _value = BENTO_AXIS_Y;
-        }
-        else
-        {
-            __BentoError($".listAxis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_value})");
-        }
-    }
-    else
-    {
-        __BentoError($".listAxis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_value})");
-    }
-    
-    BentoLayoutSetListAxis(_value, _element);
-}
-
-
-
-////////
-// .gridSize
-////////
-function __BentoLayoutSetFromJSON_gridSize(_element, _value)
+function __BentoLayoutSetFromJSON_grid(_element, _value)
 {
     if (is_array(_value))
     {
         if (array_length(_value) != 2)
         {
-            __BentoError($".gridSize layout property must have two elements if it is an array (length = {array_length(_value)})");
+            __BentoError($".grid layout property must have two elements if it is an array (length = {array_length(_value)})");
         }
         
-        BentoLayoutSetGridSize(_value[0], _value[1], _element);
+        BentoLayoutSetGrid(_value[0], _value[1], _element);
     }
     else if (is_struct(_value))
     {
-        BentoLayoutSetGridSize(_value[$ "columns"],
-                             _value[$ "rows"   ],
-                             _element);
+        BentoLayoutSetGrid(_value[$ "columns"],
+                           _value[$ "rows"   ],
+                           _element);
     }
     else
     {

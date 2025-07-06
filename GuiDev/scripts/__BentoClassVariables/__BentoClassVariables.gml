@@ -325,6 +325,9 @@ function __BentoClassVariables(_attachedElement) constructor
     __layoutPadRight  = 0;
     __layoutPadBottom = 0;
     
+    __layoutGutterX = 0;
+    __layoutGutterY = 0;
+    
     __solverPadLeft   = 0;
     __solverPadTop    = 0;
     __solverPadRight  = 0;

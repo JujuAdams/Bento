@@ -8,11 +8,11 @@ function TestGrid()
             image_blend: c_navy,
         },
         layout: {
-            gridSize: [6, 2],
-            size:     [600, 200],
-            resize:   [BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK],
-            padding:  [10, 10, 10, 10],
-            gutter:   [10, 10],
+            grid:    [6, 2],
+            size:    [600, 200],
+            resize:  [BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK],
+            padding: [10, 10, 10, 10],
+            gutter:  [10, 10],
         },
         children: function(_metadata) {
             //Create identical copies of references to the same struct

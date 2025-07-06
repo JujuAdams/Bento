@@ -24,26 +24,17 @@ function BentoLayoutSetGrid(_columns, _rows, _element = self)
             __gridRows    = max(1, _rows);
             
             __SolverGetShrinkWidth  = method(self, __BentoSolverRectGetShrinkWidth);
-            __SolverResizeWidth  = method(self, __BentoSolverGridResizeWidth);
+            __SolverResizeWidth     = method(self, __BentoSolverGridResizeWidth);
             __SolverGetShrinkHeight = method(self, __BentoSolverRectGetShrinkHeight);
-            __SolverResizeHeight = method(self, __BentoSolverGridResizeHeight);
-            __SolverPositions    = method(self, __BentoSolverGridPositions);
-            __funcMeasureWidth   = function() { return 1; }
-            __funcMeasureHeight  = function() { return 1; }
+            __SolverResizeHeight    = method(self, __BentoSolverGridResizeHeight);
+            __SolverPositions       = method(self, __BentoSolverGridPositions);
+            __funcMeasureWidth      = function() { return 1; }
+            __funcMeasureHeight     = function() { return 1; }
         }
         else
         {
-            //We're already a grid, check to see if any parameters have changed
-            
-            if ((__gridColumns != _columns)
-            ||  (__gridRows    != _rows))
-            {
-                __gridColumns = _columns;
-                __gridRows    = _rows;
-                
-                //Parameters changed, update the layout!
-                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
-            }
+            //We're already a grid!
+            BentoLayoutSetGridSize(_columns, _rows, _element);
         }
     }
 }

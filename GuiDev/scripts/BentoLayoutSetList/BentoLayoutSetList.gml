@@ -26,28 +26,18 @@ function BentoLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _elemen
             __layoutVAlignChildren = _vAlignChildren;
             
             __SolverGetShrinkWidth  = method(self, __BentoSolverListGetShrinkWidth);
-            __SolverResizeWidth  = method(self, __BentoSolverListResizeWidth);
+            __SolverResizeWidth     = method(self, __BentoSolverListResizeWidth);
             __SolverGetShrinkHeight = method(self, __BentoSolverListGetShrinkHeight);
-            __SolverResizeHeight = method(self, __BentoSolverListResizeHeight);
-            __SolverPositions    = method(self, __BentoSolverListPositions);
-            __funcMeasureWidth   = function() { return 1; }
-            __funcMeasureHeight  = function() { return 1; }
+            __SolverResizeHeight    = method(self, __BentoSolverListResizeHeight);
+            __SolverPositions       = method(self, __BentoSolverListPositions);
+            __funcMeasureWidth      = function() { return 1; }
+            __funcMeasureHeight     = function() { return 1; }
         }
         else
         {
-            //We're already a list, check to see if any parameters have changed
-            
-            if ((__listAxis != _listAxis)
-            ||  (__layoutHAlignChildren != _hAlignChildren)
-            ||  (__layoutVAlignChildren != _vAlignChildren))
-            {
-                __listAxis = _listAxis;
-                __layoutHAlignChildren = _hAlignChildren;
-                __layoutVAlignChildren = _vAlignChildren;
-                
-                //Parameters changed, update the layout!
-                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
-            }
+            //We're already a list!
+            BentoLayoutSetListAxis(_listAxis, _element);
+            BentoLayoutSetListAlign(_hAlignChildren, _vAlignChildren, _element);
         }
     }
 }

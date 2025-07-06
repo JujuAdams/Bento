@@ -6,11 +6,11 @@ function TestTransform()
         {
             object: oExampleGridWithRotation,
             layout: {
-                offset: [30, 30],
-                size: [300, 300],
+                offset:  [30, 30],
+                size:    [300, 300],
                 padding: 10,
-                gutter: 10,
-                gridSize: [2, 2],
+                gutter:  10,
+                grid:    [2, 2],
             },
             children: [
                 {

@@ -10,11 +10,6 @@ function BentoLayoutSetGutter(_x, _y, _element = self)
     
     with(_element.BENTO_VARS)
     {
-        if ((__layoutType != BENTO_LAYOUT_LIST) && (__layoutType != BENTO_LAYOUT_GRID))
-        {
-            __BentoError("Can only apply gutter to elements using a list or grid layout");
-        }
-        
         if (_x != undefined)
         {
             if (__layoutGutterX != _x)
