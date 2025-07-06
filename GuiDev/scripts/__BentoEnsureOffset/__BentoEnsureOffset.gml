@@ -68,9 +68,13 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _
         var _width  = __solvedWidth;
         var _height = __solvedHeight;
         
+        //Add our offset contribution
+        _offsetX += __offsetX;
+        _offsetY += __offsetY;
+        
         //Calculate where our center is on the parent
-        var _leftWorld   = __solvedLeft + __offsetX + _offsetX;
-        var _topWorld    = __solvedTop  + __offsetY + _offsetY;
+        var _leftWorld   = __solvedLeft + _offsetX;
+        var _topWorld    = __solvedTop  + _offsetY;
         var _rightWorld  = _leftWorld + _width;
         var _bottomWorld = _topWorld  + _height;
         
