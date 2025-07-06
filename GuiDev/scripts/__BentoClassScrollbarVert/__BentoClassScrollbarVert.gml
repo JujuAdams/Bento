@@ -69,7 +69,7 @@ function __BentoClassScrollbarVert(_element) : __BentoClassScrollbar(_element) c
                         holdHandle = true;
                         __grabDelta = handleTop - _cursorY;
                     }
-                    else if (BentoPrimaryGetClick(_element)) //FIXME - This has stopped working?
+                    else if (BentoPrimaryGetClick(_element))
                     {
                         //Otherwise allow a single click to teleport the scroll handle
                         var _param = BentoScrollGetParamY(_element);

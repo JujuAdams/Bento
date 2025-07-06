@@ -10,4 +10,4 @@ BentoLayoutSetGutter(10, 10);
 BentoLayoutSetAlignSelf(fa_left, fa_top);
 BentoLayoutSetMinSize(32, 32);
 
-BentoFocusOpen(BENTO_FOCUS_POINTER_IGNORE);
+BentoFocusOpen(BENTO_FOCUS_POINTER_DESTROY_ON_CLICK);

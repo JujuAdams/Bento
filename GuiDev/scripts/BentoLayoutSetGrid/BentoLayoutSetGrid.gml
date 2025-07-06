@@ -17,9 +17,6 @@ function BentoLayoutSetGrid(_columns, _rows, _element = self)
             __layoutType = BENTO_LAYOUT_GRID;
             __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
-            __layoutGutterX = 0;
-            __layoutGutterY = 0;
-            
             __gridColumns = max(1, _columns);
             __gridRows    = max(1, _rows);
             

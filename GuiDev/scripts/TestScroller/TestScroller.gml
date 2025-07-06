@@ -4,9 +4,10 @@ function TestScroller()
 {
     var _json = [
         {
-            object: oBentoList,
+            object: oBentoSprite,
+            offset: [30, 30],
             layout: {
-                offset: [30, 30],
+                list: ["y", fa_left, fa_top],
                 padding: 10,
                 gutter: 10,
             },

@@ -18,9 +18,6 @@ function BentoLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _elemen
             __layoutType = BENTO_LAYOUT_LIST;
             __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
-            __layoutGutterX = 0;
-            __layoutGutterY = 0;
-            
             __listAxis = _listAxis;
             __layoutHAlignChildren = _hAlignChildren;
             __layoutVAlignChildren = _vAlignChildren;

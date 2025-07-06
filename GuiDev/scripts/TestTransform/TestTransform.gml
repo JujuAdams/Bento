@@ -5,8 +5,8 @@ function TestTransform()
     var _json = [
         {
             object: oExampleGridWithRotation,
+            offset: [30, 30],
             layout: {
-                offset:  [30, 30],
                 size:    [300, 300],
                 padding: 10,
                 gutter:  10,

@@ -23,4 +23,5 @@ BentoSetIfNotDefined("valueMax",  100);
 BentoSetIfNotDefined("value",     valueMax);
 BentoSetIfNotDefined("func",      function(){});
 
+draw_set_font(fntDebug);
 BentoLayoutSetSize(string_width(title) + 20, string_height(title) + 20);

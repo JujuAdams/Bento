@@ -5,18 +5,14 @@ function TestContextMenu()
     var _json = [
         {
             object: oExampleButton,
-            layout: {
-                offset: [200, 10],
-            },
+            offset: [200, 10],
             vars: {
                 image_blend: c_blue,
             },
         },
         {
             object: oExampleButton,
-            layout: {
-                offset: [10, 10],
-            },
+            offset: [10, 10],
             vars: {
                 image_blend: c_red,
                 clickFunc: function()

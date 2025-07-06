@@ -23,25 +23,25 @@
 ///      To move elements around in a way that also moves their collisions, please use the
 ///      `BentoLayout*()` functions or `BentoSetOffset()`.
 /// 
-/// @param x
-/// @param y
+/// @param xOffset
+/// @param yOffset
 /// @param [element=self]
 
-function BentoTransformSetOrigin(_x, _y, _element = self)
+function BentoTransformSetOrigin(_xOffset, _yOffset, _element = self)
 {
     if (not BentoExists(_element)) return;
     
     with(_element.BENTO_VARS)
     {
-        if (__transformOriginX != _x)
+        if (__transformOriginX != _xOffset)
         {
-            __transformOriginX = _x;
+            __transformOriginX = _xOffset;
             __BentoMarkTransformDirty(_element);
         }
         
-        if (__transformOriginY != _y)
+        if (__transformOriginY != _yOffset)
         {
-            __transformOriginY = _y;
+            __transformOriginY = _yOffset;
             __BentoMarkTransformDirty(_element);
         }
     }
