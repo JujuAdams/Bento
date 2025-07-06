@@ -18,11 +18,6 @@ function __BentoEnsureTransforms()
             var _angle   = __transformAngle;
             var _offsetX = __transformOffsetX;
             var _offsetY = __transformOffsetY;
-            var _originX = __transformOriginX;
-            var _originY = __transformOriginY;
-            
-            var _originX = (_originX == undefined)? __attachedElement.bentoX : (__attachedElement.bentoLeft + _originX);
-            var _originY = (_originY == undefined)? __attachedElement.bentoY : (__attachedElement.bentoTop  + _originY);
             
             if ((_offsetX != 0) || (_offsetY != 0) || (_scaleX != 1) || (_scaleY != 1) || (_angle != 0))
             {
@@ -41,19 +36,27 @@ function __BentoEnsureTransforms()
                     __transformMatrix = _transformMatrix;
                 }
                 
+                var _x = __attachedElement.bentoX
+                var _y = __attachedElement.bentoY
+                
                 if (__transformOffsetAbsolute)
                 {
-                    _offsetX -= _originX;
-                    _offsetY -= _originY;
+                    _offsetX -= _x;
+                    _offsetY -= _y;
                 }
+                
+                var _originX = __transformOriginX;
+                var _originY = __transformOriginY;
+                var _originX = (_originX == undefined)? _x : (__attachedElement.bentoLeft + _originX);
+                var _originY = (_originY == undefined)? _y : (__attachedElement.bentoTop  + _originY);
                 
                 //Update the existing matrix
                 _transformMatrix[@  0] =  _scaleX*_cos;
                 _transformMatrix[@  1] =  _scaleX*_sin;
                 _transformMatrix[@  4] = -_scaleY*_sin;
                 _transformMatrix[@  5] =  _scaleY*_cos;
-                _transformMatrix[@ 11] =  _offsetX + _originX - (_originX*_scaleX*_cos - _originY*_scaleY*_sin);
-                _transformMatrix[@ 12] =  _offsetY + _originY - (_originX*_scaleX*_sin + _originY*_scaleY*_cos);
+                _transformMatrix[@ 12] =  _offsetX + _x - (_scaleX*_originX*_cos - _scaleY*_originY*_sin);
+                _transformMatrix[@ 13] =  _offsetY + _y - (_scaleY*_originY*_sin + _scaleY*_originY*_cos);
             }
             else
             {
