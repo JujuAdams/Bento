@@ -27,7 +27,7 @@
 /// @param [blocking=false]
 /// @param [element=self]
 
-function BentoAnimPlay(_duration, _delay, _xTo, _yTo, _xScaleTo, _yScaleTo, _animCurve = acBentoLinear, _blocking = false, _element = self)
+function BentoAnimPlayBasic(_duration, _delay, _xTo, _yTo, _xScaleTo, _yScaleTo, _animCurve = acBentoLinear, _blocking = false, _element = self)
 {
     if (not BentoExists(_element)) return;
     
