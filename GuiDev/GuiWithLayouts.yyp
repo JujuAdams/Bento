@@ -353,6 +353,7 @@
     {"id":{"name":"DrawCross","path":"scripts/DrawCross/DrawCross.yy",},},
     {"id":{"name":"ExampleConstrButton","path":"scripts/ExampleConstrButton/ExampleConstrButton.yy",},},
     {"id":{"name":"TestAlignSelf","path":"scripts/TestAlignSelf/TestAlignSelf.yy",},},
+    {"id":{"name":"TestAnimation","path":"scripts/TestAnimation/TestAnimation.yy",},},
     {"id":{"name":"TestCarousel","path":"scripts/TestCarousel/TestCarousel.yy",},},
     {"id":{"name":"TestContextMenu","path":"scripts/TestContextMenu/TestContextMenu.yy",},},
     {"id":{"name":"TestGrid","path":"scripts/TestGrid/TestGrid.yy",},},

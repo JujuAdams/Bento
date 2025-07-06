@@ -2,4 +2,4 @@
 
 BentoInputConfigureRetrigger(10, 9, 4, 5);
 
-TestShrinkAndExpand();
+TestScrollbox();

@@ -4,9 +4,9 @@ function TestCarousel()
 {
     var _json = [
         {
-            object: oBentoList,
+            object: oBentoSprite,
+            offset: [-30, -30],
             layout: {
-                offset: [-30, -30],
                 alignSelf: [1, 1],
                 padding: 10,
                 gutter: 10,

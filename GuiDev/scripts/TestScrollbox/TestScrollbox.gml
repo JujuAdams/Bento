@@ -8,8 +8,8 @@ function TestScrollbox()
             vars: {
                 image_blend: c_maroon,
             },
+            offset: [300, 200],
             layout: {
-                offset:  [300, 200],
                 size:    [200, 120],
                 maxSize: [200, 295],
                 resize:  [BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK],
