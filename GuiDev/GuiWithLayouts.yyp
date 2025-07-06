@@ -171,6 +171,7 @@
     {"id":{"name":"BentoAnimPlayBuildIn","path":"scripts/BentoAnimPlayBuildIn/BentoAnimPlayBuildIn.yy",},},
     {"id":{"name":"BentoAnimPlayBuildOut","path":"scripts/BentoAnimPlayBuildOut/BentoAnimPlayBuildOut.yy",},},
     {"id":{"name":"BentoAnimPlayCustom","path":"scripts/BentoAnimPlayCustom/BentoAnimPlayCustom.yy",},},
+    {"id":{"name":"BentoAnimPlayMoveFrom","path":"scripts/BentoAnimPlayMoveFrom/BentoAnimPlayMoveFrom.yy",},},
     {"id":{"name":"BentoAnimStop","path":"scripts/BentoAnimStop/BentoAnimStop.yy",},},
     {"id":{"name":"BentoClipDrawOff","path":"scripts/BentoClipDrawOff/BentoClipDrawOff.yy",},},
     {"id":{"name":"BentoClipDrawOn","path":"scripts/BentoClipDrawOn/BentoClipDrawOn.yy",},},

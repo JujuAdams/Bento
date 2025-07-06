@@ -12,7 +12,7 @@
 ///      any animation playing on the element.
 /// 
 /// N.B. This function will overwrite any values previously set by the `BentoTransformSet*()`
-///      functions. If the `alpha` parameter is set then this function will override the
+///      functions. If the `alphaTo` parameter is set then this function will override the
 ///      `image_alpha` variable on the element itself.
 /// 
 /// The parameters for this function are the final values. The starting values will be derived
@@ -24,15 +24,16 @@
 /// 
 /// @param duration
 /// @param delay
-/// @param xOffset
-/// @param yOffset
-/// @param scale
-/// @param [alpha]
+/// @param xOffsetTo
+/// @param yOffsetTo
+/// @param xScaleTo
+/// @param yScaleTo
+/// @param [alphaTo]
 /// @param [animCurve=linear]
 /// @param [blocking=true]
 /// @param [element=self]
 
-function BentoAnimPlayBuildOut(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo = undefined, _animCurve = acBentoLinear, _element = self)
+function BentoAnimPlayBuildOut(_duration, _delay, _xTo, _yTo, _xScaleTo, _yScaleTo, _alphaTo = undefined, _animCurve = acBentoLinear, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -50,15 +51,15 @@ function BentoAnimPlayBuildOut(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo
                              
                              __xTo:      _xTo,
                              __yTo:      _yTo,
-                             __xScaleTo: _scaleTo,
-                             __yScaleTo: _scaleTo,
+                             __xScaleTo: _xScaleTo,
+                             __yScaleTo: _yScaleTo,
                              __alphaTo:  _alphaTo,
                          },
                          function(_element, _t, _metadata)
                          {
                              var _q = animcurve_channel_evaluate(__curveChannel, _t);
                              
-                             BentoTransformSetPosition(lerp(__xFrom, __xTo, _q), lerp(__yFrom, __yTo, _q), _element);
+                             BentoTransformSetOffset(lerp(__xFrom, __xTo, _q), lerp(__yFrom, __yTo, _q), _element);
                              BentoTransformSetScale(lerp(__xScaleFrom, __xScaleTo, _q), lerp(__yScaleFrom, __yScaleTo, _q), _element);
                              
                              if (__alphaTo != undefined)

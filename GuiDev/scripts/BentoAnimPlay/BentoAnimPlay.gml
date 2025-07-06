@@ -1,8 +1,7 @@
 // Feather disable all
 
 /// Starts playing an animation. This function allows you to adjust transform values over time
-/// can be used to perform basic movement and scaling. This function further allows to you to
-/// change the `image_alpha` variable on the element over time. If you'd like this to be a blocking
+/// can be used to perform basic movement and scaling. If you'd like this to be a blocking
 /// animation then please set the optional `blocking` parameter to `true`. By default, however,
 /// animations played using this function are non-blocking.
 /// 
@@ -10,8 +9,7 @@
 ///      any animation playing on the element.
 /// 
 /// N.B. This function will overwrite any values previously set by the `BentoTransformSet*()`
-///      functions. If the `alpha` parameter is set then this function will override the
-///      `image_alpha` variable on the element itself.
+///      functions.
 /// 
 /// The parameters for this function are the final values. The starting values will be derived
 /// from the current transformation state of the element. The `duration` and `delay` parameters
@@ -23,13 +21,13 @@
 /// @param delay
 /// @param xOffset
 /// @param yOffset
-/// @param scale
-/// @param [alpha]
+/// @param xScale
+/// @param yScale
 /// @param [animCurve=linear]
 /// @param [blocking=false]
 /// @param [element=self]
 
-function BentoAnimPlay(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo = undefined, _animCurve = acBentoLinear, _blocking = false, _element = self)
+function BentoAnimPlay(_duration, _delay, _xTo, _yTo, _xScaleTo, _yScaleTo, _animCurve = acBentoLinear, _blocking = false, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -43,25 +41,18 @@ function BentoAnimPlay(_duration, _delay, _xTo, _yTo, _scaleTo, _alphaTo = undef
                              __yFrom:      _from.yOffset,
                              __xScaleFrom: _from.xScale,
                              __yScaleFrom: _from.yScale,
-                             __alphaFrom:  _element.image_alpha,
                              
                              __xTo:      _xTo,
                              __yTo:      _yTo,
-                             __xScaleTo: _scaleTo,
-                             __yScaleTo: _scaleTo,
-                             __alphaTo:  _alphaTo,
+                             __xScaleTo: _xScaleTo,
+                             __yScaleTo: _yScaleTo,
                          },
                          function(_element, _t, _metadata)
                          {
                              var _q = animcurve_channel_evaluate(__curveChannel, _t);
                              
-                             BentoTransformSetPosition(lerp(__xFrom, __xTo, _q), lerp(__yFrom, __yTo, _q), _element);
+                             BentoTransformSetOffset(lerp(__xFrom, __xTo, _q), lerp(__yFrom, __yTo, _q), _element);
                              BentoTransformSetScale(lerp(__xScaleFrom, __xScaleTo, _q), lerp(__yScaleFrom, __yScaleTo, _q), _element);
-                             
-                             if (__alphaTo != undefined)
-                             {
-                                 _element.image_alpha = lerp(__alphaFrom, __alphaTo, _t); //Always linear
-                             }
                          }),
                          undefined, _blocking, _element);
 }

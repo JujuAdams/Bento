@@ -27,13 +27,14 @@
 /// @param delay
 /// @param xOffsetFrom
 /// @param yOffsetFrom
-/// @param scaleFrom
+/// @param xScaleFrom
+/// @param yScaleFrom
 /// @param [alphaFrom]
 /// @param [animCurve=linear]
 /// @param [blocking=true]
 /// @param [element=self]
 
-function BentoAnimPlayBuildIn(_duration, _delay, _xFrom, _yFrom, _scaleFrom, _alphaFrom = undefined, _animCurve = acBentoLinear, _blocking = true, _element = self)
+function BentoAnimPlayBuildIn(_duration, _delay, _xFrom, _yFrom, _xScaleFrom, _yScaleFrom, _alphaFrom = undefined, _animCurve = acBentoLinear, _blocking = true, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -44,8 +45,8 @@ function BentoAnimPlayBuildIn(_duration, _delay, _xFrom, _yFrom, _scaleFrom, _al
                              
                              __xFrom:      _xFrom,
                              __yFrom:      _yFrom,
-                             __xScaleFrom: _scaleFrom,
-                             __yScaleFrom: _scaleFrom,
+                             __xScaleFrom: _xScaleFrom,
+                             __yScaleFrom: _yScaleFrom,
                              __alphaFrom:  _alphaFrom,
                              
                              __xTo:      0,
@@ -58,7 +59,7 @@ function BentoAnimPlayBuildIn(_duration, _delay, _xFrom, _yFrom, _scaleFrom, _al
                          {
                              var _q = animcurve_channel_evaluate(__curveChannel, _t);
                              
-                             BentoTransformSetPosition(lerp(__xFrom, __xTo, _q), lerp(__yFrom, __yTo, _q), _element);
+                             BentoTransformSetOffset(lerp(__xFrom, __xTo, _q), lerp(__yFrom, __yTo, _q), _element);
                              BentoTransformSetScale(lerp(__xScaleFrom, __xScaleTo, _q), lerp(__yScaleFrom, __yScaleTo, _q), _element);
                              
                              if (__alphaFrom != undefined)
