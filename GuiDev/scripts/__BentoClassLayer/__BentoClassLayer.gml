@@ -372,23 +372,71 @@ function __BentoClassLayer(_environment, _name) constructor
     
     static __DrawWireframe = function()
     {
-        __BentoEnsureDrawOrder();
         __BentoEnsureTransforms();
         
-        var _drawOrder = __drawOrder;
-        var _i = 0;
-        repeat(array_length(_drawOrder))
+        var _func = function(_func, _element, _baseAlpha)
         {
-            var _drawFunction = _drawOrder[_i];
-            with(method_get_self(_drawFunction))
-            {
-                //FIXME - This doesn't support many features
-                draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, true);
-                BentoDrawCross(bentoX, bentoY);
-            }
+            //N.B. - This should match `__BentoEnsureDrawOrderInner()`
             
-            ++_i;
+            with(_element.BENTO_VARS)
+            {
+                if (__disable) return;
+                
+                if (__transformMatrix != undefined)
+                {
+                    matrix_stack_push(__transformMatrix);
+                    matrix_set(matrix_world, matrix_stack_top());
+                }
+                
+                if (__visible)
+                {
+                    with(_element)
+                    {
+                        draw_set_alpha(_baseAlpha * ((BentoGetClickable() && BentoCursorGetHover())? 0.2 : 0.1));
+                        draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, false);
+                        draw_set_alpha(_baseAlpha);
+                        
+                        draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, true);
+                        BentoDrawCross(bentoX, bentoY);
+                    }
+                }
+                
+                if (__scissorEnabled)
+                {
+                    with(_element)
+                    {
+                        __BentoScissorPushFromElement();
+                    }
+                }
+                
+                //Add children created inside the parent to the Draw order
+                var _array = __childDrawArray;
+                var _i = 0;
+                repeat(array_length(_array))
+                {
+                    _func(_func, _array[_i], _baseAlpha);
+                    ++_i;
+                }
+                
+                if (__scissorEnabled)
+                {
+                    __BentoScissorPop();
+                }
+                
+                BentoScrollbarDrawPlaceholder(BentoScrollbarGetHoriData(_element), _element);
+                BentoScrollbarDrawPlaceholder(BentoScrollbarGetVertData(_element), _element);
+                
+                if (__transformMatrix != undefined)
+                {
+                    matrix_stack_pop();
+                    matrix_set(matrix_world, matrix_stack_top());
+                }
+            }
         }
+        
+        var _oldAlpha = draw_get_alpha();
+        _func(_func, __rootElement, _oldAlpha);
+        draw_set_alpha(_oldAlpha);
     }
     
     static __GetFocusRoot = function()

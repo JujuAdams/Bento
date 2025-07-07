@@ -64,6 +64,8 @@ function __BentoEnsureDrawOrder()
 
 function __BentoEnsureDrawOrderInner(_drawOrder, _element)
 {
+    //N.B. - If you edit this, make sure to edit `__DrawWireframe()` as well
+    
     with(_element.BENTO_VARS)
     {
         if (__disable) return;

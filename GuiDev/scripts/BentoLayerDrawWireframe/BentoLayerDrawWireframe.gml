@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Draws a layer using wireframe graphics.
+/// 
 /// @param [layerName=top]
 /// @param [environmentName=current]
 
