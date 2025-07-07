@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoSetOriginAuto",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoSetOriginAuto",
+  "parent":{
+    "name":"Properties",
+    "path":"folders/Library/Functions/Properties.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

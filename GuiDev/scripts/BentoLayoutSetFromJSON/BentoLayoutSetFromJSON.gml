@@ -8,10 +8,9 @@
 /// 
 /// 
 /// 
-/// Each layout property is associated with a layout function (`BentoSetOffset()` etc.). There are
-/// many layout properties that can be modified using this function:
+/// Each layout property is associated with a layout function (`BentoLayoutSetSize()` etc.). There
+/// are many layout properties that can be modified using this function:
 /// 
-/// `.offset`  executes `BentoSetOffset()`
 /// `.size`    executes `BentoLayoutSetSize()`
 /// `.minSize` executes `BentoLayoutSetMinSize()`
 /// `.maxSize` executes `BentoLayoutSetMaxSize()`
@@ -57,20 +56,6 @@
 /// }
 /// ```
 /// 
-/// `.offset`
-///     Calls the `BentoSetOffset()` function on the created element.
-///     
-///     Can be a 2-element array:
-///         [ <x offset>, <y offset> ]
-///     or a struct:
-///         {
-///             "x": <x offset>,
-///             "y": <y offset>
-///         }
-///     
-///     Offset values must be numbers, or you may use `null` to indicate that no change should be made
-///     to a particular value.
-///     
 /// `.size`
 ///     Calls the `BentoLayoutSetSize()` function on the created element. "Size" means the "preferred
 ///     size" which is an important detail in the layout algorithm.

@@ -119,6 +119,25 @@
 /// 
 /// 
 /// 
+/// Element definition structs may contain an `.origin` property. If specified, this must be either
+/// an array with two entries (being the x and y offsets respectively) or a struct with an `.x`
+/// and `.y` properties.
+/// 
+/// Example:
+/// ```
+/// {
+///     object: oBentoSprite,
+///     origin: [10, 20]
+/// }
+/// 
+/// {
+///     object: oBentoSprite,
+///     origin: {x: 10, y: 20}
+/// }
+/// ```
+/// 
+/// 
+/// 
 /// Element definitions struct may also contain a `.name` property. This value will be passed to
 /// `BentoNameSet()` targetting the created element.
 /// 
@@ -223,10 +242,6 @@
 /// struct that contains definitions for layout rules. This struct is passed to
 /// `BentoLayoutSetFromJSON()` targetting the created element. Please see that function for
 /// documentation.
-/// 
-/// N.B. The layout property may itself contain an `.offset` property which will conflict with an
-///      `.offset` property defined in the main element struct. In this situation, the layout struct
-///      will take precedence.
 /// 
 /// Example:
 /// ```
@@ -396,7 +411,7 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             }
         }
         
-        //Offset the instance
+        //Offset the element
         var _offset = _json[$ "offset"];
         if (_offset != undefined)
         {
@@ -406,7 +421,7 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
                 {
                     __BentoError($".offset property must have 2 elements if it is an array (length = {array_length(_offset)})");
                 }
-        
+                
                 BentoSetOffset(_offset[0], _offset[1], _element);
             }
             else if (is_struct(_offset))
@@ -416,6 +431,29 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             else
             {
                 __BentoError($".offset property must be a 2-element array or a struct (typeof \"{typeof(_offset)}\")");
+            }
+        }
+        
+        //Set element origin
+        var _origin = _json[$ "origin"];
+        if (_origin != undefined)
+        {
+            if (is_array(_origin))
+            {
+                if (array_length(_origin) != 2)
+                {
+                    __BentoError($".origin property must have 2 elements if it is an array (length = {array_length(_origin)})");
+                }
+                
+                BentoSetOffset(_origin[0], _origin[1], _element);
+            }
+            else if (is_struct(_origin))
+            {
+                BentoSetOrigin(_origin[$ "x"], _origin[$ "y"], _element);
+            }
+            else
+            {
+                __BentoError($".origin property must be a 2-element array or a struct (typeof \"{typeof(_origin)}\")");
             }
         }
         

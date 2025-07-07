@@ -22,8 +22,14 @@ function __BentoClassVariables(_attachedElement) constructor
     __visible        = true;
     __hoverableIndex = undefined;
     
+    //Cartesian offset from the calculated layout position
     __offsetX = 0;
     __offsetY = 0;
+    
+    //Origin position, used for setting `bentoX` and `bentoY`
+    __originX = 0;
+    __originY = 0;
+    __originAuto = __elementIsInstance; //Instances default to auto origin
     
     __transformMatrix  = undefined;
     __transformOriginX = undefined;
@@ -302,11 +308,6 @@ function __BentoClassVariables(_attachedElement) constructor
     //relative to edges and corners.
     __layoutAlignH = BENTO_DEFAULT_LAYOUT_ALIGN_H;
     __layoutAlignV = BENTO_DEFAULT_LAYOUT_ALIGN_V;
-    
-    //Origin position, used for setting `bentoX` and `bentoY`
-    __layoutOriginX = 0;
-    __layoutOriginY = 0;
-    __layoutOriginAuto = __elementIsInstance; //Instances default to auto origin
     
     //The "preferred" (ideal) size for the element. A value of 0 (or less) indicates that this value
     //is unset and should be inferred from some other property.

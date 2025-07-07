@@ -19,7 +19,7 @@ function BentoSetSprite(_sprite, _instance = self, _force = false)
             
             with(_instance.BENTO_VARS)
             {
-                if (__layoutOriginAuto)
+                if (__originAuto)
                 {
                     __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
                 }
