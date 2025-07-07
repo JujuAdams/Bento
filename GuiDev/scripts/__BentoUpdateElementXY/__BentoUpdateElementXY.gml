@@ -14,17 +14,18 @@ function __BentoUpdateElementXY()
         else
         {
             //Fall back on the default alignment if we have no sprite
-            var _xPerc = BENTO_DEFAULT_LAYOUT_ALIGN_H;
-            var _yPerc = BENTO_DEFAULT_LAYOUT_ALIGN_V;
+            var _xPerc = BENTO_DEFAULT_ORIGIN_X;
+            var _yPerc = BENTO_DEFAULT_ORIGIN_Y;
         }
         
-        bentoX = lerp(bentoLeft, bentoRight,  _xPerc);
-        bentoY = lerp(bentoTop,  bentoBottom, _yPerc);
     }
     else
     {
         //Otherwise use the static layout origin
-        bentoX = bentoLeft + BENTO_VARS.__originX;
-        bentoY = bentoTop  + BENTO_VARS.__originY;
+        var _xPerc = BENTO_VARS.__originX;
+        var _yPerc = BENTO_VARS.__originY;
     }
+    
+    bentoX = lerp(bentoLeft, bentoRight,  _xPerc);
+    bentoY = lerp(bentoTop,  bentoBottom, _yPerc);
 }
