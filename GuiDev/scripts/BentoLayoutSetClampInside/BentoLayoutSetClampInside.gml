@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Sets whether an element should be clamped inside the layer's root element. This is useful for
+/// context menus (pop-up menus) that may be created at unpredictable positions.
+/// 
 /// @param state
 /// @param [element=self]
 

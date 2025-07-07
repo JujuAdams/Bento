@@ -1,7 +1,8 @@
 // Feather disable all
 
 /// Sets the layout configuration for a Bento element using JSON data. The format for the JSON
-/// data is explained below.
+/// data is explained below. You cannot directly move an element using this function. Instead,
+/// please use `BentoSetOffset()`.
 /// 
 /// @param json
 /// @param [element=self]

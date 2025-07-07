@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Sets the baseline size for an element. If an element's resize type is `BENTO_RESIZE_STATIC`
+/// this size will be used as the size for the element.
+/// 
 /// @param [width]
 /// @param [height]
 /// @param [element=self]

@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Sets the padding inside an element. Positive padding values will position children away from
+/// the edges of the element.
+/// 
 /// @param [left]
 /// @param [top]
 /// @param [right]

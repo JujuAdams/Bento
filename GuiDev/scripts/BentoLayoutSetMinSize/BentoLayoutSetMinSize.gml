@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Sets the minimum size for an element. An element will never be set to a size smaller than this
+/// even if it results in overlaps.
+/// 
 /// @param [width]
 /// @param [height]
 /// @param [element=self]

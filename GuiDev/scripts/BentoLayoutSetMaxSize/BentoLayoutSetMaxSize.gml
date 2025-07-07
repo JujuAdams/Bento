@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Sets the maximum size for an element. An element will never be set to a size larger than this
+/// even if there is extra space for the element to fill.
+/// 
 /// @param [width]
 /// @param [height]
 /// @param [element=self]

@@ -18,12 +18,12 @@ function BentoLayoutSetText(_funcWidth, _funcHeight, _element = self)
             __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
             __SolverGetShrinkWidth  = method(self, __BentoSolverTextGetShrinkWidth);
-            __SolverResizeWidth  = function(){};
+            __SolverResizeWidth     = function(){};
             __SolverGetShrinkHeight = method(self, __BentoSolverTextGetShrinkHeight);
-            __SolverResizeHeight = function(){};
-            __SolverPositions    = method(self, __BentoSolverRectPositions);
-            __funcMeasureWidth   = method(__attachedElement, _funcWidth);
-            __funcMeasureHeight  = method(__attachedElement, _funcHeight);
+            __SolverResizeHeight    = function(){};
+            __SolverPositions       = method(self, __BentoSolverRectPositions);
+            __funcMeasureWidth      = method(__attachedElement, _funcWidth);
+            __funcMeasureHeight     = method(__attachedElement, _funcHeight);
         }
         else
         {
