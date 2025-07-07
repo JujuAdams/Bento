@@ -6,7 +6,7 @@ function __BentoSolverTextGetShrinkWidth()
     
     //Determine the preferred width for the text. If the preferred width isn't set then we use the
     //full width of the text string itself.
-    var _widthPref = clamp((__layoutWidthPref > 0)? __layoutWidthPref : string_width(__attachedElement.text), __layoutWidthMin, __layoutWidthMax);
+    var _widthPref = clamp((__layoutWidthPref > 0)? __layoutWidthPref : __funcMeasureWidth(__attachedElement.text), __layoutWidthMin, __layoutWidthMax);
     __solvedWidth = _widthPref;
             
     if (__layoutWidthResize == BENTO_RESIZE_STATIC)
@@ -17,7 +17,7 @@ function __BentoSolverTextGetShrinkWidth()
     else
     {
         //Use a conveniently small string to act as a baseline minimum width if no minimum width has been specified.
-        __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : string_width("Adams");
+        __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __funcMeasureWidth("Adams");
     }
     
     //Whatever the weather, the width for the purpose of shrinking the parent is whatever layout
