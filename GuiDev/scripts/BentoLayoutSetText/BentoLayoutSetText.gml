@@ -1,5 +1,27 @@
 // Feather disable all
 
+/// Sets an element as using a special layout type for resizable wrapping text.
+/// 
+/// N.B. This particular layout type presumes that you want the element containing to resize its
+///      height depending on how text wraps in the width available. You don't need to use this
+///      layout type if you don't need this feature and you'll probably want to use the
+///      `BentoLayoutSetRect()` instead (which is the default layout type).
+/// 
+/// Text has some perculiar properties: as the available width for text decreases, text wrapping
+/// will mean that the height of the text
+/// after wrapping will increase. To handle these sorts of situations, elements that are set up
+/// with this function specify two "measure" functions: one for the starting width of text, the
+/// other for the resulting height of the text after wrapping.
+/// 
+/// The `measureWidthFunc` parameter should be a function (typically a method scoped to the target
+/// element) that returns the width of the text. The width should be calculated using the settings
+/// that you intend to use for final rendering of the text. The `measureWidthFunc` function is
+/// executed with one parameter.
+/// 
+/// The `measureHeightFunc` parameter should be a function that returns the height of the text
+/// after wrapping. The `measureWidthFunc` function is executed with one parameter which is the
+/// width of the available space for the element. This value may be set to `999999` in
+/// 
 /// @param measureWidthFunc
 /// @param measureHeightFunc
 /// @param [element=self]

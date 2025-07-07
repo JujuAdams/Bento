@@ -24,7 +24,7 @@ function BentoConstrText(_text, _emptyText = "", _font = -1, _hAlign = fa_left, 
     
     // Set up the rules to use when Bento calculates layouts
     BentoLayoutSetText(
-        function(_forceString) //Measure width
+        function(_forceString = undefined) //Measure width
         {
             var _oldFont = draw_get_font();
             draw_set_font(font);
@@ -34,11 +34,11 @@ function BentoConstrText(_text, _emptyText = "", _font = -1, _hAlign = fa_left, 
             return _result;
         },
         
-        function(_forceString, _maxWidth) //Measure height
+        function(_maxWidth) //Measure height
         {
             var _oldFont = draw_get_font();
             draw_set_font(font);
-            var _result = string_height_ext(_forceString ?? text, -1, _maxWidth);
+            var _result = string_height_ext(text, -1, _maxWidth);
             draw_set_font(_oldFont);
             
             return _result;
