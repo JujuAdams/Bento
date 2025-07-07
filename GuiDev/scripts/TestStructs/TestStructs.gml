@@ -5,6 +5,7 @@ function TestStructs()
     structTest = new BentoConstrSprite(sBentoMaskRectangle, BentoGetRoot());
     with(structTest)
     {
+        BentoSetOffset(10, 10);
         BentoLayoutSetList(BENTO_AXIS_Y, fa_left, fa_top);
         BentoLayoutSetResizeType(BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK);
         BentoLayoutSetPadding(10, 10, 10, 10);
