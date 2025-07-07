@@ -11,11 +11,29 @@
 
 function BentoScrollbarDrawPlaceholder(_data, _element = self)
 {
-    draw_set_color((_data.hoverScrollbar || _data.hoverHandle)? c_gray : c_dkgray);
-    draw_rectangle(_data.barLeft, _data.barTop, _data.barRight, _data.barBottom, false);
+    var _baseAlpha = draw_get_alpha();
     
-    draw_set_color((_data.hoverHandle || _data.holdHandle)? c_yellow : c_white);
-    draw_rectangle(_data.handleLeft, _data.handleTop, _data.handleRight, _data.handleBottom, false);
-    
-    draw_set_color(c_white);
+    with(_data)
+    {
+        if (exists)
+        {
+            if (hoverScrollbar || hoverHandle)
+            {
+                draw_set_alpha(_baseAlpha * 0.2);
+                draw_rectangle(barLeft, barTop, barRight, barBottom, false);
+                draw_set_alpha(_baseAlpha);
+            }
+            
+            draw_rectangle(barLeft, barTop, barRight, barBottom, true);
+            
+            if (hoverHandle || holdHandle)
+            {
+                draw_set_alpha(_baseAlpha * 0.2);
+                draw_rectangle(handleLeft+2, handleTop+2, handleRight-2, handleBottom-2, false);
+                draw_set_alpha(_baseAlpha);
+            }
+            
+            draw_rectangle(handleLeft+2, handleTop+2, handleRight-2, handleBottom-2, true);
+        }
+    }
 }

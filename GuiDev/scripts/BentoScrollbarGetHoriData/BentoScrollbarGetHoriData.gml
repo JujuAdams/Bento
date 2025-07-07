@@ -3,6 +3,9 @@
 /// Returns a struct that contains data describing the position and state of the horizontal
 /// scrollbar.
 /// 
+/// `.exists`
+///     Whether the horizontal scrollbar has been set up for the element.
+/// 
 /// `.barLeft` `.barTop` `.barRight` `.barBottom`
 ///     The position of the main body of the scrollbar. These are absolute coordinates.
 /// 
@@ -24,6 +27,8 @@
 function BentoScrollbarGetHoriData(_element = self)
 {
     static _nullResult = {
+        exists: false,
+        
         barLeft:   0,
         barTop:    0,
         barRight:  0,
@@ -36,7 +41,7 @@ function BentoScrollbarGetHoriData(_element = self)
         
         hoverScrollbar: false,
         hoverHandle:    false,
-        holdHandle:    false,
+        holdHandle:     false,
     };
     
     if (BentoExists(_element) && (_element.BENTO_VARS.__scrollbarHori != undefined))

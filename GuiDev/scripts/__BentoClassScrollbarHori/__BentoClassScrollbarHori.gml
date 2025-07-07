@@ -2,9 +2,13 @@
 
 function __BentoClassScrollbarHori(_element) : __BentoClassScrollbar(_element) constructor
 {
+    exists = false;
+    
     static __SetSize = function()
     {
         var _element = __element;
+        
+        exists = true;
         
         if (__mirror)
         {

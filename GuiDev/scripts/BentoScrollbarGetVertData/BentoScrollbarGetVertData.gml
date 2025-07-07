@@ -3,6 +3,9 @@
 /// Returns a struct that contains data describing the position and state of the vertical
 /// scrollbar.
 /// 
+/// `.exists`
+///     Whether the vertical scrollbar has been set up for the element.
+/// 
 /// `.barLeft` `.barTop` `.barRight` `.barBottom`
 ///     The position of the main body of the scrollbar. These are absolute coordinates.
 /// 
@@ -24,6 +27,8 @@
 function BentoScrollbarGetVertData(_element = self)
 {
     static _nullResult = {
+        exists: false,
+        
         barLeft:   0,
         barTop:    0,
         barRight:  0,
