@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"DrawCross",
+  "%Name":"BentoDrawCross",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"DrawCross",
+  "name":"BentoDrawCross",
   "parent":{
-    "name":"GuiWithLayouts",
-    "path":"GuiWithLayouts.yyp",
+    "name":"Miscellaneous",
+    "path":"folders/Library/Functions/Miscellaneous.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

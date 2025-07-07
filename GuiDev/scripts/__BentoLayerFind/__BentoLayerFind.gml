@@ -5,7 +5,6 @@
 
 function __BentoLayerFind(_name, _environmentName = undefined)
 {
-    static _system = __BentoSystem();
     with(__BentoEnvironmentEnsure(_environmentName))
     {
         var _array = __layerArray;

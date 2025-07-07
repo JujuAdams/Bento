@@ -370,6 +370,27 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoLayerTargetPop();
     }
     
+    static __DrawWireframe = function()
+    {
+        __BentoEnsureDrawOrder();
+        __BentoEnsureTransforms();
+        
+        var _drawOrder = __drawOrder;
+        var _i = 0;
+        repeat(array_length(_drawOrder))
+        {
+            var _drawFunction = _drawOrder[_i];
+            with(method_get_self(_drawFunction))
+            {
+                //FIXME - This doesn't support many features
+                draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, true);
+                BentoDrawCross(bentoX, bentoY);
+            }
+            
+            ++_i;
+        }
+    }
+    
     static __GetFocusRoot = function()
     {
         //If we're inputting text then we have to focus on that element
