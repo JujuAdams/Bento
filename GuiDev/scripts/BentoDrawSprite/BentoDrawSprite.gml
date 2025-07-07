@@ -12,9 +12,6 @@ function BentoDrawSprite(_sprite, _image = -1, _blend = c_white, _alpha = 1, _el
 {
     with(_element)
     {
-        draw_sprite_ext(_sprite, _image,
-                        bentoX, bentoY,
-                        bentoWidth/sprite_get_width(_sprite), bentoHeight/sprite_get_height(_sprite), 0,
-                        _blend, _alpha);
+        draw_sprite_stretched_ext(_sprite, _image, bentoLeft, bentoTop, bentoWidth, bentoHeight, _blend, _alpha);
     }
 }

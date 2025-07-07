@@ -15,14 +15,11 @@ function BentoConstrSprite(_sprite, _parent = other) : BentoConstrAncestor(_pare
     sprite = _sprite;
     
     BentoLayoutSetSize(sprite_get_width(sprite), sprite_get_height(sprite));
-    BentoLayoutSetOrigin(sprite_get_xoffset(sprite) / sprite_get_width(sprite),
-                         sprite_get_yoffset(sprite) / sprite_get_height(sprite));
+    BentoSetOrigin(sprite_get_xoffset(sprite) / sprite_get_width(sprite),
+                   sprite_get_yoffset(sprite) / sprite_get_height(sprite));
     
     funcDraw = function()
     {
-        draw_sprite_ext(sprite, 0,
-                        bentoX, bentoY,
-                        bentoWidth/sprite_get_width(sprite), bentoHeight/sprite_get_height(sprite), 0,
-                        c_white, 1);
+        BentoDrawSprite(sprite);
     }
 }
