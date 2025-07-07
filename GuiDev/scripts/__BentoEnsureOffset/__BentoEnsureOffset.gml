@@ -123,7 +123,7 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _
             bentoWidth  = _width;
             bentoHeight = _height;
             
-            __BentoUpdateXY();
+            __BentoUpdateElementXY();
         }
         
         

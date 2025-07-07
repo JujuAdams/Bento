@@ -35,7 +35,7 @@ function BentoSetOrigin(_x, _y, _element = self)
     {
         with(_element)
         {
-            __BentoUpdateXY();
+            __BentoUpdateElementXY();
         }
     }
 }

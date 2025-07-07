@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __BentoUpdateXY()
+function __BentoUpdateElementXY()
 {
     if (BENTO_VARS.__originAuto)
     {

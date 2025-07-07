@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoUpdateXY",
+  "%Name":"__BentoUpdateElementXY",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoUpdateXY",
+  "name":"__BentoUpdateElementXY",
   "parent":{
     "name":"(System)",
     "path":"folders/Library/(System).yy",
