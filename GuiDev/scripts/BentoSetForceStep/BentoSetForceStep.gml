@@ -12,6 +12,6 @@ function BentoSetForceStep(_state, _element = self)
         if (__forceStep == _state) return;
         __forceStep = _state;
         
-        __layer.__stepDirty = true;
+        __layer.__dirtyFlags |= __BENTO_DIRTY_STEP;
     }
 }
