@@ -34,13 +34,13 @@
 #macro BENTO_FLOOR_LAYOUT_POSITIONS  true
 
 // Default alignment for elements relative to their parent. This should be a value from `0` (left
-// or top) to `1` (right or bottom). Please see documentation for `BentoLayoutSetAlignSelf()` for
+// or top) to `1` (right or bottom). Please see documentation for `BentoLayoutSetAnchor()` for
 // more information.
-#macro BENTO_DEFAULT_LAYOUT_ALIGN_H  0
-#macro BENTO_DEFAULT_LAYOUT_ALIGN_V  0
+#macro BENTO_DEFAULT_LAYOUT_ANCHOR_X  0
+#macro BENTO_DEFAULT_LAYOUT_ANCHOR_Y  0
 
 // Default alignment for elements relative to their parent. This should be a value from `0` (left
-// or top) to `1` (right or bottom). Please see documentation for `BentoLayoutSetAlignSelf()` for
+// or top) to `1` (right or bottom). Please see documentation for `BentoLayoutSetAnchor()` for
 // more information.
 #macro BENTO_DEFAULT_ORIGIN_X  0
 #macro BENTO_DEFAULT_ORIGIN_Y  0

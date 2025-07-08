@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoLayoutSetAlignSelf",
+  "%Name":"BentoLayoutSetAnchor",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoLayoutSetAlignSelf",
+  "name":"BentoLayoutSetAnchor",
   "parent":{
     "name":"Properites",
     "path":"folders/Library/Functions/Layout/Properites.yy",

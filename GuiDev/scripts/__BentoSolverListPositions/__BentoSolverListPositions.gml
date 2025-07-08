@@ -2,8 +2,8 @@
 
 function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight)
 {
-    __solvedLeft = _left + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
-    __solvedTop  = _top  + __layoutAlignV*(_allocatedHeight - __solvedHeight);
+    __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth );
+    __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight);
     
     if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {

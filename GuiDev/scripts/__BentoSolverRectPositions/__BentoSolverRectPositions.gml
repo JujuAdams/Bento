@@ -4,8 +4,8 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
 {
     // N.B. `BENTO_LAYOUT_LIST`, `BENTO_LAYOUT_GRID` override this function.
     
-    __solvedLeft = _left + __layoutAlignH*(_allocatedWidth  - __solvedWidth );
-    __solvedTop  = _top  + __layoutAlignV*(_allocatedHeight - __solvedHeight);
+    __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth );
+    __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight);
     
     if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {

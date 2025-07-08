@@ -307,8 +307,8 @@ function __BentoClassVariables(_attachedElement) constructor
     //Alignment against the region that the parent has allocated for this element. This is especially
     //useful for children of non-list / non-grid parents where you might want to position the element
     //relative to edges and corners.
-    __layoutAlignH = BENTO_DEFAULT_LAYOUT_ALIGN_H;
-    __layoutAlignV = BENTO_DEFAULT_LAYOUT_ALIGN_V;
+    __layoutAnchorX = BENTO_DEFAULT_LAYOUT_ANCHOR_X;
+    __layoutAnchorY = BENTO_DEFAULT_LAYOUT_ANCHOR_Y;
     
     //The "preferred" (ideal) size for the element. A value of 0 (or less) indicates that this value
     //is unset and should be inferred from some other property.

@@ -17,30 +17,30 @@
 /// the element has a minimum size that prevents it from fitting inside its parent then alignment
 /// will have some effect.
 /// 
-/// @param [hAlign]
-/// @param [vAlign]
+/// @param [x]
+/// @param [y]
 /// @param [element=self]
 
-function BentoLayoutSetAlignSelf(_hAlign, _vAlign, _element = self)
+function BentoLayoutSetAnchor(_x, _y, _element = self)
 {
     if (not BentoExists(_element)) return;
     
     with(_element.BENTO_VARS)
     {
-        if (_hAlign != undefined)
+        if (_x != undefined)
         {
-            if (__layoutAlignH != _hAlign)
+            if (__layoutAnchorX != _x)
             {
-                __layoutAlignH = _hAlign;
+                __layoutAnchorX = _x;
                 __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }
         
-        if (_vAlign != undefined)
+        if (_y != undefined)
         {
-            if (__layoutAlignV != _vAlign)
+            if (__layoutAnchorY != _y)
             {
-                __layoutAlignV = _vAlign;
+                __layoutAnchorY = _y;
                 __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
         }

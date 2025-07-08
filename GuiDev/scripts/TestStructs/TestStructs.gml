@@ -6,7 +6,7 @@ function TestStructs()
     with(structTest)
     {
         BentoLayoutList(BENTO_AXIS_Y, fa_left, fa_top);
-        BentoLayoutSetAlignSelf(0.5, 0.5);
+        BentoLayoutSetAnchor(0.5, 0.5);
         BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
@@ -35,7 +35,7 @@ function TestStructs()
             {
                 with(new ExampleConstrButton())
                 {
-                    BentoLayoutSetAlignSelf(0.5, 0.5);
+                    BentoLayoutSetAnchor(0.5, 0.5);
                 }
             }
         }

@@ -257,7 +257,7 @@
     {"id":{"name":"BentoLayoutGrid","path":"scripts/BentoLayoutGrid/BentoLayoutGrid.yy",},},
     {"id":{"name":"BentoLayoutList","path":"scripts/BentoLayoutList/BentoLayoutList.yy",},},
     {"id":{"name":"BentoLayoutRect","path":"scripts/BentoLayoutRect/BentoLayoutRect.yy",},},
-    {"id":{"name":"BentoLayoutSetAlignSelf","path":"scripts/BentoLayoutSetAlignSelf/BentoLayoutSetAlignSelf.yy",},},
+    {"id":{"name":"BentoLayoutSetAnchor","path":"scripts/BentoLayoutSetAnchor/BentoLayoutSetAnchor.yy",},},
     {"id":{"name":"BentoLayoutSetClampInside","path":"scripts/BentoLayoutSetClampInside/BentoLayoutSetClampInside.yy",},},
     {"id":{"name":"BentoLayoutSetFromJSON","path":"scripts/BentoLayoutSetFromJSON/BentoLayoutSetFromJSON.yy",},},
     {"id":{"name":"BentoLayoutSetGutter","path":"scripts/BentoLayoutSetGutter/BentoLayoutSetGutter.yy",},},

@@ -17,7 +17,7 @@
 /// `.maxSize` executes `BentoLayoutSetMaxSize()`
 /// `.resize`  executes `BentoLayoutSetResize()`
 /// `.padding` executes `BentoLayoutSetPadding()`
-/// `.align`   executes `BentoLayoutSetAlignSelf()`
+/// `.align`   executes `BentoLayoutSetAnchor()`
 /// `.gutter`  executes `BentoLayoutSetGutter()`
 /// `.list`    executes `BentoLayoutList()`
 /// `.grid`    executes `BentoLayoutGrid()`
@@ -142,7 +142,7 @@
 ///     particular value.
 /// 
 /// `.align`
-///     Calls the `BentoLayoutSetAlignSelf()` function on the created element.
+///     Calls the `BentoLayoutSetAnchor()` function on the created element.
 ///     
 ///     Can be a 2-element array:
 ///         [ <h align>, <v align> ]
@@ -619,7 +619,7 @@ function __BentoLayoutSetFromJSON_alignSelf(_element, _value)
         __BentoError($".align.v layout property must be a number (was \"{typeof(_v)}\")");;
     }
     
-    BentoLayoutSetAlignSelf(_h, _v, _element);
+    BentoLayoutSetAnchor(_h, _v, _element);
 }
 
 
