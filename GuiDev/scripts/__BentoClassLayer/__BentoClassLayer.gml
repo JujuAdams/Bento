@@ -374,11 +374,11 @@ function __BentoClassLayer(_environment, _name) constructor
     {
         __BentoEnsureTransforms();
         
-        var _func = function(_func, _element, _baseAlpha)
+        var _func = function(_func, _elementVars, _baseAlpha)
         {
             //N.B. - This should match `__BentoEnsureDrawOrderInner()`
             
-            with(_element.BENTO_VARS)
+            with(_elementVars)
             {
                 if (__disable) return;
                 
@@ -390,7 +390,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 if (__visible)
                 {
-                    with(_element)
+                    with(__attachedElement)
                     {
                         draw_set_alpha(_baseAlpha * ((BentoGetClickable() && BentoCursorGetHover())? 0.2 : 0.1));
                         draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, false);
@@ -403,7 +403,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 if (__scissorEnabled)
                 {
-                    with(_element)
+                    with(__attachedElement)
                     {
                         __BentoScissorPushFromElement();
                     }
@@ -423,8 +423,8 @@ function __BentoClassLayer(_environment, _name) constructor
                     __BentoScissorPop();
                 }
                 
-                BentoScrollbarDrawPlaceholder(BentoScrollbarGetHoriData(_element), _element);
-                BentoScrollbarDrawPlaceholder(BentoScrollbarGetVertData(_element), _element);
+                BentoScrollbarDrawPlaceholder(BentoScrollbarGetHoriData(__attachedElement), __attachedElement);
+                BentoScrollbarDrawPlaceholder(BentoScrollbarGetVertData(__attachedElement), __attachedElement);
                 
                 if (__transformMatrix != undefined)
                 {
@@ -435,7 +435,7 @@ function __BentoClassLayer(_environment, _name) constructor
         }
         
         var _oldAlpha = draw_get_alpha();
-        _func(_func, __rootElement, _oldAlpha);
+        _func(_func, __rootElement.BENTO_VARS, _oldAlpha);
         draw_set_alpha(_oldAlpha);
     }
     

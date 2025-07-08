@@ -12,9 +12,6 @@ function __BentoEnsureDrawOrder()
     {
         static _funcSort = function(_a, _b)
         {
-            _a = _a.BENTO_VARS;
-            _b = _b.BENTO_VARS;
-            
             var _delta = (_a.__drawDepth - _b.__drawDepth);
             if (_delta < 0)
             {
@@ -55,18 +52,18 @@ function __BentoEnsureDrawOrder()
     
     //Recursively build the global draw order
     array_resize(__drawOrder, 0);
-    __BentoEnsureDrawOrderInner(__drawOrder, __rootElement);
+    __BentoEnsureDrawOrderInner(__drawOrder, __rootElement.BENTO_VARS);
 }
 
 #macro __BENTO_DRAW_ORDER_VISIBLE  1
 #macro __BENTO_DRAW_ORDER_SCISSOR  2
 #macro __BENTO_DRAW_ORDER_MATRIX   4
 
-function __BentoEnsureDrawOrderInner(_drawOrder, _element)
+function __BentoEnsureDrawOrderInner(_drawOrder, _elementVars)
 {
     //N.B. - If you edit this, make sure to edit `__DrawWireframe()` as well
     
-    with(_element.BENTO_VARS)
+    with(_elementVars)
     {
         if (__disable) return;
         
@@ -77,7 +74,7 @@ function __BentoEnsureDrawOrderInner(_drawOrder, _element)
         
         //Find a Draw function for the lookup index
         var _function = _functionDrawLookupArray[_lookup];
-        if (_function != undefined) array_push(_drawOrder, method(_element, _function));
+        if (_function != undefined) array_push(_drawOrder, method(__attachedElement, _function));
         
         //Add children created inside the parent to the Draw order
         var _array = __childDrawArray;
@@ -93,7 +90,7 @@ function __BentoEnsureDrawOrderInner(_drawOrder, _element)
         
         //Find a Draw After function for the lookup index
         var _function = _functionDrawAfterLookupArray[_lookup];
-        if (_function != undefined) array_push(_drawOrder, method(_element, _function));
+        if (_function != undefined) array_push(_drawOrder, method(__attachedElement, _function));
     }
     
     static _functionDrawLookupArray = (function()

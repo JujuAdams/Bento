@@ -32,7 +32,7 @@ function BentoSetParent(_parent, _target = self)
         with(_parent)
         {
             array_push(BENTO_VARS.__childArray,     other);
-            array_push(BENTO_VARS.__childDrawArray, _target);
+            array_push(BENTO_VARS.__childDrawArray, other);
         
             __BentoMarkDrawOrderDirty(self);
             BentoScrollLimitsMarkDirty(self);
