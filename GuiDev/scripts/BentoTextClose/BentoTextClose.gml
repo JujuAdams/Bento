@@ -11,6 +11,7 @@ function BentoTextClose()
         if (__textHandler != undefined)
         {
             __textHandler.__Terminate(BENTO_TEXT_INACTIVE);
+            BentoInputConsume(__layerCurrent);
         }
     }
     

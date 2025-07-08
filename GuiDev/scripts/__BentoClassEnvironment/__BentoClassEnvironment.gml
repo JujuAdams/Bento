@@ -21,7 +21,6 @@ function __BentoClassEnvironment(_name) constructor
     __envDirectionalHold = false;
     
     __envHotkeyInputMap = ds_map_create();
-    __envHotkeyArray    = [];
     
     ///////
     // Set up a default input mode for convenience
@@ -119,6 +118,9 @@ function __BentoClassEnvironment(_name) constructor
         
         //Top-most layer pulls in input if there's no text input
         _layerArray[_i].__Update(_rootWidth, _rootHeight, true);
+        
+        //Wipe out the hotkeys, nullifying them for the next update loop
+        ds_map_clear(__envHotkeyInputMap);
         
         __BentoEnvironmentTargetPop();
     }

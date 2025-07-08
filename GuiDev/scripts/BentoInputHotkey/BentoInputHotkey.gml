@@ -11,13 +11,5 @@
 function BentoInputHotkey(_name, _value)
 {
     static _system = __BentoSystem();
-    with(_system.__environmentCurrent)
-    {
-        if (not ds_map_exists(__envHotkeyInputMap, _name))
-        {
-            array_push(__envHotkeyArray, _name);
-        }
-        
-        __envHotkeyInputMap[? _name] = _value;
-    }
+    _system.__environmentCurrent.__envHotkeyInputMap[? _name] = _value;
 }

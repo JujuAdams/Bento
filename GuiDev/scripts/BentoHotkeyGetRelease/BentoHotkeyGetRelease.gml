@@ -7,13 +7,14 @@
 ///      to ensure button state doesn't leak to other elements.
 /// 
 /// @param name
+/// @param [ignoreConsume=false]
 /// @param [layerOrName=current]
 
-function BentoHotkeyGetRelease(_name, _layerOrName = undefined)
+function BentoHotkeyGetRelease(_name, _ignoreConsume = false, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        if (__hotkeyConsumedMap[? _name] ?? false) return false;
+        if ((not _ignoreConsume) && (__hotkeyConsumedMap[? _name] ?? false)) return false;
         return (__hotkeyStateMap[? _name] == __BENTO_END);
     }
     

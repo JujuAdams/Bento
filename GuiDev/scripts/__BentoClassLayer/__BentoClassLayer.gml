@@ -167,6 +167,8 @@ function __BentoClassLayer(_environment, _name) constructor
     
     static __Update = function(_rootWidth, _rootHeight, _isTopLayer)
     {
+        static _hotkeyArray = [];
+        
         var _environment = __environment;
         
         __BentoLayerTargetPush(self);
@@ -245,11 +247,11 @@ function __BentoClassLayer(_environment, _name) constructor
             
             //Update hotkey input
             var _globalHotkeyInputMap = __environment.__envHotkeyInputMap;
-            var _globalHotkeyArray    = __environment.__envHotkeyArray;
+            ds_map_keys_to_array(_globalHotkeyInputMap, _hotkeyArray);
             var _i = 0;
-            repeat(array_length(_globalHotkeyArray))
+            repeat(array_length(_hotkeyArray))
             {
-                var _key = _globalHotkeyArray[_i];
+                var _key = _hotkeyArray[_i];
                 
                 var _state = (__hotkeyStateMap[? _key] ?? __BENTO_OFF) >> 1;
                 if (_globalHotkeyInputMap[? _key] ?? false) _state |= __BENTO_START;
@@ -262,6 +264,8 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 ++_i;
             }
+            
+            array_resize(_hotkeyArray, 0);
         }
         
         ///////
