@@ -21,7 +21,7 @@
 /// `.gutter`  executes `BentoLayoutSetGutter()`
 /// `.list`    executes `BentoLayoutList()`
 /// `.grid`    executes `BentoLayoutGrid()`
-/// `.ignore`  execures `BentoLayoutSetIgnore()` //TODO
+/// `.ignore`  execures `BentoLayoutSetIgnore()`
 /// 
 /// Example:
 /// ```
@@ -220,6 +220,10 @@
 ///     
 ///     Column and row values must be integers, or you may use `null` to indicate that no change should
 ///     be made to a particular value.
+/// 
+/// `.ignore`
+///     Calls the `BentoLayoutSetIgnore()` function on the created element. Must be either `true` or
+///     `false`.
 
 function BentoLayoutSetFromJSON(_json, _element = self)
 {

@@ -21,19 +21,14 @@
 /// As an overview, the following properties are valid for an element definition:
 /// `.object` or `.construct` (mutually exclusive)
 /// `.vars` (only when using `.object`)
-/// `.offset`
-/// `.visible`
-/// `.name`
-/// `.clip`
-/// `.scroll`
-/// `.layout`
 /// `.children`
 /// 
-/// TODO:
-/// `.button`
-/// `.disable`
-/// `.scrollbarVert`
-/// `.scrollbarHori`
+/// `.offset`  executes `BentoSetOffset()`
+/// `.visible` executes `BentoSetVisible()`
+/// `.name`    executes `BentoNameSet()`
+/// `.clip`    executes `BentoClipSetEnabled()` and `BentoClipSetPadding()`
+/// `.scroll`  executes `BentoScrollSetEnabled()` and `BentoScrollSetPadding()`
+/// `.layout`  executes `BentoLayoutSetFromJSON()`
 /// 
 /// 
 /// 
