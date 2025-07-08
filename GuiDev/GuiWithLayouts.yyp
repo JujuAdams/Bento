@@ -263,7 +263,7 @@
     {"id":{"name":"BentoLayoutSetMaxSize","path":"scripts/BentoLayoutSetMaxSize/BentoLayoutSetMaxSize.yy",},},
     {"id":{"name":"BentoLayoutSetMinSize","path":"scripts/BentoLayoutSetMinSize/BentoLayoutSetMinSize.yy",},},
     {"id":{"name":"BentoLayoutSetPadding","path":"scripts/BentoLayoutSetPadding/BentoLayoutSetPadding.yy",},},
-    {"id":{"name":"BentoLayoutSetResizeType","path":"scripts/BentoLayoutSetResizeType/BentoLayoutSetResizeType.yy",},},
+    {"id":{"name":"BentoLayoutSetResize","path":"scripts/BentoLayoutSetResize/BentoLayoutSetResize.yy",},},
     {"id":{"name":"BentoLayoutSetSize","path":"scripts/BentoLayoutSetSize/BentoLayoutSetSize.yy",},},
     {"id":{"name":"BentoLayoutText","path":"scripts/BentoLayoutText/BentoLayoutText.yy",},},
     {"id":{"name":"BentoLinkHori","path":"scripts/BentoLinkHori/BentoLinkHori.yy",},},

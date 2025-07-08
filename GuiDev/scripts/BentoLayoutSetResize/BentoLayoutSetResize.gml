@@ -19,7 +19,7 @@
 /// @param [height]
 /// @param [element=self]
 
-function BentoLayoutSetResizeType(_width, _height, _element = self)
+function BentoLayoutSetResize(_width, _height, _element = self)
 {
     if (not BentoExists(_element)) return;
     

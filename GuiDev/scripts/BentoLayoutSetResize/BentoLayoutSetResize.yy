@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoLayoutSetResizeType",
+  "%Name":"BentoLayoutSetResize",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoLayoutSetResizeType",
+  "name":"BentoLayoutSetResize",
   "parent":{
     "name":"Layout Properites",
     "path":"folders/Library/Functions/Layout Properites.yy",

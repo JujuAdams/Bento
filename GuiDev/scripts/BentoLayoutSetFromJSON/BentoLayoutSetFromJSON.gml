@@ -15,7 +15,7 @@
 /// `.size`    executes `BentoLayoutSetSize()`
 /// `.minSize` executes `BentoLayoutSetMinSize()`
 /// `.maxSize` executes `BentoLayoutSetMaxSize()`
-/// `.resize`  executes `BentoLayoutSetResizeType()`
+/// `.resize`  executes `BentoLayoutSetResize()`
 /// `.padding` executes `BentoLayoutSetPadding()`
 /// `.align`   executes `BentoLayoutSetAlignSelf()`
 /// `.gutter`  executes `BentoLayoutSetGutter()`
@@ -104,7 +104,7 @@
 ///     particular value.
 /// 
 /// `.resize`
-///     Calls the `BentoLayoutSetResizeType()` function on the created element.
+///     Calls the `BentoLayoutSetResize()` function on the created element.
 ///     
 ///     Can be a 2-element array:
 ///         [ <x type>, <y type> ]
@@ -512,7 +512,7 @@ function __BentoLayoutSetFromJSON_resize(_element, _value)
         __BentoError($".resize.y layout property must be \"static\", \"shrink\", \"expand\", {BENTO_RESIZE_STATIC}, {BENTO_RESIZE_SHRINK}, or {BENTO_RESIZE_EXPAND} (value was {_y})");
     }
     
-    BentoLayoutSetResizeType(_x, _y, _element);
+    BentoLayoutSetResize(_x, _y, _element);
 }
 
 
