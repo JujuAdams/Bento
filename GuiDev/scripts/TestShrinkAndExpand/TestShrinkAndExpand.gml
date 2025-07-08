@@ -6,7 +6,7 @@ function TestShrinkAndExpand()
     {
         image_blend = c_navy;
         
-        BentoLayoutSetList(BENTO_AXIS_X, fa_left, fa_top);
+        BentoLayoutList(BENTO_AXIS_X, fa_left, fa_top);
         BentoLayoutSetSize(600, 200);
         BentoLayoutSetResizeType(BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK);
         BentoLayoutSetPadding(10, 10, 10, 10);

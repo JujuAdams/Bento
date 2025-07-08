@@ -1,12 +1,16 @@
 // Feather disable all
 
+/// Sets an element to use a grid ruleset. This is an ortholinear grid that divides the element's
+/// content area (the size of the element minus padding) into equally sized cells.
 /// 
+/// If you'd like to change the grid's properties, for example to add a row to an inventory if the
+/// player has collected more items, you may call this functiuon again to overwrite values.
 /// 
 /// @param columns
 /// @param rows
 /// @param [element=self]
 
-function BentoLayoutSetGrid(_columns, _rows, _element = self)
+function BentoLayoutGrid(_columns, _rows, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -32,7 +36,18 @@ function BentoLayoutSetGrid(_columns, _rows, _element = self)
         else
         {
             //We're already a grid!
-            BentoLayoutSetGridSize(_columns, _rows, _element);
+            
+            if ((_columns != undefined) && (__gridColumns != _columns))
+            {
+                __gridColumns = max(1, _columns);
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
+            }
+            
+            if ((_rows != undefined) && (__gridRows != _rows))
+            {
+                __gridRows = max(1, _rows);
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
+            }
         }
     }
 }

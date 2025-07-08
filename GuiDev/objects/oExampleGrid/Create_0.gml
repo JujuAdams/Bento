@@ -2,4 +2,4 @@
 
 event_inherited();
 
-BentoLayoutSetGrid(2, 2);
+BentoLayoutGrid(2, 2);

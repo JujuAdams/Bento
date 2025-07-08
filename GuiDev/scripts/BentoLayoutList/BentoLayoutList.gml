@@ -7,7 +7,7 @@
 /// @param vAlignChidlren
 /// @param [element=self]
 
-function BentoLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _element = self)
+function BentoLayoutList(_listAxis, _hAlignChildren, _vAlignChildren, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -34,8 +34,30 @@ function BentoLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _elemen
         else
         {
             //We're already a list!
-            BentoLayoutSetListAxis(_listAxis, _element);
-            BentoLayoutSetListAlign(_hAlignChildren, _vAlignChildren, _element);
+            
+            if ((_listAxis != undefined) && (__listAxis != _listAxis))
+            {
+                __listAxis = _listAxis;
+                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
+            }
+            
+            if (_hAlignChildren != undefined)
+            {
+                if (__layoutHAlignChildren != _hAlignChildren)
+                {
+                    __layoutHAlignChildren = _hAlignChildren;
+                    __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
+                }
+            }
+            
+            if (_vAlignChildren != undefined)
+            {
+                if (__layoutVAlignChildren != _vAlignChildren)
+                {
+                    __layoutVAlignChildren = _vAlignChildren;
+                    __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
+                }
+            }
         }
     }
 }

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoSetOffset",
   "parent":{
-    "name":"Properties",
-    "path":"folders/Library/Functions/Properties.yy",
+    "name":"Basic Properties",
+    "path":"folders/Library/Functions/Basic Properties.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

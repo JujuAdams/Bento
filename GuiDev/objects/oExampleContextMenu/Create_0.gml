@@ -2,7 +2,7 @@
 
 event_inherited();
 
-BentoLayoutSetList(BENTO_AXIS_Y, fa_center, fa_top);
+BentoLayoutList(BENTO_AXIS_Y, fa_center, fa_top);
 BentoLayoutSetClampInside(true);
 BentoLayoutSetResizeType(BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK);
 BentoLayoutSetPadding(10, 10, 10, 10);

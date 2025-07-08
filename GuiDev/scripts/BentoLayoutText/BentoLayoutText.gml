@@ -5,7 +5,7 @@
 /// N.B. This particular layout type presumes that you want the element to change its height
 ///      depending on how text wraps in the width available. You don't need to use this layout type
 ///      if you don't need to adjust the height of an element and you'll probably want to use
-///      `BentoLayoutSetRect()` instead (which is the default layout type).
+///      `BentoLayoutRect()` instead (which is the default layout type).
 /// 
 /// Text has some perculiar properties: as the available width for text decreases, text wrapping
 /// will mean that the height of the text after wrapping will increase. Because the width of an
@@ -23,7 +23,7 @@
 /// text will be drawn in.
 /// 
 /// ```
-/// BentoLayoutSetText(function(_width)
+/// BentoLayoutText(function(_width)
 /// {
 ///     var _oldFont = draw_get_font();
 ///     draw_set_font(font);
@@ -37,7 +37,7 @@
 /// @param measureHeightFunc
 /// @param [element=self]
 
-function BentoLayoutSetText(_funcHeight, _element = self)
+function BentoLayoutText(_funcHeight, _element = self)
 {
     if (not BentoExists(_element)) return;
     

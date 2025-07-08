@@ -19,8 +19,8 @@
 /// `.padding` executes `BentoLayoutSetPadding()`
 /// `.align`   executes `BentoLayoutSetAlignSelf()`
 /// `.gutter`  executes `BentoLayoutSetGutter()`
-/// `.list`    executes `BentoLayoutSetList()`
-/// `.grid`    executes `BentoLayoutSetGrid()`
+/// `.list`    executes `BentoLayoutList()`
+/// `.grid`    executes `BentoLayoutGrid()`
 /// 
 /// Example:
 /// ```
@@ -170,7 +170,7 @@
 ///     to a particular value.
 /// 
 /// `.list`
-///     Calls the `BentoLayoutSetList()` function on the created element.
+///     Calls the `BentoLayoutList()` function on the created element.
 ///     
 ///     Can be a 3-element array:
 ///         [ <list axis>, <h align>, <v align> ]
@@ -207,7 +207,7 @@
 ///     You may also use `null` for any value to indicate that no change should be made.
 ///     
 /// `.grid`
-///     Calls the `BentoLayoutSetGrid()` function on the created element.
+///     Calls the `BentoLayoutGrid()` function on the created element.
 ///     
 ///     Can be a 2-element array:
 ///         [ <columns>, <rows> ]
@@ -744,7 +744,7 @@ function __BentoLayoutSetFromJSON_list(_element, _value)
         __BentoError($".listAlign.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
     }
     
-    BentoLayoutSetList(_axis, _hAlign, _vAlign, _element);
+    BentoLayoutList(_axis, _hAlign, _vAlign, _element);
 }
 
 
@@ -761,11 +761,11 @@ function __BentoLayoutSetFromJSON_grid(_element, _value)
             __BentoError($".grid layout property must have two elements if it is an array (length = {array_length(_value)})");
         }
         
-        BentoLayoutSetGrid(_value[0], _value[1], _element);
+        BentoLayoutGrid(_value[0], _value[1], _element);
     }
     else if (is_struct(_value))
     {
-        BentoLayoutSetGrid(_value[$ "columns"],
+        BentoLayoutGrid(_value[$ "columns"],
                            _value[$ "rows"   ],
                            _element);
     }

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayoutGrid",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayoutGrid",
+  "parent":{
+    "name":"Layout Rulesets",
+    "path":"folders/Library/Functions/Layout Rulesets.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
