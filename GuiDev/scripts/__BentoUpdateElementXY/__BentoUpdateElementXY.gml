@@ -26,6 +26,24 @@ function __BentoUpdateElementXY()
         var _yPerc = BENTO_VARS.__originY;
     }
     
-    bentoX = lerp(bentoLeft, bentoRight,  _xPerc);
-    bentoY = lerp(bentoTop,  bentoBottom, _yPerc);
+    if (BENTO_VARS.__transformMatrix == undefined)
+    {
+        bentoX = lerp(bentoLeft, bentoRight,  _xPerc);
+        bentoY = lerp(bentoTop,  bentoBottom, _yPerc);
+    }
+    else
+    {
+        //If we have a transform matrix then we need to update it when our x/y changes
+        
+        var _oldX = bentoX;
+        var _oldY = bentoY;
+        
+        bentoX = lerp(bentoLeft, bentoRight,  _xPerc);
+        bentoY = lerp(bentoTop,  bentoBottom, _yPerc);
+        
+        if ((bentoX != _oldX) || (bentoY != _oldY))
+        {
+            __BentoMarkTransformDirty(self);
+        }
+    }
 }

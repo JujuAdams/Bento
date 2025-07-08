@@ -27,8 +27,8 @@ function __BentoClassVariables(_attachedElement) constructor
     __offsetY = 0;
     
     //Origin percentage bias, used for setting `bentoX` and `bentoY`
-    __originX = BENTO_DEFAULT_ORIGIN_X;
-    __originY = BENTO_DEFAULT_ORIGIN_Y;
+    __originX    = BENTO_DEFAULT_ORIGIN_X;
+    __originY    = BENTO_DEFAULT_ORIGIN_Y;
     __originAuto = __elementIsInstance; //Instances default to auto origin
     
     __transformMatrix  = undefined;

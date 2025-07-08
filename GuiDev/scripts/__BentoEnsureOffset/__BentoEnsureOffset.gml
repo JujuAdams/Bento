@@ -126,7 +126,6 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element, _offsetX, _
             __BentoUpdateElementXY();
         }
         
-        
         if (_scissorVisibility != BENTO_VISIBLE_NONE)
         {
             _scissorVisibility = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
