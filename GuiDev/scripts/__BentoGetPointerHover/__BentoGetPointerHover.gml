@@ -5,6 +5,9 @@
 
 function __BentoGetPointerHover(_mouseX, _mouseY)
 {
+    //Can't hover anything when there are blocking animations on this layer.
+    if (not ds_map_empty(__animBlockingMap)) return BENTO_NO_ELEMENT;
+    
     var _hoverableOrder = __hoverableOrder;
     var _hoverableCount = array_length(_hoverableOrder);
     

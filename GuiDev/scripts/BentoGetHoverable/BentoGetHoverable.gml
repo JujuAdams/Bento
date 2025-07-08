@@ -19,6 +19,9 @@ function __BentoGetHoverableInternal(_element, _checkVisible)
         //Can't hover invisible elements
         if (not __visible) return false;
         
+        //Can't hover anything if the layer has any blocking animations
+        if (not ds_map_empty(__layer.__animBlockingMap)) return false;
+        
         //Can't hover elements that aren't in the most recent hoverable order array
         if (__hoverableIndex != __layer.__hoverableRegenCount) return false;
         

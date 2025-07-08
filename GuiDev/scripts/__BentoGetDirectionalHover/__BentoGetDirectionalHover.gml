@@ -12,6 +12,9 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
 {
     static _excludeArray = [];
     
+    //Can't hover anything when there are blocking animations on this layer.
+    if (not ds_map_empty(__animBlockingMap)) return BENTO_NO_ELEMENT;
+    
     _excludeArray[0] = _prevElement;
     var _nextElement = BENTO_NO_ELEMENT;
     
