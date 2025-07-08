@@ -29,7 +29,6 @@ function BentoLayoutSetList(_listAxis, _hAlignChildren, _vAlignChildren, _elemen
             __SolverGetShrinkHeight = method(self, __BentoSolverListGetShrinkHeight);
             __SolverResizeHeight    = method(self, __BentoSolverListResizeHeight);
             __SolverPositions       = method(self, __BentoSolverListPositions);
-            __funcMeasureWidth      = function() { return 1; }
             __funcMeasureHeight     = function() { return 1; }
         }
         else

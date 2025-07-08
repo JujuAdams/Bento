@@ -27,7 +27,6 @@ function BentoLayoutSetGrid(_columns, _rows, _element = self)
             __SolverGetShrinkHeight = method(self, __BentoSolverRectGetShrinkHeight);
             __SolverResizeHeight    = method(self, __BentoSolverGridResizeHeight);
             __SolverPositions       = method(self, __BentoSolverGridPositions);
-            __funcMeasureWidth      = function() { return 1; }
             __funcMeasureHeight     = function() { return 1; }
         }
         else

@@ -2,31 +2,42 @@
 
 /// Sets an element as using a special layout type for resizable wrapping text.
 /// 
-/// N.B. This particular layout type presumes that you want the element containing to resize its
-///      height depending on how text wraps in the width available. You don't need to use this
-///      layout type if you don't need this feature and you'll probably want to use the
+/// N.B. This particular layout type presumes that you want the element to change its height
+///      depending on how text wraps in the width available. You don't need to use this layout type
+///      if you don't need to adjust the height of an element and you'll probably want to use
 ///      `BentoLayoutSetRect()` instead (which is the default layout type).
 /// 
 /// Text has some perculiar properties: as the available width for text decreases, text wrapping
-/// will mean that the height of the text
-/// after wrapping will increase. To handle these sorts of situations, elements that are set up
-/// with this function specify two "measure" functions: one for the starting width of text, the
-/// other for the resulting height of the text after wrapping.
+/// will mean that the height of the text after wrapping will increase. Because the width of an
+/// element may be dependent on its parent container, we can't know the width of an element when
+/// it is created. This means we need to calculate the height of the element in the middle of the
+/// text layout algorithm and such calculations are done by what is called a "measure function".
 /// 
-/// The `measureWidthFunc` parameter should be a function (typically a method scoped to the target
-/// element) that returns the width of the text. The width should be calculated using the settings
-/// that you intend to use for final rendering of the text. The `measureWidthFunc` function is
-/// executed with one parameter.
+/// The `measureHeightFunc` parameter must be a function (typically a method scoped to the target
+/// element) that returns the height of the text after wrapping. The function is executed with one
+/// parameter which is the calculated width of the element. The height should be calculated using
+/// the settings that you intend to use for final rendering of the text.
 /// 
-/// The `measureHeightFunc` parameter should be a function that returns the height of the text
-/// after wrapping. The `measureWidthFunc` function is executed with one parameter which is the
-/// width of the available space for the element. This value may be set to `999999` in
+/// An example follows. This measure function assumes that the target element has two instance
+/// variables, `text` and `font`, which determine what text is going to be drawn and what font that
+/// text will be drawn in.
 /// 
-/// @param measureWidthFunc
+/// ```
+/// BentoLayoutSetText(function(_width)
+/// {
+///     var _oldFont = draw_get_font();
+///     draw_set_font(font);
+///     var _height = string_height_ext(text, -1, _width);
+///     draw_set_font(_oldFont);
+///     
+///     return _height;
+/// });
+/// ```
+/// 
 /// @param measureHeightFunc
 /// @param [element=self]
 
-function BentoLayoutSetText(_funcWidth, _funcHeight, _element = self)
+function BentoLayoutSetText(_funcHeight, _element = self)
 {
     if (not BentoExists(_element)) return;
     
@@ -44,17 +55,14 @@ function BentoLayoutSetText(_funcWidth, _funcHeight, _element = self)
             __SolverGetShrinkHeight = method(self, __BentoSolverTextGetShrinkHeight);
             __SolverResizeHeight    = function(){};
             __SolverPositions       = method(self, __BentoSolverRectPositions);
-            __funcMeasureWidth      = method(__attachedElement, _funcWidth);
             __funcMeasureHeight     = method(__attachedElement, _funcHeight);
         }
         else
         {
             //We're already text, check to see if any parameters have changed
             
-            if ((method_get_index(_funcWidth ) != method_get_index(__funcMeasureWidth ))
-            ||  (method_get_index(_funcHeight) != method_get_index(__funcMeasureHeight)))
+            if (method_get_index(_funcHeight) != method_get_index(__funcMeasureHeight))
             {
-                __funcMeasureWidth  = method(__attachedElement, _funcWidth);
                 __funcMeasureHeight = method(__attachedElement, _funcHeight);
                 
                 //Parameters changed, update the layout!

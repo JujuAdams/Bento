@@ -393,6 +393,5 @@ function __BentoClassVariables(_attachedElement) constructor
     __SolverPositions = method(self, __BentoSolverRectPositions);
     
     //Only used for `BENTO_LAYOUT_TEXT`
-    __funcMeasureWidth  = function() { return 1; }
     __funcMeasureHeight = function() { return 1; }
 }

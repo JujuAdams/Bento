@@ -15,25 +15,19 @@ BentoSetIfNotDefined("font", -1);
 BentoSetIfNotDefined("hAlign", fa_left);
 BentoSetIfNotDefined("vAlign", fa_top);
 
+var _oldFont = draw_get_font();
+draw_set_font(font);
+BentoLayoutSetSize(string_width(text), undefined);
+BentoLayoutSetMinSize(20, undefined);
+draw_set_font(_oldFont);
+
 // Set up the rules to use when Bento calculates layouts
-BentoLayoutSetText(
-    function(_forceString = undefined) //Measure width
-    {
-        var _oldFont = draw_get_font();
-        draw_set_font(font);
-        var _result = string_width(_forceString ?? text);
-        draw_set_font(_oldFont);
-        
-        return _result;
-    },
+BentoLayoutSetText(function(_maxWidth)
+{
+    var _oldFont = draw_get_font();
+    draw_set_font(font);
+    var _result = string_height_ext(text, -1, _maxWidth);
+    draw_set_font(_oldFont);
     
-    function(_maxWidth) //Measure height
-    {
-        var _oldFont = draw_get_font();
-        draw_set_font(font);
-        var _result = string_height_ext(text, -1, _maxWidth);
-        draw_set_font(_oldFont);
-        
-        return _result;
-    }
-);
+    return _result;
+});

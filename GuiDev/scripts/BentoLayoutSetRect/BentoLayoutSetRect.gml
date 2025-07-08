@@ -22,7 +22,6 @@ function BentoLayoutSetRect(_element = self)
             __SolverGetShrinkHeight = method(self, __BentoSolverRectGetShrinkHeight);
             __SolverResizeHeight    = function() {}
             __SolverPositions       = method(self, __BentoSolverRectPositions);
-            __funcMeasureWidth      = function() { return 1; }
             __funcMeasureHeight     = function() { return 1; }
         }
     }
