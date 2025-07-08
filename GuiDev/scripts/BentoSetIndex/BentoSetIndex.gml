@@ -11,7 +11,7 @@ function BentoSetIndex(_index, _element = self)
     if (not BentoExists(_parent)) return undefined;
     
     var _array = _parent.BENTO_VARS.__childArray;
-    var _foundIndex = array_get_index(_array, _element);
+    var _foundIndex = array_get_index(_array, _element.BENTO_VARS);
     if (_foundIndex < 0)
     {
         //?!
@@ -28,7 +28,7 @@ function BentoSetIndex(_index, _element = self)
     if (_foundIndex == _index) return;
     
     array_delete(_array, _foundIndex, 1);
-    array_insert(_array, _index, _element);
+    array_insert(_array, _index, _element.BENTO_VARS);
     
     //Changing the element order invalidates a lot of cached data
     _element.BENTO_VARS.__layer.__dirtyFlags |= __BENTO_DIRTY_ALL;

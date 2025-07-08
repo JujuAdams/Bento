@@ -11,12 +11,12 @@ function __BentoEnsureStepOrder()
     __dirtyFlags = ~((~__dirtyFlags) | __BENTO_DIRTY_STEP);
     
     array_resize(__stepOrder, 0);
-    __BentoEnsureStepOrderInner(self, __stepOrder, __GetFocusRoot(), __navPointer? BENTO_BUTTON_POINTER : BENTO_BUTTON_DIRECTIONAL, 0);
+    __BentoEnsureStepOrderInner(self, __stepOrder, __GetFocusRoot().BENTO_VARS, __navPointer? BENTO_BUTTON_POINTER : BENTO_BUTTON_DIRECTIONAL, 0);
 }
 
-function __BentoEnsureStepOrderInner(_layer, _stepOrder, _element, _navType, _localIndex)
+function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _navType, _localIndex)
 {
-    with(_element.BENTO_VARS)
+    with(_elementVars)
     {
         __localIndex = _localIndex;
         

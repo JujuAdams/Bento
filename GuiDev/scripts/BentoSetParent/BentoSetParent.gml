@@ -21,7 +21,7 @@ function BentoSetParent(_parent, _target = self)
         }
         
         __parent = _parent;
-        __layer = _parent.BENTO_VARS.__layer;
+        __layer  = _parent.BENTO_VARS.__layer;
         
         //Mark the layer we're entering as dirty
         with(__layer)
@@ -31,7 +31,7 @@ function BentoSetParent(_parent, _target = self)
         
         with(_parent)
         {
-            array_push(BENTO_VARS.__childArray,     _target);
+            array_push(BENTO_VARS.__childArray,     other);
             array_push(BENTO_VARS.__childDrawArray, _target);
         
             __BentoMarkDrawOrderDirty(self);

@@ -16,7 +16,7 @@ function __BentoRemoveParent(_child)
         var _parentVars = _parent.BENTO_VARS;
         
         var _array = _parentVars.__childArray;
-        var _index = array_get_index(_array, _child);
+        var _index = array_get_index(_array, _child.BENTO_VARS);
         if (_index >= 0) array_delete(_array, _index, 1);
         
         var _array = _parentVars.__childDrawArray;

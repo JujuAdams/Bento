@@ -15,7 +15,7 @@ function BentoDestroyChildren(_parent = self)
         var _i = array_length(_array)-1;
         repeat(array_length(_array))
         {
-            BentoDestroy(_array[_i]);
+            BentoDestroy(_array[_i].__attachedElement);
             --_i;
         }
         

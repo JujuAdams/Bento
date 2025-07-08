@@ -14,5 +14,5 @@ function BentoGetChild(_index, _parent = self)
     var _array = _parent.BENTO_VARS.__childArray;
     if (array_length(_array) >= _index) return undefined;
     
-    return _array[_index];
+    return _array[_index].__attachedElement;
 }

@@ -12,15 +12,15 @@ function __BentoEnsureHoverableOrder()
     
     if (__navPointer)
     {
-        __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, __GetFocusRoot(), __hoverableRegenCount);
+        __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, __GetFocusRoot().BENTO_VARS, __hoverableRegenCount);
     }
     else if (__navDirectional)
     {
-        __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, __GetFocusRoot(), __hoverableRegenCount);
+        __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, __GetFocusRoot().BENTO_VARS, __hoverableRegenCount);
     }
 }
 
-function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hoverableIndex)
+function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, _hoverableIndex)
 {
     static _funcScrollbarCheck = function(_mouseX, _mouseY, _holdElement)
     {
@@ -35,7 +35,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hov
         }
     }
     
-    with(_element.BENTO_VARS)
+    with(_elementVars)
     {
         if (__disable) return; //Disabled elements always ban hover, understandably
         
@@ -84,9 +84,9 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _element, _hov
     }
 }
 
-function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _element, _hoverableIndex)
+function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVars, _hoverableIndex)
 {
-    with(_element.BENTO_VARS)
+    with(_elementVars)
     {
         if (__disable) return; //Disabled elements always ban hover, understandably
         
@@ -115,7 +115,7 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _element, 
         if ((_hoverableIndex != undefined) && (__buttonType & BENTO_BUTTON_DIRECTIONAL))
         {
             __hoverableIndex = _hoverableIndex;
-            array_push(_hoverableOrder, _element);
+            array_push(_hoverableOrder, __attachedElement);
         }
         
         //Then move on to our children
