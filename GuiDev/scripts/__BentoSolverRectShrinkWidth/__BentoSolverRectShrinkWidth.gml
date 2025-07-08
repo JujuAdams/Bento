@@ -22,8 +22,7 @@ function __BentoSolverRectGetShrinkWidth()
         }
     }
     
-    __solvedWidth = clamp(_width, __layoutWidthMin, __layoutWidthMax);
-    
-    __solverGetShrinkWidth = __solvedWidth;
-    __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
+    __solvedWidth       = clamp(_width, __layoutWidthMin, __layoutWidthMax);
+    __solverShrinkWidth = __solvedWidth;
+    __solverMinWidth    = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
 }

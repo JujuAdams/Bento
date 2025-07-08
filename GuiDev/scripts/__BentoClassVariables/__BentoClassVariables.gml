@@ -342,8 +342,8 @@ function __BentoClassVariables(_attachedElement) constructor
     __layoutHeightResize = BENTO_RESIZE_STATIC;
     
     //The size required to shrink all of this element's children at their preferred size.
-    __solverGetShrinkWidth  = 0;
-    __solverGetShrinkHeight = 0;
+    __solverShrinkWidth  = 0;
+    __solverShrinkHeight = 0;
     
     //The absolute minimum size that a parent can be to shrink all of its children.
     __solverMinWidth  = 0;

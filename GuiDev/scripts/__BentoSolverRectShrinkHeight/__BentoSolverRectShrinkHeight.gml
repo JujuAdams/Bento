@@ -19,8 +19,7 @@ function __BentoSolverRectGetShrinkHeight()
         var _height = __layoutHeightMin;
     }
     
-    __solvedHeight = clamp(_height, __layoutHeightMin, __layoutHeightMax);
-    
-    __solverGetShrinkHeight = __solvedHeight;
-    __solverMinHeight = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
+    __solvedHeight       = clamp(_height, __layoutHeightMin, __layoutHeightMax);
+    __solverShrinkHeight = __solvedHeight;
+    __solverMinHeight    = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
 }

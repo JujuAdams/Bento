@@ -5,7 +5,7 @@ function __BentoSolverListResizeWidth()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedWidth - __solverGetShrinkWidth;
+    var _remaining = __solvedWidth - __solverShrinkWidth;
     
     if (__listAxis == BENTO_AXIS_Y)
     {

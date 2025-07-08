@@ -4,6 +4,6 @@ function __BentoSolverTextGetShrinkWidth()
 {
     //Fall back on the minimum width if we can't find a suitable preferred width
     __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : __layoutWidthMin, __layoutWidthMin, __layoutWidthMax);
-    __solverGetShrinkWidth = __solvedWidth;
-    __solverMinWidth = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
+    __solverShrinkWidth = __solvedWidth;
+    __solverMinWidth    = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
 }

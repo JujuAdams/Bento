@@ -18,8 +18,8 @@ function __BentoSolverListGetShrinkHeight()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _shrinkSize += _child.BENTO_VARS.__solverGetShrinkHeight;
-            _minSize += _child.BENTO_VARS.__solverMinHeight;
+            _shrinkSize += _child.BENTO_VARS.__solverShrinkHeight;
+            _minSize    += _child.BENTO_VARS.__solverMinHeight;
             ++_i;
         }
         
@@ -35,8 +35,8 @@ function __BentoSolverListGetShrinkHeight()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _shrinkSize = max(_shrinkSize, _child.BENTO_VARS.__solverGetShrinkHeight);
-            _minSize = max(_minSize, _child.BENTO_VARS.__solverMinHeight);
+            _shrinkSize = max(_shrinkSize, _child.BENTO_VARS.__solverShrinkHeight);
+            _minSize    = max(_minSize,    _child.BENTO_VARS.__solverMinHeight);
             ++_i;
         }
         
@@ -47,6 +47,6 @@ function __BentoSolverListGetShrinkHeight()
     _minSize += _extra;
     
     __solverMinHeight    = max(__layoutHeightMin, _minSize);
-    __solverGetShrinkHeight = clamp(_shrinkSize, __solverMinHeight, __layoutHeightMax);
+    __solverShrinkHeight = clamp(_shrinkSize, __solverMinHeight, __layoutHeightMax);
     __solvedHeight       = clamp((__layoutHeightResize == BENTO_RESIZE_STATIC)? __layoutHeightPref : _shrinkSize, __solverMinHeight, __layoutHeightMax);
 }

@@ -5,7 +5,7 @@ function __BentoSolverListResizeHeight()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedHeight - __solverGetShrinkHeight;
+    var _remaining = __solvedHeight - __solverShrinkHeight;
     
     if (__listAxis == BENTO_AXIS_X)
     {

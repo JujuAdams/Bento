@@ -5,8 +5,8 @@ function TestStructs()
     structTest = new BentoConstrSprite(sBentoMaskRectangle, BentoGetRoot());
     with(structTest)
     {
+        BentoLayoutList(BENTO_AXIS_Y, fa_left, fa_top);
         BentoLayoutSetAlignSelf(0.5, 0.5);
-        BentoLayoutSetList(BENTO_AXIS_Y, fa_left, fa_top);
         BentoLayoutSetResizeType(BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK);
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
@@ -23,7 +23,7 @@ function TestStructs()
         var _grid = new BentoConstrSprite(sBentoMaskRectangle);
         with(_grid)
         {
-            BentoLayoutSetGrid(6, 2);
+            BentoLayoutGrid(6, 2);
             BentoLayoutSetFromJSON({
                 size:    [600, 200],
                 resize:  [BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK],
