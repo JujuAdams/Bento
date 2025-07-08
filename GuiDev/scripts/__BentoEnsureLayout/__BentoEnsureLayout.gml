@@ -72,12 +72,13 @@ function __BentoEnsureLayerOrderInner(_layoutOrder, _elementVars)
         var _i = 0;
         repeat(array_length(_childArray))
         {
-            var _child = _childArray[_i];
-            
-            if (not _child.__layoutIgnore)
+            with(_childArray[_i])
             {
-                array_push(_layoutArray, _child);
-                __BentoEnsureLayerOrderInner(_layoutOrder, _child);
+                if ((not __layoutIgnore) && (not __disable))
+                {
+                    array_push(_layoutArray, self);
+                    __BentoEnsureLayerOrderInner(_layoutOrder, self);
+                }
             }
             
             ++_i;

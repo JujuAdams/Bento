@@ -3,9 +3,6 @@
 /// Sets whether a Bento element is disabled. A disabled element will not be interactible nor will
 /// it be visible. The children of a disabled element will not be interactible or visible either.
 /// 
-/// N.B. Disabled elements will still affect layouts.
-/// TODO - Make disabled element **not** effect layouts
-/// 
 /// @param state
 /// @param [element=self]
 
