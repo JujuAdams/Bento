@@ -17,10 +17,11 @@
 /// `.maxSize` executes `BentoLayoutSetMaxSize()`
 /// `.resize`  executes `BentoLayoutSetResize()`
 /// `.padding` executes `BentoLayoutSetPadding()`
-/// `.align`   executes `BentoLayoutSetAnchor()`
+/// `.anchor`  executes `BentoLayoutSetAnchor()`
 /// `.gutter`  executes `BentoLayoutSetGutter()`
 /// `.list`    executes `BentoLayoutList()`
 /// `.grid`    executes `BentoLayoutGrid()`
+/// `.ignore`  execures `BentoLayoutSetIgnore()` //TODO
 /// 
 /// Example:
 /// ```
@@ -141,18 +142,18 @@
 ///     must be numbers, or you may use `null` to indicate that no change should be made to a
 ///     particular value.
 /// 
-/// `.align`
+/// `.anchor`
 ///     Calls the `BentoLayoutSetAnchor()` function on the created element.
 ///     
 ///     Can be a 2-element array:
-///         [ <h align>, <v align> ]
+///         [ <x anchor>, <y anchor> ]
 ///     or a struct:
 ///         {
-///             "h": <h align>,
-///             "v": <v align>
+///             "x": <x anchor>,
+///             "y": <y anchor>
 ///         }
 ///     
-///     "x" and "y" can be used instead of "h" and "v" respectively. Alignment values must be numbers.
+///     Alignment values must be numbers.
 /// 
 /// `.gutter`
 ///     Calls the `BentoLayoutSetGutter()` function on the created element. This property can only be
@@ -260,9 +261,9 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             {
                 __BentoLayoutSetFromJSON_padding(_element, _value);
             }
-            else if (_name == "alignSelf")
+            else if (_name == "anchor")
             {
-                __BentoLayoutSetFromJSON_alignSelf(_element, _value);
+                __BentoLayoutSetFromJSON_anchor(_element, _value);
             }
             else if (_name == "gutter")
             {
@@ -276,17 +277,9 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             {
                 __BentoLayoutSetFromJSON_grid(_element, _value);
             }
-            else if (_name == "listAlign")
+            else if (_name == "ignore")
             {
-                __BentoLayoutSetFromJSON_listAlign(_element, _value);
-            }
-            else if (_name == "listAxis")
-            {
-                __BentoLayoutSetFromJSON_listAxis(_element, _value);
-            }
-            else if (_name == "gridSize")
-            { 
-                __BentoLayoutSetFromJSON_gridSize(_element, _value);
+                __BentoLayoutSetFromJSON_ignore(_element, _value);
             }
             else
             {
@@ -582,44 +575,44 @@ function __BentoLayoutSetFromJSON_gutter(_element, _value)
 
 
 ////////
-// .alignSelf
+// .anchor
 ////////
-function __BentoLayoutSetFromJSON_alignSelf(_element, _value)
+function __BentoLayoutSetFromJSON_anchor(_element, _value)
 {
-    var _h = undefined;
-    var _v = undefined;
+    var _x = undefined;
+    var _y = undefined;
     
     if (is_array(_value))
     {
         if (array_length(_value) != 2)
         {
-            __BentoError($".align layout property must have 2 elements if it is an array (length = {array_length(_value)})");
+            __BentoError($".anchor layout property must have 2 elements if it is an array (length = {array_length(_value)})");
         }
         
-        _h = _value[0];
-        _v = _value[1];
+        _x = _value[0];
+        _y = _value[1];
     }
     else if (is_struct(_value))
     {
-        _h = _value[$ "h"] ?? _value[$ "x"];
-        _v = _value[$ "v"] ?? _value[$ "y"];
+        _x = _value[$ "x"];
+        _y = _value[$ "y"];
     }
     else
     {
-        __BentoError($".align layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
+        __BentoError($".anchor layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
     }
     
-    if (not is_numeric(_h))
+    if (not is_numeric(_x))
     {
-        __BentoError($".align.h layout property must be a number (was \"{typeof(_h)}\")");;
+        __BentoError($".anchor.h layout property must be a number (was \"{typeof(_x)}\")");;
     }
     
-    if (not is_numeric(_v))
+    if (not is_numeric(_y))
     {
-        __BentoError($".align.v layout property must be a number (was \"{typeof(_v)}\")");;
+        __BentoError($".anchor.v layout property must be a number (was \"{typeof(_y)}\")");;
     }
     
-    BentoLayoutSetAnchor(_h, _v, _element);
+    BentoLayoutSetAnchor(_x, _y, _element);
 }
 
 
@@ -772,5 +765,22 @@ function __BentoLayoutSetFromJSON_grid(_element, _value)
     else
     {
         __BentoError($".gridSize layout property must be a two-element array or a struct (typeof \"{typeof(_value)}\")");
+    }
+}
+
+
+
+////////
+// .ignore
+////////
+function __BentoLayoutSetFromJSON_ignore(_element, _value)
+{
+    if (is_numeric(_value) || is_bool(_value))
+    {
+        BentoLayoutSetIgnore(_value, _element);
+    }
+    else
+    {
+        __BentoError($".ignore layout property must be a boolean (typeof \"{typeof(_value)}\")");
     }
 }

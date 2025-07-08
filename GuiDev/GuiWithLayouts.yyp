@@ -356,7 +356,7 @@
     {"id":{"name":"BentoUsingPointer","path":"scripts/BentoUsingPointer/BentoUsingPointer.yy",},},
     {"id":{"name":"BentoUsingTouch","path":"scripts/BentoUsingTouch/BentoUsingTouch.yy",},},
     {"id":{"name":"ExampleConstrButton","path":"scripts/ExampleConstrButton/ExampleConstrButton.yy",},},
-    {"id":{"name":"TestAlignSelf","path":"scripts/TestAlignSelf/TestAlignSelf.yy",},},
+    {"id":{"name":"TestAnchor","path":"scripts/TestAnchor/TestAnchor.yy",},},
     {"id":{"name":"TestAnimation","path":"scripts/TestAnimation/TestAnimation.yy",},},
     {"id":{"name":"TestCarousel","path":"scripts/TestCarousel/TestCarousel.yy",},},
     {"id":{"name":"TestContextMenu","path":"scripts/TestContextMenu/TestContextMenu.yy",},},

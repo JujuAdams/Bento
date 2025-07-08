@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"TestAlignSelf",
+  "%Name":"TestAnchor",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"TestAlignSelf",
+  "name":"TestAnchor",
   "parent":{
     "name":"Examples",
     "path":"folders/Examples.yy",

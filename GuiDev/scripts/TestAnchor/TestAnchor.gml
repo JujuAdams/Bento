@@ -1,6 +1,6 @@
 // Feather disable all
 
-function TestAlignSelf()
+function TestAnchor()
 {
     var _json = {
         object: oBentoSprite,
@@ -9,7 +9,7 @@ function TestAlignSelf()
             image_blend: c_ltgray,
         },
         layout: {
-            alignSelf: [1, 0.5],
+            anchor: [1, 0.5],
             size: [450, 200],
             resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
             padding: 10,
@@ -37,7 +37,7 @@ function TestAlignSelf()
                         },
                         layout: {
                             size: [20, 20],
-                            alignSelf: [0.5, 0],
+                            anchor: [0.5, 0],
                         },
                     },
                 ],
@@ -66,5 +66,5 @@ function TestAlignSelf()
         ],
     };
     
-    alignSelfElement = BentoCreateFromJSON(_json, undefined, BentoGetRoot());
+    anchorElement = BentoCreateFromJSON(_json, undefined, BentoGetRoot());
 }

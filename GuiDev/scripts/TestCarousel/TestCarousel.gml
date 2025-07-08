@@ -8,7 +8,7 @@ function TestCarousel()
             offset: [-30, -30],
             layout: {
                 list: ["y", fa_left, fa_top],
-                alignSelf: [1, 1],
+                anchor: [1, 1],
                 padding: 10,
                 gutter: 10,
             },
