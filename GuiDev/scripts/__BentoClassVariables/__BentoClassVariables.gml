@@ -248,7 +248,7 @@ function __BentoClassVariables(_attachedElement) constructor
         });
     }
     
-    __eventScissorPush = method(_attachedElement, __BentoScissorPushFromElement);
+    __eventScissorPush = method(_attachedElement, __BentoScissorPushFromVars);
     __eventScissorPop  = method(_attachedElement, __BentoScissorPop);
     
     static __Destroy = function()

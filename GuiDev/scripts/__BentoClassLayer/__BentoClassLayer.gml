@@ -405,7 +405,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 {
                     with(__attachedElement)
                     {
-                        __BentoScissorPushFromElement();
+                        __BentoScissorPushFromVars();
                     }
                 }
                 

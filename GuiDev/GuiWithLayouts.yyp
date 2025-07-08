@@ -132,7 +132,7 @@
     {"id":{"name":"__BentoSanitizeFilename","path":"scripts/__BentoSanitizeFilename/__BentoSanitizeFilename.yy",},},
     {"id":{"name":"__BentoScissorPop","path":"scripts/__BentoScissorPop/__BentoScissorPop.yy",},},
     {"id":{"name":"__BentoScissorPush","path":"scripts/__BentoScissorPush/__BentoScissorPush.yy",},},
-    {"id":{"name":"__BentoScissorPushFromElement","path":"scripts/__BentoScissorPushFromElement/__BentoScissorPushFromElement.yy",},},
+    {"id":{"name":"__BentoScissorPushFromVars","path":"scripts/__BentoScissorPushFromVars/__BentoScissorPushFromVars.yy",},},
     {"id":{"name":"__BentoScissorReset","path":"scripts/__BentoScissorReset/__BentoScissorReset.yy",},},
     {"id":{"name":"__BentoScissorSet","path":"scripts/__BentoScissorSet/__BentoScissorSet.yy",},},
     {"id":{"name":"__BentoScrollFindParent","path":"scripts/__BentoScrollFindParent/__BentoScrollFindParent.yy",},},
