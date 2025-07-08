@@ -21,7 +21,7 @@ function BentoAnimStop(_finalize = true, _element = self)
         {
             if (_finalize)
             {
-                __animMethod(1, __animMetadata);
+                __animMethod(__attachedElement, 1, __animMetadata);
             }
            
             __animPlaying  = false;
@@ -31,15 +31,15 @@ function BentoAnimStop(_finalize = true, _element = self)
             __animDelay    = 0;
             __animMethod   = undefined;
             __animMetadata = undefined;
-        }
-        
-        with(__layer)
-        {
-            ds_map_delete(__animPlayingMap,  self);
-            ds_map_delete(__animBlockingMap, self);
             
-            var _index = array_get_index(__animPlayingArray, self);
-            if (_index >= 0) array_delete(__animPlayingArray, _index, 1);
+            with(__layer)
+            {
+                ds_map_delete(__animPlayingMap,  other);
+                ds_map_delete(__animBlockingMap, other);
+                
+                var _index = array_get_index(__animPlayingArray, other);
+                if (_index >= 0) array_delete(__animPlayingArray, _index, 1);
+            }
         }
     }
 }

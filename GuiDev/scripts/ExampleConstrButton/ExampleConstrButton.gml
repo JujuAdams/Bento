@@ -42,9 +42,11 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
         {
             draw_set_halign(fa_center);
             draw_set_valign(fa_middle);
+            draw_set_alpha(image_alpha);
             draw_text(0.5*(bentoLeft + bentoRight), 0.5*(bentoTop + bentoBottom), text);
             draw_set_halign(fa_left);
             draw_set_valign(fa_top);
+            draw_set_alpha(1);
         }
         
         // Draw a highlight over the button is the element is being hovered by the Bento system's cursor
@@ -54,7 +56,7 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
         if (BentoCursorGetHover())
         {
             gpu_set_fog(true, c_white, 0, 0);
-            BentoDrawSprite(sBentoMaskRectangle, undefined, undefined, 0.5);
+            BentoDrawSprite(sBentoMaskRectangle, undefined, undefined, 0.5*image_alpha);
             gpu_set_fog(false, c_fuchsia, 0, 0);
         }
     }

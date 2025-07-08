@@ -129,6 +129,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __animDelay    = 0;
     __animMethod   = undefined;
     __animMetadata = undefined
+    __animElapsed  = 0;
     
     
     

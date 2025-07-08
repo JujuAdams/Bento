@@ -356,8 +356,8 @@ function __BentoClassLayer(_environment, _name) constructor
     {
         __BentoLayerTargetPush(self);
         
-        __BentoEnsureDrawOrder();
         __BentoEnsureTransforms();
+        __BentoEnsureDrawOrder();
         
         var _drawOrder = __drawOrder;
         var _i = 0;

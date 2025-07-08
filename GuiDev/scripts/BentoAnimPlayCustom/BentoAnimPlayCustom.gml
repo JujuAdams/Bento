@@ -49,6 +49,7 @@ function BentoAnimPlayCustom(_duration, _delay, _method, _metadata = undefined, 
         __animDelay    = max(0, _delay);
         __animMethod   = _method;
         __animMetadata = _metadata
+        __animElapsed  = 0;
         
         with(__layer)
         {
