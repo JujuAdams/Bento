@@ -21,13 +21,13 @@ function __BentoSolverListResizeHeight()
             {
                 with( _childArray[_i].BENTO_VARS)
                 {
-                    if (__layoutHeightResize == BENTO_RESIZE_SHRINK)
-                    {
-                        __solvedHeight = clamp(min(__solvedHeight, _available), __layoutHeightMin, __layoutHeightMax);
-                    }
-                    else if (__layoutHeightResize == BENTO_RESIZE_EXPAND)
+                    if (__layoutHeightResize == BENTO_RESIZE_EXPAND)
                     {
                         __solvedHeight = clamp(_available, __layoutHeightMin, __layoutHeightMax);
+                    }
+                    else
+                    {
+                        __solvedHeight = clamp(min(__solvedHeight, _available), __layoutHeightMin, __layoutHeightMax);
                     }
                 }
                 
@@ -47,7 +47,7 @@ function __BentoSolverListResizeHeight()
         if (_remaining > 0)
         {
             //////
-            // expand children
+            // Expand children
             //////
                 
             var _i = 0;
