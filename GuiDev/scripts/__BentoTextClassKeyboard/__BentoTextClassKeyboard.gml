@@ -10,6 +10,7 @@ function __BentoTextClassKeyboard(_environment, _initialText, _callback, _maxLen
     static __cancelOnClick = true;
     
     keyboard_string = "";
+    __lastInputTime = current_time;
     
     __Callback();
     
@@ -17,6 +18,16 @@ function __BentoTextClassKeyboard(_environment, _initialText, _callback, _maxLen
     
     static __Step = function()
     {
+        //Automatically terminate if there's been no input for 10 seconds
+        if (keyboard_check(vk_anykey))
+        {
+            __lastInputTime = current_time;
+        }
+        else if (current_time - __lastInputTime > 10_000)
+        {
+            __Terminate();
+        }
+        
         if (keyboard_check_pressed(vk_backspace))
         {
             __text = string_copy(__text, 1, string_length(__text)-1);
