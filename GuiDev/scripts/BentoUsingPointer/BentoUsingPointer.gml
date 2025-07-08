@@ -3,10 +3,11 @@
 /// Returns whether the input mode has been set to `BENTO_MODE_MOUSE` or `BENTO_MODE_TOUCH`.
 /// 
 /// @param [layerOrName=current]
+/// @param [environmentName=current]
 
-function BentoUsingPointer(_layerOrName = undefined)
+function BentoUsingPointer(_layerOrName = undefined, _environmentOrName = undefined)
 {
-    var _layer = __BentoLayerEnsure(_layerOrName);
+    var _layer = __BentoLayerEnsure(_layerOrName, _environmentOrName);
     if (_layer == undefined)
     {
         if (is_struct(_layerOrName))

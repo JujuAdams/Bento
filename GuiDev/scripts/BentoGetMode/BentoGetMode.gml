@@ -10,10 +10,11 @@
 /// - `BENTO_MODE_TOUCH`
 /// 
 /// @param [layerOrName=current]
+/// @param [environmentName=current]
 
-function BentoGetMode(_layerOrName = undefined)
+function BentoGetMode(_layerOrName = undefined, _environmentOrName = undefined)
 {
-    var _layer = __BentoLayerEnsure(_layerOrName);
+    var _layer = __BentoLayerEnsure(_layerOrName, _environmentOrName);
     if (_layer == undefined)
     {
         if (is_struct(_layerOrName))

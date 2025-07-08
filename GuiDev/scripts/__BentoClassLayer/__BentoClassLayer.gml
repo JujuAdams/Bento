@@ -25,26 +25,8 @@ function __BentoClassLayer(_environment, _name) constructor
     __animUnblockedMetadata = undefined;
     __animUnblockedPersist  = false;
     
-    ////////
-    // Set up a default input mode for convenience
-    ////////
-    
-    if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
-    {
-        __navMode = BENTO_MODE_GAMEPAD;
-    }
-    else if ((os_type == os_android) || (os_type == os_ios) || (os_type == os_tvos))
-    {
-        __navMode = BENTO_MODE_TOUCH;
-    }
-    else if ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
-    {
-        __navMode = BENTO_DESKTOP_DEFAULT_NAV_MODE;
-    }
-    else
-    {
-        __navMode = BENTO_MODE_MOUSE;
-    }
+    //Set starting input mode from the environment
+    __navMode = __environment.__envNavMode;
     
     //Explicitly using a mouse or touch input
     __navPointer = ((__navMode == BENTO_MODE_MOUSE) || (__navMode == BENTO_MODE_TOUCH));
@@ -122,14 +104,78 @@ function __BentoClassLayer(_environment, _name) constructor
         __environment.__RemoveLayer(self);
     }
     
-    static __Update = function(_rootWidth, _rootHeight, _ensureOnly)
+    static __UpdateInputMode = function()
+    {
+        var _newMode = __environment.__envNavMode;
+        if (__navMode == _newMode) return;
+        
+        //Changing input mode may change whether elements execute their step event and are hoverable
+        //when focused
+        __dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
+        
+        if ((_newMode == BENTO_MODE_KEYBOARD) || (_newMode == BENTO_MODE_GAMEPAD))
+        {
+            if (__navPointer)
+            {
+                //Reset mouse variables
+                __mouseHold = false;
+                
+                __directionalLastX = __mouseX;
+                __directionalLastY = __mouseY;
+                
+                __mousePrevX = __mouseX;
+                __mousePrevY = __mouseY;
+            }
+            
+            __navPointer     = false;
+            __navDirectional = true;
+            
+            __mousePressX = undefined;
+            __mousePressY = undefined;
+        }
+        else if ((_newMode == BENTO_MODE_MOUSE) || (_newMode == BENTO_MODE_TOUCH))
+        {
+            //Find any focused element that needs to be closed if we've swapped to a pointer mode
+            var _focusStack = __focusStack;
+            var _i = 0;
+            repeat(array_length(_focusStack))
+            {
+                var _element = _focusStack[_i];
+                if (_element.BENTO_VARS.__focusType == BENTO_FOCUS_POINTER_CANCEL_ALWAYS)
+                {
+                    BentoFocusClose(_element);
+                    break;
+                }
+                
+                ++_i;
+            }
+            
+            __navPointer     = true;
+            __navDirectional = false;
+        }
+        else
+        {
+            //Some undefined input mode, perhaps `BENTO_MODE_UNKNOWN`
+            __navPointer     = false;
+            __navDirectional = false;
+            
+            __mousePressX = undefined;
+            __mousePressY = undefined;
+        }
+        
+        __navMode = _newMode;
+    }
+    
+    static __Update = function(_rootWidth, _rootHeight, _isTopLayer)
     {
         var _environment = __environment;
         
         __BentoLayerTargetPush(self);
         
-        if (not _ensureOnly)
+        if (_isTopLayer)
         {
+            __UpdateInputMode();
+            
             //Update any animations
             var _i = array_length(__animPlayingArray)-1;
             repeat(array_length(__animPlayingArray))
@@ -227,7 +273,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureOffset();
         __BentoEnsureHoverableOrder();
         
-        if (not _ensureOnly)
+        if (_isTopLayer)
         {
             ///////
             // Navigation

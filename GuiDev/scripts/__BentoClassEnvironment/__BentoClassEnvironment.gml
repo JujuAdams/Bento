@@ -8,8 +8,9 @@ function __BentoClassEnvironment(_name) constructor
     
     __name = _name;
     
-    __layerCurrent = new __BentoClassLayer(self, "default");
-    __layerArray = [__layerCurrent];
+    ///////
+    // Raw input tracking
+    ///////
     
     __envMouseX    = 0;
     __envMouseY    = 0;
@@ -22,8 +23,44 @@ function __BentoClassEnvironment(_name) constructor
     __envHotkeyInputMap = ds_map_create();
     __envHotkeyArray    = [];
     
+    ///////
+    // Set up a default input mode for convenience
+    ///////
+    
+    if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
+    {
+        //Default to gamepad input on console
+        __envNavMode = BENTO_MODE_GAMEPAD;
+    }
+    else if ((os_type == os_android) || (os_type == os_ios) || (os_type == os_tvos))
+    {
+        //Default to touch on mobile
+        __envNavMode = BENTO_MODE_TOUCH;
+    }
+    else if ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
+    {
+        //Let the developer decide what to do on desktop
+        __envNavMode = BENTO_DESKTOP_DEFAULT_NAV_MODE;
+    }
+    else
+    {
+        __BentoTrace("Warning! OS not supported. Guessing that gamepad control is intended");
+        __envNavMode = BENTO_MODE_GAMEPAD;
+    }
+    
+    ///////
+    // Text input tracking
+    ///////
+    
     __textElement = undefined;
     __textHandler = undefined;
+    
+    ///////
+    // Layers!
+    ///////
+    
+    __layerCurrent = new __BentoClassLayer(self, "default");
+    __layerArray = [__layerCurrent];
     
     
     
@@ -76,12 +113,12 @@ function __BentoClassEnvironment(_name) constructor
         var _i = 0;
         repeat(_layerCount-1)
         {
-            _layerArray[_i].__Update(_rootWidth, _rootHeight, true);
+            _layerArray[_i].__Update(_rootWidth, _rootHeight, false);
             ++_i;
         }
         
         //Top-most layer pulls in input if there's no text input
-        _layerArray[_i].__Update(_rootWidth, _rootHeight, false);
+        _layerArray[_i].__Update(_rootWidth, _rootHeight, true);
         
         __BentoEnvironmentTargetPop();
     }
