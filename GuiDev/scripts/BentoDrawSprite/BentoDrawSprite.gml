@@ -5,10 +5,10 @@
 /// @param sprite
 /// @param [image=-1]
 /// @param [blend=white]
-/// @param [alpha=1]
+/// @param [alpha=image_alpha]
 /// @param [element=self]
 
-function BentoDrawSprite(_sprite, _image = -1, _blend = c_white, _alpha = 1, _element = self)
+function BentoDrawSprite(_sprite, _image = -1, _blend = c_white, _alpha = image_alpha, _element = self)
 {
     with(_element)
     {
