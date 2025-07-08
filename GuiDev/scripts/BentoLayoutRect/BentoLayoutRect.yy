@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoLayoutRect",
   "parent":{
-    "name":"Layout Rulesets",
-    "path":"folders/Library/Functions/Layout Rulesets.yy",
+    "name":"Rulesets",
+    "path":"folders/Library/Functions/Layout/Rulesets.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoLayoutSetPadding",
   "parent":{
-    "name":"Layout Properites",
-    "path":"folders/Library/Functions/Layout Properites.yy",
+    "name":"Properites",
+    "path":"folders/Library/Functions/Layout/Properites.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
