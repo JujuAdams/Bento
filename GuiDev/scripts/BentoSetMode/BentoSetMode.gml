@@ -39,7 +39,7 @@ function BentoSetMode(_newMode, _environmentOrName = undefined)
         
         __envNavMode = _newMode;
         
-        with(__BentoLayerTop(self))
+        with(__layerCurrent)
         {
             __UpdateInputMode();
         }

@@ -125,7 +125,6 @@
     {"id":{"name":"__BentoLayerFind","path":"scripts/__BentoLayerFind/__BentoLayerFind.yy",},},
     {"id":{"name":"__BentoLayerTargetPop","path":"scripts/__BentoLayerTargetPop/__BentoLayerTargetPop.yy",},},
     {"id":{"name":"__BentoLayerTargetPush","path":"scripts/__BentoLayerTargetPush/__BentoLayerTargetPush.yy",},},
-    {"id":{"name":"__BentoLayerTop","path":"scripts/__BentoLayerTop/__BentoLayerTop.yy",},},
     {"id":{"name":"__BentoMarkDrawOrderDirty","path":"scripts/__BentoMarkDrawOrderDirty/__BentoMarkDrawOrderDirty.yy",},},
     {"id":{"name":"__BentoMarkTransformDirty","path":"scripts/__BentoMarkTransformDirty/__BentoMarkTransformDirty.yy",},},
     {"id":{"name":"__BentoObjectInheritsFrom","path":"scripts/__BentoObjectInheritsFrom/__BentoObjectInheritsFrom.yy",},},
