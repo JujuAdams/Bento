@@ -13,7 +13,7 @@ function __BentoSolverGridResizeWidth()
         var _i = 0;
         repeat(_childCount)
         {
-            with( _childArray[_i].BENTO_VARS)
+            with( _childArray[_i])
             {
                 if (__layoutWidthResize == BENTO_RESIZE_DEFLATE)
                 {

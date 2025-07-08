@@ -24,7 +24,7 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     var _i = 0;
     repeat(array_length(_childArray))
     {
-        _childArray[_i].BENTO_VARS.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
+        _childArray[_i].__SolverPositions(_childX, _childY, _childWidth, _childHeight);
         ++_i;
     }
     

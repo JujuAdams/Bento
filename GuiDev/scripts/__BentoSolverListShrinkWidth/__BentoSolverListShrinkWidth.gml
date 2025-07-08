@@ -18,8 +18,8 @@ function __BentoSolverListGetDeflateWidth()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _deflateSize += _child.BENTO_VARS.__solverDeflateWidth;
-            _minSize    += _child.BENTO_VARS.__solverMinWidth;
+            _deflateSize += _child.__solverDeflateWidth;
+            _minSize     += _child.__solverMinWidth;
             ++_i;
         }
         
@@ -35,8 +35,8 @@ function __BentoSolverListGetDeflateWidth()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _deflateSize = max(_deflateSize, _child.BENTO_VARS.__solverDeflateWidth);
-            _minSize    = max(_minSize,    _child.BENTO_VARS.__solverMinWidth);
+            _deflateSize = max(_deflateSize, _child.__solverDeflateWidth);
+            _minSize     = max(_minSize,     _child.__solverMinWidth);
             ++_i;
         }
         
@@ -46,7 +46,7 @@ function __BentoSolverListGetDeflateWidth()
     _deflateSize += _extra;
     _minSize += _extra;
     
-    __solverMinWidth    = max(__layoutWidthMin, _minSize);
+    __solverMinWidth     = max(__layoutWidthMin, _minSize);
     __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth, __layoutWidthMax);
-    __solvedWidth       = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __layoutWidthPref : _deflateSize, __solverMinWidth, __layoutWidthMax);
+    __solvedWidth        = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __layoutWidthPref : _deflateSize, __solverMinWidth, __layoutWidthMax);
 }

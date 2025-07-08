@@ -19,7 +19,7 @@ function __BentoSolverListResizeHeight()
             var _i = 0;
             repeat(_childCount)
             {
-                with( _childArray[_i].BENTO_VARS)
+                with( _childArray[_i])
                 {
                     if (__layoutHeightResize == BENTO_RESIZE_INFLATE)
                     {
@@ -54,7 +54,7 @@ function __BentoSolverListResizeHeight()
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.BENTO_VARS.__layoutHeightResize == BENTO_RESIZE_INFLATE)
+                if (_child.__layoutHeightResize == BENTO_RESIZE_INFLATE)
                 {
                     array_push(_modifiableArray, _child);
                 }
@@ -72,7 +72,7 @@ function __BentoSolverListResizeHeight()
                 {
                     var _child = _modifiableArray[_i];
                     
-                    var _childSize = _child.BENTO_VARS.__solvedHeight;
+                    var _childSize = _child.__solvedHeight;
                     if (_childSize < _min)
                     {
                         _secondMin = _min;
@@ -103,12 +103,12 @@ function __BentoSolverListResizeHeight()
                 {
                     var _child = _modifyingArray[_i];
                     
-                    var _prevSize = _child.BENTO_VARS.__solvedHeight;
+                    var _prevSize = _child.__solvedHeight;
                     if (_prevSize == _min)
                     {
-                        if (_prevSize + _addition >= _child.BENTO_VARS.__layoutHeightMax)
+                        if (_prevSize + _addition >= _child.__layoutHeightMax)
                         {
-                            var _newSize = _child.BENTO_VARS.__layoutHeightMax;
+                            var _newSize = _child.__layoutHeightMax;
                             array_delete(_modifiableArray, array_get_index(_modifiableArray, _child), 1);
                         }
                         else
@@ -116,7 +116,7 @@ function __BentoSolverListResizeHeight()
                             var _newSize = _prevSize + _addition;
                         }
                         
-                        _child.BENTO_VARS.__solvedHeight = _newSize;
+                        _child.__solvedHeight = _newSize;
                         _remaining += _prevSize - _newSize;
                     }
                     
@@ -138,7 +138,7 @@ function __BentoSolverListResizeHeight()
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.BENTO_VARS.__layoutHeightResize != BENTO_RESIZE_NORMAL)
+                if (_child.__layoutHeightResize != BENTO_RESIZE_NORMAL)
                 {
                     array_push(_modifiableArray, _child);
                 }
@@ -156,7 +156,7 @@ function __BentoSolverListResizeHeight()
                 {
                     var _child = _modifiableArray[_i];
                     
-                    var _childSize = _child.BENTO_VARS.__solvedHeight;
+                    var _childSize = _child.__solvedHeight;
                     if (_childSize > _max)
                     {
                         _secondMax = _max;
@@ -187,12 +187,12 @@ function __BentoSolverListResizeHeight()
                 {
                     var _child = _modifyingArray[_i];
                     
-                    var _prevSize = _child.BENTO_VARS.__solvedHeight;
+                    var _prevSize = _child.__solvedHeight;
                     if (_prevSize == _max)
                     {
-                        if (_prevSize + _addition <= _child.BENTO_VARS.__layoutHeightMin)
+                        if (_prevSize + _addition <= _child.__layoutHeightMin)
                         {
-                            var _newSize = _child.BENTO_VARS.__layoutHeightMin;
+                            var _newSize = _child.__layoutHeightMin;
                             array_delete(_modifiableArray, array_get_index(_modifiableArray, _child), 1);
                         }
                         else
@@ -200,7 +200,7 @@ function __BentoSolverListResizeHeight()
                             var _newSize = _prevSize + _addition;
                         }
                         
-                        _child.BENTO_VARS.__solvedHeight = _newSize;
+                        _child.__solvedHeight = _newSize;
                         _remaining += _prevSize - _newSize;
                     }
                     

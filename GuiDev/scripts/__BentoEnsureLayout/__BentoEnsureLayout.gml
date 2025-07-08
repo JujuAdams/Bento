@@ -11,7 +11,7 @@ function __BentoEnsureLayout()
     array_resize(_layoutOrder, 0);
     
     //Ensure that our layout order is up-to-date
-    __BentoEnsureLayerOrderInner(_layoutOrder, __rootElement);
+    __BentoEnsureLayerOrderInner(_layoutOrder, __rootElement.BENTO_VARS);
     var _count = array_length(_layoutOrder);
     
     //Populate static widths of elements
@@ -55,9 +55,9 @@ function __BentoEnsureLayout()
     array_push(__dirtyOffsetArray, __rootElement);
 }
 
-function __BentoEnsureLayerOrderInner(_layoutOrder, _element)
+function __BentoEnsureLayerOrderInner(_layoutOrder, _elementVars)
 {
-    with(_element.BENTO_VARS)
+    with(_elementVars)
     {
         array_push(_layoutOrder, self);
         
@@ -72,12 +72,12 @@ function __BentoEnsureLayerOrderInner(_layoutOrder, _element)
         var _i = 0;
         repeat(array_length(_childArray))
         {
-            var _child = _childArray[_i];
+            var _childVars = _childArray[_i].BENTO_VARS;
             
-            if (not _child.BENTO_VARS.__layoutIgnore)
+            if (not _childVars.__layoutIgnore)
             {
-                array_push(_layoutArray, _child);
-                __BentoEnsureLayerOrderInner(_layoutOrder, _child);
+                array_push(_layoutArray, _childVars);
+                __BentoEnsureLayerOrderInner(_layoutOrder, _childVars);
             }
             
             ++_i;

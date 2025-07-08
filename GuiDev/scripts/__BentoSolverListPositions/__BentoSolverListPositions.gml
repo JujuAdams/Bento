@@ -26,7 +26,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _i = 0;
         repeat(_childCount)
         {
-            _majorSize += _childArray[_i].BENTO_VARS.__solvedWidth;
+            _majorSize += _childArray[_i].__solvedWidth;
             ++_i;
         }
         
@@ -48,7 +48,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _i = 0;
         repeat(_childCount)
         {
-            with(_childArray[_i].BENTO_VARS)
+            with(_childArray[_i])
             {
                 if (_minorAlign == fa_middle)
                 {
@@ -76,7 +76,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _i = 0;
         repeat(_childCount)
         {
-            _majorSize += _childArray[_i].BENTO_VARS.__solvedHeight;
+            _majorSize += _childArray[_i].__solvedHeight;
             ++_i;
         }
         
@@ -98,7 +98,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _i = 0;
         repeat(_childCount)
         {
-            with(_childArray[_i].BENTO_VARS)
+            with(_childArray[_i])
             {
                 if (_minorAlign == fa_center)
                 {
