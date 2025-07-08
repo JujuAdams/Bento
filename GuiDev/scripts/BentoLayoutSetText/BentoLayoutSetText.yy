@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoLayoutSetText",
   "parent":{
-    "name":"Layout",
-    "path":"folders/Library/Functions/Layout.yy",
+    "name":"Layout Types",
+    "path":"folders/Library/Functions/Layout/Layout Types.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoLayoutSetListAxis",
   "parent":{
-    "name":"Lists & Grids",
-    "path":"folders/Library/Functions/Layout/Lists & Grids.yy",
+    "name":"Layout Types",
+    "path":"folders/Library/Functions/Layout/Layout Types.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
