@@ -13,7 +13,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         __solvedHeight = floor(__solvedHeight);
     }
     
-    var _childArray = __childArray;
+    var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
     
     if (__listAxis == BENTO_AXIS_X)
@@ -117,4 +117,6 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         }
     }
     
+    //Reset the temporary layout array
+    array_resize(__layoutChildArray, 0);
 }

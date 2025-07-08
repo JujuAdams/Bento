@@ -13,11 +13,14 @@ function TestAnimations()
         
         with(new ExampleConstrButton(function()
         {
-            BentoTransformSetScale(2, 2);
-            BentoAnimPlayBasic(30, 0, 0, 0, 1, 1);
+            BentoLayoutSetIgnore(true);
+            BentoAnimPlayBuildOut(60, 0, 40, 0, 1, 1, 0);
+            
+            //BentoTransformSetScale(2, 2);
+            //BentoAnimPlayBasic(30, 0, 0, 0, 1, 1);
         }))
         {
-            BentoAnimPlayBuildIn(120, 0, -30, 0, 1, 1, 0);
+            BentoAnimPlayBuildIn(60, 0, -40, 0, 1, 1, 0);
         }
     }
 }

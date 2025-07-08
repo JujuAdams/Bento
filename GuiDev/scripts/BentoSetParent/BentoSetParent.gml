@@ -31,7 +31,7 @@ function BentoSetParent(_parent, _target = self)
         
         with(_parent)
         {
-            array_push(BENTO_VARS.__childArray, _target);
+            array_push(BENTO_VARS.__childArray,     _target);
             array_push(BENTO_VARS.__childDrawArray, _target);
         
             __BentoMarkDrawOrderDirty(self);

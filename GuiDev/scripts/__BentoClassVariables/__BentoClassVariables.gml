@@ -302,7 +302,10 @@ function __BentoClassVariables(_attachedElement) constructor
         __solvedHeight = 0;
     }
     
+    __layoutChildArray = [];
+    
     __layoutClampInside = false;
+    __layoutIgnore = false;
     
     //Alignment against the region that the parent has allocated for this element. This is especially
     //useful for children of non-list / non-grid parents where you might want to position the element

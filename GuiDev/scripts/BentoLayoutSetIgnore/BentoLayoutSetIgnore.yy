@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayoutSetIgnore",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayoutSetIgnore",
+  "parent":{
+    "name":"Properites",
+    "path":"folders/Library/Functions/Layout/Properites.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

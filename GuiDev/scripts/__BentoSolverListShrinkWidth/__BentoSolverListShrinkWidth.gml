@@ -5,7 +5,7 @@ function __BentoSolverListGetDeflateWidth()
     var _deflateSize = 0;
     var _minSize = 0;
     
-    var _childArray = __childArray;
+    var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
     
     if (__listAxis == BENTO_AXIS_X)

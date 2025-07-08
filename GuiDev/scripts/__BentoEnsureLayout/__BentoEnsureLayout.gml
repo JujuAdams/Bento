@@ -66,11 +66,20 @@ function __BentoEnsureLayerOrderInner(_layoutOrder, _element)
         __solverPadRight  = __layoutPadRight  + __scissorPadRight  + __scissorScrollbarRight;
         __solverPadBottom = __layoutPadBottom + __scissorPadBottom + __scissorScrollbarBottom;
         
-        var _array = __childArray;
+        var _childArray  = __childArray;
+        var _layoutArray = __layoutChildArray;
+        
         var _i = 0;
-        repeat(array_length(_array))
+        repeat(array_length(_childArray))
         {
-            __BentoEnsureLayerOrderInner(_layoutOrder, _array[_i]);
+            var _child = _childArray[_i];
+            
+            if (not _child.BENTO_VARS.__layoutIgnore)
+            {
+                array_push(_layoutArray, _child);
+                __BentoEnsureLayerOrderInner(_layoutOrder, _child);
+            }
+            
             ++_i;
         }
     }

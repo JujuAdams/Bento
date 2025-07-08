@@ -20,11 +20,14 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     var _childWidth  = __solvedWidth  - (__solverPadLeft + __solverPadRight);
     var _childHeight = __solvedHeight - (__solverPadTop + __solverPadBottom);
     
-    var _childArray = __childArray;
+    var _childArray = __layoutChildArray;
     var _i = 0;
     repeat(array_length(_childArray))
     {
         _childArray[_i].BENTO_VARS.__SolverPositions(_childX, _childY, _childWidth, _childHeight);
         ++_i;
     }
+    
+    //Reset the temporary layout array
+    array_resize(__layoutChildArray, 0);
 }

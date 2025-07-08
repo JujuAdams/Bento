@@ -13,7 +13,7 @@ function __BentoSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeig
         __solvedHeight = floor(__solvedHeight);
     }
     
-    var _childArray = __childArray;
+    var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
     
     var _availableWidth  = __solvedWidth  - (__solverPadLeft + __solverPadRight + max(0, __gridColumns-1)*__layoutGutterX);
@@ -45,4 +45,7 @@ function __BentoSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeig
         
         ++_i;
     }
+    
+    //Reset the temporary layout array
+    array_resize(__layoutChildArray, 0);
 }

@@ -2,7 +2,7 @@
 
 function __BentoSolverGridResizeWidth()
 {
-    var _childArray   = __childArray;
+    var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
     
     var _available = __solvedWidth - (__solverPadLeft + __solverPadRight + max(0, __gridColumns-1)*__layoutGutterX);
