@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __BentoSolverRectGetShrinkWidth()
+function __BentoSolverRectGetDeflateWidth()
 {
     //Determine the preferred width
     if (__layoutWidthPref > 0)
@@ -23,6 +23,6 @@ function __BentoSolverRectGetShrinkWidth()
     }
     
     __solvedWidth       = clamp(_width, __layoutWidthMin, __layoutWidthMax);
-    __solverShrinkWidth = __solvedWidth;
+    __solverDeflateWidth = __solvedWidth;
     __solverMinWidth    = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
 }

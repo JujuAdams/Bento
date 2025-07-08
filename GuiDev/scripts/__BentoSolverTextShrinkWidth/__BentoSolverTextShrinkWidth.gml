@@ -1,9 +1,9 @@
 // Feather disable all
 
-function __BentoSolverTextGetShrinkWidth()
+function __BentoSolverTextGetDeflateWidth()
 {
     //Fall back on the minimum width if we can't find a suitable preferred width
     __solvedWidth = clamp((__layoutWidthPref > 0)? __layoutWidthPref : __layoutWidthMin, __layoutWidthMin, __layoutWidthMax);
-    __solverShrinkWidth = __solvedWidth;
+    __solverDeflateWidth = __solvedWidth;
     __solverMinWidth    = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
 }

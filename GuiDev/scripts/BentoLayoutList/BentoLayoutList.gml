@@ -24,12 +24,12 @@ function BentoLayoutList(_listAxis, _hAlignChildren, _vAlignChildren, _element =
             __layoutHAlignChildren = _hAlignChildren;
             __layoutVAlignChildren = _vAlignChildren;
             
-            __SolverGetShrinkWidth  = method(self, __BentoSolverListGetShrinkWidth);
-            __SolverResizeWidth     = method(self, __BentoSolverListResizeWidth);
-            __SolverGetShrinkHeight = method(self, __BentoSolverListGetShrinkHeight);
-            __SolverResizeHeight    = method(self, __BentoSolverListResizeHeight);
-            __SolverPositions       = method(self, __BentoSolverListPositions);
-            __funcMeasureHeight     = function() { return 1; }
+            __SolverGetDeflateWidth  = method(self, __BentoSolverListGetDeflateWidth);
+            __SolverResizeWidth      = method(self, __BentoSolverListResizeWidth);
+            __SolverGetDeflateHeight = method(self, __BentoSolverListGetDeflateHeight);
+            __SolverResizeHeight     = method(self, __BentoSolverListResizeHeight);
+            __SolverPositions        = method(self, __BentoSolverListPositions);
+            __funcMeasureHeight      = function() { return 1; }
         }
         else
         {

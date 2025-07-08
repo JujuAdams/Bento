@@ -19,7 +19,7 @@ function TestTransform()
                         image_blend: c_red,
                     },
                     layout: {
-                        resize: [BENTO_RESIZE_EXPAND, BENTO_RESIZE_EXPAND],
+                        resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                     },
                 },
                 {
@@ -28,7 +28,7 @@ function TestTransform()
                         image_blend: c_lime,
                     },
                     layout: {
-                        resize: [BENTO_RESIZE_EXPAND, BENTO_RESIZE_EXPAND],
+                        resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                     },
                 },
                 {
@@ -37,7 +37,7 @@ function TestTransform()
                         image_blend: c_blue,
                     },
                     layout: {
-                        resize: [BENTO_RESIZE_EXPAND, BENTO_RESIZE_EXPAND],
+                        resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                     },
                 },
                 {
@@ -46,7 +46,7 @@ function TestTransform()
                         image_blend: c_yellow,
                     },
                     layout: {
-                        resize: [BENTO_RESIZE_EXPAND, BENTO_RESIZE_EXPAND],
+                        resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                     },
                 },
             ],

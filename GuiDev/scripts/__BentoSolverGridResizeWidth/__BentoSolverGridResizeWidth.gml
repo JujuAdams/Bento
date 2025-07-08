@@ -15,11 +15,11 @@ function __BentoSolverGridResizeWidth()
         {
             with( _childArray[_i].BENTO_VARS)
             {
-                if (__layoutWidthResize == BENTO_RESIZE_SHRINK)
+                if (__layoutWidthResize == BENTO_RESIZE_DEFLATE)
                 {
                     __solvedWidth = clamp(min(__solvedWidth, _cellSize), __layoutWidthMin, __layoutWidthMax);
                 }
-                else if (__layoutWidthResize == BENTO_RESIZE_EXPAND)
+                else if (__layoutWidthResize == BENTO_RESIZE_INFLATE)
                 {
                     __solvedWidth = clamp(_cellSize, __layoutWidthMin, __layoutWidthMax);
                 }

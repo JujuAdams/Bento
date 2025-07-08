@@ -248,7 +248,7 @@
 /// {
 ///     object: oBentoList,
 ///     layout: {
-///         resize: ["shrink", "static"],
+///         resize: ["deflate", "normal"],
 ///         size: [100, 70],
 ///         axis: "x"
 ///     },
@@ -259,7 +259,7 @@
 ///                 image_blend: c_red,
 ///             },
 ///             layout: {
-///                 resize: ["static", "expand"],
+///                 resize: ["normal", "inflate"],
 ///                 size: [30, 30]
 ///             },
 ///         },
@@ -269,7 +269,7 @@
 ///                 image_blend: c_blue,
 ///             },
 ///             layout: {
-///                 resize: ["static", "expand"],
+///                 resize: ["normal", "inflate"],
 ///                 size: [30, 30]
 ///             },
 ///         },

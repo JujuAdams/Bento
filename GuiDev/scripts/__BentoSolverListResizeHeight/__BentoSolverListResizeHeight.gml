@@ -5,12 +5,12 @@ function __BentoSolverListResizeHeight()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedHeight - __solverShrinkHeight;
+    var _remaining = __solvedHeight - __solverDeflateHeight;
     
     if (__listAxis == BENTO_AXIS_X)
     {
         //////
-        // Minor Axis - Stretch expand elements to the maximum available space
+        // Minor Axis - Stretch inflate elements to the maximum available space
         //////
             
         var _available = __solvedHeight - (__solverPadLeft + __solverPadRight);
@@ -21,7 +21,7 @@ function __BentoSolverListResizeHeight()
             {
                 with( _childArray[_i].BENTO_VARS)
                 {
-                    if (__layoutHeightResize == BENTO_RESIZE_EXPAND)
+                    if (__layoutHeightResize == BENTO_RESIZE_INFLATE)
                     {
                         __solvedHeight = clamp(_available, __layoutHeightMin, __layoutHeightMax);
                     }
@@ -47,14 +47,14 @@ function __BentoSolverListResizeHeight()
         if (_remaining > 0)
         {
             //////
-            // Expand children
+            // Inflate children
             //////
                 
             var _i = 0;
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.BENTO_VARS.__layoutHeightResize == BENTO_RESIZE_EXPAND)
+                if (_child.BENTO_VARS.__layoutHeightResize == BENTO_RESIZE_INFLATE)
                 {
                     array_push(_modifiableArray, _child);
                 }
@@ -131,14 +131,14 @@ function __BentoSolverListResizeHeight()
         else if (_remaining < 0)
         {
             //////
-            // Shrink children
+            // Deflate children
             //////
             
             var _i = 0;
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.BENTO_VARS.__layoutHeightResize != BENTO_RESIZE_STATIC)
+                if (_child.BENTO_VARS.__layoutHeightResize != BENTO_RESIZE_NORMAL)
                 {
                     array_push(_modifiableArray, _child);
                 }

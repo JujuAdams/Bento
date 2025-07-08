@@ -5,12 +5,12 @@ function __BentoSolverListResizeWidth()
     var _childArray = __childArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedWidth - __solverShrinkWidth;
+    var _remaining = __solvedWidth - __solverDeflateWidth;
     
     if (__listAxis == BENTO_AXIS_Y)
     {
         //////
-        // Minor Axis - Stretch expand elements to the maximum available space
+        // Minor Axis - Stretch inflate elements to the maximum available space
         //////
             
         var _available = __solvedWidth - (__solverPadLeft + __solverPadRight);
@@ -21,7 +21,7 @@ function __BentoSolverListResizeWidth()
             {
                 with( _childArray[_i].BENTO_VARS)
                 {
-                    if (__layoutWidthResize == BENTO_RESIZE_EXPAND)
+                    if (__layoutWidthResize == BENTO_RESIZE_INFLATE)
                     {
                         __solvedWidth = clamp(_available, __layoutWidthMin, __layoutWidthMax);
                     }
@@ -47,14 +47,14 @@ function __BentoSolverListResizeWidth()
         if (_remaining > 0)
         {
             //////
-            // Expand children
+            // Inflate children
             //////
                 
             var _i = 0;
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.BENTO_VARS.__layoutWidthResize == BENTO_RESIZE_EXPAND)
+                if (_child.BENTO_VARS.__layoutWidthResize == BENTO_RESIZE_INFLATE)
                 {
                     array_push(_modifiableArray, _child);
                 }
@@ -131,14 +131,14 @@ function __BentoSolverListResizeWidth()
         else if (_remaining < 0)
         {
             //////
-            // Shrink children
+            // Deflate children
             //////
             
             var _i = 0;
             repeat(_childCount)
             {
                 var _child = _childArray[_i];
-                if (_child.BENTO_VARS.__layoutWidthResize != BENTO_RESIZE_STATIC)
+                if (_child.BENTO_VARS.__layoutWidthResize != BENTO_RESIZE_NORMAL)
                 {
                     array_push(_modifiableArray, _child);
                 }

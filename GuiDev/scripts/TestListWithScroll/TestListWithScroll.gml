@@ -30,7 +30,7 @@ function TestListWithScroll()
                 offset:  [300, 200],
                 size:    [200, 120],
                 maxSize: [200, 295],
-                resize:  [BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK],
+                resize:  [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
                 padding: 10,
                 gutter:  10,
             },

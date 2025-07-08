@@ -50,12 +50,12 @@ function BentoLayoutText(_funcHeight, _element = self)
             __layoutType = BENTO_LAYOUT_TEXT;
             __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
-            __SolverGetShrinkWidth  = method(self, __BentoSolverTextGetShrinkWidth);
-            __SolverResizeWidth     = function(){};
-            __SolverGetShrinkHeight = method(self, __BentoSolverTextGetShrinkHeight);
-            __SolverResizeHeight    = function(){};
-            __SolverPositions       = method(self, __BentoSolverRectPositions);
-            __funcMeasureHeight     = method(__attachedElement, _funcHeight);
+            __SolverGetDeflateWidth  = method(self, __BentoSolverTextGetDeflateWidth);
+            __SolverResizeWidth      = function(){};
+            __SolverGetDeflateHeight = method(self, __BentoSolverTextGetDeflateHeight);
+            __SolverResizeHeight     = function(){};
+            __SolverPositions        = method(self, __BentoSolverRectPositions);
+            __funcMeasureHeight      = method(__attachedElement, _funcHeight);
         }
         else
         {

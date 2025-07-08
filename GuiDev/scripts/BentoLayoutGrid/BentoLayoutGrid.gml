@@ -26,12 +26,12 @@ function BentoLayoutGrid(_columns, _rows, _element = self)
             __gridColumns = max(1, _columns);
             __gridRows    = max(1, _rows);
             
-            __SolverGetShrinkWidth  = method(self, __BentoSolverRectGetShrinkWidth);
-            __SolverResizeWidth     = method(self, __BentoSolverGridResizeWidth);
-            __SolverGetShrinkHeight = method(self, __BentoSolverRectGetShrinkHeight);
-            __SolverResizeHeight    = method(self, __BentoSolverGridResizeHeight);
-            __SolverPositions       = method(self, __BentoSolverGridPositions);
-            __funcMeasureHeight     = function() { return 1; }
+            __SolverGetDeflateWidth  = method(self, __BentoSolverRectGetDeflateWidth);
+            __SolverResizeWidth      = method(self, __BentoSolverGridResizeWidth);
+            __SolverGetDeflateHeight = method(self, __BentoSolverRectGetDeflateHeight);
+            __SolverResizeHeight     = method(self, __BentoSolverGridResizeHeight);
+            __SolverPositions        = method(self, __BentoSolverGridPositions);
+            __funcMeasureHeight      = function() { return 1; }
         }
         else
         {

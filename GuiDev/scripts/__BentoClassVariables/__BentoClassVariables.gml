@@ -334,32 +334,34 @@ function __BentoClassVariables(_attachedElement) constructor
     __solverPadRight  = 0;
     __solverPadBottom = 0;
     
-    //How the element should resize. "Static" is as the name suggests - the element won't change
-    //size. "Shrink" will cause the element to shrink down to shrink any children it has inside. If an
-    //element has no ch\ildren, the "shrink" resize type will behave the same as "static". "expand" will
-    //cause the element to increase size in that axis to fill available space in the parent.
-    __layoutWidthResize  = BENTO_RESIZE_STATIC;
-    __layoutHeightResize = BENTO_RESIZE_STATIC;
+    //How the element should resize. All elements will always try to reduce in size, down to their
+    //minimum size, if they are too big for their parent regardless of resizing logic.
+    //
+    //In addition to the above, `NORMAL` resizing does nothing extra. `INFLATE` will allow the element
+    //to additionally *increase* in size to fill out available space. Finally, `DEFLATE` will
+    //additionally cause the element to shrink down to the minimum size to fit its children.
+    __layoutWidthResize  = BENTO_RESIZE_NORMAL;
+    __layoutHeightResize = BENTO_RESIZE_NORMAL;
     
-    //The size required to shrink all of this element's children at their preferred size.
-    __solverShrinkWidth  = 0;
-    __solverShrinkHeight = 0;
+    //The size required to deflate all of this element's children at their preferred size.
+    __solverDeflateWidth  = 0;
+    __solverDeflateHeight = 0;
     
-    //The absolute minimum size that a parent can be to shrink all of its children.
+    //The absolute minimum size that a parent can be to fit all of its children.
     __solverMinWidth  = 0;
     __solverMinHeight = 0;
     
     __layoutType = BENTO_LAYOUT_RECT;
     
-    //Function that sets the solver's shrink width and minimum width. This is a boring function for most
-    //elements. It gets more exciting for lists - see `__BentoSolverListGetShrinkWidth()`. This function also
-    //preliminarily sets the final calculated width for the element (`__solvedWidth`).
+    //Function that sets the solver's deflate width and minimum width. This is a boring function for
+    //most elements. It gets more exciting for lists - see `__BentoSolverListGetDeflateWidth()`. This
+    //function also preliminarily sets the final calculated width for the element (`__solvedWidth`).
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_TEXT` override this function.
-    __SolverGetShrinkWidth = method(self, __BentoSolverRectGetShrinkWidth);
+    __SolverGetDeflateWidth = method(self, __BentoSolverRectGetDeflateWidth);
     
-    //Resizes both this element and any child elements that are set to "shrink" or "expand" resize types.
-    //See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
+    //Resizes both this element and any child elements that are set to "deflate" or "inflate" resize
+    //types. See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
     __SolverResizeWidth = function()
@@ -367,15 +369,15 @@ function __BentoClassVariables(_attachedElement) constructor
         //Do nothing
     }
     
-    //Function that sets the solver's shrink height and minimum height. This is a boring function for most
-    //elements. It gets more exciting for lists - see `__BentoSolverListGetShrinkHeight()`. This function also
-    //preliminarily sets the final calculated height for the element (`__solvedHeight`).
+    //Function that sets the solver's deflate height and minimum height. This is a boring function for
+    //most elements. It gets more exciting for lists - see `__BentoSolverListGetDeflateHeight()`. This
+    //function also preliminarily sets the final calculated height for the element (`__solvedHeight`).
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_TEXT` override this function.
-    __SolverGetShrinkHeight = method(self, __BentoSolverRectGetShrinkHeight);
+    __SolverGetDeflateHeight = method(self, __BentoSolverRectGetDeflateHeight);
     
-    //Resizes both this element and any child elements that are set to "shrink" or "expand" resize types.
-    //See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
+    //Resizes both this element and any child elements that are set to "deflate" or "inflate" resize
+    //types. See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
     //
     // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
     __SolverResizeHeight = function()

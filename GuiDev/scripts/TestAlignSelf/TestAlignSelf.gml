@@ -11,7 +11,7 @@ function TestAlignSelf()
         layout: {
             alignSelf: [1, 0.5],
             size: [450, 200],
-            resize: [BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK],
+            resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
             padding: 10,
             gutter:  10,
             list: ["x", fa_left, fa_top],
@@ -26,7 +26,7 @@ function TestAlignSelf()
                 layout: {
                     size: [100, 100],
                     padding: 10,
-                    resize: [BENTO_RESIZE_STATIC, BENTO_RESIZE_EXPAND],
+                    resize: [BENTO_RESIZE_NORMAL, BENTO_RESIZE_INFLATE],
                 },
                 children: [
                     {
@@ -51,7 +51,7 @@ function TestAlignSelf()
                     size: [200, 100],
                     minSize: [50, 0],
                     maxSize: [450, undefined],
-                    resize: [BENTO_RESIZE_EXPAND, BENTO_RESIZE_STATIC],
+                    resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
                 },
             },
             {

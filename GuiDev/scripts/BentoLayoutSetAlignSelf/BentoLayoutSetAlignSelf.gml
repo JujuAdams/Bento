@@ -12,7 +12,7 @@
 /// therefore is the center or middle of the available space. You may pass `undefined` as either
 /// parameter to not change the existing value.
 ///  
-/// If you have set the resize type for a particular axis to `BENTO_RESIZE_GROW` then alignment
+/// If you have set the resize type for a particular axis to `BENTO_RESIZE_INFLATE` then alignment
 /// will usually have no effect - the element will occupy 100% of the available space. However, if
 /// the element has a minimum size that prevents it from fitting inside its parent then alignment
 /// will have some effect.

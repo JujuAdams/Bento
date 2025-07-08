@@ -15,11 +15,11 @@ function __BentoSolverGridResizeHeight()
         {
             with( _childArray[_i].BENTO_VARS)
             {
-                if (__layoutHeightResize == BENTO_RESIZE_SHRINK)
+                if (__layoutHeightResize == BENTO_RESIZE_DEFLATE)
                 {
                     __solvedHeight = clamp(min(__solvedHeight, _cellSize), __layoutHeightMin, __layoutHeightMax);
                 }
-                else if (__layoutHeightResize == BENTO_RESIZE_EXPAND)
+                else if (__layoutHeightResize == BENTO_RESIZE_INFLATE)
                 {
                     __solvedHeight = clamp(_cellSize, __layoutHeightMin, __layoutHeightMax);
                 }

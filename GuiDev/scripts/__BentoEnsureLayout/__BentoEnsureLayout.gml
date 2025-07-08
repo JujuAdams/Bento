@@ -18,11 +18,11 @@ function __BentoEnsureLayout()
     var _i = _count-1;
     repeat(_count)
     {
-        _layoutOrder[_i].__SolverGetShrinkWidth();
+        _layoutOrder[_i].__SolverGetDeflateWidth();
         --_i;
     }
     
-    //Redistribute element widths, shrinking and expanding elements
+    //Redistribute element widths, deflateing and inflateing elements
     var _i = 0;
     repeat(_count)
     {
@@ -34,11 +34,11 @@ function __BentoEnsureLayout()
     var _i = _count-1;
     repeat(_count)
     {
-        _layoutOrder[_i].__SolverGetShrinkHeight();
+        _layoutOrder[_i].__SolverGetDeflateHeight();
         --_i;
     }
     
-    //Redistribute element heights, shrinking and expanding elements
+    //Redistribute element heights, deflateing and inflateing elements
     var _i = 0;
     repeat(_count)
     {

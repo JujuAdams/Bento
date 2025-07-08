@@ -10,7 +10,7 @@ function TestGrid()
         layout: {
             grid:    [6, 2],
             size:    [600, 200],
-            resize:  [BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK],
+            resize:  [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
             padding: [10, 10, 10, 10],
             gutter:  [10, 10],
         },
@@ -23,7 +23,7 @@ function TestGrid()
                     image_blend: c_blue,
                 },
                 layout: {
-                    resize: [BENTO_RESIZE_EXPAND, BENTO_RESIZE_EXPAND],
+                    resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                 },
             });
         },

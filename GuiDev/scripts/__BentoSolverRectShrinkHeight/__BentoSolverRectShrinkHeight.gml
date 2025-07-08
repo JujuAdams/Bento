@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __BentoSolverRectGetShrinkHeight()
+function __BentoSolverRectGetDeflateHeight()
 {
     //Determine the preferred height
     if (__layoutHeightPref > 0)
@@ -20,6 +20,6 @@ function __BentoSolverRectGetShrinkHeight()
     }
     
     __solvedHeight       = clamp(_height, __layoutHeightMin, __layoutHeightMax);
-    __solverShrinkHeight = __solvedHeight;
+    __solverDeflateHeight = __solvedHeight;
     __solverMinHeight    = (__layoutHeightMin > 0)? __layoutHeightMin : __solvedHeight;
 }

@@ -1,16 +1,20 @@
 // Feather disable all
 
-/// Sets the resizing logic for an element. The `width` and `height` parameters should be one of
-/// the following values:
+/// Sets the resizing logic for an element.
 /// 
-/// `BENTO_RESIZE_STATIC`
-///     Element won't resize.
+/// N.B. Regardless of the resizing logic set by this function, elements will always attempt to
+//       reduce in size, down to their minimum size, if they are too big for their parent.
 /// 
-/// `BENTO_RESIZE_GROW`
-///     Element will increase in size in the axis to fill any available space in the parent.
+/// The `width` and `height` parameters should be one of the following values:
 /// 
-/// `BENTO_RESIZE_SHRINK`
-///     Element will reduce size to fit all of its children with no extra space.
+/// `BENTO_RESIZE_NORMAL`
+///     Element does nothing extra and keeps the same size (provided it fits inside the parent).
+/// 
+/// `BENTO_RESIZE_INFLATE`
+///     Element will try to increase in size to fill available space.
+/// 
+/// `BENTO_RESIZE_DEFLATE`
+///     Element will reduce size to tightly fit all of its children, leaving no extra space.
 /// 
 /// You may also pass `undefined` for either parameter to indicate that the existing value should
 /// not be changed.

@@ -7,7 +7,7 @@ function TestAnimations()
     {
         BentoSetOffset(100, 100);
         BentoLayoutList(BENTO_AXIS_Y, fa_left, fa_top);
-        BentoLayoutSetResize(BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK);
+        BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
@@ -15,10 +15,10 @@ function TestAnimations()
         new BentoConstrSprite(sBentoMaskRectangle);
         
         //var _text = new BentoConstrText("Hello World", undefined, fa_center);
-        //BentoLayoutSetResize(BENTO_RESIZE_EXPAND, undefined, _text);
+        //BentoLayoutSetResize(BENTO_RESIZE_INFLATE, undefined, _text);
         
         //var _text = BentoCreate(oBentoText, { text: "Hello World", hAlign: fa_center });
-        //BentoLayoutSetResize(BENTO_RESIZE_EXPAND, undefined, _text);
+        //BentoLayoutSetResize(BENTO_RESIZE_INFLATE, undefined, _text);
         //
         //new ExampleConstrButton(undefined, "Test");
         //new ExampleConstrButton(undefined, "Test");
@@ -29,7 +29,7 @@ function TestAnimations()
         //    BentoLayoutGrid(6, 2);
         //    BentoLayoutSetFromJSON({
         //        size:     [600, 200],
-        //        resize:   [BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK],
+        //        resize:   [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
         //        padding:  [10, 10, 10, 10],
         //        gutter:   [10, 10],
         //    });

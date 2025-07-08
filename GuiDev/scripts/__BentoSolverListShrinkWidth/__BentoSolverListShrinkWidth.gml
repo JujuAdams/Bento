@@ -1,8 +1,8 @@
 // Feather disable all
 
-function __BentoSolverListGetShrinkWidth()
+function __BentoSolverListGetDeflateWidth()
 {
-    var _shrinkSize = 0;
+    var _deflateSize = 0;
     var _minSize = 0;
     
     var _childArray = __childArray;
@@ -18,7 +18,7 @@ function __BentoSolverListGetShrinkWidth()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _shrinkSize += _child.BENTO_VARS.__solverShrinkWidth;
+            _deflateSize += _child.BENTO_VARS.__solverDeflateWidth;
             _minSize    += _child.BENTO_VARS.__solverMinWidth;
             ++_i;
         }
@@ -35,7 +35,7 @@ function __BentoSolverListGetShrinkWidth()
         repeat(_childCount)
         {
             var _child = _childArray[_i];
-            _shrinkSize = max(_shrinkSize, _child.BENTO_VARS.__solverShrinkWidth);
+            _deflateSize = max(_deflateSize, _child.BENTO_VARS.__solverDeflateWidth);
             _minSize    = max(_minSize,    _child.BENTO_VARS.__solverMinWidth);
             ++_i;
         }
@@ -43,10 +43,10 @@ function __BentoSolverListGetShrinkWidth()
         var _extra = __solverPadLeft + __solverPadRight;
     }
     
-    _shrinkSize += _extra;
+    _deflateSize += _extra;
     _minSize += _extra;
     
     __solverMinWidth    = max(__layoutWidthMin, _minSize);
-    __solverShrinkWidth = clamp(_shrinkSize, __solverMinWidth, __layoutWidthMax);
-    __solvedWidth       = clamp((__layoutWidthResize == BENTO_RESIZE_STATIC)? __layoutWidthPref : _shrinkSize, __solverMinWidth, __layoutWidthMax);
+    __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth, __layoutWidthMax);
+    __solvedWidth       = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __layoutWidthPref : _deflateSize, __solverMinWidth, __layoutWidthMax);
 }

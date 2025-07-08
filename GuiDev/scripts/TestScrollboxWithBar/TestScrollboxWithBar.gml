@@ -12,7 +12,7 @@ function TestScrollboxWithBar()
             layout: {
                 size:    [200, 120],
                 maxSize: [200, 295],
-                resize:  [BENTO_RESIZE_SHRINK, BENTO_RESIZE_STATIC],
+                resize:  [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_NORMAL],
                 padding: 10,
             },
             children: function(_metadata) {

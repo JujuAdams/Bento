@@ -4,7 +4,7 @@ event_inherited();
 
 BentoLayoutList(BENTO_AXIS_Y, fa_center, fa_top);
 BentoLayoutSetClampInside(true);
-BentoLayoutSetResize(BENTO_RESIZE_SHRINK, BENTO_RESIZE_SHRINK);
+BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
 BentoLayoutSetPadding(10, 10, 10, 10);
 BentoLayoutSetGutter(10, 10);
 BentoLayoutSetAlignSelf(fa_left, fa_top);
