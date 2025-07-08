@@ -14,7 +14,6 @@ function __BentoClassLayer(_environment, _name) constructor
     // Gemeral state
     ////////
     
-    __frozen = false;
     __rootElement = BENTO_NO_ELEMENT;
     
     __animPlayingArray = [];
@@ -38,13 +37,13 @@ function __BentoClassLayer(_environment, _name) constructor
     // Input state
     ////////
     
-    __mouseX        = 0;
-    __mouseY        = 0;
-    __mouseHold     = false;
-    __mousePrevX    = 0;
-    __mousePrevY    = 0;
-    __mousePressX   = undefined;
-    __mousePressY   = undefined;
+    __mouseX      = 0;
+    __mouseY      = 0;
+    __mouseHold   = false;
+    __mousePrevX  = 0;
+    __mousePrevY  = 0;
+    __mousePressX = undefined;
+    __mousePressY = undefined;
     
     __directionalDX    = 0;
     __directionalDY    = 0;
@@ -172,45 +171,52 @@ function __BentoClassLayer(_environment, _name) constructor
         
         __BentoLayerTargetPush(self);
         
-        if (_isTopLayer)
+        ///////
+        // Animations
+        ///////
+        
+        var _i = array_length(__animPlayingArray)-1;
+        repeat(array_length(__animPlayingArray))
         {
-            __UpdateInputMode();
-            
-            //Update any animations
-            var _i = array_length(__animPlayingArray)-1;
-            repeat(array_length(__animPlayingArray))
+            with(__animPlayingArray[_i])
             {
-                with(__animPlayingArray[_i])
-                {
-                    ++__animElapsed;
-                    
-                    var _t = clamp((__animElapsed - __animDelay) / __animDuration, 0, 1);
-                    if (_t >= 1)
-                    {
-                        BentoAnimStop(true, __attachedElement);
-                    }
-                    else
-                    {
-                        __animMethod(__attachedElement, _t, __animMetadata);
-                    }
-                }
+                ++__animElapsed;
                 
-                --_i;
+                var _t = clamp((__animElapsed - __animDelay) / __animDuration, 0, 1);
+                if (_t >= 1)
+                {
+                    BentoAnimStop(true, __attachedElement);
+                }
+                else
+                {
+                    __animMethod(__attachedElement, _t, __animMetadata);
+                }
             }
             
-            //If anything is animating, consume all input
-            if (ds_map_empty(__animBlockingMap))
-            {
-                __CheckUnblocked();
-            }
-            else
+            --_i;
+        }
+        
+        if (not ds_map_empty(__animBlockingMap))
+        {
+            //If anything has a blocking animating, consume all input
+            if (_isTopLayer)
             {
                 BentoInputConsume(self);
             }
-            
+        }
+        else
+        {
+            //Otherwise check if we need to execute the unblocked callback
+            __CheckUnblocked();
+        }
+        
+        if (_isTopLayer)
+        {
             ///////
             // Input handling
             ///////
+            
+            __UpdateInputMode();
             
             //Update mouse (pointer) input
             __mousePrevX = __mouseX;
@@ -281,94 +287,91 @@ function __BentoClassLayer(_environment, _name) constructor
             
             __BentoScissorReset();
             
-            if (not __frozen)
+            __primaryState = (__primaryState >> 1);
+            
+            if (__navPointer)
             {
-                __primaryState = (__primaryState >> 1);
+                //Update the primary button state based on mouse input
+                if (__mouseHold) __primaryState |= __BENTO_START;
                 
-                if (__navPointer)
+                //Start hovering an element if we're not currently holding an element
+                //We also want to check what element we're hovering if we've just released
+                if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
+                
+                //Try to hover a new element (maybe)
+                if ((not __mouseHold) || ((__navMode == BENTO_MODE_TOUCH) && (__primaryState == __BENTO_START)))
                 {
-                    //Update the primary button state based on mouse input
-                    if (__mouseHold) __primaryState |= __BENTO_START;
-                    
-                    //Start hovering an element if we're not currently holding an element
-                    //We also want to check what element we're hovering if we've just released
-                    if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
-                    
-                    //Try to hover a new element (maybe)
-                    if ((not __mouseHold) || ((__navMode == BENTO_MODE_TOUCH) && (__primaryState == __BENTO_START)))
-                    {
-                        __BentoStartHover(__BentoGetPointerHover(__mouseX, __mouseY));
-                    }
-                    
-                    if (__primaryState == __BENTO_START)
-                    {
-                        if (__environment.__textHandler != undefined) //Detect clicking off of an input box
-                        {
-                            if ((__environment.__textElement != __hoverElement)
-                            &&  (not BentoIsAncestor(__environment.__textElement, __hoverElement))
-                            &&  __environment.__textHandler.__cancelOnClick)
-                            {
-                                __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
-                                __hoverElement = BENTO_NO_ELEMENT;
-                            }
-                        }
-                        else if (BentoExists(__focusTop)) //Detect clicking off of a pop-up
-                        {
-                            if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
-                            &&  (not BentoIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
-                            {
-                                var _focusType = __focusTop.BENTO_VARS.__focusType;
-                                if (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
-                                {
-                                    BentoFocusClose(__focusTop);
-                                    __hoverElement = BENTO_NO_ELEMENT;
-                                }
-                                else if (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK)
-                                {
-                                    BentoDestroy(__focusTop);
-                                    __hoverElement = BENTO_NO_ELEMENT;
-                                }
-                            }
-                        }
-                        
-                        //Set some variable state if we've clicked the mouse
-                        __mousePressX = __mouseX;
-                        __mousePressY = __mouseY;
-                        
-                        __mousePrevX = __mouseX;
-                        __mousePrevY = __mouseY;
-                    }
-                    else if (__primaryState == __BENTO_END)
-                    {
-                        //And reset the mouse state when we release
-                        __mousePressX = undefined;
-                        __mousePressY = undefined;
-                    }
-                }
-                else if (__navDirectional)
-                {
-                    //Update the primary button state based on directional input
-                    if (__directionalHold) __primaryState |= __BENTO_START;
-                    
-                    //If the held element cannot be held then proactively reset the state variable
-                    if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
-                    
-                    //Move the cursor and hover a new element (maybe)
-                    __BentoStartHover(__BentoGetDirectionalHover(__hoverElement, __directionalStateX.__output, __directionalStateY.__output));
-                }
-                else //Some other input mode, perhaps `BENTO_MODE_UNKNOWN`
-                {
-                    __holdElement = BENTO_NO_ELEMENT;
-                    __BentoStartHover(BENTO_NO_ELEMENT);
+                    __BentoStartHover(__BentoGetPointerHover(__mouseX, __mouseY));
                 }
                 
                 if (__primaryState == __BENTO_START)
                 {
-                    __primaryConsumed = false;
+                    if (__environment.__textHandler != undefined) //Detect clicking off of an input box
+                    {
+                        if ((__environment.__textElement != __hoverElement)
+                        &&  (not BentoIsAncestor(__environment.__textElement, __hoverElement))
+                        &&  __environment.__textHandler.__cancelOnClick)
+                        {
+                            __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
+                            __hoverElement = BENTO_NO_ELEMENT;
+                        }
+                    }
+                    else if (BentoExists(__focusTop)) //Detect clicking off of a pop-up
+                    {
+                        if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
+                        &&  (not BentoIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                        {
+                            var _focusType = __focusTop.BENTO_VARS.__focusType;
+                            if (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
+                            {
+                                BentoFocusClose(__focusTop);
+                                __hoverElement = BENTO_NO_ELEMENT;
+                            }
+                            else if (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK)
+                            {
+                                BentoDestroy(__focusTop);
+                                __hoverElement = BENTO_NO_ELEMENT;
+                            }
+                        }
+                    }
+                    
+                    //Set some variable state if we've clicked the mouse
+                    __mousePressX = __mouseX;
+                    __mousePressY = __mouseY;
+                    
+                    __mousePrevX = __mouseX;
+                    __mousePrevY = __mouseY;
                 }
-                
-                __BentoUpdateElementState();
+                else if (__primaryState == __BENTO_END)
+                {
+                    //And reset the mouse state when we release
+                    __mousePressX = undefined;
+                    __mousePressY = undefined;
+                }
             }
+            else if (__navDirectional)
+            {
+                //Update the primary button state based on directional input
+                if (__directionalHold) __primaryState |= __BENTO_START;
+                
+                //If the held element cannot be held then proactively reset the state variable
+                if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
+                
+                //Move the cursor and hover a new element (maybe)
+                __BentoStartHover(__BentoGetDirectionalHover(__hoverElement, __directionalStateX.__output, __directionalStateY.__output));
+            }
+            else //Some other input mode, perhaps `BENTO_MODE_UNKNOWN`
+            {
+                __holdElement = BENTO_NO_ELEMENT;
+                __BentoStartHover(BENTO_NO_ELEMENT);
+            }
+            
+            if (__primaryState == __BENTO_START)
+            {
+                __primaryConsumed = false;
+            }
+            
+            __BentoUpdateElementState();
             
             ///////
             // Step user event execution
