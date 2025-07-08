@@ -31,7 +31,7 @@ function BentoTransformSetScale(_xScale, _yScale, _element = self)
             if (__transformScaleX != _xScale)
             {
                 __transformScaleX = _xScale;
-                __BentoMarkTransformDirty(_element);
+                __BentoMarkTransformDirty();
             }
         }
         
@@ -40,7 +40,7 @@ function BentoTransformSetScale(_xScale, _yScale, _element = self)
             if (__transformScaleY != _yScale)
             {
                 __transformScaleY = _yScale;
-                __BentoMarkTransformDirty(_element);
+                __BentoMarkTransformDirty();
             }
         }
     }

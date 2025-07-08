@@ -1,17 +1,12 @@
 // Feather disable all
 
-/// @param element
+/// Must be called in the scope of the `BENTO_VARS` for the dirtied element.
 
-function __BentoMarkTransformDirty(_element)
+function __BentoMarkTransformDirty()
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    if (not __transformDirty)
     {
-        if (not __transformDirty)
-        {
-            __transformDirty = true;
-            array_push(__layer.__dirtyTransformsArray, self);
-        }
+        __transformDirty = true;
+        array_push(__layer.__dirtyTransformsArray, self);
     }
 }

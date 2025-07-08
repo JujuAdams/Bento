@@ -1,8 +1,11 @@
 // Feather disable all
 
+/// Should be called in the scope of an element.
+
 function __BentoUpdateElementXY()
 {
-    if (BENTO_VARS.__originAuto)
+    var _vars = BENTO_VARS;
+    if (_vars.__originAuto)
     {
         //If we're in auto mode, try to calculate the origin based on the instance's sprite
         var _sprite = sprite_index;
@@ -22,11 +25,11 @@ function __BentoUpdateElementXY()
     else
     {
         //Otherwise use the static layout origin
-        var _xPerc = BENTO_VARS.__originX;
-        var _yPerc = BENTO_VARS.__originY;
+        var _xPerc = _vars.__originX;
+        var _yPerc = _vars.__originY;
     }
     
-    if (BENTO_VARS.__transformMatrix == undefined)
+    if (_vars.__transformMatrix == undefined)
     {
         bentoX = lerp(bentoLeft, bentoRight,  _xPerc);
         bentoY = lerp(bentoTop,  bentoBottom, _yPerc);
@@ -43,7 +46,10 @@ function __BentoUpdateElementXY()
         
         if ((bentoX != _oldX) || (bentoY != _oldY))
         {
-            __BentoMarkTransformDirty(self);
+            with(_vars)
+            {
+                __BentoMarkTransformDirty();
+            }
         }
     }
 }

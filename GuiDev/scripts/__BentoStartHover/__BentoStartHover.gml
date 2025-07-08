@@ -28,7 +28,7 @@ function __BentoStartHover(_element)
             if (not __updating)
             {
                 __updating = true;
-                array_push(__layer.__updateElementArray, _element)
+                array_push(__layer.__updateElementArray, self)
             }
         }
     }

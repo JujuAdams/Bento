@@ -32,7 +32,7 @@ function BentoTransformSetPosition(_x, _y, _element = self)
             if (__transformOffsetX != _x)
             {
                 __transformOffsetX = _x;
-                __BentoMarkTransformDirty(_element);
+                __BentoMarkTransformDirty();
             }
         }
         
@@ -41,14 +41,14 @@ function BentoTransformSetPosition(_x, _y, _element = self)
             if (__transformOffsetY != _y)
             {
                 __transformOffsetY = _y;
-                __BentoMarkTransformDirty(_element);
+                __BentoMarkTransformDirty();
             }
         }
         
         if (not __transformOffsetAbsolute)
         {
             __transformOffsetAbsolute = true;
-            __BentoMarkTransformDirty(_element);
+            __BentoMarkTransformDirty();
         }
     }
 }

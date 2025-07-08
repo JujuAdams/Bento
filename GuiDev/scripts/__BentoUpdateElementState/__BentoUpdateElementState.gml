@@ -7,12 +7,13 @@
 function __BentoUpdateElementState()
 {
     //Reset state for updating elements
-    array_resize(__updateElementArray, array_filter_ext(__updateElementArray, function(_element)
+    array_resize(__updateElementArray, array_filter_ext(__updateElementArray, function(_elementVars)
     {
-        if (not BentoExists(_element)) return false;
-        
-        with(_element.BENTO_VARS)
+        with(_elementVars)
         {
+            var _element = __attachedElement;
+            if (not BentoExists(_element)) return false;
+            
             if (other.__navDirectional)
             {
                 var _clickOnPress = true;

@@ -36,13 +36,13 @@ function BentoTransformSetOrigin(_xOffset, _yOffset, _element = self)
         if (__transformOriginX != _xOffset)
         {
             __transformOriginX = _xOffset;
-            __BentoMarkTransformDirty(_element);
+            __BentoMarkTransformDirty();
         }
         
         if (__transformOriginY != _yOffset)
         {
             __transformOriginY = _yOffset;
-            __BentoMarkTransformDirty(_element);
+            __BentoMarkTransformDirty();
         }
     }
 }

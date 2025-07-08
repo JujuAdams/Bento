@@ -30,7 +30,7 @@ function BentoTransformSetAngle(_angle, _element = self)
             if (__transformAngle != _angle)
             {
                 __transformAngle = _angle;
-                __BentoMarkTransformDirty(_element);
+                __BentoMarkTransformDirty();
             }
         }
     }
