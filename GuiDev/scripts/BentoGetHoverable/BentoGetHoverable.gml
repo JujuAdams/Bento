@@ -12,9 +12,7 @@ function BentoGetHoverable(_element = self, _checkVisible = true)
 
 function __BentoGetHoverableInternal(_element, _checkVisible)
 {
-    if (not BentoExists(_element)) return false;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         //Can't hover invisible elements
         if (not __visible) return false;

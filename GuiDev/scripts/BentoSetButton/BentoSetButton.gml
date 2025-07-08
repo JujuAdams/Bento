@@ -19,9 +19,7 @@
 
 function BentoSetButton(_buttonType, _element = self)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if (__buttonType == _buttonType) return;
         __buttonType = _buttonType;

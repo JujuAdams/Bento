@@ -7,10 +7,10 @@
 
 function BentoAnimGetBlocking(_element = self)
 {
-    if (not BentoExists(_element)) return false;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         return __animPlaying && __animBlocking;
     }
+    
+    return false;
 }

@@ -15,9 +15,7 @@
 
 function BentoLayoutList(_listAxis, _hAlignChildren, _vAlignChildren, _element = self)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if (__layoutType != BENTO_LAYOUT_LIST)
         {

@@ -37,9 +37,7 @@
 
 function BentoAnimPlayCustom(_duration, _delay, _method, _metadata = undefined, _blocking = false, _element = self)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         BentoAnimStop(true, __attachedElement);
         

@@ -6,9 +6,7 @@
 
 function BentoGetClickable(_element = self)
 {
-    if (not BentoExists(_element)) return false;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         //Can't click invisible elements
         if (not __visible) return false;

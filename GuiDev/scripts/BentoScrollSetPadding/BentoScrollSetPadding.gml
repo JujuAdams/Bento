@@ -11,9 +11,7 @@
 
 function BentoScrollSetPadding(_left, _top, _right, _bottom, _element = self)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if ((_left   != __scrollPadLeft)
         ||  (_top    != __scrollPadTop)

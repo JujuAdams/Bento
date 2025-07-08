@@ -24,9 +24,7 @@
 
 function BentoScrollbarSetHori(_mirror, _thickness, _padLeft, _padTop, _padRight, _padBottom, _overlap, _element = self)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if (__scrollbarHori == undefined)
         {

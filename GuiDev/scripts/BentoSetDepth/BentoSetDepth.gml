@@ -8,9 +8,7 @@
 
 function BentoSetDepth(_depth, _element = self)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if (_depth == __drawDepth) return;
         __drawDepth = _depth;

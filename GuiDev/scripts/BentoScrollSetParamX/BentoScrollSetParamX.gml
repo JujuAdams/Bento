@@ -10,9 +10,7 @@
 
 function BentoScrollSetParamX(_param, _scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = self)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         BentoScrollSetPos(lerp(__scrollMinX, __scrollMaxX, 1 - clamp(_param, 0, 1)), undefined, _scrollSpeed, _element);
     }

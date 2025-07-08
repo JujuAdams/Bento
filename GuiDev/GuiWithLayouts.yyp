@@ -119,6 +119,7 @@
     {"id":{"name":"__BentoGetPointerHover","path":"scripts/__BentoGetPointerHover/__BentoGetPointerHover.yy",},},
     {"id":{"name":"__BentoGetRaycast","path":"scripts/__BentoGetRaycast/__BentoGetRaycast.yy",},},
     {"id":{"name":"__BentoGetScrollDelta","path":"scripts/__BentoGetScrollDelta/__BentoGetScrollDelta.yy",},},
+    {"id":{"name":"__BentoGetVars","path":"scripts/__BentoGetVars/__BentoGetVars.yy",},},
     {"id":{"name":"__BentoIsInstance","path":"scripts/__BentoIsInstance/__BentoIsInstance.yy",},},
     {"id":{"name":"__BentoLayerEnsure","path":"scripts/__BentoLayerEnsure/__BentoLayerEnsure.yy",},},
     {"id":{"name":"__BentoLayerFind","path":"scripts/__BentoLayerFind/__BentoLayerFind.yy",},},

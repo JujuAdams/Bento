@@ -8,9 +8,7 @@
 
 function BentoScrollGetParamX(_element = self)
 {
-    if (not BentoExists(_element)) return 0;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         return 1 - clamp((__scrollX - __scrollMinX) / max(0.0001, __scrollMaxX - __scrollMinX), 0, 1);
     }

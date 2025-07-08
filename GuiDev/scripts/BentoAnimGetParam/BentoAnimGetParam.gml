@@ -11,12 +11,12 @@
 
 function BentoAnimGetParam(_element = self)
 {
-    if (not BentoExists(_element)) return 1;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if (not __animPlaying) return 1;
         
         return clamp((__animElapsed - __animDelay) / __animDuration, 0, 1);
     }
+    
+    return 1;
 }

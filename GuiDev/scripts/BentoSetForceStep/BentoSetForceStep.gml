@@ -7,9 +7,7 @@
 
 function BentoSetForceStep(_state, _element = self)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if (__forceStep == _state) return;
         __forceStep = _state;

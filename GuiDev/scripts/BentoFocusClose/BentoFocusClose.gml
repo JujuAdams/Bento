@@ -11,9 +11,7 @@ function BentoFocusClose(_element = self)
 
 function __BentoFocusCloseInner(_element)
 {
-    if (not BentoExists(_element)) return;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if (__focused)
         {

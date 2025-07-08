@@ -86,23 +86,23 @@ function __BentoGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _
                     bottom = _y + _padBottom;
                 }
             }
-            
-            return _result;
         }
     }
-    
-    with(_result)
+    else
     {
-        x = 0.5*(_padRight - _padLeft);
-        y = 0.5*(_padBottom - _padTop);
-        
-        width  = _padLeft + _padRight;
-        height = _padTop + _padBottom;
-        
-        left   = -_padLeft;
-        top    = -_padTop;
-        right  =  _padRight;
-        bottom =  _padBottom;
+        with(_result)
+        {
+            x = 0.5*(_padRight - _padLeft);
+            y = 0.5*(_padBottom - _padTop);
+            
+            width  = _padLeft + _padRight;
+            height = _padTop + _padBottom;
+            
+            left   = -_padLeft;
+            top    = -_padTop;
+            right  =  _padRight;
+            bottom =  _padBottom;
+        }
     }
     
     return _result;

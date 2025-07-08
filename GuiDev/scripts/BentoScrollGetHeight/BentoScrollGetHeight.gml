@@ -6,9 +6,7 @@
 
 function BentoScrollGetHeight(_element = self)
 {
-    if (not BentoExists(_element)) return 0;
-    
-    with(_element.BENTO_VARS)
+    with(__BentoGetVars(_element))
     {
         if (not __scrollVert) return 0;
         return max(0, __scrollMaxY - __scrollMinY);
