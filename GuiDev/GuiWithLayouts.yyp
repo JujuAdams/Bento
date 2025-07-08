@@ -338,6 +338,7 @@
     {"id":{"name":"BentoSystemStep","path":"scripts/BentoSystemStep/BentoSystemStep.yy",},},
     {"id":{"name":"BentoTextClose","path":"scripts/BentoTextClose/BentoTextClose.yy",},},
     {"id":{"name":"BentoTextConfigure","path":"scripts/BentoTextConfigure/BentoTextConfigure.yy",},},
+    {"id":{"name":"BentoTextGetOpen","path":"scripts/BentoTextGetOpen/BentoTextGetOpen.yy",},},
     {"id":{"name":"BentoTextGetOpenDuration","path":"scripts/BentoTextGetOpenDuration/BentoTextGetOpenDuration.yy",},},
     {"id":{"name":"BentoTextGetTargeted","path":"scripts/BentoTextGetTargeted/BentoTextGetTargeted.yy",},},
     {"id":{"name":"BentoTextOpen","path":"scripts/BentoTextOpen/BentoTextOpen.yy",},},
