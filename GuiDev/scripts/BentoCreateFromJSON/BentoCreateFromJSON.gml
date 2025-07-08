@@ -22,13 +22,18 @@
 /// `.object` or `.construct` (mutually exclusive)
 /// `.vars` (only when using `.object`)
 /// `.offset`
-/// `.button`  //TODO - Write documentation
-/// `.visible` //TODO - Write documentation
+/// `.visible`
 /// `.name`
-/// `.children`
+/// `.clip`
+/// `.scroll`
 /// `.layout`
-/// `.scissor` //TODO - Move to separate function, write docs
-/// `.scroll`  //TODO - Move to separate function, write docs
+/// `.children`
+/// 
+/// TODO:
+/// `.button`
+/// `.disable`
+/// `.scrollbarVert`
+/// `.scrollbarHori`
 /// 
 /// 
 /// 
@@ -102,7 +107,7 @@
 /// 
 /// Element definition structs may contain an `.offset` property. If specified, this must be either
 /// an array with two entries (being the x and y offsets respectively) or a struct with an `.x`
-/// and `.y` properties.
+/// and `.y` properties. This value will be passed to `BentoSetOffset()`.
 /// 
 /// Example:
 /// ```
@@ -117,26 +122,16 @@
 /// }
 /// ```
 /// 
-/// 
-/// 
-/// Element definition structs may contain an `.origin` property. If specified, this must be either
-/// an array with two entries (being the x and y offsets respectively) or a struct with an `.x`
-/// and `.y` properties.
+/// Element definition structs may contain an `.visible` property. If specified, this must be either
+/// `true` or `fdlse`. This value will be passed to `BentoSetVisible()`.
 /// 
 /// Example:
 /// ```
 /// {
 ///     object: oBentoSprite,
-///     origin: [10, 20]
-/// }
-/// 
-/// {
-///     object: oBentoSprite,
-///     origin: {x: 10, y: 20}
+///     visible: false
 /// }
 /// ```
-/// 
-/// 
 /// 
 /// Element definitions struct may also contain a `.name` property. This value will be passed to
 /// `BentoNameSet()` targetting the created element.
@@ -148,6 +143,48 @@
 ///     name: "circular ui"
 /// }
 /// ```
+/// 
+/// 
+/// 
+/// `.clip`
+///     Calls `BentoClipSetEnabled()` and `BentoClipSetPadding()` function on the created element.
+///     `BentoClipSetEnabled()` will be called on the created element regardless of the padding
+///     values that have been provided.
+///     
+///     Can be a 4-element array:
+///         [ <left>, <top>, <right>, <bottom> ]
+///     or a struct:
+///         {
+///             "left":   <left>,
+///             "top":    <top>,
+///             "right":  <right>,
+///             "bottom": <bottom>,
+///         }
+///     or a number or equal padding on all sides.
+///     
+///     Padding sizes must be numbers. If you'd like to quickly set up a clipping region and aren't
+///     concerned about getting the padding exactly correct, set `.clip` to `0`. This will still
+///     enable the clipping region but will do so without any padding.
+/// 
+/// `.scroll`
+///     Calls `BentoScrollSetEnabled()` and `BentoScrollSetPadding()` on the created element.
+///     `BentoScrollSetEnabled()` will be called on the created element regardless of the padding
+///     values that have been provided.
+///     
+///     Can be a 4-element array:
+///         [ <left>, <top>, <right>, <bottom> ]
+///     or a struct:
+///         {
+///             "left":   <left>,
+///             "top":    <top>,
+///             "right":  <right>,
+///             "bottom": <bottom>,
+///         }
+///     or a number or equal padding on all sides.
+///     
+///     Padding sizes must be numbers. If you'd like to quickly set up a scrolling area and aren't
+///     concerned about getting the padding exactly correct, set `.scroll` to `0`. This will still
+///     enable the scrolling area but will do so without any padding.
 /// 
 /// 
 /// 
@@ -316,7 +353,7 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
     {
         if (variable_struct_exists(_json, "object"))
         {
-            if (variable_struct_exists(_json, "struct")) //TODO - Swap `.struct` out for `.construct`
+            if (variable_struct_exists(_json, "construct")) //TODO - Swap `.struct` out for `.construct`
             {
                 __BentoError($"JSON must only contain .object or .struct");
             }
@@ -358,16 +395,16 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             //Create the instance itself
             var _element = BentoCreate(_object, _vars, _parent);
         }
-        else if (variable_struct_exists(_json, "struct"))
+        else if (variable_struct_exists(_json, "construct"))
         {
-            var _struct = _json[$ "struct"];
+            var _struct = _json[$ "construct"];
             if (is_struct(_struct))
             {
                 var _element = _struct;
             }
             else
             {
-                __BentoError($".struct property is incorrect datatyle, must be a struct (wrong datatype \"{typeof(_object)}\")");
+                __BentoError($".construct property is incorrect datatyle, must be a struct (wrong datatype \"{typeof(_object)}\")");
             }
         }
         else
@@ -434,29 +471,6 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             }
         }
         
-        //Set element origin
-        var _origin = _json[$ "origin"];
-        if (_origin != undefined)
-        {
-            if (is_array(_origin))
-            {
-                if (array_length(_origin) != 2)
-                {
-                    __BentoError($".origin property must have 2 elements if it is an array (length = {array_length(_origin)})");
-                }
-                
-                BentoSetOffset(_origin[0], _origin[1], _element);
-            }
-            else if (is_struct(_origin))
-            {
-                BentoSetOrigin(_origin[$ "x"], _origin[$ "y"], _element);
-            }
-            else
-            {
-                __BentoError($".origin property must be a 2-element array or a struct (typeof \"{typeof(_origin)}\")");
-            }
-        }
-        
         //Apply layout options
         var _layout = _json[$ "layout"];
         if (_layout != undefined)
@@ -505,71 +519,67 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             }
         }
         
-        var _scissor = _json[$ "scissor"];
-        if (_scissor != undefined)
+        var _clip = _json[$ "clip"];
+        if (_clip != undefined)
         {
-            if (not is_struct(_scissor))
+            BentoClipSetEnabled(true, _element);
+            
+            if (is_numeric(_clip))
             {
-                __BentoError($".scissor property must be a struct (was {typeof(_children)})");
+                BentoClipSetPadding(_clip, _clip, _clip, _clip, _element);
+            }
+            else if (is_array(_clip))
+            {
+                if (array_length(_clip) != 4)
+                {
+                    __BentoError($".clip property must have 4 elements if it is an array (length = {array_length(_clip)})");
+                }
+                
+                BentoClipSetPadding(_clip[0], _clip[1], _clip[2], _clip[3], _element);
+            }
+            else if (is_struct(_clip))
+            {
+                BentoClipSetPadding(_clip[$ "l"] ?? _clip[$ "left"],
+                                    _clip[$ "t"] ?? _clip[$ "top"],
+                                    _clip[$ "r"] ?? _clip[$ "right"],
+                                    _clip[$ "b"] ?? _clip[$ "bottom"],
+                                    _element);
             }
             else
             {
-                var _nameArray = variable_struct_get_names(_scissor);
-                var _i = 0;
-                repeat(array_length(_nameArray))
-                {
-                    var _name  = _nameArray[_i];
-                    var _value = _scissor[$ _name];
-                    
-                    if (_name == "enabled")
-                    {
-                        __BentoJSONScissor_enabled(_element, _value);
-                    }
-                    else if (_name == "padding")
-                    {
-                        __BentoJSONScissor_padding(_element, _value);
-                    }
-                    else
-                    {
-                        __BentoError($"Scissor property name \"{_name}\" not recognized or not supported");
-                    }
-                    
-                    ++_i;
-                }
+                __BentoError($".clip scroll property must be a number, a 4-element array, or a struct (typeof \"{typeof(_clip)}\")");
             }
         }
         
         var _scroll = _json[$ "scroll"];
         if (_scroll != undefined)
         {
-            if (not is_struct(_scroll))
+            BentoScrollSetEnabled(true, _element);
+            
+            if (is_numeric(_scroll))
             {
-                __BentoError($".scroll property must be a struct (was {typeof(_scroll)})");
+                BentoScrollSetPadding(_scroll, _scroll, _scroll, _scroll, _element);
+            }
+            else if (is_array(_scroll))
+            {
+                if (array_length(_scroll) != 4)
+                {
+                    __BentoError($".scroll property must have 4 elements if it is an array (length = {array_length(_scroll)})");
+                }
+                
+                BentoScrollSetPadding(_scroll[0], _scroll[1], _scroll[2], _scroll[3], _element);
+            }
+            else if (is_struct(_scroll))
+            {
+                BentoScrollSetPadding(_scroll[$ "l"] ?? _scroll[$ "left"],
+                                      _scroll[$ "t"] ?? _scroll[$ "top"],
+                                      _scroll[$ "r"] ?? _scroll[$ "right"],
+                                      _scroll[$ "b"] ?? _scroll[$ "bottom"],
+                                      _element);
             }
             else
             {
-                var _nameArray = variable_struct_get_names(_scroll);
-                var _i = 0;
-                repeat(array_length(_nameArray))
-                {
-                    var _name  = _nameArray[_i];
-                    var _value = _scroll[$ _name];
-                    
-                    if (_name == "enabled")
-                    {
-                        __BentoJSONScroll_enabled(_element, _value);
-                    }
-                    else if (_name == "padding")
-                    {
-                        __BentoJSONScroll_padding(_element, _value);
-                    }
-                    else
-                    {
-                        __BentoError($"Scroll property name \"{_name}\" not recognized or not supported");
-                    }
-                    
-                    ++_i;
-                }
+                __BentoError($".scroll property must be a number, a 4-element array, or a struct (typeof \"{typeof(_scroll)}\")");
             }
         }
         
@@ -578,114 +588,5 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
     else
     {
         __BentoError($"JSON structure must be made from arrays and structs (found datatype \"{typeof(_json)}\")");
-    }
-}
-
-
-
-////////
-// .enabled
-////////
-function __BentoJSONScissor_enabled(_element, _value)
-{
-    if (is_bool(_value))
-    {
-        BentoClipSetEnabled(_value, _element);
-    }
-    else
-    {
-        __BentoError($".enabled scissor property must be a boolean (was {typeof(_value)})");
-    }
-}
-
-
-
-////////
-// .padding
-////////
-function __BentoJSONScissor_padding(_element, _value)
-{
-    if (is_numeric(_value))
-    {
-        BentoClipSetPadding(_value, _value, _value, _value, _element);
-    }
-    else if (is_array(_value))
-    {
-        if (array_length(_value) != 4)
-        {
-            __BentoError($".padding scissor property must have 4 elements if it is an array (length = {array_length(_value)})");
-        }
-        
-        BentoClipSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
-    }
-    else if (is_struct(_value))
-    {
-        BentoClipSetPadding(_value[$ "l"] ?? _value[$ "left"],
-                             _value[$ "t"] ?? _value[$ "top"],
-                             _value[$ "r"] ?? _value[$ "right"],
-                             _value[$ "b"] ?? _value[$ "bottom"],
-                             _element);
-    }
-    else
-    {
-        __BentoError($".padding scissor property must be a number, a 4-element array, or a struct (typeof \"{typeof(_value)}\")");
-    }
-}
-
-
-
-////////
-// .enabled
-////////
-function __BentoJSONScroll_enabled(_element, _value)
-{
-    if (is_array(_value))
-    {
-        if (array_length(_value) != 2)
-        {
-            __BentoError($".padding scroll property must have 2 elements if it is an array (length = {array_length(_value)})");
-        }
-        
-        BentoScrollSetEnabled(_value[0], _value[1], _element);
-    }
-    else if (is_struct(_value))
-    {
-        BentoScrollSetEnabled(_value[$ "h"] ?? _value[$ "x"],
-                            _value[$ "v"] ?? _value[$ "y"],
-                            _element);
-    }
-    else
-    {
-        __BentoError($".enabled scroll property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
-    }
-}
-
-
-
-////////
-// .padding
-////////
-function __BentoJSONScroll_padding(_element, _value)
-{
-    if (is_array(_value))
-    {
-        if (array_length(_value) != 4)
-        {
-            __BentoError($".padding scroll property must have 4 elements if it is an array (length = {array_length(_value)})");
-        }
-        
-        BentoClipSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
-    }
-    else if (is_struct(_value))
-    {
-        BentoScrollSetPadding(_value[$ "l"] ?? _value[$ "left"],
-                            _value[$ "t"] ?? _value[$ "top"],
-                            _value[$ "r"] ?? _value[$ "right"],
-                            _value[$ "b"] ?? _value[$ "bottom"],
-                            _element);
-    }
-    else
-    {
-        __BentoError($".padding scroll property must be a 4-element array or a struct (typeof \"{typeof(_value)}\")");
     }
 }
