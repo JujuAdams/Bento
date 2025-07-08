@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns a struct that contains data relating to the visual transform state that has been set
+/// with the `BentoTransform*()`. functions.
+/// 
 /// @param [element=self]
 
 function BentoTransformGetData(_element = self)

@@ -4,7 +4,8 @@
 /// content area (the size of the element minus padding) into equally sized cells.
 /// 
 /// If you'd like to change the grid's properties, for example to add a row to an inventory if the
-/// player has collected more items, you may call this functiuon again to overwrite values.
+/// player has collected more items, you may call this functiuon again to overwrite existing
+/// values.
 /// 
 /// @param columns
 /// @param rows

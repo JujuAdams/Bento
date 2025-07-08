@@ -1,6 +1,12 @@
 // Feather disable all
 
+/// Sets an element to use a list ruleset. Lists can be orientated in either the x or y axis by
+/// providing a different constant to the `listAxis` parameter (either `BENTO_AXIS_X` or
+/// `BENTO_AXIS_Y`). The `hAlignChildren` and `vAlignChidlren` parameters control how children are
+/// positioned if content doesn't fill up the list element itself.
 /// 
+/// If you'd like to change the list's properties, you may call this functiuon again to overwrite
+/// existing values.
 /// 
 /// @param listAxis
 /// @param hAlignChildren
