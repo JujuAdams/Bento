@@ -6,7 +6,7 @@
   "name":"__BentoSolverTextGetDeflateWidth",
   "parent":{
     "name":"Text",
-    "path":"folders/Library/(System)/Solver/Text.yy",
+    "path":"folders/Library/(System)/Layout Solver/Text.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

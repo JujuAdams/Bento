@@ -6,7 +6,7 @@
   "name":"__BentoSolverRectGetDeflateHeight",
   "parent":{
     "name":"Rect",
-    "path":"folders/Library/(System)/Solver/Rect.yy",
+    "path":"folders/Library/(System)/Layout Solver/Rect.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
