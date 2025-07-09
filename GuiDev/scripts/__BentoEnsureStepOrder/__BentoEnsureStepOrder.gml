@@ -50,7 +50,8 @@ function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _navType,
             
             array_push(_stepOrder, __eventScissorPop);
             
-            //FIXME - Do we want to allow scrollbar behaviour outside of scissoring?
+            //TODO - Do we want to allow scrollbar behaviour outside of scissoring?
+            
             if (__scrollbarHori != undefined)
             {
                 array_push(_stepOrder, method(__scrollbarHori, __scrollbarHori.__Update));
