@@ -131,20 +131,10 @@ function __BentoSolverListResizeWidth()
         else if (_remaining < 0)
         {
             //////
-            // Deflate children
+            // Squash children
             //////
             
-            var _i = 0;
-            repeat(_childCount)
-            {
-                var _child = _childArray[_i];
-                if (_child.__layoutWidthResize != BENTO_RESIZE_NORMAL)
-                {
-                    array_push(_modifiableArray, _child);
-                }
-                    
-                ++_i;
-            }
+            array_copy(_modifiableArray, 0, _childArray, 0, array_length(_childArray));
             
             while ((_remaining < 0) && (array_length(_modifiableArray) > 0))
             {
