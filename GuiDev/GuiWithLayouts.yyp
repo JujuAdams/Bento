@@ -71,7 +71,6 @@
   "resources":[
     {"id":{"name":"acBentoLinear","path":"animcurves/acBentoLinear/acBentoLinear.yy",},},
     {"id":{"name":"fntDebug","path":"fonts/fntDebug/fntDebug.yy",},},
-    {"id":{"name":"TODO","path":"notes/TODO/TODO.yy",},},
     {"id":{"name":"__BentoTextAsyncController","path":"objects/__BentoTextAsyncController/__BentoTextAsyncController.yy",},},
     {"id":{"name":"oBentoAncestor","path":"objects/oBentoAncestor/oBentoAncestor.yy",},},
     {"id":{"name":"oBentoSprite","path":"objects/oBentoSprite/oBentoSprite.yy",},},

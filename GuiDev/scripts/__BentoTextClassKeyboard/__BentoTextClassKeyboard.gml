@@ -28,6 +28,9 @@ function __BentoTextClassKeyboard(_environment, _initialText, _callback, _maxLen
             __Terminate();
         }
         
+        //FIXME - Figure out a way to detect termination from the user without the dev needing to write code
+        //        Does this mean using the `BENTO_HOTKEY_CANCEL` macro?
+        
         if (keyboard_check_pressed(vk_backspace))
         {
             __text = string_copy(__text, 1, string_length(__text)-1);

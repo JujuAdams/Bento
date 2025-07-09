@@ -6,6 +6,8 @@ function __BentoClassScrollbarHori(_element) : __BentoClassScrollbar(_element) c
     
     static __SetSize = function()
     {
+        //TODO - Add awareness of the vertical scrollbar and adjust size/position accordingly
+        
         var _element = __element;
         
         exists = true;

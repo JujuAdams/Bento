@@ -9,6 +9,10 @@
 /// N.B. Elements that are receiving text input by calling `BentoTextOpen()` will override focus
 ///      rules whilst text input is open.
 /// 
+/// N.B. When receiving text input on desktop (and not using Steam's keyboard), text input will
+///      automatically close if there has been no keyboard input for 10 seconds. This ensures that
+///      your game won't lock up if there are issues with input (such as a gamepad disconnecting).
+/// 
 /// The `callback` argument must be provided when calling this function. The callback will be
 /// executed whenever text changes. The callback will also be executed when text input has been
 /// closed by the OS on non-desktop platforms (consoles and mobile devices etc.).
