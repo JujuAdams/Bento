@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoLayoutSetIgnore",
+  "%Name":"BentoLayoutSetBypass",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoLayoutSetIgnore",
+  "name":"BentoLayoutSetBypass",
   "parent":{
     "name":"Properites",
     "path":"folders/Library/Functions/Layout/Properites.yy",

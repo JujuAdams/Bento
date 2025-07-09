@@ -74,7 +74,7 @@ function __BentoEnsureLayerOrderInner(_layoutOrder, _elementVars)
         {
             with(_childArray[_i])
             {
-                if ((not __layoutIgnore) && (not __disable))
+                if ((not __layoutBypass) && (not __disable))
                 {
                     array_push(_layoutArray, self);
                     __BentoEnsureLayerOrderInner(_layoutOrder, self);

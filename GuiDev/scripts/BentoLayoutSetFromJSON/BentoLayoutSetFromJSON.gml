@@ -21,7 +21,7 @@
 /// `.gutter`  executes `BentoLayoutSetGutter()`
 /// `.list`    executes `BentoLayoutList()`
 /// `.grid`    executes `BentoLayoutGrid()`
-/// `.ignore`  execures `BentoLayoutSetIgnore()`
+/// `.bypass`  execures `BentoLayoutSetBypass()`
 /// 
 /// Example:
 /// ```
@@ -221,8 +221,8 @@
 ///     Column and row values must be integers, or you may use `null` to indicate that no change should
 ///     be made to a particular value.
 /// 
-/// `.ignore`
-///     Calls the `BentoLayoutSetIgnore()` function on the created element. Must be either `true` or
+/// `.bypass`
+///     Calls the `BentoLayoutSetBypass()` function on the created element. Must be either `true` or
 ///     `false`.
 
 function BentoLayoutSetFromJSON(_json, _element = self)
@@ -281,9 +281,9 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             {
                 __BentoLayoutSetFromJSON_grid(_element, _value);
             }
-            else if (_name == "ignore")
+            else if (_name == "bypass")
             {
-                __BentoLayoutSetFromJSON_ignore(_element, _value);
+                __BentoLayoutSetFromJSON_bypass(_element, _value);
             }
             else
             {
@@ -775,16 +775,16 @@ function __BentoLayoutSetFromJSON_grid(_element, _value)
 
 
 ////////
-// .ignore
+// .bypass
 ////////
-function __BentoLayoutSetFromJSON_ignore(_element, _value)
+function __BentoLayoutSetFromJSON_bypass(_element, _value)
 {
     if (is_numeric(_value) || is_bool(_value))
     {
-        BentoLayoutSetIgnore(_value, _element);
+        BentoLayoutSetBypass(_value, _element);
     }
     else
     {
-        __BentoError($".ignore layout property must be a boolean (typeof \"{typeof(_value)}\")");
+        __BentoError($".bypass layout property must be a boolean (typeof \"{typeof(_value)}\")");
     }
 }
