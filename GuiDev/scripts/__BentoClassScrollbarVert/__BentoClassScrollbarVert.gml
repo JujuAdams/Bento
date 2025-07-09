@@ -108,4 +108,18 @@ function __BentoClassScrollbarVert(_element) : __BentoClassScrollbar(_element) c
             holdHandle = false;
         }
     }
+    
+    //Not a static because we want to maintain scope on this method due to its use in the step order.
+    __CheckOver = function(_mouseX, _mouseY, _holdElement)
+    {
+        if (point_in_rectangle(_mouseX, _mouseY, barLeft, barTop, barRight, barBottom))
+        {
+            hoverScrollbar = true;
+            return __element;
+        }
+        else
+        {
+            return undefined;
+        }
+    }
 }

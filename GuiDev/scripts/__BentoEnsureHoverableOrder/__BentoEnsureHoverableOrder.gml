@@ -71,15 +71,14 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
             ++_i;
         }
         
-        //TODO - Move this scrollbar check code to a static method on the scrollbar struct itself
         if (__scrollbarHori != undefined)
         {
-            array_push(_hoverableOrder, method(__scrollbarHori, _funcScrollbarCheck));
+            array_push(_hoverableOrder, __scrollbarHori.__CheckOver);
         }
         
         if (__scrollbarVert != undefined)
         {
-            array_push(_hoverableOrder, method(__scrollbarVert, _funcScrollbarCheck));
+            array_push(_hoverableOrder, __scrollbarVert.__CheckOver);
         }
     }
 }
