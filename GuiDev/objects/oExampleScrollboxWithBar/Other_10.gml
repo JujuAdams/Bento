@@ -9,7 +9,7 @@ if (BentoUsingDirectional())
         BentoFocusOpen(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
     }
     
-    if (BentoHotkeyGetPress("escape"))
+    if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
     {
         BentoInputConsume();
         BentoFocusClose();

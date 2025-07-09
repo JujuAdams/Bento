@@ -95,6 +95,7 @@
 // should be used with `BentoInputHotkey()` to trigger scrolling.
 #macro BENTO_HOTKEY_MOUSE_WHEEL_UP    "mouse wheel up"
 #macro BENTO_HOTKEY_MOUSE_WHEEL_DOWN  "mouse wheel down"
+#macro BENTO_HOTKEY_CANCEL            "cancel"
 
 
 

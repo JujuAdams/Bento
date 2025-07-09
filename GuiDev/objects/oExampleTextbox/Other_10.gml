@@ -14,8 +14,9 @@ if (BentoPrimaryGetClick())
 
 if (BentoTextGetTargeted())
 {
-    if (BentoHotkeyGetPress("escape"))
+    if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
     {
+        BentoInputConsume();
         BentoTextClose();
     }
 }

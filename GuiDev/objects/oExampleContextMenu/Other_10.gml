@@ -1,7 +1,7 @@
 /// @desc Step
 
-if (BentoHotkeyGetPress("escape"))
+if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
 {
-    BentoDestroy();
     BentoInputConsume();
+    BentoDestroy();
 }
