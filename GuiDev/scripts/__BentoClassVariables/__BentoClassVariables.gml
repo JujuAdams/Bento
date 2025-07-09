@@ -248,8 +248,8 @@ function __BentoClassVariables(_attachedElement) constructor
         });
     }
     
-    __eventScissorPush = method(_attachedElement, __BentoScissorPushFromVars);
-    __eventScissorPop  = method(_attachedElement, __BentoScissorPop);
+    __eventScissorPush = method(self, __BentoScissorPushFromVars);
+    __eventScissorPop  = method(self, __BentoScissorPop);
     
     static __Destroy = function()
     {
@@ -307,8 +307,8 @@ function __BentoClassVariables(_attachedElement) constructor
     __layoutClampInside = false;
     __layoutIgnore = false;
     
-    //Alignment against the region that the parent has allocated for this element. This is especially
-    //useful for children of non-list / non-grid parents where you might want to position the element
+    //Anchor against the available space that the parent has allocated for this element. This is
+    //especially useful for children of rect parents where you might want to position the element
     //relative to edges and corners.
     __layoutAnchorX = BENTO_DEFAULT_LAYOUT_ANCHOR_X;
     __layoutAnchorY = BENTO_DEFAULT_LAYOUT_ANCHOR_Y;
