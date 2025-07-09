@@ -9,15 +9,15 @@ BentoSystemDraw();
 draw_set_font(fntDebug);
 
 // Some debug text:
-var _nodeName = "???";
+var _modeName = "???";
 switch(BentoGetMode())
 {
-    case BENTO_MODE_MOUSE:    _nodeName = "Mouse";    break;
-    case BENTO_MODE_KEYBOARD: _nodeName = "Keyboard"; break;
-    case BENTO_MODE_GAMEPAD:  _nodeName = "Gamepad";  break;
-    case BENTO_MODE_TOUCH:    _nodeName = "Touch";    break;
+    case BENTO_MODE_MOUSE:    _modeName = "Mouse";    break;
+    case BENTO_MODE_KEYBOARD: _modeName = "Keyboard"; break;
+    case BENTO_MODE_GAMEPAD:  _modeName = "Gamepad";  break;
+    case BENTO_MODE_TOUCH:    _modeName = "Touch";    break;
 }
 
 draw_set_halign(fa_right);
-draw_text(room_width-10, 10, $"Mode = {_nodeName}\n\n[1] = Mouse\n[2] = Keyboard\n[3] = Gamepad\n[4] = Touch");
+draw_text(room_width-10, 10, $"Mode = {_modeName}\n\n[1] = Mouse\n[2] = Keyboard\n[3] = Gamepad\n[4] = Touch");
 draw_set_halign(fa_left);
