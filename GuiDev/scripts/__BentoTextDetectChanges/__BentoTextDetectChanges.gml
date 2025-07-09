@@ -16,7 +16,6 @@ function __BentoTextDetectChanges(_keyboardString, _keyboardStringPrev, _backspa
     //Detect new characters by scanning for positive differences
     if (_keyboardString != _keyboardStringPrev)
     {
-        //TODO - Scan from the back of the string to speed things up a bit
         var _i = 1;
         repeat(_keyboardStringLength)
         {

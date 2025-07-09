@@ -348,9 +348,9 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
     {
         if (variable_struct_exists(_json, "object"))
         {
-            if (variable_struct_exists(_json, "construct")) //TODO - Swap `.struct` out for `.construct`
+            if (variable_struct_exists(_json, "construct"))
             {
-                __BentoError($"JSON must only contain .object or .struct");
+                __BentoError($"JSON must only contain .object or .construct");
             }
             
             //Determine object to create
@@ -404,7 +404,7 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
         }
         else
         {
-            __BentoError($"JSON must contain one of either .object or .struct");
+            __BentoError($"JSON must contain one of either .object or .construct");
         }
         
         var _button = _json[$ "button"];
