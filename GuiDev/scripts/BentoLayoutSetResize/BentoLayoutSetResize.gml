@@ -14,7 +14,12 @@
 ///     Element will try to increase in size to fill available space.
 /// 
 /// `BENTO_RESIZE_DEFLATE`
-///     Element will reduce size to tightly fit all of its children, leaving no extra space.
+///     Element will reduce size to tightly fit around its children, leaving no extra space.
+/// 
+/// `BENTO_RESIZE_ASPECT`
+///     Element will set its height relative to its width keeping the aspect ratio set by the
+///     baseline dimensions (as set by `BentoLayoutSetSize()`). This resize logic can only be used
+///     for the `height` parameter.
 /// 
 /// You may also pass `undefined` for either parameter to indicate that the existing value should
 /// not be changed.
@@ -27,22 +32,21 @@ function BentoLayoutSetResize(_width, _height, _element = self)
 {
     with(__BentoGetVars(_element))
     {
-        if (_width != undefined)
+        if ((_width != undefined) && (__layoutWidthResize != _width))
         {
-            if (__layoutWidthResize != _width)
+            if (_width == BENTO_RESIZE_ASPECT)
             {
-                __layoutWidthResize = _width;
-                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
+                __BentoError("Cannot use `BENTO_RESIZE_ASPECT` for x-axis resize");
             }
+            
+            __layoutWidthResize = _width;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
         }
         
-        if (_height != undefined)
+        if ((_height != undefined) && (__layoutHeightResize != _height))
         {
-            if (__layoutHeightResize != _height)
-            {
-                __layoutHeightResize = _height;
-                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
-            }
+            __layoutHeightResize = _height;
+            __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
         }
     }
 }

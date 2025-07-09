@@ -144,6 +144,7 @@
     {"id":{"name":"__BentoSolverListPositions","path":"scripts/__BentoSolverListPositions/__BentoSolverListPositions.yy",},},
     {"id":{"name":"__BentoSolverListResizeHeight","path":"scripts/__BentoSolverListResizeHeight/__BentoSolverListResizeHeight.yy",},},
     {"id":{"name":"__BentoSolverListResizeWidth","path":"scripts/__BentoSolverListResizeWidth/__BentoSolverListResizeWidth.yy",},},
+    {"id":{"name":"__BentoSolverMaintainAspectRatio","path":"scripts/__BentoSolverMaintainAspectRatio/__BentoSolverMaintainAspectRatio.yy",},},
     {"id":{"name":"__BentoSolverRectGetDeflateHeight","path":"scripts/__BentoSolverRectGetDeflateHeight/__BentoSolverRectGetDeflateHeight.yy",},},
     {"id":{"name":"__BentoSolverRectGetDeflateWidth","path":"scripts/__BentoSolverRectGetDeflateWidth/__BentoSolverRectGetDeflateWidth.yy",},},
     {"id":{"name":"__BentoSolverRectPositions","path":"scripts/__BentoSolverRectPositions/__BentoSolverRectPositions.yy",},},

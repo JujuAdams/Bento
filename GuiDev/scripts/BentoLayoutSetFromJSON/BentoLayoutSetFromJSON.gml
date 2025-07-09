@@ -119,9 +119,11 @@
 ///     - "normal"
 ///     - "deflate"
 ///     - "inflate"
+///     - "aspect" (y-axis only)
 ///     - 0 (equal to BENTO_RESIZE_NORMAL)
 ///     - 1 (equal to BENTO_RESIZE_DEFLATE)
 ///     - 2 (equal to BENTO_RESIZE_INFLATE)
+///     - 3 (equal to BENTO_RESIZE_ASPECT, y-axis only)
 ///     
 ///     You may also use `null` to indicate that no change should be made to a particular value.
 /// 
@@ -451,7 +453,7 @@ function __BentoLayoutSetFromJSON_resize(_element, _value)
     {
         if ((_x != BENTO_RESIZE_NORMAL) && (_x != BENTO_RESIZE_DEFLATE) && (_x != BENTO_RESIZE_INFLATE))
         {
-            __BentoError($".resize.x layout property must be \"static\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_x})");
+            __BentoError($".resize.x layout property must be \"normal\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_x})");
         }
     }
     else if (is_string(_x))
@@ -470,19 +472,19 @@ function __BentoLayoutSetFromJSON_resize(_element, _value)
         }
         else
         {
-            __BentoError($".resize.x layout property must be \"static\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_x})");
+            __BentoError($".resize.x layout property must be \"normal\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_x})");
         }
     }
     else
     {
-        __BentoError($".resize.x layout property must be \"static\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_x})");
+        __BentoError($".resize.x layout property must be \"normal\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_x})");
     }
     
     if (is_numeric(_y))
     {
-        if ((_y != BENTO_RESIZE_NORMAL) && (_y != BENTO_RESIZE_DEFLATE) && (_y != BENTO_RESIZE_INFLATE))
+        if ((_y != BENTO_RESIZE_NORMAL) && (_y != BENTO_RESIZE_DEFLATE) && (_y != BENTO_RESIZE_INFLATE) && (_y != BENTO_RESIZE_ASPECT))
         {
-            __BentoError($".resize.y layout property must be \"static\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_y})");
+            __BentoError($".resize.y layout property must be \"normal\", \"deflate\", \"inflate\", \"aspect\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, {BENTO_RESIZE_INFLATE}, or {BENTO_RESIZE_ASPECT} (value was {_y})");
         }
     }
     else if (is_string(_y))
@@ -499,14 +501,18 @@ function __BentoLayoutSetFromJSON_resize(_element, _value)
         {
             _y = BENTO_RESIZE_INFLATE;
         }
+        else if (_y == "aspect")
+        {
+            _y = BENTO_RESIZE_ASPECT;
+        }
         else
         {
-            __BentoError($".resize.y layout property must be \"static\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_y})");
+            __BentoError($".resize.y layout property must be \"normal\", \"deflate\", \"inflate\", \"aspect\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, {BENTO_RESIZE_INFLATE}, or {BENTO_RESIZE_ASPECT} (value was {_y})");
         }
     }
     else
     {
-        __BentoError($".resize.y layout property must be \"static\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_y})");
+        __BentoError($".resize.y layout property must be \"normal\", \"deflate\", \"inflate\", \"aspect\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, {BENTO_RESIZE_INFLATE}, or {BENTO_RESIZE_ASPECT} (value was {_y})");
     }
     
     BentoLayoutSetResize(_x, _y, _element);
