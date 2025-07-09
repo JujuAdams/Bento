@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoSolverTextShrinkHeight",
+  "%Name":"__BentoSolverTextGetDeflateHeight",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoSolverTextShrinkHeight",
+  "name":"__BentoSolverTextGetDeflateHeight",
   "parent":{
     "name":"Text",
     "path":"folders/Library/(System)/Solver/Text.yy",

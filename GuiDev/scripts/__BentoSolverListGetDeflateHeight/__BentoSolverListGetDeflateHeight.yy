@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoSolverListShrinkHeight",
+  "%Name":"__BentoSolverListGetDeflateHeight",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoSolverListShrinkHeight",
+  "name":"__BentoSolverListGetDeflateHeight",
   "parent":{
     "name":"List",
     "path":"folders/Library/(System)/Solver/List.yy",

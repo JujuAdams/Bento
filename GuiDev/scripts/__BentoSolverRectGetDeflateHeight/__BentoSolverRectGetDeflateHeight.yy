@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoSolverRectShrinkHeight",
+  "%Name":"__BentoSolverRectGetDeflateHeight",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoSolverRectShrinkHeight",
+  "name":"__BentoSolverRectGetDeflateHeight",
   "parent":{
     "name":"Rect",
     "path":"folders/Library/(System)/Solver/Rect.yy",
