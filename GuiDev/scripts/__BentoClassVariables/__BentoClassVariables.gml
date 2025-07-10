@@ -96,6 +96,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __scissorWorldRight  =  infinity
     __scissorWorldBottom =  infinity
     __scissorVisibility  = BENTO_VISIBLE_FULL;
+    __scissorParent      = self;
     
     __scissorScrollbarLeft    = 0;
     __scissorScrollbarTop     = 0;
@@ -174,8 +175,8 @@ function __BentoClassVariables(_attachedElement) constructor
         {
             if (instance_position(_mouseX, _mouseY, self))
             {
-                var _bentoVars = BENTO_VARS;
-                if (point_in_rectangle(_mouseX, _mouseY, _bentoVars.__scissorWorldLeft, _bentoVars.__scissorWorldTop, _bentoVars.__scissorWorldRight, _bentoVars.__scissorWorldBottom))
+                var _scissorParent = BENTO_VARS.__scissorParent;
+                if (point_in_rectangle(_mouseX, _mouseY, _scissorParent.__scissorWorldLeft, _scissorParent.__scissorWorldTop, _scissorParent.__scissorWorldRight, _scissorParent.__scissorWorldBottom))
                 {
                     return self;
                 }
@@ -231,8 +232,8 @@ function __BentoClassVariables(_attachedElement) constructor
         {
             if (point_in_rectangle(_mouseX, _mouseY, bentoLeft, bentoTop, bentoRight, bentoBottom))
             {
-                var _bentoVars = BENTO_VARS;
-                if (point_in_rectangle(_mouseX, _mouseY, _bentoVars.__scissorWorldLeft, _bentoVars.__scissorWorldTop, _bentoVars.__scissorWorldRight, _bentoVars.__scissorWorldBottom))
+                var _scissorParent = BENTO_VARS.__scissorParent;
+                if (point_in_rectangle(_mouseX, _mouseY, _scissorParent.__scissorWorldLeft, _scissorParent.__scissorWorldTop, _scissorParent.__scissorWorldRight, _scissorParent.__scissorWorldBottom))
                 {
                     return self;
                 }

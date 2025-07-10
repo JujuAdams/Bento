@@ -2,6 +2,8 @@
 
 /// Must be called in the scope of `__BentoClassLayer`.
 
+// TODO - Add `BentoGetEnclosed()` perhaps?
+
 function __BentoEnsureHoverableOrder()
 {
     if not (__dirtyFlags & __BENTO_DIRTY_HOVERABLE) return;
@@ -22,19 +24,6 @@ function __BentoEnsureHoverableOrder()
 
 function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, _hoverableIndex)
 {
-    static _funcScrollbarCheck = function(_mouseX, _mouseY, _holdElement)
-    {
-        if (point_in_rectangle(_mouseX, _mouseY, barLeft, barTop, barRight, barBottom))
-        {
-            hoverScrollbar = true;
-            return __element;
-        }
-        else
-        {
-            return undefined;
-        }
-    }
-    
     with(_elementVars)
     {
         if (__disable) return; //Disabled elements always ban hover, understandably

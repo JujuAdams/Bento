@@ -25,18 +25,16 @@ function __BentoEnsureOffset()
                 //No parent, probably the root node?
                 __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element.BENTO_VARS,
                                                0, 0,
-                                               -infinity, -infinity, infinity, infinity,
-                                               BENTO_VISIBLE_FULL);
+                                               -infinity, -infinity, infinity, infinity, _element);
             }
             else
             {
                 with(_parent.BENTO_VARS)
                 {
-                    //FIXME - Refactor to pass down the scissor parent
+                    var _scissorParent = __scissorParent;
                     __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element.BENTO_VARS,
                                                    __scrollX, __scrollY,
-                                                   __scissorWorldLeft, __scissorWorldTop, __scissorWorldRight, __scissorWorldBottom,
-                                                   __scissorVisibility);
+                                                   _scissorParent, _scissorParent.__scissorWorldLeft, _scissorParent.__scissorWorldTop, _scissorParent.__scissorWorldRight, _scissorParent.__scissorWorldBottom);
                 }
             }
         }
@@ -47,13 +45,13 @@ function __BentoEnsureOffset()
 /// @param elementVars
 /// @param offsetX
 /// @param offsetY
+/// @param scissorParent
 /// @param scissorLeft
 /// @param scissorTop
 /// @param scissorRight
 /// @param scissorBottom
-/// @param scissorVisibility
 
-function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _elementVars, _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility)
+function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _elementVars, _offsetX, _offsetY, _scissorParent, _scissorL, _scissorT, _scissorR, _scissorB)
 {
     with(_elementVars)
     {
@@ -128,26 +126,20 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _elementVars, _offset
             __BentoUpdateElementXY();
         }
         
-        if (_scissorVisibility != BENTO_VISIBLE_NONE)
-        {
-            _scissorVisibility = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
-                                                        _scissorL, _scissorT, _scissorR, _scissorB);
-        }
+        __scissorVisibility = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
+                                                     _scissorL, _scissorT, _scissorR, _scissorB);
         
         if (__scissorEnabled)
         {
-            _scissorL = max(_scissorL, _leftWorld   + __scissorPadLeft   + __scissorScrollbarLeft  );
-            _scissorT = max(_scissorT, _topWorld    + __scissorPadTop    + __scissorScrollbarTop   );
-            _scissorR = min(_scissorR, _rightWorld  - __scissorPadRight  - __scissorScrollbarRight );
-            _scissorB = min(_scissorB, _bottomWorld - __scissorPadBottom - __scissorScrollbarBottom);
+            __scissorWorldLeft   = max(_scissorL, _leftWorld   + __scissorPadLeft   + __scissorScrollbarLeft  );
+            __scissorWorldTop    = max(_scissorT, _topWorld    + __scissorPadTop    + __scissorScrollbarTop   );
+            __scissorWorldRight  = min(_scissorR, _rightWorld  - __scissorPadRight  - __scissorScrollbarRight );
+            __scissorWorldBottom = min(_scissorB, _bottomWorld - __scissorPadBottom - __scissorScrollbarBottom);
+            
+            _scissorParent = self;
         }
         
-        __scissorWorldLeft   = _scissorL;
-        __scissorWorldTop    = _scissorT;
-        __scissorWorldRight  = _scissorR;
-        __scissorWorldBottom = _scissorB;
-        __scissorVisibility  = _scissorVisibility;
-        
+        __scissorParent = _scissorParent;
         __eventReposition();
         
         //Pass values on to our children
@@ -161,7 +153,7 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _elementVars, _offset
             var _i = 0;
             repeat(array_length(_childArray))
             {
-                __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _childArray[_i], _offsetX, _offsetY, _scissorL, _scissorT, _scissorR, _scissorB, _scissorVisibility);
+                __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _childArray[_i], _offsetX, _offsetY, _scissorParent, _scissorL, _scissorT, _scissorR, _scissorB);
                 ++_i;
             }
         }

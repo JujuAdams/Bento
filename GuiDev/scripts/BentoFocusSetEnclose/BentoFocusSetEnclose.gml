@@ -36,13 +36,7 @@ function BentoFocusSetEnclose(_encloseType, _element = self)
         {
             __focusEncloseType = _encloseType;
             
-            //Enclosure affects
-            with(__layer)
-            {
-                //FIXME - Enclosure should affect step order too maybe? At the very least, there should be
-                //        a public getter (`BentoGetEnclosed()`)
-                __dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
-            }
+            __layer.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
         }
     }
 }

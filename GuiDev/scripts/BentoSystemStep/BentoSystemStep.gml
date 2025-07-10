@@ -2,6 +2,8 @@
 
 /// Updates environments, layers, and elements.
 
+// TODO - Add x/y offset to handle views moving around
+
 function BentoSystemStep(_rootWidth, _rootHeight)
 {
     static _system = __BentoSystem();
