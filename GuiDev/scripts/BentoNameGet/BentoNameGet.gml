@@ -6,7 +6,5 @@
 
 function BentoNameGet(_element = self)
 {
-    if (not BentoExists(_element)) return undefined;
-    
-    return _element.BENTO_VARS.__name;
+    return BentoExists(_element)? _element.BENTO_VARS.__name : undefined;
 }

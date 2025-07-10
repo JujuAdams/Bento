@@ -12,7 +12,7 @@ function BentoNameSet(_name, _element = self, _overwrite = true)
 {
     if (not BentoExists(_element)) return;
     
-    var _nameMap = _element.BENTO_VARS.__layer.__nameMap;
+    var _nameMap = _element.BENTO_VARS.__layer.__environment.__nameMap;
     
     var _oldElement = _nameMap[? _name];
     if ((_oldElement != undefined) && BentoExists(_oldElement))

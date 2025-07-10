@@ -6,10 +6,11 @@
 /// @param name
 /// @param variableName
 /// @param value
+/// @param [environmentOrName=current]
 
-function BentoNameSetVar(_name, _variableName, _value)
+function BentoNameSetVar(_name, _variableName, _value, _environmentOrName = undefined)
 {
-    var _element = BentoNameFind(_name);
+    var _element = BentoNameFind(_name, _environmentOrName);
     if (not BentoExists(_element)) return;
     
     _element[$ _variableName] = _value;

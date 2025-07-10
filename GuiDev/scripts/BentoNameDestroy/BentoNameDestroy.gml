@@ -3,9 +3,9 @@
 /// Destroys the element with the matching name, if it exists.
 /// 
 /// @param name
-/// @param [layerOrName=current]
+/// @param [environmentOrName=current]
 
-function BentoNameDestroy(_name, _layerOrName = undefined)
+function BentoNameDestroy(_name, _environmentOrName = undefined)
 {
-    BentoDestroy(BentoNameFind(_name, _layerOrName));
+    BentoDestroy(BentoNameFind(_name, _environmentOrName));
 }

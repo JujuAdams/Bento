@@ -61,6 +61,8 @@ function __BentoClassEnvironment(_name) constructor
     __layerCurrent = new __BentoClassLayer(self, "default");
     __layerArray = [__layerCurrent];
     
+    __nameMap = ds_map_create();
+    
     
     
     

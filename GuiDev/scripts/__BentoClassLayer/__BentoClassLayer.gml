@@ -88,8 +88,6 @@ function __BentoClassLayer(_environment, _name) constructor
     
     __updateElementArray = [];
     
-    __nameMap = ds_map_create();
-    
     __focusStack = [];
     __focusTop   = undefined;
     

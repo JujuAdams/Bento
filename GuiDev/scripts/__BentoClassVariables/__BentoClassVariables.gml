@@ -263,8 +263,8 @@ function __BentoClassVariables(_attachedElement) constructor
         
         BentoFocusClose(__attachedElement);
         
-        var _element = __layer.__nameMap[? __name];
-        if (_element == __attachedElement) ds_map_delete(__layer.__nameMap, __name);
+        var _element = __layer.__environment.__nameMap[? __name];
+        if (_element == __attachedElement) ds_map_delete(__layer.__environment.__nameMap, __name);
         
         __layer.__dirtyFlags |= __BENTO_DIRTY_ALL;
     }

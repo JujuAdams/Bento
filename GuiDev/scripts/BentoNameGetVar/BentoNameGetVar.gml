@@ -7,10 +7,11 @@
 /// @param name
 /// @param variableName
 /// @param [default=undefined]
+/// @param [environmentOrName=current]
 
-function BentoNameGetVar(_name, _variableName, _default = undefined)
+function BentoNameGetVar(_name, _variableName, _default = undefined, _environmentOrName = undefined)
 {
-    var _element = BentoNameFind(_name);
+    var _element = BentoNameFind(_name, _environmentOrName);
     if (not BentoExists(_element)) return _default;
     if (not variable_struct_exists(_element, _variableName)) return _default;
     

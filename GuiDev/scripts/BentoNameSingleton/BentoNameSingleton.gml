@@ -4,9 +4,10 @@
 /// 
 /// @param name
 /// @param [element=self]
+/// @param [environmentOrName=current]
 
-function BentoNameSingleton(_name, _element = self)
+function BentoNameSingleton(_name, _element = self, _environmentOrName = undefined)
 {
-    BentoNameDestroy(_name);
+    BentoNameDestroy(_name, _environmentOrName);
     BentoNameSet(_name, _element);
 }
