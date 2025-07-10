@@ -2,8 +2,6 @@
 
 /// Must be called in the scope of `__BentoClassLayer`.
 
-// TODO - Add `BentoGetEnclosed()` perhaps?
-
 function __BentoEnsureHoverableOrder()
 {
     if not (__dirtyFlags & __BENTO_DIRTY_HOVERABLE) return;
@@ -29,6 +27,8 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
         if (__disable) return; //Disabled elements always ban hover, understandably
         
         var _childHoverableIndex = _hoverableIndex;
+        __enclosed = (_childHoverableIndex == undefined);
+        
         var _childArray = __childArray;
         
         if (__focused)
