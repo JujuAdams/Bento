@@ -30,8 +30,6 @@ function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollParent)
     var _element  = BENTO_NO_ELEMENT;
     var _minWeight = infinity;
     
-    show_debug_message($"{_dX}, {_dY}");
-    
     var _i = 0;
     repeat(array_length(_hoverableOrder))
     {
