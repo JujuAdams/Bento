@@ -15,8 +15,8 @@ function __BentoStartHover(_element)
         
         if (__navDirectional)
         {
-            __directionalLastX = _element.bentoLeft;
-            __directionalLastY = _element.bentoTop;
+            __directionalLastX = 0.5*(__cursorLastL + __cursorLastR);
+            __directionalLastY = 0.5*(__cursorLastT + __cursorLastB);
             
             BentoScrollTo(undefined, _element);
         }
