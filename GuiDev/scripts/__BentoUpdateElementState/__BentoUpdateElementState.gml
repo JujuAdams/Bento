@@ -29,7 +29,10 @@ function __BentoUpdateElementState()
             
             __click = false;
             
-            //Manage hover state
+            ///////
+            // Hover state
+            ///////
+            
             if (other.__hoverElement == _element)
             {
                 //System says this element is hovered
@@ -64,7 +67,10 @@ function __BentoUpdateElementState()
                 }
             }
             
-            //Manage hold state
+            ///////
+            // Hold state
+            ///////
+            
             if (other.__primaryState == __BENTO_START)
             {
                 //System says the player has clicked
@@ -90,33 +96,39 @@ function __BentoUpdateElementState()
                 }
                 else
                 {
-                    //Unset the system's hold element if it's us
                     if (other.__holdElement == _element)
                     {
+                        //Unset the system's hold element if it's us
                         other.__holdElement = BENTO_NO_ELEMENT;
-                    }
-                    
-                    if (__primaryState == __BENTO_END)
-                    {
-                        __primaryState = __BENTO_OFF;
-                    }
-                    else if (__primaryState != __BENTO_OFF)
-                    {
-                        __primaryState = __BENTO_END;
                         
-                        //Pass through a click signal to the element if we're clicking on released (and the element is still selected)
-                        if ((not _clickOnPress) && (other.__primaryState == __BENTO_END))
+                        if (other.__primaryState & __BENTO_START)
                         {
-                            if (other.__navMode == BENTO_MODE_TOUCH)
+                            __primaryState = __BENTO_END;
+                            
+                            //Pass through a click signal to the element if we're clicking on released (and the element is still selected)
+                            if ((not _clickOnPress) && (other.__primaryState == __BENTO_END))
                             {
-                                //Touch mode triggers the leave state early
-                                if (__hoverState == __BENTO_END) __click = true;
-                            }
-                            else
-                            {
-                                if (BentoCursorGetHover(_element)) __click = true;
+                                if (other.__navMode == BENTO_MODE_TOUCH)
+                                {
+                                    //Touch mode triggers the leave state early
+                                    if (__hoverState == __BENTO_END) __click = true;
+                                }
+                                else
+                                {
+                                    if (BentoCursorGetHover(_element)) __click = true;
+                                }
                             }
                         }
+                        else
+                        {
+                            //Primary button has been released, mose us torwards the END state.
+                            __primaryState = __primaryState >> 1;
+                        }
+                    }
+                    else
+                    {
+                        //We not the layer's held element. Move us towards the END state.
+                        __primaryState = __primaryState >> 1;
                     }
                 }
             }
