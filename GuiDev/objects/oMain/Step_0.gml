@@ -7,36 +7,33 @@ if (keyboard_check_pressed(ord("2"))) BentoSetMode(BENTO_MODE_KEYBOARD);
 if (keyboard_check_pressed(ord("3"))) BentoSetMode(BENTO_MODE_GAMEPAD);
 if (keyboard_check_pressed(ord("4"))) BentoSetMode(BENTO_MODE_TOUCH);
 
-// "Gampead" input is, in reality, a generic directional input. Sending in a directional value
-// will push the Bento cursor in that direction. When holding a directional input, the Bento system
-// will automatically retrigger the directional input leading to auto-scrolling on menus. You can
-// configure the auto-scroll behavior by calling `BentoInputConfigureRetrigger()`. The primary
-// action parameter should be a continuous "held" value too. The Bento system handles the "pressed"
-// and "released" state internally.
-if (BentoUsingKeyboard())
-{
-    var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
-    var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
-    var _primary = keyboard_check(vk_space);
-    BentoInputDirectional(_dX, _dY, _primary);
-}
-else if (BentoUsingGamepad() && gamepad_is_connected(0))
-{
-    var _gamepadDX = gamepad_axis_value(0, gp_axislh);
-    var _gamepadDY = gamepad_axis_value(0, gp_axislv);
-    var _dX = (abs(_gamepadDX) > 0.2)? sign(_gamepadDX) : 0;
-    var _dY = (abs(_gamepadDY) > 0.2)? sign(_gamepadDY) : 0;
-    BentoInputDirectional(_dX, _dY, gamepad_button_check(0, gp_face1));
-}
-
-// Pointer input generalises both mouse and touch input. As above, the primary action should be a
-// continuous "held" value. The coordinate space for the x/y coordinates should be the same as the
-// coordinate space that the Bento is drawn in. In this example, we're drawing the Bento in the
-// standard Draw event which means we need to use room-space coordinates. If you're drawing in a
-// Draw Bento event then you should use GUI-space coordinates.
 if (BentoUsingPointer())
 {
+    // Pointer input generalises both mouse and touch input. As above, the primary action should be a
+    // continuous "held" value. The coordinate space for the x/y coordinates should be the same as the
+    // coordinate space that the Bento is drawn in. In this example, we're drawing the Bento in the
+    // standard Draw event which means we need to use room-space coordinates. If you're drawing in a
+    // Draw Bento event then you should use GUI-space coordinates.
     BentoInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(0, mb_left));
+}
+else
+{
+    if (BentoUsingKeyboard())
+    {
+        var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
+        var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
+        BentoInputDirectional(_dX, _dY, keyboard_check(vk_space));
+    }
+    else if (BentoUsingGamepad() && gamepad_is_connected(0))
+    {
+        // "Gamepad" input is, in reality, a generic directional input. Sending in a directional value
+        // will push the Bento cursor in that direction. When holding a directional input, the Bento system
+        // will automatically retrigger the directional input leading to auto-scrolling on menus. You can
+        // configure the auto-scroll behavior by calling `BentoInputConfigureRetrigger()`. The primary
+        // action parameter should be a continuous "held" value too. The Bento system handles the "pressed"
+        // and "released" state internally.
+        BentoInputDirectional(gamepad_axis_value(0, gp_axislh), gamepad_axis_value(0, gp_axislv), gamepad_button_check(0, gp_face1));
+    }
 }
 
 // No matter what input mode we're in, we can funnel "button" input into the system. "Button"\

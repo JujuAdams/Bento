@@ -192,34 +192,33 @@ function BentoSandbox(_x, _y, _width, _height)
     if (BentoUsingPointer())
     {
         //Handles both mouse and touch input
-        
         BentoInputPointer(_mouseX, _mouseY, device_mouse_check_button(0, mb_left));
-        BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
-        BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
-        BentoInputHotkey(BENTO_HOTKEY_CANCEL,           keyboard_check(vk_escape));
-    }
-    else if (BentoUsingKeyboard())
-    {
-        //Keyboard only
-        
-        var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
-        var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
-        var _primary = keyboard_check(vk_space);
-        BentoInputDirectional(_dX, _dY, _primary);
         BentoInputHotkey(BENTO_HOTKEY_CANCEL, keyboard_check(vk_escape));
-    }
-    else if (BentoUsingGamepad())
-    {
-        //Gamepad only
         
-        if (_lastDevice != undefined)
+        if (BentoUsingMouse())
         {
-            var _gamepadDX = gamepad_axis_value(_lastDevice, gp_axislh);
-            var _gamepadDY = gamepad_axis_value(_lastDevice, gp_axislv);
-            var _dX = (abs(_gamepadDX) > _threshold)? sign(_gamepadDX) : 0;
-            var _dY = (abs(_gamepadDY) > _threshold)? sign(_gamepadDY) : 0;
-            BentoInputDirectional(_dX, _dY, gamepad_button_check(_lastDevice, gp_face1));
-            BentoInputHotkey(BENTO_HOTKEY_CANCEL, gamepad_button_check(_lastDevice, gp_face2));
+            BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
+            BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
+        }
+    }
+    else
+    {
+        if (BentoUsingKeyboard())
+        {
+            BentoInputDirectional(keyboard_check(vk_right) - keyboard_check(vk_left),
+                                  keyboard_check(vk_down) - keyboard_check(vk_up),
+                                  keyboard_check(vk_space));
+            BentoInputHotkey(BENTO_HOTKEY_CANCEL, keyboard_check(vk_escape));
+        }
+        else if (BentoUsingGamepad())
+        {
+            if (_lastDevice != undefined)
+            {
+                BentoInputDirectional(gamepad_axis_value(_lastDevice, gp_axislh),
+                                      gamepad_axis_value(_lastDevice, gp_axislv),
+                                      gamepad_button_check(_lastDevice, gp_face1));
+                BentoInputHotkey(BENTO_HOTKEY_CANCEL, gamepad_button_check(_lastDevice, gp_face2));
+            }
         }
     }
     
