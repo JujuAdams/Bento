@@ -25,7 +25,7 @@ function __BentoEnsureOffset()
                 //No parent, probably the root node?
                 __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _element.BENTO_VARS,
                                                0, 0,
-                                               -infinity, -infinity, infinity, infinity, _element);
+                                               _element.BENTO_VARS, -infinity, -infinity, infinity, infinity);
             }
             else
             {

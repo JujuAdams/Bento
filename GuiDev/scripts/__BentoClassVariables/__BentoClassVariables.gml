@@ -96,8 +96,8 @@ function __BentoClassVariables(_attachedElement) constructor
     __scissorWorldTop    = -infinity
     __scissorWorldRight  =  infinity
     __scissorWorldBottom =  infinity
-    __scissorVisibility  = BENTO_VISIBLE_FULL;
-    __scissorParent      = self;
+    __scissorVisibility  =  BENTO_VISIBLE_FULL;
+    __scissorParent      =  self;
     
     __scissorScrollbarLeft    = 0;
     __scissorScrollbarTop     = 0;
