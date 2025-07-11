@@ -56,8 +56,7 @@ function __BentoClassLayer(_environment, _name) constructor
     __cursorLastR = 0;
     __cursorLastB = 0;
     
-    __directionalStateX = new __BentoClassDirectionalState();
-    __directionalStateY = new __BentoClassDirectionalState();
+    __turboState = new __BentoClassTurbo();
     
     __hotkeyStateMap    = ds_map_create();
     __hotkeyConsumedMap = ds_map_create();
@@ -240,8 +239,7 @@ function __BentoClassLayer(_environment, _name) constructor
             __directionalDX   = _environment.__envDirectionalDX;
             __directionalDY   = _environment.__envDirectionalDY;
             
-            __directionalStateX.__Update(__directionalDX, _system.__frame);
-            __directionalStateY.__Update(__directionalDY, _system.__frame);
+            __turboState.__Update(__directionalDX, __directionalDY, _system.__frame);
             
             //Update hotkey input
             var _globalHotkeyInputMap = __environment.__envHotkeyInputMap;
@@ -360,7 +358,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
                 
                 //Move the cursor and hover a new element (maybe)
-                __BentoStartHover(__BentoGetDirectionalHover(__hoverElement, __directionalStateX.__output, __directionalStateY.__output));
+                __BentoStartHover(__BentoGetDirectionalHover(__hoverElement, __turboState.__outputX, __turboState.__outputY));
             }
             else //Some other input mode, perhaps `BENTO_MODE_UNKNOWN`
             {

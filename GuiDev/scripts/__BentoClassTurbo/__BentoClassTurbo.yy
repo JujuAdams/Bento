@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoClassDirectionalState",
+  "%Name":"__BentoClassTurbo",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoClassDirectionalState",
+  "name":"__BentoClassTurbo",
   "parent":{
     "name":"Classes",
     "path":"folders/Library/(System)/Classes.yy",

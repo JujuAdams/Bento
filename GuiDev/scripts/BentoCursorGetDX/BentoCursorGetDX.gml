@@ -21,7 +21,7 @@ function BentoCursorGetDX(_layerOrName = undefined)
         }
         else if (__navDirectional)
         {
-            return __directionalStateX.__output;
+            return __turboState.__outputX;
         }
     }
     
