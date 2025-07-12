@@ -86,6 +86,9 @@ function __BentoUpdateElementState()
             }
             else
             {
+                //Advance our state
+                __primaryState = __primaryState >> 1;
+                
                 //Compare hold element to ourselves using a BENTO_VARS check - this is because GameMaker sometimes
                 //gets confused with comparing instance references. It appears that comparisons between `id` and
                 //`self` will occasionally return false positives. However, comparing the `BENTO_VARS` structs is
@@ -94,46 +97,33 @@ function __BentoUpdateElementState()
                 
                 if ((other.__primaryState == __BENTO_ON) && _isLayerHoldElement)
                 {
-                    if (__primaryState == __BENTO_START)
-                    {
-                        __primaryState = __BENTO_ON;
-                    }
+                    //Primary button is still down, we're still held
+                    __primaryState |= __BENTO_START;
                 }
                 else
                 {
+                    //Primary button is released or off, or the hold element changed away from us unexpectedly.
+                    
                     if (_isLayerHoldElement)
                     {
-                        //Unset the system's hold element if it's us
+                        //Unset the system's hold element since that's us
                         other.__holdElement = BENTO_NO_ELEMENT;
                         
-                        if (other.__primaryState & __BENTO_START)
+                        //Pass through a click signal to the element if we're clicking on release
+                        if ((not _clickOnPress) && (__primaryState == __BENTO_END) && (other.__primaryState == __BENTO_END))
                         {
-                            __primaryState = __BENTO_END;
-                            
-                            //Pass through a click signal to the element if we're clicking on released (and the element is still selected)
-                            if ((not _clickOnPress) && (other.__primaryState == __BENTO_END))
+                            if (other.__navMode == BENTO_MODE_TOUCH)
                             {
-                                if (other.__navMode == BENTO_MODE_TOUCH)
-                                {
-                                    //Touch mode triggers the leave state early
-                                    if (__hoverState == __BENTO_END) __click = true;
-                                }
-                                else
-                                {
-                                    if (BentoCursorGetHover(_element)) __click = true;
-                                }
+                                //Because we set the mouse x/y position to large negative numbers before running this function, the
+                                //hover state for the held element will always be in the leaving (END) state.
+                                if (__hoverState == __BENTO_END) __click = true;
+                            }
+                            else
+                            {
+                                //Only click if we're hovered.
+                                if (BentoCursorGetHover(_element)) __click = true;
                             }
                         }
-                        else
-                        {
-                            //Primary button has been released, mose us torwards the END state.
-                            __primaryState = __primaryState >> 1;
-                        }
-                    }
-                    else
-                    {
-                        //We not the layer's held element. Move us towards the END state.
-                        __primaryState = __primaryState >> 1;
                     }
                 }
             }
