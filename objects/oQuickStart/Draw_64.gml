@@ -1,6 +1,6 @@
 // Feather disable all
 
-BentoSandbox(0, 0, room_width, room_height);
+BentoSandbox(0, 0, display_get_gui_width(), display_get_gui_height());
 
 draw_set_font(fntDebug);
 
@@ -15,5 +15,5 @@ switch(BentoGetMode())
 }
 
 draw_set_halign(fa_right);
-draw_text(room_width-10, 10, $"Using {_modeName}");
+draw_text(display_get_gui_width()-10, 10, $"Using {_modeName}");
 draw_set_halign(fa_left);

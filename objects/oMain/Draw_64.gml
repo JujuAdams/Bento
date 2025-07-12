@@ -19,5 +19,5 @@ switch(BentoGetMode())
 }
 
 draw_set_halign(fa_right);
-draw_text(room_width-10, 10, $"Mode = {_modeName}\n\n[1] = Mouse\n[2] = Keyboard\n[3] = Gamepad\n[4] = Touch");
+draw_text(display_get_gui_width()-10, 10, $"Mode = {_modeName}\n\n[1] = Mouse\n[2] = Keyboard\n[3] = Gamepad\n[4] = Touch");
 draw_set_halign(fa_left);

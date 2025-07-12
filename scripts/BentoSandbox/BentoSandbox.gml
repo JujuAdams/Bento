@@ -196,7 +196,7 @@ function BentoSandbox(_x, _y, _width, _height)
     if (BentoUsingPointer())
     {
         //Handles both mouse and touch input
-        BentoInputPointer(_mouseX, _mouseY, device_mouse_check_button(0, mb_left));
+        BentoInputPointer(_mouseX - _x, _mouseY - _y, device_mouse_check_button(0, mb_left));
         BentoInputHotkey(BENTO_HOTKEY_CANCEL, keyboard_check(vk_escape));
         
         if (BentoUsingMouse())
@@ -227,10 +227,10 @@ function BentoSandbox(_x, _y, _width, _height)
     }
     
     //Update the entire Bento system
-    BentoSystemStep(_x, _y, _width, _height);
+    BentoSystemStep(_width, _height);
     
     //And then draw it
-    BentoSystemDraw();
+    BentoSystemDraw(_x, _y);
     
     //Make sure this map is fresh for next frame
     ds_map_clear(_deviceNewInputMap);
