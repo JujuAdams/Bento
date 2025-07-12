@@ -304,7 +304,7 @@ function __BentoClassLayer(_environment, _name) constructor
                     __BentoStartHover(__BentoGetPointerHover(__mouseX, __mouseY));
                 }
                 
-                if (__primaryState == __BENTO_START)
+                if (__primaryState == __BENTO_START) //On primary press
                 {
                     if (__environment.__textHandler != undefined) //Detect clicking off of an input box
                     {

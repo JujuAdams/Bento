@@ -57,8 +57,9 @@ function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollParent)
                             //jumping from is inside the same scroll parent; this allows us to scroll to an element that is
                             //outside of view but conceptually accessible from the current element.
                             //
-                            //FIXME - This should be the joint scissor and scroll parent
-                            if (__BentoGetHoverableInternal(self, (not BentoExists(_scrollParent)) || (_scrollParent != __BentoScrollFindParent(self))))
+                            //FIXME - Change to a check against the joint scissor and scroll parent
+                            var _checkVisible = ((not BentoExists(_scrollParent)) || (_scrollParent != __BentoScrollFindParent(self)));
+                            if (__BentoGetHoverableInternal(self, _checkVisible))
                             {
                                 _element = self;
                                 _minWeight = _weight;
