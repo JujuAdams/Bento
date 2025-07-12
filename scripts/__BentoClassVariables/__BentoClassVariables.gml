@@ -370,12 +370,7 @@ function __BentoClassVariables(_attachedElement) constructor
     
     //Resizes both this element and any child elements that are set to "deflate" or "inflate" resize
     //types. See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
-    //
-    // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
-    __SolverResizeWidth = function()
-    {
-        //Do nothing
-    }
+    __SolverResizeWidth = method(self, __BentoSolverRectResizeWidth);
     
     //Function that sets the solver's deflate height and minimum height. This is a boring function for
     //most elements. It gets more exciting for lists - see `__BentoSolverListGetDeflateHeight()`. This
@@ -386,13 +381,7 @@ function __BentoClassVariables(_attachedElement) constructor
     
     //Resizes both this element and any child elements that are set to "deflate" or "inflate" resize
     //types. See `__BentoSolverListResizeWidth()` and `__BentoSolverListResizeHeight()`.
-    //
-    // N.B. `BENTO_LAYOUT_LIST` and `BENTO_LAYOUT_GRID` override this function.
-    __SolverResizeHeight = function()
-    {
-                
-        //Do nothing
-    }
+    __SolverResizeHeight = method(self, __BentoSolverRectResizeHeight);
     
     //Final pass to set the element's position. Elements are given a region that they are permitted
     //to occupy. For elements that are children of "boring" (non-list, non-grid) parents, the
