@@ -13,6 +13,8 @@
 /// @param vAlignChidlren
 /// @param [element=self]
 
+// FIXME - Use of `fa_*` constants here is inconsistent with other alignment parameters
+
 function BentoLayoutList(_listAxis, _hAlignChildren, _vAlignChildren, _element = self)
 {
     with(__BentoGetVars(_element))

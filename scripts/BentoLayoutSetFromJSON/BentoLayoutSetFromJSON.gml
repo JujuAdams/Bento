@@ -689,7 +689,7 @@ function __BentoLayoutSetFromJSON_list(_element, _value)
     {
         if ((_hAlign != fa_left) && (_hAlign != fa_center) && (_hAlign != fa_right))
         {
-            __BentoError($".list.h layout property must be \"left\", \"deflate\", \"inflate\", {fa_left}, {fa_center}, or {fa_right} (value was {_hAlign})");
+            __BentoError($".list.h layout property must be \"left\", \"center\", \"right\", {fa_left}, {fa_center}, or {fa_right} (value was {_hAlign})");
         }
     }
     else if (is_string(_hAlign))
@@ -708,19 +708,19 @@ function __BentoLayoutSetFromJSON_list(_element, _value)
         }
         else
         {
-            __BentoError($".listAlign.h layout property invalid (value was {_hAlign}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
+            __BentoError($".list.h layout property invalid (value was {_hAlign}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
         }
     }
     else
     {
-        __BentoError($".listAlign.h layout property invalid (value was {_hAlign}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
+        __BentoError($".list.h layout property invalid (value was {_hAlign}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
     }
     
     if (is_numeric(_vAlign))
     {
         if ((_vAlign != fa_top) && (_vAlign != fa_middle) && (_vAlign != fa_bottom))
         {
-            __BentoError($".listAlign.y layout property must be \"top\", \"middle\", \"bottom\", {fa_top}, {fa_middle}, or {fa_bottom} (value was {_vAlign})");
+            __BentoError($".list.y layout property must be \"top\", \"middle\", \"bottom\", {fa_top}, {fa_middle}, or {fa_bottom} (value was {_vAlign})");
         }
     }
     else if (is_string(_vAlign))
@@ -739,12 +739,12 @@ function __BentoLayoutSetFromJSON_list(_element, _value)
         }
         else
         {
-            __BentoError($".listAlign.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
+            __BentoError($".list.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
         }
     }
     else
     {
-        __BentoError($".listAlign.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
+        __BentoError($".list.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
     }
     
     BentoLayoutList(_axis, _hAlign, _vAlign, _element);
