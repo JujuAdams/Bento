@@ -23,8 +23,6 @@ function ExampleConstrButton(_clickFunc = undefined, _text = "", _parent = other
     
     funcStep = function()
     {
-        BentoScrollOnPointer();
-        
         if (BentoPrimaryGetClick())
         {
             if (is_callable(clickFunc))

@@ -139,6 +139,7 @@ function __BentoClassVariables(_attachedElement) constructor
     {
         __eventStep = method(_attachedElement, function()
         {
+            __BentoScrollOnPointer(); //FIXME - Only execute this for pointer buttons
             event_user(BENTO_USER_EVENT_STEP);
         });
         
@@ -196,6 +197,7 @@ function __BentoClassVariables(_attachedElement) constructor
     {
         __eventStep = method(_attachedElement, function()
         {
+            __BentoScrollOnPointer(); //FIXME - Only execute this for pointer buttons
             funcStep();
         });
         

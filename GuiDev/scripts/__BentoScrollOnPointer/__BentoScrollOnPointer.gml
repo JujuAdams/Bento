@@ -3,20 +3,15 @@
 /// Handles scrolling behavior when using the `BENTO_MODE_MOUSE` or `BENTO_MODE_TOUCH` navigation modes.
 /// This function should be called in the Step user event (`BENTO_USER_EVENT_STEP`) for both the
 /// parent and any children.
-/// 
-/// @param [scrollSpeed]
-/// @param [element=self]
 
-function BentoScrollOnPointer(_scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = self)
+function __BentoScrollOnPointer()
 {
-    if (not BentoExists(_element)) return;
-    
-    var _layer = _element.BENTO_VARS.__layer;
+    var _layer = BENTO_VARS.__layer;
     if (_layer.__navPointer)
     {
-        if ((BENTO_SCROLL_ON_MOUSE_DRAG || (_layer.__navMode == BENTO_MODE_TOUCH)) && BentoPrimaryGetHold(_element))
+        if ((BENTO_SCROLL_ON_MOUSE_DRAG || (_layer.__navMode == BENTO_MODE_TOUCH)) && BentoPrimaryGetHold(self))
         {
-            with(_element.BENTO_VARS)
+            with(BENTO_VARS)
             {
                 var _pressX = __layer.__mousePressX;
                 var _pressY = __layer.__mousePressY;
@@ -40,8 +35,8 @@ function BentoScrollOnPointer(_scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _elemen
             
             if (BentoPrimaryGetDragDistance() > BENTO_SCROLL_THRESHOLD)
             {
-                var _parent = __BentoScrollFindParent(_element);
-                if (_element == _parent)
+                var _parent = __BentoScrollFindParent(self);
+                if (self == _parent)
                 {
                     BentoScrollMove(BentoCursorGetDX(), BentoCursorGetDY(), infinity, _parent);
                 }
@@ -51,7 +46,7 @@ function BentoScrollOnPointer(_scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _elemen
                 }
             }
         }
-        else if (BentoCursorGetHover(_element))
+        else if (BentoCursorGetHover(self))
         {
             //Mouse wheel input can be pretty noisy so we filter out as much as possible
             
@@ -70,7 +65,7 @@ function BentoScrollOnPointer(_scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _elemen
                 _dY -= BENTO_MOUSE_WHEEL_SCROLL_SPEED;
             }
             
-            BentoScrollMove(_dX, _dY, _scrollSpeed, _element);
+            BentoScrollMove(_dX, _dY, BENTO_DEFAULT_SCROLL_SPEED, self);
         }
     }
 }

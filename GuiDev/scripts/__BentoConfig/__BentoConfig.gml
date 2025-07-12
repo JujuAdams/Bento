@@ -59,8 +59,7 @@
 // Scrolling
 ///////
 
-// How far the pointer must move before engaging scrolling when clicking and dragging when using
-// `BentoScrollOnPointer()`.
+// How far the pointer must move before engaging scrolling when clicking and dragging.
 #macro BENTO_SCROLL_THRESHOLD  4
 
 // Default speed that scrolling element scroll at. Measured in pixels per frame.
@@ -99,8 +98,8 @@
 // `BENTO_HOTKEY_MOUSE_WHEEL_DOWN`).
 #macro BENTO_MOUSE_WHEEL_SCROLL_SPEED  20
 
-// Hotkey names to use to enable mouse wheel scrolling with `BentoScrollOnPointer()`. This macros
-// should be used with `BentoInputHotkey()` to trigger scrolling.
+// Hotkey names to use to enable mouse wheel scrolling. This macros should be used with
+// `BentoInputHotkey()` to trigger scrolling.
 #macro BENTO_HOTKEY_MOUSE_WHEEL_UP    "mouse wheel up"
 #macro BENTO_HOTKEY_MOUSE_WHEEL_DOWN  "mouse wheel down"
 

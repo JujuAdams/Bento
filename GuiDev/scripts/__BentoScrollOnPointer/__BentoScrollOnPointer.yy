@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoScrollOnPointer",
+  "%Name":"__BentoScrollOnPointer",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoScrollOnPointer",
+  "name":"__BentoScrollOnPointer",
   "parent":{
-    "name":"Scroll",
-    "path":"folders/Library/Functions/Scroll.yy",
+    "name":"(System)",
+    "path":"folders/Library/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

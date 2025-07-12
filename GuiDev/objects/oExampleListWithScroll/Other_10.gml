@@ -1,3 +1,0 @@
-/// @desc Step
-
-BentoScrollOnPointer();

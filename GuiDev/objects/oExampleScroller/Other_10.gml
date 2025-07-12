@@ -10,10 +10,6 @@
 
 event_inherited();
 
-// Magic function to pass pointer context to the nearest scrollable instance up the Bento inheritance
-// stack. This is crucial for creating click-and-drag scrolling.
-BentoScrollOnPointer();
-
 var _delta = 0;
 
 if (BentoUsingPointer())

@@ -15,7 +15,3 @@ if (BentoUsingDirectional())
         BentoFocusClose();
     }
 }
-else if (BentoUsingPointer())
-{
-    BentoScrollOnPointer();
-}
