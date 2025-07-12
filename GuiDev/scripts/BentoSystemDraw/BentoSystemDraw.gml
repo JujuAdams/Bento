@@ -1,8 +1,11 @@
 // Feather disable all
 
 /// Draws all environments, layers, and elements.
+/// 
+/// @param [x=0]
+/// @param [y=0]
 
-function BentoSystemDraw()
+function BentoSystemDraw(_x = 0, _y = 0)
 {
     static _system = __BentoSystem();
     static _matrix = matrix_build_identity();
@@ -11,11 +14,11 @@ function BentoSystemDraw()
     {
         __BentoScissorReset();
         
-        var _useMatrix = ((__globalX != 0) || (__globalY != 0));
+        var _useMatrix = ((_x != 0) || (_y != 0));
         if (_useMatrix)
         {
-            _matrix[@ 12] = __globalX;
-            _matrix[@ 13] = __globalY;
+            _matrix[@ 12] = _x;
+            _matrix[@ 13] = _y;
             
             matrix_stack_push(_matrix);
             matrix_set(matrix_world, matrix_stack_top());

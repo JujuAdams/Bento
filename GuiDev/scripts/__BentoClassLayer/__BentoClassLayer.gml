@@ -230,8 +230,8 @@ function __BentoClassLayer(_environment, _name) constructor
             }
             else
             {
-                __mouseX = _environment.__envMouseX - _system.__globalX;
-                __mouseY = _environment.__envMouseY - _system.__globalY;
+                __mouseX = _environment.__envMouseX;
+                __mouseY = _environment.__envMouseY;
             }
             
             //Update directional input
