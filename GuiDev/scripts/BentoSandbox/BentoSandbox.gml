@@ -110,6 +110,10 @@ function BentoSandbox(_x, _y, _width, _height)
               || gamepad_button_check(_device, gp_face2)
               || gamepad_button_check(_device, gp_face3)
               || gamepad_button_check(_device, gp_face4)
+              || gamepad_button_check(_device, gp_padu)
+              || gamepad_button_check(_device, gp_padd)
+              || gamepad_button_check(_device, gp_padl)
+              || gamepad_button_check(_device, gp_padr)
               || gamepad_button_check(_device, gp_start)
               || gamepad_button_check(_device, gp_select));
     }
@@ -214,8 +218,8 @@ function BentoSandbox(_x, _y, _width, _height)
         {
             if (_lastDevice != undefined)
             {
-                BentoInputDirectional(gamepad_axis_value(_lastDevice, gp_axislh),
-                                      gamepad_axis_value(_lastDevice, gp_axislv),
+                BentoInputDirectional(gamepad_axis_value(_lastDevice, gp_axislh) + (gamepad_button_check(_lastDevice, gp_padr) - gamepad_button_check(_lastDevice, gp_padl)),
+                                      gamepad_axis_value(_lastDevice, gp_axislv) + (gamepad_button_check(_lastDevice, gp_padd) - gamepad_button_check(_lastDevice, gp_padu)),
                                       gamepad_button_check(_lastDevice, gp_face1));
                 BentoInputHotkey(BENTO_HOTKEY_CANCEL, gamepad_button_check(_lastDevice, gp_face2));
             }
