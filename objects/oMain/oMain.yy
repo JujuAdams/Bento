@@ -10,8 +10,8 @@
   "name":"oMain",
   "overriddenProperties":[],
   "parent":{
-    "name":"GuiWithLayouts",
-    "path":"GuiWithLayouts.yyp",
+    "name":"Bento",
+    "path":"Bento.yyp",
   },
   "parentObjectId":null,
   "persistent":false,

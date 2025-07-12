@@ -1,6 +1,6 @@
 {
   "$GMProject":"",
-  "%Name":"GuiWithLayouts",
+  "%Name":"Bento",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
@@ -67,7 +67,7 @@
   "MetaData":{
     "IDEVersion":"2024.11.0.179",
   },
-  "name":"GuiWithLayouts",
+  "name":"Bento",
   "resources":[
     {"id":{"name":"acBentoLinear","path":"animcurves/acBentoLinear/acBentoLinear.yy",},},
     {"id":{"name":"fntDebug","path":"fonts/fntDebug/fntDebug.yy",},},

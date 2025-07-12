@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__Macros",
   "parent":{
-    "name":"GuiWithLayouts",
-    "path":"GuiWithLayouts.yyp",
+    "name":"Bento",
+    "path":"Bento.yyp",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

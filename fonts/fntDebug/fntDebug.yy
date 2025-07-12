@@ -119,8 +119,8 @@
   "maintainGms1Font":false,
   "name":"fntDebug",
   "parent":{
-    "name":"GuiWithLayouts",
-    "path":"GuiWithLayouts.yyp",
+    "name":"Bento",
+    "path":"Bento.yyp",
   },
   "pointRounding":0,
   "ranges":[

@@ -17,8 +17,8 @@
   ],
   "name":"rLandscape",
   "parent":{
-    "name":"GuiWithLayouts",
-    "path":"GuiWithLayouts.yyp",
+    "name":"Bento",
+    "path":"Bento.yyp",
   },
   "parentRoom":null,
   "physicsSettings":{
