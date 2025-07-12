@@ -86,9 +86,14 @@ function __BentoUpdateElementState()
             }
             else
             {
-                if ((other.__primaryState == __BENTO_ON) && (other.__holdElement == _element))
+                //Compare hold element to ourselves using a BENTO_VARS check - this is because GameMaker sometimes
+                //gets confused with comparing instance references. It appears that comparisons between `id` and
+                //`self` will occasionally return false positives. However, comparing the `BENTO_VARS` structs is
+                //stable and returns accurate information.
+                var _isLayerHoldElement = (other.__holdElement != BENTO_NO_ELEMENT) && (other.__holdElement.BENTO_VARS == self);
+                
+                if ((other.__primaryState == __BENTO_ON) && _isLayerHoldElement)
                 {
-                    //If we're being continuously held move into the HOLD state
                     if (__primaryState == __BENTO_START)
                     {
                         __primaryState = __BENTO_ON;
@@ -96,7 +101,7 @@ function __BentoUpdateElementState()
                 }
                 else
                 {
-                    if (other.__holdElement == _element)
+                    if (_isLayerHoldElement)
                     {
                         //Unset the system's hold element if it's us
                         other.__holdElement = BENTO_NO_ELEMENT;
