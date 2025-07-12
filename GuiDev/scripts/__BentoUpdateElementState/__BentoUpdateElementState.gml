@@ -33,38 +33,12 @@ function __BentoUpdateElementState()
             // Hover state
             ///////
             
-            if (other.__hoverElement == _element)
+            //Advance our state
+            __hoverState = __hoverState >> 1;
+            
+            if ((other.__hoverElement != BENTO_NO_ELEMENT) && (other.__hoverElement.BENTO_VARS == self))
             {
-                //System says this element is hovered
-                
-                if (__hoverState == __BENTO_START)
-                {
-                    if (BENTO_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: enter -> hover");
-                    __hoverState = __BENTO_ON;
-                }
-                else if (__hoverState == __BENTO_ON)
-                {
-                    //Do nothing
-                }
-                else
-                {
-                    if (BENTO_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: -> enter");
-                    __hoverState = __BENTO_START;
-                }
-            }
-            else
-            {
-                //System says this element is not hovered
-                
-                if (__hoverState == __BENTO_END)
-                {
-                    __hoverState = __BENTO_OFF;
-                }
-                else if (__hoverState != __BENTO_OFF)
-                {
-                    if (BENTO_VERBOSE_HOVER_STATE) __BentoTrace($"{real(_element)}: hover -> leave");
-                    __hoverState = __BENTO_END;
-                }
+                __hoverState |= __BENTO_START;
             }
             
             ///////

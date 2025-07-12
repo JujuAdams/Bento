@@ -107,10 +107,6 @@
 // Please see documentation for that function for further information.
 #macro BENTO_JSON_CHILDREN_STRING_PROCESSOR  undefined
 
-// Debug only. Set this macro to `true` to show verbose output in the debug log that shows which
-// elements are being hovered / un-hovered.
-#macro BENTO_VERBOSE_HOVER_STATE  false
-
 // Functions to call when showing debug messages. Set this macro to `undefined` to disable all
 // debug messages.
 #macro BENTO_SHOW_DEBUG_MESSAGE  show_debug_message
