@@ -38,6 +38,9 @@ function __BentoSystem()
         __creatingObject = false;
         __tempParent     = BENTO_NO_ELEMENT;
         
+        __globalX = 0;
+        __globalY = 0;
+        
         __globalDirPreDelay     = 20;
         __globalDirDelay        = 9;
         __globalDirDelayCount   = 4;

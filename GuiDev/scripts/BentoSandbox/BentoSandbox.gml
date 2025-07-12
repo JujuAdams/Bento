@@ -227,7 +227,7 @@ function BentoSandbox(_x, _y, _width, _height)
     }
     
     //Update the entire Bento system
-    BentoSystemStep(_width, _height);
+    BentoSystemStep(_x, _y, _width, _height);
     
     //And then draw it
     BentoSystemDraw();
