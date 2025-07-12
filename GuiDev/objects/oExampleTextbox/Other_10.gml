@@ -11,12 +11,3 @@ if (BentoPrimaryGetClick())
         text = _text;
     });
 }
-
-if (BentoTextGetTargeted())
-{
-    if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
-    {
-        BentoInputConsume();
-        BentoTextClose();
-    }
-}

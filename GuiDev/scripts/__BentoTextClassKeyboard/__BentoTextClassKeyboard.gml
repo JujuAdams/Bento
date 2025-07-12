@@ -26,10 +26,15 @@ function __BentoTextClassKeyboard(_environment, _initialText, _callback, _maxLen
         else if (current_time - __lastInputTime > 10_000)
         {
             __Terminate();
+            return;
         }
         
-        //FIXME - Figure out a way to detect termination from the user without the dev needing to write code
-        //        Does this mean using the `BENTO_HOTKEY_CANCEL` macro?
+        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL, true))
+        {
+            BentoInputConsume();
+            __Terminate();
+            return;
+        }
         
         if (keyboard_check_pressed(vk_backspace))
         {

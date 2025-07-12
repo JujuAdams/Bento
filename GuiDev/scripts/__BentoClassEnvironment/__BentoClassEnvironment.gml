@@ -102,7 +102,9 @@ function __BentoClassEnvironment(_name) constructor
         {
             if (BentoExists(__textElement))
             {
+                __BentoLayerTargetPush(__textElement.BENTO_VARS.__layer);
                 __textHandler.__Step();
+                __BentoLayerTargetPop();
             }
             else
             {

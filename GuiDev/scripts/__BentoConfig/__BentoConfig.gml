@@ -23,6 +23,14 @@
 // individually set itself to requiring an update using `BentoSetForceStep()`.
 #macro BENTO_ALWAYS_EXECUTE_STEP  false
 
+// Hotkey name to cancel text input. This hotkey is only used when receiving text input on a
+// desktop platform from the keyboard (and not using Steam's on-screen keyboard). You should use
+// this macro with `BentoInputHotkey()` to trigger cancelling text input. You may additionally
+// check against this macro yourself for general cancel behaviour (e.g. to quickly close a pop-up
+// window using a gamepad by pressing a button). Conventionally, a "cancel" hotkey is mapped to the
+// escape key on a keyboard or the B button on a gamepad.
+#macro BENTO_HOTKEY_CANCEL  "cancel text input"
+
 
 
 ///////
@@ -91,11 +99,10 @@
 // `BENTO_HOTKEY_MOUSE_WHEEL_DOWN`).
 #macro BENTO_MOUSE_WHEEL_SCROLL_SPEED  20
 
-// Button names to use to enable mouse wheel scrolling with `BentoScrollOnPointer()`. This macros
+// Hotkey names to use to enable mouse wheel scrolling with `BentoScrollOnPointer()`. This macros
 // should be used with `BentoInputHotkey()` to trigger scrolling.
 #macro BENTO_HOTKEY_MOUSE_WHEEL_UP    "mouse wheel up"
 #macro BENTO_HOTKEY_MOUSE_WHEEL_DOWN  "mouse wheel down"
-#macro BENTO_HOTKEY_CANCEL            "cancel"
 
 
 

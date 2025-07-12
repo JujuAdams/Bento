@@ -44,7 +44,7 @@ else
 // button. Buttons have a "pressed", "held", and "released" state that is accessed via functions.
 BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
 BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
-BentoInputHotkey("escape", BentoUsingGamepad()? gamepad_button_check(0, gp_start) : keyboard_check(vk_escape));
+BentoInputHotkey(BENTO_HOTKEY_CANCEL, BentoUsingGamepad()? gamepad_button_check(0, gp_start) : keyboard_check(vk_escape));
 
 // The main state update function. This ticks the entire system (but doesn't do any drawing).
 // Step user events (BENTO_USER_EVENT_STEP, 0) are executed by this function where appropriate.
