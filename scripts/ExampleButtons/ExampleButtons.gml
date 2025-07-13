@@ -38,26 +38,76 @@ function ExampleButtons()
                     ],
                 },
                 {
+                    object: oBentoText,
+                    vars: {
+                        text: "This example demonstrates various button behaviours. A \"button\" in Bento is any element that can be clicked by pressing the primary input (left mouse click, spacebar, [A] button on a gamepad etc.). Any element can be marked as a button.",
+                        font: fntDebug,
+                    },
+                },
+                {
+                    object: oBentoText,
+                    vars: {
+                        text: "Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or directional (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you.",
+                        font: fntDebug,
+                    },
+                },
+                {
+                    object: oBentoText,
+                    vars: {
+                        text: "When a button is clicked, `BentoPrimaryGetClick()` will return `true` for one step, including in the Draw event for the element. You should only use this function for determining if a button has been deliberately clicked by the player; any other function is liable to return false values.",
+                        font: fntDebug,
+                    },
+                },
+                {
                     object: oBentoBox,
                     layout: {
-                        grid: [5, 5],
-                        resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
+                        list: [BENTO_AXIS_Y, fa_center, fa_top],
+                        resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
+                        gutter: 20,
                     },
-                    children: function()
-                    {
-                        return array_create_ext(25, function(_index)
+                    children: [
                         {
-                            return {
-                                object: oExampleButton,
-                                vars: {
-                                    text: $"Text {_index}",
-                                },
-                                layout: {
-                                    anchor: [0.5, 0.5],
-                                },
-                            };
-                        });
-                    },
+                            object: oExampleButton,
+                            vars: {
+                                text: "Always a button",
+                            },
+                            select: true,
+                            onCreate: function()
+                            {
+                                BentoSetButton(BENTO_BUTTON_ALWAYS);
+                            },
+                        },
+                        {
+                            object: oExampleButton,
+                            vars: {
+                                text: "Pointer-only button",
+                            },
+                            onCreate: function()
+                            {
+                                BentoSetButton(BENTO_BUTTON_POINTER);
+                            },
+                        },
+                        {
+                            object: oExampleButton,
+                            vars: {
+                                text: "Directional-only button",
+                            },
+                            onCreate: function()
+                            {
+                                BentoSetButton(BENTO_BUTTON_DIRECTIONAL);
+                            },
+                        },
+                        {
+                            object: oExampleButton,
+                            vars: {
+                                text: "Never a button",
+                            },
+                            onCreate: function()
+                            {
+                                BentoSetButton(BENTO_BUTTON_NEVER);
+                            },
+                        },
+                    ],
                 },
             ],
         };
