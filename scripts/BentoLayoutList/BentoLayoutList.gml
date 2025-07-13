@@ -1,21 +1,21 @@
 // Feather disable all
 
 /// Sets an element to use a list ruleset. Lists can be orientated in either the x or y axis by
-/// providing a different constant to the `listAxis` parameter (either `BENTO_AXIS_X` or
+/// providing a different constant to the `majorAxis` parameter (either `BENTO_AXIS_X` or
 /// `BENTO_AXIS_Y`). The `hAlignChildren` and `vAlignChidlren` parameters control how children are
 /// positioned if content doesn't fill up the list element itself.
 /// 
 /// If you'd like to change the list's properties, you may call this functiuon again to overwrite
 /// existing values.
 /// 
-/// @param listAxis
+/// @param majorAxis
 /// @param hAlignChildren
 /// @param vAlignChidlren
 /// @param [element=self]
 
 // FIXME - Use of `fa_*` constants here is inconsistent with other alignment parameters
 
-function BentoLayoutList(_listAxis, _hAlignChildren, _vAlignChildren, _element = self)
+function BentoLayoutList(_majorAxis, _hAlignChildren, _vAlignChildren, _element = self)
 {
     with(__BentoGetVars(_element))
     {
@@ -26,7 +26,7 @@ function BentoLayoutList(_listAxis, _hAlignChildren, _vAlignChildren, _element =
             __layoutType = BENTO_LAYOUT_LIST;
             __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
-            __listAxis = _listAxis;
+            __listAxis = _majorAxis;
             __layoutHAlignChildren = _hAlignChildren;
             __layoutVAlignChildren = _vAlignChildren;
             
@@ -41,9 +41,9 @@ function BentoLayoutList(_listAxis, _hAlignChildren, _vAlignChildren, _element =
         {
             //We're already a list!
             
-            if ((_listAxis != undefined) && (__listAxis != _listAxis))
+            if ((_majorAxis != undefined) && (__listAxis != _majorAxis))
             {
-                __listAxis = _listAxis;
+                __listAxis = _majorAxis;
                 __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             }
             

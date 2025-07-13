@@ -5,7 +5,6 @@
 // (`BENTO_USER_EVENT_DRAW`, 1). If `BentoSetDrawAfter()` has been called then the Draw After user
 // event for that instance will be called too by `BentoSystemDraw()` (but won't by default).
 BentoSystemDraw(0, 0);
-//BentoLayerDrawWireframe();
 
 draw_set_font(fntDebug);
 
