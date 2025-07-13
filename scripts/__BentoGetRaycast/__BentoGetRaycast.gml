@@ -48,9 +48,9 @@ function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollParent)
                     var _weight = point_distance(_x, _y, _nearestX, _nearestY);
                     if (_weight < _minWeight)
                     {
-                        //Reject outside of a 45-degree cone. We do this last to avoid running expensive trig funcs
+                        //Reject outside of a 60-degree cone. We do this last to avoid running expensive trig funcs
                         var _angleDelta = angle_difference(_direction, point_direction(_x, _y, _nearestX, _nearestY));
-                        if (abs(_angleDelta) < 45)
+                        if (abs(_angleDelta) < 60)
                         {
                             //Check whether this element can actually be hovered. This is the most expensive part of the process
                             //due to needing to check a bunch of variables. We ignore the visibility check if the element we're
