@@ -79,6 +79,13 @@ function ExampleHomePage()
                                 clickFunc: ExampleButtons,
                             },
                         },
+                        {
+                            object: oExampleButton,
+                            vars: {
+                                text: $"Example: Lists",
+                                clickFunc: ExampleLists,
+                            },
+                        },
                     ],
                 },
             ],

@@ -11,6 +11,7 @@ event_inherited();
 
 // Ensure we have valid values for these variables
 BentoSetIfNotDefined("text", "");
+BentoSetIfNotDefined("emptyText", "");
 BentoSetIfNotDefined("font", -1);
 BentoSetIfNotDefined("hAlign", fa_left);
 BentoSetIfNotDefined("vAlign", fa_top);

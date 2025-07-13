@@ -368,6 +368,7 @@
     {"id":{"name":"ExampleButtons","path":"scripts/ExampleButtons/ExampleButtons.yy",},},
     {"id":{"name":"ExampleConstrButton","path":"scripts/ExampleConstrButton/ExampleConstrButton.yy",},},
     {"id":{"name":"ExampleHomePage","path":"scripts/ExampleHomePage/ExampleHomePage.yy",},},
+    {"id":{"name":"ExampleLists","path":"scripts/ExampleLists/ExampleLists.yy",},},
     {"id":{"name":"TestAnchor","path":"scripts/TestAnchor/TestAnchor.yy",},},
     {"id":{"name":"TestAnimation","path":"scripts/TestAnimation/TestAnimation.yy",},},
     {"id":{"name":"TestCarousel","path":"scripts/TestCarousel/TestCarousel.yy",},},
