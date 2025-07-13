@@ -1,3 +1,4 @@
 // Feather disable all
 
-TestScrollbox();
+mainElement = BENTO_NO_ELEMENT;
+ExampleHomePage();

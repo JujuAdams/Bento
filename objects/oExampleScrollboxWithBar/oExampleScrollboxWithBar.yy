@@ -12,7 +12,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/Examples/Objects.yy",
+    "path":"folders/Examples/Tests/Objects.yy",
   },
   "parentObjectId":{
     "name":"oBentoSprite",

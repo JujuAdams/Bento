@@ -214,7 +214,7 @@
 /// 
 /// Example:
 /// ```
-/// function ExampleGenerator(_metdata)
+/// function ExampleGenerator(_metadata)
 /// {
 ///     return array_create_ext(_metadata, function(_index)
 ///     {

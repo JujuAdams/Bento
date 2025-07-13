@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleConstrButton",
+  "%Name":"ExampleButtons",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleConstrButton",
+  "name":"ExampleButtons",
   "parent":{
-    "name":"Structs",
-    "path":"folders/Examples/Tests/Structs.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

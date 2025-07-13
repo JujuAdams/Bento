@@ -1,21 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"oExampleGrid",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oBentoBox",
+  "eventList":[],
   "managed":true,
-  "name":"oExampleGrid",
+  "name":"oBentoBox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Examples/Tests/Objects.yy",
+    "name":"Inheritable Objects",
+    "path":"folders/Library/Other Resources/Inheritable Objects.yy",
   },
   "parentObjectId":{
-    "name":"oBentoSprite",
-    "path":"objects/oBentoSprite/oBentoSprite.yy",
+    "name":"oBentoAncestor",
+    "path":"objects/oBentoAncestor/oBentoAncestor.yy",
   },
-  "persistent":false,
+  "persistent":true,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
   "physicsFriction":0.2,
@@ -32,10 +30,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"sBentoMaskRectangle",
-    "path":"sprites/sBentoMaskRectangle/sBentoMaskRectangle.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

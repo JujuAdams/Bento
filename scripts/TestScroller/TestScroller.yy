@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"TestScroller",
   "parent":{
-    "name":"Examples",
-    "path":"folders/Examples.yy",
+    "name":"Tests",
+    "path":"folders/Examples/Tests.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

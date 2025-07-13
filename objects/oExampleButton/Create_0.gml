@@ -12,3 +12,8 @@ BentoSetIfNotDefined("clickFunc", function()
 clickFunc = method(self, clickFunc);
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
+
+if (text != "")
+{
+    BentoLayoutSetSize(string_width(text) + 20, string_height(text) + 20);
+}
