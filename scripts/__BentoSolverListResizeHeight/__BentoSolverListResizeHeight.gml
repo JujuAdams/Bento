@@ -180,9 +180,9 @@ function __BentoSolverListResizeHeight()
                     var _prevSize = _child.__solvedHeight;
                     if (_prevSize == _max)
                     {
-                        if (_prevSize + _addition <= _child.__layoutHeightMin)
+                        if (_prevSize + _addition <= _child.__solverMinHeight)
                         {
-                            var _newSize = _child.__layoutHeightMin;
+                            var _newSize = _child.__solverMinHeight;
                             array_delete(_modifiableArray, array_get_index(_modifiableArray, _child), 1);
                         }
                         else
