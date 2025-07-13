@@ -23,12 +23,14 @@
 /// `.vars` (only when using `.object`)
 /// `.children`
 /// 
-/// `.offset`  executes `BentoSetOffset()`
-/// `.visible` executes `BentoSetVisible()`
-/// `.name`    executes `BentoNameSet()`
-/// `.clip`    executes `BentoClipSetEnabled()` and `BentoClipSetPadding()`
-/// `.scroll`  executes `BentoScrollSetEnabled()` and `BentoScrollSetPadding()`
-/// `.layout`  executes `BentoLayoutSetFromJSON()`
+/// `.offset`     executes `BentoSetOffset()`
+/// `.visible`    executes `BentoSetVisible()`
+/// `.name`       executes `BentoNameSet()`
+/// `.selectSoft` executes `BentoSelectSoft()`
+/// `.clip`       executes `BentoClipSetEnabled()` and `BentoClipSetPadding()`
+/// `.scroll`     executes `BentoScrollSetEnabled()` and `BentoScrollSetPadding()`
+/// `.layout`     executes `BentoLayoutSetFromJSON()`
+/// `.onCreate`   executes a custom method
 /// 
 /// 
 /// 
@@ -139,6 +141,30 @@
 /// }
 /// ```
 /// 
+/// Element definition structs may contain an `.select` property. If specified, this must be either
+/// `true` or `fdlse`. If the value is `true`, `BentoSelect()` will be executed targeting the
+/// created element.
+/// 
+/// Example:
+/// ```
+/// {
+///     object: oBentoSprite,
+///     select: true
+/// }
+/// ```
+/// 
+/// Element definition structs may contain an `.softSelect` property. If specified, this must be either
+/// `true` or `fdlse`. If the value is `true`, `BentoSelectSoft()` will be executed targeting the
+/// created element.
+/// 
+/// Example:
+/// ```
+/// {
+///     object: oBentoSprite,
+///     softSelect: true
+/// }
+/// ```
+/// 
 /// 
 /// 
 /// `.clip`
@@ -233,7 +259,7 @@
 /// ```
 /// 
 /// The `.children` property may also be a string. In this case, the string will be passed to a
-/// function that you define using the `BENTO_JSON_CHILDREN_STRING_PROCESSOR` macro. This string
+/// function that you define using the `BENTO_JSON_STRING_PROCESSOR` macro. This string
 /// processor function should return an array of Bento element definitions which will then be
 /// created. This feature is intended for use with runtime code compilation and execution - you can
 /// compile the string found in JSON to then create children. The function specified by the above
@@ -242,7 +268,7 @@
 /// 
 /// Example:
 /// ```
-/// #macro BENTO_JSON_CHILDREN_STRING_PROCESSOR  ExampleStringProcessor
+/// #macro BENTO_JSON_STRING_PROCESSOR  ExampleStringProcessor
 /// 
 /// function ExampleStringProcessor(_string, _metadata)
 /// {
@@ -306,6 +332,23 @@
 ///             },
 ///         },
 ///     ],
+/// }
+/// ```
+/// 
+/// 
+/// 
+/// Element definitions struct may also contain an `.onCreate` property. If used, this property
+/// should be a function. The function will be rescoped to the created element and executed after
+/// initializing the element and applying other properties.
+/// 
+/// Example:
+/// ```
+/// {
+///     object: oBentoSprite,
+///     onCreate: function()
+///     {
+///         BentoSetForceStep(true);
+///     }
 /// }
 /// ```
 
@@ -443,6 +486,36 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             }
         }
         
+        //Force select the instance
+        var _select = _json[$ "select"];
+        if (_select != undefined)
+        {
+            if (not is_bool(_select))
+            {
+                __BentoError($".select property is incorrect datatype, must be a boolean (was \"{typeof(_vars)}\")");
+            }
+            
+            if (_select)
+            {
+                BentoSelect(_element);
+            }
+        }
+        
+        //Soft select the instance
+        var _softSelect = _json[$ "softSelect"];
+        if (_softSelect != undefined)
+        {
+            if (not is_bool(_softSelect))
+            {
+                __BentoError($".softSelect property is incorrect datatype, must be a boolean (was \"{typeof(_vars)}\")");
+            }
+            
+            if (_softSelect)
+            {
+                BentoSelectSoft(_element);
+            }
+        }
+        
         //Offset the element
         var _offset = _json[$ "offset"];
         if (_offset != undefined)
@@ -483,14 +556,14 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
         {
             if (is_string(_children))
             {
-                var _processor = BENTO_JSON_CHILDREN_STRING_PROCESSOR;
+                var _processor = BENTO_JSON_STRING_PROCESSOR;
                 if (is_callable(_processor))
                 {
                     _children = _processor(_children, _metadata);
                 }
                 else
                 {
-                    __BentoError($".children was provided as a string but `BENTO_JSON_CHILDREN_STRING_PROCESSOR` is not a function");
+                    __BentoError($".children was provided as a string but `BENTO_JSON_STRING_PROCESSOR` is not a function");
                 }
             }
             
@@ -576,6 +649,12 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             {
                 __BentoError($".scroll property must be a number, a 4-element array, or a struct (typeof \"{typeof(_scroll)}\")");
             }
+        }
+        
+        var _onCreate = _json[$ "onCreate"];
+        if (is_callable(_onCreate))
+        {
+            method(_element, _onCreate)();
         }
         
         return _element;

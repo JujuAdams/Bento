@@ -111,7 +111,7 @@
 
 // Function to call when parsing strings from `.children` properties in `BentoCreateFromJSON()`.
 // Please see documentation for that function for further information.
-#macro BENTO_JSON_CHILDREN_STRING_PROCESSOR  undefined
+#macro BENTO_JSON_STRING_PROCESSOR  undefined
 
 // Functions to call when showing debug messages. Set this macro to `undefined` to disable all
 // debug messages.
