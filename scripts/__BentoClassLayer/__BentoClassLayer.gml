@@ -452,10 +452,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 if (__scissorEnabled)
                 {
-                    with(__attachedElement)
-                    {
-                        __BentoScissorPushFromVars();
-                    }
+                    __BentoScissorPushFromVars();
                 }
                 
                 //Add children created inside the parent to the Draw order
