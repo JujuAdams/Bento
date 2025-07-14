@@ -2,7 +2,7 @@
 
 event_inherited();
 
-BentoLayoutList(BENTO_AXIS_Y, fa_left, fa_top);
+BentoLayoutList(BENTO_AXIS_Y, 0, 0);
 BentoClipSetEnabled(true);
 BentoScrollSetEnabled(true, true);
 BentoSetButton(BENTO_BUTTON_DIRECTIONAL);

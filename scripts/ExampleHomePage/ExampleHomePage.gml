@@ -10,7 +10,7 @@ function ExampleHomePage()
                 padding: 40,
                 gutter: 35,
                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
-                list: [BENTO_AXIS_Y, fa_center, fa_top],
+                list: [BENTO_AXIS_Y, 0.5, 0],
             },
             children: [
                 {
@@ -38,7 +38,7 @@ function ExampleHomePage()
                     layout: {
                         gutter: 35,
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
-                        list: [BENTO_AXIS_X, fa_center, fa_middle],
+                        list: [BENTO_AXIS_X, 0.5, 0.5],
                     },
                     children: [
                         {
@@ -66,7 +66,7 @@ function ExampleHomePage()
                 {
                     object: oExampleScrollboxWithBar,
                     layout: {
-                        list: [BENTO_AXIS_Y, fa_center, fa_top],
+                        list: [BENTO_AXIS_Y, 0.5, 0],
                         padding: 20,
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                         gutter: 15,

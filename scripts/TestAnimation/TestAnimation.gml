@@ -6,7 +6,7 @@ function TestAnimations()
     with(structTest)
     {
         BentoSetOffset(100, 100);
-        BentoLayoutList(BENTO_AXIS_Y, fa_left, fa_top);
+        BentoLayoutList(BENTO_AXIS_Y, 0, 0);
         BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);

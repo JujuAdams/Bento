@@ -14,7 +14,7 @@ function TestAnchor()
             resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
             padding: 10,
             gutter:  10,
-            list: ["x", fa_left, fa_top],
+            list: ["x", 0, 0],
         },
         children: [
             {

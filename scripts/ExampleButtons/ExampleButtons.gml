@@ -10,13 +10,13 @@ function ExampleButtons()
                 padding: 40,
                 gutter: 35,
                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
-                list: [BENTO_AXIS_Y, fa_center, fa_top],
+                list: [BENTO_AXIS_Y, 0.5, 0],
             },
             children: [
                 {
                     object: oBentoBox,
                     layout: {
-                        list: [BENTO_AXIS_X, fa_center, fa_middle],
+                        list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
                     },
@@ -61,7 +61,7 @@ function ExampleButtons()
                 {
                     object: oBentoBox,
                     layout: {
-                        list: [BENTO_AXIS_Y, fa_center, fa_top],
+                        list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
                         gutter: 20,
                     },

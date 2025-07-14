@@ -190,24 +190,8 @@
 ///     - 0 (equal to BENTO_AXIS_X)
 ///     - 1 (equal to BENTO_AXIS_Y)
 ///     
-///     Horizontal alignment values must be one of the following:
-///     - "left"
-///     - "center"
-///     - "centre"
-///     - "right"
-///     - 0 (equal to fa_left)
-///     - 1 (equal to fa_center)
-///     - 2 (equal to fa_right)
-///     
-///     Vertical alignment values must be one of the following:
-///     - "right"
-///     - "middle"
-///     - "bottom"
-///     - 0 (equal to fa_top)
-///     - 1 (equal to fa_middle)
-///     - 2 (equal to fa_bottom)
-///     
-///     You may also use `null` for any value to indicate that no change should be made.
+///     Horizontal and vertical alignment values must be a number, typically from `0` to `1`. You may
+///     also use `null` for any value to indicate that no change should be made.
 ///     
 /// `.grid`
 ///     Calls the `BentoLayoutGrid()` function on the created element.
@@ -685,66 +669,14 @@ function __BentoLayoutSetFromJSON_list(_element, _value)
         __BentoError($".list.axis layout property must be \"x\", \"y\", {BENTO_AXIS_X}, or {BENTO_AXIS_Y} (value was {_axis})");
     }
     
-    if (is_numeric(_hAlign))
+    if (not is_numeric(_hAlign))
     {
-        if ((_hAlign != fa_left) && (_hAlign != fa_center) && (_hAlign != fa_right))
-        {
-            __BentoError($".list.h layout property must be \"left\", \"center\", \"right\", {fa_left}, {fa_center}, or {fa_right} (value was {_hAlign})");
-        }
-    }
-    else if (is_string(_hAlign))
-    {
-        if (_hAlign == "left")
-        {
-            _hAlign = fa_left;
-        }
-        else if ((_hAlign == "center") || (_hAlign == "centre"))
-        {
-            _hAlign = fa_center;
-        }
-        else if (_hAlign == "right")
-        {
-            _hAlign = fa_right;
-        }
-        else
-        {
-            __BentoError($".list.h layout property invalid (value was {_hAlign}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
-        }
-    }
-    else
-    {
-        __BentoError($".list.h layout property invalid (value was {_hAlign}). Must be one of:\n- \"left\"\n- \"center\"\n- \"right\"\n- {fa_left}\n- {fa_center}\n- {fa_right}");
+        __BentoError($".list.h layout property must be a number (typeof \"{typeof(_hAlign)}\")");
     }
     
-    if (is_numeric(_vAlign))
+    if (not is_numeric(_vAlign))
     {
-        if ((_vAlign != fa_top) && (_vAlign != fa_middle) && (_vAlign != fa_bottom))
-        {
-            __BentoError($".list.y layout property must be \"top\", \"middle\", \"bottom\", {fa_top}, {fa_middle}, or {fa_bottom} (value was {_vAlign})");
-        }
-    }
-    else if (is_string(_vAlign))
-    {
-        if (_vAlign == "top")
-        {
-            _vAlign = fa_top;
-        }
-        else if (_vAlign == "middle")
-        {
-            _vAlign = fa_middle;
-        }
-        else if (_vAlign == "bottom")
-        {
-            _vAlign = fa_bottom;
-        }
-        else
-        {
-            __BentoError($".list.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
-        }
-    }
-    else
-    {
-        __BentoError($".list.v layout property invalid (value was {_vAlign}). Must be one of:\n- \"top\"\n- \"middle\"\n- \"bottom\"\n- {fa_top}\n- {fa_middle}\n- {fa_bottom}");
+        __BentoError($".list.v layout property must be a number (typeof \"{typeof(_vAlign)}\")");
     }
     
     BentoLayoutList(_axis, _hAlign, _vAlign, _element);

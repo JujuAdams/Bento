@@ -7,7 +7,7 @@ function TestScroller()
             object: oBentoSprite,
             offset: [30, 30],
             layout: {
-                list: ["y", fa_left, fa_top],
+                list: ["y", 0, 0],
                 padding: 10,
                 gutter: 10,
             },

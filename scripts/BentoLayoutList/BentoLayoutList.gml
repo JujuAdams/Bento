@@ -2,8 +2,11 @@
 
 /// Sets an element to use a list ruleset. Lists can be orientated in either the x or y axis by
 /// providing a different constant to the `majorAxis` parameter (either `BENTO_AXIS_X` or
-/// `BENTO_AXIS_Y`). The `hAlignChildren` and `vAlignChidlren` parameters control how children are
-/// positioned if content doesn't fill up the list element itself.
+/// `BENTO_AXIS_Y`).
+/// 
+/// The `hAlignChildren` and `vAlignChidlren` parameters control how children are positioned if
+/// content doesn't fill up the list element itself. Both values should typically be a number from
+/// `0` to `1`.
 /// 
 /// If you'd like to change the list's properties, you may call this functiuon again to overwrite
 /// existing values.
@@ -12,8 +15,6 @@
 /// @param hAlignChildren
 /// @param vAlignChidlren
 /// @param [element=self]
-
-// FIXME - Use of `fa_*` constants here is inconsistent with other alignment parameters
 
 function BentoLayoutList(_majorAxis, _hAlignChildren, _vAlignChildren, _element = self)
 {
