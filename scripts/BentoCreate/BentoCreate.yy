@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoCreateObject",
+  "%Name":"BentoCreate",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoCreateObject",
+  "name":"BentoCreate",
   "parent":{
     "name":"Functions",
     "path":"folders/Library/Functions.yy",
