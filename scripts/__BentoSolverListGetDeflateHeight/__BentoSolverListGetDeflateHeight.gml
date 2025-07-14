@@ -46,7 +46,7 @@ function __BentoSolverListGetDeflateHeight()
     _deflateSize += _extra
     _minSize += _extra;
     
-    __solverMinHeight     = clamp((__layoutHeightResize == BENTO_RESIZE_INFLATE)? 0 : _minSize, __layoutHeightMin, __layoutHeightMax);
+    __solverMinHeight     = (__layoutHeightResize == BENTO_RESIZE_INFLATE)? __layoutHeightMin : clamp(_minSize, __layoutHeightMin, __layoutHeightMax);
     __solverDeflateHeight = clamp(_deflateSize, __solverMinHeight, __layoutHeightMax);
     __solvedHeight        = clamp((__layoutHeightResize == BENTO_RESIZE_NORMAL)? __layoutHeightPref : _deflateSize, __solverMinHeight, __layoutHeightMax);
 }

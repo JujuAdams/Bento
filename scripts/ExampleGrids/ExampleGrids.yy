@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExampleGrids",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExampleGrids",
+  "parent":{
+    "name":"Examples",
+    "path":"folders/Examples.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

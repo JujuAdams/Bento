@@ -86,6 +86,13 @@ function ExampleHomePage()
                                 clickFunc: ExampleLists,
                             },
                         },
+                        {
+                            object: oExampleButton,
+                            vars: {
+                                text: $"Example: Grids",
+                                clickFunc: ExampleGrids,
+                            },
+                        },
                     ],
                 },
             ],

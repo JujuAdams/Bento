@@ -7,11 +7,15 @@
 /// player has collected more items, you may call this functiuon again to overwrite existing
 /// values.
 /// 
-/// @param columns
-/// @param rows
+/// @param targetColumns
+/// @param targetRows
+/// @param [minColumns=1]
+/// @param [minRows=1]
+/// @param [maxColumns]
+/// @param [maxRows]
 /// @param [element=self]
 
-function BentoLayoutGrid(_columns, _rows, _element = self)
+function BentoLayoutGrid(_targetColumns, _targetRows, _minColumns = 1, _minRows = 1, _maxColumns = infinity, _maxRows = infinity, _element = self)
 {
     with(__BentoGetVars(_element))
     {
@@ -22,12 +26,16 @@ function BentoLayoutGrid(_columns, _rows, _element = self)
             __layoutType = BENTO_LAYOUT_GRID;
             __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
-            __gridColumns = max(1, _columns);
-            __gridRows    = max(1, _rows);
+            __gridTargetColumns = max(1, _targetColumns);
+            __gridTargetRows    = max(1, _targetRows);
+            __gridMinColumns    = max(1, _minColumns);
+            __gridMinRows       = max(1, _minRows);
+            __gridMaxColumns    = max(_minColumns, _maxColumns);
+            __gridMaxRows       = max(_minRows, _maxRows);
             
-            __SolverGetDeflateWidth  = method(self, __BentoSolverRectGetDeflateWidth);
+            __SolverGetDeflateWidth  = method(self, __BentoSolverGridGetDeflateWidth);
             __SolverResizeWidth      = method(self, __BentoSolverGridResizeWidth);
-            __SolverGetDeflateHeight = method(self, __BentoSolverRectGetDeflateHeight);
+            __SolverGetDeflateHeight = method(self, __BentoSolverGridGetDeflateHeight);
             __SolverResizeHeight     = method(self, __BentoSolverGridResizeHeight);
             __SolverPositions        = method(self, __BentoSolverGridPositions);
             __funcMeasureHeight      = function() { return 1; }
@@ -36,17 +44,7 @@ function BentoLayoutGrid(_columns, _rows, _element = self)
         {
             //We're already a grid!
             
-            if ((_columns != undefined) && (__gridColumns != _columns))
-            {
-                __gridColumns = max(1, _columns);
-                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
-            }
-            
-            if ((_rows != undefined) && (__gridRows != _rows))
-            {
-                __gridRows = max(1, _rows);
-                __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
-            }
+            //TODO
         }
     }
 }

@@ -46,7 +46,7 @@ function __BentoSolverListGetDeflateWidth()
     _deflateSize += _extra;
     _minSize += _extra;
     
-    __solverMinWidth     = clamp((__layoutWidthResize == BENTO_RESIZE_INFLATE)? 0 : _minSize, __layoutWidthMin, __layoutWidthMax);
+    __solverMinWidth     = (__layoutWidthResize == BENTO_RESIZE_INFLATE)? __layoutWidthMin : clamp(_minSize, __layoutWidthMin, __layoutWidthMax);
     __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth, __layoutWidthMax);
     __solvedWidth        = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __layoutWidthPref : _deflateSize, __solverMinWidth, __layoutWidthMax);
 }

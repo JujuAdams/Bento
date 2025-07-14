@@ -696,17 +696,17 @@ function __BentoLayoutSetFromJSON_grid(_element, _value)
             __BentoError($".grid layout property must have two elements if it is an array (length = {array_length(_value)})");
         }
         
-        BentoLayoutGrid(_value[0], _value[1], _element);
+        BentoLayoutGrid(_value[0], _value[1], undefined, undefined, undefined, undefined, _element);
     }
     else if (is_struct(_value))
     {
-        BentoLayoutGrid(_value[$ "columns"],
-                           _value[$ "rows"   ],
-                           _element);
+        BentoLayoutGrid(_value[$ "columns"], _value[$ "rows"],
+                        undefined, undefined, undefined, undefined,
+                        _element);
     }
     else
     {
-        __BentoError($".gridSize layout property must be a two-element array or a struct (typeof \"{typeof(_value)}\")");
+        __BentoError($".grid layout property must be a two-element array or a struct (typeof \"{typeof(_value)}\")");
     }
 }
 
