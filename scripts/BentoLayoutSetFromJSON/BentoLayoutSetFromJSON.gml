@@ -12,12 +12,12 @@
 /// Each layout property is associated with a layout function (`BentoLayoutSetSize()` etc.). There
 /// are many layout properties that can be modified using this function:
 /// 
+/// `.anchor`  executes `BentoLayoutSetAnchor()`
 /// `.size`    executes `BentoLayoutSetSize()`
 /// `.minSize` executes `BentoLayoutSetMinSize()`
 /// `.maxSize` executes `BentoLayoutSetMaxSize()`
 /// `.resize`  executes `BentoLayoutSetResize()`
 /// `.padding` executes `BentoLayoutSetPadding()`
-/// `.anchor`  executes `BentoLayoutSetAnchor()`
 /// `.gutter`  executes `BentoLayoutSetGutter()`
 /// `.list`    executes `BentoLayoutList()`
 /// `.grid`    executes `BentoLayoutGrid()`
