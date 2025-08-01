@@ -7,7 +7,7 @@
 //                       DO NOT EDIT THIS SCRIPT                          //
 //                       Bad things might happen.                         //
 //                                                                        //
-//            Customisation options can be found in __BentoConfig()         //
+//            Customisation options can be found in __BentoConfig()       //
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
@@ -18,7 +18,18 @@
 
 #macro BENTO_NO_ELEMENT  noone
 
+///////
+// User Event Mapping
+///////
 
+#macro BENTO_USER_EVENT_STEP        0
+#macro BENTO_USER_EVENT_DRAW        1
+#macro BENTO_USER_EVENT_DRAW_AFTER  2
+#macro BENTO_USER_EVENT_REPOSITION  3
+
+///////
+// Buttons
+///////
 
 //Not a button. Cannot be clicked and cannot be hovered in directional input modes.
 #macro BENTO_BUTTON_NEVER  0b00
@@ -32,7 +43,9 @@
 //Only a button in directional input modes. Cannot be clicked in pointer input modes.
 #macro BENTO_BUTTON_DIRECTIONAL  0b10
 
-
+///////
+// Focus
+///////
 
 //Pointer is constrained inside the focused part of the tree.
 #macro BENTO_FOCUS_POINTER_CONSTRAIN  0
@@ -51,7 +64,9 @@
 //Focus is cancelled automatically if the input mode is set to `BENTO_MODE_POINTER`.
 #macro BENTO_FOCUS_POINTER_CANCEL_ALWAYS  4
 
-
+///////
+// Focus enclose
+///////
 
 //Child elements are never enclosed and can always be interacted with.
 #macro BENTO_ENCLOSE_NEVER  0b00
@@ -68,17 +83,14 @@
 //completeness.
 #macro BENTO_ENCLOSE_POINTER  0b01
 
-
+///////
+// Layout
+///////
 
 #macro BENTO_LAYOUT_RECT  0
 #macro BENTO_LAYOUT_LIST  1
 #macro BENTO_LAYOUT_GRID  2
 #macro BENTO_LAYOUT_TEXT  3
-
-//As per GameMaker's native `rectangle_in_rectangle()` function
-#macro BENTO_VISIBLE_NONE     0
-#macro BENTO_VISIBLE_FULL     1
-#macro BENTO_VISIBLE_PARTIAL  2
 
 #macro BENTO_AXIS_X  0
 #macro BENTO_AXIS_Y  1
@@ -88,22 +100,38 @@
 #macro BENTO_RESIZE_INFLATE  2
 #macro BENTO_RESIZE_ASPECT   3
 
+///////
+// Visibility
+///////
+
+//As per GameMaker's native `rectangle_in_rectangle()` function
+#macro BENTO_VISIBLE_NONE     0
+#macro BENTO_VISIBLE_FULL     1
+#macro BENTO_VISIBLE_PARTIAL  2
+
+///////
+// Input
+///////
+
 #macro BENTO_MODE_UNKNOWN   0
 #macro BENTO_MODE_MOUSE     1
 #macro BENTO_MODE_KEYBOARD  2
 #macro BENTO_MODE_GAMEPAD   3
 #macro BENTO_MODE_TOUCH     4
 
-#macro BENTO_USER_EVENT_STEP        0
-#macro BENTO_USER_EVENT_DRAW        1
-#macro BENTO_USER_EVENT_DRAW_AFTER  2
-#macro BENTO_USER_EVENT_REPOSITION  3
+// These are used to indicate text input state.
 
 #macro BENTO_TEXT_ERROR    -666
 #macro BENTO_TEXT_ABORT    -1
 #macro BENTO_TEXT_INACTIVE  0
 #macro BENTO_TEXT_PENDING   1
 #macro BENTO_TEXT_CONFIRM   2
+
+///////
+// OS Checks
+///////
+
+// These are general purpose checks that are available if needed. Many are not used.
 
 #macro BENTO_ON_WINDOWS  (os_type == os_windows)
 #macro BENTO_ON_MACOS    (os_type == os_macosx)
