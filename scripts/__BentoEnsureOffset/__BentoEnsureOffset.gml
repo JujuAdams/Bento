@@ -131,10 +131,15 @@ function __BentoMarkScrollPosDirtyInner(_dirtyOffsetArray, _elementVars, _offset
         
         if (__scissorEnabled)
         {
-            __scissorWorldLeft   = max(_scissorL, _leftWorld   + __scissorPadLeft   + __scissorScrollbarLeft  );
-            __scissorWorldTop    = max(_scissorT, _topWorld    + __scissorPadTop    + __scissorScrollbarTop   );
-            __scissorWorldRight  = min(_scissorR, _rightWorld  - __scissorPadRight  - __scissorScrollbarRight );
-            __scissorWorldBottom = min(_scissorB, _bottomWorld - __scissorPadBottom - __scissorScrollbarBottom);
+            _scissorL = max(_scissorL, _leftWorld   + __scissorPadLeft   + __scissorScrollbarLeft  );
+            _scissorT = max(_scissorT, _topWorld    + __scissorPadTop    + __scissorScrollbarTop   );
+            _scissorR = min(_scissorR, _rightWorld  - __scissorPadRight  - __scissorScrollbarRight );
+            _scissorB = min(_scissorB, _bottomWorld - __scissorPadBottom - __scissorScrollbarBottom);
+            
+            __scissorWorldLeft   = _scissorL;
+            __scissorWorldTop    = _scissorT;
+            __scissorWorldRight  = _scissorR;
+            __scissorWorldBottom = _scissorB;
             
             _scissorParent = self;
         }

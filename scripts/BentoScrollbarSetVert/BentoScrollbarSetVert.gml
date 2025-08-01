@@ -53,7 +53,7 @@ function BentoScrollbarSetVert(_mirror, _thickness, _padLeft, _padTop, _padRight
             __scissorScrollbarRight = _overlap? 0 : _padLeft + _thickness + _padRight;
         }
         
-        //FIXME - Don't mark the as dirty every time
+        //FIXME - Don't mark the layer as dirty every time
         __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT | __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
     }
 }
