@@ -121,6 +121,7 @@ function __BentoClassScrollbarHori(_element) : __BentoClassScrollbar(_element) c
         }
         else
         {
+            hoverScrollbar = false;
             return undefined;
         }
     }
