@@ -93,6 +93,13 @@ function ExampleHomePage()
                                 clickFunc: ExampleGrids,
                             },
                         },
+                        {
+                            object: oExampleButton,
+                            vars: {
+                                text: $"Example: Settings Menu",
+                                clickFunc: ExampleSettings,
+                            },
+                        },
                     ],
                 },
             ],

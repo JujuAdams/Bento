@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoRefCreate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoRefCreate",
+  "parent":{
+    "name":"References",
+    "path":"folders/Library/Functions/References.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
