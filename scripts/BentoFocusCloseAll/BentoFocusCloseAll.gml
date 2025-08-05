@@ -16,7 +16,12 @@ function BentoFocusCloseAll(_layerOrName = undefined)
             var _i = 0;
             repeat(array_length(_focusStack))
             {
-                _focusStack[_i].__focused = false;
+                with(_focusStack[_i].BENTO_VARS)
+                {
+                    __focusType = BENTO_FOCUS_NONE;
+                    __focused   = false;
+                }
+                
                 ++_i;
             }
             

@@ -24,7 +24,12 @@ function __BentoFocusCloseInner(_element)
                 var _i = array_length(_focusStack)-1;
                 repeat(array_length(_focusStack) - _index)
                 {
-                    _focusStack[_i].BENTO_VARS.__focused = false;
+                    with(_focusStack[_i].BENTO_VARS)
+                    {
+                        __focusType = BENTO_FOCUS_NONE;
+                        __focused   = false;
+                    }
+                    
                     --_i;
                 }
             }

@@ -231,6 +231,7 @@
     {"id":{"name":"BentoFocusGetType","path":"scripts/BentoFocusGetType/BentoFocusGetType.yy",},},
     {"id":{"name":"BentoFocusOpen","path":"scripts/BentoFocusOpen/BentoFocusOpen.yy",},},
     {"id":{"name":"BentoFocusSetEnclose","path":"scripts/BentoFocusSetEnclose/BentoFocusSetEnclose.yy",},},
+    {"id":{"name":"BentoFocusToggle","path":"scripts/BentoFocusToggle/BentoFocusToggle.yy",},},
     {"id":{"name":"BentoGetBlocksKeyboard","path":"scripts/BentoGetBlocksKeyboard/BentoGetBlocksKeyboard.yy",},},
     {"id":{"name":"BentoGetBlocksMouse","path":"scripts/BentoGetBlocksMouse/BentoGetBlocksMouse.yy",},},
     {"id":{"name":"BentoGetButton","path":"scripts/BentoGetButton/BentoGetButton.yy",},},
