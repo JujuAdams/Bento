@@ -49,22 +49,25 @@ if (BentoUsingPointer())
 }
 else if (BentoUsingDirectional())
 {
-    handleHover = (BentoFocusGetType() != BENTO_FOCUS_NONE);
+    handleHover = BentoCursorGetHover() && ((not useFocus) || (BentoFocusGetType() != BENTO_FOCUS_NONE));
     handleHold  = false;
     
-    if (BentoPrimaryGetClick())
+    if (useFocus)
     {
-        BentoFocusToggle(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
-    }
-    
-    if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
-    {
-        BentoFocusClose();
+        if (BentoPrimaryGetClick())
+        {
+            BentoFocusToggle(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
+        }
+        
+        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
+        {
+            BentoFocusClose();
+        }
     }
     
     if (handleHover)
     {
-        if (BentoCursorGetHover() && (BentoCursorGetDX() != 0))
+        if (BentoCursorGetHover() && (BentoCursorGetDX(0.3) != 0))
         {
             _handleStep += sign(BentoCursorGetDX());
         }
