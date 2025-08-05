@@ -85,6 +85,7 @@
     {"id":{"name":"oExampleGrid","path":"objects/oExampleGrid/oExampleGrid.yy",},},
     {"id":{"name":"oExampleGridWithRotation","path":"objects/oExampleGridWithRotation/oExampleGridWithRotation.yy",},},
     {"id":{"name":"oExampleListWithScroll","path":"objects/oExampleListWithScroll/oExampleListWithScroll.yy",},},
+    {"id":{"name":"oExampleRadioButton","path":"objects/oExampleRadioButton/oExampleRadioButton.yy",},},
     {"id":{"name":"oExampleScrollbox","path":"objects/oExampleScrollbox/oExampleScrollbox.yy",},},
     {"id":{"name":"oExampleScrollboxWithBar","path":"objects/oExampleScrollboxWithBar/oExampleScrollboxWithBar.yy",},},
     {"id":{"name":"oExampleScroller","path":"objects/oExampleScroller/oExampleScroller.yy",},},

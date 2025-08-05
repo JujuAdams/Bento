@@ -4,6 +4,7 @@ global.settings = {
     checkbox1: true,
     checkbox2: false,
     slider: 5,
+    radiobutton: 1,
 };
 
 function ExampleSettings()
@@ -53,14 +54,14 @@ function ExampleSettings()
                         {
                             object: oExampleCheckbox,
                             vars: {
-                                text: "Button",
+                                text: "Checkbox 1",
                                 reference: BentoRefCreate(global.settings, "checkbox1"),
                             },
                         },
                         {
                             object: oExampleCheckbox,
                             vars: {
-                                text: "Button",
+                                text: "Checkbox 2",
                                 reference: BentoRefCreate(global.settings, "checkbox2"),
                             },
                         },
@@ -71,6 +72,30 @@ function ExampleSettings()
                             },
                             layout: {
                                 size: [200, undefined],
+                            },
+                        },
+                        {
+                            object: oExampleRadioButton,
+                            vars: {
+                                text: "Radio Button 1",
+                                reference: BentoRefCreate(global.settings, "radiobutton"),
+                                option: 1,
+                            },
+                        },
+                        {
+                            object: oExampleRadioButton,
+                            vars: {
+                                text: "Radio Button 2",
+                                reference: BentoRefCreate(global.settings, "radiobutton"),
+                                option: 2,
+                            },
+                        },
+                        {
+                            object: oExampleRadioButton,
+                            vars: {
+                                text: "Radio Button 3",
+                                reference: BentoRefCreate(global.settings, "radiobutton"),
+                                option: 3,
                             },
                         },
                     ],
