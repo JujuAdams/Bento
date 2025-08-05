@@ -3,6 +3,7 @@
 global.settings = {
     checkbox1: true,
     checkbox2: false,
+    slider: 5,
 };
 
 function ExampleSettings()
@@ -61,6 +62,15 @@ function ExampleSettings()
                             vars: {
                                 text: "Button",
                                 reference: BentoRefCreate(global.settings, "checkbox2"),
+                            },
+                        },
+                        {
+                            object: oExampleSlider,
+                            vars: {
+                                reference: BentoRefCreate(global.settings, "slider"),
+                            },
+                            layout: {
+                                size: [200, undefined],
                             },
                         },
                     ],

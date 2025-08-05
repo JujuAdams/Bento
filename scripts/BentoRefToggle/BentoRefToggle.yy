@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoRefToggle",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoRefToggle",
+  "parent":{
+    "name":"References",
+    "path":"folders/Library/Functions/References.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
