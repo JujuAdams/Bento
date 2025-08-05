@@ -9,9 +9,10 @@
 /// - If the input mode is set to `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD` then this function
 ///   returns the `dX` value set by `BentoInputDirectional()`.
 /// 
+/// @param [directionalThreshold=0.001]
 /// @param [layerOrName=current]
 
-function BentoCursorGetDX(_layerOrName = undefined)
+function BentoCursorGetDX(_directionalThreshold = 0.001, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
@@ -21,7 +22,8 @@ function BentoCursorGetDX(_layerOrName = undefined)
         }
         else if (__navDirectional)
         {
-            return __turboState.__outputX;
+            var _output = __turboState.__outputX;
+            return (abs(_output) < _directionalThreshold)? 0 : _output;
         }
     }
     
