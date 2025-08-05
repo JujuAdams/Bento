@@ -15,6 +15,16 @@ function __BentoClassTurbo() constructor
     {
         static _system = __BentoSystem();
         
+        if (abs(_dX) < 0.001)
+        {
+            _dX = 0;
+        }
+        
+        if (abs(_dY) < 0.001)
+        {
+            _dY = 0;
+        }
+        
         if ((_dX == 0) && (_dY == 0))
         {
             __prevActive = false;
@@ -46,6 +56,16 @@ function __BentoClassTurbo() constructor
                 _angle = 45*floor((_angle + 22.5) / 45);
                _dX =  dcos(_angle);
                _dY = -dsin(_angle);
+                
+                if (abs(_dX) < 0.001)
+                {
+                    _dX = 0;
+                }
+                
+                if (abs(_dY) < 0.001)
+                {
+                    _dY = 0;
+                }
                 
                 //Default to no output, we'll override this if necessary
                 __outputX = 0;
