@@ -38,6 +38,7 @@ if (BentoUsingPointer())
     
     if (_set)
     {
+        handleHover = true;
         _handleStep = round((BentoCursorGetX() - _handleWidth/2 - bentoLeft) / _stepWidth);
     }
     
@@ -48,13 +49,25 @@ if (BentoUsingPointer())
 }
 else if (BentoUsingDirectional())
 {
-    handleHover = BentoCursorGetHover();
+    handleHover = (BentoFocusGetType() != BENTO_FOCUS_NONE);
     handleHold  = false;
     
-    // Detect directional input to scroll throught the option array.
-    if (BentoCursorGetHover() && (BentoCursorGetDX() != 0))
+    if (BentoPrimaryGetClick())
     {
-        _handleStep += sign(BentoCursorGetDX());
+        BentoFocusToggle(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
+    }
+    
+    if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
+    {
+        BentoFocusClose();
+    }
+    
+    if (handleHover)
+    {
+        if (BentoCursorGetHover() && (BentoCursorGetDX() != 0))
+        {
+            _handleStep += sign(BentoCursorGetDX());
+        }
     }
 }
 

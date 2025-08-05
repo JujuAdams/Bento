@@ -47,22 +47,25 @@
 // Focus
 ///////
 
+//Element is not focused.
+#macro BENTO_FOCUS_NONE  0
+
 //Pointer is constrained inside the focused part of the tree.
-#macro BENTO_FOCUS_POINTER_CONSTRAIN  0
+#macro BENTO_FOCUS_POINTER_CONSTRAIN  1
 
 //Pointer ignores focus. Any part of the tree can be interacted with whilst the focus is in
 //operation.
-#macro BENTO_FOCUS_POINTER_IGNORE  1
+#macro BENTO_FOCUS_POINTER_IGNORE  2
 
 //Clicking off of the focused part of the free will cancel the focus.
-#macro BENTO_FOCUS_POINTER_CANCEL_ON_CLICK  2
+#macro BENTO_FOCUS_POINTER_CANCEL_ON_CLICK  3
 
 //Clicking off of the focused part of the tree will destroy the focused element (this is good for
 //pop-up menus).
-#macro BENTO_FOCUS_POINTER_DESTROY_ON_CLICK  3
+#macro BENTO_FOCUS_POINTER_DESTROY_ON_CLICK  4
 
 //Focus is cancelled automatically if the input mode is set to `BENTO_MODE_POINTER`.
-#macro BENTO_FOCUS_POINTER_CANCEL_ALWAYS  4
+#macro BENTO_FOCUS_POINTER_CANCEL_ALWAYS  5
 
 ///////
 // Focus enclose

@@ -65,7 +65,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __drawAfter    = false;
     
     __focused          = false;
-    __focusType        = BENTO_FOCUS_POINTER_CANCEL_ALWAYS;
+    __focusType        = BENTO_FOCUS_NONE;
     __focusEncloseType = BENTO_ENCLOSE_NEVER;
     
     __linkLeft  = BENTO_NO_ELEMENT;
