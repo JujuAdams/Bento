@@ -355,6 +355,10 @@ function __BentoClassVariables(_attachedElement) constructor
     __solverDeflateWidth  = 0;
     __solverDeflateHeight = 0;
     
+    //The size required to deflate all of this element's children at their preferred size.
+    __solverChildrenDeflateWidth  = 0;
+    __solverChildrenDeflateHeight = 0;
+    
     //The absolute minimum size that a parent can be to fit all of its children.
     __solverMinWidth  = 0;
     __solverMinHeight = 0;
