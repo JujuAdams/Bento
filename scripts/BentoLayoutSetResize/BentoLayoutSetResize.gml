@@ -19,7 +19,8 @@
 /// `BENTO_RESIZE_ASPECT`
 ///     Element will set its height relative to its width keeping the aspect ratio set by the
 ///     baseline dimensions (as set by `BentoLayoutSetSize()`). This resize logic can only be used
-///     for the `height` parameter.
+///     for the `height` parameter. This mode should be used sparingly because it can create ugly
+///     layouts.
 /// 
 /// You may also pass `undefined` for either parameter to indicate that the existing value should
 /// not be changed.

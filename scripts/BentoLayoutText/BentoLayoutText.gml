@@ -49,9 +49,9 @@ function BentoLayoutText(_funcHeight, _element = self)
             __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
             __SolverGetDeflateWidth  = method(self, __BentoSolverTextGetDeflateWidth);
-            __SolverResizeWidth      = function(){};
+            __SolverResizeWidth      = function() {};
             __SolverGetDeflateHeight = method(self, __BentoSolverTextGetDeflateHeight);
-            __SolverResizeHeight     = function(){};
+            __SolverResizeHeight     = method(self, __BentoSolverMaintainAspectRatio);
             __SolverPositions        = method(self, __BentoSolverRectPositions);
             __funcMeasureHeight      = method(__attachedElement, _funcHeight);
         }

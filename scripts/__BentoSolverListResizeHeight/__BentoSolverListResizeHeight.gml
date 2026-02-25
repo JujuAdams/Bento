@@ -2,6 +2,8 @@
 
 function __BentoSolverListResizeHeight()
 {
+    __BentoSolverMaintainAspectRatio();
+    
     var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
     

@@ -22,7 +22,7 @@ function __BentoEnsureLayout()
         --_i;
     }
     
-    //Redistribute element widths, deflateing and inflateing elements
+    //Redistribute element widths, deflating and inflating elements
     var _i = 0;
     repeat(_count)
     {
@@ -38,7 +38,7 @@ function __BentoEnsureLayout()
         --_i;
     }
     
-    //Redistribute element heights, deflateing and inflateing elements
+    //Redistribute element heights, deflating and inflating elements
     var _i = 0;
     repeat(_count)
     {

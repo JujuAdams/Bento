@@ -2,6 +2,8 @@
 
 function __BentoSolverGridResizeHeight()
 {
+    __BentoSolverMaintainAspectRatio();
+    
     var _contentSize  = __solvedHeight - (__solverPadTop + __solverPadBottom);
     var _contentCount = floor((_contentSize + __layoutGutterY) / (__solverCellMinHeight + __layoutGutterY));
     _contentCount = clamp(_contentCount, __gridMinRows, __gridMaxRows);

@@ -16,7 +16,7 @@ function __BentoSolverMaintainAspectRatio()
             var _newWidth = __solvedHeight * _aspect;
             if (_newWidth == clamp(_newWidth, __layoutWidthMin, __layoutWidthMax))
             {
-                __solvedHeight = _newWidth;
+                __solvedWidth = _newWidth;
             }
         }
     }
