@@ -71,8 +71,8 @@
 ///         }
 ///     
 ///     "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
-///     values must be numbers, or you may use `null` to indicate that no change should be made to a
-///     particular value.
+///     values must be numbers, or you may use `null` (`undefined`) to indicate that no change should
+///     be made to a particular value.
 ///     
 /// `.minSize`
 ///     Calls the `BentoLayoutSetMinSize()` function on the created element.
@@ -86,8 +86,8 @@
 ///         }
 ///     
 ///     "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
-///     values must be numbers, or you may use `null` to indicate that no change should be made to a
-///     particular value.
+///     values must be numbers, or you may use `null` (`undefined`) to indicate that no change should
+///     be made to a particular value.
 ///     
 /// `.maxSize`
 ///     Calls the `BentoLayoutSetMaxSize()` function on the created element.
@@ -101,8 +101,8 @@
 ///         }
 ///     
 ///     "width" and "x" can be used instead of "w". "height" and "y" can be used instead of "h". Size
-///     values must be numbers, or you may use `null` to indicate that no change should be made to a
-///     particular value.
+///     values must be numbers, or you may use `null` (`undefined`) to indicate that no change should
+///     be made to a particular value.
 /// 
 /// `.resize`
 ///     Calls the `BentoLayoutSetResize()` function on the created element.
@@ -114,18 +114,24 @@
 ///             "x": <x type>,
 ///             "y": <y type>
 ///         }
+///    or a string or number:
+///         <x&y type>
+///    
+///    If you specify a string or number alone then the same type will be applied to both the x and
+///    y axes.
 ///     
-///     Resize types must be one of the following:
-///     - "normal"
-///     - "deflate"
-///     - "inflate"
-///     - "aspect" (y-axis only)
-///     - 0 (equal to BENTO_RESIZE_NORMAL)
-///     - 1 (equal to BENTO_RESIZE_DEFLATE)
-///     - 2 (equal to BENTO_RESIZE_INFLATE)
-///     - 3 (equal to BENTO_RESIZE_ASPECT, y-axis only)
-///     
-///     You may also use `null` to indicate that no change should be made to a particular value.
+///    Resize types must be one of the following:
+///    - "normal"
+///    - "deflate"
+///    - "inflate"
+///    - "aspect" (y-axis only)
+///    - 0 (equal to BENTO_RESIZE_NORMAL)
+///    - 1 (equal to BENTO_RESIZE_DEFLATE)
+///    - 2 (equal to BENTO_RESIZE_INFLATE)
+///    - 3 (equal to BENTO_RESIZE_ASPECT, y-axis only)
+///    
+///    You may also use `null` (`undefined`) to indicate that no change should be made to a particular
+///    value.
 /// 
 /// `.padding`
 ///     Calls the `BentoLayoutSetPadding()` function on the created element.
@@ -141,8 +147,8 @@
 ///         }
 ///     
 ///     "left", "top", "right, "bottom" instead of "l", "t", "r", "b" respectively. Padding values
-///     must be numbers, or you may use `null` to indicate that no change should be made to a
-///     particular value.
+///     must be numbers, or you may use `null` (`undefined`) to indicate that no change should be made
+///     to a particular value.
 /// 
 /// `.anchor`
 ///     Calls the `BentoLayoutSetAnchor()` function on the created element.
@@ -169,8 +175,8 @@
 ///             "y": <y size>
 ///         }
 ///     
-///     Gutter sizes must be numbers, or you may use `null` to indicate that no change should be made
-///     to a particular value.
+///     Gutter sizes must be numbers, or you may use `null` (`undefined`) to indicate that no change should be
+///     made to a particular value.
 /// 
 /// `.list`
 ///     Calls the `BentoLayoutList()` function on the created element.
@@ -187,11 +193,11 @@
 ///     List axis values must be one of the following:
 ///     - "x"
 ///     - "y"
-///     - 0 (equal to BENTO_AXIS_X)
-///     - 1 (equal to BENTO_AXIS_Y)
+///     - 0 (equal to `BENTO_AXIS_X`)
+///     - 1 (equal to `BENTO_AXIS_Y`)
 ///     
 ///     Horizontal and vertical alignment values must be a number, typically from `0` to `1`. You may
-///     also use `null` for any value to indicate that no change should be made.
+///     also use `null` (`undefined`) for any value to indicate that no change should be made.
 ///     
 /// `.grid`
 ///     Calls the `BentoLayoutGrid()` function on the created element.
@@ -204,8 +210,8 @@
 ///             "rows": <rows>
 ///         }
 ///     
-///     Column and row values must be integers, or you may use `null` to indicate that no change should
-///     be made to a particular value.
+///     Column and row values must be integers, or you may use `null` (`undefined`) to indicate that no change
+///     should be made to a particular value.
 /// 
 /// `.bypass`
 ///     Calls the `BentoLayoutSetBypass()` function on the created element. Must be either `true` or
@@ -428,9 +434,18 @@ function __BentoLayoutSetFromJSON_resize(_element, _value)
         _x = _value[$ "x"];
         _y = _value[$ "y"];
     }
+    else if (is_string(_value) || is_numeric(_value))
+    {
+        _x = _value;
+        _y = _value;
+    }
+    else if (_value == undefined)
+    {
+        return;
+    }
     else
     {
-        __BentoError($".resize layout property must be a 2-element array or a struct (typeof \"{typeof(_value)}\")");
+        __BentoError($".resize layout property must be a 2-element array, a struct, a number, or a string (typeof \"{typeof(_value)}\")");
     }
     
     if (is_numeric(_x))
@@ -459,7 +474,7 @@ function __BentoLayoutSetFromJSON_resize(_element, _value)
             __BentoError($".resize.x layout property must be \"normal\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_x})");
         }
     }
-    else
+    else if (_x != undefined)
     {
         __BentoError($".resize.x layout property must be \"normal\", \"deflate\", \"inflate\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, or {BENTO_RESIZE_INFLATE} (value was {_x})");
     }
@@ -494,7 +509,7 @@ function __BentoLayoutSetFromJSON_resize(_element, _value)
             __BentoError($".resize.y layout property must be \"normal\", \"deflate\", \"inflate\", \"aspect\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, {BENTO_RESIZE_INFLATE}, or {BENTO_RESIZE_ASPECT} (value was {_y})");
         }
     }
-    else
+    else if (_y != undefined)
     {
         __BentoError($".resize.y layout property must be \"normal\", \"deflate\", \"inflate\", \"aspect\", {BENTO_RESIZE_NORMAL}, {BENTO_RESIZE_DEFLATE}, {BENTO_RESIZE_INFLATE}, or {BENTO_RESIZE_ASPECT} (value was {_y})");
     }
