@@ -6,6 +6,7 @@
 // scrolling through options (in this example project, that means pressing the left and right
 // arrow keys).
 
+//Always call this in events in objects that inherit from `oBentoAncestor`!
 event_inherited();
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
@@ -16,12 +17,14 @@ BentoSetButton(BENTO_BUTTON_ALWAYS);
 // raycasting so that it doesn't interfere with scrolling through options.
 BentoSetRaycastEnable(false, true);
 
-BentoVarEnsure("title",     "Example");
-BentoVarEnsure("valueStep", 1);
-BentoVarEnsure("valueMin",  0);
-BentoVarEnsure("valueMax",  100);
-BentoVarEnsure("value",     valueMax);
-BentoVarEnsure("func",      function(){});
+BentoVarEnsureMany(
+    "title",     "Example",
+    "valueStep", 1,
+    "valueMin",  0,
+    "valueMax",  100,
+    "value",     valueMax,
+    "func",      function(){},
+);
 
 draw_set_font(fntDebug);
 BentoLayoutSetSize(string_width(title) + 20, string_height(title) + 20);

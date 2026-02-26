@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoVarEnsureMany",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoVarEnsureMany",
+  "parent":{
+    "name":"Miscellaneous",
+    "path":"folders/Bento/Functions/Miscellaneous.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

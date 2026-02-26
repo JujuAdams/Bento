@@ -1,6 +1,6 @@
-/// @desc Step
-
 // Feather disable all
+
+/// @desc Step
 
 // An example that demonstrates how to make a scroller for continuous quantitative values. It
 // can be manipulated using pointer input or directional input. Clicking on the left or right
@@ -8,6 +8,7 @@
 // scrolling through options (in this example project, that means pressing the left and right
 // arrow keys).
 
+//Always call this in events in objects that inherit from `oBentoAncestor`!
 event_inherited();
 
 var _delta = 0;

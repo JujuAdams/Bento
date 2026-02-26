@@ -1,7 +1,8 @@
-/// @desc Draw
-
 // Feather disable all
 
+/// @desc Draw
+
+//Always call this in events in objects that inherit from `oBentoAncestor`!
 event_inherited();
 
 draw_self();

@@ -1,6 +1,9 @@
+// Feather disable all
+
 /// @desc Draw
 
-// Feather disable all
+//Always call this in events in objects that inherit from `oBentoAncestor`!
+event_inherited();
 
 draw_sprite_stretched_ext(sprite_index, image_index, bentoLeft, bentoTop, bentoHeight, bentoHeight, image_blend, image_alpha);
 

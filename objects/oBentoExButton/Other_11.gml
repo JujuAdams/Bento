@@ -1,12 +1,14 @@
-/// @desc Draw
-
 // Feather disable all
 
-// Really simple draw code for a button. This is generally applicable for most interactible
-// elements.
+/// @desc Draw
 
+//Always call this in events in objects that inherit from `oBentoAncestor`!
+event_inherited();
+
+//Draw ourselves. Bento positions and sizes the instance automatically
 draw_self();
 
+// If we have some text then draw it centred on the button
 if (text != "")
 {
     draw_set_halign(fa_center);
@@ -16,10 +18,8 @@ if (text != "")
     draw_set_valign(fa_top);
 }
 
-// Draw a highlight over the button is the instance is being hovered by the Bento system's cursor
-// (which applies to both pointer-driven and directional input). Alternatively, if this is a tab
-// button and this button cause a page to be opened by the tab group then we also highlight the
-// button.
+//Draw a highlight over the button if the instance is being hovered by the Bento system's cursor
+//(which applies to both pointer-driven and directional input)
 if (BentoCursorGetHover() && BentoGetClickable())
 {
     gpu_set_fog(true, c_white, 0, 0);

@@ -7,12 +7,17 @@
 /// 
 /// @param variableName
 /// @param value
-/// @param [target=self]
 
-function BentoVarEnsure(_variableName, _value, _target = self)
+function BentoVarEnsureMany()
 {
-    if (not variable_struct_exists(_target, _variableName))
+    var _i = 0;
+    repeat(argument_count div 2)
     {
-        variable_struct_set(_target, _variableName, _value);
+        if (not variable_struct_exists(self, argument[_i]))
+        {
+            variable_struct_set(self, argument[_i], argument[_i+1]);
+        }
+        
+        _i += 2;
     }
 }

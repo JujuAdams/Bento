@@ -1,9 +1,12 @@
 // Feather disable all
 
+//Always call this in events in objects that inherit from `oBentoAncestor`!
 event_inherited();
 
-BentoVarEnsure("text", "");
-BentoVarEnsure("option", undefined);
+BentoVarEnsureMany(
+    "text",   "",
+    "option", undefined,
+);
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 
