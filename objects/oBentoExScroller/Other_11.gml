@@ -17,11 +17,11 @@ if (BentoCursorGetHover())
     gpu_set_fog(false, c_fuchsia, 0, 0);
 }
 
-if (title != "")
+if (text != "")
 {
     draw_set_halign(fa_center);
     draw_set_valign(fa_bottom);
-    draw_text(_x, _y, title);
+    draw_text(_x, _y, text);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }

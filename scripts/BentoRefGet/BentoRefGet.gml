@@ -1,11 +1,11 @@
 // Feather disable all
 
 /// Returns the value held by a reference. This reference must have been created by
-/// `BentoRefCreate()`. If the reference is no longer valid (the struct has fallen out of scope or
+/// `BentoRef()`. If the reference is no longer valid (the struct has fallen out of scope or
 /// has been destroyed) then the `default` value is returned.
 /// 
 /// @param reference
-/// @param [default]
+/// @param [default=undefined]
 
 function BentoRefGet(_reference, _default = undefined)
 {

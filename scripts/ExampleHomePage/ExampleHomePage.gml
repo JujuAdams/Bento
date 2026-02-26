@@ -100,6 +100,13 @@ function ExampleHomePage()
                                 func: ExampleSettings,
                             },
                         },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Example: Carousel",
+                                func: ExampleCarousel,
+                            },
+                        },
                     ],
                 },
             ],

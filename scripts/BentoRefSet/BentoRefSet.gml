@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Sets the value held by a reference. This reference must have been created by `BentoRefCreate()`.
+/// Sets the value held by a reference. This reference must have been created by `BentoRef()`.
 /// If the reference is no longer valid (the struct has fallen out of scope or has been destroyed)
 /// then this function will silently fail.
 /// 

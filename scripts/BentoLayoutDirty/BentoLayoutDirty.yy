@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayoutDirty",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayoutDirty",
+  "parent":{
+    "name":"Layout",
+    "path":"folders/Bento/Functions/Layout.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

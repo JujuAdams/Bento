@@ -18,21 +18,24 @@ BentoSetButton(BENTO_BUTTON_ALWAYS);
 BentoSetRaycastEnable(false, true);
 
 BentoVarEnsureMany(
-    "title",       "Example",
+    "text",        "Example",
+    "reference",   undefined,
     "optionArray", [],
-    "option",      0,
     "func",        function(){},
 );
 
-var _width  = string_width(title);
-var _height = string_height(title);
+var _width  = string_width(text);
+var _height = string_height(text);
+
+var _optionWidth  = 0;
+var _optionHeight = 0;
 
 var _i = 0;
 repeat(array_length(optionArray))
 {
-    _width   = max(_width, string_width(optionArray[_i]) + 40);
-    _height += string_height(optionArray[0]);
+    _optionWidth  = max(_optionWidth,  string_width(optionArray[_i]) + 40);
+    _optionHeight = max(_optionHeight, string_height(optionArray[0]));
     ++_i;
 }
 
-BentoLayoutSetSize(_width + 10, _height + 10);
+BentoLayoutSetSize(max(_width, _optionWidth) + 30, _height + _optionHeight + 10);

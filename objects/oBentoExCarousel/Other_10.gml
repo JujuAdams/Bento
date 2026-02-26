@@ -5,6 +5,13 @@
 //Always call this in events in objects that inherit from `oBentoAncestor`!
 event_inherited();
 
+var _funcGetOptionIndex = function()
+{
+    var _option = BentoRefGet(reference, undefined);
+    var _optionIndex = array_get_index(optionArray, _option);
+    return max(_optionIndex, 0);
+}
+
 var _length = array_length(optionArray);
 if (_length > 0)
 {
@@ -15,8 +22,12 @@ if (_length > 0)
         {
             var _delta = sign(BentoCursorGetX() - x);
             if (_delta == 0) _delta = 1;
-            option = (option + _delta + _length) mod _length;
-            func(option, optionArray[option]); //Execute the callback
+            
+            var _optionIndex = (_funcGetOptionIndex() + _delta + _length) mod _length;
+            
+            var _option = optionArray[_optionIndex];
+            BentoRefSet(reference, _option);
+            func(_option); //Execute the callback
         }
     }
     else if (BentoUsingDirectional())
@@ -24,8 +35,11 @@ if (_length > 0)
         // Detect directional input to scroll throught the option array.
         if (BentoCursorGetHover() && (BentoCursorGetDX() != 0))
         {
-            option = (option + sign(BentoCursorGetDX()) + _length) mod _length;
-            func(option, optionArray[option]); //Execute the callback
+            var _optionIndex = (_funcGetOptionIndex() + sign(BentoCursorGetDX()) + _length) mod _length;
+            
+            var _option = optionArray[_optionIndex];
+            BentoRefSet(reference, _option);
+            func(_option); //Execute the callback
         }
     }
 }

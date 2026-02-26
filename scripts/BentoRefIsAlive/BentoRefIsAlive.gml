@@ -6,5 +6,5 @@
 
 function BentoRefIsAlive(_reference)
 {
-    return (_reference == global)? true : weak_ref_alive(_reference.scope);
+    return (_reference.scope == global)? true : weak_ref_alive(_reference.scope);
 }

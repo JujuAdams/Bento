@@ -67,11 +67,11 @@ function ExampleButtons()
                     },
                     children: [
                         {
+                            select: true,
                             object: oBentoExButton,
                             vars: {
                                 text: "Always a button",
                             },
-                            select: true,
                             onCreate: function()
                             {
                                 BentoSetButton(BENTO_BUTTON_ALWAYS);

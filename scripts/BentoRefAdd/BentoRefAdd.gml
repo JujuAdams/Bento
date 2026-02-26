@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Adds a numeric value to the existingvalue held by a reference. This reference must have been
-/// created by `BentoRefCreate()`. If the reference is no longer valid (the struct has fallen out
+/// created by `BentoRef()`. If the reference is no longer valid (the struct has fallen out
 /// of scope or has been destroyed) then this function will silently fail. if the value to add is
 /// non-numeric then this function will silently fail.
 /// 

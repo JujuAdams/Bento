@@ -18,7 +18,7 @@ BentoSetButton(BENTO_BUTTON_ALWAYS);
 BentoSetRaycastEnable(false, true);
 
 BentoVarEnsureMany(
-    "title",     "Example",
+    "text",      "Example",
     "valueStep", 1,
     "valueMin",  0,
     "valueMax",  100,
@@ -30,4 +30,4 @@ BentoVarEnsureMany(
 func = method(self, func);
 
 draw_set_font(fntDebug);
-BentoLayoutSetSize(string_width(title) + 20, string_height(title) + 20);
+BentoLayoutSetSize(string_width(text) + 20, string_height(text) + 20);
