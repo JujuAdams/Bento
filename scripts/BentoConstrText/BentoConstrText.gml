@@ -39,7 +39,7 @@ function BentoConstrText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_top,
         return _result;
     });
     
-    funcDraw = function()
+    eventDraw = function()
     {
         if (hAlign == fa_left)
         {

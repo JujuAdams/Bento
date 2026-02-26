@@ -17,39 +17,39 @@
 /// `BentoConstrSprite()` or `BentoConstrText()`.
 /// 
 /// Any custom constructor you make that inherits from `BentoConstrAncestor()` can, and probably
-/// should, override the callback methods that exist by default. Additionally, there are a handful
-/// of read-only variables that you can use to get where Bento has positioned the struct. Please
-/// continue reading comments in this script/function for more information.
+/// should, override the callback `event*` methods that exist by default. Additionally, there are a
+/// handful of read-only variables that you can use to get where Bento has positioned the struct.
+/// Please continue reading comments in this script/function for more information.
 /// 
 /// @param [parent=self]
 
 function BentoConstrAncestor(_parent = other) constructor
 {
-    funcStep = function()
+    eventStep = function()
     {
         // This method is executed downstream of `BentoSystemStep()`. To improve performance, only elements
         // that need to execute this method will do so. An element will execute this method in the
         // following circumstances:
         // 
-        // - The element's button type (see `BentoSetButton()`) matches the input mode (see
-        //   `BentoSetMode()`).
-        // - Forced step executed has been enabled for the element by `BentoSetForceStep()`
+        // - The element's button type matches the input mode (see `BentoSetButton()` and `BentoSetMode()`).
+        // - Forced step execution has been enabled for the element by `BentoSetForceStep()`
         // - The element has been focused by `BentoFocusOpen()`
         // - The element has a clipping region set up by `BentoClipSetEnabled()`
         // - `BENTO_ALWAYS_EXECUTE_STEP` is set to `true`
     }
     
-    funcDraw = function()
+    eventDraw = function()
     {
-        // This event is executed downstream of `BentoSystemDraw()`.
+        // This event is executed downstream of `BentoSystemDraw()`. This event will not be executed if it
+        // has been set to not visible by calling `BentoSetVisible(false)`.
     }
     
-    funcDrawAfter = function()
+    eventDrawAfter = function()
     {
         // This user event is disabled by default. Call `BentoSetDrawAfter()` to enable it.
     }
     
-    funcReposition = function()
+    eventReposition = function()
     {
         // This event is called whenever the library decides that the element needs to be moved. This is
         // typically when the element is created, the layout changes, or when the player has scrolled an

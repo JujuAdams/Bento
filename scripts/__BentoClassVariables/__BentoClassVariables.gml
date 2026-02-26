@@ -198,17 +198,17 @@ function __BentoClassVariables(_attachedElement) constructor
         __eventStep = method(_attachedElement, function()
         {
             __BentoScrollOnPointer(); //FIXME - Only execute this for pointer buttons
-            funcStep();
+            eventStep();
         });
         
         __eventDraw = method(_attachedElement, function()
         {
-            funcDraw();
+            eventDraw();
         });
         
         __eventDrawAfter = method(_attachedElement, function()
         {
-            funcDrawAfter();
+            eventDrawAfter();
         });
         
         __eventReposition = function()
@@ -227,7 +227,7 @@ function __BentoClassVariables(_attachedElement) constructor
             
             with(__attachedElement)
             {
-                funcReposition();
+                eventReposition();
             }
         };
         

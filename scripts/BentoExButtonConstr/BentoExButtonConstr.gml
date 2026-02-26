@@ -21,7 +21,7 @@ function BentoExButtonConstr(_clickFunc = undefined, _text = "", _parent = other
     
     BentoSetButton(BENTO_BUTTON_ALWAYS);
     
-    funcStep = function()
+    eventStep = function()
     {
         if (BentoPrimaryGetClick())
         {
@@ -32,7 +32,7 @@ function BentoExButtonConstr(_clickFunc = undefined, _text = "", _parent = other
         }
     }
     
-    funcDraw = function()
+    eventDraw = function()
     {
         BentoDrawSprite(sBentoMaskRectangle);
         
