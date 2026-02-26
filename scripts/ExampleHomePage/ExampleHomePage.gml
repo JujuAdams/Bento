@@ -128,6 +128,34 @@ function ExampleHomePage()
                                 func: ExampleContextMenu,
                             },
                         },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Example: Scrolling List",
+                                func: ExampleScrollingList,
+                            },
+                        },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Example: Scrolling List With Bar",
+                                func: ExampleScrollingListWithBar,
+                            },
+                        },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Example: Scrollbox",
+                                func: ExampleScrollbox,
+                            },
+                        },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Example: Scrollbox With Bar",
+                                func: ExampleScrollboxWithBar,
+                            },
+                        },
                     ],
                 },
             ],

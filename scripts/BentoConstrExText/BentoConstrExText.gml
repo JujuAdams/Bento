@@ -16,10 +16,10 @@
 
 function BentoConstrExText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_top, _parent = other) : BentoConstrAncestor(_parent) constructor
 {
-    text      = _text;
-    font      = _font;
-    hAlign    = _hAlign;
-    vAlign    = _vAlign;
+    text   = _text;
+    font   = _font;
+    hAlign = _hAlign;
+    vAlign = _vAlign;
     
     //
     var _oldFont = draw_get_font();

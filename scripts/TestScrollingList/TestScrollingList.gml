@@ -1,6 +1,6 @@
 // Feather disable all
 
-function TestListWithScroll()
+function TestScrollingList()
 {
     var _json = [
         {
@@ -22,7 +22,7 @@ function TestListWithScroll()
             }
         },
         {
-            object: oBentoExListWithScroll,
+            object: oBentoExScrollingList,
             vars: {
                 image_blend: c_navy,
             },
