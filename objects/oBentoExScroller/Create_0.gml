@@ -23,6 +23,7 @@ BentoVarEnsureMany(
     "valueStep", 1,
     "valueMin",  0,
     "valueMax",  100,
+    "useFocus",  true,
     "func",      function(){},
 );
 

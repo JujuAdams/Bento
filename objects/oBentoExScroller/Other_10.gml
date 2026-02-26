@@ -24,10 +24,26 @@ if (BentoUsingPointer())
 }
 else if (BentoUsingDirectional())
 {
-    // Detect directional input to scroll throught the option array.
-    if (BentoCursorGetHover())
+    if (useFocus)
     {
-        _delta = sign(BentoCursorGetDX());
+        if (BentoPrimaryGetClick())
+        {
+            BentoFocusToggle(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
+        }
+        
+        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
+        {
+            BentoFocusClose();
+        }
+    }
+    
+    if ((not useFocus) || (BentoFocusGetType() != BENTO_FOCUS_NONE))
+    {
+        // Detect directional input to scroll throught the option array.
+        if (BentoCursorGetHover())
+        {
+            _delta = sign(BentoCursorGetDX());
+        }
     }
 }
 
