@@ -4,6 +4,7 @@
 event_inherited();
 
 BentoVarEnsureMany(
+    "reference", undefined,
     "text", "",
     "func", function()
     {

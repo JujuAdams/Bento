@@ -60,11 +60,7 @@ function ExampleSettings()
                             },
                         },
                         {
-                            object: oBentoExCheckbox,
-                            vars: {
-                                text: "Checkbox 2",
-                                reference: BentoRef(global.settings, "checkbox2"),
-                            },
+                            construct: [BentoConstrExCheckbox, BentoRef(global.settings, "checkbox2"), "Checkbox 2"],
                         },
                         {
                             object: oBentoExSlider,
