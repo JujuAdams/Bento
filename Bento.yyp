@@ -136,6 +136,7 @@
     {"id":{"name":"__BentoMarkDrawOrderDirty","path":"scripts/__BentoMarkDrawOrderDirty/__BentoMarkDrawOrderDirty.yy",},},
     {"id":{"name":"__BentoMarkTransformDirty","path":"scripts/__BentoMarkTransformDirty/__BentoMarkTransformDirty.yy",},},
     {"id":{"name":"__BentoObjectInheritsFrom","path":"scripts/__BentoObjectInheritsFrom/__BentoObjectInheritsFrom.yy",},},
+    {"id":{"name":"__BentoOutputFormattedTable","path":"scripts/__BentoOutputFormattedTable/__BentoOutputFormattedTable.yy",},},
     {"id":{"name":"__BentoRemoveParent","path":"scripts/__BentoRemoveParent/__BentoRemoveParent.yy",},},
     {"id":{"name":"__BentoSanitizeFilename","path":"scripts/__BentoSanitizeFilename/__BentoSanitizeFilename.yy",},},
     {"id":{"name":"__BentoScissorPop","path":"scripts/__BentoScissorPop/__BentoScissorPop.yy",},},
