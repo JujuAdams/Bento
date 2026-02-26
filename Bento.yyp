@@ -401,6 +401,7 @@
     {"id":{"name":"ExampleScrollingListWithBar","path":"scripts/ExampleScrollingListWithBar/ExampleScrollingListWithBar.yy",},},
     {"id":{"name":"ExampleSettings","path":"scripts/ExampleSettings/ExampleSettings.yy",},},
     {"id":{"name":"ExampleSlider","path":"scripts/ExampleSlider/ExampleSlider.yy",},},
+    {"id":{"name":"ExampleTextbox","path":"scripts/ExampleTextbox/ExampleTextbox.yy",},},
     {"id":{"name":"TestAnchor","path":"scripts/TestAnchor/TestAnchor.yy",},},
     {"id":{"name":"TestAnimation","path":"scripts/TestAnimation/TestAnimation.yy",},},
     {"id":{"name":"TestCarousel","path":"scripts/TestCarousel/TestCarousel.yy",},},

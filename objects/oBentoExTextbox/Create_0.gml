@@ -5,10 +5,12 @@ event_inherited();
 
 BentoVarEnsureMany(
     "reference", undefined,
-    "text",      "",
     "emptyText", "",
     "func",      function() {}
 );
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 BentoLayoutSetSize(300);
+
+//Internal variable for this instance that's used to store the current text
+__displayText = BentoRefGet(reference, "");

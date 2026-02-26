@@ -156,6 +156,13 @@ function ExampleHomePage()
                                 func: ExampleScrollboxWithBar,
                             },
                         },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Example: Textbox",
+                                func: ExampleTextbox,
+                            },
+                        },
                     ],
                 },
             ],

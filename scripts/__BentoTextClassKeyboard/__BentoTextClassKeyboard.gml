@@ -18,21 +18,21 @@ function __BentoTextClassKeyboard(_environment, _initialText, _callback, _maxLen
     
     static __Step = function()
     {
-        //Automatically terminate if there's been no input for 10 seconds
+        //Automatically abort if there's been no input for 10 seconds
         if (keyboard_check(vk_anykey))
         {
             __lastInputTime = current_time;
         }
         else if (current_time - __lastInputTime > 10_000)
         {
-            __Terminate();
+            __Terminate(BENTO_TEXT_ABORT);
             return;
         }
         
         if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL, true))
         {
             BentoInputConsume();
-            __Terminate();
+            __Terminate(BENTO_TEXT_ABORT);
             return;
         }
         

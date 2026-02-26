@@ -17,17 +17,23 @@ if (BentoCursorGetHover() || (BentoFocusGetTop() == self))
     gpu_set_fog(false, c_fuchsia, 0, 0);
 }
 
-if (text == "")
+if (BentoTextGetTargeted())
 {
-    var _text = emptyText;
-    draw_set_color(BentoTextGetTargeted()? c_white : c_gray);
+    var _text = __displayText;
+    if ((BentoTextGetOpenDuration() mod 30) < 15) _text += "|";
 }
 else
 {
-    var _text = text;
+    if (__displayText == "")
+    {
+        var _text = emptyText;
+        draw_set_color(c_ltgray);
+    }
+    else
+    {
+        var _text = __displayText;
+    }
 }
-
-if (BentoTextGetTargeted() && ((BentoTextGetOpenDuration() mod 30) < 15)) _text += "|";
 
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
