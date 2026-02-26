@@ -19,10 +19,10 @@ BentoSetRaycastEnable(false, true);
 
 BentoVarEnsureMany(
     "text",      "Example",
+    "reference", undefined,
     "valueStep", 1,
     "valueMin",  0,
     "valueMax",  100,
-    "value",     valueMax,
     "func",      function(){},
 );
 
@@ -30,4 +30,4 @@ BentoVarEnsureMany(
 func = method(self, func);
 
 draw_set_font(fntDebug);
-BentoLayoutSetSize(string_width(text) + 20, string_height(text) + 20);
+BentoLayoutSetSize(max(string_width(text), string_width(valueMax)) + 30, string_height(text) + string_height(valueMax) + 10);

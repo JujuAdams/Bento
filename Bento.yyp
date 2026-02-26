@@ -389,6 +389,7 @@
     {"id":{"name":"ExampleGrids","path":"scripts/ExampleGrids/ExampleGrids.yy",},},
     {"id":{"name":"ExampleHomePage","path":"scripts/ExampleHomePage/ExampleHomePage.yy",},},
     {"id":{"name":"ExampleLists","path":"scripts/ExampleLists/ExampleLists.yy",},},
+    {"id":{"name":"ExampleScroller","path":"scripts/ExampleScroller/ExampleScroller.yy",},},
     {"id":{"name":"ExampleSettings","path":"scripts/ExampleSettings/ExampleSettings.yy",},},
     {"id":{"name":"TestAnchor","path":"scripts/TestAnchor/TestAnchor.yy",},},
     {"id":{"name":"TestAnimation","path":"scripts/TestAnimation/TestAnimation.yy",},},

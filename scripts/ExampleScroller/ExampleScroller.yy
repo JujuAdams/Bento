@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExampleScroller",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExampleScroller",
+  "parent":{
+    "name":"Examples",
+    "path":"folders/Examples.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

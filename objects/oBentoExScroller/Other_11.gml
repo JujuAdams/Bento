@@ -20,15 +20,15 @@ if (BentoCursorGetHover())
 if (text != "")
 {
     draw_set_halign(fa_center);
-    draw_set_valign(fa_bottom);
-    draw_text(_x, _y, text);
+    draw_text(_x, bbox_top + 5, text);
     draw_set_halign(fa_left);
-    draw_set_valign(fa_top);
 }
 
 draw_set_halign(fa_center);
-draw_text(_x, _y, value);
+draw_set_valign(fa_bottom);
+draw_text(_x, bbox_bottom - 5, BentoRefGet(reference, valueMin));
 draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 
-draw_triangle(bbox_left+5, _y+10, bbox_left+15, _y+5, bbox_left+15, _y+15, false); 
-draw_triangle(bbox_right-5, _y+10, bbox_right-15, _y+5, bbox_right-15, _y+15, false); 
+draw_triangle(bbox_left+5, _y, bbox_left+15, _y-5, bbox_left+15, _y+5, false); 
+draw_triangle(bbox_right-5, _y, bbox_right-15, _y-5, bbox_right-15, _y+5, false); 

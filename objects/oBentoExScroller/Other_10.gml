@@ -33,10 +33,17 @@ else if (BentoUsingDirectional())
 
 if (_delta != 0)
 {
-    value = clamp(value + _delta*valueStep, valueMin, valueMax);
+    var _value = BentoRefGet(reference, valueMin);
+    
+    if (not is_numeric(_value))
+    {
+        _value = valueMin;
+    }
+    
+    BentoRefSet(reference, clamp(_value + _delta*valueStep, valueMin, valueMax));
     
     if (is_callable(func))
     {
-        func(value); //Execute the callback
+        func(_value); //Execute the callback
     }
 }

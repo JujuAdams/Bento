@@ -52,6 +52,7 @@ function ExampleSettings()
                     },
                     children: [
                         {
+                            select: true,
                             object: oBentoExCheckbox,
                             vars: {
                                 text: "Checkbox 1",
