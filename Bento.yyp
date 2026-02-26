@@ -92,6 +92,7 @@
     {"id":{"name":"oBentoExSprite","path":"objects/oBentoExSprite/oBentoExSprite.yy",},},
     {"id":{"name":"oBentoExText","path":"objects/oBentoExText/oBentoExText.yy",},},
     {"id":{"name":"oBentoExTextbox","path":"objects/oBentoExTextbox/oBentoExTextbox.yy",},},
+    {"id":{"name":"oBentoExTextDynamic","path":"objects/oBentoExTextDynamic/oBentoExTextDynamic.yy",},},
     {"id":{"name":"oMain","path":"objects/oMain/oMain.yy",},},
     {"id":{"name":"oQuickStart","path":"objects/oQuickStart/oQuickStart.yy",},},
     {"id":{"name":"oTestGridWithRotation","path":"objects/oTestGridWithRotation/oTestGridWithRotation.yy",},},

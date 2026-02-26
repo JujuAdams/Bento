@@ -53,7 +53,7 @@ function ExampleSlider()
                     },
                 },
                 {
-                    object: oBentoExText,
+                    object: oBentoExTextDynamic,
                     vars: {
                         text: function()
                         {

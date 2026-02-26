@@ -49,7 +49,7 @@ function ExampleCarousel()
                     },
                 },
                 {
-                    object: oBentoExText,
+                    object: oBentoExTextDynamic,
                     vars: {
                         text: function()
                         {

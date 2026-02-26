@@ -18,6 +18,17 @@ BentoVarEnsureMany(
     "vAlign", fa_top,
 );
 
+//If we have a function for the `.text` variable then store that function in a different variable
+if (is_callable(text))
+{
+    funcTextUpdate = method(self, text);
+    text = funcTextUpdate();
+}
+else
+{
+    funcTextUpdate = undefined;
+}
+
 //Set the layout parameters based on the size of the string when drawn
 var _oldFont = draw_get_font();
 draw_set_font(font);

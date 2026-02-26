@@ -50,7 +50,7 @@ function ExampleScroller()
                     },
                 },
                 {
-                    object: oBentoExText,
+                    object: oBentoExTextDynamic,
                     vars: {
                         text: function()
                         {
