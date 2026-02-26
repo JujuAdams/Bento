@@ -4,7 +4,7 @@ function TestScrollbox()
 {
     var _json = [
         {
-            object: oExampleScrollbox,
+            object: oBentoExScrollbox,
             vars: {
                 image_blend: c_maroon,
             },
@@ -22,7 +22,7 @@ function TestScrollbox()
                 return array_create_ext(_metadata.count, function(_index)
                 {
                     return {
-                        object: oExampleButton,
+                        object: oBentoExButton,
                         vars: {
                             image_blend: c_blue,
                             text: string(_index),

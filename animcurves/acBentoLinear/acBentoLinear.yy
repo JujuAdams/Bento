@@ -10,8 +10,8 @@
   "function":0,
   "name":"acBentoLinear",
   "parent":{
-    "name":"Other Resources",
-    "path":"folders/Bento/Other Resources.yy",
+    "name":"Basic Resources",
+    "path":"folders/Bento/Basic Resources.yy",
   },
   "resourceType":"GMAnimCurve",
   "resourceVersion":"2.0",

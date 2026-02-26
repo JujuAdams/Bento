@@ -29,7 +29,7 @@ function ExampleLists()
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Back",
                                 clickFunc: ExampleHomePage,

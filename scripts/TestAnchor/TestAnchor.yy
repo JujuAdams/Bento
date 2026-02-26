@@ -6,7 +6,7 @@
   "name":"TestAnchor",
   "parent":{
     "name":"Tests",
-    "path":"folders/Examples/Tests.yy",
+    "path":"folders/Tests.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

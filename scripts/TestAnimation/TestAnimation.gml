@@ -11,7 +11,7 @@ function TestAnimations()
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
-        with(new ExampleConstrButton(function()
+        with(new BentoExButtonConstr(function()
         {
             BentoLayoutSetBypass(true);
             BentoAnimPlayBuildOut(60, 0, 40, 0, 1, 1, 0);

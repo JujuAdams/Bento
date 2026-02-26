@@ -29,7 +29,7 @@ function ExampleButtons()
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Back",
                                 clickFunc: ExampleHomePage,
@@ -67,7 +67,7 @@ function ExampleButtons()
                     },
                     children: [
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Always a button",
                             },
@@ -78,7 +78,7 @@ function ExampleButtons()
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Pointer-only button",
                             },
@@ -88,7 +88,7 @@ function ExampleButtons()
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Directional-only button",
                             },
@@ -98,7 +98,7 @@ function ExampleButtons()
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Never a button",
                             },

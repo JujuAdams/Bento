@@ -4,7 +4,7 @@ function TestTransform()
 {
     var _json = [
         {
-            object: oExampleGridWithRotation,
+            object: oBentoExGridWithRotation,
             offset: [30, 30],
             layout: {
                 size:    [300, 300],

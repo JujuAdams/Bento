@@ -4,7 +4,7 @@ function TestListWithScroll()
 {
     var _json = [
         {
-            object: oExampleButton,
+            object: oBentoExButton,
             vars: {
                 image_blend: c_red,
             },
@@ -13,7 +13,7 @@ function TestListWithScroll()
             }
         },
         {
-            object: oExampleButton,
+            object: oBentoExButton,
             vars: {
                 image_blend: c_lime,
             },
@@ -22,7 +22,7 @@ function TestListWithScroll()
             }
         },
         {
-            object: oExampleListWithScroll,
+            object: oBentoExListWithScroll,
             vars: {
                 image_blend: c_navy,
             },
@@ -40,7 +40,7 @@ function TestListWithScroll()
                 return array_create_ext(_metadata.count, function(_index)
                 {
                     return {
-                        object: oExampleButton,
+                        object: oBentoExButton,
                         vars: {
                             image_blend: c_blue,
                             text: string(_index),

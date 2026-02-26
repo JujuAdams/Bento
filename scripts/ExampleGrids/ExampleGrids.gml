@@ -29,7 +29,7 @@ function ExampleGrids()
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Back",
                                 clickFunc: ExampleHomePage,
@@ -46,25 +46,25 @@ function ExampleGrids()
                     },
                     children: [
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Button",
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Button",
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Button",
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Button",
                             },

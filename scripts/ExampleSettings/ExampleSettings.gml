@@ -36,7 +36,7 @@ function ExampleSettings()
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Back",
                                 clickFunc: ExampleHomePage,
@@ -52,21 +52,21 @@ function ExampleSettings()
                     },
                     children: [
                         {
-                            object: oExampleCheckbox,
+                            object: oBentoExCheckbox,
                             vars: {
                                 text: "Checkbox 1",
                                 reference: BentoRefCreate(global.settings, "checkbox1"),
                             },
                         },
                         {
-                            object: oExampleCheckbox,
+                            object: oBentoExCheckbox,
                             vars: {
                                 text: "Checkbox 2",
                                 reference: BentoRefCreate(global.settings, "checkbox2"),
                             },
                         },
                         {
-                            object: oExampleSlider,
+                            object: oBentoExSlider,
                             vars: {
                                 reference: BentoRefCreate(global.settings, "slider"),
                             },
@@ -75,7 +75,7 @@ function ExampleSettings()
                             },
                         },
                         {
-                            object: oExampleRadioButton,
+                            object: oBentoExRadioButton,
                             vars: {
                                 text: "Radio Button 1",
                                 reference: BentoRefCreate(global.settings, "radiobutton"),
@@ -83,7 +83,7 @@ function ExampleSettings()
                             },
                         },
                         {
-                            object: oExampleRadioButton,
+                            object: oBentoExRadioButton,
                             vars: {
                                 text: "Radio Button 2",
                                 reference: BentoRefCreate(global.settings, "radiobutton"),
@@ -91,7 +91,7 @@ function ExampleSettings()
                             },
                         },
                         {
-                            object: oExampleRadioButton,
+                            object: oBentoExRadioButton,
                             vars: {
                                 text: "Radio Button 3",
                                 reference: BentoRefCreate(global.settings, "radiobutton"),

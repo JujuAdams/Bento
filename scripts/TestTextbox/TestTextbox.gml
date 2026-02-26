@@ -4,11 +4,11 @@ function TestTextbox()
 {
     var _json = [
         {
-            object: oExampleTextbox,
+            object: oBentoExTextbox,
             offset: [30, 30],
         },
         {
-            object: oExampleButton,
+            object: oBentoExButton,
             offset: [30, 130],
             layout: {
                 size: [100, 100],

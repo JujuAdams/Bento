@@ -6,7 +6,7 @@
   "name":"BentoConstrAncestor",
   "parent":{
     "name":"Inheritable Constructors",
-    "path":"folders/Bento/Other Resources/Inheritable Constructors.yy",
+    "path":"folders/Bento/Basic Resources/Inheritable Constructors.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -7,7 +7,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Inheritable Objects",
-    "path":"folders/Bento/Other Resources/Inheritable Objects.yy",
+    "path":"folders/Bento/Basic Resources/Inheritable Objects.yy",
   },
   "parentObjectId":{
     "name":"oBentoAncestor",

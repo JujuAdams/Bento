@@ -42,7 +42,7 @@ function ExampleHomePage()
                     },
                     children: [
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Open repo",
                                 clickFunc: function()
@@ -52,7 +52,7 @@ function ExampleHomePage()
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: "Juju's website",
                                 clickFunc: function()
@@ -64,7 +64,7 @@ function ExampleHomePage()
                     ],
                 },
                 {
-                    object: oExampleScrollboxWithBar,
+                    object: oBentoExScrollboxWithBar,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
                         padding: 20,
@@ -73,28 +73,28 @@ function ExampleHomePage()
                     },
                     children: [
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: $"Example: Buttons",
                                 clickFunc: ExampleButtons,
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: $"Example: Lists",
                                 clickFunc: ExampleLists,
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: $"Example: Grids",
                                 clickFunc: ExampleGrids,
                             },
                         },
                         {
-                            object: oExampleButton,
+                            object: oBentoExButton,
                             vars: {
                                 text: $"Example: Settings Menu",
                                 clickFunc: ExampleSettings,

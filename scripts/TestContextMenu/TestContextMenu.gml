@@ -4,37 +4,37 @@ function TestContextMenu()
 {
     var _json = [
         {
-            object: oExampleButton,
+            object: oBentoExButton,
             offset: [200, 10],
             vars: {
                 image_blend: c_blue,
             },
         },
         {
-            object: oExampleButton,
+            object: oBentoExButton,
             offset: [10, 10],
             vars: {
                 image_blend: c_red,
                 clickFunc: function()
                 {
                     BentoCreateFromJSON({
-                        object: oExampleContextMenu,
+                        object: oBentoExContextMenu,
                         layout: {
                             size: [200, 300],
                             clampInside: true,
                         },
                         children: [
                             {
-                                object: oExampleButton,
+                                object: oBentoExButton,
                             },
                             {
-                                object: oExampleButton,
+                                object: oBentoExButton,
                             },
                             {
-                                object: oExampleButton,
+                                object: oBentoExButton,
                             },
                             {
-                                object: oExampleButton,
+                                object: oBentoExButton,
                             },
                         ],
                     });

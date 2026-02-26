@@ -2,7 +2,7 @@
 
 function TestDeflateAndInflate()
 {
-    with(BentoCreate(oExampleListWithScroll, undefined, BentoGetRoot()))
+    with(BentoCreate(oBentoExListWithScroll, undefined, BentoGetRoot()))
     {
         image_blend = c_navy;
         

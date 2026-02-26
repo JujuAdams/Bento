@@ -14,7 +14,7 @@ function TestCarousel()
             },
             children: [
                 {
-                    object: oExampleCarousel,
+                    object: oBentoExCarousel,
                     vars: {
                         optionArray: [
                             "Value 0",
@@ -25,7 +25,7 @@ function TestCarousel()
                     },
                 },
                 {
-                    object: oExampleCarousel,
+                    object: oBentoExCarousel,
                     vars: {
                         optionArray: [
                             "Value 0",

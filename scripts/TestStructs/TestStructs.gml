@@ -17,8 +17,8 @@ function TestStructs()
         var _text = BentoCreate(oBentoText, { text: "Hello World", hAlign: fa_center });
         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, undefined, _text);
         
-        new ExampleConstrButton(undefined, "Test");
-        new ExampleConstrButton(undefined, "Test");
+        new BentoExButtonConstr(undefined, "Test");
+        new BentoExButtonConstr(undefined, "Test");
         
         var _grid = new BentoConstrSprite(sBentoMaskRectangle);
         with(_grid)
@@ -33,7 +33,7 @@ function TestStructs()
             
             repeat(10)
             {
-                with(new ExampleConstrButton())
+                with(new BentoExButtonConstr())
                 {
                     BentoLayoutSetAnchor(0.5, 0.5);
                 }
