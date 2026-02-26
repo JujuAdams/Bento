@@ -1,7 +1,8 @@
 // Feather disable all
 
 /// Returns if a Bento element is alive and well. You may provide either an instance or struct.
-/// Bento elements can be destroyed with `BentoDestroy()`.
+/// Bento elements can be destroyed with `BentoDestroy()` or they can be destroyed if their Bento
+/// parent (or other ancestor) is destroyed.
 /// 
 /// @param target
 

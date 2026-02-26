@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// This constructor defines a simple sprite element that can be used within a Bento UI layout.
+/// This constructor defines a simple blank element that can be used within a Bento UI layout.
 /// 
 /// Example:
 /// ```

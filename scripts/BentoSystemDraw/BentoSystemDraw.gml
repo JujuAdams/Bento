@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Draws all environments, layers, and elements.
+/// Draws all environments, layers, and elements. You may optionally provide an offset which will
+/// visually move where Bento draws elements.
 /// 
 /// @param [x=0]
 /// @param [y=0]

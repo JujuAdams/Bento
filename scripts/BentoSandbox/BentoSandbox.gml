@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Convenience quick start function to get Bento up and running in your project quickly.
+/// Convenience quick start function to get Bento up and running in your project using a typical
+/// test configuration. This is provided to play around with Bento rather than as a serious tool.
 /// 
 /// N.B. This function should never be used in production. You should instead manage input, update
 ///      and drawing yourself by using the necessary functions.

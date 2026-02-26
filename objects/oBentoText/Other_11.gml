@@ -31,8 +31,7 @@ else
 draw_set_font(font);
 draw_set_halign(hAlign);
 draw_set_valign(vAlign);
-var _text = (text != "")? text : emptyText;
-draw_text_ext_transformed_color(_x, _y, _text, -1, bentoWidth, image_xscale, image_yscale, image_angle, image_blend, image_blend, image_blend, image_blend, image_alpha);
+draw_text_ext_transformed_color(_x, _y, text, -1, bentoWidth, image_xscale, image_yscale, image_angle, image_blend, image_blend, image_blend, image_blend, image_alpha);
 draw_set_font(-1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);

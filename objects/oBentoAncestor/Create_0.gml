@@ -1,6 +1,6 @@
 // Feather disable all
 
-// This object is the common ancestor for all (object-based) Bento elements. All objects that you
+// This object is the common ancestor for all object-based Bento elements. All objects that you
 // intend to work with Bento (i.e. to be created by `BentoCreate()`) **must** inherit from
 // `oBentoAncestor`.
 

@@ -1,17 +1,17 @@
 // Feather disable all
 
-// This object defines a simple textbox element that can be used within a Bento UI layout.
+// This object defines a simple text element that can be used within a Bento UI layout. The text
+// will wrap to a new line if the element width gets too small.
 // 
 // Example:
 // ```
-// BentoCreate(oBentoText, { text: "Prefilled text", emptyText: "Enter text here!" });
+// BentoCreate(oBentoText, { text: "Hello world!" });
 // ```
 
 event_inherited();
 
 // Ensure we have valid values for these variables
 BentoSetIfNotDefined("text", "");
-BentoSetIfNotDefined("emptyText", "");
 BentoSetIfNotDefined("font", -1);
 BentoSetIfNotDefined("hAlign", fa_left);
 BentoSetIfNotDefined("vAlign", fa_top);

@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Updates environments, layers, and elements.
+/// Updates environments, layers, and elements. You must specify a root width and height which
+/// controls the total space available to position elements.
 /// 
 /// @param rootWidth
 /// @param roomHeight

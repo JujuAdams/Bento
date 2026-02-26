@@ -1,12 +1,25 @@
 // Feather disable all
 
-/// This constructor is the common ancestor for all (struct-based) Bento elements. All structs that
+/// This constructor is the common ancestor for all struct-based Bento elements. All structs that
 /// you intend to work with Bento **must** be instantiated with a constructor that inherits from
-/// `BentoConstrAncestor`.
+/// `BentoConstrAncestor`. If you'd like to use Bento with objects, please see `BentoCreate()`.
+/// 
+/// When you inherit from `BentoConstrAncestor` you will usually want to be able to specify the
+/// parent. This means your constructor should look something like this:
+/// 
+/// function CustomElement(_parent = other) : BentoConstrAncestor(_parent) constructor
+/// {
+///     ...
+/// }
+/// 
+/// It's odd but we do need use `other` as the default value for the parent due to the way
+/// GameMaker resolves scope when executing constructors. For an example of inheritance, please see
+/// `BentoConstrSprite()` or `BentoConstrText()`.
 /// 
 /// Any custom constructor you make that inherits from `BentoConstrAncestor()` can, and probably
 /// should, override the callback methods that exist by default. Additionally, there are a handful
-/// of read-only variables that you can use to get where Bento has positioned the struct.
+/// of read-only variables that you can use to get where Bento has positioned the struct. Please
+/// continue reading comments in this script/function for more information.
 /// 
 /// @param [parent=self]
 
@@ -39,17 +52,17 @@ function BentoConstrAncestor(_parent = other) constructor
     funcReposition = function()
     {
         // This event is called whenever the library decides that the element needs to be moved. This is
-        // typically when the element is created, the layout changes, or when the player has scrolled a
+        // typically when the element is created, the layout changes, or when the player has scrolled an
         // element.
     }
     
-    // We include `image_alpha` on all Bento structs for parity with objects.
+    // We include `image_alpha` on all Bento structs for parity with objects. You may change this value as
+    // you sse fit. This value can be changed by Bento if you call one of the animation functions e.g.
+    // `BentoAnimPlayBuildIn()`.
     image_alpha = 1;
     
-    // These **read-only** variables give the position of various parts of this element in worldspace.
-    // They're read-only in the sense that they are liable to get overwritten by the library at unexpected
-    // times.
-    
+    // These **read-only** variables give the position of various parts of this element in worldspace. You
+    // can use these variables in the draw methods (`funcDraw` and `funcDrawAfter`).
     bentoLeft   = 0;
     bentoTop    = 0;
     bentoRight  = 0;
@@ -58,6 +71,8 @@ function BentoConstrAncestor(_parent = other) constructor
     bentoY      = 0;
     bentoWidth  = 0;
     bentoHeight = 0;
+    
+    // This stuff you can ignore, it's machinery to hook the struct into Bento
     
     BENTO_VARS = new __BentoClassVariables(self);
     
