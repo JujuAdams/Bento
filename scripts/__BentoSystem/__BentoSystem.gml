@@ -32,6 +32,143 @@ function __BentoSystem()
         __frame = 0;
         
         show_debug_message($"Bento: Version {BENTO_VERSION}, {BENTO_DATE}");
+            
+        if (BENTO_STEAMWORKS_SUPPORT)
+        {
+            try
+            {
+                //Using Steamworks extension
+                var _usingSteamworks = steam_init();
+                var _onSteamDeck     = steam_utils_is_steam_running_on_steam_deck();
+                
+                if (_usingSteamworks && _onSteamDeck)
+                {
+                    steam_utils_enable_callbacks();
+                    __textUseSteamKeyboard = true;
+                }
+            }
+            catch(_error)
+            {
+                show_debug_message("Steamworks extension unavailable");
+            }
+        }
+        
+        ///////
+        // Draw method lookup arrays
+        ///////
+        
+        __functionDrawLookupArray      = array_create((__BENTO_DRAW_ORDER_MATRIX << 1), undefined);
+        __functionDrawAfterLookupArray = array_create((__BENTO_DRAW_ORDER_MATRIX << 1), undefined);
+        
+        if (BENTO_RUNNING_FROM_IDE)
+        {
+            __functionDrawLookupMap = ds_map_create();
+        }
+        
+        var _funcAddDrawFunction = function(_array, _index, _name, _function)
+        {
+            _array[@ _index] = _function;
+            
+            if (BENTO_RUNNING_FROM_IDE && is_callable(_function))
+            {
+                var _method = method(self, _function);
+                var _handle = method_get_index(_method);
+                
+                __functionDrawLookupMap[? _function] = _name;
+                __functionDrawLookupMap[? _handle  ] = _name;
+            }
+        }
+        
+        _funcAddDrawFunction(__functionDrawLookupArray, 0, "null", undefined);
+        
+        _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_SCISSOR, "scissor push", function()
+        {
+            __BentoScissorPushFromVars();
+        });
+        
+        _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_MATRIX, "transform push", function()
+        {
+            matrix_stack_push(__transformMatrix);
+            matrix_set(matrix_world, matrix_stack_top());
+        });
+        
+        _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX, "transform push, scissor push", function()
+        {
+            matrix_stack_push(__transformMatrix);
+            matrix_set(matrix_world, matrix_stack_top());
+            __BentoScissorPushFromVars();
+        });
+        
+        _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE, "draw", function()
+        {
+            __eventDraw();
+        });
+        
+        _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR, "draw, scissor push", function()
+        {
+            __eventDraw();
+            __BentoScissorPushFromVars();
+        });
+        
+        _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_MATRIX, "transform push, draw", function()
+        {
+            matrix_stack_push(__transformMatrix);
+            matrix_set(matrix_world, matrix_stack_top());
+            __eventDraw();
+        });
+        
+        _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX, "transform push, draw, scissor push", function()
+        {
+            matrix_stack_push(__transformMatrix);
+            matrix_set(matrix_world, matrix_stack_top());
+            __eventDraw();
+            __BentoScissorPushFromVars();
+        });
+        
+        _funcAddDrawFunction(__functionDrawAfterLookupArray, 0, "null", undefined);
+        
+        _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_SCISSOR, "scissor pop", function()
+        {
+            __BentoScissorPop();
+        });
+        
+        _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_MATRIX, "transform pop", function()
+        {
+            matrix_stack_pop();
+            matrix_set(matrix_world, matrix_stack_top());
+        });
+        
+        _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX, "scissor pop, transform pop", function()
+        {
+            __BentoScissorPop();
+            matrix_stack_pop();
+            matrix_set(matrix_world, matrix_stack_top());
+        });
+        
+        _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR, "scissor pop, draw after", function()
+        {
+            __BentoScissorPop();
+            __eventDrawAfter();
+        });
+        
+        _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_MATRIX, "draw after, transform pop", function()
+        {
+            __eventDrawAfter();
+            matrix_stack_pop();
+            matrix_set(matrix_world, matrix_stack_top());
+        });
+        
+        _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX, "scissor pop, draw after, transform pop", function()
+        {
+            __BentoScissorPop();
+            __eventDrawAfter();
+            matrix_stack_pop();
+            matrix_set(matrix_world, matrix_stack_top());
+        });
+        
+        ///////
+        // Variable declaration
+        ///////
         
         __scissorStack = [];
         
@@ -54,26 +191,6 @@ function __BentoSystem()
         
         __textUseSteamKeyboard   = false;
         __textHandlerEnvironment = undefined;
-            
-        if (BENTO_STEAMWORKS_SUPPORT)
-        {
-            try
-            {
-                //Using Steamworks extension
-                var _usingSteamworks = steam_init();
-                var _onSteamDeck     = steam_utils_is_steam_running_on_steam_deck();
-                
-                if (_usingSteamworks && _onSteamDeck)
-                {
-                    steam_utils_enable_callbacks();
-                    __textUseSteamKeyboard = true;
-                }
-            }
-            catch(_error)
-            {
-                show_debug_message("Steamworks extension unavailable");
-            }
-        }
     }
     
     if (BENTO_RUNNING_FROM_IDE)

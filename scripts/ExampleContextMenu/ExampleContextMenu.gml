@@ -56,8 +56,6 @@ function ExampleContextMenu()
                                 BentoCreate(oBentoExButton, { text: "Button 1", func: function() { BentoDestroy(BentoFocusGetTop()) } });
                                 BentoCreate(oBentoExButton, { text: "Button 2", func: function() { BentoDestroy(BentoFocusGetTop()) } });
                                 BentoCreate(oBentoExButton, { text: "Button 3", func: function() { BentoDestroy(BentoFocusGetTop()) } });
-                                
-                                BentoDebugDrawOrder();
                             }
                         },
                     },

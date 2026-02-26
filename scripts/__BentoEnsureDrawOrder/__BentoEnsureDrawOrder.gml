@@ -60,6 +60,9 @@ function __BentoEnsureDrawOrder()
 
 function __BentoEnsureDrawOrderInner(_drawOrder, _elementVars)
 {
+    static _functionDrawLookupArray      = __BentoSystem().__functionDrawLookupArray;
+    static _functionDrawAfterLookupArray = __BentoSystem().__functionDrawAfterLookupArray;
+    
     //N.B. - If you edit this, make sure to edit `__DrawWireframe()` as well
     
     with(_elementVars)
@@ -91,105 +94,4 @@ function __BentoEnsureDrawOrderInner(_drawOrder, _elementVars)
         var _function = _functionDrawAfterLookupArray[_lookup];
         if (_function != undefined) array_push(_drawOrder, method(self, _function));
     }
-    
-    static _functionDrawLookupArray = (function()
-    {
-        var _array = array_create((__BENTO_DRAW_ORDER_MATRIX << 1), undefined);
-        
-        _array[0] = undefined;
-        
-        _array[__BENTO_DRAW_ORDER_SCISSOR] = function()
-        {
-            __BentoScissorPushFromVars();
-        }
-        
-        _array[__BENTO_DRAW_ORDER_MATRIX] = function()
-        {
-            matrix_stack_push(__transformMatrix);
-            matrix_set(matrix_world, matrix_stack_top());
-        }
-        
-        _array[__BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX] = function()
-        {
-            matrix_stack_push(__transformMatrix);
-            matrix_set(matrix_world, matrix_stack_top());
-            __BentoScissorPushFromVars();
-        }
-        
-        _array[__BENTO_DRAW_ORDER_VISIBLE] = function()
-        {
-            __eventDraw();
-        }
-        
-        _array[__BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR] = function()
-        {
-            __eventDraw();
-            __BentoScissorPushFromVars();
-        }
-        
-        _array[__BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_MATRIX] = function()
-        {
-            matrix_stack_push(__transformMatrix);
-            matrix_set(matrix_world, matrix_stack_top());
-            __eventDraw();
-        }
-        
-        _array[__BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX] = function()
-        {
-            matrix_stack_push(__transformMatrix);
-            matrix_set(matrix_world, matrix_stack_top());
-            __eventDraw();
-            __BentoScissorPushFromVars();
-        }
-        
-        return _array;
-    })();
-    
-    static _functionDrawAfterLookupArray = (function()
-    {
-        var _array = array_create((__BENTO_DRAW_ORDER_MATRIX << 1) - 1, undefined);
-        
-        _array[0] = undefined;
-        
-        _array[__BENTO_DRAW_ORDER_SCISSOR] = function()
-        {
-            __BentoScissorPop();
-        }
-        
-        _array[__BENTO_DRAW_ORDER_MATRIX] = function()
-        {
-            matrix_stack_pop();
-            matrix_set(matrix_world, matrix_stack_top());
-        }
-        
-        _array[__BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX] = function()
-        {
-            __BentoScissorPop();
-            matrix_stack_pop();
-            matrix_set(matrix_world, matrix_stack_top());
-        }
-        
-        _array[__BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR] = function()
-        {
-            __BentoScissorPop();
-            __eventDrawAfter();
-        }
-        
-        _array[__BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_MATRIX] = function()
-        {
-            __eventDrawAfter();
-            matrix_stack_pop();
-            matrix_set(matrix_world, matrix_stack_top());
-        }
-        
-        _array[__BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX] = function()
-        {
-            __BentoScissorPop();
-            __eventDrawAfter();
-            matrix_stack_pop();
-            matrix_set(matrix_world, matrix_stack_top());
-        }
-        
-        return _array;
-    })();
 }
