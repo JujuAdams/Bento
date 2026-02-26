@@ -13,19 +13,18 @@ function __BentoEnsureDrawOrder()
         static _funcSort = function(_a, _b)
         {
             var _delta = (_a.__drawDepth - _b.__drawDepth);
-            if (_delta < 0)
+            
+            if (_delta == 0)
             {
-                return 1;
+                //Fall back on the order that these siblings appear in the parent's child order
+                var _parent = _a.__parent;
+                if (_parent == BENTO_NO_ELEMENT) return 0;
+                
+                var _childArray = _parent.BENTO_VARS.__childArray;
+                _delta = array_get_index(_childArray, _a) - array_get_index(_childArray, _b);
             }
-            else if (_delta > 0)
-            {
-                return -1;
-            }
-            else
-            {
-                //Fall back on the Step order
-                return sign(_a.__localIndex - _b.__localIndex);
-            }
+            
+            return sign(_delta);
         }
         
         with(_elementVars)

@@ -55,9 +55,8 @@ function __BentoClassVariables(_attachedElement) constructor
         __textPrediction: false,
     };
     
-    __parent     = BENTO_NO_ELEMENT;
-    __localIndex = 0;
-    __drawDepth  = 0;
+    __parent    = BENTO_NO_ELEMENT;
+    __drawDepth = 0;
     
     __forceStep    = false;
     __buttonType   = BENTO_BUTTON_NEVER;
