@@ -1,16 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"oBentoExGridWithRotation",
+  "%Name":"oTestGridWithRotation",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oBentoExGridWithRotation",
+  "name":"oTestGridWithRotation",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Bento/Example Elements/Objects.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "parentObjectId":{
     "name":"oBentoSprite",

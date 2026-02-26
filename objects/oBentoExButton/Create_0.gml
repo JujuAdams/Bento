@@ -7,15 +7,15 @@ event_inherited();
 
 //Ensure that we have a couple variable defined. This emulates
 BentoVarEnsureMany(
-    "text",      "",
-    "clickFunc", function()
+    "text", "",
+    "func", function()
     {
         show_debug_message($"Button {id} clicked");
     },
 );
 
 //Ensure the click function is scoped to this instance
-clickFunc = method(self, clickFunc);
+func = method(self, func);
 
 //Allow Bento to focus this element
 BentoSetButton(BENTO_BUTTON_ALWAYS);

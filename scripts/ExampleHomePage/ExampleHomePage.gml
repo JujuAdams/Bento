@@ -45,7 +45,7 @@ function ExampleHomePage()
                             object: oBentoExButton,
                             vars: {
                                 text: "Open repo",
-                                clickFunc: function()
+                                func: function()
                                 {
                                     url_open("https://www.github.com/jujuadams/Bento/");
                                 }
@@ -55,7 +55,7 @@ function ExampleHomePage()
                             object: oBentoExButton,
                             vars: {
                                 text: "Juju's website",
-                                clickFunc: function()
+                                func: function()
                                 {
                                     url_open("https://www.jujuadams.com/");
                                 }
@@ -76,28 +76,28 @@ function ExampleHomePage()
                             object: oBentoExButton,
                             vars: {
                                 text: $"Example: Buttons",
-                                clickFunc: ExampleButtons,
+                                func: ExampleButtons,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
                                 text: $"Example: Lists",
-                                clickFunc: ExampleLists,
+                                func: ExampleLists,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
                                 text: $"Example: Grids",
-                                clickFunc: ExampleGrids,
+                                func: ExampleGrids,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
                                 text: $"Example: Settings Menu",
-                                clickFunc: ExampleSettings,
+                                func: ExampleSettings,
                             },
                         },
                     ],

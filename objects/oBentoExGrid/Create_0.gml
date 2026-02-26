@@ -3,4 +3,13 @@
 //Always call this in events in objects that inherit from `oBentoAncestor`!
 event_inherited();
 
-BentoLayoutGrid(2, 2);
+BentoVarEnsureMany(
+    "columns",    2,
+    "rows",       2,
+    "minColumns", undefined,
+    "minRows",    undefined,
+    "maxColumns", undefined,
+    "maxRows",    undefined,
+);
+
+BentoLayoutGrid(columns, rows, minColumns, minRows, maxColumns, maxRows);

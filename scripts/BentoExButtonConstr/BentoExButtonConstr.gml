@@ -16,8 +16,8 @@ function BentoExButtonConstr(_clickFunc = undefined, _text = "", _parent = other
         }
     }
     
-    text      = _text;
-    clickFunc = method(self, _clickFunc);
+    text = _text;
+    func = method(self, _clickFunc);
     
     BentoSetButton(BENTO_BUTTON_ALWAYS);
     
@@ -25,9 +25,9 @@ function BentoExButtonConstr(_clickFunc = undefined, _text = "", _parent = other
     {
         if (BentoPrimaryGetClick())
         {
-            if (is_callable(clickFunc))
+            if (is_callable(func))
             {
-                clickFunc();
+                func();
             }
         }
     }

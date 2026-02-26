@@ -32,7 +32,7 @@ function ExampleGrids()
                             object: oBentoExButton,
                             vars: {
                                 text: "Back",
-                                clickFunc: ExampleHomePage,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

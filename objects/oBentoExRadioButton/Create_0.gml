@@ -6,6 +6,10 @@ event_inherited();
 BentoVarEnsureMany(
     "text",   "",
     "option", undefined,
+    "func", function()
+    {
+        show_debug_message($"Button {id} clicked");
+    },
 );
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);

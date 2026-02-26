@@ -15,7 +15,7 @@ function TestContextMenu()
             offset: [10, 10],
             vars: {
                 image_blend: c_red,
-                clickFunc: function()
+                func: function()
                 {
                     BentoCreateFromJSON({
                         object: oBentoExContextMenu,

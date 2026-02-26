@@ -39,7 +39,7 @@ function ExampleSettings()
                             object: oBentoExButton,
                             vars: {
                                 text: "Back",
-                                clickFunc: ExampleHomePage,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

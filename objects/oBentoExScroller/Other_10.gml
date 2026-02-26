@@ -34,5 +34,9 @@ else if (BentoUsingDirectional())
 if (_delta != 0)
 {
     value = clamp(value + _delta*valueStep, valueMin, valueMax);
-    func(value); //Execute the callback
+    
+    if (is_callable(func))
+    {
+        func(value); //Execute the callback
+    }
 }

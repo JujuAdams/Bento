@@ -9,5 +9,7 @@
 
 function BentoRefToggle(_reference)
 {
-    BentoRefSet(_reference, not BentoRefGet(_reference, false));
+    var _value = not BentoRefGet(_reference, false);
+    BentoRefSet(_reference, _value);
+    return _value;
 }

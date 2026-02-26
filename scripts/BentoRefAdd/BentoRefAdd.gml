@@ -10,6 +10,10 @@
 
 function BentoRefAdd(_reference, _value)
 {
-    if (not is_numeric(_value)) return;
-    BentoRefSet(_reference, BentoRefGet(_reference, 0) + _value);
+    if (not is_numeric(_value)) return 0;
+    
+    _value += BentoRefGet(_reference, 0);
+    BentoRefSet(_reference, _value);
+    
+    return _value;
 }

@@ -76,4 +76,10 @@ else if (BentoUsingDirectional())
 }
 
 _value = clamp(valueStep*_handleStep + valueMin, valueMin, valueMax);
-BentoRefSet(reference, _value);
+if (BentoRefSet(reference, _value))
+{
+    if (is_callable(func))
+    {
+        func(_value);
+    }
+}

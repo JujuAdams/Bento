@@ -17,7 +17,16 @@ if (BentoCursorGetHover() || (BentoFocusGetTop() == self))
     gpu_set_fog(false, c_fuchsia, 0, 0);
 }
 
-var _text = text;
+if (text == "")
+{
+    var _text = emptyText;
+    draw_set_color(BentoTextGetTargeted()? c_white : c_gray);
+}
+else
+{
+    var _text = text;
+}
+
 if (BentoTextGetTargeted() && ((BentoTextGetOpenDuration() mod 30) < 15)) _text += "|";
 
 draw_set_halign(fa_left);
@@ -25,3 +34,4 @@ draw_set_valign(fa_middle);
 draw_text(bbox_left + 10, _y, _text);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
+draw_set_color(c_white);

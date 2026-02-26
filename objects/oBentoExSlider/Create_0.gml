@@ -15,7 +15,11 @@ BentoVarEnsureMany(
     "handleWidth", undefined,
     "clickToSet",  true,
     "useFocus",    true,
+    "func",        function() {}
 );
+
+//Ensure the click function is scoped to this instance
+func = method(self, func);
 
 handleHover = false;
 handleHold  = false;

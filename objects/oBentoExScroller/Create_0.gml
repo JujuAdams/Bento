@@ -1,10 +1,10 @@
 // Feather disable all
 
-// An example that demonstrates how to make a carousel of discrete qualitative options. It
-// can be manipulated using pointer input or directional input. Clicking on the left or right
-// sides will scroll through options. Directional input uses the x-axis movement to trigger
-// scrolling through options (in this example project, that means pressing the left and right
-// arrow keys).
+// An example that demonstrates how to make a scroller for numerical values. This is commonly used
+// for audio volumes, mouse sensitivity etc.  It can be manipulated using pointer input or
+// directional input. Clicking on the left or right sides will scroll through options. Directional
+// input uses the x-axis movement to trigger scrolling through options (in this example project,
+// that means pressing the left and right arrow keys).
 
 //Always call this in events in objects that inherit from `oBentoAncestor`!
 event_inherited();
@@ -25,6 +25,9 @@ BentoVarEnsureMany(
     "value",     valueMax,
     "func",      function(){},
 );
+
+//Ensure the click function is scoped to this instance
+func = method(self, func);
 
 draw_set_font(fntDebug);
 BentoLayoutSetSize(string_width(title) + 20, string_height(title) + 20);

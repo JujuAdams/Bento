@@ -8,8 +8,8 @@ event_inherited();
 //If Bento thinks this button has been clicked then trigger the callback function
 if (BentoPrimaryGetClick())
 {
-    if (is_callable(clickFunc))
+    if (is_callable(func))
     {
-        clickFunc();
+        func();
     }
 }

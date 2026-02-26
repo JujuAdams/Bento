@@ -7,5 +7,10 @@ event_inherited();
 
 if (BentoPrimaryGetClick())
 {
-    BentoRefToggle(reference);
+    var _value = BentoRefToggle(reference);
+    
+    if (is_callable(func))
+    {
+        func(_value);
+    }
 }

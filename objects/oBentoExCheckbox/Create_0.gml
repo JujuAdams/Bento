@@ -5,7 +5,14 @@ event_inherited();
 
 BentoVarEnsureMany(
     "text", "",
+    "func", function()
+    {
+        show_debug_message($"Button {id} clicked");
+    },
 );
+
+//Ensure the click function is scoped to this instance
+func = method(self, func);
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 
