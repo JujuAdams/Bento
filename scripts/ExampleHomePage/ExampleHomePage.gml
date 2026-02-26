@@ -114,6 +114,13 @@ function ExampleHomePage()
                                 func: ExampleScroller,
                             },
                         },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Example: Slider",
+                                func: ExampleSlider,
+                            },
+                        },
                     ],
                 },
             ],

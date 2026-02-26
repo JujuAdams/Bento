@@ -391,6 +391,7 @@
     {"id":{"name":"ExampleLists","path":"scripts/ExampleLists/ExampleLists.yy",},},
     {"id":{"name":"ExampleScroller","path":"scripts/ExampleScroller/ExampleScroller.yy",},},
     {"id":{"name":"ExampleSettings","path":"scripts/ExampleSettings/ExampleSettings.yy",},},
+    {"id":{"name":"ExampleSlider","path":"scripts/ExampleSlider/ExampleSlider.yy",},},
     {"id":{"name":"TestAnchor","path":"scripts/TestAnchor/TestAnchor.yy",},},
     {"id":{"name":"TestAnimation","path":"scripts/TestAnimation/TestAnimation.yy",},},
     {"id":{"name":"TestCarousel","path":"scripts/TestCarousel/TestCarousel.yy",},},
