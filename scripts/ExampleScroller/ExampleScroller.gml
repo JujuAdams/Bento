@@ -7,7 +7,7 @@ function ExampleScroller()
     with(oMain)
     {
         var _json = {
-            object: oBentoBox,
+            object: oBentoExSpacer,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -16,7 +16,7 @@ function ExampleScroller()
             },
             children: [
                 {
-                    object: oBentoBox,
+                    object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -24,7 +24,7 @@ function ExampleScroller()
                     },
                     children: [
                         {
-                            object: oBentoText,
+                            object: oBentoExText,
                             vars: {
                                 text: "Scroller Example",
                                 font: fntDebug,
@@ -50,7 +50,7 @@ function ExampleScroller()
                     },
                 },
                 {
-                    object: oBentoText,
+                    object: oBentoExText,
                     vars: {
                         text: function()
                         {

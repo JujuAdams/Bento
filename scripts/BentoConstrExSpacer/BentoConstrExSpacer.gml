@@ -9,7 +9,7 @@
 ///
 /// @param [parent=self]
 
-function BentoConstrBox(_parent = other) : BentoConstrAncestor(_parent) constructor
+function BentoConstrExSpacer(_parent = other) : BentoConstrAncestor(_parent) constructor
 {
     //Blank!
 }

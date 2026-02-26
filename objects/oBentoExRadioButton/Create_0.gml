@@ -4,8 +4,9 @@
 event_inherited();
 
 BentoVarEnsureMany(
-    "text",   "",
-    "option", undefined,
+    "text",      "",
+    "reference", undefined,
+    "value",     undefined,
     "func", function()
     {
         show_debug_message($"Button {id} clicked");

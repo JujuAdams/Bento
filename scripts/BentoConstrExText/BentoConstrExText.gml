@@ -14,7 +14,7 @@
 /// @param [vAlign=top]
 /// @param [parent=self]
 
-function BentoConstrText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_top, _parent = other) : BentoConstrAncestor(_parent) constructor
+function BentoConstrExText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_top, _parent = other) : BentoConstrAncestor(_parent) constructor
 {
     text      = _text;
     font      = _font;

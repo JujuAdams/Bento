@@ -14,8 +14,8 @@
   "name":"oBentoAncestor",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inheritable Objects",
-    "path":"folders/Bento/Reusable Resources/Inheritable Objects.yy",
+    "name":"Reusable Assets",
+    "path":"folders/Bento/Reusable Assets.yy",
   },
   "parentObjectId":null,
   "persistent":true,

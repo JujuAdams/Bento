@@ -12,27 +12,27 @@ function TestDeflateAndInflate()
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
-        with(BentoCreate(oBentoSprite))
+        with(BentoCreate(oBentoExSprite))
         {
             image_blend = c_red;
             BentoLayoutSetSize(100, 100);
         }
         
-        with(BentoCreate(oBentoSprite))
+        with(BentoCreate(oBentoExSprite))
         {
             image_blend = c_yellow;
             BentoLayoutSetSize(100, 50);
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
         }
         
-        with(BentoCreate(oBentoSprite))
+        with(BentoCreate(oBentoExSprite))
         {
             image_blend = c_yellow;
             BentoLayoutSetSize(50, 100);
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
         }
         
-        with(BentoCreate(oBentoSprite))
+        with(BentoCreate(oBentoExSprite))
         {
             image_blend = c_blue;
             BentoLayoutSetSize(100, 100);

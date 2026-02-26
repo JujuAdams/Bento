@@ -6,7 +6,7 @@
 /// @param [text]
 /// @param [parent=self]
 
-function BentoExButtonConstr(_clickFunc = undefined, _text = "", _parent = other) : BentoConstrSprite(sBentoMaskRectangle, _parent) constructor
+function BentoConstrExButton(_clickFunc = undefined, _text = "", _parent = other) : BentoConstrExSprite(sBentoMaskRectangle, _parent) constructor
 {
     if (_clickFunc == undefined)
     {

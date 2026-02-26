@@ -13,8 +13,8 @@
     "path":"folders/Examples.yy",
   },
   "parentObjectId":{
-    "name":"oBentoSprite",
-    "path":"objects/oBentoSprite/oBentoSprite.yy",
+    "name":"oBentoExSprite",
+    "path":"objects/oBentoExSprite/oBentoExSprite.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

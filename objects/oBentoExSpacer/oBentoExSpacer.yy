@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"oBentoBox",
+  "%Name":"oBentoExSpacer",
   "eventList":[],
   "managed":true,
-  "name":"oBentoBox",
+  "name":"oBentoExSpacer",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inheritable Objects",
-    "path":"folders/Bento/Reusable Resources/Inheritable Objects.yy",
+    "name":"Objects",
+    "path":"folders/Bento/Example Elements/Objects.yy",
   },
   "parentObjectId":{
     "name":"oBentoAncestor",

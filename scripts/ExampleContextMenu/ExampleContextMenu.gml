@@ -1,8 +1,6 @@
 // Feather disable all
 
-global.carouselExample = "red";
-
-function ExampleCarousel()
+function ExampleContextMenu()
 {
     with(oMain)
     {
@@ -26,7 +24,7 @@ function ExampleCarousel()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Carousel Example",
+                                text: "Context Menu Example",
                                 font: fntDebug,
                             },
                         },
@@ -41,28 +39,27 @@ function ExampleCarousel()
                 },
                 {
                     select: true,
-                    object: oBentoExCarousel,
+                    object: oBentoExButton,
                     vars: {
-                        text: "Colour Selection",
-                        optionArray: ["red", "yellow", "green", "blue", "purple"],
-                        reference: BentoRef(global, "carouselExample"),
-                    },
-                },
-                {
-                    object: oBentoExText,
-                    vars: {
-                        text: function()
+                        text: "Click Me!",
+                        func: function()
                         {
-                            return $"global.carouselExample = {global.carouselExample}";
-                        }
-                    },
-                },
-                {
-                    object: oBentoExCarousel,
-                    vars: {
-                        text: "Colour Selection\n(but backwards)",
-                        optionArray: ["red", "purple", "blue", "green", "yellow"],
-                        reference: BentoRef(global, "carouselExample"),
+                            //Creating a context menu will instantly set the cursor position so we should cache that first
+                            var _x = BentoCursorGetX();
+                            var _y = BentoCursorGetY();
+                            
+                            with(BentoCreate(oBentoExContextMenu, undefined, BentoGetRoot()))
+                            {
+                                //BentoSetDepthTop();
+                                BentoSetOffset(_x, _y);
+                                
+                                BentoCreate(oBentoExButton, { text: "Button 1", func: function() { BentoDestroy(BentoFocusGetTop()) } });
+                                BentoCreate(oBentoExButton, { text: "Button 2", func: function() { BentoDestroy(BentoFocusGetTop()) } });
+                                BentoCreate(oBentoExButton, { text: "Button 3", func: function() { BentoDestroy(BentoFocusGetTop()) } });
+                                
+                                BentoDebugDrawOrder();
+                            }
+                        },
                     },
                 },
             ],

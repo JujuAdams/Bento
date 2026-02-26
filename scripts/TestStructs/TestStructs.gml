@@ -2,7 +2,7 @@
 
 function TestStructs()
 {
-    structTest = new BentoConstrSprite(sBentoMaskRectangle, BentoGetRoot());
+    structTest = new BentoConstrExSprite(sBentoMaskRectangle, BentoGetRoot());
     with(structTest)
     {
         BentoLayoutList(BENTO_AXIS_Y, 0, 0);
@@ -11,16 +11,16 @@ function TestStructs()
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
-        var _text = new BentoConstrText("Hello World", undefined, fa_center);
+        var _text = new BentoConstrExText("Hello World", undefined, fa_center);
         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, undefined, _text);
         
-        var _text = BentoCreate(oBentoText, { text: "Hello World", hAlign: fa_center });
+        var _text = BentoCreate(oBentoExText, { text: "Hello World", hAlign: fa_center });
         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, undefined, _text);
         
-        new BentoExButtonConstr(undefined, "Test");
-        new BentoExButtonConstr(undefined, "Test");
+        new BentoConstrExButton(undefined, "Test");
+        new BentoConstrExButton(undefined, "Test");
         
-        var _grid = new BentoConstrSprite(sBentoMaskRectangle);
+        var _grid = new BentoConstrExSprite(sBentoMaskRectangle);
         with(_grid)
         {
             BentoLayoutGrid(6, 2);
@@ -33,7 +33,7 @@ function TestStructs()
             
             repeat(10)
             {
-                with(new BentoExButtonConstr())
+                with(new BentoConstrExButton())
                 {
                     BentoLayoutSetAnchor(0.5, 0.5);
                 }

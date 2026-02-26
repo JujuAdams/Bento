@@ -7,7 +7,7 @@ function ExampleSlider()
     with(oMain)
     {
         var _json = {
-            object: oBentoBox,
+            object: oBentoExSpacer,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -16,7 +16,7 @@ function ExampleSlider()
             },
             children: [
                 {
-                    object: oBentoBox,
+                    object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -24,7 +24,7 @@ function ExampleSlider()
                     },
                     children: [
                         {
-                            object: oBentoText,
+                            object: oBentoExText,
                             vars: {
                                 text: "Slider Example",
                                 font: fntDebug,
@@ -53,7 +53,7 @@ function ExampleSlider()
                     },
                 },
                 {
-                    object: oBentoText,
+                    object: oBentoExText,
                     vars: {
                         text: function()
                         {

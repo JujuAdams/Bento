@@ -3,7 +3,7 @@
 function TestAnchor()
 {
     var _json = {
-        object: oBentoSprite,
+        object: oBentoExSprite,
         name: "list",
         vars: {
             image_blend: c_ltgray,
@@ -18,7 +18,7 @@ function TestAnchor()
         },
         children: [
             {
-                object: oBentoSprite,
+                object: oBentoExSprite,
                 name: "first",
                 vars: {
                     image_blend: c_red,
@@ -30,7 +30,7 @@ function TestAnchor()
                 },
                 children: [
                     {
-                        object: oBentoSprite,
+                        object: oBentoExSprite,
                         name: "second",
                         vars: {
                             image_blend: c_yellow,
@@ -43,7 +43,7 @@ function TestAnchor()
                 ],
             },
             {
-                object: oBentoSprite,
+                object: oBentoExSprite,
                 vars: {
                     image_blend: c_lime,
                 },
@@ -55,7 +55,7 @@ function TestAnchor()
                 },
             },
             {
-                object: oBentoSprite,
+                object: oBentoExSprite,
                 vars: {
                     image_blend: c_blue,
                 },

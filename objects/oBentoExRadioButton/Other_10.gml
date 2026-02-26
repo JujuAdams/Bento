@@ -5,10 +5,10 @@ event_inherited();
 
 if (BentoPrimaryGetClick())
 {
-    BentoRefSet(reference, option);
+    BentoRefSet(reference, value);
     
     if (is_callable(func))
     {
-        func(option);
+        func(value);
     }
 }

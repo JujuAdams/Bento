@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoConstrAncestor",
   "parent":{
-    "name":"Inheritable Constructors",
-    "path":"folders/Bento/Reusable Resources/Inheritable Constructors.yy",
+    "name":"Reusable Assets",
+    "path":"folders/Bento/Reusable Assets.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

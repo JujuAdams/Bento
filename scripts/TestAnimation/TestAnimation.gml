@@ -2,7 +2,7 @@
 
 function TestAnimations()
 {
-    structTest = new BentoConstrSprite(sBentoMaskRectangle, BentoGetRoot());
+    structTest = new BentoConstrExSprite(sBentoMaskRectangle, BentoGetRoot());
     with(structTest)
     {
         BentoSetOffset(100, 100);
@@ -11,7 +11,7 @@ function TestAnimations()
         BentoLayoutSetPadding(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
-        with(new BentoExButtonConstr(function()
+        with(new BentoConstrExButton(function()
         {
             BentoLayoutSetBypass(true);
             BentoAnimPlayBuildOut(60, 0, 40, 0, 1, 1, 0);

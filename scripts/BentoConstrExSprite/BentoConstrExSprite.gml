@@ -12,7 +12,7 @@
 /// @param sprite
 /// @param [parent=self]
 
-function BentoConstrSprite(_sprite, _parent = other) : BentoConstrAncestor(_parent) constructor
+function BentoConstrExSprite(_sprite, _parent = other) : BentoConstrAncestor(_parent) constructor
 {
     sprite = _sprite;
     

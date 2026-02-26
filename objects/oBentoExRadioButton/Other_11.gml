@@ -7,7 +7,7 @@ event_inherited();
 
 draw_sprite_stretched_ext(sprite_index, image_index, bentoLeft, bentoTop, bentoHeight, bentoHeight, image_blend, image_alpha);
 
-if (BentoRefGet(reference) == option)
+if (BentoRefGet(reference) == value)
 {
     draw_circle(bentoLeft + bentoHeight/2, bentoY, bentoHeight/2 - 8, false);
 }

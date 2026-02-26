@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"oBentoText",
+  "%Name":"oBentoExText",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -8,11 +8,11 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oBentoText",
+  "name":"oBentoExText",
   "overriddenProperties":[],
   "parent":{
-    "name":"Inheritable Objects",
-    "path":"folders/Bento/Reusable Resources/Inheritable Objects.yy",
+    "name":"Objects",
+    "path":"folders/Bento/Example Elements/Objects.yy",
   },
   "parentObjectId":{
     "name":"oBentoAncestor",

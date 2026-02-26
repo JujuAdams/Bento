@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoExButtonConstr",
+  "%Name":"BentoConstrExText",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoExButtonConstr",
+  "name":"BentoConstrExText",
   "parent":{
     "name":"Structs",
     "path":"folders/Bento/Example Elements/Structs.yy",

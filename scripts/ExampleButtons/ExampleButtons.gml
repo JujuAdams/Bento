@@ -5,7 +5,7 @@ function ExampleButtons()
     with(oMain)
     {
         var _json = {
-            object: oBentoBox,
+            object: oBentoExSpacer,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -14,7 +14,7 @@ function ExampleButtons()
             },
             children: [
                 {
-                    object: oBentoBox,
+                    object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -22,7 +22,7 @@ function ExampleButtons()
                     },
                     children: [
                         {
-                            object: oBentoText,
+                            object: oBentoExText,
                             vars: {
                                 text: "Buttons Example",
                                 font: fntDebug,
@@ -38,28 +38,28 @@ function ExampleButtons()
                     ],
                 },
                 {
-                    object: oBentoText,
+                    object: oBentoExText,
                     vars: {
                         text: "This example demonstrates various button behaviours. A \"button\" in Bento is any element that can be clicked by pressing the primary input (left mouse click, spacebar, [A] button on a gamepad etc.). Any element can be marked as a button.",
                         font: fntDebug,
                     },
                 },
                 {
-                    object: oBentoText,
+                    object: oBentoExText,
                     vars: {
                         text: "Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or directional (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you.",
                         font: fntDebug,
                     },
                 },
                 {
-                    object: oBentoText,
+                    object: oBentoExText,
                     vars: {
                         text: "When a button is clicked, `BentoPrimaryGetClick()` will return `true` for one step, including in the Draw event for the element. You should only use this function for determining if a button has been deliberately clicked by the player; any other function is liable to return false values.",
                         font: fntDebug,
                     },
                 },
                 {
-                    object: oBentoBox,
+                    object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],

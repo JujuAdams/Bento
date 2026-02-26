@@ -5,7 +5,7 @@ function ExampleHomePage()
     with(oMain)
     {
         var _json = {
-            object: oBentoBox,
+            object: oBentoExSpacer,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -14,27 +14,27 @@ function ExampleHomePage()
             },
             children: [
                 {
-                    object: oBentoSprite,
+                    object: oBentoExSprite,
                     vars: {
                         sprite_index: sBentoLogo,
                     },
                 },
                 {
-                    object: oBentoText,
+                    object: oBentoExText,
                     vars: {
                         text: $"Bento {BENTO_VERSION}",
                         font: fntDebug,
                     },
                 },
                 {
-                    object: oBentoText,
+                    object: oBentoExText,
                     vars: {
                         text: $"Welcome to Bento! This is version {BENTO_VERSION} released on {BENTO_DATE}. This is an ALPHA build and as such any code and behaviour is liable to change. Please do NOT use this version of Bento as the basis for production code. This ALPHA build is intended for experimentation and fulfilling personal curiosity, and I suppose game jams too.",
                         font: fntDebug,
                     },
                 },
                 {
-                    object: oBentoBox,
+                    object: oBentoExSpacer,
                     layout: {
                         gutter: 35,
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -119,6 +119,13 @@ function ExampleHomePage()
                             vars: {
                                 text: $"Example: Slider",
                                 func: ExampleSlider,
+                            },
+                        },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Example: Context Menu",
+                                func: ExampleContextMenu,
                             },
                         },
                     ],

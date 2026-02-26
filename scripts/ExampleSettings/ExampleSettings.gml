@@ -12,7 +12,7 @@ function ExampleSettings()
     with(oMain)
     {
         var _json = {
-            object: oBentoBox,
+            object: oBentoExSpacer,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -21,7 +21,7 @@ function ExampleSettings()
             },
             children: [
                 {
-                    object: oBentoBox,
+                    object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -29,7 +29,7 @@ function ExampleSettings()
                     },
                     children: [
                         {
-                            object: oBentoText,
+                            object: oBentoExText,
                             vars: {
                                 text: "Settings Menu Example",
                                 font: fntDebug,
@@ -45,7 +45,7 @@ function ExampleSettings()
                     ],
                 },
                 {
-                    object: oBentoBox,
+                    object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0.5],
                         gutter: 15,
@@ -80,7 +80,7 @@ function ExampleSettings()
                             vars: {
                                 text: "Radio Button 1",
                                 reference: BentoRef(global.settings, "radiobutton"),
-                                option: 1,
+                                value: 1,
                             },
                         },
                         {
@@ -88,7 +88,7 @@ function ExampleSettings()
                             vars: {
                                 text: "Radio Button 2",
                                 reference: BentoRef(global.settings, "radiobutton"),
-                                option: 2,
+                                value: 2,
                             },
                         },
                         {
@@ -96,7 +96,7 @@ function ExampleSettings()
                             vars: {
                                 text: "Radio Button 3",
                                 reference: BentoRef(global.settings, "radiobutton"),
-                                option: 3,
+                                value: 3,
                             },
                         },
                     ],
