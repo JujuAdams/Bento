@@ -58,12 +58,7 @@ function ExampleCarousel()
                     },
                 },
                 {
-                    object: oBentoExCarousel,
-                    vars: {
-                        text: "Colour Selection\n(but backwards)",
-                        optionArray: ["red", "purple", "blue", "green", "yellow"],
-                        reference: BentoRef(global, "carouselExample"),
-                    },
+                    construct: [BentoConstrExCarousel, BentoRef(global, "carouselExample"), ["red", "purple", "blue", "green", "yellow"], "Colour Selection\n(but backwards)"],
                 },
             ],
         };

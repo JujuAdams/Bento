@@ -23,6 +23,10 @@ function BentoConstrExSprite(_sprite, _parent = other) : BentoConstrAncestor(_pa
     BentoSetOrigin(sprite_get_xoffset(sprite) / sprite_get_width(sprite),
                    sprite_get_yoffset(sprite) / sprite_get_height(sprite));
     
+    
+    
+    
+    
     eventDraw = function()
     {
         //Use the convenience function to draw the sprite stretched across the element

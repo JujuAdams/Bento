@@ -8,6 +8,8 @@
 
 function BentoConstrExButton(_clickFunc = undefined, _text = "", _parent = other) : BentoConstrExSprite(sBentoMaskRectangle, _parent) constructor
 {
+    text = _text;
+    
     if (_clickFunc == undefined)
     {
         _clickFunc = function()
@@ -16,10 +18,20 @@ function BentoConstrExButton(_clickFunc = undefined, _text = "", _parent = other
         }
     }
     
-    text = _text;
-    func = method(self, _clickFunc);
+    func = method(self, _clickFunc); //Ensure the click function is scoped to this instance
     
+    //Allow Bento to focus this element
     BentoSetButton(BENTO_BUTTON_ALWAYS);
+
+    //If we have some valid text then force the size of the element
+    if (text != "")
+    {
+        BentoLayoutSetSize(string_width(text) + 20, string_height(text) + 20);
+    }
+    
+    
+    
+    
     
     eventStep = function()
     {

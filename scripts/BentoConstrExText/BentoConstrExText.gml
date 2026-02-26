@@ -21,7 +21,7 @@ function BentoConstrExText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_to
     hAlign = _hAlign;
     vAlign = _vAlign;
     
-    //
+    //Set the layout parameters based on the size of the string when drawn
     var _oldFont = draw_get_font();
     draw_set_font(font);
     BentoLayoutSetSize(string_width(text), undefined);
@@ -38,6 +38,10 @@ function BentoConstrExText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_to
         
         return _result;
     });
+    
+    
+    
+    
     
     eventDraw = function()
     {

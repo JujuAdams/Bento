@@ -205,6 +205,7 @@
     {"id":{"name":"BentoClipSetPadding","path":"scripts/BentoClipSetPadding/BentoClipSetPadding.yy",},},
     {"id":{"name":"BentoConstrAncestor","path":"scripts/BentoConstrAncestor/BentoConstrAncestor.yy",},},
     {"id":{"name":"BentoConstrExButton","path":"scripts/BentoConstrExButton/BentoConstrExButton.yy",},},
+    {"id":{"name":"BentoConstrExCarousel","path":"scripts/BentoConstrExCarousel/BentoConstrExCarousel.yy",},},
     {"id":{"name":"BentoConstrExSpacer","path":"scripts/BentoConstrExSpacer/BentoConstrExSpacer.yy",},},
     {"id":{"name":"BentoConstrExSprite","path":"scripts/BentoConstrExSprite/BentoConstrExSprite.yy",},},
     {"id":{"name":"BentoConstrExText","path":"scripts/BentoConstrExText/BentoConstrExText.yy",},},

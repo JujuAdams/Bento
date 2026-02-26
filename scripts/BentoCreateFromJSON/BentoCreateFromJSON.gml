@@ -435,14 +435,30 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
         }
         else if (variable_struct_exists(_json, "construct"))
         {
-            var _struct = _json[$ "construct"];
-            if (is_struct(_struct))
+            with(_parent)
             {
-                var _element = _struct;
-            }
-            else
-            {
-                __BentoError($".construct property is incorrect datatyle, must be a struct (wrong datatype \"{typeof(_object)}\")");
+                var _constructorParameters = _json[$ "construct"];
+                switch(array_length(_constructorParameters))
+                {
+                    case 0:
+                    break;
+                    
+                    case 1:
+                        var _element = new _constructorParameters[0]();
+                    break;
+                    
+                    case 2:
+                        var _element = new _constructorParameters[0](_constructorParameters[1]);
+                    break;
+                    
+                    case 3:
+                        var _element = new _constructorParameters[0](_constructorParameters[1], _constructorParameters[2]);
+                    break;
+                    
+                    case 4:
+                        var _element = new _constructorParameters[0](_constructorParameters[1], _constructorParameters[2], _constructorParameters[3]);
+                    break;
+                }
             }
         }
         else

@@ -52,7 +52,7 @@ function ExampleTextbox()
                     vars: {
                         text: function()
                         {
-                            return $"global.textboxExample = {global.textboxExample}";
+                            return $"global.textboxExample = \"{global.textboxExample}\"";
                         }
                     },
                 },

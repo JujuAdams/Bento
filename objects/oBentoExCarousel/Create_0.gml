@@ -9,14 +9,6 @@
 //Always call this in events in objects that inherit from `oBentoAncestor`!
 event_inherited();
 
-BentoSetButton(BENTO_BUTTON_ALWAYS);
-
-// Disables raycasting in particular axes. This only applies to directional input where raycasting
-// is used to work out which element to jump to when pushing in a particular direction. This does
-// not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-// raycasting so that it doesn't interfere with scrolling through options.
-BentoSetRaycastEnable(false, true);
-
 BentoVarEnsureMany(
     "text",        "Example",
     "reference",   undefined,
@@ -39,3 +31,11 @@ repeat(array_length(optionArray))
 }
 
 BentoLayoutSetSize(max(_width, _optionWidth) + 30, _height + _optionHeight + 10);
+
+BentoSetButton(BENTO_BUTTON_ALWAYS);
+
+// Disables raycasting in particular axes. This only applies to directional input where raycasting
+// is used to work out which element to jump to when pushing in a particular direction. This does
+// not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
+// raycasting so that it doesn't interfere with scrolling through options.
+BentoSetRaycastEnable(false, true);
