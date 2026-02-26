@@ -6,7 +6,7 @@
   "name":"BentoNameSelect",
   "parent":{
     "name":"Names",
-    "path":"folders/Library/Functions/Names.yy",
+    "path":"folders/Bento/Functions/Names.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

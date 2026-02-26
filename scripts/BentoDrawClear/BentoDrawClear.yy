@@ -6,7 +6,7 @@
   "name":"BentoDrawClear",
   "parent":{
     "name":"Miscellaneous",
-    "path":"folders/Library/Functions/Miscellaneous.yy",
+    "path":"folders/Bento/Functions/Miscellaneous.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

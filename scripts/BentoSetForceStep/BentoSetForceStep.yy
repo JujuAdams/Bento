@@ -6,7 +6,7 @@
   "name":"BentoSetForceStep",
   "parent":{
     "name":"Basic Properties",
-    "path":"folders/Library/Functions/Basic Properties.yy",
+    "path":"folders/Bento/Functions/Basic Properties.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,7 +6,7 @@
   "name":"BentoLayoutSetPadding",
   "parent":{
     "name":"Properites",
-    "path":"folders/Library/Functions/Layout/Properites.yy",
+    "path":"folders/Bento/Functions/Layout/Properites.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

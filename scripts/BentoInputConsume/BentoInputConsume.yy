@@ -6,7 +6,7 @@
   "name":"BentoInputConsume",
   "parent":{
     "name":"Input & Navigation",
-    "path":"folders/Library/Functions/Input & Navigation.yy",
+    "path":"folders/Bento/Functions/Input & Navigation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

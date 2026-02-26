@@ -6,7 +6,7 @@
   "name":"BentoRefSet",
   "parent":{
     "name":"References",
-    "path":"folders/Library/Functions/References.yy",
+    "path":"folders/Bento/Functions/References.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,7 +6,7 @@
   "name":"__BentoEnvironmentTargetPop",
   "parent":{
     "name":"Environments & Layers",
-    "path":"folders/Library/(System)/Environments & Layers.yy",
+    "path":"folders/Bento/(System)/Environments & Layers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

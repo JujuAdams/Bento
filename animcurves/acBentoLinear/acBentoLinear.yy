@@ -11,7 +11,7 @@
   "name":"acBentoLinear",
   "parent":{
     "name":"Other Resources",
-    "path":"folders/Library/Other Resources.yy",
+    "path":"folders/Bento/Other Resources.yy",
   },
   "resourceType":"GMAnimCurve",
   "resourceVersion":"2.0",

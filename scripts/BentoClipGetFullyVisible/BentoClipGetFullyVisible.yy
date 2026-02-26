@@ -6,7 +6,7 @@
   "name":"BentoClipGetFullyVisible",
   "parent":{
     "name":"Clipping Regions (Scissor Test)",
-    "path":"folders/Library/Functions/Clipping Regions (Scissor Test).yy",
+    "path":"folders/Bento/Functions/Clipping Regions (Scissor Test).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

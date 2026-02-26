@@ -6,7 +6,7 @@
   "name":"BentoScrollbarGetVertData",
   "parent":{
     "name":"Scrollbar",
-    "path":"folders/Library/Functions/Scrollbar.yy",
+    "path":"folders/Bento/Functions/Scrollbar.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

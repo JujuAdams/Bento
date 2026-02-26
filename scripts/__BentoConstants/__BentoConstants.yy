@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__BentoConstants",
   "parent":{
-    "name":"Library",
-    "path":"folders/Library.yy",
+    "name":"Bento",
+    "path":"folders/Bento.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

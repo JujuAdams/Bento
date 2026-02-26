@@ -6,7 +6,7 @@
   "name":"BentoScrollLimitsMarkDirty",
   "parent":{
     "name":"Scroll",
-    "path":"folders/Library/Functions/Scroll.yy",
+    "path":"folders/Bento/Functions/Scroll.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

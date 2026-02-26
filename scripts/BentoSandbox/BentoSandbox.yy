@@ -6,7 +6,7 @@
   "name":"BentoSandbox",
   "parent":{
     "name":"Functions",
-    "path":"folders/Library/Functions.yy",
+    "path":"folders/Bento/Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

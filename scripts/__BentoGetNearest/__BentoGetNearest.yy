@@ -6,7 +6,7 @@
   "name":"__BentoGetNearest",
   "parent":{
     "name":"(System)",
-    "path":"folders/Library/(System).yy",
+    "path":"folders/Bento/(System).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

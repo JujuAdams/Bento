@@ -6,7 +6,7 @@
   "name":"__BentoTrace",
   "parent":{
     "name":"Support",
-    "path":"folders/Library/(System)/Support.yy",
+    "path":"folders/Bento/(System)/Support.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

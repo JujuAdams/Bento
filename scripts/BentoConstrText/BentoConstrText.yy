@@ -6,7 +6,7 @@
   "name":"BentoConstrText",
   "parent":{
     "name":"Inheritable Constructors",
-    "path":"folders/Library/Other Resources/Inheritable Constructors.yy",
+    "path":"folders/Bento/Other Resources/Inheritable Constructors.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

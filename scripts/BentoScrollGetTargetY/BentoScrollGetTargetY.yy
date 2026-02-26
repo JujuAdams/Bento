@@ -6,7 +6,7 @@
   "name":"BentoScrollGetTargetY",
   "parent":{
     "name":"Getters",
-    "path":"folders/Library/Functions/Scroll/Getters.yy",
+    "path":"folders/Bento/Functions/Scroll/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,7 +6,7 @@
   "name":"BentoFocusOpen",
   "parent":{
     "name":"Focus",
-    "path":"folders/Library/Functions/Focus.yy",
+    "path":"folders/Bento/Functions/Focus.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

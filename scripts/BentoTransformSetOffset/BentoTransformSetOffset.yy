@@ -6,7 +6,7 @@
   "name":"BentoTransformSetOffset",
   "parent":{
     "name":"Transform",
-    "path":"folders/Library/Functions/Transform.yy",
+    "path":"folders/Bento/Functions/Transform.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

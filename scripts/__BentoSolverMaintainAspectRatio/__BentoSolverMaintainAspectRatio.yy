@@ -6,7 +6,7 @@
   "name":"__BentoSolverMaintainAspectRatio",
   "parent":{
     "name":"Layout Solver",
-    "path":"folders/Library/(System)/Layout Solver.yy",
+    "path":"folders/Bento/(System)/Layout Solver.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

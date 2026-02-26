@@ -6,7 +6,7 @@
   "name":"BentoTextOpen",
   "parent":{
     "name":"Text Input",
-    "path":"folders/Library/Functions/Text Input.yy",
+    "path":"folders/Bento/Functions/Text Input.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

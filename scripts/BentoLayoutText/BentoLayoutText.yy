@@ -6,7 +6,7 @@
   "name":"BentoLayoutText",
   "parent":{
     "name":"Rulesets",
-    "path":"folders/Library/Functions/Layout/Rulesets.yy",
+    "path":"folders/Bento/Functions/Layout/Rulesets.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

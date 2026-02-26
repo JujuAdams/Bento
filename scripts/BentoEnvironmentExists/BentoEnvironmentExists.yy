@@ -6,7 +6,7 @@
   "name":"BentoEnvironmentExists",
   "parent":{
     "name":"Environments",
-    "path":"folders/Library/Functions/Environments.yy",
+    "path":"folders/Bento/Functions/Environments.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

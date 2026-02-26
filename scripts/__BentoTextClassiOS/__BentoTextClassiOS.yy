@@ -6,7 +6,7 @@
   "name":"__BentoTextClassiOS",
   "parent":{
     "name":"Text",
-    "path":"folders/Library/(System)/Text.yy",
+    "path":"folders/Bento/(System)/Text.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

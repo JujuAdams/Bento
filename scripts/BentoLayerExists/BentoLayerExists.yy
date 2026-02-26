@@ -6,7 +6,7 @@
   "name":"BentoLayerExists",
   "parent":{
     "name":"Layers",
-    "path":"folders/Library/Functions/Layers.yy",
+    "path":"folders/Bento/Functions/Layers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

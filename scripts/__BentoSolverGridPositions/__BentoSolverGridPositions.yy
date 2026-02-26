@@ -6,7 +6,7 @@
   "name":"__BentoSolverGridPositions",
   "parent":{
     "name":"Grid",
-    "path":"folders/Library/(System)/Layout Solver/Grid.yy",
+    "path":"folders/Bento/(System)/Layout Solver/Grid.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

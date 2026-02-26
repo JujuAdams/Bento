@@ -6,7 +6,7 @@
   "name":"BentoAnimPlayCustom",
   "parent":{
     "name":"Animation",
-    "path":"folders/Library/Functions/Animation.yy",
+    "path":"folders/Bento/Functions/Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

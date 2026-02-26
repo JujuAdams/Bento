@@ -6,7 +6,7 @@
   "name":"__BentoEnsureStepOrder",
   "parent":{
     "name":"Ensure",
-    "path":"folders/Library/(System)/Ensure.yy",
+    "path":"folders/Bento/(System)/Ensure.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
