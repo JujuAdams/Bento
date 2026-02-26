@@ -11,10 +11,10 @@
 event_inherited();
 
 // Ensure we have valid values for these variables
-BentoSetIfNotDefined("text", "");
-BentoSetIfNotDefined("font", -1);
-BentoSetIfNotDefined("hAlign", fa_left);
-BentoSetIfNotDefined("vAlign", fa_top);
+BentoVarEnsure("text", "");
+BentoVarEnsure("font", -1);
+BentoVarEnsure("hAlign", fa_left);
+BentoVarEnsure("vAlign", fa_top);
 
 var _oldFont = draw_get_font();
 draw_set_font(font);

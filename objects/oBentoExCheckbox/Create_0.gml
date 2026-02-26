@@ -2,7 +2,7 @@
 
 event_inherited();
 
-BentoSetIfNotDefined("text", "");
+BentoVarEnsure("text", "");
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 

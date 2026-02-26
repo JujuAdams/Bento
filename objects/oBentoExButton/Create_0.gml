@@ -2,8 +2,8 @@
 
 event_inherited();
 
-BentoSetIfNotDefined("text", "");
-BentoSetIfNotDefined("clickFunc", function()
+BentoVarEnsure("text", "");
+BentoVarEnsure("clickFunc", function()
 {
     show_debug_message($"Button {id} clicked");
 });

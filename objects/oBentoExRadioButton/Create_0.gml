@@ -2,8 +2,8 @@
 
 event_inherited();
 
-BentoSetIfNotDefined("text", "");
-BentoSetIfNotDefined("option", undefined);
+BentoVarEnsure("text", "");
+BentoVarEnsure("option", undefined);
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 

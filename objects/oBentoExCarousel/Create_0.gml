@@ -16,10 +16,10 @@ BentoSetButton(BENTO_BUTTON_ALWAYS);
 // raycasting so that it doesn't interfere with scrolling through options.
 BentoSetRaycastEnable(false, true);
 
-BentoSetIfNotDefined("title",       "Example");
-BentoSetIfNotDefined("optionArray", []);
-BentoSetIfNotDefined("option",      0);
-BentoSetIfNotDefined("func",        function(){});
+BentoVarEnsure("title",       "Example");
+BentoVarEnsure("optionArray", []);
+BentoVarEnsure("option",      0);
+BentoVarEnsure("func",        function(){});
 
 var _width  = string_width(title);
 var _height = string_height(title);

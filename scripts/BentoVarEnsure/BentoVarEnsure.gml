@@ -9,7 +9,7 @@
 /// @param value
 /// @param [target=self]
 
-function BentoSetIfNotDefined(_variableName, _value, _target = self)
+function BentoVarEnsure(_variableName, _value, _target = self)
 {
     if (not variable_struct_exists(_target, _variableName))
     {

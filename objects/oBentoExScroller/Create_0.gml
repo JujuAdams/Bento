@@ -16,12 +16,12 @@ BentoSetButton(BENTO_BUTTON_ALWAYS);
 // raycasting so that it doesn't interfere with scrolling through options.
 BentoSetRaycastEnable(false, true);
 
-BentoSetIfNotDefined("title",     "Example");
-BentoSetIfNotDefined("valueStep", 1);
-BentoSetIfNotDefined("valueMin",  0);
-BentoSetIfNotDefined("valueMax",  100);
-BentoSetIfNotDefined("value",     valueMax);
-BentoSetIfNotDefined("func",      function(){});
+BentoVarEnsure("title",     "Example");
+BentoVarEnsure("valueStep", 1);
+BentoVarEnsure("valueMin",  0);
+BentoVarEnsure("valueMax",  100);
+BentoVarEnsure("value",     valueMax);
+BentoVarEnsure("func",      function(){});
 
 draw_set_font(fntDebug);
 BentoLayoutSetSize(string_width(title) + 20, string_height(title) + 20);

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoSetIfNotDefined",
+  "%Name":"BentoVarEnsure",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoSetIfNotDefined",
+  "name":"BentoVarEnsure",
   "parent":{
     "name":"Miscellaneous",
     "path":"folders/Bento/Functions/Miscellaneous.yy",
