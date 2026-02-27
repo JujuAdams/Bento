@@ -4,5 +4,6 @@
 event_inherited();
 
 BentoLayoutList(BENTO_AXIS_Y, 0, 0);
+BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
 BentoClipSetEnabled(true);
 BentoScrollSetEnabled(true, true);

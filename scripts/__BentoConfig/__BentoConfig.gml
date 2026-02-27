@@ -111,6 +111,11 @@
 // Advanced
 ///////
 
+// Whether to run safety checks for some Bento functions. These error messages can help with
+// debugging your code. However, these is a small performance cost. You should consider setting
+// this macro to `false` for production builds.
+#macro BENTO_SAFE  true
+
 // Function to call when parsing strings from `.children` properties in `BentoCreateFromJSON()`.
 // Please see documentation for that function for further information.
 #macro BENTO_JSON_STRING_PROCESSOR  undefined

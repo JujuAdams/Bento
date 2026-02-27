@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoCreateOffset",
+  "%Name":"ExampleMainMenu",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoCreateOffset",
+  "name":"ExampleMainMenu",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Bento/Functions.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

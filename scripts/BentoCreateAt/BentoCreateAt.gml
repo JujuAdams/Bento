@@ -15,7 +15,7 @@
 /// @param [variableStruct]
 /// @param [parent=self]
 
-function BentoCreateOffset(_xOffset, _yOffset, _object, _struct = undefined, _parent = self)
+function BentoCreateAt(_xOffset, _yOffset, _object, _struct = undefined, _parent = self)
 {
     with(BentoCreate(_object, _struct, _parent))
     {

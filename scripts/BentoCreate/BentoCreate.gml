@@ -18,6 +18,28 @@ function BentoCreate(_object, _struct = undefined, _parent = self)
     
     if (not BentoExists(_parent)) __BentoError("Parent doesn't exist");
     
+    if (BENTO_SAFE)
+    {
+        if (__BentoIsInstance(_parent))
+        {
+            if (not object_is_ancestor(_parent.object_index, oBentoAncestor))
+            {
+                __BentoError($"Parent object instance is not a child of `oBentoAncestor` (instance was {object_get_name(_parent.object_index)}:{real(id)})\nTo create an instance as a child of root, use `BentoGetRoot()` for the parent");
+            }
+        }
+        else
+        {
+            try
+            {
+                var _vars = _parent.BENTO_VARS;
+            }
+            catch(_error)
+            {
+                __BentoError($"Parent struct does not inherit from `BentoConstrAncestor()` (instanceof was {instanceof(_parent)} {string_delete(string(ptr(_parent)), 1, 8)})\nTo create an instance as a child of root, use `BentoGetRoot()` for the parent");
+            }
+        }
+    }
+    
     if ((not is_handle(_object)) || (not object_exists(_object)))
     {
         __BentoError($"`BentoCreate()` may only be used to create object instances (object reference was \"{typeof(_object)}\"");
