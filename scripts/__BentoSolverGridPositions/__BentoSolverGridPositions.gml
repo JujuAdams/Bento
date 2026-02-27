@@ -2,6 +2,8 @@
 
 function __BentoSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeight)
 {
+    __BentoScrollLimitsMarkSelfDirty();
+    
     __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth );
     __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight);
     
