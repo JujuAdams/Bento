@@ -9,6 +9,12 @@
 
 function BentoScrollMove(_dX = 0, _dY = 0, _scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = self)
 {
+    if ((_dX == 0) && (_dY == 0))
+    {
+        //No movement, give up
+        return;
+    }
+    
     var _scroller = __BentoScrollFindParent(_element);
     if (not BentoExists(_scroller)) return;
     
