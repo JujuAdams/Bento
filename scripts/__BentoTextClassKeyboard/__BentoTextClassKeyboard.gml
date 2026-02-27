@@ -29,7 +29,7 @@ function __BentoTextClassKeyboard(_environment, _initialText, _callback, _maxLen
             return;
         }
         
-        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL, true))
+        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL_TEXT_INPUT, true))
         {
             BentoInputConsume();
             __Terminate(BENTO_TEXT_ABORT);

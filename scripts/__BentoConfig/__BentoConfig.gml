@@ -29,7 +29,7 @@
 // check against this macro yourself for general cancel behaviour (e.g. to quickly close a pop-up
 // window using a gamepad by pressing a button). Conventionally, a "cancel" hotkey is mapped to the
 // escape key on a keyboard or the B button on a gamepad.
-#macro BENTO_HOTKEY_CANCEL  "cancel text input"
+#macro BENTO_HOTKEY_CANCEL_TEXT_INPUT  "cancel text input"
 
 
 
@@ -42,14 +42,14 @@
 #macro BENTO_FLOOR_LAYOUT_POSITIONS  true
 
 // Default alignment for elements relative to their parent. This should be a value from `0` (left
-// or top) to `1` (right or bottom). Please see documentation for `BentoLayoutSetAnchor()` for
-// more information.
+// or top) to `1` (right or bottom). A value of `0.5` is therefore the centre/middle of an element.
+/// Please see documentation for `BentoLayoutSetAnchor()` for more information.
 #macro BENTO_DEFAULT_LAYOUT_ANCHOR_X  0
 #macro BENTO_DEFAULT_LAYOUT_ANCHOR_Y  0
 
 // Default alignment for elements relative to their parent. This should be a value from `0` (left
-// or top) to `1` (right or bottom). Please see documentation for `BentoLayoutSetAnchor()` for
-// more information.
+// or top) to `1` (right or bottom). A value of `0.5` is therefore the centre/middle of an element.
+// Please see documentation for `BentoLayoutSetAnchor()` for more information.
 #macro BENTO_DEFAULT_ORIGIN_X  0
 #macro BENTO_DEFAULT_ORIGIN_Y  0
 
@@ -63,14 +63,15 @@
 #macro BENTO_SCROLL_THRESHOLD  4
 
 // Default speed that scrolling element scroll at. Measured in pixels per frame.
-#macro BENTO_DEFAULT_SCROLL_SPEED  8
+#macro BENTO_DEFAULT_SCROLL_SPEED  9
 
 // Whether clicking and dragging on a scrollable element should scroll in the `BENTO_MODE_MOUSE`
 // nav mode.
 #macro BENTO_SCROLL_ON_MOUSE_DRAG  true
 
-// Padding to apply around the edges of elements have been scrolled to. This ensures that elements
-// are pleasantly visible.
+// Padding between the edge of an element and the edge of the clipping window. This will be applied
+// to the edges of elements that have been scrolled to (usually via selection when using a keyboard
+// or gamepad). This helps improve the visual presentation of the UI.
 #macro BENTO_SCROLL_TO_PADDING  10
 
 
@@ -79,13 +80,13 @@
 // Instances
 ///////
 
-// What room layer to create instances on when using `BentoCreate()`. Use `undefined` to instead
-// create instances using a particular depth see `BENTO_INSTANCE_DEPTH`.
-#macro BENTO_INSTANCE_LAYER  undefined
-
 // What depth to create instances on when using `BentoCreate()`. This macro will only be used if
 // `BENTO_INSTANCE_LAYER` is set to `undefined`.
 #macro BENTO_INSTANCE_DEPTH  0
+
+// What room layer to create instances on when using `BentoCreate()`. Use `undefined` to instead
+// create instances using a particular depth, as set by `BENTO_INSTANCE_DEPTH`.
+#macro BENTO_INSTANCE_LAYER  undefined
 
 
 
@@ -94,8 +95,7 @@
 ///////
 
 // How far to scroll when scrolling with a mouse wheel, measured in pixels. Set this value to `0`
-// to disable mouse wheel scrolling (or just don't use `BENTO_HOTKEY_MOUSE_WHEEL_UP` or
-// `BENTO_HOTKEY_MOUSE_WHEEL_DOWN`).
+// to disable mouse wheel scrolling entirely.
 #macro BENTO_MOUSE_WHEEL_SCROLL_SPEED  20
 
 // Hotkey names to use to enable mouse wheel scrolling. This macros should be used with

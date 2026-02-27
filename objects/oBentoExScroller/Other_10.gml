@@ -31,7 +31,7 @@ else if (BentoUsingDirectional())
             BentoFocusToggle(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
         }
         
-        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
+        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL_TEXT_INPUT))
         {
             BentoFocusClose();
         }
