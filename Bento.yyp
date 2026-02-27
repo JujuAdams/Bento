@@ -212,6 +212,7 @@
     {"id":{"name":"BentoConstrExText","path":"scripts/BentoConstrExText/BentoConstrExText.yy",},},
     {"id":{"name":"BentoCreate","path":"scripts/BentoCreate/BentoCreate.yy",},},
     {"id":{"name":"BentoCreateFromJSON","path":"scripts/BentoCreateFromJSON/BentoCreateFromJSON.yy",},},
+    {"id":{"name":"BentoCreateOffset","path":"scripts/BentoCreateOffset/BentoCreateOffset.yy",},},
     {"id":{"name":"BentoCursorGetBox","path":"scripts/BentoCursorGetBox/BentoCursorGetBox.yy",},},
     {"id":{"name":"BentoCursorGetDX","path":"scripts/BentoCursorGetDX/BentoCursorGetDX.yy",},},
     {"id":{"name":"BentoCursorGetDY","path":"scripts/BentoCursorGetDY/BentoCursorGetDY.yy",},},

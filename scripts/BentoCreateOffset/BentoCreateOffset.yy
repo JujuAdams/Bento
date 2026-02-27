@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoCreateOffset",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoCreateOffset",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/Bento/Functions.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
