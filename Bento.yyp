@@ -61,7 +61,9 @@
     {"$GMFolder":"","%Name":"Tests","folderPath":"folders/Tests.yy","name":"Tests","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"bento_license.txt","CopyToMask":-1,"filePath":"datafiles","name":"bento_license.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
