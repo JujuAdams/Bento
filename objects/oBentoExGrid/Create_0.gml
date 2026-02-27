@@ -1,6 +1,6 @@
 // Feather disable all
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
+//Always call this in the Create event in objects that inherit from `oBentoAncestor`
 event_inherited();
 
 BentoVarEnsureMany(

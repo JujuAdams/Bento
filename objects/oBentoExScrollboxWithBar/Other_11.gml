@@ -2,9 +2,6 @@
 
 /// @desc Draw
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
-event_inherited();
-
 if (BentoUsingDirectional())
 {
     if (BentoFocusGetTop() == self)

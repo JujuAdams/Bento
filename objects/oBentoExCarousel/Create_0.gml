@@ -1,18 +1,52 @@
 // Feather disable all
 
-// An example that demonstrates how to make a carousel of discrete qualitative options. It
-// can be manipulated using pointer input or directional input. Clicking on the left or right
-// sides will scroll through options. Directional input uses the x-axis movement to trigger
-// scrolling through options (in this example project, that means pressing the left and right
-// arrow keys).
+// This object defines a carousel of discrete options. It can be manipulated using pointer input or
+// directional input. Clicking on the left or right sides will scroll through options. Directional
+// input uses the x-axis movement to trigger scrolling through options (typically left/right arrow
+// keys or thumbstick/dpad input).
+// 
+// Carousels are connected to a variable using a "Bento reference". A Bento reference contains the
+// information necessary to change a value stored in your code when the carousel changes value. 
+// Please see `BentoRef()` for more information.
+// 
+// You may specify the following variables when creating an instance of this object with
+// `BentoCreate()`.
+// 
+// .text
+//     The text title to display on the carousel. This should be a string. If not specified, no text is
+//     drawn.
+// 
+// .reference
+//     A Bento reference, created by `BentoRef()`, that stores the value for the carousel. When the
+//     carousel changes value, this variable will be modified.
+// 
+// .optionArray
+//     An array of options that the above Bento reference may contain. The carousel will cycle through
+//     these options.
+// 
+// .func
+//     The function to execute when the carousel changes value. This function will always be re-scaoped
+//     such that the function is executed in the scope of the carousel instance.
+// 
+// Example:
+// ```
+// BentoCreate(oBentoExCarousel, {
+//     text: "Interface Color",
+//     reference: BentoRef(global.settings, "uiColor"),
+//     optionArray: ["Red", "Green", "Blue"],
+//     func: function() {
+//         SetUIColor(global.settings.uiColor);
+//     },
+// });
+// ```
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
+//Always call this in the Create event in objects that inherit from `oBentoAncestor`
 event_inherited();
 
 BentoVarEnsureMany(
-    "text",        "Example",
     "reference",   undefined,
     "optionArray", [],
+    "text",        "Example",
     "func",        function(){},
 );
 

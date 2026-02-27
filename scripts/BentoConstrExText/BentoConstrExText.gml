@@ -24,8 +24,9 @@ function BentoConstrExText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_to
     //Set the layout parameters based on the size of the string when drawn
     var _oldFont = draw_get_font();
     draw_set_font(font);
-    BentoLayoutSetSize(string_width(text), undefined);
-    BentoLayoutSetMinSize(20, undefined);
+    var _stringWidth = string_width(text);
+    BentoLayoutSetSize(_stringWidth, string_height(text));
+    BentoLayoutSetMinSize(min(_stringWidth, 4*string_width(" ")), string_height(" "));
     draw_set_font(_oldFont);
     
     //Set up the height rule to use when Bento calculates layouts

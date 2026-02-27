@@ -2,9 +2,6 @@
 
 /// @desc Draw
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
-event_inherited();
-
 //Draw ourselves. Bento positions and sizes the instance automatically
 draw_self();
 

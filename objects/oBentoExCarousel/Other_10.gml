@@ -2,9 +2,6 @@
 
 /// @desc Step
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
-event_inherited();
-
 var _funcGetOptionIndex = function()
 {
     var _option = BentoRefGet(reference, undefined);

@@ -23,13 +23,15 @@
 // individually set itself to requiring an update using `BentoSetForceStep()`.
 #macro BENTO_ALWAYS_EXECUTE_STEP  false
 
-// Hotkey name to cancel text input. This hotkey is only used when receiving text input on a
-// desktop platform from the keyboard (and not using Steam's on-screen keyboard). You should use
-// this macro with `BentoInputHotkey()` to trigger cancelling text input. You may additionally
-// check against this macro yourself for general cancel behaviour (e.g. to quickly close a pop-up
-// window using a gamepad by pressing a button). Conventionally, a "cancel" hotkey is mapped to the
-// escape key on a keyboard or the B button on a gamepad.
-#macro BENTO_HOTKEY_CANCEL_TEXT_INPUT  "cancel text input"
+// Hotkey name used to cancel input. You may check against this macro yourself for general cancel
+// behaviour (e.g. to quickly close a pop-up window using a gamepad by pressing a button).
+// Conventionally, a "cancel" hotkey is mapped to the escape key on a keyboard or the B button on a
+// gamepad.
+// 
+// This hotkey is also used when receiving text input on a desktop platform from the keyboard (and
+// not using Steam's on-screen keyboard). You should use this macro with `BentoInputHotkey()` to
+// trigger cancelling text input.
+#macro BENTO_HOTKEY_CANCEL  "hotkey cancel"
 
 
 

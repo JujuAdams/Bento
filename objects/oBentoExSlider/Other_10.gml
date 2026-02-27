@@ -2,9 +2,6 @@
 
 /// @desc Step
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
-event_inherited();
-
 var _value = BentoRefGet(reference);
 
 var _stepCount   = ceil((valueMax - valueMin) / valueStep);
@@ -60,7 +57,7 @@ else if (BentoUsingDirectional())
             BentoFocusToggle(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
         }
         
-        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL_TEXT_INPUT))
+        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
         {
             BentoFocusClose();
         }

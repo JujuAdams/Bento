@@ -8,9 +8,6 @@
 // scrolling through options (in this example project, that means pressing the left and right
 // arrow keys).
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
-event_inherited();
-
 var _delta = 0;
 
 if (BentoUsingPointer())
@@ -31,7 +28,7 @@ else if (BentoUsingDirectional())
             BentoFocusToggle(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
         }
         
-        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL_TEXT_INPUT))
+        if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
         {
             BentoFocusClose();
         }

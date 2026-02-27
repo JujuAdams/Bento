@@ -1,11 +1,46 @@
 // Feather disable all
 
-// This object defines a simple text element that can be used within a Bento UI layout. The text
-// will wrap to a new line if the element width gets too small.
+// This object defines a dynamic text element that can be used within a Bento UI layout. The text
+// will wrap to a new line if the element width gets too small. You can change the text being drawn
+// by setting `.text` after the instance has been created. You may also set the `.text` variable to
+// a method and that method will be executed every Step with the return value being used to draw
+// text.
+// 
+// As with everything in Bento, a text element is fundamentally a rectangular box. Imagine the text
+// element as an invisible box that can change shape depending on the layout algorithm. Text is
+// then drawn inside that box.
+// 
+// You may specify the following variables when creating an instance of this object with
+// `BentoCreate()`.
+// 
+// .text
+//     The text to display. This may be a string or a method. If this variable is set to a method then
+//     that method will be executed every Step. The return value from the method will be converted to a
+//     string and then that string will be drawn. If this variable is not specified then no text is drawn.
+// 
+// .font
+//     The font to display the text in. If not specified, the default native GameMaker is used.
+// 
+// .hAlign
+//     The horizontal alignment in the alignment of the text within the element's bounding box. This
+//     should be either `fa_left`, `fa_center`, or `fa_right`. If not specified, the horizontal alignment
+//     will default to `fa_left`.
+// 
+// .vAlign
+//     The vertical alignment in the alignment of the text within the element's bounding box. This should
+//     be either `fa_top`, `fa_middle`, or `fa_bottom`. If not specified, the horizontal alignment will
+//     default to `fa_top`.
 // 
 // Example:
 // ```
-// BentoCreate(oBentoText, { text: "Hello world!" });
+// BentoCreate(oBentoExTextDynamic, {
+//     text: function() {
+//         return "global.someVariable = " + string(global.someVariable);
+//     },
+//     font: fntDebug,
+//     hAlign: fa_center,
+//     vAlign: fa_middle
+// });
 // ```
 
 event_inherited();
@@ -21,19 +56,23 @@ BentoVarEnsureMany(
 //If we have a function for the `.text` variable then store that function in a different variable
 if (is_callable(text))
 {
-    funcTextUpdate = method(self, text);
-    text = funcTextUpdate();
+    __funcTextUpdate = text;
+    text = string(__funcTextUpdate());
 }
 else
 {
-    funcTextUpdate = undefined;
+    __funcTextUpdate = undefined;
 }
+
+//Store the text for comparison later
+__prevText = text;
 
 //Set the layout parameters based on the size of the string when drawn
 var _oldFont = draw_get_font();
 draw_set_font(font);
-BentoLayoutSetSize(string_width(text), undefined);
-BentoLayoutSetMinSize(20, undefined);
+var _stringWidth = string_width(text);
+BentoLayoutSetSize(_stringWidth, string_height(text));
+BentoLayoutSetMinSize(min(_stringWidth, 4*string_width(" ")), string_height(" "));
 draw_set_font(_oldFont);
 
 // Set up the rules to use when Bento calculates layouts

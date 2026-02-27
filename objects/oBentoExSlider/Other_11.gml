@@ -2,9 +2,6 @@
 
 /// @desc Draw
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
-event_inherited();
-
 draw_self();
 
 if ((not (handleHover || handleHold)) && BentoCursorGetHover() && BentoGetClickable() && (BentoGetMode() != BENTO_MODE_TOUCH))

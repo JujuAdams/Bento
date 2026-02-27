@@ -6,7 +6,7 @@
 // input uses the x-axis movement to trigger scrolling through options (in this example project,
 // that means pressing the left and right arrow keys).
 
-//Always call this in events in objects that inherit from `oBentoAncestor`!
+//Always call this in the Create event in objects that inherit from `oBentoAncestor`
 event_inherited();
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
