@@ -10,13 +10,17 @@ function __BentoEnsureHoverableOrder()
     ++__hoverableRegenCount;
     array_resize(__hoverableOrder, 0);
     
-    if (__navPointer)
+    var _rootElement = __GetFocusRoot();
+    if (BentoExists(_rootElement))
     {
-        __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, __GetFocusRoot().BENTO_VARS, __hoverableRegenCount);
-    }
-    else if (__navDirectional)
-    {
-        __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, __GetFocusRoot().BENTO_VARS, __hoverableRegenCount);
+        if (__navPointer)
+        {
+            __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount);
+        }
+        else if (__navDirectional)
+        {
+            __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount);
+        }
     }
 }
 

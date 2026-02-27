@@ -51,7 +51,11 @@ function __BentoEnsureDrawOrder()
     
     //Recursively build the global draw order
     array_resize(__drawOrder, 0);
-    __BentoEnsureDrawOrderInner(__drawOrder, __rootElement.BENTO_VARS);
+    
+    if (BentoExists(__rootElement))
+    {
+        __BentoEnsureDrawOrderInner(__drawOrder, __rootElement.BENTO_VARS);
+    }
 }
 
 #macro __BENTO_DRAW_ORDER_VISIBLE  1

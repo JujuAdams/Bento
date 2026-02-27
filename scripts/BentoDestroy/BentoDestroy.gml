@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Destroys an element.
+/// Destroys an element. The element may be an object instance or a struct.
 /// 
 /// @param [element=self]
 
