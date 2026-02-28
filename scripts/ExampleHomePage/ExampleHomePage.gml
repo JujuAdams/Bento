@@ -29,7 +29,7 @@ function ExampleHomePage()
                 {
                     object: oBentoExText,
                     vars: {
-                        text: $"Welcome to Bento! This is version {BENTO_VERSION} released on {BENTO_DATE}. This is an ALPHA build and as such any code and behaviour is liable to change. Please do NOT use this version of Bento as the basis for production code. This ALPHA build is intended for experimentation and fulfilling personal curiosity, and I suppose game jams too.",
+                        text: $"Welcome to Bento! This is version {BENTO_VERSION} released on {BENTO_DATE}. This is an alpha build and as such any code and behaviour is liable to change. Please do NOT use this version of Bento as the basis for production code. This alpha build is intended for experimentation and fulfilling personal curiosity, and I suppose game jams too.",
                         font: fntDebug,
                     },
                 },
