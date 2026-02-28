@@ -10,7 +10,17 @@ function BentoDestroy(_element = self)
     {
         if (instance_exists(_element))
         {
-            instance_destroy(_element);
+            if (not object_is_ancestor(_element.object_index, oBentoAncestor))
+            {
+                if (BENTO_SAFE)
+                {
+                    __BentoError($"Trying to destroy object instance that does not inherit from `oBentoAncestor` ({object_get_name(_element.object_index)}:{real(id)})");
+                }
+            }
+            else
+            {
+                instance_destroy(_element);
+            }
         }
         else if (is_struct(_element))
         {
