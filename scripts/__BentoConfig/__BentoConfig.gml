@@ -113,8 +113,16 @@
 
 // Whether to run safety checks for some Bento functions. These error messages can help with
 // debugging your code. However, these is a small performance cost. You should consider setting
-// this macro to `false` for production builds.
+// this macro to `false` for production builds after thorough testing.
 #macro BENTO_SAFE  true
+
+// Whether to require `BentoCreate()` when creating Bento elements using object instances. If you
+// set this macro to `false` then instances that inherit from `oBentoAncestor` but that are not
+// created with `BentoCreate()` will be automatically parented to `BentoGetRoot()` (which is often
+// correct but not always).
+// 
+// This macro does not affect Bento elements created using struct constructors.
+#macro BENTO_REQUIRE_CREATE  true
 
 // Function to call when parsing strings from `.children` properties in `BentoCreateFromJSON()`.
 // Please see documentation for that function for further information.
