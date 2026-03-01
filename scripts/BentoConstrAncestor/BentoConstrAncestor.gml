@@ -46,7 +46,13 @@ function BentoConstrAncestor(_parent = other) constructor
     
     eventDrawAfter = function()
     {
-        // This user event is disabled by default. Call `BentoSetDrawAfter()` to enable it.
+        // This event is disabled by default. Call `BentoSetDrawAfter()` to enable it.
+    }
+    
+    eventDrawHover = function()
+    {
+        // This event is called downstream of `BentoSystemDraw()` when an element is hovered. This event
+        // will not be executed if it has been set to not visible by calling `BentoSetVisible(false)`.
     }
     
     eventReposition = function()

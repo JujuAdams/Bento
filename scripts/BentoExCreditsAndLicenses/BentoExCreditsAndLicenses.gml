@@ -30,6 +30,7 @@ function BentoExCreditsAndLicenses()
                         },
                         {
                             object: oBentoExButton,
+                            select: true,
                             vars: {
                                 text: "Back",
                                 func: ExampleHomePage,

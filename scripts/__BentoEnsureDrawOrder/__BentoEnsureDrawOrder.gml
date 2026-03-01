@@ -38,7 +38,7 @@ function __BentoEnsureDrawOrder()
     }
     
     //Don't do anything if nothing is dirty!
-    if not (__dirtyFlags & __BENTO_DIRTY_DRAW) return;
+    //if not (__dirtyFlags & __BENTO_DIRTY_DRAW) return;
     __dirtyFlags = ~((~__dirtyFlags) | __BENTO_DIRTY_DRAW);
     
     //Update the local draw order for dirty elements
@@ -72,6 +72,8 @@ function __BentoEnsureDrawOrderInner(_drawOrder, _elementVars)
     with(_elementVars)
     {
         if (__disable) return;
+        
+        //TODO - We can pre-choose a draw function when these attributes change via function calls
         
         //Calculate a lookup index based on the properties of this element
         var _lookup = ((__visible? __BENTO_DRAW_ORDER_VISIBLE : 0)
