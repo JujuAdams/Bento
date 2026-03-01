@@ -1,0 +1,15 @@
+// Feather disable all
+
+/// This constructor defines a simple blank element that can be used within a Bento UI layout.
+/// 
+/// Example:
+/// ```
+/// new BentoConstrBox();
+/// ```
+///
+/// @param [parent=self]
+
+function BentoExConstrSpacer(_parent = other) : BentoConstrAncestor(_parent) constructor
+{
+    //Blank!
+}

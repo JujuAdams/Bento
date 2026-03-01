@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/Bento/Example Elements/Objects.yy",
+    "path":"folders/Bento Examples/Objects.yy",
   },
   "parentObjectId":{
     "name":"oBentoExSprite",
@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sBentoMaskRectangle",
-    "path":"sprites/sBentoMaskRectangle/sBentoMaskRectangle.yy",
+    "name":"sBentoExButton",
+    "path":"sprites/sBentoExButton/sBentoExButton.yy",
   },
   "spriteMaskId":null,
   "visible":true,

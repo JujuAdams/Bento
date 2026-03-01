@@ -58,7 +58,7 @@ function ExampleCarousel()
                     },
                 },
                 {
-                    construct: [BentoConstrExCarousel, BentoRef(global, "carouselExample"), ["red", "purple", "blue", "green", "yellow"], "Colour Selection\n(but backwards)"],
+                    construct: [BentoExConstrCarousel, BentoRef(global, "carouselExample"), ["red", "purple", "blue", "green", "yellow"], "Colour Selection\n(but backwards)"],
                 },
             ],
         };

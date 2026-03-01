@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/Bento/Example Elements/Objects.yy",
+    "path":"folders/Bento Examples/Objects.yy",
   },
   "parentObjectId":{
     "name":"oBentoAncestor",

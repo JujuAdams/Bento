@@ -60,7 +60,7 @@ function ExampleSettings()
                             },
                         },
                         {
-                            construct: [BentoConstrExCheckbox, BentoRef(global.settings, "checkbox2"), "Checkbox 2"],
+                            construct: [BentoExConstrCheckbox, BentoRef(global.settings, "checkbox2"), "Checkbox 2"],
                         },
                         {
                             object: oBentoExSlider,

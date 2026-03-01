@@ -10,7 +10,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
-    "path":"folders/Bento/Example Elements/Objects.yy",
+    "path":"folders/Bento Examples/Objects.yy",
   },
   "parentObjectId":{
     "name":"oBentoExSprite",
@@ -34,9 +34,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sBentoMaskRectangle",
-    "path":"sprites/sBentoMaskRectangle/sBentoMaskRectangle.yy",
+    "name":"sBentoExFrame",
+    "path":"sprites/sBentoExFrame/sBentoExFrame.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"sBentoExButton",
+    "path":"sprites/sBentoExButton/sBentoExButton.yy",
+  },
   "visible":true,
 }
