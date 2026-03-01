@@ -3,14 +3,19 @@
 /// @desc Draw
 
 //Draw ourselves. Bento positions and sizes the instance automatically
+draw_sprite_ext(sprite_index, image_index, x+5, y+5, image_xscale, image_yscale, image_angle, c_black, 0.4*image_alpha);
 draw_self();
 
 // If we have some text then draw it centred on the button
 if (text != "")
 {
+    draw_set_color(BENTO_EXAMPLE_DARK_BLUE);
+    draw_set_font(BENTO_EXAMPLE_DEFAULT_FONT);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     draw_text(0.5*(bbox_left + bbox_right), 0.5*(bbox_top + bbox_bottom), text);
+    draw_set_color(c_white);
+    draw_set_font(-1);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }
@@ -19,7 +24,5 @@ if (text != "")
 //(which applies to both pointer-driven and directional input)
 if (BentoCursorGetHover() && BentoGetClickable())
 {
-    gpu_set_fog(true, c_white, 0, 0);
-    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 0.5*image_alpha);
-    gpu_set_fog(false, c_fuchsia, 0, 0);
+    BentoDrawSpriteAround(10, sBentoExHighlight, undefined, BENTO_EXAMPLE_RED);
 }

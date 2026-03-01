@@ -25,7 +25,7 @@ function ExampleGrids()
                             object: oBentoExText,
                             vars: {
                                 text: "Grids Example",
-                                font: fntDebug,
+                                font: fntBentoExCandyBeans,
                             },
                         },
                         {

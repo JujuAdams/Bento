@@ -44,3 +44,5 @@ BentoLayoutSetAnchor(0, 0);
 BentoLayoutSetMinSize(32, 32);
 
 BentoFocusOpen(BENTO_FOCUS_POINTER_DESTROY_ON_CLICK);
+
+BentoSetDrawAfter(true);

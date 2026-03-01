@@ -9,5 +9,10 @@ BentoScrollSetEnabled(true, true);
 BentoSetButton(BENTO_BUTTON_DIRECTIONAL);
 BentoFocusSetEnclose(BENTO_ENCLOSE_DIRECTIONAL);
 
-BentoScrollbarSetVert(false, 20, 0, 10, 10, 10, false);
+BentoScrollbarSetVert(false, 40, 0, 10, 10, 10, false);
 BentoSetDrawAfter(true);
+
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}

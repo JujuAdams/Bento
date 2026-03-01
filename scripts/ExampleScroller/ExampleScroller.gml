@@ -27,7 +27,7 @@ function ExampleScroller()
                             object: oBentoExText,
                             vars: {
                                 text: "Scroller Example",
-                                font: fntDebug,
+                                font: fntBentoExCandyBeans,
                             },
                         },
                         {

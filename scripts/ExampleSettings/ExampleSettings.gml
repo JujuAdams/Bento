@@ -32,7 +32,7 @@ function ExampleSettings()
                             object: oBentoExText,
                             vars: {
                                 text: "Settings Menu Example",
-                                font: fntDebug,
+                                font: fntBentoExCandyBeans,
                             },
                         },
                         {

@@ -14,23 +14,22 @@ function ExampleHomePage()
             },
             children: [
                 {
-                    object: oBentoExSprite,
+                    object: oBentoExSpriteWithShadow,
                     vars: {
-                        sprite_index: sBentoLogo,
+                        sprite_index: sBentoExLogoBig,
                     },
                 },
                 {
                     object: oBentoExText,
                     vars: {
                         text: $"Bento {BENTO_VERSION}",
-                        font: fntDebug,
+                        font: fntBentoExCandyBeansBig,
                     },
                 },
                 {
                     object: oBentoExText,
                     vars: {
-                        text: $"Welcome to Bento! This is version {BENTO_VERSION} released on {BENTO_DATE}. This is an alpha build and as such any code and behaviour is liable to change. Please do NOT use this version of Bento as the basis for production code. This alpha build is intended for experimentation and fulfilling personal curiosity, and I suppose game jams too.",
-                        font: fntDebug,
+                        text: $"Welcome to Bento! This is version {BENTO_VERSION} released on {BENTO_DATE}. This is an alpha build and as such any code and behaviour is liable to change. Please do NOT use this version of Bento as the basis for serious commercial production code. This alpha build is intended for experimentation and fulfilling personal curiosity, and I suppose game jams too.",
                     },
                 },
                 {
@@ -75,91 +74,91 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Buttons",
+                                text: $"Buttons",
                                 func: ExampleButtons,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Lists",
+                                text: $"Lists",
                                 func: ExampleLists,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Grids",
+                                text: $"Grids",
                                 func: ExampleGrids,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Settings Menu",
+                                text: $"Settings Menu",
                                 func: ExampleSettings,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Carousel",
+                                text: $"Carousel",
                                 func: ExampleCarousel,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Scroller",
+                                text: $"Scroller",
                                 func: ExampleScroller,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Slider",
+                                text: $"Slider",
                                 func: ExampleSlider,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Context Menu",
+                                text: $"Context Menu",
                                 func: ExampleContextMenu,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Scrolling List",
+                                text: $"Scrolling List",
                                 func: ExampleScrollingList,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Scrolling List With Bar",
+                                text: $"Scrolling List With Bar",
                                 func: ExampleScrollingListWithBar,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Scrollbox",
+                                text: $"Scrollbox",
                                 func: ExampleScrollbox,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Scrollbox With Bar",
+                                text: $"Scrollbox With Bar",
                                 func: ExampleScrollboxWithBar,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Example: Textbox",
+                                text: $"Textbox",
                                 func: ExampleTextbox,
                             },
                         },

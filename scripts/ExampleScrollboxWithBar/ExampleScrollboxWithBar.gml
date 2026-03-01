@@ -25,7 +25,7 @@ function ExampleScrollboxWithBar()
                             object: oBentoExText,
                             vars: {
                                 text: "Context Menu Example",
-                                font: fntDebug,
+                                font: fntBentoExCandyBeans,
                             },
                         },
                         {

@@ -37,7 +37,7 @@
 //     text: function() {
 //         return "global.someVariable = " + string(global.someVariable);
 //     },
-//     font: fntDebug,
+//     font: fntBentoExCandyBeans,
 //     hAlign: fa_center,
 //     vAlign: fa_middle
 // });
@@ -48,7 +48,7 @@ event_inherited();
 // Ensure we have valid values for these variables
 BentoVarEnsureMany(
     "text",   "",
-    "font",   -1,
+    "font",   fntBentoExCandyBeans,
     "hAlign", fa_left,
     "vAlign", fa_top,
 );

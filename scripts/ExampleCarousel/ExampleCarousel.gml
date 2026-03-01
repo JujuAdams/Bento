@@ -27,7 +27,7 @@ function ExampleCarousel()
                             object: oBentoExText,
                             vars: {
                                 text: "Carousel Example",
-                                font: fntDebug,
+                                font: fntBentoExCandyBeans,
                             },
                         },
                         {

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoDrawCross",
   "parent":{
-    "name":"Miscellaneous",
-    "path":"folders/Bento/Functions/Miscellaneous.yy",
+    "name":"Draw Helpers",
+    "path":"folders/Bento/Functions/Draw Helpers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

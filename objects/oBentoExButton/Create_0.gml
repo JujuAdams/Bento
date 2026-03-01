@@ -35,6 +35,8 @@ BentoVarEnsureMany(
     },
 );
 
+image_blend = BENTO_EXAMPLE_YELLOW;
+
 //Ensure the click function is scoped to this instance
 func = method(self, func);
 
@@ -44,5 +46,7 @@ BentoSetButton(BENTO_BUTTON_ALWAYS);
 //If we have some valid text then force the size of the element
 if (text != "")
 {
+    draw_set_font(BENTO_EXAMPLE_DEFAULT_FONT);
     BentoLayoutSetSize(string_width(text) + 20, string_height(text) + 20);
+    draw_set_font(-1);
 }

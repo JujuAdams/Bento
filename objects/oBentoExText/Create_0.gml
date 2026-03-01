@@ -29,7 +29,7 @@
 // 
 // Example:
 // ```
-// BentoCreate(oBentoText, { text: "Hello world!", font: fntDebug, hAlign: fa_center, vAlign: fa_middle });
+// BentoCreate(oBentoText, { text: "Hello world!", font: fntBentoExCandyBeans, hAlign: fa_center, vAlign: fa_middle });
 // ```
 
 event_inherited();
@@ -37,10 +37,15 @@ event_inherited();
 // Ensure we have valid values for these variables
 BentoVarEnsureMany(
     "text",   "",
-    "font",   -1,
+    "font",   fntBentoExCandyBeans,
     "hAlign", fa_left,
     "vAlign", fa_top,
 );
+
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}
 
 //Set the layout parameters based on the size of the string when drawn
 var _oldFont = draw_get_font();

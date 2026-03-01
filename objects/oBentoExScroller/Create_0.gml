@@ -30,5 +30,5 @@ BentoVarEnsureMany(
 //Ensure the click function is scoped to this instance
 func = method(self, func);
 
-draw_set_font(fntDebug);
+draw_set_font(fntBentoExCandyBeans);
 BentoLayoutSetSize(max(string_width(text), string_width(valueMax)) + 30, string_height(text) + string_height(valueMax) + 10);
