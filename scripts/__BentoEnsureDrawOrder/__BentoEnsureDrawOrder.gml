@@ -7,6 +7,8 @@
 
 function __BentoEnsureDrawOrder()
 {
+    static _drawOrderHoverStack = __BentoSystem().__drawOrderHoverStack;
+    
     //Function to call per element with a dirty local draw order
     static _funcForEach = function(_elementVars)
     {
@@ -54,7 +56,16 @@ function __BentoEnsureDrawOrder()
     
     if (BentoExists(__rootElement))
     {
+        array_resize(_drawOrderHoverStack, 0);
+        array_push(_drawOrderHoverStack, BENTO_NO_ELEMENT);
+        
         __BentoEnsureDrawOrderInner(__drawOrder, __rootElement.BENTO_VARS);
+        
+        var _hoverElementVars = array_pop(_drawOrderHoverStack);
+        if (_hoverElementVars != BENTO_NO_ELEMENT)
+        {
+            array_push(__drawOrder, _hoverElementVars.__eventDrawHover);
+        }
     }
 }
 
@@ -64,6 +75,7 @@ function __BentoEnsureDrawOrder()
 
 function __BentoEnsureDrawOrderInner(_drawOrder, _elementVars)
 {
+    static _drawOrderHoverStack          = __BentoSystem().__drawOrderHoverStack;
     static _functionDrawLookupArray      = __BentoSystem().__functionDrawLookupArray;
     static _functionDrawAfterLookupArray = __BentoSystem().__functionDrawAfterLookupArray;
     
@@ -72,9 +84,12 @@ function __BentoEnsureDrawOrderInner(_drawOrder, _elementVars)
     with(_elementVars)
     {
         if (__disable) return;
+        if (__hoverState & __BENTO_START)
+        {
+            _drawOrderHoverStack[@ array_length(_drawOrderHoverStack)-1] = self;
+        }
         
         //TODO - We can pre-choose a draw function when these attributes change via function calls
-        
         //Calculate a lookup index based on the properties of this element
         var _lookup = ((__visible? __BENTO_DRAW_ORDER_VISIBLE : 0)
                     |  (__scissorEnabled? __BENTO_DRAW_ORDER_SCISSOR : 0)
@@ -84,13 +99,35 @@ function __BentoEnsureDrawOrderInner(_drawOrder, _elementVars)
         var _function = _functionDrawLookupArray[_lookup];
         if (_function != undefined) array_push(_drawOrder, method(self, _function));
         
-        //Add children created inside the parent to the Draw order
-        var _array = __childDrawArray;
-        var _i = 0;
-        repeat(array_length(_array))
+        if (__scissorEnabled)
         {
-            __BentoEnsureDrawOrderInner(_drawOrder, _array[_i]);
-            ++_i;
+            array_push(_drawOrderHoverStack, BENTO_NO_ELEMENT);
+            
+            //Add children created inside the parent to the Draw order
+            var _array = __childDrawArray;
+            var _i = 0;
+            repeat(array_length(_array))
+            {
+                __BentoEnsureDrawOrderInner(_drawOrder, _array[_i]);
+                ++_i;
+            }
+            
+            var _hoverElementVars = array_pop(_drawOrderHoverStack);
+            if (_hoverElementVars != BENTO_NO_ELEMENT)
+            {
+                array_push(_drawOrder, _hoverElementVars.__eventDrawHover);
+            }
+        }
+        else
+        {
+            //Add children created inside the parent to the Draw order
+            var _array = __childDrawArray;
+            var _i = 0;
+            repeat(array_length(_array))
+            {
+                __BentoEnsureDrawOrderInner(_drawOrder, _array[_i]);
+                ++_i;
+            }
         }
         
         //Update the lookup index based on the "Draw After" visibility state

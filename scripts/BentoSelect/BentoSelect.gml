@@ -10,7 +10,7 @@ function BentoSelect(_element, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        __hoverElement     = _element;
+        __SetHoverElement(_element);
         __hoverElementSoft = BENTO_NO_ELEMENT;
     }
 }

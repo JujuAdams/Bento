@@ -2,6 +2,7 @@
 
 function __BentoScissorPushFromVars()
 {
+    //TODO - Pass the current scissor element into child elements so we can draw highlights more efficiently
     var _element = __attachedElement;
     __BentoScissorPush(_element.bentoLeft   + __scissorPadLeft   + __scissorScrollbarLeft,
                        _element.bentoTop    + __scissorPadTop    + __scissorScrollbarTop,

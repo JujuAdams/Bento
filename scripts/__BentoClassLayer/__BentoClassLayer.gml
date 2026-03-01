@@ -100,6 +100,16 @@ function __BentoClassLayer(_environment, _name) constructor
         __environment.__RemoveLayer(self);
     }
     
+    static __SetHoverElement = function(_hoverElement)
+    {
+        if (__hoverElement != _hoverElement)
+        {
+            __dirtyFlags |= __BENTO_DIRTY_DRAW;
+        }
+        
+        __hoverElement = _hoverElement;
+    }
+    
     static __UpdateInputMode = function()
     {
         var _newMode = __environment.__envNavMode;
@@ -313,7 +323,7 @@ function __BentoClassLayer(_environment, _name) constructor
                         &&  __environment.__textHandler.__cancelOnClick)
                         {
                             __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
-                            __hoverElement = BENTO_NO_ELEMENT;
+                            __SetHoverElement(BENTO_NO_ELEMENT);
                         }
                     }
                     else if (BentoExists(__focusTop)) //Detect clicking off of a pop-up
@@ -325,12 +335,12 @@ function __BentoClassLayer(_environment, _name) constructor
                             if (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
                             {
                                 BentoFocusClose(__focusTop);
-                                __hoverElement = BENTO_NO_ELEMENT;
+                                __SetHoverElement(BENTO_NO_ELEMENT);
                             }
                             else if (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK)
                             {
                                 BentoDestroy(__focusTop);
-                                __hoverElement = BENTO_NO_ELEMENT;
+                                __SetHoverElement(BENTO_NO_ELEMENT);
                             }
                         }
                     }

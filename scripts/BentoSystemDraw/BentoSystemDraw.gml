@@ -25,9 +25,6 @@ function BentoSystemDraw(_x = 0, _y = 0)
             matrix_set(matrix_world, matrix_stack_top());
         }
         
-        array_resize(__drawHoverElementStack, 0);
-        __BentoDrawHoverElementPush();
-        
         var _environmentArray = __environmentArray;
         var _i = 0;
         repeat(array_length(_environmentArray))
@@ -35,8 +32,6 @@ function BentoSystemDraw(_x = 0, _y = 0)
             _environmentArray[_i].__Draw();
             ++_i;
         }
-        
-        __BentoDrawHoverElementPop();
         
         if (_useMatrix)
         {

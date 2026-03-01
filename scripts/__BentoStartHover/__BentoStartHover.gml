@@ -21,7 +21,7 @@ function __BentoStartHover(_element)
             BentoScrollTo(undefined, _element);
         }
         
-        __hoverElement = _element;
+        __SetHoverElement(_element);
         
         with(_element.BENTO_VARS)
         {
@@ -34,7 +34,7 @@ function __BentoStartHover(_element)
     }
     else
     {
-        __hoverElement = BENTO_NO_ELEMENT;
+        __SetHoverElement(BENTO_NO_ELEMENT);
     }
     
     __hoverElementSoft = BENTO_NO_ELEMENT;

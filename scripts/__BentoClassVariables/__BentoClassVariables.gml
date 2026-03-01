@@ -144,15 +144,6 @@ function __BentoClassVariables(_attachedElement) constructor
         
         __eventDraw = method(_attachedElement, function()
         {
-            static _drawHoverElementStack = __BentoSystem().__drawHoverElementStack;
-            
-            //FIXME - Too slow. We can figure out when to call the highlight event if we recalculate the draw order when the hovered element changes
-            if (BentoCursorGetHover())
-            {
-                //FIXME - Store the transform matrix (and offset?) for the hovered element
-                _drawHoverElementStack[@ array_length(_drawHoverElementStack)-1] = self;
-            }
-            
             event_user(BENTO_USER_EVENT_DRAW);
         });
         
@@ -216,15 +207,6 @@ function __BentoClassVariables(_attachedElement) constructor
         
         __eventDraw = method(_attachedElement, function()
         {
-            static _drawHoverElementStack = __BentoSystem().__drawHoverElementStack;
-            
-            //FIXME - Too slow. We can figure out when to call the highlight event if we recalculate the draw order when the hovered element changes
-            if (BentoCursorGetHover())
-            {
-                //FIXME - Store the transform matrix (and offset?) for the hovered element
-                _drawHoverElementStack[@ array_length(_drawHoverElementStack)-1] = self;
-            }
-            
             eventDraw();
         });
         
@@ -279,6 +261,7 @@ function __BentoClassVariables(_attachedElement) constructor
         });
     }
     
+    //TODO - If we create Step/Draw variants of scissor push/pop, can we find some efficiencies?
     __eventScissorPush = method(self, __BentoScissorPushFromVars);
     __eventScissorPop  = method(self, __BentoScissorPop);
     
