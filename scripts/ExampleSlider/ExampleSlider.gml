@@ -26,8 +26,8 @@ function ExampleSlider()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Slider Example",
-                                font: fntBentoExCandyBeans,
+                                text: "Slider",
+                                font: fntBentoExCandyBeansBig,
                             },
                         },
                         {

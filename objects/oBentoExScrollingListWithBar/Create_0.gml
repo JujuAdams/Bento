@@ -7,5 +7,10 @@ BentoLayoutList(BENTO_AXIS_Y, 0, 0);
 BentoClipSetEnabled(true);
 BentoScrollSetEnabled(true, true);
 
-BentoScrollbarSetVert(false, 20, 0, 10, 10, 10, false);
+BentoScrollbarSetVert(false, 40, 0, 10, 10, 10, false);
 BentoSetDrawAfter(true);
+
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}

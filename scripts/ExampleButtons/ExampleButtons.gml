@@ -24,8 +24,8 @@ function ExampleButtons()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Buttons Example",
-                                font: fntBentoExCandyBeans,
+                                text: "Buttons",
+                                font: fntBentoExCandyBeansBig,
                             },
                         },
                         {

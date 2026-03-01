@@ -13,6 +13,6 @@ if (text != __prevText)
     draw_set_font(font);
     var _stringWidth = string_width(text);
     BentoLayoutSetSize(_stringWidth, string_height(text));
-    BentoLayoutSetMinSize(min(_stringWidth, 4*string_width(" ")), string_height(" "));
+    BentoLayoutSetMinSize(min(_stringWidth, 4*string_width(" ")));
     draw_set_font(_oldFont);
 }

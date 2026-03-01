@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoExCreditsAndLicenses",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoExCreditsAndLicenses",
+  "parent":{
+    "name":"Examples",
+    "path":"folders/Examples.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

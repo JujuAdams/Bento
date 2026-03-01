@@ -24,8 +24,8 @@ function ExampleLists()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Lists Example",
-                                font: fntBentoExCandyBeans,
+                                text: "Lists",
+                                font: fntBentoExCandyBeansBig,
                             },
                         },
                         {

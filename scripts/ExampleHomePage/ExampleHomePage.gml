@@ -8,7 +8,7 @@ function ExampleHomePage()
             object: oBentoExSpacer,
             layout: {
                 padding: 40,
-                gutter: 35,
+                gutter: 30,
                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                 list: [BENTO_AXIS_Y, 0.5, 0],
             },
@@ -43,21 +43,15 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: "Open repo",
-                                func: function()
-                                {
-                                    url_open("https://www.github.com/jujuadams/Bento/");
-                                }
+                                text: "Credits & Licenses",
+                                func: BentoExCreditsAndLicenses
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: "Juju's website",
-                                func: function()
-                                {
-                                    url_open("https://www.jujuadams.com/");
-                                }
+                                text: "Change Input Mode",
+                                func: BentoExChangeInputMode
                             },
                         },
                     ],

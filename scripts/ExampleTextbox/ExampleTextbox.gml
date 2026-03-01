@@ -26,8 +26,8 @@ function ExampleTextbox()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Textbox Example",
-                                font: fntBentoExCandyBeans,
+                                text: "Textbox",
+                                font: fntBentoExCandyBeansBig,
                             },
                         },
                         {

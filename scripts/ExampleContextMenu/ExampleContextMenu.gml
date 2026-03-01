@@ -24,8 +24,8 @@ function ExampleContextMenu()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Context Menu Example",
-                                font: fntBentoExCandyBeans,
+                                text: "Context Menu",
+                                font: fntBentoExCandyBeansBig,
                             },
                         },
                         {

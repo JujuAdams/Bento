@@ -24,8 +24,8 @@ function ExampleScrollingListWithBar()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Context Menu Example",
-                                font: fntBentoExCandyBeans,
+                                text: "Scrolling List (& scrollbar)",
+                                font: fntBentoExCandyBeansBig,
                             },
                         },
                         {
