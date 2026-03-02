@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sBentoMaskRectangle",
-    "path":"sprites/sBentoMaskRectangle/sBentoMaskRectangle.yy",
+    "name":"sBentoExFrame",
+    "path":"sprites/sBentoExFrame/sBentoExFrame.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -18,6 +18,13 @@ BentoVarEnsureMany(
     "func",        function() {}
 );
 
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}
+
+BentoLayoutSetMinSize(undefined, 80);
+
 //Ensure the click function is scoped to this instance
 func = method(self, func);
 

@@ -74,7 +74,7 @@ function ExampleSettings()
                                 reference: BentoRef(global.settings, "slider"),
                             },
                             layout: {
-                                minSize: [200, undefined],
+                                minSize: [400, undefined],
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
                             },
                         },

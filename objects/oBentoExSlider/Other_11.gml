@@ -2,27 +2,17 @@
 
 /// @desc Draw
 
-draw_self();
+draw_sprite_ext(sBentoExButton, image_index, x, y, image_xscale, image_yscale, image_angle, BENTO_EXAMPLE_BLUE, image_alpha);
+draw_sprite_ext(sBentoExFrameShadow, image_index, x+4, y+4, image_xscale, image_yscale, image_angle, c_black, 0.5);
 
-if ((not (handleHover || handleHold)) && BentoCursorGetHover() && BentoGetClickable() && (BentoGetMode() != BENTO_MODE_TOUCH))
-{
-    gpu_set_fog(true, c_white, 0, 0);
-    draw_sprite_stretched_ext(sprite_index, image_index, bentoLeft, bentoTop, bentoWidth, bentoHeight, image_blend, 0.5*image_alpha);
-    gpu_set_fog(false, c_fuchsia, 0, 0);
-}
-
+var _smaller = 8;
 var _value = BentoRefGet(reference);
-
 var _stepCount   = ceil((valueMax - valueMin) / valueStep);
 var _handleStep  = min(_stepCount, floor((_value - valueMin) / valueStep));
 var _handleWidth = handleWidth ?? (bentoWidth / _stepCount);
-var _handleLeft  = bentoLeft + _handleStep*((bentoWidth - _handleWidth) / _stepCount);
+var _handleLeft  = bentoLeft + _smaller + _handleStep*((bentoWidth - _handleWidth - 2*_smaller) / _stepCount);
 
-draw_sprite_stretched_ext(sBentoMaskRectangle, 0, _handleLeft, bentoTop, _handleWidth, bentoHeight, c_white, image_alpha);
+draw_sprite_stretched_ext(sBentoExButton, 0, _handleLeft+4, bentoTop+4 + _smaller, _handleWidth, bentoHeight - 2*_smaller, c_black, 0.5);
+draw_sprite_stretched_ext(sBentoExButton, 0, _handleLeft, bentoTop + _smaller, _handleWidth, bentoHeight - 2*_smaller, BENTO_EXAMPLE_YELLOW, image_alpha);
 
-if (handleHover || handleHold)
-{
-    gpu_set_fog(true, c_white, 0, 0);
-    draw_sprite_stretched_ext(sBentoMaskRectangle, 0, _handleLeft, bentoTop, _handleWidth, bentoHeight, c_white, 0.5*image_alpha);
-    gpu_set_fog(false, c_white, 0, 0);
-}
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
