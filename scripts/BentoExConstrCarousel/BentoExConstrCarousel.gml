@@ -3,15 +3,20 @@
 /// @param reference
 /// @param optionArray
 /// @param [title]
+/// @param [font]
 /// @param [func]
 /// @param [parent=self]
 
-function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _func = undefined, _parent = other) : BentoConstrAncestor(_parent) constructor
+function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font = fntBentoExCandyBeans, _func = undefined, _parent = other) : BentoConstrAncestor(_parent) constructor
 {
     reference   = _reference;
     optionArray = _optionArray;
     text        = _text;
+    font        = _font;
     func        = _func ?? function() {};
+    
+    var _oldFont = draw_get_font();
+    draw_set_font(font);
     
     var _width  = string_width(text);
     var _height = string_height(text);
@@ -27,7 +32,9 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _func 
         ++_i;
     }
     
-    BentoLayoutSetSize(max(_width, _optionWidth) + 30, _height + _optionHeight + 10);
+    BentoLayoutSetSize(max(_width, _optionWidth) + 70, _height + _optionHeight + 20);
+    
+    draw_set_font(_oldFont);
     
     BentoSetButton(BENTO_BUTTON_ALWAYS);
     
@@ -85,22 +92,26 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _func 
     
     eventDraw = function()
     {
-        var _x = 0.5*(bentoLeft + bentoRight);
-        var _y = 0.5*(bentoTop + bentoBottom);
+        BentoDrawSprite(sBentoExButton, undefined, c_black, 0.5, 4, 4);
         
-        BentoDrawSprite(sBentoMaskRectangle);
+        var _offset = (BentoPrimaryGetHold() && BentoGetClickable())? 2 : 0;
+        var _left   = bentoLeft + _offset;
+        var _top    = bentoTop + _offset;
+        var _right  = bentoRight + _offset;
+        var _bottom = bentoBottom + _offset;
+        var _x      = 0.5*(_left + _right) + _offset;
+        var _y      = 0.5*(_top + _bottom) + _offset;
         
-        if (BentoCursorGetHover())
-        {
-            gpu_set_fog(true, c_white, 0, 0);
-            BentoDrawSprite(sBentoMaskRectangle, undefined, undefined, 0.3*image_alpha);
-            gpu_set_fog(false, c_fuchsia, 0, 0);
-        }
+        BentoDrawSprite(sBentoExButton, undefined, BENTO_EXAMPLE_DARK_BLUE, undefined, _offset, _offset);
+        BentoDrawSprite(sBentoExFrame, undefined, BENTO_EXAMPLE_YELLOW, undefined, _offset, _offset);
+        
+        draw_set_font(font);
+        draw_set_color(BENTO_EXAMPLE_YELLOW);
         
         if (text != "")
         {
             draw_set_halign(fa_center);
-            draw_text(_x, bentoTop + 5, text);
+            draw_text(_x, _top + 10 + _offset, text);
             draw_set_halign(fa_left);
         }
         
@@ -108,12 +119,24 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _func 
         {
             draw_set_halign(fa_center);
             draw_set_valign(fa_bottom);
-            draw_text(_x, bentoBottom - 5, BentoRefIsAlive(reference)? string(BentoRefGet(reference, "")) : optionArray[0]);
+            draw_text(_x, _bottom - 10 + _offset, BentoRefIsAlive(reference)? string(BentoRefGet(reference, "")) : optionArray[0]);
             draw_set_halign(fa_left);
             draw_set_valign(fa_top);
         }
         
-        draw_triangle(bentoLeft+5, _y, bentoLeft+15, _y-5, bentoLeft+15, _y+5, false); 
-        draw_triangle(bentoRight-5, _y, bentoRight-15, _y-5, bentoRight-15, _y+5, false);
+        draw_triangle(_left+10, _y, _left+25, _y-10, _left+25, _y+10, false); 
+        draw_triangle(_right-10, _y, _right-25, _y-10, _right-25, _y+10, false); 
+        
+        draw_set_font(-1);
+        draw_set_color(c_white);
+    }
+    
+    eventDrawHover = function()
+    {
+        if (BentoGetClickable())
+        {
+            BentoDrawSpriteAround(10, sBentoExHighlight, undefined, c_black, 0.2, un, 3, 3);
+            BentoDrawSpriteAround(10, sBentoExHighlight, undefined, BENTO_EXAMPLE_RED);
+        }
     }
 }

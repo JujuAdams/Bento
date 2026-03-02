@@ -19,6 +19,7 @@ BentoSetRaycastEnable(false, true);
 
 BentoVarEnsureMany(
     "text",      "Example",
+    "font",      fntBentoExCandyBeans,
     "reference", undefined,
     "valueStep", 1,
     "valueMin",  0,
@@ -27,8 +28,15 @@ BentoVarEnsureMany(
     "func",      function(){},
 );
 
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}
+
 //Ensure the click function is scoped to this instance
 func = method(self, func);
 
+var _oldFont = draw_get_font();
 draw_set_font(fntBentoExCandyBeans);
-BentoLayoutSetSize(max(string_width(text), string_width(valueMax)) + 30, string_height(text) + string_height(valueMax) + 10);
+BentoLayoutSetSize(max(string_width(text), string_width(valueMax)) + 70, string_height(text) + string_height(valueMax) + 20);
+draw_set_font(_oldFont);

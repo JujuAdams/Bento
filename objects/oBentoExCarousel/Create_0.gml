@@ -43,12 +43,29 @@
 //Always call this in the Create event in objects that inherit from `oBentoAncestor`
 event_inherited();
 
+BentoSetButton(BENTO_BUTTON_ALWAYS);
+
+// Disables raycasting in particular axes. This only applies to directional input where raycasting
+// is used to work out which element to jump to when pushing in a particular direction. This does
+// not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
+// raycasting so that it doesn't interfere with scrolling through options.
+BentoSetRaycastEnable(false, true);
+
 BentoVarEnsureMany(
     "reference",   undefined,
     "optionArray", [],
     "text",        "Example",
+    "font",        fntBentoExCandyBeans,
     "func",        function(){},
 );
+
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}
+
+var _oldFont = draw_get_font();
+draw_set_font(font);
 
 var _width  = string_width(text);
 var _height = string_height(text);
@@ -64,12 +81,6 @@ repeat(array_length(optionArray))
     ++_i;
 }
 
-BentoLayoutSetSize(max(_width, _optionWidth) + 30, _height + _optionHeight + 10);
+BentoLayoutSetSize(max(_width, _optionWidth) + 70, _height + _optionHeight + 20);
 
-BentoSetButton(BENTO_BUTTON_ALWAYS);
-
-// Disables raycasting in particular axes. This only applies to directional input where raycasting
-// is used to work out which element to jump to when pushing in a particular direction. This does
-// not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-// raycasting so that it doesn't interfere with scrolling through options.
-BentoSetRaycastEnable(false, true);
+draw_set_font(_oldFont);
