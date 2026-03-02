@@ -25,7 +25,7 @@ function ExampleSettings()
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
-                        resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
+                        resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
                     },
                     children: [
                         {
@@ -58,9 +58,15 @@ function ExampleSettings()
                                 text: "Checkbox 1",
                                 reference: BentoRef(global.settings, "checkbox1"),
                             },
+                            layout: {
+                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
+                            },
                         },
                         {
                             construct: [BentoExConstrCheckbox, BentoRef(global.settings, "checkbox2"), "Checkbox 2"],
+                            layout: {
+                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
+                            },
                         },
                         {
                             object: oBentoExSlider,
@@ -68,7 +74,8 @@ function ExampleSettings()
                                 reference: BentoRef(global.settings, "slider"),
                             },
                             layout: {
-                                size: [200, undefined],
+                                minSize: [200, undefined],
+                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
                             },
                         },
                         {
@@ -78,6 +85,9 @@ function ExampleSettings()
                                 reference: BentoRef(global.settings, "radiobutton"),
                                 value: 1,
                             },
+                            layout: {
+                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
+                            },
                         },
                         {
                             object: oBentoExRadioButton,
@@ -86,6 +96,9 @@ function ExampleSettings()
                                 reference: BentoRef(global.settings, "radiobutton"),
                                 value: 2,
                             },
+                            layout: {
+                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
+                            },
                         },
                         {
                             object: oBentoExRadioButton,
@@ -93,6 +106,9 @@ function ExampleSettings()
                                 text: "Radio Button 3",
                                 reference: BentoRef(global.settings, "radiobutton"),
                                 value: 3,
+                            },
+                            layout: {
+                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
                             },
                         },
                     ],

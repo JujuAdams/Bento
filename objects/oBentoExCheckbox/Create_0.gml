@@ -39,6 +39,7 @@ event_inherited();
 BentoVarEnsureMany(
     "reference", undefined,
     "text", "",
+    "font", fntBentoExCandyBeans,
     "func", function()
     {
         show_debug_message($"Button {id} clicked");
@@ -50,10 +51,15 @@ func = method(self, func);
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}
+
 if (text != "")
 {
     var _oldFont = draw_get_font();
-    draw_set_font(-1);
+    draw_set_font(font);
     
     var _height = max(50, string_height(text));
     BentoLayoutSetSize(string_width(text) + _height + 7, _height);

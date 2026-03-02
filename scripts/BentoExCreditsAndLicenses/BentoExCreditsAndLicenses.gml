@@ -98,7 +98,7 @@ function BentoExCreditsAndLicenses()
                     ],
                 },
                 {
-                    object: oBentoExScrollingList,
+                    object: oBentoExScrollingListWithBar,
                     layout: {
                         gutter: 20,
                         padding: 20,
