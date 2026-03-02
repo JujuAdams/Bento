@@ -7,34 +7,31 @@ var _y = 0.5*(bbox_top + bbox_bottom);
 
 draw_self();
 
-if (BentoCursorGetHover() || (BentoFocusGetTop() == self))
-{
-    gpu_set_fog(true, c_white, 0, 0);
-    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 0.3*image_alpha);
-    gpu_set_fog(false, c_fuchsia, 0, 0);
-}
-
 if (BentoTextGetTargeted())
 {
     var _text = __displayText;
     if ((BentoTextGetOpenDuration() mod 30) < 15) _text += "|";
+    draw_set_color(c_white);
 }
 else
 {
     if (__displayText == "")
     {
         var _text = emptyText;
-        draw_set_color(c_ltgray);
+        draw_set_color(BENTO_EXAMPLE_DARK_BLUE);
     }
     else
     {
         var _text = __displayText;
+        draw_set_color(BENTO_EXAMPLE_YELLOW);
     }
 }
 
+draw_set_font(font);
 draw_set_halign(fa_left);
 draw_set_valign(fa_middle);
 draw_text(bbox_left + 10, _y, _text);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
+draw_set_font(-1);

@@ -5,9 +5,15 @@ event_inherited();
 
 BentoVarEnsureMany(
     "reference", undefined,
+    "font",      fntBentoExCandyBeans,
     "emptyText", "",
     "func",      function() {}
 );
+
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 BentoLayoutSetSize(300);

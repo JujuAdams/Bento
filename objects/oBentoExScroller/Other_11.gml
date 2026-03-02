@@ -7,13 +7,6 @@ var _y = 0.5*(bbox_top + bbox_bottom);
 
 draw_self();
 
-if (BentoCursorGetHover())
-{
-    gpu_set_fog(true, c_white, 0, 0);
-    draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, 0.3*image_alpha);
-    gpu_set_fog(false, c_fuchsia, 0, 0);
-}
-
 if (text != "")
 {
     draw_set_halign(fa_center);
