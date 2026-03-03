@@ -10,7 +10,7 @@ function BentoDestroy(_element = self)
     {
         if (instance_exists(_element))
         {
-            if (not object_is_ancestor(_element.object_index, oBentoAncestor))
+            if (not __BentoObjectInheritsFrom(_element.object_index, oBentoAncestor))
             {
                 if (BENTO_SAFE)
                 {
