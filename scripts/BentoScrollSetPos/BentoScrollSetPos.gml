@@ -27,7 +27,7 @@ function BentoScrollSetPos(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_
         
         if ((_scrollTargetX == __scrollTargetX) && (_scrollTargetY == __scrollTargetY))
         {
-            return;
+            return true;
         }
         
         if (array_get_index(__layer.__scrollAnimatingArray, _scroller) < 0)
@@ -40,4 +40,6 @@ function BentoScrollSetPos(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_
         
         __BentoOffsetMarkDirty();
     }
+    
+    return false;
 }
