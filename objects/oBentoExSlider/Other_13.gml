@@ -1,6 +1,6 @@
 /// @desc Draw Hover
 
-if (BentoGetClickable())
+if (BentoGetClickable() && BentoUsingDirectional())
 {
     if (handleHover || handleHold)
     {
