@@ -6,6 +6,16 @@ function __BentoScissorPop()
 {
     static _scissorStack = __BentoSystem().__scissorStack;
     
+    var _hoverElement = __layer.__hoverElement;
+    if (BentoExists(_hoverElement))
+    {
+        var _hoverElementVars = _hoverElement.BENTO_VARS;
+        if (_hoverElementVars.__scissorParent == self)
+        {
+            _hoverElementVars.__eventDrawHover();
+        }
+    }
+    
     array_pop(_scissorStack);
     var _scissor = _scissorStack[array_length(_scissorStack)-1];
     __BentoScissorSet(_scissor.x, _scissor.y, _scissor.w, _scissor.h);

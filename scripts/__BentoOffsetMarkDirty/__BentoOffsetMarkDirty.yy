@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoOffsetMarkDirty",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoOffsetMarkDirty",
+  "parent":{
+    "name":"(System)",
+    "path":"folders/Bento/(System).yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -102,11 +102,6 @@ function __BentoClassLayer(_environment, _name) constructor
     
     static __SetHoverElement = function(_hoverElement)
     {
-        if (__hoverElement != _hoverElement)
-        {
-            __dirtyFlags |= __BENTO_DIRTY_DRAW;
-        }
-        
         __hoverElement = _hoverElement;
     }
     
@@ -424,6 +419,15 @@ function __BentoClassLayer(_environment, _name) constructor
         {
             _drawOrder[_i]();
             ++_i;
+        }
+        
+        if (BentoExists(__hoverElement))
+        {
+            var _hoverElementVars = __hoverElement.BENTO_VARS;
+            if (_hoverElementVars.__scissorParent == __rootElement.BENTO_VARS)
+            {
+                _hoverElementVars.__eventDrawHover();
+            }
         }
         
         __BentoLayerTargetPop();

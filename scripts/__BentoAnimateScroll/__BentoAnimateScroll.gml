@@ -33,12 +33,7 @@ function __BentoAnimateScroll()
                     __scrollX += _dX;
                     __scrollY += _dY;
                     
-                    //Mark our offset as dirty so we can update our children
-                    if (not __offsetDirty)
-                    {
-                        __offsetDirty = true;
-                        array_push(__layer.__dirtyOffsetArray, _element);
-                    }
+                    __BentoOffsetMarkDirty();
                 }
             }
         }

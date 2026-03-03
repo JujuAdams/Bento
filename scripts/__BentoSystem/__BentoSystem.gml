@@ -171,7 +171,6 @@ function __BentoSystem()
         ///////
         
         __scissorStack = [];
-        __drawOrderHoverStack = [];
         
         __creatingObject = false;
         __tempParent     = BENTO_NO_ELEMENT;

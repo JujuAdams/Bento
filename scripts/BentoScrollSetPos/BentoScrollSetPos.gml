@@ -38,11 +38,6 @@ function BentoScrollSetPos(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_
         __scrollTargetX = _scrollTargetX;
         __scrollTargetY = _scrollTargetY;
         
-        //Mark our offset as dirty so we can update our children
-        if (not __offsetDirty)
-        {
-            __offsetDirty = true;
-            array_push(__layer.__dirtyOffsetArray, _scroller);
-        }
+        __BentoOffsetMarkDirty();
     }
 }

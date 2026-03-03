@@ -35,8 +35,7 @@ function BentoSetOffset(_x, _y, _element = self)
         
         if (_dirty)
         {
-            __offsetDirty = true;
-            array_push(__layer.__dirtyOffsetArray, _element);
+            __BentoOffsetMarkDirty();
         }
     }
 }
