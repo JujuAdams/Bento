@@ -18,7 +18,7 @@ function __BentoStartHover(_element)
             __directionalLastX = 0.5*(__cursorLastL + __cursorLastR);
             __directionalLastY = 0.5*(__cursorLastT + __cursorLastB);
             
-            BentoScrollTo(undefined, _element);
+            BentoScrollTo(BentoScrollGetSpeed(_element), _element);
         }
         
         __SetHoverElement(_element);

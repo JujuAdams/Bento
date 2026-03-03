@@ -48,7 +48,6 @@ function __BentoGetDirectionalHover(_prevElement, _dX, _dY)
             //Don't allow selection of the next element if we're not visible
             if (not BentoClipGetFullyVisible(_prevElement))
             {
-                BentoScrollTo(BentoScrollGetSpeed(_prevElement), _prevElement);
                 return _prevElement;
             }
             
