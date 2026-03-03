@@ -306,7 +306,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 //Try to hover a new element (maybe)
                 if ((not __mouseHold) || ((__navMode == BENTO_MODE_TOUCH) && (__primaryState == __BENTO_START)))
                 {
-                    __BentoStartHover(__BentoGetPointerHover(__mouseX, __mouseY));
+                    __BentoSetHoverFromPointer(__mouseX, __mouseY);
                 }
                 
                 if (__primaryState == __BENTO_START) //On primary press
@@ -363,12 +363,12 @@ function __BentoClassLayer(_environment, _name) constructor
                 if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
                 
                 //Move the cursor and hover a new element (maybe)
-                __BentoStartHover(__BentoGetDirectionalHover(__hoverElement, __turboState.__outputX, __turboState.__outputY));
+                __BentoSetHoverFromDirectional(__hoverElement, __turboState.__outputX, __turboState.__outputY);
             }
             else //Some other input mode, perhaps `BENTO_MODE_UNKNOWN`
             {
                 __holdElement = BENTO_NO_ELEMENT;
-                __BentoStartHover(BENTO_NO_ELEMENT);
+                __BentoSetHover(BENTO_NO_ELEMENT);
             }
             
             if (__primaryState == __BENTO_START)

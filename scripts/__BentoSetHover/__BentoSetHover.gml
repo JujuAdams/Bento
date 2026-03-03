@@ -4,7 +4,7 @@
 /// 
 /// @param element
 
-function __BentoStartHover(_element)
+function __BentoSetHover(_element)
 {
     if (BentoExists(_element))
     {

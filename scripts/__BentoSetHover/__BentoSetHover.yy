@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoStartHover",
+  "%Name":"__BentoSetHover",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoStartHover",
+  "name":"__BentoSetHover",
   "parent":{
     "name":"(System)",
     "path":"folders/Bento/(System).yy",

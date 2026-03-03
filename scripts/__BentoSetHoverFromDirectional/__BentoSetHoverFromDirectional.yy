@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoGetPointerHover",
+  "%Name":"__BentoSetHoverFromDirectional",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoGetPointerHover",
+  "name":"__BentoSetHoverFromDirectional",
   "parent":{
     "name":"(System)",
     "path":"folders/Bento/(System).yy",
