@@ -224,6 +224,7 @@
     {"id":{"name":"BentoCursorGetX","path":"scripts/BentoCursorGetX/BentoCursorGetX.yy",},},
     {"id":{"name":"BentoCursorGetY","path":"scripts/BentoCursorGetY/BentoCursorGetY.yy",},},
     {"id":{"name":"BentoDebugDrawOrder","path":"scripts/BentoDebugDrawOrder/BentoDebugDrawOrder.yy",},},
+    {"id":{"name":"BentoDebugScissor","path":"scripts/BentoDebugScissor/BentoDebugScissor.yy",},},
     {"id":{"name":"BentoDebugStepOrder","path":"scripts/BentoDebugStepOrder/BentoDebugStepOrder.yy",},},
     {"id":{"name":"BentoDestroy","path":"scripts/BentoDestroy/BentoDestroy.yy",},},
     {"id":{"name":"BentoDestroyChildren","path":"scripts/BentoDestroyChildren/BentoDestroyChildren.yy",},},

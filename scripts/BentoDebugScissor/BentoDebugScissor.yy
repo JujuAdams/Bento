@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoDebugScissor",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoDebugScissor",
+  "parent":{
+    "name":"Debug",
+    "path":"folders/Bento/Functions/Debug.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -8,6 +8,7 @@ if (keyboard_check_pressed(ord("3"))) BentoSetMode(BENTO_MODE_GAMEPAD);
 if (keyboard_check_pressed(ord("4"))) BentoSetMode(BENTO_MODE_TOUCH);
 if (keyboard_check_pressed(vk_f1)) BentoDebugStepOrder();
 if (keyboard_check_pressed(vk_f2)) BentoDebugDrawOrder();
+if (keyboard_check_pressed(vk_f3)) BentoDebugScissor();
 
 if (BentoUsingPointer())
 {
