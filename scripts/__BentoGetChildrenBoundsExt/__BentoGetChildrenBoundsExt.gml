@@ -69,8 +69,8 @@ function __BentoGetChildrenBoundsExt(_padLeft, _padTop, _padRight, _padBottom, _
             }
             else
             {
-                var _x = x;
-                var _y = y;
+                var _x = __attachedElement.bentoX;
+                var _y = __attachedElement.bentoY;
                 
                 with(_result)
                 {

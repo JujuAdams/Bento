@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"oBentoExScrollboxWithBar",
+  "%Name":"oBentoExTextScroll",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -8,15 +8,15 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":13,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oBentoExScrollboxWithBar",
+  "name":"oBentoExTextScroll",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
     "path":"folders/Bento Examples/Objects.yy",
   },
   "parentObjectId":{
-    "name":"oBentoExSprite",
-    "path":"objects/oBentoExSprite/oBentoExSprite.yy",
+    "name":"oBentoAncestor",
+    "path":"objects/oBentoAncestor/oBentoAncestor.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

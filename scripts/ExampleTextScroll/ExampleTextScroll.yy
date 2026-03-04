@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExampleTextScroll",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExampleTextScroll",
+  "parent":{
+    "name":"Examples",
+    "path":"folders/Examples.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

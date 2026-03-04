@@ -124,6 +124,13 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
+                                text: $"Text Scroll",
+                                func: ExampleTextScroll,
+                            },
+                        },
+                        {
+                            object: oBentoExButton,
+                            vars: {
                                 text: $"Scrolling List",
                                 func: ExampleScrollingList,
                             },
