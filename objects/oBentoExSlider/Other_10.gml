@@ -6,7 +6,7 @@ var _value = BentoRefGet(reference);
 
 var _stepCount   = ceil((valueMax - valueMin) / valueStep);
 var _handleStep  = min(_stepCount, floor((_value - valueMin) / valueStep));
-var _handleWidth = handleWidth ?? (bentoWidth / _stepCount);
+var _handleWidth = max(handleWidthMin, bentoWidth / _stepCount);
 var _stepWidth   = (bentoWidth - _handleWidth) / _stepCount;
 var _handleLeft  = bentoLeft + _stepWidth*_handleStep;
 var _handleRight = _handleLeft + _handleWidth;

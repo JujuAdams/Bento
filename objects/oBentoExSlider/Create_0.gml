@@ -8,14 +8,14 @@ BentoSetButton(BENTO_BUTTON_ALWAYS);
 BentoSetRaycastEnable(false, true);
 
 BentoVarEnsureMany(
-    "reference",   undefined,
-    "valueMin",    0,
-    "valueMax",    10,
-    "valueStep",   1,
-    "handleWidth", undefined,
-    "clickToSet",  true,
-    "useFocus",    true,
-    "func",        function() {}
+    "reference",      undefined,
+    "valueMin",       0,
+    "valueMax",       10,
+    "valueStep",      1,
+    "handleWidthMin", 0,
+    "clickToSet",     true,
+    "useFocus",       true,
+    "func",           function() {}
 );
 
 if (image_blend == c_white)

@@ -46,6 +46,7 @@ function ExampleSlider()
                         text: "Slider",
                         valueMin: 1,
                         valueMax: 20,
+                        handleWidthMin: 100,
                         reference: BentoRef(global, "sliderExample"),
                     },
                     layout: {

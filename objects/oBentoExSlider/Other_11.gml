@@ -9,7 +9,7 @@ var _smaller = 8;
 var _value = BentoRefGet(reference);
 var _stepCount   = ceil((valueMax - valueMin) / valueStep);
 var _handleStep  = min(_stepCount, floor((_value - valueMin) / valueStep));
-var _handleWidth = handleWidth ?? (bentoWidth / _stepCount);
+var _handleWidth = max(handleWidthMin, bentoWidth / _stepCount);
 var _handleLeft  = bentoLeft + _smaller + _handleStep*((bentoWidth - _handleWidth - 2*_smaller) / _stepCount);
 
 draw_sprite_stretched_ext(sBentoExButton, 0, _handleLeft+4, bentoTop+4 + _smaller, _handleWidth, bentoHeight - 2*_smaller, c_black, 0.5);

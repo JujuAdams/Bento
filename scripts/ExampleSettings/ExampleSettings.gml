@@ -71,10 +71,10 @@ function ExampleSettings()
                         {
                             object: oBentoExSlider,
                             vars: {
+                                handleWidthMin: 40,
                                 reference: BentoRef(global.settings, "slider"),
                             },
                             layout: {
-                                minSize: [400, undefined],
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
                             },
                         },
