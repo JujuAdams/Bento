@@ -34,10 +34,11 @@ function BentoScrollbarGetVertData(_element = self)
         barRight:  0,
         barBottom: 0,
         
-        handleLeft:   0,
-        handleTop:    0,
-        handleRight:  0,
-        handleBottom: 0,
+        handleVisible: false,
+        handleLeft:    0,
+        handleTop:     0,
+        handleRight:   0,
+        handleBottom:  0,
         
         hoverScrollbar: false,
         hoverHandle:    false,

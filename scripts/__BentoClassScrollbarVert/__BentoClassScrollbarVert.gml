@@ -3,6 +3,7 @@
 function __BentoClassScrollbarVert(_element) : __BentoClassScrollbar(_element) constructor
 {
     exists = false;
+    handleVisible = false;
     
     static __SetSize = function()
     {
@@ -42,7 +43,20 @@ function __BentoClassScrollbarVert(_element) : __BentoClassScrollbar(_element) c
         var _element = __element;
         var _cursorY = BentoCursorGetY();
         
-        handleHeight = barHeight*clamp(barHeight / BentoScrollGetHeight(_element), 0.1, 1);
+        var _visibleHeight = _element.BENTO_VARS.__scrollVisibleHeight;
+        var _contentHeight = _element.BENTO_VARS.__scrollContentHeight;
+        
+        if (_contentHeight <= _visibleHeight)
+        {
+            handleVisible = false;
+            handleHeight = barHeight;
+        }
+        else
+        {
+            handleVisible = true;
+            handleHeight = barHeight*clamp(_visibleHeight / _contentHeight, 0, 1);
+        }
+        
         handleTop    = lerp(barTop, barBottom - handleHeight, BentoScrollGetParamY(_element));
         handleBottom = handleTop + handleHeight;
         

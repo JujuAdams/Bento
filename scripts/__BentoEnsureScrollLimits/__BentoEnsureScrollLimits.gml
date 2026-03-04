@@ -25,18 +25,20 @@ function __BentoEnsureScrollLimits()
                 
                 //Calculate the physical bounds of the children of this parent. Positions are in world-space
                 var _bounds = __BentoGetChildrenBounds(0, _parent);
+                __scrollContentWidth  = _bounds.width;
+                __scrollContentHeight = _bounds.height;
                 
                 if (__scrollHori)
                 {
                     //Calculate how much visible width we have to play with
-                    var _visibleSize = __scissorEnabled? __solvedWidth - (__scissorPadLeft + __scissorPadRight + __scissorScrollbarLeft + __scissorScrollbarRight) : __solvedWidth;
-                    _visibleSize -= __layoutPadLeft + __layoutPadRight;
+                    __scrollVisibleWidth = __scissorEnabled? __solvedWidth - (__scissorPadLeft + __scissorPadRight + __scissorScrollbarLeft + __scissorScrollbarRight) : __solvedWidth;
+                    __scrollVisibleWidth -= __layoutPadLeft + __layoutPadRight;
                     
                     //Compare the children's width to the total scrollable area
-                    if (_bounds.width > _visibleSize - (__scrollPadLeft + __scrollPadRight))
+                    if (__scrollContentWidth > __scrollVisibleWidth - (__scrollPadLeft + __scrollPadRight))
                     {
                         //Children overlow, set up limits
-                        __scrollMinX = -((_bounds.width - _visibleSize) + __scrollPadRight);
+                        __scrollMinX = -((__scrollContentWidth - __scrollVisibleWidth) + __scrollPadRight);
                         __scrollMaxX = __scrollPadLeft;
                     }
                     else
@@ -56,12 +58,12 @@ function __BentoEnsureScrollLimits()
                 //Same as above but in the y-axis
                 if (__scrollVert)
                 {
-                    var _visibleSize = __scissorEnabled? __solvedHeight - (__scissorPadTop + __scissorPadBottom + __scissorScrollbarTop + __scissorScrollbarBottom) : __solvedHeight;
-                    _visibleSize -= __layoutPadTop + __layoutPadBottom;
+                    __scrollVisibleHeight = __scissorEnabled? __solvedHeight - (__scissorPadTop + __scissorPadBottom + __scissorScrollbarTop + __scissorScrollbarBottom) : __solvedHeight;
+                    __scrollVisibleHeight -= __layoutPadTop + __layoutPadBottom;
                     
-                    if (_bounds.height > _visibleSize - (__scrollPadTop + __scrollPadBottom))
+                    if (__scrollContentHeight > __scrollVisibleHeight - (__scrollPadTop + __scrollPadBottom))
                     {
-                        __scrollMinY = -((_bounds.height - _visibleSize) + __scrollPadBottom);
+                        __scrollMinY = -((__scrollContentHeight - __scrollVisibleHeight) + __scrollPadBottom);
                         __scrollMaxY = __scrollPadTop;
                     }
                     else
@@ -86,10 +88,15 @@ function __BentoEnsureScrollLimits()
                 _newX = 0;
                 _newY = 0;
                 
-                __scrollMinX = 0;
-                __scrollMinY = 0;
-                __scrollMaxX = 0;
-                __scrollMaxY = 0;
+                __scrollMinX  = 0;
+                __scrollMinY  = 0;
+                __scrollMaxX  = 0;
+                __scrollMaxY  = 0;
+                
+                __scrollContentWidth  = 0;
+                __scrollContentHeight = 0;
+                __scrollVisibleWidth  = 0;
+                __scrollVisibleHeight = 0;
             }
             
             BentoScrollSetPos(_newX, _newY, undefined, _parent);

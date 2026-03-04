@@ -3,6 +3,7 @@
 function __BentoClassScrollbarHori(_element) : __BentoClassScrollbar(_element) constructor
 {
     exists = false;
+    handleVisible = false;
     
     static __SetSize = function()
     {
@@ -42,7 +43,20 @@ function __BentoClassScrollbarHori(_element) : __BentoClassScrollbar(_element) c
         var _element = __element;
         var _cursorX = BentoCursorGetX();
         
-        handleWidth = barWidth*clamp(barWidth / BentoScrollGetWidth(_element), 0.1, 1);
+        var _visibleWidth = _element.BENTO_VARS.__scrollVisibleWidth;
+        var _contentWidth = _element.BENTO_VARS.__scrollContentWidth;
+        
+        if (_contentWidth <= _visibleWidth)
+        {
+            handleVisible = false;
+            handleWidth = barWidth;
+        }
+        else
+        {
+            handleVisible = true;
+            handleWidth = barWidth*clamp(_visibleWidth / _contentWidth, 0.1, 0.9);
+        }
+        
         handleLeft  = lerp(barLeft, barRight - handleWidth, BentoScrollGetParamX(_element));
         handleRight = handleLeft + handleWidth;
         

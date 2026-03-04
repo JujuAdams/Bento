@@ -119,6 +119,11 @@ function __BentoClassVariables(_attachedElement) constructor
     __scrollMinY      = 0;
     __scrollMaxY      = 0;
     
+    __scrollContentWidth  = 0;
+    __scrollContentHeight = 0;
+    __scrollVisibleWidth  = 0;
+    __scrollVisibleHeight = 0;
+    
     __scrollbarHori = undefined;
     __scrollbarVert = undefined;
     
