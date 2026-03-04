@@ -36,6 +36,8 @@ function __BentoFocusCloseInner(_element)
             
             array_delete(_focusStack, _index, array_length(_focusStack) - _index);
             __layer.__focusTop = array_last(_focusStack);
+            
+            BentoSelect(_element);
         }
     }
 }

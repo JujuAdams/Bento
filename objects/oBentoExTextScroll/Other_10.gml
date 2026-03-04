@@ -16,6 +16,11 @@ if (BentoUsingDirectional())
     
     if (BentoFocusGetTop() == self)
     {
-        BentoScrollMove(-30*BentoCursorGetDX(), -30*BentoCursorGetDY());
+        if ((BentoCursorGetDX() != 0) || (BentoCursorGetDY() != 0))
+        {
+            BentoScrollMove(-2*BENTO_MOUSE_WHEEL_SCROLL_SPEED*BentoCursorGetDX(),
+                            -2*BENTO_MOUSE_WHEEL_SCROLL_SPEED*BentoCursorGetDY(),
+                            BENTO_DEFAULT_SCROLL_SPEED);
+        }
     }
 }

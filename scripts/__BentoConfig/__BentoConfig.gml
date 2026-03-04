@@ -65,7 +65,7 @@
 #macro BENTO_SCROLL_THRESHOLD  4
 
 // Default speed that scrolling element scroll at. Measured in pixels per frame.
-#macro BENTO_DEFAULT_SCROLL_SPEED  9
+#macro BENTO_DEFAULT_SCROLL_SPEED  7
 
 // Whether clicking and dragging on a scrollable element should scroll in the `BENTO_MODE_MOUSE`
 // nav mode.
