@@ -4,6 +4,8 @@
 /// 
 /// @param element
 
+//TODO - Can this be optimized by storing the scroll parent during offset calculation?
+
 function __BentoScrollFindParent(_element)
 {
     if (not BentoExists(_element)) return BENTO_NO_ELEMENT;
