@@ -11,8 +11,24 @@ function BentoSystemDraw(_x = 0, _y = 0)
     static _system = __BentoSystem();
     static _matrix = matrix_build_identity();
     
+    static _matrixView = matrix_build_identity();
+    static _matrixProj = matrix_build_identity();
+    
+    matrix_get(matrix_view, _matrixView);
+    matrix_get(matrix_projection, _matrixProj);
+    
+    if (BENTO_ON_DIRECTX)
+    {
+        _matrixProj[@ 5] *= -1;
+    }
+    
     with(_system)
     {
+        __globalScissorXOffset     = round((0.5 + 0.5*_matrixView[12]*_matrixProj[0])*window_get_width());
+        __globalScissorYOffset     = round((0.5 + 0.5*_matrixView[13]*_matrixProj[5])*window_get_height());
+        __globalScissorWidthCoeff  = _matrixView[0];
+        __globalScissorHeightCoeff = _matrixView[5];
+        
         __BentoScissorReset();
         
         var _useMatrix = ((_x != 0) || (_y != 0));

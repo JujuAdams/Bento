@@ -53,4 +53,9 @@ BentoInputHotkey(BENTO_HOTKEY_CANCEL, BentoUsingGamepad()? gamepad_button_check(
 // Step user events (BENTO_USER_EVENT_STEP, 0) are executed by this function where appropriate.
 BentoSystemStep(display_get_gui_width(), display_get_gui_height());
 
-window_set_cursor(BentoGetBlocksMouse()? cr_drag : cr_default);
+// Change mouse cursor when we're doing something with Bento
+var _margin = 4;
+if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), _margin, _margin, window_get_width() - _margin, window_get_height() - _margin))
+{
+    window_set_cursor(BentoGetBlocksMouse()? cr_drag : cr_default);
+}

@@ -151,6 +151,10 @@
 #macro BENTO_ON_CONSOLE  (BENTO_ON_XBOX || BENTO_ON_PS4 || BENTO_ON_PS5 || BENTO_ON_SWITCH)
 #macro BENTO_ON_APPLE    (BENTO_ON_MACOS || BENTO_ON_IOS)
 #macro BENTO_ON_OPERAGX  (os_type == os_operagx)
+#macro BENTO_ON_DIRECTX  ((not BENTO_ON_WEB) && (BENTO_ON_WINDOWS || BENTO_ON_XBOX))
+#macro BENTO_ON_OPENGL   (not BENTO_ON_DIRECTX)
 #macro BENTO_ON_WEB      ((os_browser != browser_not_a_browser) || BENTO_ON_OPERAGX)
 
 #macro BENTO_STEAMWORKS_SUPPORT   ((BENTO_ON_LINUX || BENTO_ON_WINDOWS) && (not BENTO_ON_WEB))
+
+#macro BENTO_IN_GUI_DRAW_EVENT  ((event_type == ev_draw) && ((event_number == ev_gui) || (event_number == ev_gui) || (event_number == ev_gui)))
