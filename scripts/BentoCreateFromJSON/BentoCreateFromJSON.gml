@@ -26,10 +26,12 @@
 /// `.offset`     executes `BentoSetOffset()`
 /// `.visible`    executes `BentoSetVisible()`
 /// `.name`       executes `BentoNameSet()`
+/// `.select`     executes `BentoSelect()`
 /// `.selectSoft` executes `BentoSelectSoft()`
 /// `.clip`       executes `BentoClipSetEnabled()` and `BentoClipSetPadding()`
 /// `.scroll`     executes `BentoScrollSetEnabled()` and `BentoScrollSetPadding()`
 /// `.layout`     executes `BentoLayoutSetFromJSON()`
+/// `.skin`       executes `BentoApplySkin()`
 /// `.onCreate`   executes a custom method
 /// 
 /// 
@@ -162,6 +164,18 @@
 /// {
 ///     object: oBentoSprite,
 ///     softSelect: true
+/// }
+/// ```
+/// 
+/// Element definition structs may contain an `.skin` property. If specified, this must be a string
+/// which is the name of the skin to apply. The skin must have been defined previously by calling
+/// `BentoApplySkin()`.
+/// 
+/// Example:
+/// ```
+/// {
+///     object: oBentoSprite,
+///     skin: "big button"
 /// }
 /// ```
 /// 
@@ -664,6 +678,19 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             else
             {
                 __BentoError($".scroll property must be a number, a 4-element array, or a struct (typeof \"{typeof(_scroll)}\")");
+            }
+        }
+        
+        var _skinName = _json[$ "skin"];
+        if (_skinName != undefined)
+        {
+            if (is_string(_skinName))
+            {
+                BentoApplySkin(_skinName, _element);
+            }
+            else
+            {
+                __BentoError($".skin property must be a string (typeof \"{typeof(_scroll)}\")");
             }
         }
         

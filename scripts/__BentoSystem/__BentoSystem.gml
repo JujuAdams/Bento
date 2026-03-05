@@ -170,6 +170,8 @@ function __BentoSystem()
         // Variable declaration
         ///////
         
+        __skinDict = {};
+        
         __scissorStack = [];
         
         __creatingObject = false;

@@ -1,26 +1,32 @@
 // Feather disable all
 
-/// Returns a struct containing two variables (`.horizontal` and `.vertical`) that indicate whether
-/// scrolling is enabled in either axis.
+/// Returns a struct containing three variables (`.horizontal` `.vertical` `.enabled`) that
+/// indicate whether scrolling is enabled in the associated axes.
 /// 
 /// @param [element=self]
 
 function BentoScrollGetEnabled(_element = self)
 {
     static _result = {
+        either:     false,
         horizontal: false,
         vertical:   false,
     };
     
-    if (BentoExists(_element))
+    with(_result)
     {
-        _result.horizontal = _element.BENTO_VARS.__scrollHori;
-        _result.vertical   = _element.BENTO_VARS.__scrollVert;
-    }
-    else
-    {
-        _result.horizontal = false;
-        _result.vertical   = false;
+        if (BentoExists(_element))
+        {
+            horizontal = _element.BENTO_VARS.__scrollHori;
+            vertical   = _element.BENTO_VARS.__scrollVert;
+            either     = horizontal || vertical;
+        }
+        else
+        {
+            horizontal = false;
+            vertical   = false;
+            either     = false;
+        }
     }
     
     return _result;

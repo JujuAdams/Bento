@@ -58,9 +58,9 @@ function ExampleHomePage()
                 },
                 {
                     object: oBentoExScrollboxWithBar,
+                    skin: "thick frame",
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
-                        padding: 20,
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                         gutter: 15,
                     },
