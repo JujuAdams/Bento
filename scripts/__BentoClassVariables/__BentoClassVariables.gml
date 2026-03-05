@@ -324,7 +324,6 @@ function __BentoClassVariables(_attachedElement) constructor
     __layoutChildArray = [];
     
     __layoutClampInside = false;
-    __layoutBypass = false;
     
     //Anchor against the available space that the parent has allocated for this element. This is
     //especially useful for children of rect parents where you might want to position the element

@@ -21,7 +21,6 @@
 /// `.gutter`  executes `BentoLayoutSetGutter()`
 /// `.list`    executes `BentoLayoutList()`
 /// `.grid`    executes `BentoLayoutGrid()`
-/// `.bypass`  execures `BentoLayoutSetBypass()`
 /// 
 /// Example:
 /// ```
@@ -212,10 +211,6 @@
 ///     
 ///     Column and row values must be integers, or you may use `null` (`undefined`) to indicate that no change
 ///     should be made to a particular value.
-/// 
-/// `.bypass`
-///     Calls the `BentoLayoutSetBypass()` function on the created element. Must be either `true` or
-///     `false`.
 
 function BentoLayoutSetFromJSON(_json, _element = self)
 {
@@ -272,10 +267,6 @@ function BentoLayoutSetFromJSON(_json, _element = self)
             else if (_name == "grid")
             {
                 __BentoLayoutSetFromJSON_grid(_element, _value);
-            }
-            else if (_name == "bypass")
-            {
-                __BentoLayoutSetFromJSON_bypass(_element, _value);
             }
             else
             {
@@ -722,22 +713,5 @@ function __BentoLayoutSetFromJSON_grid(_element, _value)
     else
     {
         __BentoError($".grid layout property must be a two-element array or a struct (typeof \"{typeof(_value)}\")");
-    }
-}
-
-
-
-////////
-// .bypass
-////////
-function __BentoLayoutSetFromJSON_bypass(_element, _value)
-{
-    if (is_numeric(_value) || is_bool(_value))
-    {
-        BentoLayoutSetBypass(_value, _element);
-    }
-    else
-    {
-        __BentoError($".bypass layout property must be a boolean (typeof \"{typeof(_value)}\")");
     }
 }

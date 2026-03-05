@@ -13,7 +13,6 @@ function TestAnimations()
         
         with(new BentoExConstrButton(function()
         {
-            BentoLayoutSetBypass(true);
             BentoAnimPlayBuildOut(60, 0, 40, 0, 1, 1, 0);
             
             //BentoTransformSetScale(2, 2);

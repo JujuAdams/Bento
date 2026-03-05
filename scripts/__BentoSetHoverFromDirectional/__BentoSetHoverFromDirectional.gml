@@ -71,9 +71,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                 //the previous element. This ensures non-visible elements never get selected but that it's possible
                 //to navigate to visually hidden elements inside the scroller.
                 var _prevScrollParent = __BentoScrollFindParent(_prevElement);
-            
-                //FIXME - Change to a check against the joint scissor and scroll parent
-                var _checkVisible = (_prevScrollParent != __BentoScrollFindParent(_nextElement));
+                var _checkVisible = (_prevScrollParent != __BentoScrollFindParent(_nextElement)); //FIXME - Change to a check against the joint scissor and scroll parent
                 if (not __BentoGetHoverableInternal(_nextElement, _checkVisible))
                 {
                     _nextElement = BENTO_NO_ELEMENT;
