@@ -17,10 +17,7 @@ function BentoSystemDraw(_x = 0, _y = 0)
     matrix_get(matrix_view, _matrixView);
     matrix_get(matrix_projection, _matrixProj);
     
-    if (BENTO_ON_DIRECTX)
-    {
-        _matrixProj[@ 5] *= -1;
-    }
+    _matrixProj[@ 5] *= -1;
     
     with(_system)
     {
