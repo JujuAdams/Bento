@@ -38,7 +38,7 @@ function __BentoSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeig
     var _i = 0;
     repeat(_childCount)
     {
-        _childArray[_i].__SolverPositions(_childLeft, _childTop, _cellWidth, _cellHeight);
+        _childArray[_i].__SolverFinalPositions(_childLeft, _childTop, _cellWidth, _cellHeight);
         
         _childLeft += _cellWidth + __layoutGutterX;
         ++_gridX;

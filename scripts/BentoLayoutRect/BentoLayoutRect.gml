@@ -23,7 +23,7 @@ function BentoLayoutRect(_element = self)
             __SolverResizeWidth      = function() {}
             __SolverGetDeflateHeight = method(self, __BentoSolverRectGetDeflateHeight);
             __SolverResizeHeight     = method(self, __BentoSolverMaintainAspectRatio);
-            __SolverPositions        = method(self, __BentoSolverRectPositions);
+            __SolverFinalPositions   = method(self, __BentoSolverRectPositions);
             __funcMeasureHeight      = function() { return 1; }
         }
     }

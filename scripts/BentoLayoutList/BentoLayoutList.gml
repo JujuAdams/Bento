@@ -35,7 +35,7 @@ function BentoLayoutList(_majorAxis, _hAlignChildren, _vAlignChildren, _element 
             __SolverResizeWidth      = method(self, __BentoSolverListResizeWidth);
             __SolverGetDeflateHeight = method(self, __BentoSolverListGetDeflateHeight);
             __SolverResizeHeight     = method(self, __BentoSolverListResizeHeight);
-            __SolverPositions        = method(self, __BentoSolverListPositions);
+            __SolverFinalPositions   = method(self, __BentoSolverListPositions);
             __funcMeasureHeight      = function() { return 1; }
         }
         else

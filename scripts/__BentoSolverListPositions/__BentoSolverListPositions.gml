@@ -44,7 +44,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
             with(_childArray[_i])
             {
                 var _childMinorPos = _minorPos + _minorAlign*(_minorAvailable - __solvedHeight);
-                __SolverPositions(_majorPos, _childMinorPos, __solvedWidth, _minorAvailable);
+                __SolverFinalPositions(_majorPos, _childMinorPos, __solvedWidth, _minorAvailable);
                 _majorPos += __solvedWidth + _gutter;
             }
           
@@ -77,7 +77,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
             with(_childArray[_i])
             {
                 var _childMinorPos = _minorPos + _minorAlign*(_minorAvailable - __solvedWidth);
-                __SolverPositions(_childMinorPos, _majorPos, _minorAvailable, __solvedHeight);
+                __SolverFinalPositions(_childMinorPos, _majorPos, _minorAvailable, __solvedHeight);
                 _majorPos += __solvedHeight + _gutter;
             }
           

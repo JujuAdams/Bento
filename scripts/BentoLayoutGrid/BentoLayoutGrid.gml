@@ -37,7 +37,7 @@ function BentoLayoutGrid(_targetColumns, _targetRows, _minColumns = 1, _minRows 
             __SolverResizeWidth      = method(self, __BentoSolverGridResizeWidth);
             __SolverGetDeflateHeight = method(self, __BentoSolverGridGetDeflateHeight);
             __SolverResizeHeight     = method(self, __BentoSolverGridResizeHeight);
-            __SolverPositions        = method(self, __BentoSolverGridPositions);
+            __SolverFinalPositions   = method(self, __BentoSolverGridPositions);
             __funcMeasureHeight      = function() { return 1; }
         }
         else

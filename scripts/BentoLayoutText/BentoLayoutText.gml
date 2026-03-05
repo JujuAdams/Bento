@@ -52,7 +52,7 @@ function BentoLayoutText(_funcHeight, _element = self)
             __SolverResizeWidth      = function() {};
             __SolverGetDeflateHeight = method(self, __BentoSolverTextGetDeflateHeight);
             __SolverResizeHeight     = method(self, __BentoSolverMaintainAspectRatio);
-            __SolverPositions        = method(self, __BentoSolverRectPositions);
+            __SolverFinalPositions   = method(self, __BentoSolverRectPositions);
             __funcMeasureHeight      = method(__attachedElement, _funcHeight);
         }
         else

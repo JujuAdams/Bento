@@ -402,7 +402,7 @@ function __BentoClassVariables(_attachedElement) constructor
     //to occupy. For elements that are children of "boring" (non-list, non-grid) parents, the
     //allocated space is equal to the full size of the parent. If an element is a parent of a list or
     //grid then the allocated space will be smaller.
-    __SolverPositions = method(self, __BentoSolverRectPositions);
+    __SolverFinalPositions = method(self, __BentoSolverRectPositions);
     
     //Only used for `BENTO_LAYOUT_TEXT`
     __funcMeasureHeight = function() { return 1; }

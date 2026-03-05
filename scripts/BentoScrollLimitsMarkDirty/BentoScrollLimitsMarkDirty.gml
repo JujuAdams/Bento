@@ -11,12 +11,6 @@ function BentoScrollLimitsMarkDirty(_element)
 {
     with(__BentoGetVars(_element))
     {
-        if ((not __scrollHori) && (not __scrollVert)) return;
-        
-        if (not __scrollLimitsDirty)
-        {
-            __scrollLimitsDirty = true;
-            array_push(__layer.__dirtyScrollLimitsArray, _element);
-        }
+        __BentoScrollLimitsMarkSelfDirty();
     }
 }

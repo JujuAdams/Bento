@@ -50,7 +50,7 @@ function __BentoEnsureLayout()
         
         //Final pass to set positions in stone
         var _rootBento = __rootElement.BENTO_VARS;
-        _rootBento.__SolverPositions(0, 0, _rootBento.__solvedWidth, _rootBento.__solvedHeight);
+        _rootBento.__SolverFinalPositions(0, 0, _rootBento.__solvedWidth, _rootBento.__solvedHeight);
     }
     
     //Ensure a full reset of the transform/scroll positions
