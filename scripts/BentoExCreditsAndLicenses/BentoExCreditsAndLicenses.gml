@@ -89,7 +89,7 @@ function BentoExCreditsAndLicenses()
                             ],
                         },
                         {
-                            object: oBentoExTextScroll,
+                            object: oBentoExText,
                             vars:
                             {
                                 text: "Permission kindly given by Chequered Ink Ltd. for use of the Candy Beans font in this example project. Candy Beans may not be reused outside of the terms of the license found alongside the project files (and linked below).",

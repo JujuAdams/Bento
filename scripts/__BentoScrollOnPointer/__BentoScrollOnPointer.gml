@@ -65,7 +65,10 @@ function __BentoScrollOnPointer()
                 _dY -= BENTO_MOUSE_WHEEL_SCROLL_SPEED;
             }
             
-            BentoScrollMove(_dX, _dY, BENTO_DEFAULT_SCROLL_SPEED, self);
+            if ((_dX != 0) || (_dY != 0))
+            {
+                BentoScrollMove(_dX, _dY, BENTO_DEFAULT_SCROLL_SPEED, self);
+            }
         }
     }
 }
