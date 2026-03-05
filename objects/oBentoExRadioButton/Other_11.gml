@@ -4,11 +4,11 @@
 
 var _filled = (BentoRefGet(reference) == value);
 
-draw_sprite_stretched_ext(sprite_index, image_index, bentoLeft+4, bentoTop+4, bentoHeight, bentoHeight, c_black, 0.5);
+draw_sprite_stretched_ext(sprite_index, image_index, bentoLeft+4, bentoTop+4, bentoHeight, bentoHeight, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
 
 if (_filled)
 {
-    draw_sprite_stretched_ext(sBentoExFrameFill, 0, bentoLeft+4, bentoTop+4, bentoHeight, bentoHeight, c_black, 0.5);
+    draw_sprite_stretched_ext(sBentoExFrameFill, 0, bentoLeft+4, bentoTop+4, bentoHeight, bentoHeight, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
 }
 
 var _offset = BentoPrimaryGetHold()? 2 : 0;

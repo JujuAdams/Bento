@@ -7,6 +7,6 @@
 
 if (sprite_exists(sprite_index))
 {
-    draw_sprite_ext(sprite_index, image_index, x+5, y+5, image_xscale, image_yscale, image_angle, c_black, 0.4*image_alpha);
+    draw_sprite_ext(sprite_index, image_index, x+6, y+6, image_xscale, image_yscale, image_angle, c_black, 0.2*image_alpha);
     draw_self();
 }

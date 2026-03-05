@@ -2,7 +2,7 @@
 
 /// @desc Draw
 
-draw_sprite_ext(sprite_index, image_index, x+4, y+4, image_xscale, image_yscale, image_angle, c_black, 0.5);
+draw_sprite_ext(sprite_index, image_index, x + BENTO_EXAMPLE_SHADOW_OFFSET, y + BENTO_EXAMPLE_SHADOW_OFFSET, image_xscale, image_yscale, image_angle, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
 
 if (BentoPrimaryGetHold() && BentoGetClickable())
 {

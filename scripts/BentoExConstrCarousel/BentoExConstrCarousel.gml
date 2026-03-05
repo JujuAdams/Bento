@@ -92,7 +92,7 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font 
     
     eventDraw = function()
     {
-        BentoDrawSprite(sBentoExButton, undefined, c_black, 0.5, 4, 4);
+        BentoDrawSprite(sBentoExButton, undefined, c_black, BENTO_EXAMPLE_SHADOW_ALPHA, BENTO_EXAMPLE_SHADOW_OFFSET, BENTO_EXAMPLE_SHADOW_OFFSET);
         
         var _offset = (BentoPrimaryGetHold() && BentoGetClickable())? 2 : 0;
         var _left   = bentoLeft + _offset;
@@ -135,7 +135,7 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font 
     {
         if (BentoGetClickable())
         {
-            BentoDrawSpriteAround(10, sBentoExHighlight, undefined, c_black, 0.2, un, 3, 3);
+            BentoDrawSpriteAround(10, sBentoExHighlight, undefined, c_black, BENTO_EXAMPLE_HIGHLIGHT_SHADOW_ALPHA, undefined, BENTO_EXAMPLE_HIGHLIGHT_SHADOW_OFFSET, BENTO_EXAMPLE_HIGHLIGHT_SHADOW_OFFSET);
             BentoDrawSpriteAround(10, sBentoExHighlight, undefined, BENTO_EXAMPLE_RED);
         }
     }

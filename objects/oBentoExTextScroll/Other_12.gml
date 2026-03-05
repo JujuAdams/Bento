@@ -4,15 +4,15 @@
 
 if (frame)
 {
-    draw_sprite_ext(sBentoExFrameShadow, image_index, x+4, y+4, image_xscale, image_yscale, image_angle, c_black, 0.4*image_alpha);
+    draw_sprite_ext(sBentoExFrameShadow, image_index, x + BENTO_EXAMPLE_SHADOW_OFFSET, y + BENTO_EXAMPLE_SHADOW_OFFSET, image_xscale, image_yscale, image_angle, c_black, BENTO_EXAMPLE_SHADOW_ALPHA*image_alpha);
 }
 
 with(BentoScrollbarGetVertData())
 {
     if (exists && handleVisible)
     {
-        draw_sprite_stretched_ext(sBentoExButton, 0, handleLeft+4, handleTop+4, handleRight - handleLeft, handleBottom - handleTop, c_black, 0.5);
-        draw_sprite_stretched_ext(sBentoExFrame, 0, barLeft+4, barTop+4, barRight - barLeft, barBottom - barTop, c_black, 0.5);
+        draw_sprite_stretched_ext(sBentoExButton, 0, handleLeft+4, handleTop+4, handleRight - handleLeft, handleBottom - handleTop, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
+        draw_sprite_stretched_ext(sBentoExFrame, 0, barLeft+4, barTop+4, barRight - barLeft, barBottom - barTop, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
     }
 }
 

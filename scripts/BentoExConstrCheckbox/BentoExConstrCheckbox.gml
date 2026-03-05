@@ -50,11 +50,11 @@ function BentoExConstrCheckbox(_reference, _text = "", _font = fntBentoExCandyBe
     {
         var _filled = (BentoRefGet(reference) == true);
         
-        draw_sprite_stretched_ext(sBentoExFrame, 0, bentoLeft+4, bentoTop+4, bentoHeight, bentoHeight, c_black, 0.5);
+        draw_sprite_stretched_ext(sBentoExFrame, 0, bentoLeft+4, bentoTop+4, bentoHeight, bentoHeight, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
         
         if (_filled)
         {
-            draw_sprite_stretched_ext(sBentoExFrameFill, 0, bentoLeft+4, bentoTop+4, bentoHeight, bentoHeight, c_black, 0.5);
+            draw_sprite_stretched_ext(sBentoExFrameFill, 0, bentoLeft+4, bentoTop+4, bentoHeight, bentoHeight, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
         }
         
         var _offset = BentoPrimaryGetHold()? 2 : 0;
@@ -81,7 +81,7 @@ function BentoExConstrCheckbox(_reference, _text = "", _font = fntBentoExCandyBe
     {
         if (BentoGetClickable())
         {
-            BentoDrawSpriteAround(10, sBentoExHighlight, undefined, c_black, 0.2, un, 3, 3);
+            BentoDrawSpriteAround(10, sBentoExHighlight, undefined, c_black, BENTO_EXAMPLE_HIGHLIGHT_SHADOW_ALPHA, undefined, BENTO_EXAMPLE_HIGHLIGHT_SHADOW_OFFSET, BENTO_EXAMPLE_HIGHLIGHT_SHADOW_OFFSET);
             BentoDrawSpriteAround(10, sBentoExHighlight, undefined, BENTO_EXAMPLE_RED);
         }
     }
