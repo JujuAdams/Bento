@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Bento Examples",
-    "path":"folders/Bento Examples.yy",
+    "name":"Sprites",
+    "path":"folders/Bento Examples/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

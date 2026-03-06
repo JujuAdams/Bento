@@ -44,8 +44,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Bento Examples",
-    "path":"folders/Bento Examples.yy",
+    "name":"Sprites",
+    "path":"folders/Bento Examples/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

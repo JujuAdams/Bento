@@ -11,6 +11,7 @@
   "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Bento Examples","folderPath":"folders/Bento Examples.yy","name":"Bento Examples","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Bento Examples/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objects","folderPath":"folders/Bento Examples/Objects.yy","name":"Objects","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Structs","folderPath":"folders/Bento Examples/Structs.yy","name":"Structs","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Bento","folderPath":"folders/Bento.yy","name":"Bento","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -440,6 +441,8 @@
     {"id":{"name":"TestStructs","path":"scripts/TestStructs/TestStructs.yy",},},
     {"id":{"name":"TestTextbox","path":"scripts/TestTextbox/TestTextbox.yy",},},
     {"id":{"name":"TestTransform","path":"scripts/TestTransform/TestTransform.yy",},},
+    {"id":{"name":"sndBentoExBeep","path":"sounds/sndBentoExBeep/sndBentoExBeep.yy",},},
+    {"id":{"name":"sndBentoExBlip","path":"sounds/sndBentoExBlip/sndBentoExBlip.yy",},},
     {"id":{"name":"sBentoExButton","path":"sprites/sBentoExButton/sBentoExButton.yy",},},
     {"id":{"name":"sBentoExFrame","path":"sprites/sBentoExFrame/sBentoExFrame.yy",},},
     {"id":{"name":"sBentoExFrameFill","path":"sprites/sBentoExFrameFill/sBentoExFrameFill.yy",},},
