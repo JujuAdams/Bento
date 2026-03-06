@@ -5,7 +5,7 @@ function __BentoSetHoverFromPointer(_mouseX, _mouseY)
     //Can't hover anything when there are blocking animations on this layer.
     if (not ds_map_empty(__animBlockingMap))
     {
-        __BentoSetHover(BENTO_NO_ELEMENT);
+        __BentoSetHover(BENTO_NO_ELEMENT, false);
         return;
     }
     
@@ -25,12 +25,12 @@ function __BentoSetHoverFromPointer(_mouseX, _mouseY)
         var _result = _hoverableOrder[_i](_mouseX, _mouseY, _holdElement);
         if (_result != undefined)
         {
-            __BentoSetHover(_result);
+            __BentoSetHover(_result, true);
             return;
         }
         
         --_i;
     }
     
-    __BentoSetHover(BENTO_NO_ELEMENT);
+    __BentoSetHover(BENTO_NO_ELEMENT, false);
 }

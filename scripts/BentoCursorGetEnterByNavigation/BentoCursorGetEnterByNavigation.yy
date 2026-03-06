@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoCursorGetEnter",
+  "%Name":"BentoCursorGetEnterByNavigation",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoCursorGetEnter",
+  "name":"BentoCursorGetEnterByNavigation",
   "parent":{
     "name":"Cursor",
     "path":"folders/Bento/Functions/Input & Navigation/Getters/Cursor.yy",

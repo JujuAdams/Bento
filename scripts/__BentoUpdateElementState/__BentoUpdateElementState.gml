@@ -41,6 +41,11 @@ function __BentoUpdateElementState()
                 __hoverState |= __BENTO_START;
             }
             
+            if (__hoverState != __BENTO_START)
+            {
+                __byNavigation = false;
+            }
+            
             ///////
             // Hold state
             ///////

@@ -368,7 +368,7 @@ function __BentoClassLayer(_environment, _name) constructor
             else //Some other input mode, perhaps `BENTO_MODE_UNKNOWN`
             {
                 __holdElement = BENTO_NO_ELEMENT;
-                __BentoSetHover(BENTO_NO_ELEMENT);
+                __BentoSetHover(BENTO_NO_ELEMENT, false);
             }
             
             if (__primaryState == __BENTO_START)

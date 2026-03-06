@@ -1,10 +1,11 @@
 // Feather disable all
 
-/// Starts the hover state for an element.
+/// Starts the hover state for an element. This must be called in the scope of a layer struct.
 /// 
 /// @param element
+/// @param byNavigation
 
-function __BentoSetHover(_element)
+function __BentoSetHover(_element, _byNavigation)
 {
     if (BentoExists(_element))
     {
@@ -29,6 +30,11 @@ function __BentoSetHover(_element)
             {
                 __updating = true;
                 array_push(__layer.__updateElementArray, self)
+            }
+            
+            if (_byNavigation)
+            {
+                __byNavigation = true;
             }
         }
     }

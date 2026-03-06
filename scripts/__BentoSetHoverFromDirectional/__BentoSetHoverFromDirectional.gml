@@ -28,6 +28,8 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
             //Otherwise fall back on searching for the nearest selectable element
             _nextElement = __BentoGetNearest(__directionalLastX, __directionalLastY, _excludeArray);
         }
+        
+        __BentoSetHover(_nextElement, false);
     }
     else
     {
@@ -99,7 +101,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                 }
             }
         }
+        
+        __BentoSetHover(_nextElement, true);
     }
-    
-    __BentoSetHover(_nextElement);
 }
