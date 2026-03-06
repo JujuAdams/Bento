@@ -39,7 +39,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
         if ((_dX == 0) && (_dY == 0))
         {
             //No movement, keep the same element we had before
-            _nextElement = _prevElement;
+            __BentoSetHover(_prevElement, false);
         }
         else
         {
@@ -100,8 +100,8 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                     }
                 }
             }
+            
+            __BentoSetHover(_nextElement, true);
         }
-        
-        __BentoSetHover(_nextElement, true);
     }
 }

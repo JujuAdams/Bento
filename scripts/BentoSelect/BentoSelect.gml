@@ -10,7 +10,7 @@
 /// @param [byNavigation=false]
 /// @param [layerOrName=current]
 
-function BentoSelect(_element, _byNavigation, _layerOrName = undefined)
+function BentoSelect(_element, _byNavigation = false, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
