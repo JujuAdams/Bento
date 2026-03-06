@@ -17,7 +17,7 @@ if (BentoUsingPointer())
     // coordinate space that the Bento is drawn in. In this example, we're drawing the Bento in the
     // standard Draw event which means we need to use room-space coordinates. If you're drawing in a
     // Draw Bento event then you should use GUI-space coordinates.
-    BentoInputPointer(device_mouse_x(0), device_mouse_y(0), device_mouse_check_button(0, mb_left));
+    BentoInputPointer(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), device_mouse_check_button(0, mb_left));
 }
 else
 {
