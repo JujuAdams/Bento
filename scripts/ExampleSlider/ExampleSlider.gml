@@ -31,9 +31,8 @@ function ExampleSlider()
                             },
                         },
                         {
-                            object: oBentoExButton,
+                            object: oBentoExBackButton,
                             vars: {
-                                text: "Back",
                                 func: ExampleHomePage,
                             },
                         },

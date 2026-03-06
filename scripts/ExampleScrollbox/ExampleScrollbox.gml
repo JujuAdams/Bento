@@ -29,9 +29,8 @@ function ExampleScrollbox()
                             },
                         },
                         {
-                            object: oBentoExButton,
+                            object: oBentoExBackButton,
                             vars: {
-                                text: "Back",
                                 func: ExampleHomePage,
                             },
                         },

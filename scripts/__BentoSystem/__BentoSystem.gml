@@ -145,6 +145,11 @@ function __BentoSystem()
             matrix_set(matrix_world, matrix_stack_top());
         });
         
+        _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE, "draw", function()
+        {
+            __eventDrawAfter();
+        });
+        
         _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR, "scissor pop, drawAfter", function()
         {
             __BentoScissorPop();

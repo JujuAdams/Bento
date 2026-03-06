@@ -29,9 +29,8 @@ function ExampleContextMenu()
                             },
                         },
                         {
-                            object: oBentoExButton,
+                            object: oBentoExBackButton,
                             vars: {
-                                text: "Back",
                                 func: ExampleHomePage,
                             },
                         },
@@ -50,7 +49,6 @@ function ExampleContextMenu()
                             
                             with(BentoCreate(oBentoExContextMenu, undefined, BentoGetRoot()))
                             {
-                                //BentoSetDepthTop();
                                 BentoSetOffset(_x, _y);
                                 
                                 BentoCreate(oBentoExButton, { text: "Button 1", func: function() { BentoDestroy(BentoFocusGetTop()) } });

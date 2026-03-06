@@ -29,9 +29,8 @@ function ExampleLists()
                             },
                         },
                         {
-                            object: oBentoExButton,
+                            object: oBentoExBackButton,
                             vars: {
-                                text: "Back",
                                 func: ExampleHomePage,
                             },
                         },

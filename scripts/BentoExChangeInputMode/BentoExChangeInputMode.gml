@@ -29,10 +29,9 @@ function BentoExChangeInputMode()
                             },
                         },
                         {
-                            object: oBentoExButton,
+                            object: oBentoExBackButton,
                             select: true,
                             vars: {
-                                text: "Back",
                                 func: ExampleHomePage,
                             },
                         },

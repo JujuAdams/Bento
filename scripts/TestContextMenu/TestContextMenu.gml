@@ -21,7 +21,6 @@ function TestContextMenu()
                         object: oBentoExContextMenu,
                         layout: {
                             size: [200, 300],
-                            clampInside: true,
                         },
                         children: [
                             {
