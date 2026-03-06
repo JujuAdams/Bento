@@ -13,7 +13,7 @@ if (BentoPrimaryGetClick())
     }
 }
 
-if (BentoCursorGetEnterByNavigation())
+if (BentoCursorGetEnterByNavigation() && BentoUsingDirectional())
 {
     audio_play_sound(sndBentoExBlip, 0, false);
 }

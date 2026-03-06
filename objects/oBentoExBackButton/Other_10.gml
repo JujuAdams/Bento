@@ -12,3 +12,8 @@ if (BentoPrimaryGetClick() || (BentoGetHoverable() && BentoHotkeyGetPress(BENTO_
         func();
     }
 }
+
+if (BentoCursorGetEnterByNavigation() && BentoUsingDirectional())
+{
+    audio_play_sound(sndBentoExBlip, 0, false);
+}

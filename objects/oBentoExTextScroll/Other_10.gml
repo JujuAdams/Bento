@@ -23,4 +23,9 @@ if (BentoUsingDirectional())
                             BENTO_DEFAULT_SCROLL_SPEED);
         }
     }
+    
+    if (BentoCursorGetEnterByNavigation())
+    {
+        audio_play_sound(sndBentoExBlip, 0, false);
+    }
 }

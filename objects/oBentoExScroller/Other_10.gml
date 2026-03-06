@@ -42,6 +42,11 @@ else if (BentoUsingDirectional())
             _delta = sign(BentoCursorGetDX());
         }
     }
+    
+    if (BentoCursorGetEnterByNavigation())
+    {
+        audio_play_sound(sndBentoExBlip, 0, false);
+    }
 }
 
 if (_delta != 0)

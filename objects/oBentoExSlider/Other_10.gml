@@ -70,6 +70,11 @@ else if (BentoUsingDirectional())
             _handleStep += sign(BentoCursorGetDX());
         }
     }
+    
+    if (BentoCursorGetEnterByNavigation())
+    {
+        audio_play_sound(sndBentoExBlip, 0, false);
+    }
 }
 
 _value = clamp(valueStep*_handleStep + valueMin, valueMin, valueMax);
