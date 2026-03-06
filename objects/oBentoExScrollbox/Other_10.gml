@@ -15,3 +15,8 @@ if (BentoUsingDirectional())
         BentoFocusClose();
     }
 }
+
+if (BentoCursorGetEnterByNavigation())
+{
+    audio_play_sound(sndBentoExBlip, 0, false);
+}
