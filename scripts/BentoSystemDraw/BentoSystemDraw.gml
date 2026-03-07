@@ -9,34 +9,46 @@
 function BentoSystemDraw(_x = 0, _y = 0)
 {
     static _system = __BentoSystem();
-    static _matrix = matrix_build_identity();
     
-    static _matrixView = matrix_build_identity();
-    static _matrixProj = matrix_build_identity();
-    
-    matrix_get(matrix_view, _matrixView);
-    matrix_get(matrix_projection, _matrixProj);
-    
-    _matrixProj[@ 5] *= -1;
+    var _matrixCustom = matrix_build_identity();
+    var _matrixWorld  = matrix_build_identity();
+    var _matrixView   = matrix_build_identity();
+    var _matrixProj   = matrix_build_identity();
+    var _matrixWVP    = matrix_build_identity();
     
     with(_system)
     {
-        __globalScissorXOffset     = round((0.5 + 0.5*_matrixView[12]*_matrixProj[0])*window_get_width());
-        __globalScissorYOffset     = round((0.5 + 0.5*_matrixView[13]*_matrixProj[5])*window_get_height());
-        __globalScissorWidthCoeff  = _matrixView[0];
-        __globalScissorHeightCoeff = _matrixView[5];
+        matrix_get(matrix_view, _matrixView);
+        matrix_get(matrix_projection, _matrixProj);
+        _matrixProj[@ 5] *= -1;
         
-        __BentoScissorReset();
-        
-        var _useMatrix = ((_x != 0) || (_y != 0));
+        var _useMatrix = ((_x != 0) || (_y != 0) || (__globalScale != 1));
         if (_useMatrix)
         {
-            _matrix[@ 12] = _x;
-            _matrix[@ 13] = _y;
+            _matrixCustom[@  0] = __globalScale;
+            _matrixCustom[@  5] = __globalScale;
+            _matrixCustom[@ 12] = _x;
+            _matrixCustom[@ 13] = _y;
             
-            matrix_stack_push(_matrix);
+            matrix_stack_push(_matrixCustom);
             matrix_set(matrix_world, matrix_stack_top());
+            
+            matrix_multiply(_matrixCustom, _matrixView, _matrixWVP);
         }
+        else
+        {
+            matrix_get(matrix_world, _matrixWorld);
+            matrix_multiply(_matrixWorld, _matrixView, _matrixWVP);
+        }
+        
+        matrix_multiply(_matrixWVP, _matrixProj, _matrixWVP);
+        
+        __globalScissorXOffset     = round((0.5 + 0.5*_matrixWVP[12])*window_get_width());
+        __globalScissorYOffset     = round((0.5 + 0.5*_matrixWVP[13])*window_get_height());
+        __globalScissorWidthCoeff  = 0.5*_matrixWVP[0]*window_get_width();
+        __globalScissorHeightCoeff = 0.5*_matrixWVP[5]*window_get_height();
+        
+        __BentoScissorReset();
         
         var _environmentArray = __environmentArray;
         var _i = 0;

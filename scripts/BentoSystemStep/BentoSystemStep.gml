@@ -15,6 +15,9 @@ function BentoSystemStep(_rootWidth, _rootHeight)
     {
         ++__frame;
         
+        _rootWidth  /= __globalScale;
+        _rootHeight /= __globalScale;
+        
         var _i = 0;
         repeat(array_length(_environmentArray))
         {

@@ -13,8 +13,8 @@ function BentoInputPointer(_x, _y, _primaryAction)
     static _system = __BentoSystem();
     with(_system.__environmentCurrent)
     {
-        __envMouseX    = _x;
-        __envMouseY    = _y;
+        __envMouseX    = _x / _system.__globalScale;
+        __envMouseY    = _y / _system.__globalScale;
         __envMouseHold = _primaryAction;
     }
 }
