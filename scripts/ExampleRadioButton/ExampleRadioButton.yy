@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleSettings",
+  "%Name":"ExampleRadioButton",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleSettings",
+  "name":"ExampleRadioButton",
   "parent":{
     "name":"Examples",
     "path":"folders/Examples.yy",

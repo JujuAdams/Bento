@@ -70,6 +70,7 @@ function BentoExChangeInputMode()
                     object: oBentoExButton,
                     vars: {
                         text: "Mouse",
+                        inoperative: (not BENTO_ON_DESKTOP),
                         func: function()
                         {
                             BentoSetMode(BENTO_MODE_MOUSE);
@@ -80,6 +81,7 @@ function BentoExChangeInputMode()
                     object: oBentoExButton,
                     vars: {
                         text: "Keyboard",
+                        inoperative: (not BENTO_ON_DESKTOP),
                         func: function()
                         {
                             BentoSetMode(BENTO_MODE_KEYBOARD);
@@ -100,10 +102,18 @@ function BentoExChangeInputMode()
                     object: oBentoExButton,
                     vars: {
                         text: "Touch",
+                        inoperative: not (BENTO_ON_DESKTOP || BENTO_ON_MOBILE),
                         func: function()
                         {
                             BentoSetMode(BENTO_MODE_TOUCH);
                         },
+                    },
+                },
+                {
+                    object: oBentoExText,
+                    vars: {
+                        text: (not BENTO_ON_DESKTOP)? "" : "You can also use the 1 / 2 / 3 / 4 keys to set input mode.",
+                        font: fntBentoExCandyBeans,
                     },
                 },
             ],

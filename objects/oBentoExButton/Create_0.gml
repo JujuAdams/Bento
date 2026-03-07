@@ -29,19 +29,30 @@ event_inherited();
 //Ensure that we have a couple variable defined. This emulates
 BentoVarEnsureMany(
     "text", "",
+    "textColor", BENTO_EXAMPLE_DARK_BLUE,
+    "inoperative", false,
     "func", function()
     {
         show_debug_message($"Button {id} clicked");
     },
 );
 
-image_blend = BENTO_EXAMPLE_YELLOW;
+if (image_blend == c_white)
+{
+    image_blend = BENTO_EXAMPLE_YELLOW;
+}
+
+if (inoperative)
+{
+    image_blend = BENTO_EXAMPLE_DARK_BLUE;
+    textColor = BENTO_EXAMPLE_BLUE;
+}
 
 //Ensure the click function is scoped to this instance
 func = method(self, func);
 
 //Allow Bento to focus this element
-BentoSetButton(BENTO_BUTTON_ALWAYS);
+BentoSetButton(inoperative? BENTO_BUTTON_NEVER : BENTO_BUTTON_ALWAYS);
 
 //If we have some valid text then force the size of the element
 if (text != "")

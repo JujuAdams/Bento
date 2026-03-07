@@ -7,7 +7,7 @@ global.settings = {
     radiobutton: 1,
 };
 
-function ExampleSettings()
+function ExampleRadioButton()
 {
     with(oMain)
     {
@@ -50,33 +50,6 @@ function ExampleSettings()
                         gutter: 15,
                     },
                     children: [
-                        {
-                            select: true,
-                            object: oBentoExCheckbox,
-                            vars: {
-                                text: "Checkbox 1",
-                                reference: BentoRef(global.settings, "checkbox1"),
-                            },
-                            layout: {
-                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
-                            },
-                        },
-                        {
-                            construct: [BentoExConstrCheckbox, BentoRef(global.settings, "checkbox2"), "Checkbox 2"],
-                            layout: {
-                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
-                            },
-                        },
-                        {
-                            object: oBentoExSlider,
-                            vars: {
-                                handleWidthMin: 40,
-                                reference: BentoRef(global.settings, "slider"),
-                            },
-                            layout: {
-                                resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_NORMAL],
-                            },
-                        },
                         {
                             object: oBentoExRadioButton,
                             vars: {

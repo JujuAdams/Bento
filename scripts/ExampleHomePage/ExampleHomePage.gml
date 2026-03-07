@@ -89,8 +89,15 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Settings Menu",
-                                func: ExampleSettings,
+                                text: $"Checkbox Menu",
+                                func: ExampleCheckbox,
+                            },
+                        },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Radio Button",
+                                func: ExampleRadioButton,
                             },
                         },
                         {

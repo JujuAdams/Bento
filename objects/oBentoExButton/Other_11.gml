@@ -12,7 +12,7 @@ draw_sprite_ext(sprite_index, image_index, x + _offset, y + _offset, image_xscal
 // If we have some text then draw it centred on the button
 if (text != "")
 {
-    draw_set_color(BENTO_EXAMPLE_DARK_BLUE);
+    draw_set_color(textColor);
     draw_set_font(BENTO_EXAMPLE_DEFAULT_FONT);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
