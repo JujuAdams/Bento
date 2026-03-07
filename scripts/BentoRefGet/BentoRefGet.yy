@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoRefGet",
   "parent":{
-    "name":"References",
-    "path":"folders/Bento/Functions/References.yy",
+    "name":"Variable References",
+    "path":"folders/Bento/Functions/Variable References.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

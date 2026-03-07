@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoSandbox",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Bento/Functions.yy",
+    "name":"System",
+    "path":"folders/Bento/Functions/System.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

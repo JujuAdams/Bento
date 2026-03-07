@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoDestroy",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Bento/Functions.yy",
+    "name":"Element Creation & Destruction",
+    "path":"folders/Bento/Functions/Element Creation & Destruction.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
