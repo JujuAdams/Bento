@@ -18,5 +18,5 @@ function __BentoScissorPop()
     
     array_pop(_scissorStack);
     var _scissor = _scissorStack[array_length(_scissorStack)-1];
-    __BentoScissorSet(_scissor.x, _scissor.y, _scissor.w, _scissor.h);
+    __BentoScissorSetGPU(_scissor.x, _scissor.y, _scissor.w, _scissor.h);
 }

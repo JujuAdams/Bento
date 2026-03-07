@@ -189,10 +189,10 @@ function __BentoSystem()
         __globalDirDelayCount   = 4;
         __globalDirDelayShorter = 5;
         
-        __globalScissorXOffset     = 0;
-        __globalScissorYOffset     = 0;
-        __globalScissorWidthCoeff  = 1;
-        __globalScissorHeightCoeff = 1;
+        __globalScissorXOffset = 0;
+        __globalScissorYOffset = 0;
+        __globalScissorXScale  = 1;
+        __globalScissorYScale  = 1;
         
         __environmentArray = [];
         var _environment = BentoEnvironmentCreate("default");

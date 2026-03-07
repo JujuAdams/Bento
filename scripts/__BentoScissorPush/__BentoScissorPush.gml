@@ -30,5 +30,5 @@ function __BentoScissorPush(_newL, _newT, _newR, _newB)
         h: _b - _t,
     });
     
-    __BentoScissorSet(_l, _t, _r - _l, _b - _t);
+    __BentoScissorSetGPU(_l, _t, _r - _l, _b - _t);
 }

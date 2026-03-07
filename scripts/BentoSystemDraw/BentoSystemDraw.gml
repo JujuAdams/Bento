@@ -10,11 +10,11 @@ function BentoSystemDraw(_x = 0, _y = 0)
 {
     static _system = __BentoSystem();
     
-    var _matrixCustom = matrix_build_identity();
-    var _matrixWorld  = matrix_build_identity();
-    var _matrixView   = matrix_build_identity();
-    var _matrixProj   = matrix_build_identity();
-    var _matrixWVP    = matrix_build_identity();
+    static _matrixCustom = matrix_build_identity();
+    static _matrixWorld  = matrix_build_identity();
+    static _matrixView   = matrix_build_identity();
+    static _matrixProj   = matrix_build_identity();
+    static _matrixWVP    = matrix_build_identity();
     
     with(_system)
     {
@@ -43,10 +43,10 @@ function BentoSystemDraw(_x = 0, _y = 0)
         
         matrix_multiply(_matrixWVP, _matrixProj, _matrixWVP);
         
-        __globalScissorXOffset     = round((0.5 + 0.5*_matrixWVP[12])*window_get_width());
-        __globalScissorYOffset     = round((0.5 + 0.5*_matrixWVP[13])*window_get_height());
-        __globalScissorWidthCoeff  = 0.5*_matrixWVP[0]*window_get_width();
-        __globalScissorHeightCoeff = 0.5*_matrixWVP[5]*window_get_height();
+        __globalScissorXOffset = round((0.5 + 0.5*_matrixWVP[12])*window_get_width());
+        __globalScissorYOffset = round((0.5 + 0.5*_matrixWVP[13])*window_get_height());
+        __globalScissorXScale  = 0.5*_matrixWVP[0]*window_get_width();
+        __globalScissorYScale  = 0.5*_matrixWVP[5]*window_get_height();
         
         __BentoScissorReset();
         

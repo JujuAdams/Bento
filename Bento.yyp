@@ -156,7 +156,7 @@
     {"id":{"name":"__BentoScissorPush","path":"scripts/__BentoScissorPush/__BentoScissorPush.yy",},},
     {"id":{"name":"__BentoScissorPushFromVars","path":"scripts/__BentoScissorPushFromVars/__BentoScissorPushFromVars.yy",},},
     {"id":{"name":"__BentoScissorReset","path":"scripts/__BentoScissorReset/__BentoScissorReset.yy",},},
-    {"id":{"name":"__BentoScissorSet","path":"scripts/__BentoScissorSet/__BentoScissorSet.yy",},},
+    {"id":{"name":"__BentoScissorSetGPU","path":"scripts/__BentoScissorSetGPU/__BentoScissorSetGPU.yy",},},
     {"id":{"name":"__BentoScrollFindParent","path":"scripts/__BentoScrollFindParent/__BentoScrollFindParent.yy",},},
     {"id":{"name":"__BentoScrollLimitsMarkSelfDirty","path":"scripts/__BentoScrollLimitsMarkSelfDirty/__BentoScrollLimitsMarkSelfDirty.yy",},},
     {"id":{"name":"__BentoScrollOnPointer","path":"scripts/__BentoScrollOnPointer/__BentoScrollOnPointer.yy",},},

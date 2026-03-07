@@ -13,5 +13,5 @@ function BentoClipDrawOff()
     if (array_length(_scissorStack) <= 1) return;
     
     var _struct = _scissorStack[0];
-    __BentoScissorSet(_struct.x, _struct.y, _struct.w, _struct.h);
+    __BentoScissorSetGPU(_struct.x, _struct.y, _struct.w, _struct.h);
 }
