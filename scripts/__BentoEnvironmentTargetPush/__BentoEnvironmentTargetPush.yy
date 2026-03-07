@@ -6,7 +6,7 @@
   "name":"__BentoEnvironmentTargetPush",
   "parent":{
     "name":"Environments & Layers",
-    "path":"folders/Bento/(System)/Environments & Layers.yy",
+    "path":"folders/Bento/(Internal)/Environments & Layers.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

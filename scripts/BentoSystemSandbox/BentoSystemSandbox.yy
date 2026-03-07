@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoSandbox",
+  "%Name":"BentoSystemSandbox",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoSandbox",
+  "name":"BentoSystemSandbox",
   "parent":{
     "name":"System",
     "path":"folders/Bento/Functions/System.yy",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__BentoStartHold",
   "parent":{
-    "name":"(System)",
-    "path":"folders/Bento/(System).yy",
+    "name":"(Internal)",
+    "path":"folders/Bento/(Internal).yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

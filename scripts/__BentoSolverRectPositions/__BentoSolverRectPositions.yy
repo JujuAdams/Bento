@@ -6,7 +6,7 @@
   "name":"__BentoSolverRectPositions",
   "parent":{
     "name":"Rect",
-    "path":"folders/Bento/(System)/Layout Solver/Rect.yy",
+    "path":"folders/Bento/(Internal)/Layout Solver/Rect.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -11,7 +11,7 @@
 /// @param width
 /// @param height
 
-function BentoSandbox(_x, _y, _width, _height)
+function BentoSystemSandbox(_x, _y, _width, _height)
 {
     //Lots of ugly state tracking. Given this is not meant for production I'm gonna leave it as is :)
     static _lastMouseX = undefined;
@@ -25,7 +25,7 @@ function BentoSandbox(_x, _y, _width, _height)
     
     if (event_type != ev_draw)
     {
-        __BentoError("Must call `BentoSandbox()` in one of the Draw events (Draw, Draw GUI etc.)");
+        __BentoError("Must call `BentoSystemSandbox()` in one of the Draw events (Draw, Draw GUI etc.)");
     }
     
     //Force this silly feature off. This might break some mobile games

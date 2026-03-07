@@ -6,7 +6,7 @@
   "name":"__BentoClassRef",
   "parent":{
     "name":"Classes",
-    "path":"folders/Bento/(System)/Classes.yy",
+    "path":"folders/Bento/(Internal)/Classes.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

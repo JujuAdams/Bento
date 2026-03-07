@@ -6,7 +6,7 @@
   "name":"__BentoSolverGridGetDeflateHeight",
   "parent":{
     "name":"Grid",
-    "path":"folders/Bento/(System)/Layout Solver/Grid.yy",
+    "path":"folders/Bento/(Internal)/Layout Solver/Grid.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

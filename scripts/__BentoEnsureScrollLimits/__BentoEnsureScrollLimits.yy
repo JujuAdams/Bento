@@ -6,7 +6,7 @@
   "name":"__BentoEnsureScrollLimits",
   "parent":{
     "name":"Ensure",
-    "path":"folders/Bento/(System)/Ensure.yy",
+    "path":"folders/Bento/(Internal)/Ensure.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

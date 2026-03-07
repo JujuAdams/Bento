@@ -6,7 +6,7 @@
   "name":"__BentoSolverTextGetDeflateHeight",
   "parent":{
     "name":"Text",
-    "path":"folders/Bento/(System)/Layout Solver/Text.yy",
+    "path":"folders/Bento/(Internal)/Layout Solver/Text.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

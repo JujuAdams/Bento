@@ -6,7 +6,7 @@
   "name":"__BentoObjectInheritsFrom",
   "parent":{
     "name":"Support",
-    "path":"folders/Bento/(System)/Support.yy",
+    "path":"folders/Bento/(Internal)/Support.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
