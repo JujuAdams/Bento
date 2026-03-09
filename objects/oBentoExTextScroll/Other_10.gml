@@ -18,9 +18,9 @@ if (BentoUsingDirectional())
     {
         if ((BentoCursorGetDX() != 0) || (BentoCursorGetDY() != 0))
         {
-            BentoScrollMove(-2*BENTO_MOUSE_WHEEL_SCROLL_SPEED*BentoCursorGetDX(),
-                            -2*BENTO_MOUSE_WHEEL_SCROLL_SPEED*BentoCursorGetDY(),
-                            BENTO_DEFAULT_SCROLL_SPEED);
+            BentoScrollAddPos(-2*BENTO_MOUSE_WHEEL_SCROLL_SPEED*BentoCursorGetDX(),
+                              -2*BENTO_MOUSE_WHEEL_SCROLL_SPEED*BentoCursorGetDY(),
+                              BENTO_DEFAULT_SCROLL_SPEED);
         }
     }
     

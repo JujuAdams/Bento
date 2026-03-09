@@ -38,7 +38,7 @@ function __BentoScrollOnPointer()
                 var _parent = __BentoScrollFindParent(self);
                 if (self == _parent)
                 {
-                    BentoScrollMove(BentoCursorGetDX(), BentoCursorGetDY(), infinity, _parent);
+                    BentoScrollAddPos(BentoCursorGetDX(), BentoCursorGetDY(), infinity, _parent);
                 }
                 else
                 {
@@ -67,7 +67,7 @@ function __BentoScrollOnPointer()
             
             if ((_dX != 0) || (_dY != 0))
             {
-                BentoScrollMove(_dX, _dY, BENTO_DEFAULT_SCROLL_SPEED, self);
+                BentoScrollAddPos(_dX, _dY, BENTO_DEFAULT_SCROLL_SPEED, self);
             }
         }
     }

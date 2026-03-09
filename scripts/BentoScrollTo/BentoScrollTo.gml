@@ -12,5 +12,5 @@ function BentoScrollTo(_scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = sel
     var _result = __BentoGetScrollDelta(_element);
     if (not BentoExists(_result.__parent)) return;
     
-    BentoScrollMove(_result.__dX, _result.__dY, _scrollSpeed, _result.__parent);
+    BentoScrollAddPos(_result.__dX, _result.__dY, _scrollSpeed, _result.__parent);
 }

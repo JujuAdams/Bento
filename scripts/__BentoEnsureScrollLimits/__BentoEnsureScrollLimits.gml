@@ -99,7 +99,7 @@ function __BentoEnsureScrollLimits()
                 __scrollVisibleHeight = 0;
             }
             
-            BentoScrollSetPos(_newX, _newY, undefined, _parent);
+            BentoScrollSetPos(_newX, _newY, infinity, _parent);
         }
     }
 }

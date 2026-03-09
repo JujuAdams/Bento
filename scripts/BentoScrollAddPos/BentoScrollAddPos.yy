@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoScrollMove",
+  "%Name":"BentoScrollAddPos",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoScrollMove",
+  "name":"BentoScrollAddPos",
   "parent":{
     "name":"Scroll",
     "path":"folders/Bento/Functions/Scroll.yy",

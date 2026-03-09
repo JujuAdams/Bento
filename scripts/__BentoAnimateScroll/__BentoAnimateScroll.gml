@@ -29,11 +29,11 @@ function __BentoAnimateScroll(_timeStep)
                 }
                 else
                 {
-                    _dX *= min(1, min(999999, __scrollSpeed) / _distance);
-                    _dY *= min(1, min(999999, __scrollSpeed) / _distance);
+                    _dX *= min(1, min(999999, _timeStep*__scrollSpeed) / _distance);
+                    _dY *= min(1, min(999999, _timeStep*__scrollSpeed) / _distance);
                     
-                    __scrollX += _timeStep*_dX;
-                    __scrollY += _timeStep*_dY;
+                    __scrollX += _dX;
+                    __scrollY += _dY;
                     
                     __BentoOffsetMarkDirty();
                 }
