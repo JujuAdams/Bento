@@ -88,7 +88,7 @@ function __BentoClassEnvironment(_name) constructor
         if (_index >= 0) array_delete(__layerArray, _index, 1);
     }
     
-    static __Update = function(_rootWidth, _rootHeight)
+    static __Update = function(_rootWidth, _rootHeight, _timeStep)
     {
         var _layerArray = __layerArray;
         
@@ -116,12 +116,12 @@ function __BentoClassEnvironment(_name) constructor
         var _i = 0;
         repeat(_layerCount-1)
         {
-            _layerArray[_i].__Update(_rootWidth, _rootHeight, false);
+            _layerArray[_i].__Update(_rootWidth, _rootHeight, false, _timeStep);
             ++_i;
         }
         
         //Top-most layer pulls in input if there's no text input
-        _layerArray[_i].__Update(_rootWidth, _rootHeight, true);
+        _layerArray[_i].__Update(_rootWidth, _rootHeight, true, _timeStep);
         
         //Wipe out the hotkeys, nullifying them for the next update loop
         ds_map_clear(__envHotkeyInputMap);

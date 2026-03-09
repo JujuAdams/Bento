@@ -1,6 +1,8 @@
 // Feather disable all
 
-function __BentoAnimateScroll()
+/// @param timeStep
+
+function __BentoAnimateScroll(_timeStep)
 {
     var _scrollAnimatingArray = __scrollAnimatingArray;
     var _i = array_length(_scrollAnimatingArray)-1;
@@ -30,8 +32,8 @@ function __BentoAnimateScroll()
                     _dX *= min(1, min(999999, __scrollSpeed) / _distance);
                     _dY *= min(1, min(999999, __scrollSpeed) / _distance);
                     
-                    __scrollX += _dX;
-                    __scrollY += _dY;
+                    __scrollX += _timeStep*_dX;
+                    __scrollY += _timeStep*_dY;
                     
                     __BentoOffsetMarkDirty();
                 }

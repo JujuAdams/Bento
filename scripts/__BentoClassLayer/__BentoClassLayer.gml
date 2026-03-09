@@ -167,7 +167,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __navMode = _newMode;
     }
     
-    static __Update = function(_rootWidth, _rootHeight, _isTopLayer)
+    static __Update = function(_rootWidth, _rootHeight, _isTopLayer, _timeStep)
     {
         static _hotkeyArray = [];
         
@@ -184,7 +184,7 @@ function __BentoClassLayer(_environment, _name) constructor
         {
             with(__animPlayingArray[_i])
             {
-                ++__animElapsed;
+                __animElapsed += _timeStep;
                 
                 var _t = clamp((__animElapsed - __animDelay) / __animDuration, 0, 1);
                 if (_t >= 1)
@@ -399,7 +399,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureLayout();
         __BentoEnsureStepOrder();
         __BentoEnsureScrollLimits();
-        __BentoAnimateScroll();
+        __BentoAnimateScroll(_timeStep);
         __BentoEnsureOffset();
         
         //And we're done
