@@ -33,7 +33,7 @@ function __BentoEnsureOffset()
                 {
                     var _scissorParent = __scissorParent;
                     __BentoEnsureOffsetInner(_dirtyOffsetArray, _element.BENTO_VARS,
-                                             __scrollX, __scrollY,
+                                             __scrollCumulativeX, __scrollCumulativeY,
                                              _scissorParent, _scissorParent.__scissorWorldLeft, _scissorParent.__scissorWorldTop, _scissorParent.__scissorWorldRight, _scissorParent.__scissorWorldBottom);
                 }
             }
@@ -153,6 +153,9 @@ function __BentoEnsureOffsetInner(_dirtyOffsetArray, _elementVars, _offsetX, _of
         {
             _offsetX += __scrollX;
             _offsetY += __scrollY;
+            
+            __scrollCumulativeX = _offsetX;
+            __scrollCumulativeY = _offsetY;
             
             var _childArray = __childArray;
             var _i = 0;
