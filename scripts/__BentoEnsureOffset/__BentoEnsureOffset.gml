@@ -24,8 +24,8 @@ function __BentoEnsureOffset()
             {
                 //No parent, probably the root node?
                 __BentoEnsureOffsetInner(_dirtyOffsetArray, _element.BENTO_VARS,
-                                               0, 0,
-                                               _element.BENTO_VARS, -infinity, -infinity, infinity, infinity);
+                                         0, 0,
+                                         _element.BENTO_VARS, -infinity, -infinity, infinity, infinity);
             }
             else
             {

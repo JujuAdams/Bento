@@ -51,9 +51,9 @@ function ExampleContextMenu()
                             {
                                 BentoSetOffset(_x, _y);
                                 
-                                BentoCreate(oBentoExButton, { text: "Button 1", func: function() { BentoDestroy(BentoFocusGetTop()) } });
-                                BentoCreate(oBentoExButton, { text: "Button 2", func: function() { BentoDestroy(BentoFocusGetTop()) } });
-                                BentoCreate(oBentoExButton, { text: "Button 3", func: function() { BentoDestroy(BentoFocusGetTop()) } });
+                                BentoCreate(oBentoExButton, { text: "Button 1" });
+                                BentoCreate(oBentoExButton, { text: "Button 2" });
+                                BentoCreate(oBentoExButton, { text: "Close", func: function() { BentoDestroy(BentoFocusGetTop()) } });
                             }
                         },
                     },

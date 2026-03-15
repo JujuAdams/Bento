@@ -170,6 +170,13 @@ function ExampleHomePage()
                                 func: ExampleTextbox,
                             },
                         },
+                        {
+                            object: oBentoExButton,
+                            vars: {
+                                text: $"Absolute Position",
+                                func: ExampleAbsolutePosition,
+                            },
+                        },
                     ],
                 },
             ],
