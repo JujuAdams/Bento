@@ -72,7 +72,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.4.1011",
+    "IDEVersion":"2024.1400.4.1020",
   },
   "name":"Bento",
   "resources":[
@@ -247,6 +247,7 @@
     {"id":{"name":"BentoEnvironmentDestroy","path":"scripts/BentoEnvironmentDestroy/BentoEnvironmentDestroy.yy",},},
     {"id":{"name":"BentoEnvironmentDraw","path":"scripts/BentoEnvironmentDraw/BentoEnvironmentDraw.yy",},},
     {"id":{"name":"BentoEnvironmentExists","path":"scripts/BentoEnvironmentExists/BentoEnvironmentExists.yy",},},
+    {"id":{"name":"BentoEnvironmentUpdate","path":"scripts/BentoEnvironmentUpdate/BentoEnvironmentUpdate.yy",},},
     {"id":{"name":"BentoExChangeInputMode","path":"scripts/BentoExChangeInputMode/BentoExChangeInputMode.yy",},},
     {"id":{"name":"BentoExConstrButton","path":"scripts/BentoExConstrButton/BentoExConstrButton.yy",},},
     {"id":{"name":"BentoExConstrCarousel","path":"scripts/BentoExConstrCarousel/BentoExConstrCarousel.yy",},},

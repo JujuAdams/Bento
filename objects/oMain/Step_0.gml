@@ -62,8 +62,8 @@ else
 }
 
 // The main state update function. This ticks the entire system (but doesn't do any drawing).
-// Step user events (BENTO_USER_EVENT_STEP, 0) are executed by this function where appropriate.
-BentoSystemStep(display_get_gui_width(), display_get_gui_height());
+// Step user events (BENTO_USER_EVENT_STEP etc.) are executed by this function where appropriate.
+BentoSystemStep(0, 0, display_get_gui_width(), display_get_gui_height());
 
 if (BENTO_ON_DESKTOP)
 {

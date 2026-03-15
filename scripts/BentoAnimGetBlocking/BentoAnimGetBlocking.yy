@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoAnimGetBlocking",
   "parent":{
-    "name":"Functions",
-    "path":"folders/Bento/Functions.yy",
+    "name":"Animation",
+    "path":"folders/Bento/Functions/Animation.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

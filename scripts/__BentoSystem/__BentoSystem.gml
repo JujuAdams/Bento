@@ -205,6 +205,12 @@ function __BentoSystem()
         
         __textUseSteamKeyboard   = false;
         __textHandlerEnvironment = undefined;
+        
+        time_source_start(time_source_create(time_source_global, 1, time_source_units_frames, function()
+        {
+            ++__frame;
+        },
+        [], -1));
     }
     
     if (BENTO_RUNNING_FROM_IDE)

@@ -167,7 +167,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __navMode = _newMode;
     }
     
-    static __Update = function(_rootWidth, _rootHeight, _isTopLayer, _timeStep)
+    static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _isTopLayer, _timeStep)
     {
         static _hotkeyArray = [];
         
@@ -274,6 +274,7 @@ function __BentoClassLayer(_environment, _name) constructor
         ///////
         
         //Ensure our root element is the same size as the overall Bento space
+        BentoSetOffset(_rootX, _rootY, __rootElement);
         BentoLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
         
         //Keep our layout and step order updated as necessary. Updating the layer and step order here

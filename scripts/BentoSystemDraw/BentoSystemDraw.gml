@@ -2,11 +2,8 @@
 
 /// Draws all environments, layers, and elements. You may optionally provide an offset which will
 /// visually move where Bento draws elements.
-/// 
-/// @param [x=0]
-/// @param [y=0]
 
-function BentoSystemDraw(_x = 0, _y = 0)
+function BentoSystemDraw()
 {
     static _system = __BentoSystem();
     
@@ -22,13 +19,11 @@ function BentoSystemDraw(_x = 0, _y = 0)
         matrix_get(matrix_projection, _matrixProj);
         _matrixProj[@ 5] *= -1;
         
-        var _useMatrix = ((_x != 0) || (_y != 0) || (__globalScale != 1));
+        var _useMatrix = (__globalScale != 1);
         if (_useMatrix)
         {
             _matrixCustom[@  0] = __globalScale;
             _matrixCustom[@  5] = __globalScale;
-            _matrixCustom[@ 12] = _x;
-            _matrixCustom[@ 13] = _y;
             
             matrix_stack_push(_matrixCustom);
             matrix_set(matrix_world, matrix_stack_top());
