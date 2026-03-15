@@ -19,6 +19,7 @@ function BentoSetPosition(_x, _y, _element = self)
         _x /= _system.__globalScale;
         _y /= _system.__globalScale;
         
-        BentoSetOffset(_x - _element.bentoX, _y - _element.bentoY, _element);
+        var _result = BentoGetOffset(_element);
+        BentoSetOffset(_result.x + (_x - _element.bentoX), _result.y + (_y - _element.bentoY), _element);
     }
 }
