@@ -1,6 +1,6 @@
 // Feather disable all
 
-function BentoExCreditsAndLicenses()
+function ExampleCreditsAndLicenses()
 {
     with(oMain)
     {

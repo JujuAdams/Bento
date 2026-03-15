@@ -1,11 +1,5 @@
 // Feather disable all
 
-// Swap the input mode depending on what number row key has been pressed. In the main
-// project, this is handled when the player hotswaps to another input device.
-if (keyboard_check_pressed(ord("1"))) BentoSetMode(BENTO_MODE_MOUSE);
-if (keyboard_check_pressed(ord("2"))) BentoSetMode(BENTO_MODE_KEYBOARD);
-if (keyboard_check_pressed(ord("3"))) BentoSetMode(BENTO_MODE_GAMEPAD);
-if (keyboard_check_pressed(ord("4"))) BentoSetMode(BENTO_MODE_TOUCH);
 if (keyboard_check_pressed(vk_f1)) BentoDebugStepOrder();
 if (keyboard_check_pressed(vk_f2)) BentoDebugDrawOrder();
 if (keyboard_check_pressed(vk_f3)) BentoDebugScissor();

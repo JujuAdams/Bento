@@ -5,8 +5,8 @@
 draw_sprite_ext(sBentoExButton, image_index, x, y, image_xscale, image_yscale, image_angle, BENTO_EXAMPLE_BLUE, image_alpha);
 draw_sprite_ext(sBentoExFrameShadow, image_index, x + BENTO_EXAMPLE_SHADOW_OFFSET, y + BENTO_EXAMPLE_SHADOW_OFFSET, image_xscale, image_yscale, image_angle, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);
 
-var _smaller = 12;
-var _value = BentoRefGet(reference);
+var _smaller     = 12;
+var _value       = BentoRefGet(reference);
 var _stepCount   = ceil((valueMax - valueMin) / valueStep);
 var _handleStep  = min(_stepCount, floor((_value - valueMin) / valueStep));
 var _handleWidth = max(handleWidthMin, bentoWidth / _stepCount);

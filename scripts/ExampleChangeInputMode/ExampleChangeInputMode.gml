@@ -1,6 +1,6 @@
 // Feather disable all
 
-function BentoExChangeInputMode()
+function ExampleChangeInputMode()
 {
     with(oMain)
     {

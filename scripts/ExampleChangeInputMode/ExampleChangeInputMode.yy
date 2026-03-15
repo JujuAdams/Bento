@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoExCreditsAndLicenses",
+  "%Name":"ExampleChangeInputMode",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoExCreditsAndLicenses",
+  "name":"ExampleChangeInputMode",
   "parent":{
     "name":"Examples",
     "path":"folders/Examples.yy",

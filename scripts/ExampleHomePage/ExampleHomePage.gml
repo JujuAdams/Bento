@@ -44,14 +44,14 @@ function ExampleHomePage()
                             object: oBentoExButton,
                             vars: {
                                 text: "Credits & Licenses",
-                                func: BentoExCreditsAndLicenses
+                                func: ExampleCreditsAndLicenses
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
                                 text: "Change Input Mode",
-                                func: BentoExChangeInputMode
+                                func: ExampleChangeInputMode
                             },
                         },
                     ],

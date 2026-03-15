@@ -12,7 +12,6 @@ function BentoGetRoot(_layerOrName = undefined)
         {
             __rootElement = new BentoConstrAncestor(__BENTO_NO_PARENT);
             __rootElement.BENTO_VARS.__layer = self;
-            BentoNameSet("__layerRoot__", __rootElement);
         }
         
         return __rootElement;
