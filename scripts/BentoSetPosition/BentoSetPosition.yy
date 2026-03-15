@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoSetAbsolutePosition",
+  "%Name":"BentoSetPosition",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoSetAbsolutePosition",
+  "name":"BentoSetPosition",
   "parent":{
     "name":"Basic Properties",
     "path":"folders/Bento/Functions/Basic Properties.yy",

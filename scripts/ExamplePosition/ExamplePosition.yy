@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleAbsolutePosition",
+  "%Name":"ExamplePosition",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleAbsolutePosition",
+  "name":"ExamplePosition",
   "parent":{
     "name":"Examples",
     "path":"folders/Examples.yy",

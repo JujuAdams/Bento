@@ -4,7 +4,7 @@
 /// @param y
 /// @param [element=self]
 
-function BentoSetAbsolutePosition(_x, _y, _element = self)
+function BentoSetPosition(_x, _y, _element = self)
 {
     static _system = __BentoSystem();
     

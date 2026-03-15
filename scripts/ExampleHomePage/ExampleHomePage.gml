@@ -174,7 +174,7 @@ function ExampleHomePage()
                             object: oBentoExButton,
                             vars: {
                                 text: $"Absolute Position",
-                                func: ExampleAbsolutePosition,
+                                func: ExamplePosition,
                             },
                         },
                     ],
