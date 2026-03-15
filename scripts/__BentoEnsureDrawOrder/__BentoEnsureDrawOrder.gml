@@ -38,7 +38,7 @@ function __BentoEnsureDrawOrder()
     }
     
     //Don't do anything if nothing is dirty!
-    //if not (__dirtyFlags & __BENTO_DIRTY_DRAW) return;
+    if not (__dirtyFlags & __BENTO_DIRTY_DRAW) return;
     __dirtyFlags = ~((~__dirtyFlags) | __BENTO_DIRTY_DRAW);
     
     //Update the local draw order for dirty elements
