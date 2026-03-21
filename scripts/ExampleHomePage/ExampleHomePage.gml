@@ -57,7 +57,7 @@ function ExampleHomePage()
                     ],
                 },
                 {
-                    object: oBentoExScrollboxWithBar,
+                    object: oBentoExListboxWithBar,
                     skin: "thick frame",
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
@@ -152,15 +152,15 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Scrollbox",
-                                func: ExampleScrollbox,
+                                text: $"Listbox",
+                                func: ExampleListbox,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Scrollbox With Bar",
-                                func: ExampleScrollboxWithBar,
+                                text: $"Listbox With Bar",
+                                func: ExampleListboxWithBar,
                             },
                         },
                         {

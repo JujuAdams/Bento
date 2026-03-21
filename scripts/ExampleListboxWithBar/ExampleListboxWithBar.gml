@@ -1,6 +1,6 @@
 // Feather disable all
 
-function ExampleScrollbox()
+function ExampleListboxWithBar()
 {
     with(oMain)
     {
@@ -24,7 +24,7 @@ function ExampleScrollbox()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Scrollbox",
+                                text: "Listbox (& scrollbar)",
                                 font: fntBentoExCandyBeansBig,
                             },
                         },
@@ -37,7 +37,7 @@ function ExampleScrollbox()
                     ],
                 },
                 {
-                    object: oBentoExScrollbox,
+                    object: oBentoExListboxWithBar,
                     layout: {
                         maxSize: [200, 295],
                         resize:  [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],

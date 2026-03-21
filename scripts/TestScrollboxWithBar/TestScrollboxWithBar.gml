@@ -1,10 +1,10 @@
 // Feather disable all
 
-function TestScrollboxWithBar()
+function TestListboxWithBar()
 {
     var _json = [
         {
-            object: oBentoExScrollboxWithBar,
+            object: oBentoExListboxWithBar,
             vars: {
                 image_blend: c_maroon,
             },

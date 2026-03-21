@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleScrollboxWithBar",
+  "%Name":"ExampleListboxWithBar",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleScrollboxWithBar",
+  "name":"ExampleListboxWithBar",
   "parent":{
     "name":"Examples",
     "path":"folders/Examples.yy",
