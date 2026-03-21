@@ -18,6 +18,9 @@ function BentoScrollSetPadding(_left, _top, _right, _bottom, _element = self)
         ||  (_right  != __scrollPadRight)
         ||  (_bottom != __scrollPadBottom))
         {
+            __scrollX += _left - __scrollPadLeft;
+            __scrollY += _top  - __scrollPadTop;
+            
             __scrollPadLeft   = _left;
             __scrollPadTop    = _top;
             __scrollPadRight  = _right;

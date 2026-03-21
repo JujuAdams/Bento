@@ -215,7 +215,7 @@
 ///             "right":  <right>,
 ///             "bottom": <bottom>,
 ///         }
-///     or a number or equal padding on all sides.
+///     or a number for equal padding on all sides.
 ///     
 ///     Padding sizes must be numbers. If you'd like to quickly set up a scrolling area and aren't
 ///     concerned about getting the padding exactly correct, set `.scroll` to `0`. This will still
@@ -652,7 +652,7 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
         var _scroll = _json[$ "scroll"];
         if (_scroll != undefined)
         {
-            BentoScrollSetEnabled(true, _element);
+            BentoScrollSetEnabled(true, true, _element);
             
             if (is_numeric(_scroll))
             {
