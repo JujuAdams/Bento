@@ -5,11 +5,11 @@
 var _funcGetOptionIndex = function()
 {
     var _option = BentoRefGet(reference, undefined);
-    var _optionIndex = array_get_index(optionArray, _option);
+    var _optionIndex = array_get_index(stringArray, _option);
     return max(_optionIndex, 0);
 }
 
-var _length = array_length(optionArray);
+var _length = array_length(stringArray);
 if (_length > 0)
 {
     if (BentoUsingPointer())
@@ -22,7 +22,7 @@ if (_length > 0)
             
             var _optionIndex = (_funcGetOptionIndex() + _delta + _length) mod _length;
             
-            var _option = optionArray[_optionIndex];
+            var _option = stringArray[_optionIndex];
             BentoRefSet(reference, _option);
             func(_option); //Execute the callback
         }
@@ -34,7 +34,7 @@ if (_length > 0)
         {
             var _optionIndex = (_funcGetOptionIndex() + sign(BentoCursorGetDX()) + _length) mod _length;
             
-            var _option = optionArray[_optionIndex];
+            var _option = stringArray[_optionIndex];
             BentoRefSet(reference, _option);
             func(_option); //Execute the callback
         }

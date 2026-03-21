@@ -26,11 +26,11 @@ if (text != "")
     draw_set_halign(fa_left);
 }
 
-if (array_length(optionArray) > 0)
+if (array_length(stringArray) > 0)
 {
     draw_set_halign(fa_center);
     draw_set_valign(fa_bottom);
-    draw_text(_x, bbox_bottom - 10, BentoRefIsAlive(reference)? string(BentoRefGet(reference, "")) : optionArray[0]);
+    draw_text(_x, bbox_bottom - 10, BentoRefIsAlive(reference)? string(BentoRefGet(reference, "")) : stringArray[0]);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }

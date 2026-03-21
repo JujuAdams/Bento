@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoExConstrCarousel",
+  "%Name":"BentoExConstrStepperStrings",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoExConstrCarousel",
+  "name":"BentoExConstrStepperStrings",
   "parent":{
     "name":"Structs",
     "path":"folders/Bento Examples/Structs.yy",

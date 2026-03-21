@@ -1,6 +1,6 @@
 // Feather disable all
 
-function TestCarousel()
+function TestStepperStrings()
 {
     var _json = [
         {
@@ -14,9 +14,9 @@ function TestCarousel()
             },
             children: [
                 {
-                    object: oBentoExCarousel,
+                    object: oBentoExStepperStrings,
                     vars: {
-                        optionArray: [
+                        stringArray: [
                             "Value 0",
                             "Value 1",
                             "Value 2",
@@ -25,9 +25,9 @@ function TestCarousel()
                     },
                 },
                 {
-                    object: oBentoExCarousel,
+                    object: oBentoExStepperStrings,
                     vars: {
-                        optionArray: [
+                        stringArray: [
                             "Value 0",
                             "Value 1",
                             "Value 2",

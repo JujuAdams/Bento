@@ -1,8 +1,8 @@
 // Feather disable all
 
-global.scrollerExample = 10;
+global.stepperExample = 10;
 
-function ExampleScroller()
+function ExampleStepperNumbers()
 {
     with(oMain)
     {
@@ -26,7 +26,7 @@ function ExampleScroller()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Scroller",
+                                text: "Stepper",
                                 font: fntBentoExCandyBeansBig,
                             },
                         },
@@ -40,12 +40,12 @@ function ExampleScroller()
                 },
                 {
                     select: true,
-                    object: oBentoExScroller,
+                    object: oBentoExStepperNumbers,
                     vars: {
-                        text: "Scroller",
+                        text: "Stepper",
                         valueMin: 1,
                         valueMax: 20,
-                        reference: BentoRef(global, "scrollerExample"),
+                        reference: BentoRef(global, "stepperExample"),
                     },
                 },
                 {
@@ -53,7 +53,7 @@ function ExampleScroller()
                     vars: {
                         text: function()
                         {
-                            return $"global.scrollerExample = {global.scrollerExample}";
+                            return $"global.stepperExample = {global.stepperExample}";
                         }
                     },
                 },

@@ -1,16 +1,16 @@
 // Feather disable all
 
 /// @param reference
-/// @param optionArray
+/// @param stringArray
 /// @param [title]
 /// @param [font]
 /// @param [func]
 /// @param [parent=self]
 
-function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font = fntBentoExCandyBeans, _func = undefined, _parent = other) : BentoConstrAncestor(_parent) constructor
+function BentoExConstrStepperStrings(_reference, _stringArray = [], _text = "", _font = fntBentoExCandyBeans, _func = undefined, _parent = other) : BentoConstrAncestor(_parent) constructor
 {
     reference   = _reference;
-    optionArray = _optionArray;
+    stringArray = _stringArray;
     text        = _text;
     font        = _font;
     func        = _func ?? function() {};
@@ -25,10 +25,10 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font 
     var _optionHeight = 0;
     
     var _i = 0;
-    repeat(array_length(optionArray))
+    repeat(array_length(stringArray))
     {
-        _optionWidth  = max(_optionWidth,  string_width(optionArray[_i]) + 40);
-        _optionHeight = max(_optionHeight, string_height(optionArray[0]));
+        _optionWidth  = max(_optionWidth,  string_width(stringArray[_i]) + 40);
+        _optionHeight = max(_optionHeight, string_height(stringArray[0]));
         ++_i;
     }
     
@@ -41,7 +41,7 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font 
     // Disables raycasting in particular axes. This only applies to directional input where raycasting
     // is used to work out which element to jump to when pushing in a particular direction. This does
     // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-    // raycasting so that it doesn't interfere with scrolling through options.
+    // raycasting so that it doesn't interfere with scrolling through strings.
     BentoSetRaycastEnable(false, true);
     
     
@@ -53,11 +53,11 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font 
         var _funcGetOptionIndex = function()
         {
             var _option = BentoRefGet(reference, undefined);
-            var _optionIndex = array_get_index(optionArray, _option);
+            var _optionIndex = array_get_index(stringArray, _option);
             return max(_optionIndex, 0);
         }
         
-        var _length = array_length(optionArray);
+        var _length = array_length(stringArray);
         if (_length > 0)
         {
             if (BentoUsingPointer())
@@ -70,7 +70,7 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font 
                     
                     var _optionIndex = (_funcGetOptionIndex() + _delta + _length) mod _length;
                     
-                    var _option = optionArray[_optionIndex];
+                    var _option = stringArray[_optionIndex];
                     BentoRefSet(reference, _option);
                     func(_option); //Execute the callback
                 }
@@ -82,7 +82,7 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font 
                 {
                     var _optionIndex = (_funcGetOptionIndex() + sign(BentoCursorGetDX()) + _length) mod _length;
                     
-                    var _option = optionArray[_optionIndex];
+                    var _option = stringArray[_optionIndex];
                     BentoRefSet(reference, _option);
                     func(_option); //Execute the callback
                 }
@@ -115,11 +115,11 @@ function BentoExConstrCarousel(_reference, _optionArray = [], _text = "", _font 
             draw_set_halign(fa_left);
         }
         
-        if (array_length(optionArray) > 0)
+        if (array_length(stringArray) > 0)
         {
             draw_set_halign(fa_center);
             draw_set_valign(fa_bottom);
-            draw_text(_x, _bottom - 10 + _offset, BentoRefIsAlive(reference)? string(BentoRefGet(reference, "")) : optionArray[0]);
+            draw_text(_x, _bottom - 10 + _offset, BentoRefIsAlive(reference)? string(BentoRefGet(reference, "")) : stringArray[0]);
             draw_set_halign(fa_left);
             draw_set_valign(fa_top);
         }

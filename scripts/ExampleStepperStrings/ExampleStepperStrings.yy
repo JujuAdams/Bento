@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleScroller",
+  "%Name":"ExampleStepperStrings",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleScroller",
+  "name":"ExampleStepperStrings",
   "parent":{
     "name":"Examples",
     "path":"folders/Examples.yy",

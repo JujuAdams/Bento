@@ -1,8 +1,8 @@
 // Feather disable all
 
-global.carouselExample = "red";
+global.stepperStringsExample = "red";
 
-function ExampleCarousel()
+function ExampleStepperStrings()
 {
     with(oMain)
     {
@@ -26,7 +26,7 @@ function ExampleCarousel()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Carousel",
+                                text: "Stepper (strings)",
                                 font: fntBentoExCandyBeansBig,
                             },
                         },
@@ -40,11 +40,11 @@ function ExampleCarousel()
                 },
                 {
                     select: true,
-                    object: oBentoExCarousel,
+                    object: oBentoExStepperStrings,
                     vars: {
                         text: "Colour Selection",
-                        optionArray: ["red", "yellow", "green", "blue", "purple"],
-                        reference: BentoRef(global, "carouselExample"),
+                        stringArray: ["red", "yellow", "green", "blue", "purple"],
+                        reference: BentoRef(global, "stepperStringsExample"),
                     },
                 },
                 {
@@ -52,12 +52,12 @@ function ExampleCarousel()
                     vars: {
                         text: function()
                         {
-                            return $"global.carouselExample = {global.carouselExample}";
+                            return $"global.stepperStringsExample = {global.stepperStringsExample}";
                         }
                     },
                 },
                 {
-                    construct: [BentoExConstrCarousel, BentoRef(global, "carouselExample"), ["red", "purple", "blue", "green", "yellow"], "Colour Selection\n(but backwards)"],
+                    construct: [BentoExConstrStepperStrings, BentoRef(global, "stepperStringsExample"), ["red", "purple", "blue", "green", "yellow"], "Colour Selection\n(but backwards)"],
                 },
             ],
         };

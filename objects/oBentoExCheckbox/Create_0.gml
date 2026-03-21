@@ -24,7 +24,7 @@
 // 
 // Example:
 // ```
-// BentoCreate(oBentoExCarousel, {
+// BentoCreate(oBentoExStepperStrings, {
 //     text: "Invert y-axis",
 //     reference: BentoRef(global.settings, "invertMouse"),
 //     func: function() {

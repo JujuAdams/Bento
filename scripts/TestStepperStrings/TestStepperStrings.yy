@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleCarousel",
+  "%Name":"TestStepperStrings",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleCarousel",
+  "name":"TestStepperStrings",
   "parent":{
-    "name":"Examples",
-    "path":"folders/Examples.yy",
+    "name":"Tests",
+    "path":"folders/Tests.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

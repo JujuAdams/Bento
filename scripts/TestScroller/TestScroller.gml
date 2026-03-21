@@ -13,10 +13,10 @@ function TestScroller()
             },
             children: [
                 {
-                    object: oBentoExScroller,
+                    object: oBentoExStepperNumbers,
                 },
                 {
-                    object: oBentoExScroller,
+                    object: oBentoExStepperNumbers,
                 },
             ],
         },

@@ -1,6 +1,6 @@
 // Feather disable all
 
-// An example that demonstrates how to make a scroller for numerical values. This is commonly used
+// An example that demonstrates how to make a stepper for numerical values. This is commonly used
 // for audio volumes, mouse sensitivity etc.  It can be manipulated using pointer input or
 // directional input. Clicking on the left or right sides will scroll through options. Directional
 // input uses the x-axis movement to trigger scrolling through options (in this example project,

@@ -103,15 +103,15 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Carousel",
-                                func: ExampleCarousel,
+                                text: $"Stepper (strings)",
+                                func: ExampleStepperStrings,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Scroller",
-                                func: ExampleScroller,
+                                text: $"Stepper (numbers)",
+                                func: ExampleStepperNumbers,
                             },
                         },
                         {
