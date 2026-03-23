@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoGetIndex",
+  "%Name":"BentoSetChildIndex",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoGetIndex",
+  "name":"BentoSetChildIndex",
   "parent":{
     "name":"Parents & Children",
     "path":"folders/Bento/Functions/Parents & Children.yy",

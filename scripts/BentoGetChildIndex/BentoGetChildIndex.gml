@@ -6,7 +6,7 @@
 /// 
 /// @param [element=self]
 
-function BentoGetIndex(_element = self)
+function BentoGetChildIndex(_element = self)
 {
     if (not BentoExists(_element)) return undefined;
     

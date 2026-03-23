@@ -82,7 +82,7 @@ function ExampleReorderLists()
                                 text: "Apple",
                                 func: function()
                                 {
-                                    BentoSetIndex(0);
+                                    BentoSetChildIndex(0);
                                 }
                             },
                         },
@@ -92,7 +92,7 @@ function ExampleReorderLists()
                                 text: "Banana",
                                 func: function()
                                 {
-                                    BentoSetIndex(0);
+                                    BentoSetChildIndex(0);
                                 }
                             },
                         },
@@ -102,7 +102,7 @@ function ExampleReorderLists()
                                 text: "Cantaloupe",
                                 func: function()
                                 {
-                                    BentoSetIndex(0);
+                                    BentoSetChildIndex(0);
                                 }
                             },
                         },
@@ -112,7 +112,7 @@ function ExampleReorderLists()
                                 text: "Date",
                                 func: function()
                                 {
-                                    BentoSetIndex(0);
+                                    BentoSetChildIndex(0);
                                 }
                             },
                         },
@@ -122,7 +122,7 @@ function ExampleReorderLists()
                                 text: "Elderberry",
                                 func: function()
                                 {
-                                    BentoSetIndex(0);
+                                    BentoSetChildIndex(0);
                                 }
                             },
                         },

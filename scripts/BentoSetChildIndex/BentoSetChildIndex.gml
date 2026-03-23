@@ -5,7 +5,7 @@
 /// @param index
 /// @param [element=self]
 
-function BentoSetIndex(_index, _element = self)
+function BentoSetChildIndex(_index, _element = self)
 {
     var _parent = BentoGetParent(1, _element);
     if (not BentoExists(_parent)) return undefined;
