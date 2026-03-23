@@ -12,7 +12,7 @@ function BentoGetChild(_index, _parent = self)
     if ((_index < 0) || (not BentoExists(_parent))) return undefined;
     
     var _array = _parent.BENTO_VARS.__childArray;
-    if (array_length(_array) >= _index) return undefined;
+    if (_index >= array_length(_array)) return undefined;
     
     return _array[_index].__attachedElement;
 }
