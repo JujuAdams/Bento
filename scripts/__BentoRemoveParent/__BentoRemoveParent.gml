@@ -22,9 +22,9 @@ function __BentoRemoveParent(_child)
         var _array = _parentVars.__childDrawArray;
         var _index = array_get_index(_array, _child.BENTO_VARS);
         if (_index >= 0) array_delete(_array, _index, 1);
+        
+        BentoScrollLimitsMarkDirty(_parent);
     }
-    
-    BentoScrollLimitsMarkDirty(_parent);
     
     _child.BENTO_VARS.__parent = BENTO_NO_ELEMENT;
 }
