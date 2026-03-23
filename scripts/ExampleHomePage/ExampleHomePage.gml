@@ -82,6 +82,13 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
+                                text: $"Reorder Lists",
+                                func: ExampleReorderLists,
+                            },
+                        },
+                        {
+                            object: oBentoExButton,
+                            vars: {
                                 text: $"Grids",
                                 func: ExampleGrids,
                             },
