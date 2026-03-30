@@ -15,7 +15,7 @@ if (BentoUsingPointer())
     // Detect clicks to scroll through the option array.
     if (BentoPrimaryGetClick())
     {
-        _delta = sign(BentoCursorGetX() - 0.5*(bbox_left + bbox_right));
+        _delta = sign(BentoCursorGetX() - 0.5*(bentoLeft + bentoRight));
         if (_delta == 0) _delta = 1;
     }
 }
