@@ -56,6 +56,7 @@ BentoVarEnsureMany(
     "stringArray", [],
     "text",        "Example",
     "font",        fntBentoExCandyBeans,
+    "useFocus",    true,
     "func",        function(){},
 );
 
