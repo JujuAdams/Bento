@@ -16,7 +16,7 @@ if (text != "")
     draw_set_font(BENTO_EXAMPLE_DEFAULT_FONT);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
-    draw_text(0.5*(bbox_left + bbox_right) + _offset, 0.5*(bbox_top + bbox_bottom) + _offset, text);
+    draw_text(0.5*(bentoLeft + bentoRight) + _offset, 0.5*(bentoTop + bentoBottom) + _offset, text);
     draw_set_color(c_white);
     draw_set_font(-1);
     draw_set_halign(fa_left);
