@@ -37,9 +37,15 @@ function ExampleReorderLists()
                     ],
                 },
                 {
+                    object: oBentoExText,
+                    vars: {
+                        text: "This example shows how to reorder lists dynamically at runtime using Bento's child functions.",
+                    },
+                },
+                {
                     object: oBentoExButton,
                     vars: {
-                        text: "Alphabetical",
+                        text: "Order Alphabetically",
                         func: function()
                         {
                             var _listElement = BentoNameFind("list");
@@ -57,7 +63,7 @@ function ExampleReorderLists()
                 {
                     object: oBentoExButton,
                     vars: {
-                        text: "Randomize",
+                        text: "Randomize Order",
                         func: function()
                         {
                             var _listElement = BentoNameFind("list");
@@ -65,6 +71,12 @@ function ExampleReorderLists()
                             array_shuffle_ext(_array);
                             BentoSetChildArray(_array, _listElement);
                         }
+                    },
+                },
+                {
+                    object: oBentoExText,
+                    vars: {
+                        text: "Click any of the following buttons to send the button to the top of the list.",
                     },
                 },
                 {

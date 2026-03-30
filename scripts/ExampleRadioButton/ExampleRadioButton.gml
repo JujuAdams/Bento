@@ -44,6 +44,12 @@ function ExampleRadioButton()
                     ],
                 },
                 {
+                    object: oBentoExText,
+                    vars: {
+                        text: "Radio buttons allow the player to select between multiple mutually exclusive options. Radio buttons share the same variable to store state.",
+                    },
+                },
+                {
                     object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0.5],

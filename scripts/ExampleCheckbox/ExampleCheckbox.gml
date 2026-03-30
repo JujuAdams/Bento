@@ -40,6 +40,12 @@ function ExampleCheckbox()
                     ],
                 },
                 {
+                    object: oBentoExText,
+                    vars: {
+                        text: "Checkboxes are implemented as buttons that when clicked toggle state. They're useful for options menus especially.",
+                    },
+                },
+                {
                     object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0.5],

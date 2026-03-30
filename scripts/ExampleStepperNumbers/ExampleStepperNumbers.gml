@@ -39,6 +39,18 @@ function ExampleStepperNumbers()
                     ],
                 },
                 {
+                    object: oBentoExText,
+                    vars: {
+                        text: "These particular steppers deal with numeric values. They're implemented as buttons with some extra behaviour when using keyboard or gamepad input. Clicking on the left and right side of the button will decrease or increase the value.",
+                    },
+                },
+                {
+                    object: oBentoExText,
+                    vars: {
+                        text: "When using a keyboard or gamepad, the stepper will need to be focused first. Then, by pressing left or right using the arrow keys or thumbstick/d-pad, the value for the stepper can be changed. The need to focus the stepper first before changed the value can be disabled if you'd like.",
+                    },
+                },
+                {
                     select: true,
                     object: oBentoExStepperNumbers,
                     vars: {

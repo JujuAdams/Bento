@@ -39,6 +39,18 @@ function ExampleStepperStrings()
                     ],
                 },
                 {
+                    object: oBentoExText,
+                    vars: {
+                        text: "These particular steppers cycle through strings. They're implemented as buttons with some extra behaviour when using keyboard or gamepad input. Clicking on the left and right side of the button will cycle through options.",
+                    },
+                },
+                {
+                    object: oBentoExText,
+                    vars: {
+                        text: "When using a keyboard or gamepad, the stepper will need to be focused first. By pressing left or right using the arrow keys or thumbstick/d-pad the option can then be cycled through. The need to focus the stepper first before changed the value can be disabled if you'd like.",
+                    },
+                },
+                {
                     select: true,
                     object: oBentoExStepperStrings,
                     vars: {
