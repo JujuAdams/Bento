@@ -8,6 +8,11 @@ function __BentoClassEnvironment(_name) constructor
     
     __name = _name;
     
+    if (BENTO_DEBUG_LEVEL >= 1)
+    {
+        __BentoTrace($"Creating environment {__BentoGetStructPointer(self)} called \"{__name}\"");
+    }
+    
     ///////
     // Raw input tracking
     ///////
@@ -47,6 +52,11 @@ function __BentoClassEnvironment(_name) constructor
         __envNavMode = BENTO_MODE_GAMEPAD;
     }
     
+    if (BENTO_DEBUG_LEVEL >= 1)
+    {
+        __BentoTrace($"Input mode for environment {__BentoGetStructPointer(self)} defaults to {__BentoGetInputModeName(__envNavMode)} based on the current OS ({os_type})");
+    }
+    
     ///////
     // Text input tracking
     ///////
@@ -69,6 +79,11 @@ function __BentoClassEnvironment(_name) constructor
     
     static __Destroy = function()
     {
+        if (BENTO_DEBUG_LEVEL >= 1)
+        {
+            __BentoTrace($"Destroying environment {__BentoGetStructPointer(self)} called \"{__name}\"");
+        }
+        
         var _index = array_get_index(_system.__environmentArray, self);
         if (_index >= 0) array_delete(_system.__environmentArray, _index, 1);
         

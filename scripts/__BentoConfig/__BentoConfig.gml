@@ -116,6 +116,16 @@
 // this macro to `false` for production builds after thorough testing.
 #macro BENTO_SAFE  true
 
+// Controls how much debug information to output. Debug messages can be seen in the "Output" window
+// in the GameMaker IDE or via various debug utilities. The following values are supported:
+// 
+// 0: No additional debug information is shown
+// 1: Debug information shown for significant changes in state
+// 
+// In general, this macro should be set to `0` for production builds. However, if you'd like to see
+// additional debug information, e.g. for QA builds, then you can use higher debug levels.
+#macro BENTO_DEBUG_LEVEL  1
+
 // Enables `BentoGetEnclosed()` but will impact performance slightly.
 #macro BENTO_ALLOW_ENCLOSED_GETTER  false
 

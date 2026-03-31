@@ -35,7 +35,7 @@ function BentoCreate(_object, _struct = undefined, _parent = self)
             }
             catch(_error)
             {
-                __BentoError($"Parent struct does not inherit from `BentoConstrAncestor()` (instanceof was {instanceof(_parent)} {string_delete(string(ptr(_parent)), 1, 8)})\nTo create an instance as a child of root, use `BentoGetRoot()` for the parent");
+                __BentoError($"Parent struct does not inherit from `BentoConstrAncestor()` (instanceof was {instanceof(_parent)} {__BentoGetStructPointer(_parent)})\nTo create an instance as a child of root, use `BentoGetRoot()` for the parent");
             }
         }
     }

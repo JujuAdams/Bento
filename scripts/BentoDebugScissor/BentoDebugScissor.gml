@@ -44,7 +44,7 @@ function __BentoDebugScissorInner(_bentoVars, _array)
             else
             {
                 _result.__type     = instanceof(__attachedElement);
-                _result.__nativeID = string_delete(string(ptr(__attachedElement)), 1, 8);
+                _result.__nativeID = __BentoGetStructPointer(__attachedElement);
             }
         }
         

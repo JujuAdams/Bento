@@ -31,7 +31,7 @@ function BentoDebugDrawOrder(_layerOrName = undefined)
             else
             {
                 var _type     = instanceof(_bentoVars.__attachedElement);
-                var _nativeID = string_delete(string(ptr(_bentoVars.__attachedElement)), 1, 8);
+                var _nativeID = __BentoGetStructPointer(_bentoVars.__attachedElement);
             }
             
             var _action = _functionDrawLookupMap[? _function] ?? "<unknown>";

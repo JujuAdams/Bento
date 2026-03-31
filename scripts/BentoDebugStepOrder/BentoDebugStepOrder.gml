@@ -70,7 +70,7 @@ function BentoDebugStepOrder(_layerOrName = undefined)
                 else
                 {
                     var _type     = instanceof(_element);
-                    var _nativeID = string_delete(string(ptr(_element)), 1, 8);
+                    var _nativeID = __BentoGetStructPointer(_element);
                 }
             }
             

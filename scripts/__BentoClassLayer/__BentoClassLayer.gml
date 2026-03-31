@@ -10,6 +10,11 @@ function __BentoClassLayer(_environment, _name) constructor
     __environment = _environment;
     __name        = _name;
     
+    if (BENTO_DEBUG_LEVEL >= 1)
+    {
+        __BentoTrace($"Creating layer {__BentoGetStructPointer(self)} called \"{__name}\" in environment {__BentoGetStructPointer(__environment)}");
+    }
+    
     ////////
     // Gemeral state
     ////////
@@ -96,6 +101,11 @@ function __BentoClassLayer(_environment, _name) constructor
     
     static __Destroy = function()
     {
+        if (BENTO_DEBUG_LEVEL >= 1)
+        {
+            __BentoTrace($"Destroying layer {__BentoGetStructPointer(self)} called \"{__name}\" in environment {__BentoGetStructPointer(__environment)}");
+        }
+        
         BentoDestroy(__rootElement);
         __environment.__RemoveLayer(self);
     }
