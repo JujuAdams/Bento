@@ -69,7 +69,7 @@ function ExampleHomePage()
                             object: oBentoExButton,
                             vars: {
                                 text: $"Buttons",
-                                func: ExampleButtons,
+                                func: ExampleButtonsProcedural,
                             },
                         },
                         {

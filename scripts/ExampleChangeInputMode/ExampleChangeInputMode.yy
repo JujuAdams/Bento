@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"ExampleChangeInputMode",
   "parent":{
-    "name":"Examples",
-    "path":"folders/Examples.yy",
+    "name":"JSON",
+    "path":"folders/Examples/JSON.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
