@@ -116,6 +116,9 @@
 // this macro to `false` for production builds after thorough testing.
 #macro BENTO_SAFE  true
 
+// Enables `BentoGetEnclosed()` but will impact performance slightly.
+#macro BENTO_ALLOW_ENCLOSED_GETTER  false
+
 // Whether to require `BentoCreate()` when creating Bento elements using object instances. If you
 // set this macro to `false` then instances that inherit from `oBentoAncestor` but that are not
 // created with `BentoCreate()` will be automatically parented to `BentoGetRoot()` (which is often

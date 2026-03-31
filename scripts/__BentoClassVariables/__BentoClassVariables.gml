@@ -21,7 +21,11 @@ function __BentoClassVariables(_attachedElement) constructor
     __disable        = false;
     __visible        = true;
     __hoverableIndex = undefined;
-    __enclosed       = false;
+    
+    if (BENTO_ALLOW_ENCLOSED_GETTER)
+    {
+        __enclosed = false;
+    }
     
     //Cartesian offset from the calculated layout position
     __offsetX = 0;
