@@ -6,7 +6,7 @@ if (BentoUsingDirectional())
 {
     if (BentoPrimaryGetClick())
     {
-        BentoFocusOpen(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
+        BentoFocusToggle(BENTO_FOCUS_POINTER_CANCEL_ALWAYS);
     }
     
     if (BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))

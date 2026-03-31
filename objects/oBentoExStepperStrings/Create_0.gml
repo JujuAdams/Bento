@@ -45,12 +45,6 @@ event_inherited();
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
 
-// Disables raycasting in particular axes. This only applies to directional input where raycasting
-// is used to work out which element to jump to when pushing in a particular direction. This does
-// not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-// raycasting so that it doesn't interfere with stepping through strings.
-BentoSetRaycastEnable(false, true);
-
 BentoVarEnsureMany(
     "reference",   undefined,
     "stringArray", [],
@@ -63,6 +57,15 @@ BentoVarEnsureMany(
 if (image_blend == c_white)
 {
     image_blend = BENTO_EXAMPLE_YELLOW;
+}
+
+if (not useFocus)
+{
+    // Disables raycasting in particular axes. This only applies to directional input where raycasting
+    // is used to work out which element to jump to when pushing in a particular direction. This does
+    // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
+    // raycasting so that it doesn't interfere with stepping through strings.
+    BentoSetRaycastEnable(false, true);
 }
 
 var _oldFont = draw_get_font();
