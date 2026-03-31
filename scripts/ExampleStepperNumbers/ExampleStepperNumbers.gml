@@ -47,7 +47,7 @@ function ExampleStepperNumbers()
                 {
                     object: oBentoExText,
                     vars: {
-                        text: "When using a keyboard or gamepad, the stepper will need to be focused first. Then, by pressing left or right using the arrow keys or thumbstick/d-pad, the value for the stepper can be changed. The need to focus the stepper first before changed the value can be disabled if you'd like.",
+                        text: "When using a keyboard or gamepad, the stepper will need to be focused first. Then, by pressing left or right using the arrow keys or thumbstick / d-pad, the value for the stepper can be changed. The need to focus the stepper first before changed the value can be disabled if you'd like.",
                     },
                 },
                 {

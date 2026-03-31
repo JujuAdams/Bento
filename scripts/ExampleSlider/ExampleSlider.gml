@@ -39,6 +39,18 @@ function ExampleSlider()
                     ],
                 },
                 {
+                    object: oBentoExText,
+                    vars: {
+                        text: "Sliders are convenient for controlling a numeric value. Sliders can be clicked and dragging to change the value or the player can click on the bar itself to set a value instantaneously.",
+                    },
+                },
+                {
+                    object: oBentoExText,
+                    vars: {
+                        text: "When using a keyboard or gamepad, the slider must first be focused. The arrow keys or thumbstick / d-pad can then be used to move the slider's handle to change the value.",
+                    },
+                },
+                {
                     select: true,
                     object: oBentoExSlider,
                     vars: {
