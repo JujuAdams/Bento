@@ -1,5 +1,13 @@
 // Feather disable all
 
+if (not BentoTextGetOpen())
+{
+    if (keyboard_check_pressed(ord("1"))) BentoSetMode(BENTO_MODE_MOUSE);
+    if (keyboard_check_pressed(ord("2"))) BentoSetMode(BENTO_MODE_KEYBOARD);
+    if (keyboard_check_pressed(ord("3"))) BentoSetMode(BENTO_MODE_GAMEPAD);
+    if (keyboard_check_pressed(ord("4"))) BentoSetMode(BENTO_MODE_TOUCH);
+}
+
 if (keyboard_check_pressed(vk_f1)) BentoDebugStepOrder();
 if (keyboard_check_pressed(vk_f2)) BentoDebugDrawOrder();
 if (keyboard_check_pressed(vk_f3)) BentoDebugScissor();
