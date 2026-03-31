@@ -19,7 +19,7 @@ function __BentoSetHoverFromPointer(_mouseX, _mouseY)
     
     var _holdElement = __holdElement;
     
-    var _i = _hoverableCount-1;
+    var _i = 0;
     repeat(_hoverableCount)
     {
         var _result = _hoverableOrder[_i](_mouseX, _mouseY, _holdElement);
@@ -29,7 +29,7 @@ function __BentoSetHoverFromPointer(_mouseX, _mouseY)
             return;
         }
         
-        --_i;
+        ++_i;
     }
     
     __BentoSetHover(BENTO_NO_ELEMENT, false);

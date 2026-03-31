@@ -53,15 +53,9 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
             }
         }
         
-        __hoverableIndex = _hoverableIndex;
-        array_push(_hoverableOrder, __funcHover);
-        
-        //Then move on to our children
-        var _i = 0;
-        repeat(array_length(_childArray))
+        if (__scrollbarVert != undefined)
         {
-            __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _childArray[_i], _childHoverableIndex);
-            ++_i;
+            array_push(_hoverableOrder, __scrollbarVert.__CheckOver);
         }
         
         if (__scrollbarHori != undefined)
@@ -69,10 +63,16 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
             array_push(_hoverableOrder, __scrollbarHori.__CheckOver);
         }
         
-        if (__scrollbarVert != undefined)
+        //Then move on to our children
+        var _i = array_length(_childArray)-1;
+        repeat(array_length(_childArray))
         {
-            array_push(_hoverableOrder, __scrollbarVert.__CheckOver);
+            __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _childArray[_i], _childHoverableIndex);
+            --_i;
         }
+        
+        __hoverableIndex = _hoverableIndex;
+        array_push(_hoverableOrder, __funcHover);
     }
 }
 
@@ -83,6 +83,8 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
         if (__disable) return; //Disabled elements always ban hover, understandably
         
         var _childHoverableIndex = _hoverableIndex;
+        __enclosed = (_childHoverableIndex == undefined);
+        
         var _childArray = __childArray;
         
         if (__focused)
@@ -91,6 +93,7 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
             //Our children also will *not* be enclosed because we're focused
             if (array_length(_childArray) > 0)
             {
+                //FIXME - We need to figure out if any descendents are buttons
                 _hoverableIndex = undefined;
             }
         }
@@ -103,19 +106,19 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
             }
         }
         
+        //Then move on to our children
+        var _i = array_length(_childArray)-1;
+        repeat(array_length(_childArray))
+        {
+            __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _childArray[_i], _childHoverableIndex);
+            --_i;
+        }
+        
         //Elements can only be selected if they're set up as buttons when in directional mode
         if ((_hoverableIndex != undefined) && (__buttonType & BENTO_BUTTON_DIRECTIONAL))
         {
             __hoverableIndex = _hoverableIndex;
             array_push(_hoverableOrder, __attachedElement);
-        }
-        
-        //Then move on to our children
-        var _i = 0;
-        repeat(array_length(_childArray))
-        {
-            __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _childArray[_i], _childHoverableIndex);
-            ++_i;
         }
     }
 }
