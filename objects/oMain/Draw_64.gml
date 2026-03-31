@@ -6,18 +6,18 @@
 // event for that instance will be called too by `BentoSystemDraw()` (but won't by default).
 BentoSystemDraw();
 
-draw_set_font(fntDebug);
-
-// Some debug text:
-var _modeName = "???";
-switch(BentoGetMode())
-{
-    case BENTO_MODE_MOUSE:    _modeName = "Mouse";    break;
-    case BENTO_MODE_KEYBOARD: _modeName = "Keyboard"; break;
-    case BENTO_MODE_GAMEPAD:  _modeName = "Gamepad";  break;
-    case BENTO_MODE_TOUCH:    _modeName = "Touch";    break;
-}
-
-draw_set_halign(fa_right);
+//draw_set_font(fntDebug);
+//
+//// Some debug text:
+//var _modeName = "???";
+//switch(BentoGetMode())
+//{
+//    case BENTO_MODE_MOUSE:    _modeName = "Mouse";    break;
+//    case BENTO_MODE_KEYBOARD: _modeName = "Keyboard"; break;
+//    case BENTO_MODE_GAMEPAD:  _modeName = "Gamepad";  break;
+//    case BENTO_MODE_TOUCH:    _modeName = "Touch";    break;
+//}
+//
+//draw_set_halign(fa_right);
 //draw_text(display_get_gui_width()-10, 10, $"Mode = {_modeName}\n\n[1] = Mouse\n[2] = Keyboard\n[3] = Gamepad\n[4] = Touch");
-draw_set_halign(fa_left);
+//draw_set_halign(fa_left);

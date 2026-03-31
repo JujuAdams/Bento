@@ -1,3 +1,4 @@
 // Feather disable all
 
-TestTextbox();
+mainElement = BENTO_NO_ELEMENT;
+ExampleHomePage();

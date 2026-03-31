@@ -228,10 +228,10 @@ function BentoSystemSandbox(_x, _y, _width, _height)
     }
     
     //Update the entire Bento system
-    BentoSystemStep(_width, _height);
+    BentoSystemStep(_x, _y, _width, _height);
     
     //And then draw it
-    BentoSystemDraw(_x, _y);
+    BentoSystemDraw();
     
     //Make sure this map is fresh for next frame
     ds_map_clear(_deviceNewInputMap);
