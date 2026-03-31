@@ -19,6 +19,9 @@ function BentoDebugStepOrder(_layerOrName = undefined)
             var _method = __stepOrder[_i];
             var _self   = method_get_self(_method);
             
+            var _buttonType = undefined;
+            var _hovered    = undefined;
+            
             if (is_instanceof(_self, __BentoClassVariables))
             {
                 var _element = _self.__attachedElement;
@@ -50,6 +53,9 @@ function BentoDebugStepOrder(_layerOrName = undefined)
             {
                 var _element = _self;
                 var _action  = "step";
+                
+                _buttonType = _self.BENTO_VARS.__buttonType;
+                _hovered    = _self.BENTO_VARS.__hoverState & __BENTO_ON;
             }
             
             if (_element != undefined)
@@ -68,13 +74,43 @@ function BentoDebugStepOrder(_layerOrName = undefined)
                 }
             }
             
-            array_push(_array, [_bentoVars.__envIndex, _nativeID, _bentoVars.__name ?? "", _type, _action]);
+            if (_buttonType == BENTO_BUTTON_NEVER)
+            {
+                _buttonType = "never";
+            }
+            else if (_buttonType == BENTO_BUTTON_POINTER)
+            {
+                _buttonType = "pointer";
+            }
+            else if (_buttonType == BENTO_BUTTON_DIRECTIONAL)
+            {
+                _buttonType = "directional";
+            }
+            else if (_buttonType == BENTO_BUTTON_ALWAYS)
+            {
+                _buttonType = "always";
+            }
+            else
+            {
+                _buttonType = "";
+            }
+            
+            if (_hovered == undefined)
+            {
+                _hovered = "";
+            }
+            else
+            {
+                _hovered = _hovered? "true" : "false";
+            }
+            
+            array_push(_array, [_bentoVars.__envIndex, _nativeID, _bentoVars.__name ?? "", _type, _action, _buttonType, _hovered]);
             
             ++_i;
         }
         
         var _function = BENTO_SHOW_DEBUG_MESSAGE;
         _function("Bento: Debugging step order");
-        _function(__BentoArray2DToFormattedTable(_array, ["GUID", "Native ID", "Name", "Type", "Action(s)"]));
+        _function(__BentoArray2DToFormattedTable(_array, ["GUID", "Native ID", "Name", "Type", "Action(s)", "Button", "Hovered"]));
     }
 }
