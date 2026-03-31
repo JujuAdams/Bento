@@ -236,6 +236,7 @@
     {"id":{"name":"BentoCursorGetY","path":"scripts/BentoCursorGetY/BentoCursorGetY.yy",},},
     {"id":{"name":"BentoDebugDrawOrder","path":"scripts/BentoDebugDrawOrder/BentoDebugDrawOrder.yy",},},
     {"id":{"name":"BentoDebugDrawPointer","path":"scripts/BentoDebugDrawPointer/BentoDebugDrawPointer.yy",},},
+    {"id":{"name":"BentoDebugHoverOrder","path":"scripts/BentoDebugHoverOrder/BentoDebugHoverOrder.yy",},},
     {"id":{"name":"BentoDebugScissor","path":"scripts/BentoDebugScissor/BentoDebugScissor.yy",},},
     {"id":{"name":"BentoDebugStepOrder","path":"scripts/BentoDebugStepOrder/BentoDebugStepOrder.yy",},},
     {"id":{"name":"BentoDestroy","path":"scripts/BentoDestroy/BentoDestroy.yy",},},
