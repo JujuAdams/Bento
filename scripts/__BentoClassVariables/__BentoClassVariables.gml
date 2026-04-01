@@ -51,6 +51,11 @@ function __BentoClassVariables(_attachedElement) constructor
     __byNavigation = false;
     __click        = false;
     
+    __dndItemChannel   = undefined;
+    __dndItemData      = undefined;
+    __dndTargetChannel = undefined;
+    __dndTargetFunc    = undefined;
+    
     __textConfig = {
         __maxLength:      300,
         __caption:        "",
