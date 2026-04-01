@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__BentoSetHoverFromDirectional",
   "parent":{
-    "name":"(Internal)",
-    "path":"folders/Bento/(Internal).yy",
+    "name":"Other Important Functions",
+    "path":"folders/Bento/(Internal)/Other Important Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoSetHoverFromPointer",
+  "%Name":"__BentoGetDirectionalNearest",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoSetHoverFromPointer",
+  "name":"__BentoGetDirectionalNearest",
   "parent":{
     "name":"Other Important Functions",
     "path":"folders/Bento/(Internal)/Other Important Functions.yy",

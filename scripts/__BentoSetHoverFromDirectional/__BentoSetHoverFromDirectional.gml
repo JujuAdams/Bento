@@ -26,7 +26,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
         else
         {
             //Otherwise fall back on searching for the nearest selectable element
-            _nextElement = __BentoGetNearest(__directionalLastX, __directionalLastY, _excludeArray);
+            _nextElement = __BentoGetDirectionalNearest(__directionalLastX, __directionalLastY, _excludeArray);
         }
         
         __BentoSetHover(_nextElement, false);
@@ -90,7 +90,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                     }
                     else
                     {
-                        _nextElement = __BentoGetRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
+                        _nextElement = __BentoGetDirectionalRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
                     
                         if (not BentoExists(_nextElement))
                         {

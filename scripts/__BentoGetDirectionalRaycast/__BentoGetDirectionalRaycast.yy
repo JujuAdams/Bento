@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoSetHoverFromPointer",
+  "%Name":"__BentoGetDirectionalRaycast",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoSetHoverFromPointer",
+  "name":"__BentoGetDirectionalRaycast",
   "parent":{
     "name":"Other Important Functions",
     "path":"folders/Bento/(Internal)/Other Important Functions.yy",

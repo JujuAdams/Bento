@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__BentoMarkDrawOrderDirty",
   "parent":{
-    "name":"(Internal)",
-    "path":"folders/Bento/(Internal).yy",
+    "name":"Miscellaneous",
+    "path":"folders/Bento/(Internal)/Miscellaneous.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

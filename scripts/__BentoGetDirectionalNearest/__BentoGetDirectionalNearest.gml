@@ -7,7 +7,7 @@
 /// @param y
 /// @param excludeArray
 
-function __BentoGetNearest(_x, _y, _excludeArray)
+function __BentoGetDirectionalNearest(_x, _y, _excludeArray)
 {
     static _system = __BentoSystem();
     
@@ -16,7 +16,7 @@ function __BentoGetNearest(_x, _y, _excludeArray)
     
     if (not _layer.__navDirectional)
     {
-        __BentoError("Can only use `__BentoGetNearest()` in directional mode");
+        __BentoError("Can only use `__BentoGetDirectionalNearest()` in directional mode");
     }
     
     var _element = BENTO_NO_ELEMENT;

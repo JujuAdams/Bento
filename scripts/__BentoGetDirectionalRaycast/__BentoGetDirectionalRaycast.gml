@@ -12,7 +12,7 @@
 /// @param excludeArray
 /// @param scrollParent
 
-function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollParent)
+function __BentoGetDirectionalRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollParent)
 {
     static _system = __BentoSystem();
     
@@ -24,7 +24,7 @@ function __BentoGetRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollParent)
     
     if (not _layer.__navDirectional)
     {
-        __BentoError("Can only use `__BentoGetRaycast()` in directional mode");
+        __BentoError("Can only use `__BentoGetDirectionalRaycast()` in directional mode");
     }
     
     var _minElement    = BENTO_NO_ELEMENT;

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoDnDGetTargetFunction",
   "parent":{
-    "name":"Setup",
-    "path":"folders/Bento/Functions/Drag & Drop/Setup.yy",
+    "name":"Getters",
+    "path":"folders/Bento/Functions/Drag & Drop/Setup/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

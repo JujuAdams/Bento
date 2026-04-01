@@ -2,7 +2,7 @@
 
 /// @param [element=self]
 
-function BentoDnDGetTargetChannel(_element = self)
+function BentoDnDGetTargetFunction(_element = self)
 {
     with(__BentoGetVars(_element))
     {
