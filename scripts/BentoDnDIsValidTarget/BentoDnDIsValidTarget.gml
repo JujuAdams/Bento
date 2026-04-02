@@ -1,5 +1,8 @@
 // Feather disable all
 
+/// Returns if an element is a valid target for a drag & drop item. If no element is being dragged
+/// as an item then this function returns `false`.
+/// 
 /// @param [element=self]
 
 function BentoDnDIsValidTarget(_element = self)
