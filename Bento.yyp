@@ -93,6 +93,8 @@
     {"id":{"name":"oBentoExButton","path":"objects/oBentoExButton/oBentoExButton.yy",},},
     {"id":{"name":"oBentoExCheckbox","path":"objects/oBentoExCheckbox/oBentoExCheckbox.yy",},},
     {"id":{"name":"oBentoExContextMenu","path":"objects/oBentoExContextMenu/oBentoExContextMenu.yy",},},
+    {"id":{"name":"oBentoExDragAndDropItem","path":"objects/oBentoExDragAndDropItem/oBentoExDragAndDropItem.yy",},},
+    {"id":{"name":"oBentoExDragAndDropTarget","path":"objects/oBentoExDragAndDropTarget/oBentoExDragAndDropTarget.yy",},},
     {"id":{"name":"oBentoExGrid","path":"objects/oBentoExGrid/oBentoExGrid.yy",},},
     {"id":{"name":"oBentoExList","path":"objects/oBentoExList/oBentoExList.yy",},},
     {"id":{"name":"oBentoExListbox","path":"objects/oBentoExListbox/oBentoExListbox.yy",},},
