@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoDnDGetValidTarget",
+  "%Name":"BentoDnDIsItem",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoDnDGetValidTarget",
+  "name":"BentoDnDIsItem",
   "parent":{
     "name":"Drag & Drop",
     "path":"folders/Bento/Functions/Drag & Drop.yy",

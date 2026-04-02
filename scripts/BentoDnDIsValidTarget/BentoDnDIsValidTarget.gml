@@ -2,7 +2,7 @@
 
 /// @param [element=self]
 
-function BentoDnDGetValidTarget(_element = self)
+function BentoDnDIsValidTarget(_element = self)
 {
     with(__BentoGetVars(_element))
     {
