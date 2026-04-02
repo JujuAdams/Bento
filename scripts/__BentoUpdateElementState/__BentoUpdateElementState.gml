@@ -32,18 +32,22 @@ function __BentoUpdateElementState()
                 var _clickOnPress = other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH));
             }
             
-            __click = false;
+            __clickState = 0b00;
             
             ///////
             // Hover state
             ///////
             
-            //Advance our state
+            //Advance our hover state
             __hoverState = __hoverState >> 1;
             
             if ((other.__hoverElement != BENTO_NO_ELEMENT) && (other.__hoverElement.BENTO_VARS == self))
             {
                 __hoverState |= __BENTO_START;
+            }
+            else
+            {
+                __pressTime = infinity;
             }
             
             if (__hoverState != __BENTO_START)
@@ -62,6 +66,8 @@ function __BentoUpdateElementState()
                 if (BentoCursorGetHover(_element) && (not BentoPrimaryGetHold(_element)))
                 {
                     __primaryState = __BENTO_START;
+                    __pressTime = current_time;
+                    
                     other.__holdElement = _element;
                     
                     if (other.__navDirectional || BENTO_DRAG_ALWAYS_TOGGLES)
@@ -90,7 +96,7 @@ function __BentoUpdateElementState()
                     }
                     
                     //Pass through a click signal to the element if we're clicking on press
-                    if (_clickOnPress) __click = true;
+                    if (_clickOnPress) __clickState = 0b01;
                 }
             }
             else
@@ -109,6 +115,12 @@ function __BentoUpdateElementState()
                 {
                     //Primary button is still down, we're still held
                     __primaryState |= __BENTO_START;
+                    
+                    if ((not __longClicked) && (current_time - __pressTime >= 1000))
+                    {
+                        __clickState = 0b10;
+                        __longClicked = true;
+                    }
                 }
                 else
                 {
@@ -120,18 +132,18 @@ function __BentoUpdateElementState()
                         other.__holdElement = BENTO_NO_ELEMENT;
                         
                         //Pass through a click signal to the element if we're clicking on release
-                        if ((not _clickOnPress) && (__primaryState == __BENTO_END) && (other.__primaryState == __BENTO_END))
+                        if ((not _clickOnPress) && (__primaryState == __BENTO_END) && (other.__primaryState == __BENTO_END) && (not __longClicked))
                         {
                             if (other.__navMode == BENTO_MODE_TOUCH)
                             {
                                 //Because we set the mouse x/y position to large negative numbers before running this function, the
                                 //hover state for the held element will always be in the leaving (END) state.
-                                if (__hoverState == __BENTO_END) __click = true;
+                                if (__hoverState == __BENTO_END) __clickState = 0b01;
                             }
                             else
                             {
                                 //Only click if we're hovered.
-                                if (BentoCursorGetHover(_element)) __click = true;
+                                if (BentoCursorGetHover(_element)) __clickState = 0b01;
                             }
                         }
                     }
@@ -142,6 +154,8 @@ function __BentoUpdateElementState()
                         //Defer cancelling until the next update tick
                         other.__dndItemCancel = true;
                     }
+                    
+                    __longClicked = false;
                 }
             }
             

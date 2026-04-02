@@ -73,6 +73,13 @@ function ExampleHomePage()
                             },
                         },
                         {
+                            object: oBentoExButtonWithLongClick,
+                            vars: {
+                                text: $"Buttons With Long Click",
+                                func: ExampleButtonsWIthLongClick,
+                            },
+                        },
+                        {
                             object: oBentoExButton,
                             vars: {
                                 text: $"Lists",

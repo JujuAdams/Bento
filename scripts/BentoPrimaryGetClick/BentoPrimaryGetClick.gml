@@ -16,7 +16,7 @@ function BentoPrimaryGetClick(_element = self)
 {
     with(__BentoGetVars(_element))
     {
-        return __layer.__primaryConsumed? false : __click;
+        return __layer.__primaryConsumed? false : (__clickState == 0b01);
     }
     
     return false;
