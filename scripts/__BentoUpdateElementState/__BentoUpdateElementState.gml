@@ -16,15 +16,20 @@ function __BentoUpdateElementState()
             
             if (other.__navDirectional)
             {
+                //Keyboard and gamepad input always uses click-on-press
                 var _clickOnPress = true;
             }
-            else if (not BentoExists(__BentoScrollFindParent(_element)))
+            else if (BentoExists(__BentoScrollFindParent(_element)))
             {
-                var _clickOnPress = other.__navPointer && (__dndItemChannel == undefined) && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH));
+                var _clickOnPress = false;
+            }
+            else if (__dndItemChannel != undefined)
+            {
+                var _clickOnPress = false;
             }
             else
             {
-                var _clickOnPress = false;
+                var _clickOnPress = other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH));
             }
             
             __click = false;
@@ -59,12 +64,29 @@ function __BentoUpdateElementState()
                     __primaryState = __BENTO_START;
                     other.__holdElement = _element;
                     
-                    //If this is a drap & drop item then set that up
-                    //TODO - Do we want to change the drag & drop to trigger when the pointer has moved a certain distance?
-                    if (__dndItemChannel != undefined)
+                    if (other.__navDirectional || BENTO_DRAG_ALWAYS_TOGGLES)
                     {
-                        other.__dndItemElement = _element;
-                        other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                        //Directional input modes toggle on the primary button
+                        if (other.__dndItemElement == _element)
+                        {
+                            other.__dndItemElement = BENTO_NO_ELEMENT;
+                            other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                        }
+                        else
+                        {
+                            other.__dndItemElement = _element;
+                            other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                        }
+                    }
+                    else if (other.__navPointer)
+                    {
+                        //Pointer input modes and click-and-hold
+                        //TODO - Do we want to change the drag & drop to trigger when the pointer has moved a certain distance?
+                        if (__dndItemChannel != undefined)
+                        {
+                            other.__dndItemElement = _element;
+                            other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                        }
                     }
                     
                     //Pass through a click signal to the element if we're clicking on press
@@ -114,7 +136,8 @@ function __BentoUpdateElementState()
                         }
                     }
                     
-                    if (_isLayerItemElement)
+                    //Unset the drag & drop element on release for pointers
+                    if (_isLayerItemElement && other.__navPointer && (not BENTO_DRAG_ALWAYS_TOGGLES))
                     {
                         //Unset the system's hold element since that's us
                         other.__dndItemElement = BENTO_NO_ELEMENT;

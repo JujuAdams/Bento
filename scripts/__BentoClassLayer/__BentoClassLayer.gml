@@ -281,12 +281,12 @@ function __BentoClassLayer(_environment, _name) constructor
             
         }
         
-        //Reset the drag & drop element if it has been destroyed for some reason. We also reset if
-        //this layer isn't the top layer
-        //TODO - Does this need to be a hoverability check?
+        //Reset the drag & drop element if it has been destroyed for some reason or its channel has
+        //been set to `undefined`. We also reset if this layer isn't the top layer
+        //TODO - Does this need to use a hoverability check?
         if (__dndItemElement !=  BENTO_NO_ELEMENT)
         {
-            if ((not _isTopLayer) || (not BentoExists(__dndItemElement)))
+            if ((not _isTopLayer) || (not BentoExists(__dndItemElement)) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined))
             {
                 __dndItemElement = BENTO_NO_ELEMENT;
                 __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
