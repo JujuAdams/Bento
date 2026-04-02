@@ -260,6 +260,7 @@
     {"id":{"name":"BentoDnDGetTarget","path":"scripts/BentoDnDGetTarget/BentoDnDGetTarget.yy",},},
     {"id":{"name":"BentoDnDGetTargetChannel","path":"scripts/BentoDnDGetTargetChannel/BentoDnDGetTargetChannel.yy",},},
     {"id":{"name":"BentoDnDGetTargetFunction","path":"scripts/BentoDnDGetTargetFunction/BentoDnDGetTargetFunction.yy",},},
+    {"id":{"name":"BentoDnDGetValidTarget","path":"scripts/BentoDnDGetValidTarget/BentoDnDGetValidTarget.yy",},},
     {"id":{"name":"BentoDnDSetItemChannel","path":"scripts/BentoDnDSetItemChannel/BentoDnDSetItemChannel.yy",},},
     {"id":{"name":"BentoDnDSetItemData","path":"scripts/BentoDnDSetItemData/BentoDnDSetItemData.yy",},},
     {"id":{"name":"BentoDnDSetTargetChannel","path":"scripts/BentoDnDSetTargetChannel/BentoDnDSetTargetChannel.yy",},},
