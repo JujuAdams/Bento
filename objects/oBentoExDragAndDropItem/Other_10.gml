@@ -17,3 +17,18 @@ if (BentoCursorGetEnterByNavigation() && BentoUsingDirectional())
 {
     audio_play_sound(sndBentoExBlip, 0, false);
 }
+
+if (BentoPrimaryGetRelease())
+{
+    show_debug_message("Released");
+    
+    if (BentoDnDGetItem() == self)
+    {
+        show_debug_message("We were being dragged");
+        
+        with(BentoDnDGetTarget())
+        {
+            show_debug_message($"Target ID = {id}");
+        }
+    }
+}
