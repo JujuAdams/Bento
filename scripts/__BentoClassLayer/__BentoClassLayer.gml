@@ -89,6 +89,7 @@ function __BentoClassLayer(_environment, _name) constructor
     __primaryState     = __BENTO_OFF;
     __primaryConsumed  = false;
     __holdElement      = BENTO_NO_ELEMENT;
+    __dndItemCancel    = false;
     __dndItemElement   = BENTO_NO_ELEMENT;
     
     __updateElementArray = [];
@@ -288,9 +289,15 @@ function __BentoClassLayer(_environment, _name) constructor
         {
             if ((not _isTopLayer) || (not BentoExists(__dndItemElement)) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined))
             {
-                __dndItemElement = BENTO_NO_ELEMENT;
-                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                __dndItemCancel = true;
             }
+        }
+        
+        if (__dndItemCancel)
+        {
+            __dndItemCancel  = false;
+            __dndItemElement = BENTO_NO_ELEMENT;
+            __dirtyFlags    |= __BENTO_DIRTY_HOVERABLE;
         }
         
         ///////

@@ -1,6 +1,6 @@
 // Feather disable all
 
-function BentoLayerGetHoverElement(_layerName = undefined, _environmentName = undefined)
+function BentoLayerGetHovered(_layerName = undefined, _environmentName = undefined)
 {
     if (_layerName == undefined)
     {

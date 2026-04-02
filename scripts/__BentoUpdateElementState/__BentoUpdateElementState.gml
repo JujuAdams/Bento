@@ -69,8 +69,8 @@ function __BentoUpdateElementState()
                         //Directional input modes toggle on the primary button
                         if (other.__dndItemElement == _element)
                         {
-                            other.__dndItemElement = BENTO_NO_ELEMENT;
-                            other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                            //Defer cancelling until the next update tick
+                            other.__dndItemCancel = true;
                         }
                         else
                         {
@@ -139,9 +139,8 @@ function __BentoUpdateElementState()
                     //Unset the drag & drop element on release for pointers
                     if (_isLayerItemElement && other.__navPointer && (not BENTO_DRAG_ALWAYS_TOGGLES))
                     {
-                        //Unset the system's hold element since that's us
-                        other.__dndItemElement = BENTO_NO_ELEMENT;
-                        other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                        //Defer cancelling until the next update tick
+                        other.__dndItemCancel = true;
                     }
                 }
             }

@@ -8,6 +8,7 @@
 
 function BentoExists(_target)
 {
+    if (_target == BENTO_NO_ELEMENT) return false;
     if (instance_exists(_target)) return true;
     if (is_handle(_target) || is_method(_target)) return false;
     return is_struct(_target);

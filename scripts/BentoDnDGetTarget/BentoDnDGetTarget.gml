@@ -1,30 +1,23 @@
 // Feather disable all
 
-/// Returns the currently hovered target element within the drag & drop system. If no target
-/// element is hovered then this function returns `undefined`.
+/// Returns the element that is being hovered whilst the drag & drop system is in use. This
+/// function will only return an element that is permitted to receive the dragged item element.
+/// 
+/// If no item is being dragged then this function returns `BENTO_NO_ELEMENT` and if no valid
+/// element is being hovered then this function will also return `BENTO_NO_ELEMENT`.
+/// 
+/// This function can return the dragged item element itself if the player has dragged the item
+/// back onto itself.
 /// 
 /// @param [layerOrName=current]
 /// @param [environmentName=current]
 
 function BentoDnDGetTarget(_layerOrName = undefined, _environmentOrName = undefined)
 {
-    var _layer = __BentoLayerEnsure(_layerOrName, _environmentOrName);
-    if (_layer == undefined)
+    if (not BentoExists(BentoDnDGetItem(_layerOrName, _environmentOrName)))
     {
-        if (is_struct(_layerOrName))
-        {
-            __BentoError("Could not find layer (datatype=struct)");
-        }
-        else if (is_array(_layerOrName))
-        {
-            __BentoError("Could not find layer (datatype=array)");
-        }
-        else
-        {
-            __BentoError($"Could not find layer \"{_layerOrName}\"");
-        }
+        return BENTO_NO_ELEMENT;
     }
     
-    //TODO
-    return undefined;
+    return BentoLayerGetHovered(_layerOrName, _environmentOrName);
 }
