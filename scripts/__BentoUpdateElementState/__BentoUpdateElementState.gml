@@ -20,7 +20,7 @@ function __BentoUpdateElementState()
             }
             else if (not BentoExists(__BentoScrollFindParent(_element)))
             {
-                var _clickOnPress = other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH));
+                var _clickOnPress = other.__navPointer && (__dndItemChannel == undefined) && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH));
             }
             else
             {
@@ -59,6 +59,14 @@ function __BentoUpdateElementState()
                     __primaryState = __BENTO_START;
                     other.__holdElement = _element;
                     
+                    //If this is a drap & drop item then set that up
+                    //TODO - Do we want to change the drag & drop to trigger when the pointer has moved a certain distance?
+                    if (__dndItemChannel != undefined)
+                    {
+                        other.__dndItemElement = _element;
+                        other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                    }
+                    
                     //Pass through a click signal to the element if we're clicking on press
                     if (_clickOnPress) __click = true;
                 }
@@ -73,8 +81,9 @@ function __BentoUpdateElementState()
                 //`self` will occasionally return false positives. However, comparing the `BENTO_VARS` structs is
                 //stable and returns accurate information.
                 var _isLayerHoldElement = (other.__holdElement != BENTO_NO_ELEMENT) && (other.__holdElement.BENTO_VARS == self);
+                var _isLayerItemElement = (other.__dndItemElement != BENTO_NO_ELEMENT) && (other.__dndItemElement.BENTO_VARS == self);
                 
-                if ((other.__primaryState == __BENTO_ON) && _isLayerHoldElement)
+                if ((other.__primaryState == __BENTO_ON) && (_isLayerHoldElement || _isLayerItemElement))
                 {
                     //Primary button is still down, we're still held
                     __primaryState |= __BENTO_START;
@@ -103,6 +112,13 @@ function __BentoUpdateElementState()
                                 if (BentoCursorGetHover(_element)) __click = true;
                             }
                         }
+                    }
+                    
+                    if (_isLayerItemElement)
+                    {
+                        //Unset the system's hold element since that's us
+                        other.__dndItemElement = BENTO_NO_ELEMENT;
+                        other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
                     }
                 }
             }

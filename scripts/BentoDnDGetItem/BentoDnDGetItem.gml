@@ -6,7 +6,7 @@
 /// @param [layerOrName=current]
 /// @param [environmentName=current]
 
-function BentoDnDGetDragged(_layerOrName = undefined, _environmentOrName = undefined)
+function BentoDnDGetItem(_layerOrName = undefined, _environmentOrName = undefined)
 {
     var _layer = __BentoLayerEnsure(_layerOrName, _environmentOrName);
     if (_layer == undefined)

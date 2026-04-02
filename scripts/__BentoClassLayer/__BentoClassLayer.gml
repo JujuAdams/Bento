@@ -89,6 +89,7 @@ function __BentoClassLayer(_environment, _name) constructor
     __primaryState     = __BENTO_OFF;
     __primaryConsumed  = false;
     __holdElement      = BENTO_NO_ELEMENT;
+    __dndItemElement   = BENTO_NO_ELEMENT;
     
     __updateElementArray = [];
     
@@ -277,6 +278,19 @@ function __BentoClassLayer(_environment, _name) constructor
             }
             
             array_resize(_hotkeyArray, 0);
+            
+        }
+        
+        //Reset the drag & drop element if it has been destroyed for some reason. We also reset if
+        //this layer isn't the top layer
+        //TODO - Does this need to be a hoverability check?
+        if (__dndItemElement !=  BENTO_NO_ELEMENT)
+        {
+            if ((not _isTopLayer) || (not BentoExists(__dndItemElement)))
+            {
+                __dndItemElement = BENTO_NO_ELEMENT;
+                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+            }
         }
         
         ///////
@@ -310,12 +324,13 @@ function __BentoClassLayer(_environment, _name) constructor
                 //Update the primary button state based on mouse input
                 if (__mouseHold) __primaryState |= __BENTO_START;
                 
-                //Start hovering an element if we're not currently holding an element
-                //We also want to check what element we're hovering if we've just released
+                //Verify that the currently held element is still held
                 if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
                 
                 //Try to hover a new element (maybe)
-                if ((not __mouseHold) || ((__navMode == BENTO_MODE_TOUCH) && (__primaryState == __BENTO_START)))
+                if ((not __mouseHold)
+                ||  (__mouseHold && (__dndItemElement != BENTO_NO_ELEMENT))
+                ||  ((__navMode == BENTO_MODE_TOUCH) && (__primaryState == __BENTO_START)))
                 {
                     __BentoSetHoverFromPointer(__mouseX, __mouseY);
                 }

@@ -13,18 +13,29 @@ function __BentoEnsureHoverableOrder()
     var _rootElement = __GetFocusRoot();
     if (BentoExists(_rootElement))
     {
+        if (BentoExists(__dndItemElement))
+        {
+            var _dndItemVars = __dndItemElement.BENTO_VARS;
+            var _dndChannel  = _dndItemVars.__dndItemChannel;
+        }
+        else
+        {
+            var _dndChannel  = undefined;
+            var _dndItemVars = undefined;
+        }
+        
         if (__navPointer)
         {
-            __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount);
+            __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount, _dndItemVars, _dndChannel);
         }
         else if (__navDirectional)
         {
-            __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount);
+            __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount, _dndItemVars, _dndChannel);
         }
     }
 }
 
-function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, _hoverableIndex)
+function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, _hoverableIndex, _dndItemVars, _dndChannel)
 {
     with(_elementVars)
     {
@@ -60,13 +71,14 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
             var _i = array_length(_childArray)-1;
             repeat(array_length(_childArray))
             {
-                _anyChildButton |= __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _childArray[_i], _childHoverableIndex);
+                _anyChildButton |= __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _childArray[_i], _childHoverableIndex, _dndItemVars, _dndChannel);
                 --_i;
             }
         }
         
         //Elements can only be selected if the are not enclosed as indicated by `_hoverableIndex`
-        if (_hoverableIndex != undefined)
+        if ((_hoverableIndex != undefined)
+        &&  ((_dndChannel == undefined) || (_dndItemVars == self) || ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()))))
         {
             __hoverableIndex = _hoverableIndex;
             array_push(_hoverableOrder, __funcHover);
@@ -78,7 +90,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
     return false;
 }
 
-function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVars, _hoverableIndex)
+function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVars, _hoverableIndex, _dndItemVars, _dndChannel)
 {
     with(_elementVars)
     {
@@ -100,7 +112,7 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
             var _i = array_length(_childArray)-1;
             repeat(array_length(_childArray))
             {
-                _anyChildButton |= __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _childArray[_i], _childHoverableIndex);
+                _anyChildButton |= __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _childArray[_i], _childHoverableIndex, _dndItemVars, _dndChannel);
                 --_i;
             }
         }
@@ -109,7 +121,10 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
         // 1. set up as buttons when in directional mode
         // 2. not enclosed as indicated by `_hoverableIndex`
         // 3. either not focused or don't have any children that are buttons
-        if ((__buttonType & BENTO_BUTTON_DIRECTIONAL) && (_hoverableIndex != undefined) && ((not _anyChildButton) || (not __focused)))
+        if ((__buttonType & BENTO_BUTTON_DIRECTIONAL)
+        &&  (_hoverableIndex != undefined)
+        &&  ((not _anyChildButton) || (not __focused))
+        &&  ((_dndChannel == undefined) || (_dndItemVars == self) || ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()))))
         {
             __hoverableIndex = _hoverableIndex;
             array_push(_hoverableOrder, __attachedElement);
