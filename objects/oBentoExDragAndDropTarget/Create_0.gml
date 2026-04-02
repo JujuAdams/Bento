@@ -63,3 +63,7 @@ if (text != "")
 }
 
 BentoDnDSetTargetChannel(1);
+BentoDnDSetTargetFunction(function()
+{
+    return (BentoDnDGetData() == text);
+});

@@ -25,6 +25,10 @@ function BentoDnDGetChannel(_layerOrName = undefined, _environmentOrName = undef
         }
     }
     
-    //TODO
+    with(__BentoGetVars(_layer.__dndItemElement))
+    {
+        return __dndItemChannel;
+    }
+    
     return undefined;
 }

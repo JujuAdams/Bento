@@ -25,6 +25,5 @@ function BentoDnDGetItem(_layerOrName = undefined, _environmentOrName = undefine
         }
     }
     
-    //TODO
-    return undefined;
+    return _layer.__dndItemElement;
 }

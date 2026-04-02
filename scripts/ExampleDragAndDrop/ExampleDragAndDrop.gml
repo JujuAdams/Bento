@@ -46,15 +46,27 @@ function ExampleDragAndDrop()
                     children: [
                         {
                             object: oBentoExDragAndDropItem,
+                            vars: {
+                                text: "Sock",
+                            },
                         },
                         {
                             object: oBentoExDragAndDropItem,
+                            vars: {
+                                text: "Hat",
+                            },
                         },
                         {
                             object: oBentoExDragAndDropItem,
+                            vars: {
+                                text: "Hat",
+                            },
                         },
                         {
                             object: oBentoExDragAndDropItem,
+                            vars: {
+                                text: "Kneepad",
+                            },
                         },
                     ],
                 },
@@ -68,15 +80,27 @@ function ExampleDragAndDrop()
                     children: [
                         {
                             object: oBentoExDragAndDropTarget,
+                            vars: {
+                                text: "Sock",
+                            },
                         },
                         {
                             object: oBentoExDragAndDropTarget,
+                            vars: {
+                                text: "Sock",
+                            },
                         },
                         {
                             object: oBentoExDragAndDropTarget,
+                            vars: {
+                                text: "Hat",
+                            },
                         },
                         {
                             object: oBentoExDragAndDropTarget,
+                            vars: {
+                                text: "Kneepad",
+                            },
                         },
                     ],
                 },

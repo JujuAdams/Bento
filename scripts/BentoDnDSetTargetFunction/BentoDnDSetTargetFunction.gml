@@ -7,6 +7,6 @@ function BentoDnDSetTargetFunction(_testFunction, _element = self)
 {
     with(__BentoGetVars(_element))
     {
-        __dndTargetFunc = undefined;
+        __dndTargetFunc = _testFunction;
     }
 }
