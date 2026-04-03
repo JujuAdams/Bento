@@ -42,13 +42,15 @@ function __BentoClassLayer(_environment, _name) constructor
     // Input state
     ////////
     
-    __mouseX      = 0;
-    __mouseY      = 0;
-    __mouseHold   = false;
-    __mousePrevX  = 0;
-    __mousePrevY  = 0;
-    __mousePressX = undefined;
-    __mousePressY = undefined;
+    __mouseX       = 0;
+    __mouseY       = 0;
+    __mouseHold    = false;
+    __mousePrevX   = 0;
+    __mousePrevY   = 0;
+    __mousePressX  = undefined;
+    __mousePressY  = undefined;
+    __mouseDragged = false;
+    __mouseDragDistance = 0;
     
     __directionalDX    = 0;
     __directionalDY    = 0;
@@ -145,6 +147,9 @@ function __BentoClassLayer(_environment, _name) constructor
             
             __mousePressX = undefined;
             __mousePressY = undefined;
+            
+            __mouseDragged      = false;
+            __mouseDragDistance = 0;
         }
         else if ((_newMode == BENTO_MODE_MOUSE) || (_newMode == BENTO_MODE_TOUCH))
         {
@@ -249,6 +254,17 @@ function __BentoClassLayer(_environment, _name) constructor
             {
                 __mouseX = _environment.__envMouseX;
                 __mouseY = _environment.__envMouseY;
+                
+                //Update mouse drag information
+                if (__navPointer && (__primaryState & __BENTO_START))
+                {
+                    __mouseDragDistance = point_distance(__mousePressX, __mousePressY, __mouseX, __mouseY);
+                    
+                    if (__mouseDragDistance > BENTO_POINTER_DRAG_THRESHOLD)
+                    {
+                        __mouseDragged = true;
+                    }
+                }
             }
             
             //Update directional input
@@ -385,6 +401,9 @@ function __BentoClassLayer(_environment, _name) constructor
                     //And reset the mouse state when we release
                     __mousePressX = undefined;
                     __mousePressY = undefined;
+                    
+                    __mouseDragged      = false;
+                    __mouseDragDistance = 0;
                 }
             }
             else if (__navDirectional)

@@ -23,7 +23,7 @@ function __BentoUpdateElementState()
             {
                 var _clickOnPress = false;
             }
-            else if (__dndItemChannel != undefined)
+            else if ((__dndItemChannel != undefined) || __longPressEnabled)
             {
                 var _clickOnPress = false;
             }
@@ -44,10 +44,6 @@ function __BentoUpdateElementState()
             if ((other.__hoverElement != BENTO_NO_ELEMENT) && (other.__hoverElement.BENTO_VARS == self))
             {
                 __hoverState |= __BENTO_START;
-            }
-            else
-            {
-                __pressTime = infinity;
             }
             
             if (__hoverState != __BENTO_START)
@@ -116,7 +112,8 @@ function __BentoUpdateElementState()
                     //Primary button is still down, we're still held
                     __primaryState |= __BENTO_START;
                     
-                    if ((not __longClicked) && (current_time - __pressTime >= 1000))
+                    //Trigger a long click
+                    if (__longPressEnabled && (not other.__mouseDragged) && (not __longClicked) && (current_time - __pressTime >= BENTO_LONG_CLICK_TIME))
                     {
                         __clickState = 0b10;
                         __longClicked = true;

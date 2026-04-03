@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoPrimaryGetDragDistance",
+  "%Name":"BentoPrimaryGetDragged",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoPrimaryGetDragDistance",
+  "name":"BentoPrimaryGetDragged",
   "parent":{
     "name":"Primary",
     "path":"folders/Bento/Functions/Input & Navigation/Getters/Primary.yy",

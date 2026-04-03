@@ -54,9 +54,11 @@ if (inoperative)
 
 //Ensure the click function is scoped to this instance
 func = method(self, func);
+funcLong = method(self, funcLong);
 
 //Allow Bento to focus this element
 BentoSetButton(inoperative? BENTO_BUTTON_NEVER : BENTO_BUTTON_ALWAYS);
+BentoSetLongPress(true);
 
 //If we have some valid text then force the size of the element
 if (text != "")

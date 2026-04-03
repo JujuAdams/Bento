@@ -39,6 +39,9 @@
 // an element and then clicks and releases again to drop the element.
 #macro BENTO_DRAG_ALWAYS_TOGGLES  false
 
+// How long, in milliseconds, the primary button must be held down to count as a "long click".
+#macro BENTO_LONG_CLICK_TIME  1000 //milliseconds
+
 
 
 ///////
@@ -68,7 +71,7 @@
 ///////
 
 // How far the pointer must move before engaging scrolling when clicking and dragging.
-#macro BENTO_SCROLL_THRESHOLD  4
+#macro BENTO_POINTER_DRAG_THRESHOLD  4
 
 // Default speed that scrolling element scroll at. Measured in pixels per frame.
 #macro BENTO_DEFAULT_SCROLL_SPEED  7

@@ -50,8 +50,10 @@ function __BentoClassVariables(_attachedElement) constructor
     __primaryState = __BENTO_OFF;
     __byNavigation = false;
     __clickState   = 0b00;
-    __pressTime    = -infinity;
-    __longClicked  = false;
+    
+    __longPressEnabled = false;
+    __pressTime        = -infinity;
+    __longClicked      = false;
     
     __dndItemChannel   = undefined;
     __dndItemData      = undefined;

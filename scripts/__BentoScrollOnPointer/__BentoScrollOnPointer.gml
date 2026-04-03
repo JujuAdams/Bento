@@ -33,7 +33,7 @@ function __BentoScrollOnPointer()
                 }
             }
             
-            if (BentoPrimaryGetDragDistance() > BENTO_SCROLL_THRESHOLD)
+            if (BentoPrimaryGetDragged())
             {
                 var _parent = __BentoScrollFindParent(self);
                 if (self == _parent)
