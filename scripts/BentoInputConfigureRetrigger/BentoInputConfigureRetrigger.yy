@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoInputConfigureRetrigger",
   "parent":{
-    "name":"Input & Navigation",
-    "path":"folders/Bento/Functions/Input & Navigation.yy",
+    "name":"Directional Only",
+    "path":"folders/Bento/Functions/Input & Navigation/Directional Only.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

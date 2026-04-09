@@ -56,7 +56,6 @@ function __BentoClassVariables(_attachedElement) constructor
     __longClicked      = false;
     
     __dndItemChannel   = undefined;
-    __dndItemData      = undefined;
     __dndTargetChannel = undefined;
     __dndTargetFunc    = undefined;
     

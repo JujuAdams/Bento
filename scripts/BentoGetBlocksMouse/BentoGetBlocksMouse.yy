@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoGetBlocksMouse",
   "parent":{
-    "name":"Input & Navigation",
-    "path":"folders/Bento/Functions/Input & Navigation.yy",
+    "name":"Getters",
+    "path":"folders/Bento/Functions/Input & Navigation/Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

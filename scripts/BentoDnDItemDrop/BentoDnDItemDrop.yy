@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoDnDGetData",
+  "%Name":"BentoDnDItemDrop",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoDnDGetData",
+  "name":"BentoDnDItemDrop",
   "parent":{
-    "name":"Drag & Drop",
-    "path":"folders/Bento/Functions/Drag & Drop.yy",
+    "name":"Manual",
+    "path":"folders/Bento/Functions/Drag & Drop/Manual.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

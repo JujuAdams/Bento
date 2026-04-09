@@ -7,6 +7,10 @@ function BentoDnDSetTargetChannel(_channel, _element = self)
 {
     with(__BentoGetVars(_element))
     {
-        __dndTargetChannel =_channel;
+        if (__dndTargetChannel != _channel)
+        {
+            __layer.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+            __dndTargetChannel =_channel;
+        }
     }
 }

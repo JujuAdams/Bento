@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoPrimaryGetLongClick",
+  "%Name":"BentoPrimaryGetLongPress",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoPrimaryGetLongClick",
+  "name":"BentoPrimaryGetLongPress",
   "parent":{
     "name":"Primary Long",
     "path":"folders/Bento/Functions/Input & Navigation/Getters/Primary Long.yy",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoInputConsume",
   "parent":{
-    "name":"Input & Navigation",
-    "path":"folders/Bento/Functions/Input & Navigation.yy",
+    "name":"Setters",
+    "path":"folders/Bento/Functions/Input & Navigation/Setters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

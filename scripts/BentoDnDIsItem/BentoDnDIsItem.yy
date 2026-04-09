@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"BentoDnDIsItem",
   "parent":{
-    "name":"Drag & Drop",
-    "path":"folders/Bento/Functions/Drag & Drop.yy",
+    "name":"State Getters",
+    "path":"folders/Bento/Functions/Drag & Drop/State Getters.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
