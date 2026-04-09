@@ -17,5 +17,19 @@
 
 function BentoDnDItemPickContinuous(_element = self)
 {
-    //Drop state should be calculated at the start of an update loop
+    with(__BentoGetVars(_element))
+    {
+        if (__dndItemChannel != undefined)
+        {
+            __layer.__dndNextItemElement = _element;
+            __dndItemContinuous = true;
+        }
+        else
+        {
+            if (BENTO_SAFE && BENTO_RUNNING_FROM_IDE)
+            {
+                __BentoError("Cannot pick drag & drop item, its channel is `undefined`\nPlease call `BentoDnDSetItemChannel()`");
+            }
+        }
+    }
 }

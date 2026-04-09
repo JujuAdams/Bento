@@ -55,9 +55,11 @@ function __BentoClassVariables(_attachedElement) constructor
     __longPressEnabled = false;
     __pressTime        = -infinity;
     
-    __dndItemChannel   = undefined;
-    __dndTargetChannel = undefined;
-    __dndTargetFunc    = undefined;
+    __dndItemState      = __BENTO_OFF;
+    __dndItemContinuous = true;
+    __dndItemChannel    = undefined;
+    __dndTargetChannel  = undefined;
+    __dndTargetFunc     = undefined;
     
     __textConfig = {
         __maxLength:      300,

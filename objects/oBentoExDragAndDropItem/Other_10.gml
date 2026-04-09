@@ -18,17 +18,22 @@ if (BentoCursorGetEnterByNavigation() && BentoUsingDirectional())
     audio_play_sound(sndBentoExBlip, 0, false);
 }
 
-if (BentoPrimaryGetRelease())
+if (BentoPrimaryGetHold())
 {
-    show_debug_message("Released");
+    BentoDnDItemPickContinuous();
+}
+
+if (BentoDnDIsItem())
+{
+    show_debug_message("We are being dragged");
+}
+
+if (BentoDnDGetItemDropped())
+{
+    show_debug_message("We were dropped");
     
-    if (BentoDnDGetItem() == self)
+    with(BentoDnDGetDropTarget())
     {
-        show_debug_message("We were being dragged");
-        
-        with(BentoDnDGetTarget())
-        {
-            show_debug_message($"Target ID = {id}");
-        }
+        show_debug_message($"Target ID = {id}");
     }
 }

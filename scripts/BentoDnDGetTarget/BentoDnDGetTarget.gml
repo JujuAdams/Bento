@@ -14,10 +14,10 @@
 
 function BentoDnDGetTarget(_layerOrName = undefined, _environmentOrName = undefined)
 {
-    if (not BentoExists(BentoDnDGetItem(_layerOrName, _environmentOrName)))
+    with(BentoDnDGetItem(_layerOrName, _environmentOrName))
     {
-        return BENTO_NO_ELEMENT;
+        return BENTO_VARS.__dndTargetElement;
     }
     
-    return BentoLayerGetHovered(_layerOrName, _environmentOrName);
+    return BENTO_NO_ELEMENT;
 }

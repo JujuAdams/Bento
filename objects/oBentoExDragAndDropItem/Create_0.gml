@@ -63,4 +63,3 @@ if (text != "")
 }
 
 BentoDnDSetItemChannel(1);
-BentoDnDSetItemData(text);

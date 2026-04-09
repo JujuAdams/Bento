@@ -35,6 +35,20 @@ function __BentoUpdateElementState()
             __clickState = 0b00;
             
             ///////
+            // Drag & drop
+            ///////
+            
+            if (__dndItemState > 0)
+            {
+                __dndItemState = __dndItemState >> 1;
+                
+                if (__dndItemState == __BENTO_OFF)
+                {
+                    __dndTargetElement = BENTO_NO_ELEMENT;
+                }
+            }
+            
+            ///////
             // Hover state
             ///////
             
@@ -65,31 +79,6 @@ function __BentoUpdateElementState()
                     __pressTime = current_time;
                     
                     other.__holdElement = _element;
-                    
-                    if (other.__navDirectional || BENTO_DRAG_ALWAYS_TOGGLES)
-                    {
-                        //Directional input modes toggle on the primary button
-                        if (other.__dndItemElement == _element)
-                        {
-                            //Defer cancelling until the next update tick
-                            other.__dndItemCancel = true;
-                        }
-                        else
-                        {
-                            other.__dndItemElement = _element;
-                            other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
-                        }
-                    }
-                    else if (other.__navPointer)
-                    {
-                        //Pointer input modes and click-and-hold
-                        //TODO - Do we want to change the drag & drop to trigger when the pointer has moved a certain distance?
-                        if (__dndItemChannel != undefined)
-                        {
-                            other.__dndItemElement = _element;
-                            other.__dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
-                        }
-                    }
                     
                     //Pass through a click signal to the element if we're clicking on press
                     if (_clickOnPress) __clickState = 0b01;
@@ -129,7 +118,9 @@ function __BentoUpdateElementState()
                         other.__holdElement = BENTO_NO_ELEMENT;
                         
                         //Pass through a click signal to the element if we're clicking on release
-                        if ((not _clickOnPress) && (__primaryState == __BENTO_END) && (other.__primaryState == __BENTO_END))
+                        if ((not _clickOnPress)
+                        &&  (__primaryState == __BENTO_END) && (other.__primaryState == __BENTO_END)
+                        &&  ((not other.__mouseDragged) || (__dndItemChannel == undefined)))
                         {
                             if (other.__navMode == BENTO_MODE_TOUCH)
                             {
@@ -137,7 +128,7 @@ function __BentoUpdateElementState()
                                 //hover state for the held element will always be in the leaving (END) state.
                                 if (__hoverState == __BENTO_END)
                                 {
-                                    __clickState = (__primaryLongState > 0)? (other.__mouseDragged? 0b00 : 0b10) : 0b01;
+                                    __clickState = (__primaryLongState > 0)? 0b10 : 0b01;
                                 }
                             }
                             else
@@ -145,23 +136,19 @@ function __BentoUpdateElementState()
                                 //Only click if we're hovered.
                                 if (BentoCursorGetHover(_element))
                                 {
-                                    __clickState = (__primaryLongState > 0)? (other.__mouseDragged? 0b00 : 0b10) : 0b01;
+                                    __clickState = (__primaryLongState > 0)? 0b10 : 0b01;
                                 }
                             }
                         }
-                    }
-                    
-                    //Unset the drag & drop element on release for pointers
-                    if (_isLayerItemElement && other.__navPointer && (not BENTO_DRAG_ALWAYS_TOGGLES))
-                    {
-                        //Defer cancelling until the next update tick
-                        other.__dndItemCancel = true;
                     }
                 }
             }
             
             //Remove this element from the update loop if it's inactive
-            if ((__hoverState == __BENTO_OFF) && (__primaryState == __BENTO_OFF) && (__primaryLongState == __BENTO_OFF))
+            if ((__hoverState == __BENTO_OFF)
+            &&  (__primaryState == __BENTO_OFF)
+            &&  (__primaryLongState == __BENTO_OFF)
+            &&  (__dndItemState == __BENTO_OFF))
             {
                 __updating = false;
                 return false;

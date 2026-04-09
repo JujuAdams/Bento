@@ -20,5 +20,13 @@
 
 function BentoDnDItemDrop(_element = self)
 {
-    //Drop state should be calculated at the start of an update loop
+    with(__BentoGetVars(_element))
+    {
+        __dndItemContinuous = true;
+        
+        if (__layer.__dndNextItemElement == _element)
+        {
+            __layer.__dndNextItemElement = BENTO_NO_ELEMENT;
+        }
+    }
 }

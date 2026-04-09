@@ -86,13 +86,13 @@ function __BentoClassLayer(_environment, _name) constructor
     __dirtyTransformsArray   = [];
     __scrollAnimatingArray   = [];
     
-    __hoverElement     = BENTO_NO_ELEMENT;
-    __hoverElementSoft = BENTO_NO_ELEMENT;
-    __primaryState     = __BENTO_OFF;
-    __primaryConsumed  = false;
-    __holdElement      = BENTO_NO_ELEMENT;
-    __dndItemCancel    = false;
-    __dndItemElement   = BENTO_NO_ELEMENT;
+    __hoverElement       = BENTO_NO_ELEMENT;
+    __hoverElementSoft   = BENTO_NO_ELEMENT;
+    __primaryState       = __BENTO_OFF;
+    __primaryConsumed    = false;
+    __holdElement        = BENTO_NO_ELEMENT;
+    __dndItemElement     = BENTO_NO_ELEMENT;
+    __dndNextItemElement = BENTO_NO_ELEMENT;
     
     __updateElementArray = [];
     
@@ -117,6 +117,12 @@ function __BentoClassLayer(_environment, _name) constructor
     static __SetHoverElement = function(_hoverElement)
     {
         __hoverElement = _hoverElement;
+            
+        //So long as we have a drag & drop element, set its target
+        if (__dndItemElement != BENTO_NO_ELEMENT)
+        {
+            __dndItemElement.BENTO_VARS.__dndTargetElement = _hoverElement;
+        }
     }
     
     static __UpdateInputMode = function()
@@ -298,24 +304,6 @@ function __BentoClassLayer(_environment, _name) constructor
             
         }
         
-        //Reset the drag & drop element if it has been destroyed for some reason or its channel has
-        //been set to `undefined`. We also reset if this layer isn't the top layer
-        //TODO - Does this need to use a hoverability check?
-        if (__dndItemElement !=  BENTO_NO_ELEMENT)
-        {
-            if ((not _isTopLayer) || (not BentoExists(__dndItemElement)) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined))
-            {
-                __dndItemCancel = true;
-            }
-        }
-        
-        if (__dndItemCancel)
-        {
-            __dndItemCancel  = false;
-            __dndItemElement = BENTO_NO_ELEMENT;
-            __dirtyFlags    |= __BENTO_DIRTY_HOVERABLE;
-        }
-        
         ///////
         // Layout and step order
         ///////
@@ -332,8 +320,62 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureOffset();
         __BentoEnsureHoverableOrder();
         
+        //Reset the drag & drop element if it has been destroyed for some reason or its channel has
+        //been set to `undefined`. We also reset if this layer isn't the top layer
+        //TODO - Does this need to use a hoverability check?
+        if (__dndItemElement !=  BENTO_NO_ELEMENT)
+        {
+            if (not BentoExists(__dndItemElement))
+            {
+                __dndItemElement = BENTO_NO_ELEMENT;
+                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+            }
+            else if ((not _isTopLayer) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined))
+            {
+                __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
+                
+                __dndItemElement = BENTO_NO_ELEMENT;
+                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+            }
+        }
+        
         if (_isTopLayer)
         {
+            ///////
+            // Drag & drop
+            ///////
+            
+            if (__dndNextItemElement != BENTO_NO_ELEMENT)
+            {
+                if (__dndNextItemElement != __dndItemElement)
+                {
+                    __dndItemElement = __dndNextItemElement;
+                    __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                    
+                    with(__dndItemElement.BENTO_VARS)
+                    {
+                        __dndTargetElement = BENTO_NO_ELEMENT;
+                    
+                        if (not __updating)
+                        {
+                            __updating = true;
+                            array_push(__layer.__updateElementArray, self)
+                        }
+                    }
+                }
+                
+                __dndItemElement.BENTO_VARS.__dndItemState |= (__BENTO_START << 1);
+                __dndNextItemElement = BENTO_NO_ELEMENT;
+            }
+            else //(__dndNextItemElement == BENTO_NO_ELEMENT)
+            {
+                if ((__dndItemElement != BENTO_NO_ELEMENT) && __dndItemElement.BENTO_VARS.__dndItemContinuous)
+                {
+                    __dndItemElement = BENTO_NO_ELEMENT;
+                    __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                }
+            }
+            
             ///////
             // Navigation
             ///////
@@ -427,6 +469,10 @@ function __BentoClassLayer(_environment, _name) constructor
             {
                 __primaryConsumed = false;
             }
+            
+            ///////
+            // State update
+            ///////
             
             __BentoUpdateElementState();
             
