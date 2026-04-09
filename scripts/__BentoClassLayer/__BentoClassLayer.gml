@@ -395,15 +395,15 @@ function __BentoClassLayer(_environment, _name) constructor
                     
                     __mousePrevX = __mouseX;
                     __mousePrevY = __mouseY;
+                    
+                    __mouseDragged      = false;
+                    __mouseDragDistance = 0;
                 }
                 else if (__primaryState == __BENTO_END)
                 {
                     //And reset the mouse state when we release
                     __mousePressX = undefined;
                     __mousePressY = undefined;
-                    
-                    __mouseDragged      = false;
-                    __mouseDragDistance = 0;
                 }
             }
             else if (__navDirectional)

@@ -40,7 +40,7 @@
 #macro BENTO_DRAG_ALWAYS_TOGGLES  false
 
 // How long, in milliseconds, the primary button must be held down to count as a "long click".
-#macro BENTO_LONG_CLICK_TIME  1000 //milliseconds
+#macro BENTO_LONG_CLICK_TIME  420 //milliseconds
 
 
 

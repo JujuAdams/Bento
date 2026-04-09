@@ -13,6 +13,24 @@ if (BentoPrimaryGetClick())
     }
 }
 
+if (BentoPrimaryGetLongPress())
+{
+    show_debug_message("long press");
+}
+
+if (BentoPrimaryGetLongHold())
+{
+    if ((BentoSystemGetTime() mod 15) == 0)
+    {
+        show_debug_message("long hold");
+    }
+}
+
+if (BentoPrimaryGetLongRelease())
+{
+    show_debug_message("long release");
+}
+
 if (BentoPrimaryGetLongClick())
 {
     audio_play_sound(sndBentoExBeep, 0, false);

@@ -46,14 +46,14 @@ function __BentoClassVariables(_attachedElement) constructor
     __transformScaleY  = 1;
     __transformAngle   = 0;
     
-    __hoverState   = __BENTO_OFF;
-    __primaryState = __BENTO_OFF;
-    __byNavigation = false;
-    __clickState   = 0b00;
+    __hoverState       = __BENTO_OFF;
+    __primaryState     = __BENTO_OFF;
+    __primaryLongState = __BENTO_OFF;
+    __byNavigation     = false;
+    __clickState       = 0b00;
     
     __longPressEnabled = false;
     __pressTime        = -infinity;
-    __longClicked      = false;
     
     __dndItemChannel   = undefined;
     __dndTargetChannel = undefined;

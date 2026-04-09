@@ -99,6 +99,7 @@ function __BentoUpdateElementState()
             {
                 //Advance our state
                 __primaryState = __primaryState >> 1;
+                __primaryLongState = __primaryLongState >> 1;
                 
                 //Compare hold element to ourselves using a BENTO_VARS check - this is because GameMaker sometimes
                 //gets confused with comparing instance references. It appears that comparisons between `id` and
@@ -113,10 +114,9 @@ function __BentoUpdateElementState()
                     __primaryState |= __BENTO_START;
                     
                     //Trigger a long click
-                    if (__longPressEnabled && (not other.__mouseDragged) && (not __longClicked) && (current_time - __pressTime >= BENTO_LONG_CLICK_TIME))
+                    if (__longPressEnabled && (current_time - __pressTime >= BENTO_LONG_CLICK_TIME))
                     {
-                        __clickState = 0b10;
-                        __longClicked = true;
+                        __primaryLongState |= __BENTO_START;
                     }
                 }
                 else
@@ -129,18 +129,24 @@ function __BentoUpdateElementState()
                         other.__holdElement = BENTO_NO_ELEMENT;
                         
                         //Pass through a click signal to the element if we're clicking on release
-                        if ((not _clickOnPress) && (__primaryState == __BENTO_END) && (other.__primaryState == __BENTO_END) && (not __longClicked))
+                        if ((not _clickOnPress) && (__primaryState == __BENTO_END) && (other.__primaryState == __BENTO_END))
                         {
                             if (other.__navMode == BENTO_MODE_TOUCH)
                             {
                                 //Because we set the mouse x/y position to large negative numbers before running this function, the
                                 //hover state for the held element will always be in the leaving (END) state.
-                                if (__hoverState == __BENTO_END) __clickState = 0b01;
+                                if (__hoverState == __BENTO_END)
+                                {
+                                    __clickState = (__primaryLongState > 0)? (other.__mouseDragged? 0b00 : 0b10) : 0b01;
+                                }
                             }
                             else
                             {
                                 //Only click if we're hovered.
-                                if (BentoCursorGetHover(_element)) __clickState = 0b01;
+                                if (BentoCursorGetHover(_element))
+                                {
+                                    __clickState = (__primaryLongState > 0)? (other.__mouseDragged? 0b00 : 0b10) : 0b01;
+                                }
                             }
                         }
                     }
@@ -151,13 +157,11 @@ function __BentoUpdateElementState()
                         //Defer cancelling until the next update tick
                         other.__dndItemCancel = true;
                     }
-                    
-                    __longClicked = false;
                 }
             }
             
             //Remove this element from the update loop if it's inactive
-            if ((__hoverState == __BENTO_OFF) && (__primaryState == __BENTO_OFF))
+            if ((__hoverState == __BENTO_OFF) && (__primaryState == __BENTO_OFF) && (__primaryLongState == __BENTO_OFF))
             {
                 __updating = false;
                 return false;

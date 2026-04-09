@@ -433,6 +433,7 @@
     {"id":{"name":"BentoSetVisible","path":"scripts/BentoSetVisible/BentoSetVisible.yy",},},
     {"id":{"name":"BentoSystemDraw","path":"scripts/BentoSystemDraw/BentoSystemDraw.yy",},},
     {"id":{"name":"BentoSystemGetScale","path":"scripts/BentoSystemGetScale/BentoSystemGetScale.yy",},},
+    {"id":{"name":"BentoSystemGetTime","path":"scripts/BentoSystemGetTime/BentoSystemGetTime.yy",},},
     {"id":{"name":"BentoSystemSandbox","path":"scripts/BentoSystemSandbox/BentoSystemSandbox.yy",},},
     {"id":{"name":"BentoSystemSetScale","path":"scripts/BentoSystemSetScale/BentoSystemSetScale.yy",},},
     {"id":{"name":"BentoSystemStep","path":"scripts/BentoSystemStep/BentoSystemStep.yy",},},
