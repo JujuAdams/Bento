@@ -7,5 +7,5 @@
 function BentoCursorGetHover(_element = self)
 {
     if (not BentoExists(_element)) return false;
-    return ((_element.BENTO_VARS.__hoverState == __BENTO_START) || (_element.BENTO_VARS.__hoverState == __BENTO_ON));
+    return ((_element.BENTO_VARS.__hoverState & __BENTO_START) > 0);
 }

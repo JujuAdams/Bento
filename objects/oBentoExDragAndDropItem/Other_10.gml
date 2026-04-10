@@ -18,17 +18,7 @@ if (BentoCursorGetEnterByNavigation() && BentoUsingDirectional())
     audio_play_sound(sndBentoExBlip, 0, false);
 }
 
-//if (BentoPrimaryGetHold())
-//{
-//    BentoDnDItemPickContinuous();
-//}
-
 BentoDnDItemBehavior();
-
-if (BentoDnDIsItem())
-{
-    show_debug_message("We are being dragged");
-}
 
 if (BentoDnDGetItemDropped())
 {

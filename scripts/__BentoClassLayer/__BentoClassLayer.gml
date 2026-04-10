@@ -349,6 +349,7 @@ function __BentoClassLayer(_environment, _name) constructor
             {
                 if (__dndNextItemElement != __dndItemElement)
                 {
+                    //We've got new drag & drop item element
                     __dndItemElement = __dndNextItemElement;
                     __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
                     
@@ -364,15 +365,22 @@ function __BentoClassLayer(_environment, _name) constructor
                     }
                 }
                 
+                //We're adjusting state here ahead of time so we need a bitshift to get the final state value correct
                 __dndItemElement.BENTO_VARS.__dndItemState |= (__BENTO_START << 1);
                 __dndNextItemElement = BENTO_NO_ELEMENT;
             }
-            else //(__dndNextItemElement == BENTO_NO_ELEMENT)
+            else if (__dndItemElement != BENTO_NO_ELEMENT)
             {
-                if ((__dndItemElement != BENTO_NO_ELEMENT) && __dndItemElement.BENTO_VARS.__dndItemContinuous)
+                if (__dndItemElement.BENTO_VARS.__dndItemContinuous)
                 {
+                    //If we have no new drag & drop item element and the current item is continuous then we've lost the item
                     __dndItemElement = BENTO_NO_ELEMENT;
                     __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                }
+                else
+                {
+                    //We're adjusting state here ahead of time so we need a bitshift to get the final state value correct
+                    __dndItemElement.BENTO_VARS.__dndItemState |= (__BENTO_START << 1);
                 }
             }
             

@@ -10,19 +10,28 @@ function BentoDnDItemBehavior(_element = self)
 {
     var _layer = BentoGetLayer(_element);
     
-    if (BentoUsingPointer(_layer) && BentoPrimaryGetHold(_element) && BentoPrimaryGetDragged(_layer))
+    if (BentoUsingPointer(_layer))
     {
-        BentoDnDItemPickContinuous(_element);
-    }
-    else if (BentoUsingDirectional(_layer) && BentoPrimaryGetClick(_element))
-    {
-        if (BentoDnDIsItem(_element))
+        if (BentoPrimaryGetHold(_element) && BentoPrimaryGetDragged(_layer))
         {
-            BentoDnDItemPick(_element);
+            BentoDnDItemPickContinuous(_element);
+        }
+    }
+    else if (BentoUsingDirectional(_layer))
+    {
+        if (not BentoDnDIsItem(_element))
+        {
+            if (BentoPrimaryGetClick(_element))
+            {
+                BentoDnDItemPick(_element);
+            }
         }
         else
         {
-            BentoDnDItemDrop(_element);
+            if (BentoPrimaryGetPress(_element) || BentoHotkeyGetPress(BENTO_HOTKEY_CANCEL))
+            {
+                BentoDnDItemDrop(_element);
+            }
         }
     }
 }

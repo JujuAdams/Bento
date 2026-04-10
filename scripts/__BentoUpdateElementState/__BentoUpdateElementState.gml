@@ -38,6 +38,8 @@ function __BentoUpdateElementState()
             // Drag & drop
             ///////
             
+            var _isLayerItemElement = (other.__dndItemElement != BENTO_NO_ELEMENT) && (other.__dndItemElement.BENTO_VARS == self);
+            
             if (__dndItemState > 0)
             {
                 __dndItemState = __dndItemState >> 1;
@@ -73,15 +75,19 @@ function __BentoUpdateElementState()
             {
                 //System says the player has clicked
                 
-                if (BentoCursorGetHover(_element) && (not BentoPrimaryGetHold(_element)))
+                if ((((__hoverState & __BENTO_START) > 0) || _isLayerItemElement)
+                &&  ((__primaryState & __BENTO_START) == 0))
                 {
                     __primaryState = __BENTO_START;
                     __pressTime = current_time;
                     
-                    other.__holdElement = _element;
-                    
-                    //Pass through a click signal to the element if we're clicking on press
-                    if (_clickOnPress) __clickState = 0b01;
+                    if (not _isLayerItemElement)
+                    {
+                        other.__holdElement = _element; 
+                        
+                        //Pass through a click signal to the element if we're clicking on press
+                        if (_clickOnPress) __clickState = 0b01;
+                    }
                 }
             }
             else
@@ -95,7 +101,6 @@ function __BentoUpdateElementState()
                 //`self` will occasionally return false positives. However, comparing the `BENTO_VARS` structs is
                 //stable and returns accurate information.
                 var _isLayerHoldElement = (other.__holdElement != BENTO_NO_ELEMENT) && (other.__holdElement.BENTO_VARS == self);
-                var _isLayerItemElement = (other.__dndItemElement != BENTO_NO_ELEMENT) && (other.__dndItemElement.BENTO_VARS == self);
                 
                 if ((other.__primaryState == __BENTO_ON) && (_isLayerHoldElement || _isLayerItemElement))
                 {
@@ -119,7 +124,8 @@ function __BentoUpdateElementState()
                         
                         //Pass through a click signal to the element if we're clicking on release
                         if ((not _clickOnPress)
-                        &&  (__primaryState == __BENTO_END) && (other.__primaryState == __BENTO_END)
+                        &&  (__primaryState == __BENTO_END)
+                        &&  (other.__primaryState == __BENTO_END)
                         &&  ((not other.__mouseDragged) || (__dndItemChannel == undefined)))
                         {
                             if (other.__navMode == BENTO_MODE_TOUCH)
@@ -134,7 +140,7 @@ function __BentoUpdateElementState()
                             else
                             {
                                 //Only click if we're hovered.
-                                if (BentoCursorGetHover(_element))
+                                if ((__hoverState & __BENTO_START) > 0)
                                 {
                                     __clickState = (__primaryLongState > 0)? 0b10 : 0b01;
                                 }
