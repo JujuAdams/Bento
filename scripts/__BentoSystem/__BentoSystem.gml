@@ -7,10 +7,10 @@
 
 #macro __BENTO_NO_PARENT  -666
 
-#macro __BENTO_OFF    0b00  //0
-#macro __BENTO_START  0b10  //2
-#macro __BENTO_ON     0b11  //3
-#macro __BENTO_END    0b01  //1
+#macro __BENTO_STATE_OFF    0b00  //0
+#macro __BENTO_STATE_START  0b10  //2
+#macro __BENTO_STATE_ON     0b11  //3
+#macro __BENTO_STATE_END    0b01  //1
 
 #macro __BENTO_DIRTY_LAYOUT     0b0001
 #macro __BENTO_DIRTY_STEP       0b0010

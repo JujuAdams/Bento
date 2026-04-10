@@ -15,7 +15,7 @@ function BentoHotkeyGetPress(_name, _ignoreConsume = false, _layerOrName = undef
     with(__BentoLayerEnsure(_layerOrName))
     {
         if ((not _ignoreConsume) && (__hotkeyConsumedMap[? _name] ?? false)) return false;
-        return (__hotkeyStateMap[? _name] == __BENTO_START);
+        return (__hotkeyStateMap[? _name] == __BENTO_STATE_START);
     }
     
     return false;

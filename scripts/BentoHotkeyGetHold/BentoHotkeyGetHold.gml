@@ -11,7 +11,7 @@ function BentoHotkeyGetHold(_name, _ignoreConsume = false, _layerOrName = undefi
     with(__BentoLayerEnsure(_layerOrName))
     {
         if ((not _ignoreConsume) && (__hotkeyConsumedMap[? _name] ?? false)) return false;
-        return (__hotkeyStateMap[? _name] == __BENTO_ON);
+        return (__hotkeyStateMap[? _name] == __BENTO_STATE_ON);
     }
     
     return false;

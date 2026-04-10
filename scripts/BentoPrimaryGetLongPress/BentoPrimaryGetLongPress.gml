@@ -10,5 +10,5 @@
 
 function BentoPrimaryGetLongPress(_element = self)
 {
-    return BentoExists(_element)? (_element.BENTO_VARS.__primaryLongState == __BENTO_START) : false;
+    return BentoExists(_element)? (_element.BENTO_VARS.__primaryLongState == __BENTO_STATE_START) : false;
 }

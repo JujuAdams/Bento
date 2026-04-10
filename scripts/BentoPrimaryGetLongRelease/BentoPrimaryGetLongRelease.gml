@@ -10,5 +10,5 @@
 
 function BentoPrimaryGetLongRelease(_element = self)
 {
-    return BentoExists(_element)? (_element.BENTO_VARS.__primaryLongState == __BENTO_END) : false;
+    return BentoExists(_element)? (_element.BENTO_VARS.__primaryLongState == __BENTO_STATE_END) : false;
 }

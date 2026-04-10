@@ -6,7 +6,7 @@ function BentoDnDGetItemDropped(_element = self)
 {
     with(__BentoGetVars(_element))
     {
-        return (__dndItemState == __BENTO_END);
+        return (__dndItemState == __BENTO_STATE_END);
     }
     
     return false;

@@ -10,7 +10,7 @@ function __BentoStartHold(_element)
     {
         with(_element.BENTO_VARS)
         {
-            __primaryState = __BENTO_START;
+            __primaryState = __BENTO_STATE_START;
             __layer.__holdElement = _element;
             
             if (not __updating)

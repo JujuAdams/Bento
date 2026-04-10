@@ -55,7 +55,7 @@ function BentoDebugStepOrder(_layerOrName = undefined)
                 var _action  = "step";
                 
                 _buttonType = _self.BENTO_VARS.__buttonType;
-                _hovered    = _self.BENTO_VARS.__hoverState & __BENTO_ON;
+                _hovered    = _self.BENTO_VARS.__hoverState & __BENTO_STATE_ON;
             }
             
             if (_element != undefined)

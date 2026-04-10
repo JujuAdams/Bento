@@ -15,7 +15,7 @@ function BentoHotkeyGetRelease(_name, _ignoreConsume = false, _layerOrName = und
     with(__BentoLayerEnsure(_layerOrName))
     {
         if ((not _ignoreConsume) && (__hotkeyConsumedMap[? _name] ?? false)) return false;
-        return (__hotkeyStateMap[? _name] == __BENTO_END);
+        return (__hotkeyStateMap[? _name] == __BENTO_STATE_END);
     }
     
     return false;
