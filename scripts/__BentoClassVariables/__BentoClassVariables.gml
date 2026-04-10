@@ -53,6 +53,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __clickState       = 0b00;
     
     __longPressEnabled = false;
+    __clickOnPress     = undefined;
     __pressTime        = -infinity;
     
     __dndItemState      = __BENTO_STATE_OFF;
