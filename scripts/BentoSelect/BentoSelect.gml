@@ -16,8 +16,19 @@ function BentoSelect(_element, _byNavigation = false, _layerOrName = undefined)
     {
         if (__navDirectional)
         {
-            __BentoSetHover(_element, _byNavigation);
-            __hoverElementSoft = BENTO_NO_ELEMENT;
+            if (__BentoGetHoverableInternal(_element, false))
+            {
+                __BentoSetHover(_element, _byNavigation);
+                __hoverElementSoft = BENTO_NO_ELEMENT;
+            }
+            else if (BENTO_SAFE)
+            {
+                __BentoTrace("Cannot select element, it is not hoverable");
+            }
+        }
+        else if (BENTO_SAFE)
+        {
+            __BentoTrace("Cannot select element, currently in a directional input mode");
         }
     }
 }
