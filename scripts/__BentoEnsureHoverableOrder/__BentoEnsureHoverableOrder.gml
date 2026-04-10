@@ -77,7 +77,8 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
         }
         
         //Elements can only be selected if the are not enclosed as indicated by `_hoverableIndex`
-        if ((_hoverableIndex != undefined)
+        if ((__buttonType != BENTO_BUTTON_NEVER)
+        &&  (_hoverableIndex != undefined)
         &&  ((_dndChannel == undefined) || (_dndItemVars == self) || ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()))))
         {
             __hoverableIndex = _hoverableIndex;

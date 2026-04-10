@@ -21,10 +21,12 @@ function BentoSetButton(_buttonType, _element = self)
 {
     with(__BentoGetVars(_element))
     {
-        if (__buttonType == _buttonType) return;
-        __buttonType = _buttonType;
-        
-        //Update data relating to buttons
-        __layer.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
+        if (__buttonType != _buttonType)
+        {
+            __buttonType = _buttonType;
+            
+            //Update data relating to buttons
+            __layer.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
+        }
     }
 }
