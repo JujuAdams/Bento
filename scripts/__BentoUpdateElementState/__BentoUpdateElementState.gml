@@ -16,8 +16,7 @@ function __BentoUpdateElementState()
             
             if (other.__navDirectional)
             {
-                //Keyboard and gamepad input always uses click-on-press
-                var _clickOnPress = true;
+                var _clickOnPress = __clickOnPress ?? true;
             }
             else if (BentoExists(__BentoScrollFindParent(_element)))
             {
@@ -29,7 +28,7 @@ function __BentoUpdateElementState()
             }
             else
             {
-                var _clickOnPress = other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH));
+                var _clickOnPress = __clickOnPress ?? (other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH)));
             }
             
             __clickState = 0b00;
