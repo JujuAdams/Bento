@@ -34,4 +34,6 @@ function BentoDnDItemBehavior(_element = self)
             }
         }
     }
+    
+    return BentoDnDGetDropTarget(_element);
 }
