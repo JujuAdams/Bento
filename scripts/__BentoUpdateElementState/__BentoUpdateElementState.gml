@@ -75,8 +75,8 @@ function __BentoUpdateElementState()
             {
                 //System says the player has clicked
                 
-                if ((((__hoverState & __BENTO_STATE_START) > 0) || _isLayerItemElement)
-                &&  ((__primaryState & __BENTO_STATE_START) == 0))
+                if (((__hoverState & __BENTO_STATE_START) || _isLayerItemElement)
+                &&  (not (__primaryState & __BENTO_STATE_START)))
                 {
                     __primaryState = __BENTO_STATE_START;
                     __pressTime = current_time;
@@ -140,7 +140,7 @@ function __BentoUpdateElementState()
                             else
                             {
                                 //Only click if we're hovered.
-                                if ((__hoverState & __BENTO_STATE_START) > 0)
+                                if (__hoverState & __BENTO_STATE_START)
                                 {
                                     __clickState = (__primaryLongState > 0)? 0b10 : 0b01;
                                 }
