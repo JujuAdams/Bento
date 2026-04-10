@@ -18,14 +18,7 @@ if (BentoCursorGetEnterByNavigation() && BentoUsingDirectional())
     audio_play_sound(sndBentoExBlip, 0, false);
 }
 
-BentoDnDItemBehavior();
-
-if (BentoDnDGetItemDropped())
+with(BentoDnDItemBehavior())
 {
-    show_debug_message("We were dropped");
-    
-    with(BentoDnDGetDropTarget())
-    {
-        show_debug_message($"Target ID = {id}");
-    }
+    show_debug_message($"Target ID = {id}");
 }

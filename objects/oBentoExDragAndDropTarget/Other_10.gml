@@ -2,6 +2,8 @@
 
 /// @desc Step
 
+BentoSetButton(BentoDnDIsValidTarget()? BENTO_BUTTON_ALWAYS : BENTO_BUTTON_NEVER);
+
 //If Bento thinks this button has been clicked then trigger the callback function
 if (BentoPrimaryGetClick())
 {
