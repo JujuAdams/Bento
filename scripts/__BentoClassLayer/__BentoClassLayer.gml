@@ -117,14 +117,14 @@ function __BentoClassLayer(_environment, _name) constructor
         __environment.__RemoveLayer(self);
     }
     
-    static __SetHoverElement = function(_hoverElement)
+    static __ClearHoverElement = function()
     {
-        __hoverElement = _hoverElement;
+        __hoverElement = BENTO_NO_ELEMENT;
             
         //So long as we have a drag & drop element, set its target
         if (__dndItemElement != BENTO_NO_ELEMENT)
         {
-            __dndItemElement.BENTO_VARS.__dndTargetElement = _hoverElement;
+            __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
         }
     }
     
@@ -197,6 +197,9 @@ function __BentoClassLayer(_environment, _name) constructor
     
     static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _isTopLayer, _timeStep)
     {
+        //This is the main update function for a layer. It handles hovering elements, holding elements,
+        //scrolling containers, disabling focus etc.
+        
         static _hotkeyArray = [];
         
         var _environment = __environment;
@@ -207,10 +210,11 @@ function __BentoClassLayer(_environment, _name) constructor
         // Animations
         ///////
         
-        var _i = array_length(__animPlayingArray)-1;
-        repeat(array_length(__animPlayingArray))
+        var _animPlayingArray = __animPlayingArray;
+        var _i = array_length(_animPlayingArray)-1;
+        repeat(array_length(_animPlayingArray))
         {
-            with(__animPlayingArray[_i])
+            with(_animPlayingArray[_i])
             {
                 __animElapsed += _timeStep;
                 
@@ -400,65 +404,72 @@ function __BentoClassLayer(_environment, _name) constructor
                 //Update the primary button state based on mouse input
                 if (__mouseHold) __primaryState |= __BENTO_STATE_START;
                 
-                //Verify that the currently held element is still held
-                if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
-                
-                //Try to hover a new element (maybe)
-                if ((not __mouseHold)
-                ||  (__mouseHold && (__dndItemElement != BENTO_NO_ELEMENT))
-                ||  ((__navMode == BENTO_MODE_TOUCH) && (__primaryState == __BENTO_STATE_START)))
+                if (__mouseHold && BentoExists(__mouseScrollingElement))
                 {
-                    __BentoSetHoverFromPointer(__mouseX, __mouseY);
+                    //Handle scrolling as a priority. This will block out hovering new elements
+                    BentoScrollAddPos(__mouseX - __mousePrevX, __mouseY - __mousePrevY, infinity, __mouseScrollingElement);
                 }
-                
-                if (__primaryState == __BENTO_STATE_START) //On primary press
+                else
                 {
-                    if (__environment.__textHandler != undefined) //Detect clicking off of an input box
+                    //Verify that the currently held element is still held
+                    if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
+                    
+                    //Try to hover a new element (maybe)
+                    if ((not __mouseHold)
+                    ||  (__mouseHold && (__dndItemElement != BENTO_NO_ELEMENT))
+                    ||  ((__navMode == BENTO_MODE_TOUCH) && (__primaryState == __BENTO_STATE_START)))
                     {
-                        if ((__environment.__textElement != __hoverElement)
-                        &&  (not BentoIsAncestor(__environment.__textElement, __hoverElement))
-                        &&  __environment.__textHandler.__cancelOnClick)
-                        {
-                            __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
-                            __SetHoverElement(BENTO_NO_ELEMENT);
-                        }
-                    }
-                    else if (BentoExists(__focusTop)) //Detect clicking off of a pop-up
-                    {
-                        if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
-                        &&  (not BentoIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
-                        {
-                            var _focusType = __focusTop.BENTO_VARS.__focusType;
-                            if (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
-                            {
-                                BentoFocusClose(__focusTop);
-                                __SetHoverElement(BENTO_NO_ELEMENT);
-                            }
-                            else if (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK)
-                            {
-                                BentoDestroy(__focusTop);
-                                __SetHoverElement(BENTO_NO_ELEMENT);
-                            }
-                        }
+                        __BentoSetHoverFromPointer(__mouseX, __mouseY);
                     }
                     
-                    //Set some variable state if we've clicked the mouse
-                    __mousePressX = __mouseX;
-                    __mousePressY = __mouseY;
-                    
-                    __mousePrevX = __mouseX;
-                    __mousePrevY = __mouseY;
-                    
-                    __mouseDragged = false;
-                    
-                    __mouseScrolledElement  = false;
-                    __mouseScrollingElement = BENTO_NO_ELEMENT;
+                    //Now handle primary press
+                    if (__primaryState == __BENTO_STATE_START)
+                    {
+                        if (__environment.__textHandler != undefined) //Detect clicking off of an input box
+                        {
+                            if ((__environment.__textElement != __hoverElement)
+                            &&  (not BentoIsAncestor(__environment.__textElement, __hoverElement))
+                            &&  __environment.__textHandler.__cancelOnClick)
+                            {
+                                __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
+                                __ClearHoverElement();
+                            }
+                        }
+                        else if (BentoExists(__focusTop)) //Detect clicking off of a pop-up
+                        {
+                            if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
+                            &&  (not BentoIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                            {
+                                var _focusType = __focusTop.BENTO_VARS.__focusType;
+                                if (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
+                                {
+                                    BentoFocusClose(__focusTop);
+                                    __ClearHoverElement();
+                                }
+                                else if (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK)
+                                {
+                                    BentoDestroy(__focusTop);
+                                    __ClearHoverElement();
+                                }
+                            }
+                        }
+                        
+                        //Set some variable state if we've clicked the mouse
+                        __mousePressX = __mouseX;
+                        __mousePressY = __mouseY;
+                        
+                        __mousePrevX = __mouseX;
+                        __mousePrevY = __mouseY;
+                    }
                 }
-                else if (__primaryState == __BENTO_STATE_END)
+                
+                if (__primaryState == __BENTO_STATE_END)
                 {
-                    //And reset the mouse state when we release
+                    //Reset some mouse state when we release
                     __mousePressX = undefined;
                     __mousePressY = undefined;
+                    
+                    __mouseDragged = false;
                 }
             }
             else if (__navDirectional)
@@ -484,10 +495,17 @@ function __BentoClassLayer(_environment, _name) constructor
             }
             
             ///////
-            // State update
+            // Update elements of interest
             ///////
             
             __BentoUpdateElementState();
+            
+            //Reset this mouse state after we update element state
+            if (__primaryState == __BENTO_STATE_END)
+            {
+                __mouseScrolledElement  = false;
+                __mouseScrollingElement = BENTO_NO_ELEMENT;
+            }
             
             ///////
             // Step user event execution

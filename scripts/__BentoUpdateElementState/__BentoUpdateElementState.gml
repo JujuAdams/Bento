@@ -156,10 +156,10 @@ function __BentoUpdateElementState()
             
             //Scrolling when in directional input mode is handled when an element is hovered
             
-            if (other.__navPointer)
+            if (other.__navPointer && (__hoverState & __BENTO_STATE_START))
             {
                 if (other.__mouseDragged
-                &&  ((BENTO_SCROLL_ON_MOUSE_DRAG || (other.__navMode == BENTO_MODE_TOUCH)) && (__primaryState & __BENTO_STATE_START)))
+                &&  ((BENTO_SCROLL_ON_MOUSE_DRAG || (other.__navMode == BENTO_MODE_TOUCH)) && (__primaryState == __BENTO_STATE_ON)))
                 {
                     //Click & drag
                     
@@ -189,14 +189,18 @@ function __BentoUpdateElementState()
                         var _parent = __BentoScrollFindParent(_element);
                         if (BentoExists(_parent))
                         {
+                            //Start scrolling the parent
                             other.__mouseScrolledElement  = true;
                             other.__mouseScrollingElement = _parent;
                             
-                            BentoScrollAddPos(BentoCursorGetDX(), BentoCursorGetDY(), infinity, _parent);
+                            //Unhover and unhold us. This makes it clear that the player is no longer interacting
+                            //with us and instead is interacting with the scrolling parent
+                            other.__holdElement = BENTO_NO_ELEMENT;
+                            other.__ClearHoverElement();
                         }
                     }
                 }
-                else if (__hoverState & __BENTO_STATE_START)
+                else
                 {
                     //Allow the mouse wheel to scroll when hovering over a container or its children
                     

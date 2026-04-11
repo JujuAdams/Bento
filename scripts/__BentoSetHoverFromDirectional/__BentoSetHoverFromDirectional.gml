@@ -9,9 +9,6 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
     static _raycastData = {};
     static _wrappedRaycastData = {};
     
-    var _raycastDataDebug = _raycastData;
-    var _wrappedRaycastDataDebug = _wrappedRaycastData;
-    
     //Can't hover anything when there are blocking animations on this layer.
     if (not ds_map_empty(__animBlockingMap)) return BENTO_NO_ELEMENT;
     

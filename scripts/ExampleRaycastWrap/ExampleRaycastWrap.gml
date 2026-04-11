@@ -17,7 +17,7 @@ function ExampleRaycastWrap()
                     object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
-                        gutter: 35,
+                        gutter: 15,
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
                     },
                     children: [
@@ -32,6 +32,10 @@ function ExampleRaycastWrap()
                             object: oBentoExBackButton,
                             vars: {
                                 func: ExampleHomePage,
+                            },
+                            onCreate: function()
+                            {
+                                BentoSetRaycastWrap(true, true);
                             },
                         },
                     ],
@@ -48,7 +52,7 @@ function ExampleRaycastWrap()
                             object: oBentoExSpacer,
                             layout: {
                                 list: [BENTO_AXIS_Y, 0.5, 0],
-                                gutter: 35,
+                                gutter: 15,
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
                             },
                             children: [
@@ -102,7 +106,8 @@ function ExampleRaycastWrap()
                             object: oBentoExListbox,
                             layout: {
                                 list: [BENTO_AXIS_Y, 0.5, 0],
-                                gutter: 35,
+                                padding: 15,
+                                gutter: 15,
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
                                 maxSize: [infinity, 200],
                             },

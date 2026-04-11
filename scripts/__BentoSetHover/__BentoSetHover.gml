@@ -22,7 +22,13 @@ function __BentoSetHover(_element, _byNavigation)
             BentoScrollTo(BentoScrollGetSpeed(_element), _element);
         }
         
-        __SetHoverElement(_element);
+        __hoverElement = _element;
+        
+        //So long as we have a drag & drop element, set its target
+        if (__dndItemElement != BENTO_NO_ELEMENT)
+        {
+            __dndItemElement.BENTO_VARS.__dndTargetElement = _element;
+        }
         
         with(_element.BENTO_VARS)
         {
@@ -40,7 +46,7 @@ function __BentoSetHover(_element, _byNavigation)
     }
     else
     {
-        __SetHoverElement(BENTO_NO_ELEMENT);
+        __ClearHoverElement();
     }
     
     __hoverElementSoft = BENTO_NO_ELEMENT;
