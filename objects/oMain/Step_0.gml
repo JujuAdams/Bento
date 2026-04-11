@@ -11,6 +11,7 @@ if (not BentoTextGetOpen())
 if (keyboard_check_pressed(vk_f1)) BentoDebugStepOrder();
 if (keyboard_check_pressed(vk_f2)) BentoDebugDrawOrder();
 if (keyboard_check_pressed(vk_f3)) BentoDebugScissor();
+if (keyboard_check_pressed(vk_f4)) BentoDebugHoverOrder();
 
 if (BentoUsingPointer())
 {

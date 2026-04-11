@@ -13,5 +13,5 @@ function BentoPrimaryGetDragged(_layerOrName = undefined)
         return __mouseDragged;
     }
     
-    return 0;
+    return false;
 }
