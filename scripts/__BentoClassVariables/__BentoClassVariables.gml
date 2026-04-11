@@ -88,8 +88,11 @@ function __BentoClassVariables(_attachedElement) constructor
     __linkUp    = BENTO_NO_ELEMENT;
     __linkDown  = BENTO_NO_ELEMENT;
     
+    //TODO - Combine into one variable using binary flags?
     __raycastEnableX = true;
     __raycastEnableY = true;
+    __raycastWrapX   = false;
+    __raycastWrapY   = false;
     
     __childArray     = [];
     __childDrawArray = [];

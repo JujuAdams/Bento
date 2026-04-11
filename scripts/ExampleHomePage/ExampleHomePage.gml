@@ -110,6 +110,13 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
+                                text: $"Raycast Wrapping",
+                                func: ExampleRaycastWrap,
+                            },
+                        },
+                        {
+                            object: oBentoExButton,
+                            vars: {
                                 text: $"Checkbox Menu",
                                 func: ExampleCheckbox,
                             },

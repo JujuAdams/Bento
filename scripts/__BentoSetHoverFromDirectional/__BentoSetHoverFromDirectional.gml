@@ -52,21 +52,21 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
             else
             {
                 //Choose a predefined navigable element if possible
-                if (_dX < 0)
-                {
-                    _nextElement = _prevBento.__linkLeft;
-                }
-                else if (_dX > 0)
-                {
-                    _nextElement = _prevBento.__linkRight;
-                }
-                else if (_dY < 0)
+                if (_dY < 0)
                 {
                     _nextElement = _prevBento.__linkUp;
                 }
                 else if (_dY > 0)
                 {
                     _nextElement = _prevBento.__linkDown;
+                }
+                else if (_dX < 0)
+                {
+                    _nextElement = _prevBento.__linkLeft;
+                }
+                else if (_dX > 0)
+                {
+                    _nextElement = _prevBento.__linkRight;
                 }
             
                 //Only check if the next element is properly visible if it's nested inside a different scroller to
@@ -91,11 +91,35 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                     else
                     {
                         _nextElement = __BentoGetDirectionalRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
-                    
+                        
                         if (not BentoExists(_nextElement))
                         {
-                            //Raycast failed, no new element can be selected
-                            _nextElement = _prevElement;
+                            //Try wrapping the raycast
+                            if ((abs(_dY) >= abs(_dX)) && _prevBento.__raycastWrapY)
+                            {
+                                var _checkWrap = _prevBento.__raycastWrapY;
+                            }
+                            else if (abs(_dX) > abs(_dY))
+                            {
+                                var _checkWrap = _prevBento.__raycastWrapX;
+                            }
+                            else
+                            {
+                                //Should never happen but let's cover our bases
+                                var _checkWrap = false;
+                            }
+                            
+                            if (_checkWrap)
+                            {
+                                //FIXME - 10,000 is an arbitrarily large number. This no doubt will fail in some situations
+                                _nextElement = __BentoGetDirectionalRaycast(__directionalLastX - 10_000*_dX, __directionalLastY - 10_000*_dY, _dX, _dY, _excludeArray, _prevScrollParent);
+                            }
+                            
+                            if (not BentoExists(_nextElement))
+                            {
+                                //Raycast failed, no new element can be selected
+                                _nextElement = _prevElement;
+                            }
                         }
                     }
                 }
