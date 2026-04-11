@@ -6,7 +6,7 @@
 
 function BentoScrollGetFinished(_element = self)
 {
-    var _scroller = __BentoScrollFindParent(_element);
+    var _scroller = __BentoFindScrollElement(_element);
     if (not BentoExists(_scroller)) return false;
     
     with(_scroller.BENTO_VARS)

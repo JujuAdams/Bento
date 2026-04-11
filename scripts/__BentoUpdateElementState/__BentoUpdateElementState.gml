@@ -18,7 +18,7 @@ function __BentoUpdateElementState()
             {
                 var _clickOnPress = __clickOnPress ?? true;
             }
-            else if (BentoExists(__BentoScrollFindParent(_element)))
+            else if (BentoExists(__BentoFindScrollElement(_element)))
             {
                 var _clickOnPress = false;
             }
@@ -186,7 +186,7 @@ function __BentoUpdateElementState()
                     
                     if (not _overScrollbar)
                     {
-                        var _parent = __BentoScrollFindParent(_element);
+                        var _parent = __BentoFindScrollElement(_element);
                         if (BentoExists(_parent))
                         {
                             //Start scrolling the parent

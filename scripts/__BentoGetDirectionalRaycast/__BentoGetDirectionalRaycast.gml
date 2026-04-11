@@ -51,7 +51,7 @@ function __BentoGetDirectionalRaycast(_resultStruct, _x, _y, _dX, _dY, _exclude,
                         var _weight = point_distance(_x, _y, _nearestX, _nearestY);
                         
                         //However, if we can find a button inside the same scroll parent then prefer that
-                        var _sameParent = (_scrollParent == __BentoScrollFindParent(BENTO_VARS.__parent));
+                        var _sameParent = (_scrollParent == __BentoFindScrollElement(BENTO_VARS.__parent));
                         
                         if ((_weight < _minWeight) || (_sameParent && (not _minSameParent)))
                         {

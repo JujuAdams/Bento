@@ -22,7 +22,7 @@ function BentoClipGetFullyVisible(_element = self)
         //Test for oversize
         
         //FIXME - This is pretty gross code. Need to find a better solution
-        var _parent = __BentoScrollFindParent(_element.BENTO_VARS.__parent);
+        var _parent = __BentoFindScrollElement(_element.BENTO_VARS.__parent);
         if (BentoExists(_parent))
         {
             with(_parent.BENTO_VARS)

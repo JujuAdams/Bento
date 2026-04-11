@@ -73,8 +73,8 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                 //Only check if the next element is properly visible if it's nested inside a different scroller to
                 //the previous element. This ensures non-visible elements never get selected but that it's possible
                 //to navigate to visually hidden elements inside the scroller.
-                var _prevScrollParent = __BentoScrollFindParent(BentoGetParent(1, _prevElement));
-                var _checkVisible = (_prevScrollParent != __BentoScrollFindParent(_nextElement)); //FIXME - Change to a check against the joint scissor and scroll parent
+                var _prevScrollParent = __BentoFindScrollElement(BentoGetParent(1, _prevElement));
+                var _checkVisible = (_prevScrollParent != __BentoFindScrollElement(_nextElement));
                 if (not __BentoGetHoverableInternal(_nextElement, _checkVisible))
                 {
                     _nextElement = BENTO_NO_ELEMENT;

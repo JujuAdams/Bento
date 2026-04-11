@@ -15,7 +15,7 @@ function __BentoGetScrollDelta(_element = self)
     {
         var _instanceBento = _element.BENTO_VARS;
         
-        var _parent = __BentoScrollFindParent(_instanceBento.__parent);
+        var _parent = __BentoFindScrollElement(_instanceBento.__parent);
         if (BentoExists(_parent))
         {
             with(_parent.BENTO_VARS)

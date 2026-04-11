@@ -11,7 +11,7 @@
 
 function BentoScrollSetPos(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_DEFAULT_SCROLL_SPEED, _element = self)
 {
-    var _scroller = __BentoScrollFindParent(_element);
+    var _scroller = __BentoFindScrollElement(_element);
     if (not BentoExists(_scroller)) return;
     
     with(_scroller.BENTO_VARS)

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoScrollFindParent",
+  "%Name":"__BentoFindScrollElement",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoScrollFindParent",
+  "name":"__BentoFindScrollElement",
   "parent":{
     "name":"Scissor & Scroll",
     "path":"folders/Bento/(Internal)/Scissor & Scroll.yy",
