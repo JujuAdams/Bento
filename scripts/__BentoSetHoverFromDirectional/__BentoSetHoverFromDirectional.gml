@@ -6,12 +6,16 @@
 
 function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
 {
-    static _excludeArray = [];
+    static _raycastData = {};
+    static _wrappedRaycastData = {};
+    
+    var _raycastDataDebug = _raycastData;
+    var _wrappedRaycastDataDebug = _wrappedRaycastData;
     
     //Can't hover anything when there are blocking animations on this layer.
     if (not ds_map_empty(__animBlockingMap)) return BENTO_NO_ELEMENT;
     
-    _excludeArray[0] = _prevElement;
+    var _exclude = (_prevElement != BENTO_NO_ELEMENT)? _prevElement.BENTO_VARS : undefined;
     var _nextElement = BENTO_NO_ELEMENT;
     
     if (not __BentoGetHoverableInternal(_prevElement, false))
@@ -26,7 +30,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
         else
         {
             //Otherwise fall back on searching for the nearest selectable element
-            _nextElement = __BentoGetDirectionalNearest(__directionalLastX, __directionalLastY, _excludeArray);
+            _nextElement = __BentoGetDirectionalNearest(__directionalLastX, __directionalLastY, _exclude);
         }
         
         __BentoSetHover(_nextElement, false);
@@ -72,7 +76,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                 //Only check if the next element is properly visible if it's nested inside a different scroller to
                 //the previous element. This ensures non-visible elements never get selected but that it's possible
                 //to navigate to visually hidden elements inside the scroller.
-                var _prevScrollParent = __BentoScrollFindParent(_prevElement);
+                var _prevScrollParent = __BentoScrollFindParent(BentoGetParent(1, _prevElement));
                 var _checkVisible = (_prevScrollParent != __BentoScrollFindParent(_nextElement)); //FIXME - Change to a check against the joint scissor and scroll parent
                 if (not __BentoGetHoverableInternal(_nextElement, _checkVisible))
                 {
@@ -90,36 +94,49 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                     }
                     else
                     {
-                        _nextElement = __BentoGetDirectionalRaycast(__directionalLastX, __directionalLastY, _dX, _dY, _excludeArray, _prevScrollParent);
+                        __BentoGetDirectionalRaycast(_raycastData, __directionalLastX, __directionalLastY, _dX, _dY, _exclude, _prevScrollParent);
                         
-                        if (not BentoExists(_nextElement))
+                        //Try wrapping the raycast
+                        if ((abs(_dY) >= abs(_dX)) && _prevBento.__raycastWrapY)
                         {
-                            //Try wrapping the raycast
-                            if ((abs(_dY) >= abs(_dX)) && _prevBento.__raycastWrapY)
+                            var _checkWrap = _prevBento.__raycastWrapY;
+                            var _wrapDX = 0;
+                            var _wrapDY = _dY;
+                        }
+                        else if (abs(_dX) > abs(_dY))
+                        {
+                            var _checkWrap = _prevBento.__raycastWrapX;
+                            var _wrapDX = _dX;
+                            var _wrapDY = 0;
+                        }
+                        else
+                        {
+                            //Should never happen but let's cover our bases
+                            var _checkWrap = false;
+                        }
+                        
+                        if (_checkWrap)
+                        {
+                            //FIXME - 1000 is an arbitrarily large number. This no doubt will fail in some situations
+                            __BentoGetDirectionalRaycast(_wrappedRaycastData, __directionalLastX - 1000*_wrapDX, __directionalLastY - 1000*_wrapDY, _wrapDX, _wrapDY, _exclude, _prevScrollParent);
+                            if ((_wrappedRaycastData.__weight < _raycastData.__weight) || (_wrappedRaycastData.__sameParent && (not _raycastData.__sameParent)))
                             {
-                                var _checkWrap = _prevBento.__raycastWrapY;
-                            }
-                            else if (abs(_dX) > abs(_dY))
-                            {
-                                var _checkWrap = _prevBento.__raycastWrapX;
+                                _nextElement = _wrappedRaycastData.__element;
                             }
                             else
                             {
-                                //Should never happen but let's cover our bases
-                                var _checkWrap = false;
+                                _nextElement = _raycastData.__element;
                             }
-                            
-                            if (_checkWrap)
-                            {
-                                //FIXME - 10,000 is an arbitrarily large number. This no doubt will fail in some situations
-                                _nextElement = __BentoGetDirectionalRaycast(__directionalLastX - 10_000*_dX, __directionalLastY - 10_000*_dY, _dX, _dY, _excludeArray, _prevScrollParent);
-                            }
-                            
-                            if (not BentoExists(_nextElement))
-                            {
-                                //Raycast failed, no new element can be selected
-                                _nextElement = _prevElement;
-                            }
+                        }
+                        else
+                        {
+                            _nextElement = _raycastData.__element;
+                        }
+                        
+                        if (not BentoExists(_nextElement))
+                        {
+                            //Raycast failed, no new element can be selected
+                            _nextElement = _prevElement;
                         }
                     }
                 }

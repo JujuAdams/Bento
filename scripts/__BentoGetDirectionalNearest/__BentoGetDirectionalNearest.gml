@@ -1,13 +1,12 @@
 // Feather disable all
 
-/// Returns the nearest element to the given coordinate. The `excludeArray` argument can be set to
-/// an array of element IDs that should be ignored by this function.
+/// Returns the nearest element to the given coordinate.
 /// 
 /// @param x
 /// @param y
-/// @param excludeArray
+/// @param exclude
 
-function __BentoGetDirectionalNearest(_x, _y, _excludeArray)
+function __BentoGetDirectionalNearest(_x, _y, _exclude)
 {
     static _system = __BentoSystem();
     
@@ -26,7 +25,7 @@ function __BentoGetDirectionalNearest(_x, _y, _excludeArray)
     {
         with(_hoverableOrder[_i])
         {
-            if (array_get_index(_excludeArray, self) < 0)
+            if (BENTO_VARS != _exclude)
             {
                 if (__BentoGetHoverableInternal(self, true))
                 {

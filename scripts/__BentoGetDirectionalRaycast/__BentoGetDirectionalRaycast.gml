@@ -1,18 +1,17 @@
 // Feather disable all
 
 /// Returns the nearest element along the given ray. This is not a true raycast as elements near
-/// the ray will be considered (which is better UX when navigating using directional input). The
-/// `excludeArray` argument can be set to an array of element IDs that should be ignored by this
-/// function.
+/// the ray will be considered (which is better UX when navigating using directional input).
 /// 
+/// @param resultStruct
 /// @param x
 /// @param y
 /// @param directionX
 /// @param directionY
-/// @param excludeArray
+/// @param exclude
 /// @param scrollParent
 
-function __BentoGetDirectionalRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollParent)
+function __BentoGetDirectionalRaycast(_resultStruct, _x, _y, _dX, _dY, _exclude, _scrollParent)
 {
     static _system = __BentoSystem();
     
@@ -36,7 +35,7 @@ function __BentoGetDirectionalRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollPa
     {
         with(_hoverableOrder[_i])
         {
-            if (array_get_index(_excludeArray, self) < 0)
+            if (BENTO_VARS != _exclude)
             {
                 var _nearestX = clamp(_x, bentoLeft, bentoRight);
                 var _nearestY = clamp(_y, bentoTop, bentoBottom);
@@ -45,17 +44,19 @@ function __BentoGetDirectionalRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollPa
                 var _dot = dot_product(_dX, _dY, _nearestX, _nearestY) - _baseDist;
                 if (_dot > 0)
                 {
-                    //Reject elements that are too far away
-                    var _weight = point_distance(_x, _y, _nearestX, _nearestY);
-                    
-                    //However, if we can find a button inside the same scroll parent then prefer that
-                    var _sameParent = (_scrollParent == __BentoScrollFindParent(self));
-                    
-                    if ((_weight < _minWeight) || (_sameParent && (not _minSameParent)))
+                    var _angleDelta = angle_difference(_direction, point_direction(_x, _y, _nearestX, _nearestY));
+                    if (abs(_angleDelta) < 50) //TODO - Faster if we do this with a dot product?
                     {
-                        //Reject outside of a 60-degree cone. We do this last to avoid running expensive trig funcs
-                        var _angleDelta = angle_difference(_direction, point_direction(_x, _y, _nearestX, _nearestY)); //TODO - Faster if we do this with a dot product?
-                        if (abs(_angleDelta) < 60)
+                        //Reject elements that are too far away
+                        var _weight = point_distance(_x, _y, _nearestX, _nearestY);
+                        
+                        //Add a penalty for off-axis elements
+                        _weight += 6*abs(_angleDelta);
+                        
+                        //However, if we can find a button inside the same scroll parent then prefer that
+                        var _sameParent = (_scrollParent == __BentoScrollFindParent(BENTO_VARS.__parent));
+                        
+                        if ((_weight < _minWeight) || (_sameParent && (not _minSameParent)))
                         {
                             //Check whether this element can actually be hovered. This is the most expensive part of the process
                             //due to needing to check a bunch of variables. We ignore the visibility check if the element we're
@@ -78,5 +79,12 @@ function __BentoGetDirectionalRaycast(_x, _y, _dX, _dY, _excludeArray, _scrollPa
         ++_i;
     }
     
-    return _minElement;
+    with(_resultStruct)
+    {
+        __element    = _minElement;
+        __weight     = _minWeight;
+        __sameParent = _minSameParent;
+    }
+    
+    return _resultStruct;
 }

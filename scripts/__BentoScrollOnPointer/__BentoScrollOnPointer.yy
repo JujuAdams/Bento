@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__BentoScrollOnPointer",
   "parent":{
-    "name":"Miscellaneous",
-    "path":"folders/Bento/(Internal)/Miscellaneous.yy",
+    "name":"Important Functions",
+    "path":"folders/Bento/(Internal)/Important Functions.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
