@@ -49,8 +49,11 @@ function __BentoClassLayer(_environment, _name) constructor
     __mousePrevY   = 0;
     __mousePressX  = undefined;
     __mousePressY  = undefined;
+    
     __mouseDragged = false;
-    __mouseDragDistance = 0;
+    
+    __mouseScrolledElement  = false;
+    __mouseScrollingElement = BENTO_NO_ELEMENT;
     
     __directionalDX    = 0;
     __directionalDY    = 0;
@@ -141,6 +144,11 @@ function __BentoClassLayer(_environment, _name) constructor
                 //Reset mouse variables
                 __mouseHold = false;
                 
+                __mouseDragged = false;
+                
+                __mouseScrolledElement  = false;
+                __mouseScrollingElement = BENTO_NO_ELEMENT;
+                
                 __directionalLastX = __mouseX;
                 __directionalLastY = __mouseY;
                 
@@ -153,9 +161,6 @@ function __BentoClassLayer(_environment, _name) constructor
             
             __mousePressX = undefined;
             __mousePressY = undefined;
-            
-            __mouseDragged      = false;
-            __mouseDragDistance = 0;
         }
         else if ((_newMode == BENTO_MODE_MOUSE) || (_newMode == BENTO_MODE_TOUCH))
         {
@@ -264,9 +269,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 //Update mouse drag information
                 if (__navPointer && (__primaryState & __BENTO_STATE_START))
                 {
-                    __mouseDragDistance = point_distance(__mousePressX, __mousePressY, __mouseX, __mouseY);
-                    
-                    if (__mouseDragDistance > BENTO_POINTER_DRAG_THRESHOLD)
+                    if (point_distance(__mousePressX, __mousePressY, __mouseX, __mouseY) > BENTO_POINTER_DRAG_THRESHOLD)
                     {
                         __mouseDragged = true;
                     }
@@ -446,8 +449,10 @@ function __BentoClassLayer(_environment, _name) constructor
                     __mousePrevX = __mouseX;
                     __mousePrevY = __mouseY;
                     
-                    __mouseDragged      = false;
-                    __mouseDragDistance = 0;
+                    __mouseDragged = false;
+                    
+                    __mouseScrolledElement  = false;
+                    __mouseScrollingElement = BENTO_NO_ELEMENT;
                 }
                 else if (__primaryState == __BENTO_STATE_END)
                 {

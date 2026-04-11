@@ -173,7 +173,6 @@
     {"id":{"name":"__BentoScissorSetGPU","path":"scripts/__BentoScissorSetGPU/__BentoScissorSetGPU.yy",},},
     {"id":{"name":"__BentoScrollFindParent","path":"scripts/__BentoScrollFindParent/__BentoScrollFindParent.yy",},},
     {"id":{"name":"__BentoScrollLimitsMarkSelfDirty","path":"scripts/__BentoScrollLimitsMarkSelfDirty/__BentoScrollLimitsMarkSelfDirty.yy",},},
-    {"id":{"name":"__BentoScrollOnPointer","path":"scripts/__BentoScrollOnPointer/__BentoScrollOnPointer.yy",},},
     {"id":{"name":"__BentoSetHover","path":"scripts/__BentoSetHover/__BentoSetHover.yy",},},
     {"id":{"name":"__BentoSetHoverFromDirectional","path":"scripts/__BentoSetHoverFromDirectional/__BentoSetHoverFromDirectional.yy",},},
     {"id":{"name":"__BentoSetHoverFromPointer","path":"scripts/__BentoSetHoverFromPointer/__BentoSetHoverFromPointer.yy",},},

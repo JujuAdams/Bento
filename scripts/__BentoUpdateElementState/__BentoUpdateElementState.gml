@@ -63,6 +63,7 @@ function __BentoUpdateElementState()
             
             if (__hoverState != __BENTO_STATE_START)
             {
+                //Reset the "by navigation" state
                 __byNavigation = false;
             }
             
@@ -125,7 +126,7 @@ function __BentoUpdateElementState()
                         if ((not _clickOnPress)
                         &&  (__primaryState == __BENTO_STATE_END)
                         &&  (other.__primaryState == __BENTO_STATE_END)
-                        &&  ((not other.__mouseDragged) || (__dndItemChannel == undefined)))
+                        &&  (not other.__mouseScrolledElement))
                         {
                             if (other.__navMode == BENTO_MODE_TOUCH)
                             {
@@ -145,6 +146,80 @@ function __BentoUpdateElementState()
                                 }
                             }
                         }
+                    }
+                }
+            }
+            
+            ///////
+            // Scrolling
+            ///////
+            
+            //Scrolling when in directional input mode is handled when an element is hovered
+            
+            if (other.__navPointer)
+            {
+                if (other.__mouseDragged
+                &&  ((BENTO_SCROLL_ON_MOUSE_DRAG || (other.__navMode == BENTO_MODE_TOUCH)) && (__primaryState & __BENTO_STATE_START)))
+                {
+                    //Click & drag
+                    
+                    var _pressX = other.__mousePressX;
+                    var _pressY = other.__mousePressY;
+                    
+                    var _overScrollbar = false;
+                    
+                    with(__scrollbarVert)
+                    {
+                        if (point_in_rectangle(_pressX, _pressY, barLeft, barTop, barRight, barBottom))
+                        {
+                            _overScrollbar = true;
+                        }
+                    }
+                    
+                    with(__scrollbarHori)
+                    {
+                        if (point_in_rectangle(_pressX, _pressY, barLeft, barTop, barRight, barBottom))
+                        {
+                            _overScrollbar = true;
+                        }
+                    }
+                    
+                    if (not _overScrollbar)
+                    {
+                        var _parent = __BentoScrollFindParent(_element);
+                        if (BentoExists(_parent))
+                        {
+                            other.__mouseScrolledElement  = true;
+                            other.__mouseScrollingElement = _parent;
+                            
+                            BentoScrollAddPos(BentoCursorGetDX(), BentoCursorGetDY(), infinity, _parent);
+                        }
+                    }
+                }
+                else if (__hoverState & __BENTO_STATE_START)
+                {
+                    //Allow the mouse wheel to scroll when hovering over a container or its children
+                    
+                    var _dX = 0;
+                    var _dY = 0;
+                    
+                    //Mouse wheel input can be pretty noisy so we filter out as much as possible
+                    
+                    if (BentoHotkeyGetPress(BENTO_HOTKEY_MOUSE_WHEEL_UP) || BentoHotkeyGetHold(BENTO_HOTKEY_MOUSE_WHEEL_UP))
+                    {
+                        _dX -= BENTO_MOUSE_WHEEL_SCROLL_SPEED;
+                        _dY += BENTO_MOUSE_WHEEL_SCROLL_SPEED;
+                    }
+                    
+                    if (BentoHotkeyGetPress(BENTO_HOTKEY_MOUSE_WHEEL_DOWN) || BentoHotkeyGetHold(BENTO_HOTKEY_MOUSE_WHEEL_DOWN))
+                    {
+                        _dX += BENTO_MOUSE_WHEEL_SCROLL_SPEED;
+                        _dY -= BENTO_MOUSE_WHEEL_SCROLL_SPEED;
+                    }
+                    
+                    if ((_dX != 0) || (_dY != 0))
+                    {
+                        BentoScrollAddPos(_dX, _dY, BENTO_DEFAULT_SCROLL_SPEED, _element);
                     }
                 }
             }
