@@ -55,6 +55,13 @@ function BentoConstrAncestor(_parent = other) constructor
         // will not be executed if it has been set to not visible by calling `BentoSetVisible(false)`.
     }
     
+    eventDrawDragged = function()
+    {
+        // This event is called downstream of `BentoSystemDraw()` when an element is being dragged as an
+        // item in the drag & drop system. This event will not be executed if it has been set to not
+        // visible by calling `BentoSetVisible(false)`.
+    }
+    
     eventReposition = function()
     {
         // This event is called whenever the library decides that the element needs to be moved. This is

@@ -550,6 +550,8 @@ function __BentoClassLayer(_environment, _name) constructor
             ++_i;
         }
         
+        //Draw the hovered element if it's not inside a scissor. If the hovered element is inside
+        //a scissor then it'll be drawn by `__BentoScissorPop()`
         if (BentoExists(__hoverElement))
         {
             var _hoverElementVars = __hoverElement.BENTO_VARS;
@@ -557,6 +559,33 @@ function __BentoClassLayer(_environment, _name) constructor
             {
                 _hoverElementVars.__eventDrawHover();
             }
+        }
+        
+        //Draw the dragged item element, if we have one
+        if (BentoExists(__dndItemElement) && ((not __dndItemElement.BENTO_VARS.__dndItemContinuous) || BentoExists(__dndNextItemElement)))
+        {
+            static _translationMatrix = matrix_build_identity();
+            static _oldViewMatrix = matrix_build_identity();
+            static _newViewMatrix = matrix_build_identity();
+            
+            if (__navPointer)
+            {
+                _translationMatrix[@ 12] = __mouseX - __mousePressX;
+                _translationMatrix[@ 13] = __mouseY - __mousePressY;
+            }
+            else
+            {
+                var _element = __dndItemElement;
+                _translationMatrix[@ 12] = __directionalLastX - 0.5*(_element.bentoLeft + _element.bentoRight);
+                _translationMatrix[@ 13] = __directionalLastY - 0.5*(_element.bentoTop + _element.bentoBottom);
+            }
+            
+            matrix_get(matrix_view, _oldViewMatrix);
+            matrix_multiply(_translationMatrix, _oldViewMatrix, _newViewMatrix);
+            
+            matrix_set(matrix_view, _newViewMatrix);
+            __dndItemElement.BENTO_VARS.__eventDrawDragged();
+            matrix_set(matrix_view, _oldViewMatrix);
         }
         
         __BentoLayerTargetPop();

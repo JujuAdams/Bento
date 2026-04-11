@@ -182,6 +182,11 @@ function __BentoClassVariables(_attachedElement) constructor
             event_user(BENTO_USER_EVENT_DRAW_HOVER);
         });
         
+        __eventDrawDragged = method(_attachedElement, function()
+        {
+            event_user(BENTO_USER_EVENT_DRAW_DRAGGED);
+        });
+        
         __eventReposition = function()
         {
             //TODO - Improve efficiency
@@ -242,6 +247,11 @@ function __BentoClassVariables(_attachedElement) constructor
         __eventDrawHover = method(_attachedElement, function()
         {
             eventDrawHover();
+        });
+        
+        __eventDrawDragged = method(_attachedElement, function()
+        {
+            eventDrawDragged();
         });
         
         __eventReposition = function()

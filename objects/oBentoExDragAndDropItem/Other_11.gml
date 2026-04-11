@@ -13,11 +13,15 @@ draw_sprite_ext(sprite_index, image_index, x + _offset, y + _offset, image_xscal
 if (text != "")
 {
     draw_set_color(textColor);
+    draw_set_alpha(image_alpha);
     draw_set_font(BENTO_EXAMPLE_DEFAULT_FONT);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
+    
     draw_text(0.5*(bentoLeft + bentoRight) + _offset, 0.5*(bentoTop + bentoBottom) + _offset, text);
+    
     draw_set_color(c_white);
+    draw_set_alpha(1);
     draw_set_font(-1);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
