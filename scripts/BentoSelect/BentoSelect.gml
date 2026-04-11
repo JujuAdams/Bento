@@ -32,3 +32,19 @@ function BentoSelect(_element, _byNavigation = false, _layerOrName = undefined)
         }
     }
 }
+
+//Internal variant without the debug messages
+function __BentoSelectInternal(_element)
+{
+    with(__BentoLayerEnsure(undefined))
+    {
+        if (__navDirectional)
+        {
+            if (__BentoGetHoverableInternal(_element, false))
+            {
+                __BentoSetHover(_element, false);
+                __hoverElementSoft = BENTO_NO_ELEMENT;
+            }
+        }
+    }
+}
