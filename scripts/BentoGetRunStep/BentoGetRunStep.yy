@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoGetForceStep",
+  "%Name":"BentoGetRunStep",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoGetForceStep",
+  "name":"BentoGetRunStep",
   "parent":{
     "name":"Getters",
     "path":"folders/Bento/Functions/Basic Properties/Getters.yy",

@@ -361,7 +361,7 @@
 ///     object: oBentoSprite,
 ///     onCreate: function()
 ///     {
-///         BentoSetForceStep(true);
+///         BentoSetRunStep(true);
 ///     }
 /// }
 /// ```

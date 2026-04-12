@@ -53,7 +53,7 @@ func = method(self, func);
 
 //Allow Bento to focus this element
 BentoSetButton(inoperative? BENTO_BUTTON_NEVER : BENTO_BUTTON_ALWAYS);
-BentoSetForceStep(true);
+BentoSetRunStep(true);
 
 //If we have some valid text then force the size of the element
 if (text != "")

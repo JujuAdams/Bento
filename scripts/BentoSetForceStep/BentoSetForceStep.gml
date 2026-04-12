@@ -1,11 +1,12 @@
 // Feather disable all
 
-/// Sets whether the Step user event / callback is forced on for the given element.
+/// Sets whether the Step user event / callback is enabled for the given element regardless of
+/// whether it is a button or not. Step events may not be executed for other reasons.
 /// 
 /// @param state
 /// @param [element=self]
 
-function BentoSetForceStep(_state, _element = self)
+function BentoSetRunStep(_state, _element = self)
 {
     with(__BentoGetVars(_element))
     {
