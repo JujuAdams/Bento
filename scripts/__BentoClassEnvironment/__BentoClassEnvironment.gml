@@ -135,7 +135,7 @@ function __BentoClassEnvironment(_name) constructor
             ++_i;
         }
         
-        //Top-most layer pulls in input if there's no text input
+        //Top-most layer pulls in player input
         _layerArray[_i].__Update(_rootX, _rootY, _rootWidth, _rootHeight, true, _timeStep);
         
         //Wipe out the hotkeys, nullifying them for the next update loop

@@ -24,6 +24,14 @@ function BentoLayerCreate(_layerName, _environmentName = undefined)
             __BentoError($"Layer called \"{_layerName}\" already exists (environment \"{__name}\")");
         }
         
+        //Reset state for the top-most layer
+        var _topLayer = array_last(__layerArray);
+        if (_topLayer != undefined)
+        {
+            _topLayer.__SetBackgroundedState();
+        }
+        
+        //Then create a new layer and push it to the stack
         var _layer = new __BentoClassLayer(self, _layerName);
         array_push(__layerArray, _layer);
         

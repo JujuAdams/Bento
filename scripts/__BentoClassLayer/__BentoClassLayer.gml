@@ -128,6 +128,40 @@ function __BentoClassLayer(_environment, _name) constructor
         }
     }
     
+    static __SetBackgroundedState = function()
+    {
+        //FIXME - What happens if there's text input happening on this layer?
+        
+        __mouseHold = false;
+        
+        __holdElement = BENTO_NO_ELEMENT;
+        
+        __directionalHold = false;
+        __directionalDX   = 0;
+        __directionalDY   = 0;
+        
+        __mouseDragged = false;
+        
+        __mouseScrolledElement  = false;
+        __mouseScrollingElement = BENTO_NO_ELEMENT;
+        
+        __ClearDraggedItem();
+    }
+    
+    static __ClearDraggedItem = function()
+    {
+        if (__dndItemElement != BENTO_NO_ELEMENT)
+        {
+            if (BentoExists(__dndItemElement))
+            {
+                __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
+            }
+            
+            __dndItemElement = BENTO_NO_ELEMENT;
+            __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+        }
+    }
+    
     static __UpdateInputMode = function()
     {
         var _newMode = __environment.__envNavMode;
@@ -141,13 +175,8 @@ function __BentoClassLayer(_environment, _name) constructor
         {
             if (__navPointer)
             {
-                //Reset mouse variables
+                //Reset mouse variables if we've swapped mouse <-> touch
                 __mouseHold = false;
-                
-                __mouseDragged = false;
-                
-                __mouseScrolledElement  = false;
-                __mouseScrollingElement = BENTO_NO_ELEMENT;
                 
                 __directionalLastX = __mouseX;
                 __directionalLastY = __mouseY;
@@ -192,17 +221,116 @@ function __BentoClassLayer(_environment, _name) constructor
             __mousePressY = undefined;
         }
         
+        __mouseDragged = false;
+        
+        __mouseScrolledElement  = false;
+        __mouseScrollingElement = BENTO_NO_ELEMENT;
+        
         __navMode = _newMode;
+    }
+    
+    static __UpdateInputStateAsTopLevel = function()
+    {
+        //A full input state update. Player input is collected and passed into layer state
+        
+        static _hotkeyArray = [];
+        
+        var _environment = __environment;
+        
+        //Update mouse (pointer) input
+        __mousePrevX = __mouseX;
+        __mousePrevY = __mouseY;
+        
+        __mouseHold = _environment.__envMouseHold;
+        
+        if ((__navMode == BENTO_MODE_TOUCH) && (not __mouseHold))
+        {
+            __mouseX = -__BENTO_VERY_LARGE;
+            __mouseY = -__BENTO_VERY_LARGE;
+        }
+        else
+        {
+            __mouseX = _environment.__envMouseX;
+            __mouseY = _environment.__envMouseY;
+            
+            //Update mouse drag information
+            if (__navPointer && (__primaryState & __BENTO_STATE_START))
+            {
+                if (point_distance(__mousePressX, __mousePressY, __mouseX, __mouseY) > BENTO_POINTER_DRAG_THRESHOLD)
+                {
+                    __mouseDragged = true;
+                }
+            }
+        }
+        
+        //Update directional input
+        __directionalHold = _environment.__envDirectionalHold;
+        __directionalDX   = _environment.__envDirectionalDX;
+        __directionalDY   = _environment.__envDirectionalDY;
+        
+        __turboState.__Update(__directionalDX, __directionalDY, _system.__frame);
+        
+        //Update hotkey input
+        var _globalHotkeyInputMap = _environment.__envHotkeyInputMap;
+        ds_map_keys_to_array(_globalHotkeyInputMap, _hotkeyArray);
+        var _i = 0;
+        repeat(array_length(_hotkeyArray))
+        {
+            var _key = _hotkeyArray[_i];
+            
+            var _state = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
+            if (_globalHotkeyInputMap[? _key] ?? false) _state |= __BENTO_STATE_START;
+            __hotkeyStateMap[? _key] = _state;
+            
+            if (_state == __BENTO_STATE_START)
+            {
+                __hotkeyConsumedMap[? _key] = false;
+            }
+            
+            ++_i;
+        }
+        
+        array_resize(_hotkeyArray, 0);
+    }
+    
+    static __UpdateInputStateAsBackgrounded = function()
+    {
+        //A partial update of input state. This artificially forces all player inputs to "off" or "null"
+        //in some sense.
+        
+        static _hotkeyArray = [];
+        
+        var _environment = __environment;
+        
+        if (__navMode == BENTO_MODE_TOUCH)
+        {
+            __mouseX = -__BENTO_VERY_LARGE;
+            __mouseY = -__BENTO_VERY_LARGE;
+        }
+        
+        __turboState.__Update(0, 0, _system.__frame);
+        
+        //Update hotkey input
+        var _globalHotkeyInputMap = _environment.__envHotkeyInputMap;
+        ds_map_keys_to_array(_globalHotkeyInputMap, _hotkeyArray);
+        var _i = 0;
+        repeat(array_length(_hotkeyArray))
+        {
+            var _key = _hotkeyArray[_i];
+            
+            __hotkeyStateMap[? _key] = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
+            //TODO - Add "click" behaviour so the develpper can filter out release events that are out of scope
+            
+            ++_i;
+        }
+        
+        array_resize(_hotkeyArray, 0);
     }
     
     static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _isTopLayer, _timeStep)
     {
         //This is the main update function for a layer. It handles hovering elements, holding elements,
         //scrolling containers, disabling focus etc.
-        
-        static _hotkeyArray = [];
-        
-        var _environment = __environment;
         
         __BentoLayerTargetPush(self);
         
@@ -248,66 +376,7 @@ function __BentoClassLayer(_environment, _name) constructor
         
         if (_isTopLayer)
         {
-            ///////
-            // Input handling
-            ///////
-            
             __UpdateInputMode();
-            
-            //Update mouse (pointer) input
-            __mousePrevX = __mouseX;
-            __mousePrevY = __mouseY;
-            
-            __mouseHold = _environment.__envMouseHold;
-            
-            if ((__navMode == BENTO_MODE_TOUCH) && (not __mouseHold))
-            {
-                __mouseX = -__BENTO_VERY_LARGE;
-                __mouseY = -__BENTO_VERY_LARGE;
-            }
-            else
-            {
-                __mouseX = _environment.__envMouseX;
-                __mouseY = _environment.__envMouseY;
-                
-                //Update mouse drag information
-                if (__navPointer && (__primaryState & __BENTO_STATE_START))
-                {
-                    if (point_distance(__mousePressX, __mousePressY, __mouseX, __mouseY) > BENTO_POINTER_DRAG_THRESHOLD)
-                    {
-                        __mouseDragged = true;
-                    }
-                }
-            }
-            
-            //Update directional input
-            __directionalHold = _environment.__envDirectionalHold;
-            __directionalDX   = _environment.__envDirectionalDX;
-            __directionalDY   = _environment.__envDirectionalDY;
-            
-            __turboState.__Update(__directionalDX, __directionalDY, _system.__frame);
-            
-            //Update hotkey input
-            var _globalHotkeyInputMap = __environment.__envHotkeyInputMap;
-            ds_map_keys_to_array(_globalHotkeyInputMap, _hotkeyArray);
-            var _i = 0;
-            repeat(array_length(_hotkeyArray))
-            {
-                var _key = _hotkeyArray[_i];
-                
-                var _state = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
-                if (_globalHotkeyInputMap[? _key] ?? false) _state |= __BENTO_STATE_START;
-                __hotkeyStateMap[? _key] = _state;
-                
-                if (_state == __BENTO_STATE_START)
-                {
-                    __hotkeyConsumedMap[? _key] = false;
-                }
-                
-                ++_i;
-            }
-            
-            array_resize(_hotkeyArray, 0);
         }
         
         ///////
@@ -326,22 +395,23 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureOffset();
         __BentoEnsureHoverableOrder();
         
-        //Reset the drag & drop element if it has been destroyed for some reason or its channel has
-        //been set to `undefined`. We also reset if this layer isn't the top layer
-        if (__dndItemElement !=  BENTO_NO_ELEMENT)
+        if (_isTopLayer)
         {
-            if (not __BentoGetHoverableInternal(__dndItemElement, false))
+            __UpdateInputStateAsTopLevel();
+            
+            //Reset the drag & drop element if it has been destroyed for some reason or its channel has
+            //been set to `undefined`
+            if (__dndItemElement != BENTO_NO_ELEMENT)
             {
-                __dndItemElement = BENTO_NO_ELEMENT;
-                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+                if ((not __BentoGetHoverableInternal(__dndItemElement, false)) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined))
+                {
+                    __ClearDraggedItem();
+                }
             }
-            else if ((not _isTopLayer) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined))
-            {
-                __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
-                
-                __dndItemElement = BENTO_NO_ELEMENT;
-                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
-            }
+        }
+        else
+        {
+            __UpdateInputStateAsBackgrounded();
         }
         
         if (_isTopLayer)
@@ -491,14 +561,18 @@ function __BentoClassLayer(_environment, _name) constructor
             {
                 __primaryConsumed = false;
             }
-            
-            ///////
-            // Update elements of interest
-            ///////
-            
+        }
+        
+        //Run an update so long as we are the top layer or we have elements of interest on this layer.
+        //Because we force player input to "null" when a layer is backgrounded, elements will become
+        //inert one or two frames after a layer is backgrounded
+        if (_isTopLayer || (array_length(__updateElementArray) > 0))
+        {
+            //Update elements of interest
             __BentoUpdateElementState();
             
-            //Reset this mouse state after we update element state
+            //Reset this mouse state after we update element state. This ensures we set the correct
+            //state when releasing after dragging a scrollable container
             if (__primaryState == __BENTO_STATE_END)
             {
                 __mouseScrolledElement  = false;
