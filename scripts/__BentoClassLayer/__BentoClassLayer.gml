@@ -632,30 +632,58 @@ function __BentoClassLayer(_environment, _name) constructor
         }
         
         //Draw the dragged item element, if we have one
-        if (BentoExists(__dndItemElement) && ((not __dndItemElement.BENTO_VARS.__dndItemContinuous) || BentoExists(__dndNextItemElement)))
+        var _itemElement = __dndItemElement;
+        if (BentoExists(_itemElement) && ((not _itemElement.BENTO_VARS.__dndItemContinuous) || BentoExists(_itemElement)))
         {
-            static _translationMatrix = matrix_build_identity();
-            static _oldViewMatrix = matrix_build_identity();
-            static _newViewMatrix = matrix_build_identity();
-            
-            if (__navPointer)
+            with(_itemElement)
             {
-                _translationMatrix[@ 12] = __mouseX - __mousePressX;
-                _translationMatrix[@ 13] = __mouseY - __mousePressY;
+                //Store the current exposed position variables
+                var _oldBentoLeft   = bentoLeft;
+                var _oldBentoTop    = bentoTop;
+                var _oldBentoRight  = bentoRight;
+                var _oldBentoBottom = bentoBottom;
+                var _oldBentoX      = bentoX;
+                var _oldBentoY      = bentoY;
+                
+                //Calculate the vector from the old cursor position to the new cursor position
+                if (other.__navPointer)
+                {
+                    var _dX = other.__mouseX - other.__mousePressX;
+                    var _dY = other.__mouseY - other.__mousePressY;
+                }
+                else if (other.__navDirectional)
+                {
+                    var _dX = other.__directionalLastX - 0.5*(_oldBentoLeft + _oldBentoRight);
+                    var _dY = other.__directionalLastY - 0.5*(_oldBentoTop + _oldBentoBottom);
+                }
+                else
+                {
+                    var _dX = 0;
+                    var _dY = 0;
+                }
+                
+                //Move the exposed position to the wherever the cursor is
+                bentoLeft   += _dX;
+                bentoTop    += _dY;
+                bentoRight  += _dX;
+                bentoBottom += _dY;
+                bentoX      += _dX;
+                bentoY      += _dY;
+                //Allow downstream code to set whatever variables it needs
+                BENTO_VARS.__eventReposition();
+                
+                //Do the actual draw
+                BENTO_VARS.__eventDrawDragged();
+                
+                //Restore the old position
+                bentoLeft   = _oldBentoLeft;
+                bentoTop    = _oldBentoTop;
+                bentoRight  = _oldBentoRight;
+                bentoBottom = _oldBentoBottom;
+                bentoX      = _oldBentoX;
+                bentoY      = _oldBentoY;
+                BENTO_VARS.__eventReposition();
             }
-            else
-            {
-                var _element = __dndItemElement;
-                _translationMatrix[@ 12] = __directionalLastX - 0.5*(_element.bentoLeft + _element.bentoRight);
-                _translationMatrix[@ 13] = __directionalLastY - 0.5*(_element.bentoTop + _element.bentoBottom);
-            }
-            
-            matrix_get(matrix_view, _oldViewMatrix);
-            matrix_multiply(_translationMatrix, _oldViewMatrix, _newViewMatrix);
-            
-            matrix_set(matrix_view, _newViewMatrix);
-            __dndItemElement.BENTO_VARS.__eventDrawDragged();
-            matrix_set(matrix_view, _oldViewMatrix);
         }
         
         __BentoLayerTargetPop();
