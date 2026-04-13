@@ -50,6 +50,9 @@ function __BentoGetDirectionalRaycast(_resultStruct, _x, _y, _dX, _dY, _exclude,
                         //Reject elements that are too far away
                         var _weight = point_distance(_x, _y, _nearestX, _nearestY);
                         
+                        //Add a slight penalty for being off-axis
+                        _weight += abs(_angleDelta);
+                        
                         //However, if we can find a button inside the same scroll parent then prefer that
                         var _sameParent = (_scrollParent == __BentoFindScrollElement(BENTO_VARS.__parent));
                         
