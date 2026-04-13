@@ -14,10 +14,6 @@
 // pointer. This won't apply if an element has a parent that is scrollable.
 #macro BENTO_POINTER_CLICK_ON_PRESS  false
 
-// What happens when the cursor hovers other elements but those elements are blocked due to some
-// focus setting.
-#macro BENTO_FOCUS_BLOCKS_POINTER_HOVER  true
-
 // Whether Bento elements should always execute their Step user event / callback method. Normally
 // the Step user event / callback would be skipped if unless an element is a valid button or has
 // individually set itself to requiring an update using `BentoSetRunStep()`.

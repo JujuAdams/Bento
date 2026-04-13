@@ -771,10 +771,10 @@ function __BentoClassLayer(_environment, _name) constructor
             if (__navDirectional) return _focusTop;
             
             var _focusType = _focusTop.BENTO_VARS.__focusType;
-            if (_focusType == BENTO_FOCUS_POINTER_CONSTRAIN) return _focusTop;
             
-            if (BENTO_FOCUS_BLOCKS_POINTER_HOVER
-            &&  ((_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK) || (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)))
+            if ((_focusType == BENTO_FOCUS_POINTER_CONSTRAIN)
+            ||  (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
+            ||  (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK))
             {
                 return _focusTop;
             }
