@@ -401,12 +401,10 @@ function __BentoClassLayer(_environment, _name) constructor
             
             //Reset the drag & drop element if it has been destroyed for some reason or its channel has
             //been set to `undefined`
-            if (__dndItemElement != BENTO_NO_ELEMENT)
+            if ((__dndItemElement != BENTO_NO_ELEMENT)
+            &&  ((not __BentoGetHoverableInternal(__dndItemElement, false)) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined)))
             {
-                if ((not __BentoGetHoverableInternal(__dndItemElement, false)) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined))
-                {
-                    __ClearDraggedItem();
-                }
+                __ClearDraggedItem();
             }
         }
         else
