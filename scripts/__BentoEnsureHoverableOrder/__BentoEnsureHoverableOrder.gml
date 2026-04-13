@@ -133,13 +133,10 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
         &&  (__buttonType & BENTO_BUTTON_DIRECTIONAL)
         &&  ((not _anyChildButton) || (not __focused)))
         {
-            var _dndIsTarget = ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()));
-            if ((_dndChannel == undefined) || (_dndItemVars == self) || _dndIsTarget)
+            if (((not __dndOnlyButtonWhenTarget) && ((_dndChannel == undefined) || (_dndItemVars == self)))
+            ||  ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc())))
             {
-                if ((not __dndOnlyButtonWhenTarget) || _dndIsTarget)
-                {
-                    __buttonIndex = _hoverableIndex;
-                }
+                __buttonIndex = _hoverableIndex;
                 
                 __hoverableIndex = _hoverableIndex;
                 array_push(_hoverableOrder, __attachedElement);

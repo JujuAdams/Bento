@@ -633,7 +633,9 @@ function __BentoClassLayer(_environment, _name) constructor
         
         //Draw the dragged item element, if we have one
         var _itemElement = __dndItemElement;
-        if (BentoExists(_itemElement) && ((not _itemElement.BENTO_VARS.__dndItemContinuous) || BentoExists(_itemElement)))
+        if (BentoExists(_itemElement)
+        &&  ((not _itemElement.BENTO_VARS.__dndItemContinuous) || BentoExists(_itemElement))
+        &&  (__navDirectional || __mouseHold))
         {
             with(_itemElement)
             {
