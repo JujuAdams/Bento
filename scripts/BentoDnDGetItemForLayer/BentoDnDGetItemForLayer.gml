@@ -6,7 +6,7 @@
 /// @param [layerOrName=current]
 /// @param [environmentName=current]
 
-function BentoDnDGetItem(_layerOrName = undefined, _environmentOrName = undefined)
+function BentoDnDGetItemForLayer(_layerOrName = undefined, _environmentOrName = undefined)
 {
     var _layer = __BentoLayerEnsure(_layerOrName, _environmentOrName);
     if (_layer == undefined)

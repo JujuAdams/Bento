@@ -35,5 +35,5 @@ function BentoDnDItemBehavior(_element = self)
         }
     }
     
-    return BentoDnDGetDropTarget(_element);
+    return BentoDnDGetItemDropped()? BentoDnDGetTarget(_element) : BENTO_NO_ELEMENT;
 }

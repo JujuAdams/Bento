@@ -66,5 +66,5 @@ BentoDnDSetOnlyButtonWhenTarget(true);
 BentoDnDSetTargetChannel(1);
 BentoDnDSetTargetFunction(function()
 {
-    return (BentoDnDGetItem().text == text);
+    return (BentoDnDGetItemForLayer().text == text);
 });

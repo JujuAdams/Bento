@@ -37,16 +37,16 @@ function __BentoUpdateElementState()
             // Drag & drop
             ///////
             
-            var _isLayerItemElement = (other.__dndItemElement != BENTO_NO_ELEMENT) && (other.__dndItemElement.BENTO_VARS == self);
+            __dndItemState = __dndItemState >> 1;
             
-            if (__dndItemState > 0)
+            var _isLayerItemElement = (other.__dndItemElement != BENTO_NO_ELEMENT) && (other.__dndItemElement.BENTO_VARS == self);
+            if (_isLayerItemElement)
             {
-                __dndItemState = __dndItemState >> 1;
-                
-                if (__dndItemState == __BENTO_STATE_OFF)
-                {
-                    __dndTargetElement = BENTO_NO_ELEMENT;
-                }
+                __dndItemState = __dndItemState | __BENTO_STATE_START;
+            }
+            else if (__dndItemState == __BENTO_STATE_OFF)
+            {
+                __dndTargetElement = BENTO_NO_ELEMENT;
             }
             
             ///////
@@ -124,6 +124,7 @@ function __BentoUpdateElementState()
                         
                         //Pass through a click signal to the element if we're clicking on release
                         if ((not _clickOnPress)
+                        &&  (not _isLayerItemElement)
                         &&  (__primaryState == __BENTO_STATE_END)
                         &&  (other.__primaryState == __BENTO_STATE_END)
                         &&  (not other.__mouseScrolledElement))
@@ -232,7 +233,7 @@ function __BentoUpdateElementState()
             if ((__hoverState == __BENTO_STATE_OFF)
             &&  (__primaryState == __BENTO_STATE_OFF)
             &&  (__primaryLongState == __BENTO_STATE_OFF)
-            &&  (__dndItemState == __BENTO_STATE_OFF))
+            &&  (__dndItemState == __BENTO_STATE_OFF) && (__dndTargetElement == BENTO_NO_ELEMENT))
             {
                 __updating = false;
                 return false;

@@ -47,8 +47,8 @@ function __BentoClassLayer(_environment, _name) constructor
     __mouseHold    = false;
     __mousePrevX   = 0;
     __mousePrevY   = 0;
-    __mousePressX  = undefined;
-    __mousePressY  = undefined;
+    __mousePressX  = 0;
+    __mousePressY  = 0;
     
     __mouseDragged = false;
     
@@ -94,8 +94,9 @@ function __BentoClassLayer(_environment, _name) constructor
     __primaryState       = __BENTO_STATE_OFF;
     __primaryConsumed    = false;
     __holdElement        = BENTO_NO_ELEMENT;
-    __dndItemElement     = BENTO_NO_ELEMENT;
+    
     __dndNextItemElement = BENTO_NO_ELEMENT;
+    __dndItemElement     = BENTO_NO_ELEMENT;
     
     __updateElementArray = [];
     
@@ -122,7 +123,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __hoverElement = BENTO_NO_ELEMENT;
             
         //So long as we have a drag & drop element, set its target
-        if (__dndItemElement != BENTO_NO_ELEMENT)
+        if (BentoExists(__dndItemElement))
         {
             __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
         }
@@ -152,12 +153,13 @@ function __BentoClassLayer(_environment, _name) constructor
     {
         if (__dndItemElement != BENTO_NO_ELEMENT)
         {
+            __dndItemElement = BENTO_NO_ELEMENT;
+            
             if (BentoExists(__dndItemElement))
             {
                 __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
             }
             
-            __dndItemElement = BENTO_NO_ELEMENT;
             __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
         }
     }
@@ -187,9 +189,6 @@ function __BentoClassLayer(_environment, _name) constructor
             
             __navPointer     = false;
             __navDirectional = true;
-            
-            __mousePressX = undefined;
-            __mousePressY = undefined;
         }
         else if ((_newMode == BENTO_MODE_MOUSE) || (_newMode == BENTO_MODE_TOUCH))
         {
@@ -210,15 +209,22 @@ function __BentoClassLayer(_environment, _name) constructor
             
             __navPointer     = true;
             __navDirectional = false;
+            
+            __mousePressX = __mouseX;
+            __mousePressY = __mouseY;
         }
         else
         {
             //Some undefined input mode, perhaps `BENTO_MODE_UNKNOWN`
             __navPointer     = false;
             __navDirectional = false;
-            
-            __mousePressX = undefined;
-            __mousePressY = undefined;
+        }
+        
+        __dndNextItemElement = BENTO_NO_ELEMENT;
+        
+        if (BentoExists(__dndItemElement))
+        {
+            __dndItemElement.BENTO_VARS.__dndItemContinuous = true;
         }
         
         __mouseDragged = false;
@@ -380,6 +386,54 @@ function __BentoClassLayer(_environment, _name) constructor
         }
         
         ///////
+        // Drag & drop
+        ///////
+        
+        if (BentoExists(__dndNextItemElement))
+        {
+            //Incoming new item element
+            
+            if (__dndNextItemElement != __dndItemElement)
+            {
+                //The item element has changed
+                
+                if (BentoExists(__dndItemElement))
+                {
+                    //To avoid bugs, reset the target for the existing item element
+                    __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
+                }
+                
+                __dndItemElement = __dndNextItemElement;
+                
+                with(__dndItemElement.BENTO_VARS)
+                {
+                    __dndTargetElement = BENTO_NO_ELEMENT;
+                    
+                    if (not __updating)
+                    {
+                        __updating = true;
+                        array_push(__layer.__updateElementArray, self)
+                    }
+                }
+                
+                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+            }
+            
+            __dndNextItemElement = BENTO_NO_ELEMENT;
+        }
+        else if (__dndItemElement != BENTO_NO_ELEMENT)
+        {
+            //No new item element
+            
+            if ((not BentoExists(__dndItemElement)) || __dndItemElement.BENTO_VARS.__dndItemContinuous)
+            {
+                //If we have no new drag & drop item element and the current item is continuous then we've lost the item
+                __dndItemElement = BENTO_NO_ELEMENT;
+                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+            }
+        }
+        
+        ///////
         // Layout and step order
         ///////
         
@@ -414,49 +468,6 @@ function __BentoClassLayer(_environment, _name) constructor
         
         if (_isTopLayer)
         {
-            ///////
-            // Drag & drop
-            ///////
-            
-            if (__dndNextItemElement != BENTO_NO_ELEMENT)
-            {
-                if (__dndNextItemElement != __dndItemElement)
-                {
-                    //We've got new drag & drop item element
-                    __dndItemElement = __dndNextItemElement;
-                    __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
-                    
-                    with(__dndItemElement.BENTO_VARS)
-                    {
-                        __dndTargetElement = BENTO_NO_ELEMENT;
-                    
-                        if (not __updating)
-                        {
-                            __updating = true;
-                            array_push(__layer.__updateElementArray, self)
-                        }
-                    }
-                }
-                
-                //We're adjusting state here ahead of time so we need a bitshift to get the final state value correct
-                __dndItemElement.BENTO_VARS.__dndItemState |= (__BENTO_STATE_START << 1);
-                __dndNextItemElement = BENTO_NO_ELEMENT;
-            }
-            else if (__dndItemElement != BENTO_NO_ELEMENT)
-            {
-                if (__dndItemElement.BENTO_VARS.__dndItemContinuous)
-                {
-                    //If we have no new drag & drop item element and the current item is continuous then we've lost the item
-                    __dndItemElement = BENTO_NO_ELEMENT;
-                    __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
-                }
-                else
-                {
-                    //We're adjusting state here ahead of time so we need a bitshift to get the final state value correct
-                    __dndItemElement.BENTO_VARS.__dndItemState |= (__BENTO_STATE_START << 1);
-                }
-            }
-            
             ///////
             // Navigation
             ///////
@@ -531,10 +542,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 if (__primaryState == __BENTO_STATE_END)
                 {
-                    //Reset some mouse state when we release
-                    __mousePressX = undefined;
-                    __mousePressY = undefined;
-                    
+                    //Reset the drag state
                     __mouseDragged = false;
                 }
             }
@@ -632,60 +640,54 @@ function __BentoClassLayer(_environment, _name) constructor
         }
         
         //Draw the dragged item element, if we have one
-        var _itemElement = __dndItemElement;
-        if (BentoExists(_itemElement)
-        &&  ((not _itemElement.BENTO_VARS.__dndItemContinuous) || BentoExists(_itemElement))
-        &&  (__navDirectional || __mouseHold))
+        with(__dndItemElement)
         {
-            with(_itemElement)
+            //Store the current exposed position variables
+            var _oldBentoLeft   = bentoLeft;
+            var _oldBentoTop    = bentoTop;
+            var _oldBentoRight  = bentoRight;
+            var _oldBentoBottom = bentoBottom;
+            var _oldBentoX      = bentoX;
+            var _oldBentoY      = bentoY;
+            
+            //Calculate the vector from the old cursor position to the new cursor position
+            if (other.__navPointer)
             {
-                //Store the current exposed position variables
-                var _oldBentoLeft   = bentoLeft;
-                var _oldBentoTop    = bentoTop;
-                var _oldBentoRight  = bentoRight;
-                var _oldBentoBottom = bentoBottom;
-                var _oldBentoX      = bentoX;
-                var _oldBentoY      = bentoY;
-                
-                //Calculate the vector from the old cursor position to the new cursor position
-                if (other.__navPointer)
-                {
-                    var _dX = other.__mouseX - other.__mousePressX;
-                    var _dY = other.__mouseY - other.__mousePressY;
-                }
-                else if (other.__navDirectional)
-                {
-                    var _dX = other.__directionalLastX - 0.5*(_oldBentoLeft + _oldBentoRight);
-                    var _dY = other.__directionalLastY - 0.5*(_oldBentoTop + _oldBentoBottom);
-                }
-                else
-                {
-                    var _dX = 0;
-                    var _dY = 0;
-                }
-                
-                //Move the exposed position to the wherever the cursor is
-                bentoLeft   += _dX;
-                bentoTop    += _dY;
-                bentoRight  += _dX;
-                bentoBottom += _dY;
-                bentoX      += _dX;
-                bentoY      += _dY;
-                //Allow downstream code to set whatever variables it needs
-                BENTO_VARS.__eventReposition();
-                
-                //Do the actual draw
-                BENTO_VARS.__eventDrawDragged();
-                
-                //Restore the old position
-                bentoLeft   = _oldBentoLeft;
-                bentoTop    = _oldBentoTop;
-                bentoRight  = _oldBentoRight;
-                bentoBottom = _oldBentoBottom;
-                bentoX      = _oldBentoX;
-                bentoY      = _oldBentoY;
-                BENTO_VARS.__eventReposition();
+                var _dX = other.__mouseX - other.__mousePressX;
+                var _dY = other.__mouseY - other.__mousePressY;
             }
+            else if (other.__navDirectional)
+            {
+                var _dX = other.__directionalLastX - 0.5*(_oldBentoLeft + _oldBentoRight);
+                var _dY = other.__directionalLastY - 0.5*(_oldBentoTop + _oldBentoBottom);
+            }
+            else
+            {
+                var _dX = 0;
+                var _dY = 0;
+            }
+            
+            //Move the exposed position to the wherever the cursor is
+            bentoLeft   += _dX;
+            bentoTop    += _dY;
+            bentoRight  += _dX;
+            bentoBottom += _dY;
+            bentoX      += _dX;
+            bentoY      += _dY;
+            //Allow downstream code to set whatever variables it needs
+            BENTO_VARS.__eventReposition();
+            
+            //Do the actual draw
+            BENTO_VARS.__eventDrawDragged();
+            
+            //Restore the old position
+            bentoLeft   = _oldBentoLeft;
+            bentoTop    = _oldBentoTop;
+            bentoRight  = _oldBentoRight;
+            bentoBottom = _oldBentoBottom;
+            bentoX      = _oldBentoX;
+            bentoY      = _oldBentoY;
+            BENTO_VARS.__eventReposition();
         }
         
         __BentoLayerTargetPop();

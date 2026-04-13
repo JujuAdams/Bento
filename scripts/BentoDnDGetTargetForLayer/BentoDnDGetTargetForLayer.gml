@@ -9,13 +9,17 @@
 /// This function can return the dragged item element itself if the player has dragged the item
 /// back onto itself.
 /// 
-/// @param [element=self]
+/// @param [layerOrName=current]
+/// @param [environmentName=current]
 
-function BentoDnDGetTarget(_element = self)
+function BentoDnDGetTargetForLayer(_layerOrName = undefined, _environmentOrName = undefined)
 {
-    with(__BentoGetVars(_element))
+    with(__BentoLayerEnsure(_layerOrName, _environmentOrName))
     {
-        return __dndTargetElement;
+        with(__BentoGetVars(__dndItemElement))
+        {
+            return __dndTargetElement;
+        }
     }
     
     return BENTO_NO_ELEMENT;

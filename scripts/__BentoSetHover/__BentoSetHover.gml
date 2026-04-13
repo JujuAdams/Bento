@@ -25,7 +25,7 @@ function __BentoSetHover(_element, _byNavigation)
         __hoverElement = _element;
         
         //So long as we have a drag & drop element, set its target
-        if (__dndItemElement != BENTO_NO_ELEMENT)
+        if (BentoExists(__dndItemElement))
         {
             __dndItemElement.BENTO_VARS.__dndTargetElement = _element;
         }

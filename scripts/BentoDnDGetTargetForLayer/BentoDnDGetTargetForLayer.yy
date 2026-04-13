@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoDnDGetDropTarget",
+  "%Name":"BentoDnDGetTargetForLayer",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoDnDGetDropTarget",
+  "name":"BentoDnDGetTargetForLayer",
   "parent":{
     "name":"State Getters",
     "path":"folders/Bento/Functions/Drag & Drop/State Getters.yy",

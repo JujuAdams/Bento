@@ -12,6 +12,7 @@ function BentoDnDIsValidTarget(_element = self)
         var _dndItemElement = __layer.__dndItemElement;
         if (BentoExists(_dndItemElement))
         {
+            //We can always be dragged onto ourselves
             if (_element == _dndItemElement)
             {
                 return true;
