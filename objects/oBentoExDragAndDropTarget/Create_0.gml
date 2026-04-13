@@ -53,7 +53,6 @@ func = method(self, func);
 
 //Allow Bento to focus this element
 BentoSetButton(inoperative? BENTO_BUTTON_NEVER : BENTO_BUTTON_ALWAYS);
-BentoSetRunStep(true);
 
 //If we have some valid text then force the size of the element
 if (text != "")
@@ -63,6 +62,7 @@ if (text != "")
     draw_set_font(-1);
 }
 
+BentoDnDSetOnlyButtonWhenTarget(true);
 BentoDnDSetTargetChannel(1);
 BentoDnDSetTargetFunction(function()
 {

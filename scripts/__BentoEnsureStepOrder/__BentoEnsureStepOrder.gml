@@ -10,6 +10,8 @@ function __BentoEnsureStepOrder()
     if not (__dirtyFlags & __BENTO_DIRTY_STEP) return;
     __dirtyFlags = ~((~__dirtyFlags) | __BENTO_DIRTY_STEP);
     
+    __BentoEnsureHoverableOrder();
+    
     array_resize(__stepOrder, 0);
     
     var _rootElement = __GetFocusRoot();
@@ -32,7 +34,7 @@ function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _navType)
         //Determine whether we need to execute the Step user event
         //
         //NOTE - This logic must match `BentoGetExecutesStep()`
-        if (BENTO_ALWAYS_EXECUTE_STEP || (__buttonType & _navType) || __forceStep || __focused || __scissorEnabled)
+        if (BENTO_ALWAYS_EXECUTE_STEP || (__buttonIndex == __layer.__hoverableRegenCount) || __forceStep || __focused || __scissorEnabled)
         {
             __executesStep = true;
             array_push(_stepOrder, __eventStep);

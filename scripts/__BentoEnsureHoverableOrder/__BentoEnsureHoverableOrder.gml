@@ -77,14 +77,21 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
         }
         
         //Elements can only be selected if the are not enclosed as indicated by `_hoverableIndex`
-        if ((__buttonType != BENTO_BUTTON_NEVER)
-        &&  (_hoverableIndex != undefined)
-        &&  ((_dndChannel == undefined) || (_dndItemVars == self) || ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()))))
+        if (_hoverableIndex != undefined)
         {
-            __hoverableIndex = _hoverableIndex;
-            array_push(_hoverableOrder, __funcHover);
-            
-            return true;
+            var _dndIsTarget = ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()));
+            if ((_dndChannel == undefined) || (_dndItemVars == self) || _dndIsTarget)
+            {
+                if ((__buttonType & BENTO_BUTTON_POINTER) && ((not __dndOnlyButtonWhenTarget) || _dndIsTarget))
+                {
+                    __buttonIndex = _hoverableIndex;
+                }
+                
+                __hoverableIndex = _hoverableIndex;
+                array_push(_hoverableOrder, __funcHover);
+                
+                return true;
+            }
         }
     }
     
@@ -122,15 +129,23 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
         // 1. set up as buttons when in directional mode
         // 2. not enclosed as indicated by `_hoverableIndex`
         // 3. either not focused or don't have any children that are buttons
-        if ((__buttonType & BENTO_BUTTON_DIRECTIONAL)
-        &&  (_hoverableIndex != undefined)
-        &&  ((not _anyChildButton) || (not __focused))
-        &&  ((_dndChannel == undefined) || (_dndItemVars == self) || ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()))))
+        if ((_hoverableIndex != undefined)
+        &&  (__buttonType & BENTO_BUTTON_DIRECTIONAL)
+        &&  ((not _anyChildButton) || (not __focused)))
         {
-            __hoverableIndex = _hoverableIndex;
-            array_push(_hoverableOrder, __attachedElement);
-            
-            return true;
+            var _dndIsTarget = ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()));
+            if ((_dndChannel == undefined) || (_dndItemVars == self) || _dndIsTarget)
+            {
+                if ((not __dndOnlyButtonWhenTarget) || _dndIsTarget)
+                {
+                    __buttonIndex = _hoverableIndex;
+                }
+                
+                __hoverableIndex = _hoverableIndex;
+                array_push(_hoverableOrder, __attachedElement);
+                
+                return true;
+            }
         }
     }
     

@@ -20,6 +20,7 @@ function __BentoClassVariables(_attachedElement) constructor
     
     __disable        = false;
     __visible        = true;
+    __buttonIndex    = undefined;
     __hoverableIndex = undefined;
     
     if (BENTO_ALLOW_ENCLOSED_GETTER)
@@ -56,11 +57,12 @@ function __BentoClassVariables(_attachedElement) constructor
     __clickOnPress     = undefined;
     __pressTime        = -infinity;
     
-    __dndItemState      = __BENTO_STATE_OFF;
-    __dndItemContinuous = true;
-    __dndItemChannel    = undefined;
-    __dndTargetChannel  = undefined;
-    __dndTargetFunc     = undefined;
+    __dndItemState            = __BENTO_STATE_OFF;
+    __dndItemContinuous       = true;
+    __dndItemChannel          = undefined;
+    __dndTargetChannel        = undefined;
+    __dndTargetFunc           = undefined;
+    __dndOnlyButtonWhenTarget = false;
     
     __textConfig = {
         __maxLength:      300,

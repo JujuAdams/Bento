@@ -38,7 +38,9 @@ function BentoGetBlocksMouse(_environmentName = undefined)
                 return true;
             }
             
-            if (BentoExists(__hoverElement) && (__hoverElement.BENTO_VARS.__buttonType & BENTO_BUTTON_POINTER))
+            __BentoEnsureHoverableOrder();
+            
+            if (BentoExists(__hoverElement) && (__hoverElement.BENTO_VARS.__hoverableIndex == __hoverableRegenCount))
             {
                 return true;
             }
