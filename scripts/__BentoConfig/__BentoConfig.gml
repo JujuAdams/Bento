@@ -16,7 +16,7 @@
 
 // Whether Bento elements should always execute their Step user event / callback method. Normally
 // the Step user event / callback would be skipped if unless an element is a valid button or has
-// individually set itself to requiring an update using `BentoSetRunStep()`.
+// individually set itself to requiring an update using `BentoSetPushStep()`.
 #macro BENTO_ALWAYS_EXECUTE_STEP  false
 
 // Hotkey name used to cancel input. You may check against this macro yourself for general cancel

@@ -6,7 +6,7 @@
 /// @param state
 /// @param [element=self]
 
-function BentoSetRunStep(_state, _element = self)
+function BentoSetPushStep(_state, _element = self)
 {
     with(__BentoGetVars(_element))
     {

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoSetForceStep",
+  "%Name":"BentoSetPushStep",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoSetForceStep",
+  "name":"BentoSetPushStep",
   "parent":{
     "name":"Basic Properties",
     "path":"folders/Bento/Functions/Basic Properties.yy",

@@ -5,7 +5,7 @@
 /// 
 /// @param [element=self]
 
-function BentoGetRunStep(_element = self)
+function BentoGetPushStep(_element = self)
 {
     return BentoExists(_element)? _element.BENTO_VARS.__forceStep : false;
 }
