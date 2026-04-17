@@ -46,6 +46,13 @@
 #macro BENTO_BUTTON_DIRECTIONAL  0b10
 
 ///////
+// Click Timing
+///////
+
+#macro BENTO_CLICK_ON_PRESS    true
+#macro BENTO_CLICK_ON_RELEASE  false
+
+///////
 // Focus
 ///////
 

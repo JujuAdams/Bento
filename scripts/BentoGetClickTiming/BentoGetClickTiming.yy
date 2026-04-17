@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoGetClickOnPress",
+  "%Name":"BentoGetClickTiming",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoGetClickOnPress",
+  "name":"BentoGetClickTiming",
   "parent":{
     "name":"Getters",
     "path":"folders/Bento/Functions/Basic Properties/Getters.yy",

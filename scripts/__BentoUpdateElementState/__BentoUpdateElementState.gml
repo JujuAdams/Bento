@@ -16,19 +16,31 @@ function __BentoUpdateElementState()
             
             if (other.__navDirectional)
             {
-                var _clickOnPress = __clickOnPress ?? true;
+                if (__clickTiming != undefined)
+                {
+                    var _clickOnPress = (__clickTiming == BENTO_CLICK_ON_PRESS);
+                }
+                else
+                {
+                    var _clickOnPress = true;
+                }
             }
-            else if (BentoExists(__BentoFindScrollElement(_element)))
-            {
-                var _clickOnPress = false;
-            }
-            else if ((__dndItemChannel != undefined) || __longPressEnabled)
+            else if (BentoExists(__BentoFindScrollElement(_element))
+                  || (__dndItemChannel != undefined)
+                  || __longPressEnabled)
             {
                 var _clickOnPress = false;
             }
             else
             {
-                var _clickOnPress = __clickOnPress ?? (other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH)));
+                if (__clickTiming != undefined)
+                {
+                    var _clickOnPress = (__clickTiming == BENTO_CLICK_ON_PRESS);
+                }
+                else
+                {
+                    var _clickOnPress = (other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH)));
+                }
             }
             
             __clickState = 0b00;

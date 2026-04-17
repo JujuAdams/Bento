@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoSetClickOnPress",
+  "%Name":"BentoSetClickTiming",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoSetClickOnPress",
+  "name":"BentoSetClickTiming",
   "parent":{
     "name":"Basic Properties",
     "path":"folders/Bento/Functions/Basic Properties.yy",
