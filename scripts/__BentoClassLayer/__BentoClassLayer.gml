@@ -132,7 +132,11 @@ function __BentoClassLayer(_environment, _name) constructor
     static __SetBackgroundedState = function()
     {
         //FIXME - What happens if there's text input happening on this layer?
+        __hoverElement = BENTO_NO_ELEMENT;
         __holdElement = BENTO_NO_ELEMENT;
+        
+        __mouseX = -__BENTO_VERY_LARGE;
+        __mouseY = -__BENTO_VERY_LARGE;
         
         __directionalDX = 0;
         __directionalDY = 0;
@@ -361,12 +365,6 @@ function __BentoClassLayer(_environment, _name) constructor
         static _hotkeyArray = [];
         
         var _environment = __environment;
-        
-        if (__navMode == BENTO_MODE_TOUCH)
-        {
-            __mouseX = -__BENTO_VERY_LARGE;
-            __mouseY = -__BENTO_VERY_LARGE;
-        }
         
         __mousePrimaryState = __mousePrimaryState >> 1;
         __directionalPrimaryState = __directionalPrimaryState >> 1;
@@ -681,7 +679,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoLayerTargetPop();
     }
     
-    static __Draw = function()
+    static __Draw = function(_isTopLayer)
     {
         __BentoLayerTargetPush(self);
         
@@ -696,66 +694,69 @@ function __BentoClassLayer(_environment, _name) constructor
             ++_i;
         }
         
-        //Draw the hovered element if it's not inside a scissor. If the hovered element is inside
-        //a scissor then it'll be drawn by `__BentoScissorPop()`
-        if (BentoExists(__hoverElement))
+        if (_isTopLayer)
         {
-            var _hoverElementVars = __hoverElement.BENTO_VARS;
-            if (_hoverElementVars.__scissorParent == __rootElement.BENTO_VARS)
+            //Draw the hovered element if it's not inside a scissor. If the hovered element is inside
+            //a scissor then it'll be drawn by `__BentoScissorPop()`
+            if (BentoExists(__hoverElement))
             {
-                _hoverElementVars.__eventDrawHover();
-            }
-        }
-        
-        //Draw the dragged item element, if we have one
-        with(__dndItemElement)
-        {
-            //Store the current exposed position variables
-            var _oldBentoLeft   = bentoLeft;
-            var _oldBentoTop    = bentoTop;
-            var _oldBentoRight  = bentoRight;
-            var _oldBentoBottom = bentoBottom;
-            var _oldBentoX      = bentoX;
-            var _oldBentoY      = bentoY;
-            
-            //Calculate the vector from the old cursor position to the new cursor position
-            if (other.__navPointer)
-            {
-                var _dX = other.__mouseX - other.__mousePressX;
-                var _dY = other.__mouseY - other.__mousePressY;
-            }
-            else if (other.__navDirectional)
-            {
-                var _dX = other.__directionalLastX - 0.5*(_oldBentoLeft + _oldBentoRight);
-                var _dY = other.__directionalLastY - 0.5*(_oldBentoTop + _oldBentoBottom);
-            }
-            else
-            {
-                var _dX = 0;
-                var _dY = 0;
+                var _hoverElementVars = __hoverElement.BENTO_VARS;
+                if (_hoverElementVars.__scissorParent == __rootElement.BENTO_VARS)
+                {
+                    _hoverElementVars.__eventDrawHover();
+                }
             }
             
-            //Move the exposed position to the wherever the cursor is
-            bentoLeft   += _dX;
-            bentoTop    += _dY;
-            bentoRight  += _dX;
-            bentoBottom += _dY;
-            bentoX      += _dX;
-            bentoY      += _dY;
-            //Allow downstream code to set whatever variables it needs
-            BENTO_VARS.__eventReposition();
-            
-            //Do the actual draw
-            BENTO_VARS.__eventDrawDragged();
-            
-            //Restore the old position
-            bentoLeft   = _oldBentoLeft;
-            bentoTop    = _oldBentoTop;
-            bentoRight  = _oldBentoRight;
-            bentoBottom = _oldBentoBottom;
-            bentoX      = _oldBentoX;
-            bentoY      = _oldBentoY;
-            BENTO_VARS.__eventReposition();
+            //Draw the dragged item element, if we have one
+            with(__dndItemElement)
+            {
+                //Store the current exposed position variables
+                var _oldBentoLeft   = bentoLeft;
+                var _oldBentoTop    = bentoTop;
+                var _oldBentoRight  = bentoRight;
+                var _oldBentoBottom = bentoBottom;
+                var _oldBentoX      = bentoX;
+                var _oldBentoY      = bentoY;
+                
+                //Calculate the vector from the old cursor position to the new cursor position
+                if (other.__navPointer)
+                {
+                    var _dX = other.__mouseX - other.__mousePressX;
+                    var _dY = other.__mouseY - other.__mousePressY;
+                }
+                else if (other.__navDirectional)
+                {
+                    var _dX = other.__directionalLastX - 0.5*(_oldBentoLeft + _oldBentoRight);
+                    var _dY = other.__directionalLastY - 0.5*(_oldBentoTop + _oldBentoBottom);
+                }
+                else
+                {
+                    var _dX = 0;
+                    var _dY = 0;
+                }
+                
+                //Move the exposed position to the wherever the cursor is
+                bentoLeft   += _dX;
+                bentoTop    += _dY;
+                bentoRight  += _dX;
+                bentoBottom += _dY;
+                bentoX      += _dX;
+                bentoY      += _dY;
+                //Allow downstream code to set whatever variables it needs
+                BENTO_VARS.__eventReposition();
+                
+                //Do the actual draw
+                BENTO_VARS.__eventDrawDragged();
+                
+                //Restore the old position
+                bentoLeft   = _oldBentoLeft;
+                bentoTop    = _oldBentoTop;
+                bentoRight  = _oldBentoRight;
+                bentoBottom = _oldBentoBottom;
+                bentoX      = _oldBentoX;
+                bentoY      = _oldBentoY;
+                BENTO_VARS.__eventReposition();
+            }
         }
         
         __BentoLayerTargetPop();

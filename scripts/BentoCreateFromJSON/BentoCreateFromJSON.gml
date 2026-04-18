@@ -7,6 +7,10 @@
 /// This function will return the element that gets created or, if the root node of the JSON is an
 /// array, this function will return an array of root elements that have been created.
 /// 
+/// Tip: To create an element attached to the root element of a layer, set the parent element
+///      parameter to `BentoLayetGetRoot()`.
+///      
+/// 
 /// @param rootNode
 /// @param [metadata]
 /// @param [parentElement=self]

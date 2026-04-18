@@ -24,7 +24,7 @@ function ExampleModal()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Lists",
+                                text: "Modals",
                                 font: fntBentoExCandyBeansBig,
                             },
                         },
@@ -36,13 +36,13 @@ function ExampleModal()
                         },
                     ],
                 },
-                {
-                    object: oBentoExText,
-                    vars: {
-                        text: "Modal",
-                        font: fntBentoExCandyBeans,
-                    },
-                },
+                //{
+                //    object: oBentoExText,
+                //    vars: {
+                //        text: "",
+                //        font: fntBentoExCandyBeans,
+                //    },
+                //},
                 {
                     object: oBentoExButton,
                     vars: {

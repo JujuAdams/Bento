@@ -176,11 +176,16 @@ function __BentoClassEnvironment(_name) constructor
         __BentoEnvironmentTargetPush(self);
         
         var _layerArray = __layerArray;
-        var _i = 0;
-        repeat(array_length(_layerArray))
+        if (array_length(_layerArray) > 0)
         {
-            _layerArray[_i].__Draw();
-            ++_i;
+            var _i = 0;
+            repeat(array_length(_layerArray)-1)
+            {
+                _layerArray[_i].__Draw(false);
+                ++_i;
+            }
+            
+            _layerArray[_i].__Draw(true);
         }
         
         __BentoEnvironmentTargetPop();
