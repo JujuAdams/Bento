@@ -18,7 +18,7 @@ function BentoCursorGetX(_layerOrName = undefined)
         }
         else if (__navMode == BENTO_MODE_TOUCH)
         {
-            return __mouseHold? __mouseX : __mousePrevX;
+            return (__mousePrimaryState & __BENTO_STATE_START)? __mouseX : __mousePrevX;
         }
     }
     

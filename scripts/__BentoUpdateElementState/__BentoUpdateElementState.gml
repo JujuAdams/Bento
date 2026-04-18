@@ -113,7 +113,6 @@ function __BentoUpdateElementState()
                 //`self` will occasionally return false positives. However, comparing the `BENTO_VARS` structs is
                 //stable and returns accurate information.
                 var _isLayerHoldElement = (other.__holdElement != BENTO_NO_ELEMENT) && (other.__holdElement.BENTO_VARS == self);
-                
                 if ((other.__primaryState == __BENTO_STATE_ON) && (_isLayerHoldElement || _isLayerItemElement))
                 {
                     //Primary button is still down, we're still held

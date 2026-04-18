@@ -18,7 +18,7 @@ function BentoCursorGetDY(_directionalThreshold = 0.001, _layerOrName = undefine
     {
         if (__navPointer)
         {
-            return __mouseHold? (__mouseY - __mousePrevY) : 0;
+            return (__mousePrimaryState & __BENTO_STATE_START)? (__mouseY - __mousePrevY) : 0;
         }
         else if (__navDirectional)
         {

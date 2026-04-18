@@ -17,13 +17,15 @@ function __BentoClassEnvironment(_name) constructor
     // Raw input tracking
     ///////
     
-    __envMouseX    = 0;
-    __envMouseY    = 0;
-    __envMouseHold = false;
+    __envMouseX     = 0;
+    __envMouseY     = 0;
+    __envMouseHold  = false;
+    __envMouseState = __BENTO_STATE_OFF;
     
-    __envDirectionalDX   = 0;
-    __envDirectionalDY   = 0;
-    __envDirectionalHold = false;
+    __envDirectionalDX    = 0;
+    __envDirectionalDY    = 0;
+    __envDirectionalHold  = false;
+    __envDirectionalState = __BENTO_STATE_OFF;
     
     __envHotkeyInputMap = ds_map_create();
     
@@ -70,6 +72,7 @@ function __BentoClassEnvironment(_name) constructor
     
     __layerCurrent = new __BentoClassLayer(self, "default");
     __layerArray = [__layerCurrent];
+    __newLayerArray = [];
     
     __nameMap = ds_map_create();
     
@@ -95,17 +98,29 @@ function __BentoClassEnvironment(_name) constructor
             _layerArray[_i].__Destroy();
             --_i;
         }
+        
+        array_resize(__newLayerArray, 0);
     }
     
     static __RemoveLayer = function(_layer)
     {
         var _index = array_get_index(__layerArray, _layer);
         if (_index >= 0) array_delete(__layerArray, _index, 1);
+        
+        var _index = array_get_index(__newLayerArray, _layer);
+        if (_index >= 0) array_delete(__newLayerArray, _index, 1);
     }
     
     static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _timeStep)
     {
         var _layerArray = __layerArray;
+        
+        //Advance mouse and directional state
+        __envMouseState = __envMouseState >> 1;
+        if (__envMouseHold) __envMouseState |= __BENTO_STATE_START;
+        
+        __envDirectionalState = __envDirectionalState >> 1;
+        if (__envDirectionalHold) __envDirectionalState |= __BENTO_STATE_START;
         
         var _layerCount = array_length(_layerArray);
         if (_layerCount <= 0) return;
@@ -127,16 +142,28 @@ function __BentoClassEnvironment(_name) constructor
             }
         }
         
+        array_resize(__newLayerArray, 0);
+        
+        var _primaryState = false;
+        
         //All lower layers only ensure layouts etc.
         var _i = 0;
         repeat(_layerCount-1)
         {
-            _layerArray[_i].__Update(_rootX, _rootY, _rootWidth, _rootHeight, false, _timeStep);
+            _layerArray[_i].__Update(_rootX, _rootY, _rootWidth, _rootHeight, false, _primaryState, _timeStep);
             ++_i;
         }
         
         //Top-most layer pulls in player input
-        _layerArray[_i].__Update(_rootX, _rootY, _rootWidth, _rootHeight, true, _timeStep);
+        _layerArray[_i].__Update(_rootX, _rootY, _rootWidth, _rootHeight, true, _primaryState, _timeStep);
+        
+        //Do a partial update of any new layers
+        var _i = 0;
+        repeat(array_length(__newLayerArray))
+        {
+            __newLayerArray[_i].__UpdateLayout(_rootX, _rootY, _rootWidth, _rootHeight);
+            ++_i;
+        }
         
         //Wipe out the hotkeys, nullifying them for the next update loop
         ds_map_clear(__envHotkeyInputMap);

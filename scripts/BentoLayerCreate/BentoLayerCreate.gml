@@ -34,6 +34,7 @@ function BentoLayerCreate(_layerName, _environmentName = undefined)
         //Then create a new layer and push it to the stack
         var _layer = new __BentoClassLayer(self, _layerName);
         array_push(__layerArray, _layer);
+        array_push(__newLayerArray, _layer);
         
         return _layer;
     }

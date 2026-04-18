@@ -9,7 +9,7 @@
 /// 
 /// @param rootNode
 /// @param [metadata]
-/// @param [parent=self]
+/// @param [parentElement=self]
 /// 
 /// 
 /// 
