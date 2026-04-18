@@ -136,8 +136,8 @@
 
 // Whether to require `BentoCreate()` when creating Bento elements using object instances. If you
 // set this macro to `false` then instances that inherit from `oBentoAncestor` but that are not
-// created with `BentoCreate()` will be automatically parented to `BentoGetRoot()` (which is often
-// correct but not always).
+// created with `BentoCreate()` will be automatically parented to `BentoLayerGetRoot()` (which is
+// often correct but not always).
 // 
 // This macro does not affect Bento elements created using struct constructors.
 #macro BENTO_REQUIRE_CREATE  true

@@ -66,5 +66,5 @@ function TestAnchor()
         ],
     };
     
-    anchorElement = BentoCreateFromJSON(_json, undefined, BentoGetRoot());
+    anchorElement = BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
 }

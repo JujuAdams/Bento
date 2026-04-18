@@ -47,7 +47,7 @@ function ExampleContextMenu()
                             var _x = BentoCursorGetX();
                             var _y = BentoCursorGetY();
                             
-                            with(BentoCreate(oBentoExContextMenu, undefined, BentoGetRoot()))
+                            with(BentoCreate(oBentoExContextMenu, undefined, BentoLayerGetRoot()))
                             {
                                 BentoSetOffset(_x, _y);
                                 
@@ -62,6 +62,6 @@ function ExampleContextMenu()
         };
         
         BentoDestroy(mainElement);
-        mainElement = BentoCreateFromJSON(_json, undefined, BentoGetRoot());
+        mainElement = BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
     }
 }

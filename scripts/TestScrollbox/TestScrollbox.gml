@@ -33,5 +33,5 @@ function TestListbox()
         },
     ];
     
-    scrollboxElement = BentoCreateFromJSON(_json, { count: 11 }, BentoGetRoot());
+    scrollboxElement = BentoCreateFromJSON(_json, { count: 11 }, BentoLayerGetRoot());
 }

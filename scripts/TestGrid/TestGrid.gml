@@ -29,5 +29,5 @@ function TestGrid()
         },
     };
     
-    gridElement = BentoCreateFromJSON(_json, { count: 11 }, BentoGetRoot());
+    gridElement = BentoCreateFromJSON(_json, { count: 11 }, BentoLayerGetRoot());
 }

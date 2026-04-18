@@ -4,7 +4,7 @@
 /// 
 /// @param [layerOrName=current]
 
-function BentoGetRoot(_layerOrName = undefined)
+function BentoLayerGetRoot(_layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {

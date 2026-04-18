@@ -2,7 +2,7 @@
 
 function TestAnimations()
 {
-    structTest = new BentoExConstrSprite(sBentoMaskRectangle, BentoGetRoot());
+    structTest = new BentoExConstrSprite(sBentoMaskRectangle, BentoLayerGetRoot());
     with(structTest)
     {
         BentoSetOffset(100, 100);

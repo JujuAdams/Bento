@@ -1,6 +1,6 @@
 function ExampleMainMenu()
 {
-    mainElement = BentoCreate(oBentoExList, undefined, BentoGetRoot());
+    mainElement = BentoCreate(oBentoExList, undefined, BentoLayerGetRoot());
     with(mainElement)
     {
         BentoSetVisible(false);

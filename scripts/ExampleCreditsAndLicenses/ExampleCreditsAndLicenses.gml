@@ -167,6 +167,6 @@ function ExampleCreditsAndLicenses()
         };
         
         BentoDestroy(mainElement);
-        mainElement = BentoCreateFromJSON(_json, undefined, BentoGetRoot());
+        mainElement = BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
     }
 }

@@ -39,5 +39,5 @@ function TestStepperStrings()
         },
     ];
     
-    gridElement = BentoCreateFromJSON(_json, undefined, BentoGetRoot());
+    gridElement = BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
 }

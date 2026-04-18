@@ -74,6 +74,6 @@ function ExamplePosition()
         };
         
         BentoDestroy(mainElement);
-        mainElement = BentoCreateFromJSON(_json, { count: 15 }, BentoGetRoot());
+        mainElement = BentoCreateFromJSON(_json, { count: 15 }, BentoLayerGetRoot());
     }
 }

@@ -2,7 +2,7 @@
 
 function TestStructs()
 {
-    structTest = new BentoExConstrSprite(sBentoMaskRectangle, BentoGetRoot());
+    structTest = new BentoExConstrSprite(sBentoMaskRectangle, BentoLayerGetRoot());
     with(structTest)
     {
         BentoLayoutList(BENTO_AXIS_Y, 0, 0);

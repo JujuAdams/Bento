@@ -16,5 +16,5 @@ function TestTextbox()
         },
     ];
     
-    textboxElement = BentoCreateFromJSON(_json, undefined, BentoGetRoot());
+    textboxElement = BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
 }

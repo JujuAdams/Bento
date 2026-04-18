@@ -16,7 +16,7 @@ function BentoSetChildArray(_inputArray, _parent = self, _destroyOrphans = true)
 {
     if (not BentoExists(_parent)) return;
     
-    var _root = BentoGetRoot(_parent.BENTO_VARS.__layer);
+    var _root = BentoLayerGetRoot(_parent.BENTO_VARS.__layer);
     var _bentoVarsArray = _parent.BENTO_VARS.__childArray;
     
     //Handle any elements that are children of the parent but are not in the input child array
