@@ -10,7 +10,7 @@ function BentoPrimaryGetDragged(_layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        return __mouseTravelled;
+        return __pointerTravelled;
     }
     
     return false;

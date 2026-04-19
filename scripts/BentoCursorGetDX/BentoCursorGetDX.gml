@@ -18,7 +18,7 @@ function BentoCursorGetDX(_directionalThreshold = 0.001, _layerOrName = undefine
     {
         if (__navPointer)
         {
-            return (__mousePrimaryState & __BENTO_STATE_START)? (__mouseX - __mousePrevX) : 0;
+            return (__pointerPrimaryState & __BENTO_STATE_START)? (__pointerX - __pointerPrevX) : 0;
         }
         else if (__navDirectional)
         {

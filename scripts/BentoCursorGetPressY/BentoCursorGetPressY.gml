@@ -10,7 +10,7 @@ function BentoCursorGetPressY(_layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        return __navPointer? __mousePressY : __directionalLastY;
+        return __navPointer? __pointerPressY : __directionalLastY;
     }
     
     return 0;

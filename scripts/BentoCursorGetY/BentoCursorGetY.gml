@@ -10,7 +10,7 @@ function BentoCursorGetY(_layerOrName = undefined)
     {
         if (__navMode == BENTO_MODE_MOUSE)
         {
-            return __mouseY;
+            return __pointerY;
         }
         else if (__navDirectional)
         {
@@ -18,7 +18,7 @@ function BentoCursorGetY(_layerOrName = undefined)
         }
         else if (__navMode == BENTO_MODE_TOUCH)
         {
-            return (__mousePrimaryState & __BENTO_STATE_START)? __mouseY : __mousePrevY;
+            return (__pointerPrimaryState & __BENTO_STATE_START)? __pointerY : __pointerPrevY;
         }
     }
     
