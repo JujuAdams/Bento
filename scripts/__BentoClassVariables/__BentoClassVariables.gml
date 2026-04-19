@@ -60,6 +60,8 @@ function __BentoClassVariables(_attachedElement) constructor
     __dndItemState            = __BENTO_STATE_OFF;
     __dndItemContinuous       = true;
     __dndItemChannel          = undefined;
+    __dndPointerDX            = 0;
+    __dndPointerDY            = 0;
     __dndTargetChannel        = undefined;
     __dndTargetFunc           = undefined;
     __dndOnlyButtonWhenTarget = false;

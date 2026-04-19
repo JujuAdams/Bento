@@ -539,6 +539,9 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 with(__dndItemElement.BENTO_VARS)
                 {
+                    __dndPointerDX = other.__pointerPressX - __attachedElement.bentoX;
+                    __dndPointerDY = other.__pointerPressY - __attachedElement.bentoY;
+                    
                     __dndTargetElement = BENTO_NO_ELEMENT;
                     __BentoSetAsUpdating();
                 }
@@ -837,8 +840,8 @@ function __BentoClassLayer(_environment, _name) constructor
                 //Calculate the vector from the old cursor position to the new cursor position
                 if (other.__navPointer)
                 {
-                    var _dX = other.__pointerX - other.__pointerPressX;
-                    var _dY = other.__pointerY - other.__pointerPressY;
+                    var _dX = other.__pointerX - bentoX - BENTO_VARS.__dndPointerDX;
+                    var _dY = other.__pointerY - bentoY - BENTO_VARS.__dndPointerDY;
                 }
                 else if (other.__navDirectional)
                 {
