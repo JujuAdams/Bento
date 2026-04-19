@@ -91,11 +91,12 @@ function __BentoClassLayer(_environment, _name) constructor
     __dirtyTransformsArray   = [];
     __scrollAnimatingArray   = [];
     
-    __hoverElement     = BENTO_NO_ELEMENT;
-    __hoverElementSoft = BENTO_NO_ELEMENT;
-    __primaryState     = __BENTO_STATE_OFF;
-    __primaryConsumed  = false;
-    __holdElement      = BENTO_NO_ELEMENT;
+    __hoverElement       = BENTO_NO_ELEMENT;
+    __hoverElementSoft   = BENTO_NO_ELEMENT;
+    __hoverElementStored = undefined;
+    __primaryState       = __BENTO_STATE_OFF;
+    __primaryConsumed    = false;
+    __holdElement        = BENTO_NO_ELEMENT;
     
     __dndNextItemElement = BENTO_NO_ELEMENT;
     __dndItemElement     = BENTO_NO_ELEMENT;
@@ -136,6 +137,7 @@ function __BentoClassLayer(_environment, _name) constructor
         //FIXME - What happens if there's text input happening on this layer?
         __isTopLayer = false;
         
+        __hoverElementStored = weak_ref_create(__hoverElement);
         __hoverElement = BENTO_NO_ELEMENT;
         __holdElement = BENTO_NO_ELEMENT;
         
@@ -156,6 +158,13 @@ function __BentoClassLayer(_environment, _name) constructor
     static __SetForegroundedState = function()
     {
         __isTopLayer = true;
+        
+        if ((__hoverElementStored != undefined) && weak_ref_alive(__hoverElementStored) && BentoExists(__hoverElementStored.ref))
+        {
+            __BentoSetHover(__hoverElementStored.ref, false);
+        }
+        
+        __hoverElementStored = undefined;
     }
     
     static __ClearDraggedItem = function()

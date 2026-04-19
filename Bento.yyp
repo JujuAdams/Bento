@@ -103,6 +103,7 @@
     {"id":{"name":"oBentoExList","path":"objects/oBentoExList/oBentoExList.yy",},},
     {"id":{"name":"oBentoExListbox","path":"objects/oBentoExListbox/oBentoExListbox.yy",},},
     {"id":{"name":"oBentoExListboxWithBar","path":"objects/oBentoExListboxWithBar/oBentoExListboxWithBar.yy",},},
+    {"id":{"name":"oBentoExModalFrame","path":"objects/oBentoExModalFrame/oBentoExModalFrame.yy",},},
     {"id":{"name":"oBentoExRadioButton","path":"objects/oBentoExRadioButton/oBentoExRadioButton.yy",},},
     {"id":{"name":"oBentoExScrollingList","path":"objects/oBentoExScrollingList/oBentoExScrollingList.yy",},},
     {"id":{"name":"oBentoExScrollingListWithBar","path":"objects/oBentoExScrollingListWithBar/oBentoExScrollingListWithBar.yy",},},
