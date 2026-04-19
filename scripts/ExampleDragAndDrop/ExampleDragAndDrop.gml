@@ -37,70 +37,111 @@ function ExampleDragAndDrop()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExFrame,
+                    vars: {
+                        fill: false,
+                    },
                     layout: {
-                        grid: [2, 2],
+                        list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
                         gutter: 10,
+                        padding: 15,
                     },
                     children: [
                         {
-                            object: oBentoExDragAndDropItem,
+                            object: oBentoExText,
                             vars: {
-                                text: "Sock",
+                                text: "Items",
                             },
                         },
                         {
-                            object: oBentoExDragAndDropItem,
-                            vars: {
-                                text: "Hat",
+                            object: oBentoExSpacer,
+                            layout: {
+                                grid: [2, 2],
+                                maxSize: [infinity, 200],
+                                resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
+                                gutter: 10,
                             },
-                        },
-                        {
-                            object: oBentoExDragAndDropItem,
-                            vars: {
-                                text: "Hat",
-                            },
-                        },
-                        {
-                            object: oBentoExDragAndDropItem,
-                            vars: {
-                                text: "Kneepad",
-                            },
+                            children: [
+                                {
+                                    object: oBentoExDragAndDropItem,
+                                    vars: {
+                                        text: "Sock",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropItem,
+                                    vars: {
+                                        text: "Hat",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropItem,
+                                    vars: {
+                                        text: "Hat",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropItem,
+                                    vars: {
+                                        text: "Kneepad",
+                                    },
+                                },
+                            ],
                         },
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExFrame,
+                    vars: {
+                        fill: false,
+                    },
                     layout: {
-                        grid: [2, 2],
+                        list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
                         gutter: 10,
+                        padding: 15,
                     },
                     children: [
                         {
-                            object: oBentoExDragAndDropTarget,
+                            object: oBentoExText,
                             vars: {
-                                text: "Sock",
+                                text: "Targets",
                             },
                         },
                         {
-                            object: oBentoExDragAndDropTarget,
-                            vars: {
-                                text: "Sock",
+                            object: oBentoExSpacer,
+                            layout: {
+                                grid: [2, 2],
+                                resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
+                                gutter: 10,
                             },
-                        },
-                        {
-                            object: oBentoExDragAndDropTarget,
-                            vars: {
-                                text: "Hat",
-                            },
-                        },
-                        {
-                            object: oBentoExDragAndDropTarget,
-                            vars: {
-                                text: "Kneepad",
-                            },
+                            children: [
+                                {
+                                    object: oBentoExDragAndDropTarget,
+                                    vars: {
+                                        text: "Sock",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropTarget,
+                                    vars: {
+                                        text: "Sock",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropTarget,
+                                    vars: {
+                                        text: "Hat",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropTarget,
+                                    vars: {
+                                        text: "Kneepad",
+                                    },
+                                },
+                            ],
                         },
                     ],
                 },
