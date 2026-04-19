@@ -32,11 +32,7 @@ function __BentoSetHover(_element, _byNavigation)
         
         with(_element.BENTO_VARS)
         {
-            if (not __updating)
-            {
-                __updating = true;
-                array_push(__layer.__updateElementArray, self)
-            }
+            __BentoSetAsUpdating();
             
             if (_byNavigation)
             {

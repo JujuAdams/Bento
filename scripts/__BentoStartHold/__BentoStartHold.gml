@@ -13,11 +13,7 @@ function __BentoStartHold(_element)
             __primaryState = __BENTO_STATE_START;
             __layer.__holdElement = _element;
             
-            if (not __updating)
-            {
-                __updating = true;
-                array_push(__layer.__updateElementArray, self)
-            }
+            __BentoSetAsUpdating();
         }
     }
 }

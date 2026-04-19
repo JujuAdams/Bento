@@ -498,12 +498,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 with(__dndItemElement.BENTO_VARS)
                 {
                     __dndTargetElement = BENTO_NO_ELEMENT;
-                    
-                    if (not __updating)
-                    {
-                        __updating = true;
-                        array_push(__layer.__updateElementArray, self)
-                    }
+                    __BentoSetAsUpdating();
                 }
                 
                 __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
