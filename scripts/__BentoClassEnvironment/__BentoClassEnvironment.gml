@@ -163,7 +163,7 @@ function __BentoClassEnvironment(_name) constructor
         var _i = 0;
         repeat(array_length(__newLayerArray))
         {
-            __newLayerArray[_i].__UpdateLayout(_rootX, _rootY, _rootWidth, _rootHeight);
+            __newLayerArray[_i].__UpdatePartialOnCreate(_rootX, _rootY, _rootWidth, _rootHeight);
             ++_i;
         }
         

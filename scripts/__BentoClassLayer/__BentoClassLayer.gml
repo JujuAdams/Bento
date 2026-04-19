@@ -448,7 +448,7 @@ function __BentoClassLayer(_environment, _name) constructor
         array_resize(_hotkeyArray, 0);
     }
     
-    static __UpdateLayout = function(_rootX, _rootY, _rootWidth, _rootHeight)
+    static __Ensure = function(_rootX, _rootY, _rootWidth, _rootHeight)
     {
         //Ensure our root element is the same size as the overall Bento space
         BentoSetOffset(_rootX, _rootY, __rootElement);
@@ -561,10 +561,14 @@ function __BentoClassLayer(_environment, _name) constructor
         }
         
         ///////
-        // Layout and step order
+        // Ensure various orders
         ///////
         
-        __UpdateLayout(_rootX, _rootY, _rootWidth, _rootHeight);
+        __Ensure(_rootX, _rootY, _rootWidth, _rootHeight);
+        
+        ///////
+        // Input
+        ///////
         
         if (_isTopLayer)
         {
@@ -727,6 +731,28 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureOffset();
         
         //And we're done
+        __BentoLayerTargetPop();
+    }
+    
+    static __UpdatePartialOnCreate = function(_rootX, _rootY, _rootWidth, _rootHeight)
+    {
+        __BentoLayerTargetPush(self);
+        
+        //Initialize all the animations
+        var _animPlayingArray = __animPlayingArray;
+        var _i = array_length(_animPlayingArray)-1;
+        repeat(array_length(_animPlayingArray))
+        {
+            with(_animPlayingArray[_i])
+            {
+                __animMethod(__attachedElement, 0, __animMetadata);
+            }
+            
+            --_i;
+        }
+        
+        __Ensure(_rootX, _rootY, _rootWidth, _rootHeight);
+        
         __BentoLayerTargetPop();
     }
     
