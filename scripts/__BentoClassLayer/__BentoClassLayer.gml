@@ -52,9 +52,9 @@ function __BentoClassLayer(_environment, _name) constructor
     __mousePressX       = 0;
     __mousePressY       = 0;
     
-    __mouseDragged = false;
+    __mouseTravelled = false;
     
-    __mouseScrolledElement  = false;
+    __mouseScrolled = false;
     __mouseScrollingElement = BENTO_NO_ELEMENT;
     
     __directionalDX           = 0;
@@ -144,9 +144,9 @@ function __BentoClassLayer(_environment, _name) constructor
         __directionalDX = 0;
         __directionalDY = 0;
         
-        __mouseDragged = false;
+        __mouseTravelled = false;
         
-        __mouseScrolledElement  = false;
+        __mouseScrolled = false;
         __mouseScrollingElement = BENTO_NO_ELEMENT;
         
         //If this layer has the current text handler then abort its use
@@ -253,11 +253,11 @@ function __BentoClassLayer(_environment, _name) constructor
             __dndItemElement.BENTO_VARS.__dndItemContinuous = true;
         }
         
-        __mouseDragged = false;
+        __mouseTravelled = false;
         
         __primaryConsumed = false;
         
-        __mouseScrolledElement  = false;
+        __mouseScrolled = false;
         __mouseScrollingElement = BENTO_NO_ELEMENT;
         
         __navMode = _newMode;
@@ -335,7 +335,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 {
                     if (point_distance(__mousePressX, __mousePressY, __mouseX, __mouseY) > BENTO_POINTER_DRAG_THRESHOLD)
                     {
-                        __mouseDragged = true;
+                        __mouseTravelled = true;
                     }
                 }
             }
@@ -657,7 +657,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 if (__mousePrimaryState == __BENTO_STATE_END)
                 {
                     //Reset the drag state
-                    __mouseDragged = false;
+                    __mouseTravelled = false;
                 }
             }
             else if (__navDirectional)
@@ -687,7 +687,7 @@ function __BentoClassLayer(_environment, _name) constructor
             //state when releasing after dragging a scrollable container
             if (__primaryState == __BENTO_STATE_END)
             {
-                __mouseScrolledElement  = false;
+                __mouseScrolled = false;
                 __mouseScrollingElement = BENTO_NO_ELEMENT;
             }
             

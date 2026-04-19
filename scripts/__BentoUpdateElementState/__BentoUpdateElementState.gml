@@ -138,7 +138,7 @@ function __BentoUpdateElementState()
                         &&  (not _isLayerItemElement)
                         &&  (__primaryState == __BENTO_STATE_END)
                         &&  (other.__primaryState == __BENTO_STATE_END)
-                        &&  (not other.__mouseScrolledElement))
+                        &&  (not other.__mouseScrolled))
                         {
                             if (other.__navMode == BENTO_MODE_TOUCH)
                             {
@@ -170,7 +170,7 @@ function __BentoUpdateElementState()
             
             if (other.__navPointer && (__hoverState & __BENTO_STATE_START))
             {
-                if (other.__mouseDragged
+                if (other.__mouseTravelled
                 &&  ((BENTO_SCROLL_ON_MOUSE_DRAG || (other.__navMode == BENTO_MODE_TOUCH)) && (__primaryState == __BENTO_STATE_ON)))
                 {
                     //Click & drag
@@ -202,7 +202,7 @@ function __BentoUpdateElementState()
                         if (BentoExists(_parent))
                         {
                             //Start scrolling the parent
-                            other.__mouseScrolledElement  = true;
+                            other.__mouseScrolled = true;
                             other.__mouseScrollingElement = _parent;
                             
                             //Unhover and unhold us. This makes it clear that the player is no longer interacting
