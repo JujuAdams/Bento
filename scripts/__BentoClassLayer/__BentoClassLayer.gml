@@ -21,6 +21,8 @@ function __BentoClassLayer(_environment, _name) constructor
     
     __rootElement = BENTO_NO_ELEMENT;
     
+    __isTopLayer = true;
+    
     __animPlayingArray      = [];
     __animPlayingMap        = ds_map_create();
     __animBlockingMap       = ds_map_create();
@@ -132,6 +134,8 @@ function __BentoClassLayer(_environment, _name) constructor
     static __SetBackgroundedState = function()
     {
         //FIXME - What happens if there's text input happening on this layer?
+        __isTopLayer = false;
+        
         __hoverElement = BENTO_NO_ELEMENT;
         __holdElement = BENTO_NO_ELEMENT;
         
@@ -147,6 +151,11 @@ function __BentoClassLayer(_environment, _name) constructor
         __mouseScrollingElement = BENTO_NO_ELEMENT;
         
         __ClearDraggedItem();
+    }
+    
+    static __SetForegroundedState = function()
+    {
+        __isTopLayer = true;
     }
     
     static __ClearDraggedItem = function()
@@ -403,8 +412,10 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureHoverableOrder();
     }
     
-    static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _isTopLayer, _primaryState, _timeStep)
+    static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _timeStep)
     {
+        var _isTopLayer = __isTopLayer;
+        
         //This is the main update function for a layer. It handles hovering elements, holding elements,
         //scrolling containers, disabling focus etc.
         
@@ -679,7 +690,7 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoLayerTargetPop();
     }
     
-    static __Draw = function(_isTopLayer)
+    static __Draw = function()
     {
         __BentoLayerTargetPush(self);
         
@@ -694,7 +705,7 @@ function __BentoClassLayer(_environment, _name) constructor
             ++_i;
         }
         
-        if (_isTopLayer)
+        if (__isTopLayer)
         {
             //Draw the hovered element if it's not inside a scissor. If the hovered element is inside
             //a scissor then it'll be drawn by `__BentoScissorPop()`

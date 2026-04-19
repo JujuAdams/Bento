@@ -105,7 +105,14 @@ function __BentoClassEnvironment(_name) constructor
     static __RemoveLayer = function(_layer)
     {
         var _index = array_get_index(__layerArray, _layer);
-        if (_index >= 0) array_delete(__layerArray, _index, 1);
+        if (_index >= 0)
+        {
+            array_delete(__layerArray, _index, 1);
+            
+            //Foreground the next top element
+            var _last = array_last(__layerArray);
+            if (_last != undefined) _last.__SetForegroundedState();
+        }
         
         var _index = array_get_index(__newLayerArray, _layer);
         if (_index >= 0) array_delete(__newLayerArray, _index, 1);
@@ -144,18 +151,13 @@ function __BentoClassEnvironment(_name) constructor
         
         array_resize(__newLayerArray, 0);
         
-        var _primaryState = false;
-        
-        //All lower layers only ensure layouts etc.
+        //Execute updates for all layers
         var _i = 0;
-        repeat(_layerCount-1)
+        repeat(_layerCount)
         {
-            _layerArray[_i].__Update(_rootX, _rootY, _rootWidth, _rootHeight, false, _primaryState, _timeStep);
+            _layerArray[_i].__Update(_rootX, _rootY, _rootWidth, _rootHeight, _timeStep);
             ++_i;
         }
-        
-        //Top-most layer pulls in player input
-        _layerArray[_i].__Update(_rootX, _rootY, _rootWidth, _rootHeight, true, _primaryState, _timeStep);
         
         //Do a partial update of any new layers
         var _i = 0;
@@ -179,13 +181,11 @@ function __BentoClassEnvironment(_name) constructor
         if (array_length(_layerArray) > 0)
         {
             var _i = 0;
-            repeat(array_length(_layerArray)-1)
+            repeat(array_length(_layerArray))
             {
-                _layerArray[_i].__Draw(false);
+                _layerArray[_i].__Draw();
                 ++_i;
             }
-            
-            _layerArray[_i].__Draw(true);
         }
         
         __BentoEnvironmentTargetPop();
