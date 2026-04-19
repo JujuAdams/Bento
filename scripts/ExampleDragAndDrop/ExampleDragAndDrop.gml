@@ -37,10 +37,7 @@ function ExampleDragAndDrop()
                     ],
                 },
                 {
-                    object: oBentoExFrame,
-                    vars: {
-                        fill: false,
-                    },
+                    object: oBentoExSpacer,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
@@ -55,14 +52,38 @@ function ExampleDragAndDrop()
                             },
                         },
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExScrollingListWithBar,
                             layout: {
-                                grid: [2, 2],
-                                maxSize: [infinity, 200],
                                 resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
+                                maxSize: [infinity, 300],
                                 gutter: 10,
+                                padding: 15,
                             },
                             children: [
+                                {
+                                    object: oBentoExDragAndDropItem,
+                                    vars: {
+                                        text: "Sock",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropItem,
+                                    vars: {
+                                        text: "Hat",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropItem,
+                                    vars: {
+                                        text: "Hat",
+                                    },
+                                },
+                                {
+                                    object: oBentoExDragAndDropItem,
+                                    vars: {
+                                        text: "Kneepad",
+                                    },
+                                },
                                 {
                                     object: oBentoExDragAndDropItem,
                                     vars: {
@@ -92,7 +113,7 @@ function ExampleDragAndDrop()
                     ],
                 },
                 {
-                    object: oBentoExFrame,
+                    object: oBentoExSpacer,
                     vars: {
                         fill: false,
                     },
@@ -110,11 +131,15 @@ function ExampleDragAndDrop()
                             },
                         },
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExFrame,
+                            vars: {
+                                fill: false,
+                            },
                             layout: {
                                 grid: [2, 2],
                                 resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
                                 gutter: 10,
+                                padding: 15,
                             },
                             children: [
                                 {
