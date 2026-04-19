@@ -152,6 +152,14 @@ function __BentoClassLayer(_environment, _name) constructor
         __mouseScrolledElement  = false;
         __mouseScrollingElement = BENTO_NO_ELEMENT;
         
+        //If this layer has the current text handler then abort its use
+        if ((__environment.__textElement != undefined) && (__environment.__textElement.BENTO_VARS.__layer == self))
+        {
+            __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
+        }
+        
+        __ClearHoverElement();
+        __holdElement = BENTO_NO_ELEMENT;
         __ClearDraggedItem();
     }
     
