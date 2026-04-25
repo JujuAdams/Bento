@@ -178,37 +178,40 @@ function __BentoUpdateElementState()
                     var _pressX = other.__pointerPressX;
                     var _pressY = other.__pointerPressY;
                     
-                    var _overScrollbar = false;
-                    
-                    with(__scrollbarVert)
+                    if (__dndItemState == __BENTO_STATE_OFF)
                     {
-                        if (point_in_rectangle(_pressX, _pressY, barLeft, barTop, barRight, barBottom))
+                        var _overScrollbar = false;
+                        
+                        with(__scrollbarVert)
                         {
-                            _overScrollbar = true;
+                            if (point_in_rectangle(_pressX, _pressY, barLeft, barTop, barRight, barBottom))
+                            {
+                                _overScrollbar = true;
+                            }
                         }
-                    }
-                    
-                    with(__scrollbarHori)
-                    {
-                        if (point_in_rectangle(_pressX, _pressY, barLeft, barTop, barRight, barBottom))
+                        
+                        with(__scrollbarHori)
                         {
-                            _overScrollbar = true;
+                            if (point_in_rectangle(_pressX, _pressY, barLeft, barTop, barRight, barBottom))
+                            {
+                                _overScrollbar = true;
+                            }
                         }
-                    }
-                    
-                    if (not _overScrollbar)
-                    {
-                        var _parent = __BentoFindScrollElement(_element);
-                        if (BentoExists(_parent))
+                        
+                        if (not _overScrollbar)
                         {
-                            //Start scrolling the parent
-                            other.__pointerScrolled = true;
-                            other.__pointerScrollingElement = _parent;
-                            
-                            //Unhover and unhold us. This makes it clear that the player is no longer interacting
-                            //with us and instead is interacting with the scrolling parent
-                            other.__holdElement = BENTO_NO_ELEMENT;
-                            other.__ClearHoverElement();
+                            var _parent = __BentoFindScrollElement(_element);
+                            if (BentoExists(_parent))
+                            {
+                                //Start scrolling the parent
+                                other.__pointerScrolled = true;
+                                other.__pointerScrollingElement = _parent;
+                                
+                                //Unhover and unhold us. This makes it clear that the player is no longer interacting
+                                //with us and instead is interacting with the scrolling parent
+                                other.__holdElement = BENTO_NO_ELEMENT;
+                                other.__ClearHoverElement();
+                            }
                         }
                     }
                 }

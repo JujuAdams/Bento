@@ -80,7 +80,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
         if (_hoverableIndex != undefined)
         {
             var _dndIsTarget = ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()));
-            if ((_dndChannel == undefined) || (_dndItemVars == self) || _dndIsTarget)
+            if ((_dndChannel == undefined) || (_dndItemVars == self) || _dndIsTarget || __scrollHori || __scrollVert)
             {
                 if ((__buttonType & BENTO_BUTTON_POINTER) && ((not __dndOnlyButtonWhenTarget) || _dndIsTarget))
                 {

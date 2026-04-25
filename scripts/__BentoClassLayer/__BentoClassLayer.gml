@@ -146,8 +146,7 @@ function __BentoClassLayer(_environment, _name) constructor
         
         __pointerTravelled = false;
         
-        __pointerScrolled = false;
-        __pointerScrollingElement = BENTO_NO_ELEMENT;
+        __ClearScrollingElement();
         
         //If this layer has the current text handler then abort its use
         if ((__environment.__textElement != undefined) && (__environment.__textElement.BENTO_VARS.__layer == self))
@@ -185,6 +184,12 @@ function __BentoClassLayer(_environment, _name) constructor
             
             __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
         }
+    }
+    
+    static __ClearScrollingElement = function()
+    {
+        __pointerScrolled = false;
+        __pointerScrollingElement = BENTO_NO_ELEMENT;
     }
     
     static __UpdateInputMode = function()
@@ -257,8 +262,7 @@ function __BentoClassLayer(_environment, _name) constructor
         
         __primaryConsumed = false;
         
-        __pointerScrolled = false;
-        __pointerScrollingElement = BENTO_NO_ELEMENT;
+        __ClearScrollingElement();
         
         __navMode = _newMode;
     }
@@ -537,6 +541,9 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 __dndItemElement = __dndNextItemElement;
                 
+                //We're going to scroll using edge detection so we don't need to actively track grabbing a scrollable element
+                __ClearScrollingElement();
+                
                 with(__dndItemElement.BENTO_VARS)
                 {
                     __dndPointerDX = other.__pointerPressX - __attachedElement.bentoX;
@@ -618,46 +625,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 if ((__pointerPrimaryState & __BENTO_STATE_START) && BentoExists(__pointerScrollingElement))
                 {
                     //Handle scrolling as a priority. This will block out hovering new elements
-                    if (__dndItemElement == BENTO_NO_ELEMENT)
-                    {
-                        BentoScrollAddPos(__pointerX - __pointerPrevX, __pointerY - __pointerPrevY, infinity, __pointerScrollingElement);
-                    }
-                    else
-                    {
-                        var _pointerScrollingElement = __pointerScrollingElement;
-                        var _hotspotWidth  = min(60, _pointerScrollingElement.bentoWidth/2); //TODO - Make this a macro
-                        var _hotspotHeight = min(60, _pointerScrollingElement.bentoHeight/2);
-                        
-                        var _dX = 0;
-                        
-                        if ((__pointerX > _pointerScrollingElement.bentoLeft) && (__pointerX <= _pointerScrollingElement.bentoLeft + _hotspotWidth))
-                        {
-                            var _dX = 4; //TODO - Make this a macro
-                        }
-                        else if ((__pointerX >= _pointerScrollingElement.bentoRight - _hotspotWidth) && (__pointerX < _pointerScrollingElement.bentoRight))
-                        {
-                            var _dX = -4;
-                        }
-                        else
-                        {
-                            var _dX = 0;
-                        }
-                        
-                        if ((__pointerY > _pointerScrollingElement.bentoTop) && (__pointerY <= _pointerScrollingElement.bentoTop + _hotspotHeight))
-                        {
-                            var _dY = 4; //TODO - Make this a macro
-                        }
-                        else if ((__pointerY >= _pointerScrollingElement.bentoBottom - _hotspotHeight) && (__pointerY < _pointerScrollingElement.bentoBottom))
-                        {
-                            var _dY = -4;
-                        }
-                        else
-                        {
-                            var _dY = 0;
-                        }
-                        
-                        BentoScrollAddPos(_dX, _dY, infinity, __pointerScrollingElement);
-                    }
+                    BentoScrollAddPos(__pointerX - __pointerPrevX, __pointerY - __pointerPrevY, infinity, __pointerScrollingElement);
                 }
                 else
                 {
@@ -709,6 +677,47 @@ function __BentoClassLayer(_environment, _name) constructor
                             }
                         }
                     }
+                    
+                    //Handle scrolling when the pointer is near the edge of a scrolling element
+                    if (__dndItemElement != BENTO_NO_ELEMENT)
+                    {
+                        var _pointerScrollingElement = __BentoFindScrollElement(__hoverElement);
+                        if (_pointerScrollingElement != BENTO_NO_ELEMENT)
+                        {
+                            var _hotspotWidth  = min(60, _pointerScrollingElement.bentoWidth/2); //TODO - Make this a macro
+                            var _hotspotHeight = min(60, _pointerScrollingElement.bentoHeight/2);
+                            
+                            var _dX = 0;
+                            
+                            if ((__pointerX > _pointerScrollingElement.bentoLeft) && (__pointerX <= _pointerScrollingElement.bentoLeft + _hotspotWidth))
+                            {
+                                var _dX = 4; //TODO - Make this a macro
+                            }
+                            else if ((__pointerX >= _pointerScrollingElement.bentoRight - _hotspotWidth) && (__pointerX < _pointerScrollingElement.bentoRight))
+                            {
+                                var _dX = -4;
+                            }
+                            else
+                            {
+                                var _dX = 0;
+                            }
+                            
+                            if ((__pointerY > _pointerScrollingElement.bentoTop) && (__pointerY <= _pointerScrollingElement.bentoTop + _hotspotHeight))
+                            {
+                                var _dY = 4; //TODO - Make this a macro
+                            }
+                            else if ((__pointerY >= _pointerScrollingElement.bentoBottom - _hotspotHeight) && (__pointerY < _pointerScrollingElement.bentoBottom))
+                            {
+                                var _dY = -4;
+                            }
+                            else
+                            {
+                                var _dY = 0;
+                            }
+                            
+                            BentoScrollAddPos(_dX, _dY, infinity, _pointerScrollingElement);
+                        }
+                    }
                 }
                 
                 if (__pointerPrimaryState == __BENTO_STATE_END)
@@ -744,8 +753,7 @@ function __BentoClassLayer(_environment, _name) constructor
             //state when releasing after dragging a scrollable container
             if (__primaryState == __BENTO_STATE_END)
             {
-                __pointerScrolled = false;
-                __pointerScrollingElement = BENTO_NO_ELEMENT;
+                __ClearScrollingElement();
             }
             
             ///////
