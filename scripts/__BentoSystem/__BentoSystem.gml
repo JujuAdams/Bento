@@ -101,12 +101,19 @@ function __BentoSystem()
         
         _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE, "draw", function()
         {
-            __eventDraw();
+            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            {
+                __eventDraw();
+            }
         });
         
         _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR, "draw, scissor push", function()
         {
-            __eventDraw();
+            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            {
+                __eventDraw();
+            }
+            
             __BentoDrawScissorPushFromVars();
         });
         
@@ -114,14 +121,23 @@ function __BentoSystem()
         {
             matrix_stack_push(__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
-            __eventDraw();
+            
+            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            {
+                __eventDraw();
+            }
         });
         
         _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX, "transform push, draw, scissor push", function()
         {
             matrix_stack_push(__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
-            __eventDraw();
+            
+            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            {
+                __eventDraw();
+            }
+            
             __BentoDrawScissorPushFromVars();
         });
         
@@ -147,18 +163,29 @@ function __BentoSystem()
         
         _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE, "draw", function()
         {
-            __eventDrawAfter();
+            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            {
+                __eventDrawAfter();
+            }
         });
         
         _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR, "scissor pop, drawAfter", function()
         {
             __BentoDrawScissorPop();
-            __eventDrawAfter();
+            
+            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            {
+                __eventDrawAfter();
+            }
         });
         
         _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_MATRIX, "drawAfter, transform pop", function()
         {
-            __eventDrawAfter();
+            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            {
+                __eventDrawAfter();
+            }
+            
             matrix_stack_pop();
             matrix_set(matrix_world, matrix_stack_top());
         });
@@ -166,7 +193,12 @@ function __BentoSystem()
         _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR | __BENTO_DRAW_ORDER_MATRIX, "scissor pop, drawAfter, transform pop", function()
         {
             __BentoDrawScissorPop();
-            __eventDrawAfter();
+            
+            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            {
+                __eventDrawAfter();
+            }
+            
             matrix_stack_pop();
             matrix_set(matrix_world, matrix_stack_top());
         });
