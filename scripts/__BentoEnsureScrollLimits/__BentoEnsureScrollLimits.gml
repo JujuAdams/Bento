@@ -31,7 +31,7 @@ function __BentoEnsureScrollLimits()
                 if (__scrollHori)
                 {
                     //Calculate how much visible width we have to play with
-                    __scrollVisibleWidth = __scissorEnabled? __solvedWidth - (__scissorPadLeft + __scissorPadRight + __scissorScrollbarLeft + __scissorScrollbarRight) : __solvedWidth;
+                    __scrollVisibleWidth = __scissorEnabled? (__solvedWidth - (__scissorPadLeft + __scissorPadRight + __scissorScrollbarLeft + __scissorScrollbarRight)) : __solvedWidth;
                     __scrollVisibleWidth -= __layoutPadLeft + __layoutPadRight;
                     
                     //Compare the children's width to the total scrollable area
@@ -40,6 +40,11 @@ function __BentoEnsureScrollLimits()
                         //Children overlow, set up limits
                         __scrollMinX = -((__scrollContentWidth - __scrollVisibleWidth) + __scrollPadRight);
                         __scrollMaxX = __scrollPadLeft;
+                        
+                        //Correct for child alignment
+                        var _dX = (__scissorEnabled? __scissorPadLeft : 0) + __layoutPadLeft + (__solvedLeft - _bounds.left);
+                        __scrollMinX += _dX;
+                        __scrollMaxX += _dX;
                     }
                     else
                     {
@@ -58,13 +63,18 @@ function __BentoEnsureScrollLimits()
                 //Same as above but in the y-axis
                 if (__scrollVert)
                 {
-                    __scrollVisibleHeight = __scissorEnabled? __solvedHeight - (__scissorPadTop + __scissorPadBottom + __scissorScrollbarTop + __scissorScrollbarBottom) : __solvedHeight;
+                    __scrollVisibleHeight = __scissorEnabled? (__solvedHeight - (__scissorPadTop + __scissorPadBottom + __scissorScrollbarTop + __scissorScrollbarBottom)) : __solvedHeight;
                     __scrollVisibleHeight -= __layoutPadTop + __layoutPadBottom;
                     
                     if (__scrollContentHeight > __scrollVisibleHeight - (__scrollPadTop + __scrollPadBottom))
                     {
                         __scrollMinY = -((__scrollContentHeight - __scrollVisibleHeight) + __scrollPadBottom);
                         __scrollMaxY = __scrollPadTop;
+                        
+                        //Correct for child alignment
+                        var _dY = (__scissorEnabled? __scissorPadTop : 0) + __layoutPadTop + (__solvedTop - _bounds.top);
+                        __scrollMinY += _dY;
+                        __scrollMaxY += _dY;
                     }
                     else
                     {
