@@ -472,6 +472,7 @@
     {"id":{"name":"ExampleButtons","path":"scripts/ExampleButtons/ExampleButtons.yy",},},
     {"id":{"name":"ExampleButtonsProcedural","path":"scripts/ExampleButtonsProcedural/ExampleButtonsProcedural.yy",},},
     {"id":{"name":"ExampleButtonsWithLongClick","path":"scripts/ExampleButtonsWithLongClick/ExampleButtonsWithLongClick.yy",},},
+    {"id":{"name":"ExampleButtonsWithLongClickProcedural","path":"scripts/ExampleButtonsWithLongClickProcedural/ExampleButtonsWithLongClickProcedural.yy",},},
     {"id":{"name":"ExampleChangeInputMode","path":"scripts/ExampleChangeInputMode/ExampleChangeInputMode.yy",},},
     {"id":{"name":"ExampleCheckbox","path":"scripts/ExampleCheckbox/ExampleCheckbox.yy",},},
     {"id":{"name":"ExampleContextMenu","path":"scripts/ExampleContextMenu/ExampleContextMenu.yy",},},

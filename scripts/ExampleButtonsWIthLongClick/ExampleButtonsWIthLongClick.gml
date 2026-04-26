@@ -24,7 +24,7 @@ function ExampleButtonsWithLongClick()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Buttons",
+                                text: "Long-Click Buttons",
                                 font: fntBentoExCandyBeansBig,
                             },
                         },
@@ -35,6 +35,12 @@ function ExampleButtonsWithLongClick()
                             },
                         },
                     ],
+                },
+                {
+                    object: oBentoExText,
+                    vars: {
+                        text: "Buttons typical activate once when clicked. However, for some use cases you may want to allow players to activate a behaviour (typically a secondary behaviour) when a button is pressed and held for longer than a normal click.",
+                    },
                 },
                 {
                     object: oBentoExSpacer,

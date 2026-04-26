@@ -76,7 +76,7 @@ function ExampleHomePage()
                             object: oBentoExButtonWithLongClick,
                             vars: {
                                 text: $"Buttons With Long Click",
-                                func: ExampleButtonsWithLongClick,
+                                func: ExampleButtonsWithLongClickProcedural,
                             },
                         },
                         {
