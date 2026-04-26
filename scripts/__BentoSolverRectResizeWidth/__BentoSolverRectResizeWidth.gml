@@ -14,6 +14,10 @@ function __BentoSolverRectResizeWidth()
             {
                 __solvedWidth = clamp(_available, __layoutWidthMin, __layoutWidthMax);
             }
+            else
+            {
+                __solvedWidth = clamp(min(__solvedWidth, _available), __layoutWidthMin, __layoutWidthMax);
+            }
         }
         
         ++_i;

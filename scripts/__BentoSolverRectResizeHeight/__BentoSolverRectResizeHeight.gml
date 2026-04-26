@@ -16,6 +16,10 @@ function __BentoSolverRectResizeHeight()
             {
                 __solvedHeight = clamp(_available, __layoutHeightMin, __layoutHeightMax);
             }
+            else
+            {
+                __solvedHeight = clamp(min(__solvedHeight, _available), __layoutHeightMin, __layoutHeightMax);
+            }
         }
         
         ++_i;

@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the height of an element after safely handling various overrides.
+
 function __BentoSolvertGetSafeHeight()
 {
     //Determine the preferred height

@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Returns the width of an element after safely handling various overrides.
+
 function __BentoSolvertGetSafeWidth()
 {
     //Determine the preferred width
