@@ -103,8 +103,8 @@ function ExampleHomePage()
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: $"Drag & Drop",
-                                func: ExampleDragAndDrop,
+                                text: $"Carry (Drag & Drop)",
+                                func: ExampleCarry,
                             },
                         },
                         {

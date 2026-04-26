@@ -98,8 +98,8 @@ function __BentoClassLayer(_environment, _name) constructor
     __primaryConsumed    = false;
     __holdElement        = BENTO_NO_ELEMENT;
     
-    __dndNextItemElement = BENTO_NO_ELEMENT;
-    __dndItemElement     = BENTO_NO_ELEMENT;
+    __carryNextItemElement = BENTO_NO_ELEMENT;
+    __carryItemElement     = BENTO_NO_ELEMENT;
     
     __updateElementArray = [];
     
@@ -126,9 +126,9 @@ function __BentoClassLayer(_environment, _name) constructor
         __hoverElement = BENTO_NO_ELEMENT;
             
         //So long as we have a drag & drop element, set its target
-        if (BentoExists(__dndItemElement))
+        if (BentoExists(__carryItemElement))
         {
-            __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
+            __carryItemElement.BENTO_VARS.__carryTargetElement = BENTO_NO_ELEMENT;
         }
     }
     
@@ -173,13 +173,13 @@ function __BentoClassLayer(_environment, _name) constructor
     
     static __ClearDraggedItem = function()
     {
-        if (__dndItemElement != BENTO_NO_ELEMENT)
+        if (__carryItemElement != BENTO_NO_ELEMENT)
         {
-            __dndItemElement = BENTO_NO_ELEMENT;
+            __carryItemElement = BENTO_NO_ELEMENT;
             
-            if (BentoExists(__dndItemElement))
+            if (BentoExists(__carryItemElement))
             {
-                __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
+                __carryItemElement.BENTO_VARS.__carryTargetElement = BENTO_NO_ELEMENT;
             }
             
             __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
@@ -251,11 +251,11 @@ function __BentoClassLayer(_environment, _name) constructor
             __navDirectional = false;
         }
         
-        __dndNextItemElement = BENTO_NO_ELEMENT;
+        __carryNextItemElement = BENTO_NO_ELEMENT;
         
-        if (BentoExists(__dndItemElement))
+        if (BentoExists(__carryItemElement))
         {
-            __dndItemElement.BENTO_VARS.__dndItemContinuous = true;
+            __carryItemElement.BENTO_VARS.__carryItemContinuous = true;
         }
         
         __pointerTravelled = false;
@@ -532,47 +532,47 @@ function __BentoClassLayer(_environment, _name) constructor
         // Drag & drop
         ///////
         
-        if (BentoExists(__dndNextItemElement))
+        if (BentoExists(__carryNextItemElement))
         {
             //Incoming new item element
             
-            if (__dndNextItemElement != __dndItemElement)
+            if (__carryNextItemElement != __carryItemElement)
             {
                 //The item element has changed
                 
-                if (BentoExists(__dndItemElement))
+                if (BentoExists(__carryItemElement))
                 {
                     //To avoid bugs, reset the target for the existing item element
-                    __dndItemElement.BENTO_VARS.__dndTargetElement = BENTO_NO_ELEMENT;
+                    __carryItemElement.BENTO_VARS.__carryTargetElement = BENTO_NO_ELEMENT;
                 }
                 
-                __dndItemElement = __dndNextItemElement;
+                __carryItemElement = __carryNextItemElement;
                 
                 //We're going to scroll using edge detection so we don't need to actively track grabbing a scrollable element
                 __ClearScrollingElement();
                 
-                with(__dndItemElement.BENTO_VARS)
+                with(__carryItemElement.BENTO_VARS)
                 {
-                    __dndPointerDX = other.__pointerPressX - __attachedElement.bentoX;
-                    __dndPointerDY = other.__pointerPressY - __attachedElement.bentoY;
+                    __carryPointerDX = other.__pointerPressX - __attachedElement.bentoX;
+                    __carryPointerDY = other.__pointerPressY - __attachedElement.bentoY;
                     
-                    __dndTargetElement = BENTO_NO_ELEMENT;
+                    __carryTargetElement = BENTO_NO_ELEMENT;
                     __BentoSetAsUpdating();
                 }
                 
                 __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
             }
             
-            __dndNextItemElement = BENTO_NO_ELEMENT;
+            __carryNextItemElement = BENTO_NO_ELEMENT;
         }
-        else if (__dndItemElement != BENTO_NO_ELEMENT)
+        else if (__carryItemElement != BENTO_NO_ELEMENT)
         {
             //No new item element
             
-            if ((not BentoExists(__dndItemElement)) || __dndItemElement.BENTO_VARS.__dndItemContinuous)
+            if ((not BentoExists(__carryItemElement)) || __carryItemElement.BENTO_VARS.__carryItemContinuous)
             {
                 //If we have no new drag & drop item element and the current item is continuous then we've lost the item
-                __dndItemElement = BENTO_NO_ELEMENT;
+                __carryItemElement = BENTO_NO_ELEMENT;
                 __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
             }
         }
@@ -593,8 +593,8 @@ function __BentoClassLayer(_environment, _name) constructor
             
             //Reset the drag & drop element if it has been destroyed for some reason or its channel has
             //been set to `undefined`
-            if ((__dndItemElement != BENTO_NO_ELEMENT)
-            &&  ((not __BentoGetHoverableInternal(__dndItemElement, false)) || (__dndItemElement.BENTO_VARS.__dndItemChannel == undefined)))
+            if ((__carryItemElement != BENTO_NO_ELEMENT)
+            &&  ((not __BentoGetHoverableInternal(__carryItemElement, false)) || (__carryItemElement.BENTO_VARS.__carryItemChannel == undefined)))
             {
                 __ClearDraggedItem();
             }
@@ -646,7 +646,7 @@ function __BentoClassLayer(_environment, _name) constructor
                     }
                     
                     if ((not (__pointerPrimaryState & __BENTO_STATE_START)) //Hover if the primary isn't held
-                    ||  (__dndItemElement != BENTO_NO_ELEMENT) //Hover if we have a drag & drop item
+                    ||  (__carryItemElement != BENTO_NO_ELEMENT) //Hover if we have a drag & drop item
                     ||  (__navMode == BENTO_MODE_TOUCH)) //Always hover if we're in touch mode
                     {
                         __BentoSetHoverFromPointer(__pointerX, __pointerY);
@@ -686,7 +686,7 @@ function __BentoClassLayer(_environment, _name) constructor
                     }
                     
                     //Handle scrolling when the pointer is near the edge of a scrolling element
-                    if (__dndItemElement != BENTO_NO_ELEMENT)
+                    if (__carryItemElement != BENTO_NO_ELEMENT)
                     {
                         var _pointerScrollingElement = __BentoFindScrollElement(__hoverElement);
                         if (_pointerScrollingElement != BENTO_NO_ELEMENT)
@@ -842,7 +842,7 @@ function __BentoClassLayer(_environment, _name) constructor
             }
             
             //Draw the dragged item element, if we have one
-            with(__dndItemElement)
+            with(__carryItemElement)
             {
                 //Store the current exposed position variables
                 var _oldBentoLeft   = bentoLeft;
@@ -855,8 +855,8 @@ function __BentoClassLayer(_environment, _name) constructor
                 //Calculate the vector from the old cursor position to the new cursor position
                 if (other.__navPointer)
                 {
-                    var _dX = other.__pointerX - bentoX - BENTO_VARS.__dndPointerDX;
-                    var _dY = other.__pointerY - bentoY - BENTO_VARS.__dndPointerDY;
+                    var _dX = other.__pointerX - bentoX - BENTO_VARS.__carryPointerDX;
+                    var _dY = other.__pointerY - bentoY - BENTO_VARS.__carryPointerDY;
                 }
                 else if (other.__navDirectional)
                 {

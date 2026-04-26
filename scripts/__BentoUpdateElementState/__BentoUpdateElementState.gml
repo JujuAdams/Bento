@@ -26,7 +26,7 @@ function __BentoUpdateElementState()
                 }
             }
             else if (BentoExists(__BentoFindScrollElement(_element))
-                  || (__dndItemChannel != undefined)
+                  || (__carryItemChannel != undefined)
                   || __longPressEnabled)
             {
                 var _clickOnPress = false;
@@ -49,16 +49,16 @@ function __BentoUpdateElementState()
             // Drag & drop
             ///////
             
-            __dndItemState = __dndItemState >> 1;
+            __carryItemState = __carryItemState >> 1;
             
-            var _isLayerItemElement = (other.__dndItemElement != BENTO_NO_ELEMENT) && (other.__dndItemElement.BENTO_VARS == self);
+            var _isLayerItemElement = (other.__carryItemElement != BENTO_NO_ELEMENT) && (other.__carryItemElement.BENTO_VARS == self);
             if (_isLayerItemElement)
             {
-                __dndItemState = __dndItemState | __BENTO_STATE_START;
+                __carryItemState = __carryItemState | __BENTO_STATE_START;
             }
-            else if (__dndItemState == __BENTO_STATE_OFF)
+            else if (__carryItemState == __BENTO_STATE_OFF)
             {
-                __dndTargetElement = BENTO_NO_ELEMENT;
+                __carryTargetElement = BENTO_NO_ELEMENT;
             }
             
             ///////
@@ -178,7 +178,7 @@ function __BentoUpdateElementState()
                     var _pressX = other.__pointerPressX;
                     var _pressY = other.__pointerPressY;
                     
-                    if (__dndItemState == __BENTO_STATE_OFF)
+                    if (__carryItemState == __BENTO_STATE_OFF)
                     {
                         var _overScrollbar = false;
                         
@@ -247,7 +247,7 @@ function __BentoUpdateElementState()
             if ((__hoverState == __BENTO_STATE_OFF)
             &&  (__primaryState == __BENTO_STATE_OFF)
             &&  (__primaryLongState == __BENTO_STATE_OFF)
-            &&  (__dndItemState == __BENTO_STATE_OFF) && (__dndTargetElement == BENTO_NO_ELEMENT))
+            &&  (__carryItemState == __BENTO_STATE_OFF) && (__carryTargetElement == BENTO_NO_ELEMENT))
             {
                 __updating = false;
                 return false;

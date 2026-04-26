@@ -13,29 +13,29 @@ function __BentoEnsureHoverableOrder()
     var _rootElement = __GetFocusRoot();
     if (BentoExists(_rootElement))
     {
-        if (BentoExists(__dndItemElement))
+        if (BentoExists(__carryItemElement))
         {
-            var _dndItemVars = __dndItemElement.BENTO_VARS;
-            var _dndChannel  = _dndItemVars.__dndItemChannel;
+            var _carryItemVars = __carryItemElement.BENTO_VARS;
+            var _carryChannel  = _carryItemVars.__carryItemChannel;
         }
         else
         {
-            var _dndChannel  = undefined;
-            var _dndItemVars = undefined;
+            var _carryChannel  = undefined;
+            var _carryItemVars = undefined;
         }
         
         if (__navPointer)
         {
-            __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount, _dndItemVars, _dndChannel);
+            __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount, _carryItemVars, _carryChannel);
         }
         else if (__navDirectional)
         {
-            __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount, _dndItemVars, _dndChannel);
+            __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount, _carryItemVars, _carryChannel);
         }
     }
 }
 
-function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, _hoverableIndex, _dndItemVars, _dndChannel)
+function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, _hoverableIndex, _carryItemVars, _carryChannel)
 {
     with(_elementVars)
     {
@@ -71,7 +71,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
             var _i = array_length(_childArray)-1;
             repeat(array_length(_childArray))
             {
-                _anyChildButton |= __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _childArray[_i], _childHoverableIndex, _dndItemVars, _dndChannel);
+                _anyChildButton |= __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _childArray[_i], _childHoverableIndex, _carryItemVars, _carryChannel);
                 --_i;
             }
         }
@@ -79,10 +79,10 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
         //Elements can only be hovered if the are not enclosed as indicated by `_hoverableIndex`
         if (_hoverableIndex != undefined)
         {
-            var _dndIsTarget = ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()));
-            if ((_dndChannel == undefined) || (_dndItemVars == self) || _dndIsTarget || __scrollHori || __scrollVert)
+            var _carryIsTarget = ((_carryChannel == __carryTargetChannel) && ((not is_callable(__carryTargetFunc)) || __carryTargetFunc()));
+            if ((_carryChannel == undefined) || (_carryItemVars == self) || _carryIsTarget || __scrollHori || __scrollVert)
             {
-                if ((__buttonType & BENTO_BUTTON_POINTER) && ((not __dndOnlyButtonWhenTarget) || _dndIsTarget))
+                if ((__buttonType & BENTO_BUTTON_POINTER) && ((not __carryOnlyButtonWhenTarget) || _carryIsTarget))
                 {
                     __buttonIndex = _hoverableIndex;
                 }
@@ -98,7 +98,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
     return false;
 }
 
-function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVars, _hoverableIndex, _dndItemVars, _dndChannel)
+function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVars, _hoverableIndex, _carryItemVars, _carryChannel)
 {
     with(_elementVars)
     {
@@ -120,7 +120,7 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
             var _i = array_length(_childArray)-1;
             repeat(array_length(_childArray))
             {
-                _anyChildButton |= __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _childArray[_i], _childHoverableIndex, _dndItemVars, _dndChannel);
+                _anyChildButton |= __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _childArray[_i], _childHoverableIndex, _carryItemVars, _carryChannel);
                 --_i;
             }
         }
@@ -133,8 +133,8 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
         &&  (__buttonType & BENTO_BUTTON_DIRECTIONAL)
         &&  ((not _anyChildButton) || (not __focused)))
         {
-            if (((not __dndOnlyButtonWhenTarget) && ((_dndChannel == undefined) || (_dndItemVars == self)))
-            ||  ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc())))
+            if (((not __carryOnlyButtonWhenTarget) && ((_carryChannel == undefined) || (_carryItemVars == self)))
+            ||  ((_carryChannel == __carryTargetChannel) && ((not is_callable(__carryTargetFunc)) || __carryTargetFunc())))
             {
                 __buttonIndex = _hoverableIndex;
                 
