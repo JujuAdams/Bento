@@ -4,7 +4,7 @@ function __BentoSolverRectGetDeflateWidth()
 {
     //Initialize with the rectangle's base properties
     var _deflateSize = clamp(__BentoSolvertGetSafeWidth(), __layoutWidthMin, __layoutWidthMax);
-    var _minSize = (__layoutWidthMin > 0)? __layoutWidthMin : __solvedWidth;
+    var _minSize = (__layoutWidthMin > 0)? __layoutWidthMin : _deflateSize;
     
     var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
