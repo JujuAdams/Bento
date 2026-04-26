@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoScissorPush",
+  "%Name":"__BentoDrawScissorPushFromVars",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoScissorPush",
+  "name":"__BentoDrawScissorPushFromVars",
   "parent":{
     "name":"Scissor & Scroll",
     "path":"folders/Bento/(Internal)/Scissor & Scroll.yy",

@@ -26,11 +26,11 @@ function BentoDebugStepOrder(_layerOrName = undefined)
             {
                 var _element = _self.__attachedElement;
                 
-                if (_method == _self.__eventScissorPush)
+                if (_method == _self.__eventStepScissorPush)
                 {
                     var _action = "scissor push";
                 }
-                else if (_method == _self.__eventScissorPop)
+                else if (_method == _self.__eventStepScissorPop)
                 {
                     var _action = "scissor pop";
                 }

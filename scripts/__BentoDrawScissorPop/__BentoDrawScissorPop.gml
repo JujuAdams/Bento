@@ -2,7 +2,7 @@
 
 /// Pops an entry off of the draw event scissor stack. This will set GPU state.
 
-function __BentoScissorPop()
+function __BentoDrawScissorPop()
 {
     static _scissorStack = __BentoSystem().__scissorStack;
     

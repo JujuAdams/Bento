@@ -44,7 +44,7 @@ function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _navType)
         var _array = __childArray;
         if (__scissorEnabled)
         {
-            array_push(_stepOrder, __eventScissorPush);
+            array_push(_stepOrder, __eventStepScissorPush);
             
             var _i = 0;
             repeat(array_length(_array))
@@ -53,7 +53,7 @@ function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _navType)
                 ++_i;
             }
             
-            array_push(_stepOrder, __eventScissorPop);
+            array_push(_stepOrder, __eventStepScissorPop);
             
             //TODO - Do we want to allow scrollbar behaviour outside of scissoring?
             

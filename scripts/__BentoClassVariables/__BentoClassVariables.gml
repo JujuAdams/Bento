@@ -299,9 +299,9 @@ function __BentoClassVariables(_attachedElement) constructor
         });
     }
     
-    //TODO - If we create Step/Draw variants of scissor push/pop, can we find some efficiencies?
-    __eventScissorPush = method(self, __BentoScissorPushFromVars);
-    __eventScissorPop  = method(self, __BentoScissorPop);
+    __eventStepScissorPush = method(self, __BentoStepScissorPushFromVars);
+    __eventStepScissorPop  = method(self, __BentoStepScissorPop);
+    //Draw variant of scissor functions are called directly in Draw Order methods (see `__BentoEnsureDrawOrder()`)
     
     static __Destroy = function()
     {

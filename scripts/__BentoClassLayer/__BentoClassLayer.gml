@@ -922,7 +922,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 if (__scissorEnabled)
                 {
-                    __BentoScissorPushFromVars();
+                    __BentoDrawScissorPushFromVars();
                 }
                 
                 //Add children created inside the parent to the Draw order
@@ -936,7 +936,7 @@ function __BentoClassLayer(_environment, _name) constructor
                 
                 if (__scissorEnabled)
                 {
-                    __BentoScissorPop();
+                    __BentoDrawScissorPop();
                 }
                 
                 BentoScrollbarDrawPlaceholder(BentoScrollbarGetHoriData(__attachedElement), __attachedElement);

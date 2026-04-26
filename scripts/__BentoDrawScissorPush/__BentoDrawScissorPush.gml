@@ -7,7 +7,7 @@
 /// @param right
 /// @param bottom
 
-function __BentoScissorPush(_newL, _newT, _newR, _newB)
+function __BentoDrawScissorPush(_newL, _newT, _newR, _newB)
 {
     static _scissorStack = __BentoSystem().__scissorStack;
     
