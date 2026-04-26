@@ -277,6 +277,9 @@ function __BentoClassLayer(_environment, _name) constructor
         
         if (__navPointer)
         {
+            var _pointerX = _environment.__envMouseX;
+            var _pointerY = _environment.__envMouseY;
+            
             var _prevPrimaryState = __pointerPrimaryState;
             var _envPrimaryState = _environment.__envMouseState;
             
@@ -313,15 +316,19 @@ function __BentoClassLayer(_environment, _name) constructor
                 __pointerPrimaryState = _prevPrimaryState >> 1;
             }
             
-            //Update mouse (pointer) input
-            __pointerPrevX = __pointerX;
-            __pointerPrevY = __pointerY;
-            
             if (__pointerPrimaryState == __BENTO_STATE_START)
             {
                 //Set some variable state if we've clicked the mouse
-                __pointerPressX = __pointerX;
-                __pointerPressY = __pointerY;
+                __pointerPressX = _pointerX;
+                __pointerPressY = _pointerY;
+                
+                __pointerPrevX = _pointerX;
+                __pointerPrevY = _pointerY;
+            }
+            else
+            {
+                __pointerPrevX = __pointerX;
+                __pointerPrevY = __pointerY;
             }
             
             if ((__navMode == BENTO_MODE_TOUCH) && (not (__pointerPrimaryState & __BENTO_STATE_START)))
@@ -331,8 +338,8 @@ function __BentoClassLayer(_environment, _name) constructor
             }
             else
             {
-                __pointerX = _environment.__envMouseX;
-                __pointerY = _environment.__envMouseY;
+                __pointerX = _pointerX;
+                __pointerY = _pointerY;
                 
                 //Update mouse drag information
                 if (__pointerPrimaryState & __BENTO_STATE_START)
@@ -640,7 +647,7 @@ function __BentoClassLayer(_environment, _name) constructor
                     
                     if ((not (__pointerPrimaryState & __BENTO_STATE_START)) //Hover if the primary isn't held
                     ||  (__dndItemElement != BENTO_NO_ELEMENT) //Hover if we have a drag & drop item
-                    ||  ((__navMode == BENTO_MODE_TOUCH) && (__pointerPrimaryState == __BENTO_STATE_START))) //Hover if we're in touch mode and we just pressed
+                    ||  (__navMode == BENTO_MODE_TOUCH)) //Always hover if we're in touch mode
                     {
                         __BentoSetHoverFromPointer(__pointerX, __pointerY);
                     }
