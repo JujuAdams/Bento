@@ -320,6 +320,7 @@
     {"id":{"name":"BentoGetExecutesStep","path":"scripts/BentoGetExecutesStep/BentoGetExecutesStep.yy",},},
     {"id":{"name":"BentoGetFocused","path":"scripts/BentoGetFocused/BentoGetFocused.yy",},},
     {"id":{"name":"BentoGetHoverable","path":"scripts/BentoGetHoverable/BentoGetHoverable.yy",},},
+    {"id":{"name":"BentoGetHovered","path":"scripts/BentoGetHovered/BentoGetHovered.yy",},},
     {"id":{"name":"BentoGetLayer","path":"scripts/BentoGetLayer/BentoGetLayer.yy",},},
     {"id":{"name":"BentoGetLongPress","path":"scripts/BentoGetLongPress/BentoGetLongPress.yy",},},
     {"id":{"name":"BentoGetMode","path":"scripts/BentoGetMode/BentoGetMode.yy",},},
