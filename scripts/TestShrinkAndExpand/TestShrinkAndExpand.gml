@@ -9,7 +9,7 @@ function TestDeflateAndInflate()
         BentoLayoutList(BENTO_AXIS_X, 0, 0);
         BentoLayoutSetSize(600, 200);
         BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
-        BentoLayoutSetPadding(10, 10, 10, 10);
+        BentoLayoutSetPaddingExt(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
         with(BentoCreate(oBentoExSprite))

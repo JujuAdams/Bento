@@ -7,7 +7,7 @@ BentoSetSkin("thick frame", function()
         image_blend = BENTO_EXAMPLE_YELLOW;
     }
     
-    BentoLayoutSetPadding(10, 10, 10, 10);
+    BentoLayoutSetPaddingExt(10, 10, 10, 10);
     
     if (BentoClipGetEnabled())
     {

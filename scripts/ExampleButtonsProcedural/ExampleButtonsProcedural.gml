@@ -10,7 +10,7 @@ function ExampleButtonsProcedural()
         mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
         with(mainElement)
         {
-            BentoLayoutSetPadding(40, 40, 40, 40);
+            BentoLayoutSetPaddingExt(40, 40, 40, 40);
             BentoLayoutSetGutter(35, 35);
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
@@ -71,7 +71,7 @@ function ExampleButtonsProcedural()
         mainElement = new BentoExConstrSpacer(BentoLayerGetRoot());
         with(mainElement)
         {
-            BentoLayoutSetPadding(40, 40, 40, 40);
+            BentoLayoutSetPaddingExt(40, 40, 40, 40);
             BentoLayoutSetGutter(35, 35);
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);

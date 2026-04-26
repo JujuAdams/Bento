@@ -8,7 +8,7 @@ function TestStructs()
         BentoLayoutList(BENTO_AXIS_Y, 0, 0);
         BentoLayoutSetAnchor(0.5, 0.5);
         BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
-        BentoLayoutSetPadding(10, 10, 10, 10);
+        BentoLayoutSetPaddingExt(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
         var _text = new BentoExConstrText("Hello World", undefined, fa_center);

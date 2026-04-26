@@ -16,7 +16,7 @@ BentoFocusSetEnclose(BENTO_ENCLOSE_DIRECTIONAL);
 
 if (frame)
 {
-    BentoLayoutSetPadding(10, 10, 10, 10);
+    BentoLayoutSetPaddingExt(10, 10, 10, 10);
 }
 
 BentoScrollbarSetVert(false, 40, 0, 10, 10, 10, false);

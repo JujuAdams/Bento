@@ -17,7 +17,7 @@
 /// `.minSize` executes `BentoLayoutSetMinSize()`
 /// `.maxSize` executes `BentoLayoutSetMaxSize()`
 /// `.resize`  executes `BentoLayoutSetResize()`
-/// `.padding` executes `BentoLayoutSetPadding()`
+/// `.padding` executes `BentoLayoutSetPaddingExt()`
 /// `.gutter`  executes `BentoLayoutSetGutter()`
 /// `.list`    executes `BentoLayoutList()`
 /// `.grid`    executes `BentoLayoutGrid()`
@@ -133,7 +133,7 @@
 ///    value.
 /// 
 /// `.padding`
-///     Calls the `BentoLayoutSetPadding()` function on the created element.
+///     Calls the `BentoLayoutSetPaddingExt()` function on the created element.
 ///     
 ///     Can be a 2-element array:
 ///         [ <left>, <top>, <right>, <bottom> ]
@@ -517,7 +517,7 @@ function __BentoLayoutSetFromJSON_padding(_element, _value)
 {
     if (is_numeric(_value))
     {
-        BentoLayoutSetPadding(_value, _value, _value, _value, _element);
+        BentoLayoutSetPaddingExt(_value, _value, _value, _value, _element);
     }
     else if (is_array(_value))
     {
@@ -526,11 +526,11 @@ function __BentoLayoutSetFromJSON_padding(_element, _value)
             __BentoError($".padding layout property must have 4 elements if it is an array (length = {array_length(_value)})");
         }
         
-        BentoLayoutSetPadding(_value[0], _value[1], _value[2], _value[3], _element);
+        BentoLayoutSetPaddingExt(_value[0], _value[1], _value[2], _value[3], _element);
     }
     else if (is_struct(_value))
     {
-        BentoLayoutSetPadding(_value[$ "l"] ?? _value[$ "left"],
+        BentoLayoutSetPaddingExt(_value[$ "l"] ?? _value[$ "left"],
                             _value[$ "t"] ?? _value[$ "top"],
                             _value[$ "r"] ?? _value[$ "right"],
                             _value[$ "b"] ?? _value[$ "bottom"],

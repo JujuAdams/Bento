@@ -1,6 +1,6 @@
 // Feather disable all
 
-function ExampleButtonsWIthLongClick()
+function ExampleButtonsWithLongClick()
 {
     with(oMain)
     {

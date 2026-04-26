@@ -8,7 +8,7 @@ function TestAnimations()
         BentoSetOffset(100, 100);
         BentoLayoutList(BENTO_AXIS_Y, 0, 0);
         BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
-        BentoLayoutSetPadding(10, 10, 10, 10);
+        BentoLayoutSetPaddingExt(10, 10, 10, 10);
         BentoLayoutSetGutter(10, 10);
         
         with(new BentoExConstrButton(function()

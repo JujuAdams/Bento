@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleButtonsWIthLongClick",
+  "%Name":"ExampleButtonsWithLongClick",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleButtonsWIthLongClick",
+  "name":"ExampleButtonsWithLongClick",
   "parent":{
     "name":"JSON",
     "path":"folders/Examples/JSON.yy",
