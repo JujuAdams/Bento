@@ -39,7 +39,7 @@ function ExampleTextbox()
                     ],
                 },
                 {
-                    select: true,
+                    hover: true,
                     object: oBentoExTextbox,
                     vars: {
                         reference: BentoRef(global, "textboxExample"),

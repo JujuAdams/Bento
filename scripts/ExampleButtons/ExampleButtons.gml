@@ -66,7 +66,7 @@ function ExampleButtons()
                     },
                     children: [
                         {
-                            select: true,
+                            hover: true,
                             object: oBentoExButton,
                             vars: {
                                 text: "Always a button",

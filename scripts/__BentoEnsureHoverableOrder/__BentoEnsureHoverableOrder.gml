@@ -46,7 +46,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
             __enclosed = (_hoverableIndex == undefined);
         }
         
-        //Elements can only be selected if the are not enclosed as indicated by `_hoverableIndex`
+        //Elements can only be hovered if the are not enclosed as indicated by `_hoverableIndex`
         if (_hoverableIndex != undefined)
         {
             if (__scrollbarVert != undefined)
@@ -76,7 +76,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
             }
         }
         
-        //Elements can only be selected if the are not enclosed as indicated by `_hoverableIndex`
+        //Elements can only be hovered if the are not enclosed as indicated by `_hoverableIndex`
         if (_hoverableIndex != undefined)
         {
             var _dndIsTarget = ((_dndChannel == __dndTargetChannel) && ((not is_callable(__dndTargetFunc)) || __dndTargetFunc()));
@@ -125,7 +125,7 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
             }
         }
         
-        //Elements can only be selected if the are:
+        //Elements can only be hovered if the are:
         // 1. set up as buttons when in directional mode
         // 2. not enclosed as indicated by `_hoverableIndex`
         // 3. either not focused or don't have any children that are buttons

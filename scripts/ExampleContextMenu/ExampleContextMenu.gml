@@ -37,7 +37,7 @@ function ExampleContextMenu()
                     ],
                 },
                 {
-                    select: true,
+                    hover: true,
                     object: oBentoExButton,
                     vars: {
                         text: "Click Me!",

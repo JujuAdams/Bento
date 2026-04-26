@@ -77,7 +77,7 @@
 #macro BENTO_SCROLL_ON_MOUSE_DRAG  true
 
 // Padding between the edge of an element and the edge of the clipping window. This will be applied
-// to the edges of elements that have been scrolled to (usually via selection when using a keyboard
+// to the edges of elements that have been scrolled to (usually via hover when using a keyboard
 // or gamepad). This helps improve the visual presentation of the UI.
 #macro BENTO_SCROLL_TO_PADDING  10
 

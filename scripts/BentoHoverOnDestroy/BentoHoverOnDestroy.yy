@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoSelectSoft",
+  "%Name":"BentoHoverOnDestroy",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoSelectSoft",
+  "name":"BentoHoverOnDestroy",
   "parent":{
     "name":"Directional Only",
     "path":"folders/Bento/Functions/Input & Navigation/Directional Only.yy",

@@ -51,7 +51,7 @@ function ExampleStepperStrings()
                     },
                 },
                 {
-                    select: true,
+                    hover: true,
                     object: oBentoExStepperStrings,
                     vars: {
                         text: "Colour Selection",

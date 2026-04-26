@@ -30,8 +30,7 @@
 /// `.offset`     executes `BentoSetOffset()`
 /// `.visible`    executes `BentoSetVisible()`
 /// `.name`       executes `BentoNameSet()`
-/// `.select`     executes `BentoSelect()`
-/// `.selectSoft` executes `BentoSelectSoft()`
+/// `.hover`      executes `BentoHover()`
 /// `.clip`       executes `BentoClipSetEnabled()` and `BentoClipSetPadding()`
 /// `.scroll`     executes `BentoScrollSetEnabled()` and `BentoScrollSetPadding()`
 /// `.layout`     executes `BentoLayoutSetFromJSON()`
@@ -147,27 +146,15 @@
 /// }
 /// ```
 /// 
-/// Element definition structs may contain an `.select` property. If specified, this must be either
-/// `true` or `fdlse`. If the value is `true`, `BentoSelect()` will be executed targeting the
+/// Element definition structs may contain a `.hover` property. If specified, this must be either
+/// `true` or `fdlse`. If the value is `true`, `BentoHover()` will be executed targeting the
 /// created element.
 /// 
 /// Example:
 /// ```
 /// {
 ///     object: oBentoSprite,
-///     select: true
-/// }
-/// ```
-/// 
-/// Element definition structs may contain an `.softSelect` property. If specified, this must be either
-/// `true` or `fdlse`. If the value is `true`, `BentoSelectSoft()` will be executed targeting the
-/// created element.
-/// 
-/// Example:
-/// ```
-/// {
-///     object: oBentoSprite,
-///     softSelect: true
+///     hover: true
 /// }
 /// ```
 /// 
@@ -520,33 +507,18 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             }
         }
         
-        //Force select the instance
-        var _select = _json[$ "select"];
-        if (_select != undefined)
+        //Hover the instance
+        var _hover = _json[$ "hover"];
+        if (_hover != undefined)
         {
-            if (not is_bool(_select))
+            if (not is_bool(_hover))
             {
-                __BentoError($".select property is incorrect datatype, must be a boolean (was \"{typeof(_vars)}\")");
+                __BentoError($".hover property is incorrect datatype, must be a boolean (was \"{typeof(_vars)}\")");
             }
             
-            if (_select)
+            if (_hover)
             {
-                BentoSelect(_element);
-            }
-        }
-        
-        //Soft select the instance
-        var _softSelect = _json[$ "softSelect"];
-        if (_softSelect != undefined)
-        {
-            if (not is_bool(_softSelect))
-            {
-                __BentoError($".softSelect property is incorrect datatype, must be a boolean (was \"{typeof(_vars)}\")");
-            }
-            
-            if (_softSelect)
-            {
-                BentoSelectSoft(_element);
+                BentoHoverSoft(_element);
             }
         }
         

@@ -30,7 +30,7 @@ function ExampleCreditsAndLicenses()
                         },
                         {
                             object: oBentoExBackButton,
-                            select: true,
+                            hover: true,
                             vars: {
                                 func: ExampleHomePage,
                             },

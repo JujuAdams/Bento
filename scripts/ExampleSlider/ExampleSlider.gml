@@ -51,7 +51,7 @@ function ExampleSlider()
                     },
                 },
                 {
-                    select: true,
+                    hover: true,
                     object: oBentoExSlider,
                     vars: {
                         text: "Slider",

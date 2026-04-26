@@ -152,7 +152,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __scrollbarHori = undefined;
     __scrollbarVert = undefined;
     
-    __selectOnDestroy = BENTO_NO_ELEMENT;
+    __hoverOnDestroy = BENTO_NO_ELEMENT;
     
     __animPlaying  = false;
     __animBlocking = false;
@@ -308,9 +308,9 @@ function __BentoClassVariables(_attachedElement) constructor
         __BentoRemoveParent(__attachedElement);
         BentoDestroyChildren(__attachedElement);
         
-        if (BentoExists(__selectOnDestroy))
+        if (BentoExists(__hoverOnDestroy))
         {
-            BentoSelectSoft(__selectOnDestroy);
+            BentoHoverSoft(__hoverOnDestroy);
         }
         
         BentoFocusClose(__attachedElement);

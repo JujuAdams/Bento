@@ -51,7 +51,7 @@ function ExampleListboxWithBar()
                         {
                             return {
                                 object: oBentoExButton,
-                                select: (_index == 0),
+                                hover: (_index == 0),
                                 vars: {
                                     text: string(_index),
                                 },

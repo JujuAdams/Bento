@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Selects an element (if possible). This function only works when the input mode is set to
+/// Hover an element (if possible). This function only works when the input mode is set to
 /// `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD` on the layer in question.
 /// 
 /// The optional `byNavigation` parameter determines whether `BentoCursorGetEnterByNavigation()`
@@ -10,7 +10,7 @@
 /// @param [byNavigation=false]
 /// @param [layerOrName=current]
 
-function BentoSelect(_element, _byNavigation = false, _layerOrName = undefined)
+function BentoHover(_element, _byNavigation = false, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
@@ -21,20 +21,21 @@ function BentoSelect(_element, _byNavigation = false, _layerOrName = undefined)
                 __BentoSetHover(_element, _byNavigation);
                 __hoverElementSoft = BENTO_NO_ELEMENT;
             }
-            else if (BENTO_SAFE)
+            else
             {
-                __BentoTrace("Cannot select element, it is not hoverable");
+                __BentoTrace("Element is not currently hoverable, using a soft hover instead");
+                __hoverElementSoft = _element;
             }
         }
         else if (BENTO_SAFE)
         {
-            __BentoTrace("Cannot select element, currently in a directional input mode");
+            __BentoTrace("Cannot hover element, not in a directional input mode");
         }
     }
 }
 
 //Internal variant without the debug messages
-function __BentoSelectInternal(_element)
+function __BentoHoverInternal(_element)
 {
     with(__BentoLayerEnsure(undefined))
     {

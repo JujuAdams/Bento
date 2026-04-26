@@ -51,7 +51,7 @@ function ExampleButtonsWithLongClick()
                     },
                     children: [
                         {
-                            select: true,
+                            hover: true,
                             object: oBentoExButtonWithLongClick,
                             vars: {
                                 text: "Button with long click",

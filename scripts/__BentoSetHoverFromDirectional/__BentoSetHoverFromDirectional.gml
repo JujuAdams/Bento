@@ -21,12 +21,12 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
         
         if (__BentoGetHoverableInternal(__hoverElementSoft, false))
         {
-            //Choose the soft selection if possible
+            //Choose the soft hover if possible
             _nextElement = __hoverElementSoft;
         }
         else
         {
-            //Otherwise fall back on searching for the nearest selectable element
+            //Otherwise fall back on searching for the nearest hoverable element
             _nextElement = __BentoGetDirectionalNearest(__directionalLastX, __directionalLastY, _exclude);
         }
         
@@ -36,7 +36,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
     {
         var _prevBento = _prevElement.BENTO_VARS;
         
-        //Previously selected element is valid, process navigation
+        //Previously hovered element is valid, process navigation
         if ((_dX == 0) && (_dY == 0))
         {
             //No movement, keep the same element we had before
@@ -44,7 +44,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
         }
         else
         {
-            //Don't allow selection of the next element if we're not visible
+            //Don't allow hover of the next element if we're not visible
             if (not BentoClipGetFullyVisible(_prevElement))
             {
                 BentoScrollTo(BentoScrollGetSpeed(_prevElement), _prevElement);
@@ -71,7 +71,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                 }
             
                 //Only check if the next element is properly visible if it's nested inside a different scroller to
-                //the previous element. This ensures non-visible elements never get selected but that it's possible
+                //the previous element. This ensures non-visible elements never get hovered but that it's possible
                 //to navigate to visually hidden elements inside the scroller.
                 var _prevScrollParent = __BentoFindScrollElement(BentoGetParent(1, _prevElement));
                 var _checkVisible = (_prevScrollParent != __BentoFindScrollElement(_nextElement));
@@ -82,7 +82,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
             
                 if (not BentoExists(_nextElement))
                 {
-                    //If the navigation element isn't selectable then fall back on a raycast
+                    //If the navigation element isn't hoverable then fall back on a raycast
                 
                     if (((_dX != 0) && (not _prevBento.__raycastEnableX)) || ((_dY != 0) && (not _prevBento.__raycastEnableY)))
                     {
@@ -132,7 +132,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                         
                         if (not BentoExists(_nextElement))
                         {
-                            //Raycast failed, no new element can be selected
+                            //Raycast failed, no new element can be hovered
                             _nextElement = _prevElement;
                         }
                     }

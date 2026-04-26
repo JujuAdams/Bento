@@ -51,7 +51,7 @@ function ExampleStepperNumbers()
                     },
                 },
                 {
-                    select: true,
+                    hover: true,
                     object: oBentoExStepperNumbers,
                     vars: {
                         text: "Stepper",

@@ -53,7 +53,7 @@ function ExampleCheckbox()
                     },
                     children: [
                         {
-                            select: true,
+                            hover: true,
                             object: oBentoExCheckbox,
                             vars: {
                                 text: "Checkbox 1",
@@ -64,7 +64,6 @@ function ExampleCheckbox()
                             },
                         },
                         {
-                            select: true,
                             object: oBentoExCheckbox,
                             vars: {
                                 text: "Checkbox 2",

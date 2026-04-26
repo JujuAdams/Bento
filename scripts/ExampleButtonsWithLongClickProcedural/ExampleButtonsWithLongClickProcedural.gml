@@ -35,7 +35,7 @@ function ExampleButtonsWithLongClickProcedural()
                 
                 with(BentoCreate(oBentoExButtonWithLongClick, { text: "Button with long click" }))
                 {
-                    BentoSelect(self);
+                    BentoHover(self);
                 }
                 
                 BentoCreate(oBentoExButton, { text: "Standard button" });
@@ -82,7 +82,7 @@ function ExampleButtonsProcedural()
                 
                 with(new BentoExConstrText("Always a button"))
                 {
-                    BentoSelect(self);
+                    BentoHover(self);
                     BentoSetButton(BENTO_BUTTON_ALWAYS);
                 }
                 
