@@ -8,8 +8,8 @@ Bento supports four different **input modes**:
 |------------|-----------------------|---------|-------------|-----------------------|
 | Mouse      | `BENTO_MODE_MOUSE`    | Yes     | No          | No                    |
 | Touch      | `BENTO_MODE_TOUCH`    | Yes     | No          | Yes                   |
-| Keyboard   | `BENTO_MODE_KEYBOARD` | No      | No          | Yes                   |
-| Gamepad    | `BENTO_MODE_GAMEPAD`  | No      | No          | Yes                   |
+| Keyboard   | `BENTO_MODE_KEYBOARD` | No      | Yes         | Yes                   |
+| Gamepad    | `BENTO_MODE_GAMEPAD`  | No      | Yes         | Yes                   |
 
 Bento will initialize using a suitable input mode for your game depending on what target platform you're using:
 
