@@ -4,7 +4,7 @@
 
 Bento does not come with a toybox filled with ready-to-use widgets. Instead, Bento provides functions and events/callbacks that you can use to build your own custom user interface elements. That having been said, I have built out a selection of examples for the most common types of element to get you started. You can find these examples [on the Bento repo](https://github.com/JujuAdams/Bento/). Example elements can be found in the project in the `Bento Examples` folder.
 
-?> Bento has no preconceived notion of what your elements are going to look like or do. You can make your elements look however you want. Bento only concerns itself with giving you the underlying structure of a UI system.
+?> Bento has no preconceived notion of what your elements are going to look like or do. You can make your elements look however you want and do (almost) anything you want. Bento only concerns itself with giving you deep foundations for your UI.
 
 Elements may be object instances or structs. This page will deal first with object instances as they are the most familiar concept for most GameMaker developers. Structs operate similarly to object instances within Bento and will be dealt with afterwards.
 
@@ -22,7 +22,7 @@ Elements may be object instances or structs. This page will deal first with obje
   - User Event 3 is called when an element is hovered and will draw over other sibling elements
   - User Event 4 is called when dragging an element in the drag-and-drop system and will draw over all other elements
   - User Event 5 is called when changing the position or size of an element
-- **Exactly what you draw is up to you.** Check against the various getter functions (such as `BentoCursorGetHover()`) to alter the appearance of elements depending on their state
+- ***Exactly what you draw is up to you.*** Check against the various getter functions (such as `BentoCursorGetHover()`) to alter the appearance of elements depending on their state
 - There is no guarantee that Bento events will be executed on any given step. Bento [minimises how much of your code it executes](Principles) to keep performance as tight as possible
 - Do not use any of the native Draw events. Bento has its own Draw loop
 - Do not use any of the native GameMaker keyboard, mouse, or gamepad input events
@@ -64,7 +64,7 @@ Bento uses a system of custom user events to structure when and how code is exec
 | `1`        | Draw              | Draw                | Before applying GPU scissoring for the element (if applicable) and before children                                                            | The "main" draw event for elements                                                          |
 | `2`        | Draw End (ish)    | Draw                | After children and after resetting GPU scissoring                                                                                             | Useful for drawing graphics over child elements such as an attractive border                |
 | `3`        | *n/a*             | Draw                | Only called when an element is hovered. Called after all sibling children but before resetting GPU scissoring for a layout ancestor           | Drawing highlights on and around hovered elements, especially when in directional mode      |
-| `4`        | *n/a*             | Draw                | Only called when an element is being dragged in the drag-and-drop system. After all other elements, executed at the very end of the draw loop | Drawing a drag-and-drop item underneath the cursor                                          |
+| `4`        | *n/a*             | Draw                | Only called when an element is being dragged in the drag-and-drop system. After all other elements, executed at the very end of the draw loop | Drawing a drag-and-drop item above all other elements                                       |
 | `5`        | *n/a*             | Logic               | Called whenever an element's layout position or layout size changes                                                                           | Resetting properties (such as `image_xscale`) that rely on the size and shape of an element |
 
 !> There is no guarantee that Bento events will be executed on any given step. Bento [minimises how much of your code it executes](Principles) to keep performance as tight as possible.
@@ -98,3 +98,5 @@ Structs also don't have the concept of "User Events". Instead, a struct-based Be
 | `3`        | `eventDrawHover`   |
 | `4`        | `eventDrawDragged` |
 | `5`        | `eventReposition`  |
+
+When constructing a Bento-compatible struct, you should set up callback methods by setting these variables to functions that you want to execute. The behaviour and timing of their execution is the same as the equivalent User Events.
