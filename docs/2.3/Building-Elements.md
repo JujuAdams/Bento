@@ -15,7 +15,7 @@ Elements may be object instances or structs. This page will deal first with obje
 - Object instances must inherit from `oBentoAncestor`
 - `event_inherited()` must be called at the top of a Create event before anything else
 - Do not deactivate Bento object instances. Call `BentoActivateInstances()` if you're using instance deactivation
-- Only put Bento logic in user events:
+- Put Bento-related code in user events:
   - User Event 0 is called when updating an element (this is Bento's "Step" event)
   - User Event 1 is called when drawing an element (this is Bento's "Draw" event)
   - User Event 2 is called when after drawing an element and after drawing all of its children (this is Bento's version of a "Draw End" event)
