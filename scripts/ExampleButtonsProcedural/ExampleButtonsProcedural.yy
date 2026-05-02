@@ -6,7 +6,7 @@
   "name":"ExampleButtonsProcedural",
   "parent":{
     "name":"Procedural",
-    "path":"folders/Examples/Procedural.yy",
+    "path":"folders/Project Examples/Procedural.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

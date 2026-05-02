@@ -6,7 +6,7 @@
   "name":"ExampleListboxWithBar",
   "parent":{
     "name":"JSON",
-    "path":"folders/Examples/JSON.yy",
+    "path":"folders/Project Examples/JSON.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__BentoExSkins",
   "parent":{
-    "name":"Bento Examples",
-    "path":"folders/Bento Examples.yy",
+    "name":"Bento Element Examples",
+    "path":"folders/Bento Element Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

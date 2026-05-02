@@ -6,7 +6,7 @@
   "name":"BentoExConstrButton",
   "parent":{
     "name":"Structs",
-    "path":"folders/Bento Examples/Structs.yy",
+    "path":"folders/Bento Element Examples/Structs.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
