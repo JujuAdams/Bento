@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayoutSetMinSize",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayoutSetMinSize",
+  "parent":{
+    "name":"Properites",
+    "path":"folders/Bento/Functions/Layout/Properites.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

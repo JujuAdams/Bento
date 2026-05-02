@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoEnvironmentCreate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoEnvironmentCreate",
+  "parent":{
+    "name":"Environments",
+    "path":"folders/Bento/Functions/Environments.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

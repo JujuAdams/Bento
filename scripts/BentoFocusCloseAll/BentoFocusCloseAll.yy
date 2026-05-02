@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoFocusCloseAll",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoFocusCloseAll",
+  "parent":{
+    "name":"Focus",
+    "path":"folders/Bento/Functions/Focus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

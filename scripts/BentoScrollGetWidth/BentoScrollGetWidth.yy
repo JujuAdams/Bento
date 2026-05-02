@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoScrollGetWidth",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoScrollGetWidth",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Bento/Functions/Scroll/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

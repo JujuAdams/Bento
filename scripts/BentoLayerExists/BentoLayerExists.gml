@@ -1,10 +1,22 @@
-/// Returns if a layer with the given name exists.
-/// 
-/// @param layerName
+// Feather disable all
 
-function BentoLayerExists(_layerName)
+/// Returns if a layer exists.
+/// 
+/// @param layerOrName
+/// @param [environmentName=current]
+
+function BentoLayerExists(_layerOrName, _environmentName = undefined)
 {
-    static _global = __BentoGlobal();
+    static _system = __BentoSystem();
     
-    return _global.__currentHost.__LayerExists(_layerName);
+    if (is_string(_layerOrName))
+    {
+        return (__BentoLayerFind(_layerOrName, __BentoEnvironmentEnsure(_environmentName)) != undefined);
+    }
+    else if (is_struct(_layerOrName))
+    {
+        return (array_get_index(__BentoEnvironmentEnsure(_environmentName, _layerOrName.__environment).__layerArray, _layerOrName) >= 0);
+    }
+    
+    return false;
 }

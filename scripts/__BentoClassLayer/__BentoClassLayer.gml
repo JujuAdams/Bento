@@ -1,920 +1,1012 @@
-BentoAddFunction("BentoLayer", function()
-{
-    BentoOpen(new __BentoClassLayer());
-    return method(undefined, BentoClose);
-});
+// Feather disable all
 
-BentoAddFunction("BentoTooltipLayer", function()
-{
-    var _layer = new __BentoClassLayer();
-    
-    BentoOpen(_layer)
-    with(_layer)
-    {
-        Set("behavior", BENTO_BEHAVIOR_MODAL);
-        Set("volatile", true);
-    }
-    
-    return method(undefined, BentoClose);
-});
+/// @param environment
+/// @param name
 
-function __BentoClassLayer() constructor
+function __BentoClassLayer(_environment, _name) constructor
 {
-    static _global       = __BentoGlobal();
-    static _debugStruct  = _global.__debug;
-    static _nullEvent = _global.__nullEvent;
+    static _system = __BentoSystem();
     
-    __name     = BentoRandomUUID();
-    __host     = _global.__currentHost;
-    __priority = undefined;
-    behavior   = BENTO_BEHAVIOR_MODAL;
+    __environment = _environment;
+    __name        = _name;
     
-    __host.__LayerAddTop(self);
-    
-    __struct            = undefined;
-    __volatile          = false;
-    __volatileKeepAlive = true;
-    
-    __destroyed     = false;
-    __animationExit = false;
-    
-    __pointerX      = 0;
-    __pointerY      = 0;
-    __pointerStartX = 0;
-    __pointerStartY = 0;
-    
-    __highlightRef     = undefined;
-    __lastHighlightRef = undefined;
-    
-    __inputDirectionState = false;
-    
-    __captureRef        = undefined;
-    __captureButtonName = undefined;
-    __captureTime       = infinity;
-    __captureLatch      = false;
-    
-    __stateButtonDict = {};
-    
-    __getter = {};
-    __setter = {};
-    
-    if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Created ", self);
-    
-    
-    
-    
-    
-    VariableBind("name", function()
+    if (BENTO_DEBUG_LEVEL >= 1)
     {
-        return __name;
-    },
-    function(_value)
+        __BentoTrace($"Creating layer {__BentoGetStructPointer(self)} called \"{__name}\" in environment {__BentoGetStructPointer(__environment)}");
+    }
+    
+    ////////
+    // Gemeral state
+    ////////
+    
+    __rootElement = BENTO_NO_ELEMENT;
+    
+    __isTopLayer = true;
+    
+    __animPlayingArray      = [];
+    __animPlayingMap        = ds_map_create();
+    __animBlockingMap       = ds_map_create();
+    __animAnyBlocking       = false;
+    __animUnblockedCallback = undefined;
+    __animUnblockedMetadata = undefined;
+    __animUnblockedPersist  = false;
+    
+    //Set starting input mode from the environment
+    __navMode = __environment.__envNavMode;
+    
+    //Explicitly using a mouse or touch input
+    __navPointer = ((__navMode == BENTO_MODE_MOUSE) || (__navMode == BENTO_MODE_TOUCH));
+    
+    //Explicitly using a keyboard or gamepad
+    __navDirectional = ((__navMode == BENTO_MODE_KEYBOARD) || (__navMode == BENTO_MODE_GAMEPAD));
+    
+    ////////
+    // Input state
+    ////////
+    
+    __pointerX            = 0;
+    __pointerY            = 0;
+    __pointerPrimaryState = __BENTO_STATE_OFF;
+    __pointerPrevX        = 0;
+    __pointerPrevY        = 0;
+    __pointerPressX       = 0;
+    __pointerPressY       = 0;
+    
+    __pointerTravelled = false;
+    
+    __pointerScrolled = false;
+    __pointerScrollingElement = BENTO_NO_ELEMENT;
+    
+    __directionalDX           = 0;
+    __directionalDY           = 0;
+    __directionalPrimaryState = __BENTO_STATE_OFF;
+    __directionalLastX        = 0;
+    __directionalLastY        = 0;
+    
+    __cursorLastL = 0;
+    __cursorLastT = 0;
+    __cursorLastR = 0;
+    __cursorLastB = 0;
+    
+    __turboState = new __BentoClassTurbo();
+    
+    __hotkeyStateMap    = ds_map_create();
+    __hotkeyConsumedMap = ds_map_create();
+    
+    ////////
+    // Update tracking
+    ////////
+    
+    __layoutOrder    = [];
+    __stepOrder      = [];
+    __hoverableOrder = [];
+    __drawOrder      = [];
+    
+    __dirtyFlags = __BENTO_DIRTY_ALL;
+    __hoverableRegenCount = 0;
+    
+    __dirtyChildOrderArray   = [];
+    __dirtyScrollLimitsArray = [];
+    __dirtyOffsetArray       = [];
+    __dirtyTransformsArray   = [];
+    __scrollAnimatingArray   = [];
+    
+    __hoverElement       = BENTO_NO_ELEMENT;
+    __hoverElementSoft   = BENTO_NO_ELEMENT;
+    __hoverElementStored = undefined;
+    __primaryState       = __BENTO_STATE_OFF;
+    __primaryConsumed    = false;
+    __holdElement        = BENTO_NO_ELEMENT;
+    
+    __carryNextItemElement = BENTO_NO_ELEMENT;
+    __carryItemElement     = BENTO_NO_ELEMENT;
+    
+    __updateElementArray = [];
+    
+    __focusStack = [];
+    __focusTop   = undefined;
+    
+    
+    
+    
+    
+    static __Destroy = function()
     {
-        if (_value != __name)
+        if (BENTO_DEBUG_LEVEL >= 1)
         {
-            __host.__LayerDestroy(_value);
+            __BentoTrace($"Destroying layer {__BentoGetStructPointer(self)} called \"{__name}\" in environment {__BentoGetStructPointer(__environment)}");
+        }
+        
+        BentoDestroy(__rootElement);
+        __environment.__RemoveLayer(self);
+    }
+    
+    static __ClearHoverElement = function()
+    {
+        __hoverElement = BENTO_NO_ELEMENT;
             
-            var _oldName = string(self);
-            __name = _value;
-            if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Renamed ", _oldName, " to ", self);
-        }
-    });
-    
-    VariableBind("volatile", function()
-    {
-        return __volatile;
-    },
-    function(_value)
-    {
-        if (_value && (not __volatile))
+        //So long as we have a drag & drop element, set its target
+        if (BentoExists(__carryItemElement))
         {
-            if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Layer \"", __name, "\" marked as volatile");
+            __carryItemElement.BENTO_VARS.__carryTargetElement = BENTO_NO_ELEMENT;
+        }
+    }
+    
+    static __SetBackgroundedState = function()
+    {
+        __isTopLayer = false;
+        
+        __hoverElementStored = BentoExists(__hoverElement)? weak_ref_create(__hoverElement) : undefined;
+        
+        __pointerX = -__BENTO_VERY_LARGE;
+        __pointerY = -__BENTO_VERY_LARGE;
+        
+        __directionalDX = 0;
+        __directionalDY = 0;
+        
+        __pointerTravelled = false;
+        
+        __ClearScrollingElement();
+        
+        //If this layer has the current text handler then abort its use
+        if ((__environment.__textElement != undefined) && (__environment.__textElement.BENTO_VARS.__layer == self))
+        {
+            __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
         }
         
-        __volatile          = _value;
-        __volatileKeepAlive = true;
-    });
-    
-    VariableBind("priority", function()
-    {
-        return __priority;
-    },
-    function(_value)
-    {
-        if (__priority != _value) __host.__LayerMoveToPriority(self, _value);
-    });
-    
-    
-    
-    
-    
-    static toString = function()
-    {
-        return "<layer " + __name + ">";
+        __ClearHoverElement();
+        __holdElement = BENTO_NO_ELEMENT;
+        __ClearDraggedItem();
     }
     
-    static VariableBind = function(_name, _getter, _setter)
+    static __SetForegroundedState = function()
     {
-        __getter[$ _name] = (_getter == undefined)? _getter : method(undefined, _getter);
-        __setter[$ _name] = (_setter == undefined)? _setter : method(undefined, _setter);
-    }
-    
-    static Get = function(_name)
-    {
-        var _method = __getter[$ _name];
-        if (is_method(_method))
-        {
-            return _method();
-        }
-        else
-        {
-            return self[$ _name];
-        }
-    }
-    
-    static Set = function(_name, _value)
-    {
-        var _method = __setter[$ _name];
-        if (is_method(_method))
-        {
-            _method(_value);
-        }
-        else
-        {
-            self[$ _name] = _value;
-        }
-    }
-    
-    static __VolatileKeepAlive = function()
-    {
-        __volatileKeepAlive = true;
-    }
-    
-    static MoveToTop = function()
-    {
-        __host.__LayerMoveToTop(self);
-    }
-    
-    static MoveOver = function(_targetName)
-    {
-        __host.__LayerMoveOver(self, _targetName);
-    }
-    
-    
-    
-    
-    
-    #region __BentoClassShared emulation functions
-    
-    __localLeft   = __host.__worldLeft;
-    __localTop    = __host.__worldTop;
-    __localRight  = __host.__worldRight;
-    __localBottom = __host.__worldBottom;
-    __localX      = 0.5*(__localLeft + __localRight);
-    __localY      = 0.5*(__localTop + __localBottom);
-    __localWidth  = __localRight - __localLeft;
-    __localHeight = __localBottom - __localTop;
-    
-    __popLayerOnClose = true;
-    
-    
-    
-    VariableBind("left", function()
-    {
-        return __localLeft;
-    },
-    function(_value)
-    {
-        __BentoError("Cannot set \"width\" for layers");
-    });
-    
-    VariableBind("top", function()
-    {
-        return __localTop;
-    },
-    function(_value)
-    {
-        __BentoError("Cannot set \"top\" for layers");
-    });
-    
-    VariableBind("right", function()
-    {
-        return __localRight;
-    },
-    function(_value)
-    {
-        __BentoError("Cannot set \"right\" for layers");
-    });
-    
-    VariableBind("bottom", function()
-    {
-        return __localBottom;
-    },
-    function(_value)
-    {
-        __BentoError("Cannot set \"bottom\" for layers");
-    });
-    
-    VariableBind("x", function()
-    {
-        return __localX;
-    },
-    function(_value)
-    {
-        __BentoError("Cannot set \"x\" for layers");
-    });
-    
-    VariableBind("y", function()
-    {
-        return __localY;
-    },
-    function(_value)
-    {
-        __BentoError("Cannot set \"y\" for layers");
-    });
-    
-    VariableBind("width", function()
-    {
-        return __localWidth;
-    },
-    function(_value)
-    {
-        __BentoError("Cannot set \"width\" for layers");
-    });
-    
-    VariableBind("height", function()
-    {
-        return __localHeight;
-    },
-    function(_value)
-    {
-        __BentoError("Cannot set \"height\" for layers");
-    });
-    
-    
-    
-    static Destroy = function()
-    {
-        if (__destroyed) return;
-        __destroyed = true;
+        __isTopLayer = true;
         
-        if (is_struct(__struct))
+        if ((__hoverElementStored != undefined) && weak_ref_alive(__hoverElementStored) && BentoExists(__hoverElementStored.ref))
         {
-            __struct.Destroy();
-            __struct = undefined;
-        }
-    }
-    
-    static HasChildren = function()
-    {
-        return is_struct(__struct);
-    }
-    
-    static __ChildAdd = function(_child)
-    {
-        return __ChildReplace(_child);
-    }
-    
-    static __ChildGetIndex = function()
-    {
-        return undefined;
-    }
-    
-    static __ChildReplace = function(_child, _index_UNUSED)
-    {
-        if (is_struct(__struct) && (__struct.__parent = self)) __struct.__parent = undefined;
-        
-        _child.__parent = self;
-        __struct = _child;
-    }
-    
-    static __ChildRemove = function(_child)
-    {
-        if (is_struct(_child) && (_child.__parent = self)) _child.__parent = undefined;
-        if (_child == __struct) __struct = undefined;
-    }
-    
-    static __FindLayer = function()
-    {
-        return self;
-    }
-    
-    static __EventGet = function()
-    {
-        return _nullEvent;
-    }
-    
-    static __LayoutExecute = function()
-    {
-        if (!is_struct(__struct)) return;
-        return __struct.__LayoutExecute();
-    }
-    
-    static __LayoutBuildOrder = function(_array)
-    {
-        if (!is_struct(__struct)) return;
-        return __struct.__LayoutBuildOrder(_array);
-    }
-    
-    static __FileOriginSearch = function(_filePathArray, _resultArray)
-    {
-        if (!is_struct(__struct)) return;
-        __struct.__FileOriginSearch(_filePathArray, _resultArray);
-        return _resultArray;
-    }
-    
-    static __CaptureCastSearch = function()
-    {
-        return undefined;
-    }
-    
-    static AnimationEnter = function()
-    {
-        if (!is_struct(__struct)) return;
-        __struct.AnimationEnter();
-    }
-    
-    static AnimationExit = function()
-    {
-        __animationExit = true;
-        if (!is_struct(__struct)) return;
-        __struct.AnimationExit();
-    }
-    
-    static __ScrollParentToSelf = function()
-    {
-        //Do nothing
-    }
-    
-    static __ScrollTo = function(_target)
-    {
-        //Do nothing
-    }
-    
-    static __HighlightableFreeSearchNextBranch = function(_current)
-    {
-        return (_current != self)? self : undefined;
-    }
-    
-    #endregion
-    
-    
-    
-    
-    
-    static __InputProcess = function(_pointerMode, _pointerX, _pointerY, _retrigger, _threshold, _excludeGroup, _buttonArray)
-    {
-        static _result = {
-            __struct:   undefined,
-            __distance: undefined,
+            __BentoSetHover(__hoverElementStored.ref, false);
         }
         
-        if (behavior >= BENTO_BEHAVIOR_PASSTHROUGH) //Don't pass input to anything with 0 behavior
+        __hoverElementStored = undefined;
+    }
+    
+    static __ClearDraggedItem = function()
+    {
+        if (__carryItemElement != BENTO_NO_ELEMENT)
         {
-            __BentoLayerStackPush(self);
+            __carryItemElement = BENTO_NO_ELEMENT;
             
-            switch(_pointerMode)
+            if (BentoExists(__carryItemElement))
             {
-                case BENTO_INPUT_MODE_POINTER:
-                    __pointerX = _pointerX;
-                    __pointerY = _pointerY;
-                    
-                    __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity, false), false);
-                break;
-                
-                case BENTO_INPUT_MODE_DIRECTIONAL:
-                    if (is_struct(__struct))
-                    {
-                        var _distance = point_distance( 0, 0, _pointerX, _pointerY);
-                        if (_distance < _threshold)
-                        {
-                            __inputDirectionState = false;
-                        }
-                        else if (_retrigger || (not __inputDirectionState))
-                        {
-                            __inputDirectionState = true;
-                            
-                            var _nX = _pointerX / _distance; 
-                            var _nY = _pointerY / _distance;
-                            
-                            var _navDirection = undefined;
-                            
-                            //Break down the movement into 4 directions
-                            if (abs(_nX) > abs(_nY))
-                            {
-                                if (_nX < 0) //Left
-                                {
-                                    _navDirection = 180;
-                                }
-                                else //Right
-                                {
-                                    _navDirection = 0;
-                                }
-                            }
-                            else
-                            {
-                                if (_nY < 0) //Up
-                                {
-                                    _navDirection = 90;
-                                }
-                                else //Down
-                                {
-                                    _navDirection = 270;
-                                }
-                            }
-                            
-                            if (__captureLatch)
-                            {
-                                //Can't move if we're latched! Convert input into a push event
-                                if (__BentoNullableRefAlive(__captureRef))
-                                {
-                                    var _captureStruct = __BentoNullableRefResolve(__captureRef);
-                                    _captureStruct.__EventGet(__BENTO_EVENT.__PUSH).__Call(_captureStruct, _navDirection);
-                                }
-                            }
-                            else
-                            {
-                                _result.__struct   = undefined;
-                                _result.__distance = infinity;
-                                
-                                var _freeSearch = true;
-                                
-                                var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
-                                if (is_struct(_highlightStruct))
-                                {
-                                    var _skipGroup  = undefined;
-                                    var _navTarget = undefined;
-                                    
-                                    with(_highlightStruct)
-                                    {
-                                        _freeSearch = !navigationLock;
-                                        if (_excludeGroup) _skipGroup = highlightGroup;
-                                        
-                                        switch(_navDirection)
-                                        {
-                                            case   0: _navTarget = __navigationRight; break;
-                                            case  90: _navTarget = __navigationUp;    break;
-                                            case 180: _navTarget = __navigationLeft;  break;
-                                            case 270: _navTarget = __navigationDown;  break;
-                                        }
-                                    }
-                                    
-                                    //See if the navigation target exists, and jump to it if so
-                                    _navTarget = __BentoNullableRefResolve(_navTarget);
-                                    if (is_struct(_navTarget))
-                                    {
-                                        _result.__struct   = _navTarget;
-                                        _result.__distance = 0;
-                                    }
-                                    else if (_freeSearch)
-                                    {
-                                        _highlightStruct.__HighlightableFreeSearch(__pointerX, __pointerY, _nX, _nY, _highlightStruct, _skipGroup, _result);
-                                    }
-                                }
-                                else
-                                {
-                                    //Nothing highlighted, free search time!
-                                    __struct.__HighlightableFreeSearchInner(__pointerX, __pointerY, _nX, _nY, undefined, -infinity, -infinity, infinity, infinity, undefined, _result);
-                                }
-                                
-                                var _target = _result.__struct;
-                                if (is_struct(_target)) __HighlightSet(_target, true);
-                            }
-                        }
-                        
-                        if (__BentoNullableRefAlive(__highlightRef))
-                        {
-                            with(__BentoNullableRefResolve(__highlightRef))
-                            {
-                                other.__pointerX = 0.5*(__worldLeft + __worldRight);
-                                other.__pointerY = 0.5*(__worldTop + __worldBottom);
-                            }
-                        }
-                        else
-                        {
-                            //Handle highlighted button disappearing
-                        }
-                        
-                        __HighlightSet(__struct.__HighlightSearch(__pointerX, __pointerY, -infinity, -infinity, infinity, infinity, true), true);
-                    }
-                break;
-                
-                default:
-                    __BentoError("Input pointer mode \"", _pointerMode, "\" for ", self, " not recognised");
-                break;
+                __carryItemElement.BENTO_VARS.__carryTargetElement = BENTO_NO_ELEMENT;
             }
             
-            var _j = 0;
-            repeat(array_length(_buttonArray))
+            __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+        }
+    }
+    
+    static __ClearScrollingElement = function()
+    {
+        __pointerScrolled = false;
+        __pointerScrollingElement = BENTO_NO_ELEMENT;
+    }
+    
+    static __UpdateInputMode = function()
+    {
+        var _newMode = __environment.__envNavMode;
+        if (__navMode == _newMode) return;
+        
+        //Changing input mode may change whether elements execute their step event and are hoverable
+        //when focused
+        __dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
+        
+        if ((_newMode == BENTO_MODE_KEYBOARD) || (_newMode == BENTO_MODE_GAMEPAD))
+        {
+            if (__navPointer)
             {
-                var _buttonData = _buttonArray[_j];
-                switch(_buttonData.__type)
+                //Reset mouse variables if we've swapped mouse <-> touch
+                __directionalLastX = __pointerX;
+                __directionalLastY = __pointerY;
+                
+                __pointerPrevX = __pointerX;
+                __pointerPrevY = __pointerY;
+            }
+            
+            __navPointer     = false;
+            __navDirectional = true;
+        }
+        else if ((_newMode == BENTO_MODE_MOUSE) || (_newMode == BENTO_MODE_TOUCH))
+        {
+            //Find any focused element that needs to be closed if we've swapped to a pointer mode
+            var _focusStack = __focusStack;
+            var _i = 0;
+            repeat(array_length(_focusStack))
+            {
+                var _element = _focusStack[_i];
+                if (_element.BENTO_VARS.__focusType == BENTO_FOCUS_POINTER_CANCEL_ALWAYS)
                 {
-                    case "target":
-                        __InputProcessTarget(_buttonData.__name, _buttonData.__state, _pointerMode);
-                    break;
-                    
-                    case "cast":
-                        __InputProcessCast(_buttonData.__name, _buttonData.__state, _pointerMode);
-                    break;
-                    
-                    default:
-                        __BentoError("Button mode \"", _buttonData.__type, "\" for button \"", _buttonData.__name, "\" for ", self, " not recognised");
+                    BentoFocusClose(_element);
                     break;
                 }
                 
-                ++_j;
+                ++_i;
             }
             
-            __BentoLayerStackPop();
+            __navPointer     = true;
+            __navDirectional = false;
+            
+            __pointerPressX = __pointerX;
+            __pointerPressY = __pointerY;
+            
+            __directionalDX = 0;
+            __directionalDY = 0;
+            
+            __turboState.__Update(0, 0, _system.__frame);
         }
-    }
-    
-    static __InputClearAll = function(_clearHighlight)
-    {
-        if (behavior >= BENTO_BEHAVIOR_PASSTHROUGH) //Don't pass input to anything with 0 behavior
+        else
         {
-            __BentoLayerStackPush(self);
-            
-            //Clear the button dictionary entirely
-            __stateButtonDict = {};
-            
-            //Execute the BUTTON_END event for the captured button
-            __BentoNullableRefEvent(__captureRef, __BENTO_EVENT.__BUTTON_END, __captureButtonName);
-            
-            //And then reset the rest of the capture state
-            __CaptureSet(undefined, undefined);
-            if (_clearHighlight) __HighlightSet(undefined, false);
-            __BentoLayerStackPop();
-        }
-    }
-    
-    
-    
-    
-    
-    static __Close = function()
-    {
-        //Do nothing!
-    }
-    
-    static __Step = function()
-    {
-        if (is_struct(__struct))
-        {
-            __BentoLayerStackPush(self);
-            __struct.__Step(__localLeft, __localTop, 1, true);
-            __BentoLayerStackPop();
+            //Some undefined input mode, perhaps `BENTO_MODE_UNKNOWN`
+            __navPointer     = false;
+            __navDirectional = false;
         }
         
-        if (__animationExit)
+        __carryNextItemElement = BENTO_NO_ELEMENT;
+        
+        if (BentoExists(__carryItemElement))
         {
-            if (!is_struct(__struct))
-            {
-                if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " build out has finished (no child struct)");
-                Destroy();
-            }
-            else if (__struct.__animationMode == BENTO_ANIMATION_EXITED)
-            {
-                if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " build out has finished");
-                Destroy();
-            }
+            __carryItemElement.BENTO_VARS.__carryItemContinuous = true;
         }
         
-        if (__volatile)
+        __pointerTravelled = false;
+        
+        __primaryConsumed = false;
+        
+        __ClearScrollingElement();
+        
+        __navMode = _newMode;
+    }
+    
+    static __UpdateInputStateAsTopLevel = function()
+    {
+        //A full input state update. Player input is collected and passed into layer state
+        
+        static _hotkeyArray = [];
+        
+        var _environment = __environment;
+        
+        if (__navPointer)
         {
-            if (__volatileKeepAlive)
+            var _pointerX = _environment.__envMouseX;
+            var _pointerY = _environment.__envMouseY;
+            
+            var _prevPrimaryState = __pointerPrimaryState;
+            var _envPrimaryState = _environment.__envMouseState;
+            
+            if (__primaryConsumed)
             {
-                __volatileKeepAlive = false;
+                if (_envPrimaryState == __BENTO_STATE_START)
+                {
+                    __primaryConsumed = false;
+                }
+                else
+                {
+                    _envPrimaryState = __BENTO_STATE_OFF;
+                }
+            }
+            
+            if ((_prevPrimaryState == __BENTO_STATE_END) && (_envPrimaryState & __BENTO_STATE_START))
+            {
+                //Catch situations where we think we've released but the environment thinks we're held
+                __pointerPrimaryState = __BENTO_STATE_START;
+            }
+            else if ((_prevPrimaryState == __BENTO_STATE_OFF) && (_envPrimaryState == __BENTO_STATE_START))
+            {
+                //Only allow us to start pressing when the environment is pressed
+                __pointerPrimaryState = __BENTO_STATE_START;
+            }
+            else if (_prevPrimaryState & __BENTO_STATE_START) && (_envPrimaryState & __BENTO_STATE_START)
+            {
+                //Sustain primary hold
+                __pointerPrimaryState = __BENTO_STATE_ON;
             }
             else
             {
-                if (BENTO_REPORT_LEVEL > 1) __BentoTrace(self, " not kept alive, destroying");
-                Destroy();
+                //Release primary
+                __pointerPrimaryState = _prevPrimaryState >> 1;
+            }
+            
+            if (__pointerPrimaryState == __BENTO_STATE_START)
+            {
+                //Set some variable state if we've clicked the mouse
+                __pointerPressX = _pointerX;
+                __pointerPressY = _pointerY;
+                
+                __pointerPrevX = _pointerX;
+                __pointerPrevY = _pointerY;
+            }
+            else
+            {
+                __pointerPrevX = __pointerX;
+                __pointerPrevY = __pointerY;
+            }
+            
+            if ((__navMode == BENTO_MODE_TOUCH) && (not (__pointerPrimaryState & __BENTO_STATE_START)))
+            {
+                __pointerX = -__BENTO_VERY_LARGE;
+                __pointerY = -__BENTO_VERY_LARGE;
+            }
+            else
+            {
+                __pointerX = _pointerX;
+                __pointerY = _pointerY;
+                
+                //Update mouse drag information
+                if (__pointerPrimaryState & __BENTO_STATE_START)
+                {
+                    if (point_distance(__pointerPressX, __pointerPressY, __pointerX, __pointerY) > BENTO_POINTER_DRAG_THRESHOLD)
+                    {
+                        __pointerTravelled = true;
+                    }
+                }
             }
         }
+        else
+        {
+            __pointerPrimaryState = __pointerPrimaryState >> 1;
+        }
+        
+        if (__navDirectional)
+        {
+            var _prevPrimaryState = __directionalPrimaryState;
+            var _envPrimaryState = _environment.__envDirectionalState;
+            
+            if (__primaryConsumed)
+            {
+                if (_envPrimaryState == __BENTO_STATE_START)
+                {
+                    __primaryConsumed = false;
+                }
+                else
+                {
+                    _envPrimaryState = __BENTO_STATE_OFF;
+                }
+            }
+            
+            if ((_prevPrimaryState == __BENTO_STATE_END) && (_envPrimaryState & __BENTO_STATE_START))
+            {
+                //Catch situations where we think we've released but the environment thinks we've held
+                __directionalPrimaryState = __BENTO_STATE_START;
+            }
+            else if ((_prevPrimaryState == __BENTO_STATE_OFF) && (_envPrimaryState == __BENTO_STATE_START))
+            {
+                //Only allow us to start pressing when the environment is pressed
+                __directionalPrimaryState = __BENTO_STATE_START;
+            }
+            else if (_prevPrimaryState & __BENTO_STATE_START) && (_envPrimaryState & __BENTO_STATE_START)
+            {
+                //Sustain primary hold
+                __directionalPrimaryState = __BENTO_STATE_ON;
+            }
+            else
+            {
+                //Release primary
+                __directionalPrimaryState = _prevPrimaryState >> 1;
+            }
+            
+            //Update directional input
+            __directionalDX = _environment.__envDirectionalDX;
+            __directionalDY = _environment.__envDirectionalDY;
+            
+            __turboState.__Update(__directionalDX, __directionalDY, _system.__frame);
+        }
+        else
+        {
+            __directionalPrimaryState = __directionalPrimaryState >> 1;
+        }
+        
+        //Update hotkey input
+        var _globalHotkeyInputMap = _environment.__envHotkeyInputMap;
+        ds_map_keys_to_array(_globalHotkeyInputMap, _hotkeyArray);
+        var _i = 0;
+        repeat(array_length(_hotkeyArray))
+        {
+            var _key = _hotkeyArray[_i];
+            
+            var _state = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
+            if (_globalHotkeyInputMap[? _key] ?? false) _state |= __BENTO_STATE_START;
+            __hotkeyStateMap[? _key] = _state;
+            
+            if (_state == __BENTO_STATE_START)
+            {
+                __hotkeyConsumedMap[? _key] = false;
+            }
+            
+            ++_i;
+        }
+        
+        array_resize(_hotkeyArray, 0);
+    }
+    
+    static __UpdateInputStateAsBackgrounded = function()
+    {
+        //A partial update of input state. This artificially forces all player inputs to "off" or "null"
+        //in some sense.
+        
+        static _hotkeyArray = [];
+        
+        var _environment = __environment;
+        
+        __pointerPrimaryState = __pointerPrimaryState >> 1;
+        __directionalPrimaryState = __directionalPrimaryState >> 1;
+        
+        __turboState.__Update(0, 0, _system.__frame);
+        
+        //Update hotkey input
+        var _globalHotkeyInputMap = _environment.__envHotkeyInputMap;
+        ds_map_keys_to_array(_globalHotkeyInputMap, _hotkeyArray);
+        var _i = 0;
+        repeat(array_length(_hotkeyArray))
+        {
+            var _key = _hotkeyArray[_i];
+            
+            __hotkeyStateMap[? _key] = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
+            //TODO - Add "click" behaviour so the develpper can filter out release events that are out of scope
+            
+            ++_i;
+        }
+        
+        array_resize(_hotkeyArray, 0);
+    }
+    
+    static __Ensure = function(_rootX, _rootY, _rootWidth, _rootHeight)
+    {
+        //Ensure our root element is the same size as the overall Bento space
+        BentoSetOffset(_rootX, _rootY, __rootElement);
+        BentoLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
+        
+        //Keep our layout and step order updated as necessary. Updating the layer and step order here
+        //catches any weird stuff the dev might've done between calls to `BentoSystemStep()`
+        __BentoEnsureLayout();
+        __BentoEnsureStepOrder();
+        __BentoEnsureScrollLimits();
+        __BentoEnsureOffset();
+        __BentoEnsureHoverableOrder();
+    }
+    
+    static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _timeStep)
+    {
+        var _isTopLayer = __isTopLayer;
+        
+        //This is the main update function for a layer. It handles hovering elements, holding elements,
+        //scrolling containers, disabling focus etc.
+        
+        __BentoLayerTargetPush(self);
+        
+        ///////
+        // Animations
+        ///////
+        
+        var _animPlayingArray = __animPlayingArray;
+        var _i = array_length(_animPlayingArray)-1;
+        repeat(array_length(_animPlayingArray))
+        {
+            with(_animPlayingArray[_i])
+            {
+                __animElapsed += _timeStep;
+                
+                var _t = clamp((__animElapsed - __animDelay) / __animDuration, 0, 1);
+                if (_t >= 1)
+                {
+                    BentoAnimStop(true, __attachedElement);
+                }
+                else
+                {
+                    __animMethod(__attachedElement, _t, __animMetadata);
+                }
+            }
+            
+            --_i;
+        }
+        
+        if (not ds_map_empty(__animBlockingMap))
+        {
+            //If anything has a blocking animating, consume all input
+            if (_isTopLayer)
+            {
+                BentoInputConsume(self);
+            }
+        }
+        else
+        {
+            //Otherwise check if we need to execute the unblocked callback
+            __CheckUnblocked();
+        }
+        
+        if (_isTopLayer)
+        {
+            __UpdateInputMode();
+        }
+        
+        ///////
+        // Drag & drop
+        ///////
+        
+        if (BentoExists(__carryNextItemElement))
+        {
+            //Incoming new item element
+            
+            if (__carryNextItemElement != __carryItemElement)
+            {
+                //The item element has changed
+                
+                if (BentoExists(__carryItemElement))
+                {
+                    //To avoid bugs, reset the target for the existing item element
+                    __carryItemElement.BENTO_VARS.__carryTargetElement = BENTO_NO_ELEMENT;
+                }
+                
+                __carryItemElement = __carryNextItemElement;
+                
+                //We're going to scroll using edge detection so we don't need to actively track grabbing a scrollable element
+                __ClearScrollingElement();
+                
+                with(__carryItemElement.BENTO_VARS)
+                {
+                    __carryPointerDX = other.__pointerPressX - __attachedElement.bentoX;
+                    __carryPointerDY = other.__pointerPressY - __attachedElement.bentoY;
+                    
+                    __carryTargetElement = BENTO_NO_ELEMENT;
+                    __BentoSetAsUpdating();
+                }
+                
+                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+            }
+            
+            __carryNextItemElement = BENTO_NO_ELEMENT;
+        }
+        else if (__carryItemElement != BENTO_NO_ELEMENT)
+        {
+            //No new item element
+            
+            if ((not BentoExists(__carryItemElement)) || __carryItemElement.BENTO_VARS.__carryItemContinuous)
+            {
+                //If we have no new drag & drop item element and the current item is continuous then we've lost the item
+                __carryItemElement = BENTO_NO_ELEMENT;
+                __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
+            }
+        }
+        
+        ///////
+        // Ensure various orders
+        ///////
+        
+        __Ensure(_rootX, _rootY, _rootWidth, _rootHeight);
+        
+        ///////
+        // Input
+        ///////
+        
+        if (_isTopLayer)
+        {
+            __UpdateInputStateAsTopLevel();
+            
+            //Reset the drag & drop element if it has been destroyed for some reason or its channel has
+            //been set to `undefined`
+            if ((__carryItemElement != BENTO_NO_ELEMENT)
+            &&  ((not __BentoGetHoverableInternal(__carryItemElement, false)) || (__carryItemElement.BENTO_VARS.__carryItemChannel == undefined)))
+            {
+                __ClearDraggedItem();
+            }
+        }
+        else
+        {
+            __UpdateInputStateAsBackgrounded();
+        }
+        
+        if (__navPointer)
+        {
+            //Update the primary button state based on mouse input
+            __primaryState = __pointerPrimaryState;
+        }
+        else if (__navDirectional)
+        {
+            //Update the primary button state based on directional input
+            __primaryState = __directionalPrimaryState;
+        }
+        else
+        {
+            __primaryState = __primaryState << 1;
+        }
+        
+        if (_isTopLayer)
+        {
+            ///////
+            // Navigation
+            ///////
+            
+            __BentoScissorReset();
+            
+            if (__navPointer)
+            {
+                if ((__pointerPrimaryState & __BENTO_STATE_START) && BentoExists(__pointerScrollingElement))
+                {
+                    //Handle scrolling as a priority. This will block out hovering new elements
+                    BentoScrollAddPos(__pointerX - __pointerPrevX, __pointerY - __pointerPrevY, infinity, __pointerScrollingElement);
+                }
+                else
+                {
+                    //Verify that the currently held element is still held
+                    if (not __BentoGetHoverableInternal(__holdElement, false))
+                    {
+                        if (__holdElement != BENTO_NO_ELEMENT)
+                        {
+                            __holdElement = BENTO_NO_ELEMENT;
+                        }
+                    }
+                    
+                    if ((not (__pointerPrimaryState & __BENTO_STATE_START)) //Hover if the primary isn't held
+                    ||  (__carryItemElement != BENTO_NO_ELEMENT) //Hover if we have a drag & drop item
+                    ||  (__navMode == BENTO_MODE_TOUCH)) //Always hover if we're in touch mode
+                    {
+                        __BentoSetHoverFromPointer(__pointerX, __pointerY);
+                    }
+                    
+                    //Now handle primary press
+                    if (__pointerPrimaryState == __BENTO_STATE_START)
+                    {
+                        if (__environment.__textHandler != undefined) //Detect clicking off of an input box
+                        {
+                            if ((__environment.__textElement != __hoverElement)
+                            &&  (not BentoIsAncestor(__environment.__textElement, __hoverElement))
+                            &&  __environment.__textHandler.__cancelOnClick)
+                            {
+                                __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
+                                __ClearHoverElement();
+                            }
+                        }
+                        else if (BentoExists(__focusTop)) //Detect clicking off of a pop-up
+                        {
+                            if ((__focusTop != __hoverElement) //Don't destroy a pop-up if we're hovering directly over it
+                            &&  (not BentoIsAncestor(__focusTop, __hoverElement))) //Also don't destroy if we're hovering over a child of the pop-up
+                            {
+                                var _focusType = __focusTop.BENTO_VARS.__focusType;
+                                if (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
+                                {
+                                    BentoFocusClose(__focusTop);
+                                    __ClearHoverElement();
+                                }
+                                else if (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK)
+                                {
+                                    BentoDestroy(__focusTop);
+                                    __ClearHoverElement();
+                                }
+                            }
+                        }
+                    }
+                    
+                    //Handle scrolling when the pointer is near the edge of a scrolling element
+                    if (__carryItemElement != BENTO_NO_ELEMENT)
+                    {
+                        var _pointerScrollingElement = __BentoFindScrollElement(__hoverElement);
+                        if (_pointerScrollingElement != BENTO_NO_ELEMENT)
+                        {
+                            var _hotspotWidth  = min(60, _pointerScrollingElement.bentoWidth/2); //TODO - Make this a macro
+                            var _hotspotHeight = min(60, _pointerScrollingElement.bentoHeight/2);
+                            
+                            var _dX = 0;
+                            
+                            if ((__pointerX > _pointerScrollingElement.bentoLeft) && (__pointerX <= _pointerScrollingElement.bentoLeft + _hotspotWidth))
+                            {
+                                var _dX = 4; //TODO - Make this a macro
+                            }
+                            else if ((__pointerX >= _pointerScrollingElement.bentoRight - _hotspotWidth) && (__pointerX < _pointerScrollingElement.bentoRight))
+                            {
+                                var _dX = -4;
+                            }
+                            else
+                            {
+                                var _dX = 0;
+                            }
+                            
+                            if ((__pointerY > _pointerScrollingElement.bentoTop) && (__pointerY <= _pointerScrollingElement.bentoTop + _hotspotHeight))
+                            {
+                                var _dY = 4; //TODO - Make this a macro
+                            }
+                            else if ((__pointerY >= _pointerScrollingElement.bentoBottom - _hotspotHeight) && (__pointerY < _pointerScrollingElement.bentoBottom))
+                            {
+                                var _dY = -4;
+                            }
+                            else
+                            {
+                                var _dY = 0;
+                            }
+                            
+                            BentoScrollAddPos(_dX, _dY, infinity, _pointerScrollingElement);
+                        }
+                    }
+                }
+                
+                if (__pointerPrimaryState == __BENTO_STATE_END)
+                {
+                    //Reset the travelled state
+                    __pointerTravelled = false;
+                }
+            }
+            else if (__navDirectional)
+            {
+                //If the held element cannot be held then proactively reset the state variable
+                if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
+                
+                //Move the cursor and hover a new element (maybe)
+                __BentoSetHoverFromDirectional(__hoverElement, __turboState.__outputX, __turboState.__outputY);
+            }
+            else //Some other input mode, perhaps `BENTO_MODE_UNKNOWN`
+            {
+                __holdElement = BENTO_NO_ELEMENT;
+                __BentoSetHover(BENTO_NO_ELEMENT, false);
+            }
+        }
+        
+        //Run an update so long as we are the top layer or we have elements of interest on this layer.
+        //Because we force player input to "null" when a layer is backgrounded, elements will become
+        //inert one or two frames after a layer is backgrounded
+        if (_isTopLayer || (array_length(__updateElementArray) > 0))
+        {
+            //Update elements of interest
+            __BentoUpdateElementState();
+            
+            //Reset this mouse state after we update element state. This ensures we set the correct
+            //state when releasing after dragging a scrollable container
+            if (__primaryState == __BENTO_STATE_END)
+            {
+                __ClearScrollingElement();
+            }
+            
+            ///////
+            // Step user event execution
+            ///////
+            
+            var _stepOrder = __stepOrder;
+            var _i = 0;
+            repeat(array_length(_stepOrder))
+            {
+                _stepOrder[_i]();
+                ++_i;
+            }
+        }
+        
+        ///////
+        // Position updates
+        ///////
+        
+        //Check to see if we need to update the layout and step order again
+        __BentoEnsureLayout();
+        __BentoEnsureStepOrder();
+        __BentoEnsureScrollLimits();
+        __BentoAnimateScroll(_timeStep);
+        __BentoEnsureOffset();
+        
+        //And we're done
+        __BentoLayerTargetPop();
+    }
+    
+    static __UpdatePartialOnCreate = function(_rootX, _rootY, _rootWidth, _rootHeight)
+    {
+        __BentoLayerTargetPush(self);
+        
+        //Initialize all the animations
+        var _animPlayingArray = __animPlayingArray;
+        var _i = array_length(_animPlayingArray)-1;
+        repeat(array_length(_animPlayingArray))
+        {
+            with(_animPlayingArray[_i])
+            {
+                __animMethod(__attachedElement, 0, __animMetadata);
+            }
+            
+            --_i;
+        }
+        
+        __Ensure(_rootX, _rootY, _rootWidth, _rootHeight);
+        
+        __BentoLayerTargetPop();
     }
     
     static __Draw = function()
     {
-        __BentoLayerStackPush(self);
+        __BentoLayerTargetPush(self);
         
-        if (is_struct(__struct))
+        __BentoEnsureTransforms();
+        __BentoEnsureDrawOrder();
+        
+        var _drawOrder = __drawOrder;
+        var _i = 0;
+        repeat(array_length(_drawOrder))
         {
-            __struct.__Draw(__localLeft, __localTop, 1);
+            _drawOrder[_i]();
+            ++_i;
         }
         
-        
-        if (_debugStruct.__showPointer)
+        if (__isTopLayer)
         {
-            var _x = BentoPointerGetX();
-            var _y = BentoPointerGetY();
+            //Draw the hovered element if it's not inside a scissor. If the hovered element is inside
+            //a scissor then it'll be drawn by `__BentoScissorPop()`
+            if (BentoExists(__hoverElement))
+            {
+                var _hoverElementVars = __hoverElement.BENTO_VARS;
+                if (_hoverElementVars.__scissorParent == __rootElement.BENTO_VARS)
+                {
+                    _hoverElementVars.__eventDrawHover();
+                }
+            }
             
-            var _oldAlpha = draw_get_alpha();
-            var _oldColor = draw_get_color();
-            
-            draw_set_color(c_white);
-            draw_set_alpha(1);
-            
-            draw_circle(_x, _y, 15, true);
-            draw_triangle(_x, _y, _x + 15, _y + 5, _x + 5, _y + 15, true);
-            
-            draw_text(_x, _y + 20, string_format(_x, 0, 0) + "," + string_format(_y, 0, 0));
-            
-            draw_set_color(_oldColor);
-            draw_set_alpha(_oldAlpha);
+            //Draw the dragged item element, if we have one
+            with(__carryItemElement)
+            {
+                //Store the current exposed position variables
+                var _oldBentoLeft   = bentoLeft;
+                var _oldBentoTop    = bentoTop;
+                var _oldBentoRight  = bentoRight;
+                var _oldBentoBottom = bentoBottom;
+                var _oldBentoX      = bentoX;
+                var _oldBentoY      = bentoY;
+                
+                //Calculate the vector from the old cursor position to the new cursor position
+                if (other.__navPointer)
+                {
+                    var _dX = other.__pointerX - bentoX - BENTO_VARS.__carryPointerDX;
+                    var _dY = other.__pointerY - bentoY - BENTO_VARS.__carryPointerDY;
+                }
+                else if (other.__navDirectional)
+                {
+                    var _dX = other.__directionalLastX - 0.5*(_oldBentoLeft + _oldBentoRight);
+                    var _dY = other.__directionalLastY - 0.5*(_oldBentoTop + _oldBentoBottom);
+                }
+                else
+                {
+                    var _dX = 0;
+                    var _dY = 0;
+                }
+                
+                //Move the exposed position to the wherever the cursor is
+                bentoLeft   += _dX;
+                bentoTop    += _dY;
+                bentoRight  += _dX;
+                bentoBottom += _dY;
+                bentoX      += _dX;
+                bentoY      += _dY;
+                //Allow downstream code to set whatever variables it needs
+                BENTO_VARS.__eventReposition();
+                
+                //Do the actual draw
+                BENTO_VARS.__eventDrawDragged();
+                
+                //Restore the old position
+                bentoLeft   = _oldBentoLeft;
+                bentoTop    = _oldBentoTop;
+                bentoRight  = _oldBentoRight;
+                bentoBottom = _oldBentoBottom;
+                bentoX      = _oldBentoX;
+                bentoY      = _oldBentoY;
+                BENTO_VARS.__eventReposition();
+            }
         }
         
-        __BentoLayerStackPop();
+        __BentoLayerTargetPop();
     }
     
-    static __InputProcessTarget = function(_buttonName, _state, _pointerMode)
+    static __DrawWireframe = function()
     {
-        var _buttonStateDict = __stateButtonDict;
-        var _oldState = _buttonStateDict[$ _buttonName] ?? false;
+        __BentoEnsureTransforms();
         
-        if (_state)
+        var _func = function(_func, _elementVars, _baseAlpha)
         {
-            _buttonStateDict[$ _buttonName] = true;
-        }
-        else
-        {
-            variable_struct_remove(__stateButtonDict, _buttonName);
-        }
-        
-        //Handle latching
-        if (__BENTO_TEST_FOCUSING || (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL))
-        {
-            var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
-            if (is_struct(_highlightStruct) && _highlightStruct.focusable)
-            {
-                //Toggle on released (falling edge)
-                if (_oldState && !_state) __captureLatch = !__captureLatch;
-            }
-            else
-            {
-                __captureLatch = false;
-            }
+            //N.B. - This should match `__BentoEnsureDrawOrderInner()`
             
-            if (!_state && __captureLatch)
+            with(_elementVars)
             {
-                _state    = true;
-                _oldState = true;
-            }
-        }
-        
-        if (_oldState != _state)
-        {
-            if (_state)
-            {
-                //Button pressed
+                if (__disable) return;
                 
-                //Only allow new input if we're not clicking other buttons
-                if ((variable_struct_names_count(_buttonStateDict) == 1) && __BentoNullableRefAlive(__highlightRef))
+                if (__transformMatrix != undefined)
                 {
-                    var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
-                    if (_highlightStruct.__CanRespondToButtonTarget(_buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL)))
+                    matrix_stack_push(__transformMatrix);
+                    matrix_set(matrix_world, matrix_stack_top());
+                }
+                
+                if (__visible)
+                {
+                    with(__attachedElement)
                     {
-                        __CaptureSet(_highlightStruct, _buttonName);
+                        draw_set_alpha(_baseAlpha * ((BentoGetClickable() && BentoCursorGetHover())? 0.2 : 0.1));
+                        draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, false);
+                        draw_set_alpha(_baseAlpha);
                         
-                        if (is_struct(_highlightStruct)
-                        &&  _highlightStruct.__ClickOnPress(__host.__inputClickOnPress))
-                        {
-                            __BentoInputButtonClick(_highlightStruct, __captureButtonName);
-                        }
+                        draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, true);
+                        BentoDrawCross(bentoX, bentoY);
                     }
                 }
-            }
-            else
-            {
-                //Button released
                 
-                var _highlightRef = __highlightRef;
-                var _captureRef   = __captureRef;
-                
-                if (__captureButtonName == _buttonName)
+                if (__scissorEnabled)
                 {
-                    var _captureStruct = __BentoNullableRefResolve(_captureRef);
-                    
-                    if (__BentoNullableRefAlive(_highlightRef)
-                    &&  __BentoNullableRefAlive(_captureRef)
-                    &&  (__BentoNullableRefResolve(_highlightRef) == _captureStruct)
-                    &&  !_captureStruct.__ClickOnPress(__host.__inputClickOnPress))
-                    {
-                        __BentoInputButtonClick(_captureStruct, __captureButtonName);
-                    }
-                    
-                    __CaptureSet(undefined, _buttonName);
+                    __BentoDrawScissorPushFromVars();
+                }
+                
+                //Add children created inside the parent to the Draw order
+                var _array = __childDrawArray;
+                var _i = 0;
+                repeat(array_length(_array))
+                {
+                    _func(_func, _array[_i], _baseAlpha);
+                    ++_i;
+                }
+                
+                if (__scissorEnabled)
+                {
+                    __BentoDrawScissorPop();
+                }
+                
+                BentoScrollbarDrawPlaceholder(BentoScrollbarGetHoriData(__attachedElement), __attachedElement);
+                BentoScrollbarDrawPlaceholder(BentoScrollbarGetVertData(__attachedElement), __attachedElement);
+                
+                if (__transformMatrix != undefined)
+                {
+                    matrix_stack_pop();
+                    matrix_set(matrix_world, matrix_stack_top());
                 }
             }
         }
-        else if (_state)
-        {
-            //Button held
-            
-            if (__captureButtonName == _buttonName)
-            {
-                var _captureRef = __captureRef;
-                if (__BentoNullableRefAlive(_captureRef))
-                {
-                    var _captureStruct = __BentoNullableRefResolve(_captureRef);
-                    _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON).__Call(_captureStruct, _buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL));
-                    
-                    if (_captureStruct.__EventExists(__BENTO_EVENT.__BUTTON_LONG_CLICK)
-                    &&  (current_time - __captureTime > BENTO_LONG_CLICK_DELAY))
-                    {
-                        _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON_LONG_CLICK).__Call(_captureStruct, __captureButtonName);
-                        __CaptureSet(undefined, _buttonName);
-                    }
-                }
-            }
-        }
+        
+        var _oldAlpha = draw_get_alpha();
+        _func(_func, __rootElement.BENTO_VARS, _oldAlpha);
+        draw_set_alpha(_oldAlpha);
     }
     
-    static __InputProcessCast = function(_buttonName, _state, _pointerMode)
+    static __GetFocusRoot = function()
     {
-        var _buttonStateDict = __stateButtonDict;
-        var _oldState = _buttonStateDict[$ _buttonName] ?? false;
-        
-        if (_state)
+        //If we're inputting text then we have to focus on that element
+        if (BentoExists(__environment.__textElement))
         {
-            _buttonStateDict[$ _buttonName] = true;
-        }
-        else
-        {
-            variable_struct_remove(__stateButtonDict, _buttonName);
+            return __environment.__textElement;
         }
         
-        //Handle latching
-        if (__BENTO_TEST_FOCUSING || (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL))
+        //Determine where to start the Step order processing
+        //FIXME - Walk up focus stack to find a pointer constrain element rather than only looking at the top one
+        var _focusTop = __focusTop;
+        if (BentoExists(_focusTop))
         {
-            var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
-            if (is_struct(_highlightStruct) && _highlightStruct.focusable)
-            {
-                //Toggle on released (falling edge)
-                if (_oldState && !_state) __captureLatch = !__captureLatch;
-            }
-            else
-            {
-                __captureLatch = false;
-            }
+            if (__navDirectional) return _focusTop;
             
-            if (!_state && __captureLatch)
+            var _focusType = _focusTop.BENTO_VARS.__focusType;
+            
+            if ((_focusType == BENTO_FOCUS_POINTER_CONSTRAIN)
+            ||  (_focusType == BENTO_FOCUS_POINTER_CANCEL_ON_CLICK)
+            ||  (_focusType == BENTO_FOCUS_POINTER_DESTROY_ON_CLICK))
             {
-                _state    = true;
-                _oldState = true;
+                return _focusTop;
             }
         }
         
-        if (_oldState != _state)
-        {
-            if (_state)
-            {
-                //Button pressed
-                
-                //Only allow new input if we're not clicking other buttons
-                if (variable_struct_names_count(_buttonStateDict) == 1)
-                {
-                    var _castFrom = __BentoNullableRefAlive(__lastHighlightRef)? __BentoNullableRefResolve(__lastHighlightRef) : __struct;
-                    var _captureStruct = is_struct(_castFrom)? _castFrom.__CaptureCastSearch(_buttonName, (_pointerMode == BENTO_INPUT_MODE_DIRECTIONAL)) : undefined;
-                    
-                    __CaptureSet(_captureStruct, _buttonName);
-                    
-                    if (is_struct(_captureStruct)
-                    &&  _captureStruct.__ClickOnPress(__host.__inputClickOnPress))
-                    {
-                        __BentoInputButtonClick(_captureStruct, __captureButtonName);
-                    }
-                }
-            }
-            else
-            {
-                //Button released
-                
-                if (__captureButtonName == _buttonName)
-                {
-                    if (__BentoNullableRefAlive(__captureRef))
-                    {
-                        var _captureStruct = __BentoNullableRefResolve(__captureRef);
-                        if (!_captureStruct.__ClickOnPress(__host.__inputClickOnPress))
-                        {
-                            __BentoInputButtonClick(_captureStruct, __captureButtonName);
-                        }
-                    }
-                    
-                    __CaptureSet(undefined, _buttonName);
-                }
-            }
-        }
-        else if (_state)
-        {
-            //Button held
-            
-            if (__captureButtonName == _buttonName)
-            {
-                var _captureRef = __captureRef;
-                if (__BentoNullableRefAlive(_captureRef))
-                {
-                    var _captureStruct = __BentoNullableRefResolve(_captureRef);
-                    _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON).__Call(_captureStruct, _buttonName);
-                    
-                    if (__EventExists(__BENTO_EVENT.__BUTTON_LONG_CLICK)
-                    &&  (current_time - __captureTime > BENTO_LONG_CLICK_DELAY))
-                    {
-                        _captureStruct.__EventGet(__BENTO_EVENT.__BUTTON_LONG_CLICK).__Call(_captureStruct, __captureButtonName);
-                        __CaptureSet(undefined, _buttonName);
-                    }
-                }
-            }
-        }
+        return __rootElement;
     }
     
-    
-    
-    
-    
-    static __HighlightFirst = function(_directional)
+    static __CheckUnblocked = function()
     {
-        if (!is_struct(__struct)) return;
-        
-        var _highlightStruct = __BentoNullableRefResolve(__highlightRef);
-        if (!is_struct(_highlightStruct))
+        if (__animAnyBlocking)
         {
-            _highlightStruct = __struct.__HighlightableSearchFirst(_directional);
-            if (_highlightStruct == undefined) return;
-        }
-        
-        with(_highlightStruct)
-        {
-            other.__pointerX = 0.5*(__worldLeft + __worldRight);
-            other.__pointerY = 0.5*(__worldTop + __worldBottom);
-        }
-        
-        __HighlightSet(_highlightStruct, _directional, true);
-    }
-    
-    static __HighlightSet = function(_newStruct, _directional, _retriggerScroll = false)
-    {
-        var _oldStruct = __BentoNullableRefResolve(__highlightRef);
-        if (_oldStruct != _newStruct)
-        {
-            if (_oldStruct != undefined)
-            {
-                if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Unsetting highlight ", _oldStruct);
-                _oldStruct.__EventGet(__BENTO_EVENT.__HIGHLIGHT_END).__Call(_oldStruct);
-                __highlightRef = undefined;
-            }
+            __animAnyBlocking = false;
             
-            if (_newStruct != undefined)
+            if (is_callable(__animUnblockedCallback))
             {
-                if (BENTO_REPORT_LEVEL > 1) __BentoTrace("Setting highlight ", _newStruct);
-                _newStruct.__EventGet(__BENTO_EVENT.__HIGHLIGHT_START).__Call(_newStruct);
-                __highlightRef     = __BentoNullableRefCreate(_newStruct);
-                __lastHighlightRef = __highlightRef;
+                __animUnblockedCallback(__name, __animUnblockedMetadata);
                 
-                if (_directional)
+                //Reset values, including the metadata in case that should be GC'd
+                if (not __animUnblockedPersist)
                 {
-                    _newStruct.__ScrollParentToSelf();
+                    __animUnblockedCallback = undefined;
+                    __animUnblockedMetadata = undefined;
+                    __animUnblockedPersist  = false;
                 }
-            }
-        }
-        else
-        {
-            if (_oldStruct != undefined)
-            {
-                _oldStruct.__EventGet(__BENTO_EVENT.__HIGHLIGHT).__Call(_oldStruct);
-                if (_retriggerScroll) _oldStruct.__ScrollParentToSelf();
-            }
-        }
-    }
-    
-    static __CaptureSet = function(_newStruct, _buttonName)
-    {
-        var _oldStruct = __BentoNullableRefResolve(__captureRef);
-        if (_oldStruct != _newStruct)
-        {
-            if (_oldStruct != undefined)
-            {
-                _oldStruct.__EventGet(__BENTO_EVENT.__BUTTON_END).__Call(_oldStruct, __captureButtonName);
-                
-                __captureRef        = undefined;
-                __captureButtonName = undefined;
-                __captureLatch      = false;
-                __captureTime       = infinity;
-                __pointerStartX     = undefined;
-                __pointerStartY     = undefined;
-            }
-            
-            if (_newStruct != undefined)
-            {
-                __captureRef        = __BentoNullableRefCreate(_newStruct);
-                __captureButtonName = _buttonName;
-                __captureLatch      = false;
-                __captureTime       = current_time;
-                __pointerStartX     = __pointerX;
-                __pointerStartY     = __pointerY;
-                
-                _newStruct.__EventGet(__BENTO_EVENT.__BUTTON_START).__Call(_newStruct, _buttonName);
             }
         }
     }

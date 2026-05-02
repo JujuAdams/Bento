@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestGrid",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestGrid",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

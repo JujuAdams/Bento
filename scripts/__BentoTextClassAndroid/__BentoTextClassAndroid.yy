@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoTextClassAndroid",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoTextClassAndroid",
+  "parent":{
+    "name":"Text",
+    "path":"folders/Bento/(Internal)/Text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

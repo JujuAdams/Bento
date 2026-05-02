@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayerStopBlockingAnimation",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayerStopBlockingAnimation",
+  "parent":{
+    "name":"Layers",
+    "path":"folders/Bento/Functions/Layers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

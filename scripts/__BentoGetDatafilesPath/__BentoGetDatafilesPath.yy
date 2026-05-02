@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoGetDatafilesPath",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoGetDatafilesPath",
+  "parent":{
+    "name":"Support",
+    "path":"folders/Bento/(Internal)/Support.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

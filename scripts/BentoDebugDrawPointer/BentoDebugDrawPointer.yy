@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoDebugDrawPointer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoDebugDrawPointer",
+  "parent":{
+    "name":"Debug",
+    "path":"folders/Bento/Functions/Debug.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

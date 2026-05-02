@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoEnsureTransforms",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoEnsureTransforms",
+  "parent":{
+    "name":"Ensure",
+    "path":"folders/Bento/(Internal)/Ensure.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

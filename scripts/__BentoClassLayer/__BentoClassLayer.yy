@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "__BentoClassLayer",
-  "isDnD": false,
-  "isCompatibility": false,
-  "parent": {
-    "name": "Classes",
-    "path": "folders/Bento/(System)/Classes.yy",
+  "$GMScript":"v1",
+  "%Name":"__BentoClassLayer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoClassLayer",
+  "parent":{
+    "name":"Classes",
+    "path":"folders/Bento/(Internal)/Classes.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

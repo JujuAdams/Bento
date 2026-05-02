@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayoutSetClampInside",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayoutSetClampInside",
+  "parent":{
+    "name":"Properites",
+    "path":"folders/Bento/Functions/Layout/Properites.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

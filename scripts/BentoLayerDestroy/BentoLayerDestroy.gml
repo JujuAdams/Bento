@@ -1,17 +1,11 @@
-/// Destroys a layer with the given name. If the layer doesn't exists, this function does nothing.
-/// 
-/// @param [layerName=current]
+// Feather disable all
 
-function BentoLayerDestroy(_layerName = undefined)
+/// Destroys a layer.
+/// 
+/// @param [layerOrName=current]
+
+function BentoLayerDestroy(_layerOrName = undefined)
 {
-    static _global = __BentoGlobal();
-    
-    if (_layerName == undefined)
-    {
-        var _layer = __BentoLayerStackTop();
-        if (_layer == undefined) return;
-        _layerName = _layer.__name;
-    }
-    
-    return _global.__currentHost.__LayerDestroy(_layerName);
+    var _layer = __BentoLayerEnsure(_layerOrName);
+    if (_layer != undefined) _layer.__Destroy();
 }

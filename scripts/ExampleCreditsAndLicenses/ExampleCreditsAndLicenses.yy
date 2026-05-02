@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExampleCreditsAndLicenses",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExampleCreditsAndLicenses",
+  "parent":{
+    "name":"JSON",
+    "path":"folders/Examples/JSON.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoUpdateElementXY",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoUpdateElementXY",
+  "parent":{
+    "name":"Miscellaneous",
+    "path":"folders/Bento/(Internal)/Miscellaneous.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

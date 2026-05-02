@@ -1,13 +1,10 @@
-function __BentoError()
+// Feather disable all
+
+/// Library-specific error handler.
+/// 
+/// @param string
+
+function __BentoError(_string)
 {
-    var _string = "";
-    
-    var _i = 0;
-    repeat(argument_count)
-    {
-        _string += string(argument[_i]);
-        ++_i;
-    }
-    
-    show_error("Bento:\n" + _string + "\n ", true);
+    BENTO_SHOW_ERROR($"\n \nBento {BENTO_VERSION}:\n{_string}\n ", true);
 }

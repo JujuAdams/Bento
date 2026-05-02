@@ -1,15 +1,16 @@
-function __BentoTrace()
+// Feather disable all
+
+/// Library-specific debug message handler.
+/// 
+/// @param string
+
+function __BentoTrace(_string)
 {
-    var _string = "";
+    static _system = __BentoSystem();
     
-    var _i = 0;
-    repeat(argument_count)
+    if (BENTO_SHOW_DEBUG_MESSAGE != undefined)
     {
-        _string += string(argument[_i]);
-        ++_i;
+        var _function = BENTO_SHOW_DEBUG_MESSAGE;
+        _function($"fr {string_format(_system.__frame, 6, 0)}   Bento: {_string}");
     }
-    
-    //Use some indirection to prevent compile failures when setting BENTO_TRACE to <undefined>
-    var _BENTO_TRACE = BENTO_TRACE;
-    if (_BENTO_TRACE != undefined) _BENTO_TRACE(_string);
 }

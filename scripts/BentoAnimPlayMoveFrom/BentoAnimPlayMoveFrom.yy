@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoAnimPlayMoveFrom",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoAnimPlayMoveFrom",
+  "parent":{
+    "name":"Animation",
+    "path":"folders/Bento/Functions/Animation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

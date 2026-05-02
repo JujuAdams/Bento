@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoSanitizeFilename",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoSanitizeFilename",
+  "parent":{
+    "name":"Miscellaneous",
+    "path":"folders/Bento/(Internal)/Miscellaneous.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

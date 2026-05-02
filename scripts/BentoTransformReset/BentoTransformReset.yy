@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoTransformReset",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoTransformReset",
+  "parent":{
+    "name":"Transform",
+    "path":"folders/Bento/Functions/Transform.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

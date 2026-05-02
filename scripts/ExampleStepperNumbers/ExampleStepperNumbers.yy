@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExampleStepperNumbers",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExampleStepperNumbers",
+  "parent":{
+    "name":"JSON",
+    "path":"folders/Examples/JSON.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

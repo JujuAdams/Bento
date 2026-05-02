@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestShrinkAndExpand",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestShrinkAndExpand",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoSystemSandbox",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoSystemSandbox",
+  "parent":{
+    "name":"System",
+    "path":"folders/Bento/Functions/System.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

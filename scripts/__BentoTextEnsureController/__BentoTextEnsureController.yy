@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoTextEnsureController",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoTextEnsureController",
+  "parent":{
+    "name":"Text",
+    "path":"folders/Bento/(Internal)/Text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

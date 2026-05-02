@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoScrollbarGetHoriData",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoScrollbarGetHoriData",
+  "parent":{
+    "name":"Scrollbar",
+    "path":"folders/Bento/Functions/Scrollbar.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

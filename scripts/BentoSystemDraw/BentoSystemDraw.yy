@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoSystemDraw",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoSystemDraw",
+  "parent":{
+    "name":"System",
+    "path":"folders/Bento/Functions/System.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

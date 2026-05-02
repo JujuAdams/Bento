@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayerDrawWireframe",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayerDrawWireframe",
+  "parent":{
+    "name":"Layers",
+    "path":"folders/Bento/Functions/Layers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

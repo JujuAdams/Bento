@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoTextDetectChanges",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoTextDetectChanges",
+  "parent":{
+    "name":"Text",
+    "path":"folders/Bento/(Internal)/Text.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

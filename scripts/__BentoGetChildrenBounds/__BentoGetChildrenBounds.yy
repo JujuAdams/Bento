@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoGetChildrenBounds",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoGetChildrenBounds",
+  "parent":{
+    "name":"Miscellaneous",
+    "path":"folders/Bento/(Internal)/Miscellaneous.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

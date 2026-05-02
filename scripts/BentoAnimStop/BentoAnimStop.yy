@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoAnimStop",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoAnimStop",
+  "parent":{
+    "name":"Animation",
+    "path":"folders/Bento/Functions/Animation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayerCreate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayerCreate",
+  "parent":{
+    "name":"Layers",
+    "path":"folders/Bento/Functions/Layers.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

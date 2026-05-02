@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoNameSet",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoNameSet",
+  "parent":{
+    "name":"Names",
+    "path":"folders/Bento/Functions/Names.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

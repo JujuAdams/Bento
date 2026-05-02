@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExampleButtonsWithLongClickProcedural",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExampleButtonsWithLongClickProcedural",
+  "parent":{
+    "name":"Procedural",
+    "path":"folders/Examples/Procedural.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

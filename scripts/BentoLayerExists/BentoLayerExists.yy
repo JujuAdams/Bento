@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "BentoLayerExists",
-  "isDnD": false,
-  "isCompatibility": false,
-  "parent": {
-    "name": "06 Layers",
-    "path": "folders/Bento/06 Layers.yy",
+  "$GMScript":"v1",
+  "%Name":"BentoLayerExists",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayerExists",
+  "parent":{
+    "name":"Layers",
+    "path":"folders/Bento/Functions/Layers.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

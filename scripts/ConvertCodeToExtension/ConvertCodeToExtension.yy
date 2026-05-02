@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ConvertCodeToExtension",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ConvertCodeToExtension",
+  "parent":{
+    "name":"Bento",
+    "path":"Bento.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

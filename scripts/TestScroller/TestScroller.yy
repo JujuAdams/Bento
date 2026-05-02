@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestScroller",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestScroller",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

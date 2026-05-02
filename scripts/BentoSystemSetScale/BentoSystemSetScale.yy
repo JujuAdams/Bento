@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoSystemSetScale",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoSystemSetScale",
+  "parent":{
+    "name":"System",
+    "path":"folders/Bento/Functions/System.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

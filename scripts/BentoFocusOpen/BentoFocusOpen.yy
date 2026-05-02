@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoFocusOpen",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoFocusOpen",
+  "parent":{
+    "name":"Focus",
+    "path":"folders/Bento/Functions/Focus.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

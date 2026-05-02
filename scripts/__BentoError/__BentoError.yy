@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "__BentoError",
-  "isDnD": false,
-  "isCompatibility": false,
-  "parent": {
-    "name": "(System)",
-    "path": "folders/Bento/(System).yy",
+  "$GMScript":"v1",
+  "%Name":"__BentoError",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoError",
+  "parent":{
+    "name":"Support",
+    "path":"folders/Bento/(Internal)/Support.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

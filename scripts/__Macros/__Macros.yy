@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__Macros",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__Macros",
+  "parent":{
+    "name":"Bento",
+    "path":"Bento.yyp",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "BentoInputPointer",
-  "isDnD": false,
-  "isCompatibility": false,
-  "parent": {
-    "name": "03 Input",
-    "path": "folders/Bento/03 Input.yy",
+  "$GMScript":"v1",
+  "%Name":"BentoInputPointer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoInputPointer",
+  "parent":{
+    "name":"Setters",
+    "path":"folders/Bento/Functions/Input & Navigation/Setters.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

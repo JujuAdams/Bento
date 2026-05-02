@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestTransform",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestTransform",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

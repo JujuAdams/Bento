@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoScrollbarGetHoriHover",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoScrollbarGetHoriHover",
+  "parent":{
+    "name":"Scrollbar",
+    "path":"folders/Bento/Functions/Scrollbar.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

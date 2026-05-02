@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoObjectInheritsFrom",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoObjectInheritsFrom",
+  "parent":{
+    "name":"Support",
+    "path":"folders/Bento/(Internal)/Support.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

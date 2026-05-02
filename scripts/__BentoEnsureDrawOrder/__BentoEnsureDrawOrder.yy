@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoEnsureDrawOrder",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoEnsureDrawOrder",
+  "parent":{
+    "name":"Ensure",
+    "path":"folders/Bento/(Internal)/Ensure.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

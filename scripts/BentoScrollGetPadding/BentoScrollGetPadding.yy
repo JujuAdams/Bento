@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoScrollGetPadding",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoScrollGetPadding",
+  "parent":{
+    "name":"Getters",
+    "path":"folders/Bento/Functions/Scroll/Getters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

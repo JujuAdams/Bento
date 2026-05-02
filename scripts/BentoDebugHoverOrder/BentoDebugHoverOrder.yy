@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoDebugHoverOrder",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoDebugHoverOrder",
+  "parent":{
+    "name":"Debug",
+    "path":"folders/Bento/Functions/Debug.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

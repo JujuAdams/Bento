@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestScrollingList",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestScrollingList",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
