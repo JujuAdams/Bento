@@ -38,7 +38,7 @@ Bento also respects typical UX practices when it comes to clicking (or "activati
 
 ## Setting And Getting
 
-The centre of Bento's input system is "primary input". What a primary input is depends on your input mode and possibly even custom bindings. Speaking broadly, primary input ss a mouse click, a finger press on a touch screen, the `A` button on a gamepad, or the spacebar on a keyboard. A primary input is a player communicating with a physical action "I want to select this thing that is highlighted on the screen". Bento also supports additonal inputs, called hotkeys, but primary input is where most of the action is.
+The centre of Bento's input system is "primary input". What a primary input is depends on your input mode and possibly even custom bindings. Speaking broadly, primary input is a mouse click, a finger press on a touch screen, the `A` button on a gamepad, or the spacebar on a keyboard. A primary input is a player communicating with a physical action "I want to select this thing that is highlighted on the screen". Bento also supports additonal inputs, called hotkeys, but primary input is where most of the action is.
 
 Bento uses an "input funnel" pattern to collect player input and then process it. Practically, this means you will need to call `BentoInputPointer()` or `BentoInputDirectional()` depending on the input mode. You will also want to call `BentoInputHotkey()` to collect input in addition to the primary input. You should call these functions before `BentoSystemStep()`, usually every step.
 
