@@ -22,7 +22,7 @@ Elements may be object instances or structs. This page will deal first with obje
   - User Event 3 is called when an element is hovered and will draw over other sibling elements
   - User Event 4 is called when dragging an element in the drag-and-drop system and will draw over all other elements
   - User Event 5 is called when changing the position or size of an element
-- Exactly what you draw is up to you. Check against the various getter functions (such as `BentoCursorGetHover()`) to alter the appearance of elements depending on their state
+- **Exactly what you draw is up to you.** Check against the various getter functions (such as `BentoCursorGetHover()`) to alter the appearance of elements depending on their state
 - There is no guarantee that Bento events will be executed on any given step. Bento [minimises how much of your code it executes](Principles) to keep performance as tight as possible
 - Do not use any of the native Draw events. Bento has its own Draw loop
 - Do not use any of the native GameMaker keyboard, mouse, or gamepad input events
