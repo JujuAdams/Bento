@@ -2,11 +2,11 @@
 
 &nbsp;
 
-Bento does not come with a toybox filled with ready-to-use widgets. Instead, Bento provides functions and events/callbacks that you can use to build your own custom user interface elements. Bento has no preconceived notion of what your elements are going to look like or do. You can make your elements look however you want. Bento only concerns itself with giving you the underlying structure of a UI system.
+Bento does not come with a toybox filled with ready-to-use widgets. Instead, Bento provides functions and events/callbacks that you can use to build your own custom user interface elements. That having been said, I have built out a selection of examples for the most common types of element to get you started. You can find these examples [on the Bento repo](https://github.com/JujuAdams/Bento/). Example elements can be found in the project in the `Bento Examples` folder.
 
-That having been said, I have built out a selection of examples for the most common types of element to get you started. You can find these examples [on the Bento repo](https://github.com/JujuAdams/Bento/). Example elements can be found in the project in the `Bento Examples` folder.
+?> Bento has no preconceived notion of what your elements are going to look like or do. You can make your elements look however you want. Bento only concerns itself with giving you the underlying structure of a UI system.
 
-Elements may be object instances or structs. This page will deal first with object instances are they are the most familiar concept for most GameMaker developers. Structs will be dealt with afterwards.
+Elements may be object instances or structs. This page will deal first with object instances as they are the most familiar concept for most GameMaker developers. Structs operate similarly to object instances within Bento and will be dealt with afterwards.
 
 &nbsp;
 
