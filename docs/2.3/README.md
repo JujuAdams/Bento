@@ -1,5 +1,5 @@
 <img src="https://raw.githubusercontent.com/JujuAdams/Bento/master/LOGO.png" width="50%" style="display: block; margin: auto;" />
-<h1 align="center">0.2 alpha</h1>
+<h1 align="center">2.3 alpha</h1>
 <p align="center">Cross-platform UI framework for GameMaker by <a href="https://www.jujuadams.com/" target="_blank">Juju Adams</a></p>
 
 <p align="center"><a href="https://github.com/JujuAdams/Bento/releases/" target="_blank">Download the .yymps</a></p>
@@ -19,10 +19,6 @@ Bento is a cross-platform device-agnostic UI framework. It simplifies much of th
 - Supports a mixture of instances and structs as UI elements
 
 Bento is not a complete kitchen sink UI solution. Trying to solve every UI problem with a single package would end up with an enormous and intimidating codebase. Instead, Bento's goal is to give you the core tools needed to build a simple UI with minimum hassle, and then to give you the necessary tools to build your own advanced custom UI components whilst relying on Bento's foundations.
-
-Because Bento is a little different to other GameMaker libraries, familiarity with its principles and technology is advised. You can read more about how Bento works [here](Technology). That having been said, basic use is straight-forward so if you'd like to get stuck in you can jump ahead to [setting up the library](Setting-Up). At any point if you get stuck then you should refer to the [example project in the GitHub repo](https://github.com/JujuAdams/Bento/).
-
-At any rate, thanks for checking out Bento. It's been a long time coming!
 
 ## Updating
 
@@ -44,7 +40,7 @@ At any rate, the process to update is as follows:
 
 Bento supports all GameMaker export platforms, with the exception of HTML5. Bento supports GameMaker 2024.11 (and later). If you'd like to report a bug or suggest a feature, please use the repo's [Issues page](https://github.com/JujuAdams/Bento/issues). Bento is constantly being maintained and upgraded; bugs are usually addressed within a few days of being reported.
 
-Bento is primarily built and maintained by [Juju](https://www.jujuadams.com/) who has been stick in UI pergatory ever since he first opened GameMaker. Juju's worked on a lot of [commercial GameMaker games](http://www.jujuadams.com/) and has many hodge-podge UI systems in his time. Bento is the product of practical experience working as a consultant.
+Bento is primarily built and maintained by [Juju](https://www.jujuadams.com/) who has been stuck in UI pergatory ever since he first opened GameMaker. Juju's worked on a lot of [commercial GameMaker games](http://www.jujuadams.com/) and has many hodge-podge UI systems in his time. Bento is the product of practical experience working as a consultant.
 
 Many, many other people have contributed to GameMaker's open source community via bug reports and feature requests. Bento wouldn't exist without them and we're eternally grateful for their creativity and patience.
 
