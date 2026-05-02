@@ -34,11 +34,11 @@
     {"$GMFolder":"","%Name":"Animation","folderPath":"folders/Bento/Functions/Animation.yy","name":"Animation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Basic Properties","folderPath":"folders/Bento/Functions/Basic Properties.yy","name":"Basic Properties","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Getters","folderPath":"folders/Bento/Functions/Basic Properties/Getters.yy","name":"Getters","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Clipping Regions (Scissor Test)","folderPath":"folders/Bento/Functions/Clipping Regions (Scissor Test).yy","name":"Clipping Regions (Scissor Test)","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Debug","folderPath":"folders/Bento/Functions/Debug.yy","name":"Debug","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Carry (Drag & Drop)","folderPath":"folders/Bento/Functions/Carry (Drag & Drop).yy","name":"Carry (Drag & Drop)","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Setup","folderPath":"folders/Bento/Functions/Carry (Drag & Drop)/Setup.yy","name":"Setup","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"State Getters","folderPath":"folders/Bento/Functions/Carry (Drag & Drop)/State Getters.yy","name":"State Getters","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Clipping Regions (Scissor Test)","folderPath":"folders/Bento/Functions/Clipping Regions (Scissor Test).yy","name":"Clipping Regions (Scissor Test)","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Debug","folderPath":"folders/Bento/Functions/Debug.yy","name":"Debug","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Draw Helpers","folderPath":"folders/Bento/Functions/Draw Helpers.yy","name":"Draw Helpers","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Draw Order","folderPath":"folders/Bento/Functions/Draw Order.yy","name":"Draw Order","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Element Creation & Destruction","folderPath":"folders/Bento/Functions/Element Creation & Destruction.yy","name":"Element Creation & Destruction","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -81,7 +81,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.1400.4.1030",
+    "IDEVersion":"2024.1400.5.1052",
   },
   "name":"Bento",
   "resources":[

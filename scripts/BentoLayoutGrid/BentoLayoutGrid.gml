@@ -1,10 +1,12 @@
 // Feather disable all
 
 /// Sets an element to use a grid ruleset. This is an ortholinear grid that divides the element's
-/// content area (the size of the element minus padding) into equally sized cells.
+/// content area (the size of the element minus padding) into equally sized cells. The size of each
+/// cell is the same. The minimum and maximum size of each cell is determined by the minimum and
+/// maximum size of the grid element's children.
 /// 
 /// If you'd like to change the grid's properties, for example to add a row to an inventory if the
-/// player has collected more items, you may call this functiuon again to overwrite existing
+/// player has collected more items, you may call this function again to overwrite existing
 /// values.
 /// 
 /// @param targetColumns
