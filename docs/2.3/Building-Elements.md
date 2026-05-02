@@ -98,3 +98,5 @@ Structs also don't have the concept of "User Events". Instead, a struct-based Be
 | `3`        | `eventDrawHover`   |
 | `4`        | `eventDrawDragged` |
 | `5`        | `eventReposition`  |
+
+When constructing a Bento-compatible struct, you should set up callback methods by setting these variables to functions that you want to execute. The behaviour and timing of their execution is the same as the equivalent User Events.
