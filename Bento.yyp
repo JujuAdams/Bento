@@ -523,6 +523,7 @@
     {"id":{"name":"sBentoExLogoBig","path":"sprites/sBentoExLogoBig/sBentoExLogoBig.yy",},},
     {"id":{"name":"sBentoExLogoSmall","path":"sprites/sBentoExLogoSmall/sBentoExLogoSmall.yy",},},
     {"id":{"name":"sBentoMaskRectangle","path":"sprites/sBentoMaskRectangle/sBentoMaskRectangle.yy",},},
+    {"id":{"name":"sBentoRectangleMask","path":"sprites/sBentoRectangleMask/sBentoRectangleMask.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
