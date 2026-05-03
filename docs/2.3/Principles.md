@@ -56,11 +56,70 @@ This leads us to a corollary: Bento's documentation should "prefer recommendatio
 
 ## Clicking is a distinct action
 
-Because Bento is a cross-platform.
+Because Bento is a cross-platform library, it must accommodate different expectations when it comes to user input. On a desktop platform, it is expected that buttons activate when the user presses a button and then releases that button whilst the mouse is hovering over the top of it. When using a touchscreen, it is more often the case that a button is activated when the player taps the button, which is a press rather than a release. Finally, when using a gamepad or a keyboard, buttons are usually activated when highlighted by the cursor (usually a virtual cursor) and then the "accept" button is pressed, usually the `A` button or the `space` key.
+
+These input mechanisms are subtly different. Bento must embrace them all. As a result, Bento introduces the concept of "click" as an entirely different state to press, hold, or release. A click lasts for only one step in the same way a press or a release lasts for only one step. However, when a click happens exactly depends on a multitude of factors. We've already discussed the different expectations depending on [input mode](Input) but clicks will also be triggered at different times depending on the context that the button is in. You can read more about clicks [here](Click).
 
 &nbsp;
 
-## Logic order is the primary draw order
+## Bento grows on trees
+
+The "document object model", or DOM, is the model by which virtually every web page is organised. Bento is built around a similar concept where the entire user interface exists within a tree:
+
+```
+system
+╰─ environment
+   ├─ layer A
+   │  ╰─ root element
+   │     ├─ element
+   │     │  ├─ element
+   │     │  ╰─ element
+   │     ╰─ ...
+   ├─ layer B
+   ╰─ ...
+```
+
+In Bento, there is only ever one "system". This is the global handler that coordinates all Bento state and code. The next level down hosts one or more environments. Environments can be thought of as containers that hold separate [user input](Input). If there are multiple players using one user interface each then you'll want to create a separate environment per player. For the vast majority of use cases (including multiplayer games where only one player can control the user interface at a time), you will only need to use one environment.
+
+Layers exist inside environments. You can have any number of layers in an environment; however, only the layer drawn last and on top (which is typically the most recently created layer) can receive input. Any other layer is considered "backgrounded". Backgrounded layers will usually not execute any update code (that's [User Event 0](Building-Elements)) but will continue to draw themselves using the other user events. The intention for layers is that they operate as modals which block input to lower layers. In the above example, `layer A` is backgrounded and cannot be interacted with and `layer B` is in the foreground and will operate as normal.
+
+Each layer has precisely one root element. Other than never having any sibling elements, the root element behaves like any other element. You may create further elements as children of the root element, and those elements may have children, and so on. It is in this repeating pattern of elements as children of other elements that the user interface tree takes shape.
+
+&nbsp;
+
+## Draw order emerges from the tree
+
+Draw order is a critical part of any 2D rendering. GameMaker uses the [painter's algorithm](https://en.wikipedia.org/wiki/Painter%27s_algorithm) in conjunction with a `depth` value. Objects, tilemaps, and other graphics with a higher numerical depth are drawn earlier. Graphics with a lower numerical depth are drawn later. This means that graphics can be layered over each other in an explicit order to get the final output that you want.
+
+User interfaces also need to have their draw order be clear and unambiguous so that the output is predictable and controllable. However, they are also very complex with lots of interdependent parts. User interfaces aren't like the game worlds that GameMaker is built to render best. Bento uses a nested document model where elements are children of other elements. Keeping track of relative depth values in a user interface to execute draw commands in the right order becomes unworkable with even a small amount of nesting and layering.
+
+Instead, we can observe that a sensible draw order emerges traversing the document model [depth-first](https://en.wikipedia.org/wiki/Depth-first_search). This typically gives us the draw order that we want (technically this is a reverse depth-first traversal):
+
+```
+element 0
+╰─ element 1
+   ├─ element 2
+   │  ├─ element 3
+   │  ├─ element 4
+   │  ╰─ element 5
+   ╰─ element 6
+```
+
+In this tree, the element are drawn from top-to-bottom in the tree. If we consider that `element 2` might be a frame that contains three children that are buttons, we can imagine how the draw order here will render the buttons on top of the frame. `element 6` is then drawn over `element 2`.
+
+However, we will sometimes find ourselves in situations where we want to adjust draw order to be different to what the tree would otherwise imply. Bento has its own depth system that can be used to adjust draw order between sibling elements that share a parent. In the above example, `element 3`, `element 4`, and `element 5` are siblings to each other (`element 2` and `element 6` are also siblings). By adjusting Bento native depths we can reorder these elements:
+
+```
+element 0
+╰─ element 1
+   ├─ element 2
+   │  ╰─ element 5, depth =  1
+   │  ╰─ element 4, depth =  0
+   │  ├─ element 3, depth = -1
+   ╰─ element 6
+```
+
+Bento's depths will only affect the order that siblings are drawn; Bento depths cannot be used to change the global draw order.
 
 &nbsp;
 
