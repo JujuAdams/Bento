@@ -148,3 +148,91 @@ draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 ```
+
+&nbsp;
+
+### 8. Set up a list of buttons
+
+Menus typically have more than one button. Return to `oUIController`'s Create event and paste the following code. We're going to take advantage of the fact that Bento elements are either object instances or structs and work with the native GameMaker `with()` instruction:
+
+```gml
+with(BentoLayerGetRoot())
+{
+	//Set the root element to lay out elements in a list in the y-axis
+	//We also set the list to centre elements in both axes
+    BentoLayoutList(BENTO_AXIS_Y, 0.5, 0.5);
+
+    //Add some spacing between each button
+    BentoLayoutSetGutter(0, 20);
+    
+    //Create three buttons!
+    BentoCreate(oButton);
+    BentoCreate(oButton);
+    BentoCreate(oButton);
+}
+```
+
+Run the game again and you'll see three buttons laid out in a vertical line in the centre of the game window. If you swap to using the keyboard or a gamepad then you will be able to navigate between buttons by using the thumbstick or arrow keys.
+
+&nbsp;
+
+### 9. Replace `BentoSystemSandbox()`
+
+The function we used to get things up and running earlier is not something that should be used in production. For fear of setting a bad example, let's sort that out now.
+
+First, open `oUIController`'s Draw GUI event, delete `BentoSystemSandbox()`, and replace it with `BentoSystemDraw()`:
+
+```gml
+/// Draw GUI event
+BentoSystemDraw();
+```
+
+Secondly, add a new Step event to `oUIController`. In this event we'll update Bento's overall position and size as well as funnelling input into it:
+
+```gml
+///Step event
+
+//Swap between input modes when pressing a number key
+if (keyboard_check_pressed(ord("1"))) BentoSetMode(BENTO_MODE_MOUSE);
+if (keyboard_check_pressed(ord("2"))) BentoSetMode(BENTO_MODE_KEYBOARD);
+if (keyboard_check_pressed(ord("3"))) BentoSetMode(BENTO_MODE_GAMEPAD);
+if (keyboard_check_pressed(ord("4"))) BentoSetMode(BENTO_MODE_TOUCH);
+
+if (BentoUsingPointer())
+{
+    //Pointer input generalises both mouse and touch input
+    BentoInputPointer(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), device_mouse_check_button(0, mb_left));
+}
+else
+{
+    if (BentoUsingKeyboard())
+    {
+        var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
+        var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
+        BentoInputDirectional(_dX, _dY, keyboard_check(vk_space));
+    }
+    else if (BentoUsingGamepad() && gamepad_is_connected(0))
+    {
+        //Only scan gamepad 0 for input. This is good enough for an example
+        var _dX = gamepad_axis_value(0, gp_axislh) + (gamepad_button_check(0, gp_padr) - gamepad_button_check(0, gp_padl));
+        var _dY = gamepad_axis_value(0, gp_axislv) + (gamepad_button_check(0, gp_padd) - gamepad_button_check(0, gp_padu));
+        BentoInputDirectional(_dX, _dY, gamepad_button_check(0, gp_face1));
+    }
+}
+
+//The main state update function. This ticks the entire system (but doesn't do any drawing).
+//Step user events (BENTO_USER_EVENT_STEP etc.) are executed by this function where appropriate.
+BentoSystemStep(0, 0, display_get_gui_width(), display_get_gui_height());
+```
+
+In a proper game project you will want to modify your input code to accommodate whatever input device the player is using. Regardless, run the game again to check that the new code is working properly. Don't forget to test out different input modes by pressing a number key.
+
+&nbsp;
+
+### 10. Next steps
+
+This guide has shown the bare basics of setting up a menu using Bento. It has included library import, basic system update and rendering, and building a button. You've learnt how to use the two most important User Events and how to automatically lay out element into a list.
+
+Going forwards, you should experiment with making the buttons do different things such as starting the game or opening an options menu. You could also try adding a large title graphic as a new type of element added to the list. You could also try adding audio cues or particle effects when selecting a button (`BentoCursorGetEnterByNavigation()` is especially helpful for this).
+
+Bento is a big library with lots to learn. From this basic starting point you will now be able to try out new things. Have fun!
