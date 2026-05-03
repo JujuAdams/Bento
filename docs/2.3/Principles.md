@@ -134,8 +134,3 @@ When using directional [input modes](Input) (keyboard or gamepad), the cursor po
 ?> There is one virtual cursor per layer. This is especially helpful for directional input. If you create a new layer and then destroy it, the underlying layer will remember which element was hovered.
 
 Directional input modes want to hover a button. Unless there are no available or valid buttons, directional input will always hover something. If a button is destroyed, the virtual cursor will move to the nearest available button and hover it. If a new layer is created, the virtual cursor for that layer will hover an available button. Directional input will also intelligently scroll containers so that the player can navigate the entire interface using only a gamepad or keyboard.
-
-&nbsp;
-
-## Elements deserve a rest
-
