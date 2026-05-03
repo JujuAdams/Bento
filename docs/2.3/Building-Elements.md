@@ -15,7 +15,9 @@ Elements may be object instances or structs. This page will deal first with obje
 - Object instances must inherit from `oBentoAncestor`
 - `event_inherited()` must be called at the top of a Create event before anything else
 - Do not deactivate Bento object instances. Call `BentoActivateInstances()` if you're using instance deactivation
-- Put Bento-related code in user events:
+- An object instance's other events will execute as normal ...
+- ... but you should put Bento-related code in the following events:
+  - Create event works as normal. You should set up your Bento element here if necessary
   - User Event 0 is called when updating an element (this is Bento's "Step" event)
   - User Event 1 is called when drawing an element (this is Bento's "Draw" event)
   - User Event 2 is called when after drawing an element and after drawing all of its children (this is Bento's version of a "Draw End" event)
@@ -38,7 +40,7 @@ Bento instances are intended to be open and easy to use. They obey similar rules
 
 ### Inheritance
 
-Firstly, Bento object instances must all be children of `oBentoAncestor` and the Create event for your Bento element must include `event_inherited()` as the first line. `oBentoAncestor` sets up the element and without an object inheriting from this parent, Bento will not work.
+Firstly, Bento object instances must all be children of `oBentoAncestor` and the Create event for your Bento element must include `event_inherited()` as the first line. `oBentoAncestor` sets up the element and without an object inheriting from this parent, Bento will not work. Please note that all Bento instances are presumed to be [persistent]() and the `persistent` variable is set to `true` by `oBentoAncestor` manually in code. [Bento is its own world](Principles) and the presumption is that the user interface should not be affeccted by room changes.
 
 ### Variables
 
@@ -56,16 +58,16 @@ You may override the default origin behaviour (using the origin of `sprite_index
 
 ### Events
 
-Bento uses a system of custom user events to structure when and how code is executed. These user events are:
+Bento uses a system of custom user events to structure when and how code is executed. Bento elements that are object instances will still obey all the normal rules of object instances, however. The Create event is often essential to set up your Bento element but using Bento's custom event structure you'll find that most other native GameMaker events aren't helpful. At any rate, These user events are:
 
-| User Event | Native Equivalent | Event Type          | Behaviour                                                                                                                                     | Usage                                                                                       |
-|------------|-------------------|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
-| `0`        | Step              | Logic               | Called if necessary but often omitted                                                                                                         | Bento logic, such as checks against `BentoPrimaryGetClick()`, should go in here             |
-| `1`        | Draw              | Draw                | Before applying GPU scissoring for the element (if applicable) and before children                                                            | The "main" draw event for elements                                                          |
-| `2`        | Draw End (ish)    | Draw                | After children and after resetting GPU scissoring                                                                                             | Useful for drawing graphics over child elements such as an attractive border                |
-| `3`        | *n/a*             | Draw                | Only called when an element is hovered. Called after all sibling children but before resetting GPU scissoring for a layout ancestor           | Drawing highlights on and around hovered elements, especially when in directional mode      |
-| `4`        | *n/a*             | Draw                | Only called when an element is being dragged in the drag-and-drop system. After all other elements, executed at the very end of the draw loop | Drawing a drag-and-drop item above all other elements                                       |
-| `5`        | *n/a*             | Logic               | Called whenever an element's layout position or layout size changes                                                                           | Resetting properties (such as `image_xscale`) that rely on the size and shape of an element |
+| User Event | Bento Name     | Native Equivalent | Behaviour                                                                                                                                      | Usage                                                                                       |
+|------------|----------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| `0`        | "Step"         | Step              | Called if necessary but often omitted                                                                                                          | Bento logic, such as checks against `BentoPrimaryGetClick()`, should go in here             |
+| `1`        | "Draw"         | Draw              | Before applying GPU scissoring for the element (if applicable) and before drawing children                                                     | The "main" draw event for elements                                                          |
+| `2`        | "Draw After"   | Draw End (ish)    | After drawing children and after resetting GPU scissoring                                                                                      | Useful for drawing graphics over child elements such as an attractive border                |
+| `3`        | "Draw Hover"   | *n/a*             | Only called when an element is hovered. Called after all sibling children but before resetting GPU scissoring for a layout ancestor            | Drawing highlights on and around hovered elements, especially when in directional mode      |
+| `4`        | "Draw Dragged" | *n/a*             | Only called when an element is being dragged in the drag-and-drop system and at the very end of the draw loop after all other elements         | Drawing a drag-and-drop item above all other elements                                       |
+| `5`        | "Reposition"   | *n/a*             | Called whenever an element's layout position or layout size changes. This event will also be called when a drag-and-drop item is being dragged | Resetting properties (such as `image_xscale`) that rely on the size and shape of an element |
 
 !> There is no guarantee that Bento events will be executed on any given step. Bento [minimises how much of your code it executes](Principles) to keep performance as tight as possible.
 
