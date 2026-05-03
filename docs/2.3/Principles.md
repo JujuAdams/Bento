@@ -113,9 +113,9 @@ However, we will sometimes find ourselves in situations where we want to adjust 
 element 0
 ╰─ element 1
    ├─ element 2
-   │  ╰─ element 5, depth =  1
-   │  ╰─ element 4, depth =  0
-   │  ├─ element 3, depth = -1
+   │  ├─ element 5, depth =  1
+   │  ├─ element 4, depth =  0
+   │  ╰─ element 3, depth = -1
    ╰─ element 6
 ```
 
