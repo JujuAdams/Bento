@@ -123,16 +123,19 @@ Bento's depths will only affect the order that siblings are drawn; Bento depths 
 
 &nbsp;
 
-## Hover is a function of cursor position
+## Virtual cursor
 
-&nbsp;
+When we think of "hovering" a button we naturally think about a mouse pointer being over the top of that button. Alternatively, we could consider a hovered button in a console game as being the button that is currently selected and is highlighted. Bento combines these two expectations into a single concept called a "virtual cursor".
 
-### The pointer is a type of cursor
+When using pointer [input modes](Input) (mouse or touch), hovering a button works like you'd expect. The cursor follows the mouse exactly and the top-most button underneath the cursor is hovered. When using touch input, the cursor is only active when the screen is touched; otherwise, touch input and mouse input work the same.
 
-&nbsp;
+When using directional [input modes](Input) (keyboard or gamepad), the cursor position is determined to be the centre of the currently hovered button. When the player pushes the cursor in a direction (using the thumbstick or arrow keys etc.), the cursor will find the next element in that direction and will jump to it. That new element is then considered hovered.
 
-### Directional cursors live to hover
+?> There is one virtual cursor per layer. This is especially helpful for directional input. If you create a new layer and then destroy it, the underlying layer will remember which element was hovered.
+
+Directional input modes want to hover a button. Unless there are no available or valid buttons, directional input will always hover something. If a button is destroyed, the virtual cursor will move to the nearest available button and hover it. If a new layer is created, the virtual cursor for that layer will hover an available button. Directional input will also intelligently scroll containers so that the player can navigate the entire interface using only a gamepad or keyboard.
 
 &nbsp;
 
 ## Elements deserve a rest
+
