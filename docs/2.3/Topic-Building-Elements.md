@@ -25,7 +25,7 @@ Elements may be object instances or structs. This page will deal first with obje
   - User Event 4 is called when dragging an element in the drag-and-drop system and will draw over all other elements
   - User Event 5 is called when changing the position or size of an element
 - ***Exactly what you draw is up to you.*** Check against the various getter functions (such as `BentoCursorGetHover()`) to alter the appearance of elements depending on their state
-- There is no guarantee that Bento events will be executed on any given step. Bento [minimises how much of your code it executes](Principles) to keep performance as tight as possible
+- There is no guarantee that Bento events will be executed on any given step. Bento [minimises how much of your code it executes](Topic-Principles) to keep performance as tight as possible
 - Do not use any of the native Draw events. Bento has its own Draw loop
 - Do not use any of the native GameMaker keyboard, mouse, or gamepad input events
 - You may occasionally want to use the native Step event but try to put Bento-specific logic in User Event 0 to help Bento optimise
@@ -40,7 +40,7 @@ Bento instances are intended to be open and easy to use. They obey similar rules
 
 ### Inheritance
 
-Firstly, Bento object instances must all be children of `oBentoAncestor` and the Create event for your Bento element must include `event_inherited()` as the first line. `oBentoAncestor` sets up the element and without an object inheriting from this parent, Bento will not work. Please note that all Bento instances are presumed to be [persistent]() and the `persistent` variable is set to `true` by `oBentoAncestor` manually in code. [Bento is its own world](Principles) and the presumption is that the user interface should not be affeccted by room changes.
+Firstly, Bento object instances must all be children of `oBentoAncestor` and the Create event for your Bento element must include `event_inherited()` as the first line. `oBentoAncestor` sets up the element and without an object inheriting from this parent, Bento will not work. Please note that all Bento instances are presumed to be [persistent]() and the `persistent` variable is set to `true` by `oBentoAncestor` manually in code. [Bento is its own world](Topic-Principles) and the presumption is that the user interface should not be affeccted by room changes.
 
 ### Variables
 
@@ -69,7 +69,7 @@ Bento uses a system of custom user events to structure when and how code is exec
 | `4`        | "Draw Dragged" | *n/a*             | Only called when an element is being dragged in the drag-and-drop system and at the very end of the draw loop after all other elements         | Drawing a drag-and-drop item above all other elements                                       |
 | `5`        | "Reposition"   | *n/a*             | Called whenever an element's layout position or layout size changes. This event will also be called when a drag-and-drop item is being dragged | Resetting properties (such as `image_xscale`) that rely on the size and shape of an element |
 
-!> There is no guarantee that Bento events will be executed on any given step. Bento [minimises how much of your code it executes](Principles) to keep performance as tight as possible.
+!> There is no guarantee that Bento events will be executed on any given step. Bento [minimises how much of your code it executes](Topic-Principles) to keep performance as tight as possible.
 
 Because Bento has its own draw loop, you should not use any of the Draw events whatsoever. You also do not need to use any of the native input events because Bento has its own features. Whether or not you choose to use the Step event varies depending on the situation but typically you'll want to avoid using it. Instead, put as much logic as possible in User Event 0 to allow Bento to optimise what code is being called and when.
 

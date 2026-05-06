@@ -8,13 +8,13 @@ Building Bento has taken over 6 years. In this span of time, I've come to realis
 
 I have come to realise that a user interface is a game engine onto itself. There is so much complexity and so many rules that don't map cleanly onto standard gameplay programming. User interfaces are largely about restricting user input to a few distinct states that change deliberately rather than a large set of continuous states that the player can smoothly move between. Bento must recognise this and it must stand apart from the rest of the game engine wherever possible.
 
-When we start seeing a user interface as an engine within an engine then it comes apparent that Bento needs to have its own "Step" loop and its own "Draw" loop. This is reflected in the two functions `BentoSystemStep()` and `BentoSystemDraw()` which handle these two loops. Additionally, Bento must have its own [input management API](Input). Bento needs to have its own events and state tracking that avoids directly interacting with native GameMaker systems as far as is possible.
+When we start seeing a user interface as an engine within an engine then it comes apparent that Bento needs to have its own "Step" loop and its own "Draw" loop. This is reflected in the two functions `BentoSystemStep()` and `BentoSystemDraw()` which handle these two loops. Additionally, Bento must have its own [input management API](Topic-Input). Bento needs to have its own events and state tracking that avoids directly interacting with native GameMaker systems as far as is possible.
 
 &nbsp;
 
 ## Cross-platform or bust
 
-Cross-platform development is where a lot of money gets made in GameMaker. Bento must not get in the way of a developer releasing a game on other platforms. This means every feature must support every one of the [input modes](Input). If a feature is extremely useful but cannot be supported on every platform this then must be highlighted and, if possible, throw an error at runtime.
+Cross-platform development is where a lot of money gets made in GameMaker. Bento must not get in the way of a developer releasing a game on other platforms. This means every feature must support every one of the [input modes](Topic-Input). If a feature is extremely useful but cannot be supported on every platform this then must be highlighted and, if possible, throw an error at runtime.
 
 This principle does **not** apply to aspect ratio flips. There is no magic spell that converts a landscape interface to a portrait interface. That work has to be done manually. Bento's goal is to make that conversion as painless as possible via the use of algorithmic layouts and reusable element patterns but Bento cannot convert layouts automatically for the user.
 
@@ -28,9 +28,9 @@ Here are some examples to illustrate the downstream impact of this principle:
 
 ### Leverage the event system and object editor
 
-Whilst I think GameMaker's UX is subpar by and large, the object editor's basic functionality is clear because the underlying logic in GameMaker's runtime is clear: Events happen at predictable times and, when they do, the relevant code for that event is executed. If we, as GameMaker developers, want something to happen we put it in the associated event in the object editor. In reality, developers will rarely use anything more than the core events but the concept is easy to grasp and easy to generalise. Bento should hook into this way of thinking by using custom [User Events](User-Events) for key "events" that Bento triggers. This keeps code structured, it makes it easier to navigation, and it's familiar to every GameMaker developer. Sadly, GameMaker offers us a limited number of User Event slots but Bento doesn't need all that many so it ends up being fine.
+Whilst I think GameMaker's UX is subpar by and large, the object editor's basic functionality is clear because the underlying logic in GameMaker's runtime is clear: Events happen at predictable times and, when they do, the relevant code for that event is executed. If we, as GameMaker developers, want something to happen we put it in the associated event in the object editor. In reality, developers will rarely use anything more than the core events but the concept is easy to grasp and easy to generalise. Bento should hook into this way of thinking by using custom [User Events](Topic-User-Events) for key "events" that Bento triggers. This keeps code structured, it makes it easier to navigation, and it's familiar to every GameMaker developer. Sadly, GameMaker offers us a limited number of User Event slots but Bento doesn't need all that many so it ends up being fine.
 
-?> I consider the "core events" to be Create, Step, the various Draw events, Clean Up (or Destroy). Bento's custom [User Events](User-Events) reflect this.
+?> I consider the "core events" to be Create, Step, the various Draw events, Clean Up (or Destroy). Bento's custom [User Events](Topic-User-Events) reflect this.
 
 ### Getters instead of callbacks
 
@@ -58,7 +58,7 @@ This leads us to a corollary: Bento's documentation should "prefer recommendatio
 
 Because Bento is a cross-platform library, it must accommodate different expectations when it comes to user input. On a desktop platform, it is expected that buttons activate when the user presses a button and then releases that button whilst the mouse is hovering over the top of it. When using a touchscreen, it is more often the case that a button is activated when the player taps the button, which is a press rather than a release. Finally, when using a gamepad or a keyboard, buttons are usually activated when highlighted by the cursor (usually a virtual cursor) and then the "accept" button is pressed, usually the `A` button or the `space` key.
 
-These input mechanisms are subtly different. Bento must embrace them all. As a result, Bento introduces the concept of "click" as an entirely different state to press, hold, or release. A click lasts for only one step in the same way a press or a release lasts for only one step. However, when a click happens exactly depends on a multitude of factors. We've already discussed the different expectations depending on [input mode](Input) but clicks will also be triggered at different times depending on the context that the button is in. You can read more about clicks [here](Click).
+These input mechanisms are subtly different. Bento must embrace them all. As a result, Bento introduces the concept of "click" as an entirely different state to press, hold, or release. A click lasts for only one step in the same way a press or a release lasts for only one step. However, when a click happens exactly depends on a multitude of factors. We've already discussed the different expectations depending on [input mode](Topic-Input) but clicks will also be triggered at different times depending on the context that the button is in. You can read more about clicks [here](Topic-Click).
 
 &nbsp;
 
@@ -79,9 +79,9 @@ system
    ╰─ ...
 ```
 
-In Bento, there is only ever one "system". This is the global handler that coordinates all Bento state and code. The next level down hosts one or more environments. Environments can be thought of as containers that hold separate [user input](Input). If there are multiple players using one user interface each then you'll want to create a separate environment per player. For the vast majority of use cases (including multiplayer games where only one player can control the user interface at a time), you will only need to use one environment.
+In Bento, there is only ever one "system". This is the global handler that coordinates all Bento state and code. The next level down hosts one or more environments. Environments can be thought of as containers that hold separate [user input](Topic-Input). If there are multiple players using one user interface each then you'll want to create a separate environment per player. For the vast majority of use cases (including multiplayer games where only one player can control the user interface at a time), you will only need to use one environment.
 
-Layers exist inside environments. You can have any number of layers in an environment; however, only the layer drawn last and on top (which is typically the most recently created layer) can receive input. Any other layer is considered "backgrounded". Backgrounded layers will usually not execute any update code (that's [User Event 0](Building-Elements)) but will continue to draw themselves using the other user events. The intention for layers is that they operate as modals which block input to lower layers. In the above example, `layer A` is backgrounded and cannot be interacted with and `layer B` is in the foreground and will operate as normal.
+Layers exist inside environments. You can have any number of layers in an environment; however, only the layer drawn last and on top (which is typically the most recently created layer) can receive input. Any other layer is considered "backgrounded". Backgrounded layers will usually not execute any update code (that's [User Event 0](Topic-Building-Elements)) but will continue to draw themselves using the other user events. The intention for layers is that they operate as modals which block input to lower layers. In the above example, `layer A` is backgrounded and cannot be interacted with and `layer B` is in the foreground and will operate as normal.
 
 Each layer has precisely one root element. Other than never having any sibling elements, the root element behaves like any other element. You may create further elements as children of the root element, and those elements may have children, and so on. It is in this repeating pattern of elements as children of other elements that the user interface tree takes shape.
 
@@ -127,9 +127,9 @@ Bento's depths will only affect the order that siblings are drawn; Bento depths 
 
 When we think of "hovering" a button we naturally think about a mouse pointer being over the top of that button. Alternatively, we could consider a hovered button in a console game as being the button that is currently selected and is highlighted. Bento combines these two expectations into a single concept called a "virtual cursor".
 
-When using pointer [input modes](Input) (mouse or touch), hovering a button works like you'd expect. The cursor follows the mouse exactly and the top-most button underneath the cursor is hovered. When using touch input, the cursor is only active when the screen is touched; otherwise, touch input and mouse input work the same.
+When using pointer [input modes](Topic-Input) (mouse or touch), hovering a button works like you'd expect. The cursor follows the mouse exactly and the top-most button underneath the cursor is hovered. When using touch input, the cursor is only active when the screen is touched; otherwise, touch input and mouse input work the same.
 
-When using directional [input modes](Input) (keyboard or gamepad), the cursor position is determined to be the centre of the currently hovered button. When the player pushes the cursor in a direction (using the thumbstick or arrow keys etc.), the cursor will find the next element in that direction and will jump to it. That new element is then considered hovered.
+When using directional [input modes](Topic-Input) (keyboard or gamepad), the cursor position is determined to be the centre of the currently hovered button. When the player pushes the cursor in a direction (using the thumbstick or arrow keys etc.), the cursor will find the next element in that direction and will jump to it. That new element is then considered hovered.
 
 ?> There is one virtual cursor per layer. This is especially helpful for directional input. If you create a new layer and then destroy it, the underlying layer will remember which element was hovered.
 

@@ -12,7 +12,7 @@ To keep things simple we'll be starting with Bento in a completely fresh GameMak
 
 You should download the Bento package (.yymps) from [the GitHub repo](https://github.com/JujuAdams/Bento/releases). You can import packages into GameMaker from the "Tools" menu and then the "Import Local Package" option. You'll need to add everything from the package.
 
-?> You'll probably need to update Bento at some point. Please see the [update guide](Update-Guide) which will walk you through the process.
+?> You'll probably need to update Bento at some point. Please see the [update guide](Topic-Update-Guide) which will walk you through the process.
 
 &nbsp;
 

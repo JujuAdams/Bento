@@ -89,6 +89,6 @@ Bento has many getters that return input state, too many to cover here. Here are
 
 ## Environments
 
-Input modes are set by environment. Environments are an advanced feature and are [discussed elsewhere](Environments) but, briefly, if you'd like to have multiple players controlling different UIs at the same time then you should use one environment per player. This means that one player might be using a keyboard to control one environment whereas another player is using a gamepad to control the other environment. Bento supports this by allowing you to set input modes per environment.
+Input modes are set by environment. Environments are an advanced feature and are [discussed elsewhere](Topic-Environments) but, briefly, if you'd like to have multiple players controlling different UIs at the same time then you should use one environment per player. This means that one player might be using a keyboard to control one environment whereas another player is using a gamepad to control the other environment. Bento supports this by allowing you to set input modes per environment.
 
 !> If you're making a multiplayer game, make sure to keep the input mode up to date for whichever player is using that environment.
