@@ -10,7 +10,7 @@ Before proceeding, there are a few things to note:
 
 1. This article presumes you are reasonably familiar with how Input works.
 2. This guide is restricted to single player games. Bento and Input can be used together for multiplayer games but that falls out of scope for this guide.
-3. `INPUT_KBM` combines mouse and keyboard input. Bento separates mouse and keyboard input into `BENTO_MODE_MOUSE` and `BENTO_MODE_KEYBOARD`. You will need to decide which Bento input mode `INPUT_KBM` maps to depending what kind of game you're making.
+3. `INPUT_KBM` combines mouse and keyboard input. Bento separates mouse and keyboard input into `BENTO_MODE_MOUSE` and `BENTO_MODE_KEYBOARD`. You will need to decide which Bento input mode `INPUT_KBM` maps to depending what kind of game you're making. `BENTO_MODE_KEYBOARD` is suitable for games that are entirely keyboard-driven and do not make use of the mouse at all.
 4. I'm assuming you're making your Bento user interface into "GUI space" i.e. you're drawing the GUI in a Draw GUI event.
 
 With that in mind, let's proceed.
