@@ -6,8 +6,8 @@
 
 **Topics**
 
-- [Principles](Principles)
-- [Building Elements](Building-Elements)
-- [Drawing Elements](Drawing-Elements)
-- [Input](Input)
-- [Your First Menu](Your-First-Menu)
+- [Your First Menu](Topic-Your-First-Menu)
+- [Principles](Topic-Principles)
+- [Building Elements](Topic-Building-Elements)
+- [Drawing Elements](Topic-Drawing-Elements)
+- [Input](Topic-Input)
