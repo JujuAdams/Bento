@@ -8,10 +8,10 @@
 
 Before proceeding, there are a few things to note:
 
-1. This article presumes you are reasonably familiar with how Input works.
+1. This article presumes you are reasonably familiar with how Input works already.
 2. This guide is restricted to single player games. Bento and Input can be used together for multiplayer games but that falls out of scope for this guide.
-3. `INPUT_KBM` combines mouse and keyboard input. Bento separates mouse and keyboard input into `BENTO_MODE_MOUSE` and `BENTO_MODE_KEYBOARD`. You will need to decide which Bento input mode `INPUT_KBM` maps to depending what kind of game you're making. `BENTO_MODE_KEYBOARD` is suitable for games that are entirely keyboard-driven and do not make use of the mouse at all.
-4. I'm assuming you're making your Bento user interface into "GUI space" i.e. you're drawing the GUI in a Draw GUI event.
+3. I'm assuming you're making your Bento user interface into "GUI space" i.e. you're drawing the GUI in a Draw GUI event.
+4. `INPUT_KBM` combines mouse and keyboard input. Bento separates mouse and keyboard input into `BENTO_MODE_MOUSE` and `BENTO_MODE_KEYBOARD`. You will need to decide which Bento input mode `INPUT_KBM` maps to depending what kind of game you're making. `BENTO_MODE_KEYBOARD` is suitable for games that are entirely keyboard-driven and do not make use of the mouse at all; otherwise, you should likely use `BENTO_MODE_MOUSE`.
 
 With that in mind, let's proceed.
 
@@ -19,18 +19,18 @@ With that in mind, let's proceed.
 
 ## Set up Input verbs
 
-Input works using a "verb" paradigm. We'll be funnelling output values from those verbs (and a cluster) into Bento. The first step is to set up the necessary components so we have something to read.
+Input works using a "verb" paradigm. We'll be funnelling output values from those verbs (and a cluster) into Bento. The first step is to set up the necessary components in Input's verb configuration script so we have something to read.
 
-Below is a suggested list of verbs and cluster to add to `__InputConfigVerb`. We're adding UI-specific "accept" and "cancel" verbs. We map `INPUT_VERB.UI_ACCEPT` to `gp_face1` on gamepads (`gp_face2` on Switch) and mapping `INPUT_VERB.UI_ACCEPT` to `gp_face2` on gamepads (`gp_face1` on Switch). This is a standard "A to accept, B to cancel" layout.
+Below is a suggested list of verbs and cluster to add to `__InputConfigVerbs`. We're adding UI-specific "accept" and "cancel" verbs. We map `INPUT_VERB.UI_ACCEPT` to `gp_face1` on gamepads and `INPUT_VERB.UI_ACCEPT` to `gp_face2` on gamepads. This is a standard "A to accept, B to cancel" layout. We invert `gp_face1` and `gp_face2` on Nintendo Switch to match the gamepad button layout.
 
-We also map `INPUT_VERB.UI_CANCEL` to `vk_escape` when using a mouse and/or keyboard. We can still use keyboard hotkeys even if we're using `BENTO_MODE_MOUSE` such that the mouse is the primary input device. `INPUT_VERB.UI_ACCEPT` is mapped to `vk_space`. However, this is only revelant if you've decided `INPUT_KBM` maps to `BENTO_MODE_KEYBOARD`.
+We also map `INPUT_VERB.UI_CANCEL` to `vk_escape` when using a mouse and/or keyboard. We can still use keyboard hotkeys even if we're using `BENTO_MODE_MOUSE`. `INPUT_VERB.UI_ACCEPT` is further mapped to `vk_space`. However, this mapping is only revelant if you've decided `INPUT_KBM` maps to `BENTO_MODE_KEYBOARD`. `INPUT_VERB.UI_ACCEPT` is otherwise ignored when using the mouse input mode.
 
 Finally, we define a cluster. This cluster presumes you're using standard Input directional verbs. If not, you'll need to make the necessary adjustments to the verb names.
 
 ```gml
-/// __InputConfigVerb
+/// __InputConfigVerbs
 
-function __InputConfigVerb()
+function __InputConfigVerbs()
 {
 	enum INPUT_VERB
 	{
