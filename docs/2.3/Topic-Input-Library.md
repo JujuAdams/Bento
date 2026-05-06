@@ -4,7 +4,7 @@
 
 &nbsp;
 
-["Input"](https://codeberg.org/offalynne/Input) is a popular cross-platform input library. Bento's API is intended primarily to support the general purpose use case where developers are handling various input devices themselves. However, Bento can also be integrated with Input to alleviate implementation friction.
+["Input"](https://codeberg.org/offalynne/Input) is a popular cross-platform input library. Bento's API is intended primarily to support the general purpose use case where developers are handling various input devices themselves. However, Bento can also be integrated with "Input" to make things smoother.
 
 Before proceeding, there are a few things to note:
 
