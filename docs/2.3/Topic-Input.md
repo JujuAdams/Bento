@@ -70,6 +70,8 @@ else
 BentoSystemStep(0, 0, display_get_gui_width(), display_get_gui_height());}
 ```
 
+?> If you're using the ["Input" library](https://codeberg.org/offalynne/Input) then you can simplify the code above. Please see [this article](Topic-Input-Library) for more information.
+
 Bento will process input when you call `BentoSystemStep()`. You can then check the state of user interface elements by calling various functions. The most important is `BentoPrimaryGetClick()` which detects when the player has clicked on an element. You should call `BentoPrimaryGetClick()` in User Event 0 for elements that are objects instances, or in the `eventStep` method for elements that are structs.
 
 !> It is very important to detect players clicking buttons by calling explicitly `BentoPrimaryGetClick()`. If you check against any other function then your user interface is liable to work incorrectly.
