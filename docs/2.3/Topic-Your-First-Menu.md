@@ -227,6 +227,8 @@ BentoSystemStep(0, 0, display_get_gui_width(), display_get_gui_height());
 
 In a proper game project you will want to modify your input code to accommodate whatever input device the player is using. Regardless, run the game again to check that the new code is working properly. Don't forget to test out different input modes by pressing a number key.
 
+?> If you're using the ["Input" library](https://codeberg.org/offalynne/Input) then you can simplify the code above. Please see [this article](Topic-Input-Library) for more information.
+
 &nbsp;
 
 ## 10. Next steps
