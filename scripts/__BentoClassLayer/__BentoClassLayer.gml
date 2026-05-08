@@ -22,6 +22,7 @@ function __BentoClassLayer(_environment, _name) constructor
     __rootElement = BENTO_NO_ELEMENT;
     
     __isTopLayer = true;
+    __drawWhenBackgrounded = true;
     
     __animPlayingArray      = [];
     __animPlayingMap        = ds_map_create();
@@ -820,12 +821,15 @@ function __BentoClassLayer(_environment, _name) constructor
         __BentoEnsureTransforms();
         __BentoEnsureDrawOrder();
         
-        var _drawOrder = __drawOrder;
-        var _i = 0;
-        repeat(array_length(_drawOrder))
+        if (__isTopLayer || __drawWhenBackgrounded)
         {
-            _drawOrder[_i]();
-            ++_i;
+            var _drawOrder = __drawOrder;
+            var _i = 0;
+            repeat(array_length(_drawOrder))
+            {
+                _drawOrder[_i]();
+                ++_i;
+            }
         }
         
         if (__isTopLayer)
