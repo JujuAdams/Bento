@@ -163,7 +163,7 @@ function ExampleHomePage()
                     object: oBentoExButton,
                     vars: {
                         text: $"Settings Menu",
-                        func: ExampleSettingsMenu,
+                        func: ExampleSettingsMenuProcedural,
                     },
                 },
                 {

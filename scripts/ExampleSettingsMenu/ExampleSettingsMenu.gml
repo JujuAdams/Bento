@@ -4,7 +4,7 @@ global.settingsStruct = {
     flimflams: false,
     wibbles: true,
     bathJam: "strawberry",
-    flatness: 90,
+    flatness: 7,
     sailorScout: "Moon",
     favoriteEvenNumber: 2,
 };
@@ -263,7 +263,6 @@ function ExampleSettingsMenu()
                             },
                         },
                         {
-                            hover: true,
                             object: oBentoExStepperNumbers,
                             vars: {
                                 text: "Favourite Even Number",
@@ -337,7 +336,7 @@ function ExampleSettingsMenu()
                                                                 global.settingsStruct.flimflams          = false;
                                                                 global.settingsStruct.wibbles            = true;
                                                                 global.settingsStruct.bathJam            = "strawberry";
-                                                                global.settingsStruct.flatness           = 90;
+                                                                global.settingsStruct.flatness           = 7;
                                                                 global.settingsStruct.sailorScout        = "Moon";
                                                                 global.settingsStruct.favoriteEvenNumber = 2;
                                                                 BentoLayerDestroy();

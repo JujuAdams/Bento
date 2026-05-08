@@ -496,6 +496,7 @@
     {"id":{"name":"ExampleScrollingList","path":"scripts/ExampleScrollingList/ExampleScrollingList.yy",},},
     {"id":{"name":"ExampleScrollingListWithBar","path":"scripts/ExampleScrollingListWithBar/ExampleScrollingListWithBar.yy",},},
     {"id":{"name":"ExampleSettingsMenu","path":"scripts/ExampleSettingsMenu/ExampleSettingsMenu.yy",},},
+    {"id":{"name":"ExampleSettingsMenuProcedural","path":"scripts/ExampleSettingsMenuProcedural/ExampleSettingsMenuProcedural.yy",},},
     {"id":{"name":"ExampleSlider","path":"scripts/ExampleSlider/ExampleSlider.yy",},},
     {"id":{"name":"ExampleStepperNumbers","path":"scripts/ExampleStepperNumbers/ExampleStepperNumbers.yy",},},
     {"id":{"name":"ExampleStepperStrings","path":"scripts/ExampleStepperStrings/ExampleStepperStrings.yy",},},
