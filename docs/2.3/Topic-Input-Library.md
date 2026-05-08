@@ -66,6 +66,7 @@ We'll now write some code to transfer verb state from Input to Bento. The first 
 /// Step event
 
 //1. Set Bento input mode from the player's device
+var _device = InputPlayerGetDevice();
 if (_device == INPUT_KBM)
 {
 	BentoSetMode(BENTO_MODE_MOUSE); //Or `BENTO_MODE_KEYBOARD`
