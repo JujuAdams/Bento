@@ -139,26 +139,15 @@ function ExampleModal()
                                                                                     },
                                                                                 },
                                                                                 {
-                                                                                    object: oBentoExSpacer,
-                                                                                    layout: {
-                                                                                        padding: 40,
-                                                                                        gutter: 35,
-                                                                                        resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
-                                                                                        list: [BENTO_AXIS_X, 0.5, 0.5],
-                                                                                    },
-                                                                                    children: [
+                                                                                    object: oBentoExButton,
+                                                                                    vars: {
+                                                                                        text: "Close please",
+                                                                                        func: function()
                                                                                         {
-                                                                                            object: oBentoExButton,
-                                                                                            vars: {
-                                                                                                text: "Close please",
-                                                                                                func: function()
-                                                                                                {
-                                                                                                    BentoLayerDestroy("modal 2");
-                                                                                                },
-                                                                                            },
+                                                                                            BentoLayerDestroy("modal 2");
                                                                                         },
-                                                                                    ],
-                                                                                }
+                                                                                    },
+                                                                                },
                                                                             ],
                                                                         },
                                                                     ],

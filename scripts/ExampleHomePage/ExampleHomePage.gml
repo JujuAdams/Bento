@@ -162,6 +162,13 @@ function ExampleHomePage()
                 {
                     object: oBentoExButton,
                     vars: {
+                        text: $"Settings Menu",
+                        func: ExampleSettingsMenu,
+                    },
+                },
+                {
+                    object: oBentoExButton,
+                    vars: {
                         text: $"Context Menu",
                         func: ExampleContextMenu,
                     },
