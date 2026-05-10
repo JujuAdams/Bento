@@ -85,6 +85,13 @@ function ExampleHomePage()
                 {
                     object: oBentoExButton,
                     vars: {
+                        text: $"Manual Positions",
+                        func: ExampleManualPositions,
+                    },
+                },
+                {
+                    object: oBentoExButton,
+                    vars: {
                         text: $"Lists",
                         func: ExampleLists,
                     },

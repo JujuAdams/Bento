@@ -60,9 +60,7 @@ function BentoExConstrButton(_clickFunc = undefined, _text = "", _parent = other
         }
         
         // Draw a highlight over the button is the element is being hovered by the Bento system's cursor
-        // (which applies to both pointer-driven and directional input). Alternatively, if this is a tab
-        // button and this button cause a page to be opened by the tab group then we also highlight the
-        // button.
+        // (which applies to both pointer-driven and directional input)
         if (BentoCursorGetHover())
         {
             gpu_set_fog(true, c_white, 0, 0);
