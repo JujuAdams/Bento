@@ -13,7 +13,9 @@ Bento elements are the building blocks that your user interface is made from. El
 `BentoCreate()` should be used to create object instances. `BentoCreate()` creates an instance of an object and then sets it up for use with Bento. For example:
 
 ```gml
-element = BentoCreate(oBentoExText, { text: "Hello World!", font: fntBentoExCandyBeans }, BentoLayerGetRoot());
+element = BentoCreate(oBentoExText,
+	                  { text: "Hello World!", font: fntBentoExCandyBeans },
+	                  BentoLayerGetRoot());
 ```
 
 The parameters for this function call are doing three things: setting `oBentoExText` as the object to create an instance of, setting some variables on the instance prior to the Create event for the instance being run, and setting `BentoLayerGetRoot()` as the Bento element to use as the parent for the new instance of `oBentoExText`. Please note that all objects that are going to be used with Bento should inherit from `oBentoAncestor`.
@@ -82,6 +84,8 @@ IStructs don't have user events in GML. Instead, Bento has a special callback me
 | `3`        | `.eventDrawHover`   | Only called when an element is hovered. Called after all sibling children but before resetting GPU scissoring for a layout ancestor            | Drawing highlights on and around hovered elements, especially when in directional mode      |
 | `4`        | `.eventDrawDragged` | Only called when an element is being dragged in the drag-and-drop system and at the very end of the draw loop after all other elements         | Drawing a drag-and-drop item above all other elements                                       |
 | `5`        | `.eventReposition`  | Called whenever an element's layout position or layout size changes. This event will also be called when a drag-and-drop item is being dragged | Resetting properties (such as `image_xscale`) that rely on the size and shape of an element |
+
+?> You should **not** definte callback methods as `static`. The callback methods should be scoped to the struct and set as normal variables.
 
 Exactly how you use these callbacks is up to you. Here's an example of a text button that shows a common basic use:
 
