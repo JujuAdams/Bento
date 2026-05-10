@@ -10,7 +10,7 @@ Bento uses a [tree](Topic-Principles) to organise your user interface. Elements 
 
 As part of the aforementioned fancy layout system, each element can have a "layout type". Elements that have a layout type will set the position of their children. For manual positioning, we don't want this. To position elements manually, you must make sure to set the layout type of an element's parent to `BENTO_LAYOUT_RECT`. This will cause the parent to be a simple rectangle container.
 
-There are two functions available to set the position of an element, `BentoSetOffset()` and `BentoSetPosition()`.
+There are two functions available to set the position of an element, `BentoSetOffset()` and `BentoSetPosition()` Please read on for further information.
 
 &nbsp;
 
