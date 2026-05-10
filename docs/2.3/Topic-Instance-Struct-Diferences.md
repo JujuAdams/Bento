@@ -162,7 +162,7 @@ function BentoExConstrButton(_text = "", _clickFunc = undefined, _parent = other
         //Reset the draw colour
         draw_set_alpha(c_white);
         
-        // Draw a highlight over the button is the element is being hovered
+        //Draw a highlight over the button if the element is being hovered
         if (BentoCursorGetHover())
         {
 	    	draw_set_alpha(0.5);
