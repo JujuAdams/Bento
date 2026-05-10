@@ -522,10 +522,18 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             }
         }
         
+        //Collect offset and position (if they exist)
+        var _offset   = _json[$ "offset"];
+        var _position = _json[$ "position"];
+        
         //Offset the element
-        var _offset = _json[$ "offset"];
         if (_offset != undefined)
         {
+            if (_position != undefined)
+            {
+                __BentoError($".offset and .position are mutually exclusive");
+            }
+            
             if (is_array(_offset))
             {
                 if (array_length(_offset) != 2)
@@ -542,6 +550,33 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             else
             {
                 __BentoError($".offset property must be a 2-element array or a struct (typeof \"{typeof(_offset)}\")");
+            }
+        }
+        
+        //Set element position
+        if (_position != undefined)
+        {
+            if (_offset != undefined)
+            {
+                __BentoError($".offset and .position are mutually exclusive");
+            }
+            
+            if (is_array(_position))
+            {
+                if (array_length(_position) != 2)
+                {
+                    __BentoError($".position property must have 2 elements if it is an array (length = {array_length(_position)})");
+                }
+                
+                BentoSetPosition(_position[0], _position[1], _element);
+            }
+            else if (is_struct(_position))
+            {
+                BentoSetPosition(_position[$ "x"], _position[$ "y"], _element);
+            }
+            else
+            {
+                __BentoError($".position property must be a 2-element array or a struct (typeof \"{typeof(_position)}\")");
             }
         }
         
