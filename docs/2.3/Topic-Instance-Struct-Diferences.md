@@ -51,11 +51,11 @@ Basically this is what's happening:
 ```gml
 with(mainMenu)
 {
-    var _mainMenu = self;
+    var _desiredParent = self;
 
 	with(aNewStruct)
 	{
-		var _alsoMainMenu = other;
+		var _alsoTheDesiredParent = other;
 	}
 }
 ```
