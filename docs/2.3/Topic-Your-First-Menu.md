@@ -4,7 +4,7 @@
 
 This page will go through the steps required to draw your very first menu. From this guide you'll learn the basic functions needed to set up Bento update and rendering as well as creating simple interactible elements.
 
-This article will use the "list" layout type as that's a particularly useful Bento feature. However, you're welcome to [manually position elements](Topic-Basic-Positioning) and use Bento in your own way.
+?> This article will use the "list" layout type as that's a particularly useful Bento feature. However, you're welcome to [manually position elements](Topic-Basic-Positioning) and use Bento in your own way.
 
 &nbsp;
 
@@ -175,6 +175,8 @@ with(BentoLayerGetRoot())
 ```
 
 Run the game again and you'll see three buttons laid out in a vertical line in the centre of the game window. If you swap to using the keyboard or a gamepad then you will be able to navigate between buttons by using the thumbstick or arrow keys.
+
+?> Whilst the "list" layout is a particularly useful Bento feature, you're welcome to [manually position elements](Topic-Basic-Positioning) and use Bento in your own way.
 
 &nbsp;
 
