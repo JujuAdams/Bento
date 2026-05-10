@@ -6,11 +6,11 @@
 /// the parent element (minus any padding on the parent).
 /// 
 /// To that end, this function allows you to specify where within the available space the element
-/// is positioned. `hAlign` and `vAlign` should be a value between `0` and `1`. If you choose a
-/// value of `0`, that will align an element to the left or the top of the available space. If you
-/// choose a value of `1`, that will align an element to the right or the bottom. A value of `0.5`
-/// therefore is the center or middle of the available space. You may pass `undefined` as either
-/// parameter to not change the existing value.
+/// is positioned. `x` and `y` should be a value between `0` and `1`. If you choose a value of `0`,
+/// that will align an element to the left or the top of the available space. If you choose a value
+/// of `1`, that will align an element to the right or the bottom. A value of `0.5` therefore is
+/// the center or middle of the available space. You may pass `undefined` as either parameter to
+/// not change the existing value.
 ///  
 /// If you have set the resize type for a particular axis to `BENTO_RESIZE_INFLATE` then alignment
 /// will usually have no effect - the element will occupy 100% of the available space. However, if

@@ -1,6 +1,7 @@
 // Feather disable all
 
-/// Sets the baseline size for an element.
+/// Sets the baseline width and height for an element. You may use a value of `undefined` to
+/// indicate that a value in a particular axis should not be changed from its current value.
 /// 
 /// @param [width]
 /// @param [height]
