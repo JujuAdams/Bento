@@ -86,21 +86,21 @@ function ExampleHomePageJSON()
                     object: oBentoExButton,
                     vars: {
                         text: $"Manual Positions",
-                        func: ExampleManualPositionsJSON,
+                        func: ExampleManualPositions,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Lists",
-                        func: ExampleListsJSON,
+                        func: ExampleLists,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Reorder Lists",
-                        func: ExampleReorderListsJSON,
+                        func: ExampleReorderLists,
                     },
                 },
                 {
