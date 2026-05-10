@@ -4,6 +4,8 @@
 
 This page will go through the steps required to draw your very first menu. From this guide you'll learn the basic functions needed to set up Bento update and rendering as well as creating simple interactible elements.
 
+This article will use the "list" layout type as that's a particularly useful Bento feature. However, you're welcome to [manually position elements](Topic-Basic-Positioning) and use Bento in your own way.
+
 &nbsp;
 
 ## 1. Import Bento into a new project
