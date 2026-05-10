@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Bento elements are the building blocks that your user interface is made from. Elements can be either [object instances](https://manual.gamemaker.io/beta/en/Quick_Start_Guide/Objects_And_Instances.htm) or [structs](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Structs.htm). By and large I expect Bento developers will prefer to use object instances for consistency with the prevailing expectations of a GameMaker developer in general. However, structs have advantages and are likely to be more useful for large, long-term projects. This article will explain the differences between instances and structs to aid in converting from one methodology to the other.
+Bento elements are the building blocks that your user interface is made from. Elements can be either [object instances](https://manual.gamemaker.io/beta/en/Quick_Start_Guide/Objects_And_Instances.htm) or [structs](https://manual.gamemaker.io/lts/en/GameMaker_Language/GML_Overview/Structs.htm). By and large I expect Bento developers will prefer to use object instances for consistency with the prevailing expectations of a GameMaker developer. However, structs have advantages and are likely to be more useful for large, long-term projects. This article will explain the differences between instances and structs to aid in converting from one methodology to the other.
 
 &nbsp;
 
