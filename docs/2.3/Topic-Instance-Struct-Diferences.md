@@ -46,7 +46,7 @@ Here we're grabbing two parameters (`_text` and `_font`) and then passing them d
 
 Basically this is what's happening:
 
-```
+```gml
 with(mainMenu)
 {
     var _mainMenu = self;
@@ -57,6 +57,8 @@ with(mainMenu)
 	}
 }
 ```
+
+Because we want the parent for the new struct to the thing that created it, that means we set the default value for `_parent` to be `other`.
 
 &nbsp;
 
