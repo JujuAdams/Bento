@@ -58,6 +58,12 @@ with(mainMenu)
 
 &nbsp;
 
+## `image_alpha`
+
+For compatibility with Bento's native animation system, structs that inherit from `BentoConstrAncestor` have `image_alpha` set on them. This is initialised to `1` much like a standard GameMaker object index. You are welcome to set and get this variable as you would with an object instance.
+
+&nbsp;
+
 ## User Events vs. Callbacks
 
 Bento instances use a system of user events to execute behaviours when necessary. These user events are executed downstream of `BentoSystemUpdate()` and `BentoSystemDraw()`. You can read more about user events [here](Topic-User-Events).
