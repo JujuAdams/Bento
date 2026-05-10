@@ -6,7 +6,7 @@ Bento comes with a powerful and fancy procedural layout system that helps you or
 
 GameMaker developers are used to positioning user interface elements manually and Bento allows you to work this way as well. Positioning elements manually is a key feature. Keyboard and gamepad navigation will work regardless of how you lay out your elements.
 
-Bento uses a [tree](Topic-Principles) to organise your user interface. Elements are children of elements are children of ... you get the picture. Importantly for this particular article, **children are positioned relative to their parent**. All child positions are internally defined are relative to their parent and if the parent moves then the child moves by the same amount.
+Bento uses a [tree](Topic-Principles) to organise your user interface. Elements may be children of elements recursively. Of particular note for this article is that **children are positioned relative to their parent**. All child positions are internally defined are relative to their parent and if the parent moves then the child moves by the same amount.
 
 As part of the aforementioned fancy layout system, each element can have a "layout type". Elements that have a layout type will set the position of their children. For manual positioning, we don't want this. To position elements manually, you must make sure to set the layout type of an element's parent to `BENTO_LAYOUT_RECT`. This will cause the parent to be a simple rectangle container.
 
