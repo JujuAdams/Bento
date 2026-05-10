@@ -64,7 +64,7 @@ Because we want the parent for the new struct to the thing that created it, that
 
 &nbsp;
 
-## `image_alpha`
+## image_alpha
 
 For compatibility with Bento's native animation system, structs that inherit from `BentoConstrAncestor` have `image_alpha` set on them. This is initialised to `1` much like a standard GameMaker object index. You are welcome to set and get this variable as you would with an object instance.
 
