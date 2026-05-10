@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleButtons",
+  "%Name":"ExampleScrollingListJSON",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleButtons",
+  "name":"ExampleScrollingListJSON",
   "parent":{
-    "name":"Procedural",
-    "path":"folders/Project Examples/Procedural.yy",
+    "name":"JSON",
+    "path":"folders/Project Examples/JSON.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

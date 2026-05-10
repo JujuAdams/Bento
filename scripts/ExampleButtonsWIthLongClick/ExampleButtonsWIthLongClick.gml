@@ -4,6 +4,49 @@ function ExampleButtonsWithLongClick()
 {
     with(oMain)
     {
+        BentoDestroy(mainElement);
+        
+        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        with(mainElement)
+        {
+            BentoLayoutSetPadding(40);
+            BentoLayoutSetGutter(35, 35);
+            BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+            BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
+            
+            with(BentoCreate(oBentoExSpacer))
+            {
+                BentoLayoutSetGutter(35, 35);
+                BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
+                BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
+                
+                BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Long-Click Buttons" });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+            }
+            
+            BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "Buttons typical activate once when clicked. However, for some use cases you may want to allow players to activate a behaviour (typically a secondary behaviour) when a button is pressed and held for longer than a normal click." });
+            
+            with(BentoCreate(oBentoExSpacer))
+            {
+                BentoLayoutSetGutter(20, 20);
+                BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
+                BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
+                
+                with(BentoCreate(oBentoExButtonWithLongClick, { text: "Button with long click" }))
+                {
+                    BentoHover(self);
+                }
+                
+                BentoCreate(oBentoExButton, { text: "Standard button" });
+            }
+        }
+    }
+}
+
+function ExampleButtonsWithLongClickJSON()
+{
+    with(oMain)
+    {
         var _json = {
             object: oBentoExSpacer,
             layout: {
@@ -31,7 +74,7 @@ function ExampleButtonsWithLongClick()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePage,
+                                func: ExampleHomePageJSON,
                             },
                         },
                     ],

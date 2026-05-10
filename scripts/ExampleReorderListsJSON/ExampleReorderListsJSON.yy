@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleButtons",
+  "%Name":"ExampleReorderListsJSON",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleButtons",
+  "name":"ExampleReorderListsJSON",
   "parent":{
-    "name":"Procedural",
-    "path":"folders/Project Examples/Procedural.yy",
+    "name":"JSON",
+    "path":"folders/Project Examples/JSON.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
