@@ -13,8 +13,8 @@
 /// 
 /// @param [element=self]
 
-function BentoCursorGetEnterByNavigation(_element = self)
+function BentoCursorGetEnterByPlayer(_element = self)
 {
     if (not BentoExists(_element)) return false;
-    return _element.BENTO_VARS.__byNavigation;
+    return _element.BENTO_VARS.__byPlayer;
 }

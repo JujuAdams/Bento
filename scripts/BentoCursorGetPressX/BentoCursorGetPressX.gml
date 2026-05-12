@@ -10,7 +10,7 @@ function BentoCursorGetPressX(_layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        return __navPointer? __pointerPressX : __directionalLastX;
+        return __inputModePointer? __pointerPressX : __directionalLastX;
     }
     
     return 0;

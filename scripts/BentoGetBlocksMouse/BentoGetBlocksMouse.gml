@@ -25,7 +25,7 @@ function BentoGetBlocksMouse(_environmentName = undefined)
     {
         with(__layerCurrent)
         {
-            if (not __navPointer) return false;
+            if (not __inputModePointer) return false;
             
             var _focusType = (__focusTop != undefined)? __focusTop.BENTO_VARS.__focusType : BENTO_FOCUS_POINTER_IGNORE;
             if ((_focusType != BENTO_FOCUS_POINTER_IGNORE) && (_focusType != BENTO_FOCUS_POINTER_CANCEL_ALWAYS))

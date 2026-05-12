@@ -17,11 +17,11 @@ function __BentoEnsureStepOrder()
     var _rootElement = __GetFocusRoot();
     if (BentoExists(_rootElement))
     {
-        __BentoEnsureStepOrderInner(self, __stepOrder, _rootElement.BENTO_VARS, __navPointer? BENTO_BUTTON_POINTER : BENTO_BUTTON_DIRECTIONAL);
+        __BentoEnsureStepOrderInner(self, __stepOrder, _rootElement.BENTO_VARS, __inputModePointer? BENTO_BUTTON_POINTER : BENTO_BUTTON_DIRECTIONAL);
     }
 }
 
-function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _navType)
+function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _inputModeType)
 {
     with(_elementVars)
     {
@@ -49,7 +49,7 @@ function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _navType)
             var _i = 0;
             repeat(array_length(_array))
             {
-                __BentoEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType);
+                __BentoEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _inputModeType);
                 ++_i;
             }
             
@@ -73,7 +73,7 @@ function __BentoEnsureStepOrderInner(_layer, _stepOrder, _elementVars, _navType)
             var _i = 0;
             repeat(array_length(_array))
             {
-                __BentoEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _navType);
+                __BentoEnsureStepOrderInner(_layer, _stepOrder, _array[_i], _inputModeType);
                 ++_i;
             }
         }

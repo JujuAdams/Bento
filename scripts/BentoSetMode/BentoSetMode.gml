@@ -35,13 +35,13 @@ function BentoSetMode(_newMode, _environmentOrName = undefined)
     
     with(_environment)
     {
-        if (_newMode == __envNavMode) return;
+        if (_newMode == __envInputMode) return;
         
-        __envNavMode = _newMode;
+        __envInputMode = _newMode;
         
         if (BENTO_DEBUG_LEVEL >= 1)
         {
-            __BentoTrace($"Input mode for environment {__BentoGetStructPointer(self)} set to {__BentoGetInputModeName(__envNavMode)}");
+            __BentoTrace($"Input mode for environment {__BentoGetStructPointer(self)} set to {__BentoGetInputModeName(__envInputMode)}");
         }
         
         with(__layerCurrent)

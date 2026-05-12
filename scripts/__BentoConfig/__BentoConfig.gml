@@ -8,7 +8,7 @@
 
 // Which input mode to default to when running on desktop platforms. Must be a `BENTO_MODE_*`
 // constant.
-#macro BENTO_DESKTOP_DEFAULT_NAV_MODE  BENTO_MODE_MOUSE
+#macro BENTO_DESKTOP_DEFAULT_INPUT_MODE  BENTO_MODE_MOUSE
 
 // Whether the primary action should trigger a click on press rather than on release when using a
 // pointer. This won't apply if an element has a parent that is scrollable.
@@ -73,7 +73,7 @@
 #macro BENTO_DEFAULT_SCROLL_SPEED  7
 
 // Whether clicking and dragging on a scrollable element should scroll in the `BENTO_MODE_MOUSE`
-// nav mode.
+// input mode.
 #macro BENTO_SCROLL_ON_MOUSE_DRAG  true
 
 // Padding between the edge of an element and the edge of the clipping window. This will be applied

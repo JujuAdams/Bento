@@ -24,11 +24,11 @@ function __BentoEnsureHoverableOrder()
             var _carryItemVars = undefined;
         }
         
-        if (__navPointer)
+        if (__inputModePointer)
         {
             __BentoEnsureHoverableOrderInnerPointer(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount, _carryItemVars, _carryChannel);
         }
-        else if (__navDirectional)
+        else if (__inputModeDirectional)
         {
             __BentoEnsureHoverableOrderInnerDirectional(__hoverableOrder, _rootElement.BENTO_VARS, __hoverableRegenCount, _carryItemVars, _carryChannel);
         }
@@ -60,7 +60,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
             }
         }
         
-        //Enclose our children if the enclose type matches the nav type
+        //Enclose our children if the enclose type matches the input mode
         var _anyChildButton = false;
         var _childHoverableIndex = ((not __focused) && (__focusEncloseType & BENTO_ENCLOSE_POINTER))? undefined : _hoverableIndex;
         
@@ -109,7 +109,7 @@ function __BentoEnsureHoverableOrderInnerDirectional(_hoverableOrder, _elementVa
             __enclosed = (_hoverableIndex == undefined);
         }
         
-        //Enclose our children if the enclose type matches the nav type
+        //Enclose our children if the enclose type matches the input mode
         var _anyChildButton = false;
         var _childHoverableIndex = ((not __focused) && (__focusEncloseType & BENTO_ENCLOSE_DIRECTIONAL))? undefined : _hoverableIndex;
         

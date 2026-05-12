@@ -24,5 +24,5 @@ function BentoUsingMouse(_layerOrName = undefined, _environmentOrName = undefine
         }
     }
     
-    return (_layer.__navMode == BENTO_MODE_MOUSE);
+    return (_layer.__inputMode == BENTO_MODE_MOUSE);
 }

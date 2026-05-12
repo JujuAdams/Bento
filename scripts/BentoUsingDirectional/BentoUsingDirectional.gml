@@ -24,5 +24,5 @@ function BentoUsingDirectional(_layerOrName = undefined, _environmentOrName = un
         }
     }
     
-    return _layer.__navDirectional;
+    return _layer.__inputModeDirectional;
 }

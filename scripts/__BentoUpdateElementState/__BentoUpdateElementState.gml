@@ -14,7 +14,7 @@ function __BentoUpdateElementState()
             var _element = __attachedElement;
             if (not BentoExists(_element)) return false;
             
-            if (other.__navDirectional)
+            if (other.__inputModeDirectional)
             {
                 if (__clickTiming != undefined)
                 {
@@ -39,7 +39,7 @@ function __BentoUpdateElementState()
                 }
                 else
                 {
-                    var _clickOnPress = (other.__navPointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__navMode == BENTO_MODE_TOUCH)));
+                    var _clickOnPress = (other.__inputModePointer && (BENTO_POINTER_CLICK_ON_PRESS || (other.__inputMode == BENTO_MODE_TOUCH)));
                 }
             }
             
@@ -75,8 +75,8 @@ function __BentoUpdateElementState()
             
             if (__hoverState != __BENTO_STATE_START)
             {
-                //Reset the "by navigation" state
-                __byNavigation = false;
+                //Reset the "by player" state
+                __byPlayer = false;
             }
             
             ///////
@@ -140,7 +140,7 @@ function __BentoUpdateElementState()
                         &&  (other.__primaryState == __BENTO_STATE_END)
                         &&  (not other.__pointerScrolled))
                         {
-                            if (other.__navMode == BENTO_MODE_TOUCH)
+                            if (other.__inputMode == BENTO_MODE_TOUCH)
                             {
                                 //Because we set the mouse x/y position to large negative numbers before running this function, the
                                 //hover state for the held element will always be in the leaving (END) state.
@@ -168,10 +168,10 @@ function __BentoUpdateElementState()
             
             //Scrolling when in directional input mode is handled when an element is hovered
             
-            if (other.__navPointer && (__hoverState & __BENTO_STATE_START))
+            if (other.__inputModePointer && (__hoverState & __BENTO_STATE_START))
             {
                 if (other.__pointerTravelled
-                &&  ((BENTO_SCROLL_ON_MOUSE_DRAG || (other.__navMode == BENTO_MODE_TOUCH)) && (__primaryState == __BENTO_STATE_ON)))
+                &&  ((BENTO_SCROLL_ON_MOUSE_DRAG || (other.__inputMode == BENTO_MODE_TOUCH)) && (__primaryState == __BENTO_STATE_ON)))
                 {
                     //Click & drag
                     

@@ -86,13 +86,12 @@
 //Child elements are always enclosed and cannot be interacted with unless the parent is focused.
 #macro BENTO_ENCLOSE_ALWAYS  0b11
 
-//Child elements are enclosed in directional navigation modes only. Pointer navigation modes will
-//be able to hover elements freely. This is useful for scrollboxes.
+//Child elements are enclosed in directional input modes only. Pointer input modes willbe able to
+//hover elements freely. This is useful for scrollboxes.
 #macro BENTO_ENCLOSE_DIRECTIONAL  0b10
 
-//Child elements are enclosed in pointer navigation modes only. Directional navigation modes will
-//be able to hover elements freely. This is probably never useful and is provided only for
-//completeness.
+//Child elements are enclosed in pointer input modes only. Directional input modes will be able to
+//hover elements freely. This is probably never useful and is provided only for completeness.
 #macro BENTO_ENCLOSE_POINTER  0b01
 
 ///////

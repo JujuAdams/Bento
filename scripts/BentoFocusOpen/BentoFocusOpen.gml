@@ -1,9 +1,9 @@
 // Feather disable all
 
 /// Starts focusing on an element. Generally speaking, only the focused element or descendents of
-/// the focused element will be hoverable. This will completely restrict interaction and navigation
-/// inside the focused container. This is especially helpful for setting up contextual regions of
-/// the user interface without needing to create and manage new layers.
+/// the focused element will be hoverable. This will completely restrict interaction inside the
+/// focused container. This is especially helpful for setting up contextual regions of the user
+/// interface without needing to create and manage new layers.
 /// 
 /// You must specify a particular focus type which controls how the element focus interacts with
 /// the pointer. All focus types will restrict the what elements can be hovered in directional
@@ -49,7 +49,7 @@ function BentoFocusOpen(_focusType, _element = self)
         
         //If the player is using a pointer but we want to always cancel focus when using a pointer
         //then sort that out
-        if (_layer.__navPointer && (_focusType == BENTO_FOCUS_POINTER_CANCEL_ALWAYS))
+        if (_layer.__inputModePointer && (_focusType == BENTO_FOCUS_POINTER_CANCEL_ALWAYS))
         {
             BentoFocusClose(_element);
             return;

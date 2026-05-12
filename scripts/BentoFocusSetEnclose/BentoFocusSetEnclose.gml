@@ -12,13 +12,13 @@
 ///     focused.
 /// 
 /// `BENTO_ENCLOSE_DIRECTIONAL`  
-///     Child elements are enclosed in directional navigation modes only. Pointer navigation modes
-///     will be able to select elements freely. This is useful for scrollboxes.
+///     Child elements are enclosed in directional input modes only. Pointer input modes modes will
+///     be able to select elements freely. This is useful for scrollboxes.
 /// 
 /// `BENTO_ENCLOSE_POINTER` 
-///     Child elements are enclosed in pointer navigation modes only. Directional navigation modes
-///     will be able to select elements freely. This is probably never useful and is provided only
-///     for completeness.     
+///     Child elements are enclosed in pointer input modes modes only. Directional input modes
+///     modes will be able to select elements freely. This is probably never useful and is provided
+///     only for completeness.     
 /// 
 /// The enclose feature is useful for scrollboxes where you want the contents to be hoverable and
 /// clickable when using pointer input but inaccessible when using directional input. In this

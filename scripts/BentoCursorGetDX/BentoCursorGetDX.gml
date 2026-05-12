@@ -16,11 +16,11 @@ function BentoCursorGetDX(_directionalThreshold = 0.001, _layerOrName = undefine
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        if (__navPointer)
+        if (__inputModePointer)
         {
             return (__pointerPrimaryState & __BENTO_STATE_START)? (__pointerX - __pointerPrevX) : 0;
         }
-        else if (__navDirectional)
+        else if (__inputModeDirectional)
         {
             var _output = __turboState.__outputX;
             return (abs(_output) < _directionalThreshold)? 0 : _output;

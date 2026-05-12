@@ -13,7 +13,7 @@ function __BentoGetDirectionalNearest(_x, _y, _exclude)
     var _layer = _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
     
-    if (not _layer.__navDirectional)
+    if (not _layer.__inputModeDirectional)
     {
         __BentoError("Can only use `__BentoGetDirectionalNearest()` in directional mode");
     }

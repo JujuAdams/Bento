@@ -5,7 +5,7 @@
 /// works when the input mode is set to `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD`.
 /// 
 /// Hovering an element in this way will not count as entering by navigation. This means that
-/// `BentoCursorGetEnterByNavigation()` will return `false`.
+/// `BentoCursorGetEnterByPlayer()` will return `false`.
 /// 
 /// @param element
 /// @param [layerOrName=current]
@@ -14,7 +14,7 @@ function BentoHoverSoft(_element, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        if (__navDirectional)
+        if (__inputModeDirectional)
         {
             __hoverElementSoft = _element;
         }

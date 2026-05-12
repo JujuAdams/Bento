@@ -40,7 +40,7 @@ if (_length > 0)
             }
         }
         
-        if (BentoCursorGetEnterByNavigation())
+        if (BentoCursorGetEnterByPlayer())
         {
             audio_play_sound(sndBentoExBlip, 0, false);
         }

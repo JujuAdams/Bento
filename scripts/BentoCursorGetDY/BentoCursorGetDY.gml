@@ -16,11 +16,11 @@ function BentoCursorGetDY(_directionalThreshold = 0.001, _layerOrName = undefine
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        if (__navPointer)
+        if (__inputModePointer)
         {
             return (__pointerPrimaryState & __BENTO_STATE_START)? (__pointerY - __pointerPrevY) : 0;
         }
-        else if (__navDirectional)
+        else if (__inputModeDirectional)
         {
             var _output = __turboState.__outputY;
             return (abs(_output) < _directionalThreshold)? 0 : _output;

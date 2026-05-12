@@ -24,5 +24,5 @@ function BentoUsingKeyboard(_layerOrName = undefined, _environmentOrName = undef
         }
     }
     
-    return (_layer.__navMode == BENTO_MODE_KEYBOARD);
+    return (_layer.__inputMode == BENTO_MODE_KEYBOARD);
 }

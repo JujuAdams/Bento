@@ -3,22 +3,22 @@
 /// Hover an element (if possible). This function only works when the input mode is set to
 /// `BENTO_MODE_KEYBOARD` or `BENTO_MODE_GAMEPAD` on the layer in question.
 /// 
-/// The optional `byNavigation` parameter determines whether `BentoCursorGetEnterByNavigation()`
-/// will return `true`.
+/// The optional `byPlayer` parameter determines whether `BentoCursorGetEnterByPlayer()` will
+/// return `true`.
 /// 
 /// @param element
-/// @param [byNavigation=false]
+/// @param [byPlayer=false]
 /// @param [layerOrName=current]
 
-function BentoHover(_element, _byNavigation = false, _layerOrName = undefined)
+function BentoHover(_element, _byPlayer = false, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        if (__navDirectional)
+        if (__inputModeDirectional)
         {
             if (__BentoGetHoverableInternal(_element, false))
             {
-                __BentoSetHover(_element, _byNavigation);
+                __BentoSetHover(_element, _byPlayer);
                 __hoverElementSoft = BENTO_NO_ELEMENT;
             }
             else
@@ -39,7 +39,7 @@ function __BentoHoverInternal(_element)
 {
     with(__BentoLayerEnsure(undefined))
     {
-        if (__navDirectional)
+        if (__inputModeDirectional)
         {
             if (__BentoGetHoverableInternal(_element, false))
             {
