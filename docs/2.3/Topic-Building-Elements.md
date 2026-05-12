@@ -58,7 +58,7 @@ You may override the default origin behaviour (using the origin of `sprite_index
 
 ### Events
 
-Bento uses a system of custom user events to structure when and how code is executed. Bento elements that are object instances will still obey all the normal rules of object instances, however. The Create event is often essential to set up your Bento element but using Bento's custom event structure you'll find that most other native GameMaker events aren't helpful. At any rate, These user events are:
+Bento uses a system of custom user events to structure when and how code is executed. Bento elements that are object instances will still obey all the normal rules of object instances, however. The Create event is often essential to set up your Bento element but using Bento's custom event structure you'll find that most other native GameMaker events aren't helpful. You can read up on user events in more detail [on this page](Topic-User-Events). At any rate, Bento's user events are:
 
 | User Event | Bento Name     | Native Equivalent | Behaviour                                                                                                                                      | Usage                                                                                       |
 |------------|----------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
