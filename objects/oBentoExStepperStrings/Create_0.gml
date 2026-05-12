@@ -51,6 +51,7 @@ BentoVarEnsureMany(
     "text",        "Example",
     "font",        fntBentoExCandyBeans,
     "useFocus",    true,
+    "showMarkers", true,
     "func",        function(){},
 );
 
@@ -73,6 +74,11 @@ draw_set_font(font);
 
 var _width  = string_width(text);
 var _height = string_height(text);
+
+if (showMarkers)
+{
+    _height += 30;
+}
 
 var _optionWidth  = 0;
 var _optionHeight = 0;

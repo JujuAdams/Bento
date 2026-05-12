@@ -69,7 +69,13 @@ function ExampleStepperStringsJSON()
                     },
                 },
                 {
-                    construct: [BentoExConstrStepperStrings, BentoRef(global, "stepperStringsExample"), ["red", "purple", "blue", "green", "yellow"], "Colour Selection\n(but backwards)"],
+                    hover: true,
+                    object: oBentoExStepperStrings,
+                    vars: {
+                        text: "Backwards Selection",
+                        stringArray: ["red", "purple", "blue", "green", "yellow"],
+                        reference: BentoRef(global, "stepperStringsExample"),
+                    },
                 },
             ],
         };
