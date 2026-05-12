@@ -140,7 +140,7 @@ function ExampleSettingsMenu()
             with(BentoCreate(oBentoExSpacer))
             {
                 BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
-                BentoLayoutList(BENTO_AXIS_X, 0, 0);
+                BentoLayoutList(BENTO_AXIS_X, 0, 0.5);
                 
                 BentoCreate(oBentoExStepperStrings, {
                     text: "Sailor Scout",
