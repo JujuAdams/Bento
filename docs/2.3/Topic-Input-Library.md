@@ -25,7 +25,7 @@ Below is a suggested list of verbs and cluster to add to `__InputConfigVerbs`. W
 
 We also map `INPUT_VERB.UI_CANCEL` to `vk_escape` when using a mouse and/or keyboard. We can still use keyboard hotkeys even if we're using `BENTO_MODE_MOUSE`. `INPUT_VERB.UI_ACCEPT` is further mapped to `vk_space`. However, this mapping is only revelant if you've decided `INPUT_KBM` maps to `BENTO_MODE_KEYBOARD`. `INPUT_VERB.UI_ACCEPT` is otherwise ignored when using the mouse input mode.
 
-Finally, we define a cluster. This cluster presumes you're using standard Input directional verbs. If not, you'll need to make the necessary adjustments to the verb names.
+Finally, we define a cluster. This cluster presumes you're using standard Input navigation verbs. If not, you'll need to make the necessary adjustments to the verb names.
 
 ```gml
 /// __InputConfigVerbs
@@ -91,7 +91,7 @@ if (BentoUsingPointer())
 }
 else
 {
-	BentoInputDirectional(InputX(INPUT_CLUSTER.UI_NAVIGATION), InputY(INPUT_CLUSTER.UI_NAVIGATION), InputCheck(INPUT_VERB.UI_ACCEPT);
+	BentoInputNavigation(InputX(INPUT_CLUSTER.UI_NAVIGATION), InputY(INPUT_CLUSTER.UI_NAVIGATION), InputCheck(INPUT_VERB.UI_ACCEPT);
 }
 
 //3. Set hotkeys based on further verb state

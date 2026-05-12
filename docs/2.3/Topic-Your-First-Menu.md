@@ -213,14 +213,14 @@ else
     {
         var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
         var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
-        BentoInputDirectional(_dX, _dY, keyboard_check(vk_space));
+        BentoInputNavigation(_dX, _dY, keyboard_check(vk_space));
     }
     else if (BentoUsingGamepad() && gamepad_is_connected(0))
     {
         //Only scan gamepad 0 for input. This is good enough for an example
         var _dX = gamepad_axis_value(0, gp_axislh) + (gamepad_button_check(0, gp_padr) - gamepad_button_check(0, gp_padl));
         var _dY = gamepad_axis_value(0, gp_axislv) + (gamepad_button_check(0, gp_padd) - gamepad_button_check(0, gp_padu));
-        BentoInputDirectional(_dX, _dY, gamepad_button_check(0, gp_face1));
+        BentoInputNavigation(_dX, _dY, gamepad_button_check(0, gp_face1));
     }
 }
 

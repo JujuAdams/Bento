@@ -4,12 +4,12 @@
 
 Bento supports four different **input modes**:
 
-| Input Mode | Constant              | Pointer | Directional | Prefer click-on-press |
-|------------|-----------------------|---------|-------------|-----------------------|
-| Mouse      | `BENTO_MODE_MOUSE`    | Yes     | No          | No                    |
-| Touch      | `BENTO_MODE_TOUCH`    | Yes     | No          | Yes                   |
-| Keyboard   | `BENTO_MODE_KEYBOARD` | No      | Yes         | Yes                   |
-| Gamepad    | `BENTO_MODE_GAMEPAD`  | No      | Yes         | Yes                   |
+| Input Mode | Constant              | Pointer | Navigation | Prefer click-on-press |
+|------------|-----------------------|---------|------------|-----------------------|
+| Mouse      | `BENTO_MODE_MOUSE`    | Yes     | No         | No                    |
+| Touch      | `BENTO_MODE_TOUCH`    | Yes     | No         | Yes                   |
+| Keyboard   | `BENTO_MODE_KEYBOARD` | No      | Yes        | Yes                   |
+| Gamepad    | `BENTO_MODE_GAMEPAD`  | No      | Yes        | Yes                   |
 
 Bento will initialize using a suitable input mode for your game depending on what target platform you're using:
 
@@ -26,7 +26,7 @@ Bento will initialize using a suitable input mode for your game depending on wha
 
 You may change input mode at any time by calling `BentoSetMode()` and you can return the current mode by calling `BentoGetMode()`. You may also call the various `BentoUsing*()` functions to return what input mode is being using in a semantically convenient way.
 
-Input modes are split into two broader categories: "pointer" and "directional". Pointer input modes - that's mouse and touch input - chiefly use a pointer to interact with a user interface. Directional input modes - gamepad and keyboard - instead use a virtual cursor to navigate around an interface. Bento supports both and for basic operation you do not need to differentiate between pointer input and directional input when writing code using Bento.
+Input modes are split into two broader categories: "pointer" and "navigation". Pointer input modes - that's mouse and touch input - chiefly use a pointer to interact with a user interface. Navigation input modes - gamepad and keyboard - instead use a virtual cursor to navigate around an interface. Bento supports both and for basic operation you do not need to differentiate between pointer input and navigation input when writing code using Bento.
 
 Bento also respects typical UX practices when it comes to clicking (or "activating" etc.) user interface elements. When using a mouse, it is usually the case that a button is only considered "clicked" when the mouse button is released. However, on a touchscreen and when using a gamepad or keyboard, it's usually the case that a button is "clicked" when pressed rather than released. As such, Bento will treat user interface elements as clicked in different ways depending on the input mode.
 
@@ -40,7 +40,7 @@ Bento also respects typical UX practices when it comes to clicking (or "activati
 
 The centre of Bento's input system is "primary input". What a primary input is depends on your input mode and possibly even custom bindings. Speaking broadly, primary input is a mouse click, a finger press on a touch screen, the `A` button on a gamepad, or the spacebar on a keyboard. A primary input is a player communicating with a physical action "I want to select this thing that is highlighted on the screen". Bento also supports additonal inputs, called hotkeys, but primary input is where most of the action is.
 
-Bento uses an "input funnel" pattern to collect player input and then process it. Practically, this means you will need to call `BentoInputPointer()` or `BentoInputDirectional()` depending on the input mode. You will also want to call `BentoInputHotkey()` to collect input in addition to the primary input. You should call these functions before `BentoSystemStep()`, usually every step.
+Bento uses an "input funnel" pattern to collect player input and then process it. Practically, this means you will need to call `BentoInputPointer()` or `BentoInputNavigation()` depending on the input mode. You will also want to call `BentoInputHotkey()` to collect input in addition to the primary input. You should call these functions before `BentoSystemStep()`, usually every step.
 
 Here's an example for funnelling input into Bento:
 
@@ -56,13 +56,13 @@ else
     {
         var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
         var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
-        BentoInputDirectional(_dX, _dY, keyboard_check(vk_space));
+        BentoInputNavigation(_dX, _dY, keyboard_check(vk_space));
     }
     else if (BentoUsingGamepad() && gamepad_is_connected(0))
     {
         var _dX = gamepad_axis_value(0, gp_axislh) + (gamepad_button_check(0, gp_padr) - gamepad_button_check(0, gp_padl));
         var _dY = gamepad_axis_value(0, gp_axislv) + (gamepad_button_check(0, gp_padd) - gamepad_button_check(0, gp_padu));
-        BentoInputDirectional(_dX, _dY, gamepad_button_check(0, gp_face1));
+        BentoInputNavigation(_dX, _dY, gamepad_button_check(0, gp_face1));
     }
 }
 
@@ -82,7 +82,7 @@ Bento has many getters that return input state, too many to cover here. Here are
 |-----------------------------------|-----------------------------------------------------------------------------------|
 | `BentoPrimaryGetClick`            | Does it all                                                                       |
 | `BentoCursorGetHover`             | Useful for changing user element appearance when a button is highlighted          |
-| `BentoCursorGetBox`               | Helpful for drawing highlights around buttons when in directional input modes     |
+| `BentoCursorGetBox`               | Helpful for drawing highlights around buttons when in navigation input modes      |
 | `BentoCursorGetEnterByNavigation` | Good for triggering audio cues when entering an element                           |
 | `BentoGetBlocksKeyboard`          | Prevents keyboard input from leaking to gameplay when the player is entering text |
 
