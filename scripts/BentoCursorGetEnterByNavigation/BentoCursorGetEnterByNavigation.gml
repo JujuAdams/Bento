@@ -6,9 +6,9 @@
 /// 
 /// This function, unlike `BentoCursorGetEnter()`, will return `false` if an element has been
 /// hovered without specific player input. This can happen in many situations:
-/// - Destroying the currently hovered element when using directional input
+/// - Destroying the currently hovered element when using navigation input
 /// - Destroying a UI page and creating a new UI page
-/// - Swapping from pointer input to directional input
+/// - Swapping from pointer input to navigation input
 /// - Entering into a focusable container e.g. a scrollbox
 /// 
 /// @param [element=self]

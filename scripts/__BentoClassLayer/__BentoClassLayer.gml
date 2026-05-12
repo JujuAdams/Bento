@@ -39,7 +39,7 @@ function __BentoClassLayer(_environment, _name) constructor
     __inputModePointer = ((__inputMode == BENTO_MODE_MOUSE) || (__inputMode == BENTO_MODE_TOUCH));
     
     //Explicitly using a keyboard or gamepad
-    __inputModeDirectional = ((__inputMode == BENTO_MODE_KEYBOARD) || (__inputMode == BENTO_MODE_GAMEPAD));
+    __inputModeNavigation = ((__inputMode == BENTO_MODE_KEYBOARD) || (__inputMode == BENTO_MODE_GAMEPAD));
     
     ////////
     // Input state
@@ -58,11 +58,11 @@ function __BentoClassLayer(_environment, _name) constructor
     __pointerScrolled = false;
     __pointerScrollingElement = BENTO_NO_ELEMENT;
     
-    __directionalDX           = 0;
-    __directionalDY           = 0;
-    __directionalPrimaryState = __BENTO_STATE_OFF;
-    __directionalLastX        = 0;
-    __directionalLastY        = 0;
+    __navigationDX           = 0;
+    __navigationDY           = 0;
+    __navigationPrimaryState = __BENTO_STATE_OFF;
+    __navigationLastX        = 0;
+    __navigationLastY        = 0;
     
     __cursorLastL = 0;
     __cursorLastT = 0;
@@ -142,8 +142,8 @@ function __BentoClassLayer(_environment, _name) constructor
         __pointerX = -__BENTO_VERY_LARGE;
         __pointerY = -__BENTO_VERY_LARGE;
         
-        __directionalDX = 0;
-        __directionalDY = 0;
+        __navigationDX = 0;
+        __navigationDY = 0;
         
         __pointerTravelled = false;
         
@@ -207,15 +207,15 @@ function __BentoClassLayer(_environment, _name) constructor
             if (__inputModePointer)
             {
                 //Reset mouse variables if we've swapped mouse <-> touch
-                __directionalLastX = __pointerX;
-                __directionalLastY = __pointerY;
+                __navigationLastX = __pointerX;
+                __navigationLastY = __pointerY;
                 
                 __pointerPrevX = __pointerX;
                 __pointerPrevY = __pointerY;
             }
             
             __inputModePointer     = false;
-            __inputModeDirectional = true;
+            __inputModeNavigation = true;
         }
         else if ((_newMode == BENTO_MODE_MOUSE) || (_newMode == BENTO_MODE_TOUCH))
         {
@@ -235,13 +235,13 @@ function __BentoClassLayer(_environment, _name) constructor
             }
             
             __inputModePointer     = true;
-            __inputModeDirectional = false;
+            __inputModeNavigation = false;
             
             __pointerPressX = __pointerX;
             __pointerPressY = __pointerY;
             
-            __directionalDX = 0;
-            __directionalDY = 0;
+            __navigationDX = 0;
+            __navigationDY = 0;
             
             __turboState.__Update(0, 0, _system.__frame);
         }
@@ -249,7 +249,7 @@ function __BentoClassLayer(_environment, _name) constructor
         {
             //Some undefined input mode, perhaps `BENTO_MODE_UNKNOWN`
             __inputModePointer     = false;
-            __inputModeDirectional = false;
+            __inputModeNavigation = false;
         }
         
         __carryNextItemElement = BENTO_NO_ELEMENT;
@@ -357,10 +357,10 @@ function __BentoClassLayer(_environment, _name) constructor
             __pointerPrimaryState = __pointerPrimaryState >> 1;
         }
         
-        if (__inputModeDirectional)
+        if (__inputModeNavigation)
         {
-            var _prevPrimaryState = __directionalPrimaryState;
-            var _envPrimaryState = _environment.__envDirectionalState;
+            var _prevPrimaryState = __navigationPrimaryState;
+            var _envPrimaryState = _environment.__envNavigationState;
             
             if (__primaryConsumed)
             {
@@ -377,33 +377,33 @@ function __BentoClassLayer(_environment, _name) constructor
             if ((_prevPrimaryState == __BENTO_STATE_END) && (_envPrimaryState & __BENTO_STATE_START))
             {
                 //Catch situations where we think we've released but the environment thinks we've held
-                __directionalPrimaryState = __BENTO_STATE_START;
+                __navigationPrimaryState = __BENTO_STATE_START;
             }
             else if ((_prevPrimaryState == __BENTO_STATE_OFF) && (_envPrimaryState == __BENTO_STATE_START))
             {
                 //Only allow us to start pressing when the environment is pressed
-                __directionalPrimaryState = __BENTO_STATE_START;
+                __navigationPrimaryState = __BENTO_STATE_START;
             }
             else if (_prevPrimaryState & __BENTO_STATE_START) && (_envPrimaryState & __BENTO_STATE_START)
             {
                 //Sustain primary hold
-                __directionalPrimaryState = __BENTO_STATE_ON;
+                __navigationPrimaryState = __BENTO_STATE_ON;
             }
             else
             {
                 //Release primary
-                __directionalPrimaryState = _prevPrimaryState >> 1;
+                __navigationPrimaryState = _prevPrimaryState >> 1;
             }
             
-            //Update directional input
-            __directionalDX = _environment.__envDirectionalDX;
-            __directionalDY = _environment.__envDirectionalDY;
+            //Update navigation input
+            __navigationDX = _environment.__envNavigationDX;
+            __navigationDY = _environment.__envNavigationDY;
             
-            __turboState.__Update(__directionalDX, __directionalDY, _system.__frame);
+            __turboState.__Update(__navigationDX, __navigationDY, _system.__frame);
         }
         else
         {
-            __directionalPrimaryState = __directionalPrimaryState >> 1;
+            __navigationPrimaryState = __navigationPrimaryState >> 1;
         }
         
         //Update hotkey input
@@ -439,7 +439,7 @@ function __BentoClassLayer(_environment, _name) constructor
         var _environment = __environment;
         
         __pointerPrimaryState = __pointerPrimaryState >> 1;
-        __directionalPrimaryState = __directionalPrimaryState >> 1;
+        __navigationPrimaryState = __navigationPrimaryState >> 1;
         
         __turboState.__Update(0, 0, _system.__frame);
         
@@ -610,10 +610,10 @@ function __BentoClassLayer(_environment, _name) constructor
             //Update the primary button state based on mouse input
             __primaryState = __pointerPrimaryState;
         }
-        else if (__inputModeDirectional)
+        else if (__inputModeNavigation)
         {
-            //Update the primary button state based on directional input
-            __primaryState = __directionalPrimaryState;
+            //Update the primary button state based on navigation input
+            __primaryState = __navigationPrimaryState;
         }
         else
         {
@@ -734,13 +734,13 @@ function __BentoClassLayer(_environment, _name) constructor
                     __pointerTravelled = false;
                 }
             }
-            else if (__inputModeDirectional)
+            else if (__inputModeNavigation)
             {
                 //If the held element cannot be held then proactively reset the state variable
                 if (not __BentoGetHoverableInternal(__holdElement, false)) __holdElement = BENTO_NO_ELEMENT;
                 
                 //Move the cursor and hover a new element (maybe)
-                __BentoSetHoverFromDirectional(__hoverElement, __turboState.__outputX, __turboState.__outputY);
+                __BentoSetHoverFromNavigation(__hoverElement, __turboState.__outputX, __turboState.__outputY);
             }
             else //Some other input mode, perhaps `BENTO_MODE_UNKNOWN`
             {
@@ -862,10 +862,10 @@ function __BentoClassLayer(_environment, _name) constructor
                     var _dX = other.__pointerX - bentoX - BENTO_VARS.__carryPointerDX;
                     var _dY = other.__pointerY - bentoY - BENTO_VARS.__carryPointerDY;
                 }
-                else if (other.__inputModeDirectional)
+                else if (other.__inputModeNavigation)
                 {
-                    var _dX = other.__directionalLastX - 0.5*(_oldBentoLeft + _oldBentoRight);
-                    var _dY = other.__directionalLastY - 0.5*(_oldBentoTop + _oldBentoBottom);
+                    var _dX = other.__navigationLastX - 0.5*(_oldBentoLeft + _oldBentoRight);
+                    var _dY = other.__navigationLastY - 0.5*(_oldBentoTop + _oldBentoBottom);
                 }
                 else
                 {
@@ -979,7 +979,7 @@ function __BentoClassLayer(_environment, _name) constructor
         var _focusTop = __focusTop;
         if (BentoExists(_focusTop))
         {
-            if (__inputModeDirectional) return _focusTop;
+            if (__inputModeNavigation) return _focusTop;
             
             var _focusType = _focusTop.BENTO_VARS.__focusType;
             

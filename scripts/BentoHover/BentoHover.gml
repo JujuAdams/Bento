@@ -14,7 +14,7 @@ function BentoHover(_element, _byPlayer = false, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        if (__inputModeDirectional)
+        if (__inputModeNavigation)
         {
             if (__BentoGetHoverableInternal(_element, false))
             {
@@ -29,7 +29,7 @@ function BentoHover(_element, _byPlayer = false, _layerOrName = undefined)
         }
         else if (BENTO_SAFE)
         {
-            __BentoTrace("Cannot hover element, not in a directional input mode");
+            __BentoTrace("Cannot hover element, not in a navigation input mode");
         }
     }
 }
@@ -39,7 +39,7 @@ function __BentoHoverInternal(_element)
 {
     with(__BentoLayerEnsure(undefined))
     {
-        if (__inputModeDirectional)
+        if (__inputModeNavigation)
         {
             if (__BentoGetHoverableInternal(_element, false))
             {

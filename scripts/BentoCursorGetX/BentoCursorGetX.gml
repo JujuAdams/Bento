@@ -12,7 +12,7 @@ function BentoCursorGetX(_layerOrName = undefined)
         {
             return __pointerX;
         }
-        else if (__inputModeDirectional)
+        else if (__inputModeNavigation)
         {
             return 0.5*(__cursorLastL + __cursorLastR);
         }

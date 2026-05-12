@@ -11,19 +11,19 @@
 ///     Child elements are always enclosed and cannot be interacted with unless the parent is
 ///     focused.
 /// 
-/// `BENTO_ENCLOSE_DIRECTIONAL`  
-///     Child elements are enclosed in directional input modes only. Pointer input modes modes will
+/// `BENTO_ENCLOSE_NAVIGATION`  
+///     Child elements are enclosed in navigation input modes only. Pointer input modes modes will
 ///     be able to select elements freely. This is useful for scrollboxes.
 /// 
 /// `BENTO_ENCLOSE_POINTER` 
-///     Child elements are enclosed in pointer input modes modes only. Directional input modes
+///     Child elements are enclosed in pointer input modes modes only. Navigation input modes
 ///     modes will be able to select elements freely. This is probably never useful and is provided
 ///     only for completeness.     
 /// 
 /// The enclose feature is useful for scrollboxes where you want the contents to be hoverable and
-/// clickable when using pointer input but inaccessible when using directional input. In this
-/// example, you'd use the enclose type `BENTO_ENCLOSE_DIRECTIONAL` - we want the buttons to
-/// be inaccessible when the parent scrollbox is unfocused when using a directional input mode.
+/// clickable when using pointer input but inaccessible when using navigation input. In this
+/// example, you'd use the enclose type `BENTO_ENCLOSE_NAVIGATION` - we want the buttons to
+/// be inaccessible when the parent scrollbox is unfocused when using a navigation input mode.
 /// 
 /// @param encloseType
 /// @parma [element=self]

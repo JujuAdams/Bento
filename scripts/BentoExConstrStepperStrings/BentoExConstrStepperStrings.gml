@@ -38,7 +38,7 @@ function BentoExConstrStepperStrings(_reference, _stringArray = [], _text = "", 
     
     BentoSetButton(BENTO_BUTTON_ALWAYS);
     
-    // Disables raycasting in particular axes. This only applies to directional input where raycasting
+    // Disables raycasting in particular axes. This only applies to navigation input where raycasting
     // is used to work out which element to jump to when pushing in a particular direction. This does
     // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
     // raycasting so that it doesn't interfere with scrolling through strings.
@@ -75,9 +75,9 @@ function BentoExConstrStepperStrings(_reference, _stringArray = [], _text = "", 
                     func(_option); //Execute the callback
                 }
             }
-            else if (BentoUsingDirectional())
+            else if (BentoUsingNavigation())
             {
-                // Detect directional input to scroll throught the option array.
+                // Detect navigation input to scroll throught the option array.
                 if (BentoCursorGetHover() && (BentoCursorGetDX() != 0))
                 {
                     var _optionIndex = (_funcGetOptionIndex() + sign(BentoCursorGetDX()) + _length) mod _length;

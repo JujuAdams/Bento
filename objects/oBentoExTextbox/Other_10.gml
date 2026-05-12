@@ -29,7 +29,7 @@ if (BentoPrimaryGetClick())
     });
 }
 
-if (BentoCursorGetEnterByPlayer() && BentoUsingDirectional())
+if (BentoCursorGetEnterByPlayer() && BentoUsingNavigation())
 {
     audio_play_sound(sndBentoExBlip, 0, false);
 }

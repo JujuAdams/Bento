@@ -16,7 +16,7 @@ if (_length > 0)
             if (_delta == 0) _delta = 1;
         }
     }
-    else if (BentoUsingDirectional())
+    else if (BentoUsingNavigation())
     {
         if (useFocus)
         {
@@ -33,7 +33,7 @@ if (_length > 0)
         
         if ((not useFocus) || (BentoFocusGetType() != BENTO_FOCUS_NONE))
         {
-            // Detect directional input to scroll throught the option array.
+            // Detect navigation input to scroll throught the option array.
             if (BentoCursorGetHover())
             {
                 _delta = sign(BentoCursorGetDX());

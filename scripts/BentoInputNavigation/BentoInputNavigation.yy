@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoInputDirectional",
+  "%Name":"BentoInputNavigation",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoInputDirectional",
+  "name":"BentoInputNavigation",
   "parent":{
     "name":"Setters",
     "path":"folders/Bento/Functions/Input & Navigation/Setters.yy",

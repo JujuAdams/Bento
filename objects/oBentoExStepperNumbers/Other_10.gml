@@ -3,8 +3,8 @@
 /// @desc Step
 
 // An example that demonstrates how to make a stepper for continuous quantitative values. It
-// can be manipulated using pointer input or directional input. Clicking on the left or right
-// sides will scroll through options. Directional input uses the x-axis movement to trigger
+// can be manipulated using pointer input or navigation input. Clicking on the left or right
+// sides will scroll through options. Navigation input uses the x-axis movement to trigger
 // scrolling through options (in this example project, that means pressing the left and right
 // arrow keys).
 
@@ -19,7 +19,7 @@ if (BentoUsingPointer())
         if (_delta == 0) _delta = 1;
     }
 }
-else if (BentoUsingDirectional())
+else if (BentoUsingNavigation())
 {
     if (useFocus)
     {
@@ -36,7 +36,7 @@ else if (BentoUsingDirectional())
     
     if ((not useFocus) || (BentoFocusGetType() != BENTO_FOCUS_NONE))
     {
-        // Detect directional input to scroll throught the option array.
+        // Detect navigation input to scroll throught the option array.
         if (BentoCursorGetHover())
         {
             _delta = sign(BentoCursorGetDX());

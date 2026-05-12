@@ -45,7 +45,7 @@ if (BentoUsingPointer())
         handleHold = false;
     }
 }
-else if (BentoUsingDirectional())
+else if (BentoUsingNavigation())
 {
     handleHover = BentoCursorGetHover() && ((not useFocus) || (BentoFocusGetType() != BENTO_FOCUS_NONE));
     handleHold  = false;

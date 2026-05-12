@@ -6,16 +6,16 @@
 /// @param y
 /// @param exclude
 
-function __BentoGetDirectionalNearest(_x, _y, _exclude)
+function __BentoGetNavigationNearest(_x, _y, _exclude)
 {
     static _system = __BentoSystem();
     
     var _layer = _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
     
-    if (not _layer.__inputModeDirectional)
+    if (not _layer.__inputModeNavigation)
     {
-        __BentoError("Can only use `__BentoGetDirectionalNearest()` in directional mode");
+        __BentoError("Can only use `__BentoGetNavigationNearest()` in navigation mode");
     }
     
     var _element = BENTO_NO_ELEMENT;

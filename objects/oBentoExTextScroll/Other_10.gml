@@ -2,7 +2,7 @@
 
 /// @desc Step
 
-if (BentoUsingDirectional())
+if (BentoUsingNavigation())
 {
     if (BentoPrimaryGetClick())
     {

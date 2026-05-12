@@ -4,7 +4,7 @@
 /// @param dX
 /// @param dY
 
-function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
+function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
 {
     static _raycastData = {};
     static _wrappedRaycastData = {};
@@ -27,7 +27,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
         else
         {
             //Otherwise fall back on searching for the nearest hoverable element
-            _nextElement = __BentoGetDirectionalNearest(__directionalLastX, __directionalLastY, _exclude);
+            _nextElement = __BentoGetNavigationNearest(__navigationLastX, __navigationLastY, _exclude);
         }
         
         __BentoSetHover(_nextElement, false);
@@ -91,7 +91,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                     }
                     else
                     {
-                        __BentoGetDirectionalRaycast(_raycastData, __directionalLastX, __directionalLastY, _dX, _dY, _exclude, _prevScrollParent);
+                        __BentoGetNavigationRaycast(_raycastData, __navigationLastX, __navigationLastY, _dX, _dY, _exclude, _prevScrollParent);
                         
                         //Try wrapping the raycast
                         if ((abs(_dY) >= abs(_dX)) && _prevBento.__raycastWrapY)
@@ -115,7 +115,7 @@ function __BentoSetHoverFromDirectional(_prevElement, _dX, _dY)
                         if (_checkWrap)
                         {
                             //FIXME - 1000 is an arbitrarily large number. This no doubt will fail in some situations
-                            __BentoGetDirectionalRaycast(_wrappedRaycastData, __directionalLastX - 1000*_wrapDX, __directionalLastY - 1000*_wrapDY, _wrapDX, _wrapDY, _exclude, _prevScrollParent);
+                            __BentoGetNavigationRaycast(_wrappedRaycastData, __navigationLastX - 1000*_wrapDX, __navigationLastY - 1000*_wrapDY, _wrapDX, _wrapDY, _exclude, _prevScrollParent);
                             if ((_wrappedRaycastData.__weight < _raycastData.__weight) || (_wrappedRaycastData.__sameParent && (not _raycastData.__sameParent)))
                             {
                                 _nextElement = _wrappedRaycastData.__element;

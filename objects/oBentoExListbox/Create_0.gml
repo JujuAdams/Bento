@@ -11,7 +11,7 @@ if (image_blend == c_white)
 BentoLayoutList(BENTO_AXIS_Y, 0, 0);
 BentoClipSetEnabled(true);
 BentoScrollSetEnabled(true, true);
-BentoSetButton(BENTO_BUTTON_DIRECTIONAL);
-BentoFocusSetEnclose(BENTO_ENCLOSE_DIRECTIONAL)
+BentoSetButton(BENTO_BUTTON_NAVIGATION);
+BentoFocusSetEnclose(BENTO_ENCLOSE_NAVIGATION)
 
 BentoSetDrawAfter(true);

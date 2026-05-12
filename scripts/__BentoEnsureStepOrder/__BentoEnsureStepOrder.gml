@@ -17,7 +17,7 @@ function __BentoEnsureStepOrder()
     var _rootElement = __GetFocusRoot();
     if (BentoExists(_rootElement))
     {
-        __BentoEnsureStepOrderInner(self, __stepOrder, _rootElement.BENTO_VARS, __inputModePointer? BENTO_BUTTON_POINTER : BENTO_BUTTON_DIRECTIONAL);
+        __BentoEnsureStepOrderInner(self, __stepOrder, _rootElement.BENTO_VARS, __inputModePointer? BENTO_BUTTON_POINTER : BENTO_BUTTON_NAVIGATION);
     }
 }
 

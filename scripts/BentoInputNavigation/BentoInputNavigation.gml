@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Sets input values for directional input (gamepad and keyboard). The `primaryAction` argument
+/// Sets input values for navigation input (gamepad and keyboard). The `primaryAction` argument
 /// should be set to the current held state of the primary "accept" or "confirm" button,
 /// conventionally the "A" button on a gamepad or the spacebar on a keyboard.
 /// 
@@ -14,7 +14,7 @@
 /// @param primaryAction
 /// @param [threshold=0.25]
 
-function BentoInputDirectional(_dX, _dY, _primaryAction, _threshold = 0.25)
+function BentoInputNavigation(_dX, _dY, _primaryAction, _threshold = 0.25)
 {
     static _system = __BentoSystem();
     with(_system.__environmentCurrent)
@@ -25,8 +25,8 @@ function BentoInputDirectional(_dX, _dY, _primaryAction, _threshold = 0.25)
             _dY = 0;
         }
         
-        __envDirectionalDX   = _dX;
-        __envDirectionalDY   = _dY;
-        __envDirectionalHold = _primaryAction;
+        __envNavigationDX   = _dX;
+        __envNavigationDY   = _dY;
+        __envNavigationHold = _primaryAction;
     }
 }

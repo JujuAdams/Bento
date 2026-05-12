@@ -31,7 +31,7 @@
 
 // Drag & drop when using a pointer input mode (moues or touch) requires the player to click and
 // hold as they move the element around. If this macro is set to `true` then pointer input will
-// instead behave like directional input modes where the player clicks and releases once to pick up
+// instead behave like navigation input modes where the player clicks and releases once to pick up
 // an element and then clicks and releases again to drop the element.
 #macro BENTO_DRAG_ALWAYS_TOGGLES  false
 

@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// if (BentoUsingDirectional() && BentoHotkeyGetPress("pick up"))
+/// if (BentoUsingNavigation() && BentoHotkeyGetPress("pick up"))
 /// {
 ///     if (BentoCarryIsItem())
 ///     {

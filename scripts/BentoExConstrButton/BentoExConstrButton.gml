@@ -60,7 +60,7 @@ function BentoExConstrButton(_clickFunc = undefined, _text = "", _parent = other
         }
         
         // Draw a highlight over the button is the element is being hovered by the Bento system's cursor
-        // (which applies to both pointer-driven and directional input)
+        // (which applies to both pointer-driven and navigation input)
         if (BentoCursorGetHover())
         {
             gpu_set_fog(true, c_white, 0, 0);

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoUsingDirectional",
+  "%Name":"BentoUsingNavigation",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoUsingDirectional",
+  "name":"BentoUsingNavigation",
   "parent":{
     "name":"Modes",
     "path":"folders/Bento/Functions/Input & Navigation/Modes.yy",

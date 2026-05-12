@@ -6,7 +6,7 @@
 /// interface without needing to create and manage new layers.
 /// 
 /// You must specify a particular focus type which controls how the element focus interacts with
-/// the pointer. All focus types will restrict the what elements can be hovered in directional
+/// the pointer. All focus types will restrict the what elements can be hovered in navigation
 /// input modes (as above). The focus type must be one of the following constants:
 /// 
 /// `BENTO_FOCUS_POINTER_IGNORE`
@@ -91,13 +91,13 @@ function BentoFocusOpen(_focusType, _element = self)
             if (__scissorEnabled)
             {
                 //Use the smaller scissor region
-                _layer.__directionalLastX = _element.bentoLeft + __scissorPadLeft + __scissorScrollbarLeft;
-                _layer.__directionalLastY = _element.bentoTop  + __scissorPadTop + __scissorScrollbarTop;
+                _layer.__navigationLastX = _element.bentoLeft + __scissorPadLeft + __scissorScrollbarLeft;
+                _layer.__navigationLastY = _element.bentoTop  + __scissorPadTop + __scissorScrollbarTop;
             }
             else
             {
-                _layer.__directionalLastX = _element.bentoLeft;
-                _layer.__directionalLastY = _element.bentoTop;
+                _layer.__navigationLastX = _element.bentoLeft;
+                _layer.__navigationLastY = _element.bentoTop;
             }
         }
     }

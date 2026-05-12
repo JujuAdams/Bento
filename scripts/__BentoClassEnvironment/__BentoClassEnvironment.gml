@@ -22,10 +22,10 @@ function __BentoClassEnvironment(_name) constructor
     __envMouseHold  = false;
     __envMouseState = __BENTO_STATE_OFF;
     
-    __envDirectionalDX    = 0;
-    __envDirectionalDY    = 0;
-    __envDirectionalHold  = false;
-    __envDirectionalState = __BENTO_STATE_OFF;
+    __envNavigationDX    = 0;
+    __envNavigationDY    = 0;
+    __envNavigationHold  = false;
+    __envNavigationState = __BENTO_STATE_OFF;
     
     __envHotkeyInputMap = ds_map_create();
     
@@ -122,12 +122,12 @@ function __BentoClassEnvironment(_name) constructor
     {
         var _layerArray = __layerArray;
         
-        //Advance mouse and directional state
+        //Advance mouse and navigation state
         __envMouseState = __envMouseState >> 1;
         if (__envMouseHold) __envMouseState |= __BENTO_STATE_START;
         
-        __envDirectionalState = __envDirectionalState >> 1;
-        if (__envDirectionalHold) __envDirectionalState |= __BENTO_STATE_START;
+        __envNavigationState = __envNavigationState >> 1;
+        if (__envNavigationHold) __envNavigationState |= __BENTO_STATE_START;
         
         var _layerCount = array_length(_layerArray);
         if (_layerCount <= 0) return;

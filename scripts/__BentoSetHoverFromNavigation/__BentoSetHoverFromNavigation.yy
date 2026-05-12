@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoSetHoverFromDirectional",
+  "%Name":"__BentoSetHoverFromNavigation",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoSetHoverFromDirectional",
+  "name":"__BentoSetHoverFromNavigation",
   "parent":{
     "name":"Important Functions",
     "path":"folders/Bento/(Internal)/Important Functions.yy",

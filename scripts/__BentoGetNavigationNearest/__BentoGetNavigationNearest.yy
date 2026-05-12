@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoGetDirectionalRaycast",
+  "%Name":"__BentoGetNavigationNearest",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoGetDirectionalRaycast",
+  "name":"__BentoGetNavigationNearest",
   "parent":{
     "name":"Important Functions",
     "path":"folders/Bento/(Internal)/Important Functions.yy",

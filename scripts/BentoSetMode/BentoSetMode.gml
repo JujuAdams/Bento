@@ -9,7 +9,7 @@
 /// - `BENTO_MODE_TOUCH`
 /// 
 /// The mouse and touch input modes are considered "pointer" input modes. The keyboard and gamepad
-/// input modes are considered "directional" input modes.
+/// input modes are considered "navigation" input modes.
 /// 
 /// @param mode
 /// @param [environmentName=current]

@@ -17,7 +17,7 @@ function BentoCarryItemBehavior(_element = self)
             BentoCarryItemPickContinuous(_element);
         }
     }
-    else if (BentoUsingDirectional(_layer))
+    else if (BentoUsingNavigation(_layer))
     {
         if (not BentoCarryIsItem(_element))
         {

@@ -26,7 +26,7 @@ function ExampleButtons()
             }
             
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "This example demonstrates various button behaviours. A \"button\" in Bento is any element that can be clicked by pressing the primary input (left mouse click, spacebar, [A] button on a gamepad etc.). Any element can be marked as a button." });
-            BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or directional (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you." });
+            BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or navigation (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you." });
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "When a button is clicked, `BentoPrimaryGetClick()` will return `true` for one step, including in the Draw event for the element. You should only use this function for determining if a button has been deliberately clicked by the player; any other function is liable to return false values." });
             
             with(BentoCreate(oBentoExSpacer))
@@ -46,9 +46,9 @@ function ExampleButtons()
                     BentoSetButton(BENTO_BUTTON_POINTER);
                 }
                 
-                with(BentoCreate(oBentoExButton, { text: "Directional-only button" }))
+                with(BentoCreate(oBentoExButton, { text: "Navigation-only button" }))
                 {
-                    BentoSetButton(BENTO_BUTTON_DIRECTIONAL);
+                    BentoSetButton(BENTO_BUTTON_NAVIGATION);
                 }
                 
                 with(BentoCreate(oBentoExButton, { text: "Never a button" }))
@@ -87,7 +87,7 @@ function ExampleButtons()
             }
             
             new BentoExConstrText("This example demonstrates various button behaviours. A \"button\" in Bento is any element that can be clicked by pressing the primary input (left mouse click, spacebar, [A] button on a gamepad etc.). Any element can be marked as a button.", fntBentoExCandyBeans);
-            new BentoExConstrText("Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or directional (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you.", fntBentoExCandyBeans);
+            new BentoExConstrText("Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or navigation (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you.", fntBentoExCandyBeans);
             new BentoExConstrText("When a button is clicked, `BentoPrimaryGetClick()` will return `true` for one step, including in the Draw event for the element. You should only use this function for determining if a button has been deliberately clicked by the player; any other function is liable to return false values.", fntBentoExCandyBeans);
             
             with(new BentoExConstrSpacer())
@@ -107,9 +107,9 @@ function ExampleButtons()
                     BentoSetButton(BENTO_BUTTON_POINTER);
                 }
                 
-                with(new BentoExConstrText("Directional-only button"))
+                with(new BentoExConstrText("Navigation-only button"))
                 {
-                    BentoSetButton(BENTO_BUTTON_DIRECTIONAL);
+                    BentoSetButton(BENTO_BUTTON_NAVIGATION);
                 }
                 
                 with(new BentoExConstrText("Never a button"))
@@ -168,7 +168,7 @@ function ExampleButtonsJSON()
                 {
                     object: oBentoExText,
                     vars: {
-                        text: "Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or directional (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you.",
+                        text: "Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or navigation (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you.",
                         font: fntBentoExCandyBeans,
                     },
                 },
@@ -211,11 +211,11 @@ function ExampleButtonsJSON()
                         {
                             object: oBentoExButton,
                             vars: {
-                                text: "Directional-only button",
+                                text: "Navigation-only button",
                             },
                             onCreate: function()
                             {
-                                BentoSetButton(BENTO_BUTTON_DIRECTIONAL);
+                                BentoSetButton(BENTO_BUTTON_NAVIGATION);
                             },
                         },
                         {

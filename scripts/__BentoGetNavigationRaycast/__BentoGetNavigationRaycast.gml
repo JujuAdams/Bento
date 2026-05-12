@@ -1,7 +1,7 @@
 // Feather disable all
 
 /// Returns the nearest element along the given ray. This is not a true raycast as elements near
-/// the ray will be considered (which is better UX when moving between elements with directional
+/// the ray will be considered (which is better UX when moving between elements with navigation
 /// input).
 /// 
 /// @param resultStruct
@@ -12,7 +12,7 @@
 /// @param exclude
 /// @param scrollParent
 
-function __BentoGetDirectionalRaycast(_resultStruct, _x, _y, _dX, _dY, _exclude, _scrollParent)
+function __BentoGetNavigationRaycast(_resultStruct, _x, _y, _dX, _dY, _exclude, _scrollParent)
 {
     static _system = __BentoSystem();
     
@@ -22,9 +22,9 @@ function __BentoGetDirectionalRaycast(_resultStruct, _x, _y, _dX, _dY, _exclude,
     var _layer = _system.__layerCurrent;
     var _hoverableOrder = _layer.__hoverableOrder;
     
-    if (not _layer.__inputModeDirectional)
+    if (not _layer.__inputModeNavigation)
     {
-        __BentoError("Can only use `__BentoGetDirectionalRaycast()` in directional mode");
+        __BentoError("Can only use `__BentoGetNavigationRaycast()` in navigation mode");
     }
     
     var _minElement    = BENTO_NO_ELEMENT;

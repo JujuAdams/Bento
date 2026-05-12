@@ -5,7 +5,7 @@
 /// @param [layerOrName=current]
 /// @param [environmentName=current]
 
-function BentoUsingDirectional(_layerOrName = undefined, _environmentOrName = undefined)
+function BentoUsingNavigation(_layerOrName = undefined, _environmentOrName = undefined)
 {
     var _layer = __BentoLayerEnsure(_layerOrName, _environmentOrName);
     if (_layer == undefined)
@@ -24,5 +24,5 @@ function BentoUsingDirectional(_layerOrName = undefined, _environmentOrName = un
         }
     }
     
-    return _layer.__inputModeDirectional;
+    return _layer.__inputModeNavigation;
 }

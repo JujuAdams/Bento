@@ -14,7 +14,7 @@ function __BentoUpdateElementState()
             var _element = __attachedElement;
             if (not BentoExists(_element)) return false;
             
-            if (other.__inputModeDirectional)
+            if (other.__inputModeNavigation)
             {
                 if (__clickTiming != undefined)
                 {
@@ -166,7 +166,7 @@ function __BentoUpdateElementState()
             // Scrolling
             ///////
             
-            //Scrolling when in directional input mode is handled when an element is hovered
+            //Scrolling when in navigation input mode is handled when an element is hovered
             
             if (other.__inputModePointer && (__hoverState & __BENTO_STATE_START))
             {

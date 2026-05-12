@@ -14,7 +14,7 @@ function BentoHoverSoft(_element, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {
-        if (__inputModeDirectional)
+        if (__inputModeNavigation)
         {
             __hoverElementSoft = _element;
         }

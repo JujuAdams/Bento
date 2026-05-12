@@ -14,10 +14,10 @@ function __BentoSetHover(_element, _byPlayer)
         __cursorLastR = _element.bentoRight;
         __cursorLastB = _element.bentoBottom;
         
-        if (__inputModeDirectional)
+        if (__inputModeNavigation)
         {
-            __directionalLastX = 0.5*(__cursorLastL + __cursorLastR);
-            __directionalLastY = 0.5*(__cursorLastT + __cursorLastB);
+            __navigationLastX = 0.5*(__cursorLastL + __cursorLastR);
+            __navigationLastY = 0.5*(__cursorLastT + __cursorLastB);
             
             BentoScrollTo(BentoScrollGetSpeed(_element), _element);
         }
