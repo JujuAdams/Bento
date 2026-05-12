@@ -1,5 +1,7 @@
 // Feather disable all
 
+/// Sets whether an element only becomes a valid button when it is also a valid carry target.
+/// 
 /// @param state
 /// @param [element=self]
 
