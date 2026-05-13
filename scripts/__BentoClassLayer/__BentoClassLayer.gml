@@ -450,10 +450,7 @@ function __BentoClassLayer(_environment, _name) constructor
         repeat(array_length(_hotkeyArray))
         {
             var _key = _hotkeyArray[_i];
-            
             __hotkeyStateMap[? _key] = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
-            //TODO - Add "click" behaviour so the develpper can filter out release events that are out of scope
-            
             ++_i;
         }
         
