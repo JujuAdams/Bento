@@ -34,7 +34,7 @@ function ExampleButtonsWithLongClick()
                 
                 with(BentoCreate(oBentoExButtonWithLongClick, { text: "Button with long click" }))
                 {
-                    BentoHover(self);
+                    BentoHover();
                 }
                 
                 BentoCreate(oBentoExButton, { text: "Standard button" });

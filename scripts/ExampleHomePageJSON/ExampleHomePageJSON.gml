@@ -169,6 +169,13 @@ function ExampleHomePageJSON()
                 {
                     object: oBentoExButton,
                     vars: {
+                        text: $"Main Menu",
+                        func: ExampleMainMenu,
+                    },
+                },
+                {
+                    object: oBentoExButton,
+                    vars: {
                         text: $"Settings Menu",
                         func: ExampleSettingsMenu,
                     },

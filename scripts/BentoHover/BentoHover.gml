@@ -6,11 +6,11 @@
 /// The optional `byPlayer` parameter determines whether `BentoCursorGetEnterByPlayer()` will
 /// return `true`.
 /// 
-/// @param element
+/// @param [element=self]
 /// @param [byPlayer=false]
 /// @param [layerOrName=current]
 
-function BentoHover(_element, _byPlayer = false, _layerOrName = undefined)
+function BentoHover(_element = self, _byPlayer = false, _layerOrName = undefined)
 {
     with(__BentoLayerEnsure(_layerOrName))
     {

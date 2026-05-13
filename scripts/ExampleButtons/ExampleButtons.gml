@@ -37,7 +37,7 @@ function ExampleButtons()
                 
                 with(BentoCreate(oBentoExButton, { text: "Always a button" }))
                 {
-                    BentoHover(self);
+                    BentoHover();
                     BentoSetButton(BENTO_BUTTON_ALWAYS);
                 }
                 
@@ -98,7 +98,7 @@ function ExampleButtons()
                 
                 with(new BentoExConstrText("Always a button"))
                 {
-                    BentoHover(self);
+                    BentoHover();
                     BentoSetButton(BENTO_BUTTON_ALWAYS);
                 }
                 

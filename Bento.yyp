@@ -487,6 +487,7 @@
     {"id":{"name":"ExampleListboxJSON","path":"scripts/ExampleListboxJSON/ExampleListboxJSON.yy",},},
     {"id":{"name":"ExampleListboxWithBarJSON","path":"scripts/ExampleListboxWithBarJSON/ExampleListboxWithBarJSON.yy",},},
     {"id":{"name":"ExampleLists","path":"scripts/ExampleLists/ExampleLists.yy",},},
+    {"id":{"name":"ExampleMainMenu","path":"scripts/ExampleMainMenu/ExampleMainMenu.yy",},},
     {"id":{"name":"ExampleMainMenuJSON","path":"scripts/ExampleMainMenuJSON/ExampleMainMenuJSON.yy",},},
     {"id":{"name":"ExampleManualPositions","path":"scripts/ExampleManualPositions/ExampleManualPositions.yy",},},
     {"id":{"name":"ExampleModalJSON","path":"scripts/ExampleModalJSON/ExampleModalJSON.yy",},},
@@ -530,8 +531,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
     {"roomId":{"name":"rLandscape","path":"rooms/rLandscape/rLandscape.yy",},},
+    {"roomId":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
