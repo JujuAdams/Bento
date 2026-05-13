@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoGetLandscape",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoGetLandscape",
+  "parent":{
+    "name":"Miscellaneous",
+    "path":"folders/Bento/Functions/Miscellaneous.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

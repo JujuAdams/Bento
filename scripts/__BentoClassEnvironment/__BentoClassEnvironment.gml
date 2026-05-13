@@ -76,6 +76,13 @@ function __BentoClassEnvironment(_name) constructor
     
     __nameMap = ds_map_create();
     
+    ///////
+    // Other Stuff
+    ///////
+    
+    //Initialize to some guesswork values
+    __approxWidth  = window_get_width();
+    __approxHeight = window_get_height();
     
     
     
@@ -120,6 +127,9 @@ function __BentoClassEnvironment(_name) constructor
     
     static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _timeStep)
     {
+        __approxWidth  = _rootWidth;
+        __approxHeight = _rootHeight;
+        
         var _layerArray = __layerArray;
         
         //Advance mouse and navigation state

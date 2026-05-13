@@ -239,7 +239,7 @@ function ExampleHomePageJSON()
             ],
         };
         
-        var _listParams = (room_width > room_height)? [BENTO_AXIS_X, 0.5, 0] : [BENTO_AXIS_Y, 0.5, 0];
+        var _listParams = BentoGetLandscape()? [BENTO_AXIS_X, 0.5, 0] : [BENTO_AXIS_Y, 0.5, 0];
         
         var _json = {
             object: oBentoExSpacer,

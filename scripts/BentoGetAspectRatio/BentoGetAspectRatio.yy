@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoGetAspectRatio",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoGetAspectRatio",
+  "parent":{
+    "name":"Miscellaneous",
+    "path":"folders/Bento/Functions/Miscellaneous.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
