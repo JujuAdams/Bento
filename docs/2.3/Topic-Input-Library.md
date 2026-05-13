@@ -1,6 +1,6 @@
 # "Input" Library Integration
 
-?> You should read up on Bento's [input system in general](Topic-Input) before reading this article.
+?> You should read up on Bento's [input modes](Topic-Input-Modes) before reading this article.
 
 &nbsp;
 
