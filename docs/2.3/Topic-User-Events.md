@@ -19,14 +19,14 @@ Because Bento has its own draw loop, you should not use any of the Draw events w
 
 Bento-compatible structs don't have user events per-se. Instead, structs that inherit from `BentoConstrAncestor` use callback methods in lieu of user events. Please see the [Instance & Struct Differences](Topic-Instance-Struct-Diferences) article for more information.
 
-| User Event | Struct Method       |
-|------------|---------------------|
-| `0`        | `.eventStep`        |
-| `1`        | `.eventDraw`        |
-| `2`        | `.eventDrawAfter`   |
-| `3`        | `.eventDrawHover`   |
-| `4`        | `.eventDrawDragged` |
-| `5`        | `.eventReposition`  |
+| User Event | Equivalent Method  |
+|------------|--------------------|
+| `0`        | `.eventStep`       |
+| `1`        | `.eventDraw`       |
+| `2`        | `.eventDrawAfter`  |
+| `3`        | `.eventDrawHover`  |
+| `4`        | `.eventDrawDragged`|
+| `5`        | `.eventReposition` |
 
 &nbsp;
 
