@@ -31,6 +31,10 @@ if (not useFocus)
     BentoSetRaycastEnable(false, true);
 }
 
+//Since the player will want to click and drag this slider, we want to prevent drag movement being
+//used to move a scroll parent.
+BentoSetHoldBlocksDragScroll(true);
+
 BentoLayoutSetMinSize(undefined, 80);
 
 //Ensure the click function is scoped to this instance

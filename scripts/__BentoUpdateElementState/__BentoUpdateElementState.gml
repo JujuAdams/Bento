@@ -178,7 +178,7 @@ function __BentoUpdateElementState()
                     var _pressX = other.__pointerPressX;
                     var _pressY = other.__pointerPressY;
                     
-                    if (__carryItemState == __BENTO_STATE_OFF)
+                    if ((not __holdBlocksDragScroll) && (__carryItemState == __BENTO_STATE_OFF))
                     {
                         var _overScrollbar = false;
                         

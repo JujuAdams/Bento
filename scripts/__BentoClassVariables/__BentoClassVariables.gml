@@ -50,7 +50,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __hoverState       = __BENTO_STATE_OFF;
     __primaryState     = __BENTO_STATE_OFF;
     __primaryLongState = __BENTO_STATE_OFF;
-    __byPlayer     = false;
+    __byPlayer         = false;
     __clickState       = 0b00;
     
     __longPressEnabled = false;
@@ -82,6 +82,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __buttonType   = BENTO_BUTTON_NEVER;
     __executesStep = false;
     __drawAfter    = false;
+    __holdBlocksDragScroll = false;
     
     __focused          = false;
     __focusType        = BENTO_FOCUS_NONE;
