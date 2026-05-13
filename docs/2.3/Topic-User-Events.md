@@ -38,3 +38,51 @@ The situations in which Bento will execute User Event 0 are as follows:
 - If an element has a clipping region defined (via `BentoClipSetEnabled()`) then User Event 0 will be executed
 
 - If an element is clickable as a button then User Event 0 will be executed
+
+&nbsp;
+
+## User Event 1 "Draw"
+
+User Event 1 is analogous to GameMaker's native Draw event. This user event is called downstream of `BentoSystemDraw()` and should be used for most element drawing. This user event, however, is not always called and Bento will only call User Event 1 if necessary. User Event 1 for an element is called after the parent calls its own User Event 1 (such that children draw on top of parents) and after the parent element's clipping region has been set, if enabled.
+
+?> You should avoid drawing a "highlight" effect in this user event. Instead, please use User Event 3 "Draw Hover" (see below).
+
+The situations in which Bento will execute User Event 1 are as follows:
+
+- No disabled element will execute User Event 1, regardless of the other factors below
+
+- Elements that are invisible (as per `BentoSetVisible()`) won't execute User Event 1
+
+- If an element is on a backgrounded layer that is set to be hidden when backgrounded then User Event 1 will not be executed
+
+- If an element is inside a clipping region but is outside the visible portion of the clipping region then User Event 1 will not be executed
+
+&nbsp;
+
+## User Event 2 "Draw After"
+
+User Event 2 is sort of analogous to GameMaker's native Draw End event. This user event is executed after children have executed their own Draw event (User Event 1). "Draw After" is disabled by default and must be enabled by calling `BentoSetDrawAfter()` per element. The intention for this user event is to allow you to draw graphics over the top of children, such as frames or minor decorations.
+
+This user event is called downstream of `BentoSystemDraw()`. User Event 2 will further not be executed if an element is either disabled or invisible (see `BentoSetDisable()` and/or `BentoSetVisible()`).
+
+&nbsp;
+
+## User Event 3 "Draw Hover"
+
+User Event 3 is used to draw a highlight graphic on top of the currently hovered element. This user event is called downstream of `BentoSystemDraw()`. Bento will only call User Event 3 if necessary and only for the element that is currently hovered. This event is called after most other draw-enabled user events and allows you to draw a highlight effect without ordering problems.
+
+&nbsp;
+
+## User Event 4 "Draw Dragged"
+
+User Event 4 is used to draw an element that is currently being dragged at the position where the element is being dragged to. This user event is called downstream of `BentoSystemDraw()`. Bento will only call User Event 4 if necessary and only for the element that is being dragged. This event is called last after all other draw-enabled user events and allows you to draw a highlight effect without ordering problems and without being clipped by clipping regions.
+
+?> You should use the standard `bentoLeft`, `bentoY` etc. variables when drawing the dragged element. Bento will automatically update its public read-only position variables so that they are correct during this event and will then reset those variables at the end of the event.
+
+&nbsp;
+
+## User Event 5 "Reposition"
+
+User Event 5 executed when Bento's layout system detects that an element needs to change position. This user event can be called at any time but Bento will only call User Event 5 if necessary.
+
+?> This user event will be called every step when an element is being dragged.
