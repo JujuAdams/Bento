@@ -15,6 +15,19 @@ Bento uses a system of custom user events to structure when and how code is exec
 
 Because Bento has its own draw loop, you should not use any of the Draw events whatsoever. You also do not need to use any of the native input events because Bento has its own features. Whether or not you choose to use the Step event varies depending on the situation but typically you'll want to avoid using it. Instead, put as much logic as possible in User Event 0 to allow Bento to optimise what code is being called and when.
 
+### Struct Equivalents
+
+Bento-compatible structs don't have user events per-se. Instead, structs that inherit from `BentoConstrAncestor` use callback methods in lieu of user events. Please see the [Instance & Struct Differences](Topic-Instance-Struct-Diferences) article for more information.
+
+| User Event | Struct Method       |
+|------------|---------------------|
+| `0`        | `.eventStep`        |
+| `1`        | `.eventDraw`        |
+| `2`        | `.eventDrawAfter`   |
+| `3`        | `.eventDrawHover`   |
+| `4`        | `.eventDrawDragged` |
+| `5`        | `.eventReposition`  |
+
 &nbsp;
 
 ## User Event 0 "Step"
