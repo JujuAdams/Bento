@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleRaycastWrapJSON",
+  "%Name":"ExampleNavigationWrapJSON",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleRaycastWrapJSON",
+  "name":"ExampleNavigationWrapJSON",
   "parent":{
     "name":"JSON",
     "path":"folders/Project Examples/JSON.yy",

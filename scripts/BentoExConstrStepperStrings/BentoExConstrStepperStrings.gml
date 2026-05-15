@@ -38,11 +38,9 @@ function BentoExConstrStepperStrings(_reference, _stringArray = [], _text = "", 
     
     BentoSetButton(BENTO_BUTTON_ALWAYS);
     
-    // Disables raycasting in particular axes. This only applies to navigation input where raycasting
-    // is used to work out which element to jump to when pushing in a particular direction. This does
-    // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-    // raycasting so that it doesn't interfere with scrolling through strings.
-    BentoSetRaycastEnable(false, true);
+    // We disable horizontal navigation so that players can scroll through strings without jumping
+    // to another element
+    BentoSetNavigationEnable(false, true);
     
     
     

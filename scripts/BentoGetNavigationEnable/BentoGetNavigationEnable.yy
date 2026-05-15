@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoGetRaycastEnable",
+  "%Name":"BentoGetNavigationEnable",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoGetRaycastEnable",
+  "name":"BentoGetNavigationEnable",
   "parent":{
     "name":"Navigation Only",
     "path":"folders/Bento/Functions/Input & Navigation/Navigation Only.yy",

@@ -1,10 +1,10 @@
 // Feather disable all
 
 /// Creates a horizontal navigation link between two elements. When pressing left or right with
-/// navigation input, the cursor will jump between the two elements rather than performing a
-/// general raycast.
+/// navigation input, the cursor will jump between the two elements rather than performing general
+/// navigation.
 /// 
-/// N.B. The linking feature only applies to navigation (keyboard and gamepad) input.
+/// N.B. The linking feature only applies to navigation (keyboard and gamepad) input modes.
 /// 
 /// @param left
 /// @param right

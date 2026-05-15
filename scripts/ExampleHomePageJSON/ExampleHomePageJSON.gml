@@ -127,8 +127,8 @@ function ExampleHomePageJSON()
                 {
                     object: oBentoExButton,
                     vars: {
-                        text: $"Raycast Wrapping",
-                        func: ExampleRaycastWrapJSON,
+                        text: $"Navigation Wrapping",
+                        func: ExampleNavigationWrapJSON,
                     },
                 },
                 {

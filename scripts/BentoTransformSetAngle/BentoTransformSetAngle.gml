@@ -6,7 +6,7 @@
 /// This particular function applies a rotation to an element.
 /// 
 /// N.B. This transformation only applies to how the element is drawn. It does not affect
-///      any collisions or raycasts. Transformations will not change `bento*` variables either.
+///      any collisions or navigation. Transformations will not change `bento*` variables either.
 ///      To move elements around in a way that also moves their collisions, please use the
 ///      `BentoLayout*()` functions or `BentoSetOffset()`.
 /// 

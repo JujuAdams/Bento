@@ -41,7 +41,7 @@ function ExampleMainMenu()
                     with(BentoCreate(oBentoExButton, { text: "New Game" }))
                     {
                         BentoHover();
-                        BentoSetRaycastWrap(false, true);
+                        BentoSetNavigationWrap(false, true);
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                     }
                     
@@ -57,7 +57,7 @@ function ExampleMainMenu()
                     
                     with(BentoCreate(oBentoExButton, { text: "Quit", func: ExampleHomePageJSON }))
                     {
-                        BentoSetRaycastWrap(false, true);
+                        BentoSetNavigationWrap(false, true);
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                     }
                 }

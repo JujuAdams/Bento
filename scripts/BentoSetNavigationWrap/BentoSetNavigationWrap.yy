@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoSetRaycastWrap",
+  "%Name":"BentoSetNavigationWrap",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoSetRaycastWrap",
+  "name":"BentoSetNavigationWrap",
   "parent":{
     "name":"Navigation Only",
     "path":"folders/Bento/Functions/Input & Navigation/Navigation Only.yy",

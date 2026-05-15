@@ -84,7 +84,7 @@ function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
                 {
                     //If the navigation element isn't hoverable then fall back on a raycast
                 
-                    if (((_dX != 0) && (not _prevBento.__raycastEnableX)) || ((_dY != 0) && (not _prevBento.__raycastEnableY)))
+                    if (((_dX != 0) && (not _prevBento.__navigationEnableX)) || ((_dY != 0) && (not _prevBento.__navigationEnableY)))
                     {
                         //Raycast is disabled for the previous element!
                         _nextElement = _prevElement;
@@ -94,15 +94,15 @@ function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
                         __BentoGetNavigationRaycast(_raycastData, __navigationLastX, __navigationLastY, _dX, _dY, _exclude, _prevScrollParent);
                         
                         //Try wrapping the raycast
-                        if ((abs(_dY) >= abs(_dX)) && _prevBento.__raycastWrapY)
+                        if ((abs(_dY) >= abs(_dX)) && _prevBento.__navigationWrapY)
                         {
-                            var _checkWrap = _prevBento.__raycastWrapY;
+                            var _checkWrap = _prevBento.__navigationWrapY;
                             var _wrapDX = 0;
                             var _wrapDY = _dY;
                         }
                         else if (abs(_dX) > abs(_dY))
                         {
-                            var _checkWrap = _prevBento.__raycastWrapX;
+                            var _checkWrap = _prevBento.__navigationWrapX;
                             var _wrapDX = _dX;
                             var _wrapDY = 0;
                         }

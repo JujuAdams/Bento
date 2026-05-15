@@ -1,6 +1,6 @@
 // Feather disable all
 
-function ExampleRaycastWrapJSON()
+function ExampleNavigationWrapJSON()
 {
     with(oMain)
     {
@@ -24,7 +24,7 @@ function ExampleRaycastWrapJSON()
                         {
                             object: oBentoExText,
                             vars: {
-                                text: "Raycast Wrapping",
+                                text: "Navigation Wrapping",
                                 font: fntBentoExCandyBeansBig,
                             },
                         },
@@ -35,7 +35,7 @@ function ExampleRaycastWrapJSON()
                             },
                             onCreate: function()
                             {
-                                BentoSetRaycastWrap(true, true);
+                                BentoSetNavigationWrap(true, true);
                             },
                         },
                     ],
@@ -64,7 +64,7 @@ function ExampleRaycastWrapJSON()
                                     },
                                     onCreate: function()
                                     {
-                                        BentoSetRaycastWrap(true, true);
+                                        BentoSetNavigationWrap(true, true);
                                     },
                                 },
                                 {
@@ -75,7 +75,7 @@ function ExampleRaycastWrapJSON()
                                     },
                                     onCreate: function()
                                     {
-                                        BentoSetRaycastWrap(true, true);
+                                        BentoSetNavigationWrap(true, true);
                                     },
                                 },
                                 {
@@ -86,7 +86,7 @@ function ExampleRaycastWrapJSON()
                                     },
                                     onCreate: function()
                                     {
-                                        BentoSetRaycastWrap(true, true);
+                                        BentoSetNavigationWrap(true, true);
                                     },
                                 },
                                 {
@@ -97,7 +97,7 @@ function ExampleRaycastWrapJSON()
                                     },
                                     onCreate: function()
                                     {
-                                        BentoSetRaycastWrap(true, true);
+                                        BentoSetNavigationWrap(true, true);
                                     },
                                 },
                             ],
@@ -113,7 +113,7 @@ function ExampleRaycastWrapJSON()
                             },
                             onCreate: function()
                             {
-                                BentoSetRaycastWrap(true, true);
+                                BentoSetNavigationWrap(true, true);
                             },
                             children: [
                                 {
@@ -124,7 +124,7 @@ function ExampleRaycastWrapJSON()
                                     },
                                     onCreate: function()
                                     {
-                                        BentoSetRaycastWrap(true, true);
+                                        BentoSetNavigationWrap(true, true);
                                     },
                                 },
                                 {
@@ -135,7 +135,7 @@ function ExampleRaycastWrapJSON()
                                     },
                                     onCreate: function()
                                     {
-                                        BentoSetRaycastWrap(true, true);
+                                        BentoSetNavigationWrap(true, true);
                                     },
                                 },
                                 {
@@ -146,7 +146,7 @@ function ExampleRaycastWrapJSON()
                                     },
                                     onCreate: function()
                                     {
-                                        BentoSetRaycastWrap(true, true);
+                                        BentoSetNavigationWrap(true, true);
                                     },
                                 },
                                 {
@@ -157,7 +157,7 @@ function ExampleRaycastWrapJSON()
                                     },
                                     onCreate: function()
                                     {
-                                        BentoSetRaycastWrap(true, true);
+                                        BentoSetNavigationWrap(true, true);
                                     },
                                 },
                             ],

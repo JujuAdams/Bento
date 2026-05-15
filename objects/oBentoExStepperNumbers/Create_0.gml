@@ -29,11 +29,9 @@ if (image_blend == c_white)
 
 if (not useFocus)
 {
-    // Disables raycasting in particular axes. This only applies to navigation input where raycasting
-    // is used to work out which element to jump to when pushing in a particular direction. This does
-    // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-    // raycasting so that it doesn't interfere with stepping through strings.
-    BentoSetRaycastEnable(false, true);
+    // We disable horizontal navigation so that players can scroll through values without jumping
+    // to another element
+    BentoSetNavigationEnable(false, true);
 }
 
 //Ensure the click function is scoped to this instance
