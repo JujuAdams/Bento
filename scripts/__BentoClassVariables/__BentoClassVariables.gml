@@ -89,10 +89,10 @@ function __BentoClassVariables(_attachedElement) constructor
     __focusType        = BENTO_FOCUS_NONE;
     __focusEncloseType = BENTO_ENCLOSE_NEVER;
     
-    __linkLeft  = BENTO_NO_ELEMENT;
-    __linkRight = BENTO_NO_ELEMENT;
-    __linkUp    = BENTO_NO_ELEMENT;
-    __linkDown  = BENTO_NO_ELEMENT;
+    __navigationLinkLeft  = BENTO_NO_ELEMENT;
+    __navigationLinkRight = BENTO_NO_ELEMENT;
+    __navigationLinkUp    = BENTO_NO_ELEMENT;
+    __navigationLinkDown  = BENTO_NO_ELEMENT;
     
     //TODO - Combine into one variable using binary flags?
     __navigationEnableX = true;

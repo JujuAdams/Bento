@@ -4,7 +4,8 @@
 /// both axes). This is helpful when creating scrolling elements that treat e.g. left and right
 /// input as a way to adjust a setting.
 /// 
-/// N.B. Links created by `BentoLinkHori()` and `BentoLinkVert()` will override this setting.
+/// N.B. Links created by `BentoNavigationLinkX()` and `BentoNavigationLinkY()` will override this
+///      setting.
 /// 
 /// @param enableX
 /// @param enableY

@@ -3,7 +3,8 @@
 /// Sets whether navigation wrapping should be enabled in each axis. This can be used to create
 /// lists of buttons that can be scrolled in bother directions.
 /// 
-/// N.B. Links created by `BentoLinkHori()` and `BentoLinkVert()` will override this setting.
+/// N.B. Links created by `BentoNavigationLinkX()` and `BentoNavigationLinkY()` will override this
+///      setting.
 /// 
 /// @param wrapX
 /// @param wrapY

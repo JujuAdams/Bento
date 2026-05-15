@@ -9,8 +9,8 @@
 /// @param up
 /// @param down
 
-function BentoLinkVert(_up, _down)
+function BentoNavigationLinkY(_up, _down)
 {
-    if (BentoExists(_up)) _up.BENTO_VARS.__linkDown = _down;
-    if (BentoExists(_down)) _down.BENTO_VARS.__linkUp = _up;
+    if (BentoExists(_up)) _up.BENTO_VARS.__navigationLinkDown = _down;
+    if (BentoExists(_down)) _down.BENTO_VARS.__navigationLinkUp = _up;
 }

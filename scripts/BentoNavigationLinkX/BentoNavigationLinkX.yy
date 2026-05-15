@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoLinkVert",
+  "%Name":"BentoNavigationLinkX",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoLinkVert",
+  "name":"BentoNavigationLinkX",
   "parent":{
     "name":"Navigation Only",
     "path":"folders/Bento/Functions/Input & Navigation/Navigation Only.yy",

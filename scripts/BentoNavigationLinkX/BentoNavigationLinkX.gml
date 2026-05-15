@@ -9,8 +9,8 @@
 /// @param left
 /// @param right
 
-function BentoLinkHori(_left, _right)
+function BentoNavigationLinkX(_left, _right)
 {
-    if (BentoExists(_left)) _left.BENTO_VARS.__linkRight = _right;
-    if (BentoExists(_right)) _right.BENTO_VARS.__linkLeft = _left;
+    if (BentoExists(_left)) _left.BENTO_VARS.__navigationLinkRight = _right;
+    if (BentoExists(_right)) _right.BENTO_VARS.__navigationLinkLeft = _left;
 }

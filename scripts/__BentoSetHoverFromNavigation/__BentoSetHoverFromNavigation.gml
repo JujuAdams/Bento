@@ -55,19 +55,19 @@ function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
                 //Choose a predefined navigable element if possible
                 if (_dY < 0)
                 {
-                    _nextElement = _prevBento.__linkUp;
+                    _nextElement = _prevBento.__navigationLinkUp;
                 }
                 else if (_dY > 0)
                 {
-                    _nextElement = _prevBento.__linkDown;
+                    _nextElement = _prevBento.__navigationLinkDown;
                 }
                 else if (_dX < 0)
                 {
-                    _nextElement = _prevBento.__linkLeft;
+                    _nextElement = _prevBento.__navigationLinkLeft;
                 }
                 else if (_dX > 0)
                 {
-                    _nextElement = _prevBento.__linkRight;
+                    _nextElement = _prevBento.__navigationLinkRight;
                 }
             
                 //Only check if the next element is properly visible if it's nested inside a different scroller to
