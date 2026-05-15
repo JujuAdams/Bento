@@ -95,6 +95,23 @@
 #macro BENTO_ENCLOSE_POINTER  0b01
 
 ///////
+// Maintain Background Hover
+///////
+
+//The element will be unhovered when its layer is backgrounded.
+#macro BENTO_MAINTAIN_NEVER  0
+
+//The element will only remain hovered when its layer is using mouse or touch input.
+#macro BENTO_MAINTAIN_POINTER  1
+
+//This is the default value. The element will only remain hovered when its layer is using keyboard
+//or gamepad input.
+#macro BENTO_MAINTAIN_NAVIGATION  2
+
+//The element will remain hovered when its layer is backgrounded regardless of input mode.
+#macro BENTO_MAINTAIN_ALWAYS  3
+
+///////
 // Layout
 ///////
 

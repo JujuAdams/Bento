@@ -23,6 +23,7 @@ function __BentoClassLayer(_environment, _name) constructor
     
     __isTopLayer = true;
     __drawWhenBackgrounded = true;
+    __runStep = true;
     
     __animPlayingArray      = [];
     __animPlayingMap        = ds_map_create();
@@ -137,8 +138,6 @@ function __BentoClassLayer(_environment, _name) constructor
     {
         __isTopLayer = false;
         
-        __hoverElementStored = BentoExists(__hoverElement)? weak_ref_create(__hoverElement) : BENTO_NO_ELEMENT;
-        
         __pointerX = -__BENTO_VERY_LARGE;
         __pointerY = -__BENTO_VERY_LARGE;
         
@@ -155,7 +154,23 @@ function __BentoClassLayer(_environment, _name) constructor
             __environment.__textHandler.__Terminate(BENTO_TEXT_ABORT);
         }
         
-        __ClearHoverElement();
+        if (BentoExists(__hoverElement))
+        {
+            __hoverElementStored = weak_ref_create(__hoverElement);
+            
+            var _backgroundHover = __hoverElement.BENTO_VARS.__backgroundHover;
+            if ((_backgroundHover == BENTO_MAINTAIN_NEVER)
+            ||  (_backgroundHover == BENTO_MAINTAIN_POINTER) && (not __inputModePointer)
+            ||  (_backgroundHover == BENTO_MAINTAIN_NAVIGATION) && (not __inputModeNavigation)) 
+            {
+                __ClearHoverElement();
+            }
+        }
+        else
+        {
+            __hoverElementStored = BENTO_NO_ELEMENT;
+        }
+        
         __holdElement = BENTO_NO_ELEMENT;
         __ClearDraggedItem();
     }
@@ -746,21 +761,25 @@ function __BentoClassLayer(_environment, _name) constructor
             }
         }
         
-        //Run an update so long as we are the top layer or we have elements of interest on this layer.
-        //Because we force player input to "null" when a layer is backgrounded, elements will become
-        //inert one or two frames after a layer is backgrounded
-        if (_isTopLayer || (array_length(__updateElementArray) > 0))
+        //Always run Step events if we're the top layer
+        __runStep = _isTopLayer;
+        
+        //Update elements of interest. `__runStep` is also set to `true` in here too depending on what
+        //state elements are in
+        array_resize(__updateElementArray, array_filter_ext(__updateElementArray, function(_elementVars)
         {
-            //Update elements of interest
-            __BentoUpdateLayerActiveElements();
-            
-            //Reset this mouse state after we update element state. This ensures we set the correct
-            //state when releasing after dragging a scrollable container
-            if (__primaryState == __BENTO_STATE_END)
-            {
-                __ClearScrollingElement();
-            }
-            
+            return __BentoUpdateActiveElement(_elementVars);
+        }));
+        
+        //Reset this mouse state after we update element state. This ensures we set the correct
+        //state when releasing after dragging a scrollable container
+        if (__primaryState == __BENTO_STATE_END)
+        {
+            __ClearScrollingElement();
+        }
+        
+        if (__runStep)
+        {
             ///////
             // Step user event execution
             ///////
@@ -829,19 +848,19 @@ function __BentoClassLayer(_environment, _name) constructor
             }
         }
         
+        //Draw the hovered element if it's not inside a scissor. If the hovered element is inside
+        //a scissor then it'll be drawn by `__BentoScissorPop()`
+        if (BentoExists(__hoverElement))
+        {
+            var _hoverElementVars = __hoverElement.BENTO_VARS;
+            if (_hoverElementVars.__scissorParent == __rootElement.BENTO_VARS)
+            {
+                _hoverElementVars.__eventDrawHover();
+            }
+        }
+        
         if (__isTopLayer)
         {
-            //Draw the hovered element if it's not inside a scissor. If the hovered element is inside
-            //a scissor then it'll be drawn by `__BentoScissorPop()`
-            if (BentoExists(__hoverElement))
-            {
-                var _hoverElementVars = __hoverElement.BENTO_VARS;
-                if (_hoverElementVars.__scissorParent == __rootElement.BENTO_VARS)
-                {
-                    _hoverElementVars.__eventDrawHover();
-                }
-            }
-            
             //Draw the dragged item element, if we have one
             with(__carryItemElement)
             {

@@ -1,17 +1,6 @@
 // Feather disable all
 
-/// Updates library state for elements that need it.
-/// 
 /// Must be called in the scope of `__BentoClassLayer`.
-
-function __BentoUpdateLayerActiveElements()
-{
-    //Reset state for updating elements
-    array_resize(__updateElementArray, array_filter_ext(__updateElementArray, function(_elementVars)
-    {
-        return __BentoUpdateActiveElement(_elementVars);
-    }));
-}
 
 function __BentoUpdateActiveElement(_elementVars)
 {
@@ -167,13 +156,13 @@ function __BentoUpdateActiveElement(_elementVars)
                 }
             }
         }
-            
+        
         ///////
         // Scrolling
         ///////
-            
+        
         //Scrolling when in navigation input mode is handled when an element is hovered
-            
+        
         if (other.__inputModePointer && (__hoverState & __BENTO_STATE_START))
         {
             if (other.__pointerTravelled
@@ -250,17 +239,36 @@ function __BentoUpdateActiveElement(_elementVars)
         }
         
         //Remove this element from the update loop if it's inactive
-        if ((__hoverState == __BENTO_STATE_OFF)
-        &&  (__primaryState == __BENTO_STATE_OFF)
-        &&  (__primaryLongState == __BENTO_STATE_OFF)
-        &&  (__carryItemState == __BENTO_STATE_OFF) && (__carryTargetElement == BENTO_NO_ELEMENT))
+        if ((__primaryState != __BENTO_STATE_OFF)
+        ||  (__primaryLongState != __BENTO_STATE_OFF)
+        ||  (__carryItemState != __BENTO_STATE_OFF)
+        ||  (__carryTargetElement != BENTO_NO_ELEMENT))
         {
+            //We're updating states that are "dangerous" so we must run Step events
+            other.__runStep = true;
+            
+            //Keep us in the array
+            return true;
+        }
+        else if (__hoverState != __BENTO_STATE_OFF)
+        {
+            if ((__backgroundHover == BENTO_MAINTAIN_NEVER)
+            ||  (__backgroundHover == BENTO_MAINTAIN_POINTER) && (not other.__inputModePointer)
+            ||  (__backgroundHover == BENTO_MAINTAIN_NAVIGATION) && (not other.__inputModeNavigation)) 
+            {
+                //If we're *not* maintaining background hover then elements lose the opportunity
+                //to catch the "hover end" (leave) state unless we run Step events
+                other.__runStep = true;
+            }
+            
+            //Keep us in the array
+            return true;
+        }
+        else // if (__hoverState == __BENTO_STATE_OFF)
+        {
+            //Nothing interesting is happening! Remove us from the array
             __updating = false;
             return false;
-        }
-        else
-        {
-            return true;
         }
     }
     

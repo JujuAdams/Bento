@@ -78,11 +78,12 @@ function __BentoClassVariables(_attachedElement) constructor
     __parent    = BENTO_NO_ELEMENT;
     __drawDepth = 0;
     
-    __forceStep    = false;
-    __buttonType   = BENTO_BUTTON_NEVER;
-    __executesStep = false;
-    __drawAfter    = false;
+    __forceStep            = false;
+    __buttonType           = BENTO_BUTTON_NEVER;
+    __executesStep         = false;
+    __drawAfter            = false;
     __holdBlocksDragScroll = false;
+    __backgroundHover      = BENTO_MAINTAIN_NAVIGATION;
     
     __focused          = false;
     __focusType        = BENTO_FOCUS_NONE;
