@@ -137,7 +137,7 @@ function __BentoClassLayer(_environment, _name) constructor
     {
         __isTopLayer = false;
         
-        __hoverElementStored = BentoExists(__hoverElement)? weak_ref_create(__hoverElement) : undefined;
+        __hoverElementStored = BentoExists(__hoverElement)? weak_ref_create(__hoverElement) : BENTO_NO_ELEMENT;
         
         __pointerX = -__BENTO_VERY_LARGE;
         __pointerY = -__BENTO_VERY_LARGE;
@@ -752,7 +752,7 @@ function __BentoClassLayer(_environment, _name) constructor
         if (_isTopLayer || (array_length(__updateElementArray) > 0))
         {
             //Update elements of interest
-            __BentoUpdateElementState();
+            __BentoUpdateLayerActiveElements();
             
             //Reset this mouse state after we update element state. This ensures we set the correct
             //state when releasing after dragging a scrollable container

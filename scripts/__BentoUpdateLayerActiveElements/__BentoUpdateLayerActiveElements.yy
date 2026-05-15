@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoUpdateElementState",
+  "%Name":"__BentoUpdateLayerActiveElements",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoUpdateElementState",
+  "name":"__BentoUpdateLayerActiveElements",
   "parent":{
     "name":"Important Functions",
     "path":"folders/Bento/(Internal)/Important Functions.yy",
