@@ -58,6 +58,18 @@ function ExampleContextMenuJSON()
                         },
                     },
                 },
+                {
+                    object: oBentoExButton,
+                    vars: {
+                        text: "Other Button",
+                    },
+                },
+                {
+                    object: oBentoExButton,
+                    vars: {
+                        text: "Other Button",
+                    },
+                },
             ],
         };
         
