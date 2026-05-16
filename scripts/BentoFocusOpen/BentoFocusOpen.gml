@@ -68,9 +68,10 @@ function BentoFocusOpen(_focusType, _element = self)
                 var _focusElement = undefined;
                 repeat(array_length(_focusStack))
                 {
-                    if (BentoIsAncestor(_focusStack[_i], _element))
+                    var _stackElement = _focusStack[_i].__focusElement;
+                    if (BentoIsAncestor(_stackElement, _element))
                     {
-                        _focusElement = _focusStack[_i];
+                        _focusElement = _stackElement;
                         break;
                     }
                     
@@ -80,7 +81,11 @@ function BentoFocusOpen(_focusType, _element = self)
                 BentoFocusClose(_focusElement);
             }
             
-            array_push(_focusStack, _element);
+            array_push(_focusStack, {
+                __prevHoverElement: _layer.__hoverElement,
+                __focusElement: _element,
+            });
+            
             _layer.__focusTop = _element;
             
             _layer.__cursorLastL = _element.bentoLeft;

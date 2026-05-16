@@ -33,19 +33,3 @@ function BentoHover(_element = self, _byPlayer = false, _layerOrName = undefined
         }
     }
 }
-
-//Internal variant without the debug messages
-function __BentoHoverInternal(_element)
-{
-    with(__BentoLayerEnsure(undefined))
-    {
-        if (__inputModeNavigation)
-        {
-            if (__BentoGetHoverableInternal(_element, false))
-            {
-                __BentoSetHover(_element, false);
-                __hoverElementSoft = BENTO_NO_ELEMENT;
-            }
-        }
-    }
-}

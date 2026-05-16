@@ -239,7 +239,7 @@ function __BentoClassLayer(_environment, _name) constructor
             var _i = 0;
             repeat(array_length(_focusStack))
             {
-                var _element = _focusStack[_i];
+                var _element = _focusStack[_i].__focusElement;
                 if (_element.BENTO_VARS.__focusType == BENTO_FOCUS_POINTER_CANCEL_ALWAYS)
                 {
                     BentoFocusClose(_element);
