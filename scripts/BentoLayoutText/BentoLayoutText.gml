@@ -23,7 +23,7 @@
 /// text will be drawn in.
 /// 
 /// ```
-/// BentoLayoutText(function(_width)
+/// BentoLayoutText(function(_maxWidth, _maxHeight)
 /// {
 ///     var _oldFont = draw_get_font();
 ///     draw_set_font(font);

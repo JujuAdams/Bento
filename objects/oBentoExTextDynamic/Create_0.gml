@@ -81,7 +81,7 @@ BentoLayoutSetMinSize(min(_stringWidth, 4*string_width(" ")));
 draw_set_font(_oldFont);
 
 // Set up the rules to use when Bento calculates layouts
-BentoLayoutText(function(_maxWidth)
+BentoLayoutText(function(_maxWidth, _maxHeight)
 {
     var _oldFont = draw_get_font();
     draw_set_font(font);

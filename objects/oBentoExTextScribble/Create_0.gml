@@ -1,13 +1,5 @@
 // Feather disable all
 
-// This object defines a simple text element that can be used within a Bento UI layout. The text
-// will wrap to a new line if the element width gets too small. You cannot change the text after
-// the instance has been created (please use `oBentoExTextDynamic` instead).
-// 
-// As with everything in Bento, a text element is fundamentally a rectangular box. Imagine the text
-// element as an invisible box that can change shape depending on the layout algorithm. Text is
-// then drawn inside that box.
-// 
 // You may specify the following variables when creating an instance of this object with
 // `BentoCreate()`.
 // 
@@ -29,7 +21,7 @@
 // 
 // Example:
 // ```
-// BentoCreate(oBentoText, { text: "Hello world!", font: fntBentoExCandyBeans, hAlign: fa_center, vAlign: fa_middle });
+// BentoCreate(oBentoExTextScribble, { text: "Hello world!", font: "fntBentoExCandyBeans", hAlign: fa_center, vAlign: fa_middle });
 // ```
 
 event_inherited();
@@ -37,31 +29,42 @@ event_inherited();
 // Ensure we have valid values for these variables
 BentoVarEnsureMany(
     "text",   "",
-    "font",   fntBentoExCandyBeans,
+    "font",   "fntBentoExCandyBeans",
     "hAlign", fa_left,
     "vAlign", fa_top,
 );
+
+if (not is_string(font))
+{
+    if (font_exists(font))
+    {
+        font = font_get_name(font);
+    }
+    else
+    {
+        font = "scribble_fallback_font";
+    }
+}
 
 if (image_blend == c_white)
 {
     image_blend = BENTO_EXAMPLE_YELLOW;
 }
 
-//Set the layout parameters based on the size of the string when drawn
-var _oldFont = draw_get_font();
-draw_set_font(font);
-var _stringWidth = string_width(text);
-BentoLayoutSetSize(_stringWidth, string_height(text));
-BentoLayoutSetMinSize(min(_stringWidth, 4*string_width(" ")));
-draw_set_font(_oldFont);
-
-// Set up the rules to use when Bento calculates layouts
-BentoLayoutText(function(_maxWidth)
+funcGetTextElement = function()
 {
-    var _oldFont = draw_get_font();
-    draw_set_font(font);
-    var _result = string_height_ext(text, -1, _maxWidth);
-    draw_set_font(_oldFont);
-    
-    return _result;
+    return scribble(text, id)
+           .align(hAlign, vAlign)
+           .starting_format(font, image_blend);
+}
+
+var _textElement = funcGetTextElement();
+var _stringWidth  = _textElement.get_width();
+var _stringHeight = _textElement.get_height();
+BentoLayoutSetSize(_stringWidth, _stringHeight);
+BentoLayoutSetMinSize(min(_stringWidth, 30));
+
+BentoLayoutText(function(_maxWidth, _maxHeight)
+{
+    return funcGetTextElement().fit_to_box(_maxWidth, _maxHeight).get_height();
 });

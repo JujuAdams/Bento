@@ -71,6 +71,13 @@ function ExampleHomePageJSON()
                 {
                     object: oBentoExButton,
                     vars: {
+                        text: $"Scribble",
+                        func: ExampleScribble,
+                    },
+                },
+                {
+                    object: oBentoExButton,
+                    vars: {
                         text: $"Buttons",
                         func: ExampleButtons,
                     },

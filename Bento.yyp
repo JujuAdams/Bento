@@ -609,6 +609,7 @@
     {"id":{"name":"ExamplePositionJSON","path":"scripts/ExamplePositionJSON/ExamplePositionJSON.yy",},},
     {"id":{"name":"ExampleRadioButtonJSON","path":"scripts/ExampleRadioButtonJSON/ExampleRadioButtonJSON.yy",},},
     {"id":{"name":"ExampleReorderLists","path":"scripts/ExampleReorderLists/ExampleReorderLists.yy",},},
+    {"id":{"name":"ExampleScribble","path":"scripts/ExampleScribble/ExampleScribble.yy",},},
     {"id":{"name":"ExampleScrollingListJSON","path":"scripts/ExampleScrollingListJSON/ExampleScrollingListJSON.yy",},},
     {"id":{"name":"ExampleScrollingListWithBarJSON","path":"scripts/ExampleScrollingListWithBarJSON/ExampleScrollingListWithBarJSON.yy",},},
     {"id":{"name":"ExampleSettingsMenu","path":"scripts/ExampleSettingsMenu/ExampleSettingsMenu.yy",},},
