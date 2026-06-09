@@ -12,7 +12,7 @@ function __BentoSetHoverFromPointer(_mouseX, _mouseY)
     var _hoverableOrder = __hoverableOrder;
     var _hoverableCount = array_length(_hoverableOrder);
     
-    if (not __navPointer)
+    if (not __inputModePointer)
     {
         __BentoError("Can only use `__BentoSetHoverFromPointer()` in pointer mode");
     }

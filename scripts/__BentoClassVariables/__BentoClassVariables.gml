@@ -50,7 +50,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __hoverState       = __BENTO_STATE_OFF;
     __primaryState     = __BENTO_STATE_OFF;
     __primaryLongState = __BENTO_STATE_OFF;
-    __byNavigation     = false;
+    __byPlayer         = false;
     __clickState       = 0b00;
     
     __longPressEnabled = false;
@@ -78,25 +78,27 @@ function __BentoClassVariables(_attachedElement) constructor
     __parent    = BENTO_NO_ELEMENT;
     __drawDepth = 0;
     
-    __forceStep    = false;
-    __buttonType   = BENTO_BUTTON_NEVER;
-    __executesStep = false;
-    __drawAfter    = false;
+    __forceStep            = false;
+    __buttonType           = BENTO_BUTTON_NEVER;
+    __executesStep         = false;
+    __drawAfter            = false;
+    __holdBlocksDragScroll = false;
+    __backgroundHover      = BENTO_MAINTAIN_NAVIGATION;
     
     __focused          = false;
     __focusType        = BENTO_FOCUS_NONE;
     __focusEncloseType = BENTO_ENCLOSE_NEVER;
     
-    __linkLeft  = BENTO_NO_ELEMENT;
-    __linkRight = BENTO_NO_ELEMENT;
-    __linkUp    = BENTO_NO_ELEMENT;
-    __linkDown  = BENTO_NO_ELEMENT;
+    __navigationLinkLeft  = BENTO_NO_ELEMENT;
+    __navigationLinkRight = BENTO_NO_ELEMENT;
+    __navigationLinkUp    = BENTO_NO_ELEMENT;
+    __navigationLinkDown  = BENTO_NO_ELEMENT;
     
     //TODO - Combine into one variable using binary flags?
-    __raycastEnableX = true;
-    __raycastEnableY = true;
-    __raycastWrapX   = false;
-    __raycastWrapY   = false;
+    __navigationEnableX = true;
+    __navigationEnableY = true;
+    __navigationWrapX   = false;
+    __navigationWrapY   = false;
     
     __childArray     = [];
     __childDrawArray = [];

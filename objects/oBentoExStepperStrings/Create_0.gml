@@ -1,7 +1,7 @@
 // Feather disable all
 
 // This object defines a stepper of discrete strings. It can be manipulated using pointer input or
-// directional input. Clicking on the left or right sides will scroll through strings. Directional
+// navigation input. Clicking on the left or right sides will scroll through strings. Navigation
 // input uses the x-axis movement to trigger stepping through strings (typically left/right arrow
 // keys or thumbstick/dpad input).
 // 
@@ -51,6 +51,7 @@ BentoVarEnsureMany(
     "text",        "Example",
     "font",        fntBentoExCandyBeans,
     "useFocus",    true,
+    "showMarkers", true,
     "func",        function(){},
 );
 
@@ -61,11 +62,9 @@ if (image_blend == c_white)
 
 if (not useFocus)
 {
-    // Disables raycasting in particular axes. This only applies to directional input where raycasting
-    // is used to work out which element to jump to when pushing in a particular direction. This does
-    // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-    // raycasting so that it doesn't interfere with stepping through strings.
-    BentoSetRaycastEnable(false, true);
+    // We disable horizontal navigation so that players can scroll through strings without jumping
+    // to another element
+    BentoSetNavigationEnable(false, true);
 }
 
 var _oldFont = draw_get_font();
@@ -73,6 +72,11 @@ draw_set_font(font);
 
 var _width  = string_width(text);
 var _height = string_height(text);
+
+if (showMarkers)
+{
+    _height += 30;
+}
 
 var _optionWidth  = 0;
 var _optionHeight = 0;

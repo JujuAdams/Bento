@@ -2647,8 +2647,8 @@
   "maintainGms1Font":false,
   "name":"fntBentoExCandyBeans",
   "parent":{
-    "name":"Bento Examples",
-    "path":"folders/Bento Examples.yy",
+    "name":"Bento Element Examples",
+    "path":"folders/Bento Element Examples.yy",
   },
   "pointRounding":0,
   "ranges":[

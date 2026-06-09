@@ -1,38 +1,77 @@
+// Feather disable all
+
 function ExampleMainMenu()
 {
-    mainElement = BentoCreate(oBentoExList, undefined, BentoLayerGetRoot());
-    with(mainElement)
+    with(oMain)
     {
-        BentoSetVisible(false);
-        BentoLayoutSetAnchor(0.5, 0.5);
-        BentoLayoutSetGutter(0, 10);
+        BentoDestroy(mainElement);
         
-        BentoCreate(oBentoExText, {
-            text: "Main Menu"
-        });
-        
-        BentoCreate(oBentoExButton, {
-            text: "New Game",
-            func: function()
+        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        with(mainElement)
+        {
+            BentoLayoutSetPadding(20);
+            BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+            
+            with(BentoCreate(oBentoExSpacer))
             {
-                show_debug_message("New Game");
+                BentoLayoutSetAnchor(0.5, 0.5);
+                
+                BentoLayoutSetGutter(0, 60);
+                BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
+                BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
+                
+                with(BentoCreate(oBentoExSpacer))
+                {
+                    BentoLayoutSetGutter(20, 20);
+                    BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
+                    BentoLayoutList(BENTO_AXIS_Y, 0.5, 0.5);
+                    
+                    BentoCreate(oBentoExSpriteWithShadow, { sprite_index: sBentoExLogoBig });
+                
+                    BentoCreate(oBentoExText, { text: "Game Title", font: fntBentoExCandyBeansBig });
+                }
+                
+                with(BentoCreate(oBentoExSpacer))
+                {
+                    BentoLayoutSetGutter(20, 20);
+                    BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
+                    BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
+                    
+                    
+                    with(BentoCreate(oBentoExButton, { text: "New Game" }))
+                    {
+                        BentoHover();
+                        BentoSetNavigationWrap(false, true);
+                        BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+                    }
+                    
+                    with(BentoCreate(oBentoExButton, { text: "Load Game" }))
+                    {
+                        BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+                    }
+                    
+                    with(BentoCreate(oBentoExButton, { text: "Options" }))
+                    {
+                        BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+                    }
+                    
+                    with(BentoCreate(oBentoExButton, { text: "Quit", func: ExampleHomePageJSON }))
+                    {
+                        BentoSetNavigationWrap(false, true);
+                        BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+                    }
+                }
             }
-        });
-        
-        BentoCreate(oBentoExButton, {
-            text: "Load Game",
-            func: function()
+                
+            with(BentoCreate(oBentoExText, { text: "Juju Adams", font: fntBentoExCandyBeans }))
             {
-                show_debug_message("Load Game");
+                BentoLayoutSetAnchor(0, 1);
             }
-        });
-        
-        BentoCreate(oBentoExButton, {
-            text: "Quit Game",
-            func: function()
+                
+            with(BentoCreate(oBentoExText, { text: BENTO_VERSION, font: fntBentoExCandyBeans }))
             {
-                game_end();
+                BentoLayoutSetAnchor(1, 1);
             }
-        });
+        }
     }
 }

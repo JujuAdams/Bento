@@ -34,8 +34,36 @@ if (text != "")
 if (array_length(stringArray) > 0)
 {
     draw_set_halign(fa_center);
-    draw_set_valign(fa_bottom);
-    draw_text(_centerX + _dX, bentoBottom - 10 + _dY, BentoRefIsAlive(reference)? string(BentoRefGet(reference, "")) : stringArray[0]);
+    
+    var _value = BentoRefIsAlive(reference)? string(BentoRefGet(reference, "")) : stringArray[0];
+    var _index = array_get_index(stringArray, _value);
+    
+    if (showMarkers)
+    {
+        draw_set_valign(fa_middle);
+        draw_text(_centerX + _dX, _centerY + _dY, _value);
+    }
+    else
+    {
+        draw_set_valign(fa_bottom);
+        draw_text(_centerX + _dX, bentoBottom - 10 + _dY, _value);
+    }
+    
+    if (showMarkers)
+    {
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_bottom);
+        var _length = array_length(stringArray);
+        var _i = 0;
+        repeat(_length)
+        {
+            draw_set_alpha((_i == _index)? 0.75 : 0.5);
+            draw_text(lerp(bentoLeft + 20, bentoRight - 20, (_i + 1) / (_length + 1)), bentoBottom - 10, (_i == _index)? "*" : ".");
+            ++_i;
+        }
+    }
+    
+    draw_set_alpha(1);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
 }

@@ -2,7 +2,7 @@
 
 // An example that demonstrates how to make a stepper for numerical values. This is commonly used
 // for audio volumes, mouse sensitivity etc.  It can be manipulated using pointer input or
-// directional input. Clicking on the left or right sides will scroll through options. Directional
+// navigation input. Clicking on the left or right sides will scroll through options. Navigation
 // input uses the x-axis movement to trigger scrolling through options (in this example project,
 // that means pressing the left and right arrow keys).
 
@@ -29,11 +29,9 @@ if (image_blend == c_white)
 
 if (not useFocus)
 {
-    // Disables raycasting in particular axes. This only applies to directional input where raycasting
-    // is used to work out which element to jump to when pushing in a particular direction. This does
-    // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-    // raycasting so that it doesn't interfere with stepping through strings.
-    BentoSetRaycastEnable(false, true);
+    // We disable horizontal navigation so that players can scroll through values without jumping
+    // to another element
+    BentoSetNavigationEnable(false, true);
 }
 
 //Ensure the click function is scoped to this instance

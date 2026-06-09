@@ -3,9 +3,9 @@
 /// Starts the hover state for an element. This must be called in the scope of a layer struct.
 /// 
 /// @param element
-/// @param byNavigation
+/// @param byPlayer
 
-function __BentoSetHover(_element, _byNavigation)
+function __BentoSetHover(_element, _byPlayer)
 {
     if (BentoExists(_element))
     {
@@ -14,10 +14,10 @@ function __BentoSetHover(_element, _byNavigation)
         __cursorLastR = _element.bentoRight;
         __cursorLastB = _element.bentoBottom;
         
-        if (__navDirectional)
+        if (__inputModeNavigation)
         {
-            __directionalLastX = 0.5*(__cursorLastL + __cursorLastR);
-            __directionalLastY = 0.5*(__cursorLastT + __cursorLastB);
+            __navigationLastX = 0.5*(__cursorLastL + __cursorLastR);
+            __navigationLastY = 0.5*(__cursorLastT + __cursorLastB);
             
             BentoScrollTo(BentoScrollGetSpeed(_element), _element);
         }
@@ -34,9 +34,9 @@ function __BentoSetHover(_element, _byNavigation)
         {
             __BentoSetAsUpdating();
             
-            if (_byNavigation)
+            if (_byPlayer)
             {
-                __byNavigation = true;
+                __byPlayer = true;
             }
         }
     }

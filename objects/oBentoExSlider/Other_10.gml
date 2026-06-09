@@ -45,7 +45,7 @@ if (BentoUsingPointer())
         handleHold = false;
     }
 }
-else if (BentoUsingDirectional())
+else if (BentoUsingNavigation())
 {
     handleHover = BentoCursorGetHover() && ((not useFocus) || (BentoFocusGetType() != BENTO_FOCUS_NONE));
     handleHold  = false;
@@ -71,7 +71,7 @@ else if (BentoUsingDirectional())
         }
     }
     
-    if (BentoCursorGetEnterByNavigation())
+    if (BentoCursorGetEnterByPlayer())
     {
         audio_play_sound(sndBentoExBlip, 0, false);
     }

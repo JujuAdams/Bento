@@ -1,18 +1,11 @@
 // Feather disable all
 
+/// @param [layerOrName]
+/// @param [environmentOrName]
+
 function BentoLayerGetHovered(_layerName = undefined, _environmentName = undefined)
 {
-    if (_layerName == undefined)
-    {
-        var _environment = __BentoEnvironmentEnsure(_environmentName);
-        var _layer = (_environment == undefined)? undefined : _environment.__layerCurrent;
-    }
-    else
-    {
-        var _layer = __BentoLayerFind(_layerName, _environmentName);
-    }
-    
-    with(_layer)
+    with(__BentoLayerEnsure(_layerName, _environmentName))
     {
         return __hoverElement;
     }

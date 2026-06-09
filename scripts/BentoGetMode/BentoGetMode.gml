@@ -31,5 +31,5 @@ function BentoGetMode(_layerOrName = undefined, _environmentOrName = undefined)
         }
     }
     
-    return _layer.__navMode;
+    return _layer.__inputMode;
 }

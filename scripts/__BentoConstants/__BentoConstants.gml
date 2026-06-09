@@ -11,8 +11,8 @@
 //                                                                        //
 ////////////////////////////////////////////////////////////////////////////
 
-#macro BENTO_VERSION  "2.3.0-alpha"
-#macro BENTO_DATE     "2026-05-02"
+#macro BENTO_VERSION  "2.3.4-alpha"
+#macro BENTO_DATE     "2026-06-09"
 
 #macro BENTO_RUNNING_FROM_IDE  (GM_build_type == "run")
 
@@ -33,17 +33,17 @@
 // Buttons
 ///////
 
-//Not a button. Cannot be clicked and cannot be hovered in directional input modes.
+//Not a button. Cannot be clicked and cannot be hovered in navigation input modes.
 #macro BENTO_BUTTON_NEVER  0b00
 
 //Always hoverable and clickable in any input mode.
 #macro BENTO_BUTTON_ALWAYS  0b11
 
-//Only a button in pointer input modes. Cannot be hovered in directional input modes.
+//Only a button in pointer input modes. Cannot be hovered in navigation input modes.
 #macro BENTO_BUTTON_POINTER  0b01
 
-//Only a button in directional input modes. Cannot be clicked in pointer input modes.
-#macro BENTO_BUTTON_DIRECTIONAL  0b10
+//Only a button in navigation input modes. Cannot be clicked in pointer input modes.
+#macro BENTO_BUTTON_NAVIGATION  0b10
 
 ///////
 // Click Timing
@@ -86,14 +86,30 @@
 //Child elements are always enclosed and cannot be interacted with unless the parent is focused.
 #macro BENTO_ENCLOSE_ALWAYS  0b11
 
-//Child elements are enclosed in directional navigation modes only. Pointer navigation modes will
-//be able to hover elements freely. This is useful for scrollboxes.
-#macro BENTO_ENCLOSE_DIRECTIONAL  0b10
+//Child elements are enclosed in navigation input modes only. Pointer input modes willbe able to
+//hover elements freely. This is useful for scrollboxes.
+#macro BENTO_ENCLOSE_NAVIGATION  0b10
 
-//Child elements are enclosed in pointer navigation modes only. Directional navigation modes will
-//be able to hover elements freely. This is probably never useful and is provided only for
-//completeness.
+//Child elements are enclosed in pointer input modes only. Navigation input modes will be able to
+//hover elements freely. This is probably never useful and is provided only for completeness.
 #macro BENTO_ENCLOSE_POINTER  0b01
+
+///////
+// Maintain Background Hover
+///////
+
+//The element will be unhovered when its layer is backgrounded.
+#macro BENTO_MAINTAIN_NEVER  0
+
+//The element will only remain hovered when its layer is using mouse or touch input.
+#macro BENTO_MAINTAIN_POINTER  1
+
+//This is the default value. The element will only remain hovered when its layer is using keyboard
+//or gamepad input.
+#macro BENTO_MAINTAIN_NAVIGATION  2
+
+//The element will remain hovered when its layer is backgrounded regardless of input mode.
+#macro BENTO_MAINTAIN_ALWAYS  3
 
 ///////
 // Layout

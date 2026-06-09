@@ -5,7 +5,7 @@
 /// has been clicked when the primary button has been released. However, elements will return that
 /// they have been clicked on pressed in the following situations:
 /// 
-/// - A layer is using a directional input mode
+/// - A layer is using a navigation input mode
 /// - A layer is using the mouse input mode and `BENTO_POINTER_CLICK_ON_PRESS` is `true` and the
 ///   element is not inside a scrolling container
 /// - A layer is using the touch input mode and the element is not inside a scrolling container

@@ -24,5 +24,5 @@ function BentoUsingGamepad(_layerOrName = undefined, _environmentOrName = undefi
         }
     }
     
-    return (_layer.__navMode == BENTO_MODE_GAMEPAD);
+    return (_layer.__inputMode == BENTO_MODE_GAMEPAD);
 }

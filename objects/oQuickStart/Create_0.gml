@@ -1,7 +1,7 @@
 // Feather disable all
 
 mainElement = BENTO_NO_ELEMENT;
-ExampleHomePage();
+ExampleHomePageJSON();
 
 if (BENTO_ON_MOBILE)
 {

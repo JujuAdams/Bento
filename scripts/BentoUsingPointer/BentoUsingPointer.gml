@@ -24,5 +24,5 @@ function BentoUsingPointer(_layerOrName = undefined, _environmentOrName = undefi
         }
     }
     
-    return _layer.__navPointer;
+    return _layer.__inputModePointer;
 }

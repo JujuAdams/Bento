@@ -22,10 +22,10 @@ function __BentoClassEnvironment(_name) constructor
     __envMouseHold  = false;
     __envMouseState = __BENTO_STATE_OFF;
     
-    __envDirectionalDX    = 0;
-    __envDirectionalDY    = 0;
-    __envDirectionalHold  = false;
-    __envDirectionalState = __BENTO_STATE_OFF;
+    __envNavigationDX    = 0;
+    __envNavigationDY    = 0;
+    __envNavigationHold  = false;
+    __envNavigationState = __BENTO_STATE_OFF;
     
     __envHotkeyInputMap = ds_map_create();
     
@@ -36,27 +36,27 @@ function __BentoClassEnvironment(_name) constructor
     if ((os_type == os_switch) || (os_type == os_ps4) || (os_type == os_ps5) || (os_type == os_xboxone) || (os_type == os_xboxseriesxs))
     {
         //Default to gamepad input on console
-        __envNavMode = BENTO_MODE_GAMEPAD;
+        __envInputMode = BENTO_MODE_GAMEPAD;
     }
     else if ((os_type == os_android) || (os_type == os_ios) || (os_type == os_tvos))
     {
         //Default to touch on mobile
-        __envNavMode = BENTO_MODE_TOUCH;
+        __envInputMode = BENTO_MODE_TOUCH;
     }
     else if ((os_type == os_windows) || (os_type == os_macosx) || (os_type == os_linux))
     {
         //Let the developer decide what to do on desktop
-        __envNavMode = BENTO_DESKTOP_DEFAULT_NAV_MODE;
+        __envInputMode = BENTO_DESKTOP_DEFAULT_INPUT_MODE;
     }
     else
     {
         __BentoTrace("Warning! OS not supported. Guessing that gamepad control is intended");
-        __envNavMode = BENTO_MODE_GAMEPAD;
+        __envInputMode = BENTO_MODE_GAMEPAD;
     }
     
     if (BENTO_DEBUG_LEVEL >= 1)
     {
-        __BentoTrace($"Input mode for environment {__BentoGetStructPointer(self)} defaults to {__BentoGetInputModeName(__envNavMode)} based on the current OS ({os_type})");
+        __BentoTrace($"Input mode for environment {__BentoGetStructPointer(self)} defaults to {__BentoGetInputModeName(__envInputMode)} based on the current OS ({os_type})");
     }
     
     ///////
@@ -76,6 +76,13 @@ function __BentoClassEnvironment(_name) constructor
     
     __nameMap = ds_map_create();
     
+    ///////
+    // Other Stuff
+    ///////
+    
+    //Initialize to some guesswork values
+    __approxWidth  = window_get_width();
+    __approxHeight = window_get_height();
     
     
     
@@ -120,14 +127,17 @@ function __BentoClassEnvironment(_name) constructor
     
     static __Update = function(_rootX, _rootY, _rootWidth, _rootHeight, _timeStep)
     {
+        __approxWidth  = _rootWidth;
+        __approxHeight = _rootHeight;
+        
         var _layerArray = __layerArray;
         
-        //Advance mouse and directional state
+        //Advance mouse and navigation state
         __envMouseState = __envMouseState >> 1;
         if (__envMouseHold) __envMouseState |= __BENTO_STATE_START;
         
-        __envDirectionalState = __envDirectionalState >> 1;
-        if (__envDirectionalHold) __envDirectionalState |= __BENTO_STATE_START;
+        __envNavigationState = __envNavigationState >> 1;
+        if (__envNavigationHold) __envNavigationState |= __BENTO_STATE_START;
         
         var _layerCount = array_length(_layerArray);
         if (_layerCount <= 0) return;

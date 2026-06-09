@@ -30,7 +30,7 @@ function BentoExConstrText(_text, _font = -1, _hAlign = fa_left, _vAlign = fa_to
     draw_set_font(_oldFont);
     
     //Set up the height rule to use when Bento calculates layouts
-    BentoLayoutText(function(_maxWidth)
+    BentoLayoutText(function(_maxWidth, _maxHeight)
     {
         var _oldFont = draw_get_font();
         draw_set_font(font);

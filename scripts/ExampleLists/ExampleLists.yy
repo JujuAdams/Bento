@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"ExampleLists",
   "parent":{
-    "name":"JSON",
-    "path":"folders/Examples/JSON.yy",
+    "name":"Procedural",
+    "path":"folders/Project Examples/Procedural.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

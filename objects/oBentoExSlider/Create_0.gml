@@ -4,7 +4,7 @@
 event_inherited();
 
 BentoSetButton(BENTO_BUTTON_ALWAYS);
-BentoFocusSetEnclose(BENTO_ENCLOSE_DIRECTIONAL);
+BentoFocusSetEnclose(BENTO_ENCLOSE_NAVIGATION);
 
 BentoVarEnsureMany(
     "reference",      undefined,
@@ -24,12 +24,14 @@ if (image_blend == c_white)
 
 if (not useFocus)
 {
-    // Disables raycasting in particular axes. This only applies to directional input where raycasting
-    // is used to work out which element to jump to when pushing in a particular direction. This does
-    // not apply to navigation links created with `BentoLink*()` functions. We disable horizontal
-    // raycasting so that it doesn't interfere with stepping through strings.
-    BentoSetRaycastEnable(false, true);
+    // We disable horizontal navigation so that players can move the slider without jumping to
+    // another element
+    BentoSetNavigationEnable(false, true);
 }
+
+//Since the player will want to click and drag this slider, we want to prevent drag movement being
+//used to move a scroll parent.
+BentoSetHoldBlocksDragScroll(true);
 
 BentoLayoutSetMinSize(undefined, 80);
 

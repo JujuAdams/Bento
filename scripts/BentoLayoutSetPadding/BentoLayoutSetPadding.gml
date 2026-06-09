@@ -1,7 +1,7 @@
 // Feather disable all
 
-/// Sets the padding inside an element. Positive padding values will position children away from
-/// the edges of the element.
+/// Sets the symmetric padding inside an element. Positive padding values will position children
+/// away from the edges of the element towards the centre of the element.
 /// 
 /// @param size
 /// @param [element=self]

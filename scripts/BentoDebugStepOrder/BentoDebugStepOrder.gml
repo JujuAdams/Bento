@@ -82,9 +82,9 @@ function BentoDebugStepOrder(_layerOrName = undefined)
             {
                 _buttonType = "pointer";
             }
-            else if (_buttonType == BENTO_BUTTON_DIRECTIONAL)
+            else if (_buttonType == BENTO_BUTTON_NAVIGATION)
             {
-                _buttonType = "directional";
+                _buttonType = "navigation";
             }
             else if (_buttonType == BENTO_BUTTON_ALWAYS)
             {
