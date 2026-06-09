@@ -53,23 +53,17 @@ function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
             else
             {
                 //Choose a predefined navigable element if possible
-                if (_dY < 0)
+                if (abs(_dX) > abs(_dY))
                 {
-                    _nextElement = _prevBento.__navigationLinkUp;
+                    var _primaryAxis = BENTO_AXIS_X;
+                    _nextElement = (_dX < 0)? _prevBento.__navigationLinkLeft : _prevBento.__navigationLinkRight;
                 }
-                else if (_dY > 0)
+                else
                 {
-                    _nextElement = _prevBento.__navigationLinkDown;
+                    var _primaryAxis = BENTO_AXIS_Y;
+                    _nextElement = (_dY < 0)? _prevBento.__navigationLinkUp : _prevBento.__navigationLinkDown;
                 }
-                else if (_dX < 0)
-                {
-                    _nextElement = _prevBento.__navigationLinkLeft;
-                }
-                else if (_dX > 0)
-                {
-                    _nextElement = _prevBento.__navigationLinkRight;
-                }
-            
+                
                 //Only check if the next element is properly visible if it's nested inside a different scroller to
                 //the previous element. This ensures non-visible elements never get hovered but that it's possible
                 //to navigate to visually hidden elements inside the scroller.
@@ -84,7 +78,7 @@ function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
                 {
                     //If the navigation element isn't hoverable then fall back on a raycast
                 
-                    if (((_dX != 0) && (not _prevBento.__navigationEnableX)) || ((_dY != 0) && (not _prevBento.__navigationEnableY)))
+                    if (((_primaryAxis == BENTO_AXIS_X) && (not _prevBento.__navigationEnableX)) || ((_primaryAxis == BENTO_AXIS_Y) && (not _prevBento.__navigationEnableY)))
                     {
                         //Raycast is disabled for the previous element!
                         _nextElement = _prevElement;
@@ -94,17 +88,17 @@ function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
                         __BentoGetNavigationRaycast(_raycastData, __navigationLastX, __navigationLastY, _dX, _dY, _exclude, _prevScrollParent);
                         
                         //Try wrapping the raycast
-                        if ((abs(_dY) >= abs(_dX)) && _prevBento.__navigationWrapY)
+                        if ((_primaryAxis == BENTO_AXIS_X) && _prevBento.__navigationWrapX)
                         {
-                            var _checkWrap = _prevBento.__navigationWrapY;
-                            var _wrapDX = 0;
-                            var _wrapDY = _dY;
-                        }
-                        else if (abs(_dX) > abs(_dY))
-                        {
-                            var _checkWrap = _prevBento.__navigationWrapX;
+                            var _checkWrap = true;
                             var _wrapDX = _dX;
                             var _wrapDY = 0;
+                        }
+                        else if ((_primaryAxis == BENTO_AXIS_Y) && _prevBento.__navigationWrapY)
+                        {
+                            var _checkWrap = true;
+                            var _wrapDX = 0;
+                            var _wrapDY = _dY;
                         }
                         else
                         {
