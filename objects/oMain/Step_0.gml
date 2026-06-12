@@ -48,8 +48,8 @@ else
 // is an abstract input that doesn't necessarily have to map to a physical input at all. Button
 // input could be triggered by a tutorial, a cutscene, a touch gesture etc. ... or it could be a
 // button. Buttons have a "pressed", "held", and "released" state that is accessed via functions.
-BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
-BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
+BentoInputHotkey(BENTO_HOTKEY_SCROLL_UP,   mouse_wheel_up());
+BentoInputHotkey(BENTO_HOTKEY_SCROLL_DOWN, mouse_wheel_down());
     
 if (BentoUsingTouch())
 {

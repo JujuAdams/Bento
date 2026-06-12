@@ -202,8 +202,8 @@ function BentoSystemSandbox(_x, _y, _width, _height)
         
         if (BentoUsingMouse())
         {
-            BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_UP,   mouse_wheel_up());
-            BentoInputHotkey(BENTO_HOTKEY_MOUSE_WHEEL_DOWN, mouse_wheel_down());
+            BentoInputHotkey(BENTO_HOTKEY_SCROLL_UP,   mouse_wheel_up());
+            BentoInputHotkey(BENTO_HOTKEY_SCROLL_DOWN, mouse_wheel_down());
         }
     }
     else

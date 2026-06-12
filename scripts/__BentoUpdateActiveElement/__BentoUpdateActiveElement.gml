@@ -219,13 +219,13 @@ function __BentoUpdateActiveElement(_elementVars)
                     
                 //Mouse wheel input can be pretty noisy so we filter out as much as possible
                     
-                if (BentoHotkeyGetPress(BENTO_HOTKEY_MOUSE_WHEEL_UP) || BentoHotkeyGetHold(BENTO_HOTKEY_MOUSE_WHEEL_UP))
+                if (BentoHotkeyGetPress(BENTO_HOTKEY_SCROLL_UP) || BentoHotkeyGetHold(BENTO_HOTKEY_SCROLL_UP))
                 {
                     _dX -= BENTO_MOUSE_WHEEL_SCROLL_SPEED;
                     _dY += BENTO_MOUSE_WHEEL_SCROLL_SPEED;
                 }
                     
-                if (BentoHotkeyGetPress(BENTO_HOTKEY_MOUSE_WHEEL_DOWN) || BentoHotkeyGetHold(BENTO_HOTKEY_MOUSE_WHEEL_DOWN))
+                if (BentoHotkeyGetPress(BENTO_HOTKEY_SCROLL_DOWN) || BentoHotkeyGetHold(BENTO_HOTKEY_SCROLL_DOWN))
                 {
                     _dX += BENTO_MOUSE_WHEEL_SCROLL_SPEED;
                     _dY -= BENTO_MOUSE_WHEEL_SCROLL_SPEED;

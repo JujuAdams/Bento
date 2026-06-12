@@ -105,10 +105,14 @@
 // to disable mouse wheel scrolling entirely.
 #macro BENTO_MOUSE_WHEEL_SCROLL_SPEED  20
 
-// Hotkey names to use to enable mouse wheel scrolling. This macros should be used with
-// `BentoInputHotkey()` to trigger scrolling.
-#macro BENTO_HOTKEY_MOUSE_WHEEL_UP    "mouse wheel up"
-#macro BENTO_HOTKEY_MOUSE_WHEEL_DOWN  "mouse wheel down"
+// Hotkey names to use to enable scrolling, typically using the mouse wheel. This macros should be
+// used with `BentoInputHotkey()` e.g.
+// 
+//     BentoInputHotkey(BENTO_HOTKEY_SCROLL_UP,   mouse_wheel_up());
+//     BentoInputHotkey(BENTO_HOTKEY_SCROLL_DOWN, mouse_wheel_down());
+// 
+#macro BENTO_HOTKEY_SCROLL_UP    "scroll up"
+#macro BENTO_HOTKEY_SCROLL_DOWN  "scroll down"
 
 
 
