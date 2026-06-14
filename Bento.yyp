@@ -725,6 +725,7 @@
     {"id":{"name":"string_width_scribble","path":"scripts/string_width_scribble/string_width_scribble.yy",},},
     {"id":{"name":"TestAnchor","path":"scripts/TestAnchor/TestAnchor.yy",},},
     {"id":{"name":"TestAnimation","path":"scripts/TestAnimation/TestAnimation.yy",},},
+    {"id":{"name":"TestColumns","path":"scripts/TestColumns/TestColumns.yy",},},
     {"id":{"name":"TestContextMenu","path":"scripts/TestContextMenu/TestContextMenu.yy",},},
     {"id":{"name":"TestGrid","path":"scripts/TestGrid/TestGrid.yy",},},
     {"id":{"name":"TestScrollbox","path":"scripts/TestScrollbox/TestScrollbox.yy",},},
@@ -767,8 +768,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
     {"roomId":{"name":"rLandscape","path":"rooms/rLandscape/rLandscape.yy",},},
+    {"roomId":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestColumns",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestColumns",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
