@@ -81,8 +81,8 @@ function __BentoClassEnvironment(_name) constructor
     ///////
     
     //Initialize to some guesswork values
-    __approxWidth  = window_get_width();
-    __approxHeight = window_get_height();
+    __approxWidth  = display_get_gui_width();
+    __approxHeight = display_get_gui_height();
     
     
     
