@@ -51,4 +51,10 @@ function __BentoSolverListGetDeflateHeight()
     __solverMinHeight       = (__layoutHeightResize == BENTO_RESIZE_INFLATE)? __layoutHeightMin : clamp(_minSize, __layoutHeightMin, __layoutHeightMax);
     __solverDeflateHeight   = clamp(_deflateSize, __solverMinHeight, __layoutHeightMax);
     __solvedHeight          = clamp((__layoutHeightResize == BENTO_RESIZE_NORMAL)? __layoutHeightPref : _deflateSize, __solverMinHeight, __layoutHeightMax);
+    
+    //Ensure we can never deflate lower than our fixed size
+    if (__layoutWidthResize == BENTO_RESIZE_NORMAL)
+    {
+        __solverDeflateHeight = max(__solvedHeight, __solverDeflateHeight);
+    }
 }

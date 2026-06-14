@@ -768,8 +768,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rLandscape","path":"rooms/rLandscape/rLandscape.yy",},},
     {"roomId":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
+    {"roomId":{"name":"rLandscape","path":"rooms/rLandscape/rLandscape.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

@@ -51,4 +51,10 @@ function __BentoSolverListGetDeflateWidth()
     __solverMinWidth     = (__layoutWidthResize == BENTO_RESIZE_INFLATE)? __layoutWidthMin : clamp(_minSize, __layoutWidthMin, __layoutWidthMax);
     __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth, __layoutWidthMax);
     __solvedWidth        = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __layoutWidthPref : _deflateSize, __solverMinWidth, __layoutWidthMax);
+    
+    //Ensure we can never deflate lower than our fixed size
+    if (__layoutWidthResize == BENTO_RESIZE_NORMAL)
+    {
+        __solverDeflateWidth = max(__solvedWidth, __solverDeflateWidth);
+    }
 }
