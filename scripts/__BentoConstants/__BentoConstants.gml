@@ -1,17 +1,12 @@
 // Feather disable all
 
-////////////////////////////////////////////////////////////////////////////
-//                                                                        //
-// You're welcome to use any of the following macros in your game but ... //
-//                                                                        //
-//                       DO NOT EDIT THIS SCRIPT                          //
-//                       Bad things might happen.                         //
-//                                                                        //
-//            Customisation options can be found in __BentoConfig()       //
-//                                                                        //
-////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+//                                                         //
+//  Customisation options can be found in __BentoConfig()  //
+//                                                         //
+/////////////////////////////////////////////////////////////
 
-#macro BENTO_VERSION  "2.3.4-alpha"
+#macro BENTO_VERSION  "2.3.5-alpha"
 #macro BENTO_DATE     "2026-06-09"
 
 #macro BENTO_RUNNING_FROM_IDE  (GM_build_type == "run")
