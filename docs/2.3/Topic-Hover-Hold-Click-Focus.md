@@ -23,7 +23,7 @@ Bento stores hover state per element. An element can be multiple states at once 
 |"hover"   |*any*                        |✅                          |`BentoCursorGetHover()`                                                   |
 |"leave"   |✅                          |❌                          |`BentoCursorGetLeave()`                                                   |
 
-You'll note detecting the "enter" state has two getters. The first getter, `BentoCursorGetEnterByNavigation()` is the function you'll usually want to use. This function will only return `true` when the player has hovered an element by making an input. This is very helpful when playing audio cues as the player navigates between elements. The second function, `BentoCursorGetEnterByGeneral()`, still has its uses but is rarer to see in practice.
+You'll note detecting the "enter" state has two getters. The first getter, `BentoCursorGetEnterByNavigation()` is the function you'll usually want to use. This function will only return `true` when the player has hovered an element by making a deliberate input. This is very helpful when playing audio cues as the player navigates between elements. The second function, `BentoCursorGetEnterByGeneral()`, still has its uses but is rarer to see in practice.
 
 Only one element may be hovered per layer. If a layer is backgrounded, the hovered element (if there is one) will be transitioned first to the "leave" state and then to the "no hover" state. When that layer is foregrounded, the element that was previously hovered will become hovered once again (via the "enter" state). An element on a backgrounded layer cannot be hovered in any situation.
 
