@@ -16,6 +16,11 @@ function BentoScrollSetPos(_scrollTargetX, _scrollTargetY, _scrollSpeed = BENTO_
     
     with(_scroller.BENTO_VARS)
     {
+        with(__layer)
+        {
+            __BentoEnsureScrollLimits();
+        }
+        
         //Update the scroll speed regardless
         __scrollSpeed = _scrollSpeed;
         
