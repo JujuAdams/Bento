@@ -15,4 +15,4 @@
 - ["Input" Library Integration](Topic-Input-Library)
 - [User Events](Topic-User-Events)
 - [Instance & Struct Differences](Topic-Instance-Struct-Diferences)
-- [Hover vs. Hold vs. Click vs. Focus](Topic-Hover-Hold-Click-Focus)
+- [Hover / Hold / Click / Focus](Topic-Hover-Hold-Click-Focus)
