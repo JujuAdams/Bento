@@ -14,7 +14,7 @@ The hover state applies to pointer (mouse, touch) [input modes](Topic-Input-Mode
 
 When using a navigation input mode, Bento will track which element is hovered for you [using an internal cursor](Topic-Principles?id=virtual-cursor) without there being an explicit pointer coordinate. Bento will ensure that an element will always be hovered if there is a hoverable element available. This means that destroying the currently hovered element will cause the internal cursor to avoid another element, typically the next nearest element to where the cursor was previously. When using a navigation input mode, it is often helpful to be able to visualise where the internal cursor is. You may use the `BentoCursorGetBox()` function to return the bounding box of the element that the internal cursor is currently hovering.
 
-Bento stores hover state per element. An element can have one of four values for its hover state. The table below explains when each state occurs.
+Bento stores hover state per element. An element can be multiple states at once depending on the situation. The table below explains when each state occurs.
 
 |Name      |Hovered on the previous frame|Hovered on the current frame|Getter function                                                           |
 |----------|-----------------------------|----------------------------|--------------------------------------------------------------------------|
@@ -65,7 +65,7 @@ Before going further, it is critical to understand the difference between what B
 
 !> It is very important to detect players clicking buttons by calling explicitly `BentoPrimaryGetClick()`. If you check against any other function then your user interface is liable to work incorrectly.
 
-Bento stores hold state per element. An element can have one of four values for its hold state. The table below explains when each state occurs.
+Bento stores hold state per element. An element can be multiple states at once depending on the situation. The table below explains when each state occurs.
 
 |Name      |Held on the previous frame|Held on the current frame|Getter function            |
 |----------|--------------------------|-------------------------|---------------------------|
