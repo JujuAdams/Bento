@@ -2,7 +2,13 @@
 
 &nbsp;
 
-Every user interface uses different terminology for element state. Bento has three main states that a button can be in: hovered, held, and focused. You may be familiar with these terms from other frameworks where their meaning and usage is different to Bento. Ahead of time, I will apologise for any confusion.
+Every user interface uses different terminology for element state. Bento is concerned with four main states: hovered, held, clicked, and focused. You may be familiar with these terms from other frameworks where their meaning and usage is different to Bento. Ahead of time: I apologise for any confusion. This page will lay out clearly what is meant by each term.
+
+In brief:
+- "Hover" means the player is looking at an element
+- "Hold" means the player is in the process of interacting with an element by pressing their primary input (mouse click, spacebar, etc.)
+- "Click" means the player has activated the element and intends for the element to do something in response
+- "Focus" means the player wants to only interact with the focused element or that element's hoverable children (if it has any)
 
 &nbsp;
 
