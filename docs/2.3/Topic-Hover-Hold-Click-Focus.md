@@ -1,4 +1,4 @@
-# Hover vs. Hold vs. Focus
+# Hover vs. Hold vs. Click vs. Focus
 
 &nbsp;
 
@@ -8,7 +8,7 @@ Every user interface uses different terminology for element state. Bento has thr
 
 ## Hover
 
-Bento's "hover" state is called "mouse over" or "highlight" in other UI frameworks. More technically, "hover" is a state that indicates an element will be the recipient of the primary input when activated (a mouse click, pressing the spacebar, press the A button on a gamepad).
+Bento's "hover" state is called "mouse over" or "highlight" in other UI frameworks. More technically, "hover" is a state that indicates an element will be the recipient of the primary input when activated (clicking a mouse button, pressing the spacebar, press the A button on a gamepad).
 
 The hover state applies to pointer (mouse, touch) [input modes](Topic-Input-Modes) as well as navigation (keyboard, gamepad) input modes. When using a pointer input mode, an element will be hovered if it is the top-most element underneath the pointer.
 
@@ -54,3 +54,38 @@ Mindful of the above limits, an element is hovered in the following situations:
 - The [input mode](Topic-Input-Modes) is set to `BENTO_MODE_GAMEPAD`
 - The player has navigated to the button using directional input or Bento has decided to focus the element for another reason (such as destroying the previously hovered element)
 - The element has its button type set to `BENTO_BUTTON_NAVIGATION` or `BENTO_BUTTON_ALWAYS`
+
+&nbsp;
+
+## Hold & Click
+
+Bento's "hold" state is called "click" or "grab" in other UI frameworks. More technically, "hold" is a state that indicates an element has received, or continues to receive, an active primary input (clicking and holding a mouse button, holding down the spacebar, holding down the A button on a gamepad).
+
+Before going further, it is critical to understand the difference between what Bento considers a "click". A click within Bento is a deliberate activation of an element (typically a button) by the player. When using a mouse, it is usually the case that a button is only considered "clicked" when the mouse button is released. However, on a touchscreen and when using a gamepad or keyboard, it’s usually the case that a button is "clicked" on a press rather than a release. As such, Bento will treat user interface elements as clicked in different ways depending on the input mode.
+
+!> It is very important to detect players clicking buttons by calling explicitly `BentoPrimaryGetClick()`. If you check against any other function then your user interface is liable to work incorrectly.
+
+Bento stores hold state per element. An element can have one of four values for its hold state. The table below explains when each state occurs.
+
+|Name      |Held on the previous frame|Held on the current frame|Getter function            |
+|----------|--------------------------|-------------------------|---------------------------|
+|"no hold" |❌                        |❌                      |`not BentoPrimaryGetHold()`|
+|"press"   |❌                        |✅                      |`BentoPrimaryGetPress()`   |
+|"hold"    |✅                        |✅                      |`BentoPrimaryGetHold()`    |
+|"release" |✅                        |❌                      |`BentoPrimaryGetRelease()` |
+
+Only one element may be held per layer. If a layer is backgrounded, the held element (if there is one) will be transitioned first to the "release" state and then to the "no hold" state. When that layer is foregrounded, the element will remain not held.
+
+An element can only be pressed (for the hold state to start) if that element is hovered and the primary input itself has been pressed whilst the element is hovered. This means that, in the example of mouse input, pressing the mouse button whilst hovering over some empty space and then moving the mouse to hover an element will not cause the element to be pressed or held. The element must first be hovered then the mouse button must be pressed for an element to be held. The same applies to navigation [input modes](Topic-Input-Modes) as well.
+
+Bento also allows you to detect long presses and long clicks etc.  This is especially useful on mobile devices where a long press is often interpreted as an alternate interaction for e.g. a tooltip. Elements by default will not be able to receive long input and will instead perceive long input as standard (short) input. You must call `BentoSetLongPress()` for elements that you would like to configure to receive long input. You may adjust the length of time that the primary input must be active for to count as a "long" input by adjusting the `BENTO_LONG_CLICK_TIME` config macro.
+
+You should use the following function variants to check for long holds:
+
+|Getter function            |Long variant                   |
+|---------------------------|-------------------------------|
+|`not BentoPrimaryGetHold()`|`not BentoPrimaryGetLongHold()`|
+|`BentoPrimaryGetPress()`   |`BentoPrimaryGetLongPress()`   |
+|`BentoPrimaryGetHold()`    |`BentoPrimaryGetLongHold()`    |
+|`BentoPrimaryGetClick()`   |`BentoPrimaryGetLongClick()`   |
+|`BentoPrimaryGetRelease()` |`BentoPrimaryGetLongRelease()` |
