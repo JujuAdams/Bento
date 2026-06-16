@@ -72,6 +72,7 @@ Bento stores hold state per element. An element can have one of four values for 
 |"no hold" |❌                        |❌                      |`not BentoPrimaryGetHold()`|
 |"press"   |❌                        |✅                      |`BentoPrimaryGetPress()`   |
 |"hold"    |✅                        |✅                      |`BentoPrimaryGetHold()`    |
+|"click"   |*n/a*                     |*n/a*                    |`BentoPrimaryGetClick()`   |
 |"release" |✅                        |❌                      |`BentoPrimaryGetRelease()` |
 
 Only one element may be held per layer. If a layer is backgrounded, the held element (if there is one) will be transitioned first to the "release" state and then to the "no hold" state. When that layer is foregrounded, the element will remain not held.
