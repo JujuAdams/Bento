@@ -8,7 +8,7 @@ Every user interface uses different terminology for element state. Bento has thr
 
 ## Hover
 
-Bento's "hover" state is called "mouse over" or "highlight" in other UI frameworks. More technically, "hover" is a state that indicates an element will be the recipient of the primary input when activated (clicking a mouse button, pressing the spacebar, press the A button on a gamepad).
+Bento's "hover" state is called "mouse over" or "highlight" in other UI frameworks. More technically, "hover" is a state that indicates an element will be the recipient of the primary input when activated (clicking a mouse button, pressing the spacebar, press the A button on a gamepad). A hovered element is the next element that the player will interact with should they chose to do so.
 
 The hover state applies to pointer (mouse, touch) [input modes](Topic-Input-Modes) as well as navigation (keyboard, gamepad) input modes. When using a pointer input mode, an element will be hovered if it is the top-most element underneath the pointer.
 
@@ -59,7 +59,7 @@ Mindful of the above limits, an element is hovered in the following situations:
 
 ## Hold & Click
 
-Bento's "hold" state is called "click" or "grab" in other UI frameworks. More technically, "hold" is a state that indicates an element has received, or continues to receive, an active primary input (clicking and holding a mouse button, holding down the spacebar, holding down the A button on a gamepad).
+Bento's "hold" state is called "click" or "grab" in other UI frameworks. More technically, "hold" is a state that indicates an element has received, or continues to receive, an active primary input (clicking and holding a mouse button, holding down the spacebar, holding down the A button on a gamepad). If a Bento element is being held then the player is currently trying to interact with that element.
 
 Before going further, it is critical to understand the difference between what Bento considers a "click". A click within Bento is a deliberate activation of an element (typically a button) by the player. When using a mouse, it is usually the case that a button is only considered "clicked" when the mouse button is released. However, on a touchscreen and when using a gamepad or keyboard, it’s usually the case that a button is "clicked" on a press rather than a release. As such, Bento will treat user interface elements as clicked in different ways depending on the input mode.
 
@@ -95,7 +95,7 @@ You should use the following function variants to check for long holds:
 
 ## Focus
 
-Bento's "focus" state does not have a clear analogue in other UI frameworks, or at least I don't know of an analogue (please get in touch if you do). Bento's "focus" is a way for you to separate regions of your user interface and to allow input in one region and to prevent input in others.
+Bento's "focus" state does not have a clear analogue in other UI frameworks, or at least I don't know of an analogue (please get in touch if you do). Bento's "focus" is a way for you to separate regions of your user interface and to allow input in one region and to prevent input in others. In a sense, if an element is focused then that means the player's control is limited to what's "inside" that element.
 
 There are many examples of what Bento calls "focus" in user interface design. The most familiar example is a context menu. I'm presuming you're on a desktop OS, but try right-clicking on this web page and then navigate that menu using the arrow keys on your keyboard. You'll notice that navigation is limited to what is inside that context menu. In Bento's terminology this means that the context menu is "focused". Only content within the context menu can be navigated to. However, if you return to using your mouse, you'll find that you can still click on the web page behind the context menu without impairment.
 
