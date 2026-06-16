@@ -20,7 +20,7 @@ Bento stores hover state per element. An element can be multiple states at once 
 |----------|-----------------------------|----------------------------|--------------------------------------------------------------------------|
 |"no hover"|❌                          |❌                          |`not BentoCursorGetHover()`                                               |
 |"enter"   |❌                          |✅                          |`BentoCursorGetEnterByNavigation()`<br>or `BentoCursorGetEnterByGeneral()`|
-|"hover"   |✅                          |✅                          |`BentoCursorGetHover()`                                                   |
+|"hover"   |*any*                        |✅                          |`BentoCursorGetHover()`                                                   |
 |"leave"   |✅                          |❌                          |`BentoCursorGetLeave()`                                                   |
 
 You'll note detecting the "enter" state has two getters. The first getter, `BentoCursorGetEnterByNavigation()` is the function you'll usually want to use. This function will only return `true` when the player has hovered an element by making an input. This is very helpful when playing audio cues as the player navigates between elements. The second function, `BentoCursorGetEnterByGeneral()`, still has its uses but is rarer to see in practice.
@@ -71,7 +71,7 @@ Bento stores hold state per element. An element can be multiple states at once d
 |----------|--------------------------|-------------------------|---------------------------|
 |"no hold" |❌                        |❌                      |`not BentoPrimaryGetHold()`|
 |"press"   |❌                        |✅                      |`BentoPrimaryGetPress()`   |
-|"hold"    |✅                        |✅                      |`BentoPrimaryGetHold()`    |
+|"hold"    |*any*                     |✅                      |`BentoPrimaryGetHold()`    |
 |"click"   |*n/a*                     |*n/a*                    |`BentoPrimaryGetClick()`   |
 |"release" |✅                        |❌                      |`BentoPrimaryGetRelease()` |
 
