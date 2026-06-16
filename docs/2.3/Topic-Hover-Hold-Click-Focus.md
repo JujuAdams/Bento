@@ -51,7 +51,7 @@ Mindful of the above limits, an element is hovered in the following situations:
 
 ### Gamepad
 
-- The [input mode](Topic-Input-Modes) is set to `BENTO_MODE_GAMEPAD`
+- The input mode is set to `BENTO_MODE_GAMEPAD`
 - The player has navigated to the button using directional input or Bento has decided to focus the element for another reason (such as destroying the previously hovered element)
 - The element has its button type set to `BENTO_BUTTON_NAVIGATION` or `BENTO_BUTTON_ALWAYS`
 
