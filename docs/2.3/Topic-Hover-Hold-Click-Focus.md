@@ -89,3 +89,33 @@ You should use the following function variants to check for long holds:
 |`BentoPrimaryGetHold()`    |`BentoPrimaryGetLongHold()`    |
 |`BentoPrimaryGetClick()`   |`BentoPrimaryGetLongClick()`   |
 |`BentoPrimaryGetRelease()` |`BentoPrimaryGetLongRelease()` |
+
+&nbsp;
+
+## Focus
+
+Bento's "focus" state does not have a clear analogue in other UI frameworks, or at least I don't know of an analogue (please get in touch if you do). Bento's "focus" is a way for you to separate regions of your user interface and to allow input in one region and to prevent input in others.
+
+There are many examples of what Bento calls "focus" in user interface design. The most familiar example is a context menu. I'm presuming you're on a desktop OS, but try right-clicking on this web page and then navigate that menu using the arrow keys on your keyboard. You'll notice that navigation is limited to what is inside that context menu. In Bento's terminology this means that the context menu is "focused". Only content within the context menu can be navigated to. However, if you return to using your mouse, you'll find that you can still click on the web page behind the context menu without impairment.
+
+Another example of focus is a slider on a settings menu. Let's consider volume adjustment for a game. When using a mouse (or touchscreen), you can easily click and drag the handle on the slider to adjust the volume. However, it is often the case that when using keyboard or gamepad input you must first hover the slider then activate it (select it by pressing the spacebar or the A button on a gamepad) before you can adjust the volume by pressing left or right. In this situation, we can say that the slider itself is focused. Despite the slider not having any child elements, it is still a focusable element in the user interface.
+
+Generally speaking, focus limits only apply to navigation [input modes](Topic-Input-Modes) (keyboard and gamepad). When using mouse or touch input, the expectation is usually that the player can interact with anything that's visible. This is not universally true and there are many reasons to restrict what can be interacted but these are uncommon.
+
+There are two general rules:
+
+1. If an element has hoverable descendents (children, or children of children etc.) then focusing the element will only allow its descendents to be hovered.
+
+2. If an element has **no** hoverable descendents then focusing the element will only allow the element itself to be hovered.
+
+We can modify the above rules to handle various different situations where we might want pointer input to behave differently to navigation input. The table below explains what focus types are available and how they behave:
+
+|Focus type                            |Behaviour                                                                                              |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------|
+|`BENTO_FOCUS_POINTER_IGNORE`          |Pointer ignores focus limits. Any hoverable element can be interacted with whilst an element is focused|
+|`BENTO_FOCUS_POINTER_CANCEL_ON_CLICK` |Pressing outside of the focused part of the free will cancel the focus                                 |
+|`BENTO_FOCUS_POINTER_DESTROY_ON_CLICK`|Pressing off of the focused part of the tree will destroy the focused element                          |
+|`BENTO_FOCUS_POINTER_CANCEL_ALWAYS`   |Focus is cancelled automatically if the input mode is set to `BENTO_MODE_POINTER`                      |
+|`BENTO_FOCUS_POINTER_CONSTRAIN`       |Pointer is constrained inside the focused part of the tree. The user will not be able to hover, hold, or click elements outside of the focused part of the tree.<br>**N.B.** You should be careful with this focus type as it is possible to softlock your game!|
+
+You can start focus on any element by calling `BentoFocusOpen()`. This function requires that you specify a focus type from the table above. You can return whether an element is focused or not by calling `BentoGetFocused()`. You can unfocus an element by calling `BentoFocusClose()`. As an example, you may wish to unfocus a listbox if the user pressed the B button on their gamepad. Sometimes it's helpful to toggle focus and that can be done with `BentoFocusToggle()`. There are a handful of other focus-related functions and I leave exploring them up to you.
