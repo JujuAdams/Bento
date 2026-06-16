@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestListXFail",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestListXFail",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
