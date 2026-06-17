@@ -1,7 +1,9 @@
 // Feather disable all
 
 /// Sets the maximum size for an element. An element will never be set to a size larger than this
-/// even if there is extra space for the element to fill.
+/// even if there is extra space for the element to fill. A value of `infinity` will be treated
+/// as "no maximum set" and Bento will allow the element to scale infinitely. This is also the
+/// default behaviour.
 /// 
 /// @param [width]
 /// @param [height]

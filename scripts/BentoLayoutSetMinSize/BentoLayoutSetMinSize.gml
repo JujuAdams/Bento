@@ -1,7 +1,9 @@
 // Feather disable all
 
 /// Sets the minimum size for an element. An element will never be set to a size smaller than this
-/// even if it results in overlaps.
+/// even if it results in overlaps. A value of zero (or less) will be treated as "no minimum set"
+/// and Bento will use the width/height set by `BentoLayoutSetSize()` as the minimum size instead.
+/// This is also the default behaviour.
 /// 
 /// @param [width]
 /// @param [height]
