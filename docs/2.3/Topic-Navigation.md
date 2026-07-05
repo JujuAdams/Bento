@@ -4,7 +4,7 @@
 
 Navigation is the rules that govern how Input's [virtual cursor](Topic-Principles?id=virtual-cursor) moves between elements when using keyboard or gamepad input. When using these input modes, elements are highlighted using an invisible cursor that Bento keeps track of for you. The virtual cursor triggers [hover](Topic-Hover-Hold-Click-Focus?id=hover) state as a mouse pointer or touchpoint would. However, the virtual cursor cannot freely move around the screen and is limited to only hovering viable elements. Bento is set up so that any interface can be navigated with pointer input as well as navigation input.
 
-There is one virtual cursor per layer. If you create a new layer then the virtual cursor for that layer and then destroy it, the underlying layer will remember which element was hovered. If there are any elements that can be hovered then Bento will always ensure that one of them is hovered by the virtual cursor. If the currently hovered element is destroyed or it otherwise becomes unhoverable then the virtual cursor will jump to the nearest element. When navigating inside a scrolling list 
+There is one virtual cursor per layer. If you create a new layer then the virtual cursor for that layer and then destroy it, the underlying layer will remember which element was hovered. If there are any elements that can be hovered then Bento will always ensure that one of them is hovered by the virtual cursor. If the currently hovered element is destroyed or it otherwise becomes unhoverable then the virtual cursor will jump to the nearest element.
 
 The cursor position is determined to be the centre of the currently hovered element. If no element is hovered because there are no viable elements then the x/y position of the cursor will remain at the last place an element was hovered. If no element has been hovered on a layer then the x/y position will be `0, 0`. You can return the position of the cursor with `BentoCursorGetX()` and `BentoCursorGetY()` as well as `BentoCursorGetBox()`.
 
@@ -30,8 +30,18 @@ In the above code, the cursor moves when the keyboard checks or gamepad thumbsti
 
 Bento will retrigger navigation if a direction is held for a long time. This will cause the virtual cursor to move between elements repeatedly if a direction is held. This is useful for navigating long lists of buttons. The rate that navigation will be retrigged can be changed by calling `BentoInputConfigureRetrigger()`. You can get the direction that the virtual cursor was pushed by calling `BentoCursorGetDX()` and `BentoCursorGetDY()`.
 
+You may set the hover state for a certain element by calling `BentoHover()`. This function does not allow you to hover an inelligible element, however. You can also use `BentoHoverSoft()` to hover an element; this function will only set hover state if no other element is already hovered. This is helpful to encourage a particular option to be hovered when creating menus for the first time.
+
 &nbsp;
 
 ## What can be hovered?
 
-To reflect the complex needs of keyboard and gamepad input, Bento has lots of options for controlling how the virtual cursor moves. The common rule is that for any element to be hovered by the virtual cursor, the element must have the button type `BENTO_BUTTON_NAVIGATION` or `BENTO_BUTTON_ALWAYS` as set by `BentoSetButton()`.
+To reflect the complex needs of keyboard and gamepad input, Bento has lots of options for controlling how the virtual cursor moves. The common rule is that for any element to be hovered by the virtual cursor, the element must have the button type `BENTO_BUTTON_NAVIGATION` or `BENTO_BUTTON_ALWAYS` as set by `BentoSetButton()`. For the simplest use case, this is all that matters and navigation is straight-forward.
+
+Normally, Bento will use a raycast (really a cone collision) to determine which element to hover. However, you can override the standard raycast by creating "links" between elements using `BentoNavigationLinkX()` and `BentoNavigationLinkY()`. You can further disable raycasting in particular cardinal directions by calling `BentoGetNavigationEnable()`. This latter function is helpful when creating sliders for settings menus.
+
+Bento has special rules regarding scrolling lists. When an element is hovered by the virtual cursor, the scrolling list will scroll automatically to show the element. The virtual cursor will not leave an element due to user input until the hovered element is fully visible within the scrolling list. Furthermore, when Bento tries to hover an element inside a scrolling list from a position that it outside that scrolling list then Bento will prefentially choose element inside the list that are visible.
+
+May also set up navigation wrapping with `BentoGetNavigationWrap()`. If Bento cannot find a suitable element in a particular direction then it will attempt to find another element on the other side of the screen. This feature works within the context of scrolling lists and Bento will try to wrap inside a scrolling list before allowing the cursor to escape the list and hover an outside element.
+
+If an element has been [focused](Topic-Hover-Hold-Click-Focus?id=focus) and that element has no hoverable children then the virtual cursor cannot be moved away from the focused element. Additionally, elements that are enclosed within an unfocused parent cannot be hovered. Please see [this page](Topic-Hover-Hold-Click-Focus?id=enclosure) for more information on enclosing elements.
