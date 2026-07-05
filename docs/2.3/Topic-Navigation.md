@@ -71,7 +71,9 @@ The Draw Hover user event is called by Bento after all other sibling elements ha
 BentoDrawSpriteAround(10, sHoverBorder, 0, c_yellow);
 ```
 
-You can take care of drawing the virtual cursor yourself. For example:
+Using the Draw Hover user event is generally how I'd recommend drawing the virtual cursor but you can combine this with the Draw user event to create whatever effect you're looking for.
+
+You can take care of drawing the virtual cursor yourself outside of Bento's standard draw loop. For example:
 
 ```gml
 /// Draw GUI event
