@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"__BentoParsePercentageString",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__BentoParsePercentageString",
+  "parent":{
+    "name":"Support",
+    "path":"folders/Bento/(Internal)/Support.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

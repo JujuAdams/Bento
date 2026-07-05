@@ -5,10 +5,11 @@
 function __BentoSolvertGetSafeWidth()
 {
     //Determine the preferred width
-    if (__layoutWidthPref > 0)
+    var _value = __BentoParsePercentageString(__layoutWidthPref, display_get_gui_width());
+    if (_value > 0)
     {
         //If the preferred width is greater than 0 then use the preferred width
-        return __layoutWidthPref;
+        return _value;
     }
     else
     {

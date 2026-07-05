@@ -2,6 +2,9 @@
 
 function __BentoSolverListResizeWidth()
 {
+    var _layoutWidthMin = __BentoParsePercentageString(__layoutWidthMin, display_get_gui_width());
+    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, display_get_gui_width());
+    
     var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
     
@@ -23,11 +26,11 @@ function __BentoSolverListResizeWidth()
                 {
                     if (__layoutWidthResize == BENTO_RESIZE_INFLATE)
                     {
-                        __solvedWidth = clamp(_available, __layoutWidthMin, __layoutWidthMax);
+                        __solvedWidth = clamp(_available, _layoutWidthMin, _layoutWidthMax);
                     }
                     else
                     {
-                        __solvedWidth = clamp(min(__solvedWidth, _available), __layoutWidthMin, __layoutWidthMax);
+                        __solvedWidth = clamp(min(__solvedWidth, _available), _layoutWidthMin, _layoutWidthMax);
                     }
                 }
                 
@@ -106,9 +109,10 @@ function __BentoSolverListResizeWidth()
                     var _prevSize = _child.__solvedWidth;
                     if (_prevSize == _min)
                     {
-                        if (_prevSize + _addition >= _child.__layoutWidthMax)
+                        var _childLayoutWidthMax = __BentoParsePercentageString(_child.__layoutWidthMax, display_get_gui_width());
+                        if (_prevSize + _addition >= _childLayoutWidthMax)
                         {
-                            var _newSize = _child.__layoutWidthMax;
+                            var _newSize = _childLayoutWidthMax;
                             array_delete(_modifiableArray, array_get_index(_modifiableArray, _child), 1);
                         }
                         else

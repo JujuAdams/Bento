@@ -2,6 +2,8 @@
 
 function __BentoSolverGridResizeWidth()
 {
+    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, display_get_gui_width());
+    
     var _contentSize  = __solvedWidth - (__solverPadLeft + __solverPadRight);
     var _contentCount = floor((_contentSize + __layoutGutterX) / (__solverCellMinWidth + __layoutGutterX));
     _contentCount = clamp(_contentCount, __gridMinColumns, __gridMaxColumns);
@@ -18,11 +20,11 @@ function __BentoSolverGridResizeWidth()
         {
             if (__layoutWidthResize == BENTO_RESIZE_INFLATE)
             {
-                __solvedWidth = clamp(_cellSize, __solverMinWidth, __layoutWidthMax);
+                __solvedWidth = clamp(_cellSize, __solverMinWidth, _layoutWidthMax);
             }
             else
             {
-                __solvedWidth = clamp(min(__solvedWidth, _cellSize), __solverMinWidth, __layoutWidthMax);
+                __solvedWidth = clamp(min(__solvedWidth, _cellSize), __solverMinWidth, _layoutWidthMax);
             }
         }
         
