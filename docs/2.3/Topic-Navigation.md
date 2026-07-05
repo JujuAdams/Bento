@@ -45,3 +45,49 @@ Bento has special rules regarding scrolling lists. When an element is hovered by
 May also set up navigation wrapping with `BentoGetNavigationWrap()`. If Bento cannot find a suitable element in a particular direction then it will attempt to find another element on the other side of the screen. This feature works within the context of scrolling lists and Bento will try to wrap inside a scrolling list before allowing the cursor to escape the list and hover an outside element.
 
 If an element has been [focused](Topic-Hover-Hold-Click-Focus?id=focus) and that element has no hoverable children then the virtual cursor cannot be moved away from the focused element. Additionally, elements that are enclosed within an unfocused parent cannot be hovered. Please see [this page](Topic-Hover-Hold-Click-Focus?id=enclosure) for more information on enclosing elements.
+
+&nbsp;
+
+## Drawing the virtual cursor
+
+As previously mentioned, Bento's virtual cursor is invisible. However, it is very often a good idea to have some sort of visual indictation of what is hovered for the player's benefit. Bento offers a couple different ways to address this. The easiest way to indicate what is hovered is to write some conditional code in the element's Draw [user event](Topic-User-Events).
+
+```gml
+/// Draw user event
+
+//Choose a yellow hue for the button when it's hovered
+var _blend = `()? c_yellow : c_white;
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, _blend, image_alpha);
+```
+
+This is the simplest way to communicate hover state to the player but it's often quite limiting. For example, if we wanted to draw a box around the button then we might run into draw order difficulties. To solve this, we can use the Draw Hover user event.
+
+The Draw Hover user event is called by Bento after all other sibling elements have been drawn. Importantly, this event is only ever executed if the element is hovered (which means we don't need to check against `BentoPrimaryGetHover()` ourselves).
+
+```gml
+/// Draw Hover user event
+
+//Draw a nine-sliced sprite around ourselves when we're hovered
+BentoDrawSpriteAround(10, sHoverBorder, 0, c_yellow);
+```
+
+You can take care of drawing the virtual cursor yourself. For example:
+
+```gml
+/// Draw GUI event
+
+//Draw Bento elements
+BentoSystemDraw();
+
+//Draw the virtual cursor in navigation mode, provided that we're hovering an element
+if (BentoUsingNavigation() && BentoLayerGetHoveringAny())
+{
+    with(BentoCursorGetBox())
+    {
+        var _padding = 10;
+        draw_sprite_stretched_ext(sHoverBorder, 0, left - _padding, top - _padding, 1 + right - left + 2*_padding, 1 + bottom - top + 2*_padding, c_yellow, 1);
+    }
+}
+```
+
+You should take care to only draw the virtual cursor in this way if an element is hovered. `BentoCursorGetBox()` will still return coordinates even if no element is hovered which can lead to confusing situations for your players.
