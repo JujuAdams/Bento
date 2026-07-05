@@ -460,6 +460,7 @@
     {"id":{"name":"BentoLayerGetBlockingAnimation","path":"scripts/BentoLayerGetBlockingAnimation/BentoLayerGetBlockingAnimation.yy",},},
     {"id":{"name":"BentoLayerGetDrawWhenBackgrounded","path":"scripts/BentoLayerGetDrawWhenBackgrounded/BentoLayerGetDrawWhenBackgrounded.yy",},},
     {"id":{"name":"BentoLayerGetHovered","path":"scripts/BentoLayerGetHovered/BentoLayerGetHovered.yy",},},
+    {"id":{"name":"BentoLayerGetHoveringAny","path":"scripts/BentoLayerGetHoveringAny/BentoLayerGetHoveringAny.yy",},},
     {"id":{"name":"BentoLayerGetRoot","path":"scripts/BentoLayerGetRoot/BentoLayerGetRoot.yy",},},
     {"id":{"name":"BentoLayerGetTop","path":"scripts/BentoLayerGetTop/BentoLayerGetTop.yy",},},
     {"id":{"name":"BentoLayerSetDrawWhenBackgrounded","path":"scripts/BentoLayerSetDrawWhenBackgrounded/BentoLayerSetDrawWhenBackgrounded.yy",},},
