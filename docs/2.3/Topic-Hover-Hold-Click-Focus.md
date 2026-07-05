@@ -2,7 +2,7 @@
 
 &nbsp;
 
-Every user interface uses different terminology for element state. Bento is concerned with four main states: hovered, held, clicked, and focused. You may be familiar with these terms from other frameworks where their meaning and usage is different to Bento. Ahead of time: I apologise for any confusion. This page will lay out clearly what is meant by each term.
+Every user interface uses different terminology for element state. Bento is concerned with four main states: hovered, held, clicked, and focused. You may be familiar with these terms from other frameworks where their meaning and usage is different to Bento. Ahead of time, I apologise for any confusion. This page will lay out clearly what is meant by each term within Bento.
 
 In brief:
 - "Hover" means the player is looking at an element
@@ -26,7 +26,7 @@ Bento stores hover state per element. An element can be multiple states at once 
 |----------|-----------------------------|----------------------------|--------------------------------------------------------------------------|
 |"no hover"|❌                          |❌                          |`not BentoCursorGetHover()`                                               |
 |"enter"   |❌                          |✅                          |`BentoCursorGetEnterByNavigation()`<br>or `BentoCursorGetEnterByGeneral()`|
-|"hover"   |*any*                        |✅                          |`BentoCursorGetHover()`                                                   |
+|"hover"   |Both ❌ and ✅              |✅                          |`BentoCursorGetHover()`                                                   |
 |"leave"   |✅                          |❌                          |`BentoCursorGetLeave()`                                                   |
 
 You'll note detecting the "enter" state has two getters. The first getter, `BentoCursorGetEnterByNavigation()` is the function you'll usually want to use. This function will only return `true` when the player has hovered an element by making a deliberate input. This is very helpful when playing audio cues as the player navigates between elements. The second function, `BentoCursorGetEnterByGeneral()`, still has its uses but is rarer to see in practice.
@@ -77,7 +77,7 @@ Bento stores hold state per element. An element can be multiple states at once d
 |----------|--------------------------|-------------------------|---------------------------|
 |"no hold" |❌                        |❌                      |`not BentoPrimaryGetHold()`|
 |"press"   |❌                        |✅                      |`BentoPrimaryGetPress()`   |
-|"hold"    |*any*                     |✅                      |`BentoPrimaryGetHold()`    |
+|"hold"    |Both ❌ and ✅           |✅                      |`BentoPrimaryGetHold()`    |
 |"click"   |*n/a*                     |*n/a*                    |`BentoPrimaryGetClick()`   |
 |"release" |✅                        |❌                      |`BentoPrimaryGetRelease()` |
 
