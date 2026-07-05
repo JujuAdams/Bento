@@ -67,7 +67,7 @@ else
 }
 
 //Presumes we're drawing the UI in a Draw GUI event
-BentoSystemStep(0, 0, display_get_gui_width(), display_get_gui_height());}
+BentoSystemStep(0, 0, display_get_gui_width(), display_get_gui_height());
 ```
 
 ?> If you're using the ["Input" library](https://codeberg.org/offalynne/Input) then you can simplify the code above. Please see [this article](Topic-Input-Library) for more information.
