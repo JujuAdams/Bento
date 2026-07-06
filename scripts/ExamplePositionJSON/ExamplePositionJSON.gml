@@ -58,7 +58,7 @@ function ExamplePositionJSON()
                                     {
                                         with(BentoCreate(oBentoExButton, { text: "Destroy", func: function() { BentoDestroy() } }))
                                         {
-                                            BentoSetPosition(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0));
+                                            BentoSetPosition(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), false);
                                         }
                                     },
                                 },

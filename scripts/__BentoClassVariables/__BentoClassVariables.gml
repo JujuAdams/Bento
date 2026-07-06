@@ -28,6 +28,12 @@ function __BentoClassVariables(_attachedElement) constructor
         __enclosed = false;
     }
     
+    //Forced position
+    __positionX = undefined;
+    __positionY = undefined;
+    __positionInnerCoordSpace = true;
+    __positionOverride = false;
+    
     //Cartesian offset from the calculated layout position
     __offsetX = 0;
     __offsetY = 0;
