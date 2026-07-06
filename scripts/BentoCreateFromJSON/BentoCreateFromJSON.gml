@@ -568,11 +568,11 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
                     __BentoError($".position property must have 2 elements if it is an array (length = {array_length(_position)})");
                 }
                 
-                BentoSetPosition(_position[0], _position[1], _element);
+                BentoSetPosition(_position[0], _position[1], true, _element);
             }
             else if (is_struct(_position))
             {
-                BentoSetPosition(_position[$ "x"], _position[$ "y"], _element);
+                BentoSetPosition(_position[$ "x"], _position[$ "y"], true, _element);
             }
             else
             {

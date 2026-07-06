@@ -1,25 +1,47 @@
 // Feather disable all
 
-/// @param x
-/// @param y
+/// @param [x]
+/// @param [y]
+/// @param [innerCoordSpace=true]
 /// @param [element=self]
 
-function BentoSetPosition(_x, _y, _element = self)
+function BentoSetPosition(_x, _y, _innerCoordSpace = true, _element = self)
 {
-    static _system = __BentoSystem();
-    
     with(__BentoGetVars(_element))
     {
-        with(__layer)
+        var _dirty = false;
+        
+        if (_x != undefined)
         {
-            __BentoEnsureLayout();
-            __BentoEnsureOffset();
+            if (__positionX != _x)
+            {
+                __positionX = _x;
+                _dirty = true;
+            }
         }
         
-        _x /= _system.__globalScale;
-        _y /= _system.__globalScale;
+        if (_y != undefined)
+        {
+            if (__positionY != _y)
+            {
+                __positionY = _y;
+                _dirty = true;
+            }
+        }
         
-        var _result = BentoGetOffset(_element);
-        BentoSetOffset(_result.x + (_x - _element.bentoX), _result.y + (_y - _element.bentoY), _element);
+        if (_innerCoordSpace != undefined)
+        {
+            if (__positionInnerCoordSpace != _innerCoordSpace)
+            {
+                __positionInnerCoordSpace = _innerCoordSpace;
+                _dirty = true;
+            }
+        }
+        
+        if (_dirty)
+        {
+            __positionOverride = true;
+            __BentoOffsetMarkDirty();
+        }
     }
 }

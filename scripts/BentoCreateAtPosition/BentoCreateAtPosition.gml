@@ -19,7 +19,7 @@ function BentoCreateAtPosition(_x, _y, _object, _struct = undefined, _parent = s
 {
     with(BentoCreate(_object, _struct, _parent))
     {
-        BentoSetPosition(_x, _y);
+        BentoSetPosition(_x, _y, true, self);
         return self;
     }
     

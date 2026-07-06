@@ -50,7 +50,7 @@ function ExampleManualPositions()
                 
                 with(BentoCreate(oBentoExButton, { text: "400, 330" }))
                 {
-                    BentoSetPosition(400, 330);
+                    BentoSetPosition(400, 330, false);
                 }
                 
                 with(BentoCreate(oBentoExTextDynamic, { text: function()
