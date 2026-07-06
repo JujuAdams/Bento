@@ -4,7 +4,7 @@
 
 Navigation is the rules that govern how Input's [virtual cursor](Topic-Principles?id=virtual-cursor) moves between elements when using keyboard or gamepad input. When using these input modes, elements are highlighted using an invisible cursor that Bento keeps track of for you. The virtual cursor triggers [hover](Topic-Hover-Hold-Click-Focus?id=hover) state as a mouse pointer or touchpoint would. However, the virtual cursor cannot freely move around the screen and is limited to only hovering viable elements. Bento is set up so that any interface can be navigated with pointer input as well as navigation input.
 
-There is one virtual cursor per layer. If you create a new layer then the virtual cursor for that layer and then destroy it, the underlying layer will remember which element was hovered. If there are any elements that can be hovered then Bento will always ensure that one of them is hovered by the virtual cursor. If the currently hovered element is destroyed or it otherwise becomes unhoverable then the virtual cursor will jump to the nearest element.
+There is one virtual cursor per layer. If you create a new layer and then destroy it, the original underlying layer will remember which element was hovered. If there are any elements that can be hovered then Bento will always ensure that one of them is hovered by the virtual cursor. If the currently hovered element is destroyed or it otherwise becomes unhoverable then the virtual cursor will jump to the nearest element.
 
 The cursor position is determined to be the centre of the currently hovered element. If no element is hovered because there are no viable elements then the x/y position of the cursor will remain at the last place an element was hovered. If no element has been hovered on a layer then the x/y position will be `0, 0`. You can return the position of the cursor with `BentoCursorGetX()` and `BentoCursorGetY()` as well as `BentoCursorGetBox()`.
 
@@ -56,7 +56,7 @@ As previously mentioned, Bento's virtual cursor is invisible. However, it is ver
 /// Draw user event
 
 //Choose a yellow hue for the button when it's hovered
-var _blend = `()? c_yellow : c_white;
+var _blend = BentoPrimaryGetHover()? c_yellow : c_white;
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, _blend, image_alpha);
 ```
 
