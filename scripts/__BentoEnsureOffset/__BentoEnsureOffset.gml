@@ -78,13 +78,13 @@ function __BentoEnsureOffsetInner(_dirtyOffsetArray, _elementVars, _offsetX, _of
         {
             if (__positionInnerCoordSpace)
             {
-                var _leftWorld = __positionX + _offsetX - __originX*_width;
-                var _topWorld  = __positionY + _offsetY - __originY*_height;
+                var _leftWorld = __BentoParsePercentageString(__positionX, display_get_gui_width())  + _offsetX - __originX*_width;
+                var _topWorld  = __BentoParsePercentageString(__positionY, display_get_gui_height()) + _offsetY - __originY*_height;
             }
             else
             {
-                var _leftWorld = (__positionX / _system.__globalScale) + _offsetX - __originX*_width;
-                var _topWorld  = (__positionY / _system.__globalScale) + _offsetY - __originY*_height;
+                var _leftWorld = (__BentoParsePercentageString(__positionX, display_get_gui_width())  / _system.__globalScale) + _offsetX - __originX*_width;
+                var _topWorld  = (__BentoParsePercentageString(__positionY, display_get_gui_height()) / _system.__globalScale) + _offsetY - __originY*_height;
             }
         }
         else
