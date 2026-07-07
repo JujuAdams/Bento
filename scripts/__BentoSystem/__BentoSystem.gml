@@ -210,6 +210,7 @@ function __BentoSystem()
         __globalScale = 1;
         
         __skinDict = {};
+        __percentageParseDict = {};
         
         __scissorStack = [];
         
