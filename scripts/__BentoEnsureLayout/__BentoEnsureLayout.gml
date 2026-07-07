@@ -4,8 +4,13 @@
 
 function __BentoEnsureLayout()
 {
+    static _system = __BentoSystem();
+    
     if not (__dirtyFlags & __BENTO_DIRTY_LAYOUT) return;
     __dirtyFlags = ~((~__dirtyFlags) | __BENTO_DIRTY_LAYOUT);
+    
+    var _rootWidth  = _system.__percentageWidth;
+    var _rootHeight = _system.__percentageHeight;
     
     var _layoutOrder = __layoutOrder;
     array_resize(_layoutOrder, 0);
@@ -20,7 +25,7 @@ function __BentoEnsureLayout()
         var _i = _count-1;
         repeat(_count)
         {
-            _layoutOrder[_i].__SolverGetDeflateWidth();
+            _layoutOrder[_i].__SolverGetDeflateWidth(_rootWidth);
             --_i;
         }
         
@@ -28,7 +33,7 @@ function __BentoEnsureLayout()
         var _i = 0;
         repeat(_count)
         {
-            _layoutOrder[_i].__SolverResizeWidth();
+            _layoutOrder[_i].__SolverResizeWidth(_rootWidth);
             ++_i;
         }
         
@@ -36,7 +41,7 @@ function __BentoEnsureLayout()
         var _i = _count-1;
         repeat(_count)
         {
-            _layoutOrder[_i].__SolverGetDeflateHeight();
+            _layoutOrder[_i].__SolverGetDeflateHeight(_rootHeight);
             --_i;
         }
         
@@ -44,7 +49,7 @@ function __BentoEnsureLayout()
         var _i = 0;
         repeat(_count)
         {
-            _layoutOrder[_i].__SolverResizeHeight();
+            _layoutOrder[_i].__SolverResizeHeight(_rootWidth, _rootHeight);
             ++_i;
         }
         

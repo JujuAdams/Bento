@@ -1,9 +1,9 @@
 // Feather disable all
 
-function __BentoSolverListResizeWidth()
+function __BentoSolverListResizeWidth(_rootWidth)
 {
-    var _layoutWidthMin = __BentoParsePercentageString(__layoutWidthMin, display_get_gui_width());
-    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, display_get_gui_width());
+    var _layoutWidthMin = __BentoParsePercentageString(__layoutWidthMin, _rootWidth);
+    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, _rootWidth);
     
     var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
@@ -109,7 +109,7 @@ function __BentoSolverListResizeWidth()
                     var _prevSize = _child.__solvedWidth;
                     if (_prevSize == _min)
                     {
-                        var _childLayoutWidthMax = __BentoParsePercentageString(_child.__layoutWidthMax, display_get_gui_width());
+                        var _childLayoutWidthMax = __BentoParsePercentageString(_child.__layoutWidthMax, _rootWidth);
                         if (_prevSize + _addition >= _childLayoutWidthMax)
                         {
                             var _newSize = _childLayoutWidthMax;

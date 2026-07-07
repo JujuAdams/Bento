@@ -227,6 +227,9 @@ function __BentoSystem()
         __globalScissorXScale  = 1;
         __globalScissorYScale  = 1;
         
+        __percentageWidth  = display_get_gui_width();
+        __percentageHeight = display_get_gui_height();
+        
         __environmentArray = [];
         var _environment = BentoEnvironmentCreate("default");
         

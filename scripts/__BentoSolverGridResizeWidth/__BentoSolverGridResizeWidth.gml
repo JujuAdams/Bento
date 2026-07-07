@@ -1,8 +1,8 @@
 // Feather disable all
 
-function __BentoSolverGridResizeWidth()
+function __BentoSolverGridResizeWidth(_rootWidth)
 {
-    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, display_get_gui_width());
+    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, _rootWidth);
     
     var _contentSize  = __solvedWidth - (__solverPadLeft + __solverPadRight);
     var _contentCount = floor((_contentSize + __layoutGutterX) / (__solverCellMinWidth + __layoutGutterX));

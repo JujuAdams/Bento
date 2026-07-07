@@ -1,9 +1,9 @@
 // Feather disable all
 
-function __BentoSolverRectResizeWidth()
+function __BentoSolverRectResizeWidth(_rootWidth)
 {
-    var _layoutWidthMin = __BentoParsePercentageString(__layoutWidthMin, display_get_gui_width());
-    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, display_get_gui_width());
+    var _layoutWidthMin = __BentoParsePercentageString(__layoutWidthMin, _rootWidth);
+    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, _rootWidth);
     
     var _childArray = __layoutChildArray;
     var _available = __solvedWidth - (__solverPadLeft + __solverPadRight);

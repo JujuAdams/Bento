@@ -1,9 +1,9 @@
 // Feather disable all
 
-function __BentoSolverGridGetDeflateHeight()
+function __BentoSolverGridGetDeflateHeight(_rootHeight)
 {
-    var _layoutHeightMin = __BentoParsePercentageString(__layoutHeightMin, display_get_gui_height());
-    var _layoutHeightMax = __BentoParsePercentageString(__layoutHeightMax, display_get_gui_height());
+    var _layoutHeightMin = __BentoParsePercentageString(__layoutHeightMin, _rootHeight);
+    var _layoutHeightMax = __BentoParsePercentageString(__layoutHeightMax, _rootHeight);
     
     var _deflateSize = 0;
     var _minSize = 0;
@@ -32,5 +32,5 @@ function __BentoSolverGridGetDeflateHeight()
     
     __solverMinHeight     = (__layoutHeightResize == BENTO_RESIZE_INFLATE)? _layoutHeightMin : clamp(_minSize, _layoutHeightMin, _layoutHeightMax);
     __solverDeflateHeight = clamp(_deflateSize, __solverMinHeight, _layoutHeightMax);
-    __solvedHeight        = clamp((__layoutHeightResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeHeight() : _deflateSize, __solverMinHeight, _layoutHeightMax);
+    __solvedHeight        = clamp((__layoutHeightResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeHeight(_rootHeight) : _deflateSize, __solverMinHeight, _layoutHeightMax);
 }

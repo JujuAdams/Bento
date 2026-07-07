@@ -2,10 +2,10 @@
 
 /// Returns the width of an element after safely handling various overrides.
 
-function __BentoSolvertGetSafeWidth()
+function __BentoSolvertGetSafeWidth(_rootWidth)
 {
     //Determine the preferred width
-    var _value = __BentoParsePercentageString(__layoutWidthPref, display_get_gui_width());
+    var _value = __BentoParsePercentageString(__layoutWidthPref, _rootWidth);
     if (_value > 0)
     {
         //If the preferred width is greater than 0 then use the preferred width

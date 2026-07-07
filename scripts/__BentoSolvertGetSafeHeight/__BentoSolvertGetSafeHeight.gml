@@ -2,10 +2,10 @@
 
 /// Returns the height of an element after safely handling various overrides.
 
-function __BentoSolvertGetSafeHeight()
+function __BentoSolvertGetSafeHeight(_rootHeight)
 {
     //Determine the preferred height
-    var _value = __BentoParsePercentageString(__layoutHeightPref, display_get_gui_height());
+    var _value = __BentoParsePercentageString(__layoutHeightPref, _rootHeight);
     if (_value > 0)
     {
         //If the preferred height is greater than 0 then use the preferred height

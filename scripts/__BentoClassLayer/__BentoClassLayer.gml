@@ -478,6 +478,9 @@ function __BentoClassLayer(_environment, _name) constructor
         BentoSetOffset(_rootX, _rootY, __rootElement);
         BentoLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
         
+        _system.__percentageWidth  = _rootWidth;
+        _system.__percentageHeight = _rootHeight;
+        
         //Keep our layout and step order updated as necessary. Updating the layer and step order here
         //catches any weird stuff the dev might've done between calls to `BentoSystemStep()`
         __BentoEnsureLayout();
@@ -796,6 +799,9 @@ function __BentoClassLayer(_environment, _name) constructor
         ///////
         // Position updates
         ///////
+        
+        _system.__percentageWidth  = _rootWidth;
+        _system.__percentageHeight = _rootHeight;
         
         //Check to see if we need to update the layout and step order again
         __BentoEnsureLayout();

@@ -1,9 +1,9 @@
 // Feather disable all
 
-function __BentoSolverListGetDeflateWidth()
+function __BentoSolverListGetDeflateWidth(_rootWidth)
 {
-    var _layoutWidthMin = __BentoParsePercentageString(__layoutWidthMin, display_get_gui_width());
-    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, display_get_gui_width());
+    var _layoutWidthMin = __BentoParsePercentageString(__layoutWidthMin, _rootWidth);
+    var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, _rootWidth);
     
     var _deflateSize = 0;
     var _minSize = 0;
@@ -53,7 +53,7 @@ function __BentoSolverListGetDeflateWidth()
     
     __solverMinWidth     = (__layoutWidthResize == BENTO_RESIZE_INFLATE)? _layoutWidthMin : clamp(_minSize, _layoutWidthMin, _layoutWidthMax);
     __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth, _layoutWidthMax);
-    __solvedWidth        = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeWidth() : _deflateSize, __solverMinWidth, _layoutWidthMax);
+    __solvedWidth        = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeWidth(_rootWidth) : _deflateSize, __solverMinWidth, _layoutWidthMax);
     
     //Ensure we can never deflate lower than our fixed size
     if (__layoutWidthResize == BENTO_RESIZE_NORMAL)

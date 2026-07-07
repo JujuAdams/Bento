@@ -1,11 +1,11 @@
 // Feather disable all
 
-function __BentoSolverRectResizeHeight()
+function __BentoSolverRectResizeHeight(_rootWidth, _rootHeight)
 {
-    var _layoutHeightMin = __BentoParsePercentageString(__layoutHeightMin, display_get_gui_height());
-    var _layoutHeightMax = __BentoParsePercentageString(__layoutHeightMax, display_get_gui_height());
+    var _layoutHeightMin = __BentoParsePercentageString(__layoutHeightMin, _rootHeight);
+    var _layoutHeightMax = __BentoParsePercentageString(__layoutHeightMax, _rootHeight);
     
-    __BentoSolverMaintainAspectRatio();
+    __BentoSolverMaintainAspectRatio(_rootWidth, _rootHeight);
     
     var _childArray = __layoutChildArray;
     var _available = __solvedHeight - (__solverPadTop + __solverPadBottom);
