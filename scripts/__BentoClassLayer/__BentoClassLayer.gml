@@ -477,6 +477,7 @@ function __BentoClassLayer(_environment, _name) constructor
         //Ensure our root element is the same size as the overall Bento space
         BentoSetOffset(_rootX, _rootY, __rootElement);
         BentoLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
+        BentoLayoutSetMaxSize(_rootWidth, _rootHeight, __rootElement);
         
         _system.__percentageWidth  = _rootWidth;
         _system.__percentageHeight = _rootHeight;
