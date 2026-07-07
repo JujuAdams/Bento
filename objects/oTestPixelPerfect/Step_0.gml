@@ -1,0 +1,79 @@
+// Feather disable all
+
+if (not BentoTextGetOpen())
+{
+    if (keyboard_check_pressed(ord("1"))) BentoSetMode(BENTO_MODE_MOUSE);
+    if (keyboard_check_pressed(ord("2"))) BentoSetMode(BENTO_MODE_KEYBOARD);
+    if (keyboard_check_pressed(ord("3"))) BentoSetMode(BENTO_MODE_GAMEPAD);
+    if (keyboard_check_pressed(ord("4"))) BentoSetMode(BENTO_MODE_TOUCH);
+}
+
+if (keyboard_check_pressed(vk_f1)) BentoDebugStepOrder();
+if (keyboard_check_pressed(vk_f2)) BentoDebugDrawOrder();
+if (keyboard_check_pressed(vk_f3)) BentoDebugScissor();
+if (keyboard_check_pressed(vk_f4)) BentoDebugHoverOrder();
+
+if (BentoUsingPointer())
+{
+    // Pointer input generalises both mouse and touch input. As above, the primary action should be a
+    // continuous "held" value. The coordinate space for the x/y coordinates should be the same as the
+    // coordinate space that the Bento is drawn in. In this example, we're drawing the Bento in the
+    // standard Draw event which means we need to use room-space coordinates. If you're drawing in a
+    // Draw Bento event then you should use GUI-space coordinates.
+    BentoInputPointer(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), device_mouse_check_button(0, mb_left));
+}
+else
+{
+    if (BentoUsingKeyboard())
+    {
+        var _dX = keyboard_check(vk_right) - keyboard_check(vk_left);
+        var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
+        BentoInputNavigation(_dX, _dY, keyboard_check(vk_space));
+    }
+    else if (BentoUsingGamepad() && gamepad_is_connected(0))
+    {
+        // "Gamepad" input is, in reality, a generic navigation input. Sending in a navigation value
+        // will push the Bento cursor in that direction. When holding a navigation input, the Bento system
+        // will automatically retrigger the navigation input leading to auto-scrolling on menus. You can
+        // configure the auto-scroll behavior by calling `BentoInputConfigureRetrigger()`. The primary
+        // action parameter should be a continuous "held" value too. The Bento system handles the "pressed"
+        // and "released" state internally.
+        var _dX = gamepad_axis_value(0, gp_axislh) + (gamepad_button_check(0, gp_padr) - gamepad_button_check(0, gp_padl));
+        var _dY = gamepad_axis_value(0, gp_axislv) + (gamepad_button_check(0, gp_padd) - gamepad_button_check(0, gp_padu));
+        BentoInputNavigation(_dX, _dY, gamepad_button_check(0, gp_face1));
+    }
+}
+
+// No matter what input mode we're in, we can funnel "button" input into the system. "Button"\
+// is an abstract input that doesn't necessarily have to map to a physical input at all. Button
+// input could be triggered by a tutorial, a cutscene, a touch gesture etc. ... or it could be a
+// button. Buttons have a "pressed", "held", and "released" state that is accessed via functions.
+BentoInputHotkey(BENTO_HOTKEY_SCROLL_UP,   mouse_wheel_up());
+BentoInputHotkey(BENTO_HOTKEY_SCROLL_DOWN, mouse_wheel_down());
+    
+if (BentoUsingTouch())
+{
+    BentoInputHotkey(BENTO_HOTKEY_CANCEL, keyboard_check(vk_backspace));
+}
+else if (BentoUsingGamepad())
+{
+    BentoInputHotkey(BENTO_HOTKEY_CANCEL, gamepad_button_check(0, gp_face2));
+}
+else
+{
+    BentoInputHotkey(BENTO_HOTKEY_CANCEL, keyboard_check(vk_escape));
+}
+
+// The main state update function. This ticks the entire system (but doesn't do any drawing).
+// Step user events (BENTO_USER_EVENT_STEP etc.) are executed by this function where appropriate.
+BentoSystemStep(0, 0, width, height);
+
+if (BENTO_ON_DESKTOP)
+{
+    // Change mouse cursor when we're doing something with Bento
+    var _margin = 5;
+    if (point_in_rectangle(window_mouse_get_x(), window_mouse_get_y(), _margin, _margin, window_get_width() - _margin, window_get_height() - _margin))
+    {
+        window_set_cursor(BentoGetBlocksMouse()? cr_drag : cr_default);
+    }
+}
