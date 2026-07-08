@@ -11,6 +11,7 @@ function __BentoEnsureLayout()
     
     var _rootWidth  = _system.__percentageWidth;
     var _rootHeight = _system.__percentageHeight;
+    var _rightToLeftRootWidth = _system.__rightToLeft? _rootWidth : undefined;
     
     var _layoutOrder = __layoutOrder;
     array_resize(_layoutOrder, 0);
@@ -55,7 +56,7 @@ function __BentoEnsureLayout()
         
         //Final pass to set positions in stone
         var _rootBento = __rootElement.BENTO_VARS;
-        _rootBento.__SolverFinalPositions(0, 0, _rootBento.__solvedWidth, _rootBento.__solvedHeight);
+        _rootBento.__SolverFinalPositions(0, 0, _rootBento.__solvedWidth, _rootBento.__solvedHeight, _rightToLeftRootWidth);
     }
     
     //Ensure a full reset of the transform/scroll positions

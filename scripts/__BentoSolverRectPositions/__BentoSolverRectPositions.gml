@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeight)
+function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeight, _rightToLeftRootWidth)
 {
     // N.B. `BENTO_LAYOUT_LIST`, `BENTO_LAYOUT_GRID` override this function.
     
@@ -26,10 +26,16 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     var _i = 0;
     repeat(array_length(_childArray))
     {
-        _childArray[_i].__SolverFinalPositions(_childX, _childY, _childWidth, _childHeight);
+        _childArray[_i].__SolverFinalPositions(_childX, _childY, _childWidth, _childHeight, _rightToLeftRootWidth);
         ++_i;
     }
     
     //Reset the temporary layout array
     array_resize(__layoutChildArray, 0);
+    
+    //Flip the x-axis position if we're using a right-to-left layout
+    if (_rightToLeftRootWidth != undefined)
+    {
+        __solvedLeft = _rightToLeftRootWidth - (__solvedLeft + __solvedWidth);
+    }
 }

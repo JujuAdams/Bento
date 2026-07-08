@@ -208,6 +208,7 @@ function __BentoSystem()
         ///////
         
         __globalScale = 1;
+        __rightToLeft = false;
         
         __skinDict = {};
         __percentageParseDict = {};

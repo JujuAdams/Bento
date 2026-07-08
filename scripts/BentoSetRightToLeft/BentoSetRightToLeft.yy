@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoSetRightToLeft",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoSetRightToLeft",
+  "parent":{
+    "name":"Miscellaneous",
+    "path":"folders/Bento/Functions/Miscellaneous.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

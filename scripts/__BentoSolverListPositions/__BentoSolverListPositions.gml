@@ -1,6 +1,6 @@
 // Feather disable all
 
-function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight)
+function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeight, _rightToLeftRootWidth)
 {
     __BentoScrollLimitsMarkSelfDirty();
     
@@ -44,7 +44,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
             with(_childArray[_i])
             {
                 var _childMinorPos = _minorPos + _minorAlign*(_minorAvailable - __solvedHeight);
-                __SolverFinalPositions(_majorPos, _childMinorPos, __solvedWidth, _minorAvailable);
+                __SolverFinalPositions(_majorPos, _childMinorPos, __solvedWidth, _minorAvailable, _rightToLeftRootWidth);
                 _majorPos += __solvedWidth + _gutter;
             }
           
@@ -77,7 +77,7 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
             with(_childArray[_i])
             {
                 var _childMinorPos = _minorPos + _minorAlign*(_minorAvailable - __solvedWidth);
-                __SolverFinalPositions(_childMinorPos, _majorPos, _minorAvailable, __solvedHeight);
+                __SolverFinalPositions(_childMinorPos, _majorPos, _minorAvailable, __solvedHeight, _rightToLeftRootWidth);
                 _majorPos += __solvedHeight + _gutter;
             }
           
@@ -87,4 +87,10 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
     
     //Reset the temporary layout array
     array_resize(__layoutChildArray, 0);
+    
+    //Flip the x-axis position if we're using a right-to-left layout
+    if (_rightToLeftRootWidth != undefined)
+    {
+        __solvedLeft = _rightToLeftRootWidth - (__solvedLeft + __solvedWidth);
+    }
 }
