@@ -130,7 +130,6 @@ BentoLayoutText(function(_maxWidth, _maxHeight)
 scribble(text, id)
 .starting_format(font, c_white)
 .fit_to_box(bentoWidth, bentoHeight)
-.blend(c_white, image_alpha)
 .draw(_x, _y);
 ```
 
