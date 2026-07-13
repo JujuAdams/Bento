@@ -150,11 +150,13 @@ BentoLayoutSetSize(_textElement.GetWidth(), _textElement.GetHeight());
 
 BentoLayoutText(function(_maxWidth, _maxHeight)
 {
-    return ScribblejrFitExt(text, fa_left, fa_top, font, undefined, _maxWidth, _maxHeight).GetHeight();
+    return ScribblejrFitExt(text, fa_left, fa_top, font, undefined, _maxWidth, _maxHeight)
+           .GetHeight();
 });
 
 
 
 /// User Event 1 - Draw
-ScribblejrFitExt(text, fa_left, fa_top, font, undefined, bentoWidth, bentoHeight).Draw(_x, _y, c_white, 1);
+ScribblejrFitExt(text, fa_left, fa_top, font, undefined, bentoWidth, bentoHeight)
+.Draw(_x, _y, c_white, 1);
 ```
