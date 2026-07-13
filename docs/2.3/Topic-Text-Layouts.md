@@ -14,9 +14,9 @@ Drawing text in Bento works similarly to drawing other content, such as sprites.
 /// Create
 text = "Hello World!";
 font = fntDefault;
+```
 
-
-
+```gml
 /// User Event 1 - Draw
 draw_set_font(font);
 draw_text(bentoLeft, bentoTop, text);
@@ -59,9 +59,9 @@ draw_set_font(font);
 //Set the size of this element to be the size of the text after wrapping
 BentoLayoutSetSize(maxWidth, string_height_ext(text, -1, maxWidth));
 draw_set_font(_oldFont);
+```
 
-
-
+```gml
 /// User Event 1 - Draw
 draw_set_font(font);
 draw_text_ext(bentoLeft, bentoTop, text, -1, maxWidth);
@@ -93,9 +93,9 @@ BentoLayoutText(function(_maxWidth, _maxHeight)
     
     return _result;
 });
+```
 
-
-
+```gml
 /// User Event 1 - Draw
 draw_set_font(font);
 draw_text_ext(bentoLeft, bentoTop, text, -1, bentoWidth);
@@ -123,9 +123,9 @@ BentoLayoutText(function(_maxWidth, _maxHeight)
            .fit_to_box(_maxWidth, _maxHeight)
            .get_height();
 });
+```
 
-
-
+```gml
 /// User Event 1 - Draw
 scribble(text, id)
 .starting_format(font, c_white)
@@ -153,9 +153,9 @@ BentoLayoutText(function(_maxWidth, _maxHeight)
     return ScribblejrFitExt(text, fa_left, fa_top, font, undefined, _maxWidth, _maxHeight)
            .GetHeight();
 });
+```
 
-
-
+```gml
 /// User Event 1 - Draw
 ScribblejrFitExt(text, fa_left, fa_top, font, undefined, bentoWidth, bentoHeight)
 .Draw(_x, _y, c_white, 1);
