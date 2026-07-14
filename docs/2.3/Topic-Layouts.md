@@ -59,11 +59,11 @@ This logic type can only be used for the y-axis. Using this logic, an element wi
 
 ### Rectangle
 
-The default layout type.
-
-&nbsp;
+The default layout type. Children of a rectangle-type element are allowed to fill their (rectangle) parent.
 
 ### Text
+
+A special layout for wrapping text. Text-type elements can adjust their height based on their width (i.e. wrapped text takes up more vertical space). Other than that, text-type elements behave the same as rectangle-type elements.
 
 ?> You can read more about text rendering in [this article](Topic-Text-Layouts).
 
