@@ -48,11 +48,11 @@ The default layout logic for both the x and y axes. Using this logic, an element
 
 ### `BENTO_RESIZE_INFLATE`
 
-Using this logic, an element will increase in size to fill empty space along an axis. An element will only fill space to fill its parent.
+Using this logic, an element will increase in size to fill empty space along an axis. An element will only fill space to fill its parent. An element using this logic will also scale down if necessary if there isn't enough space in the parent.
 
 ### `BENTO_RESIZE_DEFLATE`
 
-Using this logic, an element will decrease in size to fit around its children.
+Using this logic, an element will decrease in size to fit around its children. An element using this logic will also scale down if necessary if there isn't enough space in the parent. An element using this logic will also scale down if necessary if there isn't enough space in the parent.
 
 ### `BENTO_RESIZE_ASPECT`
 
