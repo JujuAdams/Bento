@@ -13,6 +13,8 @@ Every Bento element has a "layout type". An element may only have one layout typ
 
 Every element also has layout-specific properties that are stored internally. These properties are adjusted by calling functions such as `BentoLayoutSetSize()` or `BentoLayoutSetAnchor()`. Elements can be given special logic to execute during the layout calculation process, as set by `BentoLayoutSetResize()`.
 
+You can horizontally flip your interface by setting the "right-to-left" flag by calling `BentoSetRightToLeft()`. This is a global setting and will affect all layouts in all environments.
+
 Layout calculation is expensive and layouts are recalculated only when necessary. Element positions are cached wherever possible. If an element's position or size is changed then the ["Reposition" user event](Topic-User-Events) is executed.
 
 &nbsp;
@@ -67,10 +69,10 @@ A special layout for wrapping text. Text-type elements can adjust their height b
 
 ?> You can read more about text rendering in [this article](Topic-Text-Layouts).
 
-&nbsp;
-
 ### Lists
 
-&nbsp;
+A layout type for organising elements in a row (x-axis) or a column (y-axis). You can also align children in both the major and minor axes. Note that alignment only applies if the list parent has more space in the major axis than its children need.
 
 ### Grids
+
+A layout type for organising elements in a grid where every cell has the same width and height. The cell width and height is defined by the widths and heights seen amongst a grid's children. You may specify a target number of rows and columns as well as a minimum and maximum number of rows and columns.
