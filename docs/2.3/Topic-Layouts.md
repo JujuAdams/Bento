@@ -13,7 +13,7 @@ Every Bento element has a "layout type". An element may only have one layout typ
 
 Layout types are set by calling specific functions (e.g. `BentoLayoutList()`). Every element also has layout-specific properties that are stored internally. These properties are adjusted by calling functions such as `BentoLayoutSetSize()` or `BentoLayoutSetAnchor()`.
 
-Most importantly, UI elements can dynamically resize themselves as the algorithm proceeds based on how much space is available. Setting the resize logic is done with `BentoLayoutSetResize()`. There are four types of resize logic:
+Most importantly, UI elements can dynamically resize themselves as the algorithm proceeds based on how much space is available. You may set resize logic per axis e.g. you may want to resize on the x-axis but not resize on the y-axis. Setting the resize logic is done with `BentoLayoutSetResize()`. There are four types of resize logic:
 
 - `BENTO_RESIZE_NORMAL`
 - `BENTO_RESIZE_INFLATE`
@@ -26,21 +26,37 @@ Layout calculation is expensive and layouts are recalculated only when necessary
 
 ## The Algorithm
 
-&nbsp;
+Bento's algorithm happens in multiple stages:
 
-## Layout Properties
+1. Traverse the tree of elements and build a flat array of elements to operate on. Whilst doing this, Bento also calculates a final padding value including scrollbars and scissor padding.
 
-### Size (& minimum & maximum)
+2. Iterate backwards and calculate the minimum viable **width** for elements.
 
-### Resize
+3. Iterate forwards and resize the **width** of elements that need to be deflated or inflated.
 
-### Anchor
+4. Iterate backwards and calculate the minimum viable **height** for elements.
 
-### Clamp Inside
+5. Iterate forwards and resize the **height** of elements that need to be deflated or inflated. If an element has the `BENTO_RESIZE_ASPECT` logic then its height is set here.
 
-### Padding & Gutter
+6. Iterate forwards and finalise positions of all elements, including reversing positions for right-to-left interfaces.
 
-### Setting from JSON
+Note that the calculation and resizing steps are separate for the x and y axes. This gives us the opportunity to resize user interface elements based on text wrapping.
+
+### `BENTO_RESIZE_NORMAL`
+
+The default layout logic for both the x and y axes. Using this logic, an element will shrink to fit the available space if necessary. Otherwise, an element will not change size.
+
+### `BENTO_RESIZE_INFLATE`
+
+Using this logic, an element will increase in size to fill empty space along an axis. An element will only fill space to fill its parent.
+
+### `BENTO_RESIZE_DEFLATE`
+
+Using this logic, an element will decrease in size to fit around its children.
+
+### `BENTO_RESIZE_ASPECT`
+
+This logic type can only be used for the y-axis. Using this logic, an element will set its height in proportion to its width keeping the same aspect ratio as the initial width and height.
 
 &nbsp;
 
