@@ -1,10 +1,6 @@
-<!-- tabs:start -->
-
-#### **Screenshot**
+## Basic Size & Positioning
 
 <figure><img src="assets/DocsRectangle.png" style="width:80%; display: block; margin: 25px auto 15px; max-width: 300px; height: auto;" /></figure>
-
-#### **Example**
 
 ```gml
 with(BentoLayerGetRoot()) //Step inside the root element for the layer
@@ -52,15 +48,11 @@ with(BentoLayerGetRoot()) //Step inside the root element for the layer
 }
 ```
 
-<!-- tabs:end -->
+&nbsp;
 
-<!-- tabs:start -->
-
-#### **Screenshot**
+## Anchors
 
 <figure><img src="assets/DocsAnchor.png" style="width:80%; display: block; margin: 25px auto 15px; max-width: 300px; height: auto;" /></figure>
-
-#### **Example**
 
 ```gml
 with(BentoLayerGetRoot()) //Step inside the root element for the layer
@@ -107,5 +99,3 @@ with(BentoLayerGetRoot()) //Step inside the root element for the layer
     }
 }
 ```
-
-<!-- tabs:end -->
