@@ -42,6 +42,8 @@ Bento's algorithm happens in multiple stages:
 
 Note that the calculation and resizing steps are separate for the x and y axes. This gives us the opportunity to resize user interface elements based on text wrapping.
 
+You can change the logic that an element will when resizing by calling `BentoLayoutSetResize()`. This function should be given one of the following `BENTO_RESIZE_*` constants:
+
 ### `BENTO_RESIZE_NORMAL`
 
 The default layout logic for both the x and y axes. Using this logic, an element will shrink to fit the available space if necessary. Otherwise, an element will not change size.
