@@ -2,6 +2,12 @@
 
 Bento uses a custom layout algorithm to determine where to place user interface elements. This layout system reduces the burden of calculating the precise position of elements yourself. Whilst this layout system is powerful, it does require some getting used to. If you'd prefer to use a simpler system, you're welcome to use [basic positioning code](Topic-Basic-Positioning); Bento's other features will work regardless.
 
+?> You can find some layout examples [here](Layout-Examples).
+
+&nbsp;
+
+## Introduction
+
 Every Bento element has a "layout type". An element may only have one layout type at a time. Layouts control how children of a Bento element are arranged. Layout types are set by calling specific functions (e.g. `BentoLayoutList()`). Bento currently supports the following layout types:
 
 - Rectangle (the default)
