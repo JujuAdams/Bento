@@ -135,7 +135,7 @@ scribble(text, id)
 
 &nbsp;
 
-## Scribble Deluxe
+## Scribble Jr.
 
 Scribble Jr. can also be used with Bento in much the same way.
 
