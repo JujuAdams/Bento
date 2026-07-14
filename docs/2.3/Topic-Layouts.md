@@ -1,4 +1,4 @@
-# The Layout Algorithm
+# Layouts
 
 Bento uses a custom layout algorithm to determine where to place user interface elements. This layout system reduces the burden of calculating the precise position of elements yourself. Whilst this layout system is powerful, it does require some getting used to. If you'd prefer to use a simpler system, you're welcome to use [basic positioning code](Topic-Basic-Positioning); Bento's other features will work regardless.
 
@@ -21,6 +21,10 @@ Most importantly, UI elements can dynamically resize themselves as the algorithm
 - `BENTO_RESIZE_ASPECT` (y-axis only)
 
 Layout calculation is expensive and layouts are recalculated only when necessary. Element positions are cached wherever possible. If an element's position or size is changed then the ["Reposition" user event](Topic-User-Events) is executed.
+
+&nbsp;
+
+## The Algorithm
 
 &nbsp;
 
