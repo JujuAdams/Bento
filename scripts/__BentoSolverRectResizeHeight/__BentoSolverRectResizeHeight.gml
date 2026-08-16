@@ -2,9 +2,6 @@
 
 function __BentoSolverRectResizeHeight(_rootWidth, _rootHeight)
 {
-    var _layoutHeightMin = __BentoParsePercentageString(__layoutHeightMin, _rootHeight);
-    var _layoutHeightMax = __BentoParsePercentageString(__layoutHeightMax, _rootHeight);
-    
     __BentoSolverMaintainAspectRatio(_rootWidth, _rootHeight);
     
     var _childArray = __layoutChildArray;
@@ -17,11 +14,13 @@ function __BentoSolverRectResizeHeight(_rootWidth, _rootHeight)
         {
             if (__layoutHeightResize == BENTO_RESIZE_INFLATE)
             {
-                __solvedHeight = clamp(_available, _layoutHeightMin, _layoutHeightMax);
+                __solvedHeight = clamp(_available,
+                                       __BentoParsePercentageString(__layoutHeightMin, _rootHeight),
+                                       __BentoParsePercentageString(__layoutHeightMax, _rootHeight));
             }
             else
             {
-                __solvedHeight = clamp(min(__solvedHeight, _available), _layoutHeightMin, _layoutHeightMax);
+                __solvedHeight = max(min(__solvedHeight, _available), __BentoParsePercentageString(__layoutHeightMin, _rootHeight));
             }
         }
         
