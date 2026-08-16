@@ -5,7 +5,7 @@ function __BentoSolverRectResizeHeight(_rootWidth, _rootHeight)
     __BentoSolverMaintainAspectRatio(_rootWidth, _rootHeight);
     
     var _childArray = __layoutChildArray;
-    var _available = __solvedHeight - (__solverPadTop + __solverPadBottom);
+    var _available = __solvedHeight - (__solverPadTop + __solverPadBottom + __layoutMarginHeight);
     
     var _i = 0;
     repeat(array_length(_childArray))

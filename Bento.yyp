@@ -482,6 +482,8 @@
     {"id":{"name":"BentoLayoutSetClampInside","path":"scripts/BentoLayoutSetClampInside/BentoLayoutSetClampInside.yy",},},
     {"id":{"name":"BentoLayoutSetFromJSON","path":"scripts/BentoLayoutSetFromJSON/BentoLayoutSetFromJSON.yy",},},
     {"id":{"name":"BentoLayoutSetGutter","path":"scripts/BentoLayoutSetGutter/BentoLayoutSetGutter.yy",},},
+    {"id":{"name":"BentoLayoutSetMargin","path":"scripts/BentoLayoutSetMargin/BentoLayoutSetMargin.yy",},},
+    {"id":{"name":"BentoLayoutSetMarginExt","path":"scripts/BentoLayoutSetMarginExt/BentoLayoutSetMarginExt.yy",},},
     {"id":{"name":"BentoLayoutSetMaxSize","path":"scripts/BentoLayoutSetMaxSize/BentoLayoutSetMaxSize.yy",},},
     {"id":{"name":"BentoLayoutSetMinSize","path":"scripts/BentoLayoutSetMinSize/BentoLayoutSetMinSize.yy",},},
     {"id":{"name":"BentoLayoutSetPadding","path":"scripts/BentoLayoutSetPadding/BentoLayoutSetPadding.yy",},},

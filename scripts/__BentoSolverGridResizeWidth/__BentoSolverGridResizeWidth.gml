@@ -4,7 +4,7 @@ function __BentoSolverGridResizeWidth(_rootWidth)
 {
     var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, _rootWidth);
     
-    var _contentSize  = __solvedWidth - (__solverPadLeft + __solverPadRight);
+    var _contentSize  = __solvedWidth - (__solverPadLeft + __solverPadRight + __layoutMarginWidth);
     var _contentCount = floor((_contentSize + __layoutGutterX) / (__solverCellMinWidth + __layoutGutterX));
     _contentCount = clamp(_contentCount, __gridMinColumns, __gridMaxColumns);
     

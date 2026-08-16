@@ -6,8 +6,8 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     
     __BentoScrollLimitsMarkSelfDirty();
     
-    __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth );
-    __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight);
+    __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth ) + __layoutMarginLeft;
+    __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight) + __layoutMarginTop;
     
     if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {
@@ -19,8 +19,8 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     
     var _childX      = __solvedLeft + __solverPadLeft;
     var _childY      = __solvedTop  + __solverPadTop;
-    var _childWidth  = __solvedWidth  - (__solverPadLeft + __solverPadRight);
-    var _childHeight = __solvedHeight - (__solverPadTop + __solverPadBottom);
+    var _childWidth  = __solvedWidth  - (__solverPadLeft + __solverPadRight + __layoutMarginWidth);
+    var _childHeight = __solvedHeight - (__solverPadTop + __solverPadBottom + __layoutMarginHeight);
     
     var _childArray = __layoutChildArray;
     var _i = 0;

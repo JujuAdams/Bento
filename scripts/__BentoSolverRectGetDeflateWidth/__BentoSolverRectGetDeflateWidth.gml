@@ -27,7 +27,7 @@ function __BentoSolverRectGetDeflateWidth(_rootWidth)
         _minSize     += _extra;
     }
     
-    __solverMinWidth     = clamp(_minSize, _layoutWidthMin, _layoutWidthMax);
-    __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth, _layoutWidthMax);
-    __solvedWidth        = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeWidth(_rootWidth) : _deflateSize, __solverMinWidth, _layoutWidthMax);
+    __solverMinWidth     = clamp(_minSize, _layoutWidthMin, _layoutWidthMax) + __layoutMarginWidth;
+    __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth, _layoutWidthMax) + __layoutMarginWidth;
+    __solvedWidth        = clamp(((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeWidth(_rootWidth) : _deflateSize) + __layoutMarginWidth, __solverMinWidth, _layoutWidthMax + __layoutMarginWidth);
 }

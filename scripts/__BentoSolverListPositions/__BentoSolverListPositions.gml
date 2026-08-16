@@ -4,8 +4,8 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
 {
     __BentoScrollLimitsMarkSelfDirty();
     
-    __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth );
-    __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight);
+    __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth ) + __layoutMarginLeft;
+    __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight) + __layoutMarginTop;
     
     if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {
@@ -14,6 +14,9 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         __solvedWidth  = floor(__solvedWidth);
         __solvedHeight = floor(__solvedHeight);
     }
+    
+    var _finalWidth  = __solvedWidth  - __layoutMarginWidth;
+    var _finalHeight = __solvedHeight - __layoutMarginHeight;
     
     var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
@@ -34,16 +37,16 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _minorPos = __solvedTop  + __solverPadTop;
         var _gutter   = __layoutGutterX;
         
-        _majorPos += __layoutHAlignChildren*(__solvedWidth - _majorSize);
+        _majorPos += __layoutHAlignChildren*(_finalWidth - _majorSize);
         
-        var _minorAvailable = __solvedHeight - (__solverPadTop + __solverPadBottom);
+        var _minorAvailable = _finalHeight - (__solverPadTop + __solverPadBottom);
         var _minorAlign = __layoutVAlignChildren;
         var _i = 0;
         repeat(_childCount)
         {
             with(_childArray[_i])
             {
-                var _childMinorPos = _minorPos + _minorAlign*(_minorAvailable - __solvedHeight);
+                var _childMinorPos = _minorPos + _minorAlign*(_minorAvailable - __solvedWidth);
                 __SolverFinalPositions(_majorPos, _childMinorPos, __solvedWidth, _minorAvailable, _rightToLeftRootWidth);
                 _majorPos += __solvedWidth + _gutter;
             }
@@ -67,9 +70,9 @@ function __BentoSolverListPositions(_left, _top, _allocatedWidth, _allocatedHeig
         var _minorPos = __solvedLeft + __solverPadLeft;
         var _gutter   = __layoutGutterY;
         
-        _majorPos += __layoutVAlignChildren*(__solvedHeight - _majorSize);
+        _majorPos += __layoutVAlignChildren*(_finalHeight - _majorSize);
         
-        var _minorAvailable = __solvedWidth - (__solverPadLeft + __solverPadRight);
+        var _minorAvailable = _finalWidth - (__solverPadLeft + __solverPadRight);
         var _minorAlign = __layoutHAlignChildren;
         var _i = 0;
         repeat(_childCount)

@@ -10,7 +10,7 @@ function __BentoSolverListResizeHeight(_rootWidth, _rootHeight)
     var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedHeight - __solverChildrenDeflateHeight;
+    var _remaining = __solvedHeight - (__solverChildrenDeflateHeight + __layoutMarginHeight);
     
     if (__listAxis == BENTO_AXIS_X)
     {
@@ -18,7 +18,7 @@ function __BentoSolverListResizeHeight(_rootWidth, _rootHeight)
         // Minor Axis - Stretch inflate elements to the maximum available space
         //////
             
-        var _available = __solvedHeight - (__solverPadLeft + __solverPadRight);
+        var _available = __solvedHeight - (__solverPadLeft + __solverPadRight + __layoutMarginWidth);
         if (_available > 0)
         {
             var _i = 0;
