@@ -159,6 +159,7 @@
     {"id":{"name":"oTestPixelPerfect","path":"objects/oTestPixelPerfect/oTestPixelPerfect.yy",},},
     {"id":{"name":"rLandscape","path":"rooms/rLandscape/rLandscape.yy",},},
     {"id":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
+    {"id":{"name":"rSquare","path":"rooms/rSquare/rSquare.yy",},},
     {"id":{"name":"__BentoAnimateScroll","path":"scripts/__BentoAnimateScroll/__BentoAnimateScroll.yy",},},
     {"id":{"name":"__BentoClassEnvironment","path":"scripts/__BentoClassEnvironment/__BentoClassEnvironment.yy",},},
     {"id":{"name":"__BentoClassLayer","path":"scripts/__BentoClassLayer/__BentoClassLayer.yy",},},
@@ -787,6 +788,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"rSquare","path":"rooms/rSquare/rSquare.yy",},},
     {"roomId":{"name":"rPortrait","path":"rooms/rPortrait/rPortrait.yy",},},
     {"roomId":{"name":"rLandscape","path":"rooms/rLandscape/rLandscape.yy",},},
   ],
