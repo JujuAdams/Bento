@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DocsAnchor",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DocsAnchor",
+  "parent":{
+    "name":"Documentation",
+    "path":"folders/Documentation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

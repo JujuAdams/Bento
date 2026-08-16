@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DocsListX",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DocsListX",
+  "parent":{
+    "name":"Documentation",
+    "path":"folders/Documentation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

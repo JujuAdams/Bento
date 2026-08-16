@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DocsRectangle",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DocsRectangle",
+  "parent":{
+    "name":"Documentation",
+    "path":"folders/Documentation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

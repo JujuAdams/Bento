@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DocsInflate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DocsInflate",
+  "parent":{
+    "name":"Documentation",
+    "path":"folders/Documentation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

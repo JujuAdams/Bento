@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"DocsDeflate",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"DocsDeflate",
+  "parent":{
+    "name":"Documentation",
+    "path":"folders/Documentation.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
