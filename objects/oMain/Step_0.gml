@@ -13,6 +13,11 @@ if (keyboard_check_pressed(vk_f2)) BentoDebugDrawOrder();
 if (keyboard_check_pressed(vk_f3)) BentoDebugScissor();
 if (keyboard_check_pressed(vk_f4)) BentoDebugHoverOrder();
 
+if (keyboard_check_pressed(vk_f11) && (screenshotName != undefined))
+{
+    screen_save(screenshotName);
+}
+
 if (BentoUsingPointer())
 {
     // Pointer input generalises both mouse and touch input. As above, the primary action should be a

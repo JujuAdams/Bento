@@ -1,5 +1,6 @@
 // Feather disable all
 
+screenshotName = undefined;
 mainElement = BENTO_NO_ELEMENT;
 TestColumns();
 
