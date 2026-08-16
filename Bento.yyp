@@ -432,7 +432,6 @@
     {"id":{"name":"BentoGetFocused","path":"scripts/BentoGetFocused/BentoGetFocused.yy",},},
     {"id":{"name":"BentoGetHoldBlocksDragScroll","path":"scripts/BentoGetHoldBlocksDragScroll/BentoGetHoldBlocksDragScroll.yy",},},
     {"id":{"name":"BentoGetHoverable","path":"scripts/BentoGetHoverable/BentoGetHoverable.yy",},},
-    {"id":{"name":"BentoGetHovered","path":"scripts/BentoGetHovered/BentoGetHovered.yy",},},
     {"id":{"name":"BentoGetLandscape","path":"scripts/BentoGetLandscape/BentoGetLandscape.yy",},},
     {"id":{"name":"BentoGetLayer","path":"scripts/BentoGetLayer/BentoGetLayer.yy",},},
     {"id":{"name":"BentoGetLongPress","path":"scripts/BentoGetLongPress/BentoGetLongPress.yy",},},
