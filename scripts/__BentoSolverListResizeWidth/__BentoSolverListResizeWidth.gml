@@ -16,7 +16,7 @@ function __BentoSolverListResizeWidth(_rootWidth)
         // Minor Axis - Stretch inflate elements to the maximum available space
         //////
             
-        var _available = __solvedWidth - (__solverPadLeft + __solverPadRight + __layoutMarginWidth);
+        var _available = __solvedWidth - (__solverPadWidth + __layoutMarginWidth);
         if (_available > 0)
         {
             var _i = 0;

@@ -3,7 +3,7 @@
 function __BentoSolverRectResizeWidth(_rootWidth)
 {
     var _childArray = __layoutChildArray;
-    var _available = __solvedWidth - (__solverPadLeft + __solverPadRight + __layoutMarginWidth);
+    var _available = __solvedWidth - (__solverPadWidth + __layoutMarginWidth);
     
     var _i = 0;
     repeat(array_length(_childArray))

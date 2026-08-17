@@ -405,6 +405,8 @@ function __BentoClassVariables(_attachedElement) constructor
     __solverPadTop    = 0;
     __solverPadRight  = 0;
     __solverPadBottom = 0;
+    __solverPadWidth  = 0;
+    __solverPadHeight = 0;
     
     //How the element should resize. All elements will always try to reduce in size, down to their
     //minimum size, if they are too big for their parent regardless of resizing logic.

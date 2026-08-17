@@ -6,6 +6,8 @@ function __BentoSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeig
     
     __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth ) + __layoutMarginLeft;
     __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight) + __layoutMarginTop;
+    __solvedWidth  -= __layoutMarginWidth;
+    __solvedHeight -= __layoutMarginHeight;
     
     if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {
@@ -15,8 +17,8 @@ function __BentoSolverGridPositions(_left, _top, _allocatedWidth, _allocatedHeig
         __solvedHeight = floor(__solvedHeight);
     }
     
-    var _contentWidth  = __solvedWidth  - (__solverPadLeft + __solverPadRight + __layoutMarginWidth);
-    var _contentHeight = __solvedHeight - (__solverPadTop + __solverPadBottom + __layoutMarginHeight);
+    var _contentWidth  = __solvedWidth  - __solverPadWidth;
+    var _contentHeight = __solvedHeight - __solverPadHeight;
     
     var _columns = floor((_contentWidth  + __layoutGutterX) / (__solverCellMinWidth  + __layoutGutterX));
     var _rows    = floor((_contentHeight + __layoutGutterY) / (__solverCellMinHeight + __layoutGutterY));

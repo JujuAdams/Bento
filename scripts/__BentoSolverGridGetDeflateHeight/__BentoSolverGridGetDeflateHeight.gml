@@ -23,10 +23,10 @@ function __BentoSolverGridGetDeflateHeight(_rootHeight)
     __solverCellMinHeight = _minSize;
     
     _minSize *= __gridMinRows;
-    _minSize += __solverPadTop + __solverPadBottom + __layoutGutterY*(__gridMinRows-1);
+    _minSize += __solverPadHeight + __layoutGutterY*(__gridMinRows-1);
     
     _deflateSize *= __gridTargetRows;
-    _deflateSize += __solverPadTop + __solverPadBottom + __layoutGutterY*(__gridTargetRows-1);
+    _deflateSize += __solverPadHeight + __layoutGutterY*(__gridTargetRows-1);
     
     __solverChildrenDeflateHeight = _deflateSize;
     

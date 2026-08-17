@@ -78,6 +78,8 @@ function __BentoEnsureLayerOrderInner(_layoutOrder, _elementVars)
         __solverPadTop    = __layoutPadTop    + __scissorPadTop    + __scissorScrollbarTop;
         __solverPadRight  = __layoutPadRight  + __scissorPadRight  + __scissorScrollbarRight;
         __solverPadBottom = __layoutPadBottom + __scissorPadBottom + __scissorScrollbarBottom;
+        __solverPadWidth  = __solverPadLeft + __solverPadRight;
+        __solverPadHeight = __solverPadTop + __solverPadBottom;
         
         var _childArray  = __childArray;
         var _layoutArray = __layoutChildArray;

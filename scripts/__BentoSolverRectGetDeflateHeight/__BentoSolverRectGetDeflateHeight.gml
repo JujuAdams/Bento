@@ -22,9 +22,8 @@ function __BentoSolverRectGetDeflateHeight(_rootHeight)
             ++_i;
         }
         
-        var _extra = __solverPadTop + __solverPadBottom;
-        _deflateSize += _extra;
-        _minSize     += _extra;
+        _deflateSize += __solverPadHeight;
+        _minSize     += __solverPadHeight;
     }
     
     __solverMinHeight     = clamp(_minSize, _layoutHeightMin, _layoutHeightMax) + __layoutMarginHeight;

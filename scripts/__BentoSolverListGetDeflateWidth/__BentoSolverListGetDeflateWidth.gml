@@ -26,7 +26,7 @@ function __BentoSolverListGetDeflateWidth(_rootWidth)
             ++_i;
         }
         
-        var _extra = __solverPadLeft + __solverPadRight + max(_childCount-1, 0)*__layoutGutterX;
+        var _extra = __solverPadWidth + max(_childCount-1, 0)*__layoutGutterX;
     }
     else
     {
@@ -43,7 +43,7 @@ function __BentoSolverListGetDeflateWidth(_rootWidth)
             ++_i;
         }
         
-        var _extra = __solverPadLeft + __solverPadRight;
+        var _extra = __solverPadWidth;
     }
     
     _deflateSize += _extra;

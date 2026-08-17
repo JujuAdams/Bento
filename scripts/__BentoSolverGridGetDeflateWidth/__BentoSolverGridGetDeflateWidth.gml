@@ -23,10 +23,10 @@ function __BentoSolverGridGetDeflateWidth(_rootWidth)
     __solverCellMinWidth = _minSize;
     
     _minSize *= __gridMinColumns;
-    _minSize += __solverPadLeft + __solverPadRight + __layoutGutterX*(__gridMinColumns-1);
+    _minSize += __solverPadWidth + __layoutGutterX*(__gridMinColumns-1);
     
     _deflateSize *= __gridTargetColumns;
-    _deflateSize += __solverPadLeft + __solverPadRight + __layoutGutterX*(__gridTargetColumns-1);
+    _deflateSize += __solverPadWidth + __layoutGutterX*(__gridTargetColumns-1);
     
     __solverChildrenDeflateWidth = _deflateSize;
     

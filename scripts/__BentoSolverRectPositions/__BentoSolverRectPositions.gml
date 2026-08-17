@@ -8,6 +8,8 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     
     __solvedLeft = _left + __layoutAnchorX*(_allocatedWidth  - __solvedWidth ) + __layoutMarginLeft;
     __solvedTop  = _top  + __layoutAnchorY*(_allocatedHeight - __solvedHeight) + __layoutMarginTop;
+    __solvedWidth  -= __layoutMarginWidth;
+    __solvedHeight -= __layoutMarginHeight;
     
     if (BENTO_FLOOR_LAYOUT_POSITIONS)
     {
@@ -19,8 +21,8 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     
     var _childX      = __solvedLeft + __solverPadLeft;
     var _childY      = __solvedTop  + __solverPadTop;
-    var _childWidth  = __solvedWidth  - (__solverPadLeft + __solverPadRight + __layoutMarginWidth);
-    var _childHeight = __solvedHeight - (__solverPadTop + __solverPadBottom + __layoutMarginHeight);
+    var _childWidth  = __solvedWidth  - __solverPadWidth;
+    var _childHeight = __solvedHeight - __solverPadHeight;
     
     var _childArray = __layoutChildArray;
     var _i = 0;
@@ -38,7 +40,4 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     {
         __solvedLeft = _rightToLeftRootWidth - (__solvedLeft + __solvedWidth);
     }
-    
-    __solvedWidth  -= __layoutMarginWidth;
-    __solvedHeight -= __layoutMarginHeight;
 }
