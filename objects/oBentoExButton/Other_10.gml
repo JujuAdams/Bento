@@ -12,6 +12,15 @@ if (BentoPrimaryGetClick())
         func();
     }
 }
+else if (BentoHotkeyGetHold(hotkey))
+{
+    audio_play_sound(sndBentoExBeep, 0, false);
+    
+    if (is_callable(func))
+    {
+        func();
+    }
+}
 
 if (BentoCursorGetEnterByPlayer() && BentoUsingNavigation())
 {

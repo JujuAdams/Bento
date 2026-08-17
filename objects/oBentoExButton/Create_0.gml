@@ -31,6 +31,7 @@ BentoVarEnsureMany(
     "text", "",
     "textColor", BENTO_EXAMPLE_DARK_BLUE,
     "inoperative", false,
+    "hotkey", undefined,
     "func", function()
     {
         show_debug_message($"Button {id} clicked");
