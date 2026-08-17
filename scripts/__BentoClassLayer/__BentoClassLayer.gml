@@ -287,8 +287,6 @@ function __BentoClassLayer(_environment, _name) constructor
     {
         //A full input state update. Player input is collected and passed into layer state
         
-        static _hotkeyArray = [];
-        
         var _environment = __environment;
         
         if (__inputModePointer)
@@ -423,12 +421,9 @@ function __BentoClassLayer(_environment, _name) constructor
         
         //Update hotkey input
         var _globalHotkeyInputMap = _environment.__envHotkeyInputMap;
-        ds_map_keys_to_array(_globalHotkeyInputMap, _hotkeyArray);
-        var _i = 0;
-        repeat(array_length(_hotkeyArray))
+        var _key = ds_map_find_first(_globalHotkeyInputMap);
+        repeat(ds_map_size(_globalHotkeyInputMap))
         {
-            var _key = _hotkeyArray[_i];
-            
             var _state = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
             if (_globalHotkeyInputMap[? _key] ?? false) _state |= __BENTO_STATE_START;
             __hotkeyStateMap[? _key] = _state;
@@ -438,18 +433,14 @@ function __BentoClassLayer(_environment, _name) constructor
                 __hotkeyConsumedMap[? _key] = false;
             }
             
-            ++_i;
+            _key = ds_map_find_next(_globalHotkeyInputMap, _key);
         }
-        
-        array_resize(_hotkeyArray, 0);
     }
     
     static __UpdateInputStateAsBackgrounded = function()
     {
         //A partial update of input state. This artificially forces all player inputs to "off" or "null"
         //in some sense.
-        
-        static _hotkeyArray = [];
         
         var _environment = __environment;
         
@@ -460,16 +451,12 @@ function __BentoClassLayer(_environment, _name) constructor
         
         //Update hotkey input
         var _globalHotkeyInputMap = _environment.__envHotkeyInputMap;
-        ds_map_keys_to_array(_globalHotkeyInputMap, _hotkeyArray);
-        var _i = 0;
-        repeat(array_length(_hotkeyArray))
+        var _key = ds_map_find_first(_globalHotkeyInputMap);
+        repeat(ds_map_size(_globalHotkeyInputMap))
         {
-            var _key = _hotkeyArray[_i];
             __hotkeyStateMap[? _key] = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
-            ++_i;
+            _key = ds_map_find_next(_globalHotkeyInputMap, _key);
         }
-        
-        array_resize(_hotkeyArray, 0);
     }
     
     static __Ensure = function(_rootX, _rootY, _rootWidth, _rootHeight)
@@ -477,10 +464,6 @@ function __BentoClassLayer(_environment, _name) constructor
         //Ensure our root element is the same size as the overall Bento space
         BentoSetOffset(_rootX, _rootY, __rootElement);
         BentoLayoutSetSize(_rootWidth, _rootHeight, __rootElement);
-        BentoLayoutSetMaxSize(_rootWidth, _rootHeight, __rootElement);
-        
-        _system.__percentageWidth  = _rootWidth;
-        _system.__percentageHeight = _rootHeight;
         
         //Keep our layout and step order updated as necessary. Updating the layer and step order here
         //catches any weird stuff the dev might've done between calls to `BentoSystemStep()`
@@ -800,9 +783,6 @@ function __BentoClassLayer(_environment, _name) constructor
         ///////
         // Position updates
         ///////
-        
-        _system.__percentageWidth  = _rootWidth;
-        _system.__percentageHeight = _rootHeight;
         
         //Check to see if we need to update the layout and step order again
         __BentoEnsureLayout();

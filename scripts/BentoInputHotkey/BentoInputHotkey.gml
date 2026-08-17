@@ -11,5 +11,9 @@
 function BentoInputHotkey(_name, _value)
 {
     static _system = __BentoSystem();
-    _system.__environmentCurrent.__envHotkeyInputMap[? _name] = _value;
+    with(_system.__environmentCurrent)
+    {
+        __envHotkeyInputMap[? _name] = _value;
+        __envHotkeySeenMap[?  _name] = true;
+    }
 }

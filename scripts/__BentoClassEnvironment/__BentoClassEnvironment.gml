@@ -28,6 +28,7 @@ function __BentoClassEnvironment(_name) constructor
     __envNavigationState = __BENTO_STATE_OFF;
     
     __envHotkeyInputMap = ds_map_create();
+    __envHotkeySeenMap  = ds_map_create();
     
     ///////
     // Set up a default input mode for convenience

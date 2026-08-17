@@ -12,15 +12,12 @@ function BentoInputConsume(_layerOrName = undefined)
     {
         __primaryConsumed = true;
         
-        var _map = __hotkeyConsumedMap;
-        ds_map_keys_to_array(__environment.__envHotkeyInputMap, _hotkeyArray);
-        var _i = 0;
-        repeat(array_length(_hotkeyArray))
+        var _map = __environment.__envHotkeySeenMap;
+        var _key = ds_map_find_first(_map);
+        repeat(ds_map_size(_map))
         {
-            _map[? _hotkeyArray[_i]] = true;
-            ++_i;
+            __hotkeyConsumedMap[? _key] = true;
+            _key = ds_map_find_next(_map, _key);
         }
-        
-        array_resize(_hotkeyArray, 0);
     }
 }
