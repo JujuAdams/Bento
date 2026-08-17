@@ -8,6 +8,11 @@
 
 function BentoHotkeyGetHold(_name, _ignoreConsume = false, _layerOrName = undefined)
 {
+    if (_name == undefined)
+    {
+        return false;
+    }
+    
     with(__BentoLayerEnsure(_layerOrName))
     {
         if ((not _ignoreConsume) && (__hotkeyConsumedMap[? _name] ?? false)) return false;
