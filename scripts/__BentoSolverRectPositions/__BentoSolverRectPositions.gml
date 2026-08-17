@@ -38,4 +38,7 @@ function __BentoSolverRectPositions(_left, _top, _allocatedWidth, _allocatedHeig
     {
         __solvedLeft = _rightToLeftRootWidth - (__solvedLeft + __solvedWidth);
     }
+    
+    __solvedWidth  -= __layoutMarginWidth;
+    __solvedHeight -= __layoutMarginHeight;
 }
