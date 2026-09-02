@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestTable",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestTable",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

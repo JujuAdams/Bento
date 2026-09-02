@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoLayoutTable",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoLayoutTable",
+  "parent":{
+    "name":"Rulesets",
+    "path":"folders/Bento/Functions/Layout/Rulesets.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

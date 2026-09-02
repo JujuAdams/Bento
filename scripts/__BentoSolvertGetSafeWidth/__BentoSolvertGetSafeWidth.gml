@@ -2,7 +2,7 @@
 
 /// Returns the width of an element after safely handling various overrides.
 
-function __BentoSolvertGetSafeWidth(_rootWidth)
+function __BentoSolvertGetSafeWidth(_rootWidth) // FIXME - Typo!
 {
     //Determine the preferred width
     var _value = __BentoParsePercentageString(__layoutWidthPref, _rootWidth);

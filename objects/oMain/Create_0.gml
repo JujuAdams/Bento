@@ -2,7 +2,7 @@
 
 screenshotName = undefined;
 mainElement = BENTO_NO_ELEMENT;
-TestColumns();
+TestTable();
 
 if (BENTO_ON_MOBILE)
 {

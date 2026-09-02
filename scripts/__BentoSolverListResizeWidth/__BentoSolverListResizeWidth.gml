@@ -8,8 +8,6 @@ function __BentoSolverListResizeWidth(_rootWidth)
     var _childArray = __layoutChildArray;
     var _childCount = array_length(_childArray);
     
-    var _remaining = __solvedWidth - (__solverChildrenDeflateWidth + __layoutMarginWidth);
-    
     if (__listAxis == BENTO_AXIS_Y)
     {
         //////
@@ -43,10 +41,11 @@ function __BentoSolverListResizeWidth(_rootWidth)
         //////
         // Major Axis
         //////
-            
+        
         static _modifiableArray = [];
         static _modifyingArray  = [];
-            
+        
+        var _remaining = __solvedWidth - (__solverChildrenDeflateWidth + __layoutMarginWidth);
         if (_remaining > 0)
         {
             //////

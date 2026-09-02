@@ -110,10 +110,11 @@
 // Layout
 ///////
 
-#macro BENTO_LAYOUT_RECT  0
-#macro BENTO_LAYOUT_LIST  1
-#macro BENTO_LAYOUT_GRID  2
-#macro BENTO_LAYOUT_TEXT  3
+#macro BENTO_LAYOUT_RECT   0
+#macro BENTO_LAYOUT_LIST   1
+#macro BENTO_LAYOUT_GRID   2
+#macro BENTO_LAYOUT_TEXT   3
+#macro BENTO_LAYOUT_TABLE  4
 
 #macro BENTO_AXIS_X  0
 #macro BENTO_AXIS_Y  1
