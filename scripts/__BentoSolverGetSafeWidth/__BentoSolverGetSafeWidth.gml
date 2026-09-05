@@ -5,7 +5,7 @@
 /// @param rootHeight
 /// @param [fallbackWidth=0]
 
-function __BentoSolvertGetSafeWidth(_rootWidth, _fallbackWidth = 0) // FIXME - Typo!
+function __BentoSolverGetSafeWidth(_rootWidth, _fallbackWidth = 0) // FIXME - Typo!
 {
     //Determine the preferred width
     var _value = __BentoParsePercentageString(__layoutWidthPref, _rootWidth);

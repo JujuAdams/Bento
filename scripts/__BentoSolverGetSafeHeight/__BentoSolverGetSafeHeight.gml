@@ -5,7 +5,7 @@
 /// @param rootHeight
 /// @param [fallbackHeight=0]
 
-function __BentoSolvertGetSafeHeight(_rootHeight, _fallbackHeight = 0) // FIXME - Typo!
+function __BentoSolverGetSafeHeight(_rootHeight, _fallbackHeight = 0) // FIXME - Typo!
 {
     //Determine the preferred height
     var _value = __BentoParsePercentageString(__layoutHeightPref, _rootHeight);

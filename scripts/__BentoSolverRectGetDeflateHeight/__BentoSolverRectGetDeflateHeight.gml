@@ -6,7 +6,7 @@ function __BentoSolverRectGetDeflateHeight(_rootHeight)
     var _layoutHeightMax = __BentoParsePercentageString(__layoutHeightMax, _rootHeight);
     
     //Initialize with the rectangle's base properties
-    var _deflateSize = clamp(__BentoSolvertGetSafeHeight(_rootHeight), _layoutHeightMin, _layoutHeightMax);
+    var _deflateSize = clamp(__BentoSolverGetSafeHeight(_rootHeight), _layoutHeightMin, _layoutHeightMax);
     var _minSize = (_layoutHeightMin > 0)? _layoutHeightMin : _deflateSize;
     
     var _childArray = __layoutChildArray;
@@ -28,5 +28,5 @@ function __BentoSolverRectGetDeflateHeight(_rootHeight)
     
     __solverMinHeight     = clamp(_minSize, _layoutHeightMin, _layoutHeightMax) + __layoutMarginHeight;
     __solverDeflateHeight = clamp(_deflateSize, __solverMinHeight - __layoutMarginHeight, _layoutHeightMax) + __layoutMarginHeight;
-    __solvedHeight        = clamp(((__layoutHeightResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeHeight(_rootHeight) : _deflateSize) + __layoutMarginHeight, __solverMinHeight, _layoutHeightMax + __layoutMarginHeight);
+    __solvedHeight        = clamp(((__layoutHeightResize == BENTO_RESIZE_NORMAL)? __BentoSolverGetSafeHeight(_rootHeight) : _deflateSize) + __layoutMarginHeight, __solverMinHeight, _layoutHeightMax + __layoutMarginHeight);
 }

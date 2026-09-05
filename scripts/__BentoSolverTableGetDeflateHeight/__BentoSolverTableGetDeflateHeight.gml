@@ -53,7 +53,7 @@ function __BentoSolverTableGetDeflateHeight(_rootHeight)
     
     __solverMinHeight       = clamp(_minSize, _layoutHeightMin, _layoutHeightMax) + __layoutMarginHeight;
     __solverDeflateHeight   = clamp(_deflateSize, __solverMinHeight - __layoutMarginHeight, _layoutHeightMax) + __layoutMarginHeight;
-    __solvedHeight          = clamp(((__layoutHeightResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeHeight(_rootHeight, _deflateSize) : _deflateSize) + __layoutMarginHeight, __solverMinHeight, _layoutHeightMax + __layoutMarginHeight);
+    __solvedHeight          = clamp(((__layoutHeightResize == BENTO_RESIZE_NORMAL)? __BentoSolverGetSafeHeight(_rootHeight, _deflateSize) : _deflateSize) + __layoutMarginHeight, __solverMinHeight, _layoutHeightMax + __layoutMarginHeight);
     
     //Ensure we can never deflate lower than our fixed size
     if (__layoutWidthResize == BENTO_RESIZE_NORMAL)

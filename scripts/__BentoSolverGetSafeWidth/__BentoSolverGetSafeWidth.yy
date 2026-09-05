@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoSolvertGetSafeWidth",
+  "%Name":"__BentoSolverGetSafeWidth",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoSolvertGetSafeWidth",
+  "name":"__BentoSolverGetSafeWidth",
   "parent":{
     "name":"Layout Solver",
     "path":"folders/Bento/(Internal)/Layout Solver.yy",

@@ -6,7 +6,7 @@ function __BentoSolverMaintainAspectRatio(_rootWidth, _rootHeight)
     
     if (__layoutHeightResize == BENTO_RESIZE_ASPECT)
     {
-        var _aspect = __BentoSolvertGetSafeWidth(_rootWidth) / __BentoSolvertGetSafeHeight(_rootHeight);
+        var _aspect = __BentoSolverGetSafeWidth(_rootWidth) / __BentoSolverGetSafeHeight(_rootHeight);
         
         var _newHeight = __solvedWidth / _aspect;
         if (_newHeight == clamp(_newHeight,

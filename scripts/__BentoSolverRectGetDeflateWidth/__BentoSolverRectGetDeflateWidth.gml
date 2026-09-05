@@ -6,7 +6,7 @@ function __BentoSolverRectGetDeflateWidth(_rootWidth)
     var _layoutWidthMax = __BentoParsePercentageString(__layoutWidthMax, _rootWidth);
     
     //Initialize with the rectangle's base properties
-    var _deflateSize = clamp(__BentoSolvertGetSafeWidth(_rootWidth), _layoutWidthMin, _layoutWidthMax);
+    var _deflateSize = clamp(__BentoSolverGetSafeWidth(_rootWidth), _layoutWidthMin, _layoutWidthMax);
     var _minSize = (_layoutWidthMin > 0)? _layoutWidthMin : _deflateSize;
     
     var _childArray = __layoutChildArray;
@@ -28,5 +28,5 @@ function __BentoSolverRectGetDeflateWidth(_rootWidth)
     
     __solverMinWidth     = clamp(_minSize, _layoutWidthMin, _layoutWidthMax) + __layoutMarginWidth;
     __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth - __layoutMarginWidth, _layoutWidthMax) + __layoutMarginWidth;
-    __solvedWidth        = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeWidth(_rootWidth) : _deflateSize, __solverMinWidth - __layoutMarginWidth, _layoutWidthMax) + __layoutMarginWidth;
+    __solvedWidth        = clamp((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __BentoSolverGetSafeWidth(_rootWidth) : _deflateSize, __solverMinWidth - __layoutMarginWidth, _layoutWidthMax) + __layoutMarginWidth;
 }
