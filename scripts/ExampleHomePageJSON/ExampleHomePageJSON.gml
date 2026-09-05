@@ -191,7 +191,7 @@ function ExampleHomePageJSON()
                     object: oBentoExButton,
                     vars: {
                         text: $"Context Menu",
-                        func: ExampleContextMenuJSON,
+                        func: ExampleContextMenu,
                     },
                 },
                 {
@@ -219,7 +219,7 @@ function ExampleHomePageJSON()
                     object: oBentoExButton,
                     vars: {
                         text: $"Listbox",
-                        func: ExampleListboxJSON,
+                        func: ExampleListbox,
                     },
                 },
                 {
@@ -233,14 +233,14 @@ function ExampleHomePageJSON()
                     object: oBentoExButton,
                     vars: {
                         text: $"Textbox",
-                        func: ExampleTextboxJSON,
+                        func: ExampleTextbox,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Absolute Position",
-                        func: ExamplePositionJSON,
+                        func: ExamplePosition,
                     },
                 },
             ],

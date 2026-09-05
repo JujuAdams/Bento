@@ -1,5 +1,54 @@
 // Feather disable all
 
+function ExampleContextMenu()
+{
+    with(oMain)
+    {
+        BentoDestroy(mainElement);
+        
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
+        with(mainElement)
+        {
+            BentoLayoutSetPadding(40);
+            BentoLayoutSetGutter(35, 35);
+            BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+            BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
+            
+            with(BentoCreateBlank())
+            {
+                BentoLayoutSetGutter(35, 35);
+                BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
+                BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);
+                
+                BentoCreate(oBentoExText, { text: "Context Menu", font: fntBentoExCandyBeansBig });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+            }
+            
+            with(BentoCreate(oBentoExButton, { text: "Click Me!", func: function()
+            {
+                //Creating a context menu will instantly set the cursor position so we should cache that first
+                var _x = BentoCursorGetX();
+                var _y = BentoCursorGetY();
+                
+                with(BentoCreate(oBentoExContextMenu, undefined, BentoLayerGetRoot()))
+                {
+                    BentoSetOffset(_x, _y);
+                    
+                    BentoCreate(oBentoExButton, { text: "Button 1" });
+                    BentoCreate(oBentoExButton, { text: "Button 2" });
+                    BentoCreate(oBentoExButton, { text: "Close", func: function() { BentoDestroy(BentoFocusGetTop()) } });
+                }
+            }}))
+            {
+                BentoHover();
+            }
+            
+            BentoCreate(oBentoExButton, { text: "Another Button" });
+            BentoCreate(oBentoExButton, { text: "Another Button" });
+        }
+    }
+}
+
 function ExampleContextMenuJSON()
 {
     with(oMain)

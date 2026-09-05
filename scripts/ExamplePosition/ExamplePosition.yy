@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleTextboxJSON",
+  "%Name":"ExamplePosition",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleTextboxJSON",
+  "name":"ExamplePosition",
   "parent":{
-    "name":"JSON",
-    "path":"folders/Project Examples/JSON.yy",
+    "name":"Procedural",
+    "path":"folders/Project Examples/Procedural.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
