@@ -11,7 +11,7 @@ function TestTable()
         {
             BentoLayoutSetPadding(_padding);
             BentoLayoutSetGutter(_padding, _padding);
-            //BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
+            BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
             BentoLayoutTable(2); //TODO - Add alignment options
             
             BentoCreate(oBentoExText, { text: "Label" });
@@ -20,15 +20,10 @@ function TestTable()
             BentoCreate(oBentoExText, { text: "Label 2" });
             BentoCreate(oBentoExButton, { text: "Button" });
             
-            with(oBentoExText)
+            BentoForeachChild(undefined, function()
             {
                 BentoLayoutSetAnchor(0.5, 0.5);
-            }
-            
-            with(oBentoExButton)
-            {
-                BentoLayoutSetAnchor(0.5, 0.5);
-            }
+            });
         }
     }
 }
