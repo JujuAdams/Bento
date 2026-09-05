@@ -6,7 +6,7 @@ function ExampleButtonsWithLongClick()
     {
         BentoDestroy(mainElement);
         
-        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
         with(mainElement)
         {
             BentoLayoutSetPadding(40);
@@ -14,7 +14,7 @@ function ExampleButtonsWithLongClick()
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetGutter(35, 35);
                 BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
@@ -26,7 +26,7 @@ function ExampleButtonsWithLongClick()
             
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "Buttons typical activate once when clicked. However, for some use cases you may want to allow players to activate a behaviour (typically a secondary behaviour) when a button is pressed and held for longer than a normal click." });
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetGutter(20, 20);
                 BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
@@ -48,7 +48,7 @@ function ExampleButtonsWithLongClickJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -57,7 +57,7 @@ function ExampleButtonsWithLongClickJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -86,7 +86,7 @@ function ExampleButtonsWithLongClickJSON()
                     },
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],

@@ -6,7 +6,7 @@ function TestColumns()
     {
         BentoDestroy(mainElement);
         
-        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
         with(mainElement)
         {
             BentoLayoutSetPadding(_padding);
@@ -14,7 +14,7 @@ function TestColumns()
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetResize(BENTO_RESIZE_NORMAL, BENTO_RESIZE_INFLATE);
                 BentoLayoutSetSize((display_get_gui_width() - _padding * 3) * (1/4), undefined);

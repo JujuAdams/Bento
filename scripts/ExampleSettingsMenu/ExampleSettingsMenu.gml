@@ -15,7 +15,7 @@ function ExampleSettingsMenu()
     {
         BentoDestroy(mainElement);
         
-        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
         with(mainElement)
         {
             BentoLayoutSetPadding(40);
@@ -23,7 +23,7 @@ function ExampleSettingsMenu()
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetGutter(35, 35);
                 BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
@@ -35,7 +35,7 @@ function ExampleSettingsMenu()
             
             BentoCreate(oBentoExText, { text: "This is an example of a settings menu.", font: fntBentoExCandyBeans });
             
-            with(BentoCreate(BentoGetLandscape()? oBentoExScrollingListWithBar : oBentoExSpacer))
+            with(BentoCreate(BentoGetLandscape()? oBentoExScrollingListWithBar : oBentoExParent))
             {
                 if (BentoGetLandscape())
                 {
@@ -46,14 +46,14 @@ function ExampleSettingsMenu()
                 BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
                 BentoLayoutSetGutter(35, 35);
             
-                with(BentoCreate(oBentoExSpacer))
+                with(BentoCreateBlank())
                 {
                     BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
                     BentoLayoutList(BENTO_AXIS_X, 0, 0);
                 
                     BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Flimflams" });
                 
-                    with(BentoCreate(oBentoExSpacer))
+                    with(BentoCreateBlank())
                     {
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                     }
@@ -64,14 +64,14 @@ function ExampleSettingsMenu()
                     }
                 }
             
-                with(BentoCreate(oBentoExSpacer))
+                with(BentoCreateBlank())
                 {
                     BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
                     BentoLayoutList(BENTO_AXIS_X, 0, 0);
                 
                     BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Wibbles" });
                 
-                    with(BentoCreate(oBentoExSpacer))
+                    with(BentoCreateBlank())
                     {
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                     }
@@ -88,14 +88,14 @@ function ExampleSettingsMenu()
                 
                     BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "What type of jam do you bathe in?" });
                 
-                    with(BentoCreate(oBentoExSpacer))
+                    with(BentoCreateBlank())
                     {
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
                         BentoLayoutList(BENTO_AXIS_X, 0, 0);
                     
                         BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Strawberry" });
                     
-                        with(BentoCreate(oBentoExSpacer))
+                        with(BentoCreateBlank())
                         {
                             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                         }
@@ -103,14 +103,14 @@ function ExampleSettingsMenu()
                         BentoCreate(oBentoExRadioButton, { value: "strawberry", reference: BentoRef(global.settingsStruct, "bathJam") });
                     }
                 
-                    with(BentoCreate(oBentoExSpacer))
+                    with(BentoCreateBlank())
                     {
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
                         BentoLayoutList(BENTO_AXIS_X, 0, 0);
                     
                         BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Raspberry" });
                     
-                        with(BentoCreate(oBentoExSpacer))
+                        with(BentoCreateBlank())
                         {
                             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                         }
@@ -118,14 +118,14 @@ function ExampleSettingsMenu()
                         BentoCreate(oBentoExRadioButton, { value: "raspberry", reference: BentoRef(global.settingsStruct, "bathJam") });
                     }
                 
-                    with(BentoCreate(oBentoExSpacer))
+                    with(BentoCreateBlank())
                     {
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
                         BentoLayoutList(BENTO_AXIS_X, 0, 0);
                     
                         BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Marmalade" });
                     
-                        with(BentoCreate(oBentoExSpacer))
+                        with(BentoCreateBlank())
                         {
                             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                         }
@@ -134,7 +134,7 @@ function ExampleSettingsMenu()
                     }
                 }
             
-                with(BentoCreate(oBentoExSpacer))
+                with(BentoCreateBlank())
                 {
                     BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
                     BentoLayoutList(BENTO_AXIS_X, 0, 0.5);
@@ -148,7 +148,7 @@ function ExampleSettingsMenu()
                     }
                 }
             
-                with(BentoCreate(oBentoExSpacer))
+                with(BentoCreateBlank())
                 {
                     BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
                     BentoLayoutList(BENTO_AXIS_X, 0, 0.5);
@@ -159,7 +159,7 @@ function ExampleSettingsMenu()
                         reference: BentoRef(global.settingsStruct, "sailorScout"),
                     });
                 
-                    with(BentoCreate(oBentoExSpacer))
+                    with(BentoCreateBlank())
                     {
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                     }
@@ -175,7 +175,7 @@ function ExampleSettingsMenu()
                 BentoCreate(oBentoExButton, { text: "Reset", font: fntBentoExCandyBeansBig, func: function()
                 {
                     BentoLayerCreate("reset settings modal");
-                    with(BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot("reset settings modal")))
+                    with(BentoCreateBlank(BentoLayerGetRoot("reset settings modal")))
                     {
                         BentoLayoutSetPadding(40);
                         BentoLayoutSetGutter(35, 35);
@@ -195,7 +195,7 @@ function ExampleSettingsMenu()
                                 font: fntBentoExCandyBeansBig,
                             });
                         
-                            with(BentoCreate(oBentoExSpacer))
+                            with(BentoCreateBlank())
                             {
                                 BentoLayoutSetPadding(40);
                                 BentoLayoutSetGutter(35, 35);
@@ -234,7 +234,7 @@ function ExampleSettingsMenuJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -243,7 +243,7 @@ function ExampleSettingsMenuJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -273,7 +273,7 @@ function ExampleSettingsMenuJSON()
                     },
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0, 0],
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -288,7 +288,7 @@ function ExampleSettingsMenuJSON()
                             },
                         },
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExParent,
                             layout: {
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                             },
@@ -302,7 +302,7 @@ function ExampleSettingsMenuJSON()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0, 0],
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -316,7 +316,7 @@ function ExampleSettingsMenuJSON()
                             },
                         },
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExParent,
                             layout: {
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                             },
@@ -345,7 +345,7 @@ function ExampleSettingsMenuJSON()
                             },
                         },
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExParent,
                             layout: {
                                 list: [BENTO_AXIS_X, 0, 0],
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -359,7 +359,7 @@ function ExampleSettingsMenuJSON()
                                     },
                                 },
                                 {
-                                    object: oBentoExSpacer,
+                                    object: oBentoExParent,
                                     layout: {
                                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                                     },
@@ -374,7 +374,7 @@ function ExampleSettingsMenuJSON()
                             ],
                         },
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExParent,
                             layout: {
                                 list: [BENTO_AXIS_X, 0, 0],
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -388,7 +388,7 @@ function ExampleSettingsMenuJSON()
                                     },
                                 },
                                 {
-                                    object: oBentoExSpacer,
+                                    object: oBentoExParent,
                                     layout: {
                                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                                     },
@@ -403,7 +403,7 @@ function ExampleSettingsMenuJSON()
                             ],
                         },
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExParent,
                             layout: {
                                 list: [BENTO_AXIS_X, 0, 0],
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -417,7 +417,7 @@ function ExampleSettingsMenuJSON()
                                     },
                                 },
                                 {
-                                    object: oBentoExSpacer,
+                                    object: oBentoExParent,
                                     layout: {
                                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                                     },
@@ -434,7 +434,7 @@ function ExampleSettingsMenuJSON()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0, 0.5],
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -460,7 +460,7 @@ function ExampleSettingsMenuJSON()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0, 0.5],
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -477,7 +477,7 @@ function ExampleSettingsMenuJSON()
                             },
                         },
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExParent,
                             layout: {
                                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
                             },
@@ -502,7 +502,7 @@ function ExampleSettingsMenuJSON()
                         {
                             BentoLayerCreate("reset settings modal");
                             BentoCreateFromJSON({
-                                object: oBentoExSpacer,
+                                object: oBentoExParent,
                                 layout: {
                                     padding: 40,
                                     gutter: 35,
@@ -528,7 +528,7 @@ function ExampleSettingsMenuJSON()
                                                 },
                                             },
                                             {
-                                                object: oBentoExSpacer,
+                                                object: oBentoExParent,
                                                 layout: {
                                                     padding: 40,
                                                     gutter: 35,

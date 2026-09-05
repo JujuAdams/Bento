@@ -12,7 +12,7 @@ function ExampleRadioButtonJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -21,7 +21,7 @@ function ExampleRadioButtonJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -50,7 +50,7 @@ function ExampleRadioButtonJSON()
                     },
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0.5],
                         gutter: 15,

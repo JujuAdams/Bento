@@ -6,7 +6,7 @@ function ExampleReorderLists()
     {
         BentoDestroy(mainElement);
         
-        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
         with(mainElement)
         {
             BentoLayoutSetPaddingExt(40, 40, 40, 40);
@@ -14,7 +14,7 @@ function ExampleReorderLists()
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetGutter(35, 35);
                 BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
@@ -57,7 +57,7 @@ function ExampleReorderLists()
                 text: "Click any of the following buttons to send the button to the top of the list.",
             });
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoNameSet("list");
                 
@@ -114,7 +114,7 @@ function ExampleReorderListsJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -123,7 +123,7 @@ function ExampleReorderListsJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -189,7 +189,7 @@ function ExampleReorderListsJSON()
                     },
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     name: "list",
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],

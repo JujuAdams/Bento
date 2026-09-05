@@ -5,7 +5,7 @@ function ExampleCarryJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -14,7 +14,7 @@ function ExampleCarryJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -37,7 +37,7 @@ function ExampleCarryJSON()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
@@ -113,7 +113,7 @@ function ExampleCarryJSON()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     vars: {
                         fill: false,
                     },

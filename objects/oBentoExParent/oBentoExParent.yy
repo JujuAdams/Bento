@@ -1,15 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"oBentoExSpacer",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oBentoExParent",
+  "eventList":[],
   "managed":true,
-  "name":"oBentoExSpacer",
+  "name":"oBentoExParent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Bento Element Examples/Objects.yy",
+    "name":"Bento Element Examples",
+    "path":"folders/Bento Element Examples.yy",
   },
   "parentObjectId":{
     "name":"oBentoAncestor",

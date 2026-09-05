@@ -5,7 +5,7 @@ function ExampleModalJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -14,7 +14,7 @@ function ExampleModalJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -65,7 +65,7 @@ function ExampleModalJSON()
                         {
                             BentoLayerCreate("modal 1");
                             BentoCreateFromJSON({
-                                object: oBentoExSpacer,
+                                object: oBentoExParent,
                                 layout: {
                                     padding: 40,
                                     gutter: 35,
@@ -89,7 +89,7 @@ function ExampleModalJSON()
                                                 },
                                             },
                                             {
-                                                object: oBentoExSpacer,
+                                                object: oBentoExParent,
                                                 layout: {
                                                     padding: 40,
                                                     gutter: 35,
@@ -115,7 +115,7 @@ function ExampleModalJSON()
                                                             {
                                                                 BentoLayerCreate("modal 2");
                                                                 BentoCreateFromJSON({
-                                                                    object: oBentoExSpacer,
+                                                                    object: oBentoExParent,
                                                                     layout: {
                                                                         padding: 40,
                                                                         gutter: 35,

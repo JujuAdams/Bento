@@ -12,8 +12,8 @@
     "path":"folders/Documentation.yy",
   },
   "parentObjectId":{
-    "name":"oBentoAncestor",
-    "path":"objects/oBentoAncestor/oBentoAncestor.yy",
+    "name":"oBentoExParent",
+    "path":"objects/oBentoExParent/oBentoExParent.yy",
   },
   "persistent":true,
   "physicsAngularDamping":0.1,

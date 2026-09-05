@@ -5,7 +5,7 @@ function ExampleGridsJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -14,7 +14,7 @@ function ExampleGridsJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -37,7 +37,7 @@ function ExampleGridsJSON()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         grid: [2, 2],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],

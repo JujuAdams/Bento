@@ -7,7 +7,7 @@ function ExampleButtons()
     {
         BentoDestroy(mainElement);
         
-        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
         with(mainElement)
         {
             BentoLayoutSetPaddingExt(40, 40, 40, 40);
@@ -15,7 +15,7 @@ function ExampleButtons()
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetGutter(35, 35);
                 BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
@@ -29,7 +29,7 @@ function ExampleButtons()
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "Buttons can further be filtered based on the input mode. There are occasions where a button should only be clickable in pointer (mouse and touch) modes or navigation (keyboard and gamepad) modes. Use the equivalent constant when setting the button behaviour and Bento will take care of it for you." });
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "When a button is clicked, `BentoPrimaryGetClick()` will return `true` for one step, including in the Draw event for the element. You should only use this function for determining if a button has been deliberately clicked by the player; any other function is liable to return false values." });
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetGutter(20, 20);
                 BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
@@ -127,7 +127,7 @@ function ExampleButtonsJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -136,7 +136,7 @@ function ExampleButtonsJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -180,7 +180,7 @@ function ExampleButtonsJSON()
                     },
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],

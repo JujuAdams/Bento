@@ -6,13 +6,13 @@ function ExampleMainMenu()
     {
         BentoDestroy(mainElement);
         
-        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
         with(mainElement)
         {
             BentoLayoutSetPadding(20);
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetAnchor(0.5, 0.5);
                 
@@ -20,7 +20,7 @@ function ExampleMainMenu()
                 BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
                 BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
                 
-                with(BentoCreate(oBentoExSpacer))
+                with(BentoCreateBlank())
                 {
                     BentoLayoutSetGutter(20, 20);
                     BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
@@ -31,7 +31,7 @@ function ExampleMainMenu()
                     BentoCreate(oBentoExText, { text: "Game Title", font: fntBentoExCandyBeansBig });
                 }
                 
-                with(BentoCreate(oBentoExSpacer))
+                with(BentoCreateBlank())
                 {
                     BentoLayoutSetGutter(20, 20);
                     BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);

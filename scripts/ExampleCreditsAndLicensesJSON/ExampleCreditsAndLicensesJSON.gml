@@ -5,7 +5,7 @@ function ExampleCreditsAndLicensesJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -14,7 +14,7 @@ function ExampleCreditsAndLicensesJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -38,7 +38,7 @@ function ExampleCreditsAndLicensesJSON()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [(room_width > room_height)? BENTO_AXIS_X : BENTO_AXIS_Y, 0.5, 0.5],
                         gutter: 35,
@@ -66,7 +66,7 @@ function ExampleCreditsAndLicensesJSON()
                                     },
                                 },
                                 {
-                                    object: oBentoExSpacer,
+                                    object: oBentoExParent,
                                     layout: {
                                         gutter: 35,
                                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -129,7 +129,7 @@ function ExampleCreditsAndLicensesJSON()
                                     },
                                 },
                                 {
-                                    object: oBentoExSpacer,
+                                    object: oBentoExParent,
                                     layout: {
                                         gutter: 35,
                                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],

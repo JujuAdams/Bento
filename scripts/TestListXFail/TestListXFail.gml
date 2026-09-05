@@ -6,7 +6,7 @@ function TestListXFail()
     {
         BentoDestroy(mainElement);
         
-        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
         with(mainElement)
         {
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
@@ -14,7 +14,7 @@ function TestListXFail()
             BentoLayoutSetPadding(_padding);
             BentoLayoutSetGutter(_padding);
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetResize(BENTO_RESIZE_NORMAL, BENTO_RESIZE_INFLATE);
                 BentoLayoutSetSize(0.3*display_get_gui_width(), undefined);
@@ -22,7 +22,7 @@ function TestListXFail()
                 BentoLayoutSetPadding(_padding);
                 BentoLayoutSetGutter(_padding, _padding);
                 
-                with(BentoCreate(oBentoExSpacer))
+                with(BentoCreateBlank())
                 {
                     BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
                     BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);

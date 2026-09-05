@@ -5,7 +5,7 @@ function ExampleHomePageJSON()
     with(oMain)
     {
         var _blurb = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 gutter: 30,
                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -32,7 +32,7 @@ function ExampleHomePageJSON()
                     },
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         gutter: 35,
                         resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -249,7 +249,7 @@ function ExampleHomePageJSON()
         var _listParams = BentoGetLandscape()? [BENTO_AXIS_X, 0.5, 0] : [BENTO_AXIS_Y, 0.5, 0];
         
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 30,

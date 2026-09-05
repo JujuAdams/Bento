@@ -6,7 +6,7 @@ function ExampleLists()
     {
         BentoDestroy(mainElement);
         
-        mainElement = BentoCreate(oBentoExSpacer, undefined, BentoLayerGetRoot());
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
         with(mainElement)
         {
             BentoLayoutSetPaddingExt(40, 40, 40, 40);
@@ -14,7 +14,7 @@ function ExampleLists()
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutSetGutter(35, 35);
                 BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
@@ -28,7 +28,7 @@ function ExampleLists()
             
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "The main direction for arranging children in a list is called the \"major axis\". The other axis is the \"minor axis\". Children will be arranged along the major axis. If children are set to INFLATE on the major axis then they will share any extra space. However, if children are set to INFLATE on the minor axis then they will expand to fill their parent on that axis." });
             
-            with(BentoCreate(oBentoExSpacer))
+            with(BentoCreateBlank())
             {
                 BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
                 BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
@@ -38,7 +38,7 @@ function ExampleLists()
                 var _i = 0;
                 repeat(array_length(_data))
                 {
-                    with(BentoCreate(oBentoExSpacer))
+                    with(BentoCreateBlank())
                     {
                         BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
@@ -51,7 +51,7 @@ function ExampleLists()
                             BentoLayoutSetMaxSize(200, infinity);
                         }
                         
-                        with(BentoCreate(oBentoExSpacer))
+                        with(BentoCreateBlank())
                         {
                             BentoLayoutSetMinSize(100, 20);
                             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
@@ -82,7 +82,7 @@ function ExampleListsJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -91,7 +91,7 @@ function ExampleListsJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -128,7 +128,7 @@ function ExampleListsJSON()
                     },
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_Y, 0.5, 0],
                         resize: [BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE],
@@ -144,7 +144,7 @@ function ExampleListsJSON()
                         repeat(array_length(_data))
                         {
                             array_push(_array, {
-                                object: oBentoExSpacer,
+                                object: oBentoExParent,
                                 layout: {
                                     list: [BENTO_AXIS_X, 0.5, 0.5],
                                     resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE],
@@ -161,7 +161,7 @@ function ExampleListsJSON()
                                         },
                                     },
                                     {
-                                        object: oBentoExSpacer,
+                                        object: oBentoExParent,
                                         layout: {
                                             minSize: [100, 20],
                                             resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],

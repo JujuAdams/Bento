@@ -5,7 +5,7 @@ function ExampleNavigationWrapJSON()
     with(oMain)
     {
         var _json = {
-            object: oBentoExSpacer,
+            object: oBentoExParent,
             layout: {
                 padding: 40,
                 gutter: 35,
@@ -14,7 +14,7 @@ function ExampleNavigationWrapJSON()
             },
             children: [
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 15,
@@ -41,7 +41,7 @@ function ExampleNavigationWrapJSON()
                     ],
                 },
                 {
-                    object: oBentoExSpacer,
+                    object: oBentoExParent,
                     layout: {
                         list: [BENTO_AXIS_X, 0.5, 0.5],
                         gutter: 35,
@@ -49,7 +49,7 @@ function ExampleNavigationWrapJSON()
                     },
                     children: [
                         {
-                            object: oBentoExSpacer,
+                            object: oBentoExParent,
                             layout: {
                                 list: [BENTO_AXIS_Y, 0.5, 0],
                                 gutter: 15,
