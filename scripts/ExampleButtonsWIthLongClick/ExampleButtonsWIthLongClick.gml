@@ -32,10 +32,8 @@ function ExampleButtonsWithLongClick()
                 BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
                 BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
                 
-                with(BentoCreate(oBentoExButtonWithLongClick, { text: "Button with long click" }))
-                {
-                    BentoHover();
-                }
+                BentoCreate(oBentoExButtonWithLongClick, { text: "Button with long click" });
+                BentoHover(BENTO_PREV_ELEMENT);
                 
                 BentoCreate(oBentoExButton, { text: "Standard button" });
             }

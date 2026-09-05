@@ -24,7 +24,7 @@ function ExampleContextMenu()
                 BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
             }
             
-            with(BentoCreate(oBentoExButton, { text: "Click Me!", func: function()
+            BentoCreate(oBentoExButton, { text: "Click Me!", func: function()
             {
                 //Creating a context menu will instantly set the cursor position so we should cache that first
                 var _x = BentoCursorGetX();
@@ -38,10 +38,8 @@ function ExampleContextMenu()
                     BentoCreate(oBentoExButton, { text: "Button 2" });
                     BentoCreate(oBentoExButton, { text: "Close", func: function() { BentoDestroy(BentoFocusGetTop()) } });
                 }
-            }}))
-            {
-                BentoHover();
-            }
+            }});
+            BentoHover(BENTO_PREV_ELEMENT);
             
             BentoCreate(oBentoExButton, { text: "Another Button" });
             BentoCreate(oBentoExButton, { text: "Another Button" });

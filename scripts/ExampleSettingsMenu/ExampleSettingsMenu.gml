@@ -58,10 +58,8 @@ function ExampleSettingsMenu()
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                     }
                 
-                    with(BentoCreate(oBentoExCheckbox, { reference: BentoRef(global.settingsStruct, "flimflams") }))
-                    {
-                        BentoHoverSoft(self);
-                    }
+                    BentoCreate(oBentoExCheckbox, { reference: BentoRef(global.settingsStruct, "flimflams") });
+                    BentoHoverSoft(BENTO_PREV_ELEMENT);
                 }
             
                 with(BentoCreateBlank())
@@ -202,13 +200,11 @@ function ExampleSettingsMenu()
                                 BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
                                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);
                             
-                                with(BentoCreate(oBentoExButton, { text: "No thanks", func: function()
+                                BentoCreate(oBentoExButton, { text: "No thanks", func: function()
                                 {
                                     BentoLayerDestroy();
-                                }}))
-                                {
-                                    BentoHoverSoft(self);
-                                }
+                                }});
+                                BentoHover(BENTO_PREV_ELEMENT);
                             
                                 BentoCreate(oBentoExButton, { text: "Yes, please reset", func: function()
                                 {
