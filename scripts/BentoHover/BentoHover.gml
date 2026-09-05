@@ -12,6 +12,8 @@
 
 function BentoHover(_element = self, _byPlayer = false, _layerOrName = undefined)
 {
+    //FIXME - Extract the layer automatically from the element
+    
     with(__BentoLayerEnsure(_layerOrName))
     {
         if (__inputModeNavigation)

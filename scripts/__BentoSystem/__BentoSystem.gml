@@ -240,6 +240,8 @@ function __BentoSystem()
         __layerStack   = [];
         __layerCurrent = __environmentCurrent.__layerCurrent;
         
+        __previousElement = BENTO_NO_ELEMENT;
+        
         __textUseSteamKeyboard   = false;
         __textHandlerEnvironment = undefined;
         

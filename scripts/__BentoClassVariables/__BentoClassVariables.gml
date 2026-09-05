@@ -4,6 +4,8 @@
 
 function __BentoClassVariables(_attachedElement) constructor
 {
+    static _system = __BentoSystem();
+    
     static _globalCount = 0;
     __envIndex = _globalCount++;
     
@@ -14,6 +16,7 @@ function __BentoClassVariables(_attachedElement) constructor
     
     __attachedElement = _attachedElement;
     __elementIsInstance = __BentoIsInstance(_attachedElement);
+    _system.__previousElement = _attachedElement;
     
     __name  = undefined;
     __layer = undefined;

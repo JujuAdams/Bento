@@ -12,6 +12,7 @@
 #macro BENTO_RUNNING_FROM_IDE  (GM_build_type == "run")
 
 #macro BENTO_NO_ELEMENT  noone
+#macro BENTO_PREV_ELEMENT  (__BentoSystem().__previousElement)
 
 ///////
 // User Event Mapping

@@ -26,10 +26,8 @@ function ExampleTextbox()
                 BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
             }
             
-            with(BentoCreate(oBentoExTextbox, { reference: BentoRef(global, "textboxExample"), emptyText: "Enter text here!" }))
-            {
-                BentoHover();
-            }
+            BentoCreate(oBentoExTextbox, { reference: BentoRef(global, "textboxExample"), emptyText: "Enter text here!" });
+            BentoHover(BENTO_PREV_ELEMENT);
             
             BentoCreate(oBentoExTextDynamic, { text: function()
             {
