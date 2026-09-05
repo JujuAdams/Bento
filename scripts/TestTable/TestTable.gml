@@ -10,12 +10,25 @@ function TestTable()
         with(mainElement)
         {
             BentoLayoutSetPadding(_padding);
-            BentoLayoutSetGutter(_padding);
-            BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
-            BentoLayoutTable(2);
+            BentoLayoutSetGutter(_padding, _padding);
+            //BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
+            BentoLayoutTable(2); //TODO - Add alignment options
             
             BentoCreate(oBentoExText, { text: "Label" });
+            BentoCreate(oBentoExButton, { text: "Button 1" });
+            
+            BentoCreate(oBentoExText, { text: "Label 2" });
             BentoCreate(oBentoExButton, { text: "Button" });
+            
+            with(oBentoExText)
+            {
+                BentoLayoutSetAnchor(0.5, 0.5);
+            }
+            
+            with(oBentoExButton)
+            {
+                BentoLayoutSetAnchor(0.5, 0.5);
+            }
         }
     }
 }

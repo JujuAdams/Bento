@@ -26,20 +26,21 @@ function __BentoSolverTableGetDeflateHeight(_rootHeight)
         __layoutTableDeflateHeight[@ _row] = max(__layoutTableDeflateHeight[_row], _child.__solverDeflateHeight);
         __layoutTableMinHeight[@     _row] = max(__layoutTableMinHeight[    _row], _child.__solverMinHeight    );
         
-        _i += _tableColumns;
+        ++_i;
     }
+    
+    array_copy(__layoutTableSolvedHeight, 0, __layoutTableDeflateHeight, 0, _tableRows);
     
     //Sum the heights of the rows to give the overall height of the table
     var _deflateSize = 0;
     var _minSize = 0;
     
     var _i = 0;
-    repeat(_tableColumns)
+    repeat(_tableRows)
     {
-        __layoutTableSolvedHeight[@ _i] = __layoutTableDeflateHeight[_i];
-        
         _deflateSize += __layoutTableDeflateHeight[_i];
         _minSize += __layoutTableMinHeight[_i];
+        
         ++_i;
     }
     

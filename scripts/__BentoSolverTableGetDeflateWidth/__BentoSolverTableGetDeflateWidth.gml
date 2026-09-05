@@ -25,8 +25,10 @@ function __BentoSolverTableGetDeflateWidth(_rootWidth)
         __layoutTableDeflateWidth[@ _column] = max(__layoutTableDeflateWidth[_column], _child.__solverDeflateWidth);
         __layoutTableMinWidth[@     _column] = max(__layoutTableMinWidth[    _column], _child.__solverMinWidth    );
         
-        _i += _tableColumns;
+        ++_i;
     }
+    
+    array_copy(__layoutTableSolvedWidth, 0, __layoutTableDeflateWidth, 0, _tableColumns);
     
     //Sum the widths of the columns to give the overall width of the table
     var _deflateSize = 0;
@@ -35,10 +37,9 @@ function __BentoSolverTableGetDeflateWidth(_rootWidth)
     var _i = 0;
     repeat(_tableColumns)
     {
-        __layoutTableSolvedWidth[@ _i] = __layoutTableDeflateWidth[_i];
-        
         _deflateSize += __layoutTableDeflateWidth[_i];
         _minSize += __layoutTableMinWidth[_i];
+        
         ++_i;
     }
     

@@ -20,95 +20,47 @@ function __BentoSolverTablePositions(_left, _top, _allocatedWidth, _allocatedHei
     var _childArray   = __layoutChildArray;
     var _childCount   = array_length(_childArray);
     var _tableColumns = __tableColumns;
-    var _tableRows    = ceil(_childCount / __tableColumns);
+    var _tableRows    = ceil(_childCount / _tableColumns);
     
     var _xPos    = __solvedLeft + __solverPadLeft;
     var _yPos    = __solvedTop  + __solverPadTop;
     var _xGutter = __layoutGutterX;
     var _yGutter = __layoutGutterY;
     
+    var _x = _xPos;
+    var _y = _yPos;
+    
+    var _row = 0;
+    var _rowHeight = __layoutTableSolvedHeight[0];
+    var _column = 0;
+    
     var _i = 0;
     repeat(_childCount)
     {
-        var _column = _i mod _tableColumns;
-        var _row    = _i div _tableColumns;
+        var _columnWidth = __layoutTableSolvedWidth[_column];
         
-        var _width  = __layoutTableSolvedWidth[_column];
-        var _height = __layoutTableSolvedHeight[_row];
-        
-        
+        with(_childArray[_i])
+        {
+            __SolverFinalPositions(_x, _y, _columnWidth, _rowHeight, _rightToLeftRootWidth);
+        }
         
         ++_i;
-    }
-    
-    
-    
-    
-    
-    if (__listAxis == BENTO_AXIS_X)
-    {
-        var _majorSize = 0;
-        var _i = 0;
-        repeat(_childCount)
+        
+        ++_column;
+        if (_column >= _tableColumns)
         {
-            _majorSize += _childArray[_i].__solvedWidth;
-            ++_i;
+            ++_row;
+            if (_row >= _tableRows) break;
+            
+            _x = _xPos;
+            _y += _rowHeight + _yGutter;
+            
+            _rowHeight = __layoutTableSolvedHeight[_row];
+            _column = 0;
         }
-        
-        _majorSize += __solverPadWidth + max(_childCount-1, 0)*__layoutGutterX;
-        
-        var _majorPos = __solvedLeft + __solverPadLeft;
-        var _minorPos = __solvedTop  + __solverPadTop;
-        var _gutter   = __layoutGutterX;
-        
-        _majorPos += __layoutHAlignChildren*(__solvedWidth - _majorSize);
-        
-        var _minorAvailable = __solvedHeight - __solverPadHeight;
-        var _minorAlign = __layoutVAlignChildren;
-        var _i = 0;
-        repeat(_childCount)
+        else
         {
-            with(_childArray[_i])
-            {
-                var _childMinorPos = _minorPos + _minorAlign*(_minorAvailable - __solvedHeight);
-                __SolverFinalPositions(_majorPos, _childMinorPos, __solvedWidth, _minorAvailable, _rightToLeftRootWidth);
-                _majorPos += __solvedWidth + __layoutMarginWidth + _gutter;
-            }
-          
-            ++_i;
-        }
-    }
-    else
-    {
-        var _majorSize = 0;
-        var _i = 0;
-        repeat(_childCount)
-        {
-            _majorSize += _childArray[_i].__solvedHeight;
-            ++_i;
-        }
-        
-        _majorSize += __solverPadHeight + max(_childCount-1, 0)*__layoutGutterY;
-        
-        var _majorPos = __solvedTop  + __solverPadTop;
-        var _minorPos = __solvedLeft + __solverPadLeft;
-        var _gutter   = __layoutGutterY;
-        
-        _majorPos += __layoutVAlignChildren*(__solvedHeight - _majorSize);
-        
-        var _minorAvailable = __solvedWidth - __solverPadWidth;
-        var _minorAlign = __layoutHAlignChildren;
-        var _i = 0;
-        repeat(_childCount)
-        {
-            with(_childArray[_i])
-            {
-                var _childMinorPos = _minorPos + _minorAlign*(_minorAvailable - __solvedWidth);
-                __SolverFinalPositions(_childMinorPos, _majorPos, _minorAvailable, __solvedHeight, _rightToLeftRootWidth);
-                _majorPos += __solvedHeight + __layoutMarginHeight + _gutter;
-            }
-          
-            ++_i;
+            _x += _columnWidth + _xGutter;
         }
     }
     
