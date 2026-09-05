@@ -11,7 +11,7 @@ function TestTable()
         {
             BentoLayoutSetPadding(_padding);
             BentoLayoutSetGutter(_padding, _padding);
-            BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
+            //BentoLayoutSetResize(BENTO_RESIZE_DEFLATE, BENTO_RESIZE_DEFLATE);
             BentoLayoutTable(2); //TODO - Add alignment options
             
             BentoCreate(oBentoExText, { text: "Label" });

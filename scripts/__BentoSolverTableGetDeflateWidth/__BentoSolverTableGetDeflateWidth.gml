@@ -50,9 +50,9 @@ function __BentoSolverTableGetDeflateWidth(_rootWidth)
     
     __solverChildrenDeflateWidth = _deflateSize;
     
-    __solverMinWidth     = ((__layoutWidthResize == BENTO_RESIZE_INFLATE)? _layoutWidthMin : clamp(_minSize, _layoutWidthMin, _layoutWidthMax)) + __layoutMarginWidth;
-    __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth, _layoutWidthMax) + __layoutMarginWidth;
-    __solvedWidth        = clamp(((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeWidth(_rootWidth) : _deflateSize) + __layoutMarginWidth, __solverMinWidth, _layoutWidthMax + __layoutMarginWidth);
+    __solverMinWidth     = clamp(_minSize, _layoutWidthMin, _layoutWidthMax) + __layoutMarginWidth;
+    __solverDeflateWidth = clamp(_deflateSize, __solverMinWidth - __layoutMarginWidth, _layoutWidthMax) + __layoutMarginWidth;
+    __solvedWidth        = clamp(((__layoutWidthResize == BENTO_RESIZE_NORMAL)? __BentoSolvertGetSafeWidth(_rootWidth, _deflateSize) : _deflateSize) + __layoutMarginWidth, __solverMinWidth, _layoutWidthMax + __layoutMarginWidth);
     
     //Ensure we can never deflate lower than our fixed size
     if (__layoutWidthResize == BENTO_RESIZE_NORMAL)

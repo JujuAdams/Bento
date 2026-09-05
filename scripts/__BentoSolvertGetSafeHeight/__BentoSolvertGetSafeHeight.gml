@@ -1,8 +1,11 @@
 // Feather disable all
 
 /// Returns the height of an element after safely handling various overrides.
+/// 
+/// @param rootHeight
+/// @param [fallbackHeight=0]
 
-function __BentoSolvertGetSafeHeight(_rootHeight)
+function __BentoSolvertGetSafeHeight(_rootHeight, _fallbackHeight = 0) // FIXME - Typo!
 {
     //Determine the preferred height
     var _value = __BentoParsePercentageString(__layoutHeightPref, _rootHeight);
@@ -21,7 +24,7 @@ function __BentoSolvertGetSafeHeight(_rootHeight)
         else
         {
             //Fall back on the minimum height if we can't find a suitable preferred height
-            return __layoutHeightMin;
+            return (__layoutHeightMin > 0)? __layoutHeightMin : _fallbackHeight;
         }
     }
 }

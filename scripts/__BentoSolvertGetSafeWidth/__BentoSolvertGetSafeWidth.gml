@@ -1,8 +1,11 @@
 // Feather disable all
 
 /// Returns the width of an element after safely handling various overrides.
+/// 
+/// @param rootHeight
+/// @param [fallbackWidth=0]
 
-function __BentoSolvertGetSafeWidth(_rootWidth) // FIXME - Typo!
+function __BentoSolvertGetSafeWidth(_rootWidth, _fallbackWidth = 0) // FIXME - Typo!
 {
     //Determine the preferred width
     var _value = __BentoParsePercentageString(__layoutWidthPref, _rootWidth);
@@ -21,7 +24,7 @@ function __BentoSolvertGetSafeWidth(_rootWidth) // FIXME - Typo!
         else
         {
             //Fall back on the minimum width if we can't find a suitable preferred width
-            return __layoutWidthMin;
+            return (__layoutWidthMin > 0)? __layoutWidthMin : _fallbackWidth;
         }
     }
 }
