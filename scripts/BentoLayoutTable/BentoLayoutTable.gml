@@ -1,5 +1,11 @@
 // Feather disable all
 
+/// Creates a dynamically resizing table with a fixed number of columns. Elements will be arranged
+/// in the table from the top-left cell to the bottom-right cell with each added element occupying
+/// a single cell.
+/// 
+/// N.B. Do not use `fa_*` constants with this function. Provide a number for the alignments.
+/// 
 /// @param columns
 /// @param [element=self]
 

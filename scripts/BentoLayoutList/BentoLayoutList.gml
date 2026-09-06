@@ -8,6 +8,8 @@
 /// content doesn't fill up the list element itself. Both values should typically be a number from
 /// `0` to `1`.
 /// 
+/// N.B. Do not use `fa_*` constants with this function. Provide a number for the alignments.
+/// 
 /// If you'd like to change the list's properties, you may call this functiuon again to overwrite
 /// existing values.
 /// 

@@ -11,6 +11,8 @@
 /// of `1`, that will align an element to the right or the bottom. A value of `0.5` therefore is
 /// the center or middle of the available space. You may pass `undefined` as either parameter to
 /// not change the existing value.
+/// 
+/// N.B. Do not use `fa_*` constants with this function. Provide a number for the alignments.
 ///  
 /// If you have set the resize type for a particular axis to `BENTO_RESIZE_INFLATE` then alignment
 /// will usually have no effect - the element will occupy 100% of the available space. However, if
