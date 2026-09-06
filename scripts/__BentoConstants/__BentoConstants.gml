@@ -6,8 +6,8 @@
 //                                                         //
 /////////////////////////////////////////////////////////////
 
-#macro BENTO_VERSION  "2.4.0-alpha"
-#macro BENTO_DATE     "2026-08-05"
+#macro BENTO_VERSION  "2.5.0-alpha"
+#macro BENTO_DATE     "2026-08-06"
 
 #macro BENTO_RUNNING_FROM_IDE  (GM_build_type == "run")
 
