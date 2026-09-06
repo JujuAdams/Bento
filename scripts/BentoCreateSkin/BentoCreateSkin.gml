@@ -1,7 +1,7 @@
 /// @param skinName
 /// @param function
 
-function BentoSetSkin(_skinName, _function)
+function BentoCreateSkin(_skinName, _function)
 {
     static _skinDict = __BentoSystem().__skinDict;
     

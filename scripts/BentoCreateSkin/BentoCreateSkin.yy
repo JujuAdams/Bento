@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoGetSkin",
+  "%Name":"BentoCreateSkin",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoGetSkin",
+  "name":"BentoCreateSkin",
   "parent":{
-    "name":"Skin",
-    "path":"folders/Bento/Functions/Skin.yy",
+    "name":"Miscellaneous",
+    "path":"folders/Bento/Functions/Miscellaneous.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
