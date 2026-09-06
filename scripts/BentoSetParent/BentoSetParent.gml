@@ -3,7 +3,7 @@
 /// Sets the parent for an element. If the parent exists on a separate layer or in an separate
 /// environment then the element will move to that layer and/or environment.
 /// 
-/// @param parent
+/// @param newParent
 /// @param [target=self]
 
 function BentoSetParent(_parent, _target = self)

@@ -31,7 +31,7 @@ function __BentoSystem()
     {
         __frame = 0;
         
-        show_debug_message($"Bento: Version {BENTO_VERSION}, {BENTO_DATE}");
+        __BentoTrace($"Welcome to Bento by Juju Adams! This is version {BENTO_VERSION}, {BENTO_DATE}");
             
         if (BENTO_STEAMWORKS_SUPPORT)
         {
@@ -49,7 +49,7 @@ function __BentoSystem()
             }
             catch(_error)
             {
-                show_debug_message("Steamworks extension unavailable");
+                __BentoTrace("Steamworks extension unavailable");
             }
         }
         

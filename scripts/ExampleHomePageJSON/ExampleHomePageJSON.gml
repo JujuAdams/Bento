@@ -43,14 +43,14 @@ function ExampleHomePageJSON()
                             object: oBentoExButton,
                             vars: {
                                 text: "Credits & Licenses",
-                                func: ExampleCreditsAndLicensesJSON
+                                func: ExampleCreditsAndLicenses,
                             },
                         },
                         {
                             object: oBentoExButton,
                             vars: {
                                 text: "Change Input Mode",
-                                func: ExampleChangeInputModeJSON
+                                func: ExampleChangeInputMode,
                             },
                         },
                     ],
@@ -114,63 +114,63 @@ function ExampleHomePageJSON()
                     object: oBentoExButton,
                     vars: {
                         text: $"Modal",
-                        func: ExampleModalJSON,
+                        func: ExampleModal,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Carry (Drag & Drop)",
-                        func: ExampleCarryJSON,
+                        func: ExampleCarry,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Grids",
-                        func: ExampleGridsJSON,
+                        func: ExampleGrids,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Navigation Wrapping",
-                        func: ExampleNavigationWrapJSON,
+                        func: ExampleNavigationWrap,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
-                        text: $"Checkbox Menu",
-                        func: ExampleCheckboxJSON,
+                        text: $"Checkbox",
+                        func: ExampleCheckbox,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Radio Button",
-                        func: ExampleRadioButtonJSON,
+                        func: ExampleRadioButton,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Stepper (strings)",
-                        func: ExampleStepperStringsJSON,
+                        func: ExampleStepperStrings,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Stepper (numbers)",
-                        func: ExampleStepperNumbersJSON,
+                        func: ExampleStepperNumbers,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Slider",
-                        func: ExampleSliderJSON,
+                        func: ExampleSlider,
                     },
                 },
                 {
@@ -198,21 +198,21 @@ function ExampleHomePageJSON()
                     object: oBentoExButton,
                     vars: {
                         text: $"Text Scroll",
-                        func: ExampleTextScrollJSON,
+                        func: ExampleTextScroll,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Scrolling List",
-                        func: ExampleScrollingListJSON,
+                        func: ExampleScrollingList,
                     },
                 },
                 {
                     object: oBentoExButton,
                     vars: {
                         text: $"Scrolling List With Bar",
-                        func: ExampleScrollingListWithBarJSON,
+                        func: ExampleScrollingListWithBar,
                     },
                 },
                 {
@@ -226,7 +226,7 @@ function ExampleHomePageJSON()
                     object: oBentoExButton,
                     vars: {
                         text: $"Listbox With Bar",
-                        func: ExampleListboxWithBarJSON,
+                        func: ExampleListboxWithBar,
                     },
                 },
                 {
