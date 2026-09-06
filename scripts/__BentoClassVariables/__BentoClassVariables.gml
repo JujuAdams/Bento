@@ -61,6 +61,7 @@ function __BentoClassVariables(_attachedElement) constructor
     __primaryLongState = __BENTO_STATE_OFF;
     __byPlayer         = false;
     __clickState       = 0b00;
+    __hotspotScale     = 1;
     
     __longPressEnabled = false;
     __clickTiming      = undefined;
@@ -224,22 +225,20 @@ function __BentoClassVariables(_attachedElement) constructor
         
         __funcHover = method(_attachedElement, function(_mouseX, _mouseY)
         {
-            if (instance_position(_mouseX, _mouseY, self))
+            var _bentoVars = BENTO_VARS;
+            var _xCenter = 0.5*(bbox_left + bbox_right);
+            var _yCenter = 0.5*(bbox_top + bbox_bottom);
+            if (instance_position(_xCenter + ((_mouseX - _xCenter) / _bentoVars.__hotspotScale),
+                                  _yCenter + ((_mouseY - _yCenter) / _bentoVars.__hotspotScale), self))
             {
-                var _scissorParent = BENTO_VARS.__scissorParent;
+                var _scissorParent = _bentoVars.__scissorParent;
                 if (point_in_rectangle(_mouseX, _mouseY, _scissorParent.__scissorWorldLeft, _scissorParent.__scissorWorldTop, _scissorParent.__scissorWorldRight, _scissorParent.__scissorWorldBottom))
                 {
                     return self;
                 }
-                else
-                {
-                    return undefined;
-                }
             }
-            else
-            {
-                return undefined;
-            }
+            
+            return undefined;
         });
     }
     else
@@ -291,9 +290,14 @@ function __BentoClassVariables(_attachedElement) constructor
         
         __funcHover = method(_attachedElement, function(_mouseX, _mouseY)
         {
-            if (point_in_rectangle(_mouseX, _mouseY, bentoLeft, bentoTop, bentoRight, bentoBottom))
+            var _bentoVars = BENTO_VARS;
+            var _xCenter = 0.5*(bentoLeft + bentoRight);
+            var _yCenter = 0.5*(bentoTop + bentoBottom);
+            if (point_in_rectangle(_xCenter + ((_mouseX - _xCenter) / _bentoVars.__hotspotScale),
+                                   _yCenter + ((_mouseY - _yCenter) / _bentoVars.__hotspotScale),
+                                   bentoLeft, bentoTop, bentoRight, bentoBottom))
             {
-                var _scissorParent = BENTO_VARS.__scissorParent;
+                var _scissorParent = _bentoVars.__scissorParent;
                 if (point_in_rectangle(_mouseX, _mouseY, _scissorParent.__scissorWorldLeft, _scissorParent.__scissorWorldTop, _scissorParent.__scissorWorldRight, _scissorParent.__scissorWorldBottom))
                 {
                     return self;
