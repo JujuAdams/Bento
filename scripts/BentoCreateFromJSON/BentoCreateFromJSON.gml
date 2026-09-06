@@ -34,7 +34,7 @@
 /// `.clip`       executes `BentoClipSetEnabled()` and `BentoClipSetPadding()`
 /// `.scroll`     executes `BentoScrollSetEnabled()` and `BentoScrollSetPadding()`
 /// `.layout`     executes `BentoLayoutSetFromJSON()`
-/// `.skin`       executes `BentoApplySkin()`
+/// `.template`   executes `BentoTemplateApply()`
 /// `.onCreate`   executes a custom method
 /// 
 /// 
@@ -158,15 +158,15 @@
 /// }
 /// ```
 /// 
-/// Element definition structs may contain an `.skin` property. If specified, this must be a string
-/// which is the name of the skin to apply. The skin must have been defined previously by calling
-/// `BentoApplySkin()`.
+/// Element definition structs may contain a `.template` property. If specified, this must be a
+/// string which is the name of the template to apply. The template must have been created
+/// previously by calling `BentoTemplateCreate()`.
 /// 
 /// Example:
 /// ```
 /// {
 ///     object: oBentoSprite,
-///     skin: "big button"
+///     template: "big button"
 /// }
 /// ```
 /// 
@@ -692,16 +692,16 @@ function __BentoCreateViaJSONInner(_json, _metadata, _parent)
             }
         }
         
-        var _skinName = _json[$ "skin"];
-        if (_skinName != undefined)
+        var _templateName = _json[$ "template"];
+        if (_templateName != undefined)
         {
-            if (is_string(_skinName))
+            if (is_string(_templateName))
             {
-                BentoApplySkin(_skinName, _element);
+                BentoTemplateApply(_templateName, _element);
             }
             else
             {
-                __BentoError($".skin property must be a string (typeof \"{typeof(_scroll)}\")");
+                __BentoError($".template property must be a string (typeof \"{typeof(_scroll)}\")");
             }
         }
         

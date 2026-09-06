@@ -1,4 +1,4 @@
-BentoCreateSkin("thick frame", function()
+BentoTemplateCreate("thick frame", function()
 {
     sprite_index = sBentoExFrame;
     

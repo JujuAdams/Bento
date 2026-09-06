@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"BentoApplySkin",
+  "%Name":"BentoTemplateCreate",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"BentoApplySkin",
+  "name":"BentoTemplateCreate",
   "parent":{
     "name":"Miscellaneous",
     "path":"folders/Bento/Functions/Miscellaneous.yy",

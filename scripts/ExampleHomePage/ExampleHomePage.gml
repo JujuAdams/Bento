@@ -37,7 +37,7 @@ function ExampleHomePage()
             
             with(BentoCreate(oBentoExListboxWithBar))
             {
-                BentoApplySkin("thick frame");
+                BentoTemplateApply("thick frame");
                 BentoLayoutSetGutter(15, 15);
                 BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                 BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
@@ -133,7 +133,7 @@ function ExampleHomePageJSON()
         var _menu = 
         {
             object: oBentoExListboxWithBar,
-            skin: "thick frame",
+            template: "thick frame",
             layout: {
                 list: [BENTO_AXIS_Y, 0.5, 0],
                 resize: [BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE],
