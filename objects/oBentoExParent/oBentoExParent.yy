@@ -6,8 +6,8 @@
   "name":"oBentoExParent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Bento Element Examples",
-    "path":"folders/Bento Element Examples.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "parentObjectId":{
     "name":"oBentoAncestor",

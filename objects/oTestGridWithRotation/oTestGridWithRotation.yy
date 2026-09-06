@@ -9,8 +9,8 @@
   "name":"oTestGridWithRotation",
   "overriddenProperties":[],
   "parent":{
-    "name":"Project Examples",
-    "path":"folders/Project Examples.yy",
+    "name":"Tests",
+    "path":"folders/Tests.yy",
   },
   "parentObjectId":{
     "name":"oBentoExParent",

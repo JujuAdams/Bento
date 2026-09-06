@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"ExampleStepperNumbers",
   "parent":{
-    "name":"Project Examples",
-    "path":"folders/Project Examples.yy",
+    "name":"Pages",
+    "path":"folders/Examples/Pages.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

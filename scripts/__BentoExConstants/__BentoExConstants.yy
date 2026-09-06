@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"__BentoExConstants",
   "parent":{
-    "name":"Bento Element Examples",
-    "path":"folders/Bento Element Examples.yy",
+    "name":"Examples",
+    "path":"folders/Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -6,7 +6,7 @@
   "name":"BentoExConstrText",
   "parent":{
     "name":"Structs",
-    "path":"folders/Bento Element Examples/Structs.yy",
+    "path":"folders/Examples/Structs.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

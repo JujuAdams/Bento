@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Sprites",
-    "path":"folders/Bento Element Examples/Sprites.yy",
+    "path":"folders/Examples/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
