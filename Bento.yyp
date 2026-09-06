@@ -757,6 +757,7 @@
     {"id":{"name":"TestColumns","path":"scripts/TestColumns/TestColumns.yy",},},
     {"id":{"name":"TestContextMenu","path":"scripts/TestContextMenu/TestContextMenu.yy",},},
     {"id":{"name":"TestGrid","path":"scripts/TestGrid/TestGrid.yy",},},
+    {"id":{"name":"TestListSetPosition","path":"scripts/TestListSetPosition/TestListSetPosition.yy",},},
     {"id":{"name":"TestListXFail","path":"scripts/TestListXFail/TestListXFail.yy",},},
     {"id":{"name":"TestScrollbox","path":"scripts/TestScrollbox/TestScrollbox.yy",},},
     {"id":{"name":"TestScrollboxWithBar","path":"scripts/TestScrollboxWithBar/TestScrollboxWithBar.yy",},},

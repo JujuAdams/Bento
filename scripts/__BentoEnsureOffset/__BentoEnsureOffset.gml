@@ -86,6 +86,9 @@ function __BentoEnsureOffsetInner(_dirtyOffsetArray, _elementVars, _offsetX, _of
                 var _leftWorld = (__BentoParsePercentageString(__positionX, _system.__percentageWidth ) / _system.__globalScale) + _offsetX - __originX*_width;
                 var _topWorld  = (__BentoParsePercentageString(__positionY, _system.__percentageHeight) / _system.__globalScale) + _offsetY - __originY*_height;
             }
+            
+            _offsetX = _leftWorld - __solvedLeft;
+            _offsetY = _topWorld  - __solvedTop;
         }
         else
         {

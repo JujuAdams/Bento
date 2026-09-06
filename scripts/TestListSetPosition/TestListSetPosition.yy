@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestListSetPosition",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestListSetPosition",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
