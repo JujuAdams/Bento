@@ -4,23 +4,30 @@
 /// in the table from the top-left cell to the bottom-right cell with each added element occupying
 /// a single cell.
 /// 
+/// The `rowVAlign` parameter controls how children are positioned if content doesn't fill up the
+/// full height of a row. This value should typically be a number from `0` to `1`.
+/// 
 /// N.B. Do not use `fa_*` constants with this function. Provide a number for the alignments.
 /// 
 /// @param columns
+/// @param rowVAlign
+/// @param rowMaxHeight
 /// @param [element=self]
 
-function BentoLayoutTable(_columns, _element = self)
+function BentoLayoutTable(_columns, _rowVAlign, _rowHaxHeight, _element = self)
 {
     with(__BentoGetVars(_element))
     {
         if (__layoutType != BENTO_LAYOUT_TABLE)
         {
-            //Swapping into list layout, reset everything
+            //Swapping into table layout, reset everything
             
             __layoutType = BENTO_LAYOUT_TABLE;
             __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
             
-            __tableColumns = _columns;
+            __tableColumns   = _columns;
+            __tableVAlign    = _rowVAlign;    //Shared across all rows
+            __tableHaxHeight = _rowHaxHeight; //Shared across all rows
             
             __SolverGetDeflateWidth  = method(self, __BentoSolverTableGetDeflateWidth);
             __SolverResizeWidth      = method(self, __BentoSolverTableResizeWidth);
@@ -38,6 +45,24 @@ function BentoLayoutTable(_columns, _element = self)
                 if (__tableColumns != _columns)
                 {
                     __tableColumns = _columns;
+                    __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
+                }
+            }
+            
+            if (_columns != undefined)
+            {
+                if (__tableVAlign != _rowVAlign)
+                {
+                    __tableVAlign = _rowVAlign;
+                    __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
+                }
+            }
+            
+            if (_rowHaxHeight != undefined)
+            {
+                if (__tableHaxHeight != _rowHaxHeight)
+                {
+                    __tableHaxHeight = _rowHaxHeight;
                     __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
                 }
             }

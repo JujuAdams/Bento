@@ -330,6 +330,16 @@ function __BentoClassVariables(_attachedElement) constructor
         
         BentoFocusClose(__attachedElement);
         
+        if (struct_exists(self, "__tableHAlignMap"))
+        {
+            ds_map_destroy(__tableHAlignMap);
+        }
+        
+        if (struct_exists(self, "__tableMaxWidthMap"))
+        {
+            ds_map_destroy(__tableMaxWidthMap);
+        }
+        
         var _element = __layer.__environment.__nameMap[? __name];
         if (_element == __attachedElement) ds_map_delete(__layer.__environment.__nameMap, __name);
         
@@ -372,6 +382,12 @@ function __BentoClassVariables(_attachedElement) constructor
     __layoutChildArray = [];
     
     __layoutClampInside = false;
+    
+    //Table-specific values
+    __tableDefaultHAlign   = 0;
+    __tableDefaultMaxWidth = infinity;
+    __tableHAlignMap       = ds_map_create(); //FIXME - Create maps on demand
+    __tableMaxWidthMap     = ds_map_create(); //FIXME - Create maps on demand
     
     //Anchor against the available space that the parent has allocated for this element. This is
     //especially useful for children of rect parents where you might want to position the element

@@ -17,18 +17,21 @@ function __BentoSolverTablePositions(_left, _top, _allocatedWidth, _allocatedHei
         __solvedHeight = floor(__solvedHeight);
     }
     
-    var _childArray   = __layoutChildArray;
-    var _childCount   = array_length(_childArray);
-    var _tableColumns = __tableColumns;
-    var _tableRows    = ceil(_childCount / _tableColumns);
+    var _childArray    = __layoutChildArray;
+    var _childCount    = array_length(_childArray);
+    var _tableColumns  = __tableColumns;
+    var _tableRows     = ceil(_childCount / _tableColumns);
+    var _vAlign        = __tableVAlign;
+    var _defaultHAlign = __tableDefaultHAlign;
+    var _hAlignMap     = __tableHAlignMap;
     
-    var _xPos    = __solvedLeft + __solverPadLeft;
-    var _yPos    = __solvedTop  + __solverPadTop;
+    var _xStart  = __solvedLeft + __solverPadLeft;
+    var _yStart  = __solvedTop  + __solverPadTop;
     var _xGutter = __layoutGutterX;
     var _yGutter = __layoutGutterY;
     
-    var _x = _xPos;
-    var _y = _yPos;
+    var _xPos = _xStart;
+    var _yPos = _yStart;
     
     var _row = 0;
     var _rowHeight = __layoutTableSolvedHeight[0];
@@ -38,10 +41,13 @@ function __BentoSolverTablePositions(_left, _top, _allocatedWidth, _allocatedHei
     repeat(_childCount)
     {
         var _columnWidth = __layoutTableSolvedWidth[_column];
+        var _hAlign = _hAlignMap[? _column] ?? _defaultHAlign;
         
         with(_childArray[_i])
         {
-            __SolverFinalPositions(_x, _y, _columnWidth, _rowHeight, _rightToLeftRootWidth);
+            __SolverFinalPositions(_xPos + _hAlign*(_columnWidth - __solvedWidth),
+                                   _yPos + _vAlign*(_rowHeight - __solvedHeight),
+                                   _columnWidth, _rowHeight, _rightToLeftRootWidth);
         }
         
         ++_i;
@@ -52,15 +58,15 @@ function __BentoSolverTablePositions(_left, _top, _allocatedWidth, _allocatedHei
             ++_row;
             if (_row >= _tableRows) break;
             
-            _x = _xPos;
-            _y += _rowHeight + _yGutter;
+            _xPos = _xStart;
+            _yPos += _rowHeight + _yGutter;
             
             _rowHeight = __layoutTableSolvedHeight[_row];
             _column = 0;
         }
         else
         {
-            _x += _columnWidth + _xGutter;
+            _xPos += _columnWidth + _xGutter;
         }
     }
     

@@ -1,8 +1,8 @@
 // Feather disable all
 
 /// Sets the size of the gutter in each axis, measued in pixels. The "gutter" is the space between
-/// child elements when using a list or grid ruleset. Setting the gutter will do nothing for other
-/// rulesets.
+/// child elements when using a list, grid, or table ruleset. Setting the gutter will do nothing
+/// for other rulesets.
 /// 
 /// @param [x]
 /// @param [y]
