@@ -27,7 +27,7 @@ function BentoLayoutTable(_columns, _rowVAlign, _rowHaxHeight, _element = self)
             
             __tableColumns   = _columns;
             __tableVAlign    = _rowVAlign;    //Shared across all rows
-            __tableHaxHeight = _rowHaxHeight; //Shared across all rows
+            __tableMaxHeight = _rowHaxHeight; //Shared across all rows
             
             __SolverGetDeflateWidth  = method(self, __BentoSolverTableGetDeflateWidth);
             __SolverResizeWidth      = method(self, __BentoSolverTableResizeWidth);
@@ -60,9 +60,9 @@ function BentoLayoutTable(_columns, _rowVAlign, _rowHaxHeight, _element = self)
             
             if (_rowHaxHeight != undefined)
             {
-                if (__tableHaxHeight != _rowHaxHeight)
+                if (__tableMaxHeight != _rowHaxHeight)
                 {
-                    __tableHaxHeight = _rowHaxHeight;
+                    __tableMaxHeight = _rowHaxHeight;
                     __layer.__dirtyFlags |= __BENTO_DIRTY_LAYOUT;
                 }
             }

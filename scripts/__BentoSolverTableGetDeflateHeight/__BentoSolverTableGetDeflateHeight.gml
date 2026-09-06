@@ -9,6 +9,7 @@ function __BentoSolverTableGetDeflateHeight(_rootHeight)
     var _childCount   = array_length(_childArray);
     var _tableColumns = __tableColumns;
     var _tableRows    = ceil(_childCount / _tableColumns);
+    var _maxHeight    = __tableMaxHeight;
     
     //Make arrays for each row
     //TODO - Can these be allocated when setting the table layout ruleset?
@@ -23,13 +24,14 @@ function __BentoSolverTableGetDeflateHeight(_rootHeight)
         var _child = _childArray[_i];
         
         var _row = _i div _tableColumns;
-        __layoutTableDeflateHeight[@ _row] = max(__layoutTableDeflateHeight[_row], _child.__solverDeflateHeight);
-        __layoutTableMinHeight[@     _row] = max(__layoutTableMinHeight[    _row], _child.__solverMinHeight    );
+        var _minHeight     = max(__layoutTableMinHeight[_row], _child.__solverMinHeight);
+        var _deflateHeight = max(__layoutTableDeflateHeight[_row], _child.__solverDeflateHeight, _minHeight);
+        
+        __layoutTableMinHeight[@     _row] = _minHeight;
+        __layoutTableDeflateHeight[@ _row] = _deflateHeight;
         
         ++_i;
     }
-    
-    array_copy(__layoutTableSolvedHeight, 0, __layoutTableDeflateHeight, 0, _tableRows);
     
     //Sum the heights of the rows to give the overall height of the table
     var _deflateSize = 0;
@@ -38,6 +40,8 @@ function __BentoSolverTableGetDeflateHeight(_rootHeight)
     var _i = 0;
     repeat(_tableRows)
     {
+        __layoutTableSolvedHeight[@ _i] = min(__layoutTableDeflateHeight[_i], _maxHeight);
+        
         _deflateSize += __layoutTableDeflateHeight[_i];
         _minSize += __layoutTableMinHeight[_i];
         
@@ -45,7 +49,7 @@ function __BentoSolverTableGetDeflateHeight(_rootHeight)
     }
     
     //Add gutters and padding
-    var _extra = max(_tableColumns-1, 0)*__layoutGutterY + __solverPadHeight; //TODO - Should padding be around each element?
+    var _extra = max(_tableRows-1, 0)*__layoutGutterY + __solverPadHeight; //TODO - Should padding be around each element?
     _deflateSize += _extra;
     _minSize     += _extra;
     

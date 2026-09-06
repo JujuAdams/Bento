@@ -21,9 +21,12 @@ function __BentoSolverTableGetDeflateWidth(_rootWidth)
     {
         var _child = _childArray[_i];
         
-        var _column = _i mod _tableColumns;
-        __layoutTableDeflateWidth[@ _column] = max(__layoutTableDeflateWidth[_column], _child.__solverDeflateWidth);
-        __layoutTableMinWidth[@     _column] = max(__layoutTableMinWidth[    _column], _child.__solverMinWidth    );
+        var _column   = _i mod _tableColumns;
+        var _minWidth     = max(__layoutTableMinWidth[_column], _child.__solverMinWidth);
+        var _deflateWidth = max(__layoutTableDeflateWidth[_column], _child.__solverDeflateWidth, _minWidth);
+        
+        __layoutTableMinWidth[@     _column] = _minWidth;
+        __layoutTableDeflateWidth[@ _column] = _deflateWidth;
         
         ++_i;
     }
@@ -37,6 +40,8 @@ function __BentoSolverTableGetDeflateWidth(_rootWidth)
     var _i = 0;
     repeat(_tableColumns)
     {
+        __layoutTableSolvedWidth[@ _i] = min(__layoutTableDeflateWidth[_i], __tableMaxWidthMap[? _i] ?? __tableDefaultMaxWidth);
+        
         _deflateSize += __layoutTableDeflateWidth[_i];
         _minSize += __layoutTableMinWidth[_i];
         

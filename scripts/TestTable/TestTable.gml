@@ -11,9 +11,9 @@ function TestTable()
         {
             BentoLayoutSetPadding(_padding);
             BentoLayoutSetGutter(_padding, _padding);
-            BentoLayoutSetResize(BENTO_RESIZE_NORMAL, BENTO_RESIZE_NORMAL);
+            BentoLayoutSetAnchor(0.5, 0.5);
             BentoLayoutTable(2, 0.5, infinity);
-            BentoLayoutSetTableColumn(0, 0.5, infinity);
+            BentoLayoutSetTableColumn(0, 1, 200);
             
             BentoCreate(oBentoExText, { text: "Label" });
             BentoCreate(oBentoExButton, { text: "Button 1" });

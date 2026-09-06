@@ -15,6 +15,13 @@ function __BentoSolverTableResizeWidth(_rootWidth)
     
     static _modifiableArray = [];
     static _modifyingArray  = [];
+    
+    var _column = 0;
+    repeat(_tableColumns)
+    {
+        array_push(_modifiableArray, _column);
+        ++_column;
+    }
         
     var _remaining = __solvedWidth - (__solverChildrenDeflateWidth + __layoutMarginWidth);
     if (_remaining > 0)
@@ -25,14 +32,16 @@ function __BentoSolverTableResizeWidth(_rootWidth)
             // Expand columns
             //////
             
-            while(_remaining > 0)
+            while ((_remaining > 0) && (array_length(_modifiableArray) > 0))
             {
                 var _min       = infinity;
                 var _secondMin = undefined;
                 
-                var _column = 0;
-                repeat(_tableColumns)
+                var _i = 0;
+                repeat(array_length(_modifiableArray))
                 {
+                    var _column = _modifiableArray[_i];
+                    
                     var _childSize = __layoutTableSolvedWidth[_column];
                     if (_childSize < _min)
                     {
@@ -51,7 +60,7 @@ function __BentoSolverTableResizeWidth(_rootWidth)
                         _secondMin = min(_secondMin, _childSize);
                     }
                 
-                    ++_column;
+                    ++_i;
                 }
                 
                 var _workCount = array_length(_modifyingArray);
@@ -67,8 +76,19 @@ function __BentoSolverTableResizeWidth(_rootWidth)
                     var _prevSize = __layoutTableSolvedWidth[_column];
                     if (_prevSize == _min)
                     {
-                        __layoutTableSolvedWidth[@ _column] += _addition;
-                        _remaining -= _addition;
+                        var _columnMaxWidth = __tableMaxWidthMap[? _column] ?? __tableDefaultMaxWidth;
+                        if (_prevSize + _addition >= _columnMaxWidth)
+                        {
+                            var _newSize = _columnMaxWidth;
+                            array_delete(_modifiableArray, array_get_index(_modifiableArray, _column), 1);
+                        }
+                        else
+                        {
+                            var _newSize = _prevSize + _addition;
+                        }
+                        
+                        __layoutTableSolvedWidth[@ _column] = _newSize;
+                        _remaining += _prevSize - _newSize;
                     }
                     
                     ++_i;
@@ -81,13 +101,6 @@ function __BentoSolverTableResizeWidth(_rootWidth)
         //////
         // Squash columns
         //////
-        
-        var _column = 0;
-        repeat(_tableColumns)
-        {
-            array_push(_modifiableArray, _column);
-            ++_column;
-        }
         
         while((_remaining < 0) && (array_length(_modifiableArray) > 0))
         {

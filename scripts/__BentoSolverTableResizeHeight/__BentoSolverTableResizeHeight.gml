@@ -9,6 +9,7 @@ function __BentoSolverTableResizeHeight(_rootWidth, _rootHeight)
     var _childCount   = array_length(_childArray);
     var _tableColumns = __tableColumns;
     var _tableRows    = ceil(_childCount / _tableColumns);
+    var _rowMaxHeight = __tableMaxHeight;
     
     ///////
     // Distribute space between rows
@@ -16,6 +17,13 @@ function __BentoSolverTableResizeHeight(_rootWidth, _rootHeight)
     
     static _modifiableArray = [];
     static _modifyingArray  = [];
+    
+    var _row = 0;
+    repeat(_tableRows)
+    {
+        array_push(_modifiableArray, _row);
+        ++_row;
+    }
         
     var _remaining = __solvedHeight - (__solverChildrenDeflateHeight + __layoutMarginHeight);
     if (_remaining > 0)
@@ -23,17 +31,19 @@ function __BentoSolverTableResizeHeight(_rootWidth, _rootHeight)
         if (__layoutHeightResize == BENTO_RESIZE_INFLATE)
         {
             //////
-            // Expand columns
+            // Expand rows
             //////
             
-            while(_remaining > 0)
+            while ((_remaining > 0) && (array_length(_modifiableArray) > 0))
             {
                 var _min       = infinity;
                 var _secondMin = undefined;
                 
-                var _row = 0;
-                repeat(_tableRows)
+                var _i = 0;
+                repeat(array_length(_modifiableArray))
                 {
+                    var _row = _modifiableArray[_i];
+                    
                     var _childSize = __layoutTableSolvedHeight[_row];
                     if (_childSize < _min)
                     {
@@ -52,7 +62,7 @@ function __BentoSolverTableResizeHeight(_rootWidth, _rootHeight)
                         _secondMin = min(_secondMin, _childSize);
                     }
                 
-                    ++_row;
+                    ++_i;
                 }
                 
                 var _workCount = array_length(_modifyingArray);
@@ -68,8 +78,18 @@ function __BentoSolverTableResizeHeight(_rootWidth, _rootHeight)
                     var _prevSize = __layoutTableSolvedHeight[_row];
                     if (_prevSize == _min)
                     {
-                        __layoutTableSolvedHeight[@ _row] += _addition;
-                        _remaining -= _addition;
+                        if (_prevSize + _addition >= _rowMaxHeight)
+                        {
+                            var _newSize = _rowMaxHeight;
+                            array_delete(_modifiableArray, array_get_index(_modifiableArray, _row), 1);
+                        }
+                        else
+                        {
+                            var _newSize = _prevSize + _addition;
+                        }
+                        
+                        __layoutTableSolvedHeight[@ _row] = _newSize;
+                        _remaining += _prevSize - _newSize;
                     }
                     
                     ++_i;
@@ -80,15 +100,8 @@ function __BentoSolverTableResizeHeight(_rootWidth, _rootHeight)
     else if (_remaining < 0)
     {
         //////
-        // Squash columns
+        // Squash rows
         //////
-        
-        var _row = 0;
-        repeat(_tableRows)
-        {
-            array_push(_modifiableArray, _row);
-            ++_row;
-        }
         
         while((_remaining < 0) && (array_length(_modifiableArray) > 0))
         {
