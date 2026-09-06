@@ -30,7 +30,7 @@ function ExampleSettingsMenu()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Settings Menu" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExText, { text: "This is an example of a settings menu.", font: fntBentoExCandyBeans });
@@ -256,7 +256,7 @@ function ExampleSettingsMenuJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

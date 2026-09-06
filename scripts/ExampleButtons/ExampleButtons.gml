@@ -22,7 +22,7 @@ function ExampleButtons()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Buttons" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "This example demonstrates various button behaviours. A \"button\" in Bento is any element that can be clicked by pressing the primary input (left mouse click, spacebar, [A] button on a gamepad etc.). Any element can be marked as a button." });
@@ -153,7 +153,7 @@ function ExampleButtonsJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

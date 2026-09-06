@@ -21,7 +21,7 @@ function ExampleManualPositions()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Manual Positions" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "Bento has fancy tools to automatically lay out elements but often manual positioning is more convenient." });
@@ -96,7 +96,7 @@ function ExampleManualPositionsJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

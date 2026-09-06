@@ -21,7 +21,7 @@ function ExampleScribble()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Buttons" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExTextScribble, { font: fntBentoExCandyBeans, text: "[wave][sBentoExLogoSmall] Scribble Text! [sBentoExLogoSmall]" });

@@ -21,7 +21,7 @@ function ExampleReorderLists()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Reorder Lists" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "This example shows how to reorder lists dynamically at runtime using Bento's child functions." });
@@ -140,7 +140,7 @@ function ExampleReorderListsJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

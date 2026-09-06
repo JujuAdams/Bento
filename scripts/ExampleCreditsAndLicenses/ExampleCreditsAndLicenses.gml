@@ -21,7 +21,7 @@ function ExampleCreditsAndLicenses()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Credits & Licenses" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             with(BentoCreateBlank())
@@ -154,7 +154,7 @@ function ExampleCreditsAndLicensesJSON()
                             object: oBentoExBackButton,
                             hover: true,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

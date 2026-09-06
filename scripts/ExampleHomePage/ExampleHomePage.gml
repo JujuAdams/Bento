@@ -1,5 +1,77 @@
 // Feather disable all
 
+function ExampleHomePage()
+{
+    with(oMain)
+    {
+        BentoDestroy(mainElement);
+        
+        mainElement = BentoCreateBlank(BentoLayerGetRoot());
+        with(mainElement)
+        {
+            BentoLayoutSetPadding(40);
+            BentoLayoutSetGutter(30, 30);
+            BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+            BentoLayoutList(BentoGetLandscape()? BENTO_AXIS_X : BENTO_AXIS_Y, 0.5, 0);
+            
+            with(BentoCreateBlank())
+            {
+                BentoLayoutSetGutter(30, 30);
+                BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
+                BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
+                
+                BentoCreate(oBentoExSpriteWithShadow, { sprite_index: sBentoExLogoBig });
+                BentoCreate(oBentoExText, { text: $"Bento {BENTO_VERSION}", font: fntBentoExCandyBeansBig, });
+                BentoCreate(oBentoExText, { text: $"Welcome to Bento! This is version {BENTO_VERSION} released on {BENTO_DATE}. This is an alpha build and as such any code and behaviour is liable to change. Please do NOT use this version of Bento as the basis for serious commercial production code. This alpha build is intended for experimentation and fulfilling personal curiosity, and I suppose game jams too.", });
+                
+                with(BentoCreateBlank())
+                {
+                    BentoLayoutSetGutter(35, 35);
+                    BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_DEFLATE);
+                    BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);
+                    
+                    BentoCreate(oBentoExButton, { text: "Credits & Licenses", func: ExampleCreditsAndLicenses });
+                    BentoCreate(oBentoExButton, { text: "Change Input Mode",  func: ExampleChangeInputMode    });
+                }
+            }
+            
+            with(BentoCreate(oBentoExListboxWithBar))
+            {
+                BentoApplySkin("thick frame");
+                BentoLayoutSetGutter(15, 15);
+                BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
+                BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
+                
+                BentoCreate(oBentoExButton, { text: "Scribble",                func: ExampleScribble             });
+                BentoCreate(oBentoExButton, { text: "Buttons",                 func: ExampleButtons              });
+                BentoCreate(oBentoExButton, { text: "Buttons With Long Click", func: ExampleButtonsWithLongClick });
+                BentoCreate(oBentoExButton, { text: "Manual Positions",        func: ExampleManualPositions      });
+                BentoCreate(oBentoExButton, { text: "Lists",                   func: ExampleLists                });
+                BentoCreate(oBentoExButton, { text: "Reorder Lists",           func: ExampleReorderLists         });
+                BentoCreate(oBentoExButton, { text: "Modal",                   func: ExampleModal                });
+                BentoCreate(oBentoExButton, { text: "Carry (Drag & Drop)",     func: ExampleCarry                });
+                BentoCreate(oBentoExButton, { text: "Grids",                   func: ExampleGrids                });
+                BentoCreate(oBentoExButton, { text: "Navigation Wrapping",     func: ExampleNavigationWrap       });
+                BentoCreate(oBentoExButton, { text: "Checkbox",                func: ExampleCheckbox             });
+                BentoCreate(oBentoExButton, { text: "Radio Button",            func: ExampleRadioButton          });
+                BentoCreate(oBentoExButton, { text: "Stepper (strings)",       func: ExampleStepperStrings       });
+                BentoCreate(oBentoExButton, { text: "Stepper (numbers)",       func: ExampleStepperNumbers       });
+                BentoCreate(oBentoExButton, { text: "Slider",                  func: ExampleSlider               });
+                BentoCreate(oBentoExButton, { text: "Main Menu",               func: ExampleMainMenu             });
+                BentoCreate(oBentoExButton, { text: "Settings Menu",           func: ExampleSettingsMenu         });
+                BentoCreate(oBentoExButton, { text: "Context Menu",            func: ExampleContextMenu          });
+                BentoCreate(oBentoExButton, { text: "Text Scroll",             func: ExampleTextScroll           });
+                BentoCreate(oBentoExButton, { text: "Scrolling List",          func: ExampleScrollingList        });
+                BentoCreate(oBentoExButton, { text: "Scrolling List With Bar", func: ExampleScrollingListWithBar });
+                BentoCreate(oBentoExButton, { text: "Listbox",                 func: ExampleListbox              });
+                BentoCreate(oBentoExButton, { text: "Listbox With Bar",        func: ExampleListboxWithBar       });
+                BentoCreate(oBentoExButton, { text: "Textbox",                 func: ExampleTextbox              });
+                BentoCreate(oBentoExButton, { text: "Absolute Position",       func: ExamplePosition             });
+            }
+        }
+    }
+}
+
 function ExampleHomePageJSON()
 {
     with(oMain)

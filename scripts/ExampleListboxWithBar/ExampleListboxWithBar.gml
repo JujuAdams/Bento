@@ -21,7 +21,7 @@ function ExampleListboxWithBar()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Listbox (& scrollbar)" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             with(BentoCreate(oBentoExListboxWithBar))
@@ -80,7 +80,7 @@ function ExampleListboxWithBarJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

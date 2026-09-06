@@ -21,7 +21,7 @@ function ExampleContextMenu()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);
                 
                 BentoCreate(oBentoExText, { text: "Context Menu", font: fntBentoExCandyBeansBig });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExButton, { text: "Click Me!", func: function()
@@ -78,7 +78,7 @@ function ExampleContextMenuJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

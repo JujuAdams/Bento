@@ -21,7 +21,7 @@ function ExampleListbox()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);
                 
                 BentoCreate(oBentoExText, { text: "Listbox", font: fntBentoExCandyBeansBig });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             with(BentoCreate(oBentoExListbox))
@@ -78,7 +78,7 @@ function ExampleListboxJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

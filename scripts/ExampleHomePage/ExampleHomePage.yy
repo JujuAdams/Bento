@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"ExampleHomePageJSON",
+  "%Name":"ExampleHomePage",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"ExampleHomePageJSON",
+  "name":"ExampleHomePage",
   "parent":{
-    "name":"JSON",
-    "path":"folders/Project Examples/JSON.yy",
+    "name":"Project Examples",
+    "path":"folders/Project Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

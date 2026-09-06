@@ -21,7 +21,7 @@ function ExampleChangeInputMode()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Change Input Mode" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExTextDynamic, {
@@ -135,7 +135,7 @@ function ExampleChangeInputModeJSON()
                             object: oBentoExBackButton,
                             hover: true,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

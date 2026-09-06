@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"ExampleCheckbox",
   "parent":{
-    "name":"Procedural",
-    "path":"folders/Project Examples/Procedural.yy",
+    "name":"Project Examples",
+    "path":"folders/Project Examples.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

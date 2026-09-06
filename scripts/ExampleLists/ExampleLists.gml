@@ -21,7 +21,7 @@ function ExampleLists()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Lists" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExText, { font: fntBentoExCandyBeans, text: "Lists are a type of \"layout rule\". Layout rules will automatically size and position child elements to fit a particular pattern. Layout rules are mutually exclusive - an element cannot use both list and grid layout rules, for example. For lists, child elements will be arranged in a straight line along either the x- or y-axis." });
@@ -108,7 +108,7 @@ function ExampleListsJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

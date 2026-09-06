@@ -55,7 +55,7 @@ function ExampleMainMenu()
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                     }
                     
-                    with(BentoCreate(oBentoExButton, { text: "Quit", func: ExampleHomePageJSON }))
+                    with(BentoCreate(oBentoExButton, { text: "Quit", func: ExampleHomePage }))
                     {
                         BentoSetNavigationWrap(false, true);
                         BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);

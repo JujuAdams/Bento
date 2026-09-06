@@ -21,7 +21,7 @@ function ExampleCarry()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Carry (Drag & Drop)" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
                 BentoSetNavigationWrap(true, true, BENTO_PREV_ELEMENT);
             }
             
@@ -113,7 +113,7 @@ function ExampleCarryJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

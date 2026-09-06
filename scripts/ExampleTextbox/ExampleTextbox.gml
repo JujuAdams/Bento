@@ -23,7 +23,7 @@ function ExampleTextbox()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);
                 
                 BentoCreate(oBentoExText, { text: "Textbox", font: fntBentoExCandyBeansBig });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
             }
             
             BentoCreate(oBentoExTextbox, { reference: BentoRef(global, "textboxExample"), emptyText: "Enter text here!" });
@@ -68,7 +68,7 @@ function ExampleTextboxJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                         },
                     ],

@@ -21,7 +21,7 @@ function ExampleNavigationWrap()
                 BentoLayoutList(BENTO_AXIS_X, 0.5, 0);
                 
                 BentoCreate(oBentoExText, { font: fntBentoExCandyBeansBig, text: "Navigation Wrapping" });
-                BentoCreate(oBentoExBackButton, { func: ExampleHomePageJSON });
+                BentoCreate(oBentoExBackButton, { func: ExampleHomePage });
                 BentoSetNavigationWrap(true, true, BENTO_PREV_ELEMENT);
             }
             
@@ -131,7 +131,7 @@ function ExampleNavigationWrapJSON()
                         {
                             object: oBentoExBackButton,
                             vars: {
-                                func: ExampleHomePageJSON,
+                                func: ExampleHomePage,
                             },
                             onCreate: function()
                             {
