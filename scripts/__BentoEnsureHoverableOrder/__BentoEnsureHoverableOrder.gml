@@ -39,7 +39,7 @@ function __BentoEnsureHoverableOrderInnerPointer(_hoverableOrder, _elementVars, 
 {
     with(_elementVars)
     {
-        if (__disable) return; //Disabled elements always ban hover, understandably
+        if (__disable) return false; //Disabled elements always ban hover, understandably
         
         if (BENTO_ALLOW_ENCLOSED_GETTER)
         {
@@ -102,7 +102,7 @@ function __BentoEnsureHoverableOrderInnerNavigation(_hoverableOrder, _elementVar
 {
     with(_elementVars)
     {
-        if (__disable) return; //Disabled elements always ban hover, understandably
+        if (__disable) return false; //Disabled elements always ban hover, understandably
         
         if (BENTO_ALLOW_ENCLOSED_GETTER)
         {
