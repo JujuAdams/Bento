@@ -18,5 +18,16 @@ function __BentoEnvironmentSeek(_environmentOrName, _fallback = undefined)
         if (_environment != undefined) return _environment;
     }
     
-    return _fallback ?? _system.__environmentCurrent;
+    if (_fallback != undefined)
+    {
+        return _fallback;
+    }
+    
+    var _environment = _system.__environmentCurrent;
+    if (_environment != undefined)
+    {
+        return _environment;
+    }
+    
+    __BentoError("No environment found");
 }
