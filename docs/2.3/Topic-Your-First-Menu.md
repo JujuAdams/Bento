@@ -33,7 +33,20 @@ BentoSystemSandbox(0, 0, display_get_gui_width(), display_get_gui_height());
 
 &nbsp;
 
-## 3. Build a button object
+## 3. Create a layer
+
+Bento arranges elements into layers. An element must be on a layer to do anything. You should create and destroy layers as necessary; for example, your main menu should be built on a layer. When proceeding into gameplay, you should destroy the entire layer.
+
+To get started, let's create a layer in the Create event of `oUIController`.
+
+```gml
+/// Create event
+BentoLayerCreate("first layer");
+```
+
+&nbsp;
+
+## 4. Build a button object
 
 Please now make a new object in your project and call it `oButton`. Sets its parent to `oBentoAncestor` which is an object that is included with the library. You can find it in the asset browser in `Bento / Assets`. You should also set the sprite for `oButton` to `sBentoRectangleMask` so that the button has a collision mask.
 
@@ -58,7 +71,7 @@ BentoLayoutSetSize(string_width(text) + 20, string_height(text) + 20);
 
 &nbsp;
 
-## 4. Add code to Bento user events
+## 5. Add code to Bento user events
 
 In the `oButton`, override User Event 0. This user event is executed whenever a button is able to be hovered or clicked or otherwise interacted with. In this event, we'll check to see if the button has been clicked and, if so, show a pop-up message
 
@@ -97,18 +110,19 @@ draw_set_valign(fa_top);
 
 &nbsp;
 
-## 5. Create the button
+## 6. Create the button
 
 In `oUIController`'s Create event, call `BentoCreate()`:
 
 ```gml
 /// Create event of oUIController
-BentoCreate(oButton, undefined, BentoLayerGetRoot());
+BentoLayerCreate("first layer");
+BentoCreate(oButton, undefined, BentoLayerGetRoot("first layer"));
 ```
 
 &nbsp;
 
-## 6. Run the game
+## 7. Run the game
 
 You should see a button in the top-left corner of the screen. When you click the button you should see a pop-up message.
 
@@ -120,7 +134,7 @@ If you run into trouble then re-read the instructions so far paying attention to
 
 &nbsp;
 
-## 7. Improving the button
+## 8. Improving the button
 
 The button is very basic right now. Let's tweak it using some further Bento functions. The first thing we'll do is change the colour of the button when it is hovered. Open User Event 1 in `oButton` and enter the following code:
 
@@ -153,12 +167,12 @@ draw_set_valign(fa_top);
 
 &nbsp;
 
-## 8. Set up a list of buttons
+## 9. Set up a list of buttons
 
 Menus typically have more than one button. Return to `oUIController`'s Create event and paste the following code. We're going to take advantage of the fact that Bento elements are either object instances or structs and work with the native GameMaker `with()` instruction:
 
 ```gml
-with(BentoLayerGetRoot())
+with(BentoLayerGetRoot("first layer"))
 {
 	//Set the root element to lay out elements in a list in the y-axis
 	//We also set the list to centre elements in both axes
@@ -180,7 +194,7 @@ Run the game again and you'll see three buttons laid out in a vertical line in t
 
 &nbsp;
 
-## 9. Replace `BentoSystemSandbox()`
+## 10. Replace `BentoSystemSandbox()`
 
 The function we used to get things up and running earlier is not something that should be used in production. For fear of setting a bad example, let's sort that out now.
 
@@ -235,7 +249,7 @@ In a proper game project you will want to modify your input code to accommodate 
 
 &nbsp;
 
-## 10. Next steps
+## 11. Next steps
 
 This guide has shown the bare basics of setting up a menu using Bento. It has included library import, basic system update and rendering, and building a button. You've learnt how to use the two most important User Events and how to automatically lay out element into a list.
 
