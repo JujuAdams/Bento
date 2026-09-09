@@ -4,10 +4,8 @@ function TestTable()
     
     with(oMain)
     {
-        BentoDestroy(mainElement);
-        
-        mainElement = BentoCreateBlank(BentoLayerGetRoot());
-        with(mainElement)
+        BentoLayerClear("example layer");
+        with(BentoCreateBlank(BentoGetRoot()))
         {
             BentoLayoutSetPadding(_padding);
             BentoLayoutSetGutter(_padding, _padding);

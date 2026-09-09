@@ -238,7 +238,7 @@ function __BentoSystem()
         __environmentCurrent = _environment;
         
         __layerStack   = [];
-        __layerCurrent = __environmentCurrent.__layerCurrent;
+        __layerCurrent = undefined;
         
         __previousElement = BENTO_NO_ELEMENT;
         

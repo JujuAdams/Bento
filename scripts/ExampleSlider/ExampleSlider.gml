@@ -6,10 +6,8 @@ function ExampleSlider()
 {
     with(oMain)
     {
-        BentoDestroy(mainElement);
-        
-        mainElement = BentoCreateBlank(BentoLayerGetRoot());
-        with(mainElement)
+        BentoLayerClear("example layer");
+        with(BentoCreateBlank(BentoGetRoot()))
         {
             BentoLayoutSetPadding(40);
             BentoLayoutSetGutter(35, 35);
@@ -130,7 +128,7 @@ function ExampleSliderJSON()
             ],
         };
         
-        BentoDestroy(mainElement);
-        mainElement = BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
+        BentoLayerClear("example layer");
+        BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
     }
 }

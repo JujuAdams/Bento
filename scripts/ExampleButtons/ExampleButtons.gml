@@ -5,10 +5,8 @@ function ExampleButtons()
 {
     with(oMain)
     {
-        BentoDestroy(mainElement);
-        
-        mainElement = BentoCreateBlank(BentoLayerGetRoot());
-        with(mainElement)
+        BentoLayerClear("example layer");
+        with(BentoCreateBlank(BentoGetRoot()))
         {
             BentoLayoutSetPaddingExt(40, 40, 40, 40);
             BentoLayoutSetGutter(35, 35);
@@ -233,7 +231,7 @@ function ExampleButtonsJSON()
             ],
         };
         
-        BentoDestroy(mainElement);
-        mainElement = BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
+        BentoLayerClear("example layer");
+        BentoCreateFromJSON(_json, undefined, BentoLayerGetRoot());
     }
 }

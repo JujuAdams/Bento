@@ -6,6 +6,7 @@ height = 170;
 gpu_set_tex_filter(false);
 surface = -1;
 
+BentoLayerCreate("example layer");
 with(BentoLayerGetRoot())
 {
     with(BentoCreate(oBentoExRect))

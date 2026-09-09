@@ -4,10 +4,8 @@ function ExampleMainMenu()
 {
     with(oMain)
     {
-        BentoDestroy(mainElement);
-        
-        mainElement = BentoCreateBlank(BentoLayerGetRoot());
-        with(mainElement)
+        BentoLayerClear("example layer");
+        with(BentoCreateBlank(BentoGetRoot()))
         {
             BentoLayoutSetPadding(20);
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);

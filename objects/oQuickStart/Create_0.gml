@@ -1,6 +1,6 @@
 // Feather disable all
 
-mainElement = BENTO_NO_ELEMENT;
+BentoLayerCreate("example layer");
 ExampleHomePage();
 
 if (BENTO_ON_MOBILE)

@@ -8,7 +8,12 @@
 
 function BentoSetParent(_parent, _target = self)
 {
-    if ((not BentoExists(_parent)) || (not BentoExists(_target))) return;
+    if (not BentoExists(_parent))
+    {
+        __BentoError($"Parent does not exist");
+    }
+    
+    if (not BentoExists(_target)) return;
     
     __BentoRemoveParent(_target);
     

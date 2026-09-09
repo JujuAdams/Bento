@@ -4,10 +4,8 @@ function TestListXFail()
     
     with(oMain)
     {
-        BentoDestroy(mainElement);
-        
-        mainElement = BentoCreateBlank(BentoLayerGetRoot());
-        with(mainElement)
+        BentoLayerClear("example layer");
+        with(BentoCreateBlank(BentoGetRoot()))
         {
             BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
             BentoLayoutList(BENTO_AXIS_X, 0.5, 0.5);

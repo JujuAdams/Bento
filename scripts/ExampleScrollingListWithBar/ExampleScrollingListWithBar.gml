@@ -4,10 +4,8 @@ function ExampleScrollingListWithBar()
 {
     with(oMain)
     {
-        BentoDestroy(mainElement);
-        
-        mainElement = BentoCreateBlank(BentoLayerGetRoot());
-        with(mainElement)
+        BentoLayerClear("example layer");
+        with(BentoCreateBlank(BentoGetRoot()))
         {
             BentoLayoutSetPadding(40);
             BentoLayoutSetGutter(35, 35);
@@ -114,7 +112,7 @@ function ExampleScrollingListWithBarJSON()
             ],
         };
         
-        BentoDestroy(mainElement);
-        mainElement = BentoCreateFromJSON(_json, { count: 15 }, BentoLayerGetRoot());
+        BentoLayerClear("example layer");
+        BentoCreateFromJSON(_json, { count: 15 }, BentoLayerGetRoot());
     }
 }
