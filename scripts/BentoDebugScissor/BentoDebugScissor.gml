@@ -7,7 +7,7 @@ function BentoDebugScissor(_layerOrName = undefined)
     if (not BENTO_RUNNING_FROM_IDE) return;
     if (BENTO_SHOW_DEBUG_MESSAGE == undefined) return;
     
-    with(__BentoLayerEnsure(_layerOrName))
+    with(__BentoLayerSeek(_layerOrName))
     {
         var _array = [];
         

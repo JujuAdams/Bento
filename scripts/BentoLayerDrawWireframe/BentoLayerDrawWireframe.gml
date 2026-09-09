@@ -9,7 +9,7 @@ function BentoLayerDrawWireframe(_layerName = undefined, _environmentName = unde
 {
     if (_layerName == undefined)
     {
-        var _environment = __BentoEnvironmentEnsure(_environmentName);
+        var _environment = __BentoEnvironmentSeek(_environmentName);
         var _layer = (_environment == undefined)? undefined : _environment.__layerCurrent;
     }
     else

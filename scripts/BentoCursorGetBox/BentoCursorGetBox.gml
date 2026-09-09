@@ -14,7 +14,7 @@ function BentoCursorGetBox(_layerOrName = undefined)
 {
     static _result = {};
     
-    var _layer = __BentoLayerEnsure(_layerOrName);
+    var _layer = __BentoLayerSeek(_layerOrName);
     if (_layer == undefined)
     {
         with(_layer)

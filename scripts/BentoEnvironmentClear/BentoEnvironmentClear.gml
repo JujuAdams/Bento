@@ -7,7 +7,7 @@
 
 function BentoEnvironmentClear(_environmentOrName = undefined)
 {
-    with(__BentoEnvironmentEnsure(_environmentOrName))
+    with(__BentoEnvironmentSeek(_environmentOrName))
     {
         var _i = array_length(__layerArray)-1;
         repeat(_i+1)

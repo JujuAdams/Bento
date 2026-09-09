@@ -8,7 +8,7 @@
 
 function BentoPrimaryGetDragged(_layerOrName = undefined)
 {
-    with(__BentoLayerEnsure(_layerOrName))
+    with(__BentoLayerSeek(_layerOrName))
     {
         return __pointerTravelled;
     }

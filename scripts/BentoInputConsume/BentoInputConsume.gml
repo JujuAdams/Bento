@@ -8,7 +8,7 @@ function BentoInputConsume(_layerOrName = undefined)
 {
     static _hotkeyArray = [];
     
-    with(__BentoLayerEnsure(_layerOrName))
+    with(__BentoLayerSeek(_layerOrName))
     {
         __primaryConsumed = true;
         

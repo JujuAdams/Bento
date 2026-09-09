@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"__BentoEnvironmentEnsure",
+  "%Name":"__BentoEnvironmentSeek",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"__BentoEnvironmentEnsure",
+  "name":"__BentoEnvironmentSeek",
   "parent":{
     "name":"Environments & Layers",
     "path":"folders/Bento/(Internal)/Environments & Layers.yy",

@@ -7,7 +7,7 @@
 
 function BentoLayerGetDrawWhenBackgrounded(_layerOrName = undefined, _environmentOrName = undefined)
 {
-    with(__BentoLayerEnsure(_layerOrName, _environmentOrName, noone))
+    with(__BentoLayerSeek(_layerOrName, _environmentOrName, noone))
     {
         return __drawWhenBackgrounded;
     }

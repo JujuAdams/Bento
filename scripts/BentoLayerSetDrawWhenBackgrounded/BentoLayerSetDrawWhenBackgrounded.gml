@@ -8,7 +8,7 @@
 
 function BentoLayerSetDrawWhenBackgrounded(_state, _layerOrName = undefined, _environmentOrName = undefined)
 {
-    with(__BentoLayerEnsure(_layerOrName, _environmentOrName, noone))
+    with(__BentoLayerSeek(_layerOrName, _environmentOrName, noone))
     {
         __drawWhenBackgrounded = _state;
     }

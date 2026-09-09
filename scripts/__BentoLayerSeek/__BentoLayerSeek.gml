@@ -4,7 +4,7 @@
 /// @param environmentOrName
 /// @param [fallbackLayer=current]
 
-function __BentoLayerEnsure(_layerOrName, _environmentOrName = undefined, _fallbackLayer = undefined)
+function __BentoLayerSeek(_layerOrName, _environmentOrName = undefined, _fallbackLayer = undefined)
 {
     static _system = __BentoSystem();
     
@@ -15,7 +15,7 @@ function __BentoLayerEnsure(_layerOrName, _environmentOrName = undefined, _fallb
     
     if (is_string(_layerOrName))
     {
-        return __BentoLayerFind(_layerOrName, __BentoEnvironmentEnsure(_environmentOrName));
+        return __BentoLayerFind(_layerOrName, __BentoEnvironmentSeek(_environmentOrName));
     }
     
     if (_fallbackLayer != undefined)
@@ -29,7 +29,7 @@ function __BentoLayerEnsure(_layerOrName, _environmentOrName = undefined, _fallb
         return _layer;
     }
     
-    var _environment = __BentoEnvironmentEnsure(_environmentOrName);
+    var _environment = __BentoEnvironmentSeek(_environmentOrName);
     if (_environment == undefined)
     {
         __BentoError($"Could not find an environment");
@@ -41,5 +41,5 @@ function __BentoLayerEnsure(_layerOrName, _environmentOrName = undefined, _fallb
         return _layer;
     }
     
-    __BentoError($"No layer exists on environment \"{__BentoEnvironmentEnsure(_environmentOrName).__name}\"");
+    __BentoError($"No layer exists on environment \"{__BentoEnvironmentSeek(_environmentOrName).__name}\"");
 }

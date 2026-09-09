@@ -14,7 +14,7 @@ function BentoGetBlocksKeyboard(_environmentName = undefined)
     
     if (_system.__textHandlerEnvironment != undefined) return true;
     
-    with(__BentoEnvironmentEnsure(_environmentName))
+    with(__BentoEnvironmentSeek(_environmentName))
     {
         if (__layerCurrent.__inputMode == BENTO_MODE_KEYBOARD) return true;
     }

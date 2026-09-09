@@ -8,7 +8,7 @@
 
 function BentoCarryGetItemForLayer(_layerOrName = undefined, _environmentOrName = undefined)
 {
-    var _layer = __BentoLayerEnsure(_layerOrName, _environmentOrName);
+    var _layer = __BentoLayerSeek(_layerOrName, _environmentOrName);
     if (_layer == undefined)
     {
         if (is_struct(_layerOrName))

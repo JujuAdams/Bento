@@ -17,7 +17,7 @@ function BentoLayerCreate(_layerName, _environmentName = undefined)
 {
     static _system = __BentoSystem();
     
-    with(__BentoEnvironmentEnsure(_environmentName))
+    with(__BentoEnvironmentSeek(_environmentName))
     {
         if (BentoLayerExists(_layerName, self))
         {

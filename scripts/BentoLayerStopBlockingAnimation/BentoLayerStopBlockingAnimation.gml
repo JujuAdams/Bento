@@ -11,7 +11,7 @@
 
 function BentoLayerStopBlockingAnimation(_layerName, _finalize = true, _environmentName = undefined)
 {
-    with(__BentoLayerFind(_layerName, __BentoEnvironmentEnsure(_environmentName)))
+    with(__BentoLayerFind(_layerName, __BentoEnvironmentSeek(_environmentName)))
     {
         var _i = array_length(__animPlayingArray)-1;
         repeat(array_length(__animPlayingArray))

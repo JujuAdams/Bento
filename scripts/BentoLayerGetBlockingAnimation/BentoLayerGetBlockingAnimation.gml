@@ -7,7 +7,7 @@
 
 function BentoLayerGetBlockingAnimation(_layerOrName, _environmentName = undefined)
 {
-    var _layerStruct = __BentoLayerEnsure(_layerOrName, __BentoEnvironmentEnsure(_environmentName));
+    var _layerStruct = __BentoLayerSeek(_layerOrName, __BentoEnvironmentSeek(_environmentName));
     if (_layerStruct == undefined) return;
     
     return (not ds_map_empty(_layerStruct.__animBlockingMap));

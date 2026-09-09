@@ -7,7 +7,7 @@ function BentoDebugHoverOrder(_layerOrName = undefined)
     if (not BENTO_RUNNING_FROM_IDE) return;
     if (BENTO_SHOW_DEBUG_MESSAGE == undefined) return;
     
-    with(__BentoLayerEnsure(_layerOrName))
+    with(__BentoLayerSeek(_layerOrName))
     {
         __dirtyFlags |= __BENTO_DIRTY_HOVERABLE;
         __BentoEnsureHoverableOrder();

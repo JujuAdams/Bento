@@ -14,7 +14,7 @@
 
 function BentoCursorGetDY(_navigationThreshold = 0.001, _layerOrName = undefined)
 {
-    with(__BentoLayerEnsure(_layerOrName))
+    with(__BentoLayerSeek(_layerOrName))
     {
         if (__inputModePointer)
         {

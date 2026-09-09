@@ -6,7 +6,7 @@
 
 function BentoFocusCloseAll(_layerOrName = undefined)
 {
-    with(__BentoLayerEnsure(_layerOrName))
+    with(__BentoLayerSeek(_layerOrName))
     {
         var _focusStack = __layer.__focusStack;
         if (array_length(_focusStack) > 0)

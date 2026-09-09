@@ -3,7 +3,7 @@
 /// @param environmentOrName
 /// @param [fallback=current]
 
-function __BentoEnvironmentEnsure(_environmentOrName, _fallback = undefined)
+function __BentoEnvironmentSeek(_environmentOrName, _fallback = undefined)
 {
     static _system = __BentoSystem();
     

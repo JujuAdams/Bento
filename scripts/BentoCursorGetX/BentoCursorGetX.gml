@@ -6,7 +6,7 @@
 
 function BentoCursorGetX(_layerOrName = undefined)
 {
-    with(__BentoLayerEnsure(_layerOrName))
+    with(__BentoLayerSeek(_layerOrName))
     {
         if (__inputMode == BENTO_MODE_MOUSE)
         {

@@ -11,11 +11,11 @@ function BentoLayerExists(_layerOrName, _environmentName = undefined)
     
     if (is_string(_layerOrName))
     {
-        return (__BentoLayerFind(_layerOrName, __BentoEnvironmentEnsure(_environmentName)) != undefined);
+        return (__BentoLayerFind(_layerOrName, __BentoEnvironmentSeek(_environmentName)) != undefined);
     }
     else if (is_struct(_layerOrName))
     {
-        return (array_get_index(__BentoEnvironmentEnsure(_environmentName, _layerOrName.__environment).__layerArray, _layerOrName) >= 0);
+        return (array_get_index(__BentoEnvironmentSeek(_environmentName, _layerOrName.__environment).__layerArray, _layerOrName) >= 0);
     }
     
     return false;

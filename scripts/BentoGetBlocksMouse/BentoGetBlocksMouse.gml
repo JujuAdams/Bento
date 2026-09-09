@@ -21,7 +21,7 @@ function BentoGetBlocksMouse(_environmentName = undefined)
     
     if (_system.__textHandlerEnvironment != undefined) return true;
     
-    with(__BentoEnvironmentEnsure(_environmentName))
+    with(__BentoEnvironmentSeek(_environmentName))
     {
         with(__layerCurrent)
         {

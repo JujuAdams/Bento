@@ -6,7 +6,7 @@ function BentoGetLandscape(_environmentOrName = undefined)
 {
     static _system = __BentoSystem();
     
-    var _environment = __BentoEnvironmentEnsure(_environmentOrName)
+    var _environment = __BentoEnvironmentSeek(_environmentOrName)
     if (_environment == undefined)
     {
         //Guess!

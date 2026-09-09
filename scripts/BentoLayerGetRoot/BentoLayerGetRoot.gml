@@ -6,7 +6,7 @@
 
 function BentoLayerGetRoot(_layerOrName = undefined)
 {
-    with(__BentoLayerEnsure(_layerOrName))
+    with(__BentoLayerSeek(_layerOrName))
     {
         if (not BentoExists(__rootElement))
         {

@@ -8,7 +8,7 @@
 
 function BentoNameFind(_name, _environmentOrName = undefined)
 {
-    var _environment = __BentoEnvironmentEnsure(_environmentOrName);
+    var _environment = __BentoEnvironmentSeek(_environmentOrName);
     if (_environment != undefined)
     {
         return (_environment.__nameMap[? _name] ?? BENTO_NO_ELEMENT);

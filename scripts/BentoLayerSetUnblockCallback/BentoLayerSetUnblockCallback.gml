@@ -21,7 +21,7 @@
 
 function BentoLayerSetUnblockCallback(_layerName, _callback, _metadata = undefined, _persist = false, _environmentName = undefined)
 {
-    with(__BentoLayerFind(_layerName, __BentoEnvironmentEnsure(_environmentName)))
+    with(__BentoLayerFind(_layerName, __BentoEnvironmentSeek(_environmentName)))
     {
         __animUnblockedCallback = _callback;
         __animUnblockedMetadata = _metadata;

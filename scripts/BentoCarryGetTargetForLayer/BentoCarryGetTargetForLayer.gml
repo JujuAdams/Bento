@@ -14,7 +14,7 @@
 
 function BentoCarryGetTargetForLayer(_layerOrName = undefined, _environmentOrName = undefined)
 {
-    with(__BentoLayerEnsure(_layerOrName, _environmentOrName))
+    with(__BentoLayerSeek(_layerOrName, _environmentOrName))
     {
         with(__BentoGetVars(__carryItemElement))
         {
