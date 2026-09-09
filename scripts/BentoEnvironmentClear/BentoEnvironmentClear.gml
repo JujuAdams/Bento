@@ -5,7 +5,7 @@
 /// 
 /// @param [environmentOrName=current]
 
-function BentoEnvironmentGetTopLayer(_environmentOrName = undefined)
+function BentoEnvironmentClear(_environmentOrName = undefined)
 {
     with(__BentoEnvironmentEnsure(_environmentOrName))
     {
