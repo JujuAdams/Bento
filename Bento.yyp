@@ -454,6 +454,7 @@
     {"id":{"name":"BentoGetPosition","path":"scripts/BentoGetPosition/BentoGetPosition.yy",},},
     {"id":{"name":"BentoGetPushStep","path":"scripts/BentoGetPushStep/BentoGetPushStep.yy",},},
     {"id":{"name":"BentoGetRightToLeft","path":"scripts/BentoGetRightToLeft/BentoGetRightToLeft.yy",},},
+    {"id":{"name":"BentoGetRoot","path":"scripts/BentoGetRoot/BentoGetRoot.yy",},},
     {"id":{"name":"BentoGetVisible","path":"scripts/BentoGetVisible/BentoGetVisible.yy",},},
     {"id":{"name":"BentoHotkeyGetHold","path":"scripts/BentoHotkeyGetHold/BentoHotkeyGetHold.yy",},},
     {"id":{"name":"BentoHotkeyGetPress","path":"scripts/BentoHotkeyGetPress/BentoHotkeyGetPress.yy",},},
