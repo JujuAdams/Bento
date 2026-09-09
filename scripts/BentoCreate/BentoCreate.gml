@@ -16,6 +16,12 @@ function BentoCreate(_object, _struct = undefined, _parent = self)
     static _system = __BentoSystem();
     static _emptyStruct = {};
     
+    //Allow a layer or layer name to be passed in
+    if (is_string(_parent) || (is_struct(_parent) && is_instanceof(_parent, __BentoClassLayer)))
+    {
+        _parent = BentoLayerGetRoot(_parent);
+    }
+    
     if (not BentoExists(_parent)) __BentoError("Parent doesn't exist");
     
     if (BENTO_SAFE)

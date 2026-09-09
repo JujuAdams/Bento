@@ -91,6 +91,12 @@ function BentoConstrAncestor(_parent = other) constructor
     
     if (_parent != __BENTO_NO_PARENT)
     {
+        //Allow a layer or layer name to be passed in
+        if (is_string(_parent) || (is_struct(_parent) && is_instanceof(_parent, __BentoClassLayer)))
+        {
+            _parent = BentoLayerGetRoot(_parent);
+        }
+        
         BentoSetParent(_parent);
     }
 }

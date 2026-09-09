@@ -5,7 +5,7 @@ function ExampleHomePage()
     with(oMain)
     {
         BentoLayerClear("example layer");
-        with(BentoCreateBlank(BentoGetRoot()))
+        with(BentoCreateBlank("example layer"))
         {
             BentoLayoutSetPadding(40);
             BentoLayoutSetGutter(30, 30);
