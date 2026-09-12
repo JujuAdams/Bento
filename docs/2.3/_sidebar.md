@@ -17,6 +17,7 @@
 - [Instance & Struct Differences](Topic-Instance-Struct-Diferences)
 - [Hover / Hold / Click / Focus](Topic-Hover-Hold-Click-Focus)
 - [Navigation](Topic-Navigation)
+- [Layers](Topic-Layers)
 - [Layouts](Topic-Layouts)
 - [Layout Examples](Layout-Examples)
 - [Text Layouts](Topic-Text-Layouts)

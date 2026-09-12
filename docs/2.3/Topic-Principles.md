@@ -81,9 +81,7 @@ system
 
 In Bento, there is only ever one "system". This is the global handler that coordinates all Bento state and code. The next level down hosts one or more environments. Environments can be thought of as containers that hold separate [user input](Topic-Input-Modes). If there are multiple players using one user interface each then you'll want to create a separate environment per player. For the vast majority of use cases (including multiplayer games where only one player can control the user interface at a time), you will only need to use one environment.
 
-Layers exist inside environments. You can have any number of layers in an environment; however, only the layer drawn last and on top (which is typically the most recently created layer) can receive input. Any other layer is considered "backgrounded". Backgrounded layers will usually not execute any update code (that's [User Event 0](Topic-Building-Elements)) but will continue to draw themselves using the other user events. The intention for layers is that they operate as modals which block input to lower layers. In the above example, `layer A` is backgrounded and cannot be interacted with and `layer B` is in the foreground and will operate as normal.
-
-Each layer has precisely one root element. Other than never having any sibling elements, the root element behaves like any other element. You may create further elements as children of the root element, and those elements may have children, and so on. It is in this repeating pattern of elements as children of other elements that the user interface tree takes shape.
+Layers exist inside environments. They are used to organise which parts of your interface should be receiving input and are very useful for modals and the like. Layers contain one indestructible root element which is used as the ultimate ancestor when you create UI elements on a layer. You can read more about layers [here](Topic-Layers).
 
 &nbsp;
 
