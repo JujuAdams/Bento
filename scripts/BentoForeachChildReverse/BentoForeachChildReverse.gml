@@ -2,7 +2,12 @@
 
 /// Executes a function for each child of a parent. The function will be rescoped and executed in
 /// the scope of the child. Execution will happen in the reverse of the order that children appear
-/// in the array returned by `BentoGetChildArray()`.
+/// in the array returned by `BentoGetChildArray()`. You may use this function to delete children
+/// if you like.
+/// 
+/// The callback is executed with two parameters. The first parameter is the index of the child.
+/// This is 0-indexed with the first child being index `0`. The second parameter is the metadata
+/// defined when calling `BentoForeachChild()`. The metadata can be any datatype.
 /// 
 /// @param function
 /// @param [metadata]

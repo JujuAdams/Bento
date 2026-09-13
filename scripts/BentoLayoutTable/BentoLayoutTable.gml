@@ -2,12 +2,16 @@
 
 /// Creates a dynamically resizing table with a fixed number of columns. Elements will be arranged
 /// in the table from the top-left cell to the bottom-right cell with each added element occupying
-/// a single cell.
+/// a single cell. For example, if you define a table with 3 columns, the first three children in
+/// the parent will be arranged across the first row. Adding a fourth child will push the child to
+/// the next row.
 /// 
 /// The `rowVAlign` parameter controls how children are positioned if content doesn't fill up the
 /// full height of a row. This value should typically be a number from `0` to `1`.
 /// 
 /// N.B. Do not use `fa_*` constants with this function. Provide a number for the alignments.
+/// 
+/// To customise the behaviour of individual columns you may call `BentoLayoutSetTableColumn()`.
 /// 
 /// @param columns
 /// @param rowVAlign

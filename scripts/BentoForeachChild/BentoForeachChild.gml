@@ -4,6 +4,10 @@
 /// the scope of the child. Execution will happen in the order that children appear in the array
 /// returned by `BentoGetChildArray()`.
 /// 
+/// The callback is executed with two parameters. The first parameter is the index of the child.
+/// This is 0-indexed with the first child being index `0`. The second parameter is the metadata
+/// defined when calling `BentoForeachChild()`. The metadata can be any datatype.
+/// 
 /// N.B. Do not use this function to delete/destroy children. Instead, you must use
 ///      `BentoForeachChildReverse()` otherwise you will encounter crahses.
 /// 
