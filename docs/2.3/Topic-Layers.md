@@ -1,6 +1,6 @@
 # Layouts
 
-Bento builds user interfaces exists [within a tree](Topic-Principles?id=bento-grows-on-trees):
+Bento builds user interfaces [within a tree](Topic-Principles?id=bento-grows-on-trees):
 
 ```
 system
