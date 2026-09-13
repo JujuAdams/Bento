@@ -26,6 +26,9 @@ function __BentoClassVariables(_attachedElement) constructor
     __buttonIndex    = undefined;
     __hoverableIndex = undefined;
     
+    __callbackOnDestroy = undefined;
+    __callbackOnDestroyParams = undefined;
+    
     if (BENTO_ALLOW_ENCLOSED_GETTER)
     {
         __enclosed = false;
@@ -320,6 +323,23 @@ function __BentoClassVariables(_attachedElement) constructor
     
     static __Destroy = function()
     {
+        if (is_callable(__callbackOnDestroy))
+        {
+            var _callbackOnDestroyParams = __callbackOnDestroyParams;
+            if (is_array(_callbackOnDestroyParams))
+            {
+                method_call(__callbackOnDestroy, _callbackOnDestroyParams);
+            }
+            else if (_callbackOnDestroyParams == undefined)
+            {
+                __callbackOnDestroy();
+            }
+            else
+            {
+                __callbackOnDestroy(_callbackOnDestroyParams);
+            }
+        }
+        
         __BentoRemoveParent(__attachedElement);
         BentoDestroyChildren(__attachedElement);
         

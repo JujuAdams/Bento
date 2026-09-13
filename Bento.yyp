@@ -556,6 +556,7 @@
     {"id":{"name":"BentoScrollSetPos","path":"scripts/BentoScrollSetPos/BentoScrollSetPos.yy",},},
     {"id":{"name":"BentoScrollTo","path":"scripts/BentoScrollTo/BentoScrollTo.yy",},},
     {"id":{"name":"BentoSetButton","path":"scripts/BentoSetButton/BentoSetButton.yy",},},
+    {"id":{"name":"BentoSetCallbackOnDestroy","path":"scripts/BentoSetCallbackOnDestroy/BentoSetCallbackOnDestroy.yy",},},
     {"id":{"name":"BentoSetChildArray","path":"scripts/BentoSetChildArray/BentoSetChildArray.yy",},},
     {"id":{"name":"BentoSetChildIndex","path":"scripts/BentoSetChildIndex/BentoSetChildIndex.yy",},},
     {"id":{"name":"BentoSetClickTiming","path":"scripts/BentoSetClickTiming/BentoSetClickTiming.yy",},},
