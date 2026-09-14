@@ -10,6 +10,7 @@ if (image_blend == c_white)
 
 BentoLayoutList(BENTO_AXIS_Y, 0, 0);
 BentoClipSetEnabled(true);
+BentoClipSetPadding(4, 4, 4, 4);
 BentoScrollSetEnabled(true, true);
 BentoSetButton(BENTO_BUTTON_NAVIGATION);
 BentoFocusSetEnclose(BENTO_ENCLOSE_NAVIGATION)

@@ -10,6 +10,7 @@ BentoVarEnsureMany(
 
 BentoLayoutList(BENTO_AXIS_Y, 0, 0);
 BentoClipSetEnabled(true);
+BentoClipSetPadding(4, 4, 4, 4);
 BentoScrollSetEnabled(false, true);
 BentoSetButton(BENTO_BUTTON_NAVIGATION);
 BentoFocusSetEnclose(BENTO_ENCLOSE_NAVIGATION);

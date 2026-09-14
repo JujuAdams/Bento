@@ -5,6 +5,7 @@ event_inherited();
 
 BentoLayoutList(BENTO_AXIS_Y, 0, 0);
 BentoClipSetEnabled(true);
+BentoClipSetPadding(4, 4, 4, 4);
 BentoScrollSetEnabled(true, true);
 
 BentoScrollbarSetVert(false, 40, 0, 10, 10, 10, false);
