@@ -1,6 +1,6 @@
 // Feather disable all
 
-/// Returns the input mode for a layer, as set by `BentoSetMode()`. This will be one of the
+/// Returns the input mode for an environment, as set by `BentoSetMode()`. This will be one of the
 /// following constants:
 /// 
 /// - `BENTO_MODE_UNKNOWN`
@@ -9,27 +9,12 @@
 /// - `BENTO_MODE_GAMEPAD`
 /// - `BENTO_MODE_TOUCH`
 /// 
-/// @param [layerOrName=current]
 /// @param [environmentName=current]
 
-function BentoGetMode(_layerOrName = undefined, _environmentOrName = undefined)
+function BentoGetMode(_environmentOrName = undefined)
 {
-    var _layer = __BentoLayerSeek(_layerOrName, _environmentOrName);
-    if (_layer == undefined)
+    with(__BentoEnvironmentSeek(_environmentOrName))
     {
-        if (is_struct(_layerOrName))
-        {
-            __BentoError("Could not find layer (datatype=struct)");
-        }
-        else if (is_array(_layerOrName))
-        {
-            __BentoError("Could not find layer (datatype=array)");
-        }
-        else
-        {
-            __BentoError($"Could not find layer \"{_layerOrName}\"");
-        }
+        return __envInputMode;
     }
-    
-    return _layer.__inputMode;
 }
