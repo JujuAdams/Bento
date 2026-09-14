@@ -821,6 +821,9 @@ function __BentoClassLayer(_environment, _name) constructor
     {
         __BentoLayerTargetPush(self);
         
+        __BentoEnsureLayout();
+        __BentoEnsureScrollLimits();
+        __BentoEnsureOffset();
         __BentoEnsureTransforms();
         __BentoEnsureDrawOrder();
         
