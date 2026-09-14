@@ -472,6 +472,7 @@
     {"id":{"name":"BentoLayerCreate","path":"scripts/BentoLayerCreate/BentoLayerCreate.yy",},},
     {"id":{"name":"BentoLayerDestroy","path":"scripts/BentoLayerDestroy/BentoLayerDestroy.yy",},},
     {"id":{"name":"BentoLayerDrawWireframe","path":"scripts/BentoLayerDrawWireframe/BentoLayerDrawWireframe.yy",},},
+    {"id":{"name":"BentoLayerEnsure","path":"scripts/BentoLayerEnsure/BentoLayerEnsure.yy",},},
     {"id":{"name":"BentoLayerExists","path":"scripts/BentoLayerExists/BentoLayerExists.yy",},},
     {"id":{"name":"BentoLayerGetBlockingAnimation","path":"scripts/BentoLayerGetBlockingAnimation/BentoLayerGetBlockingAnimation.yy",},},
     {"id":{"name":"BentoLayerGetDrawWhenBackgrounded","path":"scripts/BentoLayerGetDrawWhenBackgrounded/BentoLayerGetDrawWhenBackgrounded.yy",},},
