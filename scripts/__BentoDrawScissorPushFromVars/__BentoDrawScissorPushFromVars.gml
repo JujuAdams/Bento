@@ -8,8 +8,8 @@ function __BentoDrawScissorPushFromVars()
     
     var _left    = _element.bentoLeft   + __scissorPadLeft   + __scissorScrollbarLeft;
     var _top     = _element.bentoTop    + __scissorPadTop    + __scissorScrollbarTop;
-    var _right   = _element.bentoRight  - __scissorPadRight  + __scissorScrollbarRight;
-    var _bottom  = _element.bentoBottom - __scissorPadBottom + __scissorScrollbarBottom;
+    var _right   = _element.bentoRight  - __scissorPadRight  - __scissorScrollbarRight;
+    var _bottom  = _element.bentoBottom - __scissorPadBottom - __scissorScrollbarBottom;
     
     if (__transformMatrix != undefined)
     {
