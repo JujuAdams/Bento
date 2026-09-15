@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"ExampleCustomMap",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ExampleCustomMap",
+  "parent":{
+    "name":"Pages",
+    "path":"folders/Examples/Pages.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

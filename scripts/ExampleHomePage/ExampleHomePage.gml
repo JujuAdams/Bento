@@ -41,6 +41,7 @@ function ExampleHomePage()
                 BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
                 
                 BentoCreate(oBentoExButton, { text: "Scribble",                func: ExampleScribble             });
+                BentoCreate(oBentoExButton, { text: "Custom Map",              func: ExampleCustomMap            });
                 BentoCreate(oBentoExButton, { text: "Buttons",                 func: ExampleButtons              });
                 BentoCreate(oBentoExButton, { text: "Buttons With Long Click", func: ExampleButtonsWithLongClick });
                 BentoCreate(oBentoExButton, { text: "Manual Positions",        func: ExampleManualPositions      });
