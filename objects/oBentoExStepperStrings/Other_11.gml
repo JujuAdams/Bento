@@ -19,7 +19,7 @@ else
 }
 
 draw_sprite_ext(sBentoExButton, image_index, x + _dX, y + _dY, image_xscale, image_yscale, image_angle, BENTO_EXAMPLE_DARK_BLUE, image_alpha);
-draw_sprite_ext(sprite_index,   image_index, x + _dX, y + _dY, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index,   image_index, x + _dX, y + _dY, image_xscale, image_yscale, image_angle, BentoGetFocused()? BENTO_EXAMPLE_RED : image_blend, image_alpha);
 
 draw_set_font(font);
 draw_set_color(image_blend);
@@ -58,7 +58,7 @@ if (array_length(stringArray) > 0)
         repeat(_length)
         {
             draw_set_alpha((_i == _index)? 0.75 : 0.5);
-            draw_text(lerp(bentoLeft + 20, bentoRight - 20, (_i + 1) / (_length + 1)), bentoBottom - 10, (_i == _index)? "*" : ".");
+            draw_text(lerp(bentoLeft + 20, bentoRight - 20, (_i + 1) / (_length + 1)) + _dX, bentoBottom - 10 + _dY, (_i == _index)? "*" : ".");
             ++_i;
         }
     }
@@ -68,8 +68,11 @@ if (array_length(stringArray) > 0)
     draw_set_valign(fa_top);
 }
 
-draw_triangle(bentoLeft+10  + _dX, _centerY + _dY, bentoLeft+25  + _dX, _centerY-10 + _dY, bentoLeft+25  + _dX, _centerY+10 + _dY, false); 
-draw_triangle(bentoRight-10 + _dX, _centerY + _dY, bentoRight-25 + _dX, _centerY-10 + _dY, bentoRight-25 + _dX, _centerY+10 + _dY, false); 
+if (BentoUsingPointer() || BentoGetFocused())
+{
+    draw_triangle(bentoLeft+10  + _dX, _centerY + _dY, bentoLeft+25  + _dX, _centerY-10 + _dY, bentoLeft+25  + _dX, _centerY+10 + _dY, false); 
+    draw_triangle(bentoRight-10 + _dX, _centerY + _dY, bentoRight-25 + _dX, _centerY-10 + _dY, bentoRight-25 + _dX, _centerY+10 + _dY, false); 
+}
 
 draw_set_font(-1);
 draw_set_color(c_white);
