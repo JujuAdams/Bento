@@ -10,14 +10,14 @@ function BentoCarryItemBehavior(_element = self)
 {
     var _layer = BentoGetLayer(_element);
     
-    if (BentoUsingPointer(_layer))
+    if (BentoUsingPointer())
     {
         if (BentoPrimaryGetHold(_element) && BentoPrimaryGetDragged(_layer))
         {
             BentoCarryItemPickContinuous(_element);
         }
     }
-    else if (BentoUsingNavigation(_layer))
+    else if (BentoUsingNavigation())
     {
         if (not BentoCarryIsItem(_element))
         {
