@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"TestReplaceableList",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"TestReplaceableList",
+  "parent":{
+    "name":"Tests",
+    "path":"folders/Tests.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

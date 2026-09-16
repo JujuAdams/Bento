@@ -765,6 +765,7 @@
     {"id":{"name":"TestGrid","path":"scripts/TestGrid/TestGrid.yy",},},
     {"id":{"name":"TestListSetPosition","path":"scripts/TestListSetPosition/TestListSetPosition.yy",},},
     {"id":{"name":"TestListXFail","path":"scripts/TestListXFail/TestListXFail.yy",},},
+    {"id":{"name":"TestReplaceableList","path":"scripts/TestReplaceableList/TestReplaceableList.yy",},},
     {"id":{"name":"TestScrollbox","path":"scripts/TestScrollbox/TestScrollbox.yy",},},
     {"id":{"name":"TestScrollboxWithBar","path":"scripts/TestScrollboxWithBar/TestScrollboxWithBar.yy",},},
     {"id":{"name":"TestScroller","path":"scripts/TestScroller/TestScroller.yy",},},
