@@ -19,16 +19,23 @@ function BentoSetChildArray(_inputArray, _parent = self, _destroyOrphans = true)
     var _root = BentoLayerGetRoot(_parent.BENTO_VARS.__layer);
     var _bentoVarsArray = _parent.BENTO_VARS.__childArray;
     
+    //Compare Bento vars versus Bento vars. This avoids comparison problems when mixing
+    //instances and structs
+    var _workArray = array_map(_inputArray, function(_element, _index)
+    {
+        return __BentoGetVars(_element);
+    });
+    
     //Handle any elements that are children of the parent but are not in the input child array
     var _i = array_length(_bentoVarsArray)-1;
     repeat(array_length(_bentoVarsArray))
     {
-        var _element = _bentoVarsArray[_i].__attachedElement;
-        if (array_get_index(_inputArray, _element) < 0)
+        var _element = _bentoVarsArray[_i];
+        if (array_get_index(_workArray, _element) < 0)
         {
             if (_destroyOrphans)
             {
-                BentoDestroy(_element);
+                BentoDestroy(_element.__attachedElement);
             }
             else
             {
