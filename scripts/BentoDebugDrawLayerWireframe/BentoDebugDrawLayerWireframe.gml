@@ -5,7 +5,7 @@
 /// @param [layerName=top]
 /// @param [environmentName=current]
 
-function BentoLayerDrawWireframe(_layerName = undefined, _environmentName = undefined)
+function BentoDebugDrawLayerWireframe(_layerName = undefined, _environmentName = undefined)
 {
     if (_layerName == undefined)
     {

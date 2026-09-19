@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"BentoDebugDrawLayerWireframe",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"BentoDebugDrawLayerWireframe",
+  "parent":{
+    "name":"Debug",
+    "path":"folders/Bento/Functions/Debug.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
