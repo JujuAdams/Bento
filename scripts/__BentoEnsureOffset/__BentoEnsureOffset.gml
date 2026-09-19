@@ -133,6 +133,8 @@ function __BentoEnsureOffsetInner(_dirtyOffsetArray, _elementVars, _offsetX, _of
             _topWorld    += _deltaY;
             _rightWorld  += _deltaX;
             _bottomWorld += _deltaY;
+            _offsetX     += _deltaX;
+            _offsetY     += _deltaY;
         }
         
         //Set final variables ready for the reposition user event
