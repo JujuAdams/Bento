@@ -40,7 +40,7 @@ function ExampleHomePage()
                 BentoLayoutSetResize(BENTO_RESIZE_INFLATE, BENTO_RESIZE_INFLATE);
                 BentoLayoutList(BENTO_AXIS_Y, 0.5, 0);
                 
-                BentoCreate(oBentoExButton, { text: "Scribble",                func: ExampleScribble             });
+                BentoCreate(oBentoExButton, { text: "Scribble",                func: ExampleScribble             }); BentoSetNavigationWrap(false, true, BENTO_PREV_ELEMENT);
                 BentoCreate(oBentoExButton, { text: "Custom Map",              func: ExampleCustomMap            });
                 BentoCreate(oBentoExButton, { text: "Buttons",                 func: ExampleButtons              });
                 BentoCreate(oBentoExButton, { text: "Buttons With Long Click", func: ExampleButtonsWithLongClick });
@@ -65,7 +65,7 @@ function ExampleHomePage()
                 BentoCreate(oBentoExButton, { text: "Listbox",                 func: ExampleListbox              });
                 BentoCreate(oBentoExButton, { text: "Listbox With Bar",        func: ExampleListboxWithBar       });
                 BentoCreate(oBentoExButton, { text: "Textbox",                 func: ExampleTextbox              });
-                BentoCreate(oBentoExButton, { text: "Absolute Position",       func: ExamplePosition             });
+                BentoCreate(oBentoExButton, { text: "Absolute Position",       func: ExamplePosition             }); BentoSetNavigationWrap(false, true, BENTO_PREV_ELEMENT);
             }
         }
     }

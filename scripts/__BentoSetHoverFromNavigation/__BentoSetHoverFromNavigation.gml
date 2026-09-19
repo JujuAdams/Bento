@@ -108,8 +108,8 @@ function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
                         
                         if (_checkWrap)
                         {
-                            //FIXME - 1000 is an arbitrarily large number. This no doubt will fail in some situations
-                            __BentoGetNavigationRaycast(_wrappedRaycastData, __navigationLastX - 1000*_wrapDX, __navigationLastY - 1000*_wrapDY, _wrapDX, _wrapDY, _exclude, _prevScrollParent);
+                            //FIXME - 10_000 is an arbitrarily large number. This no doubt will fail in some situations
+                            __BentoGetNavigationRaycast(_wrappedRaycastData, __navigationLastX - 10_000*_wrapDX, __navigationLastY - 10_000*_wrapDY, _wrapDX, _wrapDY, _exclude, _prevScrollParent);
                             if ((_wrappedRaycastData.__weight < _raycastData.__weight) || (_wrappedRaycastData.__sameParent && (not _raycastData.__sameParent)))
                             {
                                 _nextElement = _wrappedRaycastData.__element;
