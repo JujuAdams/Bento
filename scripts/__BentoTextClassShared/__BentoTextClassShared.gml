@@ -45,7 +45,7 @@ function __BentoTextClassShared(_environment, _initialText, _callback, _maxLengt
                         __textElement = undefined;
                         
                         //Make sure our layer is updated
-                        __layerCurrent.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
+                        other.__layerCurrent.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
                     }
                 }
                 

@@ -115,7 +115,7 @@ function BentoTextOpen(_initialText, _callback, _hostElement = self)
             }
             
             //Make sure our layer is updated
-            __layerCurrent.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
+            _system.__layerCurrent.__dirtyFlags |= __BENTO_DIRTY_STEP | __BENTO_DIRTY_HOVERABLE;
         }
     }
 }
