@@ -13,6 +13,6 @@ var _handleWidth = max(handleWidthMin, bentoWidth / _stepCount);
 var _handleLeft  = bentoLeft + _smaller + _handleStep*((bentoWidth - _handleWidth - 2*_smaller) / _stepCount);
 
 draw_sprite_stretched_ext(sBentoExButton, 0, _handleLeft+4, bentoTop+4 + _smaller, _handleWidth, bentoHeight - 2*_smaller, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
-draw_sprite_stretched_ext(sBentoExButton, 0, _handleLeft, bentoTop + _smaller, _handleWidth, bentoHeight - 2*_smaller, BENTO_EXAMPLE_YELLOW, image_alpha);
+draw_sprite_stretched_ext(sBentoExButton, 0, _handleLeft, bentoTop + _smaller, _handleWidth, bentoHeight - 2*_smaller, BentoGetFocused()? BENTO_EXAMPLE_RED : image_blend, image_alpha);
 
-draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, BentoGetFocused()? BENTO_EXAMPLE_RED : image_blend, image_alpha);

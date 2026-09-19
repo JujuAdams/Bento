@@ -11,8 +11,8 @@ with(BentoScrollbarGetVertData())
 {
     if (exists && handleVisible)
     {
-        draw_sprite_stretched_ext(sBentoExButton, 0, handleLeft+4, handleTop+4, handleRight - handleLeft, handleBottom - handleTop, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
-        draw_sprite_stretched_ext(sBentoExFrame, 0, barLeft+4, barTop+4, barRight - barLeft, barBottom - barTop, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);;
+        draw_sprite_stretched_ext(sBentoExButton, 0, handleLeft+4, handleTop+4, handleRight - handleLeft, handleBottom - handleTop, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);
+        draw_sprite_stretched_ext(sBentoExFrame, 0, barLeft+4, barTop+4, barRight - barLeft, barBottom - barTop, c_black, BENTO_EXAMPLE_SHADOW_ALPHA);
     }
 }
 
@@ -21,11 +21,12 @@ if (frame)
     draw_self();
 }
 
+var _focused = BentoGetFocused();
 with(BentoScrollbarGetVertData())
 {
     if (exists && handleVisible)
     {
-        draw_sprite_stretched_ext(sBentoExButton, 0, handleLeft, handleTop, handleRight - handleLeft, handleBottom - handleTop, BENTO_EXAMPLE_YELLOW, 1);
-        draw_sprite_stretched_ext(sBentoExFrame, 0, barLeft, barTop, barRight - barLeft, barBottom - barTop, BENTO_EXAMPLE_YELLOW, 1);
+        draw_sprite_stretched_ext(sBentoExButton, 0, handleLeft, handleTop, handleRight - handleLeft, handleBottom - handleTop, _focused? BENTO_EXAMPLE_RED : BENTO_EXAMPLE_YELLOW, 1);
+        draw_sprite_stretched_ext(sBentoExFrame, 0, barLeft, barTop, barRight - barLeft, barBottom - barTop, _focused? BENTO_EXAMPLE_RED : BENTO_EXAMPLE_YELLOW, 1);
     }
 }
