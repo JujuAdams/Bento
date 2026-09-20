@@ -24,7 +24,7 @@ function __BentoGetHoverableInternal(_element, _checkVisible)
         if (__hoverableIndex != __layer.__hoverableRegenCount) return false;
         
         //Can't hover anything that's outside a clipping region
-        return ((not _checkVisible) || (__scissorVisibility != BENTO_VISIBLE_NONE));
+        return ((not _checkVisible) || (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE));
     }
     
     return false;

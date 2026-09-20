@@ -120,6 +120,16 @@
 // Advanced
 ///////
 
+// Coverage value at which elements will not be drawn (or hoverable using a pointer). A value of `0`
+// indicates that a fully hidden element will not be drawn but all partially visible elements will
+// be drawn. Setting this macro to `1` will cause all elements to fail to draw.
+#macro BENTO_MIN_DRAW_COVERAGE  0
+
+// Coverage value at which elements will not be hoverable. This value should be greater than or
+// equal to `BENTO_MIN_DRAW_COVERAGE` above. A value of `0` indicates that a fully hidden element
+// will not be hoverable but all partially visible elements will be hoverable.
+#macro BENTO_MIN_HOVER_COVERAGE  0.9
+
 // Whether to run safety checks for some Bento functions. These error messages can help with
 // debugging your code. However, these is a small performance cost. You should consider setting
 // this macro to `false` for production builds after thorough testing.

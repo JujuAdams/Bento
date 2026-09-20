@@ -12,7 +12,7 @@ function BentoGetClickable(_element = self)
         if (not __visible) return false;
         
         //Can't click anything that's outside a clipping region
-        if (__scissorVisibility == BENTO_VISIBLE_NONE) return false;
+        if (__scissorCoverage <= BENTO_MIN_DRAW_COVERAGE) return false;
         
         //Can only click it if the button type matches the input mode
         return (__buttonIndex == __layer.__hoverableRegenCount);

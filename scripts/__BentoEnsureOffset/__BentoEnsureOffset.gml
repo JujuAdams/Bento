@@ -151,25 +151,25 @@ function __BentoEnsureOffsetInner(_dirtyOffsetArray, _elementVars, _offsetX, _of
         }
         
         __scissorParent = _scissorParent;
-        __scissorVisibility = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
-                                                     _scissorL, _scissorT, _scissorR, _scissorB);
+       var _visibility = rectangle_in_rectangle(_leftWorld, _topWorld, _rightWorld, _bottomWorld,
+                                                _scissorL, _scissorT, _scissorR, _scissorB);
         
-        if (__scissorVisibility == BENTO_VISIBLE_NONE)
+        if (_visibility == 0)
         {
             __scissorCoverage = 0;
         }
-        else if (__scissorVisibility == BENTO_VISIBLE_FULL)
+        else if (_visibility == 1)
         {
             __scissorCoverage = 1;
         }
-        else //if (__scissorVisibility == BENTO_VISIBLE_PARTIAL)
+        else //if (_visibility == 2)
         {
             var _overlapL = max(_scissorL, _leftWorld  );
             var _overlapT = max(_scissorT, _topWorld   );
             var _overlapR = min(_scissorR, _rightWorld );
             var _overlapB = min(_scissorB, _bottomWorld);
             
-            __scissorCoverage = ((_overlapR - _overlapL)*(_overlapB - _overlapT)) / ((_rightWorld - _leftWorld)*(_bottomWorld - _topWorld))
+            __scissorCoverage = clamp(((_overlapR - _overlapL)*(_overlapB - _overlapT)) / ((_rightWorld - _leftWorld)*(_bottomWorld - _topWorld)), 0, 1);
         }
         
         if (__scissorEnabled)

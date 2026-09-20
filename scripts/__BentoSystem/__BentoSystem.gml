@@ -101,7 +101,7 @@ function __BentoSystem()
         
         _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE, "draw", function()
         {
-            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            if (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
                 __eventDraw();
             }
@@ -109,7 +109,7 @@ function __BentoSystem()
         
         _funcAddDrawFunction(__functionDrawLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_SCISSOR, "draw, scissor push", function()
         {
-            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            if (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
                 __eventDraw();
             }
@@ -122,7 +122,7 @@ function __BentoSystem()
             matrix_stack_push(__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             
-            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            if (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
                 __eventDraw();
             }
@@ -133,7 +133,7 @@ function __BentoSystem()
             matrix_stack_push(__transformMatrix);
             matrix_set(matrix_world, matrix_stack_top());
             
-            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            if (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
                 __eventDraw();
             }
@@ -163,7 +163,7 @@ function __BentoSystem()
         
         _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE, "draw", function()
         {
-            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            if (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
                 __eventDrawAfter();
             }
@@ -173,7 +173,7 @@ function __BentoSystem()
         {
             __BentoDrawScissorPop();
             
-            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            if (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
                 __eventDrawAfter();
             }
@@ -181,7 +181,7 @@ function __BentoSystem()
         
         _funcAddDrawFunction(__functionDrawAfterLookupArray, __BENTO_DRAW_ORDER_VISIBLE | __BENTO_DRAW_ORDER_MATRIX, "drawAfter, transform pop", function()
         {
-            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            if (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
                 __eventDrawAfter();
             }
@@ -194,7 +194,7 @@ function __BentoSystem()
         {
             __BentoDrawScissorPop();
             
-            if (__scissorVisibility != BENTO_VISIBLE_NONE)
+            if (__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
                 __eventDrawAfter();
             }

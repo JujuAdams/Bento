@@ -44,8 +44,8 @@ function __BentoSetHoverFromNavigation(_prevElement, _dX, _dY)
         }
         else
         {
-            //Don't allow hover of the next element if we're not visible
-            if (not BentoClipGetFullyVisible(_prevElement))
+            //Don't allow hover of the next element if we're not fully visible
+            if (_prevBento < 1)
             {
                 BentoScrollTo(BentoScrollGetSpeed(_prevElement), _prevElement);
                 _nextElement = _prevElement;

@@ -23,20 +23,23 @@ function BentoDebugDrawOrder(_layerOrName = undefined)
             var _bentoVars = method_get_self(_method);
             var _function  = method_get_index(_method);
             
-            if (_bentoVars.__elementIsInstance)
+            if (_bentoVars.__scissorCoverage > BENTO_MIN_DRAW_COVERAGE)
             {
-                var _type     = object_get_name(_bentoVars.__attachedElement.object_index);
-                var _nativeID = string(real(_bentoVars.__attachedElement.id));
+                if (_bentoVars.__elementIsInstance)
+                {
+                    var _type     = object_get_name(_bentoVars.__attachedElement.object_index);
+                    var _nativeID = string(real(_bentoVars.__attachedElement.id));
+                }
+                else
+                {
+                    var _type     = instanceof(_bentoVars.__attachedElement);
+                    var _nativeID = __BentoGetStructPointer(_bentoVars.__attachedElement);
+                }
+                
+                var _action = _functionDrawLookupMap[? _function] ?? "<unknown>";
+                
+                array_push(_array, [_bentoVars.__envIndex, _nativeID, _bentoVars.__name ?? "", _type, _action]);
             }
-            else
-            {
-                var _type     = instanceof(_bentoVars.__attachedElement);
-                var _nativeID = __BentoGetStructPointer(_bentoVars.__attachedElement);
-            }
-            
-            var _action = _functionDrawLookupMap[? _function] ?? "<unknown>";
-            
-            array_push(_array, [_bentoVars.__envIndex, _nativeID, _bentoVars.__name ?? "", _type, _action]);
             
             ++_i;
         }

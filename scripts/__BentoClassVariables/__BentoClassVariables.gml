@@ -133,7 +133,6 @@ function __BentoClassVariables(_attachedElement) constructor
     __scissorWorldTop    = -infinity
     __scissorWorldRight  =  infinity
     __scissorWorldBottom =  infinity
-    __scissorVisibility  =  BENTO_VISIBLE_FULL;
     __scissorCoverage    =  1;
     __scissorParent      =  self;
     
@@ -230,6 +229,8 @@ function __BentoClassVariables(_attachedElement) constructor
         __funcHover = method(_attachedElement, function(_mouseX, _mouseY)
         {
             var _bentoVars = BENTO_VARS;
+            if (_bentoVars.__scissorCoverage <= max(BENTO_MIN_DRAW_COVERAGE, BENTO_MIN_HOVER_COVERAGE)) return undefined;
+            
             var _xCenter = 0.5*(bbox_left + bbox_right);
             var _yCenter = 0.5*(bbox_top + bbox_bottom);
             if (instance_position(_xCenter + ((_mouseX - _xCenter) / _bentoVars.__hotspotScale),
@@ -295,6 +296,8 @@ function __BentoClassVariables(_attachedElement) constructor
         __funcHover = method(_attachedElement, function(_mouseX, _mouseY)
         {
             var _bentoVars = BENTO_VARS;
+            if (_bentoVars.__scissorCoverage <= max(BENTO_MIN_DRAW_COVERAGE, BENTO_MIN_HOVER_COVERAGE)) return undefined;
+            
             var _xCenter = 0.5*(bentoLeft + bentoRight);
             var _yCenter = 0.5*(bentoTop + bentoBottom);
             if (point_in_rectangle(_xCenter + ((_mouseX - _xCenter) / _bentoVars.__hotspotScale),
