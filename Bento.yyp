@@ -363,6 +363,7 @@
     {"id":{"name":"BentoCarrySetTargetFunction","path":"scripts/BentoCarrySetTargetFunction/BentoCarrySetTargetFunction.yy",},},
     {"id":{"name":"BentoClipDrawOff","path":"scripts/BentoClipDrawOff/BentoClipDrawOff.yy",},},
     {"id":{"name":"BentoClipDrawOn","path":"scripts/BentoClipDrawOn/BentoClipDrawOn.yy",},},
+    {"id":{"name":"BentoClipGetCoverage","path":"scripts/BentoClipGetCoverage/BentoClipGetCoverage.yy",},},
     {"id":{"name":"BentoClipGetEnabled","path":"scripts/BentoClipGetEnabled/BentoClipGetEnabled.yy",},},
     {"id":{"name":"BentoClipGetFullyVisible","path":"scripts/BentoClipGetFullyVisible/BentoClipGetFullyVisible.yy",},},
     {"id":{"name":"BentoClipGetPadding","path":"scripts/BentoClipGetPadding/BentoClipGetPadding.yy",},},
