@@ -20,7 +20,7 @@ function BentoExConstrButton(_clickFunc = undefined, _text = "", _parent = other
     
     func = method(self, _clickFunc); //Ensure the click function is scoped to this instance
     
-    //Allow Bento to focus this element
+    //Allow Bento to hover this element
     BentoSetButton(BENTO_BUTTON_ALWAYS);
 
     //If we have some valid text then force the size of the element

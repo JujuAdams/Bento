@@ -48,6 +48,7 @@ function ExampleHomePage()
                 BentoCreate(oBentoExButton, { text: "Lists",                   func: ExampleLists                });
                 BentoCreate(oBentoExButton, { text: "Reorder Lists",           func: ExampleReorderLists         });
                 BentoCreate(oBentoExButton, { text: "Modal",                   func: ExampleModal                });
+                BentoCreate(oBentoExButton, { text: "Tabs",                    func: ExampleTabs                 });
                 BentoCreate(oBentoExButton, { text: "Carry (Drag & Drop)",     func: ExampleCarry                });
                 BentoCreate(oBentoExButton, { text: "Grids",                   func: ExampleGrids                });
                 BentoCreate(oBentoExButton, { text: "Navigation Wrapping",     func: ExampleNavigationWrap       });
@@ -186,6 +187,13 @@ function ExampleHomePageJSON()
                     vars: {
                         text: $"Modal",
                         func: ExampleModal,
+                    },
+                },
+                {
+                    object: oBentoExButton,
+                    vars: {
+                        text: $"Tabs",
+                        func: ExampleTabs,
                     },
                 },
                 {

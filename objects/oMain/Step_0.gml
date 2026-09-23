@@ -18,6 +18,10 @@ if (keyboard_check_pressed(vk_f11) && (screenshotName != undefined))
     screen_save(screenshotName);
 }
 
+//Hardcoded gamepad index for testing. Adjust as you see fit (if you're using a DInput gamepad
+//like a DualShock 5 then this should probably be 4)
+var _gamepad = 0;
+
 if (BentoUsingPointer())
 {
     // Pointer input generalises both mouse and touch input. As above, the primary action should be a
@@ -35,7 +39,7 @@ else
         var _dY = keyboard_check(vk_down) - keyboard_check(vk_up);
         BentoInputNavigation(_dX, _dY, keyboard_check(vk_space));
     }
-    else if (BentoUsingGamepad() && gamepad_is_connected(0))
+    else if (BentoUsingGamepad() && gamepad_is_connected(_gamepad))
     {
         // "Gamepad" input is, in reality, a generic navigation input. Sending in a navigation value
         // will push the Bento cursor in that direction. When holding a navigation input, the Bento system
@@ -43,9 +47,9 @@ else
         // configure the auto-scroll behavior by calling `BentoInputConfigureRetrigger()`. The primary
         // action parameter should be a continuous "held" value too. The Bento system handles the "pressed"
         // and "released" state internally.
-        var _dX = gamepad_axis_value(0, gp_axislh) + (gamepad_button_check(0, gp_padr) - gamepad_button_check(0, gp_padl));
-        var _dY = gamepad_axis_value(0, gp_axislv) + (gamepad_button_check(0, gp_padd) - gamepad_button_check(0, gp_padu));
-        BentoInputNavigation(_dX, _dY, gamepad_button_check(0, gp_face1));
+        var _dX = gamepad_axis_value(_gamepad, gp_axislh) + (gamepad_button_check(_gamepad, gp_padr) - gamepad_button_check(_gamepad, gp_padl));
+        var _dY = gamepad_axis_value(_gamepad, gp_axislv) + (gamepad_button_check(_gamepad, gp_padd) - gamepad_button_check(_gamepad, gp_padu));
+        BentoInputNavigation(_dX, _dY, gamepad_button_check(_gamepad, gp_face1));
     }
 }
 
@@ -58,15 +62,20 @@ BentoInputHotkey(BENTO_HOTKEY_SCROLL_DOWN, mouse_wheel_down());
     
 if (BentoUsingTouch())
 {
+    //Backspace on Android is the back button / gesture
     BentoInputHotkey(BENTO_HOTKEY_CANCEL, keyboard_check(vk_backspace));
 }
 else if (BentoUsingGamepad())
 {
     BentoInputHotkey(BENTO_HOTKEY_CANCEL, gamepad_button_check(0, gp_face2));
+    BentoInputHotkey("tab left", gamepad_button_check(_gamepad, gp_shoulderl));
+    BentoInputHotkey("tab right", gamepad_button_check(_gamepad, gp_shoulderr));
 }
 else
 {
     BentoInputHotkey(BENTO_HOTKEY_CANCEL, keyboard_check(vk_escape));
+    BentoInputHotkey("tab left", keyboard_check(ord("Q")));
+    BentoInputHotkey("tab right", keyboard_check(ord("E")));
 }
 
 // The main state update function. This ticks the entire system (but doesn't do any drawing).

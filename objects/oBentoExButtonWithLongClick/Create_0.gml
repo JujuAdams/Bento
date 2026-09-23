@@ -56,7 +56,7 @@ if (inoperative)
 func = method(self, func);
 funcLong = method(self, funcLong);
 
-//Allow Bento to focus this element
+//Allow Bento to hover this element
 BentoSetButton(inoperative? BENTO_BUTTON_NEVER : BENTO_BUTTON_ALWAYS);
 BentoSetLongPress(true);
 

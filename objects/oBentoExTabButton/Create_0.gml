@@ -1,28 +1,5 @@
 // Feather disable all
 
-// This object defines a simple text button that can be used within a Bento UI layout. The button
-// will execute a callback function when clicked.
-// 
-// You may specify the following variables when creating an instance of this object with
-// `BentoCreate()`.
-// 
-// .text
-//     The text to display on the button. This should be a string. If not specified, no text is drawn.
-// 
-// .func
-//     The function to execute when the button is clicked. This function will always be re-scaoped such
-//     that the function is executed in the scope of the button instance.
-// 
-// Example:
-// ```
-// BentoCreate(oBentoButton, {
-//     text: "Quit to Desktop",
-//     func: function() {
-//         game_end();
-//     }
-// });
-// ```
-
 //Always call this in the Create event in objects that inherit from `oBentoAncestor`
 event_inherited();
 
@@ -31,7 +8,6 @@ BentoVarEnsureMany(
     "text", "",
     "textColor", BENTO_EXAMPLE_DARK_BLUE,
     "inoperative", false,
-    "hotkey", undefined,
     "func", function()
     {
         show_debug_message($"Button {id} clicked");
@@ -52,8 +28,12 @@ if (inoperative)
 //Ensure the click function is scoped to this instance
 func = method(self, func);
 
-//Allow Bento to hover this element
-BentoSetButton(inoperative? BENTO_BUTTON_NEVER : BENTO_BUTTON_ALWAYS);
+//Allow Bento to hover this element when using pointer input but not navigation input. This means
+//that keyboard/gamepad input cannot directly interact with the button
+BentoSetButton(inoperative? BENTO_BUTTON_NEVER : BENTO_BUTTON_POINTER);
+
+//But always run the Step event! This allows us to check hotkeys
+BentoSetPushStep(not inoperative);
 
 //If we have some valid text then force the size of the element
 if (text != "")
@@ -62,3 +42,5 @@ if (text != "")
     BentoLayoutSetSize(string_width(text) + 20, string_height(text) + 20);
     draw_set_font(-1);
 }
+
+tabOpen = false;
