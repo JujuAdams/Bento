@@ -16,7 +16,7 @@ function BentoInputConsume(_layerOrName = undefined)
         var _key = ds_map_find_first(_map);
         repeat(ds_map_size(_map))
         {
-            __hotkeyConsumedMap[? _key] = true;
+            __hotkeyConsumedMap[? _key] = true; //TODO - Consider moving consume to environment
             _key = ds_map_find_next(_map, _key);
         }
     }

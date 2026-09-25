@@ -29,6 +29,7 @@ function __BentoClassEnvironment(_name) constructor
     
     __envHotkeyInputMap = ds_map_create();
     __envHotkeySeenMap  = ds_map_create();
+    __envHotkeyStateMap = ds_map_create();
     
     ///////
     // Set up a default input mode for convenience
@@ -140,6 +141,25 @@ function __BentoClassEnvironment(_name) constructor
         __envNavigationState = __envNavigationState >> 1;
         if (__envNavigationHold) __envNavigationState |= __BENTO_STATE_START;
         
+        //Update hotkey input
+        var _hotkeyInputMap = __envHotkeyInputMap;
+        var _hotkeyStateMap = __envHotkeyStateMap;
+        var _key = ds_map_find_first(_hotkeyInputMap);
+        repeat(ds_map_size(_hotkeyInputMap))
+        {
+            var _state = (_hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
+            if (_hotkeyInputMap[? _key]) _state |= __BENTO_STATE_START;
+            _hotkeyStateMap[? _key] = _state;
+            
+            __BentoTrace($"env hotkey \"{_key}\" = {_state}");
+            
+            _key = ds_map_find_next(_hotkeyInputMap, _key);
+        }
+        
+        //Wipe out the hotkeys, nullifying them for the next update loop
+        ds_map_clear(__envHotkeyInputMap);
+        
+        //Start the actual update loop
         var _layerCount = array_length(_layerArray);
         if (_layerCount <= 0) return;
         
@@ -177,9 +197,6 @@ function __BentoClassEnvironment(_name) constructor
             __newLayerArray[_i].__UpdatePartialOnCreate(_rootX, _rootY, _rootWidth, _rootHeight);
             ++_i;
         }
-        
-        //Wipe out the hotkeys, nullifying them for the next update loop
-        ds_map_clear(__envHotkeyInputMap);
         
         __BentoEnvironmentTargetPop();
     }

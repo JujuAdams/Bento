@@ -420,20 +420,36 @@ function __BentoClassLayer(_environment, _name) constructor
         }
         
         //Update hotkey input
-        var _globalHotkeyInputMap = _environment.__envHotkeyInputMap;
-        var _key = ds_map_find_first(_globalHotkeyInputMap);
-        repeat(ds_map_size(_globalHotkeyInputMap))
+        var _globalHotkeyStateMap = _environment.__envHotkeyStateMap;
+        var _key = ds_map_find_first(_globalHotkeyStateMap);
+        repeat(ds_map_size(_globalHotkeyStateMap))
         {
             var _state = (__hotkeyStateMap[? _key] ?? __BENTO_STATE_OFF) >> 1;
-            if (_globalHotkeyInputMap[? _key] ?? false) _state |= __BENTO_STATE_START;
+            
+            var _globalState = _globalHotkeyStateMap[? _key];
+            if (_state == __BENTO_STATE_OFF)
+            {
+                if (_globalState == __BENTO_STATE_START) //Only retrigger on exactly START
+                {
+                    _state |= __BENTO_STATE_START;
+                }
+            }
+            else
+            {
+                if (_globalState & __BENTO_STATE_START)
+                {
+                    _state |= __BENTO_STATE_START;
+                }
+            }
+            
             __hotkeyStateMap[? _key] = _state;
             
             if (_state == __BENTO_STATE_START)
             {
-                __hotkeyConsumedMap[? _key] = false;
+                __hotkeyConsumedMap[? _key] = false; //TODO - Consider moving consume to environment
             }
             
-            _key = ds_map_find_next(_globalHotkeyInputMap, _key);
+            _key = ds_map_find_next(_globalHotkeyStateMap, _key);
         }
     }
     
