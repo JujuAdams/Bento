@@ -144,7 +144,7 @@ The button is very basic right now. Let's tweak it using some further Bento func
 /// @desc Draw
 
 //Draw the button background
-draw_set_color(BentoGetHovered()? c_gray : c_dkgray);
+draw_set_color(BentoCursorGetHover()? c_gray : c_dkgray);
 draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, false);
 
 //Draw the button border when we're hovered
@@ -152,7 +152,7 @@ draw_set_color(c_white);
 draw_rectangle(bentoLeft, bentoTop, bentoRight, bentoBottom, true);
 
 //Set the colour of the text when hovered
-draw_set_color(BentoGetHovered()? c_white : c_gray);
+draw_set_color(BentoCursorGetHover()? c_white : c_gray);
 
 //Draw the text for the button
 draw_set_halign(fa_center);
