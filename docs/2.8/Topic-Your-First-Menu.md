@@ -170,9 +170,10 @@ draw_set_valign(fa_top);
 
 ## 9. Set up a list of buttons
 
-Menus typically have more than one button. Return to `oUIController`'s Create event and paste the following code. We're going to take advantage of the fact that Bento elements are either object instances or structs and work with the native GameMaker `with()` instruction:
+Menus typically have more than one button. Return to `oUIController`'s Create event and **replace it** with the following code. We're going to take advantage of the fact that Bento elements are either object instances or structs and work with the native GameMaker `with()` instruction:
 
 ```gml
+/// Create event of oUIController
 BentoLayerCreate("first layer");
 with(BentoLayerGetRoot("first layer"))
 {
