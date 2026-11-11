@@ -12,7 +12,7 @@ function __BentoEnsureDrawOrder()
     {
         static _funcSort = function(_a, _b)
         {
-            var _delta = (_a.__drawDepth - _b.__drawDepth);
+            var _delta = (_b.__drawDepth - _a.__drawDepth);
             
             if (_delta == 0)
             {
